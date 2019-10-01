@@ -1,2 +1,3 @@
 e:\documents\visual studio 2015\Projects\LogicPOS\LogicPOS\bin\Debug\LogicPOS.exe.config
 C:\Users\Alexander Wibowo\Documents\LogicPos\LogicPOS\bin\Debug\LogicPOS.exe.config
+E:\Documents\LogicPos\LogicPOS\bin\Debug\LogicPOS.exe.config
