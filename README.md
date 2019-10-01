@@ -1,0 +1,2 @@
+# LogicPos
+Sejati Software
