@@ -26,6 +26,7 @@ Partial Class fbarang
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fbarang))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnauto = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -36,8 +37,9 @@ Partial Class fbarang
         Me.btnhapus = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
         Me.btntambah = New System.Windows.Forms.Button()
-        Me.cmbkategori = New System.Windows.Forms.ComboBox()
+        Me.cmbjenis = New System.Windows.Forms.ComboBox()
         Me.txtsatuan = New System.Windows.Forms.ComboBox()
+        Me.txtmodal = New System.Windows.Forms.TextBox()
         Me.txtnama = New System.Windows.Forms.TextBox()
         Me.txtkode = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -51,8 +53,6 @@ Partial Class fbarang
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtmodal = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,7 +73,7 @@ Partial Class fbarang
         Me.GroupBox1.Controls.Add(Me.btnhapus)
         Me.GroupBox1.Controls.Add(Me.btnedit)
         Me.GroupBox1.Controls.Add(Me.btntambah)
-        Me.GroupBox1.Controls.Add(Me.cmbkategori)
+        Me.GroupBox1.Controls.Add(Me.cmbjenis)
         Me.GroupBox1.Controls.Add(Me.txtsatuan)
         Me.GroupBox1.Controls.Add(Me.txtmodal)
         Me.GroupBox1.Controls.Add(Me.txtnama)
@@ -90,12 +90,22 @@ Partial Class fbarang
         '
         'btnauto
         '
-        Me.btnauto.Location = New System.Drawing.Point(308, 15)
+        Me.btnauto.Location = New System.Drawing.Point(301, 9)
         Me.btnauto.Name = "btnauto"
-        Me.btnauto.Size = New System.Drawing.Size(75, 23)
+        Me.btnauto.Size = New System.Drawing.Size(86, 58)
         Me.btnauto.TabIndex = 22
-        Me.btnauto.Text = "Auto"
+        Me.btnauto.Text = "Auto Code"
         Me.btnauto.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(6, 143)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(86, 18)
+        Me.Label5.TabIndex = 21
+        Me.Label5.Text = "Modal Rp."
         '
         'Label3
         '
@@ -103,24 +113,24 @@ Partial Class fbarang
         Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(5, 111)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(77, 18)
+        Me.Label3.Size = New System.Drawing.Size(50, 18)
         Me.Label3.TabIndex = 21
-        Me.Label3.Text = "Kategori"
+        Me.Label3.Text = "Jenis"
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.PictureBox1)
-        Me.GroupBox2.Location = New System.Drawing.Point(389, 34)
+        Me.GroupBox2.Location = New System.Drawing.Point(474, 34)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(292, 180)
+        Me.GroupBox2.Size = New System.Drawing.Size(207, 180)
         Me.GroupBox2.TabIndex = 20
         Me.GroupBox2.TabStop = False
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(18, 17)
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 19)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(251, 154)
+        Me.PictureBox1.Size = New System.Drawing.Size(189, 154)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 22
         Me.PictureBox1.TabStop = False
@@ -128,9 +138,9 @@ Partial Class fbarang
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.txtgbr)
-        Me.Panel1.Location = New System.Drawing.Point(389, 15)
+        Me.Panel1.Location = New System.Drawing.Point(474, 13)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(292, 23)
+        Me.Panel1.Size = New System.Drawing.Size(207, 23)
         Me.Panel1.TabIndex = 19
         '
         'txtgbr
@@ -146,7 +156,7 @@ Partial Class fbarang
         '
         'btnupload
         '
-        Me.btnupload.Location = New System.Drawing.Point(308, 44)
+        Me.btnupload.Location = New System.Drawing.Point(393, 9)
         Me.btnupload.Name = "btnupload"
         Me.btnupload.Size = New System.Drawing.Size(75, 58)
         Me.btnupload.TabIndex = 17
@@ -189,25 +199,33 @@ Partial Class fbarang
         Me.btntambah.Text = "Tambah"
         Me.btntambah.UseVisualStyleBackColor = True
         '
-        'cmbkategori
+        'cmbjenis
         '
-        Me.cmbkategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbkategori.FormattingEnabled = True
-        Me.cmbkategori.Items.AddRange(New Object() {"HP", "Saldo", "Item", "Pulsa"})
-        Me.cmbkategori.Location = New System.Drawing.Point(109, 108)
-        Me.cmbkategori.Name = "cmbkategori"
-        Me.cmbkategori.Size = New System.Drawing.Size(186, 21)
-        Me.cmbkategori.TabIndex = 12
+        Me.cmbjenis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbjenis.FormattingEnabled = True
+        Me.cmbjenis.Items.AddRange(New Object() {"Kain", "Lembaran"})
+        Me.cmbjenis.Location = New System.Drawing.Point(109, 108)
+        Me.cmbjenis.Name = "cmbjenis"
+        Me.cmbjenis.Size = New System.Drawing.Size(186, 21)
+        Me.cmbjenis.TabIndex = 12
         '
         'txtsatuan
         '
         Me.txtsatuan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.txtsatuan.FormattingEnabled = True
-        Me.txtsatuan.Items.AddRange(New Object() {"Pcs", "-"})
+        Me.txtsatuan.Items.AddRange(New Object() {"Pcs", "Meter", "Centimeter", "-"})
         Me.txtsatuan.Location = New System.Drawing.Point(109, 75)
         Me.txtsatuan.Name = "txtsatuan"
         Me.txtsatuan.Size = New System.Drawing.Size(186, 21)
         Me.txtsatuan.TabIndex = 12
+        '
+        'txtmodal
+        '
+        Me.txtmodal.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtmodal.Location = New System.Drawing.Point(109, 143)
+        Me.txtmodal.Name = "txtmodal"
+        Me.txtmodal.Size = New System.Drawing.Size(186, 23)
+        Me.txtmodal.TabIndex = 2
         '
         'txtnama
         '
@@ -305,34 +323,18 @@ Partial Class fbarang
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "no-image.jpg")
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(6, 143)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(86, 18)
-        Me.Label5.TabIndex = 21
-        Me.Label5.Text = "Modal Rp."
-        '
-        'txtmodal
-        '
-        Me.txtmodal.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtmodal.Location = New System.Drawing.Point(109, 143)
-        Me.txtmodal.Name = "txtmodal"
-        Me.txtmodal.Size = New System.Drawing.Size(186, 23)
-        Me.txtmodal.TabIndex = 2
-        '
         'fbarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(742, 571)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "fbarang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Data Item"
+        Me.Text = "Data Barang"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -369,7 +371,7 @@ Partial Class fbarang
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents Label3 As Label
-    Friend WithEvents cmbkategori As ComboBox
+    Friend WithEvents cmbjenis As ComboBox
     Friend WithEvents btnauto As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents txtmodal As TextBox

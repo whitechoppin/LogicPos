@@ -20,8 +20,8 @@ Public Class fbarang
         txtnama.Clear()
         txtsatuan.Enabled = False
         txtsatuan.SelectedIndex = -1
-        cmbkategori.Enabled = False
-        cmbkategori.SelectedIndex = -1
+        cmbjenis.Enabled = False
+        cmbjenis.SelectedIndex = -1
         txtmodal.Text = 0
         txtmodal.Enabled = False
 
@@ -41,14 +41,13 @@ Public Class fbarang
         cnn.Close()
     End Sub
     Private Sub fbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Me.MdiParent = fmenu
+        Me.MdiParent = fmenu
         Call awal()
     End Sub
     Sub index()
         txtkode.TabIndex = 1
         txtnama.TabIndex = 2
         txtsatuan.TabIndex = 3
-
     End Sub
     Sub isitabel()
         'Call koneksii()
@@ -63,14 +62,14 @@ Public Class fbarang
 
             GridControl1.DataSource = ds.Tables(0)
             GridColumn1.Caption = "Kode"
-            GridColumn1.FieldName = "kode"
-            GridColumn2.Caption = "Nama Item"
-            GridColumn2.FieldName = "nama"
+            GridColumn1.FieldName = "kode_barang"
+            GridColumn2.Caption = "Nama Barang"
+            GridColumn2.FieldName = "nama_barang"
             GridColumn3.Caption = "Satuan"
-            GridColumn3.FieldName = "satuan"
+            GridColumn3.FieldName = "satuan_barang"
             GridColumn3.Width = "60"
-            GridColumn4.Caption = "Kategori"
-            GridColumn4.FieldName = "kategori"
+            GridColumn4.Caption = "Jenis"
+            GridColumn4.FieldName = "jenis_barang"
             'GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
             'GridColumn4.DisplayFormat.FormatString = "##,##0"
             GridControl1.Visible = True
@@ -81,8 +80,8 @@ Public Class fbarang
         btnauto.Enabled = True
         txtkode.Enabled = True
         txtnama.Enabled = True
-        cmbkategori.Enabled = True
-        cmbkategori.SelectedIndex = 0
+        cmbjenis.Enabled = True
+        cmbjenis.SelectedIndex = 0
         txtsatuan.Enabled = True
         txtsatuan.SelectedIndex = 0
         btnupload.Enabled = True
@@ -108,8 +107,8 @@ Public Class fbarang
                     If txtsatuan.SelectedIndex = -1 Then
                         MsgBox("Satuan belum terpilih!!!")
                     Else
-                        If cmbkategori.SelectedIndex = -1 Then
-                            MsgBox("Kategori belum dipilih!!!")
+                        If cmbjenis.SelectedIndex = -1 Then
+                            MsgBox("Jenis belum dipilih!!!")
                         Else
                             Call simpan()
                         End If
@@ -121,13 +120,12 @@ Public Class fbarang
     Sub simpan()
         'Call koneksii()
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_barang WHERE kode  = '" + txtkode.Text + "'"
+            sql = "SELECT * FROM tb_barang WHERE kode_barang  = '" + txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
             cnn.Open()
-
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
-                MsgBox("Kode barang Sudah ada dengan nama " + dr("nama"), MsgBoxStyle.Critical, "Pemberitahuan")
+                MsgBox("Kode barang Sudah ada dengan nama " + dr("nama_barang"), MsgBoxStyle.Critical, "Pemberitahuan")
                 txtkode.Clear()
                 txtnama.Clear()
                 txtsatuan.SelectedIndex = -1
@@ -141,30 +139,22 @@ Public Class fbarang
                 PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
                 'merubah gambar pada ms ke array
                 ms.ToArray()
-
-                sql = "INSERT INTO tb_barang (kode,nama,satuan,kategori,stok,gambar) VALUES ( ?,?,?,?,?,?)"
+                sql = "INSERT INTO tb_barang (kode_barang,nama_barang,satuan_barang,jenis_barang,gambar_barang) VALUES ( ?,?,?,?,?,?)"
                 cmmd = New OdbcCommand(sql, cnn)
-                cmmd.Parameters.AddWithValue("@kode", txtkode.Text)
-                cmmd.Parameters.AddWithValue("@nama", txtnama.Text)
-                cmmd.Parameters.AddWithValue("@satuan", txtsatuan.Text)
-                cmmd.Parameters.AddWithValue("@kategori", cmbkategori.Text)
-                cmmd.Parameters.AddWithValue("@stok", 0)
-                cmmd.Parameters.AddWithValue("@gambar", ms.ToArray)
+                cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
+                cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
+                cmmd.Parameters.AddWithValue("@satuan_barang", txtsatuan.Text)
+                cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
+                cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
                 cnn.Open()
                 cmmd.ExecuteNonQuery()
-
                 cnn.Close()
-
-
                 MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
                 btntambah.Text = "Tambah"
                 Me.Refresh()
                 Call awal()
             End If
-
         End Using
-
-
     End Sub
     Sub cari()
         txtkode.Text = GridView1.GetFocusedRowCellValue("kode")
@@ -178,14 +168,13 @@ Public Class fbarang
             cnn.Open()
             dr = cmmd.ExecuteReader
             dr.Read()
-
             If dr.HasRows Then
-                txtnama.Text = dr("nama")
-                txtsatuan.Text = dr("satuan")
-                cmbkategori.Text = dr("kategori")
-                kode = dr("kode")
-                foto = dr("gambar")
-                modal = dr("modal")
+                txtnama.Text = dr("nama_barang")
+                txtsatuan.Text = dr("satuan_barang")
+                cmbjenis.Text = dr("jenis_barang")
+                kode = dr("kode_barang")
+                foto = dr("gambar_barang")
+                modal = dr("modal_barang")
                 txtmodal.Text = Format(modal, "##,##0")
                 PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
                 PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
@@ -212,11 +201,8 @@ Public Class fbarang
         If btnedit.Text = "Edit" Then
             btnedit.Text = "Simpan"
             btnhapus.Enabled = False
-
-
             Call enable_text()
             Call index()
-
             GridControl1.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
@@ -228,7 +214,7 @@ Public Class fbarang
                     If txtsatuan.SelectedIndex = -1 Then
                         MsgBox("Satuan belum terpilih!!!")
                     Else
-                        If cmbkategori.SelectedIndex = -1 Then
+                        If cmbjenis.SelectedIndex = -1 Then
                             MsgBox("Kategori belum terisi!!!")
                         Else
                             Call edit()
@@ -246,18 +232,17 @@ Public Class fbarang
         'merubah gambar pada ms ke array
         ms.ToArray()
         Using cnn As New OdbcConnection(strConn)
-            sql = "UPDATE tb_barang SET kode=?, nama=?, satuan=?,  kategori=?, gambar=?, modal=? WHERE  kode='" & kode & "'"
+            sql = "UPDATE tb_barang SET kode_barang=?, nama_barang=?, satuan_barang=?,  jenis_barang=?, gambar_barang=?, modal_barang=? WHERE  kode_barang='" & kode & "'"
             cmmd = New OdbcCommand(sql, cnn)
-            cmmd.Parameters.AddWithValue("@kode", txtkode.Text)
-            cmmd.Parameters.AddWithValue("@nama", txtnama.Text)
-            cmmd.Parameters.AddWithValue("@satuan", txtsatuan.Text)
-            cmmd.Parameters.AddWithValue("@kategori", cmbkategori.Text)
-            cmmd.Parameters.AddWithValue("@gambar", ms.ToArray)
-            cmmd.Parameters.AddWithValue("@modal", harga)
+            cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
+            cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
+            cmmd.Parameters.AddWithValue("@satuan_barang", txtsatuan.Text)
+            cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
+            cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
+            cmmd.Parameters.AddWithValue("@modal_barang", harga)
             cnn.Open()
             cmmd.ExecuteNonQuery()
             cnn.Close()
-
             MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "&Edit"
             cnn.Close()
@@ -270,12 +255,12 @@ Public Class fbarang
             Call update()
         Else
             Using cnn As New OdbcConnection(strConn)
-                sql = "SELECT * FROM tb_barang WHERE kode  = '" + txtkode.Text + "'"
+                sql = "SELECT * FROM tb_barang WHERE kode_barang  = '" + txtkode.Text + "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 cnn.Open()
                 dr = cmmd.ExecuteReader
                 If dr.HasRows Then
-                    MsgBox("Kode barang Sudah ada dengan nama " + dr("nama"), MsgBoxStyle.Exclamation, "Pemberitahuan")
+                    MsgBox("Kode barang Sudah ada dengan nama " + dr("nama_barang"), MsgBoxStyle.Exclamation, "Pemberitahuan")
                     cnn.Close()
                 Else
                     cnn.Close()
@@ -289,12 +274,11 @@ Public Class fbarang
         'Call koneksii()
         If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             Using cnn As New OdbcConnection(strConn)
-                sql = "DELETE FROM tb_barang WHERE  `kode`='" & txtkode.Text & "'"
+                sql = "DELETE FROM tb_barang WHERE  `kode_barang`='" & txtkode.Text & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 cnn.Open()
                 dr = cmmd.ExecuteReader
                 cnn.Close()
-
                 'sql = "DELETE FROM tb_stok WHERE  `kode`='" & txtkode.Text & "'"
                 'cmmd = New OdbcCommand(sql, cnn)
                 'cnn.Open()
@@ -307,7 +291,7 @@ Public Class fbarang
         End If
     End Sub
     Private Sub txtharga_KeyPress(sender As Object, e As KeyPressEventArgs)
-        ' e.Handled = ValidAngka(e)
+        e.Handled = ValidAngka(e)
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnupload.Click
         'On Error Resume Next
@@ -367,7 +351,6 @@ Public Class fbarang
         Dim angka As Integer = r.Next(99999)
         txtkode.Text = angka
     End Sub
-
     Private Sub txtmodal_TextChanged(sender As Object, e As EventArgs) Handles txtmodal.TextChanged
         If txtmodal.Text = "" Then
             txtmodal.Text = 0
@@ -377,8 +360,7 @@ Public Class fbarang
             txtmodal.SelectionStart = Len(txtmodal.Text)
         End If
     End Sub
-
     Private Sub txtmodal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtmodal.KeyPress
-        'e.Handled = ValidAngka(e)
+        e.Handled = ValidAngka(e)
     End Sub
 End Class
