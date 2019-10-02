@@ -88,10 +88,22 @@
     <Compile Include="fbarang.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fcustomer.designer.vb">
+      <DependentUpon>fcustomer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcustomer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fmenu.designer.vb">
       <DependentUpon>fmenu.vb</DependentUpon>
     </Compile>
     <Compile Include="fmenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fsupplier.designer.vb">
+      <DependentUpon>fsupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fsupplier.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="koneksi.vb" />
@@ -116,8 +128,14 @@
     <EmbeddedResource Include="fbarang.resx">
       <DependentUpon>fbarang.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fcustomer.resx">
+      <DependentUpon>fcustomer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmenu.resx">
       <DependentUpon>fmenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fsupplier.resx">
+      <DependentUpon>fsupplier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
