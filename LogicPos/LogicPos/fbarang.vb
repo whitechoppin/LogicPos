@@ -139,13 +139,14 @@ Public Class fbarang
                 PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
                 'merubah gambar pada ms ke array
                 ms.ToArray()
-                sql = "INSERT INTO tb_barang (kode_barang,nama_barang,satuan_barang,jenis_barang,gambar_barang) VALUES ( ?,?,?,?,?,?)"
+                sql = "INSERT INTO tb_barang (kode_barang,nama_barang,satuan_barang,jenis_barang,gambar_barang, modal_barang) VALUES ( ?,?,?,?,?,?)"
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
                 cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
                 cmmd.Parameters.AddWithValue("@satuan_barang", txtsatuan.Text)
                 cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
                 cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
+                cmmd.Parameters.AddWithValue("@modal_barang", txtmodal.Text)
                 cnn.Open()
                 cmmd.ExecuteNonQuery()
                 cnn.Close()
@@ -157,13 +158,12 @@ Public Class fbarang
         End Using
     End Sub
     Sub cari()
-        txtkode.Text = GridView1.GetFocusedRowCellValue("kode")
-        ' Call koneksii()
+        txtkode.Text = GridView1.GetFocusedRowCellValue("kode_barang")
         'menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
         Dim foto As Byte()
         'menyiapkan koneksi database
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_barang WHERE kode  = '" + txtkode.Text + "'"
+            sql = "SELECT * FROM tb_barang WHERE kode_barang  = '" + txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
             cnn.Open()
             dr = cmmd.ExecuteReader
