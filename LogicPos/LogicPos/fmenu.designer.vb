@@ -39,9 +39,9 @@ Partial Class fmenu
         Me.PembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransferBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PenjualanToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PembelianToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InfoStokToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LStokBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrinterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
@@ -55,6 +55,18 @@ Partial Class fmenu
         Me.BarangMasukToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BarangKeluarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdministrasiMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PelunasanUtangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PelunasanPiutangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.KasMasukToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.KasKeluarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TransferKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LUtangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LPiutangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LAkunMasukToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LAkunKeluarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LTransferKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LTransferBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -62,7 +74,7 @@ Partial Class fmenu
         'MenuUtama
         '
         Me.MenuUtama.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuUtama.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterMenu, Me.TransaksiMenu, Me.AdministrasiMenu, Me.LaporanMenu, Me.SettingMenu})
+        Me.MenuUtama.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterMenu, Me.TransaksiMenu, Me.AdministrasiMenu, Me.LaporanMenu, Me.SettingMenu, Me.AboutMenu})
         Me.MenuUtama.Location = New System.Drawing.Point(0, 0)
         Me.MenuUtama.Name = "MenuUtama"
         Me.MenuUtama.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
@@ -153,40 +165,40 @@ Partial Class fmenu
         '
         'LaporanMenu
         '
-        Me.LaporanMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PenjualanToolStripMenuItem1, Me.PembelianToolStripMenuItem1, Me.InfoStokToolStripMenuItem})
+        Me.LaporanMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LPenjualanToolStripMenuItem, Me.LPembelianToolStripMenuItem, Me.LUtangToolStripMenuItem, Me.LPiutangToolStripMenuItem, Me.LAkunMasukToolStripMenuItem, Me.LAkunKeluarToolStripMenuItem, Me.LTransferKasToolStripMenuItem, Me.LTransferBarangToolStripMenuItem, Me.LStokBarangToolStripMenuItem})
         Me.LaporanMenu.Name = "LaporanMenu"
         Me.LaporanMenu.Size = New System.Drawing.Size(75, 24)
-        Me.LaporanMenu.Text = "Laporan"
+        Me.LaporanMenu.Text = "&Laporan"
         '
-        'PenjualanToolStripMenuItem1
+        'LPenjualanToolStripMenuItem
         '
-        Me.PenjualanToolStripMenuItem1.Name = "PenjualanToolStripMenuItem1"
-        Me.PenjualanToolStripMenuItem1.Size = New System.Drawing.Size(181, 26)
-        Me.PenjualanToolStripMenuItem1.Text = "Penjualan"
+        Me.LPenjualanToolStripMenuItem.Name = "LPenjualanToolStripMenuItem"
+        Me.LPenjualanToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
+        Me.LPenjualanToolStripMenuItem.Text = "Laporan Penjualan"
         '
-        'PembelianToolStripMenuItem1
+        'LPembelianToolStripMenuItem
         '
-        Me.PembelianToolStripMenuItem1.Name = "PembelianToolStripMenuItem1"
-        Me.PembelianToolStripMenuItem1.Size = New System.Drawing.Size(181, 26)
-        Me.PembelianToolStripMenuItem1.Text = "Pembelian"
+        Me.LPembelianToolStripMenuItem.Name = "LPembelianToolStripMenuItem"
+        Me.LPembelianToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
+        Me.LPembelianToolStripMenuItem.Text = "Laporan Pembelian"
         '
-        'InfoStokToolStripMenuItem
+        'LStokBarangToolStripMenuItem
         '
-        Me.InfoStokToolStripMenuItem.Name = "InfoStokToolStripMenuItem"
-        Me.InfoStokToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
-        Me.InfoStokToolStripMenuItem.Text = "Info Stok"
+        Me.LStokBarangToolStripMenuItem.Name = "LStokBarangToolStripMenuItem"
+        Me.LStokBarangToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
+        Me.LStokBarangToolStripMenuItem.Text = "Laporan Stok Barang"
         '
         'SettingMenu
         '
         Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrinterToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(68, 24)
-        Me.SettingMenu.Text = "Setting"
+        Me.SettingMenu.Text = "&Setting"
         '
         'PrinterToolStripMenuItem
         '
         Me.PrinterToolStripMenuItem.Name = "PrinterToolStripMenuItem"
-        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(127, 26)
+        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
         Me.PrinterToolStripMenuItem.Text = "Printer"
         '
         'StatusStrip
@@ -259,9 +271,82 @@ Partial Class fmenu
         '
         'AdministrasiMenu
         '
+        Me.AdministrasiMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PelunasanUtangToolStripMenuItem, Me.PelunasanPiutangToolStripMenuItem, Me.KasMasukToolStripMenuItem, Me.KasKeluarToolStripMenuItem, Me.TransferKasToolStripMenuItem})
         Me.AdministrasiMenu.Name = "AdministrasiMenu"
         Me.AdministrasiMenu.Size = New System.Drawing.Size(103, 24)
         Me.AdministrasiMenu.Text = "&Administrasi"
+        '
+        'PelunasanUtangToolStripMenuItem
+        '
+        Me.PelunasanUtangToolStripMenuItem.Name = "PelunasanUtangToolStripMenuItem"
+        Me.PelunasanUtangToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
+        Me.PelunasanUtangToolStripMenuItem.Text = "Pelunasan &Utang"
+        '
+        'PelunasanPiutangToolStripMenuItem
+        '
+        Me.PelunasanPiutangToolStripMenuItem.Name = "PelunasanPiutangToolStripMenuItem"
+        Me.PelunasanPiutangToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
+        Me.PelunasanPiutangToolStripMenuItem.Text = "Pelunasan Piutang"
+        '
+        'KasMasukToolStripMenuItem
+        '
+        Me.KasMasukToolStripMenuItem.Name = "KasMasukToolStripMenuItem"
+        Me.KasMasukToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
+        Me.KasMasukToolStripMenuItem.Text = "Kas Masuk"
+        '
+        'KasKeluarToolStripMenuItem
+        '
+        Me.KasKeluarToolStripMenuItem.Name = "KasKeluarToolStripMenuItem"
+        Me.KasKeluarToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
+        Me.KasKeluarToolStripMenuItem.Text = "Kas Keluar"
+        '
+        'TransferKasToolStripMenuItem
+        '
+        Me.TransferKasToolStripMenuItem.Name = "TransferKasToolStripMenuItem"
+        Me.TransferKasToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
+        Me.TransferKasToolStripMenuItem.Text = "Transfer Kas"
+        '
+        'LUtangToolStripMenuItem
+        '
+        Me.LUtangToolStripMenuItem.Name = "LUtangToolStripMenuItem"
+        Me.LUtangToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
+        Me.LUtangToolStripMenuItem.Text = "Laporan Utang"
+        '
+        'LPiutangToolStripMenuItem
+        '
+        Me.LPiutangToolStripMenuItem.Name = "LPiutangToolStripMenuItem"
+        Me.LPiutangToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
+        Me.LPiutangToolStripMenuItem.Text = "Laporan Piutang"
+        '
+        'LAkunMasukToolStripMenuItem
+        '
+        Me.LAkunMasukToolStripMenuItem.Name = "LAkunMasukToolStripMenuItem"
+        Me.LAkunMasukToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
+        Me.LAkunMasukToolStripMenuItem.Text = "Laporan Akun Masuk"
+        '
+        'LAkunKeluarToolStripMenuItem
+        '
+        Me.LAkunKeluarToolStripMenuItem.Name = "LAkunKeluarToolStripMenuItem"
+        Me.LAkunKeluarToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
+        Me.LAkunKeluarToolStripMenuItem.Text = "Laporan Akun Keluar"
+        '
+        'LTransferKasToolStripMenuItem
+        '
+        Me.LTransferKasToolStripMenuItem.Name = "LTransferKasToolStripMenuItem"
+        Me.LTransferKasToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
+        Me.LTransferKasToolStripMenuItem.Text = "Laporan Transfer Kas"
+        '
+        'LTransferBarangToolStripMenuItem
+        '
+        Me.LTransferBarangToolStripMenuItem.Name = "LTransferBarangToolStripMenuItem"
+        Me.LTransferBarangToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
+        Me.LTransferBarangToolStripMenuItem.Text = "Laporan Transfer Barang"
+        '
+        'AboutMenu
+        '
+        Me.AboutMenu.Name = "AboutMenu"
+        Me.AboutMenu.Size = New System.Drawing.Size(62, 24)
+        Me.AboutMenu.Text = "Abou&t"
         '
         'fmenu
         '
@@ -297,15 +382,15 @@ Partial Class fmenu
     Friend WithEvents TransaksiMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PembelianToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LaporanMenu As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PenjualanToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PembelianToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LPenjualanToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LPembelianToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusStrip As System.Windows.Forms.StatusStrip
     Friend WithEvents statususer As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents Timer As System.Windows.Forms.Timer
     Friend WithEvents statustgl As System.Windows.Forms.ToolStripStatusLabel
     Private WithEvents statusjam As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents DataSupplierToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents InfoStokToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LStokBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SettingMenu As ToolStripMenuItem
     Friend WithEvents PrinterToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PricelistGroupToolStripMenuItem As ToolStripMenuItem
@@ -318,4 +403,16 @@ Partial Class fmenu
     Friend WithEvents BarangMasukToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BarangKeluarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AdministrasiMenu As ToolStripMenuItem
+    Friend WithEvents PelunasanUtangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PelunasanPiutangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents KasMasukToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents KasKeluarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TransferKasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LUtangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LPiutangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LAkunMasukToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LAkunKeluarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LTransferKasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LTransferBarangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AboutMenu As ToolStripMenuItem
 End Class

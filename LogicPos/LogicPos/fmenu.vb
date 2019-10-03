@@ -13,7 +13,7 @@ Public Class fmenu
         'Call koneksii()
         'statususer.Text = flogin.
     End Sub
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
+    Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         statusjam.Text = TimeOfDay
     End Sub
     Private Sub DataBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataBarangToolStripMenuItem.Click
@@ -35,7 +35,7 @@ Public Class fmenu
         'fpenjualan.Show()
         'fmodal.Show()
     End Sub
-    Private Sub PembelianToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PembelianToolStripMenuItem1.Click
+    Private Sub PembelianToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPembelianToolStripMenuItem.Click
         'flaporanpembelian.Show()
     End Sub
     Private Sub ReturPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs)
@@ -47,10 +47,10 @@ Public Class fmenu
     Private Sub PelunasanNotaToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'fpelunasan.Show()
     End Sub
-    Private Sub PenjualanToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PenjualanToolStripMenuItem1.Click
+    Private Sub PenjualanToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPenjualanToolStripMenuItem.Click
         'flaporanpenjualan.Show()
     End Sub
-    Private Sub InfoStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InfoStokToolStripMenuItem.Click
+    Private Sub InfoStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LStokBarangToolStripMenuItem.Click
         'fminstok.Show()
     End Sub
     Private Sub ManageUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataUserToolStripMenuItem.Click
