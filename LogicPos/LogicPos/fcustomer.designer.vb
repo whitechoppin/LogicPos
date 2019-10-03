@@ -22,6 +22,7 @@ Partial Class fcustomer
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fcustomer))
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btnbatal = New System.Windows.Forms.Button()
@@ -44,9 +45,18 @@ Partial Class fcustomer
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtcari = New System.Windows.Forms.TextBox()
         Me.cmbpilih = New System.Windows.Forms.ComboBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtgbr = New System.Windows.Forms.Label()
+        Me.btnupload = New System.Windows.Forms.Button()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridColumn4
@@ -57,7 +67,7 @@ Partial Class fcustomer
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(544, 111)
+        Me.btnbatal.Location = New System.Drawing.Point(251, 180)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(75, 23)
         Me.btnbatal.TabIndex = 13
@@ -66,7 +76,7 @@ Partial Class fcustomer
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(463, 111)
+        Me.btnhapus.Location = New System.Drawing.Point(170, 180)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(75, 23)
         Me.btnhapus.TabIndex = 14
@@ -75,7 +85,7 @@ Partial Class fcustomer
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(382, 111)
+        Me.btnedit.Location = New System.Drawing.Point(89, 180)
         Me.btnedit.Name = "btnedit"
         Me.btnedit.Size = New System.Drawing.Size(75, 23)
         Me.btnedit.TabIndex = 15
@@ -84,7 +94,7 @@ Partial Class fcustomer
         '
         'btntambah
         '
-        Me.btntambah.Location = New System.Drawing.Point(301, 111)
+        Me.btntambah.Location = New System.Drawing.Point(8, 180)
         Me.btntambah.Name = "btntambah"
         Me.btntambah.Size = New System.Drawing.Size(75, 23)
         Me.btntambah.TabIndex = 16
@@ -135,10 +145,10 @@ Partial Class fcustomer
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 208)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 283)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(679, 223)
+        Me.GridControl1.Size = New System.Drawing.Size(679, 334)
         Me.GridControl1.TabIndex = 7
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -164,6 +174,9 @@ Partial Class fcustomer
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
+        Me.GroupBox1.Controls.Add(Me.Panel1)
+        Me.GroupBox1.Controls.Add(Me.btnupload)
         Me.GroupBox1.Controls.Add(Me.txtalamat)
         Me.GroupBox1.Controls.Add(Me.btnbatal)
         Me.GroupBox1.Controls.Add(Me.btnhapus)
@@ -178,7 +191,7 @@ Partial Class fcustomer
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(679, 150)
+        Me.GroupBox1.Size = New System.Drawing.Size(679, 235)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Customer"
@@ -195,7 +208,7 @@ Partial Class fcustomer
         'txttelp
         '
         Me.txttelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttelp.Location = New System.Drawing.Point(392, 15)
+        Me.txttelp.Location = New System.Drawing.Point(109, 140)
         Me.txttelp.Name = "txttelp"
         Me.txttelp.Size = New System.Drawing.Size(186, 20)
         Me.txttelp.TabIndex = 2
@@ -214,7 +227,7 @@ Partial Class fcustomer
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(314, 18)
+        Me.Label3.Location = New System.Drawing.Point(4, 142)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(72, 18)
         Me.Label3.TabIndex = 7
@@ -223,7 +236,7 @@ Partial Class fcustomer
         'txtcari
         '
         Me.txtcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcari.Location = New System.Drawing.Point(139, 177)
+        Me.txtcari.Location = New System.Drawing.Point(139, 253)
         Me.txtcari.Name = "txtcari"
         Me.txtcari.Size = New System.Drawing.Size(284, 24)
         Me.txtcari.TabIndex = 2
@@ -234,28 +247,85 @@ Partial Class fcustomer
         Me.cmbpilih.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbpilih.FormattingEnabled = True
         Me.cmbpilih.Items.AddRange(New Object() {"ID", "Nama", "Alamat", "Telepon"})
-        Me.cmbpilih.Location = New System.Drawing.Point(12, 177)
+        Me.cmbpilih.Location = New System.Drawing.Point(12, 253)
         Me.cmbpilih.Name = "cmbpilih"
         Me.cmbpilih.Size = New System.Drawing.Size(121, 22)
         Me.cmbpilih.TabIndex = 8
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.PictureBox1)
+        Me.GroupBox2.Location = New System.Drawing.Point(466, 43)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(207, 180)
+        Me.GroupBox2.TabIndex = 23
+        Me.GroupBox2.TabStop = False
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.txtgbr)
+        Me.Panel1.Location = New System.Drawing.Point(466, 15)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(207, 23)
+        Me.Panel1.TabIndex = 22
+        '
+        'txtgbr
+        '
+        Me.txtgbr.AutoSize = True
+        Me.txtgbr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtgbr.Location = New System.Drawing.Point(3, 3)
+        Me.txtgbr.Name = "txtgbr"
+        Me.txtgbr.Size = New System.Drawing.Size(39, 13)
+        Me.txtgbr.TabIndex = 19
+        Me.txtgbr.Text = "Label6"
+        Me.txtgbr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'btnupload
+        '
+        Me.btnupload.Location = New System.Drawing.Point(388, 15)
+        Me.btnupload.Name = "btnupload"
+        Me.btnupload.Size = New System.Drawing.Size(75, 46)
+        Me.btnupload.TabIndex = 21
+        Me.btnupload.Text = "Upload Foto"
+        Me.btnupload.UseVisualStyleBackColor = True
+        '
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "no-image.jpg")
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(9, 13)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(189, 154)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 23
+        Me.PictureBox1.TabStop = False
         '
         'fcustomer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(703, 443)
+        Me.ClientSize = New System.Drawing.Size(704, 637)
         Me.Controls.Add(Me.cmbpilih)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txtcari)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "fcustomer"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Customer"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -281,4 +351,10 @@ Partial Class fcustomer
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtcari As System.Windows.Forms.TextBox
     Friend WithEvents cmbpilih As System.Windows.Forms.ComboBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents txtgbr As Label
+    Friend WithEvents btnupload As Button
+    Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

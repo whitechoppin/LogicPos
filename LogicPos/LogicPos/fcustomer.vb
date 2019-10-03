@@ -1,9 +1,12 @@
 ﻿Imports System.Data.Odbc
+Imports System.Drawing.Drawing2D
+Imports System.IO
 Public Class fcustomer
     Private Sub fcustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
         cmbpilih.SelectedIndex = 1
+
     End Sub
     Sub awal()
         txtkode.Clear()
@@ -29,34 +32,36 @@ Public Class fcustomer
         btntambah.Text = "Tambah"
         btnedit.Text = "Edit"
 
+        txtgbr.Text = ""
+        PictureBox1.Image = ImageList1.Images(0)
+        btnupload.Enabled = False
+
         GridControl1.Enabled = True
         Call isitabel()
     End Sub
     Sub kolom()
-        GridColumn1.Caption = "ID"
+        GridColumn1.Caption = "Kode"
         GridColumn1.Width = 65
-        GridColumn1.FieldName = "id"
+        GridColumn1.FieldName = "kode_pelanggan"
         GridColumn2.Caption = "Nama"
         GridColumn2.Width = 65
-        GridColumn2.FieldName = "nama"
+        GridColumn2.FieldName = "nama_pelanggan"
         GridColumn3.Caption = "Alamat"
-        GridColumn3.FieldName = "alamat"
+        GridColumn3.FieldName = "alamat_pelanggan"
         GridColumn4.Caption = "Telepon"
         GridColumn4.Width = 73
-        GridColumn4.FieldName = "telepon"
+        GridColumn4.FieldName = "telepon_pelanggan"
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "Select * from tb_customer"
+        sql = "Select * from tb_pelanggan"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
         GridControl1.DataSource = Nothing
-
         'GridView1.Columns.Clear()
         GridControl1.DataSource = ds.Tables(0)
         Call kolom()
-
     End Sub
     Sub index()
         txtnama.TabIndex = 1
@@ -65,7 +70,7 @@ Public Class fcustomer
     End Sub
     Function autonumber()
         Call koneksii()
-        sql = "SELECT RIGHT(`id`,2) FROM `tb_customer` WHERE date_format(LEFT(`id`,6), ' %y ')+ MONTH(LEFT(`id`,6)) + DAY(LEFT(`id`,6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(id,2) DESC"
+        sql = "SELECT RIGHT(`kode_pelanggan`,2) FROM `tb_pelanggan` WHERE date_format(LEFT(`kode_pelanggan`,6), ' %y ')+ MONTH(LEFT(`kode_pelanggan`,6)) + DAY(LEFT(`kode_pelanggan`,6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pelanggan,2) DESC"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -102,6 +107,7 @@ Public Class fcustomer
         If btntambah.Text = "Tambah" Then
             btnbatal.Enabled = True
             btntambah.Text = "Simpan"
+            btnupload.Enabled = True
             Call enable_text()
             Call index()
             txtkode.Text = autonumber()
@@ -119,28 +125,91 @@ Public Class fcustomer
         End If
     End Sub
     Sub simpan()
-        Call koneksii()
-        sql = "SELECT * FROM tb_customer WHERE id  = '" + txtkode.Text + "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-        If dr.HasRows Then
-            MsgBox("ID Customer Sudah ada dengan nama " + dr("nama"), MsgBoxStyle.Information, "Pemberitahuan")
+        'Call koneksii()
+        'sql = "SELECT * FROM tb_customer WHERE id  = '" + txtkode.Text + "'"
+        'cmmd = New OdbcCommand(sql, cnn)
+        'dr = cmmd.ExecuteReader
+        'If dr.HasRows Then
+        '    MsgBox("ID Customer Sudah ada dengan nama " + dr("nama"), MsgBoxStyle.Information, "Pemberitahuan")
 
-        Else
-            sql = "INSERT INTO tb_customer (id, nama, telepon, alamat) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "')"
+        'Else
+        '    sql = "INSERT INTO tb_customer (id, nama, telepon, alamat) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "')"
+        '    cmmd = New OdbcCommand(sql, cnn)
+        '    dr = cmmd.ExecuteReader()
+
+        '    MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+        '    btntambah.Text = "Tambah"
+        '    Me.Refresh()
+        '    Call awal()
+        'End If
+        Using cnn As New OdbcConnection(strConn)
+            sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" + txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-
-            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-            btntambah.Text = "Tambah"
-            Me.Refresh()
-            Call awal()
-        End If
+            cnn.Open()
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                MsgBox("Kode Customer Sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
+                txtkode.Clear()
+                txtnama.Clear()
+                txtkode.Focus()
+                cnn.Close()
+            Else
+                cnn.Close()
+                'menyiapkan MemoryStream
+                Dim ms As MemoryStream = New MemoryStream
+                'menyimpan gambar ke dalam ms dengan format jpeg
+                PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
+                'merubah gambar pada ms ke array
+                ms.ToArray()
+                sql = "INSERT INTO tb_pelanggan (kode_pelanggan,nama_pelanggan,alamat_pelanggan,telepon_pelanggan,foto_pelanggan,created_by,updated_by,date_created,last_updated) VALUES ( ?,?,?,?,?,?,?,?,?)"
+                cmmd = New OdbcCommand(sql, cnn)
+                cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
+                cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
+                cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
+                cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
+                cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
+                cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@date_created", Date.Now)
+                cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+                cnn.Open()
+                cmmd.ExecuteNonQuery()
+                cnn.Close()
+                MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+                btntambah.Text = "Tambah"
+                Me.Refresh()
+                Call awal()
+            End If
+        End Using
     End Sub
+    Private Function ResizeGambar(ByVal gmb As Image,
+    ByVal size As Size, Optional ByVal preserveAspectRatio As Boolean = True) As Image
+        Dim newWidth As Integer
+        Dim newHeight As Integer
+        If preserveAspectRatio Then
+            Dim originalWidth As Integer = gmb.Width
+            Dim originalHeight As Integer = gmb.Height
+            Dim percentWidth As Single = CSng(size.Width) / CSng(originalWidth)
+            Dim percentHeight As Single = CSng(size.Height) / CSng(originalHeight)
+            Dim percent As Single = If(percentHeight < percentWidth, percentHeight, percentWidth)
+            newWidth = CInt(originalWidth * percent)
+            newHeight = CInt(originalHeight * percent)
+        Else
+            newWidth = size.Width
+            newHeight = size.Height
+        End If
+        Dim newImage As Image = New Bitmap(newWidth, newHeight)
+        Using graphicsHandle As Graphics = Graphics.FromImage(newImage)
+            graphicsHandle.InterpolationMode = InterpolationMode.HighQualityBicubic
+            graphicsHandle.DrawImage(gmb, 0, 0, newWidth, newHeight)
+        End Using
+        Return newImage
+    End Function
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If btnedit.Text = "Edit" Then
             btnedit.Text = "Simpan"
             btnhapus.Enabled = False
+            btnupload.Enabled = True
             Call enable_text()
             Call index()
             GridControl1.Enabled = False
@@ -157,14 +226,39 @@ Public Class fcustomer
         End If
     End Sub
     Sub edit()
-        Call koneksii()
-        sql = "UPDATE tb_customer SET  nama='" & txtnama.Text & "',alamat='" & txtalamat.Text & "', telepon='" & txttelp.Text & "'  WHERE  id='" & txtkode.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-        btnedit.Text = "Edit"
-        Me.Refresh()
-        Call awal()
+        'Call koneksii()
+        'sql = "UPDATE tb_pelanggan SET  nama_pelanggan='" & txtnama.Text & "',alamat_pelanggan='" & txtalamat.Text & "', telepon_pelanggan='" & txttelp.Text & "'  WHERE  kode_pelanggan='" & txtkode.Text & "'"
+        'cmmd = New OdbcCommand(sql, cnn)
+        'dr = cmmd.ExecuteReader()
+        'MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+        'btnedit.Text = "Edit"
+        'Me.Refresh()
+        'Call awal()
+        'Call koneksii()
+        Dim ms As MemoryStream = New MemoryStream
+        'menyimpan gambar ke dalam ms dengan format jpeg
+        PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
+        'merubah gambar pada ms ke array
+        ms.ToArray()
+        Using cnn As New OdbcConnection(strConn)
+            sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & txtkode.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
+            cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
+            cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
+            cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
+            cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+            cnn.Open()
+            cmmd.ExecuteNonQuery()
+            cnn.Close()
+            MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "&Edit"
+            cnn.Close()
+            Me.Refresh()
+            Call awal()
+        End Using
     End Sub
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
@@ -172,10 +266,9 @@ Public Class fcustomer
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         Call koneksii()
         If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            sql = "DELETE FROM tb_customer WHERE  id='" & txtkode.Text & "'"
+            sql = "DELETE FROM tb_pelanggan WHERE  kode_pelanggan='" & txtkode.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
-
             MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Me.Refresh()
             Call awal()
@@ -184,23 +277,22 @@ Public Class fcustomer
     Sub cari()
         Dim pilih As String
         If cmbpilih.SelectedIndex = 0 Then
-            pilih = "id"
+            pilih = "kode_pelanggan"
         Else
             If cmbpilih.SelectedIndex = 1 Then
-                pilih = "nama"
+                pilih = "nama_pelanggan"
             Else
                 If cmbpilih.SelectedIndex = 2 Then
-                    pilih = "alamat"
+                    pilih = "alamat_pelanggan"
                 Else
                     If cmbpilih.SelectedIndex = 3 Then
-                        pilih = "telepon"
+                        pilih = "telepon_pelanggan"
                     End If
                 End If
             End If
         End If
 
-
-        sql = "SELECT * FROM elektronik.`tb_customer` WHERE `" & pilih & "` LIKE '" & txtcari.Text & "%'"
+        sql = "SELECT * FROM logicpos.`tb_pelanggan` WHERE `" & pilih & "` LIKE '" & txtcari.Text & "%'"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -212,18 +304,60 @@ Public Class fcustomer
         e.Handled = ValidAngka(e)
     End Sub
     Private Sub txtcari_TextChanged(sender As Object, e As EventArgs) Handles txtcari.TextChanged
-
         Call cari()
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        txtkode.Text = GridView1.GetFocusedRowCellValue("id")
-        txtnama.Text = GridView1.GetFocusedRowCellValue("nama")
-        txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat")
-        txttelp.Text = GridView1.GetFocusedRowCellValue("telepon")
+        txtkode.Text = GridView1.GetFocusedRowCellValue("kode_pelanggan")
+        'txtnama.Text = GridView1.GetFocusedRowCellValue("nama_pelanggan")
+        'txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat_pelanggan")
+        'txttelp.Text = GridView1.GetFocusedRowCellValue("telepon_pelanggan")
         btnedit.Enabled = True
         btnbatal.Enabled = True
         btnhapus.Enabled = True
         btntambah.Enabled = False
         btntambah.Text = "Tambah"
+
+        'txtkode.Text = GridView1.GetFocusedRowCellValue("kode_barang")
+        'menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
+        Dim foto As Byte()
+        'menyiapkan koneksi database
+        Using cnn As New OdbcConnection(strConn)
+            sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" + txtkode.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            cnn.Open()
+            dr = cmmd.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                txtnama.Text = dr("nama_pelanggan")
+                txtalamat.Text = dr("alamat_pelanggan")
+                txttelp.Text = dr("telepon_pelanggan")
+                'kode = dr("kode_barang")
+                foto = dr("foto_pelanggan")
+                PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+                PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
+                btnedit.Enabled = True
+                btnbatal.Enabled = True
+                btnhapus.Enabled = True
+                btntambah.Enabled = False
+                cnn.Close()
+            End If
+        End Using
+    End Sub
+    Private Sub btnupload_Click(sender As Object, e As EventArgs) Handles btnupload.Click
+        Dim oD As New OpenFileDialog
+        oD.Multiselect = False
+        Dim filena As String
+        oD.Filter = "Image Files (*.jpg, *.png)|*.jpg; *.png"
+        If oD.ShowDialog(Me) = DialogResult.OK Then
+            filena = oD.FileName
+            Dim fs As FileStream = New FileStream(filena, FileMode.OpenOrCreate, FileAccess.Read)
+            Dim rawData() As Byte = New Byte(CType(fs.Length, Integer)) {}
+            fs.Read(rawData, 0, System.Convert.ToInt32(fs.Length))
+            fs.Close()
+            Dim resized As Image = ResizeGambar(Image.FromFile(filena), New Size(260, 260))
+            Dim memStream As MemoryStream = New MemoryStream()
+            resized.Save(memStream, System.Drawing.Imaging.ImageFormat.Jpeg)
+            PictureBox1.Image = resized
+        End If
     End Sub
 End Class

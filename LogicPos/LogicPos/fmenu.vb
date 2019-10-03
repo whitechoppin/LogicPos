@@ -20,7 +20,7 @@ Public Class fmenu
         fbarang.Show()
     End Sub
     Private Sub DataCustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataCustomerToolStripMenuItem.Click
-        'fcustomer.Show()
+        fcustomer.Show()
     End Sub
     Private Sub DataSupplierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataSupplierToolStripMenuItem.Click
         'fsupplier.Show()

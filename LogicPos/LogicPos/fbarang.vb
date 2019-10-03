@@ -8,7 +8,6 @@ Public Class fbarang
     Dim kode As String
     Dim minstok As Integer
     Private PathFile As String = Nothing
-
     Sub awal()
         btntambah.Text = "Tambah"
         btnedit.Text = "Edit"
