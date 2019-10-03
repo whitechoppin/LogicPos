@@ -1,19 +1,19 @@
 ﻿Imports System.Data.Odbc
 Public Class fmenu
-    Private Sub exitStripMenuItem_Click(sender As Object, e As EventArgs) Handles exitStripMenuItem.Click
+    Private Sub exitStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitStripMenuItem.Click
         Me.Close()
         Me.Dispose()
         Application.Exit()
     End Sub
     Private Sub main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         statustgl.Text = Now.ToLongDateString
-        Timer1.Start()
+        Timer.Start()
         'frmlogin.show()
         'frmlogin.mdiparent=me
         'Call koneksii()
         'statususer.Text = flogin.
     End Sub
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         statusjam.Text = TimeOfDay
     End Sub
     Private Sub DataBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataBarangToolStripMenuItem.Click
@@ -25,13 +25,13 @@ Public Class fmenu
     Private Sub DataSupplierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataSupplierToolStripMenuItem.Click
         'fsupplier.Show()
     End Sub
-    Private Sub StokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles stokmenu.Click
+    Private Sub StokToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'fstok.Show()
     End Sub
     Private Sub PembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PembelianToolStripMenuItem.Click
         'fpembelian.Show()
     End Sub
-    Private Sub PenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PenjualanToolStripMenuItem.Click
+    Private Sub PenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'fpenjualan.Show()
         'fmodal.Show()
     End Sub
@@ -53,7 +53,7 @@ Public Class fmenu
     Private Sub InfoStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InfoStokToolStripMenuItem.Click
         'fminstok.Show()
     End Sub
-    Private Sub ManageUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManageUserToolStripMenuItem.Click
+    Private Sub ManageUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataUserToolStripMenuItem.Click
         'fuser.Show()
     End Sub
     Private Sub fmenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -68,7 +68,15 @@ Public Class fmenu
     Private Sub PricelistGroupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PricelistGroupToolStripMenuItem.Click
         'fpricelist.Show()
     End Sub
-    Private Sub ReprintFakturJualToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReprintFakturJualToolStripMenuItem.Click
+    Private Sub ReprintFakturJualToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'freprint.Show()
+    End Sub
+
+    Private Sub MenuStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuUtama.ItemClicked
+
+    End Sub
+
+    Private Sub mastermenu_Click(sender As Object, e As EventArgs) Handles MasterMenu.Click
+
     End Sub
 End Class
