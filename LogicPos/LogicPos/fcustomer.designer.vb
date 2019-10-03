@@ -314,7 +314,6 @@ Partial Class fcustomer
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txtcari)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "fcustomer"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Customer"

@@ -22,7 +22,6 @@ Partial Class fsupplier
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fsupplier))
         Me.cmbpilih = New System.Windows.Forms.ComboBox()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -279,7 +278,6 @@ Partial Class fsupplier
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txtcari)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "fsupplier"
         Me.Text = "Data Supplier"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
