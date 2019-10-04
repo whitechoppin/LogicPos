@@ -32,7 +32,7 @@ Public Class fbarang
         txtkode.MaxLength = 20
         txtnama.MaxLength = 20
 
-        GridControl1.Enabled = True
+        GridControl.Enabled = True
         Call isitabel()
         txtgbr.Text = ""
         PictureBox1.Image = ImageList1.Images(0)
@@ -57,9 +57,9 @@ Public Class fbarang
             ds = New DataSet
 
             da.Fill(ds)
-            GridControl1.DataSource = Nothing
+            GridControl.DataSource = Nothing
 
-            GridControl1.DataSource = ds.Tables(0)
+            GridControl.DataSource = ds.Tables(0)
             GridColumn1.Caption = "Kode"
             GridColumn1.FieldName = "kode_barang"
             GridColumn2.Caption = "Nama Barang"
@@ -69,9 +69,11 @@ Public Class fbarang
             GridColumn3.Width = "60"
             GridColumn4.Caption = "Jenis"
             GridColumn4.FieldName = "jenis_barang"
+            GridColumn5.Caption = "Modal"
+            GridColumn5.FieldName = "modal_barang"
             'GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
             'GridColumn4.DisplayFormat.FormatString = "##,##0"
-            GridControl1.Visible = True
+            GridControl.Visible = True
             cnn.Close()
         End Using
     End Sub
@@ -95,19 +97,19 @@ Public Class fbarang
             Call enable_text()
             Call index()
 
-            GridControl1.Enabled = False
+            GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
-                MsgBox("Kode barang belum terisi!!!")
+                MsgBox("Kode barang belum terisi !")
             Else
                 If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama barang belum terisi!!!")
+                    MsgBox("Nama barang belum terisi !")
                 Else
                     If txtsatuan.SelectedIndex = -1 Then
-                        MsgBox("Satuan belum terpilih!!!")
+                        MsgBox("Satuan belum terpilih !")
                     Else
                         If cmbjenis.SelectedIndex = -1 Then
-                            MsgBox("Jenis belum dipilih!!!")
+                            MsgBox("Jenis belum dipilih !")
                         Else
                             Call simpan()
                         End If
@@ -157,7 +159,7 @@ Public Class fbarang
         End Using
     End Sub
     Sub cari()
-        txtkode.Text = GridView1.GetFocusedRowCellValue("kode_barang")
+        txtkode.Text = GridView.GetFocusedRowCellValue("kode_barang")
         'menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
         Dim foto As Byte()
         'menyiapkan koneksi database
@@ -185,10 +187,10 @@ Public Class fbarang
             End If
         End Using
     End Sub
-    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs)
         Call cari()
     End Sub
-    Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
+    Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
             Call cari()
         End If
@@ -202,7 +204,7 @@ Public Class fbarang
             btnhapus.Enabled = False
             Call enable_text()
             Call index()
-            GridControl1.Enabled = False
+            GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
                 MsgBox("Kode barang belum terisi!!!")
@@ -320,6 +322,7 @@ Public Class fbarang
             Dim memStream As MemoryStream = New MemoryStream()
             resized.Save(memStream, System.Drawing.Imaging.ImageFormat.Jpeg)
             PictureBox1.Image = resized
+            txtgbr.Text = oD.SafeFileName
         End If
     End Sub
     Private Function ResizeGambar(ByVal gmb As Image,
@@ -347,8 +350,13 @@ Public Class fbarang
     End Function
     Private Sub btnauto_Click(sender As Object, e As EventArgs) Handles btnauto.Click
         Dim r As New Random
-        Dim angka As Integer = r.Next(99999)
-        txtkode.Text = angka
+        Dim s As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        Dim sb As New System.Text.StringBuilder
+        For i As Integer = 1 To 8
+            Dim idx As Integer = r.Next(0, 35)
+            sb.Append(s.Substring(idx, 1))
+        Next
+        txtkode.Text = sb.ToString()
     End Sub
     Private Sub txtmodal_TextChanged(sender As Object, e As EventArgs) Handles txtmodal.TextChanged
         If txtmodal.Text = "" Then
@@ -359,6 +367,11 @@ Public Class fbarang
             txtmodal.SelectionStart = Len(txtmodal.Text)
         End If
     End Sub
+
+    Private Sub GridControl_Click(sender As Object, e As EventArgs) Handles GridControl.Click
+
+    End Sub
+
     Private Sub txtmodal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtmodal.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
