@@ -323,7 +323,6 @@ Partial Class fbarang
         '
         'GridColumn1
         '
-        Me.GridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.Visible = True
         Me.GridColumn1.VisibleIndex = 0
@@ -348,7 +347,7 @@ Partial Class fbarang
         '
         'GridColumn5
         '
-        Me.GridColumn5.DisplayFormat.FormatString = "##,###"
+        Me.GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4

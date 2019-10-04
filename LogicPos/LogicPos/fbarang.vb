@@ -71,8 +71,8 @@ Public Class fbarang
             GridColumn4.FieldName = "jenis_barang"
             GridColumn5.Caption = "Modal"
             GridColumn5.FieldName = "modal_barang"
-            'GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-            'GridColumn4.DisplayFormat.FormatString = "##,##0"
+            GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+            GridColumn5.DisplayFormat.FormatString = "Rp ##,#0"
             GridControl.Visible = True
             cnn.Close()
         End Using
@@ -147,7 +147,7 @@ Public Class fbarang
                 cmmd.Parameters.AddWithValue("@satuan_barang", txtsatuan.Text)
                 cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
                 cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
-                cmmd.Parameters.AddWithValue("@modal_barang", txtmodal.Text)
+                cmmd.Parameters.AddWithValue("@modal_barang", harga)
                 cnn.Open()
                 cmmd.ExecuteNonQuery()
                 cnn.Close()
@@ -187,10 +187,10 @@ Public Class fbarang
             End If
         End Using
     End Sub
-    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs)
+    Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
         Call cari()
     End Sub
-    Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs)
+    Private Sub GridView_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView.KeyDown
         If e.KeyCode = Keys.Enter Then
             Call cari()
         End If
@@ -294,7 +294,7 @@ Public Class fbarang
     Private Sub txtharga_KeyPress(sender As Object, e As KeyPressEventArgs)
         e.Handled = ValidAngka(e)
     End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnupload.Click
+    Private Sub btnupload_Click(sender As Object, e As EventArgs) Handles btnupload.Click
         'On Error Resume Next
         'OpenFileDialog1.Filter = "JPG Files(*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|GIF Files(*.gif)|*.gif|PNG Files(*.png)|*.png|BMP Files(*.bmp)|*.bmp|TIFF Files(*.tiff)|*.tiff"
         'OpenFileDialog1.FileName = ""
@@ -366,10 +366,6 @@ Public Class fbarang
             txtmodal.Text = Format(harga, "##,##0")
             txtmodal.SelectionStart = Len(txtmodal.Text)
         End If
-    End Sub
-
-    Private Sub GridControl_Click(sender As Object, e As EventArgs) Handles GridControl.Click
-
     End Sub
 
     Private Sub txtmodal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtmodal.KeyPress
