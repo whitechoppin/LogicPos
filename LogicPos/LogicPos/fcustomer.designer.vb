@@ -39,24 +39,24 @@ Partial Class fcustomer
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtgbr = New System.Windows.Forms.Label()
+        Me.btnupload = New System.Windows.Forms.Button()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtcari = New System.Windows.Forms.TextBox()
         Me.cmbpilih = New System.Windows.Forms.ComboBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.txtgbr = New System.Windows.Forms.Label()
-        Me.btnupload = New System.Windows.Forms.Button()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GridColumn4
@@ -135,7 +135,6 @@ Partial Class fcustomer
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
-        Me.GridView1.OptionsView.ShowGroupPanel = False
         '
         'GridColumn3
         '
@@ -196,6 +195,52 @@ Partial Class fcustomer
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Customer"
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.PictureBox1)
+        Me.GroupBox2.Location = New System.Drawing.Point(466, 43)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(207, 180)
+        Me.GroupBox2.TabIndex = 23
+        Me.GroupBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(9, 13)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(189, 154)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 23
+        Me.PictureBox1.TabStop = False
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.txtgbr)
+        Me.Panel1.Location = New System.Drawing.Point(466, 15)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(207, 23)
+        Me.Panel1.TabIndex = 22
+        '
+        'txtgbr
+        '
+        Me.txtgbr.AutoSize = True
+        Me.txtgbr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtgbr.Location = New System.Drawing.Point(3, 3)
+        Me.txtgbr.Name = "txtgbr"
+        Me.txtgbr.Size = New System.Drawing.Size(39, 13)
+        Me.txtgbr.TabIndex = 19
+        Me.txtgbr.Text = "Label6"
+        Me.txtgbr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'btnupload
+        '
+        Me.btnupload.Location = New System.Drawing.Point(388, 15)
+        Me.btnupload.Name = "btnupload"
+        Me.btnupload.Size = New System.Drawing.Size(75, 46)
+        Me.btnupload.TabIndex = 21
+        Me.btnupload.Text = "Upload Foto"
+        Me.btnupload.UseVisualStyleBackColor = True
+        '
         'txtalamat
         '
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -240,6 +285,7 @@ Partial Class fcustomer
         Me.txtcari.Name = "txtcari"
         Me.txtcari.Size = New System.Drawing.Size(284, 24)
         Me.txtcari.TabIndex = 2
+        Me.txtcari.Visible = False
         '
         'cmbpilih
         '
@@ -251,58 +297,13 @@ Partial Class fcustomer
         Me.cmbpilih.Name = "cmbpilih"
         Me.cmbpilih.Size = New System.Drawing.Size(121, 22)
         Me.cmbpilih.TabIndex = 8
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.PictureBox1)
-        Me.GroupBox2.Location = New System.Drawing.Point(466, 43)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(207, 180)
-        Me.GroupBox2.TabIndex = 23
-        Me.GroupBox2.TabStop = False
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.txtgbr)
-        Me.Panel1.Location = New System.Drawing.Point(466, 15)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(207, 23)
-        Me.Panel1.TabIndex = 22
-        '
-        'txtgbr
-        '
-        Me.txtgbr.AutoSize = True
-        Me.txtgbr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtgbr.Location = New System.Drawing.Point(3, 3)
-        Me.txtgbr.Name = "txtgbr"
-        Me.txtgbr.Size = New System.Drawing.Size(39, 13)
-        Me.txtgbr.TabIndex = 19
-        Me.txtgbr.Text = "Label6"
-        Me.txtgbr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'btnupload
-        '
-        Me.btnupload.Location = New System.Drawing.Point(388, 15)
-        Me.btnupload.Name = "btnupload"
-        Me.btnupload.Size = New System.Drawing.Size(75, 46)
-        Me.btnupload.TabIndex = 21
-        Me.btnupload.Text = "Upload Foto"
-        Me.btnupload.UseVisualStyleBackColor = True
+        Me.cmbpilih.Visible = False
         '
         'ImageList1
         '
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "no-image.jpg")
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(9, 13)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(189, 154)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 23
-        Me.PictureBox1.TabStop = False
         '
         'fcustomer
         '
@@ -322,9 +323,9 @@ Partial Class fcustomer
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

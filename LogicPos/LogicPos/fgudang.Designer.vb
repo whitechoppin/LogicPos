@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class fsupplier
+Partial Class fgudang
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,17 +22,10 @@ Partial Class fsupplier
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.cmbpilih = New System.Windows.Forms.ComboBox()
-        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtcari = New System.Windows.Forms.TextBox()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnhapus = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
@@ -45,92 +38,27 @@ Partial Class fsupplier
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtcari = New System.Windows.Forms.TextBox()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cmbpilih = New System.Windows.Forms.ComboBox()
+        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'cmbpilih
+        'txtcari
         '
-        Me.cmbpilih.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbpilih.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbpilih.FormattingEnabled = True
-        Me.cmbpilih.Items.AddRange(New Object() {"ID", "Nama", "Alamat", "Telepon", "Keterangan"})
-        Me.cmbpilih.Location = New System.Drawing.Point(12, 168)
-        Me.cmbpilih.Name = "cmbpilih"
-        Me.cmbpilih.Size = New System.Drawing.Size(121, 22)
-        Me.cmbpilih.TabIndex = 12
-        Me.cmbpilih.Visible = False
-        '
-        'GridControl1
-        '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 196)
-        Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(679, 300)
-        Me.GridControl1.TabIndex = 11
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GridView1
-        '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsBehavior.Editable = False
-        '
-        'GridColumn1
-        '
-        Me.GridColumn1.Name = "GridColumn1"
-        Me.GridColumn1.Visible = True
-        Me.GridColumn1.VisibleIndex = 0
-        '
-        'GridColumn2
-        '
-        Me.GridColumn2.Name = "GridColumn2"
-        Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 1
-        '
-        'GridColumn3
-        '
-        Me.GridColumn3.Name = "GridColumn3"
-        Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 2
-        '
-        'GridColumn4
-        '
-        Me.GridColumn4.Name = "GridColumn4"
-        Me.GridColumn4.Visible = True
-        Me.GridColumn4.VisibleIndex = 3
-        '
-        'GridColumn5
-        '
-        Me.GridColumn5.Name = "GridColumn5"
-        Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 4
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.txtketerangan)
-        Me.GroupBox1.Controls.Add(Me.txtalamat)
-        Me.GroupBox1.Controls.Add(Me.btnbatal)
-        Me.GroupBox1.Controls.Add(Me.btnhapus)
-        Me.GroupBox1.Controls.Add(Me.btnedit)
-        Me.GroupBox1.Controls.Add(Me.btntambah)
-        Me.GroupBox1.Controls.Add(Me.txttelp)
-        Me.GroupBox1.Controls.Add(Me.txtnama)
-        Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.txtkode)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 12)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(678, 150)
-        Me.GroupBox1.TabIndex = 10
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Input Supplier"
+        Me.txtcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtcari.Location = New System.Drawing.Point(138, 168)
+        Me.txtcari.Name = "txtcari"
+        Me.txtcari.Size = New System.Drawing.Size(284, 24)
+        Me.txtcari.TabIndex = 13
+        Me.txtcari.Visible = False
         '
         'txtketerangan
         '
@@ -149,6 +77,29 @@ Partial Class fsupplier
         Me.txtalamat.Size = New System.Drawing.Size(186, 58)
         Me.txtalamat.TabIndex = 17
         Me.txtalamat.Text = ""
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.txtketerangan)
+        Me.GroupBox1.Controls.Add(Me.txtalamat)
+        Me.GroupBox1.Controls.Add(Me.btnbatal)
+        Me.GroupBox1.Controls.Add(Me.btnhapus)
+        Me.GroupBox1.Controls.Add(Me.btnedit)
+        Me.GroupBox1.Controls.Add(Me.btntambah)
+        Me.GroupBox1.Controls.Add(Me.txttelp)
+        Me.GroupBox1.Controls.Add(Me.txtnama)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.txtkode)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(678, 150)
+        Me.GroupBox1.TabIndex = 14
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Input Gudang"
         '
         'btnbatal
         '
@@ -260,58 +211,108 @@ Partial Class fsupplier
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "ID"
         '
-        'txtcari
+        'GridColumn5
         '
-        Me.txtcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcari.Location = New System.Drawing.Point(139, 168)
-        Me.txtcari.Name = "txtcari"
-        Me.txtcari.Size = New System.Drawing.Size(284, 24)
-        Me.txtcari.TabIndex = 9
-        Me.txtcari.Visible = False
+        Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.Visible = True
+        Me.GridColumn5.VisibleIndex = 4
         '
-        'fsupplier
+        'GridColumn4
+        '
+        Me.GridColumn4.Name = "GridColumn4"
+        Me.GridColumn4.Visible = True
+        Me.GridColumn4.VisibleIndex = 3
+        '
+        'cmbpilih
+        '
+        Me.cmbpilih.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbpilih.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbpilih.FormattingEnabled = True
+        Me.cmbpilih.Items.AddRange(New Object() {"ID", "Nama", "Alamat", "Telepon", "Keterangan"})
+        Me.cmbpilih.Location = New System.Drawing.Point(11, 168)
+        Me.cmbpilih.Name = "cmbpilih"
+        Me.cmbpilih.Size = New System.Drawing.Size(121, 22)
+        Me.cmbpilih.TabIndex = 16
+        Me.cmbpilih.Visible = False
+        '
+        'GridColumn3
+        '
+        Me.GridColumn3.Name = "GridColumn3"
+        Me.GridColumn3.Visible = True
+        Me.GridColumn3.VisibleIndex = 2
+        '
+        'GridControl1
+        '
+        Me.GridControl1.Location = New System.Drawing.Point(11, 196)
+        Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.Size = New System.Drawing.Size(679, 300)
+        Me.GridControl1.TabIndex = 15
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        '
+        'GridView1
+        '
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
+        Me.GridView1.GridControl = Me.GridControl1
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.Editable = False
+        '
+        'GridColumn1
+        '
+        Me.GridColumn1.Name = "GridColumn1"
+        Me.GridColumn1.Visible = True
+        Me.GridColumn1.VisibleIndex = 0
+        '
+        'GridColumn2
+        '
+        Me.GridColumn2.Name = "GridColumn2"
+        Me.GridColumn2.Visible = True
+        Me.GridColumn2.VisibleIndex = 1
+        '
+        'fgudang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(707, 520)
+        Me.ClientSize = New System.Drawing.Size(724, 513)
+        Me.Controls.Add(Me.txtcari)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.cmbpilih)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.txtcari)
-        Me.Name = "fsupplier"
+        Me.Name = "fgudang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Data Supplier"
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Text = "Data Gudang"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmbpilih As System.Windows.Forms.ComboBox
+
+    Friend WithEvents txtcari As TextBox
+    Friend WithEvents txtketerangan As RichTextBox
+    Friend WithEvents txtalamat As RichTextBox
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents btnbatal As Button
+    Friend WithEvents btnhapus As Button
+    Friend WithEvents btnedit As Button
+    Friend WithEvents btntambah As Button
+    Friend WithEvents txttelp As TextBox
+    Friend WithEvents txtnama As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txtkode As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cmbpilih As ComboBox
+    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents txtalamat As System.Windows.Forms.RichTextBox
-    Friend WithEvents btnbatal As System.Windows.Forms.Button
-    Friend WithEvents btnhapus As System.Windows.Forms.Button
-    Friend WithEvents btnedit As System.Windows.Forms.Button
-    Friend WithEvents btntambah As System.Windows.Forms.Button
-    Friend WithEvents txttelp As System.Windows.Forms.TextBox
-    Friend WithEvents txtnama As System.Windows.Forms.TextBox
-    Friend WithEvents txtkode As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents txtcari As System.Windows.Forms.TextBox
-    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents txtketerangan As System.Windows.Forms.RichTextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
 End Class

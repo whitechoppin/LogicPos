@@ -23,7 +23,7 @@ Public Class fmenu
         fcustomer.Show()
     End Sub
     Private Sub DataSupplierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataSupplierToolStripMenuItem.Click
-        'fsupplier.Show()
+        fsupplier.Show()
     End Sub
     Private Sub StokToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'fstok.Show()
@@ -71,12 +71,13 @@ Public Class fmenu
     Private Sub ReprintFakturJualToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'freprint.Show()
     End Sub
-
     Private Sub MenuStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuUtama.ItemClicked
 
     End Sub
-
     Private Sub mastermenu_Click(sender As Object, e As EventArgs) Handles MasterMenu.Click
 
+    End Sub
+    Private Sub DataGudangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataGudangToolStripMenuItem.Click
+        fgudang.Show()
     End Sub
 End Class

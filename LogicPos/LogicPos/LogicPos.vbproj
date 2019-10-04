@@ -94,6 +94,12 @@
     <Compile Include="fcustomer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fgudang.Designer.vb">
+      <DependentUpon>fgudang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fgudang.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fmenu.designer.vb">
       <DependentUpon>fmenu.vb</DependentUpon>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fcustomer.resx">
       <DependentUpon>fcustomer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fgudang.resx">
+      <DependentUpon>fgudang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmenu.resx">
       <DependentUpon>fmenu.vb</DependentUpon>

@@ -1,8 +1,8 @@
 ﻿Imports System.Data.Odbc
 Imports System.Drawing.Drawing2D
 Imports System.IO
-Public Class fsupplier
-    Private Sub fsupplier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+Public Class fgudang
+    Private Sub fgudang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
         cmbpilih.SelectedIndex = 1
@@ -37,24 +37,24 @@ Public Class fsupplier
         Call isitabel()
     End Sub
     Sub kolom()
-        GridColumn1.Caption = "Kode Supplier"
+        GridColumn1.Caption = "Kode Gudang"
         GridColumn1.Width = 65
-        GridColumn1.FieldName = "kode_supplier"
-        GridColumn2.Caption = "Nama Supplier"
+        GridColumn1.FieldName = "kode_gudang"
+        GridColumn2.Caption = "Nama Gudang"
         GridColumn2.Width = 65
-        GridColumn2.FieldName = "nama_supplier"
+        GridColumn2.FieldName = "nama_gudang"
         GridColumn3.Caption = "Alamat"
-        GridColumn3.FieldName = "alamat_supplier"
+        GridColumn3.FieldName = "alamat_gudang"
         GridColumn3.Width = 73
         GridColumn4.Caption = "Telepon"
-        GridColumn4.FieldName = "telepon_supplier"
+        GridColumn4.FieldName = "telepon_gudang"
         GridColumn5.Caption = "Keterangan"
         GridColumn5.Width = 75
-        GridColumn5.FieldName = "keterangan_supplier"
+        GridColumn5.FieldName = "keterangan_gudang"
     End Sub
     Sub isitabel()
         'Call koneksii()
-        sql = "Select * from tb_supplier"
+        sql = "Select * from tb_gudang"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -70,7 +70,7 @@ Public Class fsupplier
     End Sub
     Function autonumber()
         Call koneksii()
-        sql = "SELECT RIGHT(`kode_supplier`,3) FROM `tb_supplier` WHERE LEFT(`kode_supplier`,2)= DATE_FORMAT(now(),'%y') ORDER BY RIGHT(kode_supplier,3) DESC"
+        sql = "SELECT RIGHT(`kode_gudang`,3) FROM `tb_gudang` WHERE LEFT(`kode_gudang`,2)= DATE_FORMAT(now(),'%y') ORDER BY RIGHT(kode_gudang,3) DESC"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -118,7 +118,7 @@ Public Class fsupplier
             GridControl1.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
-                MsgBox("ID belum terisi!!!")
+                MsgBox("Kode belum terisi!!!")
             Else
                 If txtnama.Text.Length = 0 Then
                     MsgBox("Nama belum terisi!!!")
@@ -130,13 +130,13 @@ Public Class fsupplier
     End Sub
     Sub simpan()
         Call koneksii()
-        sql = "SELECT * FROM tb_supplier WHERE kode_supplier  = '" + txtkode.Text + "'"
+        sql = "SELECT * FROM tb_gudang WHERE kode_gudang  = '" + txtkode.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            MsgBox("Kode Supplier Sudah ada dengan nama " + dr("nama_supplier"), MsgBoxStyle.Information, "Pemberitahuan")
+            MsgBox("Kode Gudang Sudah ada dengan nama " + dr("nama_gudang"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_supplier (kode_supplier, nama_supplier, telepon_supplier, alamat_supplier, keterangan_supplier) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "')"
+            sql = "INSERT INTO tb_gudang (kode_gudang, nama_gudang, telepon_gudang, alamat_gudang, keterangan_gudang, created_by, updated_by,date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -167,7 +167,7 @@ Public Class fsupplier
     End Sub
     Sub edit()
         Call koneksii()
-        sql = "UPDATE tb_supplier SET  nama_supplier='" & txtnama.Text & "',alamat_supplier='" & txtalamat.Text & "', telepon_supplier='" & txttelp.Text & "',keterangan_supplier='" & txtketerangan.Text & "'  WHERE  kode_supplier='" & txtkode.Text & "'"
+        sql = "UPDATE tb_gudang SET  nama_gudang='" & txtnama.Text & "',alamat_gudang='" & txtalamat.Text & "', telepon_gudang='" & txttelp.Text & "',keterangan_gudang='" & txtketerangan.Text & "'  WHERE  kode_gudang='" & txtkode.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -179,11 +179,11 @@ Public Class fsupplier
         Call awal()
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        txtkode.Text = GridView1.GetFocusedRowCellValue("kode_supplier")
-        txtnama.Text = GridView1.GetFocusedRowCellValue("nama_supplier")
-        txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat_supplier")
-        txttelp.Text = GridView1.GetFocusedRowCellValue("telepon_supplier")
-        txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_supplier")
+        txtkode.Text = GridView1.GetFocusedRowCellValue("kode_gudang")
+        txtnama.Text = GridView1.GetFocusedRowCellValue("nama_gudang")
+        txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat_gudang")
+        txttelp.Text = GridView1.GetFocusedRowCellValue("telepon_gudang")
+        txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_gudang")
         btnedit.Enabled = True
         btnbatal.Enabled = True
         btnhapus.Enabled = True
@@ -193,7 +193,7 @@ Public Class fsupplier
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         Call koneksii()
         If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            sql = "DELETE FROM tb_supplier WHERE  kode_supplier='" & txtkode.Text & "'"
+            sql = "DELETE FROM tb_gudang WHERE  kode_gudang='" & txtkode.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -204,25 +204,25 @@ Public Class fsupplier
     Sub cari()
         Dim pilih As String
         If cmbpilih.SelectedIndex = 0 Then
-            pilih = "kode_supplier"
+            pilih = "kode_gudang"
         Else
             If cmbpilih.SelectedIndex = 1 Then
-                pilih = "nama_supplier"
+                pilih = "nama_gudang"
             Else
                 If cmbpilih.SelectedIndex = 2 Then
-                    pilih = "alamat_supplier"
+                    pilih = "alamat_gudang"
                 Else
                     If cmbpilih.SelectedIndex = 3 Then
-                        pilih = "telepon_supplier"
+                        pilih = "telepon_gudang"
                     Else
                         If cmbpilih.SelectedIndex = 4 Then
-                            pilih = "keterangan_supplier"
+                            pilih = "keterangan_gudang"
                         End If
                     End If
                 End If
             End If
         End If
-        sql = "SELECT * FROM tb_supplier WHERE `" & pilih & "` LIKE '%" & txtcari.Text & "%'"
+        sql = "SELECT * FROM tb_gudang WHERE `" & pilih & "` LIKE '%" & txtcari.Text & "%'"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
