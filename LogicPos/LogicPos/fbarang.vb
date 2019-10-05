@@ -140,7 +140,7 @@ Public Class fbarang
                 PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
                 'merubah gambar pada ms ke array
                 ms.ToArray()
-                sql = "INSERT INTO tb_barang (kode_barang,nama_barang,satuan_barang,jenis_barang,gambar_barang, modal_barang) VALUES ( ?,?,?,?,?,?)"
+                sql = "INSERT INTO tb_barang (kode_barang,nama_barang,satuan_barang,jenis_barang,gambar_barang, modal_barang,created_by,updated_by,date_created,last_updated) VALUES ( ?,?,?,?,?,?,?,?,?,?)"
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
                 cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
@@ -148,6 +148,10 @@ Public Class fbarang
                 cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
                 cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
                 cmmd.Parameters.AddWithValue("@modal_barang", harga)
+                cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@date_created", Date.Now)
+                cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
                 cnn.Open()
                 cmmd.ExecuteNonQuery()
                 cnn.Close()
@@ -233,7 +237,7 @@ Public Class fbarang
         'merubah gambar pada ms ke array
         ms.ToArray()
         Using cnn As New OdbcConnection(strConn)
-            sql = "UPDATE tb_barang SET kode_barang=?, nama_barang=?, satuan_barang=?,  jenis_barang=?, gambar_barang=?, modal_barang=? WHERE  kode_barang='" & kode & "'"
+            sql = "UPDATE tb_barang SET kode_barang=?, nama_barang=?, satuan_barang=?,  jenis_barang=?, gambar_barang=?, modal_barang=?, updated_by=?, last_updated=? WHERE  kode_barang='" & kode & "'"
             cmmd = New OdbcCommand(sql, cnn)
             cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
             cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
@@ -241,6 +245,8 @@ Public Class fbarang
             cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
             cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
             cmmd.Parameters.AddWithValue("@modal_barang", harga)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
             cnn.Open()
             cmmd.ExecuteNonQuery()
             cnn.Close()

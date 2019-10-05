@@ -5,7 +5,6 @@ Public Class fcustomer
     Private Sub fcustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
-        cmbpilih.SelectedIndex = 1
 
     End Sub
     Sub awal()
@@ -15,9 +14,6 @@ Public Class fcustomer
         txttelp.Clear()
 
         Call koneksii()
-
-        txtcari.Enabled = True
-        cmbpilih.Enabled = True
 
         txtalamat.Enabled = False
         txttelp.Enabled = False
@@ -100,8 +96,6 @@ Public Class fcustomer
         txttelp.Enabled = True
         txtalamat.Enabled = True
         txtnama.Focus()
-        txtcari.Enabled = False
-        cmbpilih.Enabled = False
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If btntambah.Text = "Tambah" Then
@@ -274,38 +268,36 @@ Public Class fcustomer
             Call awal()
         End If
     End Sub
-    Sub cari()
-        Dim pilih As String
-        If cmbpilih.SelectedIndex = 0 Then
-            pilih = "kode_pelanggan"
-        Else
-            If cmbpilih.SelectedIndex = 1 Then
-                pilih = "nama_pelanggan"
-            Else
-                If cmbpilih.SelectedIndex = 2 Then
-                    pilih = "alamat_pelanggan"
-                Else
-                    If cmbpilih.SelectedIndex = 3 Then
-                        pilih = "telepon_pelanggan"
-                    End If
-                End If
-            End If
-        End If
+    'Sub cari()
+    'Dim pilih As String
+    'If cmbpilih.SelectedIndex = 0 Then
+    'pilih = "kode_pelanggan"
+    'Else
+    'If cmbpilih.SelectedIndex = 1 Then
+    'pilih = "nama_pelanggan"
+    'Else
+    'If cmbpilih.SelectedIndex = 2 Then
+    'pilih = "alamat_pelanggan"
+    'Else
+    'If cmbpilih.SelectedIndex = 3 Then
+    'pilih = "telepon_pelanggan"
+    'End If
+    'End If
+    'End If
+    'End If
 
-        sql = "SELECT * FROM logicpos.`tb_pelanggan` WHERE `" & pilih & "` LIKE '" & txtcari.Text & "%'"
-        da = New OdbcDataAdapter(sql, cnn)
-        ds = New DataSet
-        da.Fill(ds)
-        GridControl1.DataSource = Nothing
-        GridControl1.DataSource = ds.Tables(0)
-        Call kolom()
-    End Sub
+    'sql = "SELECT * FROM logicpos.`tb_pelanggan` WHERE `" & pilih & "` LIKE '" & txtcari.Text & "%'"
+    'da = New OdbcDataAdapter(sql, cnn)
+    'ds = New DataSet
+    'da.Fill(ds)
+    'GridControl1.DataSource = Nothing
+    'GridControl1.DataSource = ds.Tables(0)
+    'Call kolom()
+    'End Sub
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
-    Private Sub txtcari_TextChanged(sender As Object, e As EventArgs) Handles txtcari.TextChanged
-        Call cari()
-    End Sub
+
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         txtkode.Text = GridView1.GetFocusedRowCellValue("kode_pelanggan")
         'txtnama.Text = GridView1.GetFocusedRowCellValue("nama_pelanggan")
