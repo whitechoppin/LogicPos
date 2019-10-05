@@ -136,7 +136,7 @@ Public Class fsupplier
         If dr.HasRows Then
             MsgBox("Kode Supplier Sudah ada dengan nama " + dr("nama_supplier"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_supplier (kode_supplier, nama_supplier, telepon_supplier, alamat_supplier, keterangan_supplier) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "')"
+            sql = "INSERT INTO tb_supplier (kode_supplier, nama_supplier, telepon_supplier, alamat_supplier, keterangan_supplier, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -144,7 +144,7 @@ Public Class fsupplier
             Me.Refresh()
             Call awal()
         End If
-        'Call koneksii()
+
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If btnedit.Text = "Edit" Then
@@ -167,7 +167,7 @@ Public Class fsupplier
     End Sub
     Sub edit()
         Call koneksii()
-        sql = "UPDATE tb_supplier SET  nama_supplier='" & txtnama.Text & "',alamat_supplier='" & txtalamat.Text & "', telepon_supplier='" & txttelp.Text & "',keterangan_supplier='" & txtketerangan.Text & "'  WHERE  kode_supplier='" & txtkode.Text & "'"
+        sql = "UPDATE tb_supplier SET  nama_supplier='" & txtnama.Text & "',alamat_supplier='" & txtalamat.Text & "', telepon_supplier='" & txttelp.Text & "',keterangan_supplier='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_supplier='" & txtkode.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
