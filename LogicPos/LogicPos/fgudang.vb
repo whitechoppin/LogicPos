@@ -5,7 +5,6 @@ Public Class fgudang
     Private Sub fgudang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
-        cmbpilih.SelectedIndex = 1
     End Sub
     Sub awal()
         txtkode.Clear()
@@ -15,9 +14,6 @@ Public Class fgudang
         txtketerangan.Clear()
 
         Call koneksii()
-
-        txtcari.Enabled = True
-        cmbpilih.Enabled = True
 
         txtalamat.Enabled = False
         txttelp.Enabled = False
@@ -33,7 +29,7 @@ Public Class fgudang
         btntambah.Text = "Tambah"
         btnedit.Text = "Edit"
 
-        GridControl1.Enabled = True
+        GridControl.Enabled = True
         Call isitabel()
     End Sub
     Sub kolom()
@@ -58,8 +54,8 @@ Public Class fgudang
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
-        GridControl1.DataSource = Nothing
-        GridControl1.DataSource = ds.Tables(0)
+        GridControl.DataSource = Nothing
+        GridControl.DataSource = ds.Tables(0)
         Call kolom()
     End Sub
     Sub index()
@@ -105,8 +101,6 @@ Public Class fgudang
         txtalamat.Enabled = True
         txtketerangan.Enabled = True
         txtnama.Focus()
-        txtcari.Enabled = False
-        cmbpilih.Enabled = False
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If btntambah.Text = "Tambah" Then
@@ -115,7 +109,7 @@ Public Class fgudang
             Call enable_text()
             Call index()
             txtkode.Text = autonumber()
-            GridControl1.Enabled = False
+            GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
                 MsgBox("Kode belum terisi!!!")
@@ -152,7 +146,7 @@ Public Class fgudang
             btnhapus.Enabled = False
             Call enable_text()
             Call index()
-            GridControl1.Enabled = False
+            GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
                 MsgBox("ID belum terisi!!!")
@@ -178,12 +172,12 @@ Public Class fgudang
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
     End Sub
-    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        txtkode.Text = GridView1.GetFocusedRowCellValue("kode_gudang")
-        txtnama.Text = GridView1.GetFocusedRowCellValue("nama_gudang")
-        txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat_gudang")
-        txttelp.Text = GridView1.GetFocusedRowCellValue("telepon_gudang")
-        txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_gudang")
+    Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
+        txtkode.Text = GridView.GetFocusedRowCellValue("kode_gudang")
+        txtnama.Text = GridView.GetFocusedRowCellValue("nama_gudang")
+        txtalamat.Text = GridView.GetFocusedRowCellValue("alamat_gudang")
+        txttelp.Text = GridView.GetFocusedRowCellValue("telepon_gudang")
+        txtketerangan.Text = GridView.GetFocusedRowCellValue("keterangan_gudang")
         btnedit.Enabled = True
         btnbatal.Enabled = True
         btnhapus.Enabled = True
@@ -201,39 +195,7 @@ Public Class fgudang
             Call awal()
         End If
     End Sub
-    Sub cari()
-        Dim pilih As String
-        If cmbpilih.SelectedIndex = 0 Then
-            pilih = "kode_gudang"
-        Else
-            If cmbpilih.SelectedIndex = 1 Then
-                pilih = "nama_gudang"
-            Else
-                If cmbpilih.SelectedIndex = 2 Then
-                    pilih = "alamat_gudang"
-                Else
-                    If cmbpilih.SelectedIndex = 3 Then
-                        pilih = "telepon_gudang"
-                    Else
-                        If cmbpilih.SelectedIndex = 4 Then
-                            pilih = "keterangan_gudang"
-                        End If
-                    End If
-                End If
-            End If
-        End If
-        sql = "SELECT * FROM tb_gudang WHERE `" & pilih & "` LIKE '%" & txtcari.Text & "%'"
-        da = New OdbcDataAdapter(sql, cnn)
-        ds = New DataSet
-        da.Fill(ds)
-        GridControl1.DataSource = Nothing
-        GridControl1.DataSource = ds.Tables(0)
-        Call kolom()
-    End Sub
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
         e.Handled = ValidAngka(e)
-    End Sub
-    Private Sub txtcari_TextChanged(sender As Object, e As EventArgs) Handles txtcari.TextChanged
-        Call cari()
     End Sub
 End Class

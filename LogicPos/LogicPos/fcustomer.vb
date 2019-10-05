@@ -32,7 +32,7 @@ Public Class fcustomer
         PictureBox1.Image = ImageList1.Images(0)
         btnupload.Enabled = False
 
-        GridControl1.Enabled = True
+        GridControl.Enabled = True
         Call isitabel()
     End Sub
     Sub kolom()
@@ -54,9 +54,9 @@ Public Class fcustomer
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
-        GridControl1.DataSource = Nothing
+        GridControl.DataSource = Nothing
         'GridView1.Columns.Clear()
-        GridControl1.DataSource = ds.Tables(0)
+        GridControl.DataSource = ds.Tables(0)
         Call kolom()
     End Sub
     Sub index()
@@ -105,7 +105,7 @@ Public Class fcustomer
             Call enable_text()
             Call index()
             txtkode.Text = autonumber()
-            GridControl1.Enabled = False
+            GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
                 MsgBox("ID belum terisi!!!")
@@ -206,7 +206,7 @@ Public Class fcustomer
             btnupload.Enabled = True
             Call enable_text()
             Call index()
-            GridControl1.Enabled = False
+            GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
                 MsgBox("ID belum terisi!!!")
@@ -298,8 +298,8 @@ Public Class fcustomer
         e.Handled = ValidAngka(e)
     End Sub
 
-    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        txtkode.Text = GridView1.GetFocusedRowCellValue("kode_pelanggan")
+    Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
+        txtkode.Text = GridView.GetFocusedRowCellValue("kode_pelanggan")
         'txtnama.Text = GridView1.GetFocusedRowCellValue("nama_pelanggan")
         'txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat_pelanggan")
         'txttelp.Text = GridView1.GetFocusedRowCellValue("telepon_pelanggan")
@@ -350,6 +350,7 @@ Public Class fcustomer
             Dim memStream As MemoryStream = New MemoryStream()
             resized.Save(memStream, System.Drawing.Imaging.ImageFormat.Jpeg)
             PictureBox1.Image = resized
+            txtgbr.Text = oD.SafeFileName
         End If
     End Sub
 End Class

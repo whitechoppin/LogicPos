@@ -33,13 +33,14 @@ Partial Class fcustomer
         Me.txtkode = New System.Windows.Forms.TextBox()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.GridControl = New DevExpress.XtraGrid.GridControl()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtgbr = New System.Windows.Forms.Label()
         Me.btnupload = New System.Windows.Forms.Button()
@@ -48,13 +49,12 @@ Partial Class fcustomer
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GridColumn4
@@ -66,7 +66,7 @@ Partial Class fcustomer
         'btnbatal
         '
         Me.btnbatal.Location = New System.Drawing.Point(403, 38)
-        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(115, 60)
         Me.btnbatal.TabIndex = 13
@@ -76,7 +76,7 @@ Partial Class fcustomer
         'btnhapus
         '
         Me.btnhapus.Location = New System.Drawing.Point(281, 38)
-        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(115, 60)
         Me.btnhapus.TabIndex = 14
@@ -86,7 +86,7 @@ Partial Class fcustomer
         'btnedit
         '
         Me.btnedit.Location = New System.Drawing.Point(160, 38)
-        Me.btnedit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnedit.Name = "btnedit"
         Me.btnedit.Size = New System.Drawing.Size(115, 60)
         Me.btnedit.TabIndex = 15
@@ -96,7 +96,7 @@ Partial Class fcustomer
         'btntambah
         '
         Me.btntambah.Location = New System.Drawing.Point(21, 38)
-        Me.btntambah.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btntambah.Margin = New System.Windows.Forms.Padding(4)
         Me.btntambah.Name = "btntambah"
         Me.btntambah.Size = New System.Drawing.Size(131, 60)
         Me.btntambah.TabIndex = 16
@@ -106,19 +106,19 @@ Partial Class fcustomer
         'txtnama
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(182, 153)
-        Me.txtnama.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtnama.Location = New System.Drawing.Point(160, 153)
+        Me.txtnama.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(336, 23)
+        Me.txtnama.Size = New System.Drawing.Size(358, 23)
         Me.txtnama.TabIndex = 2
         '
         'txtkode
         '
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkode.Location = New System.Drawing.Point(181, 122)
-        Me.txtkode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtkode.Location = New System.Drawing.Point(160, 122)
+        Me.txtkode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkode.Name = "txtkode"
-        Me.txtkode.Size = New System.Drawing.Size(336, 23)
+        Me.txtkode.Size = New System.Drawing.Size(357, 23)
         Me.txtkode.TabIndex = 1
         '
         'GridColumn2
@@ -133,12 +133,12 @@ Partial Class fcustomer
         Me.GridColumn1.Visible = True
         Me.GridColumn1.VisibleIndex = 0
         '
-        'GridView1
+        'GridView
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsBehavior.Editable = False
+        Me.GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
+        Me.GridView.GridControl = Me.GridControl
+        Me.GridView.Name = "GridView"
+        Me.GridView.OptionsBehavior.Editable = False
         '
         'GridColumn3
         '
@@ -146,38 +146,38 @@ Partial Class fcustomer
         Me.GridColumn3.Visible = True
         Me.GridColumn3.VisibleIndex = 2
         '
-        'GridControl1
+        'GridControl
         '
-        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GridControl1.Location = New System.Drawing.Point(13, 366)
-        Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(817, 301)
-        Me.GridControl1.TabIndex = 7
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
+        Me.GridControl.Location = New System.Drawing.Point(13, 366)
+        Me.GridControl.MainView = Me.GridView
+        Me.GridControl.Margin = New System.Windows.Forms.Padding(4)
+        Me.GridControl.Name = "GridControl"
+        Me.GridControl.Size = New System.Drawing.Size(817, 301)
+        Me.GridControl.TabIndex = 7
+        Me.GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(16, 151)
+        Me.Label2.Location = New System.Drawing.Point(17, 153)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(154, 25)
+        Me.Label2.Size = New System.Drawing.Size(110, 25)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Nama Customer"
+        Me.Label2.Text = "Nama Cust"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(16, 117)
+        Me.Label1.Location = New System.Drawing.Point(17, 122)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(149, 25)
+        Me.Label1.Size = New System.Drawing.Size(105, 25)
         Me.Label1.TabIndex = 8
-        Me.Label1.Text = "Kode Customer"
+        Me.Label1.Text = "Kode Cust"
         '
         'GroupBox1
         '
@@ -197,9 +197,9 @@ Partial Class fcustomer
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(16, 13)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(814, 345)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
@@ -209,28 +209,38 @@ Partial Class fcustomer
         '
         Me.GroupBox2.Controls.Add(Me.PictureBox1)
         Me.GroupBox2.Controls.Add(Me.Panel1)
-        Me.GroupBox2.Location = New System.Drawing.Point(526, 106)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Location = New System.Drawing.Point(526, 102)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox2.Size = New System.Drawing.Size(275, 222)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox2.Size = New System.Drawing.Size(275, 226)
         Me.GroupBox2.TabIndex = 23
         Me.GroupBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(8, 16)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(259, 161)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 23
+        Me.PictureBox1.TabStop = False
         '
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.txtgbr)
         Me.Panel1.Location = New System.Drawing.Point(8, 185)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(259, 28)
+        Me.Panel1.Size = New System.Drawing.Size(259, 33)
         Me.Panel1.TabIndex = 22
         '
         'txtgbr
         '
         Me.txtgbr.AutoSize = True
         Me.txtgbr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtgbr.Location = New System.Drawing.Point(4, 4)
+        Me.txtgbr.Location = New System.Drawing.Point(8, 8)
         Me.txtgbr.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtgbr.Name = "txtgbr"
         Me.txtgbr.Size = New System.Drawing.Size(51, 17)
@@ -241,7 +251,7 @@ Partial Class fcustomer
         'btnupload
         '
         Me.btnupload.Location = New System.Drawing.Point(525, 38)
-        Me.btnupload.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnupload.Margin = New System.Windows.Forms.Padding(4)
         Me.btnupload.Name = "btnupload"
         Me.btnupload.Size = New System.Drawing.Size(276, 60)
         Me.btnupload.TabIndex = 21
@@ -251,27 +261,27 @@ Partial Class fcustomer
         'txtalamat
         '
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtalamat.Location = New System.Drawing.Point(181, 184)
-        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtalamat.Location = New System.Drawing.Point(160, 184)
+        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
         Me.txtalamat.Name = "txtalamat"
-        Me.txtalamat.Size = New System.Drawing.Size(335, 91)
+        Me.txtalamat.Size = New System.Drawing.Size(356, 91)
         Me.txtalamat.TabIndex = 17
         Me.txtalamat.Text = ""
         '
         'txttelp
         '
         Me.txttelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttelp.Location = New System.Drawing.Point(182, 283)
-        Me.txttelp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txttelp.Location = New System.Drawing.Point(160, 283)
+        Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(336, 23)
+        Me.txttelp.Size = New System.Drawing.Size(358, 23)
         Me.txttelp.TabIndex = 2
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(16, 190)
+        Me.Label4.Location = New System.Drawing.Point(16, 184)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(73, 25)
@@ -282,7 +292,7 @@ Partial Class fcustomer
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(16, 283)
+        Me.Label3.Location = New System.Drawing.Point(16, 281)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(84, 25)
@@ -295,36 +305,27 @@ Partial Class fcustomer
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "no-image.jpg")
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 16)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(259, 161)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 23
-        Me.PictureBox1.TabStop = False
-        '
         'fcustomer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(849, 680)
-        Me.Controls.Add(Me.GridControl1)
+        Me.Controls.Add(Me.GridControl)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.MaximizeBox = False
         Me.Name = "fcustomer"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Customer"
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -337,9 +338,9 @@ Partial Class fcustomer
     Friend WithEvents txtkode As System.Windows.Forms.TextBox
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridControl As DevExpress.XtraGrid.GridControl
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
