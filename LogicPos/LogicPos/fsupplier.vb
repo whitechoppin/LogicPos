@@ -5,7 +5,6 @@ Public Class fsupplier
     Private Sub fsupplier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
-        cmbpilih.SelectedIndex = 1
     End Sub
     Sub awal()
         txtkode.Clear()
@@ -15,9 +14,6 @@ Public Class fsupplier
         txtketerangan.Clear()
 
         Call koneksii()
-
-        txtcari.Enabled = True
-        cmbpilih.Enabled = True
 
         txtalamat.Enabled = False
         txttelp.Enabled = False
@@ -105,8 +101,6 @@ Public Class fsupplier
         txtalamat.Enabled = True
         txtketerangan.Enabled = True
         txtnama.Focus()
-        txtcari.Enabled = False
-        cmbpilih.Enabled = False
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If btntambah.Text = "Tambah" Then
@@ -201,39 +195,7 @@ Public Class fsupplier
             Call awal()
         End If
     End Sub
-    Sub cari()
-        Dim pilih As String
-        If cmbpilih.SelectedIndex = 0 Then
-            pilih = "kode_supplier"
-        Else
-            If cmbpilih.SelectedIndex = 1 Then
-                pilih = "nama_supplier"
-            Else
-                If cmbpilih.SelectedIndex = 2 Then
-                    pilih = "alamat_supplier"
-                Else
-                    If cmbpilih.SelectedIndex = 3 Then
-                        pilih = "telepon_supplier"
-                    Else
-                        If cmbpilih.SelectedIndex = 4 Then
-                            pilih = "keterangan_supplier"
-                        End If
-                    End If
-                End If
-            End If
-        End If
-        sql = "SELECT * FROM tb_supplier WHERE `" & pilih & "` LIKE '%" & txtcari.Text & "%'"
-        da = New OdbcDataAdapter(sql, cnn)
-        ds = New DataSet
-        da.Fill(ds)
-        GridControl1.DataSource = Nothing
-        GridControl1.DataSource = ds.Tables(0)
-        Call kolom()
-    End Sub
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
         e.Handled = ValidAngka(e)
-    End Sub
-    Private Sub txtcari_TextChanged(sender As Object, e As EventArgs) Handles txtcari.TextChanged
-        Call cari()
     End Sub
 End Class
