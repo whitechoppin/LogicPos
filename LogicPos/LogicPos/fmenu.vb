@@ -66,7 +66,7 @@ Public Class fmenu
         'fsetprinter.Show()
     End Sub
     Private Sub PricelistGroupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PricelistGroupToolStripMenuItem.Click
-        'fpricelist.Show()
+        fpricelist.Show()
     End Sub
     Private Sub ReprintFakturJualToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'freprint.Show()
