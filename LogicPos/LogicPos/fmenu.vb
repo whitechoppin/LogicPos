@@ -80,4 +80,8 @@ Public Class fmenu
     Private Sub DataGudangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataGudangToolStripMenuItem.Click
         fgudang.Show()
     End Sub
+
+    Private Sub DataKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataKasToolStripMenuItem.Click
+        fkas.Show()
+    End Sub
 End Class

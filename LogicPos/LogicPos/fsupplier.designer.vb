@@ -51,10 +51,10 @@ Partial Class fsupplier
         '
         'GridControl1
         '
-        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Location = New System.Drawing.Point(13, 371)
         Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(823, 296)
         Me.GridControl1.TabIndex = 11
@@ -136,9 +136,9 @@ Partial Class fsupplier
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(17, 15)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(819, 348)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
@@ -148,7 +148,7 @@ Partial Class fsupplier
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtketerangan.Location = New System.Drawing.Point(557, 215)
-        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
         Me.txtketerangan.Size = New System.Drawing.Size(247, 107)
         Me.txtketerangan.TabIndex = 17
@@ -158,7 +158,7 @@ Partial Class fsupplier
         '
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtalamat.Location = New System.Drawing.Point(157, 217)
-        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
         Me.txtalamat.Name = "txtalamat"
         Me.txtalamat.Size = New System.Drawing.Size(247, 105)
         Me.txtalamat.TabIndex = 17
@@ -167,7 +167,7 @@ Partial Class fsupplier
         'btnbatal
         '
         Me.btnbatal.Location = New System.Drawing.Point(416, 35)
-        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(190, 60)
         Me.btnbatal.TabIndex = 13
@@ -177,7 +177,7 @@ Partial Class fsupplier
         'btnhapus
         '
         Me.btnhapus.Location = New System.Drawing.Point(614, 35)
-        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(190, 60)
         Me.btnhapus.TabIndex = 14
@@ -187,7 +187,7 @@ Partial Class fsupplier
         'btnedit
         '
         Me.btnedit.Location = New System.Drawing.Point(214, 35)
-        Me.btnedit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnedit.Name = "btnedit"
         Me.btnedit.Size = New System.Drawing.Size(190, 60)
         Me.btnedit.TabIndex = 15
@@ -197,7 +197,7 @@ Partial Class fsupplier
         'btntambah
         '
         Me.btntambah.Location = New System.Drawing.Point(13, 35)
-        Me.btntambah.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btntambah.Margin = New System.Windows.Forms.Padding(4)
         Me.btntambah.Name = "btntambah"
         Me.btntambah.Size = New System.Drawing.Size(190, 60)
         Me.btntambah.TabIndex = 16
@@ -208,7 +208,7 @@ Partial Class fsupplier
         '
         Me.txttelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txttelp.Location = New System.Drawing.Point(557, 137)
-        Me.txttelp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
         Me.txttelp.Name = "txttelp"
         Me.txttelp.Size = New System.Drawing.Size(247, 26)
         Me.txttelp.TabIndex = 2
@@ -217,7 +217,7 @@ Partial Class fsupplier
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnama.Location = New System.Drawing.Point(157, 170)
-        Me.txtnama.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtnama.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnama.Name = "txtnama"
         Me.txtnama.Size = New System.Drawing.Size(247, 26)
         Me.txtnama.TabIndex = 2
@@ -237,7 +237,7 @@ Partial Class fsupplier
         '
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkode.Location = New System.Drawing.Point(157, 135)
-        Me.txtkode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtkode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkode.Name = "txtkode"
         Me.txtkode.Size = New System.Drawing.Size(247, 26)
         Me.txtkode.TabIndex = 1
@@ -294,7 +294,7 @@ Partial Class fsupplier
         Me.ClientSize = New System.Drawing.Size(849, 680)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fsupplier"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Supplier"
