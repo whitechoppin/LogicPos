@@ -198,4 +198,8 @@ Public Class fsupplier
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
+
+    Private Sub btnrekening_Click(sender As Object, e As EventArgs) Handles btnrekening.Click
+        frekening_supplier.ShowDialog()
+    End Sub
 End Class
