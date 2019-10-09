@@ -101,19 +101,45 @@ Public Class fpricelist
         'Else
         Call cari()
         'End If
-        Call cek_item()
+        'Call cek_item()
     End Sub
     Sub cari()
         Call koneksii()
         Dim kataCari As String = txtkode.Text
-        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kataCari & "'"
+        'sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kataCari & "'"
+        'cmmd = New OdbcCommand(sql, cnn)
+        'dr = cmmd.ExecuteReader
+        'If dr.HasRows Then
+        '    txtnama.Text = dr("nama_barang")
+        'Else
+        '    txtnama.Text = ""
+        'End If
+        sql = "select * from tb_price_group join tb_barang on tb_barang.kode_barang = tb_price_group.kode_barang  where tb_price_group.kode_barang='" & txtkode.Text & "' and tb_price_group.kode_pelanggan='" & txtkodecus.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
+            btnedit.Enabled = True
+            btnhapus.Enabled = True
+            btntambah.Enabled = False
             txtnama.Text = dr("nama_barang")
+            harga = dr("harga_jual")
+            txtharga.Text = Format(harga, "##,##0")
+            'txtharga.SelectionStart = Len(txtharga.Text)
         Else
-            txtnama.Text = ""
-        End If
+            sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & txtkode.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                txtnama.Text = dr("nama_barang")
+            Else
+                txtnama.Text = ""
+            End If
+
+            btnedit.Enabled = False
+                btnhapus.Enabled = False
+                btntambah.Enabled = True
+                txtharga.Text = 0
+            End If
     End Sub
     Private Sub txtharga_TextChanged(sender As Object, e As EventArgs) Handles txtharga.TextChanged
         If txtharga.Text = "" Then
@@ -206,12 +232,12 @@ Public Class fpricelist
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         txtkode.Text = GridView1.GetFocusedRowCellValue("kode_barang")
-        txtnama.Text = GridView1.GetFocusedRowCellValue("nama_barang")
-        harga = GridView1.GetFocusedRowCellValue("harga")
-        txtharga.Text = Format(harga, "##,##0")
-        txtharga.SelectionStart = Len(txtharga.Text)
-        orderan = GridView1.GetFocusedRowCellValue("min")
-        Call cek_item()
+        Call cari()
+        'txtnama.Text = GridView1.GetFocusedRowCellValue("nama_barang")
+        'harga = GridView1.GetFocusedRowCellValue("harga")
+        'txtharga.Text = Format(harga, "##,##0")
+        'txtharga.SelectionStart = Len(txtharga.Text)
+        'Call cek_item()
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         Call koneksii()
