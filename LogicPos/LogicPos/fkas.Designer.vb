@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class fkas
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,15 +20,15 @@ Partial Class fkas
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtalamat = New System.Windows.Forms.RichTextBox()
+        Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnhapus = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
         Me.btntambah = New System.Windows.Forms.Button()
-        Me.txttelp = New System.Windows.Forms.TextBox()
+        Me.txtsaldo = New System.Windows.Forms.TextBox()
         Me.txtnama = New System.Windows.Forms.TextBox()
         Me.txtkode = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -41,7 +41,6 @@ Partial Class fkas
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,12 +48,12 @@ Partial Class fkas
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.txtalamat)
+        Me.GroupBox1.Controls.Add(Me.txtketerangan)
         Me.GroupBox1.Controls.Add(Me.btnbatal)
         Me.GroupBox1.Controls.Add(Me.btnhapus)
         Me.GroupBox1.Controls.Add(Me.btnedit)
         Me.GroupBox1.Controls.Add(Me.btntambah)
-        Me.GroupBox1.Controls.Add(Me.txttelp)
+        Me.GroupBox1.Controls.Add(Me.txtsaldo)
         Me.GroupBox1.Controls.Add(Me.txtnama)
         Me.GroupBox1.Controls.Add(Me.txtkode)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -71,15 +70,15 @@ Partial Class fkas
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Akun Kas"
         '
-        'txtalamat
+        'txtketerangan
         '
-        Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtalamat.Location = New System.Drawing.Point(557, 138)
-        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtalamat.Name = "txtalamat"
-        Me.txtalamat.Size = New System.Drawing.Size(247, 105)
-        Me.txtalamat.TabIndex = 17
-        Me.txtalamat.Text = ""
+        Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtketerangan.Location = New System.Drawing.Point(557, 138)
+        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtketerangan.Name = "txtketerangan"
+        Me.txtketerangan.Size = New System.Drawing.Size(247, 105)
+        Me.txtketerangan.TabIndex = 17
+        Me.txtketerangan.Text = ""
         '
         'btnbatal
         '
@@ -121,14 +120,14 @@ Partial Class fkas
         Me.btntambah.Text = "Tambah"
         Me.btntambah.UseVisualStyleBackColor = True
         '
-        'txttelp
+        'txtsaldo
         '
-        Me.txttelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttelp.Location = New System.Drawing.Point(157, 204)
-        Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
-        Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(247, 26)
-        Me.txttelp.TabIndex = 2
+        Me.txtsaldo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtsaldo.Location = New System.Drawing.Point(157, 204)
+        Me.txtsaldo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtsaldo.Name = "txtsaldo"
+        Me.txtsaldo.Size = New System.Drawing.Size(247, 26)
+        Me.txtsaldo.TabIndex = 2
         '
         'txtnama
         '
@@ -205,7 +204,7 @@ Partial Class fkas
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
         Me.GridView1.GridControl = Me.GridControl
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
@@ -251,16 +250,6 @@ Partial Class fkas
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
-        'GridColumn5
-        '
-        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn5.AppearanceCell.Options.UseFont = True
-        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn5.Name = "GridColumn5"
-        Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 4
-        '
         'fkas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -280,12 +269,12 @@ Partial Class fkas
     End Sub
 
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents txtalamat As RichTextBox
+    Friend WithEvents txtketerangan As RichTextBox
     Friend WithEvents btnbatal As Button
     Friend WithEvents btnhapus As Button
     Friend WithEvents btnedit As Button
     Friend WithEvents btntambah As Button
-    Friend WithEvents txttelp As TextBox
+    Friend WithEvents txtsaldo As TextBox
     Friend WithEvents txtnama As TextBox
     Friend WithEvents txtkode As TextBox
     Friend WithEvents Label4 As Label
@@ -298,5 +287,4 @@ Partial Class fkas
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -96,16 +96,17 @@ Public Class fpricelist
     Private Sub txtkode_TextChanged(sender As Object, e As EventArgs) Handles txtkode.TextChanged
         isi = txtkode.Text
         isicari = isi
-        If Strings.Left(txtkode.Text, 1) Like "[A-Z, a-z]" Then
-            Call search()
-        Else
-            Call cari()
-        End If
+        'If Strings.Left(txtkode.Text, 1) Like "[A-Z, a-z]" Then
+        'Call search()
+        'Else
+        Call cari()
+        'End If
         Call cek_item()
     End Sub
     Sub cari()
         Call koneksii()
-        sql = "SELECT * FROM tb_barang WHERE kode_barang='" & txtkode.Text & "'"
+        Dim kataCari As String = txtkode.Text
+        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kataCari & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
