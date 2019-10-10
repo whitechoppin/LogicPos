@@ -1,6 +1,7 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fkas
+    Dim saldoawal As Double
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If btntambah.Text = "Tambah" Then
             btnbatal.Enabled = True
@@ -67,6 +68,8 @@ Public Class fkas
         GridColumn3.Width = 200
         GridColumn4.Caption = "Saldo Awal"
         GridColumn4.FieldName = "saldo_awal"
+        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
     End Sub
     Sub isitabel()
         'Call koneksii()
@@ -99,7 +102,7 @@ Public Class fkas
         If dr.HasRows Then
             MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_kas (kode_kas, nama_kas, keterangan_kas, saldo_awal, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & txtsaldo.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_kas (kode_kas, nama_kas, keterangan_kas, saldo_awal, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & saldoawal & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -144,7 +147,7 @@ Public Class fkas
 
     Sub edit()
         Call koneksii()
-        sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', saldo_awal='" & txtsaldo.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & txtkode.Text & "'"
+        sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', saldo_awal='" & saldoawal & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & txtkode.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -205,6 +208,16 @@ Public Class fkas
                     End If
                 End If
             End If
+        End If
+    End Sub
+
+    Private Sub txtsaldo_TextChanged(sender As Object, e As EventArgs) Handles txtsaldo.TextChanged
+        If txtsaldo.Text = "" Then
+            txtsaldo.Text = 0
+        Else
+            saldoawal = txtsaldo.Text
+            txtsaldo.Text = Format(saldoawal, "##,##0")
+            txtsaldo.SelectionStart = Len(txtsaldo.Text)
         End If
     End Sub
 End Class

@@ -297,23 +297,8 @@ Public Class fbarang
             End Using
         End If
     End Sub
-    Private Sub txtharga_KeyPress(sender As Object, e As KeyPressEventArgs)
-        e.Handled = ValidAngka(e)
-    End Sub
-    Private Sub btnupload_Click(sender As Object, e As EventArgs) Handles btnupload.Click
-        'On Error Resume Next
-        'OpenFileDialog1.Filter = "JPG Files(*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|GIF Files(*.gif)|*.gif|PNG Files(*.png)|*.png|BMP Files(*.bmp)|*.bmp|TIFF Files(*.tiff)|*.tiff"
-        'OpenFileDialog1.FileName = ""
-        'If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
-        '    PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-        '    PictureBox1.Image = New Bitmap(OpenFileDialog1.FileName)
-        '    'Button3.Enabled = True
-        '    PathFile = OpenFileDialog1.FileName
-        '    'txtgbr.Text = PathFile.Substring(PathFile.LastIndexOf("\") + 1)
-        '    txtgbr.Text = OpenFileDialog1.FileName
 
-        '    PictureBox1.Image = Image.FromFile(txtgbr.Text)
-        'End If
+    Private Sub btnupload_Click(sender As Object, e As EventArgs) Handles btnupload.Click
         Dim oD As New OpenFileDialog
         oD.Multiselect = False
         Dim filena As String
