@@ -24,10 +24,10 @@ Partial Class frekeningsupplier
     Private Sub InitializeComponent()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.txtnamarek = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtnorek = New System.Windows.Forms.TextBox()
@@ -59,15 +59,6 @@ Partial Class frekeningsupplier
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
-        'GroupControl1
-        '
-        Me.GroupControl1.Controls.Add(Me.GridControl1)
-        Me.GroupControl1.Location = New System.Drawing.Point(203, 67)
-        Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(395, 205)
-        Me.GroupControl1.TabIndex = 1
-        Me.GroupControl1.Text = "List Rekening"
-        '
         'GridColumn1
         '
         Me.GridColumn1.Caption = "GridColumn1"
@@ -88,6 +79,15 @@ Partial Class frekeningsupplier
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
         Me.GridColumn3.VisibleIndex = 2
+        '
+        'GroupControl1
+        '
+        Me.GroupControl1.Controls.Add(Me.GridControl1)
+        Me.GroupControl1.Location = New System.Drawing.Point(203, 67)
+        Me.GroupControl1.Name = "GroupControl1"
+        Me.GroupControl1.Size = New System.Drawing.Size(395, 205)
+        Me.GroupControl1.TabIndex = 1
+        Me.GroupControl1.Text = "List Rekening"
         '
         'txtnamarek
         '
@@ -179,7 +179,7 @@ Partial Class frekeningsupplier
         Me.btntambah.Text = "Tambah"
         Me.btntambah.UseVisualStyleBackColor = True
         '
-        'frekening_supplier
+        'frekeningsupplier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -198,7 +198,7 @@ Partial Class frekeningsupplier
         Me.Controls.Add(Me.GroupControl1)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frekening_supplier"
+        Me.Name = "frekeningsupplier"
         Me.Text = "Data Rekening Supplier"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()

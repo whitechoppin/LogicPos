@@ -200,6 +200,7 @@ Public Class fsupplier
     End Sub
 
     Private Sub btnrekening_Click(sender As Object, e As EventArgs) Handles btnrekening.Click
+        frekeningsupplier.kode_supplier = Me.txtkode.Text
         frekeningsupplier.ShowDialog()
     End Sub
 End Class
