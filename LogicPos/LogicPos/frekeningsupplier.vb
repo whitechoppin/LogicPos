@@ -1,4 +1,4 @@
-﻿Public Class frekening_supplier
+﻿Public Class frekeningsupplier
     Private Sub frekening_supplier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Me.MdiParent = fmenu
         Call awal()

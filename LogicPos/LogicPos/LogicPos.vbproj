@@ -130,10 +130,10 @@
     <Compile Include="fpricelist.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frekening_supplier.Designer.vb">
-      <DependentUpon>frekening_supplier.vb</DependentUpon>
+    <Compile Include="frekeningsupplier.Designer.vb">
+      <DependentUpon>frekeningsupplier.vb</DependentUpon>
     </Compile>
-    <Compile Include="frekening_supplier.vb">
+    <Compile Include="frekeningsupplier.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fsupplier.designer.vb">
@@ -186,8 +186,8 @@
     <EmbeddedResource Include="fpricelist.resx">
       <DependentUpon>fpricelist.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frekening_supplier.resx">
-      <DependentUpon>frekening_supplier.vb</DependentUpon>
+    <EmbeddedResource Include="frekeningsupplier.resx">
+      <DependentUpon>frekeningsupplier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fsupplier.resx">
       <DependentUpon>fsupplier.vb</DependentUpon>

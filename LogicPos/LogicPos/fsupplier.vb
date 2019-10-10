@@ -200,6 +200,6 @@ Public Class fsupplier
     End Sub
 
     Private Sub btnrekening_Click(sender As Object, e As EventArgs) Handles btnrekening.Click
-        frekening_supplier.ShowDialog()
+        frekeningsupplier.ShowDialog()
     End Sub
 End Class
