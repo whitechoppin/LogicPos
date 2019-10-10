@@ -7,6 +7,7 @@ Public Class fkas
             btntambah.Text = "Simpan"
             Call enable_text()
             Call index()
+            txtkode.Text = autonumber()
             GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
@@ -84,11 +85,11 @@ Public Class fkas
         txtketerangan.TabIndex = 4
     End Sub
     Sub enable_text()
-        txtkode.Enabled = True
+        txtkode.Enabled = False
         txtnama.Enabled = True
         txtsaldo.Enabled = True
         txtketerangan.Enabled = True
-        txtkode.Focus()
+        txtnama.Focus()
     End Sub
     Sub simpan()
         Call koneksii()
@@ -107,5 +108,103 @@ Public Class fkas
             Call awal()
         End If
 
+    End Sub
+
+    Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
+        Call koneksii()
+        If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+            sql = "DELETE FROM tb_kas WHERE  kode_kas='" & txtkode.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Me.Refresh()
+            Call awal()
+        End If
+    End Sub
+
+    Private Sub txtsaldo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtsaldo.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+        txtkode.Text = GridView1.GetFocusedRowCellValue("kode_kas")
+        txtnama.Text = GridView1.GetFocusedRowCellValue("nama_kas")
+        txtsaldo.Text = GridView1.GetFocusedRowCellValue("saldo_awal")
+        txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_kas")
+        btnedit.Enabled = True
+        btnbatal.Enabled = True
+        btnhapus.Enabled = True
+        btntambah.Enabled = False
+        btntambah.Text = "Tambah"
+    End Sub
+
+    Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
+        Call awal()
+    End Sub
+
+    Sub edit()
+        Call koneksii()
+        sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', saldo_awal='" & txtsaldo.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & txtkode.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+        btnedit.Text = "Edit"
+        Me.Refresh()
+        Call awal()
+    End Sub
+
+    Function autonumber()
+        Call koneksii()
+        sql = "SELECT RIGHT(`kode_kas`,3) FROM `tb_kas` WHERE LEFT(`kode_kas`,2)= DATE_FORMAT(now(),'%y') ORDER BY RIGHT(kode_kas,3) DESC"
+        Dim pesan As String = ""
+        Try
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                dr.Read()
+                If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
+                    Return Format(Now.Date, "yy") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                Else
+                    If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
+                        Return Format(Now.Date, "yy") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                    Else
+                        If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
+                            Return Format(Now.Date, "yy") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                        End If
+                    End If
+                End If
+            Else
+                Return Format(Now.Date, "yy") + "001"
+            End If
+        Catch ex As Exception
+            pesan = ex.Message.ToString
+        Finally
+            cnn.Close()
+        End Try
+        Return pesan
+    End Function
+
+    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+        If btnedit.Text = "Edit" Then
+            btnedit.Text = "Simpan"
+            btnhapus.Enabled = False
+            Call enable_text()
+            Call index()
+            GridControl.Enabled = False
+        Else
+            If txtkode.Text.Length = 0 Then
+                MsgBox("ID belum terisi!!!")
+            Else
+                If txtnama.Text.Length = 0 Then
+                    MsgBox("Nama belum terisi!!!")
+                Else
+                    If txtsaldo.Text.Length = 0 Then
+                        MsgBox("saldo belum terisi!!!")
+                    Else
+                        Call edit()
+                    End If
+                End If
+            End If
+        End If
     End Sub
 End Class

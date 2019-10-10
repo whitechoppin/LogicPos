@@ -68,7 +68,7 @@ Partial Class fkas
         Me.GroupBox1.Size = New System.Drawing.Size(819, 348)
         Me.GroupBox1.TabIndex = 11
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Input Akun Kas"
+        Me.GroupBox1.Text = "Input Data Kas"
         '
         'txtketerangan
         '
@@ -259,7 +259,7 @@ Partial Class fkas
         Me.Controls.Add(Me.GridControl)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "fkas"
-        Me.Text = "fkas"
+        Me.Text = "Input Data Kas"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).EndInit()
