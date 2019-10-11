@@ -4,7 +4,7 @@ Imports System.Drawing.Drawing2D
 Imports System.IO
 
 Public Class fbarang
-    Dim harga, modal As Double
+    Dim hargabarang, modalbarang As Double
     Dim kode As String
     Dim minstok As Integer
     Private PathFile As String = Nothing
@@ -147,7 +147,7 @@ Public Class fbarang
                 cmmd.Parameters.AddWithValue("@satuan_barang", txtsatuan.Text)
                 cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
                 cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
-                cmmd.Parameters.AddWithValue("@modal_barang", harga)
+                cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
                 cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
                 cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
                 cmmd.Parameters.AddWithValue("@date_created", Date.Now)
@@ -179,8 +179,8 @@ Public Class fbarang
                 cmbjenis.Text = dr("jenis_barang")
                 kode = dr("kode_barang")
                 foto = dr("gambar_barang")
-                modal = dr("modal_barang")
-                txtmodal.Text = Format(modal, "##,##0")
+                modalbarang = dr("modal_barang")
+                txtmodal.Text = Format(modalbarang, "##,##0")
                 PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
                 PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
                 btnedit.Enabled = True
@@ -244,7 +244,7 @@ Public Class fbarang
             cmmd.Parameters.AddWithValue("@satuan_barang", txtsatuan.Text)
             cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
             cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
-            cmmd.Parameters.AddWithValue("@modal_barang", harga)
+            cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
             cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
             cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
             cnn.Open()
@@ -353,8 +353,8 @@ Public Class fbarang
         If txtmodal.Text = "" Then
             txtmodal.Text = 0
         Else
-            harga = txtmodal.Text
-            txtmodal.Text = Format(harga, "##,##0")
+            hargabarang = txtmodal.Text
+            txtmodal.Text = Format(hargabarang, "##,##0")
             txtmodal.SelectionStart = Len(txtmodal.Text)
         End If
     End Sub

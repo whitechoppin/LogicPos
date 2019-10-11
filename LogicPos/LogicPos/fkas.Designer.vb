@@ -82,7 +82,7 @@ Partial Class fkas
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(416, 35)
+        Me.btnbatal.Location = New System.Drawing.Point(614, 35)
         Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(190, 60)
@@ -92,7 +92,7 @@ Partial Class fkas
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(614, 35)
+        Me.btnhapus.Location = New System.Drawing.Point(412, 35)
         Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(190, 60)

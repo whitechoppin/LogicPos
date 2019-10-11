@@ -93,11 +93,11 @@ Partial Class fgudang
         Me.GroupBox1.Size = New System.Drawing.Size(820, 326)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Input Gudang"
+        Me.GroupBox1.Text = "Input Data Gudang"
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(412, 42)
+        Me.btnbatal.Location = New System.Drawing.Point(610, 42)
         Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(190, 60)
@@ -107,7 +107,7 @@ Partial Class fgudang
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(610, 42)
+        Me.btnhapus.Location = New System.Drawing.Point(412, 42)
         Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(190, 60)

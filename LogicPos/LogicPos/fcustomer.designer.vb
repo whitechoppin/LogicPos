@@ -49,6 +49,7 @@ Partial Class fcustomer
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.btnrekening = New System.Windows.Forms.Button()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -165,7 +166,7 @@ Partial Class fcustomer
         'GridControl
         '
         Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl.Location = New System.Drawing.Point(13, 366)
+        Me.GridControl.Location = New System.Drawing.Point(13, 392)
         Me.GridControl.MainView = Me.GridView
         Me.GridControl.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Name = "GridControl"
@@ -197,6 +198,7 @@ Partial Class fcustomer
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btnrekening)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.btnupload)
         Me.GroupBox1.Controls.Add(Me.txtalamat)
@@ -216,7 +218,7 @@ Partial Class fcustomer
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(814, 345)
+        Me.GroupBox1.Size = New System.Drawing.Size(814, 371)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data Customer"
@@ -229,7 +231,7 @@ Partial Class fcustomer
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(275, 226)
+        Me.GroupBox2.Size = New System.Drawing.Size(275, 261)
         Me.GroupBox2.TabIndex = 23
         Me.GroupBox2.TabStop = False
         '
@@ -238,7 +240,7 @@ Partial Class fcustomer
         Me.PictureBox1.Location = New System.Drawing.Point(8, 16)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(259, 161)
+        Me.PictureBox1.Size = New System.Drawing.Size(259, 196)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 23
         Me.PictureBox1.TabStop = False
@@ -246,7 +248,7 @@ Partial Class fcustomer
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.txtgbr)
-        Me.Panel1.Location = New System.Drawing.Point(8, 185)
+        Me.Panel1.Location = New System.Drawing.Point(8, 220)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(259, 33)
@@ -308,7 +310,7 @@ Partial Class fcustomer
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(16, 281)
+        Me.Label3.Location = New System.Drawing.Point(16, 280)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(84, 25)
@@ -320,6 +322,16 @@ Partial Class fcustomer
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "no-image.jpg")
+        '
+        'btnrekening
+        '
+        Me.btnrekening.Location = New System.Drawing.Point(158, 314)
+        Me.btnrekening.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrekening.Name = "btnrekening"
+        Me.btnrekening.Size = New System.Drawing.Size(360, 46)
+        Me.btnrekening.TabIndex = 24
+        Me.btnrekening.Text = "Data Rekening"
+        Me.btnrekening.UseVisualStyleBackColor = True
         '
         'fcustomer
         '
@@ -370,4 +382,5 @@ Partial Class fcustomer
     Friend WithEvents btnupload As Button
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnrekening As Button
 End Class

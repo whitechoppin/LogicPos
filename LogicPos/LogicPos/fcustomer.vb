@@ -119,23 +119,6 @@ Public Class fcustomer
         End If
     End Sub
     Sub simpan()
-        'Call koneksii()
-        'sql = "SELECT * FROM tb_customer WHERE id  = '" + txtkode.Text + "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader
-        'If dr.HasRows Then
-        '    MsgBox("ID Customer Sudah ada dengan nama " + dr("nama"), MsgBoxStyle.Information, "Pemberitahuan")
-
-        'Else
-        '    sql = "INSERT INTO tb_customer (id, nama, telepon, alamat) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "')"
-        '    cmmd = New OdbcCommand(sql, cnn)
-        '    dr = cmmd.ExecuteReader()
-
-        '    MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-        '    btntambah.Text = "Tambah"
-        '    Me.Refresh()
-        '    Call awal()
-        'End If
         Using cnn As New OdbcConnection(strConn)
             sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" + txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
@@ -220,15 +203,6 @@ Public Class fcustomer
         End If
     End Sub
     Sub edit()
-        'Call koneksii()
-        'sql = "UPDATE tb_pelanggan SET  nama_pelanggan='" & txtnama.Text & "',alamat_pelanggan='" & txtalamat.Text & "', telepon_pelanggan='" & txttelp.Text & "'  WHERE  kode_pelanggan='" & txtkode.Text & "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader()
-        'MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-        'btnedit.Text = "Edit"
-        'Me.Refresh()
-        'Call awal()
-        'Call koneksii()
         Dim ms As MemoryStream = New MemoryStream
         'menyimpan gambar ke dalam ms dengan format jpeg
         PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
@@ -268,32 +242,6 @@ Public Class fcustomer
             Call awal()
         End If
     End Sub
-    'Sub cari()
-    'Dim pilih As String
-    'If cmbpilih.SelectedIndex = 0 Then
-    'pilih = "kode_pelanggan"
-    'Else
-    'If cmbpilih.SelectedIndex = 1 Then
-    'pilih = "nama_pelanggan"
-    'Else
-    'If cmbpilih.SelectedIndex = 2 Then
-    'pilih = "alamat_pelanggan"
-    'Else
-    'If cmbpilih.SelectedIndex = 3 Then
-    'pilih = "telepon_pelanggan"
-    'End If
-    'End If
-    'End If
-    'End If
-
-    'sql = "SELECT * FROM logicpos.`tb_pelanggan` WHERE `" & pilih & "` LIKE '" & txtcari.Text & "%'"
-    'da = New OdbcDataAdapter(sql, cnn)
-    'ds = New DataSet
-    'da.Fill(ds)
-    'GridControl1.DataSource = Nothing
-    'GridControl1.DataSource = ds.Tables(0)
-    'Call kolom()
-    'End Sub
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
@@ -308,7 +256,6 @@ Public Class fcustomer
         btntambah.Enabled = False
         btntambah.Text = "Tambah"
 
-        'txtkode.Text = GridView1.GetFocusedRowCellValue("kode_barang")
         'menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
         Dim foto As Byte()
         'menyiapkan koneksi database
@@ -322,7 +269,6 @@ Public Class fcustomer
                 txtnama.Text = dr("nama_pelanggan")
                 txtalamat.Text = dr("alamat_pelanggan")
                 txttelp.Text = dr("telepon_pelanggan")
-                'kode = dr("kode_barang")
                 foto = dr("foto_pelanggan")
                 PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
                 PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))

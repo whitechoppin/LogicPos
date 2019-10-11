@@ -130,6 +130,12 @@
     <Compile Include="fpricelist.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frekeningcustomer.Designer.vb">
+      <DependentUpon>frekeningcustomer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frekeningcustomer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frekeningsupplier.Designer.vb">
       <DependentUpon>frekeningsupplier.vb</DependentUpon>
     </Compile>
