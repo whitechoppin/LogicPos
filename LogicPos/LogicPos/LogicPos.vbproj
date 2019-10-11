@@ -192,6 +192,9 @@
     <EmbeddedResource Include="fpricelist.resx">
       <DependentUpon>fpricelist.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frekeningcustomer.resx">
+      <DependentUpon>frekeningcustomer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frekeningsupplier.resx">
       <DependentUpon>frekeningsupplier.vb</DependentUpon>
     </EmbeddedResource>

@@ -37,10 +37,12 @@ Partial Class fcaricust
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(5, 62)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Location = New System.Drawing.Point(7, 76)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(375, 168)
+        Me.GridControl1.Size = New System.Drawing.Size(500, 207)
         Me.GridControl1.TabIndex = 14
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -66,29 +68,32 @@ Partial Class fcaricust
         'txtcari
         '
         Me.txtcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcari.Location = New System.Drawing.Point(114, 32)
+        Me.txtcari.Location = New System.Drawing.Point(152, 39)
+        Me.txtcari.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtcari.Name = "txtcari"
-        Me.txtcari.Size = New System.Drawing.Size(267, 24)
+        Me.txtcari.Size = New System.Drawing.Size(355, 29)
         Me.txtcari.TabIndex = 13
         '
         'cmbcari
         '
         Me.cmbcari.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbcari.Font = New System.Drawing.Font("Arial Rounded MT Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbcari.FormattingEnabled = True
         Me.cmbcari.Items.AddRange(New Object() {"Kode", "Nama"})
-        Me.cmbcari.Location = New System.Drawing.Point(5, 31)
+        Me.cmbcari.Location = New System.Drawing.Point(7, 38)
+        Me.cmbcari.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbcari.Name = "cmbcari"
-        Me.cmbcari.Size = New System.Drawing.Size(103, 25)
+        Me.cmbcari.Size = New System.Drawing.Size(136, 32)
         Me.cmbcari.TabIndex = 12
         '
         'btnmasuk
         '
         Me.btnmasuk.BackgroundImage = CType(resources.GetObject("btnmasuk.BackgroundImage"), System.Drawing.Image)
         Me.btnmasuk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnmasuk.Location = New System.Drawing.Point(387, 31)
+        Me.btnmasuk.Location = New System.Drawing.Point(516, 38)
+        Me.btnmasuk.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnmasuk.Name = "btnmasuk"
-        Me.btnmasuk.Size = New System.Drawing.Size(81, 60)
+        Me.btnmasuk.Size = New System.Drawing.Size(108, 74)
         Me.btnmasuk.TabIndex = 17
         Me.btnmasuk.UseVisualStyleBackColor = True
         '
@@ -96,25 +101,27 @@ Partial Class fcaricust
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(2, 4)
+        Me.Label1.Location = New System.Drawing.Point(3, 5)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(146, 24)
+        Me.Label1.Size = New System.Drawing.Size(185, 29)
         Me.Label1.TabIndex = 15
         Me.Label1.Text = "Data Customer"
         '
         'fcaricust
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(485, 242)
+        Me.ClientSize = New System.Drawing.Size(647, 298)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.txtcari)
         Me.Controls.Add(Me.cmbcari)
         Me.Controls.Add(Me.btnmasuk)
         Me.Controls.Add(Me.Label1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fcaricust"
-        Me.Text = "Search Customer"
+        Me.Text = "Pencarian Customer"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

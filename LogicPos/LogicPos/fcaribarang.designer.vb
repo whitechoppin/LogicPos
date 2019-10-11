@@ -44,36 +44,41 @@ Partial Class fcaribarang
         'txtcari
         '
         Me.txtcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcari.Location = New System.Drawing.Point(120, 39)
+        Me.txtcari.Location = New System.Drawing.Point(160, 48)
+        Me.txtcari.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtcari.Name = "txtcari"
-        Me.txtcari.Size = New System.Drawing.Size(379, 24)
+        Me.txtcari.Size = New System.Drawing.Size(385, 29)
         Me.txtcari.TabIndex = 7
         '
         'cmbcari
         '
         Me.cmbcari.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbcari.Font = New System.Drawing.Font("Arial Rounded MT Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbcari.FormattingEnabled = True
         Me.cmbcari.Items.AddRange(New Object() {"Kode", "Nama"})
-        Me.cmbcari.Location = New System.Drawing.Point(11, 38)
+        Me.cmbcari.Location = New System.Drawing.Point(15, 47)
+        Me.cmbcari.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbcari.Name = "cmbcari"
-        Me.cmbcari.Size = New System.Drawing.Size(103, 25)
+        Me.cmbcari.Size = New System.Drawing.Size(136, 32)
         Me.cmbcari.TabIndex = 6
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(505, 69)
+        Me.GroupBox1.Location = New System.Drawing.Point(683, 85)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(282, 279)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(376, 343)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(6, 10)
+        Me.PictureBox1.Location = New System.Drawing.Point(9, 17)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(270, 263)
+        Me.PictureBox1.Size = New System.Drawing.Size(359, 317)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -81,28 +86,32 @@ Partial Class fcaribarang
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 11)
+        Me.Label1.Location = New System.Drawing.Point(16, 14)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(113, 24)
+        Me.Label1.Size = New System.Drawing.Size(156, 29)
         Me.Label1.TabIndex = 9
-        Me.Label1.Text = "List Barang"
+        Me.Label1.Text = "Data Barang"
         '
         'btnmasuk
         '
         Me.btnmasuk.BackgroundImage = CType(resources.GetObject("btnmasuk.BackgroundImage"), System.Drawing.Image)
         Me.btnmasuk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnmasuk.Location = New System.Drawing.Point(505, 11)
+        Me.btnmasuk.Location = New System.Drawing.Point(553, 50)
+        Me.btnmasuk.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnmasuk.Name = "btnmasuk"
-        Me.btnmasuk.Size = New System.Drawing.Size(81, 52)
+        Me.btnmasuk.Size = New System.Drawing.Size(121, 30)
         Me.btnmasuk.TabIndex = 11
         Me.btnmasuk.UseVisualStyleBackColor = True
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(11, 69)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Location = New System.Drawing.Point(15, 85)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(494, 280)
+        Me.GridControl1.Size = New System.Drawing.Size(659, 345)
         Me.GridControl1.TabIndex = 12
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -147,16 +156,17 @@ Partial Class fcaribarang
         '
         'fcaribarang
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(804, 354)
+        Me.ClientSize = New System.Drawing.Size(1072, 448)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.btnmasuk)
         Me.Controls.Add(Me.txtcari)
         Me.Controls.Add(Me.cmbcari)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fcaribarang"
         Me.Text = "Pencarian Barang"
         Me.GroupBox1.ResumeLayout(False)
