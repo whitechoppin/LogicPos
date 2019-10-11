@@ -25,6 +25,7 @@ Public Class fsupplier
         btnbatal.Enabled = False
         btnedit.Enabled = False
         btnhapus.Enabled = False
+        btnrekening.Enabled = False
 
         btntambah.Text = "Tambah"
         btnedit.Text = "Edit"
@@ -143,6 +144,7 @@ Public Class fsupplier
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If btnedit.Text = "Edit" Then
             btnedit.Text = "Simpan"
+            btnrekening.Enabled = True
             btnhapus.Enabled = False
             Call enable_text()
             Call index()
@@ -203,4 +205,5 @@ Public Class fsupplier
         frekeningsupplier.kode_supplier = Me.txtkode.Text
         frekeningsupplier.ShowDialog()
     End Sub
+
 End Class
