@@ -22,8 +22,16 @@ Partial Class frekeningcustomer
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container
+        Me.SuspendLayout()
+        '
+        'frekeningcustomer
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(672, 395)
+        Me.Name = "frekeningcustomer"
         Me.Text = "frekeningcustomer"
+        Me.ResumeLayout(False)
+
     End Sub
 End Class
