@@ -30,7 +30,7 @@ Partial Class frekeningsupplier
         Me.txtkoderekening = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtketeranganbank = New System.Windows.Forms.RichTextBox()
+        Me.txtketeranganrekening = New System.Windows.Forms.RichTextBox()
         Me.txtnamabank = New System.Windows.Forms.TextBox()
         Me.label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -43,6 +43,7 @@ Partial Class frekeningsupplier
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,7 +95,7 @@ Partial Class frekeningsupplier
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.btnhapus)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.txtketeranganbank)
+        Me.GroupBox1.Controls.Add(Me.txtketeranganrekening)
         Me.GroupBox1.Controls.Add(Me.btntambah)
         Me.GroupBox1.Controls.Add(Me.btnedit)
         Me.GroupBox1.Controls.Add(Me.txtnamabank)
@@ -136,17 +137,18 @@ Partial Class frekeningsupplier
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(310, 138)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(136, 18)
+        Me.Label4.Size = New System.Drawing.Size(168, 18)
         Me.Label4.TabIndex = 22
-        Me.Label4.Text = "Keterangan Bank"
+        Me.Label4.Text = "Keterangan Rekening"
         '
-        'txtketeranganbank
+        'txtketeranganrekening
         '
-        Me.txtketeranganbank.Location = New System.Drawing.Point(313, 159)
-        Me.txtketeranganbank.Name = "txtketeranganbank"
-        Me.txtketeranganbank.Size = New System.Drawing.Size(287, 82)
-        Me.txtketeranganbank.TabIndex = 21
-        Me.txtketeranganbank.Text = ""
+        Me.txtketeranganrekening.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtketeranganrekening.Location = New System.Drawing.Point(313, 159)
+        Me.txtketeranganrekening.Name = "txtketeranganrekening"
+        Me.txtketeranganrekening.Size = New System.Drawing.Size(287, 82)
+        Me.txtketeranganrekening.TabIndex = 21
+        Me.txtketeranganrekening.Text = ""
         '
         'txtnamabank
         '
@@ -213,7 +215,7 @@ Partial Class frekeningsupplier
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
@@ -246,6 +248,12 @@ Partial Class frekeningsupplier
         Me.GridColumn4.VisibleIndex = 3
         Me.GridColumn4.Width = 103
         '
+        'GridColumn5
+        '
+        Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.Visible = True
+        Me.GridColumn5.VisibleIndex = 4
+        '
         'frekeningsupplier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -276,7 +284,7 @@ Partial Class frekeningsupplier
     Friend WithEvents txtnorekening As TextBox
     Friend WithEvents txtnamabank As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents txtketeranganbank As RichTextBox
+    Friend WithEvents txtketeranganrekening As RichTextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
@@ -286,4 +294,5 @@ Partial Class frekeningsupplier
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents txtkoderekening As TextBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

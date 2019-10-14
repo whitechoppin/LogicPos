@@ -11,13 +11,13 @@ Public Class frekeningsupplier
         txtnamabank.Enabled = False
         txtnamarekening.Enabled = False
         txtnorekening.Enabled = False
-        txtketeranganbank.Enabled = False
+        txtketeranganrekening.Enabled = False
 
         txtkoderekening.Clear()
         txtnamabank.Clear()
         txtnamarekening.Clear()
         txtnorekening.Clear()
-        txtketeranganbank.Clear()
+        txtketeranganrekening.Clear()
 
         btntambah.Text = "Tambah"
         btnedit.Text = "Edit"
@@ -33,14 +33,14 @@ Public Class frekeningsupplier
         txtnamabank.Enabled = True
         txtnorekening.Enabled = True
         txtnamarekening.Enabled = True
-        txtketeranganbank.Enabled = True
+        txtketeranganrekening.Enabled = True
         txtnamarekening.Focus()
     End Sub
     Sub index()
         txtnamarekening.TabIndex = 0
         txtnorekening.TabIndex = 1
         txtnamabank.TabIndex = 2
-        txtketeranganbank.TabIndex = 3
+        txtketeranganrekening.TabIndex = 3
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If btntambah.Text = "Tambah" Then
@@ -48,7 +48,7 @@ Public Class frekeningsupplier
             btntambah.Text = "Simpan"
             Call enable_text()
             Call index()
-            'txtkode.Text = autonumber()
+            txtkoderekening.Text = autonumber()
             GridControl1.Enabled = False
         Else
             If txtnamabank.Text.Trim.Length = 0 Then
@@ -69,14 +69,13 @@ Public Class frekeningsupplier
     End Sub
     Sub simpan()
         Call koneksii()
-        'MsgBox(kode_supplier)
         sql = "SELECT * FROM tb_rekening_supplier WHERE nomor_rekening  = '" + txtnorekening.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             MsgBox("Nomor Rekening Sudah ada dengan nama " + dr("nama_supplier"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_rekening_supplier (kode_rekening, nomor_rekening, nama_bank, nama_rekening, kode_supplier, created_by, update_by,date_created,last_updated) VALUES ('" & txtnorekening.Text & "', '" & txtnorekening.Text & "', '" & txtnamabank.Text & "','" & txtnamarekening.Text & "','" & kode_supplier & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_rekening_supplier (kode_rekening, nomor_rekening, nama_bank, nama_rekening, keterangan_rekening, kode_supplier, created_by, update_by,date_created,last_updated) VALUES ('" & txtkoderekening.Text & "', '" & txtnorekening.Text & "', '" & txtnamabank.Text & "','" & txtnamarekening.Text & "','" & txtketeranganrekening.Text & "','" & kode_supplier & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -86,18 +85,21 @@ Public Class frekeningsupplier
         End If
     End Sub
     Sub kolom()
-        GridColumn1.Caption = "Nomor Rekening"
+        GridColumn1.Caption = "Kode Rekening"
         GridColumn1.Width = 65
-        GridColumn1.FieldName = "nomor_rekening"
-        GridColumn2.Caption = "Nama Rekening"
+        GridColumn1.FieldName = "kode_rekening"
+        GridColumn2.Caption = "Nomor Rekening"
         GridColumn2.Width = 65
-        GridColumn2.FieldName = "nama_rekening"
-        GridColumn3.Caption = "Nama Bank"
-        GridColumn3.Width = 73
-        GridColumn3.FieldName = "nama_bank"
-        GridColumn4.Caption = "Keterangan Bank"
+        GridColumn2.FieldName = "nomor_rekening"
+        GridColumn3.Caption = "Nama Rekening"
+        GridColumn3.Width = 65
+        GridColumn3.FieldName = "nama_rekening"
+        GridColumn4.Caption = "Nama Bank"
         GridColumn4.Width = 73
-        GridColumn4.FieldName = "keterangan_bank"
+        GridColumn4.FieldName = "nama_bank"
+        GridColumn5.Caption = "Keterangan Rekening"
+        GridColumn5.Width = 73
+        GridColumn5.FieldName = "keterangan_rekening"
     End Sub
     Sub isitabel()
         'Call koneksii()
@@ -118,7 +120,7 @@ Public Class frekeningsupplier
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         Call koneksii()
         If MessageBox.Show("Hapus " & Me.txtnorekening.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            sql = "DELETE FROM tb_rekening_supplier WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & txtnorekening.Text & "'"
+            sql = "DELETE FROM tb_rekening_supplier WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & txtkoderekening.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             MessageBox.Show("Rekening " + txtnorekening.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -151,9 +153,9 @@ Public Class frekeningsupplier
     End Sub
     Sub edit()
         Dim norek As String
-        norek = txtnorekening.Text
+        norek = txtkoderekening.Text
         Call koneksii()
-        sql = "UPDATE tb_rekening_supplier SET kode_rekening='" & txtnorekening.Text & "', nomor_rekening='" & txtnorekening.Text & "',nama_rekening='" & txtnamarekening.Text & "', nama_bank='" & txtnamabank.Text & "',update_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & norek & "'"
+        sql = "UPDATE tb_rekening_supplier SET nomor_rekening='" & txtnorekening.Text & "', nama_bank='" & txtnamabank.Text & "', nama_rekening='" & txtnamarekening.Text & "', keterangan_rekening='" & txtketeranganrekening.Text & "', update_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & norek & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -163,10 +165,11 @@ Public Class frekeningsupplier
     End Sub
 
     Private Sub GridControl1_DoubleClick(sender As Object, e As EventArgs) Handles GridControl1.DoubleClick
+        txtkoderekening.Text = GridView1.GetFocusedRowCellValue("kode_rekening")
         txtnorekening.Text = GridView1.GetFocusedRowCellValue("nomor_rekening")
         txtnamarekening.Text = GridView1.GetFocusedRowCellValue("nama_rekening")
         txtnamabank.Text = GridView1.GetFocusedRowCellValue("nama_bank")
-        txtketeranganbank.Text = GridView1.GetFocusedRowCellValue("keterangan_bank")
+        txtketeranganrekening.Text = GridView1.GetFocusedRowCellValue("keterangan_rekening")
 
         btnedit.Enabled = True
         btnbatal.Enabled = True
@@ -174,4 +177,35 @@ Public Class frekeningsupplier
         btntambah.Enabled = False
         btntambah.Text = "Tambah"
     End Sub
+
+    Function autonumber()
+        Call koneksii()
+        sql = "SELECT RIGHT(`kode_rekening`,3) FROM `tb_rekening_supplier` WHERE LEFT(`kode_rekening`,2)= DATE_FORMAT(now(),'%y') ORDER BY RIGHT(kode_rekening,3) DESC"
+        Dim pesan As String = ""
+        Try
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                dr.Read()
+                If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
+                    Return Format(Now.Date, "yy") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                Else
+                    If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
+                        Return Format(Now.Date, "yy") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                    Else
+                        If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
+                            Return Format(Now.Date, "yy") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                        End If
+                    End If
+                End If
+            Else
+                Return Format(Now.Date, "yy") + "001"
+            End If
+        Catch ex As Exception
+            pesan = ex.Message.ToString
+        Finally
+            cnn.Close()
+        End Try
+        Return pesan
+    End Function
 End Class
