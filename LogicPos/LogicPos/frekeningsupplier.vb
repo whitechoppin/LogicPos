@@ -86,7 +86,7 @@ Public Class frekeningsupplier
     End Sub
     Sub kolom()
         GridColumn1.Caption = "Kode Rekening"
-        GridColumn1.Width = 65
+        GridColumn1.Width = 30
         GridColumn1.FieldName = "kode_rekening"
         GridColumn2.Caption = "Nomor Rekening"
         GridColumn2.Width = 65
@@ -95,10 +95,10 @@ Public Class frekeningsupplier
         GridColumn3.Width = 65
         GridColumn3.FieldName = "nama_rekening"
         GridColumn4.Caption = "Nama Bank"
-        GridColumn4.Width = 73
+        GridColumn4.Width = 65
         GridColumn4.FieldName = "nama_bank"
         GridColumn5.Caption = "Keterangan Rekening"
-        GridColumn5.Width = 73
+        GridColumn5.Width = 75
         GridColumn5.FieldName = "keterangan_rekening"
     End Sub
     Sub isitabel()

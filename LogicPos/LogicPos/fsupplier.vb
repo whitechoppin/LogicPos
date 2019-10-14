@@ -146,6 +146,7 @@ Public Class fsupplier
             btnedit.Text = "Simpan"
             btnrekening.Enabled = True
             btnhapus.Enabled = False
+            btnrekening.Enabled = False
             Call enable_text()
             Call index()
             GridControl1.Enabled = False
@@ -180,6 +181,7 @@ Public Class fsupplier
         txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat_supplier")
         txttelp.Text = GridView1.GetFocusedRowCellValue("telepon_supplier")
         txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_supplier")
+        btnrekening.Enabled = True
         btnedit.Enabled = True
         btnbatal.Enabled = True
         btnhapus.Enabled = True
