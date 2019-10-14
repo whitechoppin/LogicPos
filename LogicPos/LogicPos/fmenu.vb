@@ -29,7 +29,7 @@ Public Class fmenu
         'fstok.Show()
     End Sub
     Private Sub PembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PembelianToolStripMenuItem.Click
-        'fpembelian.Show()
+        fpembelian.Show()
     End Sub
     Private Sub PenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'fpenjualan.Show()
