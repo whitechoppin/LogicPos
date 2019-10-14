@@ -47,38 +47,33 @@ Partial Class frekeningcustomer
         'txtnamabank
         '
         Me.txtnamabank.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamabank.Location = New System.Drawing.Point(13, 254)
-        Me.txtnamabank.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnamabank.Location = New System.Drawing.Point(10, 206)
         Me.txtnamabank.Name = "txtnamabank"
-        Me.txtnamabank.Size = New System.Drawing.Size(245, 29)
+        Me.txtnamabank.Size = New System.Drawing.Size(185, 24)
         Me.txtnamabank.TabIndex = 22
         '
         'txtnorek
         '
         Me.txtnorek.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnorek.Location = New System.Drawing.Point(13, 181)
-        Me.txtnorek.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnorek.Location = New System.Drawing.Point(10, 147)
         Me.txtnorek.Name = "txtnorek"
-        Me.txtnorek.Size = New System.Drawing.Size(245, 29)
+        Me.txtnorek.Size = New System.Drawing.Size(185, 24)
         Me.txtnorek.TabIndex = 23
         '
         'txtnamarek
         '
         Me.txtnamarek.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamarek.Location = New System.Drawing.Point(13, 111)
-        Me.txtnamarek.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnamarek.Location = New System.Drawing.Point(10, 90)
         Me.txtnamarek.Name = "txtnamarek"
-        Me.txtnamarek.Size = New System.Drawing.Size(245, 29)
+        Me.txtnamarek.Size = New System.Drawing.Size(185, 24)
         Me.txtnamarek.TabIndex = 24
         '
         'GridControl1
         '
-        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl1.Location = New System.Drawing.Point(13, 28)
+        Me.GridControl1.Location = New System.Drawing.Point(10, 23)
         Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(507, 218)
+        Me.GridControl1.Size = New System.Drawing.Size(380, 177)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -111,40 +106,36 @@ Partial Class frekeningcustomer
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(408, 13)
-        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnbatal.Location = New System.Drawing.Point(306, 11)
         Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(189, 60)
+        Me.btnbatal.Size = New System.Drawing.Size(142, 49)
         Me.btnbatal.TabIndex = 25
         Me.btnbatal.Text = "Batal"
         Me.btnbatal.UseVisualStyleBackColor = True
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(605, 13)
-        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnhapus.Location = New System.Drawing.Point(454, 11)
         Me.btnhapus.Name = "btnhapus"
-        Me.btnhapus.Size = New System.Drawing.Size(189, 60)
+        Me.btnhapus.Size = New System.Drawing.Size(142, 49)
         Me.btnhapus.TabIndex = 26
         Me.btnhapus.Text = "Hapus"
         Me.btnhapus.UseVisualStyleBackColor = True
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(210, 13)
-        Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnedit.Location = New System.Drawing.Point(158, 11)
         Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(189, 60)
+        Me.btnedit.Size = New System.Drawing.Size(142, 49)
         Me.btnedit.TabIndex = 27
         Me.btnedit.Text = "Edit"
         Me.btnedit.UseVisualStyleBackColor = True
         '
         'btntambah
         '
-        Me.btntambah.Location = New System.Drawing.Point(13, 13)
-        Me.btntambah.Margin = New System.Windows.Forms.Padding(4)
+        Me.btntambah.Location = New System.Drawing.Point(10, 11)
         Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(189, 60)
+        Me.btntambah.Size = New System.Drawing.Size(142, 49)
         Me.btntambah.TabIndex = 28
         Me.btntambah.Text = "Tambah"
         Me.btntambah.UseVisualStyleBackColor = True
@@ -152,10 +143,9 @@ Partial Class frekeningcustomer
         'GroupControl1
         '
         Me.GroupControl1.Controls.Add(Me.GridControl1)
-        Me.GroupControl1.Location = New System.Drawing.Point(268, 80)
-        Me.GroupControl1.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupControl1.Location = New System.Drawing.Point(201, 65)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(527, 252)
+        Me.GroupControl1.Size = New System.Drawing.Size(395, 205)
         Me.GroupControl1.TabIndex = 21
         Me.GroupControl1.Text = "List Rekening"
         '
@@ -163,10 +153,9 @@ Partial Class frekeningcustomer
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(13, 153)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(10, 124)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(138, 24)
+        Me.Label2.Size = New System.Drawing.Size(110, 18)
         Me.Label2.TabIndex = 29
         Me.Label2.Text = "No. Rekening"
         '
@@ -174,10 +163,9 @@ Partial Class frekeningcustomer
         '
         Me.label3.AutoSize = True
         Me.label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.label3.Location = New System.Drawing.Point(13, 225)
-        Me.label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.label3.Location = New System.Drawing.Point(10, 183)
         Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(116, 24)
+        Me.label3.Size = New System.Drawing.Size(95, 18)
         Me.label3.TabIndex = 30
         Me.label3.Text = "Nama Bank"
         '
@@ -185,19 +173,18 @@ Partial Class frekeningcustomer
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(13, 82)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(10, 67)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(159, 24)
+        Me.Label1.Size = New System.Drawing.Size(127, 18)
         Me.Label1.TabIndex = 31
         Me.Label1.Text = "Nama Rekening"
         '
         'frekeningcustomer
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(804, 343)
+        Me.ClientSize = New System.Drawing.Size(603, 279)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.label3)
         Me.Controls.Add(Me.Label1)
@@ -209,6 +196,7 @@ Partial Class frekeningcustomer
         Me.Controls.Add(Me.btnedit)
         Me.Controls.Add(Me.btntambah)
         Me.Controls.Add(Me.GroupControl1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frekeningcustomer"

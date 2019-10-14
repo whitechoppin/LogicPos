@@ -7,13 +7,17 @@ Public Class frekeningsupplier
         Call awal()
     End Sub
     Sub awal()
+        txtkoderekening.Enabled = False
         txtnamabank.Enabled = False
-        txtnamarek.Enabled = False
-        txtnorek.Enabled = False
+        txtnamarekening.Enabled = False
+        txtnorekening.Enabled = False
+        txtketeranganbank.Enabled = False
 
+        txtkoderekening.Clear()
         txtnamabank.Clear()
-        txtnamarek.Clear()
-        txtnorek.Clear()
+        txtnamarekening.Clear()
+        txtnorekening.Clear()
+        txtketeranganbank.Clear()
 
         btntambah.Text = "Tambah"
         btnedit.Text = "Edit"
@@ -25,32 +29,35 @@ Public Class frekeningsupplier
         Call isitabel()
     End Sub
     Sub enable_text()
+        txtkoderekening.Enabled = False
         txtnamabank.Enabled = True
-        txtnorek.Enabled = True
-        txtnamarek.Enabled = True
-        txtnamarek.Focus()
+        txtnorekening.Enabled = True
+        txtnamarekening.Enabled = True
+        txtketeranganbank.Enabled = True
+        txtnamarekening.Focus()
     End Sub
     Sub index()
-        txtnamarek.TabIndex = 0
-        txtnorek.TabIndex = 1
+        txtnamarekening.TabIndex = 0
+        txtnorekening.TabIndex = 1
         txtnamabank.TabIndex = 2
+        txtketeranganbank.TabIndex = 3
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If btntambah.Text = "Tambah" Then
             btnbatal.Enabled = True
             btntambah.Text = "Simpan"
             Call enable_text()
-            Call Index()
+            Call index()
             'txtkode.Text = autonumber()
             GridControl1.Enabled = False
         Else
             If txtnamabank.Text.Trim.Length = 0 Then
                 MsgBox("Nama Bank belum terisi!!!")
             Else
-                If txtnamarek.Text.Trim.Length = 0 Then
+                If txtnamarekening.Text.Trim.Length = 0 Then
                     MsgBox("Nama Rekening belum terisi!!!")
                 Else
-                    If txtnorek.Text.Trim.Length = 0 Then
+                    If txtnorekening.Text.Trim.Length = 0 Then
                         MsgBox("Nomor Rekening belum terisi!!!")
                     Else
                         Call simpan()
@@ -63,13 +70,13 @@ Public Class frekeningsupplier
     Sub simpan()
         Call koneksii()
         'MsgBox(kode_supplier)
-        sql = "SELECT * FROM tb_rekening_supplier WHERE nomor_rekening  = '" + txtnorek.Text + "'"
+        sql = "SELECT * FROM tb_rekening_supplier WHERE nomor_rekening  = '" + txtnorekening.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             MsgBox("Nomor Rekening Sudah ada dengan nama " + dr("nama_supplier"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_rekening_supplier (kode_rekening, nomor_rekening, nama_bank, nama_rekening, kode_supplier, created_by, update_by,date_created,last_updated) VALUES ('" & txtnorek.Text & "', '" & txtnorek.Text & "', '" & txtnamabank.Text & "','" & txtnamarek.Text & "','" & kode_supplier & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_rekening_supplier (kode_rekening, nomor_rekening, nama_bank, nama_rekening, kode_supplier, created_by, update_by,date_created,last_updated) VALUES ('" & txtnorekening.Text & "', '" & txtnorekening.Text & "', '" & txtnamabank.Text & "','" & txtnamarekening.Text & "','" & kode_supplier & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -86,8 +93,11 @@ Public Class frekeningsupplier
         GridColumn2.Width = 65
         GridColumn2.FieldName = "nama_rekening"
         GridColumn3.Caption = "Nama Bank"
-        GridColumn3.FieldName = "nama_bank"
         GridColumn3.Width = 73
+        GridColumn3.FieldName = "nama_bank"
+        GridColumn4.Caption = "Keterangan Bank"
+        GridColumn4.Width = 73
+        GridColumn4.FieldName = "keterangan_bank"
     End Sub
     Sub isitabel()
         'Call koneksii()
@@ -102,16 +112,16 @@ Public Class frekeningsupplier
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
     End Sub
-    Private Sub txtnorek_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtnorek.KeyPress
+    Private Sub txtnorek_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtnorekening.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         Call koneksii()
-        If MessageBox.Show("Hapus " & Me.txtnorek.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            sql = "DELETE FROM tb_rekening_supplier WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & txtnorek.Text & "'"
+        If MessageBox.Show("Hapus " & Me.txtnorekening.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+            sql = "DELETE FROM tb_rekening_supplier WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & txtnorekening.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
-            MessageBox.Show("Rekening " + txtnorek.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Rekening " + txtnorekening.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Me.Refresh()
             Call awal()
         End If
@@ -127,10 +137,10 @@ Public Class frekeningsupplier
             If txtnamabank.Text.Trim.Length = 0 Then
                 MsgBox("Nama Bank belum terisi!!!")
             Else
-                If txtnamarek.Text.Trim.Length = 0 Then
+                If txtnamarekening.Text.Trim.Length = 0 Then
                     MsgBox("Nama Rekening belum terisi!!!")
                 Else
-                    If txtnorek.Text.Trim.Length = 0 Then
+                    If txtnorekening.Text.Trim.Length = 0 Then
                         MsgBox("Nomor Rekening belum terisi!!!")
                     Else
                         Call edit()
@@ -141,9 +151,9 @@ Public Class frekeningsupplier
     End Sub
     Sub edit()
         Dim norek As String
-        norek = txtnorek.Text
+        norek = txtnorekening.Text
         Call koneksii()
-        sql = "UPDATE tb_rekening_supplier SET kode_rekening='" & txtnorek.Text & "', nomor_rekening='" & txtnorek.Text & "',nama_rekening='" & txtnamarek.Text & "', nama_bank='" & txtnamabank.Text & "',update_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & norek & "'"
+        sql = "UPDATE tb_rekening_supplier SET kode_rekening='" & txtnorekening.Text & "', nomor_rekening='" & txtnorekening.Text & "',nama_rekening='" & txtnamarekening.Text & "', nama_bank='" & txtnamabank.Text & "',update_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & norek & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -153,9 +163,11 @@ Public Class frekeningsupplier
     End Sub
 
     Private Sub GridControl1_DoubleClick(sender As Object, e As EventArgs) Handles GridControl1.DoubleClick
+        txtnorekening.Text = GridView1.GetFocusedRowCellValue("nomor_rekening")
+        txtnamarekening.Text = GridView1.GetFocusedRowCellValue("nama_rekening")
         txtnamabank.Text = GridView1.GetFocusedRowCellValue("nama_bank")
-        txtnamarek.Text = GridView1.GetFocusedRowCellValue("nama_rekening")
-        txtnorek.Text = GridView1.GetFocusedRowCellValue("nomor_rekening")
+        txtketeranganbank.Text = GridView1.GetFocusedRowCellValue("keterangan_bank")
+
         btnedit.Enabled = True
         btnbatal.Enabled = True
         btnhapus.Enabled = True

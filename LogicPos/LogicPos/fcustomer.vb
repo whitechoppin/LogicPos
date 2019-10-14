@@ -298,4 +298,9 @@ Public Class fcustomer
             txtgbr.Text = oD.SafeFileName
         End If
     End Sub
+
+    Private Sub btnrekening_Click(sender As Object, e As EventArgs) Handles btnrekening.Click
+        frekeningcustomer.kode_customer = Me.txtkode.Text
+        frekeningcustomer.ShowDialog()
+    End Sub
 End Class
