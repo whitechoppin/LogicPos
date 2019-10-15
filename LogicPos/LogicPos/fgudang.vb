@@ -34,18 +34,19 @@ Public Class fgudang
     End Sub
     Sub kolom()
         GridColumn1.Caption = "Kode Gudang"
-        GridColumn1.Width = 65
+        GridColumn1.Width = 40
         GridColumn1.FieldName = "kode_gudang"
         GridColumn2.Caption = "Nama Gudang"
-        GridColumn2.Width = 65
+        GridColumn2.Width = 60
         GridColumn2.FieldName = "nama_gudang"
         GridColumn3.Caption = "Alamat"
+        GridColumn3.Width = 80
         GridColumn3.FieldName = "alamat_gudang"
-        GridColumn3.Width = 73
         GridColumn4.Caption = "Telepon"
+        GridColumn4.Width = 40
         GridColumn4.FieldName = "telepon_gudang"
         GridColumn5.Caption = "Keterangan"
-        GridColumn5.Width = 75
+        GridColumn5.Width = 70
         GridColumn5.FieldName = "keterangan_gudang"
     End Sub
     Sub isitabel()
@@ -112,12 +113,20 @@ Public Class fgudang
             GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
-                MsgBox("Kode belum terisi!!!")
+                MsgBox("Kode belum terisi !")
             Else
                 If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama belum terisi!!!")
+                    MsgBox("Nama belum terisi !")
                 Else
-                    Call simpan()
+                    If txtalamat.Text.Length = 0 Then
+                        MsgBox("Alamat belum terisi !")
+                    Else
+                        If txttelp.Text.Length = 0 Then
+                            MsgBox("Telepon belum terisi !")
+                        Else
+                            Call simpan()
+                        End If
+                    End If
                 End If
             End If
         End If
@@ -149,12 +158,20 @@ Public Class fgudang
             GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
-                MsgBox("ID belum terisi!!!")
+                MsgBox("Kode belum terisi !")
             Else
                 If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama belum terisi!!!")
+                    MsgBox("Nama belum terisi !")
                 Else
-                    Call edit()
+                    If txtalamat.Text.Length = 0 Then
+                        MsgBox("Alamat belum terisi !")
+                    Else
+                        If txttelp.Text.Length = 0 Then
+                            MsgBox("Telepon belum terisi !")
+                        Else
+                            Call edit()
+                        End If
+                    End If
                 End If
             End If
         End If

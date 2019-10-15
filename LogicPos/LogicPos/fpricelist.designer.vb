@@ -27,16 +27,16 @@ Partial Class fpricelist
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btncari = New System.Windows.Forms.Button()
-        Me.btnbatal = New System.Windows.Forms.Button()
         Me.txtharga = New System.Windows.Forms.TextBox()
-        Me.btnhapus = New System.Windows.Forms.Button()
         Me.txtnama = New System.Windows.Forms.TextBox()
-        Me.btnedit = New System.Windows.Forms.Button()
         Me.txtkode = New System.Windows.Forms.TextBox()
-        Me.btntambah = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnbatal = New System.Windows.Forms.Button()
+        Me.btnhapus = New System.Windows.Forms.Button()
+        Me.btnedit = New System.Windows.Forms.Button()
+        Me.btntambah = New System.Windows.Forms.Button()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -48,17 +48,19 @@ Partial Class fpricelist
         Me.txtnamacus = New System.Windows.Forms.TextBox()
         Me.btncaricus = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 19)
+        Me.Label1.Location = New System.Drawing.Point(6, 35)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(119, 20)
         Me.Label1.TabIndex = 0
@@ -68,7 +70,7 @@ Partial Class fpricelist
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 53)
+        Me.Label2.Location = New System.Drawing.Point(6, 69)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(124, 20)
         Me.Label2.TabIndex = 0
@@ -77,99 +79,60 @@ Partial Class fpricelist
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.btncari)
-        Me.GroupBox1.Controls.Add(Me.btnbatal)
         Me.GroupBox1.Controls.Add(Me.txtharga)
-        Me.GroupBox1.Controls.Add(Me.btnhapus)
         Me.GroupBox1.Controls.Add(Me.txtnama)
-        Me.GroupBox1.Controls.Add(Me.btnedit)
         Me.GroupBox1.Controls.Add(Me.txtkode)
-        Me.GroupBox1.Controls.Add(Me.btntambah)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 88)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(414, 16)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(367, 176)
+        Me.GroupBox1.Size = New System.Drawing.Size(384, 155)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Data Item"
+        Me.GroupBox1.Text = "Input Data Item"
         '
         'btncari
         '
         Me.btncari.BackgroundImage = CType(resources.GetObject("btncari.BackgroundImage"), System.Drawing.Image)
         Me.btncari.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncari.ImageIndex = 0
-        Me.btncari.Location = New System.Drawing.Point(327, 20)
+        Me.btncari.Location = New System.Drawing.Point(342, 45)
         Me.btncari.Name = "btncari"
         Me.btncari.Size = New System.Drawing.Size(29, 26)
         Me.btncari.TabIndex = 10
         Me.btncari.UseVisualStyleBackColor = True
         '
-        'btnbatal
-        '
-        Me.btnbatal.Location = New System.Drawing.Point(246, 145)
-        Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(75, 23)
-        Me.btnbatal.TabIndex = 17
-        Me.btnbatal.Text = "Batal"
-        Me.btnbatal.UseVisualStyleBackColor = True
-        '
         'txtharga
         '
         Me.txtharga.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtharga.Location = New System.Drawing.Point(127, 83)
+        Me.txtharga.Location = New System.Drawing.Point(136, 109)
         Me.txtharga.Name = "txtharga"
-        Me.txtharga.Size = New System.Drawing.Size(194, 26)
+        Me.txtharga.Size = New System.Drawing.Size(235, 26)
         Me.txtharga.TabIndex = 5
-        '
-        'btnhapus
-        '
-        Me.btnhapus.Location = New System.Drawing.Point(165, 145)
-        Me.btnhapus.Name = "btnhapus"
-        Me.btnhapus.Size = New System.Drawing.Size(75, 23)
-        Me.btnhapus.TabIndex = 18
-        Me.btnhapus.Text = "Hapus"
-        Me.btnhapus.UseVisualStyleBackColor = True
         '
         'txtnama
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(127, 51)
+        Me.txtnama.Location = New System.Drawing.Point(136, 77)
         Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(194, 26)
+        Me.txtnama.Size = New System.Drawing.Size(235, 26)
         Me.txtnama.TabIndex = 6
-        '
-        'btnedit
-        '
-        Me.btnedit.Location = New System.Drawing.Point(84, 145)
-        Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(75, 23)
-        Me.btnedit.TabIndex = 19
-        Me.btnedit.Text = "Ubah"
-        Me.btnedit.UseVisualStyleBackColor = True
         '
         'txtkode
         '
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkode.Location = New System.Drawing.Point(127, 19)
+        Me.txtkode.Location = New System.Drawing.Point(136, 45)
         Me.txtkode.Name = "txtkode"
-        Me.txtkode.Size = New System.Drawing.Size(194, 26)
+        Me.txtkode.Size = New System.Drawing.Size(207, 26)
         Me.txtkode.TabIndex = 7
-        '
-        'btntambah
-        '
-        Me.btntambah.Location = New System.Drawing.Point(3, 145)
-        Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(75, 23)
-        Me.btntambah.TabIndex = 20
-        Me.btntambah.Text = "Tambah"
-        Me.btntambah.UseVisualStyleBackColor = True
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(9, 86)
+        Me.Label5.Location = New System.Drawing.Point(17, 109)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(115, 20)
         Me.Label5.TabIndex = 2
@@ -179,7 +142,7 @@ Partial Class fpricelist
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(8, 51)
+        Me.Label4.Location = New System.Drawing.Point(17, 77)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(87, 20)
         Me.Label4.TabIndex = 3
@@ -189,18 +152,54 @@ Partial Class fpricelist
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(8, 19)
+        Me.Label3.Location = New System.Drawing.Point(17, 45)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(82, 20)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Kode Item"
         '
+        'btnbatal
+        '
+        Me.btnbatal.Location = New System.Drawing.Point(313, 115)
+        Me.btnbatal.Name = "btnbatal"
+        Me.btnbatal.Size = New System.Drawing.Size(95, 56)
+        Me.btnbatal.TabIndex = 17
+        Me.btnbatal.Text = "Batal"
+        Me.btnbatal.UseVisualStyleBackColor = True
+        '
+        'btnhapus
+        '
+        Me.btnhapus.Location = New System.Drawing.Point(212, 115)
+        Me.btnhapus.Name = "btnhapus"
+        Me.btnhapus.Size = New System.Drawing.Size(95, 56)
+        Me.btnhapus.TabIndex = 18
+        Me.btnhapus.Text = "Hapus"
+        Me.btnhapus.UseVisualStyleBackColor = True
+        '
+        'btnedit
+        '
+        Me.btnedit.Location = New System.Drawing.Point(111, 115)
+        Me.btnedit.Name = "btnedit"
+        Me.btnedit.Size = New System.Drawing.Size(95, 56)
+        Me.btnedit.TabIndex = 19
+        Me.btnedit.Text = "Ubah"
+        Me.btnedit.UseVisualStyleBackColor = True
+        '
+        'btntambah
+        '
+        Me.btntambah.Location = New System.Drawing.Point(10, 115)
+        Me.btntambah.Name = "btntambah"
+        Me.btntambah.Size = New System.Drawing.Size(95, 56)
+        Me.btntambah.TabIndex = 20
+        Me.btntambah.Text = "Tambah"
+        Me.btntambah.UseVisualStyleBackColor = True
+        '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(6, 19)
+        Me.GridControl1.Location = New System.Drawing.Point(6, 23)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(464, 235)
+        Me.GridControl1.Size = New System.Drawing.Size(792, 230)
         Me.GridControl1.TabIndex = 9
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -244,17 +243,17 @@ Partial Class fpricelist
         'txtkodecus
         '
         Me.txtkodecus.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkodecus.Location = New System.Drawing.Point(152, 19)
+        Me.txtkodecus.Location = New System.Drawing.Point(134, 32)
         Me.txtkodecus.Name = "txtkodecus"
-        Me.txtkodecus.Size = New System.Drawing.Size(194, 26)
+        Me.txtkodecus.Size = New System.Drawing.Size(246, 26)
         Me.txtkodecus.TabIndex = 7
         '
         'txtnamacus
         '
         Me.txtnamacus.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamacus.Location = New System.Drawing.Point(152, 56)
+        Me.txtnamacus.Location = New System.Drawing.Point(134, 69)
         Me.txtnamacus.Name = "txtnamacus"
-        Me.txtnamacus.Size = New System.Drawing.Size(194, 26)
+        Me.txtnamacus.Size = New System.Drawing.Size(274, 26)
         Me.txtnamacus.TabIndex = 7
         '
         'btncaricus
@@ -262,7 +261,7 @@ Partial Class fpricelist
         Me.btncaricus.BackgroundImage = CType(resources.GetObject("btncaricus.BackgroundImage"), System.Drawing.Image)
         Me.btncaricus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncaricus.ImageIndex = 0
-        Me.btncaricus.Location = New System.Drawing.Point(352, 20)
+        Me.btncaricus.Location = New System.Drawing.Point(379, 32)
         Me.btncaricus.Name = "btncaricus"
         Me.btncaricus.Size = New System.Drawing.Size(29, 26)
         Me.btncaricus.TabIndex = 11
@@ -271,37 +270,54 @@ Partial Class fpricelist
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.GridControl1)
-        Me.GroupBox2.Location = New System.Drawing.Point(387, 20)
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 208)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(477, 259)
+        Me.GroupBox2.Size = New System.Drawing.Size(804, 259)
         Me.GroupBox2.TabIndex = 13
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "List Harga Berdasarkan Customer"
         Me.GroupBox2.UseCompatibleTextRendering = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.GroupBox1)
+        Me.GroupBox3.Controls.Add(Me.btnbatal)
+        Me.GroupBox3.Controls.Add(Me.Label1)
+        Me.GroupBox3.Controls.Add(Me.txtkodecus)
+        Me.GroupBox3.Controls.Add(Me.btncaricus)
+        Me.GroupBox3.Controls.Add(Me.btntambah)
+        Me.GroupBox3.Controls.Add(Me.btnhapus)
+        Me.GroupBox3.Controls.Add(Me.txtnamacus)
+        Me.GroupBox3.Controls.Add(Me.Label2)
+        Me.GroupBox3.Controls.Add(Me.btnedit)
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 14)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(804, 188)
+        Me.GroupBox3.TabIndex = 14
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Input Data Customer"
         '
         'fpricelist
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(869, 291)
+        Me.ClientSize = New System.Drawing.Size(830, 480)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.btncaricus)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.txtnamacus)
-        Me.Controls.Add(Me.txtkodecus)
         Me.Name = "fpricelist"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Price List"
+        Me.Text = "Input Price List"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -330,4 +346,5 @@ Partial Class fpricelist
     Friend WithEvents btncaricus As Button
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents GroupBox3 As GroupBox
 End Class

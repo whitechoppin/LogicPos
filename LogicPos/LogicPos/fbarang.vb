@@ -17,8 +17,8 @@ Public Class fbarang
         txtkode.Clear()
         txtnama.Enabled = False
         txtnama.Clear()
-        txtsatuan.Enabled = False
-        txtsatuan.SelectedIndex = -1
+        cmbsatuan.Enabled = False
+        cmbsatuan.SelectedIndex = -1
         cmbjenis.Enabled = False
         cmbjenis.SelectedIndex = -1
         txtmodal.Text = 0
@@ -46,7 +46,10 @@ Public Class fbarang
     Sub index()
         txtkode.TabIndex = 1
         txtnama.TabIndex = 2
-        txtsatuan.TabIndex = 3
+        cmbjenis.TabIndex = 3
+        cmbsatuan.TabIndex = 4
+        txtmodal.TabIndex = 5
+        btnupload.TabIndex = 6
     End Sub
     Sub isitabel()
         'Call koneksii()
@@ -62,17 +65,22 @@ Public Class fbarang
             GridControl.DataSource = ds.Tables(0)
             GridColumn1.Caption = "Kode"
             GridColumn1.FieldName = "kode_barang"
+            GridColumn1.Width = "40"
             GridColumn2.Caption = "Nama Barang"
             GridColumn2.FieldName = "nama_barang"
-            GridColumn3.Caption = "Satuan"
-            GridColumn3.FieldName = "satuan_barang"
-            GridColumn3.Width = "60"
-            GridColumn4.Caption = "Jenis"
-            GridColumn4.FieldName = "jenis_barang"
+            GridColumn2.Width = "80"
+            GridColumn3.Caption = "Jenis"
+            GridColumn3.FieldName = "jenis_barang"
+            GridColumn3.Width = "40"
+            GridColumn4.Caption = "Satuan"
+            GridColumn4.FieldName = "satuan_barang"
+            GridColumn4.Width = "40"
             GridColumn5.Caption = "Modal"
             GridColumn5.FieldName = "modal_barang"
+            GridColumn5.Width = "60"
             GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
             GridColumn5.DisplayFormat.FormatString = "Rp ##,#0"
+
             GridControl.Visible = True
             cnn.Close()
         End Using
@@ -83,8 +91,8 @@ Public Class fbarang
         txtnama.Enabled = True
         cmbjenis.Enabled = True
         cmbjenis.SelectedIndex = 0
-        txtsatuan.Enabled = True
-        txtsatuan.SelectedIndex = 0
+        cmbsatuan.Enabled = True
+        cmbsatuan.SelectedIndex = 0
         btnupload.Enabled = True
         txtmodal.Enabled = True
         txtkode.Focus()
@@ -105,7 +113,7 @@ Public Class fbarang
                 If txtnama.Text.Length = 0 Then
                     MsgBox("Nama barang belum terisi !")
                 Else
-                    If txtsatuan.SelectedIndex = -1 Then
+                    If cmbsatuan.SelectedIndex = -1 Then
                         MsgBox("Satuan belum terpilih !")
                     Else
                         If cmbjenis.SelectedIndex = -1 Then
@@ -129,7 +137,7 @@ Public Class fbarang
                 MsgBox("Kode barang Sudah ada dengan nama " + dr("nama_barang"), MsgBoxStyle.Critical, "Pemberitahuan")
                 txtkode.Clear()
                 txtnama.Clear()
-                txtsatuan.SelectedIndex = -1
+                cmbsatuan.SelectedIndex = -1
                 txtkode.Focus()
                 cnn.Close()
             Else
@@ -144,7 +152,7 @@ Public Class fbarang
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
                 cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
-                cmmd.Parameters.AddWithValue("@satuan_barang", txtsatuan.Text)
+                cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
                 cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
                 cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
                 cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
@@ -162,6 +170,28 @@ Public Class fbarang
             End If
         End Using
     End Sub
+
+    Sub isi_satuan()
+        cmbsatuan.Items.Clear()
+        cmbsatuan.AutoCompleteCustomSource.Clear()
+        If cmbjenis.Text.Equals("Rol") Then
+            cmbsatuan.Items.Clear()
+            cmbsatuan.AutoCompleteCustomSource.Clear()
+            cmbsatuan.AutoCompleteCustomSource.Add("Meter")
+            cmbsatuan.Items.Add("Meter")
+            cmbsatuan.AutoCompleteCustomSource.Add("Centimeter")
+            cmbsatuan.Items.Add("Centimeter")
+            cmbsatuan.SelectedIndex = 0
+        ElseIf cmbjenis.Text.Equals("Lembaran") Then
+            cmbsatuan.Items.Clear()
+            cmbsatuan.AutoCompleteCustomSource.Clear()
+            cmbsatuan.AutoCompleteCustomSource.Add("Pcs")
+            cmbsatuan.Items.Add("Pcs")
+            cmbsatuan.SelectedIndex = 0
+        End If
+
+
+    End Sub
     Sub cari()
         txtkode.Text = GridView.GetFocusedRowCellValue("kode_barang")
         'menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
@@ -175,7 +205,7 @@ Public Class fbarang
             dr.Read()
             If dr.HasRows Then
                 txtnama.Text = dr("nama_barang")
-                txtsatuan.Text = dr("satuan_barang")
+                cmbsatuan.Text = dr("satuan_barang")
                 cmbjenis.Text = dr("jenis_barang")
                 kode = dr("kode_barang")
                 foto = dr("gambar_barang")
@@ -216,7 +246,7 @@ Public Class fbarang
                 If txtnama.Text.Length = 0 Then
                     MsgBox("Nama barang belum terisi!!!")
                 Else
-                    If txtsatuan.SelectedIndex = -1 Then
+                    If cmbsatuan.SelectedIndex = -1 Then
                         MsgBox("Satuan belum terpilih!!!")
                     Else
                         If cmbjenis.SelectedIndex = -1 Then
@@ -241,7 +271,7 @@ Public Class fbarang
             cmmd = New OdbcCommand(sql, cnn)
             cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
             cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
-            cmmd.Parameters.AddWithValue("@satuan_barang", txtsatuan.Text)
+            cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
             cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
             cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
             cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
@@ -357,6 +387,10 @@ Public Class fbarang
             txtmodal.Text = Format(hargabarang, "##,##0")
             txtmodal.SelectionStart = Len(txtmodal.Text)
         End If
+    End Sub
+
+    Private Sub cmbjenis_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbjenis.SelectedIndexChanged
+        Call isi_satuan()
     End Sub
 
     Private Sub txtmodal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtmodal.KeyPress
