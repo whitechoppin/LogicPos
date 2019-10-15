@@ -124,7 +124,7 @@ Public Class fpembelian
             Exit Sub
         End If
         For i As Integer = 0 To GridView1.RowCount - 1
-            If txtkodeitem.Text = GridView1.GetRowCellValue(i, "kode") Then
+            If txtkodeitem.Text = GridView1.GetRowCellValue(i, "kode_barang") Then
                 Dim byk As Integer
                 byk = GridView1.GetRowCellValue(i, "banyak")
                 GridView1.DeleteRow(GridView1.GetRowHandle(i))
@@ -324,9 +324,6 @@ Public Class fpembelian
     Private Sub txtongkir_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtongkir.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
-
-
-
     Private Sub btncari_Click(sender As Object, e As EventArgs) Handles btncari.Click
         isi = txtkodeitem.Text
         Call search()
