@@ -90,9 +90,7 @@ Public Class fbarang
         txtkode.Enabled = True
         txtnama.Enabled = True
         cmbjenis.Enabled = True
-        cmbjenis.SelectedIndex = 0
         cmbsatuan.Enabled = True
-        cmbsatuan.SelectedIndex = 0
         btnupload.Enabled = True
         txtmodal.Enabled = True
         txtkode.Focus()
@@ -241,16 +239,16 @@ Public Class fbarang
             GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
-                MsgBox("Kode barang belum terisi!!!")
+                MsgBox("Kode barang belum terisi !")
             Else
                 If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama barang belum terisi!!!")
+                    MsgBox("Nama barang belum terisi !")
                 Else
                     If cmbsatuan.SelectedIndex = -1 Then
-                        MsgBox("Satuan belum terpilih!!!")
+                        MsgBox("Satuan belum terpilih !")
                     Else
                         If cmbjenis.SelectedIndex = -1 Then
-                            MsgBox("Kategori belum terisi!!!")
+                            MsgBox("Kategori belum terisi !")
                         Else
                             Call edit()
                         End If

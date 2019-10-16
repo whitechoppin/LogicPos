@@ -35,15 +35,16 @@ Public Class fsupplier
     End Sub
     Sub kolom()
         GridColumn1.Caption = "Kode Supplier"
-        GridColumn1.Width = 65
+        GridColumn1.Width = 30
         GridColumn1.FieldName = "kode_supplier"
         GridColumn2.Caption = "Nama Supplier"
-        GridColumn2.Width = 65
+        GridColumn2.Width = 50
         GridColumn2.FieldName = "nama_supplier"
         GridColumn3.Caption = "Alamat"
+        GridColumn3.Width = 75
         GridColumn3.FieldName = "alamat_supplier"
-        GridColumn3.Width = 73
         GridColumn4.Caption = "Telepon"
+        GridColumn4.Width = 30
         GridColumn4.FieldName = "telepon_supplier"
         GridColumn5.Caption = "Keterangan"
         GridColumn5.Width = 75

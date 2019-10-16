@@ -5,7 +5,6 @@ Public Class fcustomer
     Private Sub fcustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
-
     End Sub
     Sub awal()
         txtkode.Clear()
@@ -24,13 +23,14 @@ Public Class fcustomer
         btnbatal.Enabled = False
         btnedit.Enabled = False
         btnhapus.Enabled = False
+        btnrekening.Enabled = False
+        btnupload.Enabled = False
 
         btntambah.Text = "Tambah"
         btnedit.Text = "Edit"
 
         txtgbr.Text = ""
         PictureBox1.Image = ImageList1.Images(0)
-        btnupload.Enabled = False
 
         GridControl.Enabled = True
         Call isitabel()
@@ -43,6 +43,7 @@ Public Class fcustomer
         GridColumn2.Width = 65
         GridColumn2.FieldName = "nama_pelanggan"
         GridColumn3.Caption = "Alamat"
+        GridColumn3.Width = 65
         GridColumn3.FieldName = "alamat_pelanggan"
         GridColumn4.Caption = "Telepon"
         GridColumn4.Width = 73
