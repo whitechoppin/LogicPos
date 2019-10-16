@@ -64,6 +64,7 @@ Public Class fcustomer
         txtnama.TabIndex = 1
         txtalamat.TabIndex = 2
         txttelp.TabIndex = 3
+        btnupload.TabIndex = 4
     End Sub
     Function autonumber()
         Call koneksii()
@@ -188,6 +189,7 @@ Public Class fcustomer
             btnedit.Text = "Simpan"
             btnhapus.Enabled = False
             btnupload.Enabled = True
+            btnrekening.Enabled = False
             Call enable_text()
             Call index()
             GridControl.Enabled = False
@@ -251,6 +253,7 @@ Public Class fcustomer
         'txtnama.Text = GridView1.GetFocusedRowCellValue("nama_pelanggan")
         'txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat_pelanggan")
         'txttelp.Text = GridView1.GetFocusedRowCellValue("telepon_pelanggan")
+        btnrekening.Enabled = True
         btnedit.Enabled = True
         btnbatal.Enabled = True
         btnhapus.Enabled = True

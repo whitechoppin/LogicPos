@@ -28,12 +28,13 @@ Partial Class frekeningcustomer
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtkoderekening = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnhapus = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtketeranganbank = New System.Windows.Forms.RichTextBox()
+        Me.txtketeranganrekening = New System.Windows.Forms.RichTextBox()
         Me.btntambah = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
         Me.txtnamabank = New System.Windows.Forms.TextBox()
@@ -59,13 +60,17 @@ Partial Class frekeningcustomer
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
         '
         'GridColumn1
         '
+        Me.GridColumn1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn1.AppearanceCell.Options.UseFont = True
+        Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn1.AppearanceHeader.Options.UseFont = True
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.Visible = True
         Me.GridColumn1.VisibleIndex = 0
@@ -73,6 +78,10 @@ Partial Class frekeningcustomer
         '
         'GridColumn2
         '
+        Me.GridColumn2.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn2.AppearanceCell.Options.UseFont = True
+        Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn2.AppearanceHeader.Options.UseFont = True
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
@@ -80,6 +89,10 @@ Partial Class frekeningcustomer
         '
         'GridColumn3
         '
+        Me.GridColumn3.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn3.AppearanceCell.Options.UseFont = True
+        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn3.AppearanceHeader.Options.UseFont = True
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
         Me.GridColumn3.VisibleIndex = 2
@@ -87,10 +100,24 @@ Partial Class frekeningcustomer
         '
         'GridColumn4
         '
+        Me.GridColumn4.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn4.AppearanceCell.Options.UseFont = True
+        Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn4.AppearanceHeader.Options.UseFont = True
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         Me.GridColumn4.Width = 103
+        '
+        'GridColumn5
+        '
+        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceCell.Options.UseFont = True
+        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.Visible = True
+        Me.GridColumn5.VisibleIndex = 4
         '
         'GroupBox1
         '
@@ -98,7 +125,7 @@ Partial Class frekeningcustomer
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.btnhapus)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.txtketeranganbank)
+        Me.GroupBox1.Controls.Add(Me.txtketeranganrekening)
         Me.GroupBox1.Controls.Add(Me.btntambah)
         Me.GroupBox1.Controls.Add(Me.btnedit)
         Me.GroupBox1.Controls.Add(Me.txtnamabank)
@@ -114,7 +141,7 @@ Partial Class frekeningcustomer
         Me.GroupBox1.Size = New System.Drawing.Size(613, 254)
         Me.GroupBox1.TabIndex = 25
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Input Data Rekening Supplier"
+        Me.GroupBox1.Text = "Input Data Rekening Customer"
         '
         'txtkoderekening
         '
@@ -150,17 +177,18 @@ Partial Class frekeningcustomer
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(310, 138)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(136, 18)
+        Me.Label4.Size = New System.Drawing.Size(168, 18)
         Me.Label4.TabIndex = 22
-        Me.Label4.Text = "Keterangan Bank"
+        Me.Label4.Text = "Keterangan Rekening"
         '
-        'txtketeranganbank
+        'txtketeranganrekening
         '
-        Me.txtketeranganbank.Location = New System.Drawing.Point(313, 159)
-        Me.txtketeranganbank.Name = "txtketeranganbank"
-        Me.txtketeranganbank.Size = New System.Drawing.Size(287, 82)
-        Me.txtketeranganbank.TabIndex = 21
-        Me.txtketeranganbank.Text = ""
+        Me.txtketeranganrekening.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtketeranganrekening.Location = New System.Drawing.Point(313, 159)
+        Me.txtketeranganrekening.Name = "txtketeranganrekening"
+        Me.txtketeranganrekening.Size = New System.Drawing.Size(287, 82)
+        Me.txtketeranganrekening.TabIndex = 21
+        Me.txtketeranganrekening.Text = ""
         '
         'btntambah
         '
@@ -258,7 +286,7 @@ Partial Class frekeningcustomer
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frekeningcustomer"
-        Me.Text = "frekeningcustomer"
+        Me.Text = "Data Rekening Customer"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
@@ -273,12 +301,13 @@ Partial Class frekeningcustomer
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents txtkoderekening As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents btnhapus As Button
     Friend WithEvents Label4 As Label
-    Friend WithEvents txtketeranganbank As RichTextBox
+    Friend WithEvents txtketeranganrekening As RichTextBox
     Friend WithEvents btntambah As Button
     Friend WithEvents btnedit As Button
     Friend WithEvents txtnamabank As TextBox
