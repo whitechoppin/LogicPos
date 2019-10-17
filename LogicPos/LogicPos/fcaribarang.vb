@@ -5,6 +5,7 @@ Imports DevExpress.XtraGrid.Columns
 Public Class fcaribarang
     Dim pilih As String
     Dim kode As String
+    Dim modalbarang As Double
     Private Sub fcaribarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Me.MdiParent = fmenu
         'Call koneksii()
@@ -113,26 +114,26 @@ Public Class fcaribarang
         Call cari()
     End Sub
     Sub ambil_gbr()
-        kode = GridView1.GetFocusedRowCellValue("kode")
+        kode = Me.GridView1.GetFocusedRowCellValue("kode_barang")
         Dim foto As Byte()
         'menyiapkan koneksi database
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_barang WHERE kode_barang= '" + kode + "'"
+            sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
             cmmd = New OdbcCommand(sql, cnn)
             cnn.Open()
             dr = cmmd.ExecuteReader
             dr.Read()
             If dr.HasRows Then
-                foto = dr("gambar")
+                modalbarang = dr("modal_barang")
+                LabelHarga.Text = Format(modalbarang, "##,##0")
+                foto = dr("gambar_barang")
                 PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
                 PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
                 cnn.Close()
             End If
         End Using
     End Sub
-    Private Sub GridView1_Click(sender As Object, e As EventArgs)
-        Call ambil_gbr()
-    End Sub
+
     Private Sub Gridview1_KeyUp(sender As Object, e As KeyEventArgs)
         'Dim a As Integer = GridView1.FocusedRowHandle
         'If a = 0 Then
@@ -178,7 +179,6 @@ Public Class fcaribarang
             '        End If
             '    End If
         End If
-        'Me.Dispose()
     End Sub
     Private Sub txtcari_KeyDown(sender As Object, e As KeyEventArgs) Handles txtcari.KeyDown
         If e.KeyCode = Keys.Down Then
@@ -201,8 +201,23 @@ Public Class fcaribarang
         'restoring the layout, the layout file needs to be deleted manually
         GridView1.RestoreLayoutFromXml("C:\data\tempLayout.xml")
     End Sub
-    'Private Sub btnexcel_Click(sender As Object, e As EventArgs)
-    '    ExportToExcel()
-    '    MsgBox("Export successfull!")
-    'End Sub
+
+    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+        If tutup = 1 Then
+            fpricelist.txtkode.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
+            Me.Hide()
+        End If
+    End Sub
+
+    Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click
+        Call ambil_gbr()
+    End Sub
+
+    Private Sub GridControl1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridControl1.KeyDown
+        Call ambil_gbr()
+    End Sub
+
+    Private Sub GridControl1_KeyUp(sender As Object, e As KeyEventArgs) Handles GridControl1.KeyUp
+        Call ambil_gbr()
+    End Sub
 End Class

@@ -154,6 +154,12 @@
     <Compile Include="fsupplier.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fuser.Designer.vb">
+      <DependentUpon>fuser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fuser.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="koneksi.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

@@ -13,6 +13,7 @@ Public Class fcaricust
         'txtcari.Clear()
         txtcari.Focus()
         txtcari.Text = isicari2
+
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"
@@ -65,6 +66,13 @@ Public Class fcaricust
             fpricelist.txtkodecus.Text = Me.GridView1.GetFocusedRowCellValue("kode_pelanggan")
             'Else
             '    flaporanpenjualan.txtkodekasir.Text = Me.GridView1.GetFocusedRowCellValue("id")
+        End If
+        Me.Close()
+    End Sub
+
+    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+        If tutupcus = 1 Then
+            fpricelist.txtkodecus.Text = Me.GridView1.GetFocusedRowCellValue("kode_pelanggan")
         End If
         Me.Close()
     End Sub

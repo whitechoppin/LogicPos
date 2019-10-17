@@ -35,6 +35,9 @@ Partial Class fcaribarang
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.LabelHarga = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -44,10 +47,9 @@ Partial Class fcaribarang
         'txtcari
         '
         Me.txtcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcari.Location = New System.Drawing.Point(160, 48)
-        Me.txtcari.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtcari.Location = New System.Drawing.Point(120, 39)
         Me.txtcari.Name = "txtcari"
-        Me.txtcari.Size = New System.Drawing.Size(385, 29)
+        Me.txtcari.Size = New System.Drawing.Size(290, 24)
         Me.txtcari.TabIndex = 7
         '
         'cmbcari
@@ -56,29 +58,28 @@ Partial Class fcaribarang
         Me.cmbcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbcari.FormattingEnabled = True
         Me.cmbcari.Items.AddRange(New Object() {"Kode", "Nama"})
-        Me.cmbcari.Location = New System.Drawing.Point(15, 47)
-        Me.cmbcari.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbcari.Location = New System.Drawing.Point(11, 38)
         Me.cmbcari.Name = "cmbcari"
-        Me.cmbcari.Size = New System.Drawing.Size(136, 32)
+        Me.cmbcari.Size = New System.Drawing.Size(103, 26)
         Me.cmbcari.TabIndex = 6
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.LabelHarga)
+        Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(683, 85)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Location = New System.Drawing.Point(512, 30)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox1.Size = New System.Drawing.Size(376, 343)
+        Me.GroupBox1.Size = New System.Drawing.Size(282, 318)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(9, 17)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox1.Location = New System.Drawing.Point(7, 14)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(359, 317)
+        Me.PictureBox1.Size = New System.Drawing.Size(269, 219)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -86,32 +87,28 @@ Partial Class fcaribarang
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(16, 14)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(12, 11)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(156, 29)
+        Me.Label1.Size = New System.Drawing.Size(223, 24)
         Me.Label1.TabIndex = 9
-        Me.Label1.Text = "Data Barang"
+        Me.Label1.Text = "Pencarian Data Barang"
         '
         'btnmasuk
         '
         Me.btnmasuk.BackgroundImage = CType(resources.GetObject("btnmasuk.BackgroundImage"), System.Drawing.Image)
         Me.btnmasuk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnmasuk.Location = New System.Drawing.Point(553, 50)
-        Me.btnmasuk.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnmasuk.Location = New System.Drawing.Point(415, 41)
         Me.btnmasuk.Name = "btnmasuk"
-        Me.btnmasuk.Size = New System.Drawing.Size(121, 30)
+        Me.btnmasuk.Size = New System.Drawing.Size(91, 24)
         Me.btnmasuk.TabIndex = 11
         Me.btnmasuk.UseVisualStyleBackColor = True
         '
         'GridControl1
         '
-        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GridControl1.Location = New System.Drawing.Point(15, 85)
+        Me.GridControl1.Location = New System.Drawing.Point(11, 38)
         Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(659, 345)
+        Me.GridControl1.Size = New System.Drawing.Size(494, 311)
         Me.GridControl1.TabIndex = 12
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -154,22 +151,52 @@ Partial Class fcaribarang
         Me.GridColumn4.VisibleIndex = 3
         Me.GridColumn4.Width = 123
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(6, 241)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(93, 16)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Modal Barang"
+        '
+        'LabelHarga
+        '
+        Me.LabelHarga.AutoSize = True
+        Me.LabelHarga.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelHarga.Location = New System.Drawing.Point(100, 276)
+        Me.LabelHarga.Name = "LabelHarga"
+        Me.LabelHarga.Size = New System.Drawing.Size(17, 17)
+        Me.LabelHarga.TabIndex = 2
+        Me.LabelHarga.Text = "0"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.Location = New System.Drawing.Point(61, 276)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(33, 17)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Rp."
+        '
         'fcaribarang
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1072, 448)
+        Me.ClientSize = New System.Drawing.Size(804, 364)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.btnmasuk)
         Me.Controls.Add(Me.txtcari)
         Me.Controls.Add(Me.cmbcari)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fcaribarang"
         Me.Text = "Pencarian Barang"
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -189,4 +216,7 @@ Partial Class fcaribarang
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LabelHarga As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
 End Class
