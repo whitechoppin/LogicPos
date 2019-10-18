@@ -24,6 +24,7 @@ Partial Class fpembelian
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fpembelian))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblsatuan = New System.Windows.Forms.Label()
         Me.btncari = New System.Windows.Forms.Button()
         Me.btntambah = New System.Windows.Forms.Button()
         Me.txtbanyak = New System.Windows.Forms.TextBox()
@@ -58,9 +59,9 @@ Partial Class fpembelian
         Me.txtongkir = New System.Windows.Forms.TextBox()
         Me.cbongkir = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.lblsatuan = New System.Windows.Forms.Label()
         Me.cmbbayar = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,6 +87,15 @@ Partial Class fpembelian
         Me.GroupBox1.Size = New System.Drawing.Size(395, 176)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
+        '
+        'lblsatuan
+        '
+        Me.lblsatuan.AutoSize = True
+        Me.lblsatuan.Location = New System.Drawing.Point(199, 88)
+        Me.lblsatuan.Name = "lblsatuan"
+        Me.lblsatuan.Size = New System.Drawing.Size(45, 13)
+        Me.lblsatuan.TabIndex = 25
+        Me.lblsatuan.Text = "Label11"
         '
         'btncari
         '
@@ -231,7 +241,7 @@ Partial Class fpembelian
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -387,15 +397,6 @@ Partial Class fpembelian
         Me.GroupBox2.TabIndex = 24
         Me.GroupBox2.TabStop = False
         '
-        'lblsatuan
-        '
-        Me.lblsatuan.AutoSize = True
-        Me.lblsatuan.Location = New System.Drawing.Point(199, 88)
-        Me.lblsatuan.Name = "lblsatuan"
-        Me.lblsatuan.Size = New System.Drawing.Size(45, 13)
-        Me.lblsatuan.TabIndex = 25
-        Me.lblsatuan.Text = "Label11"
-        '
         'cmbbayar
         '
         Me.cmbbayar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -413,6 +414,12 @@ Partial Class fpembelian
         Me.Label11.Size = New System.Drawing.Size(66, 13)
         Me.Label11.TabIndex = 26
         Me.Label11.Text = "Pembayaran"
+        '
+        'GridColumn8
+        '
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 7
         '
         'fpembelian
         '
@@ -482,4 +489,5 @@ Partial Class fpembelian
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents cmbbayar As ComboBox
     Friend WithEvents Label11 As Label
+    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
 End Class
