@@ -364,7 +364,7 @@ Public Class fpembelian
     End Sub
     Function autonumber()
         Call koneksii()
-        sql = "SELECT RIGHT(kode_pembelian,3) FROM tb_pembelian WHERE date_format (MID(`kode_pembelian`, 2 , 6), ' %y ')+ MONTH(MID(`kode_pembelian`,2 , 6)) + DAY(MID(`kode_pembelian`,2, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pembelian,3) DESC"
+        sql = "SELECT RIGHT(kode_pembelian,3) FROM tb_pembelian WHERE DATE_FORMAT(MID(`kode_pembelian`, 2 , 6), ' %y ')+ MONTH(MID(`kode_pembelian`,2 , 6)) + DAY(MID(`kode_pembelian`,2, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pembelian,3) DESC"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)

@@ -120,6 +120,7 @@ Partial Class fcaricust
         Me.Controls.Add(Me.btnmasuk)
         Me.Controls.Add(Me.Label1)
         Me.Name = "fcaricust"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pencarian Customer"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()

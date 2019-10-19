@@ -68,7 +68,7 @@ Public Class fcustomer
     End Sub
     Function autonumber()
         Call koneksii()
-        sql = "SELECT RIGHT(`kode_pelanggan`,2) FROM `tb_pelanggan` WHERE date_format(LEFT(`kode_pelanggan`,6), ' %y ')+ MONTH(LEFT(`kode_pelanggan`,6)) + DAY(LEFT(`kode_pelanggan`,6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pelanggan,2) DESC"
+        sql = "SELECT RIGHT(kode_pelanggan,3) FROM tb_pelanggan WHERE DATE_FORMAT(MID(`kode_pelanggan`, 3 , 6), ' %y ')+ MONTH(MID(`kode_pelanggan`,3 , 6)) + DAY(MID(`kode_pelanggan`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pelanggan,3) DESC"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -76,15 +76,20 @@ Public Class fcustomer
             If dr.HasRows Then
                 dr.Read()
                 If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
-                    Return Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                    Return "CS" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                 Else
                     If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
-                        Return Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                        Return "CS" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                    Else
+                        If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
+                            Return "CS" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                        End If
                     End If
                 End If
             Else
-                Return Format(Now.Date, "yyMMdd") + "01"
+                Return "CS" + Format(Now.Date, "yyMMdd") + "001"
             End If
+
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
