@@ -48,6 +48,7 @@ Partial Class fpembelian
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -61,7 +62,6 @@ Partial Class fpembelian
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.cmbbayar = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -294,6 +294,12 @@ Partial Class fpembelian
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
         '
+        'GridColumn8
+        '
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 7
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -414,12 +420,6 @@ Partial Class fpembelian
         Me.Label11.Size = New System.Drawing.Size(66, 13)
         Me.Label11.TabIndex = 26
         Me.Label11.Text = "Pembayaran"
-        '
-        'GridColumn8
-        '
-        Me.GridColumn8.Name = "GridColumn8"
-        Me.GridColumn8.Visible = True
-        Me.GridColumn8.VisibleIndex = 7
         '
         'fpembelian
         '
