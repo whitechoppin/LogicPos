@@ -177,11 +177,16 @@ Public Class fpricelist
             MsgBox("Customer Belum Di pilih")
             Exit Sub
         Else
-            If txtkode.Text.Length = 0 And txtharga.Text.Length = 0 Then
+            If txtkode.Text.Length = 0 Then
                 MsgBox("Item Belum Di isi")
                 Exit Sub
             Else
-                Call save_new_item()
+                If txtharga.Text.Length = 0 Then
+                    MsgBox("Harga jual Belum Di isi")
+                    Exit Sub
+                Else
+                    Call save_new_item()
+                End If
             End If
         End If
     End Sub

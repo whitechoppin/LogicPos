@@ -56,6 +56,7 @@ Partial Class fcaricust
         Me.GridColumn1.AppearanceCell.Options.UseFont = True
         Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn1.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn1.Caption = "GridColumn1"
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.Visible = True
         Me.GridColumn1.VisibleIndex = 0
@@ -66,6 +67,7 @@ Partial Class fcaricust
         Me.GridColumn2.AppearanceCell.Options.UseFont = True
         Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn2.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn2.Caption = "Gridcolumn2"
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1

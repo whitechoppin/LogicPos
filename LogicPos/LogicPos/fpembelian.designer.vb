@@ -82,27 +82,27 @@ Partial Class fpembelian
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.txtkodeitem)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Location = New System.Drawing.Point(15, 56)
+        Me.GroupBox1.Location = New System.Drawing.Point(15, 162)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(395, 176)
+        Me.GroupBox1.Size = New System.Drawing.Size(783, 70)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         '
         'lblsatuan
         '
         Me.lblsatuan.AutoSize = True
-        Me.lblsatuan.Location = New System.Drawing.Point(199, 88)
+        Me.lblsatuan.Location = New System.Drawing.Point(459, 40)
         Me.lblsatuan.Name = "lblsatuan"
-        Me.lblsatuan.Size = New System.Drawing.Size(45, 13)
+        Me.lblsatuan.Size = New System.Drawing.Size(41, 13)
         Me.lblsatuan.TabIndex = 25
-        Me.lblsatuan.Text = "Label11"
+        Me.lblsatuan.Text = "Satuan"
         '
         'btncari
         '
         Me.btncari.BackgroundImage = CType(resources.GetObject("btncari.BackgroundImage"), System.Drawing.Image)
         Me.btncari.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncari.ImageIndex = 0
-        Me.btncari.Location = New System.Drawing.Point(308, 19)
+        Me.btncari.Location = New System.Drawing.Point(185, 31)
         Me.btncari.Name = "btncari"
         Me.btncari.Size = New System.Drawing.Size(29, 26)
         Me.btncari.TabIndex = 5
@@ -113,16 +113,16 @@ Partial Class fpembelian
         Me.btntambah.BackgroundImage = CType(resources.GetObject("btntambah.BackgroundImage"), System.Drawing.Image)
         Me.btntambah.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btntambah.ImageIndex = 0
-        Me.btntambah.Location = New System.Drawing.Point(308, 85)
+        Me.btntambah.Location = New System.Drawing.Point(741, 19)
         Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(52, 47)
+        Me.btntambah.Size = New System.Drawing.Size(34, 34)
         Me.btntambah.TabIndex = 5
         Me.btntambah.UseVisualStyleBackColor = True
         '
         'txtbanyak
         '
         Me.txtbanyak.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbanyak.Location = New System.Drawing.Point(134, 81)
+        Me.txtbanyak.Location = New System.Drawing.Point(394, 31)
         Me.txtbanyak.Name = "txtbanyak"
         Me.txtbanyak.Size = New System.Drawing.Size(59, 24)
         Me.txtbanyak.TabIndex = 9
@@ -131,16 +131,16 @@ Partial Class fpembelian
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(16, 81)
+        Me.Label3.Location = New System.Drawing.Point(394, 12)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(57, 18)
+        Me.Label3.Size = New System.Drawing.Size(31, 18)
         Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Banyak"
+        Me.Label3.Text = "Qty"
         '
         'txtharga
         '
         Me.txtharga.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtharga.Location = New System.Drawing.Point(134, 108)
+        Me.txtharga.Location = New System.Drawing.Point(567, 30)
         Me.txtharga.Name = "txtharga"
         Me.txtharga.Size = New System.Drawing.Size(168, 24)
         Me.txtharga.TabIndex = 10
@@ -148,7 +148,7 @@ Partial Class fpembelian
         'txtnama
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(134, 49)
+        Me.txtnama.Location = New System.Drawing.Point(220, 31)
         Me.txtnama.Name = "txtnama"
         Me.txtnama.Size = New System.Drawing.Size(168, 24)
         Me.txtnama.TabIndex = 10
@@ -157,7 +157,7 @@ Partial Class fpembelian
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(109, 108)
+        Me.Label9.Location = New System.Drawing.Point(534, 36)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(27, 18)
         Me.Label9.TabIndex = 6
@@ -167,7 +167,7 @@ Partial Class fpembelian
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(16, 112)
+        Me.Label8.Location = New System.Drawing.Point(564, 12)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(76, 18)
         Me.Label8.TabIndex = 6
@@ -177,16 +177,16 @@ Partial Class fpembelian
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(16, 52)
+        Me.Label5.Location = New System.Drawing.Point(220, 12)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(80, 18)
+        Me.Label5.Size = New System.Drawing.Size(99, 18)
         Me.Label5.TabIndex = 6
-        Me.Label5.Text = "Nama Item"
+        Me.Label5.Text = "Nama Barang"
         '
         'txtkodeitem
         '
         Me.txtkodeitem.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkodeitem.Location = New System.Drawing.Point(134, 19)
+        Me.txtkodeitem.Location = New System.Drawing.Point(11, 33)
         Me.txtkodeitem.Name = "txtkodeitem"
         Me.txtkodeitem.Size = New System.Drawing.Size(168, 24)
         Me.txtkodeitem.TabIndex = 11
@@ -195,11 +195,11 @@ Partial Class fpembelian
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(16, 22)
+        Me.Label2.Location = New System.Drawing.Point(11, 12)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(75, 18)
+        Me.Label2.Size = New System.Drawing.Size(94, 18)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Kode Item"
+        Me.Label2.Text = "Kode Barang"
         '
         'cmbsupplier
         '
@@ -224,7 +224,7 @@ Partial Class fpembelian
         '
         Me.btnproses.BackgroundImage = CType(resources.GetObject("btnproses.BackgroundImage"), System.Drawing.Image)
         Me.btnproses.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnproses.Location = New System.Drawing.Point(807, 554)
+        Me.btnproses.Location = New System.Drawing.Point(723, 515)
         Me.btnproses.Name = "btnproses"
         Me.btnproses.Size = New System.Drawing.Size(75, 62)
         Me.btnproses.TabIndex = 5
@@ -235,7 +235,7 @@ Partial Class fpembelian
         Me.GridControl1.Location = New System.Drawing.Point(12, 247)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(873, 209)
+        Me.GridControl1.Size = New System.Drawing.Size(786, 209)
         Me.GridControl1.TabIndex = 13
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -247,6 +247,7 @@ Partial Class fpembelian
         '
         'GridColumn1
         '
+        Me.GridColumn1.Caption = "Kode Stok"
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.OptionsColumn.AllowEdit = False
         Me.GridColumn1.Visible = True
@@ -254,6 +255,7 @@ Partial Class fpembelian
         '
         'GridColumn2
         '
+        Me.GridColumn2.Caption = "Kode Barang"
         Me.GridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
@@ -261,6 +263,7 @@ Partial Class fpembelian
         '
         'GridColumn3
         '
+        Me.GridColumn3.Caption = "Nama Barang"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.OptionsColumn.AllowEdit = False
         Me.GridColumn3.Visible = True
@@ -268,6 +271,7 @@ Partial Class fpembelian
         '
         'GridColumn4
         '
+        Me.GridColumn4.Caption = "Banyak"
         Me.GridColumn4.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.OptionsColumn.AllowEdit = False
@@ -276,6 +280,7 @@ Partial Class fpembelian
         '
         'GridColumn5
         '
+        Me.GridColumn5.Caption = "Satuan barang"
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.OptionsColumn.AllowEdit = False
         Me.GridColumn5.Visible = True
@@ -283,6 +288,7 @@ Partial Class fpembelian
         '
         'GridColumn6
         '
+        Me.GridColumn6.Caption = "Jenis barang"
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.OptionsColumn.AllowEdit = False
         Me.GridColumn6.Visible = True
@@ -290,12 +296,14 @@ Partial Class fpembelian
         '
         'GridColumn7
         '
+        Me.GridColumn7.Caption = "Harga Satuan"
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
         '
         'GridColumn8
         '
+        Me.GridColumn8.Caption = "Sub Total"
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.Visible = True
         Me.GridColumn8.VisibleIndex = 7
@@ -324,9 +332,9 @@ Partial Class fpembelian
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(12, 9)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(344, 31)
+        Me.Label7.Size = New System.Drawing.Size(251, 31)
         Me.Label7.TabIndex = 16
-        Me.Label7.Text = "Pembelian Barang Masuk"
+        Me.Label7.Text = "Pembelian Barang"
         '
         'Label10
         '
@@ -374,7 +382,7 @@ Partial Class fpembelian
         '
         'txtongkir
         '
-        Me.txtongkir.Location = New System.Drawing.Point(726, 460)
+        Me.txtongkir.Location = New System.Drawing.Point(641, 462)
         Me.txtongkir.Name = "txtongkir"
         Me.txtongkir.Size = New System.Drawing.Size(157, 20)
         Me.txtongkir.TabIndex = 22
@@ -382,7 +390,7 @@ Partial Class fpembelian
         'cbongkir
         '
         Me.cbongkir.AutoSize = True
-        Me.cbongkir.Location = New System.Drawing.Point(643, 462)
+        Me.cbongkir.Location = New System.Drawing.Point(558, 464)
         Me.cbongkir.Name = "cbongkir"
         Me.cbongkir.Size = New System.Drawing.Size(77, 17)
         Me.cbongkir.TabIndex = 23
@@ -397,9 +405,9 @@ Partial Class fpembelian
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox2.Location = New System.Drawing.Point(413, 56)
+        Me.GroupBox2.Location = New System.Drawing.Point(15, 43)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(307, 176)
+        Me.GroupBox2.Size = New System.Drawing.Size(317, 113)
         Me.GroupBox2.TabIndex = 24
         Me.GroupBox2.TabStop = False
         '
@@ -407,7 +415,7 @@ Partial Class fpembelian
         '
         Me.cmbbayar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbbayar.FormattingEnabled = True
-        Me.cmbbayar.Location = New System.Drawing.Point(643, 486)
+        Me.cmbbayar.Location = New System.Drawing.Point(558, 488)
         Me.cmbbayar.Name = "cmbbayar"
         Me.cmbbayar.Size = New System.Drawing.Size(239, 21)
         Me.cmbbayar.TabIndex = 25
@@ -415,7 +423,7 @@ Partial Class fpembelian
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(571, 494)
+        Me.Label11.Location = New System.Drawing.Point(486, 496)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(66, 13)
         Me.Label11.TabIndex = 26
@@ -426,7 +434,7 @@ Partial Class fpembelian
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(894, 749)
+        Me.ClientSize = New System.Drawing.Size(807, 668)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.cmbbayar)
         Me.Controls.Add(Me.GroupBox2)
@@ -440,7 +448,7 @@ Partial Class fpembelian
         Me.Controls.Add(Me.btnproses)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "fpembelian"
-        Me.Text = "Transaksi Barang Masuk"
+        Me.Text = "Transaksi Pembelian Barang"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
