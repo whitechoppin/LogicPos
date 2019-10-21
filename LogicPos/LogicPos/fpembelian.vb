@@ -24,9 +24,6 @@ Public Class fpembelian
             '.OptionsPrint.EnableAppearanceOddRow = True 'aktifkan style saat print
         End With
 
-        sql = "Delete from tb_pembelian_sementara" 'clear data
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
     End Sub
     Sub tabindex()
         txtkodeitem.TabIndex = 1
@@ -107,6 +104,9 @@ Public Class fpembelian
         Call tabel_utama()
         cmbsupplier.SelectedIndex = -1
         lblsatuan.Text = ""
+        sql = "Delete from tb_pembelian_sementara" 'clear data
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
     End Sub
     Sub cari()
         Call koneksii()
