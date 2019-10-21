@@ -417,14 +417,24 @@ Public Class fpembelian
         End If
     End Sub
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
-        If e.Column.FieldName = "Banyak" Then
+        If e.Column.FieldName = "banyak" Then
             Try
-                GridView1.SetRowCellValue(e.RowHandle, "Subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga"))
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga"))
             Catch ex As Exception
-                'error jika nulai qty=blank
-                GridView1.SetRowCellValue(e.RowHandle, "Subtotal", 0)
+                'error jika nilai qty=blank
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
             End Try
+        Else
+            If e.Column.FieldName = "harga" Then
+                Try
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
+                Catch ex As Exception
+                    'error jika nilai qty=blank
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+                End Try
+            End If
         End If
+
     End Sub
     Private Sub txtharga_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtharga.KeyPress
         e.Handled = ValidAngka(e)
