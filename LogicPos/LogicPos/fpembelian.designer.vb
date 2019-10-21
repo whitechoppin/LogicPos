@@ -113,9 +113,9 @@ Partial Class fpembelian
         Me.btntambah.BackgroundImage = CType(resources.GetObject("btntambah.BackgroundImage"), System.Drawing.Image)
         Me.btntambah.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btntambah.ImageIndex = 0
-        Me.btntambah.Location = New System.Drawing.Point(741, 19)
+        Me.btntambah.Location = New System.Drawing.Point(727, 12)
         Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(34, 34)
+        Me.btntambah.Size = New System.Drawing.Size(50, 52)
         Me.btntambah.TabIndex = 5
         Me.btntambah.UseVisualStyleBackColor = True
         '
@@ -140,7 +140,7 @@ Partial Class fpembelian
         'txtharga
         '
         Me.txtharga.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtharga.Location = New System.Drawing.Point(567, 30)
+        Me.txtharga.Location = New System.Drawing.Point(543, 33)
         Me.txtharga.Name = "txtharga"
         Me.txtharga.Size = New System.Drawing.Size(168, 24)
         Me.txtharga.TabIndex = 10
@@ -157,7 +157,7 @@ Partial Class fpembelian
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(534, 36)
+        Me.Label9.Location = New System.Drawing.Point(510, 39)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(27, 18)
         Me.Label9.TabIndex = 6
@@ -167,7 +167,7 @@ Partial Class fpembelian
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(564, 12)
+        Me.Label8.Location = New System.Drawing.Point(540, 15)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(76, 18)
         Me.Label8.TabIndex = 6
@@ -304,6 +304,7 @@ Partial Class fpembelian
         '
         Me.GridColumn8.Caption = "Sub Total"
         Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.OptionsColumn.AllowEdit = False
         Me.GridColumn8.Visible = True
         Me.GridColumn8.VisibleIndex = 7
         '

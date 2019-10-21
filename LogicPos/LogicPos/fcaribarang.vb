@@ -40,7 +40,7 @@ Public Class fcaribarang
     End Sub
     Sub tabel()
         'Call koneksii()
-        If tutup = 1 Then
+        If tutup > 0 Then
             '    Using cnn As New OdbcConnection(strConn)
             '        'sql = "Select tb_barang.kode, tb_barang.nama , tb_barang.satuan, tb_barang.stok from tb_barang "
             '        sql = "SELECT tb_barang.kode, tb_barang.nama, tb_barang.satuan, tb_barang.kategori, tb_barang.stok, tb_price.harga as harga from tb_barang join tb_price on tb_barang.kode = tb_price.idbrg where tb_price.idcustomer='" & Strings.Right(fpenjualan.cmbcustomer.Text, 8) & "'"
@@ -78,7 +78,7 @@ Public Class fcaribarang
                 pilih = "tb_barang.nama_barang"
             End If
         End If
-        If tutup = 1 Then
+        If tutup > 0 Then
             '    Using cnn As New OdbcConnection(strConn)
             '        'sql = "Select tb_barang.kode_barang, tb_barang.nama_barang , tb_barang.satuan_barang, tb_barang.jenis_barang from tb_barang  where " & pilih & " LIKE '%" & txtcari.Text & "%'  "
             '        sql = "SELECT tb_barang.kode, tb_barang.nama, tb_barang.satuan, tb_barang.kategori,tb_barang.stok, tb_price.harga as harga from tb_barang join tb_price on tb_barang.kode = tb_price.idbrg where " & pilih & " LIKE '%" & txtcari.Text & "%' and tb_price.idcustomer='" & Strings.Right(fpenjualan.cmbcustomer.Text, 8) & "'"
@@ -205,6 +205,9 @@ Public Class fcaribarang
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutup = 1 Then
             fpricelist.txtkode.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
+            Me.Hide()
+        ElseIf tutup = 2 Then
+            fpembelian.txtkodeitem.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
             Me.Hide()
         End If
     End Sub
