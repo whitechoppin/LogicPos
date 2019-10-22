@@ -137,10 +137,12 @@ Public Class fpembelian
             Exit Sub
         End If
 
-        If GridView1.RowCount = 0 Then
+        If GridView1.RowCount = 0 Then  'data tidak ada
             If lblsatuan.Text = "Pcs" Then
+                'tambahkan data ke tabel keranjang
                 tabel.Rows.Add(txtkodeitem.Text, txtkodeitem.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(harga), Val(txtbanyak.Text) * Val(harga))
                 GridControl1.RefreshDataSource()
+                'bersihkan textbox
                 lblsatuan.Text = ""
                 txtkodeitem.Clear()
                 txtnama.Clear()
@@ -149,11 +151,14 @@ Public Class fpembelian
                 txtnama.Enabled = False
                 txtkodeitem.Focus()
             Else
-                'MsgBox(txtkodeitem.Text + "1")
-                sql = "SELECT * FROM tb_stok where kode_barang= '" & txtkodeitem.Text & "' order by date_created desc limit 1"
+
+                'cek ke database stok untuk mendapatkan kode stok baru
+                sql = "SELECT *, REPLACE(kode_stok, '" & txtkodeitem.Text & "', '') FROM tb_stok WHERE kode_barang = 'S58CPM7R'  ORDER BY REPLACE(kode_stok, '" & txtkodeitem.Text & "', '') DESC LIMIT 1"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
-                If dr.HasRows Then
+
+                If dr.HasRows Then 'kalau sdh ada stok sebelumnya
+                    'tambahkan data
                     kode_stok = dr("kode_stok")
                     total_karakter = Len(kode_stok)
                     counter_angka = Microsoft.VisualBasic.Right(kode_stok, total_karakter - 8)
@@ -164,7 +169,7 @@ Public Class fpembelian
                     sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodeitem.Text + CStr(tambah_counter) & "', '" & txtkodeitem.Text & "', '" & txtnama.Text & "','" & Val(txtbanyak.Text) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(txtbanyak.Text) * Val(harga) & "' ,'1')"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
-
+                    'bersihkan textbox
                     lblsatuan.Text = ""
                     txtkodeitem.Clear()
                     txtnama.Clear()
@@ -172,15 +177,17 @@ Public Class fpembelian
                     txtharga.Text = 0
                     txtnama.Enabled = False
                     txtkodeitem.Focus()
-                Else
 
+                Else 'kalau belum ada stok
+                    'tambahkan data ke tabel keranjang
                     tabel.Rows.Add(txtkodeitem.Text + "1", txtkodeitem.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(harga), Val(txtbanyak.Text) * Val(harga))
                     GridControl1.RefreshDataSource()
+                    'simpan kedalam tabel pembelian sementara agar kode dapat dilanjutkan
                     Call koneksii()
                     sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodeitem.Text + "1" & "', '" & txtkodeitem.Text & "', '" & txtnama.Text & "','" & Val(txtbanyak.Text) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(txtbanyak.Text) * Val(harga) & "' ,'1')"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
-
+                    'bersihkan textbox
                     lblsatuan.Text = ""
                     txtkodeitem.Clear()
                     txtnama.Clear()
@@ -189,8 +196,6 @@ Public Class fpembelian
                     txtnama.Enabled = False
                     txtkodeitem.Focus()
                 End If
-
-
             End If
         Else 'data ada
             Dim lokasi As Integer = -1
@@ -201,7 +206,7 @@ Public Class fpembelian
                     'MsgBox("ini pcs")
                     For i As Integer = 0 To GridView1.RowCount - 1
                         If GridView1.GetRowCellValue(i, "kode_barang") = txtkodeitem.Text And GridView1.GetRowCellValue(i, "satuan_barang").Equals("Pcs") Then
-                            MsgBox(GridView1.GetRowCellValue(i, "kode_barang"))
+                            'MsgBox(GridView1.GetRowCellValue(i, "kode_barang"))
                             lokasi = i
                         End If
                     Next
@@ -234,7 +239,7 @@ Public Class fpembelian
                 Else
                     'MsgBox("bukan Pcs")
                     Call koneksii()
-                    sql = "SELECT * FROM tb_pembelian_sementara where kode_barang= '" & txtkodeitem.Text & "' order by nomor desc limit 1"
+                    sql = "SELECT * FROM tb_pembelian_sementara WHERE kode_barang= '" & txtkodeitem.Text & "' ORDER BY nomor DESC LIMIT 1"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
                     If dr.HasRows Then
@@ -256,10 +261,6 @@ Public Class fpembelian
                         dr = cmmd.ExecuteReader()
                     End If
 
-                    'MsgBox(dr("kode_stok"))
-                    'MsgBox("counter Angka= " + counter_angka)
-                    'MsgBox(txtkodeitem.Text + CStr(tambah_counter))
-                    'MsgBox("bisa di input")
                     lblsatuan.Text = ""
                     txtkodeitem.Clear()
                     txtnama.Clear()
@@ -267,19 +268,7 @@ Public Class fpembelian
                     txtharga.Clear()
                     txtnama.Enabled = False
                     txtkodeitem.Focus()
-                    'sql = "SELECT * FROM tb_pembelian_sementara where kode_barang= '" & txtkodeitem.Text & "'"
-                    'cmmd = New OdbcCommand(sql, cnn)
-                    'dr = cmmd.ExecuteReader()
-                    'If dr.HasRows Then
-                    '    kode_barang = dr("kode_barang")
-                    '    nama_barang = dr("nama_barang")
-                    '    qty = dr("qty")
-                    '    satuan_barang = dr("satuan_barang")
-                    '    jenis_barang = dr("jenis_barang")
-                    '    harga_satuan = dr("harga_satuan")
-                    '    subtotal = dr("subtotal")
-                    '    nomor = dr("nomor")
-                    'End If
+
                 End If
             End If
         End If

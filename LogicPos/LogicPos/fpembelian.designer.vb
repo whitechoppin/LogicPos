@@ -24,6 +24,7 @@ Partial Class fpembelian
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fpembelian))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblsatuanbeli = New System.Windows.Forms.Label()
         Me.lblsatuan = New System.Windows.Forms.Label()
         Me.btncari = New System.Windows.Forms.Button()
         Me.btntambah = New System.Windows.Forms.Button()
@@ -70,6 +71,7 @@ Partial Class fpembelian
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lblsatuanbeli)
         Me.GroupBox1.Controls.Add(Me.lblsatuan)
         Me.GroupBox1.Controls.Add(Me.btncari)
         Me.GroupBox1.Controls.Add(Me.btntambah)
@@ -88,6 +90,15 @@ Partial Class fpembelian
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         '
+        'lblsatuanbeli
+        '
+        Me.lblsatuanbeli.AutoSize = True
+        Me.lblsatuanbeli.Location = New System.Drawing.Point(623, 16)
+        Me.lblsatuanbeli.Name = "lblsatuanbeli"
+        Me.lblsatuanbeli.Size = New System.Drawing.Size(41, 13)
+        Me.lblsatuanbeli.TabIndex = 26
+        Me.lblsatuanbeli.Text = "Satuan"
+        '
         'lblsatuan
         '
         Me.lblsatuan.AutoSize = True
@@ -102,7 +113,7 @@ Partial Class fpembelian
         Me.btncari.BackgroundImage = CType(resources.GetObject("btncari.BackgroundImage"), System.Drawing.Image)
         Me.btncari.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncari.ImageIndex = 0
-        Me.btncari.Location = New System.Drawing.Point(185, 31)
+        Me.btncari.Location = New System.Drawing.Point(178, 32)
         Me.btncari.Name = "btncari"
         Me.btncari.Size = New System.Drawing.Size(29, 26)
         Me.btncari.TabIndex = 5
@@ -113,16 +124,16 @@ Partial Class fpembelian
         Me.btntambah.BackgroundImage = CType(resources.GetObject("btntambah.BackgroundImage"), System.Drawing.Image)
         Me.btntambah.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btntambah.ImageIndex = 0
-        Me.btntambah.Location = New System.Drawing.Point(727, 12)
+        Me.btntambah.Location = New System.Drawing.Point(717, 12)
         Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(50, 52)
+        Me.btntambah.Size = New System.Drawing.Size(60, 52)
         Me.btntambah.TabIndex = 5
         Me.btntambah.UseVisualStyleBackColor = True
         '
         'txtbanyak
         '
         Me.txtbanyak.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbanyak.Location = New System.Drawing.Point(394, 31)
+        Me.txtbanyak.Location = New System.Drawing.Point(394, 33)
         Me.txtbanyak.Name = "txtbanyak"
         Me.txtbanyak.Size = New System.Drawing.Size(59, 24)
         Me.txtbanyak.TabIndex = 9
@@ -140,7 +151,7 @@ Partial Class fpembelian
         'txtharga
         '
         Me.txtharga.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtharga.Location = New System.Drawing.Point(543, 33)
+        Me.txtharga.Location = New System.Drawing.Point(543, 34)
         Me.txtharga.Name = "txtharga"
         Me.txtharga.Size = New System.Drawing.Size(168, 24)
         Me.txtharga.TabIndex = 10
@@ -148,7 +159,7 @@ Partial Class fpembelian
         'txtnama
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(220, 31)
+        Me.txtnama.Location = New System.Drawing.Point(214, 33)
         Me.txtnama.Name = "txtnama"
         Me.txtnama.Size = New System.Drawing.Size(168, 24)
         Me.txtnama.TabIndex = 10
@@ -167,11 +178,11 @@ Partial Class fpembelian
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(540, 15)
+        Me.Label8.Location = New System.Drawing.Point(540, 12)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(76, 18)
+        Me.Label8.Size = New System.Drawing.Size(88, 18)
         Me.Label8.TabIndex = 6
-        Me.Label8.Text = "Harga Beli"
+        Me.Label8.Text = "Harga Beli / "
         '
         'Label5
         '
@@ -359,7 +370,7 @@ Partial Class fpembelian
         Me.RichTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RichTextBox1.Location = New System.Drawing.Point(12, 545)
         Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(446, 59)
+        Me.RichTextBox1.Size = New System.Drawing.Size(449, 59)
         Me.RichTextBox1.TabIndex = 18
         Me.RichTextBox1.Text = "Fungsi Tombol" & Global.Microsoft.VisualBasic.ChrW(10) & "- F2 pada kolom Kode Item untuk membatalkan Transaksi"
         '
@@ -407,7 +418,7 @@ Partial Class fpembelian
         Me.GroupBox2.Controls.Add(Me.DateTimePicker1)
         Me.GroupBox2.Location = New System.Drawing.Point(15, 43)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(317, 113)
+        Me.GroupBox2.Size = New System.Drawing.Size(783, 113)
         Me.GroupBox2.TabIndex = 24
         Me.GroupBox2.TabStop = False
         '
@@ -498,4 +509,5 @@ Partial Class fpembelian
     Friend WithEvents cmbbayar As ComboBox
     Friend WithEvents Label11 As Label
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents lblsatuanbeli As Label
 End Class
