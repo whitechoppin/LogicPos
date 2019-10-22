@@ -103,8 +103,8 @@ Public Class fpembelian
         DateTimePicker1.MinDate = Date.Now
         Call tabel_utama()
         cmbsupplier.SelectedIndex = -1
-        lblsatuan.Text = ""
-        lblsatuanbeli.Text = ""
+        lblsatuan.Text = "satuan"
+        lblsatuanbeli.Text = "satuan"
         sql = "Delete from tb_pembelian_sementara" 'clear data
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -124,8 +124,8 @@ Public Class fpembelian
             txtharga.Text = Format(modal, "##,##0")
         Else
             txtnama.Text = ""
-            lblsatuan.Text = ""
-            lblsatuanbeli.Text = ""
+            lblsatuan.Text = "satuan"
+            lblsatuanbeli.Text = "satuan"
             txtharga.Text = 0
         End If
     End Sub
@@ -146,8 +146,8 @@ Public Class fpembelian
                 tabel.Rows.Add(txtkodeitem.Text, txtkodeitem.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(harga), Val(txtbanyak.Text) * Val(harga))
                 GridControl1.RefreshDataSource()
                 'bersihkan textbox
-                lblsatuan.Text = ""
-                lblsatuanbeli.Text = ""
+                lblsatuan.Text = "satuan"
+                lblsatuanbeli.Text = "satuan"
                 txtkodeitem.Clear()
                 txtnama.Clear()
                 txtbanyak.Clear()
@@ -174,8 +174,8 @@ Public Class fpembelian
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
                     'bersihkan textbox
-                    lblsatuan.Text = ""
-                    lblsatuanbeli.Text = ""
+                    lblsatuan.Text = "satuan"
+                    lblsatuanbeli.Text = "satuan"
                     txtkodeitem.Clear()
                     txtnama.Clear()
                     txtbanyak.Clear()
@@ -193,8 +193,8 @@ Public Class fpembelian
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
                     'bersihkan textbox
-                    lblsatuan.Text = ""
-                    lblsatuanbeli.Text = ""
+                    lblsatuan.Text = "satuan"
+                    lblsatuanbeli.Text = "satuan"
                     txtkodeitem.Clear()
                     txtnama.Clear()
                     txtbanyak.Clear()
@@ -219,8 +219,8 @@ Public Class fpembelian
                     If lokasi = -1 Then
                         tabel.Rows.Add(txtkodeitem.Text, txtkodeitem.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(harga), Val(txtbanyak.Text) * Val(harga))
                         GridControl1.RefreshDataSource()
-                        lblsatuan.Text = ""
-                        lblsatuanbeli.Text = ""
+                        lblsatuan.Text = "satuan"
+                        lblsatuanbeli.Text = "satuan"
                         txtkodeitem.Clear()
                         txtnama.Clear()
                         txtbanyak.Clear()
@@ -233,8 +233,8 @@ Public Class fpembelian
                         tabel.Rows.Add(txtkodeitem.Text, txtkodeitem.Text, txtnama.Text, (Val(txtbanyak.Text) + qty1), satuan, jenis, Val(harga), (Val(txtbanyak.Text) + qty1) * Val(harga))
                         GridControl1.RefreshDataSource()
 
-                        lblsatuan.Text = ""
-                        lblsatuanbeli.Text = ""
+                        lblsatuan.Text = "satuan"
+                        lblsatuanbeli.Text = "satuan"
                         txtkodeitem.Clear()
                         txtnama.Clear()
                         txtbanyak.Clear()
@@ -279,8 +279,8 @@ Public Class fpembelian
                             cmmd = New OdbcCommand(sql, cnn)
                             dr = cmmd.ExecuteReader()
                             'bersihkan textbox
-                            lblsatuan.Text = ""
-                            lblsatuanbeli.Text = ""
+                            lblsatuan.Text = "satuan"
+                            lblsatuanbeli.Text = "satuan"
                             txtkodeitem.Clear()
                             txtnama.Clear()
                             txtbanyak.Clear()
@@ -297,8 +297,8 @@ Public Class fpembelian
                         End If
                     End If
 
-                    lblsatuan.Text = ""
-                    lblsatuanbeli.Text = ""
+                    lblsatuan.Text = "satuan"
+                    lblsatuanbeli.Text = "satuan"
                     txtkodeitem.Clear()
                     txtnama.Clear()
                     txtbanyak.Clear()
@@ -476,8 +476,14 @@ Public Class fpembelian
         End If
     End Sub
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
+        Dim hapuskode As String
         If e.KeyCode = Keys.Delete Then
+            hapuskode = GridView1.GetFocusedRowCellValue("kode_stok")
+            sql = "DELETE FROM tb_pembelian_sementara WHERE  kode_stok='" & hapuskode & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
             GridView1.DeleteSelectedRows()
+
         End If
     End Sub
     'Private Sub txtkodeitem_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkodeitem.KeyPress
