@@ -104,6 +104,7 @@ Public Class fpembelian
         Call tabel_utama()
         cmbsupplier.SelectedIndex = -1
         lblsatuan.Text = ""
+        lblsatuanbeli.Text = ""
         sql = "Delete from tb_pembelian_sementara" 'clear data
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -117,12 +118,14 @@ Public Class fpembelian
             txtnama.Text = dr("nama_barang")
             satuan = dr("satuan_barang")
             lblsatuan.Text = satuan
+            lblsatuanbeli.Text = satuan
             jenis = dr("jenis_barang")
             modal = dr("modal_barang")
             txtharga.Text = Format(modal, "##,##0")
         Else
             txtnama.Text = ""
             lblsatuan.Text = ""
+            lblsatuanbeli.Text = ""
             txtharga.Text = 0
         End If
     End Sub
@@ -144,6 +147,7 @@ Public Class fpembelian
                 GridControl1.RefreshDataSource()
                 'bersihkan textbox
                 lblsatuan.Text = ""
+                lblsatuanbeli.Text = ""
                 txtkodeitem.Clear()
                 txtnama.Clear()
                 txtbanyak.Clear()
@@ -153,7 +157,7 @@ Public Class fpembelian
             Else
 
                 'cek ke database stok untuk mendapatkan kode stok baru
-                sql = "SELECT *, REPLACE(kode_stok, '" & txtkodeitem.Text & "', '') FROM tb_stok WHERE kode_barang = 'S58CPM7R'  ORDER BY REPLACE(kode_stok, '" & txtkodeitem.Text & "', '') DESC LIMIT 1"
+                sql = "SELECT *, REPLACE(kode_stok, '" & txtkodeitem.Text & "', '') FROM tb_stok WHERE kode_barang = '" & txtkodeitem.Text & "'  ORDER BY REPLACE(kode_stok, '" & txtkodeitem.Text & "', '') DESC LIMIT 1"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
@@ -171,6 +175,7 @@ Public Class fpembelian
                     dr = cmmd.ExecuteReader()
                     'bersihkan textbox
                     lblsatuan.Text = ""
+                    lblsatuanbeli.Text = ""
                     txtkodeitem.Clear()
                     txtnama.Clear()
                     txtbanyak.Clear()
@@ -189,6 +194,7 @@ Public Class fpembelian
                     dr = cmmd.ExecuteReader()
                     'bersihkan textbox
                     lblsatuan.Text = ""
+                    lblsatuanbeli.Text = ""
                     txtkodeitem.Clear()
                     txtnama.Clear()
                     txtbanyak.Clear()
@@ -214,6 +220,7 @@ Public Class fpembelian
                         tabel.Rows.Add(txtkodeitem.Text, txtkodeitem.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(harga), Val(txtbanyak.Text) * Val(harga))
                         GridControl1.RefreshDataSource()
                         lblsatuan.Text = ""
+                        lblsatuanbeli.Text = ""
                         txtkodeitem.Clear()
                         txtnama.Clear()
                         txtbanyak.Clear()
@@ -227,6 +234,7 @@ Public Class fpembelian
                         GridControl1.RefreshDataSource()
 
                         lblsatuan.Text = ""
+                        lblsatuanbeli.Text = ""
                         txtkodeitem.Clear()
                         txtnama.Clear()
                         txtbanyak.Clear()
@@ -262,6 +270,7 @@ Public Class fpembelian
                     End If
 
                     lblsatuan.Text = ""
+                    lblsatuanbeli.Text = ""
                     txtkodeitem.Clear()
                     txtnama.Clear()
                     txtbanyak.Clear()
@@ -334,7 +343,7 @@ Public Class fpembelian
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows = 0 Then
-            MsgBox("Nama Supplier Tidak Di temukan!")
+            MsgBox("Nama Supplier Tidak Ditemukan!")
             Exit Sub
         Else
             If GridView1.RowCount = 0 Then
@@ -342,12 +351,12 @@ Public Class fpembelian
                 Exit Sub
             Else
                 For i As Integer = 0 To GridView1.RowCount - 1
-                    sql = "INSERT INTO tb_pembelian_detail (kode_pembelian, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty,harga_beli, subtotal) VALUES ('" & autonumber() & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "', '" & GridView1.GetRowCellValue(i, "harga") & "','" & GridView1.GetRowCellValue(i, "subtotal") & "')"
+                    sql = "INSERT INTO tb_pembelian_detail (kode_pembelian, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty,harga_beli, subtotal,created_by, updated_by,date_created, last_updated) VALUES ('" & autonumber() & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "', '" & GridView1.GetRowCellValue(i, "harga") & "','" & GridView1.GetRowCellValue(i, "subtotal") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
                     cmmd = New OdbcCommand(sql, cnn)
                     cnn.Open()
                     dr = cmmd.ExecuteReader()
                 Next
-                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,keterangan_pembelian,harga_ongkir,tgl_pembelian,tgl_jatuhtempo_pembelian,total_pembelian,pembayaran_pembelian) VALUES ('" & txtnonota.Text & "','" & Strings.Right(cmbsupplier.Text, 5) & "', '" & txtketerangan.Text & "', '" & ongkir & "', NOW() ,'" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "','" & total2 & "', '" & cmbbayar.Text & "')"
+                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,keterangan_pembelian,harga_ongkir,tgl_pembelian,tgl_jatuhtempo_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "','" & Strings.Right(cmbsupplier.Text, 5) & "', '" & txtketerangan.Text & "', '" & ongkir & "', NOW() ,'" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "','" & total2 & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 

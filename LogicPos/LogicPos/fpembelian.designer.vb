@@ -218,7 +218,7 @@ Partial Class fpembelian
         Me.cmbsupplier.FormattingEnabled = True
         Me.cmbsupplier.Location = New System.Drawing.Point(130, 44)
         Me.cmbsupplier.Name = "cmbsupplier"
-        Me.cmbsupplier.Size = New System.Drawing.Size(168, 26)
+        Me.cmbsupplier.Size = New System.Drawing.Size(252, 26)
         Me.cmbsupplier.TabIndex = 12
         '
         'Label6
@@ -331,10 +331,11 @@ Partial Class fpembelian
         '
         'DateTimePicker1
         '
+        Me.DateTimePicker1.CustomFormat = ""
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker1.Location = New System.Drawing.Point(130, 76)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(168, 22)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(252, 22)
         Me.DateTimePicker1.TabIndex = 15
         '
         'Label7
@@ -362,7 +363,7 @@ Partial Class fpembelian
         Me.txtnonota.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnonota.Location = New System.Drawing.Point(130, 14)
         Me.txtnonota.Name = "txtnonota"
-        Me.txtnonota.Size = New System.Drawing.Size(168, 24)
+        Me.txtnonota.Size = New System.Drawing.Size(252, 24)
         Me.txtnonota.TabIndex = 11
         '
         'RichTextBox1
