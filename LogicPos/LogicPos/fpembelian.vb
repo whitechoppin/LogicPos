@@ -261,12 +261,40 @@ Public Class fpembelian
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
                     Else
-                        tabel.Rows.Add(txtkodeitem.Text + "1", txtkodeitem.Text, txtnama.Text, (Val(txtbanyak.Text)), satuan, jenis, Val(harga), Val(txtbanyak.Text) * Val(harga))
-                        GridControl1.RefreshDataSource()
 
-                        sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodeitem.Text + "1" & "', '" & txtkodeitem.Text & " ', '" & txtnama.Text & "','" & Val(txtbanyak.Text) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(txtbanyak.Text) * Val(harga) & "', '" & tambah_counter & "')"
+                        sql = "SELECT *, REPLACE(kode_stok, '" & txtkodeitem.Text & "', '') FROM tb_stok WHERE kode_barang = '" & txtkodeitem.Text & "'  ORDER BY REPLACE(kode_stok, '" & txtkodeitem.Text & "', '') DESC LIMIT 1"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
+
+                        If dr.HasRows Then
+                            'tambahkan data
+                            kode_stok = dr("kode_stok")
+                            total_karakter = Len(kode_stok)
+                            counter_angka = Microsoft.VisualBasic.Right(kode_stok, total_karakter - 8)
+                            tambah_counter = counter_angka + 1
+                            tabel.Rows.Add(txtkodeitem.Text + CStr(tambah_counter), txtkodeitem.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(harga), Val(txtbanyak.Text) * Val(harga))
+                            GridControl1.RefreshDataSource()
+                            Call koneksii()
+                            sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodeitem.Text + CStr(tambah_counter) & "', '" & txtkodeitem.Text & "', '" & txtnama.Text & "','" & Val(txtbanyak.Text) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(txtbanyak.Text) * Val(harga) & "' ,'1')"
+                            cmmd = New OdbcCommand(sql, cnn)
+                            dr = cmmd.ExecuteReader()
+                            'bersihkan textbox
+                            lblsatuan.Text = ""
+                            lblsatuanbeli.Text = ""
+                            txtkodeitem.Clear()
+                            txtnama.Clear()
+                            txtbanyak.Clear()
+                            txtharga.Text = 0
+                            txtnama.Enabled = False
+                            txtkodeitem.Focus()
+                        Else
+                            tabel.Rows.Add(txtkodeitem.Text + "1", txtkodeitem.Text, txtnama.Text, (Val(txtbanyak.Text)), satuan, jenis, Val(harga), Val(txtbanyak.Text) * Val(harga))
+                            GridControl1.RefreshDataSource()
+
+                            sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodeitem.Text + "1" & "', '" & txtkodeitem.Text & " ', '" & txtnama.Text & "','" & Val(txtbanyak.Text) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(txtbanyak.Text) * Val(harga) & "', '" & tambah_counter & "')"
+                            cmmd = New OdbcCommand(sql, cnn)
+                            dr = cmmd.ExecuteReader()
+                        End If
                     End If
 
                     lblsatuan.Text = ""
