@@ -53,7 +53,7 @@ Public Class fpembelian
         GridColumn2.Visible = False
         GridColumn3.FieldName = "nama_barang"
         GridColumn3.Caption = "Nama Barang"
-        GridColumn4.Caption = "Banyak"
+        GridColumn4.Caption = "Qty"
         GridColumn4.FieldName = "banyak"
         GridColumn5.FieldName = "satuan_barang"
         GridColumn5.Caption = "Satuan Barang"
