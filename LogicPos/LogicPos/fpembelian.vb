@@ -18,6 +18,7 @@ Public Class fpembelian
             '.OptionsView.ColumnAutoWidth = False ' agar muncul scrol bar
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
+            .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
             '.OptionsView.ShowAutoFilterRow = True 'aktifkan autofilter
             '.OptionsView.EnableAppearanceOddRow = True 'aktifkan style
