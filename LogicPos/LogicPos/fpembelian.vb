@@ -409,7 +409,8 @@ Public Class fpembelian
     End Function
     Sub simpan()
         total2 = GridView1.Columns("subtotal").SummaryItem.SummaryValue 'ambil isi summary gridview
-        sql = "SELECT * FROM tb_supplier  WHERE '" & Strings.Right(cmbsupplier.Text, 5) & "' =  kode_supplier"
+        sql = "SELECT * FROM tb_supplier  WHERE '" & cmbsupplier.Text & "' =  kode_supplier"
+        'Strings.Right()
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows = 0 Then
