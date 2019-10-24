@@ -427,7 +427,7 @@ Public Class fpembelian
                     cnn.Open()
                     dr = cmmd.ExecuteReader()
                 Next
-                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,keterangan_pembelian,harga_ongkir,tgl_pembelian,tgl_jatuhtempo_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "','" & Strings.Right(cmbsupplier.Text, 5) & "', '" & txtketerangan.Text & "', '" & ongkir & "', NOW() ,'" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "','" & total2 & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,kode_gudang,kode_user,tgl_pembelian,tgl_jatuhtempo_pembelian,lunas_pembelian,void_pembelian,print_pembelian,posted_pembelian,keterangan_pembelian,diskon_pembelian,pajak_pembelian,ongkir_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "','" & cmbsupplier.Text & "','" & cmbgudang.Text & "','" & cmbsales.Text & "', NOW() ,'" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total2 & "','" & total2 & "','" & total2 & "','" & total2 & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
