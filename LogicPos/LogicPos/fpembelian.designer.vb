@@ -61,34 +61,48 @@ Partial Class fpembelian
         Me.txtongkir = New System.Windows.Forms.TextBox()
         Me.cbongkir = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.txtgudang = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.cbposted = New System.Windows.Forms.CheckBox()
+        Me.cbprinted = New System.Windows.Forms.CheckBox()
+        Me.cblunas = New System.Windows.Forms.CheckBox()
+        Me.cbvoid = New System.Windows.Forms.CheckBox()
+        Me.txtsupplier = New System.Windows.Forms.TextBox()
+        Me.btncarigudang = New System.Windows.Forms.Button()
+        Me.btncarisupplier = New System.Windows.Forms.Button()
+        Me.cmbgudang = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cmbbayar = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.cblunas = New System.Windows.Forms.CheckBox()
-        Me.cbvoid = New System.Windows.Forms.CheckBox()
         Me.cbppn = New System.Windows.Forms.CheckBox()
         Me.cbdiskon = New System.Windows.Forms.CheckBox()
         Me.txtdiskon = New System.Windows.Forms.TextBox()
         Me.txtppn = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.txttotal = New System.Windows.Forms.TextBox()
-        Me.cbprinted = New System.Windows.Forms.CheckBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnprint = New System.Windows.Forms.Button()
+        Me.btnbatal = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.btnedit = New System.Windows.Forms.Button()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.btnprev = New System.Windows.Forms.Button()
+        Me.btnnext = New System.Windows.Forms.Button()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.btngo = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -106,7 +120,7 @@ Partial Class fpembelian
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.txtkodeitem)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 269)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 193)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1028, 63)
         Me.GroupBox1.TabIndex = 4
@@ -238,37 +252,37 @@ Partial Class fpembelian
         '
         Me.cmbsupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbsupplier.FormattingEnabled = True
-        Me.cmbsupplier.Location = New System.Drawing.Point(130, 51)
+        Me.cmbsupplier.Location = New System.Drawing.Point(122, 59)
         Me.cmbsupplier.Name = "cmbsupplier"
-        Me.cmbsupplier.Size = New System.Drawing.Size(184, 26)
+        Me.cmbsupplier.Size = New System.Drawing.Size(130, 26)
         Me.cmbsupplier.TabIndex = 12
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(11, 54)
+        Me.Label6.Location = New System.Drawing.Point(12, 63)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(61, 18)
+        Me.Label6.Size = New System.Drawing.Size(100, 18)
         Me.Label6.TabIndex = 3
-        Me.Label6.Text = "Supplier"
+        Me.Label6.Text = "Kode Supplier"
         '
         'btnproses
         '
         Me.btnproses.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnproses.Location = New System.Drawing.Point(90, 19)
+        Me.btnproses.Location = New System.Drawing.Point(94, 23)
         Me.btnproses.Name = "btnproses"
-        Me.btnproses.Size = New System.Drawing.Size(75, 28)
+        Me.btnproses.Size = New System.Drawing.Size(75, 35)
         Me.btnproses.TabIndex = 5
         Me.btnproses.Text = "Simpan"
         Me.btnproses.UseVisualStyleBackColor = True
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 338)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 259)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1028, 221)
+        Me.GridControl1.Size = New System.Drawing.Size(1028, 257)
         Me.GridControl1.TabIndex = 13
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -280,6 +294,10 @@ Partial Class fpembelian
         '
         'GridColumn1
         '
+        Me.GridColumn1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn1.AppearanceCell.Options.UseFont = True
+        Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn1.AppearanceHeader.Options.UseFont = True
         Me.GridColumn1.Caption = "Kode Stok"
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.OptionsColumn.AllowEdit = False
@@ -288,6 +306,10 @@ Partial Class fpembelian
         '
         'GridColumn2
         '
+        Me.GridColumn2.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn2.AppearanceCell.Options.UseFont = True
+        Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn2.AppearanceHeader.Options.UseFont = True
         Me.GridColumn2.Caption = "Kode Barang"
         Me.GridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn2.Name = "GridColumn2"
@@ -296,6 +318,10 @@ Partial Class fpembelian
         '
         'GridColumn3
         '
+        Me.GridColumn3.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn3.AppearanceCell.Options.UseFont = True
+        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn3.AppearanceHeader.Options.UseFont = True
         Me.GridColumn3.Caption = "Nama Barang"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.OptionsColumn.AllowEdit = False
@@ -304,6 +330,10 @@ Partial Class fpembelian
         '
         'GridColumn4
         '
+        Me.GridColumn4.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn4.AppearanceCell.Options.UseFont = True
+        Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn4.AppearanceHeader.Options.UseFont = True
         Me.GridColumn4.Caption = "Qty"
         Me.GridColumn4.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn4.Name = "GridColumn4"
@@ -312,6 +342,10 @@ Partial Class fpembelian
         '
         'GridColumn5
         '
+        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceCell.Options.UseFont = True
+        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
         Me.GridColumn5.Caption = "Satuan barang"
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.OptionsColumn.AllowEdit = False
@@ -320,6 +354,10 @@ Partial Class fpembelian
         '
         'GridColumn6
         '
+        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceCell.Options.UseFont = True
+        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
         Me.GridColumn6.Caption = "Jenis barang"
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.OptionsColumn.AllowEdit = False
@@ -328,6 +366,8 @@ Partial Class fpembelian
         '
         'GridColumn7
         '
+        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceCell.Options.UseFont = True
         Me.GridColumn7.Caption = "Harga Satuan"
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
@@ -335,6 +375,8 @@ Partial Class fpembelian
         '
         'GridColumn8
         '
+        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceCell.Options.UseFont = True
         Me.GridColumn8.Caption = "Sub Total"
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.OptionsColumn.AllowEdit = False
@@ -345,7 +387,7 @@ Partial Class fpembelian
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(605, 55)
+        Me.Label1.Location = New System.Drawing.Point(603, 93)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(151, 18)
         Me.Label1.TabIndex = 14
@@ -355,7 +397,7 @@ Partial Class fpembelian
         '
         Me.DateTimePicker1.CustomFormat = ""
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.DateTimePicker1.Location = New System.Drawing.Point(764, 52)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(762, 90)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(252, 23)
         Me.DateTimePicker1.TabIndex = 15
@@ -364,7 +406,7 @@ Partial Class fpembelian
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(12, 9)
+        Me.Label7.Location = New System.Drawing.Point(12, 22)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(251, 31)
         Me.Label7.TabIndex = 16
@@ -374,7 +416,7 @@ Partial Class fpembelian
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(11, 27)
+        Me.Label10.Location = New System.Drawing.Point(12, 33)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(78, 18)
         Me.Label10.TabIndex = 7
@@ -383,26 +425,26 @@ Partial Class fpembelian
         'txtnonota
         '
         Me.txtnonota.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnonota.Location = New System.Drawing.Point(130, 23)
+        Me.txtnonota.Location = New System.Drawing.Point(122, 30)
         Me.txtnonota.Name = "txtnonota"
-        Me.txtnonota.Size = New System.Drawing.Size(184, 24)
+        Me.txtnonota.Size = New System.Drawing.Size(163, 24)
         Me.txtnonota.TabIndex = 11
         '
         'RichTextBox1
         '
         Me.RichTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.Location = New System.Drawing.Point(12, 684)
+        Me.RichTextBox1.Location = New System.Drawing.Point(11, 637)
         Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(449, 48)
+        Me.RichTextBox1.Size = New System.Drawing.Size(599, 71)
         Me.RichTextBox1.TabIndex = 18
         Me.RichTextBox1.Text = "Fungsi Tombol" & Global.Microsoft.VisualBasic.ChrW(10) & "- F2 pada kolom Kode Item untuk membatalkan Transaksi"
         '
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtketerangan.Location = New System.Drawing.Point(12, 584)
+        Me.txtketerangan.Location = New System.Drawing.Point(12, 536)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(598, 94)
+        Me.txtketerangan.Size = New System.Drawing.Size(598, 92)
         Me.txtketerangan.TabIndex = 19
         Me.txtketerangan.Text = ""
         '
@@ -410,7 +452,7 @@ Partial Class fpembelian
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label4.Location = New System.Drawing.Point(12, 565)
+        Me.Label4.Location = New System.Drawing.Point(12, 517)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(83, 18)
         Me.Label4.TabIndex = 20
@@ -419,7 +461,7 @@ Partial Class fpembelian
         'txtongkir
         '
         Me.txtongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txtongkir.Location = New System.Drawing.Point(843, 632)
+        Me.txtongkir.Location = New System.Drawing.Point(843, 577)
         Me.txtongkir.Name = "txtongkir"
         Me.txtongkir.Size = New System.Drawing.Size(198, 24)
         Me.txtongkir.TabIndex = 22
@@ -428,7 +470,7 @@ Partial Class fpembelian
         '
         Me.cbongkir.AutoSize = True
         Me.cbongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbongkir.Location = New System.Drawing.Point(739, 630)
+        Me.cbongkir.Location = New System.Drawing.Point(739, 575)
         Me.cbongkir.Name = "cbongkir"
         Me.cbongkir.Size = New System.Drawing.Size(98, 22)
         Me.cbongkir.TabIndex = 23
@@ -437,7 +479,16 @@ Partial Class fpembelian
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.ComboBox1)
+        Me.GroupBox2.Controls.Add(Me.txtgudang)
+        Me.GroupBox2.Controls.Add(Me.Label18)
+        Me.GroupBox2.Controls.Add(Me.TextBox3)
+        Me.GroupBox2.Controls.Add(Me.Label16)
+        Me.GroupBox2.Controls.Add(Me.Label15)
+        Me.GroupBox2.Controls.Add(Me.GroupBox3)
+        Me.GroupBox2.Controls.Add(Me.txtsupplier)
+        Me.GroupBox2.Controls.Add(Me.btncarigudang)
+        Me.GroupBox2.Controls.Add(Me.btncarisupplier)
+        Me.GroupBox2.Controls.Add(Me.cmbgudang)
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.DateTimePicker2)
         Me.GroupBox2.Controls.Add(Me.Label12)
@@ -448,73 +499,97 @@ Partial Class fpembelian
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.DateTimePicker1)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox2.Location = New System.Drawing.Point(11, 55)
+        Me.GroupBox2.Location = New System.Drawing.Point(11, 70)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1029, 216)
+        Me.GroupBox2.Size = New System.Drawing.Size(1029, 126)
         Me.GroupBox2.TabIndex = 24
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Detail Pembelian"
         '
-        'ComboBox1
+        'txtgudang
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(130, 81)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(184, 26)
-        Me.ComboBox1.TabIndex = 19
+        Me.txtgudang.Location = New System.Drawing.Point(414, 89)
+        Me.txtgudang.Name = "txtgudang"
+        Me.txtgudang.Size = New System.Drawing.Size(162, 24)
+        Me.txtgudang.TabIndex = 41
         '
-        'Label13
+        'Label18
         '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(11, 83)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(60, 18)
-        Me.Label13.TabIndex = 18
-        Me.Label13.Text = "Gudang"
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(304, 93)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(104, 18)
+        Me.Label18.TabIndex = 40
+        Me.Label18.Text = "Nama Gudang"
         '
-        'DateTimePicker2
+        'TextBox3
         '
-        Me.DateTimePicker2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.DateTimePicker2.Location = New System.Drawing.Point(764, 20)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(252, 23)
-        Me.DateTimePicker2.TabIndex = 17
+        Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox3.Location = New System.Drawing.Point(414, 30)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(163, 24)
+        Me.TextBox3.TabIndex = 38
         '
-        'Label12
+        'Label16
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label12.Location = New System.Drawing.Point(606, 25)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(133, 18)
-        Me.Label12.TabIndex = 16
-        Me.Label12.Text = "Tanggal Pembelian"
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(304, 33)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(84, 18)
+        Me.Label16.TabIndex = 37
+        Me.Label16.Text = "Kode Sales"
         '
-        'cmbbayar
+        'Label15
         '
-        Me.cmbbayar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cmbbayar.FormattingEnabled = True
-        Me.cmbbayar.Location = New System.Drawing.Point(802, 704)
-        Me.cmbbayar.Name = "cmbbayar"
-        Me.cmbbayar.Size = New System.Drawing.Size(239, 26)
-        Me.cmbbayar.TabIndex = 25
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(11, 92)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(105, 18)
+        Me.Label15.TabIndex = 30
+        Me.Label15.Text = "Nama Supplier"
         '
-        'Label11
+        'GroupBox3
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label11.Location = New System.Drawing.Point(706, 707)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(91, 18)
-        Me.Label11.TabIndex = 26
-        Me.Label11.Text = "Pembayaran"
+        Me.GroupBox3.Controls.Add(Me.cbposted)
+        Me.GroupBox3.Controls.Add(Me.cbprinted)
+        Me.GroupBox3.Controls.Add(Me.cblunas)
+        Me.GroupBox3.Controls.Add(Me.cbvoid)
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.GroupBox3.Location = New System.Drawing.Point(607, 9)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(407, 45)
+        Me.GroupBox3.TabIndex = 36
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Status"
+        '
+        'cbposted
+        '
+        Me.cbposted.AutoSize = True
+        Me.cbposted.Location = New System.Drawing.Point(309, 16)
+        Me.cbposted.Name = "cbposted"
+        Me.cbposted.Size = New System.Drawing.Size(74, 22)
+        Me.cbposted.TabIndex = 36
+        Me.cbposted.Text = "Posted"
+        Me.cbposted.UseVisualStyleBackColor = True
+        '
+        'cbprinted
+        '
+        Me.cbprinted.AutoSize = True
+        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.cbprinted.Location = New System.Drawing.Point(214, 16)
+        Me.cbprinted.Name = "cbprinted"
+        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
+        Me.cbprinted.TabIndex = 35
+        Me.cbprinted.Text = "Printed"
+        Me.cbprinted.UseVisualStyleBackColor = True
         '
         'cblunas
         '
         Me.cblunas.AutoSize = True
         Me.cblunas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cblunas.Location = New System.Drawing.Point(7, 21)
+        Me.cblunas.Location = New System.Drawing.Point(30, 16)
         Me.cblunas.Name = "cblunas"
         Me.cblunas.Size = New System.Drawing.Size(67, 22)
         Me.cblunas.TabIndex = 27
@@ -525,18 +600,102 @@ Partial Class fpembelian
         '
         Me.cbvoid.AutoSize = True
         Me.cbvoid.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbvoid.Location = New System.Drawing.Point(80, 21)
+        Me.cbvoid.Location = New System.Drawing.Point(123, 16)
         Me.cbvoid.Name = "cbvoid"
         Me.cbvoid.Size = New System.Drawing.Size(56, 22)
         Me.cbvoid.TabIndex = 28
         Me.cbvoid.Text = "Void"
         Me.cbvoid.UseVisualStyleBackColor = True
         '
+        'txtsupplier
+        '
+        Me.txtsupplier.Location = New System.Drawing.Point(122, 89)
+        Me.txtsupplier.Name = "txtsupplier"
+        Me.txtsupplier.Size = New System.Drawing.Size(162, 24)
+        Me.txtsupplier.TabIndex = 29
+        '
+        'btncarigudang
+        '
+        Me.btncarigudang.BackgroundImage = CType(resources.GetObject("btncarigudang.BackgroundImage"), System.Drawing.Image)
+        Me.btncarigudang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarigudang.ImageIndex = 0
+        Me.btncarigudang.Location = New System.Drawing.Point(545, 59)
+        Me.btncarigudang.Name = "btncarigudang"
+        Me.btncarigudang.Size = New System.Drawing.Size(31, 27)
+        Me.btncarigudang.TabIndex = 28
+        Me.btncarigudang.UseVisualStyleBackColor = True
+        '
+        'btncarisupplier
+        '
+        Me.btncarisupplier.BackgroundImage = CType(resources.GetObject("btncarisupplier.BackgroundImage"), System.Drawing.Image)
+        Me.btncarisupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarisupplier.ImageIndex = 0
+        Me.btncarisupplier.Location = New System.Drawing.Point(253, 59)
+        Me.btncarisupplier.Name = "btncarisupplier"
+        Me.btncarisupplier.Size = New System.Drawing.Size(32, 27)
+        Me.btncarisupplier.TabIndex = 27
+        Me.btncarisupplier.UseVisualStyleBackColor = True
+        '
+        'cmbgudang
+        '
+        Me.cmbgudang.FormattingEnabled = True
+        Me.cmbgudang.Location = New System.Drawing.Point(414, 59)
+        Me.cmbgudang.Name = "cmbgudang"
+        Me.cmbgudang.Size = New System.Drawing.Size(130, 26)
+        Me.cmbgudang.TabIndex = 19
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(304, 63)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(99, 18)
+        Me.Label13.TabIndex = 18
+        Me.Label13.Text = "Kode Gudang"
+        '
+        'DateTimePicker2
+        '
+        Me.DateTimePicker2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(762, 58)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(252, 23)
+        Me.DateTimePicker2.TabIndex = 17
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label12.Location = New System.Drawing.Point(604, 63)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(133, 18)
+        Me.Label12.TabIndex = 16
+        Me.Label12.Text = "Tanggal Pembelian"
+        '
+        'cmbbayar
+        '
+        Me.cmbbayar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.cmbbayar.FormattingEnabled = True
+        Me.cmbbayar.Location = New System.Drawing.Point(843, 637)
+        Me.cmbbayar.Name = "cmbbayar"
+        Me.cmbbayar.Size = New System.Drawing.Size(198, 26)
+        Me.cmbbayar.TabIndex = 25
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label11.Location = New System.Drawing.Point(746, 640)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(91, 18)
+        Me.Label11.TabIndex = 26
+        Me.Label11.Text = "Pembayaran"
+        '
         'cbppn
         '
         Me.cbppn.AutoSize = True
         Me.cbppn.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbppn.Location = New System.Drawing.Point(739, 603)
+        Me.cbppn.Location = New System.Drawing.Point(739, 548)
         Me.cbppn.Name = "cbppn"
         Me.cbppn.Size = New System.Drawing.Size(58, 22)
         Me.cbppn.TabIndex = 29
@@ -547,7 +706,7 @@ Partial Class fpembelian
         '
         Me.cbdiskon.AutoSize = True
         Me.cbdiskon.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbdiskon.Location = New System.Drawing.Point(739, 575)
+        Me.cbdiskon.Location = New System.Drawing.Point(739, 520)
         Me.cbdiskon.Name = "cbdiskon"
         Me.cbdiskon.Size = New System.Drawing.Size(74, 22)
         Me.cbdiskon.TabIndex = 30
@@ -557,15 +716,15 @@ Partial Class fpembelian
         'txtdiskon
         '
         Me.txtdiskon.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txtdiskon.Location = New System.Drawing.Point(843, 575)
+        Me.txtdiskon.Location = New System.Drawing.Point(843, 520)
         Me.txtdiskon.Name = "txtdiskon"
-        Me.txtdiskon.Size = New System.Drawing.Size(62, 24)
+        Me.txtdiskon.Size = New System.Drawing.Size(44, 24)
         Me.txtdiskon.TabIndex = 31
         '
         'txtppn
         '
         Me.txtppn.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txtppn.Location = New System.Drawing.Point(843, 603)
+        Me.txtppn.Location = New System.Drawing.Point(843, 548)
         Me.txtppn.Name = "txtppn"
         Me.txtppn.Size = New System.Drawing.Size(197, 24)
         Me.txtppn.TabIndex = 32
@@ -574,7 +733,7 @@ Partial Class fpembelian
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label14.Location = New System.Drawing.Point(781, 675)
+        Me.Label14.Location = New System.Drawing.Point(781, 610)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(41, 18)
         Me.Label14.TabIndex = 33
@@ -583,104 +742,116 @@ Partial Class fpembelian
         'txttotal
         '
         Me.txttotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txttotal.Location = New System.Drawing.Point(843, 672)
+        Me.txttotal.Location = New System.Drawing.Point(843, 607)
         Me.txttotal.Name = "txttotal"
         Me.txttotal.Size = New System.Drawing.Size(198, 24)
         Me.txttotal.TabIndex = 34
         '
-        'cbprinted
-        '
-        Me.cbprinted.AutoSize = True
-        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(142, 21)
-        Me.cbprinted.Name = "cbprinted"
-        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
-        Me.cbprinted.TabIndex = 35
-        Me.cbprinted.Text = "Printed"
-        Me.cbprinted.UseVisualStyleBackColor = True
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.cbprinted)
-        Me.GroupBox3.Controls.Add(Me.cblunas)
-        Me.GroupBox3.Controls.Add(Me.cbvoid)
-        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox3.Location = New System.Drawing.Point(819, 2)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(221, 54)
-        Me.GroupBox3.TabIndex = 36
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Status"
-        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(9, 20)
+        Me.Button1.Location = New System.Drawing.Point(14, 23)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 27)
+        Me.Button1.Size = New System.Drawing.Size(75, 35)
         Me.Button1.TabIndex = 37
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "Baru"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnprint
         '
-        Me.Button2.Location = New System.Drawing.Point(171, 19)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 28)
-        Me.Button2.TabIndex = 38
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnprint.Location = New System.Drawing.Point(255, 23)
+        Me.btnprint.Name = "btnprint"
+        Me.btnprint.Size = New System.Drawing.Size(75, 35)
+        Me.btnprint.TabIndex = 38
+        Me.btnprint.Text = "Print"
+        Me.btnprint.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnbatal
         '
-        Me.Button3.Location = New System.Drawing.Point(251, 20)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 27)
-        Me.Button3.TabIndex = 39
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnbatal.Location = New System.Drawing.Point(335, 23)
+        Me.btnbatal.Name = "btnbatal"
+        Me.btnbatal.Size = New System.Drawing.Size(75, 35)
+        Me.btnbatal.TabIndex = 39
+        Me.btnbatal.Text = "Batal"
+        Me.btnbatal.UseVisualStyleBackColor = True
         '
         'GroupBox4
         '
-        Me.GroupBox4.Controls.Add(Me.Button5)
-        Me.GroupBox4.Controls.Add(Me.Button4)
-        Me.GroupBox4.Controls.Add(Me.Button3)
+        Me.GroupBox4.Controls.Add(Me.btnedit)
+        Me.GroupBox4.Controls.Add(Me.GroupBox5)
+        Me.GroupBox4.Controls.Add(Me.btnbatal)
         Me.GroupBox4.Controls.Add(Me.Button1)
-        Me.GroupBox4.Controls.Add(Me.Button2)
+        Me.GroupBox4.Controls.Add(Me.btnprint)
         Me.GroupBox4.Controls.Add(Me.btnproses)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.GroupBox4.Location = New System.Drawing.Point(269, 2)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(544, 54)
+        Me.GroupBox4.Size = New System.Drawing.Size(771, 72)
         Me.GroupBox4.TabIndex = 40
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Tools"
         '
-        'Button4
+        'btnedit
         '
-        Me.Button4.Location = New System.Drawing.Point(332, 20)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 28)
-        Me.Button4.TabIndex = 40
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnedit.Location = New System.Drawing.Point(174, 23)
+        Me.btnedit.Name = "btnedit"
+        Me.btnedit.Size = New System.Drawing.Size(75, 35)
+        Me.btnedit.TabIndex = 40
+        Me.btnedit.Text = "Edit"
+        Me.btnedit.UseVisualStyleBackColor = True
         '
-        'Button5
+        'GroupBox5
         '
-        Me.Button5.Location = New System.Drawing.Point(413, 21)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 26)
-        Me.Button5.TabIndex = 41
-        Me.Button5.Text = "Button5"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.GroupBox5.Controls.Add(Me.btnprev)
+        Me.GroupBox5.Controls.Add(Me.btnnext)
+        Me.GroupBox5.Controls.Add(Me.TextBox2)
+        Me.GroupBox5.Controls.Add(Me.btngo)
+        Me.GroupBox5.Location = New System.Drawing.Point(423, 10)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(339, 52)
+        Me.GroupBox5.TabIndex = 37
+        Me.GroupBox5.TabStop = False
+        '
+        'btnprev
+        '
+        Me.btnprev.Location = New System.Drawing.Point(7, 17)
+        Me.btnprev.Name = "btnprev"
+        Me.btnprev.Size = New System.Drawing.Size(75, 26)
+        Me.btnprev.TabIndex = 40
+        Me.btnprev.Text = "<< Prev"
+        Me.btnprev.UseVisualStyleBackColor = True
+        '
+        'btnnext
+        '
+        Me.btnnext.Location = New System.Drawing.Point(258, 17)
+        Me.btnnext.Name = "btnnext"
+        Me.btnnext.Size = New System.Drawing.Size(75, 26)
+        Me.btnnext.TabIndex = 42
+        Me.btnnext.Text = "Next >>"
+        Me.btnnext.UseVisualStyleBackColor = True
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(137, 18)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(117, 24)
+        Me.TextBox2.TabIndex = 43
+        '
+        'btngo
+        '
+        Me.btngo.Location = New System.Drawing.Point(85, 17)
+        Me.btngo.Name = "btngo"
+        Me.btngo.Size = New System.Drawing.Size(52, 26)
+        Me.btngo.TabIndex = 41
+        Me.btngo.Text = "Go"
+        Me.btngo.UseVisualStyleBackColor = True
         '
         'fpembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1053, 744)
+        Me.ClientSize = New System.Drawing.Size(1053, 720)
         Me.Controls.Add(Me.GroupBox4)
-        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.txttotal)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.txtppn)
@@ -698,6 +869,7 @@ Partial Class fpembelian
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
+        Me.MaximizeBox = False
         Me.Name = "fpembelian"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Transaksi Pembelian Barang"
@@ -710,6 +882,8 @@ Partial Class fpembelian
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -756,7 +930,7 @@ Partial Class fpembelian
     Friend WithEvents lblsatuanbeli As Label
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents Label12 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cmbgudang As ComboBox
     Friend WithEvents Label13 As Label
     Friend WithEvents cblunas As CheckBox
     Friend WithEvents cbvoid As CheckBox
@@ -769,9 +943,22 @@ Partial Class fpembelian
     Friend WithEvents cbprinted As CheckBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnprint As Button
+    Friend WithEvents btnbatal As Button
     Friend WithEvents GroupBox4 As GroupBox
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents btngo As Button
+    Friend WithEvents btnprev As Button
+    Friend WithEvents btncarigudang As Button
+    Friend WithEvents btncarisupplier As Button
+    Friend WithEvents txtsupplier As TextBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents cbposted As CheckBox
+    Friend WithEvents btnnext As Button
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents btnedit As Button
+    Friend WithEvents Label16 As Label
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents txtgudang As TextBox
+    Friend WithEvents Label18 As Label
 End Class

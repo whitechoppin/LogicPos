@@ -13,6 +13,7 @@ Public Class fpembelian
         Call awal()
         Call autonumber()
         Call comboboxsupplier()
+        Call comboboxgudang()
 
         With GridView1
             '.OptionsView.ColumnAutoWidth = False ' agar muncul scrol bar
@@ -48,25 +49,39 @@ Public Class fpembelian
         GridControl1.DataSource = tabel
         GridColumn1.FieldName = "kode_stok"
         GridColumn1.Caption = "Kode Stok"
+        GridColumn1.Width = 30
+
         GridColumn2.FieldName = "kode_barang"
         GridColumn2.Caption = "Kode Barang"
         GridColumn2.Visible = False
+
         GridColumn3.FieldName = "nama_barang"
         GridColumn3.Caption = "Nama Barang"
+        GridColumn3.Width = 70
+
         GridColumn4.Caption = "Qty"
         GridColumn4.FieldName = "banyak"
+        GridColumn4.Width = 20
+
         GridColumn5.FieldName = "satuan_barang"
         GridColumn5.Caption = "Satuan Barang"
+        GridColumn5.Width = 30
+
         GridColumn6.FieldName = "jenis_barang"
         GridColumn6.Caption = "Jenis Barang"
+        GridColumn6.Width = 30
+
         GridColumn7.FieldName = "harga"
         GridColumn7.Caption = "Harga Satuan"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn7.Width = 50
+
         GridColumn8.FieldName = "subtotal"
         GridColumn8.Caption = "Subtotal"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn8.Width = 55
     End Sub
     Sub isi_pembayaran()
         Call koneksii()
@@ -97,6 +112,8 @@ Public Class fpembelian
         txtnonota.Enabled = False
         txtnama.Clear()
         txtnama.Enabled = False
+        txtsupplier.Enabled = False
+        txtgudang.Enabled = False
         txtnonota.Text = autonumber()
         txtongkir.Enabled = False
         cbongkir.Checked = False
@@ -110,7 +127,7 @@ Public Class fpembelian
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
     End Sub
-    Sub cari()
+    Sub caribarang()
         Call koneksii()
         sql = "SELECT * FROM tb_barang WHERE kode_barang='" & txtkodeitem.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
@@ -128,6 +145,30 @@ Public Class fpembelian
             lblsatuan.Text = "satuan"
             lblsatuanbeli.Text = "satuan"
             txtharga.Text = 0
+        End If
+    End Sub
+
+    Sub carisupplier()
+        Call koneksii()
+        sql = "SELECT * FROM tb_supplier WHERE kode_supplier='" & cmbsupplier.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            txtsupplier.Text = dr("nama_supplier")
+        Else
+            txtsupplier.Text = ""
+        End If
+    End Sub
+
+    Sub carigudang()
+        Call koneksii()
+        sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbgudang.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            txtgudang.Text = dr("nama_gudang")
+        Else
+            txtgudang.Text = ""
         End If
     End Sub
     Sub tambah()
@@ -323,7 +364,7 @@ Public Class fpembelian
         '    'fcaribarang.txtcari.Focus()
         '    'fcaribarang.txtcari.DeselectAll()
         'Else
-        Call cari()
+        Call caribarang()
         'End If
     End Sub
     Private Sub txtharga_TextChanged(sender As Object, e As EventArgs) Handles txtharga.TextChanged
@@ -337,7 +378,7 @@ Public Class fpembelian
     End Sub
     Function autonumber()
         Call koneksii()
-        sql = "SELECT RIGHT(kode_pembelian,3) FROM tb_pembelian WHERE DATE_FORMAT(MID(`kode_pembelian`, 2 , 6), ' %y ')+ MONTH(MID(`kode_pembelian`,2 , 6)) + DAY(MID(`kode_pembelian`,2, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pembelian,3) DESC"
+        sql = "SELECT RIGHT(kode_pembelian,3) FROM tb_pembelian WHERE DATE_FORMAT(MID(`kode_pembelian`, 3 , 6), ' %y ')+ MONTH(MID(`kode_pembelian`,3 , 6)) + DAY(MID(`kode_pembelian`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pembelian,3) DESC"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -345,18 +386,18 @@ Public Class fpembelian
             If dr.HasRows Then
                 dr.Read()
                 If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
-                    Return "N" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                    Return "BL" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                 Else
                     If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
-                        Return "N" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                        Return "BL" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                     Else
                         If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
-                            Return "N" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                            Return "BL" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                         End If
                     End If
                 End If
             Else
-                Return "N" + Format(Now.Date, "yyMMdd") + "001"
+                Return "BL" + Format(Now.Date, "yyMMdd") + "001"
             End If
 
         Catch ex As Exception
@@ -438,8 +479,22 @@ Public Class fpembelian
         dr = cmmd.ExecuteReader()
         If dr.HasRows = True Then
             While dr.Read()
-                cmbsupplier.AutoCompleteCustomSource.Add(dr("nama_supplier") + " - " + dr("kode_supplier"))
-                cmbsupplier.Items.Add(dr("nama_supplier") + " - " + dr("kode_supplier"))
+                cmbsupplier.AutoCompleteCustomSource.Add(dr("kode_supplier"))
+                cmbsupplier.Items.Add(dr("kode_supplier"))
+            End While
+        End If
+    End Sub
+
+    Sub comboboxgudang()
+        Call koneksii()
+        cmmd = New OdbcCommand("SELECT * FROM tb_gudang", cnn)
+        cmbgudang.Items.Clear()
+        cmbgudang.AutoCompleteCustomSource.Clear()
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbgudang.AutoCompleteCustomSource.Add(dr("kode_gudang"))
+                cmbgudang.Items.Add(dr("kode_gudang"))
             End While
         End If
     End Sub
@@ -510,6 +565,25 @@ Public Class fpembelian
     Private Sub txtongkir_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtongkir.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
+
+    Private Sub btncarisupplier_Click(sender As Object, e As EventArgs) Handles btncarisupplier.Click
+        tutupsup = 1
+        fcarisupp.ShowDialog()
+    End Sub
+
+    Private Sub btncarigudang_Click(sender As Object, e As EventArgs) Handles btncarigudang.Click
+        tutupgudang = 1
+        fcarigudang.ShowDialog()
+    End Sub
+
+    Private Sub cmbsupplier_TextChanged(sender As Object, e As EventArgs) Handles cmbsupplier.TextChanged
+        Call carisupplier()
+    End Sub
+
+    Private Sub cmbgudang_TextChanged(sender As Object, e As EventArgs) Handles cmbgudang.TextChanged
+        Call carigudang()
+    End Sub
+
     Private Sub txtongkir_TextChanged(sender As Object, e As EventArgs) Handles txtongkir.TextChanged
         If txtongkir.Text = "" Then
             txtongkir.Text = 0

@@ -275,6 +275,7 @@ Partial Class fgudang
         Me.ClientSize = New System.Drawing.Size(637, 552)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl)
+        Me.MaximizeBox = False
         Me.Name = "fgudang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Gudang"

@@ -100,6 +100,18 @@
     <Compile Include="fcaricust.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fcarigudang.Designer.vb">
+      <DependentUpon>fcarigudang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcarigudang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fcarisupp.Designer.vb">
+      <DependentUpon>fcarisupp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcarisupp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fcustomer.designer.vb">
       <DependentUpon>fcustomer.vb</DependentUpon>
     </Compile>
@@ -188,6 +200,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fcaricust.resx">
       <DependentUpon>fcaricust.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcarigudang.resx">
+      <DependentUpon>fcarigudang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcarisupp.resx">
+      <DependentUpon>fcarisupp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fcustomer.resx">
       <DependentUpon>fcustomer.vb</DependentUpon>
