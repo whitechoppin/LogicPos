@@ -142,6 +142,12 @@
     <Compile Include="fpembelian.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fpenjualan.designer.vb">
+      <DependentUpon>fpenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fpenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fpricelist.designer.vb">
       <DependentUpon>fpricelist.vb</DependentUpon>
     </Compile>
@@ -221,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fpembelian.resx">
       <DependentUpon>fpembelian.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fpenjualan.resx">
+      <DependentUpon>fpenjualan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fpricelist.resx">
       <DependentUpon>fpricelist.vb</DependentUpon>
