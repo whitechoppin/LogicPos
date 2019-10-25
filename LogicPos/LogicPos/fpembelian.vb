@@ -3,7 +3,7 @@ Imports DevExpress.Utils
 
 Public Class fpembelian
     Dim tabel As DataTable
-    Dim harga, modal, ongkir As Double
+    Dim harga, modal, ongkir, ppn, diskonpersen, diskonjumlah As Double
     Dim total2 As Double
     Dim satuan, jenis, supplier As String
     Public isi As String
@@ -101,13 +101,25 @@ Public Class fpembelian
     End Sub
     Sub awal()
         Call tabindex()
-        RichTextBox1.Enabled = False
+        txtinformasi.Enabled = False
         txtketerangan.Enabled = True
         txtketerangan.Clear()
         txtkodeitem.Focus()
         txtbanyak.Clear()
+
         txtharga.Clear()
         txtharga.Text = 0
+        txtdiskonpersen.Clear()
+        txtdiskonpersen.Text = 0
+        txtdiskonnominal.Clear()
+        txtdiskonnominal.Text = 0
+        txtppn.Clear()
+        txtppn.Text = 0
+        txtongkir.Clear()
+        txtongkir.Text = 0
+        txttotal.Clear()
+        txttotal.Text = 0
+
         txtkodeitem.Clear()
         txtnonota.Enabled = False
         txtnama.Clear()
@@ -115,14 +127,24 @@ Public Class fpembelian
         txtsupplier.Enabled = False
         txtgudang.Enabled = False
         txtnonota.Text = autonumber()
+
         txtongkir.Enabled = False
+        txtppn.Enabled = False
+        txtdiskonpersen.Enabled = False
+        txtdiskonnominal.Enabled = False
+
         cbongkir.Checked = False
+        cbppn.Checked = False
+        cbdiskon.Checked = False
+
         DateTimePicker1.Value = Date.Now
         DateTimePicker1.MinDate = Date.Now
+
         Call tabel_utama()
         cmbsupplier.SelectedIndex = -1
         lblsatuan.Text = "satuan"
         lblsatuanbeli.Text = "satuan"
+
         sql = "Delete from tb_pembelian_sementara" 'clear data
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -354,6 +376,7 @@ Public Class fpembelian
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         Call tambah()
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
     Private Sub txtkodeitem_TextChanged(sender As Object, e As EventArgs) Handles txtkodeitem.TextChanged, txtnonota.TextChanged
         'isi = txtkodeitem.Text
@@ -517,7 +540,7 @@ Public Class fpembelian
                 End Try
             End If
         End If
-
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
     Private Sub txtharga_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtharga.KeyPress
         e.Handled = ValidAngka(e)
@@ -585,6 +608,64 @@ Public Class fpembelian
         Call carigudang()
     End Sub
 
+    Private Sub txtppn_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtppn.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtdiskonnominal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtdiskonnominal.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtdiskonpersen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtdiskonpersen.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtdiskonpersen_TextChanged(sender As Object, e As EventArgs) Handles txtdiskonpersen.TextChanged
+        If txtdiskonpersen.Text = "" Then
+            txtdiskonpersen.Text = 0
+        Else
+            diskonpersen = txtdiskonpersen.Text
+            txtdiskonpersen.Text = Format(diskonpersen, "##,##0")
+            txtdiskonpersen.SelectionStart = Len(txtdiskonpersen.Text)
+        End If
+    End Sub
+
+    Private Sub cbppn_CheckedChanged(sender As Object, e As EventArgs) Handles cbppn.CheckedChanged
+        If cbppn.Checked = True Then
+            txtppn.Enabled = True
+        Else
+            txtppn.Enabled = False
+        End If
+    End Sub
+
+    Private Sub GridView1_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles GridView1.RowUpdated
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
+    Private Sub GridView1_RowDeleted(sender As Object, e As DevExpress.Data.RowDeletedEventArgs) Handles GridView1.RowDeleted
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
+    Private Sub cbdiskon_CheckedChanged(sender As Object, e As EventArgs) Handles cbdiskon.CheckedChanged
+        If cbdiskon.Checked = True Then
+            txtdiskonnominal.Enabled = True
+            txtdiskonpersen.Enabled = True
+        Else
+            txtdiskonnominal.Enabled = False
+            txtdiskonpersen.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtppn_TextChanged(sender As Object, e As EventArgs) Handles txtppn.TextChanged
+        If txtppn.Text = "" Then
+            txtppn.Text = 0
+        Else
+            ppn = txtppn.Text
+            txtppn.Text = Format(ppn, "##,##0")
+            txtppn.SelectionStart = Len(txtppn.Text)
+        End If
+    End Sub
+
     Private Sub txtongkir_TextChanged(sender As Object, e As EventArgs) Handles txtongkir.TextChanged
         If txtongkir.Text = "" Then
             txtongkir.Text = 0
@@ -609,5 +690,8 @@ Public Class fpembelian
         If Not (Char.IsDigit(e.KeyChar)) And e.KeyChar <> ChrW(Keys.Back) Then
             e.Handled = True
         End If
+    End Sub
+    Private Sub UpdateTotalText()
+        txttotal.Text = GridView1.Columns("subtotal").SummaryText
     End Sub
 End Class
