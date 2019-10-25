@@ -49,7 +49,6 @@ Partial Class fpenjualan
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.txtkembali = New System.Windows.Forms.TextBox()
         Me.txtbayar = New System.Windows.Forms.TextBox()
@@ -223,7 +222,7 @@ Partial Class fpenjualan
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -253,7 +252,7 @@ Partial Class fpenjualan
         '
         'GridColumn4
         '
-        Me.GridColumn4.Caption = "Harga Satuan"
+        Me.GridColumn4.Caption = "Jenis"
         Me.GridColumn4.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.OptionsColumn.AllowEdit = False
@@ -262,21 +261,21 @@ Partial Class fpenjualan
         '
         'GridColumn5
         '
-        Me.GridColumn5.Caption = "Disc. (Rp)"
+        Me.GridColumn5.Caption = "Harga Satuan"
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
         '
         'GridColumn6
         '
-        Me.GridColumn6.Caption = "Harga Disc."
+        Me.GridColumn6.Caption = "Diskon Rp."
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
         '
         'GridColumn7
         '
-        Me.GridColumn7.Caption = "Subtotal"
+        Me.GridColumn7.Caption = "Harga Diskon"
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.OptionsColumn.AllowEdit = False
         Me.GridColumn7.Visible = True
@@ -284,6 +283,7 @@ Partial Class fpenjualan
         '
         'GridColumn8
         '
+        Me.GridColumn8.Caption = "Subtotal"
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.Visible = True
         Me.GridColumn8.VisibleIndex = 7
@@ -305,12 +305,6 @@ Partial Class fpenjualan
         Me.GridColumn11.Name = "GridColumn11"
         Me.GridColumn11.Visible = True
         Me.GridColumn11.VisibleIndex = 10
-        '
-        'GridColumn12
-        '
-        Me.GridColumn12.Name = "GridColumn12"
-        Me.GridColumn12.Visible = True
-        Me.GridColumn12.VisibleIndex = 11
         '
         'RichTextBox1
         '
@@ -608,7 +602,6 @@ Partial Class fpenjualan
     Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label11 As Label
     Friend WithEvents txtsisa As TextBox
-    Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents txtnamacustomer As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents btncaripelanggan As Button

@@ -29,7 +29,7 @@ Public Class fpenjualan
         With GridView1
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
-            .Columns("Subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "Subtotal", "{0:n0}")
+            .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
         tgl = Now()
 
@@ -125,6 +125,7 @@ Public Class fpenjualan
             .Columns.Add("subtotal", GetType(Double))
             .Columns.Add("kode_barang")
             .Columns.Add("laba")
+            .Columns.Add("modal_barang")
 
         End With
 
@@ -141,7 +142,7 @@ Public Class fpenjualan
         GridColumn6.DisplayFormat.FormatString = "{0:n0}"
         GridColumn7.FieldName = "hargadiskon"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn8.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn7.DisplayFormat.FormatString = "{0:n0}"
         GridColumn8.FieldName = "subtotal"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
@@ -149,6 +150,7 @@ Public Class fpenjualan
         GridColumn9.Visible = False
         GridColumn10.FieldName = "laba"
         GridColumn10.Visible = False
+        GridColumn11.FieldName = "modal_barang"
 
     End Sub
     Function autonumber()
@@ -182,9 +184,20 @@ Public Class fpenjualan
         End Try
         Return pesan
     End Function
+    Sub cari_pelanggan()
+        sql = "SELECT * from tb_pelanggan where kode_pelanggan = '" & txtkodecustomer.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            txtnamacustomer.Text = dr("nama_pelanggan")
+        Else
+            txtnamacustomer.Text = ""
+        End If
+    End Sub
     Sub cari()
         Call koneksii()
-        sql = "SELECT tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.satuan_barang, tb_barang.jenis_barang, tb_barang.modal_barang, tb_price_group.harga_jual from tb_barang join tb_price_group on tb_barang.kode_barang = tb_price_group.kode_barang WHERE tb_barang.kode_barang='" & txtkodeitem.Text & "' and tb_price_group.kode_pelanggan='" & txtkodecustomer.Text & "'"
+        'sql = "SELECT tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.satuan_barang, tb_barang.jenis_barang, tb_barang.modal_barang, tb_price_group.harga_jual from tb_barang join tb_price_group on tb_barang.kode_barang = tb_price_group.kode_barang WHERE tb_barang.kode_barang='" & txtkodeitem.Text & "' and tb_price_group.kode_pelanggan='" & txtkodecustomer.Text & "'"
+        sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodeitem.Text & "' and tb_price_group.kode_pelanggan='" & txtkodecustomer.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
@@ -200,6 +213,15 @@ Public Class fpenjualan
             jenis = ""
             txtharga.Text = ""
         End If
+    End Sub
+    Sub reload_tabel()
+        GridControl1.RefreshDataSource()
+        txtkodeitem.Clear()
+        txtnama.Clear()
+        txtbanyak.Clear()
+        txtharga.Text = 0
+        txtnama.Enabled = False
+        txtkodeitem.Focus()
     End Sub
     Private Sub txtkodeitem_TextChanged(sender As Object, e As EventArgs) Handles txtkodeitem.TextChanged
         'isi = txtkodeitem.Text
@@ -221,10 +243,56 @@ Public Class fpenjualan
         If txtnama.Text = "" Or txtharga.Text = "" Or txtbanyak.Text = "" Then
             Exit Sub
         Else
-            Dim banyak As Integer
-            sql = "Select tb_barang.kode_barang, tb_barang.nama_barang , tb_barang.satuan_barang, tb_stok.jumlah_stok, tb_price.harga from tb_barang join tb_price on tb_barang.kode=tb_price.idbrg where tb_barang.kode='" & txtkodeitem.Text & "' and tb_price.idcustomer='" & txtkodecustomer.Text & "' and '" & banyak + Val(txtbanyak.Text) & "' >=tb_price.min order by tb_price.min desc limit 1 "
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
+            If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
+                sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodeitem.Text & "' and tb_price_group.kode_pelanggan='" & txtkodecustomer.Text & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
+                dr.Read()
+                If dr("jumlah_stok") < Val(txtbanyak.Text) Then
+                    MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                    Exit Sub
+                Else
+                    tabel.Rows.Add(txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), txtkodeitem.Text, (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                    Call reload_tabel()
+                End If
+            Else 'kalau ada isi
+                sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodeitem.Text & "' and tb_price_group.kode_pelanggan='" & txtkodecustomer.Text & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
+                dr.Read()
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    If txtkodeitem.Text = GridView1.GetRowCellValue(i, "kode_barang") Then
+                        Dim banyak As Integer
+                        Dim diskon As Double
+                        Dim hargadiskon As Double
+                        banyak = GridView1.GetRowCellValue(i, "banyak")
+                        diskon = GridView1.GetRowCellValue(i, "diskon")
+                        hargadiskon = GridView1.GetRowCellValue(i, "hargadiskon")
+
+
+                        If dr("jumlah_stok") + banyak < Val(txtbanyak.Text) Then
+                            MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                            Exit Sub
+                        Else
+                            GridView1.DeleteRow(GridView1.GetRowHandle(i))
+                            tabel.Rows.Add(txtnama.Text, Val(txtbanyak.Text) + banyak, satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * (Val(txtbanyak.Text) + banyak), txtkodeitem.Text, (Val(dr("harga_jual")) - Val(modal)) * (Val(txtbanyak.Text) + banyak), modal)
+                            Call reload_tabel()
+                            Exit Sub
+                        End If
+                    Else
+                        If dr("jumlah_stok") < Val(txtbanyak.Text) Then
+                            MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                            Exit Sub
+                        Else
+                            tabel.Rows.Add(txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), txtkodeitem.Text, (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                            Call reload_tabel()
+                            Exit Sub
+                        End If
+                    End If
+                Next
+
+            End If
+
 
             'For i As Integer = 0 To GridView1.RowCount - 1
             '    If txtnama.Text = GridView1.GetRowCellValue(i, "Nama") Then
@@ -281,9 +349,6 @@ Public Class fpenjualan
             'End If
         End If
     End Sub
-
-
-
     Sub ambil_total()
         total2 = GridView1.Columns("subtotal").SummaryItem.SummaryValue 'ambil isi summary gridview
         total3 = total2
@@ -603,6 +668,9 @@ Public Class fpenjualan
         '        Call proses()
         '    End If
         'End If
+    End Sub
+    Private Sub txtkodecustomer_TextChanged(sender As Object, e As EventArgs) Handles txtkodecustomer.TextChanged
+        Call cari_pelanggan()
     End Sub
     Sub search()
         'tutup = 1

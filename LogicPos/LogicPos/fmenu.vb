@@ -31,8 +31,8 @@ Public Class fmenu
     Private Sub PembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PembelianToolStripMenuItem.Click
         fpembelian.Show()
     End Sub
-    Private Sub PenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'fpenjualan.Show()
+    Private Sub PenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PenjualanToolStripMenuItem.Click
+        fpenjualan.Show()
         'fmodal.Show()
     End Sub
     Private Sub PembelianToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPembelianToolStripMenuItem.Click
