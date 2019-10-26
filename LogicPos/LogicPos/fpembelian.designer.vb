@@ -83,7 +83,7 @@ Partial Class fpembelian
         Me.cbppn = New System.Windows.Forms.CheckBox()
         Me.cbdiskon = New System.Windows.Forms.CheckBox()
         Me.txtdiskonpersen = New System.Windows.Forms.TextBox()
-        Me.txtppn = New System.Windows.Forms.TextBox()
+        Me.txtppnpersen = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.txttotal = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -99,7 +99,7 @@ Partial Class fpembelian
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtdiskonnominal = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtppnnominal = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -734,14 +734,14 @@ Partial Class fpembelian
         Me.txtdiskonpersen.Size = New System.Drawing.Size(31, 24)
         Me.txtdiskonpersen.TabIndex = 31
         '
-        'txtppn
+        'txtppnpersen
         '
-        Me.txtppn.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txtppn.Location = New System.Drawing.Point(843, 548)
-        Me.txtppn.MaxLength = 2
-        Me.txtppn.Name = "txtppn"
-        Me.txtppn.Size = New System.Drawing.Size(31, 24)
-        Me.txtppn.TabIndex = 32
+        Me.txtppnpersen.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.txtppnpersen.Location = New System.Drawing.Point(843, 548)
+        Me.txtppnpersen.MaxLength = 2
+        Me.txtppnpersen.Name = "txtppnpersen"
+        Me.txtppnpersen.Size = New System.Drawing.Size(31, 24)
+        Me.txtppnpersen.TabIndex = 32
         '
         'Label14
         '
@@ -890,15 +890,15 @@ Partial Class fpembelian
         Me.Label19.TabIndex = 43
         Me.Label19.Text = "%"
         '
-        'TextBox1
+        'txtppnnominal
         '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.TextBox1.Location = New System.Drawing.Point(893, 548)
-        Me.TextBox1.MaxLength = 12
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(148, 24)
-        Me.TextBox1.TabIndex = 44
+        Me.txtppnnominal.Enabled = False
+        Me.txtppnnominal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.txtppnnominal.Location = New System.Drawing.Point(893, 548)
+        Me.txtppnnominal.MaxLength = 12
+        Me.txtppnnominal.Name = "txtppnnominal"
+        Me.txtppnnominal.Size = New System.Drawing.Size(148, 24)
+        Me.txtppnnominal.TabIndex = 44
         '
         'fpembelian
         '
@@ -906,14 +906,14 @@ Partial Class fpembelian
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1053, 716)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtppnnominal)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.txtdiskonnominal)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.txttotal)
         Me.Controls.Add(Me.Label14)
-        Me.Controls.Add(Me.txtppn)
+        Me.Controls.Add(Me.txtppnpersen)
         Me.Controls.Add(Me.txtdiskonpersen)
         Me.Controls.Add(Me.cbdiskon)
         Me.Controls.Add(Me.cbppn)
@@ -996,7 +996,7 @@ Partial Class fpembelian
     Friend WithEvents cbppn As CheckBox
     Friend WithEvents cbdiskon As CheckBox
     Friend WithEvents txtdiskonpersen As TextBox
-    Friend WithEvents txtppn As TextBox
+    Friend WithEvents txtppnpersen As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents txttotal As TextBox
     Friend WithEvents cbprinted As CheckBox
@@ -1023,5 +1023,5 @@ Partial Class fpembelian
     Friend WithEvents Label17 As Label
     Friend WithEvents txtdiskonnominal As TextBox
     Friend WithEvents Label19 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtppnnominal As TextBox
 End Class

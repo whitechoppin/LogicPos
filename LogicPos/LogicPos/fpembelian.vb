@@ -3,8 +3,7 @@ Imports DevExpress.Utils
 
 Public Class fpembelian
     Dim tabel As DataTable
-    Dim harga, modal, ongkir, ppn, diskonpersen, diskonjumlah As Double
-    Dim total2 As Double
+    Dim harga, modal, ongkir, ppn, diskonpersen, diskonnominal, ppnpersen, ppnnominal, total1, total2, grandtotal As Double
     Dim satuan, jenis, supplier As String
     Public isi As String
     Private Sub fpembelian_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -113,8 +112,10 @@ Public Class fpembelian
         txtdiskonpersen.Text = 0
         txtdiskonnominal.Clear()
         txtdiskonnominal.Text = 0
-        txtppn.Clear()
-        txtppn.Text = 0
+        txtppnpersen.Clear()
+        txtppnpersen.Text = 0
+        txtppnnominal.Clear()
+        txtppnnominal.Text = 0
         txtongkir.Clear()
         txtongkir.Text = 0
         txttotal.Clear()
@@ -129,7 +130,8 @@ Public Class fpembelian
         txtnonota.Text = autonumber()
 
         txtongkir.Enabled = False
-        txtppn.Enabled = False
+        txtppnpersen.Enabled = False
+        txtppnnominal.Enabled = False
         txtdiskonpersen.Enabled = False
         txtdiskonnominal.Enabled = False
 
@@ -431,7 +433,7 @@ Public Class fpembelian
         Return pesan
     End Function
     Sub simpan()
-        total2 = GridView1.Columns("subtotal").SummaryItem.SummaryValue 'ambil isi summary gridview
+        total1 = GridView1.Columns("subtotal").SummaryItem.SummaryValue 'ambil isi summary gridview
         sql = "SELECT * FROM tb_supplier  WHERE '" & cmbsupplier.Text & "' =  kode_supplier"
         'Strings.Right()
         cmmd = New OdbcCommand(sql, cnn)
@@ -450,7 +452,7 @@ Public Class fpembelian
                     cnn.Open()
                     dr = cmmd.ExecuteReader()
                 Next
-                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,kode_gudang,kode_user,tgl_pembelian,tgl_jatuhtempo_pembelian,lunas_pembelian,void_pembelian,print_pembelian,posted_pembelian,keterangan_pembelian,diskon_pembelian,pajak_pembelian,ongkir_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "','" & cmbsupplier.Text & "','" & cmbgudang.Text & "','" & cmbsales.Text & "', NOW() ,'" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total2 & "','" & total2 & "','" & total2 & "','" & total2 & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,kode_gudang,kode_user,tgl_pembelian,tgl_jatuhtempo_pembelian,lunas_pembelian,void_pembelian,print_pembelian,posted_pembelian,keterangan_pembelian,diskon_pembelian,pajak_pembelian,ongkir_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "','" & cmbsupplier.Text & "','" & cmbgudang.Text & "','" & cmbsales.Text & "', NOW() ,'" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total1 & "','" & total1 & "','" & total1 & "','" & total1 & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
@@ -608,7 +610,7 @@ Public Class fpembelian
         Call carigudang()
     End Sub
 
-    Private Sub txtppn_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtppn.KeyPress
+    Private Sub txtppn_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtppnpersen.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
 
@@ -620,22 +622,49 @@ Public Class fpembelian
         e.Handled = ValidAngka(e)
     End Sub
 
+    Private Sub txtppnnominal_TextChanged(sender As Object, e As EventArgs) Handles txtppnnominal.TextChanged
+        If txtppnnominal.Text = "" Then
+            txtppnnominal.Text = 0
+        Else
+            ppnnominal = txtppnnominal.Text
+            txtppnnominal.Text = Format(ppnnominal, "##,##0")
+            txtppnnominal.SelectionStart = Len(txtppnnominal.Text)
+        End If
+    End Sub
+
+    Private Sub txttotal_TextChanged(sender As Object, e As EventArgs) Handles txttotal.TextChanged
+        If txttotal.Text = "" Then
+            txttotal.Text = 0
+        Else
+            txttotal.Text = Format(grandtotal, "##,##0")
+            txttotal.SelectionStart = Len(txttotal.Text)
+        End If
+    End Sub
+
     Private Sub txtdiskonpersen_TextChanged(sender As Object, e As EventArgs) Handles txtdiskonpersen.TextChanged
         If txtdiskonpersen.Text = "" Then
             txtdiskonpersen.Text = 0
+        End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
+    Private Sub txtdiskonnominal_TextChanged(sender As Object, e As EventArgs) Handles txtdiskonnominal.TextChanged
+        If txtdiskonnominal.Text = "" Then
+            txtdiskonnominal.Text = 0
         Else
-            diskonpersen = txtdiskonpersen.Text
-            txtdiskonpersen.Text = Format(diskonpersen, "##,##0")
-            txtdiskonpersen.SelectionStart = Len(txtdiskonpersen.Text)
+            diskonnominal = txtdiskonnominal.Text
+            txtdiskonnominal.Text = Format(diskonnominal, "##,##0")
+            txtdiskonnominal.SelectionStart = Len(txtdiskonnominal.Text)
         End If
     End Sub
 
     Private Sub cbppn_CheckedChanged(sender As Object, e As EventArgs) Handles cbppn.CheckedChanged
         If cbppn.Checked = True Then
-            txtppn.Enabled = True
+            txtppnpersen.Enabled = True
         Else
-            txtppn.Enabled = False
+            txtppnpersen.Enabled = False
         End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
 
     Private Sub GridView1_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles GridView1.RowUpdated
@@ -648,22 +677,18 @@ Public Class fpembelian
 
     Private Sub cbdiskon_CheckedChanged(sender As Object, e As EventArgs) Handles cbdiskon.CheckedChanged
         If cbdiskon.Checked = True Then
-            txtdiskonnominal.Enabled = True
             txtdiskonpersen.Enabled = True
         Else
-            txtdiskonnominal.Enabled = False
             txtdiskonpersen.Enabled = False
         End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
 
-    Private Sub txtppn_TextChanged(sender As Object, e As EventArgs) Handles txtppn.TextChanged
-        If txtppn.Text = "" Then
-            txtppn.Text = 0
-        Else
-            ppn = txtppn.Text
-            txtppn.Text = Format(ppn, "##,##0")
-            txtppn.SelectionStart = Len(txtppn.Text)
+    Private Sub txtppn_TextChanged(sender As Object, e As EventArgs) Handles txtppnpersen.TextChanged
+        If txtppnpersen.Text = "" Then
+            txtppnpersen.Text = 0
         End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
 
     Private Sub txtongkir_TextChanged(sender As Object, e As EventArgs) Handles txtongkir.TextChanged
@@ -674,6 +699,7 @@ Public Class fpembelian
             txtongkir.Text = Format(ongkir, "##,##0")
             txtongkir.SelectionStart = Len(txtongkir.Text)
         End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
     Private Sub btncari_Click(sender As Object, e As EventArgs) Handles btncari.Click
         tutup = 2
@@ -692,6 +718,29 @@ Public Class fpembelian
         End If
     End Sub
     Private Sub UpdateTotalText()
-        txttotal.Text = GridView1.Columns("subtotal").SummaryText
+        total2 = GridView1.Columns("subtotal").SummaryItem.SummaryValue
+        grandtotal = total2
+        If cbdiskon.Checked = True And cbppn.Checked = False And cbongkir.Checked = False Then
+            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
+            grandtotal = total2 - (total2 * txtdiskonpersen.Text / 100)
+        ElseIf cbppn.Checked = True And cbdiskon.Checked = False And cbongkir.Checked = False Then
+            txtppnnominal.Text = total2 * txtppnpersen.Text / 100
+            grandtotal = total2 + (total2 * txtppnpersen.Text / 100)
+        ElseIf cbppn.Checked = True And cbdiskon.Checked = True And cbongkir.Checked = False Then
+            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
+            txtppnnominal.Text = (total2 - txtdiskonnominal.Text) * txtppnpersen.Text / 100
+            grandtotal = total2 - txtdiskonnominal.Text + txtppnnominal.Text
+        ElseIf cbdiskon.Checked = True And cbppn.Checked = False And cbongkir.Checked = True Then
+            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
+            grandtotal = total2 - (total2 * txtdiskonpersen.Text / 100) + txtongkir.Text
+        ElseIf cbppn.Checked = True And cbdiskon.Checked = False And cbongkir.Checked = True Then
+            txtppnnominal.Text = total2 * txtppnpersen.Text / 100
+            grandtotal = total2 + (total2 * txtppnpersen.Text / 100) + txtongkir.Text
+        ElseIf cbppn.Checked = True And cbdiskon.Checked = True And cbongkir.Checked = True Then
+            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
+            txtppnnominal.Text = (total2 - txtdiskonnominal.Text) * txtppnpersen.Text / 100
+            grandtotal = total2 - txtdiskonnominal.Text + txtppnnominal.Text + txtongkir.Text
+        End If
+        txttotal.Text = grandtotal
     End Sub
 End Class

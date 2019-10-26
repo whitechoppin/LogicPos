@@ -22,6 +22,7 @@ Partial Class fmenu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fmenu))
         Me.MenuUtama = New System.Windows.Forms.MenuStrip()
         Me.MasterMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -65,7 +66,9 @@ Partial Class fmenu
         Me.statususer = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusjam = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Timer = New System.Windows.Forms.Timer()
+        Me.Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TokoSejatiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -152,43 +155,43 @@ Partial Class fmenu
         'PembelianToolStripMenuItem
         '
         Me.PembelianToolStripMenuItem.Name = "PembelianToolStripMenuItem"
-        Me.PembelianToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.PembelianToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.PembelianToolStripMenuItem.Text = "&Pembelian"
         '
         'PenjualanToolStripMenuItem
         '
         Me.PenjualanToolStripMenuItem.Name = "PenjualanToolStripMenuItem"
-        Me.PenjualanToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.PenjualanToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.PenjualanToolStripMenuItem.Text = "&Penjualan"
         '
         'ReturPembelianToolStripMenuItem
         '
         Me.ReturPembelianToolStripMenuItem.Name = "ReturPembelianToolStripMenuItem"
-        Me.ReturPembelianToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
-        Me.ReturPembelianToolStripMenuItem.Text = "&ReturPembelian"
+        Me.ReturPembelianToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.ReturPembelianToolStripMenuItem.Text = "&Retur Pembelian"
         '
         'ReturPenjualanToolStripMenuItem
         '
         Me.ReturPenjualanToolStripMenuItem.Name = "ReturPenjualanToolStripMenuItem"
-        Me.ReturPenjualanToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.ReturPenjualanToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.ReturPenjualanToolStripMenuItem.Text = "&Retur Penjualan"
         '
         'BarangMasukToolStripMenuItem
         '
         Me.BarangMasukToolStripMenuItem.Name = "BarangMasukToolStripMenuItem"
-        Me.BarangMasukToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.BarangMasukToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.BarangMasukToolStripMenuItem.Text = "Barang Masuk"
         '
         'BarangKeluarToolStripMenuItem
         '
         Me.BarangKeluarToolStripMenuItem.Name = "BarangKeluarToolStripMenuItem"
-        Me.BarangKeluarToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.BarangKeluarToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.BarangKeluarToolStripMenuItem.Text = "Barang Keluar"
         '
         'TransferBarangToolStripMenuItem
         '
         Me.TransferBarangToolStripMenuItem.Name = "TransferBarangToolStripMenuItem"
-        Me.TransferBarangToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.TransferBarangToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.TransferBarangToolStripMenuItem.Text = "Transfer Barang"
         '
         'AdministrasiMenu
@@ -299,11 +302,12 @@ Partial Class fmenu
         'PrinterToolStripMenuItem
         '
         Me.PrinterToolStripMenuItem.Name = "PrinterToolStripMenuItem"
-        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
+        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PrinterToolStripMenuItem.Text = "Printer"
         '
         'AboutMenu
         '
+        Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogicHouseToolStripMenuItem, Me.TokoSejatiToolStripMenuItem})
         Me.AboutMenu.Name = "AboutMenu"
         Me.AboutMenu.Size = New System.Drawing.Size(52, 20)
         Me.AboutMenu.Text = "Abou&t"
@@ -344,6 +348,18 @@ Partial Class fmenu
         'Timer
         '
         Me.Timer.Interval = 1000
+        '
+        'LogicHouseToolStripMenuItem
+        '
+        Me.LogicHouseToolStripMenuItem.Name = "LogicHouseToolStripMenuItem"
+        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogicHouseToolStripMenuItem.Text = "Logic House"
+        '
+        'TokoSejatiToolStripMenuItem
+        '
+        Me.TokoSejatiToolStripMenuItem.Name = "TokoSejatiToolStripMenuItem"
+        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TokoSejatiToolStripMenuItem.Text = "Toko Sejati"
         '
         'fmenu
         '
@@ -411,4 +427,6 @@ Partial Class fmenu
     Friend WithEvents LTransferKasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LTransferBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutMenu As ToolStripMenuItem
+    Friend WithEvents LogicHouseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TokoSejatiToolStripMenuItem As ToolStripMenuItem
 End Class
