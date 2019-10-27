@@ -452,7 +452,7 @@ Public Class fpembelian
                     cnn.Open()
                     dr = cmmd.ExecuteReader()
                 Next
-                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,kode_gudang,kode_user,tgl_pembelian,tgl_jatuhtempo_pembelian,lunas_pembelian,void_pembelian,print_pembelian,posted_pembelian,keterangan_pembelian,diskon_pembelian,pajak_pembelian,ongkir_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "','" & cmbsupplier.Text & "','" & cmbgudang.Text & "','" & cmbsales.Text & "', NOW() ,'" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total1 & "','" & total1 & "','" & total1 & "','" & total1 & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,kode_gudang,kode_user,tgl_pembelian,tgl_jatuhtempo_pembelian,lunas_pembelian,void_pembelian,print_pembelian,posted_pembelian,keterangan_pembelian,diskon_pembelian,pajak_pembelian,ongkir_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "','" & cmbsupplier.Text & "','" & cmbgudang.Text & "','" & cmbsales.Text & "', NOW() ,'" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & txtdiskonnominal.Text & "','" & txtppnnominal.Text & "','" & txtongkir.Text & "','" & grandtotal & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
@@ -711,6 +711,7 @@ Public Class fpembelian
         Else
             txtongkir.Enabled = False
         End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
     Private Sub txtbanyak_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtbanyak.KeyPress
         If Not (Char.IsDigit(e.KeyChar)) And e.KeyChar <> ChrW(Keys.Back) Then
@@ -740,6 +741,8 @@ Public Class fpembelian
             txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
             txtppnnominal.Text = (total2 - txtdiskonnominal.Text) * txtppnpersen.Text / 100
             grandtotal = total2 - txtdiskonnominal.Text + txtppnnominal.Text + txtongkir.Text
+        ElseIf cbppn.Checked = False And cbdiskon.Checked = False And cbongkir.Checked = True Then
+            grandtotal = total2 + txtongkir.Text
         End If
         txttotal.Text = grandtotal
     End Sub
