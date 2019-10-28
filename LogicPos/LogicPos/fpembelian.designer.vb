@@ -275,7 +275,7 @@ Partial Class fpembelian
         'btnsimpan
         '
         Me.btnsimpan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnsimpan.Location = New System.Drawing.Point(119, 23)
+        Me.btnsimpan.Location = New System.Drawing.Point(115, 23)
         Me.btnsimpan.Name = "btnsimpan"
         Me.btnsimpan.Size = New System.Drawing.Size(93, 35)
         Me.btnsimpan.TabIndex = 2
@@ -438,7 +438,7 @@ Partial Class fpembelian
         'txtinformasi
         '
         Me.txtinformasi.Enabled = False
-        Me.txtinformasi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtinformasi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtinformasi.Location = New System.Drawing.Point(11, 637)
         Me.txtinformasi.Name = "txtinformasi"
         Me.txtinformasi.Size = New System.Drawing.Size(599, 71)
@@ -765,7 +765,7 @@ Partial Class fpembelian
         '
         'btnbaru
         '
-        Me.btnbaru.Location = New System.Drawing.Point(20, 23)
+        Me.btnbaru.Location = New System.Drawing.Point(16, 23)
         Me.btnbaru.Name = "btnbaru"
         Me.btnbaru.Size = New System.Drawing.Size(93, 35)
         Me.btnbaru.TabIndex = 1
@@ -774,7 +774,7 @@ Partial Class fpembelian
         '
         'btnprint
         '
-        Me.btnprint.Location = New System.Drawing.Point(218, 23)
+        Me.btnprint.Location = New System.Drawing.Point(214, 23)
         Me.btnprint.Name = "btnprint"
         Me.btnprint.Size = New System.Drawing.Size(92, 35)
         Me.btnprint.TabIndex = 3
@@ -783,7 +783,7 @@ Partial Class fpembelian
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(316, 23)
+        Me.btnbatal.Location = New System.Drawing.Point(312, 23)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(93, 35)
         Me.btnbatal.TabIndex = 4
@@ -811,7 +811,7 @@ Partial Class fpembelian
         Me.GroupBox5.Controls.Add(Me.btnnext)
         Me.GroupBox5.Controls.Add(Me.txtgopembelian)
         Me.GroupBox5.Controls.Add(Me.btngo)
-        Me.GroupBox5.Location = New System.Drawing.Point(423, 10)
+        Me.GroupBox5.Location = New System.Drawing.Point(417, 10)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(339, 52)
         Me.GroupBox5.TabIndex = 37
