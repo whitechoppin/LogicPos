@@ -89,6 +89,7 @@ Public Class fpenjualan
         metode = "CASH"
         'Call awal()
         'Call autonumber()
+        lbltotal.Text = 0
         rbfaktur.Checked = True
         RichTextBox1.Enabled = False
         txtharga.Enabled = False
@@ -149,8 +150,9 @@ Public Class fpenjualan
         GridColumn9.FieldName = "kode_barang"
         GridColumn9.Visible = False
         GridColumn10.FieldName = "laba"
-        GridColumn10.Visible = False
+        'GridColumn10.Visible = False
         GridColumn11.FieldName = "modal_barang"
+        'GridColumn11.Visible = False
 
     End Sub
     Function autonumber()
@@ -354,6 +356,7 @@ Public Class fpenjualan
         total3 = total2
         txttotal.Text = Format(total2, "##,##0")
         txttotal.SelectionStart = Len(txttotal.Text)
+        lbltotal.Text = Format(total2, "##,##0")
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         Call tambah()
@@ -368,40 +371,40 @@ Public Class fpenjualan
         total1 = total1 - diskon
         txttotal.Text = Format(total1, "##,##0")
         total2 = total1
-
+        lbltotal.Text = Format(total1, "##,##0")
         'kembali = bayar - total2
         'txtkembali.Text = Format(kembali, "##,##0")
     End Sub
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
-        If e.Column.FieldName = "Banyak" Then
+        If e.Column.FieldName = "banyak" Then
             Try
-                GridView1.SetRowCellValue(e.RowHandle, "Subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "hargadiskon"))
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "hargadiskon"))
             Catch ex As Exception
                 'error jika nulai qty=blank
-                GridView1.SetRowCellValue(e.RowHandle, "Subtotal", 0)
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
             End Try
         End If
 
         If e.Column.FieldName = "diskon" Then
 
             Try
-                GridView1.SetRowCellValue(e.RowHandle, "hargadiskon", GridView1.GetRowCellValue(e.RowHandle, "harga") - e.Value)
-                GridView1.SetRowCellValue(e.RowHandle, "Subtotal", GridView1.GetRowCellValue(e.RowHandle, "Banyak") * GridView1.GetRowCellValue(e.RowHandle, "hargadiskon"))
-                GridView1.SetRowCellValue(e.RowHandle, "untung", (GridView1.GetRowCellValue(e.RowHandle, "hargadiskon") - GridView1.GetRowCellValue(e.RowHandle, "modal")) * GridView1.GetRowCellValue(e.RowHandle, "Banyak"))
+                GridView1.SetRowCellValue(e.RowHandle, "hargadiskon", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * GridView1.GetRowCellValue(e.RowHandle, "hargadiskon"))
+                GridView1.SetRowCellValue(e.RowHandle, "laba", (GridView1.GetRowCellValue(e.RowHandle, "hargadiskon") - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
             Catch ex As Exception
                 'error jika nulai qty=blank
-                GridView1.SetRowCellValue(e.RowHandle, "Subtotal", 0)
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
             End Try
         End If
 
         If e.Column.FieldName = "hargadiskon" Then
             Try
-                GridView1.SetRowCellValue(e.RowHandle, "diskon", GridView1.GetRowCellValue(e.RowHandle, "harga") - e.Value)
-                GridView1.SetRowCellValue(e.RowHandle, "Subtotal", GridView1.GetRowCellValue(e.RowHandle, "Banyak") * (GridView1.GetRowCellValue(e.RowHandle, "harga") - GridView1.GetRowCellValue(e.RowHandle, "diskon")))
-                GridView1.SetRowCellValue(e.RowHandle, "untung", (e.Value - GridView1.GetRowCellValue(e.RowHandle, "modal")) * GridView1.GetRowCellValue(e.RowHandle, "Banyak"))
+                GridView1.SetRowCellValue(e.RowHandle, "diskon", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banya") * (GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - GridView1.GetRowCellValue(e.RowHandle, "diskon")))
+                GridView1.SetRowCellValue(e.RowHandle, "laba", (e.Value - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
             Catch ex As Exception
                 'error jika nulai qty=blank
-                GridView1.SetRowCellValue(e.RowHandle, "Subtotal", 0)
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
             End Try
         End If
         Call hitung()
