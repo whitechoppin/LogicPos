@@ -112,6 +112,12 @@
     <Compile Include="fcarisupp.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fcariuser.Designer.vb">
+      <DependentUpon>fcariuser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcariuser.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fcustomer.designer.vb">
       <DependentUpon>fcustomer.vb</DependentUpon>
     </Compile>
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fsupplier.resx">
       <DependentUpon>fsupplier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fuser.resx">
+      <DependentUpon>fuser.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">

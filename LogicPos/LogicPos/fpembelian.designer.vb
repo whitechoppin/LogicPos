@@ -258,6 +258,7 @@ Partial Class fpembelian
         Me.cmbsupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbsupplier.FormattingEnabled = True
         Me.cmbsupplier.Location = New System.Drawing.Point(122, 59)
+        Me.cmbsupplier.MaxLength = 99
         Me.cmbsupplier.Name = "cmbsupplier"
         Me.cmbsupplier.Size = New System.Drawing.Size(130, 26)
         Me.cmbsupplier.TabIndex = 10
@@ -517,6 +518,7 @@ Partial Class fpembelian
         '
         Me.cmbsales.FormattingEnabled = True
         Me.cmbsales.Location = New System.Drawing.Point(414, 30)
+        Me.cmbsales.MaxLength = 99
         Me.cmbsales.Name = "cmbsales"
         Me.cmbsales.Size = New System.Drawing.Size(162, 26)
         Me.cmbsales.TabIndex = 13
@@ -652,6 +654,7 @@ Partial Class fpembelian
         Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
         Me.cmbgudang.FormattingEnabled = True
         Me.cmbgudang.Location = New System.Drawing.Point(414, 59)
+        Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
         Me.cmbgudang.Size = New System.Drawing.Size(130, 26)
         Me.cmbgudang.TabIndex = 14
