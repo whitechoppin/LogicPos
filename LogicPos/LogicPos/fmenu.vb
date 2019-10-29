@@ -54,7 +54,7 @@ Public Class fmenu
         'fminstok.Show()
     End Sub
     Private Sub ManageUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataUserToolStripMenuItem.Click
-        'fuser.Show()
+        fuser.Show()
     End Sub
     Private Sub fmenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Application.Exit()

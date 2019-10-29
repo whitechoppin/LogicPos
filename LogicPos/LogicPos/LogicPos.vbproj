@@ -219,6 +219,9 @@
     <EmbeddedResource Include="fcarisupp.resx">
       <DependentUpon>fcarisupp.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fcariuser.resx">
+      <DependentUpon>fcariuser.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fcustomer.resx">
       <DependentUpon>fcustomer.vb</DependentUpon>
     </EmbeddedResource>
