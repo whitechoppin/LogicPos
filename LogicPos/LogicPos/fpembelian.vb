@@ -17,7 +17,7 @@ Public Class fpembelian
         Call koneksii()
         'mulai
         kodepembelian = currentnumber()
-        Call inisisalisasi(kodepembelian)
+        Call inisialisasi(kodepembelian)
 
         With GridView1
             '.OptionsView.ColumnAutoWidth = False ' agar muncul scrol bar
@@ -85,7 +85,7 @@ Public Class fpembelian
         Return pesan
     End Function
 
-    Function prevnumber(previousnumber As String)
+    Private Sub prevnumber(previousnumber As String)
         'Dim sekarang As Date
         'Dim counternilai As Integer
 
@@ -93,46 +93,43 @@ Public Class fpembelian
         'counternilai = previousnumber.Substring(8, 3)
 
         Call koneksii()
-        sql = "SELECT kode_pembelian FROM tb_pembelian WHERE date_created < (SELECT date_created FROM tb_pembelian WHERE kode_pembelian = " & previousnumber & ")ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT kode_pembelian FROM tb_pembelian WHERE date_created < (SELECT date_created FROM tb_pembelian WHERE kode_pembelian = '" + previousnumber + "')ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 dr.Read()
-                Return dr.Item(0).ToString
+                Call inisialisasi(dr.Item(0).ToString)
             Else
-                Return previousnumber
+                Call inisialisasi(previousnumber)
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
             cnn.Close()
         End Try
-        Return pesan
-    End Function
+    End Sub
 
-    Function nextnumber(nextingnumber As String)
+    Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT kode_pembelian FROM tb_pembelian ORDER BY kode_pembelian DESC LIMIT 1;"
+        sql = "SELECT kode_pembelian FROM tb_pembelian WHERE date_created > (SELECT date_created FROM tb_pembelian WHERE kode_pembelian = '" + nextingnumber + "')ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 dr.Read()
-                Return dr.Item(0).ToString
+                Call inisialisasi(dr.Item(0).ToString)
             Else
-                Return ""
+                Call inisialisasi(nextingnumber)
             End If
-
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
             cnn.Close()
         End Try
-        Return pesan
-    End Function
+    End Sub
 
     Sub previewpembelian(lihat As String)
         sql = "Select * from tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
@@ -180,7 +177,7 @@ Public Class fpembelian
         GridColumn8.Width = 55
     End Sub
 
-    Sub inisisalisasi(nomorkode As String)
+    Sub inisialisasi(nomorkode As String)
         'bersihkan dan set default value
         'button tools
         btnbaru.Enabled = True
@@ -918,7 +915,7 @@ Public Class fpembelian
                 Next
                 MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
 
-                Call inisisalisasi(kodepembelian)
+                Call inisialisasi(kodepembelian)
             End If
         End If
     End Sub
@@ -931,7 +928,7 @@ Public Class fpembelian
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
-        Call inisisalisasi(kodepembelian)
+        Call inisialisasi(kodepembelian)
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
@@ -951,7 +948,7 @@ Public Class fpembelian
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
-                Call inisisalisasi(txtgopembelian.Text)
+                Call inisialisasi(txtgopembelian.Text)
             Else
                 MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -959,7 +956,7 @@ Public Class fpembelian
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-
+        Call nextnumber(txtnonota.Text)
     End Sub
 
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
