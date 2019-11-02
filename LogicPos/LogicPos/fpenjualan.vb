@@ -22,7 +22,6 @@ Public Class fpenjualan
     Dim penggunaan, modal As Double
     Private Sub fpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Me.WindowState = FormWindowState.Maximized
         Call koneksii()
         'Call printer()
         'Call cek_kas()

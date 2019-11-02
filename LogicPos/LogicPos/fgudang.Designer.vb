@@ -155,6 +155,7 @@ Partial Class fgudang
         '
         'txtkode
         '
+        Me.txtkode.Enabled = False
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkode.Location = New System.Drawing.Point(123, 108)
         Me.txtkode.Name = "txtkode"
