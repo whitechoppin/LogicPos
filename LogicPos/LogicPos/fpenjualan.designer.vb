@@ -49,6 +49,7 @@ Partial Class fpenjualan
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.txtkembali = New System.Windows.Forms.TextBox()
         Me.txtbayar = New System.Windows.Forms.TextBox()
@@ -70,7 +71,6 @@ Partial Class fpenjualan
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.lbltotal = New System.Windows.Forms.Label()
         Me.txtkodecustomer = New System.Windows.Forms.TextBox()
-        Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,9 +83,10 @@ Partial Class fpenjualan
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(12, 13)
+        Me.Label6.Location = New System.Drawing.Point(16, 16)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(113, 18)
+        Me.Label6.Size = New System.Drawing.Size(141, 24)
         Me.Label6.TabIndex = 19
         Me.Label6.Text = "Kode Customer"
         '
@@ -94,9 +95,10 @@ Partial Class fpenjualan
         Me.btncaribarang.BackgroundImage = CType(resources.GetObject("btncaribarang.BackgroundImage"), System.Drawing.Image)
         Me.btncaribarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncaribarang.ImageIndex = 0
-        Me.btncaribarang.Location = New System.Drawing.Point(188, 37)
+        Me.btncaribarang.Location = New System.Drawing.Point(251, 46)
+        Me.btncaribarang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btncaribarang.Name = "btncaribarang"
-        Me.btncaribarang.Size = New System.Drawing.Size(29, 26)
+        Me.btncaribarang.Size = New System.Drawing.Size(39, 32)
         Me.btncaribarang.TabIndex = 5
         Me.btncaribarang.UseVisualStyleBackColor = True
         '
@@ -105,53 +107,59 @@ Partial Class fpenjualan
         Me.btntambah.BackgroundImage = CType(resources.GetObject("btntambah.BackgroundImage"), System.Drawing.Image)
         Me.btntambah.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btntambah.ImageIndex = 0
-        Me.btntambah.Location = New System.Drawing.Point(870, 16)
+        Me.btntambah.Location = New System.Drawing.Point(1160, 20)
+        Me.btntambah.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(52, 47)
+        Me.btntambah.Size = New System.Drawing.Size(69, 58)
         Me.btntambah.TabIndex = 5
         Me.btntambah.UseVisualStyleBackColor = True
         '
         'txtbanyak
         '
         Me.txtbanyak.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbanyak.Location = New System.Drawing.Point(557, 37)
+        Me.txtbanyak.Location = New System.Drawing.Point(743, 46)
+        Me.txtbanyak.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtbanyak.Name = "txtbanyak"
-        Me.txtbanyak.Size = New System.Drawing.Size(70, 24)
+        Me.txtbanyak.Size = New System.Drawing.Size(92, 29)
         Me.txtbanyak.TabIndex = 9
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(554, 16)
+        Me.Label3.Location = New System.Drawing.Point(739, 20)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(57, 18)
+        Me.Label3.Size = New System.Drawing.Size(71, 24)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Banyak"
         '
         'txtharga
         '
         Me.txtharga.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtharga.Location = New System.Drawing.Point(666, 37)
+        Me.txtharga.Location = New System.Drawing.Point(888, 46)
+        Me.txtharga.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtharga.Name = "txtharga"
-        Me.txtharga.Size = New System.Drawing.Size(144, 24)
+        Me.txtharga.Size = New System.Drawing.Size(191, 29)
         Me.txtharga.TabIndex = 10
         '
         'txtnama
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(223, 37)
+        Me.txtnama.Location = New System.Drawing.Point(297, 46)
+        Me.txtnama.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(328, 24)
+        Me.txtnama.Size = New System.Drawing.Size(436, 29)
         Me.txtnama.TabIndex = 10
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(633, 43)
+        Me.Label9.Location = New System.Drawing.Point(844, 53)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(27, 18)
+        Me.Label9.Size = New System.Drawing.Size(34, 24)
         Me.Label9.TabIndex = 6
         Me.Label9.Text = "Rp"
         '
@@ -159,9 +167,10 @@ Partial Class fpenjualan
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(663, 16)
+        Me.Label8.Location = New System.Drawing.Point(884, 20)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(98, 18)
+        Me.Label8.Size = New System.Drawing.Size(124, 24)
         Me.Label8.TabIndex = 6
         Me.Label8.Text = "Harga Satuan"
         '
@@ -169,9 +178,10 @@ Partial Class fpenjualan
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(220, 16)
+        Me.Label5.Location = New System.Drawing.Point(293, 20)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(80, 18)
+        Me.Label5.Size = New System.Drawing.Size(100, 24)
         Me.Label5.TabIndex = 6
         Me.Label5.Text = "Nama Item"
         '
@@ -188,36 +198,42 @@ Partial Class fpenjualan
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.txtkodeitem)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Location = New System.Drawing.Point(11, 107)
+        Me.GroupBox1.Location = New System.Drawing.Point(15, 132)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(928, 73)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(1237, 90)
         Me.GroupBox1.TabIndex = 20
         Me.GroupBox1.TabStop = False
         '
         'txtkodeitem
         '
         Me.txtkodeitem.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkodeitem.Location = New System.Drawing.Point(14, 37)
+        Me.txtkodeitem.Location = New System.Drawing.Point(19, 46)
+        Me.txtkodeitem.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtkodeitem.Name = "txtkodeitem"
-        Me.txtkodeitem.Size = New System.Drawing.Size(168, 24)
+        Me.txtkodeitem.Size = New System.Drawing.Size(223, 29)
         Me.txtkodeitem.TabIndex = 11
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(11, 16)
+        Me.Label2.Location = New System.Drawing.Point(15, 20)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(75, 18)
+        Me.Label2.Size = New System.Drawing.Size(95, 24)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Kode Item"
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 186)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Location = New System.Drawing.Point(16, 229)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(928, 234)
+        Me.GridControl1.Size = New System.Drawing.Size(1237, 288)
         Me.GridControl1.TabIndex = 32
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -307,12 +323,19 @@ Partial Class fpenjualan
         Me.GridColumn11.Visible = True
         Me.GridColumn11.VisibleIndex = 10
         '
+        'GridColumn12
+        '
+        Me.GridColumn12.Name = "GridColumn12"
+        Me.GridColumn12.Visible = True
+        Me.GridColumn12.VisibleIndex = 11
+        '
         'RichTextBox1
         '
         Me.RichTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.Location = New System.Drawing.Point(12, 429)
+        Me.RichTextBox1.Location = New System.Drawing.Point(16, 528)
+        Me.RichTextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(323, 135)
+        Me.RichTextBox1.Size = New System.Drawing.Size(530, 211)
         Me.RichTextBox1.TabIndex = 33
         Me.RichTextBox1.Text = "Fungsi Tombol" & Global.Microsoft.VisualBasic.ChrW(10) & "Kode Item" & Global.Microsoft.VisualBasic.ChrW(10) & "- F2 untuk membatalkan Transaksi" & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(10) & "Bayar" & Global.Microsoft.VisualBasic.ChrW(10) & "- F9  untuk mengi" &
     "si diskon" & Global.Microsoft.VisualBasic.ChrW(10) & "- F10 untuk mengubah jenis pembayaran"
@@ -320,42 +343,47 @@ Partial Class fpenjualan
         'txtkembali
         '
         Me.txtkembali.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkembali.Location = New System.Drawing.Point(765, 515)
+        Me.txtkembali.Location = New System.Drawing.Point(1020, 634)
+        Me.txtkembali.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtkembali.Name = "txtkembali"
-        Me.txtkembali.Size = New System.Drawing.Size(174, 24)
+        Me.txtkembali.Size = New System.Drawing.Size(231, 29)
         Me.txtkembali.TabIndex = 38
         '
         'txtbayar
         '
         Me.txtbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbayar.Location = New System.Drawing.Point(766, 485)
+        Me.txtbayar.Location = New System.Drawing.Point(1021, 597)
+        Me.txtbayar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtbayar.Name = "txtbayar"
-        Me.txtbayar.Size = New System.Drawing.Size(174, 24)
+        Me.txtbayar.Size = New System.Drawing.Size(231, 29)
         Me.txtbayar.TabIndex = 39
         '
         'txttotal
         '
         Me.txttotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttotal.Location = New System.Drawing.Point(765, 455)
+        Me.txttotal.Location = New System.Drawing.Point(1020, 560)
+        Me.txttotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txttotal.Name = "txttotal"
-        Me.txttotal.Size = New System.Drawing.Size(174, 24)
+        Me.txttotal.Size = New System.Drawing.Size(231, 29)
         Me.txttotal.TabIndex = 40
         '
         'txtdiskon
         '
         Me.txtdiskon.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtdiskon.Location = New System.Drawing.Point(765, 425)
+        Me.txtdiskon.Location = New System.Drawing.Point(1020, 523)
+        Me.txtdiskon.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtdiskon.Name = "txtdiskon"
-        Me.txtdiskon.Size = New System.Drawing.Size(174, 24)
+        Me.txtdiskon.Size = New System.Drawing.Size(231, 29)
         Me.txtdiskon.TabIndex = 41
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(675, 518)
+        Me.Label10.Location = New System.Drawing.Point(900, 638)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(88, 18)
+        Me.Label10.Size = New System.Drawing.Size(112, 24)
         Me.Label10.TabIndex = 34
         Me.Label10.Text = "Kembali Rp."
         '
@@ -363,9 +391,10 @@ Partial Class fpenjualan
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(690, 488)
+        Me.Label1.Location = New System.Drawing.Point(920, 601)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(73, 18)
+        Me.Label1.Size = New System.Drawing.Size(91, 24)
         Me.Label1.TabIndex = 35
         Me.Label1.Text = "Bayar Rp."
         '
@@ -373,9 +402,10 @@ Partial Class fpenjualan
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(690, 428)
+        Me.Label12.Location = New System.Drawing.Point(920, 527)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(69, 18)
+        Me.Label12.Size = New System.Drawing.Size(85, 24)
         Me.Label12.TabIndex = 36
         Me.Label12.Text = "Disc. Rp."
         '
@@ -383,9 +413,10 @@ Partial Class fpenjualan
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(695, 458)
+        Me.Label13.Location = New System.Drawing.Point(927, 564)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(68, 18)
+        Me.Label13.Size = New System.Drawing.Size(85, 24)
         Me.Label13.TabIndex = 37
         Me.Label13.Text = "Total Rp."
         '
@@ -393,18 +424,20 @@ Partial Class fpenjualan
         '
         Me.btnproses.BackgroundImage = CType(resources.GetObject("btnproses.BackgroundImage"), System.Drawing.Image)
         Me.btnproses.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnproses.Location = New System.Drawing.Point(945, 501)
+        Me.btnproses.Location = New System.Drawing.Point(1260, 617)
+        Me.btnproses.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnproses.Name = "btnproses"
-        Me.btnproses.Size = New System.Drawing.Size(97, 67)
+        Me.btnproses.Size = New System.Drawing.Size(129, 82)
         Me.btnproses.TabIndex = 42
         Me.btnproses.UseVisualStyleBackColor = True
         '
         'rbfaktur
         '
         Me.rbfaktur.AutoSize = True
-        Me.rbfaktur.Location = New System.Drawing.Point(17, 28)
+        Me.rbfaktur.Location = New System.Drawing.Point(23, 34)
+        Me.rbfaktur.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rbfaktur.Name = "rbfaktur"
-        Me.rbfaktur.Size = New System.Drawing.Size(55, 17)
+        Me.rbfaktur.Size = New System.Drawing.Size(69, 21)
         Me.rbfaktur.TabIndex = 43
         Me.rbfaktur.TabStop = True
         Me.rbfaktur.Text = "Faktur"
@@ -413,9 +446,10 @@ Partial Class fpenjualan
         'rbstruk
         '
         Me.rbstruk.AutoSize = True
-        Me.rbstruk.Location = New System.Drawing.Point(17, 51)
+        Me.rbstruk.Location = New System.Drawing.Point(23, 63)
+        Me.rbstruk.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rbstruk.Name = "rbstruk"
-        Me.rbstruk.Size = New System.Drawing.Size(50, 17)
+        Me.rbstruk.Size = New System.Drawing.Size(62, 21)
         Me.rbstruk.TabIndex = 44
         Me.rbstruk.TabStop = True
         Me.rbstruk.Text = "Struk"
@@ -425,9 +459,11 @@ Partial Class fpenjualan
         '
         Me.GroupBox2.Controls.Add(Me.rbstruk)
         Me.GroupBox2.Controls.Add(Me.rbfaktur)
-        Me.GroupBox2.Location = New System.Drawing.Point(337, 490)
+        Me.GroupBox2.Location = New System.Drawing.Point(565, 534)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(91, 74)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(121, 91)
         Me.GroupBox2.TabIndex = 45
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Tipe Cetak"
@@ -437,34 +473,38 @@ Partial Class fpenjualan
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(699, 547)
+        Me.Label11.Location = New System.Drawing.Point(932, 673)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(64, 18)
+        Me.Label11.Size = New System.Drawing.Size(79, 24)
         Me.Label11.TabIndex = 34
         Me.Label11.Text = "Sisa Rp."
         '
         'txtsisa
         '
         Me.txtsisa.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsisa.Location = New System.Drawing.Point(765, 544)
+        Me.txtsisa.Location = New System.Drawing.Point(1020, 670)
+        Me.txtsisa.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtsisa.Name = "txtsisa"
-        Me.txtsisa.Size = New System.Drawing.Size(174, 24)
+        Me.txtsisa.Size = New System.Drawing.Size(231, 29)
         Me.txtsisa.TabIndex = 38
         '
         'txtnamacustomer
         '
-        Me.txtnamacustomer.Location = New System.Drawing.Point(131, 42)
+        Me.txtnamacustomer.Location = New System.Drawing.Point(175, 52)
+        Me.txtnamacustomer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtnamacustomer.Name = "txtnamacustomer"
-        Me.txtnamacustomer.Size = New System.Drawing.Size(168, 20)
+        Me.txtnamacustomer.Size = New System.Drawing.Size(223, 22)
         Me.txtnamacustomer.TabIndex = 46
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(12, 44)
+        Me.Label4.Location = New System.Drawing.Point(16, 54)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(118, 18)
+        Me.Label4.Size = New System.Drawing.Size(146, 24)
         Me.Label4.TabIndex = 19
         Me.Label4.Text = "Nama Customer"
         '
@@ -473,9 +513,10 @@ Partial Class fpenjualan
         Me.btncaripelanggan.BackgroundImage = CType(resources.GetObject("btncaripelanggan.BackgroundImage"), System.Drawing.Image)
         Me.btncaripelanggan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncaripelanggan.ImageIndex = 0
-        Me.btncaripelanggan.Location = New System.Drawing.Point(305, 10)
+        Me.btncaripelanggan.Location = New System.Drawing.Point(407, 12)
+        Me.btncaripelanggan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btncaripelanggan.Name = "btncaripelanggan"
-        Me.btncaripelanggan.Size = New System.Drawing.Size(29, 26)
+        Me.btncaripelanggan.Size = New System.Drawing.Size(39, 32)
         Me.btncaripelanggan.TabIndex = 5
         Me.btncaripelanggan.UseVisualStyleBackColor = True
         '
@@ -496,9 +537,10 @@ Partial Class fpenjualan
         Me.GroupControl1.AppearanceCaption.Options.UseForeColor = True
         Me.GroupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
         Me.GroupControl1.Controls.Add(Me.lbltotal)
-        Me.GroupControl1.Location = New System.Drawing.Point(482, 10)
+        Me.GroupControl1.Location = New System.Drawing.Point(643, 12)
+        Me.GroupControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(457, 99)
+        Me.GroupControl1.Size = New System.Drawing.Size(609, 122)
         Me.GroupControl1.TabIndex = 47
         Me.GroupControl1.Text = "Total"
         '
@@ -507,31 +549,27 @@ Partial Class fpenjualan
         Me.lbltotal.AutoSize = True
         Me.lbltotal.BackColor = System.Drawing.Color.Transparent
         Me.lbltotal.Font = New System.Drawing.Font("Times New Roman", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbltotal.Location = New System.Drawing.Point(5, 54)
+        Me.lbltotal.Location = New System.Drawing.Point(7, 66)
+        Me.lbltotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbltotal.Name = "lbltotal"
-        Me.lbltotal.Size = New System.Drawing.Size(109, 36)
+        Me.lbltotal.Size = New System.Drawing.Size(138, 45)
         Me.lbltotal.TabIndex = 0
         Me.lbltotal.Text = "Label7"
         '
         'txtkodecustomer
         '
-        Me.txtkodecustomer.Location = New System.Drawing.Point(131, 12)
+        Me.txtkodecustomer.Location = New System.Drawing.Point(175, 15)
+        Me.txtkodecustomer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtkodecustomer.Name = "txtkodecustomer"
-        Me.txtkodecustomer.Size = New System.Drawing.Size(168, 20)
+        Me.txtkodecustomer.Size = New System.Drawing.Size(223, 22)
         Me.txtkodecustomer.TabIndex = 48
-        '
-        'GridColumn12
-        '
-        Me.GridColumn12.Name = "GridColumn12"
-        Me.GridColumn12.Visible = True
-        Me.GridColumn12.VisibleIndex = 11
         '
         'fpenjualan
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1057, 684)
+        Me.ClientSize = New System.Drawing.Size(1409, 842)
         Me.Controls.Add(Me.txtkodecustomer)
         Me.Controls.Add(Me.GroupControl1)
         Me.Controls.Add(Me.btncaripelanggan)
@@ -553,6 +591,7 @@ Partial Class fpenjualan
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fpenjualan"
         Me.Text = "Penjualan"
         Me.GroupBox1.ResumeLayout(False)

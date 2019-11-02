@@ -33,10 +33,12 @@ Partial Class fcariuser
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(11, 36)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Location = New System.Drawing.Point(15, 44)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(463, 401)
+        Me.GridControl1.Size = New System.Drawing.Size(617, 494)
         Me.GridControl1.TabIndex = 20
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -73,21 +75,24 @@ Partial Class fcariuser
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(13, 9)
+        Me.Label1.Location = New System.Drawing.Point(17, 11)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(200, 24)
+        Me.Label1.Size = New System.Drawing.Size(252, 29)
         Me.Label1.TabIndex = 21
         Me.Label1.Text = "Pencarian Data User"
         '
         'fcariuser
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(484, 446)
+        Me.ClientSize = New System.Drawing.Size(645, 549)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.Label1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fcariuser"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pencarian User"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()

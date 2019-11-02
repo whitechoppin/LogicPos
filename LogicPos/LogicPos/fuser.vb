@@ -1,6 +1,7 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fuser
+    Dim kode As String
     Private Sub fuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -102,13 +103,25 @@ Public Class fuser
                 If txtnama.Text.Length = 0 Then
                     MsgBox("Nama belum terisi !")
                 Else
-                    If txtalamat.Text.Length = 0 Then
-                        MsgBox("Alamat belum terisi !")
+                    If txtpassword.Text.Length = 0 Then
+                        MsgBox("Password belum terisi !")
                     Else
-                        If txttelp.Text.Length = 0 Then
-                            MsgBox("Telepon belum terisi !")
+                        If cmbjabatan.Text.Length = 0 Then
+                            MsgBox("Jabatan belum terisi !")
                         Else
-                            Call simpan()
+                            If txtemail.Text.Length = 0 Then
+                                MsgBox("Email belum terisi !")
+                            Else
+                                If txttelp.Text.Length = 0 Then
+                                    MsgBox("Telepon belum terisi !")
+                                Else
+                                    If txtalamat.Text.Length = 0 Then
+                                        MsgBox("Alamat belum terisi !")
+                                    Else
+                                        Call simpan()
+                                    End If
+                                End If
+                            End If
                         End If
                     End If
                 End If
@@ -136,19 +149,116 @@ Public Class fuser
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+        If btnedit.Text = "Edit" Then
+            btnedit.Text = "Simpan"
+            btnhapus.Enabled = False
+            Call enable_text()
+            Call index()
+            GridControl.Enabled = False
+        Else
+            If txtkode.Text.Length = 0 Then
+                MsgBox("Kode belum terisi !")
+            Else
+                If txtnama.Text.Length = 0 Then
+                    MsgBox("Nama belum terisi !")
+                Else
+                    If txtpassword.Text.Length = 0 Then
+                        MsgBox("Password belum terisi !")
+                    Else
+                        If cmbjabatan.Text.Length = 0 Then
+                            MsgBox("Jabatan belum terisi !")
+                        Else
+                            If txtemail.Text.Length = 0 Then
+                                MsgBox("Email belum terisi !")
+                            Else
+                                If txttelp.Text.Length = 0 Then
+                                    MsgBox("Telepon belum terisi !")
+                                Else
+                                    If txtalamat.Text.Length = 0 Then
+                                        MsgBox("Alamat belum terisi !")
+                                    Else
+                                        Call edit()
+                                    End If
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    End Sub
 
+    Sub edit()
+        Using cnn As New OdbcConnection(strConn)
+            sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            cmmd.Parameters.AddWithValue("@kode_user", txtkode.Text)
+            cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
+            cmmd.Parameters.AddWithValue("@password_user", txtpassword.Text)
+            cmmd.Parameters.AddWithValue("@jabatan_user", cmbjabatan.Text)
+            cmmd.Parameters.AddWithValue("@email_user", txtemail.Text)
+            cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
+            cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
+            cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+            cnn.Open()
+            cmmd.ExecuteNonQuery()
+            cnn.Close()
+            MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
+            cnn.Close()
+            Me.Refresh()
+            Call awal()
+        End Using
     End Sub
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-
+        Call koneksii()
+        If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+            sql = "DELETE FROM tb_user WHERE  kode_user='" & txtkode.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Me.Refresh()
+            Call awal()
+        End If
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
     End Sub
 
-    Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
+    Sub cari()
+        txtkode.Text = GridView.GetFocusedRowCellValue("kode_user")
+        Using cnn As New OdbcConnection(strConn)
+            sql = "SELECT * FROM tb_user WHERE kode_user  = '" + txtkode.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            cnn.Open()
+            dr = cmmd.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                kode = dr("kode_user")
+                txtnama.Text = dr("nama_user")
+                txtpassword.Text = dr("password_user")
+                cmbjabatan.Text = dr("jabatan_user")
+                txtemail.Text = dr("email_user")
+                txttelp.Text = dr("telepon_user")
+                txtalamat.Text = dr("alamat_user")
+                txtketerangan.Text = dr("keterangan_user")
 
+                btnedit.Enabled = True
+                btnbatal.Enabled = True
+                btnhapus.Enabled = True
+                btntambah.Enabled = False
+                btntambah.Text = "Tambah"
+                cnn.Close()
+            End If
+        End Using
+    End Sub
+
+    Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
+        Call cari()
     End Sub
 
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
