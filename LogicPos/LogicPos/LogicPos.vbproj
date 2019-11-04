@@ -88,6 +88,18 @@
     <Compile Include="fbarang.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fbarangkeluar.Designer.vb">
+      <DependentUpon>fbarangkeluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fbarangkeluar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fbarangmasuk.Designer.vb">
+      <DependentUpon>fbarangmasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fbarangmasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fcaribarang.designer.vb">
       <DependentUpon>fcaribarang.vb</DependentUpon>
     </Compile>
@@ -136,6 +148,30 @@
     <Compile Include="fkas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fkaskeluar.Designer.vb">
+      <DependentUpon>fkaskeluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fkaskeluar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fkasmasuk.Designer.vb">
+      <DependentUpon>fkasmasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fkasmasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flunaspiutang.Designer.vb">
+      <DependentUpon>flunaspiutang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flunaspiutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flunasutang.Designer.vb">
+      <DependentUpon>flunasutang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flunasutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fmenu.designer.vb">
       <DependentUpon>fmenu.vb</DependentUpon>
     </Compile>
@@ -172,10 +208,34 @@
     <Compile Include="frekeningsupplier.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="freturbeli.Designer.vb">
+      <DependentUpon>freturbeli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="freturbeli.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="freturjual.Designer.vb">
+      <DependentUpon>freturjual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="freturjual.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fsupplier.designer.vb">
       <DependentUpon>fsupplier.vb</DependentUpon>
     </Compile>
     <Compile Include="fsupplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ftransferbarang.Designer.vb">
+      <DependentUpon>ftransferbarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ftransferbarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ftransferkas.Designer.vb">
+      <DependentUpon>ftransferkas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ftransferkas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fuser.Designer.vb">
