@@ -79,7 +79,7 @@ Partial Class fmenu
         Me.MenuUtama.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterMenu, Me.TransaksiMenu, Me.AdministrasiMenu, Me.LaporanMenu, Me.SettingMenu, Me.AboutMenu})
         Me.MenuUtama.Location = New System.Drawing.Point(0, 0)
         Me.MenuUtama.Name = "MenuUtama"
-        Me.MenuUtama.Size = New System.Drawing.Size(969, 24)
+        Me.MenuUtama.Size = New System.Drawing.Size(1050, 24)
         Me.MenuUtama.TabIndex = 0
         Me.MenuUtama.Text = "MenuStrip"
         '
@@ -328,10 +328,10 @@ Partial Class fmenu
         '
         Me.StatusStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statususer, Me.statusjam, Me.statustgl})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 304)
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 581)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.StatusStrip.Size = New System.Drawing.Size(969, 22)
+        Me.StatusStrip.Size = New System.Drawing.Size(1050, 22)
         Me.StatusStrip.TabIndex = 1
         Me.StatusStrip.Text = "StatusStrip"
         '
@@ -366,7 +366,7 @@ Partial Class fmenu
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(969, 326)
+        Me.ClientSize = New System.Drawing.Size(1050, 603)
         Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.MenuUtama)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -374,7 +374,7 @@ Partial Class fmenu
         Me.MainMenuStrip = Me.MenuUtama
         Me.Name = "fmenu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "S"
+        Me.Text = "Logic POS"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuUtama.ResumeLayout(False)
         Me.MenuUtama.PerformLayout()

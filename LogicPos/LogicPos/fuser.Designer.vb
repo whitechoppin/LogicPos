@@ -50,14 +50,24 @@ Partial Class fuser
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.cmbjabatan)
+        Me.GroupBox1.Controls.Add(Me.GridControl)
         Me.GroupBox1.Controls.Add(Me.txtemail)
         Me.GroupBox1.Controls.Add(Me.txtpassword)
         Me.GroupBox1.Controls.Add(Me.Label8)
@@ -78,11 +88,9 @@ Partial Class fuser
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(16, 14)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox1.Size = New System.Drawing.Size(820, 326)
+        Me.GroupBox1.Size = New System.Drawing.Size(1228, 261)
         Me.GroupBox1.TabIndex = 16
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data User"
@@ -91,37 +99,33 @@ Partial Class fuser
         '
         Me.cmbjabatan.FormattingEnabled = True
         Me.cmbjabatan.Items.AddRange(New Object() {"Kasir", "Administrasi", "Supervisor", "Owner"})
-        Me.cmbjabatan.Location = New System.Drawing.Point(155, 238)
-        Me.cmbjabatan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbjabatan.Location = New System.Drawing.Point(116, 170)
         Me.cmbjabatan.Name = "cmbjabatan"
-        Me.cmbjabatan.Size = New System.Drawing.Size(247, 30)
+        Me.cmbjabatan.Size = New System.Drawing.Size(186, 26)
         Me.cmbjabatan.TabIndex = 24
         '
         'txtemail
         '
-        Me.txtemail.Location = New System.Drawing.Point(155, 277)
-        Me.txtemail.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtemail.Location = New System.Drawing.Point(116, 202)
         Me.txtemail.Name = "txtemail"
-        Me.txtemail.Size = New System.Drawing.Size(247, 28)
+        Me.txtemail.Size = New System.Drawing.Size(186, 24)
         Me.txtemail.TabIndex = 23
         '
         'txtpassword
         '
-        Me.txtpassword.Location = New System.Drawing.Point(155, 202)
-        Me.txtpassword.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtpassword.Location = New System.Drawing.Point(116, 141)
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.txtpassword.Size = New System.Drawing.Size(247, 28)
+        Me.txtpassword.Size = New System.Drawing.Size(186, 24)
         Me.txtpassword.TabIndex = 21
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(15, 206)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(11, 144)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(98, 25)
+        Me.Label8.Size = New System.Drawing.Size(78, 20)
         Me.Label8.TabIndex = 20
         Me.Label8.Text = "Password"
         '
@@ -129,10 +133,9 @@ Partial Class fuser
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(15, 241)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Location = New System.Drawing.Point(11, 173)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(83, 25)
+        Me.Label7.Size = New System.Drawing.Size(67, 20)
         Me.Label7.TabIndex = 19
         Me.Label7.Text = "Jabatan"
         '
@@ -140,69 +143,62 @@ Partial Class fuser
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(15, 279)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Location = New System.Drawing.Point(11, 204)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(60, 25)
+        Me.Label6.Size = New System.Drawing.Size(48, 20)
         Me.Label6.TabIndex = 18
         Me.Label6.Text = "Email"
         '
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangan.Location = New System.Drawing.Point(551, 244)
-        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtketerangan.Location = New System.Drawing.Point(414, 188)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(247, 62)
+        Me.txtketerangan.Size = New System.Drawing.Size(186, 61)
         Me.txtketerangan.TabIndex = 17
         Me.txtketerangan.Text = ""
         '
         'txtalamat
         '
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtalamat.Location = New System.Drawing.Point(551, 167)
-        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtalamat.Location = New System.Drawing.Point(414, 113)
         Me.txtalamat.Name = "txtalamat"
-        Me.txtalamat.Size = New System.Drawing.Size(247, 68)
+        Me.txtalamat.Size = New System.Drawing.Size(186, 69)
         Me.txtalamat.TabIndex = 17
         Me.txtalamat.Text = ""
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(611, 42)
-        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnbatal.Location = New System.Drawing.Point(458, 27)
         Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(189, 60)
+        Me.btnbatal.Size = New System.Drawing.Size(142, 49)
         Me.btnbatal.TabIndex = 13
         Me.btnbatal.Text = "Batal"
         Me.btnbatal.UseVisualStyleBackColor = True
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(412, 42)
-        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnhapus.Location = New System.Drawing.Point(309, 27)
         Me.btnhapus.Name = "btnhapus"
-        Me.btnhapus.Size = New System.Drawing.Size(189, 60)
+        Me.btnhapus.Size = New System.Drawing.Size(142, 49)
         Me.btnhapus.TabIndex = 14
         Me.btnhapus.Text = "Hapus"
         Me.btnhapus.UseVisualStyleBackColor = True
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(213, 42)
-        Me.btnedit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnedit.Location = New System.Drawing.Point(160, 27)
         Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(189, 60)
+        Me.btnedit.Size = New System.Drawing.Size(142, 49)
         Me.btnedit.TabIndex = 15
         Me.btnedit.Text = "Edit"
         Me.btnedit.UseVisualStyleBackColor = True
         '
         'btntambah
         '
-        Me.btntambah.Location = New System.Drawing.Point(16, 42)
-        Me.btntambah.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btntambah.Location = New System.Drawing.Point(12, 27)
         Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(189, 60)
+        Me.btntambah.Size = New System.Drawing.Size(142, 49)
         Me.btntambah.TabIndex = 16
         Me.btntambah.Text = "Tambah"
         Me.btntambah.UseVisualStyleBackColor = True
@@ -210,49 +206,44 @@ Partial Class fuser
         'txttelp
         '
         Me.txttelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttelp.Location = New System.Drawing.Point(552, 133)
-        Me.txttelp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txttelp.Location = New System.Drawing.Point(414, 85)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(247, 26)
+        Me.txttelp.Size = New System.Drawing.Size(186, 22)
         Me.txttelp.TabIndex = 2
         '
         'txtnama
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(155, 167)
-        Me.txtnama.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtnama.Location = New System.Drawing.Point(116, 113)
         Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(247, 26)
+        Me.txtnama.Size = New System.Drawing.Size(186, 22)
         Me.txtnama.TabIndex = 2
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(420, 244)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Location = New System.Drawing.Point(315, 191)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(114, 25)
+        Me.Label5.Size = New System.Drawing.Size(92, 20)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "Keterangan"
         '
         'txtkode
         '
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkode.Location = New System.Drawing.Point(155, 133)
-        Me.txtkode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtkode.Location = New System.Drawing.Point(116, 85)
         Me.txtkode.Name = "txtkode"
-        Me.txtkode.Size = New System.Drawing.Size(247, 26)
+        Me.txtkode.Size = New System.Drawing.Size(186, 22)
         Me.txtkode.TabIndex = 1
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(439, 170)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(325, 115)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(73, 25)
+        Me.Label4.Size = New System.Drawing.Size(59, 20)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Alamat"
         '
@@ -260,10 +251,9 @@ Partial Class fuser
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(429, 133)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(322, 86)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(84, 25)
+        Me.Label3.Size = New System.Drawing.Size(66, 20)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Telepon"
         '
@@ -271,10 +261,9 @@ Partial Class fuser
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(13, 166)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(10, 112)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(110, 25)
+        Me.Label2.Size = New System.Drawing.Size(89, 20)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Nama User"
         '
@@ -282,21 +271,18 @@ Partial Class fuser
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(15, 132)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(11, 84)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(105, 25)
+        Me.Label1.Size = New System.Drawing.Size(84, 20)
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Kode User"
         '
         'GridControl
         '
-        Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GridControl.Location = New System.Drawing.Point(13, 348)
+        Me.GridControl.Location = New System.Drawing.Point(616, 27)
         Me.GridControl.MainView = Me.GridView
-        Me.GridControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl.Name = "GridControl"
-        Me.GridControl.Size = New System.Drawing.Size(823, 318)
+        Me.GridControl.Size = New System.Drawing.Size(601, 222)
         Me.GridControl.TabIndex = 17
         Me.GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
@@ -357,15 +343,94 @@ Partial Class fuser
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Label15)
+        Me.GroupBox2.Controls.Add(Me.Label14)
+        Me.GroupBox2.Controls.Add(Me.Label13)
+        Me.GroupBox2.Controls.Add(Me.Label12)
+        Me.GroupBox2.Controls.Add(Me.Label11)
+        Me.GroupBox2.Controls.Add(Me.Label10)
+        Me.GroupBox2.Controls.Add(Me.Label9)
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.GroupBox2.Location = New System.Drawing.Point(13, 270)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(1227, 428)
+        Me.GroupBox2.TabIndex = 17
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Akses User"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(51, 43)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(51, 18)
+        Me.Label9.TabIndex = 0
+        Me.Label9.Text = "Label9"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(51, 70)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(59, 18)
+        Me.Label10.TabIndex = 1
+        Me.Label10.Text = "Label10"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(51, 97)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(59, 18)
+        Me.Label11.TabIndex = 2
+        Me.Label11.Text = "Label11"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(51, 127)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(59, 18)
+        Me.Label12.TabIndex = 3
+        Me.Label12.Text = "Label12"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(51, 154)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(59, 18)
+        Me.Label13.TabIndex = 4
+        Me.Label13.Text = "Label13"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(53, 192)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(59, 18)
+        Me.Label14.TabIndex = 5
+        Me.Label14.Text = "Label14"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(57, 234)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(59, 18)
+        Me.Label15.TabIndex = 6
+        Me.Label15.Text = "Label15"
+        '
         'fuser
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(849, 679)
+        Me.ClientSize = New System.Drawing.Size(1250, 710)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.GridControl)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.Name = "fuser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -374,6 +439,8 @@ Partial Class fuser
         Me.GroupBox1.PerformLayout()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -406,4 +473,12 @@ Partial Class fuser
     Friend WithEvents txtemail As TextBox
     Friend WithEvents txtpassword As TextBox
     Friend WithEvents cmbjabatan As ComboBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label9 As Label
 End Class
