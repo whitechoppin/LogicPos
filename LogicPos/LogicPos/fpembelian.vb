@@ -8,7 +8,7 @@ Public Class fpembelian
     Public isi As String
     'variabel bantuan view pembelian
     Dim nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan As String
-    Dim statuslunas, statusvoid, statusprint, statusposted As Boolean
+    Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
     Dim viewtglpembelian, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir As Double
 
@@ -30,7 +30,6 @@ Public Class fpembelian
             '.OptionsPrint.EnableAppearanceOddRow = True 'aktifkan style saat print
         End With
     End Sub
-
     Function autonumber()
         Call koneksii()
         sql = "SELECT RIGHT(kode_pembelian,3) FROM tb_pembelian WHERE DATE_FORMAT(MID(`kode_pembelian`, 3 , 6), ' %y ')+ MONTH(MID(`kode_pembelian`,3 , 6)) + DAY(MID(`kode_pembelian`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pembelian,3) DESC"
@@ -62,7 +61,6 @@ Public Class fpembelian
         End Try
         Return pesan
     End Function
-
     Function currentnumber()
         Call koneksii()
         sql = "SELECT kode_pembelian FROM tb_pembelian ORDER BY kode_pembelian DESC LIMIT 1;"
@@ -84,7 +82,6 @@ Public Class fpembelian
         End Try
         Return pesan
     End Function
-
     Private Sub prevnumber(previousnumber As String)
         'Dim sekarang As Date
         'Dim counternilai As Integer
@@ -110,7 +107,6 @@ Public Class fpembelian
             cnn.Close()
         End Try
     End Sub
-
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
         sql = "SELECT kode_pembelian FROM tb_pembelian WHERE date_created > (SELECT date_created FROM tb_pembelian WHERE kode_pembelian = '" + nextingnumber + "')ORDER BY date_created ASC LIMIT 1"
@@ -130,7 +126,6 @@ Public Class fpembelian
             cnn.Close()
         End Try
     End Sub
-
     Sub previewpembelian(lihat As String)
         sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
         da = New OdbcDataAdapter(sql, cnn)
@@ -176,7 +171,6 @@ Public Class fpembelian
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
         GridColumn8.Width = 55
     End Sub
-
     Sub inisialisasi(nomorkode As String)
         'bersihkan dan set default value
         'button tools
@@ -364,7 +358,6 @@ Public Class fpembelian
         End If
 
     End Sub
-
     Sub awalbaru()
         'bersihkan dan set default value
         'button tools
@@ -475,9 +468,8 @@ Public Class fpembelian
         sql = "DELETE FROM tb_pembelian_sementara" 'clear data
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
-
+        statusedit = False
     End Sub
-
     Sub tabel_utama()
         tabel = New DataTable
         With tabel
@@ -528,7 +520,6 @@ Public Class fpembelian
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
         GridColumn8.Width = 55
     End Sub
-
     Sub comboboxpembayaran()
         Call koneksii()
         cmbbayar.Items.Clear()
@@ -545,7 +536,6 @@ Public Class fpembelian
             End While
         End If
     End Sub
-
     Sub caribarang()
         Call koneksii()
         sql = "SELECT * FROM tb_barang WHERE kode_barang='" & txtkodebarang.Text & "'"
@@ -566,11 +556,9 @@ Public Class fpembelian
             txthargabarang.Text = 0
         End If
     End Sub
-
     Sub cariuser()
 
     End Sub
-
     Sub carisupplier()
         Call koneksii()
         sql = "SELECT * FROM tb_supplier WHERE kode_supplier='" & cmbsupplier.Text & "'"
@@ -582,7 +570,6 @@ Public Class fpembelian
             txtsupplier.Text = ""
         End If
     End Sub
-
     Sub carigudang()
         Call koneksii()
         sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbgudang.Text & "'"
@@ -594,7 +581,6 @@ Public Class fpembelian
             txtgudang.Text = ""
         End If
     End Sub
-
     Sub comboboxsupplier()
         Call koneksii()
         cmmd = New OdbcCommand("SELECT * FROM tb_supplier", cnn)
@@ -608,7 +594,6 @@ Public Class fpembelian
             End While
         End If
     End Sub
-
     Sub comboboxgudang()
         Call koneksii()
         cmmd = New OdbcCommand("SELECT * FROM tb_gudang", cnn)
@@ -622,7 +607,6 @@ Public Class fpembelian
             End While
         End If
     End Sub
-
     Sub comboboxuser()
         Call koneksii()
         cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
@@ -636,7 +620,6 @@ Public Class fpembelian
             End While
         End If
     End Sub
-
     Sub tambah()
         Dim kode_barang, nama_barang, satuan_barang, jenis_barang, kode_stok As String
         Dim counter_angka As String
@@ -854,7 +837,6 @@ Public Class fpembelian
         Call tambah()
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
-
     Sub simpan()
         Call koneksii()
         total1 = GridView1.Columns("subtotal").SummaryItem.SummaryValue 'ambil isi summary gridview
@@ -922,23 +904,18 @@ Public Class fpembelian
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         Call simpan()
     End Sub
-
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
         Call awalbaru()
     End Sub
-
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call inisialisasi(kodepembelian)
     End Sub
-
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
 
     End Sub
-
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
         Call prevnumber(txtnonota.Text)
     End Sub
-
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
         If txtgopembelian.Text = "" Then
             MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
@@ -954,30 +931,50 @@ Public Class fpembelian
             End If
         End If
     End Sub
-
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
         Call nextnumber(txtnonota.Text)
     End Sub
-
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
-        If e.Column.FieldName = "banyak" Then
-            Try
-                GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga"))
-            Catch ex As Exception
-                'error jika nilai qty=blank
-                GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
-            End Try
-        Else
-            If e.Column.FieldName = "harga" Then
+        If statusedit = True Then
+            If e.Column.FieldName = "qty" Then
                 Try
-                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "qty"))
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga_beli"))
                 Catch ex As Exception
                     'error jika nilai qty=blank
                     GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
                 End Try
+            Else
+                If e.Column.FieldName = "harga_beli" Then
+                    Try
+                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "qty"))
+                    Catch ex As Exception
+                        'error jika nilai qty=blank
+                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+                    End Try
+                End If
             End If
+            BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+        Else
+            If e.Column.FieldName = "qty" Then
+                Try
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga"))
+                Catch ex As Exception
+                    'error jika nilai qty=blank
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+                End Try
+            Else
+                If e.Column.FieldName = "harga" Then
+                    Try
+                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "qty"))
+                    Catch ex As Exception
+                        'error jika nilai qty=blank
+                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+                    End Try
+                End If
+            End If
+            BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
         End If
-        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+
     End Sub
     Private Sub txthargabarang_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txthargabarang.KeyPress
         e.Handled = ValidAngka(e)
@@ -996,6 +993,63 @@ Public Class fpembelian
             dr = cmmd.ExecuteReader
             GridView1.DeleteSelectedRows()
         End If
+    End Sub
+    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+        If btnedit.Text = "Edit" Then
+            btnbaru.Enabled = False
+            btnsimpan.Enabled = False
+            btnprint.Enabled = False
+            btnprev.Enabled = False
+            btnnext.Enabled = False
+
+            GridControl1.Enabled = True
+            GridView1.OptionsBehavior.Editable = True
+            GridColumn4.OptionsColumn.AllowEdit = True
+            GridColumn7.OptionsColumn.AllowEdit = True
+            statusedit = True
+            btnedit.Text = "Update"
+        Else
+            If btnedit.Text = "Update" Then
+                Call update_pembelian()
+            End If
+        End If
+    End Sub
+    Sub update_pembelian()
+        'sql = "select * from tb_pembelian join tb_pembelian_detail on tb_pembelian.kode_pembelian = tb_pembelian_detail.kode_pembelian where kode_pembelian = '" & txtnonota.Text & "'"
+        'cmmd = New OdbcCommand(sql, cnn)
+        'dr = cmmd.ExecuteReader()
+        'If dr.HasRows Then
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            Dim stok_awal As Double
+            Dim stok_nota_awal As Double
+
+            Call koneksii()
+            sql = "select * from tb_barang join tb_stok on tb_stok.kode_barang = tb_barang.kode_barang where tb_stok.kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            dr.Read()
+            stok_awal = dr("jumlah_stok")
+
+            sql = "select * from tb_pembelian_detail where kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' and kode_pembelian= '" & txtnonota.Text & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            dr.Read()
+            stok_nota_awal = dr("qty")
+
+            sql = "update tb_stok set jumlah_stok= '" & GridView1.GetRowCellValue(i, "qty") & "'- '" & stok_nota_awal & "' + '" & stok_awal & "' where kode_stok='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+
+            sql = "update tb_pembelian_detail set qty= '" & GridView1.GetRowCellValue(i, "qty") & "', harga_beli= '" & GridView1.GetRowCellValue(i, "harga_beli") & "' where kode_pembelian = '" & txtnonota.Text & "' and kode_stok='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+        Next
+        sql = "update tb_pembelian set total_pembelian= '" & grandtotal & "' where kode_pembelian = '" & txtnonota.Text & "' "
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        MsgBox("Update Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
     End Sub
     'Private Sub txtkodeitem_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkodeitem.KeyPress
     '    If e.KeyChar Like "[A-Z,a-z]" Then
@@ -1020,42 +1074,33 @@ Public Class fpembelian
     Private Sub txtongkir_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtongkir.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
-
     Private Sub btncari_Click(sender As Object, e As EventArgs) Handles btncari.Click
         tutup = 2
         fcaribarang.ShowDialog()
     End Sub
-
     Private Sub btncarisupplier_Click(sender As Object, e As EventArgs) Handles btncarisupplier.Click
         tutupsup = 1
         fcarisupp.ShowDialog()
     End Sub
-
     Private Sub btncarigudang_Click(sender As Object, e As EventArgs) Handles btncarigudang.Click
         tutupgudang = 1
         fcarigudang.ShowDialog()
     End Sub
-
     Private Sub cmbsupplier_TextChanged(sender As Object, e As EventArgs) Handles cmbsupplier.TextChanged
         Call carisupplier()
     End Sub
-
     Private Sub cmbgudang_TextChanged(sender As Object, e As EventArgs) Handles cmbgudang.TextChanged
         Call carigudang()
     End Sub
-
     Private Sub txtppn_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtppnpersen.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
-
     Private Sub txtdiskonnominal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtdiskonnominal.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
-
     Private Sub txtdiskonpersen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtdiskonpersen.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
-
     Private Sub txtppnnominal_TextChanged(sender As Object, e As EventArgs) Handles txtppnnominal.TextChanged
         If txtppnnominal.Text = "" Then
             txtppnnominal.Text = 0
@@ -1065,7 +1110,6 @@ Public Class fpembelian
             txtppnnominal.SelectionStart = Len(txtppnnominal.Text)
         End If
     End Sub
-
     Private Sub txttotal_TextChanged(sender As Object, e As EventArgs) Handles txttotal.TextChanged
         If txttotal.Text = "" Then
             txttotal.Text = 0
@@ -1074,7 +1118,6 @@ Public Class fpembelian
             txttotal.SelectionStart = Len(txttotal.Text)
         End If
     End Sub
-
     Private Sub txtbanyakbarang_TextChanged(sender As Object, e As EventArgs) Handles txtbanyakbarang.TextChanged
         If txtbanyakbarang.Text = "" Then
             txtbanyakbarang.Text = 0
@@ -1084,7 +1127,6 @@ Public Class fpembelian
             txtbanyakbarang.SelectionStart = Len(txtbanyakbarang.Text)
         End If
     End Sub
-
     Private Sub cbdiskon_CheckedChanged(sender As Object, e As EventArgs) Handles cbdiskon.CheckedChanged
         If cbdiskon.Checked = True Then
             txtdiskonpersen.Enabled = True
@@ -1093,7 +1135,6 @@ Public Class fpembelian
         End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
-
     Private Sub txtdiskonpersen_TextChanged(sender As Object, e As EventArgs) Handles txtdiskonpersen.TextChanged
         If txtdiskonpersen.Text = "" Then
             txtdiskonpersen.Text = 0
@@ -1104,7 +1145,6 @@ Public Class fpembelian
         End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
-
     Private Sub txtdiskonnominal_TextChanged(sender As Object, e As EventArgs) Handles txtdiskonnominal.TextChanged
         If txtdiskonnominal.Text = "" Then
             txtdiskonnominal.Text = 0
@@ -1114,7 +1154,6 @@ Public Class fpembelian
             txtdiskonnominal.SelectionStart = Len(txtdiskonnominal.Text)
         End If
     End Sub
-
     Private Sub cbppn_CheckedChanged(sender As Object, e As EventArgs) Handles cbppn.CheckedChanged
         If cbppn.Checked = True Then
             txtppnpersen.Enabled = True
@@ -1123,7 +1162,6 @@ Public Class fpembelian
         End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
-
     Private Sub txtppnpersen_TextChanged(sender As Object, e As EventArgs) Handles txtppnpersen.TextChanged
         If txtppnpersen.Text = "" Then
             txtppnpersen.Text = 0
@@ -1134,15 +1172,12 @@ Public Class fpembelian
         End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
-
     Private Sub GridView1_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles GridView1.RowUpdated
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
-
     Private Sub GridView1_RowDeleted(sender As Object, e As DevExpress.Data.RowDeletedEventArgs) Handles GridView1.RowDeleted
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
-
     Private Sub cmbongkir_CheckedChanged(sender As Object, e As EventArgs) Handles cbongkir.CheckedChanged
         If cbongkir.Checked = True Then
             txtongkir.Enabled = True
@@ -1151,7 +1186,6 @@ Public Class fpembelian
         End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
-
     Private Sub txtongkir_TextChanged(sender As Object, e As EventArgs) Handles txtongkir.TextChanged
         If txtongkir.Text = "" Then
             txtongkir.Text = 0
