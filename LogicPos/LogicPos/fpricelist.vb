@@ -5,6 +5,8 @@ Public Class fpricelist
     Public isi2 As String
     Dim harga As Double = 0
     Dim orderan As Double = 0
+    Dim modalbarang As Double = 0
+
     Private Sub fpricelist_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -122,6 +124,7 @@ Public Class fpricelist
             btnhapus.Enabled = True
             btntambah.Enabled = False
             txtnama.Text = dr("nama_barang")
+            txtmodal.Text = dr("modal_barang")
             harga = dr("harga_jual")
             txtharga.Text = Format(harga, "##,##0")
             'txtharga.SelectionStart = Len(txtharga.Text)
@@ -131,8 +134,10 @@ Public Class fpricelist
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 txtnama.Text = dr("nama_barang")
+                txtmodal.Text = dr("modal_barang")
             Else
                 txtnama.Text = ""
+                txtmodal.Text = ""
             End If
 
             btnedit.Enabled = False
@@ -269,5 +274,15 @@ Public Class fpricelist
         MsgBox("Data terupdate", MsgBoxStyle.Information, "Success")
         Call awal1()
         Call caricust()
+    End Sub
+
+    Private Sub txtmodal_TextChanged(sender As Object, e As EventArgs) Handles txtmodal.TextChanged
+        If txtmodal.Text = "" Then
+            txtmodal.Text = 0
+        Else
+            modalbarang = txtmodal.Text
+            txtmodal.Text = Format(modalbarang, "##,##0")
+            txtmodal.SelectionStart = Len(txtmodal.Text)
+        End If
     End Sub
 End Class
