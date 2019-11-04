@@ -160,6 +160,66 @@
     <Compile Include="fkasmasuk.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flaporakunkeluar.Designer.vb">
+      <DependentUpon>flaporakunkeluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporakunkeluar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporakunmasuk.Designer.vb">
+      <DependentUpon>flaporakunmasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporakunmasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporbeli.Designer.vb">
+      <DependentUpon>flaporbeli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporbeli.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporjual.Designer.vb">
+      <DependentUpon>flaporjual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporjual.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporpiutang.Designer.vb">
+      <DependentUpon>flaporpiutang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporpiutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporstokbarang.Designer.vb">
+      <DependentUpon>flaporstokbarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporstokbarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaportransferbarang.Designer.vb">
+      <DependentUpon>flaportransferbarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaportransferbarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaportransferkas.Designer.vb">
+      <DependentUpon>flaportransferkas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaportransferkas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporutang.Designer.vb">
+      <DependentUpon>flaporutang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flogichouse.Designer.vb">
+      <DependentUpon>flogichouse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flogichouse.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flunaspiutang.Designer.vb">
       <DependentUpon>flunaspiutang.vb</DependentUpon>
     </Compile>
@@ -224,6 +284,12 @@
       <DependentUpon>fsupplier.vb</DependentUpon>
     </Compile>
     <Compile Include="fsupplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ftokosejati.Designer.vb">
+      <DependentUpon>ftokosejati.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ftokosejati.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ftransferbarang.Designer.vb">

@@ -62,13 +62,13 @@ Partial Class fmenu
         Me.SettingMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrinterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TokoSejatiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.statususer = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusjam = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TokoSejatiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -312,6 +312,18 @@ Partial Class fmenu
         Me.AboutMenu.Size = New System.Drawing.Size(52, 20)
         Me.AboutMenu.Text = "Abou&t"
         '
+        'LogicHouseToolStripMenuItem
+        '
+        Me.LogicHouseToolStripMenuItem.Name = "LogicHouseToolStripMenuItem"
+        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogicHouseToolStripMenuItem.Text = "Logic House"
+        '
+        'TokoSejatiToolStripMenuItem
+        '
+        Me.TokoSejatiToolStripMenuItem.Name = "TokoSejatiToolStripMenuItem"
+        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TokoSejatiToolStripMenuItem.Text = "Toko Sejati"
+        '
         'StatusStrip
         '
         Me.StatusStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
@@ -349,18 +361,6 @@ Partial Class fmenu
         '
         Me.Timer.Interval = 1000
         '
-        'LogicHouseToolStripMenuItem
-        '
-        Me.LogicHouseToolStripMenuItem.Name = "LogicHouseToolStripMenuItem"
-        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.LogicHouseToolStripMenuItem.Text = "Logic House"
-        '
-        'TokoSejatiToolStripMenuItem
-        '
-        Me.TokoSejatiToolStripMenuItem.Name = "TokoSejatiToolStripMenuItem"
-        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.TokoSejatiToolStripMenuItem.Text = "Toko Sejati"
-        '
         'fmenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -374,7 +374,7 @@ Partial Class fmenu
         Me.MainMenuStrip = Me.MenuUtama
         Me.Name = "fmenu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Logic POS"
+        Me.Text = "S"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuUtama.ResumeLayout(False)
         Me.MenuUtama.PerformLayout()
