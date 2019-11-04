@@ -285,6 +285,7 @@ Partial Class frekeningsupplier
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frekeningsupplier"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Rekening Supplier"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

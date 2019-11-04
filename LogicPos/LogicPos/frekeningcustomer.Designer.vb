@@ -286,6 +286,7 @@ Partial Class frekeningcustomer
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frekeningcustomer"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Rekening Customer"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
