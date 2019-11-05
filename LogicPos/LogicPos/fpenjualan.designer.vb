@@ -740,6 +740,7 @@ Partial Class fpenjualan
         '
         'txtnonota
         '
+        Me.txtnonota.Enabled = False
         Me.txtnonota.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnonota.Location = New System.Drawing.Point(131, 30)
         Me.txtnonota.Name = "txtnonota"

@@ -690,8 +690,8 @@ Public Class fpenjualan
         'Me.txtkodeitem.Clear()
     End Sub
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
-        tutup = 3
-        fcaribarang.ShowDialog()
+        tutupstok = 1
+        fcaristok.ShowDialog()
     End Sub
     Private Sub txtbanyak_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtbanyak.KeyPress
         If Not (Char.IsDigit(e.KeyChar)) And e.KeyChar <> ChrW(Keys.Back) Then
