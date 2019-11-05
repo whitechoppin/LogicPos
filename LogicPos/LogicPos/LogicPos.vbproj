@@ -118,6 +118,12 @@
     <Compile Include="fcarigudang.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fcaristok.Designer.vb">
+      <DependentUpon>fcaristok.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcaristok.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fcarisupp.Designer.vb">
       <DependentUpon>fcarisupp.vb</DependentUpon>
     </Compile>
@@ -341,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fcarigudang.resx">
       <DependentUpon>fcarigudang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcaristok.resx">
+      <DependentUpon>fcaristok.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fcarisupp.resx">
       <DependentUpon>fcarisupp.vb</DependentUpon>

@@ -73,6 +73,8 @@ Public Class fcaricust
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupcus = 1 Then
             fpricelist.txtkodecus.Text = Me.GridView1.GetFocusedRowCellValue("kode_pelanggan")
+        ElseIf tutupcus = 2 Then
+            fpenjualan.cmbcustomer.Text = Me.GridView1.GetFocusedRowCellValue("kode_pelanggan")
         End If
         Me.Close()
     End Sub

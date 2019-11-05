@@ -257,7 +257,7 @@ Public Class fbarang
             End If
         End If
     End Sub
-    Sub update()
+    Sub perbaharui()
         'Call koneksii()
         Dim ms As MemoryStream = New MemoryStream
         'menyimpan gambar ke dalam ms dengan format jpeg
@@ -287,7 +287,7 @@ Public Class fbarang
     End Sub
     Sub edit()
         If txtkode.Text = kode Then
-            Call update()
+            Call perbaharui()
         Else
             Using cnn As New OdbcConnection(strConn)
                 sql = "SELECT * FROM tb_barang WHERE kode_barang  = '" + txtkode.Text + "'"
@@ -299,7 +299,7 @@ Public Class fbarang
                     cnn.Close()
                 Else
                     cnn.Close()
-                    Call update()
+                    Call perbaharui()
                 End If
             End Using
         End If
