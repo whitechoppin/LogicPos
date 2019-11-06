@@ -20,6 +20,12 @@ Public Class fpenjualan
     Dim stok As Double
     Dim namabaru As String
     Dim penggunaan, modal As Double
+
+    'variabel bantuan view pembelian
+    Dim nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan As String
+    Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
+    Dim viewtglpembelian, viewtgljatuhtempo As DateTime
+    Dim nilaidiskon, nilaippn, nilaiongkir As Double
     Private Sub fpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
@@ -150,7 +156,7 @@ Public Class fpenjualan
     End Sub
     Function autonumber()
         Call koneksii()
-        sql = "SELECT RIGHT(kode_penjualan,3) FROM tb_penjualan WHERE date_format (MID(kode_penjualan, 3 , 6), ' %y ')+ MONTH(MID(kode_penjualan,3 , 6)) + DAY(MID(kode_penjualan,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_penjualan,3) DESC"
+        sql = "SELECT RIGHT(kode_penjualan,3) FROM tb_penjualan WHERE DATE_FORMAT(MID(`kode_penjualan`, 3 , 6), ' %y ')+ MONTH(MID(`kode_penjualan`,3 , 6)) + DAY(MID(`kode_penjualan`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_penjualan,3) DESC"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -158,18 +164,18 @@ Public Class fpenjualan
             If dr.HasRows Then
                 dr.Read()
                 If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
-                    Return "PJ" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                    Return "JL" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                 Else
                     If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
-                        Return "PJ" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                        Return "JL" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                     Else
                         If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
-                            Return "PJ" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                            Return "JL" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                         End If
                     End If
                 End If
             Else
-                Return "PJ" + Format(Now.Date, "yyMMdd") + "001"
+                Return "JL" + Format(Now.Date, "yyMMdd") + "001"
             End If
 
         Catch ex As Exception
@@ -557,8 +563,8 @@ Public Class fpenjualan
     '    'fakturjual.Dispose()
     'End Sub
     Sub simpan()
-        Dim a As String
-        a = autonumber()
+        Dim kodepenjualan As String
+        kodepenjualan = autonumber()
         Call koneksii()
 
         For i As Integer = 0 To GridView1.RowCount - 1
@@ -568,12 +574,12 @@ Public Class fpenjualan
         Next
 
         For i As Integer = 0 To GridView1.RowCount - 1
-            sql = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, nama_barang, qty, satuan, harga_satuan, diskon, harga_diskon, subtotal, keuntungan,kode_barang) VALUES ('" & a & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & GridView1.GetRowCellValue(i, "diskon") & "','" & GridView1.GetRowCellValue(i, "hargadiskon") & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "laba") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "')"
+            sql = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan, qty, harga_jual, diskon, harga_diskon, subtotal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & GridView1.GetRowCellValue(i, "diskon") & "','" & GridView1.GetRowCellValue(i, "hargadiskon") & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Next
 
-        sql = "INSERT INTO tb_penjualan ( kode_penjualan, kode_pelanggan, kode_user, tgl_penjualan, total_penjualan, diskon_penjualan, bayar_penjualan, sisa_penjualan, metode_pembayaran, rekening ) VALUES ('" & a & "','" & cmbcustomer.Text & "','" & fmenu.statususer.Text & "' , NOW() ,'" & total2 & "','" & diskon & "','" & bayar & "','" & sisa & "','CASH', 'CASH')"
+        sql = "INSERT INTO tb_penjualan (kode_penjualan, kode_pelanggan, kode_gudang, kode_user, tgl_penjualan, tgl_jatuhtempo_penjualan, lunas_penjualan, void_penjualan, print_penjualan, posted_penjualan, keterangan_penjualan, diskon_penjualan, pajak_penjualan, ongkir_penjualan, total_penjualan, metode_pembayaran, rekening, bayar_penjualan, sisa_penjualan, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepenjualan & "','" & cmbcustomer.Text & "','" & cmbgudang.Text & "','" & cmbsales.Text & "' , '" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & diskon & "','" & 0 & "','" & 0 & "','" & total2 & "','CASH', 'CASH','" & bayar & "','" & sisa & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
