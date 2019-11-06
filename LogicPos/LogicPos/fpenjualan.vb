@@ -32,8 +32,8 @@ Public Class fpenjualan
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
         tgl = Now()
-
     End Sub
+
     'Sub cek_kas()
     '    Dim tgl As Date
     '    Dim tutupkas As Date
@@ -76,21 +76,14 @@ Public Class fpenjualan
     '        .Columns("Subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "Subtotal", "{0:n0}")
     '    End With
     'End Sub
-    Sub TabIndex()
-        txtkodebarang.TabIndex = 1
-        txtbanyak.TabIndex = 2
-        btntambah.TabIndex = 3
-        txtbayar.TabIndex = 4
-    End Sub
+
     Sub awal()
-        Call TabIndex()
 
         metode = "CASH"
-        'Call awal()
         'Call autonumber()
         lbltotal.Text = 0
         rbfaktur.Checked = True
-        RichTextBox1.Enabled = False
+        txtinformasi.Enabled = False
         txtharga.Enabled = False
         txtkodebarang.Focus()
         txtbanyak.Clear()
@@ -186,7 +179,7 @@ Public Class fpenjualan
         End Try
         Return pesan
     End Function
-    Sub cari_pelanggan()
+    Sub caripelanggan()
         sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & cmbcustomer.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -196,27 +189,43 @@ Public Class fpenjualan
             txtcustomer.Text = ""
         End If
     End Sub
+
+    Sub carigudang()
+        Call koneksii()
+        sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbgudang.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            txtgudang.Text = dr("nama_gudang")
+        Else
+            txtgudang.Text = ""
+        End If
+    End Sub
+
     Sub cari()
         Call koneksii()
-        'sql = "SELECT tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.satuan_barang, tb_barang.jenis_barang, tb_barang.modal_barang, tb_price_group.harga_jual from tb_barang join tb_price_group on tb_barang.kode_barang = tb_price_group.kode_barang WHERE tb_barang.kode_barang='" & txtkodeitem.Text & "' and tb_price_group.kode_pelanggan='" & txtkodecustomer.Text & "'"
-        sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodebarang.Text & "' and tb_price_group.kode_pelanggan='" & cmbcustomer.Text & "'"
+        sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodebarang.Text & "' AND tb_price_group.kode_pelanggan ='" & cmbcustomer.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             txtnama.Text = dr("nama_barang")
             satuan = dr("satuan_barang")
+            lblsatuan.Text = satuan
+            lblsatuanjual.Text = satuan
             jenis = dr("jenis_barang")
             txtharga.Text = Format(dr("harga_jual"), "##,##0")
             txtharga.SelectionStart = Len(txtharga.Text)
             modal = dr("modal_barang")
             kode_barang = dr("kode_barang")
         Else
-            sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodebarang.Text & "' and tb_price_group.kode_pelanggan='00000000'"
+            sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok= '" & txtkodebarang.Text & "' AND tb_price_group.kode_pelanggan = '00000000'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 txtnama.Text = dr("nama_barang")
                 satuan = dr("satuan_barang")
+                lblsatuan.Text = satuan
+                lblsatuanjual.Text = satuan
                 jenis = dr("jenis_barang")
                 txtharga.Text = Format(dr("harga_jual"), "##,##0")
                 txtharga.SelectionStart = Len(txtharga.Text)
@@ -225,6 +234,8 @@ Public Class fpenjualan
             Else
                 txtnama.Text = ""
                 satuan = ""
+                lblsatuan.Text = satuan
+                lblsatuanjual.Text = satuan
                 jenis = ""
                 txtharga.Text = ""
             End If
@@ -253,7 +264,6 @@ Public Class fpenjualan
 
         'End If
         Call cari()
-
     End Sub
     Sub tambah()
         If txtnama.Text = "" Or txtharga.Text = "" Or txtbanyak.Text = "" Then
@@ -546,7 +556,7 @@ Public Class fpenjualan
     '    'fakturjual.ShowDialog()
     '    'fakturjual.Dispose()
     'End Sub
-    Sub save()
+    Sub simpan()
         Dim a As String
         a = autonumber()
         Call koneksii()
@@ -624,7 +634,7 @@ Public Class fpenjualan
     Sub proses()
         For i As Integer = 0 To GridView1.RowCount - 1
             Call koneksii()
-            sql = "Select * from tb_stok join tb_barang on tb_barang.kode_barang=tb_stok.kode_barang where kode_stok='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+            sql = "SELECT * FROM tb_stok JOIN tb_barang ON tb_barang.kode_barang = tb_stok.kode_barang WHERE kode_stok ='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             dr.Read()
@@ -639,7 +649,7 @@ Public Class fpenjualan
             End If
         Next
 
-        Call save()
+        Call simpan()
         ''If rbfaktur.Checked = True Then
         ''    Call cetak_faktur()
         ''    Call save()
@@ -659,7 +669,7 @@ Public Class fpenjualan
     End Sub
 
     Private Sub cmbcustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbcustomer.SelectedIndexChanged
-        Call cari_pelanggan()
+        Call caripelanggan()
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
