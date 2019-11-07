@@ -17,6 +17,8 @@ Public Class fcaristok
         GridColumn4.FieldName = "jenis_barang"
         GridColumn5.Caption = "Satuan"
         GridColumn5.FieldName = "satuan_barang"
+        GridColumn6.Caption = "Jumlah Stok"
+        GridColumn6.FieldName = "jumlah_stok"
 
         GridControl1.Visible = True
     End Sub
@@ -24,7 +26,7 @@ Public Class fcaristok
         'Call koneksii()
         If tutupstok > 0 Then
             Using cnn As New OdbcConnection(strConn)
-                sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang"
+                sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang"
                 da = New OdbcDataAdapter(sql, cnn)
                 cnn.Open()
                 ds = New DataSet
@@ -60,7 +62,7 @@ Public Class fcaristok
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupstok = 1 Then
-            fpenjualan.txtkodebarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
+            fpenjualan.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
             Me.Hide()
         End If
     End Sub

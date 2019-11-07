@@ -91,9 +91,9 @@ Public Class fpenjualan
         rbfaktur.Checked = True
         txtinformasi.Enabled = False
         txtharga.Enabled = False
-        txtkodebarang.Focus()
+        txtkodestok.Focus()
         txtbanyak.Clear()
-        txtkodebarang.Clear()
+        txtkodestok.Clear()
         txtnama.Clear()
         txtcustomer.Clear()
         txtsisa.Enabled = False
@@ -110,50 +110,96 @@ Public Class fpenjualan
         txtkembali.Clear()
         txtkembali.Enabled = False
         'cmbcustomer.SelectedIndex = -1
+        Call tabel_utama()
+    End Sub
 
+    Sub tabel_utama()
         tabel = New DataTable
+
         With tabel
+            .Columns.Add("kode_barang")
+            .Columns.Add("kode_stok")
             .Columns.Add("nama_barang")
             .Columns.Add("banyak", GetType(Double))
             .Columns.Add("satuan_barang")
             .Columns.Add("jenis_barang")
             .Columns.Add("harga_satuan", GetType(Double))
             .Columns.Add("diskon", GetType(Double))
-            .Columns.Add("hargadiskon", GetType(Double))
+            .Columns.Add("harga_diskon", GetType(Double))
             .Columns.Add("subtotal", GetType(Double))
-            .Columns.Add("kode_stok")
-            .Columns.Add("laba")
-            .Columns.Add("modal_barang")
-            .Columns.Add("kode_barang")
+            .Columns.Add("laba", GetType(Double))
+            .Columns.Add("modal_barang", GetType(Double))
 
         End With
 
         GridControl1.DataSource = tabel
-        GridColumn1.FieldName = "nama_barang"
-        GridColumn2.FieldName = "banyak"
-        GridColumn3.FieldName = "satuan_barang"
-        GridColumn4.FieldName = "jenis_barang"
-        GridColumn5.FieldName = "harga_satuan"
-        GridColumn5.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn5.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn6.FieldName = "diskon"
-        GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn6.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn7.FieldName = "hargadiskon"
+
+        GridColumn1.FieldName = "kode_barang"
+        GridColumn1.Caption = "Kode Barang"
+        GridColumn1.Width = 30
+
+        GridColumn2.FieldName = "kode_stok"
+        GridColumn2.Caption = "Kode Stok"
+        GridColumn2.Width = 30
+
+        GridColumn3.FieldName = "nama_barang"
+        GridColumn3.Caption = "Nama Barang"
+        GridColumn3.Width = 50
+
+        GridColumn4.FieldName = "banyak"
+        GridColumn4.Caption = "banyak"
+        GridColumn4.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn4.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn4.Width = 20
+
+        GridColumn5.FieldName = "satuan_barang"
+        GridColumn5.Caption = "Satuan Barang"
+        GridColumn5.Width = 30
+
+        GridColumn6.FieldName = "jenis_barang"
+        GridColumn6.Caption = "Jenis Barang"
+        GridColumn6.Width = 30
+
+        GridColumn7.FieldName = "harga_satuan"
+        GridColumn7.Caption = "Harga Satuan"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn8.FieldName = "subtotal"
+        GridColumn7.Width = 20
+
+        GridColumn8.FieldName = "diskon"
+        GridColumn8.Caption = "Diskon"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn9.FieldName = "kode_stok"
-        GridColumn9.Visible = False
-        GridColumn10.FieldName = "laba"
-        'GridColumn10.Visible = False
-        GridColumn11.FieldName = "modal_barang"
-        'GridColumn11.Visible = False
-        GridColumn12.FieldName = "kode_barang"
+        GridColumn8.Width = 20
+
+        GridColumn9.FieldName = "harga_diskon"
+        GridColumn9.Caption = "Harga Diskon"
+        GridColumn9.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn9.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn9.Width = 20
+
+        GridColumn10.FieldName = "subtotal"
+        GridColumn10.Caption = "Subtotal"
+        GridColumn10.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn10.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn10.Width = 20
+
+        GridColumn11.FieldName = "laba"
+        GridColumn11.Caption = "Laba"
+        GridColumn11.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn11.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn11.Width = 20
+        GridColumn11.Visible = False
+
+        GridColumn12.FieldName = "modal_barang"
+        GridColumn12.Caption = "Modal Barang"
+        GridColumn12.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn12.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn12.Width = 20
+        GridColumn12.Visible = False
 
     End Sub
+
     Function autonumber()
         Call koneksii()
         sql = "SELECT RIGHT(kode_penjualan,3) FROM tb_penjualan WHERE DATE_FORMAT(MID(`kode_penjualan`, 3 , 6), ' %y ')+ MONTH(MID(`kode_penjualan`,3 , 6)) + DAY(MID(`kode_penjualan`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_penjualan,3) DESC"
@@ -210,11 +256,12 @@ Public Class fpenjualan
 
     Sub cari()
         Call koneksii()
-        sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodebarang.Text & "' AND tb_price_group.kode_pelanggan ='" & cmbcustomer.Text & "'"
+        sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan ='" & cmbcustomer.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             txtnama.Text = dr("nama_barang")
+            txtkodebarang.Text = dr("kode_barang")
             satuan = dr("satuan_barang")
             lblsatuan.Text = satuan
             lblsatuanjual.Text = satuan
@@ -224,11 +271,12 @@ Public Class fpenjualan
             modal = dr("modal_barang")
             kode_barang = dr("kode_barang")
         Else
-            sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok= '" & txtkodebarang.Text & "' AND tb_price_group.kode_pelanggan = '00000000'"
+            sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok= '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan = '00000000'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 txtnama.Text = dr("nama_barang")
+                txtkodebarang.Text = dr("kode_barang")
                 satuan = dr("satuan_barang")
                 lblsatuan.Text = satuan
                 lblsatuanjual.Text = satuan
@@ -239,6 +287,7 @@ Public Class fpenjualan
                 kode_barang = dr("kode_barang")
             Else
                 txtnama.Text = ""
+                txtkodebarang.Text = ""
                 satuan = ""
                 lblsatuan.Text = satuan
                 lblsatuanjual.Text = satuan
@@ -249,14 +298,14 @@ Public Class fpenjualan
     End Sub
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
-        txtkodebarang.Clear()
+        txtkodestok.Clear()
         txtnama.Clear()
         txtbanyak.Clear()
         txtharga.Text = 0
         txtnama.Enabled = False
-        txtkodebarang.Focus()
+        txtkodestok.Focus()
     End Sub
-    Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodebarang.TextChanged
+    Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
         'isi = txtkodeitem.Text
         'isicari = isi
         'If Strings.Left(txtkodeitem.Text, 1) Like "[A-Z, a-z]" Then
@@ -276,19 +325,19 @@ Public Class fpenjualan
             Exit Sub
         Else
             If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
-                sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodebarang.Text & "' and tb_price_group.kode_pelanggan='" & cmbcustomer.Text & "'"
+                sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan='" & cmbcustomer.Text & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 If dr.HasRows Then
                     If dr("jumlah_stok") < Val(txtbanyak.Text) Then
-                        MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                        MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
                         Exit Sub
                     Else
-                        tabel.Rows.Add(txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), txtkodebarang.Text, (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal, dr("kode_barang"))
+                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                         Call reload_tabel()
                     End If
                 Else
-                    sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodebarang.Text & "' and tb_price_group.kode_pelanggan='00000000'"
+                    sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodestok.Text & "' and tb_price_group.kode_pelanggan='00000000'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader
                     dr.Read()
@@ -296,18 +345,18 @@ Public Class fpenjualan
                         MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                         Exit Sub
                     Else
-                        tabel.Rows.Add(txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), txtkodebarang.Text, (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal, dr("kode_barang"))
+                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                         Call reload_tabel()
                     End If
                 End If
 
             Else 'kalau ada isi
-                sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodebarang.Text & "' and tb_price_group.kode_pelanggan='" & cmbcustomer.Text & "'"
+                sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodestok.Text & "' and tb_price_group.kode_pelanggan='" & cmbcustomer.Text & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 If dr.HasRows Then
                     For i As Integer = 0 To GridView1.RowCount - 1
-                        If txtkodebarang.Text = GridView1.GetRowCellValue(i, "kode_stok") Then
+                        If txtkodestok.Text = GridView1.GetRowCellValue(i, "kode_stok") Then
                             Dim banyak As Integer
                             Dim diskon As Double
                             Dim hargadiskon As Double
@@ -321,7 +370,7 @@ Public Class fpenjualan
                                 Exit Sub
                             Else
                                 GridView1.DeleteRow(GridView1.GetRowHandle(i))
-                                tabel.Rows.Add(txtnama.Text, Val(txtbanyak.Text) + banyak, satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * (Val(txtbanyak.Text) + banyak), txtkodebarang.Text, (Val(dr("harga_jual")) - Val(modal)) * (Val(txtbanyak.Text) + banyak), modal, dr("kode_barang"))
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
@@ -330,19 +379,19 @@ Public Class fpenjualan
                                 MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                                 Exit Sub
                             Else
-                                tabel.Rows.Add(txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), txtkodebarang.Text, (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal, dr("kode_barang"))
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
                         End If
                     Next
                 Else
-                    sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodebarang.Text & "' and tb_price_group.kode_pelanggan='00000000'"
+                    sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodestok.Text & "' and tb_price_group.kode_pelanggan='00000000'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader
                     dr.Read()
                     For i As Integer = 0 To GridView1.RowCount - 1
-                        If txtkodebarang.Text = GridView1.GetRowCellValue(i, "kode_barang") Then
+                        If txtkodestok.Text = GridView1.GetRowCellValue(i, "kode_barang") Then
                             Dim banyak As Integer
                             Dim diskon As Double
                             Dim hargadiskon As Double
@@ -356,7 +405,7 @@ Public Class fpenjualan
                                 Exit Sub
                             Else
                                 GridView1.DeleteRow(GridView1.GetRowHandle(i))
-                                tabel.Rows.Add(txtnama.Text, Val(txtbanyak.Text) + banyak, satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * (Val(txtbanyak.Text) + banyak), txtkodebarang.Text, (Val(dr("harga_jual")) - Val(modal)) * (Val(txtbanyak.Text) + banyak), modal, dr("kode_barang"))
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
@@ -365,7 +414,7 @@ Public Class fpenjualan
                                 MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                                 Exit Sub
                             Else
-                                tabel.Rows.Add(txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), txtkodebarang.Text, (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal, dr("kode_barang"))
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
@@ -402,7 +451,7 @@ Public Class fpenjualan
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
         If e.Column.FieldName = "banyak" Then
             Try
-                GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "hargadiskon"))
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga_diskon"))
             Catch ex As Exception
                 'error jika nulai qty=blank
                 GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
@@ -412,19 +461,19 @@ Public Class fpenjualan
         If e.Column.FieldName = "diskon" Then
 
             Try
-                GridView1.SetRowCellValue(e.RowHandle, "hargadiskon", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
-                GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * GridView1.GetRowCellValue(e.RowHandle, "hargadiskon"))
-                GridView1.SetRowCellValue(e.RowHandle, "laba", (GridView1.GetRowCellValue(e.RowHandle, "hargadiskon") - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
+                GridView1.SetRowCellValue(e.RowHandle, "harga_diskon", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * GridView1.GetRowCellValue(e.RowHandle, "harga_diskon"))
+                GridView1.SetRowCellValue(e.RowHandle, "laba", (GridView1.GetRowCellValue(e.RowHandle, "harga_diskon") - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
             Catch ex As Exception
                 'error jika nulai qty=blank
                 GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
             End Try
         End If
 
-        If e.Column.FieldName = "hargadiskon" Then
+        If e.Column.FieldName = "harga_diskon" Then
             Try
                 GridView1.SetRowCellValue(e.RowHandle, "diskon", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
-                GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banya") * (GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - GridView1.GetRowCellValue(e.RowHandle, "diskon")))
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * (GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - GridView1.GetRowCellValue(e.RowHandle, "diskon")))
                 GridView1.SetRowCellValue(e.RowHandle, "laba", (e.Value - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
             Catch ex As Exception
                 'error jika nulai qty=blank
@@ -574,7 +623,7 @@ Public Class fpenjualan
         Next
 
         For i As Integer = 0 To GridView1.RowCount - 1
-            sql = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan, qty, harga_jual, diskon, harga_diskon, subtotal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & GridView1.GetRowCellValue(i, "diskon") & "','" & GridView1.GetRowCellValue(i, "hargadiskon") & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan, qty, harga_jual, diskon, harga_diskon, subtotal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & GridView1.GetRowCellValue(i, "diskon") & "','" & GridView1.GetRowCellValue(i, "harga_diskon") & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Next
@@ -714,11 +763,7 @@ Public Class fpenjualan
             e.Handled = True
         End If
     End Sub
-    Private Sub txtkodeitem_KeyDown(sender As Object, e As KeyEventArgs) Handles txtkodebarang.KeyDown
-        'If e.KeyCode = Keys.F2 Then
-        '   Call awal()
-        'End If
-    End Sub
+
     Private Sub txtbayar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtbayar.KeyPress
 
         'If pembayaran = "CASH" Then

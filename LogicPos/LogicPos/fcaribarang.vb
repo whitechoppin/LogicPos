@@ -98,7 +98,7 @@ Public Class fcaribarang
             fpembelian.txtkodebarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
             Me.Hide()
         ElseIf tutup = 3 Then
-            fpenjualan.txtkodebarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
+            fpenjualan.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
             Me.Hide()
         End If
     End Sub

@@ -25,27 +25,14 @@ Public Class fmenu
     Private Sub DataSupplierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataSupplierToolStripMenuItem.Click
         fsupplier.Show()
     End Sub
-    Private Sub StokToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'fstok.Show()
-    End Sub
     Private Sub PembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PembelianToolStripMenuItem.Click
         fpembelian.Show()
     End Sub
     Private Sub PenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PenjualanToolStripMenuItem.Click
         fpenjualan.Show()
-        'fmodal.Show()
     End Sub
     Private Sub PembelianToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPembelianToolStripMenuItem.Click
         'flaporanpembelian.Show()
-    End Sub
-    Private Sub ReturPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'freturjual.Show()
-    End Sub
-    Private Sub NotaToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'frmcarinota.Show()
-    End Sub
-    Private Sub PelunasanNotaToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'fpelunasan.Show()
     End Sub
     Private Sub PenjualanToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPenjualanToolStripMenuItem.Click
         'flaporanpenjualan.Show()
@@ -59,22 +46,13 @@ Public Class fmenu
     Private Sub fmenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Application.Exit()
     End Sub
-    Private Sub ReprintNotaToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'freprint.Show()
-    End Sub
     Private Sub PrinterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrinterToolStripMenuItem.Click
         'fsetprinter.Show()
     End Sub
     Private Sub PricelistGroupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PricelistGroupToolStripMenuItem.Click
         fpricelist.Show()
     End Sub
-    Private Sub ReprintFakturJualToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'freprint.Show()
-    End Sub
     Private Sub MenuStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuUtama.ItemClicked
-
-    End Sub
-    Private Sub mastermenu_Click(sender As Object, e As EventArgs) Handles MasterMenu.Click
 
     End Sub
     Private Sub DataGudangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataGudangToolStripMenuItem.Click
