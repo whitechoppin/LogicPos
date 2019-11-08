@@ -26,6 +26,47 @@ Public Class fpenjualan
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
     Dim viewtglpembelian, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir As Double
+
+    Sub comboboxcustomer()
+        Call koneksii()
+        cmmd = New OdbcCommand("SELECT * FROM tb_pelanggan", cnn)
+        cmbcustomer.Items.Clear()
+        cmbcustomer.AutoCompleteCustomSource.Clear()
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbcustomer.AutoCompleteCustomSource.Add(dr("kode_pelanggan"))
+                cmbcustomer.Items.Add(dr("kode_pelanggan"))
+            End While
+        End If
+    End Sub
+    Sub comboboxgudang()
+        Call koneksii()
+        cmmd = New OdbcCommand("SELECT * FROM tb_gudang", cnn)
+        cmbgudang.Items.Clear()
+        cmbgudang.AutoCompleteCustomSource.Clear()
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbgudang.AutoCompleteCustomSource.Add(dr("kode_gudang"))
+                cmbgudang.Items.Add(dr("kode_gudang"))
+            End While
+        End If
+    End Sub
+    Sub comboboxuser()
+        Call koneksii()
+        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
+        cmbsales.Items.Clear()
+        cmbsales.AutoCompleteCustomSource.Clear()
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbsales.AutoCompleteCustomSource.Add(dr("kode_user"))
+                cmbsales.Items.Add(dr("kode_user"))
+            End While
+        End If
+    End Sub
+
     Private Sub fpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
@@ -39,6 +80,10 @@ Public Class fpenjualan
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
         tgl = Now()
+
+        Call comboboxcustomer()
+        Call comboboxgudang()
+        Call comboboxuser()
     End Sub
 
     'Sub cek_kas()
@@ -104,8 +149,8 @@ Public Class fpenjualan
         txtsisa.Clear()
         txttotal.Clear()
         txttotal.Enabled = False
-        txtdiskon.Clear()
-        txtdiskon.Enabled = False
+        txtdiskonnominal.Clear()
+        txtdiskonnominal.Enabled = False
         txtbayar.Clear()
         txtbayar.Enabled = True
         txtkembali.Clear()
@@ -152,15 +197,15 @@ Public Class fpenjualan
         GridColumn4.Caption = "banyak"
         GridColumn4.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn4.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn4.Width = 10
+        GridColumn4.Width = 5
 
         GridColumn5.FieldName = "satuan_barang"
         GridColumn5.Caption = "Satuan Barang"
-        GridColumn5.Width = 20
+        GridColumn5.Width = 10
 
         GridColumn6.FieldName = "jenis_barang"
         GridColumn6.Caption = "Jenis Barang"
-        GridColumn6.Width = 20
+        GridColumn6.Width = 10
 
         GridColumn7.FieldName = "harga_satuan"
         GridColumn7.Caption = "Harga Satuan"
@@ -178,19 +223,19 @@ Public Class fpenjualan
         GridColumn9.Caption = "Diskon Nominal"
         GridColumn9.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn9.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn9.Width = 20
+        GridColumn9.Width = 30
 
         GridColumn10.FieldName = "harga_diskon"
         GridColumn10.Caption = "Harga Diskon"
         GridColumn10.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn10.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn10.Width = 20
+        GridColumn10.Width = 30
 
         GridColumn11.FieldName = "subtotal"
         GridColumn11.Caption = "Subtotal"
         GridColumn11.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn11.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn11.Width = 20
+        GridColumn11.Width = 30
 
         GridColumn12.FieldName = "laba"
         GridColumn12.Caption = "Laba"
@@ -245,8 +290,12 @@ Public Class fpenjualan
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             txtcustomer.Text = dr("nama_pelanggan")
+            txtalamat.Text = dr("alamat_pelanggan")
+            txttelp.Text = dr("telepon_pelanggan")
         Else
             txtcustomer.Text = ""
+            txtalamat.Text = ""
+            txttelp.Text = ""
         End If
     End Sub
 
@@ -262,7 +311,7 @@ Public Class fpenjualan
         End If
     End Sub
 
-    Sub cari()
+    Sub caribarang()
         Call koneksii()
         sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan ='" & cmbcustomer.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
@@ -307,10 +356,10 @@ Public Class fpenjualan
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
         txtkodestok.Clear()
+        txtkodebarang.Clear()
         txtnama.Clear()
         txtbanyak.Clear()
         txtharga.Text = 0
-        txtnama.Enabled = False
         txtkodestok.Focus()
     End Sub
     Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
@@ -326,10 +375,11 @@ Public Class fpenjualan
         '    Call cari()
 
         'End If
-        Call cari()
+
+        Call caribarang()
     End Sub
     Sub tambah()
-        If txtnama.Text = "" Or txtharga.Text = "" Or txtbanyak.Text = "" Then
+        If txtkodebarang.Text = "" Or txtnama.Text = "" Or txtharga.Text = "" Or txtbanyak.Text = "" Then
             Exit Sub
         Else
             If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
@@ -345,7 +395,7 @@ Public Class fpenjualan
                         Call reload_tabel()
                     End If
                 Else
-                    sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodestok.Text & "' and tb_price_group.kode_pelanggan='00000000'"
+                    sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan = '00000000'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader
                     dr.Read()
@@ -359,7 +409,7 @@ Public Class fpenjualan
                 End If
 
             Else 'kalau ada isi
-                sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodestok.Text & "' and tb_price_group.kode_pelanggan='" & cmbcustomer.Text & "'"
+                sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan = '" & cmbcustomer.Text & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 If dr.HasRows Then
@@ -439,6 +489,19 @@ Public Class fpenjualan
         txttotal.SelectionStart = Len(txttotal.Text)
         lbltotal.Text = Format(total2, "##,##0")
     End Sub
+
+    Private Sub ritediskonpersen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonpersen.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub ritediskonnominal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonnominal.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub cmbcustomer_TextChanged(sender As Object, e As EventArgs) Handles cmbcustomer.TextChanged
+        Call caripelanggan()
+    End Sub
+
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         Call tambah()
         Call ambil_total()
