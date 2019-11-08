@@ -54,6 +54,7 @@ Partial Class fpenjualan
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn13 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.txtinformasi = New System.Windows.Forms.RichTextBox()
         Me.txtkembali = New System.Windows.Forms.TextBox()
         Me.txtbayar = New System.Windows.Forms.TextBox()
@@ -308,7 +309,7 @@ Partial Class fpenjualan
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -402,7 +403,7 @@ Partial Class fpenjualan
         Me.GridColumn8.AppearanceCell.Options.UseFont = True
         Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn8.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn8.Caption = "Diskon"
+        Me.GridColumn8.Caption = "Diskon %"
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.Visible = True
         Me.GridColumn8.VisibleIndex = 7
@@ -413,9 +414,8 @@ Partial Class fpenjualan
         Me.GridColumn9.AppearanceCell.Options.UseFont = True
         Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn9.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn9.Caption = "Harga Diskon"
+        Me.GridColumn9.Caption = "Diskon Nominal"
         Me.GridColumn9.Name = "GridColumn9"
-        Me.GridColumn9.OptionsColumn.AllowEdit = False
         Me.GridColumn9.Visible = True
         Me.GridColumn9.VisibleIndex = 8
         '
@@ -425,8 +425,9 @@ Partial Class fpenjualan
         Me.GridColumn10.AppearanceCell.Options.UseFont = True
         Me.GridColumn10.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn10.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn10.Caption = "Subtotal"
+        Me.GridColumn10.Caption = "Harga Diskon"
         Me.GridColumn10.Name = "GridColumn10"
+        Me.GridColumn10.OptionsColumn.AllowEdit = False
         Me.GridColumn10.Visible = True
         Me.GridColumn10.VisibleIndex = 9
         '
@@ -436,7 +437,7 @@ Partial Class fpenjualan
         Me.GridColumn11.AppearanceCell.Options.UseFont = True
         Me.GridColumn11.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn11.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn11.Caption = "Laba"
+        Me.GridColumn11.Caption = "Subtotal"
         Me.GridColumn11.Name = "GridColumn11"
         Me.GridColumn11.OptionsColumn.AllowEdit = False
         Me.GridColumn11.Visible = True
@@ -448,11 +449,22 @@ Partial Class fpenjualan
         Me.GridColumn12.AppearanceCell.Options.UseFont = True
         Me.GridColumn12.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn12.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn12.Caption = "Modal Barang"
+        Me.GridColumn12.Caption = "Laba"
         Me.GridColumn12.Name = "GridColumn12"
         Me.GridColumn12.OptionsColumn.AllowEdit = False
         Me.GridColumn12.Visible = True
         Me.GridColumn12.VisibleIndex = 11
+        '
+        'GridColumn13
+        '
+        Me.GridColumn13.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn13.AppearanceCell.Options.UseFont = True
+        Me.GridColumn13.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn13.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn13.Caption = "Modal Barang"
+        Me.GridColumn13.Name = "GridColumn13"
+        Me.GridColumn13.Visible = True
+        Me.GridColumn13.VisibleIndex = 12
         '
         'txtinformasi
         '
@@ -1184,4 +1196,5 @@ Partial Class fpenjualan
     Friend WithEvents txttelp As TextBox
     Friend WithEvents txtkodebarang As TextBox
     Friend WithEvents Label23 As Label
+    Friend WithEvents GridColumn13 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

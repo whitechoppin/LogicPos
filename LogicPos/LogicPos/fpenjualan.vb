@@ -35,6 +35,7 @@ Public Class fpenjualan
         With GridView1
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
+            .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
         tgl = Now()
@@ -124,7 +125,8 @@ Public Class fpenjualan
             .Columns.Add("satuan_barang")
             .Columns.Add("jenis_barang")
             .Columns.Add("harga_satuan", GetType(Double))
-            .Columns.Add("diskon", GetType(Double))
+            .Columns.Add("diskon_persen", GetType(Double))
+            .Columns.Add("diskon_nominal", GetType(Double))
             .Columns.Add("harga_diskon", GetType(Double))
             .Columns.Add("subtotal", GetType(Double))
             .Columns.Add("laba", GetType(Double))
@@ -136,29 +138,29 @@ Public Class fpenjualan
 
         GridColumn1.FieldName = "kode_barang"
         GridColumn1.Caption = "Kode Barang"
-        GridColumn1.Width = 30
+        GridColumn1.Width = 20
 
         GridColumn2.FieldName = "kode_stok"
         GridColumn2.Caption = "Kode Stok"
-        GridColumn2.Width = 30
+        GridColumn2.Width = 20
 
         GridColumn3.FieldName = "nama_barang"
         GridColumn3.Caption = "Nama Barang"
-        GridColumn3.Width = 50
+        GridColumn3.Width = 70
 
         GridColumn4.FieldName = "banyak"
         GridColumn4.Caption = "banyak"
         GridColumn4.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn4.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn4.Width = 20
+        GridColumn4.Width = 10
 
         GridColumn5.FieldName = "satuan_barang"
         GridColumn5.Caption = "Satuan Barang"
-        GridColumn5.Width = 30
+        GridColumn5.Width = 20
 
         GridColumn6.FieldName = "jenis_barang"
         GridColumn6.Caption = "Jenis Barang"
-        GridColumn6.Width = 30
+        GridColumn6.Width = 20
 
         GridColumn7.FieldName = "harga_satuan"
         GridColumn7.Caption = "Harga Satuan"
@@ -166,37 +168,43 @@ Public Class fpenjualan
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
         GridColumn7.Width = 20
 
-        GridColumn8.FieldName = "diskon"
-        GridColumn8.Caption = "Diskon"
+        GridColumn8.FieldName = "diskon_persen"
+        GridColumn8.Caption = "Diskon %"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
         GridColumn8.Width = 20
 
-        GridColumn9.FieldName = "harga_diskon"
-        GridColumn9.Caption = "Harga Diskon"
+        GridColumn9.FieldName = "diskon_nominal"
+        GridColumn9.Caption = "Diskon Nominal"
         GridColumn9.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn9.DisplayFormat.FormatString = "{0:n0}"
         GridColumn9.Width = 20
 
-        GridColumn10.FieldName = "subtotal"
-        GridColumn10.Caption = "Subtotal"
+        GridColumn10.FieldName = "harga_diskon"
+        GridColumn10.Caption = "Harga Diskon"
         GridColumn10.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn10.DisplayFormat.FormatString = "{0:n0}"
         GridColumn10.Width = 20
 
-        GridColumn11.FieldName = "laba"
-        GridColumn11.Caption = "Laba"
+        GridColumn11.FieldName = "subtotal"
+        GridColumn11.Caption = "Subtotal"
         GridColumn11.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn11.DisplayFormat.FormatString = "{0:n0}"
         GridColumn11.Width = 20
-        GridColumn11.Visible = False
 
-        GridColumn12.FieldName = "modal_barang"
-        GridColumn12.Caption = "Modal Barang"
+        GridColumn12.FieldName = "laba"
+        GridColumn12.Caption = "Laba"
         GridColumn12.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn12.DisplayFormat.FormatString = "{0:n0}"
         GridColumn12.Width = 20
         GridColumn12.Visible = False
+
+        GridColumn13.FieldName = "modal_barang"
+        GridColumn13.Caption = "Modal Barang"
+        GridColumn13.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn13.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn13.Width = 20
+        GridColumn13.Visible = False
 
     End Sub
 
@@ -288,7 +296,7 @@ Public Class fpenjualan
             Else
                 txtnama.Text = ""
                 txtkodebarang.Text = ""
-                satuan = ""
+                satuan = "satuan"
                 lblsatuan.Text = satuan
                 lblsatuanjual.Text = satuan
                 jenis = ""
@@ -333,7 +341,7 @@ Public Class fpenjualan
                         MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
                         Exit Sub
                     Else
-                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                         Call reload_tabel()
                     End If
                 Else
@@ -345,7 +353,7 @@ Public Class fpenjualan
                         MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                         Exit Sub
                     Else
-                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                         Call reload_tabel()
                     End If
                 End If
@@ -361,8 +369,8 @@ Public Class fpenjualan
                             Dim diskon As Double
                             Dim hargadiskon As Double
                             banyak = GridView1.GetRowCellValue(i, "banyak")
-                            diskon = GridView1.GetRowCellValue(i, "diskon")
-                            hargadiskon = GridView1.GetRowCellValue(i, "hargadiskon")
+                            diskon = GridView1.GetRowCellValue(i, "diskon_persen")
+                            hargadiskon = GridView1.GetRowCellValue(i, "harga_diskon")
 
 
                             If dr("jumlah_stok") + banyak < Val(txtbanyak.Text) Then
@@ -370,7 +378,7 @@ Public Class fpenjualan
                                 Exit Sub
                             Else
                                 GridView1.DeleteRow(GridView1.GetRowHandle(i))
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
@@ -379,7 +387,7 @@ Public Class fpenjualan
                                 MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                                 Exit Sub
                             Else
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
@@ -405,7 +413,7 @@ Public Class fpenjualan
                                 Exit Sub
                             Else
                                 GridView1.DeleteRow(GridView1.GetRowHandle(i))
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
@@ -414,7 +422,7 @@ Public Class fpenjualan
                                 MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                                 Exit Sub
                             Else
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
@@ -458,9 +466,23 @@ Public Class fpenjualan
             End Try
         End If
 
-        If e.Column.FieldName = "diskon" Then
+        If e.Column.FieldName = "diskon_persen" Then
 
             Try
+                GridView1.SetRowCellValue(e.RowHandle, "diskon_nominal", e.Value / 100 * GridView1.GetRowCellValue(e.RowHandle, "harga_satuan"))
+                GridView1.SetRowCellValue(e.RowHandle, "harga_diskon", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value / 100 * GridView1.GetRowCellValue(e.RowHandle, "harga_satuan"))
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * GridView1.GetRowCellValue(e.RowHandle, "harga_diskon"))
+                GridView1.SetRowCellValue(e.RowHandle, "laba", (GridView1.GetRowCellValue(e.RowHandle, "harga_diskon") - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
+            Catch ex As Exception
+                'error jika nulai qty=blank
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+            End Try
+        End If
+
+        If e.Column.FieldName = "diskon_nominal" Then
+
+            Try
+                GridView1.SetRowCellValue(e.RowHandle, "diskon_persen", e.Value / GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") * 100%)
                 GridView1.SetRowCellValue(e.RowHandle, "harga_diskon", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
                 GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * GridView1.GetRowCellValue(e.RowHandle, "harga_diskon"))
                 GridView1.SetRowCellValue(e.RowHandle, "laba", (GridView1.GetRowCellValue(e.RowHandle, "harga_diskon") - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
@@ -470,16 +492,18 @@ Public Class fpenjualan
             End Try
         End If
 
-        If e.Column.FieldName = "harga_diskon" Then
-            Try
-                GridView1.SetRowCellValue(e.RowHandle, "diskon", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
-                GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * (GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - GridView1.GetRowCellValue(e.RowHandle, "diskon")))
-                GridView1.SetRowCellValue(e.RowHandle, "laba", (e.Value - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
-            Catch ex As Exception
-                'error jika nulai qty=blank
-                GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
-            End Try
-        End If
+        'If e.Column.FieldName = "harga_diskon" Then
+        'Try
+        'GridView1.SetRowCellValue(e.RowHandle, "diskon_persen", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
+        'GridView1.SetRowCellValue(e.RowHandle, "diskon_nominal", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
+        'GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * (GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - GridView1.GetRowCellValue(e.RowHandle, "diskon_nominal")))
+        'GridView1.SetRowCellValue(e.RowHandle, "laba", (e.Value - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
+        'Catch ex As Exception
+        'error jika nulai qty=blank
+        'GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+        'End Try
+        'End If
+
         Call hitung()
     End Sub
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
