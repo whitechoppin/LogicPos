@@ -17,15 +17,34 @@ Public Class fpenjualan
     Dim sisa As Double = 0
     Public isi As String
     Public metode As String
-    Dim stok As Double
+    Dim stok, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal As Double
     Dim namabaru As String
-    Dim penggunaan, modal As Double
+    Dim penggunaan, modalpenjualan As Double
 
-    'variabel bantuan view pembelian
-    Dim nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan As String
+    'variabel bantuan view penjualan
+    Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan As String
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
-    Dim viewtglpembelian, viewtgljatuhtempo As DateTime
+    Dim viewtglpenjualan, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir As Double
+
+    Private Sub fpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.MdiParent = fmenu
+        Call koneksii()
+        'Call printer()
+        'Call cek_kas()
+        Call awal()
+        With GridView1
+            .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
+            'buat sum harga
+            .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
+            .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
+        End With
+        tgl = Now()
+
+        Call comboboxcustomer()
+        Call comboboxgudang()
+        Call comboboxuser()
+    End Sub
 
     Sub comboboxcustomer()
         Call koneksii()
@@ -65,25 +84,6 @@ Public Class fpenjualan
                 cmbsales.Items.Add(dr("kode_user"))
             End While
         End If
-    End Sub
-
-    Private Sub fpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.MdiParent = fmenu
-        Call koneksii()
-        'Call printer()
-        'Call cek_kas()
-        Call awal()
-        With GridView1
-            .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
-            'buat sum harga
-            .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
-            .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
-        End With
-        tgl = Now()
-
-        Call comboboxcustomer()
-        Call comboboxgudang()
-        Call comboboxuser()
     End Sub
 
     'Sub cek_kas()
@@ -133,7 +133,7 @@ Public Class fpenjualan
 
         metode = "CASH"
         'Call autonumber()
-        lbltotal.Text = 0
+        'lbltotal.Text = 0
         rbfaktur.Checked = True
         txtinformasi.Enabled = False
         txtharga.Enabled = False
@@ -142,20 +142,49 @@ Public Class fpenjualan
         txtkodestok.Clear()
         txtnama.Clear()
         txtcustomer.Clear()
-        txtsisa.Enabled = False
+        'txtsisa.Enabled = False
 
         txtnama.Enabled = False
         sisa = 0
-        txtsisa.Clear()
-        txttotal.Clear()
-        txttotal.Enabled = False
-        txtdiskonnominal.Clear()
-        txtdiskonnominal.Enabled = False
-        txtbayar.Clear()
-        txtbayar.Enabled = True
-        txtkembali.Clear()
-        txtkembali.Enabled = False
+
+        'txtbayar.Clear()
+        'txtbayar.Enabled = True
+        'txtkembali.Clear()
+        'txtkembali.Enabled = False
         'cmbcustomer.SelectedIndex = -1
+
+        'total tabel pembelian
+        txtketerangan.Enabled = False
+        txtketerangan.Clear()
+
+        'cbongkir.Enabled = False
+        'cbppn.Enabled = False
+        'cbdiskon.Enabled = False
+
+        cbongkir.Checked = False
+        cbppn.Checked = False
+        cbdiskon.Checked = False
+
+        txtongkir.Enabled = False
+        txtppnpersen.Enabled = False
+        txtppnnominal.Enabled = False
+        txtdiskonpersen.Enabled = False
+        txtdiskonnominal.Enabled = False
+
+        txtdiskonpersen.Clear()
+        txtdiskonpersen.Text = 0
+        txtdiskonnominal.Clear()
+        txtdiskonnominal.Text = 0
+        txtppnpersen.Clear()
+        txtppnpersen.Text = 0
+        txtppnnominal.Clear()
+        txtppnnominal.Text = 0
+        txtongkir.Clear()
+        txtongkir.Text = 0
+
+        txttotal.Clear()
+        txttotal.Text = 0
+
         Call tabel_utama()
     End Sub
 
@@ -310,7 +339,21 @@ Public Class fpenjualan
             txtgudang.Text = ""
         End If
     End Sub
-
+    Sub reload_tabel()
+        GridControl1.RefreshDataSource()
+        txtkodestok.Clear()
+        txtkodebarang.Clear()
+        txtnama.Clear()
+        txtbanyak.Clear()
+        txtharga.Text = 0
+        txtkodestok.Focus()
+    End Sub
+    Private Sub ritediskonpersen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonpersen.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+    Private Sub ritediskonnominal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonnominal.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
     Sub caribarang()
         Call koneksii()
         sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan ='" & cmbcustomer.Text & "'"
@@ -325,7 +368,7 @@ Public Class fpenjualan
             jenis = dr("jenis_barang")
             txtharga.Text = Format(dr("harga_jual"), "##,##0")
             txtharga.SelectionStart = Len(txtharga.Text)
-            modal = dr("modal_barang")
+            modalpenjualan = dr("modal_barang")
             kode_barang = dr("kode_barang")
         Else
             sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok= '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan = '00000000'"
@@ -340,7 +383,7 @@ Public Class fpenjualan
                 jenis = dr("jenis_barang")
                 txtharga.Text = Format(dr("harga_jual"), "##,##0")
                 txtharga.SelectionStart = Len(txtharga.Text)
-                modal = dr("modal_barang")
+                modalpenjualan = dr("modal_barang")
                 kode_barang = dr("kode_barang")
             Else
                 txtnama.Text = ""
@@ -352,15 +395,6 @@ Public Class fpenjualan
                 txtharga.Text = ""
             End If
         End If
-    End Sub
-    Sub reload_tabel()
-        GridControl1.RefreshDataSource()
-        txtkodestok.Clear()
-        txtkodebarang.Clear()
-        txtnama.Clear()
-        txtbanyak.Clear()
-        txtharga.Text = 0
-        txtkodestok.Focus()
     End Sub
     Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
         'isi = txtkodeitem.Text
@@ -391,7 +425,7 @@ Public Class fpenjualan
                         MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
                         Exit Sub
                     Else
-                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modalpenjualan) * Val(txtbanyak.Text)), modalpenjualan)
                         Call reload_tabel()
                     End If
                 Else
@@ -403,7 +437,7 @@ Public Class fpenjualan
                         MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                         Exit Sub
                     Else
-                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modalpenjualan) * Val(txtbanyak.Text)), modalpenjualan)
                         Call reload_tabel()
                     End If
                 End If
@@ -428,7 +462,7 @@ Public Class fpenjualan
                                 Exit Sub
                             Else
                                 GridView1.DeleteRow(GridView1.GetRowHandle(i))
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modalpenjualan) * Val(txtbanyak.Text)), modalpenjualan)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
@@ -437,14 +471,14 @@ Public Class fpenjualan
                                 MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                                 Exit Sub
                             Else
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modalpenjualan) * Val(txtbanyak.Text)), modalpenjualan)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
                         End If
                     Next
                 Else
-                    sql = "select * from tb_barang join tb_stok on tb_barang.kode_barang=tb_stok.kode_barang join tb_price_group on tb_barang.kode_barang=tb_price_group.kode_barang where kode_stok= '" & txtkodestok.Text & "' and tb_price_group.kode_pelanggan='00000000'"
+                    sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan='00000000'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader
                     dr.Read()
@@ -463,7 +497,7 @@ Public Class fpenjualan
                                 Exit Sub
                             Else
                                 GridView1.DeleteRow(GridView1.GetRowHandle(i))
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modalpenjualan) * Val(txtbanyak.Text)), modalpenjualan)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
@@ -472,7 +506,7 @@ Public Class fpenjualan
                                 MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                                 Exit Sub
                             Else
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modal) * Val(txtbanyak.Text)), modal)
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnama.Text, Val(txtbanyak.Text), satuan, jenis, Val(dr("harga_jual")), "0", "0", Val(dr("harga_jual")), Val(dr("harga_jual")) * Val(txtbanyak.Text), (Val(dr("harga_jual")) * Val(txtbanyak.Text) - Val(modalpenjualan) * Val(txtbanyak.Text)), modalpenjualan)
                                 Call reload_tabel()
                                 Exit Sub
                             End If
@@ -482,43 +516,126 @@ Public Class fpenjualan
             End If
         End If
     End Sub
-    Sub ambil_total()
-        total2 = GridView1.Columns("subtotal").SummaryItem.SummaryValue 'ambil isi summary gridview
-        total3 = total2
-        txttotal.Text = Format(total2, "##,##0")
-        txttotal.SelectionStart = Len(txttotal.Text)
-        lbltotal.Text = Format(total2, "##,##0")
+    'Sub ambil_total()
+    'total2 = GridView1.Columns("subtotal").SummaryItem.SummaryValue 'ambil isi summary gridview
+    'total3 = total2
+    'txttotal.Text = Format(total2, "##,##0")
+    'txttotal.SelectionStart = Len(txttotal.Text)
+    'lbltotal.Text = Format(total2, "##,##0")
+    'End Sub
+
+    Private Sub cbdiskon_CheckedChanged(sender As Object, e As EventArgs) Handles cbdiskon.CheckedChanged
+        If cbdiskon.Checked = True Then
+            txtdiskonpersen.Enabled = True
+        Else
+            txtdiskonpersen.Enabled = False
+        End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
 
-    Private Sub ritediskonpersen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonpersen.KeyPress
-        e.Handled = ValidAngka(e)
+    Private Sub cbppn_CheckedChanged(sender As Object, e As EventArgs) Handles cbppn.CheckedChanged
+        If cbppn.Checked = True Then
+            txtppnpersen.Enabled = True
+        Else
+            txtppnpersen.Enabled = False
+        End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
 
-    Private Sub ritediskonnominal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonnominal.KeyPress
-        e.Handled = ValidAngka(e)
+    Private Sub cbongkir_CheckedChanged(sender As Object, e As EventArgs) Handles cbongkir.CheckedChanged
+        If cbongkir.Checked = True Then
+            txtongkir.Enabled = True
+        Else
+            txtongkir.Enabled = False
+        End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
+
+    Private Sub txtppnnominal_TextChanged(sender As Object, e As EventArgs) Handles txtppnnominal.TextChanged
+        If txtppnnominal.Text = "" Then
+            txtppnnominal.Text = 0
+        Else
+            ppnnominal = txtppnnominal.Text
+            txtppnnominal.Text = Format(ppnnominal, "##,##0")
+            txtppnnominal.SelectionStart = Len(txtppnnominal.Text)
+        End If
+    End Sub
+
+    Private Sub txtdiskonnominal_TextChanged(sender As Object, e As EventArgs) Handles txtdiskonnominal.TextChanged
+        If txtdiskonnominal.Text = "" Then
+            txtdiskonnominal.Text = 0
+        Else
+            diskonnominal = txtdiskonnominal.Text
+            txtdiskonnominal.Text = Format(diskonnominal, "##,##0")
+            txtdiskonnominal.SelectionStart = Len(txtdiskonnominal.Text)
+        End If
+    End Sub
+
+    Private Sub txtppnpersen_TextChanged(sender As Object, e As EventArgs) Handles txtppnpersen.TextChanged
+        If txtppnpersen.Text = "" Then
+            txtppnpersen.Text = 0
+        Else
+            ppnpersen = txtppnpersen.Text
+            txtppnpersen.Text = Format(ppnpersen, "##,##0")
+            txtppnpersen.SelectionStart = Len(txtppnpersen.Text)
+        End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
+    Private Sub txtdiskonpersen_TextChanged(sender As Object, e As EventArgs) Handles txtdiskonpersen.TextChanged
+        If txtdiskonpersen.Text = "" Then
+            txtdiskonpersen.Text = 0
+        Else
+            diskonpersen = txtdiskonpersen.Text
+            txtdiskonpersen.Text = Format(diskonpersen, "##,##0")
+            txtdiskonpersen.SelectionStart = Len(txtdiskonpersen.Text)
+        End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
+    Private Sub txtongkir_TextChanged(sender As Object, e As EventArgs) Handles txtongkir.TextChanged
+        If txtongkir.Text = "" Then
+            txtongkir.Text = 0
+        Else
+            ongkir = txtongkir.Text
+            txtongkir.Text = Format(ongkir, "##,##0")
+            txtongkir.SelectionStart = Len(txtongkir.Text)
+        End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
+
 
     Private Sub cmbcustomer_TextChanged(sender As Object, e As EventArgs) Handles cmbcustomer.TextChanged
         Call caripelanggan()
     End Sub
 
+    Private Sub cmbgudang_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbgudang.SelectedIndexChanged
+        Call carigudang()
+    End Sub
+
+    Private Sub cmbgudang_TextChanged(sender As Object, e As EventArgs) Handles cmbgudang.TextChanged
+        Call carigudang()
+    End Sub
+
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         Call tambah()
-        Call ambil_total()
+        'Call ambil_total()
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
-    Sub hitung()
-        Dim total1 As Double
-        For i As Integer = 0 To GridView1.RowCount - 1
-            total1 = total1 + GridView1.GetRowCellValue(i, "subtotal")
-        Next
-        total3 = total1
-        total1 = total1 - diskon
-        txttotal.Text = Format(total1, "##,##0")
-        total2 = total1
-        lbltotal.Text = Format(total1, "##,##0")
-        'kembali = bayar - total2
-        'txtkembali.Text = Format(kembali, "##,##0")
-    End Sub
+    'Sub hitung()
+    'Dim total1 As Double
+    'For i As Integer = 0 To GridView1.RowCount - 1
+    'total1 = total1 + GridView1.GetRowCellValue(i, "subtotal")
+    'Next
+    'total3 = total1
+    'total1 = total1 - diskon
+    'txttotal.Text = Format(total1, "##,##0")
+    'total2 = total1
+    'lbltotal.Text = Format(total1, "##,##0")
+    'kembali = bayar - total2
+    'txtkembali.Text = Format(kembali, "##,##0")
+    'End Sub
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
         If e.Column.FieldName = "banyak" Then
             Try
@@ -555,51 +672,38 @@ Public Class fpenjualan
             End Try
         End If
 
-        'If e.Column.FieldName = "harga_diskon" Then
-        'Try
-        'GridView1.SetRowCellValue(e.RowHandle, "diskon_persen", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
-        'GridView1.SetRowCellValue(e.RowHandle, "diskon_nominal", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value)
-        'GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * (GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - GridView1.GetRowCellValue(e.RowHandle, "diskon_nominal")))
-        'GridView1.SetRowCellValue(e.RowHandle, "laba", (e.Value - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
-        'Catch ex As Exception
-        'error jika nulai qty=blank
-        'GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
-        'End Try
-        'End If
-
-        Call hitung()
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
         If e.KeyCode = Keys.Delete Then
             GridView1.DeleteSelectedRows()
-            Call hitung()
         End If
     End Sub
-    Private Sub txtbayar_TextChanged(sender As Object, e As EventArgs) Handles txtbayar.TextChanged
-        If txtbayar.Text.Length = 0 Then
-            txtbayar.Text = 0
-            bayar = txtbayar.Text
-            txtbayar.Text = Format(bayar, "##,##0")
-            txtbayar.SelectionStart = Len(txtbayar.Text)
-            kembali = bayar - total2
-            sisa = total2 - bayar
+    Private Sub txtbayar_TextChanged(sender As Object, e As EventArgs)
+        'If txtbayar.Text.Length = 0 Then
+        'txtbayar.Text = 0
+        'bayar = txtbayar.Text
+        'txtbayar.Text = Format(bayar, "##,##0")
+        'txtbayar.SelectionStart = Len(txtbayar.Text)
+        'kembali = bayar - total2
+        'sisa = total2 - bayar
 
-            txtkembali.Text = Format(kembali, "##,##0")
-            txtsisa.Text = Format(sisa, "##,##0")
-            'lblkembali.Text = "Rp " + Format(kembali, "##,##0")
-            'lblbayar.Text = "Rp " + Format(bayar, "##,##0")
-        Else
-            bayar = txtbayar.Text
-            txtbayar.Text = Format(bayar, "##,##0")
-            txtbayar.SelectionStart = Len(txtbayar.Text)
-            kembali = bayar - total2
-            sisa = total2 - bayar
+        'txtkembali.Text = Format(kembali, "##,##0")
+        'txtsisa.Text = Format(sisa, "##,##0")
+        'lblkembali.Text = "Rp " + Format(kembali, "##,##0")
+        'lblbayar.Text = "Rp " + Format(bayar, "##,##0")
+        'Else
+        'bayar = txtbayar.Text
+        'txtbayar.Text = Format(bayar, "##,##0")
+        'txtbayar.SelectionStart = Len(txtbayar.Text)
+        'kembali = bayar - total2
+        'sisa = total2 - bayar
 
-            txtkembali.Text = Format(kembali, "##,##0")
-            txtsisa.Text = Format(sisa, "##,##0")
-            'lblkembali.Text = "Rp " + Format(hasil, "##,##0")
-            'lblbayar.Text = "Rp " + Format(bayar, "##,##0")
-        End If
+        'txtkembali.Text = Format(kembali, "##,##0")
+        'txtsisa.Text = Format(sisa, "##,##0")
+        'lblkembali.Text = "Rp " + Format(hasil, "##,##0")
+        'lblbayar.Text = "Rp " + Format(bayar, "##,##0")
+        'End If
     End Sub
     'Sub cetak_faktur()
     '    Dim tabel2 As New DataTable
@@ -741,8 +845,6 @@ Public Class fpenjualan
 
         MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
         Call awal()
-        txtsisa.Text = 0
-
     End Sub
     Private Function CpuId() As String
         Dim computer As String = "."
@@ -804,7 +906,14 @@ Public Class fpenjualan
         ''Call save()
         'fmsgbox.ShowDialog()
     End Sub
-
+    Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
+        tutupcus = 2
+        fcaricust.ShowDialog()
+    End Sub
+    Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
+        tutupstok = 1
+        fcaristok.ShowDialog()
+    End Sub
     Private Sub btncarigudang_Click(sender As Object, e As EventArgs) Handles btncarigudang.Click
         tutupgudang = 2
         fcarigudang.ShowDialog()
@@ -826,49 +935,35 @@ Public Class fpenjualan
         'End If
         Call proses()
     End Sub
-
-    Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
-        tutupcus = 2
-        fcaricust.ShowDialog()
-    End Sub
-
-    Sub search()
-        'tutup = 1
-        'Dim panjang As Integer = txtkodeitem.Text.Length
-        'fcaribarang.Show()
-        'fcaribarang.txtcari.Focus()
-        'fcaribarang.txtcari.DeselectAll()
-        'fcaribarang.txtcari.SelectionStart = panjang
-        'Me.txtkodeitem.Clear()
-    End Sub
-    Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
-        tutupstok = 1
-        fcaristok.ShowDialog()
-    End Sub
     Private Sub txtbanyak_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtbanyak.KeyPress
-        If Not (Char.IsDigit(e.KeyChar)) And e.KeyChar <> ChrW(Keys.Back) Then
-            e.Handled = True
-        End If
+        e.Handled = ValidAngka(e)
     End Sub
-
-    Private Sub txtbayar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtbayar.KeyPress
-
-        'If pembayaran = "CASH" Then
-        If Not (Char.IsDigit(e.KeyChar)) And e.KeyChar <> ChrW(Keys.Back) Then
-            e.Handled = True
+    Private Sub UpdateTotalText()
+        total2 = GridView1.Columns("subtotal").SummaryItem.SummaryValue
+        grandtotal = total2
+        If cbdiskon.Checked = True And cbppn.Checked = False And cbongkir.Checked = False Then
+            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
+            grandtotal = total2 - (total2 * txtdiskonpersen.Text / 100)
+        ElseIf cbppn.Checked = True And cbdiskon.Checked = False And cbongkir.Checked = False Then
+            txtppnnominal.Text = total2 * txtppnpersen.Text / 100
+            grandtotal = total2 + (total2 * txtppnpersen.Text / 100)
+        ElseIf cbppn.Checked = True And cbdiskon.Checked = True And cbongkir.Checked = False Then
+            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
+            txtppnnominal.Text = (total2 - txtdiskonnominal.Text) * txtppnpersen.Text / 100
+            grandtotal = total2 - txtdiskonnominal.Text + txtppnnominal.Text
+        ElseIf cbdiskon.Checked = True And cbppn.Checked = False And cbongkir.Checked = True Then
+            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
+            grandtotal = total2 - (total2 * txtdiskonpersen.Text / 100) + txtongkir.Text
+        ElseIf cbppn.Checked = True And cbdiskon.Checked = False And cbongkir.Checked = True Then
+            txtppnnominal.Text = total2 * txtppnpersen.Text / 100
+            grandtotal = total2 + (total2 * txtppnpersen.Text / 100) + txtongkir.Text
+        ElseIf cbppn.Checked = True And cbdiskon.Checked = True And cbongkir.Checked = True Then
+            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
+            txtppnnominal.Text = (total2 - txtdiskonnominal.Text) * txtppnpersen.Text / 100
+            grandtotal = total2 - txtdiskonnominal.Text + txtppnnominal.Text + txtongkir.Text
+        ElseIf cbppn.Checked = False And cbdiskon.Checked = False And cbongkir.Checked = True Then
+            grandtotal = total2 + txtongkir.Text
         End If
-        'Else
-        'If e.KeyChar <> ChrW(Keys.F10) And e.KeyChar <> ChrW(Keys.F9) Then
-        '        e.Handled = True
-        '    End If
-        'End If
-    End Sub
-    Private Sub txtbayar_KeyDown(sender As Object, e As KeyEventArgs) Handles txtbayar.KeyDown
-        'If e.KeyCode = Keys.F9 Then
-        '    Call fdiskon.ShowDialog()
-        'End If
-        'If e.KeyCode = Keys.F10 Then
-        '    Call fmetodepembayaran.ShowDialog()
-        'End If
+        txttotal.Text = grandtotal
     End Sub
 End Class
