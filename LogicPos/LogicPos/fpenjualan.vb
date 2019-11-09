@@ -542,6 +542,10 @@ Public Class fpenjualan
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
 
+    Private Sub rbstruk_CheckedChanged(sender As Object, e As EventArgs) Handles rbstruk.CheckedChanged
+
+    End Sub
+
     Private Sub cbongkir_CheckedChanged(sender As Object, e As EventArgs) Handles cbongkir.CheckedChanged
         If cbongkir.Checked = True Then
             txtongkir.Enabled = True
