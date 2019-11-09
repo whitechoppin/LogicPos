@@ -350,9 +350,11 @@ Public Class fpenjualan
     End Sub
     Private Sub ritediskonpersen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonpersen.KeyPress
         e.Handled = ValidAngka(e)
+
     End Sub
     Private Sub ritediskonnominal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonnominal.KeyPress
         e.Handled = ValidAngka(e)
+
     End Sub
     Sub caribarang()
         Call koneksii()
@@ -546,6 +548,18 @@ Public Class fpenjualan
 
     End Sub
 
+    Private Sub GridView1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles GridView1.KeyPress
+
+    End Sub
+
+    Private Sub GridView1_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles GridView1.RowUpdated
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
+    Private Sub GridView1_RowDeleted(sender As Object, e As DevExpress.Data.RowDeletedEventArgs) Handles GridView1.RowDeleted
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
     Private Sub cbongkir_CheckedChanged(sender As Object, e As EventArgs) Handles cbongkir.CheckedChanged
         If cbongkir.Checked = True Then
             txtongkir.Enabled = True
@@ -648,6 +662,7 @@ Public Class fpenjualan
                 'error jika nulai qty=blank
                 GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
             End Try
+            BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
         End If
 
         If e.Column.FieldName = "diskon_persen" Then
@@ -661,6 +676,7 @@ Public Class fpenjualan
                 'error jika nulai qty=blank
                 GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
             End Try
+            BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
         End If
 
         If e.Column.FieldName = "diskon_nominal" Then
@@ -674,9 +690,8 @@ Public Class fpenjualan
                 'error jika nulai qty=blank
                 GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
             End Try
+            BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
         End If
-
-        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
         If e.KeyCode = Keys.Delete Then
