@@ -121,6 +121,7 @@ Partial Class fpenjualan
         Me.txtbayar = New System.Windows.Forms.TextBox()
         Me.cmbpembayaran = New System.Windows.Forms.ComboBox()
         Me.txtrekening = New System.Windows.Forms.TextBox()
+        Me.btncarikas = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1104,7 +1105,7 @@ Partial Class fpenjualan
         'txtppnpersen
         '
         Me.txtppnpersen.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txtppnpersen.Location = New System.Drawing.Point(931, 517)
+        Me.txtppnpersen.Location = New System.Drawing.Point(931, 516)
         Me.txtppnpersen.Margin = New System.Windows.Forms.Padding(4)
         Me.txtppnpersen.MaxLength = 2
         Me.txtppnpersen.Name = "txtppnpersen"
@@ -1171,7 +1172,7 @@ Partial Class fpenjualan
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(998, 650)
+        Me.Label1.Location = New System.Drawing.Point(1000, 663)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(37, 18)
@@ -1182,7 +1183,7 @@ Partial Class fpenjualan
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(802, 650)
+        Me.Label10.Location = New System.Drawing.Point(802, 663)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(46, 18)
@@ -1193,7 +1194,7 @@ Partial Class fpenjualan
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(709, 618)
+        Me.Label11.Location = New System.Drawing.Point(952, 612)
         Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(91, 18)
@@ -1204,7 +1205,7 @@ Partial Class fpenjualan
         '
         Me.txtsisa.Enabled = False
         Me.txtsisa.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsisa.Location = New System.Drawing.Point(1001, 672)
+        Me.txtsisa.Location = New System.Drawing.Point(1001, 684)
         Me.txtsisa.Margin = New System.Windows.Forms.Padding(4)
         Me.txtsisa.Name = "txtsisa"
         Me.txtsisa.Size = New System.Drawing.Size(194, 24)
@@ -1213,7 +1214,7 @@ Partial Class fpenjualan
         'txtbayar
         '
         Me.txtbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbayar.Location = New System.Drawing.Point(804, 672)
+        Me.txtbayar.Location = New System.Drawing.Point(804, 684)
         Me.txtbayar.Margin = New System.Windows.Forms.Padding(4)
         Me.txtbayar.Name = "txtbayar"
         Me.txtbayar.Size = New System.Drawing.Size(194, 24)
@@ -1223,20 +1224,32 @@ Partial Class fpenjualan
         '
         Me.cmbpembayaran.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cmbpembayaran.FormattingEnabled = True
-        Me.cmbpembayaran.Location = New System.Drawing.Point(804, 615)
+        Me.cmbpembayaran.Location = New System.Drawing.Point(804, 634)
         Me.cmbpembayaran.Name = "cmbpembayaran"
-        Me.cmbpembayaran.Size = New System.Drawing.Size(194, 26)
+        Me.cmbpembayaran.Size = New System.Drawing.Size(165, 26)
         Me.cmbpembayaran.TabIndex = 71
         '
         'txtrekening
         '
         Me.txtrekening.Enabled = False
         Me.txtrekening.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtrekening.Location = New System.Drawing.Point(1001, 615)
+        Me.txtrekening.Location = New System.Drawing.Point(1001, 634)
         Me.txtrekening.Margin = New System.Windows.Forms.Padding(4)
         Me.txtrekening.Name = "txtrekening"
         Me.txtrekening.Size = New System.Drawing.Size(194, 26)
         Me.txtrekening.TabIndex = 72
+        '
+        'btncarikas
+        '
+        Me.btncarikas.BackgroundImage = CType(resources.GetObject("btncarikas.BackgroundImage"), System.Drawing.Image)
+        Me.btncarikas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarikas.ImageIndex = 0
+        Me.btncarikas.Location = New System.Drawing.Point(967, 633)
+        Me.btncarikas.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncarikas.Name = "btncarikas"
+        Me.btncarikas.Size = New System.Drawing.Size(32, 28)
+        Me.btncarikas.TabIndex = 31
+        Me.btncarikas.UseVisualStyleBackColor = True
         '
         'fpenjualan
         '
@@ -1244,6 +1257,7 @@ Partial Class fpenjualan
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1205, 717)
+        Me.Controls.Add(Me.btncarikas)
         Me.Controls.Add(Me.txtrekening)
         Me.Controls.Add(Me.cmbpembayaran)
         Me.Controls.Add(Me.txtbayar)
@@ -1392,4 +1406,5 @@ Partial Class fpenjualan
     Friend WithEvents txtbayar As TextBox
     Friend WithEvents cmbpembayaran As ComboBox
     Friend WithEvents txtrekening As TextBox
+    Friend WithEvents btncarikas As Button
 End Class

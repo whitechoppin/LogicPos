@@ -123,9 +123,12 @@ Public Class fpenjualan
 
     Sub comboboxpembayaran()
         Call koneksii()
-        cmmd = New OdbcCommand("SELECT * FROM tb_kas", cnn)
         cmbpembayaran.Items.Clear()
         cmbpembayaran.AutoCompleteCustomSource.Clear()
+
+        cmbpembayaran.Items.Add("KREDIT")
+
+        cmmd = New OdbcCommand("SELECT * FROM tb_kas", cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows = True Then
             While dr.Read()
@@ -400,14 +403,18 @@ Public Class fpenjualan
     End Sub
 
     Sub caripembayaran()
-        Call koneksii()
-        sql = "SELECT * FROM tb_kas WHERE kode_kas='" & cmbpembayaran.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-        If dr.HasRows Then
-            txtrekening.Text = dr("nama_kas")
+        If cmbpembayaran.Text.Equals("KREDIT") Then
+            txtrekening.Text = "KREDIT"
         Else
-            txtrekening.Text = ""
+            Call koneksii()
+            sql = "SELECT * FROM tb_kas WHERE kode_kas='" & cmbpembayaran.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                txtrekening.Text = dr("nama_kas")
+            Else
+                txtrekening.Text = ""
+            End If
         End If
     End Sub
 
@@ -725,6 +732,7 @@ Public Class fpenjualan
     End Sub
     Private Sub txtbayar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtbayar.KeyPress
         e.Handled = ValidAngka(e)
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
 
     Private Sub txtppnnominal_TextChanged(sender As Object, e As EventArgs) Handles txtppnnominal.TextChanged
@@ -1090,5 +1098,7 @@ Public Class fpenjualan
             grandtotal = total2 + txtongkir.Text
         End If
         txttotal.Text = grandtotal
+        sisa = grandtotal - txtbayar.Text
+        txtsisa.Text = sisa
     End Sub
 End Class
