@@ -128,48 +128,54 @@ Public Class fpembelian
     End Sub
     Sub previewpembelian(lihat As String)
         sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
-        da = New OdbcDataAdapter(sql, cnn)
-        ds = New DataSet
-        da.Fill(ds)
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), dr("harga_beli"), dr("subtotal"))
+            GridControl1.RefreshDataSource()
+        End While
+        'da = New OdbcDataAdapter(sql, cnn)
+        'ds = New DataSet
+        'da.Fill(ds)
 
-        GridControl1.DataSource = Nothing
-        GridControl1.DataSource = ds.Tables(0)
+        'GridControl1.DataSource = Nothing
+        'GridControl1.DataSource = ds.Tables(0)
 
-        GridColumn1.FieldName = "kode_stok"
-        GridColumn1.Caption = "Kode Stok"
-        GridColumn1.Width = 30
+        'GridColumn1.FieldName = "kode_stok"
+        'GridColumn1.Caption = "Kode Stok"
+        'GridColumn1.Width = 30
 
-        GridColumn2.FieldName = "kode_barang"
-        GridColumn2.Caption = "Kode Barang"
-        GridColumn2.Visible = False
+        'GridColumn2.FieldName = "kode_barang"
+        'GridColumn2.Caption = "Kode Barang"
+        'GridColumn2.Visible = False
 
-        GridColumn3.FieldName = "nama_barang"
-        GridColumn3.Caption = "Nama Barang"
-        GridColumn3.Width = 70
+        'GridColumn3.FieldName = "nama_barang"
+        'GridColumn3.Caption = "Nama Barang"
+        'GridColumn3.Width = 70
 
-        GridColumn4.Caption = "qty"
-        GridColumn4.FieldName = "qty"
-        GridColumn4.Width = 20
+        'GridColumn4.Caption = "qty"
+        'GridColumn4.FieldName = "qty"
+        'GridColumn4.Width = 20
 
-        GridColumn5.FieldName = "satuan_barang"
-        GridColumn5.Caption = "Satuan Barang"
-        GridColumn5.Width = 30
+        'GridColumn5.FieldName = "satuan_barang"
+        'GridColumn5.Caption = "Satuan Barang"
+        'GridColumn5.Width = 30
 
-        GridColumn6.FieldName = "jenis_barang"
-        GridColumn6.Caption = "Jenis Barang"
-        GridColumn6.Width = 30
+        'GridColumn6.FieldName = "jenis_barang"
+        'GridColumn6.Caption = "Jenis Barang"
+        'GridColumn6.Width = 30
 
-        GridColumn7.FieldName = "harga_beli"
-        GridColumn7.Caption = "Harga Satuan"
-        GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn7.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn7.Width = 50
+        'GridColumn7.FieldName = "harga_beli"
+        'GridColumn7.Caption = "Harga Satuan"
+        'GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
+        'GridColumn7.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn7.Width = 50
 
-        GridColumn8.FieldName = "subtotal"
-        GridColumn8.Caption = "Subtotal"
-        GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn8.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn8.Width = 55
+        'GridColumn8.FieldName = "subtotal"
+        'GridColumn8.Caption = "Subtotal"
+        'GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
+        'GridColumn8.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn8.Width = 55
     End Sub
     Sub inisialisasi(nomorkode As String)
         'bersihkan dan set default value
@@ -634,8 +640,13 @@ Public Class fpembelian
         If GridView1.RowCount = 0 Then  'data tidak ada
             If lblsatuan.Text = "Pcs" Then
                 'tambahkan data ke tabel keranjang
-                tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, Val(txtbanyakbarang.Text), satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
-                GridControl1.RefreshDataSource()
+                If btnedit.Text = "Update" Then
+                    tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, Val(txtbanyakbarang.Text), satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
+                    GridControl1.RefreshDataSource()
+                Else
+
+                End If
+
                 'bersihkan textbox
                 lblsatuan.Text = "satuan"
                 lblsatuanbeli.Text = "satuan"
@@ -1030,7 +1041,7 @@ Public Class fpembelian
         dr = cmmd.ExecuteReader()
 
         For i As Integer = 0 To GridView1.RowCount - 1
-            sql = "INSERT INTO tb_pembelian_detail_sementara (kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty,harga_beli, subtotal) VALUES ('" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "', '" & GridView1.GetRowCellValue(i, "harga_beli") & "','" & GridView1.GetRowCellValue(i, "subtotal") & "')"
+            sql = "INSERT INTO tb_pembelian_detail_sementara (kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty,harga_beli, subtotal) VALUES ('" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "', '" & GridView1.GetRowCellValue(i, "harga") & "','" & GridView1.GetRowCellValue(i, "subtotal") & "')"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Next
@@ -1067,7 +1078,7 @@ Public Class fpembelian
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
-                sql = "update tb_pembelian_detail set qty= '" & GridView1.GetRowCellValue(i, "qty") & "', harga_beli= '" & GridView1.GetRowCellValue(i, "harga_beli") & "' where kode_pembelian = '" & txtnonota.Text & "' and kode_stok='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+                sql = "update tb_pembelian_detail set qty= '" & GridView1.GetRowCellValue(i, "qty") & "', harga_beli= '" & GridView1.GetRowCellValue(i, "harga") & "' where kode_pembelian = '" & txtnonota.Text & "' and kode_stok='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             Else
