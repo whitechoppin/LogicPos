@@ -1001,6 +1001,8 @@ Public Class fpembelian
             btnprint.Enabled = False
             btnprev.Enabled = False
             btnnext.Enabled = False
+            btncari.Enabled = True
+            btntambahbarang.Enabled = True
 
             GridControl1.Enabled = True
             GridView1.OptionsBehavior.Editable = True
@@ -1042,7 +1044,7 @@ Public Class fpembelian
         For i As Integer = 0 To GridView1.RowCount - 1
             Dim stok_awal As Double
             Dim stok_nota_awal As Double
-            MsgBox(GridView1.GetRowCellValue(i, "kode_stok"))
+            'MsgBox(GridView1.GetRowCellValue(i, "kode_stok"))
 
             sql = "select * from tb_pembelian_detail_sementara where kode_stok ='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
             cmmd = New OdbcCommand(sql, cnn)
@@ -1094,11 +1096,9 @@ Public Class fpembelian
                     dr = cmmd.ExecuteReader()
                 End If
             End If
-
-
         Next
-
-
+        Call inisialisasi(kodepembelian)
+        btnedit.Text = "Edit"
 
         'For i As Integer = 0 To GridView1.RowCount - 1
         '    Dim stok_awal As Double
