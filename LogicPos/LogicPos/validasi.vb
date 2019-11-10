@@ -7,5 +7,6 @@
     Public tutupsup As Integer
     Public tutupstok As Integer
     Public tutupgudang As Integer
+    Public tutupkas As Integer
     Public msgbox1 As Integer
 End Module

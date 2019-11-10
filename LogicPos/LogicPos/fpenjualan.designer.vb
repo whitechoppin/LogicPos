@@ -1244,7 +1244,7 @@ Partial Class fpenjualan
         Me.btncarikas.BackgroundImage = CType(resources.GetObject("btncarikas.BackgroundImage"), System.Drawing.Image)
         Me.btncarikas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarikas.ImageIndex = 0
-        Me.btncarikas.Location = New System.Drawing.Point(967, 633)
+        Me.btncarikas.Location = New System.Drawing.Point(968, 633)
         Me.btncarikas.Margin = New System.Windows.Forms.Padding(4)
         Me.btncarikas.Name = "btncarikas"
         Me.btncarikas.Size = New System.Drawing.Size(32, 28)

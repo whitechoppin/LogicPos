@@ -797,6 +797,11 @@ Public Class fpenjualan
         End If
     End Sub
 
+    Private Sub btncarikas_Click(sender As Object, e As EventArgs) Handles btncarikas.Click
+        tutupkas = 1
+        fcarikas.ShowDialog()
+    End Sub
+
     Private Sub txtbayar_TextChanged(sender As Object, e As EventArgs) Handles txtbayar.TextChanged
         'If txtbayar.Text.Length = 0 Then
         'txtbayar.Text = 0
