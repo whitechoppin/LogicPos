@@ -29,7 +29,7 @@ Partial Class fpenjualan
         Me.txtbanyak = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtharga = New System.Windows.Forms.TextBox()
-        Me.txtnama = New System.Windows.Forms.TextBox()
+        Me.txtnamabarang = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -114,6 +114,13 @@ Partial Class fpenjualan
         Me.cbppn = New System.Windows.Forms.CheckBox()
         Me.cbongkir = New System.Windows.Forms.CheckBox()
         Me.txtongkir = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtsisa = New System.Windows.Forms.TextBox()
+        Me.txtbayar = New System.Windows.Forms.TextBox()
+        Me.cmbpembayaran = New System.Windows.Forms.ComboBox()
+        Me.txtrekening = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -183,6 +190,7 @@ Partial Class fpenjualan
         '
         'txtharga
         '
+        Me.txtharga.Enabled = False
         Me.txtharga.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtharga.Location = New System.Drawing.Point(951, 30)
         Me.txtharga.Margin = New System.Windows.Forms.Padding(4)
@@ -190,14 +198,15 @@ Partial Class fpenjualan
         Me.txtharga.Size = New System.Drawing.Size(169, 24)
         Me.txtharga.TabIndex = 10
         '
-        'txtnama
+        'txtnamabarang
         '
-        Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(423, 30)
-        Me.txtnama.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(376, 24)
-        Me.txtnama.TabIndex = 10
+        Me.txtnamabarang.Enabled = False
+        Me.txtnamabarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnamabarang.Location = New System.Drawing.Point(423, 30)
+        Me.txtnamabarang.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnamabarang.Name = "txtnamabarang"
+        Me.txtnamabarang.Size = New System.Drawing.Size(376, 24)
+        Me.txtnamabarang.TabIndex = 10
         '
         'Label9
         '
@@ -243,7 +252,7 @@ Partial Class fpenjualan
         Me.GroupBox1.Controls.Add(Me.txtbanyak)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.txtharga)
-        Me.GroupBox1.Controls.Add(Me.txtnama)
+        Me.GroupBox1.Controls.Add(Me.txtnamabarang)
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label5)
@@ -517,7 +526,7 @@ Partial Class fpenjualan
         '
         Me.txttotal.Enabled = False
         Me.txttotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttotal.Location = New System.Drawing.Point(931, 577)
+        Me.txttotal.Location = New System.Drawing.Point(932, 577)
         Me.txttotal.Margin = New System.Windows.Forms.Padding(4)
         Me.txttotal.Name = "txttotal"
         Me.txttotal.Size = New System.Drawing.Size(263, 24)
@@ -527,7 +536,7 @@ Partial Class fpenjualan
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(886, 580)
+        Me.Label13.Location = New System.Drawing.Point(886, 584)
         Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(41, 18)
@@ -1140,7 +1149,7 @@ Partial Class fpenjualan
         '
         Me.cbongkir.AutoSize = True
         Me.cbongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbongkir.Location = New System.Drawing.Point(831, 547)
+        Me.cbongkir.Location = New System.Drawing.Point(831, 544)
         Me.cbongkir.Margin = New System.Windows.Forms.Padding(4)
         Me.cbongkir.Name = "cbongkir"
         Me.cbongkir.Size = New System.Drawing.Size(98, 22)
@@ -1151,12 +1160,83 @@ Partial Class fpenjualan
         'txtongkir
         '
         Me.txtongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txtongkir.Location = New System.Drawing.Point(931, 545)
+        Me.txtongkir.Location = New System.Drawing.Point(931, 543)
         Me.txtongkir.Margin = New System.Windows.Forms.Padding(4)
         Me.txtongkir.MaxLength = 12
         Me.txtongkir.Name = "txtongkir"
-        Me.txtongkir.Size = New System.Drawing.Size(263, 24)
+        Me.txtongkir.Size = New System.Drawing.Size(264, 24)
         Me.txtongkir.TabIndex = 62
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(998, 650)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(37, 18)
+        Me.Label1.TabIndex = 65
+        Me.Label1.Text = "Sisa"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(802, 650)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(46, 18)
+        Me.Label10.TabIndex = 66
+        Me.Label10.Text = "Bayar"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(709, 618)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(91, 18)
+        Me.Label11.TabIndex = 67
+        Me.Label11.Text = "Pembayaran"
+        '
+        'txtsisa
+        '
+        Me.txtsisa.Enabled = False
+        Me.txtsisa.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtsisa.Location = New System.Drawing.Point(1001, 672)
+        Me.txtsisa.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtsisa.Name = "txtsisa"
+        Me.txtsisa.Size = New System.Drawing.Size(194, 24)
+        Me.txtsisa.TabIndex = 69
+        '
+        'txtbayar
+        '
+        Me.txtbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtbayar.Location = New System.Drawing.Point(804, 672)
+        Me.txtbayar.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtbayar.Name = "txtbayar"
+        Me.txtbayar.Size = New System.Drawing.Size(194, 24)
+        Me.txtbayar.TabIndex = 70
+        '
+        'cmbpembayaran
+        '
+        Me.cmbpembayaran.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.cmbpembayaran.FormattingEnabled = True
+        Me.cmbpembayaran.Location = New System.Drawing.Point(804, 615)
+        Me.cmbpembayaran.Name = "cmbpembayaran"
+        Me.cmbpembayaran.Size = New System.Drawing.Size(194, 26)
+        Me.cmbpembayaran.TabIndex = 71
+        '
+        'txtrekening
+        '
+        Me.txtrekening.Enabled = False
+        Me.txtrekening.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtrekening.Location = New System.Drawing.Point(1001, 615)
+        Me.txtrekening.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtrekening.Name = "txtrekening"
+        Me.txtrekening.Size = New System.Drawing.Size(194, 26)
+        Me.txtrekening.TabIndex = 72
         '
         'fpenjualan
         '
@@ -1164,6 +1244,13 @@ Partial Class fpenjualan
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1205, 717)
+        Me.Controls.Add(Me.txtrekening)
+        Me.Controls.Add(Me.cmbpembayaran)
+        Me.Controls.Add(Me.txtbayar)
+        Me.Controls.Add(Me.txtsisa)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtppnnominal)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.txtdiskonnominal)
@@ -1213,7 +1300,7 @@ Partial Class fpenjualan
     Friend WithEvents txtbanyak As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents txtharga As TextBox
-    Friend WithEvents txtnama As TextBox
+    Friend WithEvents txtnamabarang As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label5 As Label
@@ -1298,4 +1385,11 @@ Partial Class fpenjualan
     Friend WithEvents cbppn As CheckBox
     Friend WithEvents cbongkir As CheckBox
     Friend WithEvents txtongkir As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents txtsisa As TextBox
+    Friend WithEvents txtbayar As TextBox
+    Friend WithEvents cmbpembayaran As ComboBox
+    Friend WithEvents txtrekening As TextBox
 End Class
