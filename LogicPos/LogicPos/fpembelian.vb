@@ -946,46 +946,25 @@ Public Class fpembelian
         Call nextnumber(txtnonota.Text)
     End Sub
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
-        If statusedit = True Then
-            If e.Column.FieldName = "qty" Then
-                Try
-                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga_beli"))
-                Catch ex As Exception
-                    'error jika nilai qty=blank
-                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
-                End Try
-            Else
-                If e.Column.FieldName = "harga_beli" Then
-                    Try
-                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "qty"))
-                    Catch ex As Exception
-                        'error jika nilai qty=blank
-                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
-                    End Try
-                End If
-            End If
-            BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
-        Else
-            If e.Column.FieldName = "qty" Then
-                Try
-                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga"))
-                Catch ex As Exception
-                    'error jika nilai qty=blank
-                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
-                End Try
-            Else
-                If e.Column.FieldName = "harga" Then
-                    Try
-                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "qty"))
-                    Catch ex As Exception
-                        'error jika nilai qty=blank
-                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
-                    End Try
-                End If
-            End If
-            BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
-        End If
 
+        If e.Column.FieldName = "qty" Then
+            Try
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga"))
+            Catch ex As Exception
+                'error jika nilai qty=blank
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+            End Try
+        Else
+            If e.Column.FieldName = "harga" Then
+                Try
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "qty"))
+                Catch ex As Exception
+                    'error jika nilai qty=blank
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+                End Try
+            End If
+        End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
     Private Sub txthargabarang_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txthargabarang.KeyPress
         e.Handled = ValidAngka(e)
@@ -1046,11 +1025,69 @@ Public Class fpembelian
             dr = cmmd.ExecuteReader()
         Next
     End Sub
+    Sub cek_pembelian()
+        Dim kode_stok As String
+        Dim jumlah_stok As Double
+        sql = "select * from tb_pembelian_detail_sementara"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            Dim status_oke As Integer
+            'MsgBox(dr("kode_stok"))
+            For i As Integer = 0 To GridView1.RowCount - 1
+                'MsgBox(dr("kode_stok") + "=" + GridView1.GetRowCellValue(i, "kode_stok"))
+                If dr("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok") Then
+                    'MsgBox("sama")
+                    status_oke = 1
+                Else
+                    If status_oke = 1 Then
+                        'MsgBox("beda")
+                        status_oke = 1
+                    Else
+                        If status_oke = 0 Then
+                            'MsgBox("beda")
+                            status_oke = 0
+                            kode_stok = dr("kode_stok")
+                            jumlah_stok = dr("qty")
+                        End If
+                    End If
+                End If
+            Next
+
+            MsgBox("Final " + status_oke.ToString)
+            MsgBox(kode_stok + " " + jumlah_stok.ToString)
+
+            If status_oke = 0 Then
+                'MsgBox("Perubahan")
+                status_oke = 0
+                sql = " update tb_stok set jumlah_stok = jumlah_stok - '" & jumlah_stok & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
+                sql = " delete from tb_pembelian_detail where kode_pembelian = '" & txtnonota.Text & "' and kode_stok = '" & kode_stok & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            Else
+                If status_oke = 1 Then
+                    MsgBox("tidak berubah")
+                    status_oke = 0
+                End If
+                'sql = " update tb_stok set jumlah_stok = jumlah_stok - '" & jumlah_stok & "' "
+                'cmmd = New OdbcCommand(sql, cnn)
+                'dr = cmmd.ExecuteReader()
+
+                'sql = " delete from tb_pembelian_detail where kode_pembelian = '" & txtnonota.Text & "' and kode_stok = '" & kode_stok & "' "
+                'cmmd = New OdbcCommand(sql, cnn)
+                'dr = cmmd.ExecuteReader()
+            End If
+        End While
+    End Sub
     Sub update_pembelian()
         'sql = "select * from tb_pembelian join tb_pembelian_detail on tb_pembelian.kode_pembelian = tb_pembelian_detail.kode_pembelian where kode_pembelian = '" & txtnonota.Text & "'"
         'cmmd = New OdbcCommand(sql, cnn)
         'dr = cmmd.ExecuteReader()
         'If dr.HasRows Then
+
         Call koneksii()
         For i As Integer = 0 To GridView1.RowCount - 1
             Dim stok_awal As Double
@@ -1108,6 +1145,8 @@ Public Class fpembelian
                 End If
             End If
         Next
+        Call cek_pembelian()
+
         Call inisialisasi(kodepembelian)
         btnedit.Text = "Edit"
 
