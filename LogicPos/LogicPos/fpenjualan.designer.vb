@@ -1213,6 +1213,7 @@ Partial Class fpenjualan
         '
         'txtbayar
         '
+        Me.txtbayar.Enabled = False
         Me.txtbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtbayar.Location = New System.Drawing.Point(804, 684)
         Me.txtbayar.Margin = New System.Windows.Forms.Padding(4)
