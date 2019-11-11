@@ -6,7 +6,7 @@ Imports CrystalDecisions.Shared
 Public Class fpenjualan
     Public tabel As DataTable
     'variabel dalam penjualan
-    Public jenis, satuan As String
+    Public jenis, satuan, kodepenjualan As String
     Dim totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
 
     'variabel bantuan view penjualan
@@ -20,7 +20,8 @@ Public Class fpenjualan
         Call koneksii()
         'Call printer()
         'Call cek_kas()
-        Call inisialisasi("123456")
+        kodepenjualan = currentnumber()
+        Call inisialisasi(kodepenjualan)
         With GridView1
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
@@ -128,12 +129,12 @@ Public Class fpenjualan
             cnn.Close()
         End Try
     End Sub
-    Sub previewpembelian(lihat As String)
+    Sub previewpenjualan(lihat As String)
         sql = "SELECT * FROM tb_penjualan_detail WHERE kode_penjualan ='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), dr("harga_jual"), dr("diskon"), dr("harga_diskon"), dr("subtotal"), 0, dr("keuntungan"))
+            tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), dr("harga_jual"), dr("diskon"), dr("harga_jual") - dr("diskon") / 100, dr("harga_diskon"), dr("subtotal"), 0, 0)
             GridControl1.RefreshDataSource()
         End While
 
@@ -333,6 +334,7 @@ Public Class fpenjualan
 
         cmbpembayaran.SelectedIndex = -1
         cmbpembayaran.Enabled = True
+        btncarikas.Enabled = True
 
         txtrekening.Clear()
 
@@ -449,12 +451,92 @@ Public Class fpenjualan
         txttotal.Text = 0
 
         cmbpembayaran.Enabled = False
+        btncarikas.Enabled = False
         txtrekening.Clear()
 
         txtbayar.Clear()
         txtbayar.Text = 0
+        txtbayar.Enabled = False
         txtsisa.Clear()
         txtsisa.Text = 0
+
+        If nomorkode IsNot "" Then
+            Using cnn As New OdbcConnection(strConn)
+                sql = "SELECT * FROM tb_penjualan WHERE kode_penjualan = '" + nomorkode.ToString + "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                cnn.Open()
+                dr = cmmd.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    'header
+                    nomornota = dr("kode_penjualan")
+                    nomorcustomer = dr("kode_pelanggan")
+                    nomorsales = dr("kode_user")
+                    nomorgudang = dr("kode_gudang")
+                    statuslunas = dr("lunas_penjualan")
+                    statusvoid = dr("void_penjualan")
+                    statusprint = dr("print_penjualan")
+                    statusposted = dr("posted_penjualan")
+                    viewtglpenjualan = dr("tgl_penjualan")
+                    viewtgljatuhtempo = dr("tgl_jatuhtempo_penjualan")
+                    viewketerangan = dr("keterangan_penjualan")
+                    nilaidiskon = dr("diskon_penjualan")
+                    nilaippn = dr("pajak_penjualan")
+                    nilaiongkir = dr("ongkir_penjualan")
+
+                    txtnonota.Text = nomornota
+                    cmbcustomer.Text = nomorcustomer
+                    cmbsales.Text = nomorsales
+                    cmbgudang.Text = nomorgudang
+                    cblunas.Checked = statuslunas
+                    cbvoid.Checked = statusvoid
+                    cbprinted.Checked = statusprint
+                    cbposted.Checked = statusposted
+
+                    dtpenjualan.Value = viewtglpenjualan
+                    dtjatuhtempo.Value = viewtgljatuhtempo
+
+                    'isi tabel view pembelian
+
+                    Call previewpenjualan(nomorkode)
+
+                    'total tabel pembelian
+
+                    txtketerangan.Text = viewketerangan
+
+                    If nilaidiskon <> 0 Then
+                        cbdiskon.Checked = True
+                        txtdiskonpersen.Text = nilaidiskon
+                    Else
+                        cbdiskon.Checked = False
+                        txtdiskonpersen.Text = 0
+                    End If
+
+                    If nilaippn <> 0 Then
+                        cbppn.Checked = True
+                        txtppnpersen.Text = nilaippn
+                    Else
+                        cbppn.Checked = False
+                        txtppnpersen.Text = 0
+                    End If
+
+                    If nilaiongkir <> 0 Then
+                        cbongkir.Checked = True
+                        txtongkir.Text = nilaiongkir
+                    Else
+                        cbongkir.Checked = False
+                        txtongkir.Text = 0
+                    End If
+
+                    txtongkir.Enabled = False
+                    txtppnpersen.Enabled = False
+                    txtdiskonpersen.Enabled = False
+
+                    'cmbbayar.SelectedIndex = -1
+                    cnn.Close()
+                End If
+            End Using
+        End If
 
     End Sub
 
@@ -564,6 +646,7 @@ Public Class fpenjualan
     End Sub
 
     Sub caripelanggan()
+        Call koneksii()
         sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & cmbcustomer.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -706,7 +789,7 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
-        Call inisialisasi("123456")
+        Call inisialisasi(kodepenjualan)
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
@@ -1199,7 +1282,7 @@ Public Class fpenjualan
         Next
 
         For i As Integer = 0 To GridView1.RowCount - 1
-            sql = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan, qty, harga_jual, diskon, harga_diskon, subtotal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & GridView1.GetRowCellValue(i, "diskon") & "','" & GridView1.GetRowCellValue(i, "harga_diskon") & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & GridView1.GetRowCellValue(i, "diskon") & "','" & GridView1.GetRowCellValue(i, "harga_diskon") & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Next
