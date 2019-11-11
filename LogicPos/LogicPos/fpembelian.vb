@@ -1069,7 +1069,7 @@ Public Class fpembelian
                 dr = cmmd.ExecuteReader()
             Else
                 If status_oke = 1 Then
-                    MsgBox("tidak berubah")
+                    'MsgBox("tidak berubah")
                     status_oke = 0
                 End If
                 'sql = " update tb_stok set jumlah_stok = jumlah_stok - '" & jumlah_stok & "' "
