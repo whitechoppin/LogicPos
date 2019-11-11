@@ -1146,7 +1146,6 @@ Public Class fpembelian
             End If
         Next
         Call cek_pembelian()
-
         Call inisialisasi(kodepembelian)
         btnedit.Text = "Edit"
 
