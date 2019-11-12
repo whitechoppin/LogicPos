@@ -100,9 +100,9 @@ Public Class fpenjualan
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 dr.Read()
-                'Call inisialisasi(dr.Item(0).ToString)
+                Call inisialisasi(dr.Item(0).ToString)
             Else
-                'Call inisialisasi(previousnumber)
+                Call inisialisasi(previousnumber)
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
@@ -119,9 +119,9 @@ Public Class fpenjualan
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 dr.Read()
-                'Call inisialisasi(dr.Item(0).ToString)
+                Call inisialisasi(dr.Item(0).ToString)
             Else
-                'Call inisialisasi(nextingnumber)
+                Call inisialisasi(nextingnumber)
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
@@ -793,7 +793,7 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
-
+        Call prevnumber(kodepenjualan)
     End Sub
 
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
@@ -801,7 +801,7 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-
+        Call nextnumber(kodepenjualan)
     End Sub
 
 
@@ -1312,7 +1312,7 @@ Public Class fpenjualan
         'End If
 
         MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
-        Call inisialisasi("123456")
+        Call inisialisasi(kodepenjualan)
     End Sub
     Private Function CpuId() As String
         Dim computer As String = "."
