@@ -640,12 +640,10 @@ Public Class fpembelian
         If GridView1.RowCount = 0 Then  'data tidak ada
             If lblsatuan.Text = "Pcs" Then
                 'tambahkan data ke tabel keranjang
-                If btnedit.Text = "Update" Then
-                    tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, Val(txtbanyakbarang.Text), satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
-                    GridControl1.RefreshDataSource()
-                Else
 
-                End If
+                tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, Val(txtbanyakbarang.Text), satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
+                GridControl1.RefreshDataSource()
+
 
                 'bersihkan textbox
                 lblsatuan.Text = "satuan"
@@ -1104,89 +1102,89 @@ Public Class fpembelian
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             If dr.HasRows Then
-                    sql = "select * from tb_pembelian_detail_sementara where kode_stok ='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
-                    cmmd = New OdbcCommand(sql, cnn)
-                    dr = cmmd.ExecuteReader()
-                    If dr.HasRows Then
-                    sql = "UPDATE tb_stok SET jumlah_stok ='" & GridView1.GetRowCellValue(i, "qty") & "'- '" & dr("qty") & "' +  jumlah_stok  WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
-                    cmmd = New OdbcCommand(sql, cnn)
-                        dr = cmmd.ExecuteReader()
-                    End If
-
-                Else
-                    sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_gudang") & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
+                sql = "select * from tb_pembelian_detail_sementara where kode_stok ='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+                If dr.HasRows Then
+                    sql = "UPDATE tb_stok SET jumlah_stok =jumlah_stok - '" & dr("qty") & "' + '" & GridView1.GetRowCellValue(i, "qty") & "'   WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
                 End If
 
-                sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
+            Else
+                sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_gudang") & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
+            End If
 
-            ''Dim stok_awal As Double
-            ''Dim stok_nota_awal As Double
-            '''MsgBox(GridView1.GetRowCellValue(i, "kode_stok"))
-
-            ''sql = "select * from tb_pembelian_detail_sementara where kode_stok ='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
-            ''cmmd = New OdbcCommand(sql, cnn)
-            ''dr = cmmd.ExecuteReader()
-            ''If dr.HasRows Then
-            ''    'MsgBox("ada")
-            ''    sql = "select * from tb_barang join tb_stok on tb_stok.kode_barang = tb_barang.kode_barang where tb_stok.kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
-            ''    cmmd = New OdbcCommand(sql, cnn)
-            ''    dr = cmmd.ExecuteReader()
-            ''    dr.Read()
-            ''    MsgBox(dr("kode_stok"))
-            ''    stok_awal = dr("jumlah_stok")
-
-            ''    sql = "select * from tb_pembelian_detail_sementara where kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
-            ''    cmmd = New OdbcCommand(sql, cnn)
-            ''    dr = cmmd.ExecuteReader()
-            ''    dr.Read()
-            ''    stok_nota_awal = dr("qty")
-
-            ''    sql = "update tb_stok set jumlah_stok= '" & GridView1.GetRowCellValue(i, "qty") & "'- '" & stok_nota_awal & "' + '" & stok_awal & "' where kode_stok='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
-            ''    cmmd = New OdbcCommand(sql, cnn)
-            ''    dr = cmmd.ExecuteReader()
-
-            ''    sql = "update tb_pembelian_detail set qty= '" & GridView1.GetRowCellValue(i, "qty") & "', harga_beli= '" & GridView1.GetRowCellValue(i, "harga") & "' where kode_pembelian = '" & txtnonota.Text & "' and kode_stok='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
-            ''    cmmd = New OdbcCommand(sql, cnn)
-            ''    dr = cmmd.ExecuteReader()
-            ''Else
-            ''    'MsgBox("tdk ada")
-            ''    sql = "INSERT INTO tb_pembelian_detail (kode_pembelian, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty,harga_beli, subtotal,created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "', '" & GridView1.GetRowCellValue(i, "harga") & "','" & GridView1.GetRowCellValue(i, "subtotal") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-            ''    cmmd = New OdbcCommand(sql, cnn)
-
-            ''    dr = cmmd.ExecuteReader()
-
-            ''    If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
-            ''        sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
-            ''        cmmd = New OdbcCommand(sql, cnn)
-            ''        dr = cmmd.ExecuteReader()
-            ''        If dr.HasRows Then
-            ''            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
-            ''            cmmd = New OdbcCommand(sql, cnn)
-            ''            dr = cmmd.ExecuteReader()
-            ''        Else
-            ''            sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_gudang") & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
-            ''            cmmd = New OdbcCommand(sql, cnn)
-            ''            dr = cmmd.ExecuteReader()
-            ''        End If
-
-            ''        sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
-            ''        cmmd = New OdbcCommand(sql, cnn)
-            ''        dr = cmmd.ExecuteReader()
-            ''    Else
-            ''        sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_gudang") & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
-            ''        cmmd = New OdbcCommand(sql, cnn)
-            ''        dr = cmmd.ExecuteReader()
-
-            ''        sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
-            ''        cmmd = New OdbcCommand(sql, cnn)
-            ''        dr = cmmd.ExecuteReader()
-            ''    End If
-            ''End If
+            sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
         Next
+        ''Dim stok_awal As Double
+        ''Dim stok_nota_awal As Double
+        '''MsgBox(GridView1.GetRowCellValue(i, "kode_stok"))
+
+        ''sql = "select * from tb_pembelian_detail_sementara where kode_stok ='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+        ''cmmd = New OdbcCommand(sql, cnn)
+        ''dr = cmmd.ExecuteReader()
+        ''If dr.HasRows Then
+        ''    'MsgBox("ada")
+        ''    sql = "select * from tb_barang join tb_stok on tb_stok.kode_barang = tb_barang.kode_barang where tb_stok.kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+        ''    cmmd = New OdbcCommand(sql, cnn)
+        ''    dr = cmmd.ExecuteReader()
+        ''    dr.Read()
+        ''    MsgBox(dr("kode_stok"))
+        ''    stok_awal = dr("jumlah_stok")
+
+        ''    sql = "select * from tb_pembelian_detail_sementara where kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+        ''    cmmd = New OdbcCommand(sql, cnn)
+        ''    dr = cmmd.ExecuteReader()
+        ''    dr.Read()
+        ''    stok_nota_awal = dr("qty")
+
+        ''    sql = "update tb_stok set jumlah_stok= '" & GridView1.GetRowCellValue(i, "qty") & "'- '" & stok_nota_awal & "' + '" & stok_awal & "' where kode_stok='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+        ''    cmmd = New OdbcCommand(sql, cnn)
+        ''    dr = cmmd.ExecuteReader()
+
+        ''    sql = "update tb_pembelian_detail set qty= '" & GridView1.GetRowCellValue(i, "qty") & "', harga_beli= '" & GridView1.GetRowCellValue(i, "harga") & "' where kode_pembelian = '" & txtnonota.Text & "' and kode_stok='" & GridView1.GetRowCellValue(i, "kode_stok") & "' "
+        ''    cmmd = New OdbcCommand(sql, cnn)
+        ''    dr = cmmd.ExecuteReader()
+        ''Else
+        ''    'MsgBox("tdk ada")
+        ''    sql = "INSERT INTO tb_pembelian_detail (kode_pembelian, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty,harga_beli, subtotal,created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "', '" & GridView1.GetRowCellValue(i, "harga") & "','" & GridView1.GetRowCellValue(i, "subtotal") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+        ''    cmmd = New OdbcCommand(sql, cnn)
+
+        ''    dr = cmmd.ExecuteReader()
+
+        ''    If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
+        ''        sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
+        ''        cmmd = New OdbcCommand(sql, cnn)
+        ''        dr = cmmd.ExecuteReader()
+        ''        If dr.HasRows Then
+        ''            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
+        ''            cmmd = New OdbcCommand(sql, cnn)
+        ''            dr = cmmd.ExecuteReader()
+        ''        Else
+        ''            sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_gudang") & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
+        ''            cmmd = New OdbcCommand(sql, cnn)
+        ''            dr = cmmd.ExecuteReader()
+        ''        End If
+
+        ''        sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
+        ''        cmmd = New OdbcCommand(sql, cnn)
+        ''        dr = cmmd.ExecuteReader()
+        ''    Else
+        ''        sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_gudang") & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
+        ''        cmmd = New OdbcCommand(sql, cnn)
+        ''        dr = cmmd.ExecuteReader()
+
+        ''        sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
+        ''        cmmd = New OdbcCommand(sql, cnn)
+        ''        dr = cmmd.ExecuteReader()
+        ''    End If
+        ''End If
+
         Call cek_pembelian()
         Call inisialisasi(kodepembelian)
         btnedit.Text = "Edit"
