@@ -4,6 +4,8 @@ Module koneksi
     Public cnn As New OdbcConnection
     Public cmmd As OdbcCommand
     Public dr As OdbcDataReader
+    Public drpenjualan As OdbcDataReader
+
     Public sql As String
     Public da As OdbcDataAdapter
     Public ds As DataSet
