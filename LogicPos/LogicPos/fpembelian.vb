@@ -241,6 +241,7 @@ Public Class fpembelian
         lblsatuanbeli.Text = "satuan"
 
         btntambahbarang.Enabled = False
+        btnedit.Text = "Edit"
 
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = False

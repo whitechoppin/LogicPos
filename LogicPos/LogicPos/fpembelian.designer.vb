@@ -909,7 +909,7 @@ Partial Class fpembelian
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1099, 609)
+        Me.ClientSize = New System.Drawing.Size(1152, 609)
         Me.Controls.Add(Me.txtppnnominal)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.txtdiskonnominal)
