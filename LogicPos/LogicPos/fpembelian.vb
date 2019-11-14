@@ -1041,6 +1041,9 @@ Public Class fpembelian
                     If status_oke = 1 Then
                         'MsgBox("beda 1")
                         status_oke = 1
+                        kode_stok = 0
+                        jumlah_stok = 0
+
                     Else
                         If status_oke = 0 Then
                             'MsgBox("beda 0")
@@ -1051,12 +1054,13 @@ Public Class fpembelian
                     End If
                 End If
             Next
-            'MsgBox("Final " + status_oke.ToString)
-            'MsgBox(kode_stok + " " + jumlah_stok.ToString)
+            MsgBox("Final " + status_oke.ToString)
+            MsgBox(kode_stok + " " + jumlah_stok.ToString)
             If status_oke = 0 Then
-                'MsgBox("Perubahan")
+                MsgBox("Perubahan")
                 status_oke = 0
-                sql = " update tb_stok set jumlah_stok = jumlah_stok - '" & jumlah_stok & "' "
+
+                sql = " update tb_stok set jumlah_stok = jumlah_stok - '" & jumlah_stok & "'where kode_stok =  '" & kode_stok & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
@@ -1065,7 +1069,7 @@ Public Class fpembelian
                 dr = cmmd.ExecuteReader()
             Else
                 If status_oke = 1 Then
-                    'MsgBox("tidak berubah")
+                    MsgBox("tidak berubah")
                     status_oke = 0
                 End If
             End If
