@@ -116,7 +116,7 @@ Partial Class fbarangmasuk
         '
         'txtgudang
         '
-        Me.txtgudang.Location = New System.Drawing.Point(618, 86)
+        Me.txtgudang.Location = New System.Drawing.Point(603, 86)
         Me.txtgudang.Name = "txtgudang"
         Me.txtgudang.Size = New System.Drawing.Size(220, 24)
         Me.txtgudang.TabIndex = 16
@@ -125,7 +125,7 @@ Partial Class fbarangmasuk
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(481, 92)
+        Me.Label18.Location = New System.Drawing.Point(466, 92)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(104, 18)
         Me.Label18.TabIndex = 40
@@ -197,7 +197,7 @@ Partial Class fbarangmasuk
         Me.btncarigudang.BackgroundImage = CType(resources.GetObject("btncarigudang.BackgroundImage"), System.Drawing.Image)
         Me.btncarigudang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarigudang.ImageIndex = 0
-        Me.btncarigudang.Location = New System.Drawing.Point(807, 55)
+        Me.btncarigudang.Location = New System.Drawing.Point(792, 55)
         Me.btncarigudang.Name = "btncarigudang"
         Me.btncarigudang.Size = New System.Drawing.Size(31, 27)
         Me.btncarigudang.TabIndex = 15
@@ -207,7 +207,7 @@ Partial Class fbarangmasuk
         '
         Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
         Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(618, 56)
+        Me.cmbgudang.Location = New System.Drawing.Point(603, 56)
         Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
         Me.cmbgudang.Size = New System.Drawing.Size(192, 26)
@@ -216,7 +216,7 @@ Partial Class fbarangmasuk
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(481, 62)
+        Me.Label13.Location = New System.Drawing.Point(466, 62)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(99, 18)
         Me.Label13.TabIndex = 18
@@ -225,7 +225,7 @@ Partial Class fbarangmasuk
         'dtpembelian
         '
         Me.dtpembelian.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtpembelian.Location = New System.Drawing.Point(617, 27)
+        Me.dtpembelian.Location = New System.Drawing.Point(602, 27)
         Me.dtpembelian.Name = "dtpembelian"
         Me.dtpembelian.Size = New System.Drawing.Size(221, 23)
         Me.dtpembelian.TabIndex = 17
@@ -234,7 +234,7 @@ Partial Class fbarangmasuk
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label12.Location = New System.Drawing.Point(481, 33)
+        Me.Label12.Location = New System.Drawing.Point(466, 33)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(133, 18)
         Me.Label12.TabIndex = 16

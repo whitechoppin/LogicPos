@@ -66,4 +66,8 @@ Public Class fmenu
     Private Sub BarangKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangKeluarToolStripMenuItem.Click
         fbarangkeluar.Show()
     End Sub
+
+    Private Sub BarangMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangMasukToolStripMenuItem.Click
+        fbarangmasuk.Show()
+    End Sub
 End Class
