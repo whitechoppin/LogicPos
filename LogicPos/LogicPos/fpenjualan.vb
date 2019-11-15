@@ -141,9 +141,9 @@ Public Class fpenjualan
 
     Sub comboboxcustomer()
         Call koneksii()
-        cmmd = New OdbcCommand("SELECT * FROM tb_pelanggan", cnn)
         cmbcustomer.Items.Clear()
         cmbcustomer.AutoCompleteCustomSource.Clear()
+        cmmd = New OdbcCommand("SELECT * FROM tb_pelanggan", cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows = True Then
             While dr.Read()
@@ -154,9 +154,9 @@ Public Class fpenjualan
     End Sub
     Sub comboboxgudang()
         Call koneksii()
-        cmmd = New OdbcCommand("SELECT * FROM tb_gudang", cnn)
         cmbgudang.Items.Clear()
         cmbgudang.AutoCompleteCustomSource.Clear()
+        cmmd = New OdbcCommand("SELECT * FROM tb_gudang", cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows = True Then
             While dr.Read()
@@ -167,9 +167,9 @@ Public Class fpenjualan
     End Sub
     Sub comboboxuser()
         Call koneksii()
-        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
         cmbsales.Items.Clear()
         cmbsales.AutoCompleteCustomSource.Clear()
+        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows = True Then
             While dr.Read()
@@ -183,9 +183,7 @@ Public Class fpenjualan
         Call koneksii()
         cmbpembayaran.Items.Clear()
         cmbpembayaran.AutoCompleteCustomSource.Clear()
-
         cmbpembayaran.Items.Add("KREDIT")
-
         cmmd = New OdbcCommand("SELECT * FROM tb_kas", cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows = True Then
@@ -251,7 +249,7 @@ Public Class fpenjualan
         'button navigations
         btnprev.Enabled = False
         btngo.Enabled = False
-        txtgopembelian.Enabled = False
+        txtgopenjualan.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -260,15 +258,16 @@ Public Class fpenjualan
         txtnonota.Enabled = False
 
         cmbcustomer.Enabled = True
-        cmbcustomer.SelectedIndex = -1
+        cmbcustomer.SelectedIndex = 0
+        cmbcustomer.Text = "00000000"
         cmbcustomer.Focus()
         btncaricustomer.Enabled = True
 
-        cmbsales.SelectedIndex = -1
+        cmbsales.SelectedIndex = 0
         cmbsales.Enabled = True
 
         cmbgudang.Enabled = True
-        cmbgudang.SelectedIndex = -1
+        cmbgudang.SelectedIndex = 0
         btncarigudang.Enabled = True
         txtgudang.Enabled = False
 
@@ -338,6 +337,7 @@ Public Class fpenjualan
 
         txtrekening.Clear()
 
+        txtbayar.Enabled = True
         txtbayar.Clear()
         txtbayar.Text = 0
         txtsisa.Clear()
@@ -367,7 +367,7 @@ Public Class fpenjualan
         'button navigations
         btnprev.Enabled = True
         btngo.Enabled = True
-        txtgopembelian.Enabled = True
+        txtgopenjualan.Enabled = True
         btnnext.Enabled = True
 
         rbfaktur.Checked = True
@@ -552,6 +552,37 @@ Public Class fpenjualan
                     cnn.Close()
                 End If
             End Using
+        Else
+            txtnonota.Clear()
+            cmbcustomer.Text = ""
+            cmbsales.Text = ""
+            cmbgudang.Text = ""
+            cblunas.Checked = False
+            cbvoid.Checked = False
+            cbprinted.Checked = False
+            cbposted.Checked = False
+
+            dtpenjualan.Value = Date.Now
+            dtjatuhtempo.Value = Date.Now
+
+            txtketerangan.Text = ""
+
+
+            cbdiskon.Checked = False
+            txtdiskonpersen.Text = 0
+
+            cbppn.Checked = False
+            txtppnpersen.Text = 0
+
+            cbongkir.Checked = False
+            txtongkir.Text = 0
+
+            txtongkir.Enabled = False
+            txtppnpersen.Enabled = False
+            txtdiskonpersen.Enabled = False
+
+            cmbpembayaran.Text = viewpembayaran
+            txtbayar.Text = ""
         End If
 
     End Sub
@@ -568,7 +599,7 @@ Public Class fpenjualan
         'button navigations
         btnprev.Enabled = False
         btngo.Enabled = False
-        txtgopembelian.Enabled = False
+        txtgopenjualan.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -652,6 +683,7 @@ Public Class fpenjualan
         'cmbpembayaran.SelectedIndex = -1
         cmbpembayaran.Enabled = True
         btncarikas.Enabled = True
+        txtbayar.Enabled = True
 
         'txtrekening.Clear()
 
@@ -668,6 +700,12 @@ Public Class fpenjualan
 
         'simpan di tabel sementara
         Call koneksii()
+
+        'hapus di tabel jual sementara
+        Call koneksii()
+        sql = "DELETE FROM tb_penjualan_detail_sementara"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
 
         sql = "INSERT INTO tb_penjualan_detail_sementara SELECT * FROM tb_penjualan_detail WHERE kode_penjualan ='" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
@@ -716,10 +754,6 @@ Public Class fpenjualan
             cmmd = New OdbcCommand(sql, cnn)
             drpenjualan = cmmd.ExecuteReader()
         End While
-    End Sub
-
-    Sub updateedit()
-
     End Sub
 
     Sub tabel_utama()
@@ -888,21 +922,20 @@ Public Class fpenjualan
     End Sub
 
     Private Sub cmbpembayaran_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbpembayaran.SelectedIndexChanged
-        txtbayar.Enabled = True
+        'txtbayar.Enabled = True
         Call caripembayaran()
     End Sub
 
     Private Sub cmbpembayaran_TextChanged(sender As Object, e As EventArgs) Handles cmbpembayaran.TextChanged
+        'txtbayar.Enabled = True
         Call caripembayaran()
     End Sub
 
     Private Sub ritediskonpersen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonpersen.KeyPress
         e.Handled = ValidAngka(e)
-
     End Sub
     Private Sub ritediskonnominal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonnominal.KeyPress
         e.Handled = ValidAngka(e)
-
     End Sub
     Sub caribarang()
         Call koneksii()
@@ -951,10 +984,22 @@ Public Class fpenjualan
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         If GridView1.DataRowCount > 0 Then
-            If cmbpembayaran.SelectedIndex > -1 Then
-                Call proses()
+            If cmbcustomer.SelectedIndex > -1 Then
+                If cmbgudang.SelectedIndex > -1 Then
+                    If cmbsales.SelectedIndex > -1 Then
+                        If cmbpembayaran.SelectedIndex > -1 Then
+                            Call proses()
+                        Else
+                            MsgBox("Isi Pembayaran")
+                        End If
+                    Else
+                        MsgBox("Isi Sales")
+                    End If
+                Else
+                    MsgBox("Isi Gudang")
+                End If
             Else
-                MsgBox("Isi Pembayaran")
+                MsgBox("Isi Customer")
             End If
         Else
             MsgBox("Keranjang Masih Kosong")
@@ -972,10 +1017,30 @@ Public Class fpenjualan
             Call awaledit()
 
         ElseIf btnedit.Text.Equals("Update") Then
-            btnedit.Text = "Edit"
-            'isi disini sub updatenya
-            Call perbarui(txtnonota.Text)
-            Call inisialisasi(txtnonota.Text)
+            If GridView1.DataRowCount > 0 Then
+                If cmbcustomer.SelectedIndex > -1 Then
+                    If cmbgudang.SelectedIndex > -1 Then
+                        If cmbsales.SelectedIndex > -1 Then
+                            If cmbpembayaran.SelectedIndex > -1 Then
+                                btnedit.Text = "Edit"
+                                'isi disini sub updatenya
+                                Call perbarui(txtnonota.Text)
+                                Call inisialisasi(txtnonota.Text)
+                            Else
+                                MsgBox("Isi Pembayaran")
+                            End If
+                        Else
+                            MsgBox("Isi Sales")
+                        End If
+                    Else
+                        MsgBox("Isi Gudang")
+                    End If
+                Else
+                    MsgBox("Isi Customer")
+                End If
+            Else
+                MsgBox("Keranjang Masih Kosong")
+            End If
         End If
     End Sub
 
@@ -994,7 +1059,19 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
-
+        If txtgopenjualan.Text = "" Then
+            MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+        Else
+            Call koneksii()
+            sql = "SELECT kode_penjualan FROM tb_penjualan WHERE kode_penjualan  = '" + txtgopenjualan.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                Call inisialisasi(txtgopenjualan.Text)
+            Else
+                MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+            End If
+        End If
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
@@ -1197,6 +1274,10 @@ Public Class fpenjualan
 
     Private Sub GridView1_RowDeleted(sender As Object, e As DevExpress.Data.RowDeletedEventArgs) Handles GridView1.RowDeleted
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
+    Private Sub dtpenjualan_ValueChanged(sender As Object, e As EventArgs) Handles dtpenjualan.ValueChanged
+        dtjatuhtempo.MinDate = dtpenjualan.Value
     End Sub
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click

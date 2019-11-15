@@ -95,7 +95,7 @@ Partial Class fpenjualan
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
-        Me.txtgopembelian = New System.Windows.Forms.TextBox()
+        Me.txtgopenjualan = New System.Windows.Forms.TextBox()
         Me.btngo = New System.Windows.Forms.Button()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
@@ -939,7 +939,7 @@ Partial Class fpenjualan
         '
         Me.GroupBox5.Controls.Add(Me.btnprev)
         Me.GroupBox5.Controls.Add(Me.btnnext)
-        Me.GroupBox5.Controls.Add(Me.txtgopembelian)
+        Me.GroupBox5.Controls.Add(Me.txtgopenjualan)
         Me.GroupBox5.Controls.Add(Me.btngo)
         Me.GroupBox5.Location = New System.Drawing.Point(605, 10)
         Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4)
@@ -969,13 +969,13 @@ Partial Class fpenjualan
         Me.btnnext.Text = "Next >>"
         Me.btnnext.UseVisualStyleBackColor = True
         '
-        'txtgopembelian
+        'txtgopenjualan
         '
-        Me.txtgopembelian.Location = New System.Drawing.Point(131, 18)
-        Me.txtgopembelian.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtgopembelian.Name = "txtgopembelian"
-        Me.txtgopembelian.Size = New System.Drawing.Size(117, 24)
-        Me.txtgopembelian.TabIndex = 7
+        Me.txtgopenjualan.Location = New System.Drawing.Point(131, 18)
+        Me.txtgopenjualan.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtgopenjualan.Name = "txtgopenjualan"
+        Me.txtgopenjualan.Size = New System.Drawing.Size(117, 24)
+        Me.txtgopenjualan.TabIndex = 7
         '
         'btngo
         '
@@ -1370,7 +1370,7 @@ Partial Class fpenjualan
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents btnprev As Button
     Friend WithEvents btnnext As Button
-    Friend WithEvents txtgopembelian As TextBox
+    Friend WithEvents txtgopenjualan As TextBox
     Friend WithEvents btngo As Button
     Friend WithEvents btnbatal As Button
     Friend WithEvents btnedit As Button
