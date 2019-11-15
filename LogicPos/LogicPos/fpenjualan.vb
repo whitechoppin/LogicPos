@@ -183,7 +183,6 @@ Public Class fpenjualan
         Call koneksii()
         cmbpembayaran.Items.Clear()
         cmbpembayaran.AutoCompleteCustomSource.Clear()
-        cmbpembayaran.Items.Add("KREDIT")
         cmmd = New OdbcCommand("SELECT * FROM tb_kas", cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows = True Then
@@ -275,7 +274,7 @@ Public Class fpenjualan
         dtpenjualan.Value = Date.Now
 
         dtjatuhtempo.Enabled = True
-        dtjatuhtempo.Value = Date.Now
+        dtjatuhtempo.Value = dtpenjualan.Value
 
         'body
         txtkodestok.Clear()
@@ -331,11 +330,9 @@ Public Class fpenjualan
         txttotal.Clear()
         txttotal.Text = 0
 
-        cmbpembayaran.SelectedIndex = -1
+        cmbpembayaran.SelectedIndex = 0
         cmbpembayaran.Enabled = True
         btncarikas.Enabled = True
-
-        txtrekening.Clear()
 
         txtbayar.Enabled = True
         txtbayar.Clear()
@@ -391,7 +388,7 @@ Public Class fpenjualan
         dtpenjualan.Value = Date.Now
 
         dtjatuhtempo.Enabled = False
-        dtjatuhtempo.Value = Date.Now
+        dtjatuhtempo.Value = dtpenjualan.Value
 
         'body
         txtkodestok.Clear()
@@ -581,7 +578,7 @@ Public Class fpenjualan
             txtppnpersen.Enabled = False
             txtdiskonpersen.Enabled = False
 
-            cmbpembayaran.Text = viewpembayaran
+            cmbpembayaran.Text = ""
             txtbayar.Text = ""
         End If
 
@@ -890,18 +887,14 @@ Public Class fpenjualan
     End Sub
 
     Sub caripembayaran()
-        If cmbpembayaran.Text.Equals("KREDIT") Then
-            txtrekening.Text = "KREDIT"
+        Call koneksii()
+        sql = "SELECT * FROM tb_kas WHERE kode_kas='" & cmbpembayaran.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            txtrekening.Text = dr("nama_kas")
         Else
-            Call koneksii()
-            sql = "SELECT * FROM tb_kas WHERE kode_kas='" & cmbpembayaran.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            If dr.HasRows Then
-                txtrekening.Text = dr("nama_kas")
-            Else
-                txtrekening.Text = ""
-            End If
+            txtrekening.Text = ""
         End If
     End Sub
 
@@ -984,10 +977,10 @@ Public Class fpenjualan
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         If GridView1.DataRowCount > 0 Then
-            If cmbcustomer.SelectedIndex > -1 Then
-                If cmbgudang.SelectedIndex > -1 Then
-                    If cmbsales.SelectedIndex > -1 Then
-                        If cmbpembayaran.SelectedIndex > -1 Then
+            If txtcustomer.Text IsNot "" Then
+                If txtgudang.Text IsNot "" Then
+                    If cmbsales.Text IsNot "" Then
+                        If txtrekening.Text IsNot "" Then
                             Call proses()
                         Else
                             MsgBox("Isi Pembayaran")
@@ -1014,6 +1007,7 @@ Public Class fpenjualan
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If btnedit.Text.Equals("Edit") Then
             btnedit.Text = "Update"
+            Me.ControlBox = False
             Call awaledit()
 
         ElseIf btnedit.Text.Equals("Update") Then
@@ -1023,6 +1017,7 @@ Public Class fpenjualan
                         If cmbsales.SelectedIndex > -1 Then
                             If cmbpembayaran.SelectedIndex > -1 Then
                                 btnedit.Text = "Edit"
+                                Me.ControlBox = True
                                 'isi disini sub updatenya
                                 Call perbarui(txtnonota.Text)
                                 Call inisialisasi(txtnonota.Text)
@@ -1049,6 +1044,7 @@ Public Class fpenjualan
             Call inisialisasi(kodepenjualan)
         ElseIf btnedit.Text.Equals("Update") Then
             btnedit.Text = "Edit"
+            Me.ControlBox = True
             Call batalawaledit()
             Call inisialisasi(txtnonota.Text)
         End If

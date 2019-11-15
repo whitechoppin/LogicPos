@@ -62,4 +62,8 @@ Public Class fmenu
     Private Sub DataKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataKasToolStripMenuItem.Click
         fkas.Show()
     End Sub
+
+    Private Sub BarangKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangKeluarToolStripMenuItem.Click
+        fbarangkeluar.Show()
+    End Sub
 End Class

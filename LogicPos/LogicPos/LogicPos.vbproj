@@ -345,6 +345,12 @@
     <EmbeddedResource Include="fbarang.resx">
       <DependentUpon>fbarang.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fbarangkeluar.resx">
+      <DependentUpon>fbarangkeluar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fbarangmasuk.resx">
+      <DependentUpon>fbarangmasuk.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fcaribarang.resx">
       <DependentUpon>fcaribarang.vb</DependentUpon>
     </EmbeddedResource>

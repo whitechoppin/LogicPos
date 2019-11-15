@@ -520,8 +520,7 @@ Partial Class fpenjualan
         Me.txtinformasi.Name = "txtinformasi"
         Me.txtinformasi.Size = New System.Drawing.Size(584, 113)
         Me.txtinformasi.TabIndex = 33
-        Me.txtinformasi.Text = "Fungsi Tombol" & Global.Microsoft.VisualBasic.ChrW(10) & "Kode Item" & Global.Microsoft.VisualBasic.ChrW(10) & "- F2 untuk membatalkan Transaksi" & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(10) & "Bayar" & Global.Microsoft.VisualBasic.ChrW(10) & "- F9  untuk mengi" &
-    "si diskon" & Global.Microsoft.VisualBasic.ChrW(10) & "- F10 untuk mengubah jenis pembayaran"
+        Me.txtinformasi.Text = "Keterangan Tabel Keranjang : "
         '
         'txttotal
         '
