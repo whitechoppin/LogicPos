@@ -704,27 +704,11 @@ Public Class fpenjualan
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
+        'isi tabel sementara dengan data tabel detail
         sql = "INSERT INTO tb_penjualan_detail_sementara SELECT * FROM tb_penjualan_detail WHERE kode_penjualan ='" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
-        'hapus di tabel jual detail
-        Call koneksii()
-        sql = "DELETE FROM tb_penjualan_detail where kode_penjualan = '" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
-        'update stok
-        Call koneksii()
-        sql = "SELECT * FROM tb_penjualan_detail_sementara where kode_penjualan = '" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
-        While dr.Read
-            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            drpenjualan = cmmd.ExecuteReader()
-        End While
     End Sub
 
     Sub batalawaledit()
@@ -1007,17 +991,17 @@ Public Class fpenjualan
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If btnedit.Text.Equals("Edit") Then
             btnedit.Text = "Update"
-            Me.ControlBox = False
+            'Me.ControlBox = False
             Call awaledit()
 
         ElseIf btnedit.Text.Equals("Update") Then
             If GridView1.DataRowCount > 0 Then
-                If cmbcustomer.SelectedIndex > -1 Then
-                    If cmbgudang.SelectedIndex > -1 Then
-                        If cmbsales.SelectedIndex > -1 Then
-                            If cmbpembayaran.SelectedIndex > -1 Then
+                If txtcustomer.Text IsNot "" Then
+                    If txtgudang.Text IsNot "" Then
+                        If cmbsales.Text IsNot "" Then
+                            If txtrekening.Text IsNot "" Then
                                 btnedit.Text = "Edit"
-                                Me.ControlBox = True
+                                'Me.ControlBox = True
                                 'isi disini sub updatenya
                                 Call perbarui(txtnonota.Text)
                                 Call inisialisasi(txtnonota.Text)
@@ -1044,8 +1028,8 @@ Public Class fpenjualan
             Call inisialisasi(kodepenjualan)
         ElseIf btnedit.Text.Equals("Update") Then
             btnedit.Text = "Edit"
-            Me.ControlBox = True
-            Call batalawaledit()
+            'Me.ControlBox = True
+            'Call batalawaledit()
             Call inisialisasi(txtnonota.Text)
         End If
     End Sub
@@ -1602,9 +1586,27 @@ Public Class fpenjualan
 
     Sub perbarui(nomornota As String)
         kodepenjualan = nomornota
+
+        'hapus di tabel jual detail
         Call koneksii()
+        sql = "DELETE FROM tb_penjualan_detail where kode_penjualan = '" & nomornota & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        'update stok
+        Call koneksii()
+        sql = "SELECT * FROM tb_penjualan_detail_sementara where kode_penjualan = '" & nomornota & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        While dr.Read
+            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            drpenjualan = cmmd.ExecuteReader()
+        End While
 
         'hapus di tabel jual sementara
+        Call koneksii()
         sql = "DELETE FROM tb_penjualan_detail_sementara where kode_penjualan = '" & nomornota & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
