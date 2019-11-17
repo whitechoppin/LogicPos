@@ -399,6 +399,9 @@
     <EmbeddedResource Include="frekeningsupplier.resx">
       <DependentUpon>frekeningsupplier.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="freturjual.resx">
+      <DependentUpon>freturjual.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fsupplier.resx">
       <DependentUpon>fsupplier.vb</DependentUpon>
     </EmbeddedResource>

@@ -17,7 +17,6 @@ Public Class fpenjualan
 
     'variabel edit penjualan
     Dim countingbarang As Integer
-
     Private Sub fpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
@@ -33,8 +32,6 @@ Public Class fpenjualan
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
     End Sub
-
-
     Function autonumber()
         Call koneksii()
         sql = "SELECT RIGHT(kode_penjualan,3) FROM tb_penjualan WHERE DATE_FORMAT(MID(`kode_penjualan`, 3 , 6), ' %y ')+ MONTH(MID(`kode_penjualan`,3 , 6)) + DAY(MID(`kode_penjualan`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_penjualan,3) DESC"
@@ -66,7 +63,6 @@ Public Class fpenjualan
         End Try
         Return pesan
     End Function
-
     Function currentnumber()
         Call koneksii()
         sql = "SELECT kode_penjualan FROM tb_penjualan ORDER BY kode_penjualan DESC LIMIT 1;"
@@ -88,7 +84,6 @@ Public Class fpenjualan
         End Try
         Return pesan
     End Function
-
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
         sql = "SELECT kode_penjualan FROM tb_penjualan WHERE date_created < (SELECT date_created FROM tb_penjualan WHERE kode_penjualan = '" + previousnumber + "')ORDER BY date_created DESC LIMIT 1"
@@ -138,7 +133,6 @@ Public Class fpenjualan
         End While
 
     End Sub
-
     Sub comboboxcustomer()
         Call koneksii()
         cmbcustomer.Items.Clear()
@@ -178,7 +172,6 @@ Public Class fpenjualan
             End While
         End If
     End Sub
-
     Sub comboboxpembayaran()
         Call koneksii()
         cmbpembayaran.Items.Clear()
@@ -192,50 +185,48 @@ Public Class fpenjualan
             End While
         End If
     End Sub
+    Sub cek_kas()
+        '    Dim tgl As Date
+        '    Dim tutupkas As Date
+        '    Call koneksii()
+        '    cmmd = New OdbcCommand("SELECT * FROM tb_historikas where idkasir=  '" & fmenu.statususer.Text & "' order by id desc limit 1", cnn)
+        '    dr = cmmd.ExecuteReader()
+        '    If dr.HasRows Then
+        '        'MsgBox("cek kas 1")
+        '        tgl = dr("bukakas")
+        '        tutupkas = dr("tutupkas")
+        '        'MsgBox(tgl)
+        '        If tgl = "1/1/1990" Then
+        '            'MsgBox("cek kas 1 1/2")
+        '            Call fmodal.Show()
+        '        Else
 
-    'Sub cek_kas()
-    '    Dim tgl As Date
-    '    Dim tutupkas As Date
-    '    Call koneksii()
-    '    cmmd = New OdbcCommand("SELECT * FROM tb_historikas where idkasir=  '" & fmenu.statususer.Text & "' order by id desc limit 1", cnn)
-    '    dr = cmmd.ExecuteReader()
-    '    If dr.HasRows Then
-    '        'MsgBox("cek kas 1")
-    '        tgl = dr("bukakas")
-    '        tutupkas = dr("tutupkas")
-    '        'MsgBox(tgl)
-    '        If tgl = "1/1/1990" Then
-    '            'MsgBox("cek kas 1 1/2")
-    '            Call fmodal.Show()
-    '        Else
+        '            If tutupkas <> "1/1/1990" Then
+        '                'MsgBox("cek kas 1 1 fmodal")
+        '                fmodal.Show()
+        '                'sql = "INSERT INTO tb_historikas ( idkasir ) VALUES ( '" & fmenu.statususer.Text & "')"
+        '                'cmmd = New OdbcCommand(sql, cnn)
+        '                'dr = cmmd.ExecuteReader()
+        '                'Call awal()
+        '            Else
+        '                'MsgBox("cek kas 1 1 awal")
+        '                Call awal()
+        '            End If
 
-    '            If tutupkas <> "1/1/1990" Then
-    '                'MsgBox("cek kas 1 1 fmodal")
-    '                fmodal.Show()
-    '                'sql = "INSERT INTO tb_historikas ( idkasir ) VALUES ( '" & fmenu.statususer.Text & "')"
-    '                'cmmd = New OdbcCommand(sql, cnn)
-    '                'dr = cmmd.ExecuteReader()
-    '                'Call awal()
-    '            Else
-    '                'MsgBox("cek kas 1 1 awal")
-    '                Call awal()
-    '            End If
-
-    '        End If
-    '    Else
-    '        'MsgBox("cek kas 2")
-    '        'sql = "INSERT INTO tb_historikas ( idkasir ) VALUES ( '" & fmenu.statususer.Text & "')"
-    '        'cmmd = New OdbcCommand(sql, cnn)
-    '        'dr = cmmd.ExecuteReader()
-    '        fmodal.Show()
-    '    End If
-    '    With GridView1
-    '        .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
-    '        'buat sum harga
-    '        .Columns("Subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "Subtotal", "{0:n0}")
-    '    End With
-    'End Sub
-
+        '        End If
+        '    Else
+        '        'MsgBox("cek kas 2")
+        '        'sql = "INSERT INTO tb_historikas ( idkasir ) VALUES ( '" & fmenu.statususer.Text & "')"
+        '        'cmmd = New OdbcCommand(sql, cnn)
+        '        'dr = cmmd.ExecuteReader()
+        '        fmodal.Show()
+        '    End If
+        '    With GridView1
+        '        .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
+        '        'buat sum harga
+        '        .Columns("Subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "Subtotal", "{0:n0}")
+        '    End With
+    End Sub
     Sub awalbaru()
         'bersihkan dan set default value
         'button tools

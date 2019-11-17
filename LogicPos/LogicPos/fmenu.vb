@@ -70,4 +70,8 @@ Public Class fmenu
     Private Sub BarangMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangMasukToolStripMenuItem.Click
         fbarangmasuk.Show()
     End Sub
+
+    Private Sub ReturPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturPenjualanToolStripMenuItem.Click
+        freturjual.Show()
+    End Sub
 End Class
