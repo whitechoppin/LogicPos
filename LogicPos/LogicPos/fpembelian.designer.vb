@@ -261,7 +261,7 @@ Partial Class fpembelian
         Me.cmbsupplier.Location = New System.Drawing.Point(122, 59)
         Me.cmbsupplier.MaxLength = 99
         Me.cmbsupplier.Name = "cmbsupplier"
-        Me.cmbsupplier.Size = New System.Drawing.Size(202, 26)
+        Me.cmbsupplier.Size = New System.Drawing.Size(199, 26)
         Me.cmbsupplier.TabIndex = 10
         '
         'Label6
@@ -657,7 +657,7 @@ Partial Class fpembelian
         Me.cmbgudang.Location = New System.Drawing.Point(470, 56)
         Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
-        Me.cmbgudang.Size = New System.Drawing.Size(192, 26)
+        Me.cmbgudang.Size = New System.Drawing.Size(190, 26)
         Me.cmbgudang.TabIndex = 14
         '
         'Label13
@@ -909,7 +909,7 @@ Partial Class fpembelian
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1152, 609)
+        Me.ClientSize = New System.Drawing.Size(1152, 722)
         Me.Controls.Add(Me.txtppnnominal)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.txtdiskonnominal)

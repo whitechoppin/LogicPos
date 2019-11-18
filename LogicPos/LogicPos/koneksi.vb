@@ -5,6 +5,7 @@ Module koneksi
     Public cmmd As OdbcCommand
     Public dr As OdbcDataReader
     Public drpenjualan As OdbcDataReader
+    Public drpembelian As OdbcDataReader
 
     Public sql As String
     Public da As OdbcDataAdapter
