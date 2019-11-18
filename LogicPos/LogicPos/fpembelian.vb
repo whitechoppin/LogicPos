@@ -850,7 +850,7 @@ Public Class fpembelian
                     MsgBox("Isi Gudang")
                 End If
             Else
-                MsgBox("Isi Customer")
+                MsgBox("Isi Supplier")
             End If
         Else
             MsgBox("Keranjang Masih Kosong")
@@ -939,10 +939,6 @@ Public Class fpembelian
             Call awaledit()
         Else
             If btnedit.Text = "Update" Then
-                btnedit.Text = "Edit"
-                Call perbarui(txtnonota.Text)
-                Call inisialisasi(txtnonota.Text)
-
                 If GridView1.DataRowCount > 0 Then
                     If txtsupplier.Text IsNot "" Then
                         If txtgudang.Text IsNot "" Then
@@ -1209,6 +1205,7 @@ Public Class fpembelian
             txtdiskonpersen.Enabled = True
         Else
             txtdiskonpersen.Enabled = False
+            txtdiskonpersen.Text = 0
         End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
@@ -1236,6 +1233,7 @@ Public Class fpembelian
             txtppnpersen.Enabled = True
         Else
             txtppnpersen.Enabled = False
+            txtppnpersen.Text = 0
         End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
@@ -1260,6 +1258,7 @@ Public Class fpembelian
             txtongkir.Enabled = True
         Else
             txtongkir.Enabled = False
+            txtongkir.Text = 0
         End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub

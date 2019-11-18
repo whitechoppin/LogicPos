@@ -174,6 +174,7 @@ Partial Class fpenjualan
         Me.txtbanyak.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtbanyak.Location = New System.Drawing.Point(807, 30)
         Me.txtbanyak.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtbanyak.MaxLength = 12
         Me.txtbanyak.Name = "txtbanyak"
         Me.txtbanyak.Size = New System.Drawing.Size(64, 24)
         Me.txtbanyak.TabIndex = 9
@@ -195,6 +196,7 @@ Partial Class fpenjualan
         Me.txtharga.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtharga.Location = New System.Drawing.Point(951, 30)
         Me.txtharga.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtharga.MaxLength = 12
         Me.txtharga.Name = "txtharga"
         Me.txtharga.Size = New System.Drawing.Size(169, 24)
         Me.txtharga.TabIndex = 10
@@ -528,6 +530,7 @@ Partial Class fpenjualan
         Me.txttotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txttotal.Location = New System.Drawing.Point(932, 577)
         Me.txttotal.Margin = New System.Windows.Forms.Padding(4)
+        Me.txttotal.MaxLength = 12
         Me.txttotal.Name = "txttotal"
         Me.txttotal.Size = New System.Drawing.Size(263, 24)
         Me.txttotal.TabIndex = 40
@@ -1206,6 +1209,7 @@ Partial Class fpenjualan
         Me.txtsisa.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtsisa.Location = New System.Drawing.Point(1001, 684)
         Me.txtsisa.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtsisa.MaxLength = 12
         Me.txtsisa.Name = "txtsisa"
         Me.txtsisa.Size = New System.Drawing.Size(194, 24)
         Me.txtsisa.TabIndex = 69
@@ -1216,6 +1220,7 @@ Partial Class fpenjualan
         Me.txtbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtbayar.Location = New System.Drawing.Point(804, 684)
         Me.txtbayar.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtbayar.MaxLength = 12
         Me.txtbayar.Name = "txtbayar"
         Me.txtbayar.Size = New System.Drawing.Size(194, 24)
         Me.txtbayar.TabIndex = 70
