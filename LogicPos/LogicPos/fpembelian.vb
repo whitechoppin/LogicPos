@@ -924,7 +924,7 @@ Public Class fpembelian
     End Sub
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
         Dim hapuskode As String
-        If e.KeyCode = Keys.Delete Then
+        If e.KeyCode = Keys.Delete And btnbatal.Enabled = True Then
             hapuskode = GridView1.GetFocusedRowCellValue("kode_stok")
             sql = "DELETE FROM tb_pembelian_sementara WHERE  kode_stok='" & hapuskode & "'"
             cmmd = New OdbcCommand(sql, cnn)

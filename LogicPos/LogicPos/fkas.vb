@@ -102,7 +102,7 @@ Public Class fkas
         If dr.HasRows Then
             MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_kas (kode_kas, nama_kas, keterangan_kas, saldo_awal, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & saldoawal & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_kas (kode_kas, nama_kas, keterangan_kas, saldo_awal, total_saldo, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & saldoawal & "','" & saldoawal & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -147,7 +147,7 @@ Public Class fkas
 
     Sub edit()
         Call koneksii()
-        sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', saldo_awal='" & saldoawal & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & txtkode.Text & "'"
+        sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', saldo_awal='" & saldoawal & "', total_saldo='" & saldoawal & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & txtkode.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")

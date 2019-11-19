@@ -6,11 +6,11 @@ Imports CrystalDecisions.Shared
 Public Class fpenjualan
     Public tabel As DataTable
     'variabel dalam penjualan
-    Public jenis, satuan, kodepenjualan As String
+    Public jenis, satuan, kodepenjualan, kodetransaksi As String
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
 
     'variabel bantuan view penjualan
-    Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan, viewpembayaran As String
+    Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan, viewpembayaran, kodepembayaran As String
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
     Dim viewtglpenjualan, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
@@ -32,6 +32,7 @@ Public Class fpenjualan
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
     End Sub
+
     Function autonumber()
         Call koneksii()
         sql = "SELECT RIGHT(kode_penjualan,3) FROM tb_penjualan WHERE DATE_FORMAT(MID(`kode_penjualan`, 3 , 6), ' %y ')+ MONTH(MID(`kode_penjualan`,3 , 6)) + DAY(MID(`kode_penjualan`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_penjualan,3) DESC"
@@ -1157,12 +1158,18 @@ Public Class fpenjualan
         End If
     End Sub
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
-        If e.KeyCode = Keys.Delete Then
+        If e.KeyCode = Keys.Delete And btnbatal.Enabled = True Then
             GridView1.DeleteSelectedRows()
         End If
     End Sub
     Private Sub GridView1_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles GridView1.RowUpdated
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
+    Private Sub txtrekening_TextChanged(sender As Object, e As EventArgs) Handles txtrekening.TextChanged
+        If txtrekening.Text.Equals("KREDIT") Then
+            txtbayar.Text = 0
+        End If
     End Sub
 
     Private Sub GridView1_RowDeleted(sender As Object, e As DevExpress.Data.RowDeletedEventArgs) Handles GridView1.RowDeleted
@@ -1296,9 +1303,14 @@ Public Class fpenjualan
         If txtbayar.Text = "" Then
             txtbayar.Text = 0
         Else
-            bayar = txtbayar.Text
-            txtbayar.Text = Format(bayar, "##,##0")
-            txtbayar.SelectionStart = Len(txtbayar.Text)
+            If cmbpembayaran.Text.Equals("KREDIT") Then
+                bayar = 0
+                txtbayar.Text = 0
+            Else
+                bayar = txtbayar.Text
+                txtbayar.Text = Format(bayar, "##,##0")
+                txtbayar.SelectionStart = Len(txtbayar.Text)
+            End If
         End If
     End Sub
 
@@ -1330,25 +1342,19 @@ Public Class fpenjualan
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
-        ''MsgBox(metode)
-        'If metode = "pembiayaan" Then
-        '    'MsgBox("bayar pembiayaan")
-        '    sql = "UPDATE tb_kas SET nontunai = nontunai + '" & total2 - bayar & "', tunai = tunai + '" & bayar & "' WHERE iduser = '" & fmenu.statususer.Text & "'"
-        '    cmmd = New OdbcCommand(sql, cnn)
-        '    dr = cmmd.ExecuteReader()
-        'Else
-        '    If metode = "CASH" Then
-        '        'MsgBox("byr cash")
-        '        sql = "UPDATE tb_kas SET tunai = tunai + '" & total2 & "' WHERE iduser = '" & fmenu.statususer.Text & "'"
-        '        cmmd = New OdbcCommand(sql, cnn)
-        '        dr = cmmd.ExecuteReader()
-        '    Else
-        '        'MsgBox("byr non tunai")
-        '        sql = "UPDATE tb_kas SET nontunai = nontunai + '" & total2 & "' WHERE iduser = '" & fmenu.statususer.Text & "'"
-        '        cmmd = New OdbcCommand(sql, cnn)
-        '        dr = cmmd.ExecuteReader()
-        '    End If
-        'End If
+        kodepembayaran = cmbpembayaran.Text
+
+        If kodepembayaran IsNot "" Then
+            If kodepembayaran.Equals("KREDIT") Then
+                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'PANJAR', now(), 'Pembayaran Sebagian Nota Nomor " & kodepenjualan & "', '" & sisa & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            Else
+                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'PANJAR', now(), 'Pembayaran Sebagian Nota Nomor " & kodepenjualan & "', '" & bayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            End If
+        End If
 
         MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
         Call inisialisasi(kodepenjualan)
@@ -1356,6 +1362,7 @@ Public Class fpenjualan
 
     Sub perbarui(nomornota As String)
         kodepenjualan = nomornota
+        kodepembayaran = cmbpembayaran.Text
 
         'hapus di tabel jual detail
         Call koneksii()
@@ -1374,6 +1381,12 @@ Public Class fpenjualan
             cmmd = New OdbcCommand(sql, cnn)
             drpenjualan = cmmd.ExecuteReader()
         End While
+
+        'hapus panjar
+        sql = "DELETE FROM tb_transaksi_kas where kode_penjualan = '" & nomornota & "' and jenis_kas ='PANJAR'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
 
         'hapus di tabel jual sementara
         Call koneksii()
@@ -1396,6 +1409,18 @@ Public Class fpenjualan
         sql = "UPDATE tb_penjualan SET kode_pelanggan ='" & cmbcustomer.Text & "', kode_gudang ='" & cmbgudang.Text & "', kode_user ='" & cmbsales.Text & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_penjualan ='" & txtketerangan.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_penjualan ='" & kodepenjualan & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
+
+        If kodepembayaran IsNot "" Then
+            If kodepembayaran.Equals("KREDIT") Then
+                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'PANJAR', now(), 'Pembayaran Sebagian Nota Nomor " & kodepenjualan & "', '" & sisa & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            Else
+                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'PANJAR', now(), 'Pembayaran Sebagian Nota Nomor " & kodepenjualan & "', '" & bayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            End If
+        End If
 
         MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
         Call inisialisasi(nomornota)
