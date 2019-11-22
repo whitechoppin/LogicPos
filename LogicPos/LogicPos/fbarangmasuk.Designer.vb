@@ -612,6 +612,7 @@ Partial Class fbarangmasuk
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "fbarangmasuk"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "fbarangmasuk"
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()

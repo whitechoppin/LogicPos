@@ -642,32 +642,6 @@ Public Class fpenjualan
 
     End Sub
 
-    Sub batalawaledit()
-        'simpan di tabel detail
-        Call koneksii()
-        sql = "INSERT INTO tb_penjualan_detail SELECT * FROM tb_penjualan_detail_sementara WHERE kode_penjualan ='" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
-        'hapus di tabel jual sementara
-        Call koneksii()
-        sql = "DELETE FROM tb_penjualan_detail_sementara where kode_penjualan = '" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
-        'update stok kembali
-        Call koneksii()
-        sql = "SELECT * FROM tb_penjualan_detail where kode_penjualan = '" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
-        While dr.Read
-            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            drpenjualan = cmmd.ExecuteReader()
-        End While
-    End Sub
-
     Sub tabel_utama()
         tabel = New DataTable
 
@@ -956,8 +930,6 @@ Public Class fpenjualan
             Call inisialisasi(kodepenjualan)
         ElseIf btnedit.Text.Equals("Update") Then
             btnedit.Text = "Edit"
-            'Me.ControlBox = True
-            'Call batalawaledit()
             Call inisialisasi(txtnonota.Text)
         End If
     End Sub

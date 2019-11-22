@@ -36,21 +36,23 @@ Partial Class fbarangkeluar
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnsimpan = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btncaricustomer = New System.Windows.Forms.Button()
+        Me.cmbcustomer = New System.Windows.Forms.ComboBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
         Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
         Me.txtgudang = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.txtcustomer = New System.Windows.Forms.TextBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.cbposted = New System.Windows.Forms.CheckBox()
         Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.btncarigudang = New System.Windows.Forms.Button()
         Me.cmbgudang = New System.Windows.Forms.ComboBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.dtpenjualan = New System.Windows.Forms.DateTimePicker()
+        Me.dtbarangkeluar = New System.Windows.Forms.DateTimePicker()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
@@ -64,8 +66,6 @@ Partial Class fbarangkeluar
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ritediskonpersen = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.ritediskonnominal = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtkodebarang = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -78,7 +78,6 @@ Partial Class fbarangkeluar
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtkodestok = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -86,8 +85,6 @@ Partial Class fbarangkeluar
         Me.GroupBox6.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ritediskonpersen, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ritediskonnominal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -224,6 +221,8 @@ Partial Class fbarangkeluar
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.btncaricustomer)
+        Me.GroupBox3.Controls.Add(Me.cmbcustomer)
         Me.GroupBox3.Controls.Add(Me.txttelp)
         Me.GroupBox3.Controls.Add(Me.txtalamat)
         Me.GroupBox3.Controls.Add(Me.Label22)
@@ -232,12 +231,11 @@ Partial Class fbarangkeluar
         Me.GroupBox3.Controls.Add(Me.txtgudang)
         Me.GroupBox3.Controls.Add(Me.Label18)
         Me.GroupBox3.Controls.Add(Me.Label16)
-        Me.GroupBox3.Controls.Add(Me.txtcustomer)
         Me.GroupBox3.Controls.Add(Me.GroupBox6)
         Me.GroupBox3.Controls.Add(Me.btncarigudang)
         Me.GroupBox3.Controls.Add(Me.cmbgudang)
         Me.GroupBox3.Controls.Add(Me.Label14)
-        Me.GroupBox3.Controls.Add(Me.dtpenjualan)
+        Me.GroupBox3.Controls.Add(Me.dtbarangkeluar)
         Me.GroupBox3.Controls.Add(Me.Label17)
         Me.GroupBox3.Controls.Add(Me.txtnonota)
         Me.GroupBox3.Controls.Add(Me.Label19)
@@ -251,6 +249,29 @@ Partial Class fbarangkeluar
         Me.GroupBox3.TabIndex = 58
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Detail Barang Keluar"
+        '
+        'btncaricustomer
+        '
+        Me.btncaricustomer.BackgroundImage = CType(resources.GetObject("btncaricustomer.BackgroundImage"), System.Drawing.Image)
+        Me.btncaricustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncaricustomer.ImageIndex = 0
+        Me.btncaricustomer.Location = New System.Drawing.Point(235, 83)
+        Me.btncaricustomer.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncaricustomer.Name = "btncaricustomer"
+        Me.btncaricustomer.Size = New System.Drawing.Size(30, 29)
+        Me.btncaricustomer.TabIndex = 57
+        Me.btncaricustomer.UseVisualStyleBackColor = True
+        '
+        'cmbcustomer
+        '
+        Me.cmbcustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbcustomer.FormattingEnabled = True
+        Me.cmbcustomer.Location = New System.Drawing.Point(96, 85)
+        Me.cmbcustomer.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbcustomer.MaxLength = 99
+        Me.cmbcustomer.Name = "cmbcustomer"
+        Me.cmbcustomer.Size = New System.Drawing.Size(141, 26)
+        Me.cmbcustomer.TabIndex = 58
         '
         'txttelp
         '
@@ -282,6 +303,17 @@ Partial Class fbarangkeluar
         Me.Label22.Size = New System.Drawing.Size(61, 18)
         Me.Label22.TabIndex = 48
         Me.Label22.Text = "Telepon"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label20.Location = New System.Drawing.Point(269, 27)
+        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(53, 18)
+        Me.Label20.TabIndex = 47
+        Me.Label20.Text = "Alamat"
         '
         'cmbsales
         '
@@ -323,15 +355,6 @@ Partial Class fbarangkeluar
         Me.Label16.Size = New System.Drawing.Size(84, 18)
         Me.Label16.TabIndex = 37
         Me.Label16.Text = "Kode Sales"
-        '
-        'txtcustomer
-        '
-        Me.txtcustomer.Enabled = False
-        Me.txtcustomer.Location = New System.Drawing.Point(96, 86)
-        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(168, 24)
-        Me.txtcustomer.TabIndex = 46
         '
         'GroupBox6
         '
@@ -406,14 +429,14 @@ Partial Class fbarangkeluar
         Me.Label14.TabIndex = 18
         Me.Label14.Text = "Kode Gudang"
         '
-        'dtpenjualan
+        'dtbarangkeluar
         '
-        Me.dtpenjualan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtpenjualan.Location = New System.Drawing.Point(679, 26)
-        Me.dtpenjualan.Margin = New System.Windows.Forms.Padding(4)
-        Me.dtpenjualan.Name = "dtpenjualan"
-        Me.dtpenjualan.Size = New System.Drawing.Size(193, 23)
-        Me.dtpenjualan.TabIndex = 17
+        Me.dtbarangkeluar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.dtbarangkeluar.Location = New System.Drawing.Point(679, 26)
+        Me.dtbarangkeluar.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtbarangkeluar.Name = "dtbarangkeluar"
+        Me.dtbarangkeluar.Size = New System.Drawing.Size(193, 23)
+        Me.dtbarangkeluar.TabIndex = 17
         '
         'Label17
         '
@@ -476,7 +499,6 @@ Partial Class fbarangkeluar
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ritediskonpersen, Me.ritediskonnominal})
         Me.GridControl1.Size = New System.Drawing.Size(1003, 232)
         Me.GridControl1.TabIndex = 56
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -558,17 +580,6 @@ Partial Class fbarangkeluar
         Me.GridColumn6.OptionsColumn.AllowEdit = False
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
-        '
-        'ritediskonpersen
-        '
-        Me.ritediskonpersen.AutoHeight = False
-        Me.ritediskonpersen.MaxLength = 2
-        Me.ritediskonpersen.Name = "ritediskonpersen"
-        '
-        'ritediskonnominal
-        '
-        Me.ritediskonnominal.AutoHeight = False
-        Me.ritediskonnominal.Name = "ritediskonnominal"
         '
         'GroupBox1
         '
@@ -707,17 +718,6 @@ Partial Class fbarangkeluar
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Kode Stok"
         '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label20.Location = New System.Drawing.Point(269, 27)
-        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(53, 18)
-        Me.Label20.TabIndex = 47
-        Me.Label20.Text = "Alamat"
-        '
         'Label15
         '
         Me.Label15.AutoSize = True
@@ -743,6 +743,7 @@ Partial Class fbarangkeluar
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "fbarangkeluar"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Barang Keluar"
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
@@ -753,8 +754,6 @@ Partial Class fbarangkeluar
         Me.GroupBox6.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ritediskonpersen, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ritediskonnominal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
@@ -783,14 +782,13 @@ Partial Class fbarangkeluar
     Friend WithEvents txtgudang As TextBox
     Friend WithEvents Label18 As Label
     Friend WithEvents Label16 As Label
-    Friend WithEvents txtcustomer As TextBox
     Friend WithEvents GroupBox6 As GroupBox
     Friend WithEvents cbposted As CheckBox
     Friend WithEvents cbprinted As CheckBox
     Friend WithEvents btncarigudang As Button
     Friend WithEvents cmbgudang As ComboBox
     Friend WithEvents Label14 As Label
-    Friend WithEvents dtpenjualan As DateTimePicker
+    Friend WithEvents dtbarangkeluar As DateTimePicker
     Friend WithEvents Label17 As Label
     Friend WithEvents txtnonota As TextBox
     Friend WithEvents Label19 As Label
@@ -804,8 +802,6 @@ Partial Class fbarangkeluar
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents ritediskonpersen As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents ritediskonnominal As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents txtkodebarang As TextBox
     Friend WithEvents Label23 As Label
@@ -819,4 +815,6 @@ Partial Class fbarangkeluar
     Friend WithEvents txtkodestok As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label15 As Label
+    Friend WithEvents btncaricustomer As Button
+    Friend WithEvents cmbcustomer As ComboBox
 End Class
