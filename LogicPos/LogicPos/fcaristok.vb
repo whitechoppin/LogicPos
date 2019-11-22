@@ -63,8 +63,10 @@ Public Class fcaristok
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupstok = 1 Then
             fpenjualan.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
-            Me.Hide()
+        ElseIf tutupstok = 2 Then
+            fbarangkeluar.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
         End If
+        Me.Hide()
     End Sub
 
     Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click

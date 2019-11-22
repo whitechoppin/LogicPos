@@ -275,7 +275,6 @@ Partial Class fbarangkeluar
         '
         'txttelp
         '
-        Me.txttelp.Enabled = False
         Me.txttelp.Location = New System.Drawing.Point(337, 86)
         Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
         Me.txttelp.Name = "txttelp"
@@ -284,7 +283,6 @@ Partial Class fbarangkeluar
         '
         'txtalamat
         '
-        Me.txtalamat.Enabled = False
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.txtalamat.Location = New System.Drawing.Point(336, 27)
         Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
