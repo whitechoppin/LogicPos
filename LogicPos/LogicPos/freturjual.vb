@@ -1,11 +1,12 @@
 ﻿Imports System.Data.Odbc
 Imports DevExpress.Utils
+Imports DevExpress.XtraGrid.Views.Grid
+
 Public Class freturjual
-    Dim tabel1, tabel2 As DataTable
+    Public tabel1, tabel2 As DataTable
     'variabel dalam penjualan
     Dim jenis, satuan, kodepenjualan As String
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
-
     'variabel bantuan view penjualan
     'Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan, viewpembayaran As String
     'Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
@@ -70,7 +71,6 @@ Public Class freturjual
             .Columns.Add("subtotal", GetType(Double))
             .Columns.Add("laba", GetType(Double))
             .Columns.Add("modal_barang", GetType(Double))
-
         End With
 
         GridControl1.DataSource = tabel1
@@ -243,6 +243,17 @@ Public Class freturjual
         txtnonota.Clear()
         txtcustomer.Clear()
     End Sub
+    Sub previewpenjualan(lihat As String)
+        sql = "SELECT * FROM tb_penjualan_detail WHERE kode_penjualan ='" & lihat & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            tabel1.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - dr("diskon") / 100, Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
+            'tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), dr("diskon"), 0, dr("harga_diskon"), dr("subtotal"), 0, 0)
+            GridControl1.RefreshDataSource()
+        End While
+
+    End Sub
     Sub cari_nota()
         Call koneksii()
         sql = "Select * From tb_penjualan Join tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan where tb_penjualan.kode_penjualan = '" & txtnonota.Text & "'"
@@ -252,13 +263,7 @@ Public Class freturjual
             'jika ditemukan
             txtcustomer.Text = dr("nama_pelanggan")
 
-            sql = "SELECT * FROM tb_penjualan_detail WHERE kode_penjualan='" & txtnonota.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-            While dr.Read
-                tabel1.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), dr("harga_jual"), dr("diskon"), 0, dr("harga_diskon"), dr("subtotal"), dr("keuntungan"), dr("modal"))
-                GridControl1.RefreshDataSource()
-            End While
+            Call previewpenjualan(txtnonota.Text)
         Else
             'jika tidak ditemukan
             txtcustomer.Text = ""
@@ -267,5 +272,33 @@ Public Class freturjual
     End Sub
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
         Call cari_nota()
+    End Sub
+    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+
+        fretjual.kode_barang = GridView1.GetFocusedRowCellValue("kode_barang")
+        fretjual.kode_stok = GridView1.GetFocusedRowCellValue("kode_stok")
+        fretjual.nama_barang = GridView1.GetFocusedRowCellValue("nama_barang")
+        fretjual.satuan_barang = GridView1.GetFocusedRowCellValue("satuan_barang")
+        fretjual.jenis_barang = GridView1.GetFocusedRowCellValue("jenis_barang")
+        fretjual.banyak = GridView1.GetFocusedRowCellValue("banyak")
+        fretjual.harga_satuan = GridView1.GetFocusedRowCellValue("harga_satuan")
+        fretjual.diskon_persen = GridView1.GetFocusedRowCellValue("diskon_persen")
+        fretjual.diskon_nominal = GridView1.GetFocusedRowCellValue("diskon_nominal")
+        fretjual.harga_diskon = GridView1.GetFocusedRowCellValue("harga_diskon")
+        fretjual.subtotal = GridView1.GetFocusedRowCellValue("subtotal")
+        fretjual.laba = GridView1.GetFocusedRowCellValue("laba")
+        fretjual.modal_barang = GridView1.GetFocusedRowCellValue("modal_barang")
+
+        Dim ea As DXMouseEventArgs = TryCast(e, DXMouseEventArgs)
+        Dim view As GridView = TryCast(sender, GridView)
+        Dim info As DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitInfo = view.CalcHitInfo(ea.Location)
+        If info.InRow OrElse info.InRowCell Then
+            Dim colCaption As String = If(info.Column Is Nothing, "N/A", info.Column.GetCaption())
+            'MessageBox.Show(String.Format("DoubleClick on row: {0}, column: {1}.", info.RowHandle, colCaption))
+        End If
+        'GridView1.DeleteRow(GridView1.GetRowHandle(info.RowHandle))
+
+
+        fretjual.ShowDialog()
     End Sub
 End Class
