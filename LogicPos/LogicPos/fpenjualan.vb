@@ -1395,7 +1395,7 @@ Public Class fpenjualan
         End If
 
         MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
-        Call inisialisasi(nomornota)
+        'Call inisialisasi(nomornota)
     End Sub
     Private Function CpuId() As String
         Dim computer As String = "."

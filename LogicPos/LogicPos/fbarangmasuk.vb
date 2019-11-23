@@ -22,4 +22,12 @@
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
 
     End Sub
+
+    Private Sub txtbanyakbarang_TextChanged(sender As Object, e As EventArgs) Handles txtbanyakbarang.TextChanged
+
+    End Sub
+
+    Private Sub txtbanyakbarang_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtbanyakbarang.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
 End Class
