@@ -28,7 +28,7 @@ Partial Class fbarangkeluar
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
-        Me.txtgopenjualan = New System.Windows.Forms.TextBox()
+        Me.txtgobarangkeluar = New System.Windows.Forms.TextBox()
         Me.btngo = New System.Windows.Forms.Button()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
@@ -120,7 +120,7 @@ Partial Class fbarangkeluar
         '
         Me.GroupBox5.Controls.Add(Me.btnprev)
         Me.GroupBox5.Controls.Add(Me.btnnext)
-        Me.GroupBox5.Controls.Add(Me.txtgopenjualan)
+        Me.GroupBox5.Controls.Add(Me.txtgobarangkeluar)
         Me.GroupBox5.Controls.Add(Me.btngo)
         Me.GroupBox5.Location = New System.Drawing.Point(459, 10)
         Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4)
@@ -150,13 +150,13 @@ Partial Class fbarangkeluar
         Me.btnnext.Text = "Next >>"
         Me.btnnext.UseVisualStyleBackColor = True
         '
-        'txtgopenjualan
+        'txtgobarangkeluar
         '
-        Me.txtgopenjualan.Location = New System.Drawing.Point(131, 18)
-        Me.txtgopenjualan.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtgopenjualan.Name = "txtgopenjualan"
-        Me.txtgopenjualan.Size = New System.Drawing.Size(117, 24)
-        Me.txtgopenjualan.TabIndex = 7
+        Me.txtgobarangkeluar.Location = New System.Drawing.Point(131, 18)
+        Me.txtgobarangkeluar.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtgobarangkeluar.Name = "txtgobarangkeluar"
+        Me.txtgobarangkeluar.Size = New System.Drawing.Size(117, 24)
+        Me.txtgobarangkeluar.TabIndex = 7
         '
         'btngo
         '
@@ -764,7 +764,7 @@ Partial Class fbarangkeluar
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents btnprev As Button
     Friend WithEvents btnnext As Button
-    Friend WithEvents txtgopenjualan As TextBox
+    Friend WithEvents txtgobarangkeluar As TextBox
     Friend WithEvents btngo As Button
     Friend WithEvents btnbatal As Button
     Friend WithEvents btnedit As Button

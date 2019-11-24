@@ -251,7 +251,7 @@ Public Class fbarangkeluar
         'button navigations
         btnprev.Enabled = False
         btngo.Enabled = False
-        txtgopenjualan.Enabled = False
+        txtgobarangkeluar.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -325,7 +325,7 @@ Public Class fbarangkeluar
         'button navigations
         btnprev.Enabled = False
         btngo.Enabled = False
-        txtgopenjualan.Enabled = False
+        txtgobarangkeluar.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -408,7 +408,7 @@ Public Class fbarangkeluar
         'button navigations
         btnprev.Enabled = True
         btngo.Enabled = True
-        txtgopenjualan.Enabled = True
+        txtgobarangkeluar.Enabled = True
         btnnext.Enabled = True
 
         'header
@@ -676,6 +676,30 @@ Public Class fbarangkeluar
             btnedit.Text = "Edit"
             Call inisialisasi(txtnonota.Text)
         End If
+    End Sub
+
+    Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
+        Call prevnumber(kodebarangkeluar)
+    End Sub
+
+    Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
+        If txtgobarangkeluar.Text = "" Then
+            MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+        Else
+            Call koneksii()
+            sql = "SELECT kode_barang_keluar FROM tb_barang_keluar WHERE kode_barang_keluar  = '" + txtgobarangkeluar.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                Call inisialisasi(txtgobarangkeluar.Text)
+            Else
+                MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+            End If
+        End If
+    End Sub
+
+    Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
+        Call nextnumber(kodebarangkeluar)
     End Sub
 
     Sub tambah()

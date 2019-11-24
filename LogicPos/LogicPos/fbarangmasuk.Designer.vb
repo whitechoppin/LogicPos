@@ -32,7 +32,6 @@ Partial Class fbarangmasuk
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.cbposted = New System.Windows.Forms.CheckBox()
         Me.cbprinted = New System.Windows.Forms.CheckBox()
-        Me.txtsupplier = New System.Windows.Forms.TextBox()
         Me.btncarigudang = New System.Windows.Forms.Button()
         Me.cmbgudang = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -65,13 +64,15 @@ Partial Class fbarangmasuk
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
-        Me.txtgopenjualan = New System.Windows.Forms.TextBox()
+        Me.txtgobarangmasuk = New System.Windows.Forms.TextBox()
         Me.btngo = New System.Windows.Forms.Button()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
         Me.btnbaru = New System.Windows.Forms.Button()
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnsimpan = New System.Windows.Forms.Button()
+        Me.btncarisupplier = New System.Windows.Forms.Button()
+        Me.cmbsupplier = New System.Windows.Forms.ComboBox()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,13 +84,14 @@ Partial Class fbarangmasuk
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.btncarisupplier)
+        Me.GroupBox2.Controls.Add(Me.cmbsupplier)
         Me.GroupBox2.Controls.Add(Me.cmbsales)
         Me.GroupBox2.Controls.Add(Me.txtgudang)
         Me.GroupBox2.Controls.Add(Me.Label18)
         Me.GroupBox2.Controls.Add(Me.Label16)
         Me.GroupBox2.Controls.Add(Me.Label15)
         Me.GroupBox2.Controls.Add(Me.GroupBox3)
-        Me.GroupBox2.Controls.Add(Me.txtsupplier)
         Me.GroupBox2.Controls.Add(Me.btncarigudang)
         Me.GroupBox2.Controls.Add(Me.cmbgudang)
         Me.GroupBox2.Controls.Add(Me.Label13)
@@ -184,13 +186,6 @@ Partial Class fbarangmasuk
         Me.cbprinted.TabIndex = 40
         Me.cbprinted.Text = "Printed"
         Me.cbprinted.UseVisualStyleBackColor = True
-        '
-        'txtsupplier
-        '
-        Me.txtsupplier.Location = New System.Drawing.Point(122, 89)
-        Me.txtsupplier.Name = "txtsupplier"
-        Me.txtsupplier.Size = New System.Drawing.Size(231, 24)
-        Me.txtsupplier.TabIndex = 12
         '
         'btncarigudang
         '
@@ -499,7 +494,7 @@ Partial Class fbarangmasuk
         '
         Me.GroupBox5.Controls.Add(Me.btnprev)
         Me.GroupBox5.Controls.Add(Me.btnnext)
-        Me.GroupBox5.Controls.Add(Me.txtgopenjualan)
+        Me.GroupBox5.Controls.Add(Me.txtgobarangmasuk)
         Me.GroupBox5.Controls.Add(Me.btngo)
         Me.GroupBox5.Location = New System.Drawing.Point(459, 10)
         Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4)
@@ -529,13 +524,13 @@ Partial Class fbarangmasuk
         Me.btnnext.Text = "Next >>"
         Me.btnnext.UseVisualStyleBackColor = True
         '
-        'txtgopenjualan
+        'txtgobarangmasuk
         '
-        Me.txtgopenjualan.Location = New System.Drawing.Point(131, 18)
-        Me.txtgopenjualan.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtgopenjualan.Name = "txtgopenjualan"
-        Me.txtgopenjualan.Size = New System.Drawing.Size(117, 24)
-        Me.txtgopenjualan.TabIndex = 7
+        Me.txtgobarangmasuk.Location = New System.Drawing.Point(131, 18)
+        Me.txtgobarangmasuk.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtgobarangmasuk.Name = "txtgobarangmasuk"
+        Me.txtgobarangmasuk.Size = New System.Drawing.Size(117, 24)
+        Me.txtgobarangmasuk.TabIndex = 7
         '
         'btngo
         '
@@ -598,6 +593,27 @@ Partial Class fbarangmasuk
         Me.btnsimpan.Text = "Simpan"
         Me.btnsimpan.UseVisualStyleBackColor = True
         '
+        'btncarisupplier
+        '
+        Me.btncarisupplier.BackgroundImage = CType(resources.GetObject("btncarisupplier.BackgroundImage"), System.Drawing.Image)
+        Me.btncarisupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarisupplier.ImageIndex = 0
+        Me.btncarisupplier.Location = New System.Drawing.Point(320, 89)
+        Me.btncarisupplier.Name = "btncarisupplier"
+        Me.btncarisupplier.Size = New System.Drawing.Size(32, 27)
+        Me.btncarisupplier.TabIndex = 42
+        Me.btncarisupplier.UseVisualStyleBackColor = True
+        '
+        'cmbsupplier
+        '
+        Me.cmbsupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbsupplier.FormattingEnabled = True
+        Me.cmbsupplier.Location = New System.Drawing.Point(122, 89)
+        Me.cmbsupplier.MaxLength = 99
+        Me.cmbsupplier.Name = "cmbsupplier"
+        Me.cmbsupplier.Size = New System.Drawing.Size(199, 26)
+        Me.cmbsupplier.TabIndex = 41
+        '
         'fbarangmasuk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -638,7 +654,6 @@ Partial Class fbarangmasuk
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents cbposted As CheckBox
     Friend WithEvents cbprinted As CheckBox
-    Friend WithEvents txtsupplier As TextBox
     Friend WithEvents btncarigudang As Button
     Friend WithEvents cmbgudang As ComboBox
     Friend WithEvents Label13 As Label
@@ -671,11 +686,13 @@ Partial Class fbarangmasuk
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents btnprev As Button
     Friend WithEvents btnnext As Button
-    Friend WithEvents txtgopenjualan As TextBox
+    Friend WithEvents txtgobarangmasuk As TextBox
     Friend WithEvents btngo As Button
     Friend WithEvents btnbatal As Button
     Friend WithEvents btnedit As Button
     Friend WithEvents btnbaru As Button
     Friend WithEvents btnprint As Button
     Friend WithEvents btnsimpan As Button
+    Friend WithEvents btncarisupplier As Button
+    Friend WithEvents cmbsupplier As ComboBox
 End Class
