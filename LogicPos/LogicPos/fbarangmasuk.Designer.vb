@@ -24,6 +24,8 @@ Partial Class fbarangmasuk
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fbarangmasuk))
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btncarisupplier = New System.Windows.Forms.Button()
+        Me.cmbsupplier = New System.Windows.Forms.ComboBox()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
         Me.txtgudang = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -35,7 +37,7 @@ Partial Class fbarangmasuk
         Me.btncarigudang = New System.Windows.Forms.Button()
         Me.cmbgudang = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.dtpembelian = New System.Windows.Forms.DateTimePicker()
+        Me.dtbarangmasuk = New System.Windows.Forms.DateTimePicker()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -71,8 +73,6 @@ Partial Class fbarangmasuk
         Me.btnbaru = New System.Windows.Forms.Button()
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnsimpan = New System.Windows.Forms.Button()
-        Me.btncarisupplier = New System.Windows.Forms.Button()
-        Me.cmbsupplier = New System.Windows.Forms.ComboBox()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,7 +95,7 @@ Partial Class fbarangmasuk
         Me.GroupBox2.Controls.Add(Me.btncarigudang)
         Me.GroupBox2.Controls.Add(Me.cmbgudang)
         Me.GroupBox2.Controls.Add(Me.Label13)
-        Me.GroupBox2.Controls.Add(Me.dtpembelian)
+        Me.GroupBox2.Controls.Add(Me.dtbarangmasuk)
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Controls.Add(Me.txtnonota)
         Me.GroupBox2.Controls.Add(Me.Label10)
@@ -106,6 +106,27 @@ Partial Class fbarangmasuk
         Me.GroupBox2.TabIndex = 44
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Detail Pembelian"
+        '
+        'btncarisupplier
+        '
+        Me.btncarisupplier.BackgroundImage = CType(resources.GetObject("btncarisupplier.BackgroundImage"), System.Drawing.Image)
+        Me.btncarisupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarisupplier.ImageIndex = 0
+        Me.btncarisupplier.Location = New System.Drawing.Point(320, 89)
+        Me.btncarisupplier.Name = "btncarisupplier"
+        Me.btncarisupplier.Size = New System.Drawing.Size(32, 27)
+        Me.btncarisupplier.TabIndex = 42
+        Me.btncarisupplier.UseVisualStyleBackColor = True
+        '
+        'cmbsupplier
+        '
+        Me.cmbsupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbsupplier.FormattingEnabled = True
+        Me.cmbsupplier.Location = New System.Drawing.Point(122, 89)
+        Me.cmbsupplier.MaxLength = 99
+        Me.cmbsupplier.Name = "cmbsupplier"
+        Me.cmbsupplier.Size = New System.Drawing.Size(199, 26)
+        Me.cmbsupplier.TabIndex = 41
         '
         'cmbsales
         '
@@ -217,13 +238,13 @@ Partial Class fbarangmasuk
         Me.Label13.TabIndex = 18
         Me.Label13.Text = "Kode Gudang"
         '
-        'dtpembelian
+        'dtbarangmasuk
         '
-        Me.dtpembelian.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtpembelian.Location = New System.Drawing.Point(602, 27)
-        Me.dtpembelian.Name = "dtpembelian"
-        Me.dtpembelian.Size = New System.Drawing.Size(221, 23)
-        Me.dtpembelian.TabIndex = 17
+        Me.dtbarangmasuk.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.dtbarangmasuk.Location = New System.Drawing.Point(602, 27)
+        Me.dtbarangmasuk.Name = "dtbarangmasuk"
+        Me.dtbarangmasuk.Size = New System.Drawing.Size(221, 23)
+        Me.dtbarangmasuk.TabIndex = 17
         '
         'Label12
         '
@@ -231,9 +252,9 @@ Partial Class fbarangmasuk
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label12.Location = New System.Drawing.Point(466, 33)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(133, 18)
+        Me.Label12.Size = New System.Drawing.Size(109, 18)
         Me.Label12.TabIndex = 16
-        Me.Label12.Text = "Tanggal Pembelian"
+        Me.Label12.Text = "Tanggal Masuk"
         '
         'txtnonota
         '
@@ -593,27 +614,6 @@ Partial Class fbarangmasuk
         Me.btnsimpan.Text = "Simpan"
         Me.btnsimpan.UseVisualStyleBackColor = True
         '
-        'btncarisupplier
-        '
-        Me.btncarisupplier.BackgroundImage = CType(resources.GetObject("btncarisupplier.BackgroundImage"), System.Drawing.Image)
-        Me.btncarisupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btncarisupplier.ImageIndex = 0
-        Me.btncarisupplier.Location = New System.Drawing.Point(320, 89)
-        Me.btncarisupplier.Name = "btncarisupplier"
-        Me.btncarisupplier.Size = New System.Drawing.Size(32, 27)
-        Me.btncarisupplier.TabIndex = 42
-        Me.btncarisupplier.UseVisualStyleBackColor = True
-        '
-        'cmbsupplier
-        '
-        Me.cmbsupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbsupplier.FormattingEnabled = True
-        Me.cmbsupplier.Location = New System.Drawing.Point(122, 89)
-        Me.cmbsupplier.MaxLength = 99
-        Me.cmbsupplier.Name = "cmbsupplier"
-        Me.cmbsupplier.Size = New System.Drawing.Size(199, 26)
-        Me.cmbsupplier.TabIndex = 41
-        '
         'fbarangmasuk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -657,7 +657,7 @@ Partial Class fbarangmasuk
     Friend WithEvents btncarigudang As Button
     Friend WithEvents cmbgudang As ComboBox
     Friend WithEvents Label13 As Label
-    Friend WithEvents dtpembelian As DateTimePicker
+    Friend WithEvents dtbarangmasuk As DateTimePicker
     Friend WithEvents Label12 As Label
     Friend WithEvents txtnonota As TextBox
     Friend WithEvents Label10 As Label

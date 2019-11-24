@@ -443,9 +443,9 @@ Partial Class fbarangkeluar
         Me.Label17.Location = New System.Drawing.Point(568, 29)
         Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(96, 18)
+        Me.Label17.Size = New System.Drawing.Size(74, 18)
         Me.Label17.TabIndex = 16
-        Me.Label17.Text = "Tgl Penjualan"
+        Me.Label17.Text = "Tgl Keluar"
         '
         'txtnonota
         '

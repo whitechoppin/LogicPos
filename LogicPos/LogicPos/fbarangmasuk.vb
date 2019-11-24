@@ -8,7 +8,8 @@ Public Class fbarangmasuk
     'variabel bantuan view pembelian
     Dim nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan, viewbayar As String
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
-    Dim viewtglpembelian, viewtgljatuhtempo As DateTime
+
+    Dim viewtglpembelian As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir As Double
     Private Sub fbarangmasuk_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
@@ -165,8 +166,8 @@ Public Class fbarangmasuk
         btncarigudang.Enabled = False
         txtgudang.Enabled = False
 
-        dtpembelian.Enabled = False
-        dtpembelian.Value = Date.Now
+        dtbarangmasuk.Enabled = False
+        dtbarangmasuk.Value = Date.Now
 
         'body
         txtkodebarang.Clear()
@@ -225,7 +226,7 @@ Public Class fbarangmasuk
                     cbprinted.Checked = statusprint
                     cbposted.Checked = statusposted
 
-                    dtpembelian.Value = viewtglpembelian
+                    dtbarangmasuk.Value = viewtglpembelian
 
                     'isi tabel view pembelian
 
@@ -246,7 +247,7 @@ Public Class fbarangmasuk
             cbprinted.Checked = False
             cbposted.Checked = False
 
-            dtpembelian.Value = Date.Now
+            dtbarangmasuk.Value = Date.Now
 
             txtketerangan.Text = ""
 
@@ -286,8 +287,8 @@ Public Class fbarangmasuk
         btncarigudang.Enabled = True
         txtgudang.Enabled = False
 
-        dtpembelian.Enabled = True
-        dtpembelian.Value = Date.Now
+        dtbarangmasuk.Enabled = True
+        dtbarangmasuk.Value = Date.Now
 
         'body
         txtkodebarang.Clear()
@@ -435,6 +436,18 @@ Public Class fbarangmasuk
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
+
+    End Sub
+
+    Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
+
+    End Sub
+
+    Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
+
+    End Sub
+
+    Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
 
     End Sub
 
