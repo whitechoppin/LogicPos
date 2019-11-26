@@ -26,7 +26,7 @@ Public Class fcaristok
         'Call koneksii()
         If tutupstok > 0 Then
             Using cnn As New OdbcConnection(strConn)
-                sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang"
+                sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE kode_gudang ='" & kodegudang & "'"
                 da = New OdbcDataAdapter(sql, cnn)
                 cnn.Open()
                 ds = New DataSet
