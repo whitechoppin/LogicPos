@@ -184,7 +184,6 @@ Public Class fpenjualan
             End While
         End If
     End Sub
-
     Sub awalbaru()
         'bersihkan dan set default value
         'button tools
@@ -299,7 +298,6 @@ Public Class fpenjualan
         Call tabel_utama()
 
     End Sub
-
     Sub inisialisasi(nomorkode As String)
 
         'bersihkan dan set default value
@@ -531,7 +529,6 @@ Public Class fpenjualan
         End If
 
     End Sub
-
     Sub awaledit()
         'bersihkan dan set default value
         'button tools

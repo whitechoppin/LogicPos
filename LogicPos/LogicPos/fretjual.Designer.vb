@@ -73,6 +73,7 @@ Partial Class fretjual
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblnamaibarang)
         Me.Name = "fretjual"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Jumlah Retur"
         Me.ResumeLayout(False)
         Me.PerformLayout()

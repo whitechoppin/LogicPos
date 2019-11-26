@@ -87,7 +87,7 @@ Partial Class freturjual
         Me.GroupBox3.Controls.Add(Me.Label19)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(13, 62)
+        Me.GroupBox3.Location = New System.Drawing.Point(19, 44)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
@@ -163,7 +163,7 @@ Partial Class freturjual
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(18, 20)
+        Me.Label7.Location = New System.Drawing.Point(13, 9)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(223, 31)
@@ -173,7 +173,7 @@ Partial Class freturjual
         'GridControl1
         '
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl1.Location = New System.Drawing.Point(12, 159)
+        Me.GridControl1.Location = New System.Drawing.Point(19, 141)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
@@ -358,7 +358,7 @@ Partial Class freturjual
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(13, 449)
+        Me.Label1.Location = New System.Drawing.Point(13, 417)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(223, 31)
@@ -368,7 +368,7 @@ Partial Class freturjual
         'GridControl2
         '
         Me.GridControl2.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl2.Location = New System.Drawing.Point(13, 484)
+        Me.GridControl2.Location = New System.Drawing.Point(19, 452)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl2.Name = "GridControl2"
@@ -551,7 +551,7 @@ Partial Class freturjual
         '
         'btnproses
         '
-        Me.btnproses.Location = New System.Drawing.Point(342, 101)
+        Me.btnproses.Location = New System.Drawing.Point(351, 83)
         Me.btnproses.Margin = New System.Windows.Forms.Padding(4)
         Me.btnproses.Name = "btnproses"
         Me.btnproses.Size = New System.Drawing.Size(56, 50)
@@ -573,6 +573,7 @@ Partial Class freturjual
         Me.Controls.Add(Me.GroupBox3)
         Me.Name = "freturjual"
         Me.Text = "Retur Penjualan"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
