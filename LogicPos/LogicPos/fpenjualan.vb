@@ -1429,8 +1429,8 @@ Public Class fpenjualan
             End If
 
             MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
-
-            Call inisialisasi(nomornota)
+            Call inisialisasi(txtnonota.Text)
+            'Call inisialisasi(nomornota)
             btnedit.Text = "Edit"
         End If
     End Sub
