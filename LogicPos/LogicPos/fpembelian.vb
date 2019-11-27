@@ -3,7 +3,7 @@ Imports DevExpress.Utils
 
 Public Class fpembelian
     Dim tabel As DataTable
-    Dim harga, modalpembelian, ongkir, ppn, diskonpersen, diskonnominal, ppnpersen, ppnnominal, total1, total2, grandtotal, banyak As Double
+    Dim harga, modalpembelian, ongkir, ppn, diskonpersen, diskonnominal, ppnpersen, ppnnominal, subtotalsummary, grandtotal, banyak As Double
     Dim satuan, jenis, supplier, kodepembelian As String
     Public isi As String
     'variabel bantuan view pembelian
@@ -512,6 +512,46 @@ Public Class fpembelian
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
         GridColumn8.Width = 55
     End Sub
+
+    Sub comboboxsupplier()
+        Call koneksii()
+        cmmd = New OdbcCommand("SELECT * FROM tb_supplier", cnn)
+        cmbsupplier.Items.Clear()
+        cmbsupplier.AutoCompleteCustomSource.Clear()
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbsupplier.AutoCompleteCustomSource.Add(dr("kode_supplier"))
+                cmbsupplier.Items.Add(dr("kode_supplier"))
+            End While
+        End If
+    End Sub
+    Sub comboboxgudang()
+        Call koneksii()
+        cmmd = New OdbcCommand("SELECT * FROM tb_gudang", cnn)
+        cmbgudang.Items.Clear()
+        cmbgudang.AutoCompleteCustomSource.Clear()
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbgudang.AutoCompleteCustomSource.Add(dr("kode_gudang"))
+                cmbgudang.Items.Add(dr("kode_gudang"))
+            End While
+        End If
+    End Sub
+    Sub comboboxuser()
+        Call koneksii()
+        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
+        cmbsales.Items.Clear()
+        cmbsales.AutoCompleteCustomSource.Clear()
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbsales.AutoCompleteCustomSource.Add(dr("kode_user"))
+                cmbsales.Items.Add(dr("kode_user"))
+            End While
+        End If
+    End Sub
     Sub comboboxpembayaran()
         Call koneksii()
         cmbbayar.Items.Clear()
@@ -570,45 +610,6 @@ Public Class fpembelian
             txtgudang.Text = ""
         End If
     End Sub
-    Sub comboboxsupplier()
-        Call koneksii()
-        cmmd = New OdbcCommand("SELECT * FROM tb_supplier", cnn)
-        cmbsupplier.Items.Clear()
-        cmbsupplier.AutoCompleteCustomSource.Clear()
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbsupplier.AutoCompleteCustomSource.Add(dr("kode_supplier"))
-                cmbsupplier.Items.Add(dr("kode_supplier"))
-            End While
-        End If
-    End Sub
-    Sub comboboxgudang()
-        Call koneksii()
-        cmmd = New OdbcCommand("SELECT * FROM tb_gudang", cnn)
-        cmbgudang.Items.Clear()
-        cmbgudang.AutoCompleteCustomSource.Clear()
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbgudang.AutoCompleteCustomSource.Add(dr("kode_gudang"))
-                cmbgudang.Items.Add(dr("kode_gudang"))
-            End While
-        End If
-    End Sub
-    Sub comboboxuser()
-        Call koneksii()
-        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
-        cmbsales.Items.Clear()
-        cmbsales.AutoCompleteCustomSource.Clear()
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbsales.AutoCompleteCustomSource.Add(dr("kode_user"))
-                cmbsales.Items.Add(dr("kode_user"))
-            End While
-        End If
-    End Sub
 
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
@@ -651,21 +652,21 @@ Public Class fpembelian
                     total_karakter_kode = Len(txtkodebarang.Text)
                     counter_angka = CInt(Microsoft.VisualBasic.Right(kode_stok, total_karakter - total_karakter_kode))
                     tambah_counter = counter_angka + 1
-                    tabel.Rows.Add(txtkodebarang.Text + CStr(tambah_counter), txtkodebarang.Text, txtnamabarang.Text, banyak, satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
+                    tabel.Rows.Add(txtkodebarang.Text + CStr(tambah_counter), txtkodebarang.Text, txtnamabarang.Text, Val(banyak), satuan, jenis, Val(harga), Val(banyak) * Val(harga))
 
                     Call koneksii()
-                    sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodebarang.Text + CStr(tambah_counter) & "', '" & txtkodebarang.Text & "', '" & txtnamabarang.Text & "','" & Val(txtbanyakbarang.Text) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(txtbanyakbarang.Text) * Val(harga) & "' ,'1')"
+                    sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodebarang.Text + CStr(tambah_counter) & "', '" & txtkodebarang.Text & "', '" & txtnamabarang.Text & "','" & Val(banyak) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(banyak) * Val(harga) & "' ,'1')"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
 
                     Call reload_tabel()
                 Else 'kalau belum ada stok
                     'tambahkan data ke tabel keranjang
-                    tabel.Rows.Add(txtkodebarang.Text + "1", txtkodebarang.Text, txtnamabarang.Text, banyak, satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
+                    tabel.Rows.Add(txtkodebarang.Text + "1", txtkodebarang.Text, txtnamabarang.Text, Val(banyak), satuan, jenis, Val(harga), Val(banyak) * Val(harga))
 
                     'simpan kedalam tabel pembelian sementara agar kode dapat dilanjutkan
                     Call koneksii()
-                    sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodebarang.Text + "1" & "', '" & txtkodebarang.Text & "', '" & txtnamabarang.Text & "','" & Val(txtbanyakbarang.Text) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(txtbanyakbarang.Text) * Val(harga) & "' ,'1')"
+                    sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang, qty, satuan_barang, jenis_barang, harga_satuan, subtotal, nomor) VALUES ('" & txtkodebarang.Text + "1" & "', '" & txtkodebarang.Text & "', '" & txtnamabarang.Text & "','" & Val(banyak) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(banyak) * Val(harga) & "' ,'1')"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
 
@@ -686,12 +687,12 @@ Public Class fpembelian
                         End If
                     Next
                     If lokasi = -1 Then
-                        tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, banyak, satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
+                        tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, Val(banyak), satuan, jenis, Val(harga), Val(banyak) * Val(harga))
                         Call reload_tabel()
                     Else
                         qty1 = GridView1.GetRowCellValue(lokasi, "qty")
                         GridView1.DeleteRow(GridView1.GetRowHandle(lokasi))
-                        tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, (banyak + qty1), satuan, jenis, Val(harga), (Val(txtbanyakbarang.Text) + qty1) * Val(harga))
+                        tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, Val(banyak + qty1), satuan, jenis, Val(harga), (Val(banyak) + qty1) * Val(harga))
                         Call reload_tabel()
 
                     End If
@@ -708,10 +709,10 @@ Public Class fpembelian
                         total_karakter_kode = Len(txtkodebarang.Text)
                         counter_angka = CInt(Microsoft.VisualBasic.Right(kode_stok, total_karakter - total_karakter_kode))
                         tambah_counter = counter_angka + 1
-                        tabel.Rows.Add(txtkodebarang.Text + CStr(tambah_counter), txtkodebarang.Text, txtnamabarang.Text, banyak, satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
+                        tabel.Rows.Add(txtkodebarang.Text + CStr(tambah_counter), txtkodebarang.Text, txtnamabarang.Text, Val(banyak), satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
 
 
-                        sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodebarang.Text + CStr(tambah_counter) & "', '" & txtkodebarang.Text & " ', '" & txtnamabarang.Text & "','" & Val(txtbanyakbarang.Text) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(txtbanyakbarang.Text) * Val(harga) & "', '" & tambah_counter & "')"
+                        sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodebarang.Text + CStr(tambah_counter) & "', '" & txtkodebarang.Text & " ', '" & txtnamabarang.Text & "','" & Val(banyak) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(banyak) * Val(harga) & "', '" & tambah_counter & "')"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
 
@@ -719,7 +720,7 @@ Public Class fpembelian
                     Else
                         'tidak ada data
                         'sql = "SELECT *, REPLACE(kode_stok, '" & txtkodebarang.Text & "', '') FROM tb_stok WHERE kode_barang = '" & txtkodebarang.Text & "'  ORDER BY REPLACE(kode_stok, '" & txtkodebarang.Text & "', '') DESC LIMIT 1"
-                        sql = "SELECT *, (substring(kode_stok,LENGTH(kode_barang)+1)) as nomor, LENGTH(kode_barang) as panjang  FROM tb_stok WHERE kode_barang= '" & txtkodebarang.Text & "' order by nomor+0 desc limit 1"
+                        sql = "SELECT *, (substring(kode_stok,LENGTH(kode_barang)+1)) as nomor, LENGTH(kode_barang) as panjang  FROM tb_stok WHERE kode_barang= '" & txtkodebarang.Text & "' ORDER BY nomor + 0 DESC LIMIT 1"
                         cmmd = New OdbcCommand(sql, cnn)
 
                         dr = cmmd.ExecuteReader()
@@ -731,18 +732,18 @@ Public Class fpembelian
                             'total_karakter_kode = Len(txtkodebarang.Text)
                             'counter_angka = CInt(Microsoft.VisualBasic.Right(kode_stok, total_karakter - total_karakter_kode))
                             tambah_counter = dr("nomor") + 1
-                            tabel.Rows.Add(txtkodebarang.Text + CStr(tambah_counter), txtkodebarang.Text, txtnamabarang.Text, banyak, satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
+                            tabel.Rows.Add(txtkodebarang.Text + CStr(tambah_counter), txtkodebarang.Text, txtnamabarang.Text, Val(banyak), satuan, jenis, Val(harga), Val(banyak) * Val(harga))
 
                             Call koneksii()
-                            sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodebarang.Text + CStr(tambah_counter) & "', '" & txtkodebarang.Text & "', '" & txtnamabarang.Text & "','" & Val(txtbanyakbarang.Text) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(txtbanyakbarang.Text) * Val(harga) & "' ,'1')"
+                            sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodebarang.Text + CStr(tambah_counter) & "', '" & txtkodebarang.Text & "', '" & txtnamabarang.Text & "','" & Val(banyak) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(banyak) * Val(harga) & "' ,'1')"
                             cmmd = New OdbcCommand(sql, cnn)
                             dr = cmmd.ExecuteReader()
 
                             Call reload_tabel()
                         Else
-                            tabel.Rows.Add(txtkodebarang.Text + "1", txtkodebarang.Text, txtnamabarang.Text, banyak, satuan, jenis, Val(harga), Val(txtbanyakbarang.Text) * Val(harga))
+                            tabel.Rows.Add(txtkodebarang.Text + "1", txtkodebarang.Text, txtnamabarang.Text, Val(banyak), satuan, jenis, Val(harga), Val(banyak) * Val(harga))
 
-                            sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodebarang.Text + "1" & "', '" & txtkodebarang.Text & " ', '" & txtnamabarang.Text & "','" & Val(txtbanyakbarang.Text) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(txtbanyakbarang.Text) * Val(harga) & "', '" & tambah_counter & "')"
+                            sql = "INSERT INTO tb_pembelian_sementara (kode_stok, kode_barang, nama_barang,qty,satuan_barang,jenis_barang,harga_satuan,subtotal,nomor) VALUES ('" & txtkodebarang.Text + "1" & "', '" & txtkodebarang.Text & " ', '" & txtnamabarang.Text & "','" & Val(banyak) & "','" & satuan & "','" & jenis & "', '" & Val(harga) & "','" & Val(banyak) * Val(harga) & "', '" & tambah_counter & "')"
                             cmmd = New OdbcCommand(sql, cnn)
                             dr = cmmd.ExecuteReader()
 
@@ -772,7 +773,7 @@ Public Class fpembelian
     Sub simpan()
         kodepembelian = autonumber()
         Call koneksii()
-        total1 = GridView1.Columns("subtotal").SummaryItem.SummaryValue 'ambil isi summary gridview
+
         sql = "SELECT * FROM tb_supplier  WHERE '" & cmbsupplier.Text & "' =  kode_supplier"
         'Strings.Right()
         cmmd = New OdbcCommand(sql, cnn)
@@ -798,15 +799,15 @@ Public Class fpembelian
 
                 For i As Integer = 0 To GridView1.RowCount - 1
                     If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
-                        sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
+                        sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang='" & cmbgudang.Text & "' LIMIT 1"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
                         If dr.HasRows Then
-                            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
+                            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang='" & cmbgudang.Text & "'"
                             cmmd = New OdbcCommand(sql, cnn)
                             dr = cmmd.ExecuteReader()
                         Else
-                            sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_gudang") & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
+                            sql = "INSERT INTO tb_stok (kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & cmbgudang.Text & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
                             cmmd = New OdbcCommand(sql, cnn)
                             dr = cmmd.ExecuteReader()
                         End If
@@ -816,13 +817,11 @@ Public Class fpembelian
                         dr = cmmd.ExecuteReader()
 
                     Else
-                        sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_gudang") & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
+                        sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & cmbgudang.Text & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
 
-                        'sql = "UPDATE tb_barang SET stok = stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE kode = '" & GridView1.GetRowCellValue(i, "kode") & "'"
-                        'cmmd = New OdbcCommand(sql, cnn)
-                        'dr = cmmd.ExecuteReader()
+                        'update modal pada barang apabila ada harga baru
                         sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
@@ -948,7 +947,6 @@ Public Class fpembelian
                                     btnedit.Text = "Edit"
                                     'isi disini sub updatenya
                                     Call perbarui(txtnonota.Text)
-                                    Call inisialisasi(txtnonota.Text)
                                 Else
                                     MsgBox("Isi Pembayaran")
                                 End If
@@ -1066,14 +1064,23 @@ Public Class fpembelian
 
     Sub perbarui(nomornota As String)
         Call koneksii()
+        Dim kodegudangupdate As String
 
-        'hapus data yang ada
+        'cari nota  yang sebelumnya (kembalikan stok dulu)
+        sql = "SELECT kode_gudang FROM tb_pembelian WHERE kode_pembelian = '" & nomornota & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        dr.Read()
+
+        kodegudangupdate = dr("kode_gudang")
+
+        'update data yang sebelumnya (kembalikan stok dulu)
         sql = "SELECT * FROM tb_pembelian_detail_sementara WHERE kode_pembelian = '" & nomornota & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
         While dr.Read
-            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "'"
+            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang='" & kodegudangupdate & "'"
             cmmd = New OdbcCommand(sql, cnn)
             drpembelian = cmmd.ExecuteReader()
         End While
@@ -1082,6 +1089,8 @@ Public Class fpembelian
         sql = "DELETE FROM tb_pembelian_detail WHERE kode_pembelian = '" & nomornota & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
+
+        '========================================================================================
 
         'loop isi pembelian detail
 
@@ -1100,11 +1109,11 @@ Public Class fpembelian
 
             For i As Integer = 0 To GridView1.RowCount - 1
                 If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
-                    sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
+                    sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang='" & cmbgudang.Text & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
                     If dr.HasRows Then
-                        sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
+                        sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang='" & cmbgudang.Text & "'"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
                     Else
@@ -1118,15 +1127,15 @@ Public Class fpembelian
                     dr = cmmd.ExecuteReader()
 
                 Else
-                    sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
+                    sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang='" & cmbgudang.Text & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
                     If dr.HasRows Then
-                        sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "'"
+                        sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang='" & cmbgudang.Text & "'"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
                     Else
-                        sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_gudang") & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
+                        sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_stok") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & cmbgudang.Text & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
                     End If
@@ -1140,6 +1149,7 @@ Public Class fpembelian
         End If
         MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
         Call inisialisasi(nomornota)
+        'Call inisialisasi(txtnonota.Text)
     End Sub
 
     Private Sub cmbsupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsupplier.SelectedIndexChanged
@@ -1277,30 +1287,30 @@ Public Class fpembelian
         e.Handled = ValidAngka(e)
     End Sub
     Private Sub UpdateTotalText()
-        total2 = GridView1.Columns("subtotal").SummaryItem.SummaryValue
-        grandtotal = total2
+        subtotalsummary = GridView1.Columns("subtotal").SummaryItem.SummaryValue
+        grandtotal = subtotalsummary
         If cbdiskon.Checked = True And cbppn.Checked = False And cbongkir.Checked = False Then
-            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
-            grandtotal = total2 - (total2 * txtdiskonpersen.Text / 100)
+            txtdiskonnominal.Text = subtotalsummary * txtdiskonpersen.Text / 100
+            grandtotal = subtotalsummary - (subtotalsummary * txtdiskonpersen.Text / 100)
         ElseIf cbppn.Checked = True And cbdiskon.Checked = False And cbongkir.Checked = False Then
-            txtppnnominal.Text = total2 * txtppnpersen.Text / 100
-            grandtotal = total2 + (total2 * txtppnpersen.Text / 100)
+            txtppnnominal.Text = subtotalsummary * txtppnpersen.Text / 100
+            grandtotal = subtotalsummary + (subtotalsummary * txtppnpersen.Text / 100)
         ElseIf cbppn.Checked = True And cbdiskon.Checked = True And cbongkir.Checked = False Then
-            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
-            txtppnnominal.Text = (total2 - txtdiskonnominal.Text) * txtppnpersen.Text / 100
-            grandtotal = total2 - txtdiskonnominal.Text + txtppnnominal.Text
+            txtdiskonnominal.Text = subtotalsummary * txtdiskonpersen.Text / 100
+            txtppnnominal.Text = (subtotalsummary - txtdiskonnominal.Text) * txtppnpersen.Text / 100
+            grandtotal = subtotalsummary - txtdiskonnominal.Text + txtppnnominal.Text
         ElseIf cbdiskon.Checked = True And cbppn.Checked = False And cbongkir.Checked = True Then
-            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
-            grandtotal = total2 - (total2 * txtdiskonpersen.Text / 100) + txtongkir.Text
+            txtdiskonnominal.Text = subtotalsummary * txtdiskonpersen.Text / 100
+            grandtotal = subtotalsummary - (subtotalsummary * txtdiskonpersen.Text / 100) + txtongkir.Text
         ElseIf cbppn.Checked = True And cbdiskon.Checked = False And cbongkir.Checked = True Then
-            txtppnnominal.Text = total2 * txtppnpersen.Text / 100
-            grandtotal = total2 + (total2 * txtppnpersen.Text / 100) + txtongkir.Text
+            txtppnnominal.Text = subtotalsummary * txtppnpersen.Text / 100
+            grandtotal = subtotalsummary + (subtotalsummary * txtppnpersen.Text / 100) + txtongkir.Text
         ElseIf cbppn.Checked = True And cbdiskon.Checked = True And cbongkir.Checked = True Then
-            txtdiskonnominal.Text = total2 * txtdiskonpersen.Text / 100
-            txtppnnominal.Text = (total2 - txtdiskonnominal.Text) * txtppnpersen.Text / 100
-            grandtotal = total2 - txtdiskonnominal.Text + txtppnnominal.Text + txtongkir.Text
+            txtdiskonnominal.Text = subtotalsummary * txtdiskonpersen.Text / 100
+            txtppnnominal.Text = (subtotalsummary - txtdiskonnominal.Text) * txtppnpersen.Text / 100
+            grandtotal = subtotalsummary - txtdiskonnominal.Text + txtppnnominal.Text + txtongkir.Text
         ElseIf cbppn.Checked = False And cbdiskon.Checked = False And cbongkir.Checked = True Then
-            grandtotal = total2 + txtongkir.Text
+            grandtotal = subtotalsummary + txtongkir.Text
         End If
         txttotal.Text = grandtotal
     End Sub
