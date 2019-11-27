@@ -414,6 +414,9 @@
     <EmbeddedResource Include="fsupplier.resx">
       <DependentUpon>fsupplier.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ftransferbarang.resx">
+      <DependentUpon>ftransferbarang.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fuser.resx">
       <DependentUpon>fuser.vb</DependentUpon>
     </EmbeddedResource>
