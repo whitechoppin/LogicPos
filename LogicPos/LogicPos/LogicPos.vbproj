@@ -286,7 +286,7 @@
     <Compile Include="fretjual.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="freturbeli.Designer.vb">
+    <Compile Include="freturbeli.designer.vb">
       <DependentUpon>freturbeli.vb</DependentUpon>
     </Compile>
     <Compile Include="freturbeli.vb">
@@ -407,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fretjual.resx">
       <DependentUpon>fretjual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="freturbeli.resx">
+      <DependentUpon>freturbeli.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="freturjual.resx">
       <DependentUpon>freturjual.vb</DependentUpon>

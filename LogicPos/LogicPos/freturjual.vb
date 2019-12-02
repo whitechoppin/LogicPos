@@ -7,6 +7,13 @@ Public Class freturjual
     'variabel dalam penjualan
     Dim jenis, satuan, kodepenjualan As String
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
+    'variabel bantuan view penjualan
+    'Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan, viewpembayaran As String
+    'Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
+    'Dim viewtglpenjualan, viewtgljatuhtempo As DateTime
+    Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
+    'variabel edit penjualan
+    'Dim countingbarang As Integer
 
     Function autonumber()
         Call koneksii()
@@ -83,14 +90,6 @@ Public Class freturjual
         Call simpan()
     End Sub
 
-    'variabel bantuan view penjualan
-    'Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan, viewpembayaran As String
-    'Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
-    'Dim viewtglpenjualan, viewtgljatuhtempo As DateTime
-    Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
-
-    'variabel edit penjualan
-    'Dim countingbarang As Integer
     Private Sub freturjual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
