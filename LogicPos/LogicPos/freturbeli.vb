@@ -214,63 +214,63 @@ Public Class freturbeli
         GridColumn16.Caption = "Nama Barang"
         GridColumn16.Width = 70
 
-        GridColumn17.FieldName = "banyak"
-        GridColumn17.Caption = "banyak"
-        GridColumn17.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn17.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn17.Width = 5
+        'GridColumn17.FieldName = "banyak"
+        'GridColumn17.Caption = "banyak"
+        'GridColumn17.DisplayFormat.FormatType = FormatType.Numeric
+        'GridColumn17.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn17.Width = 5
 
-        GridColumn18.FieldName = "satuan_barang"
-        GridColumn18.Caption = "Satuan Barang"
-        GridColumn18.Width = 10
+        'GridColumn18.FieldName = "satuan_barang"
+        'GridColumn18.Caption = "Satuan Barang"
+        'GridColumn18.Width = 10
 
-        GridColumn19.FieldName = "jenis_barang"
-        GridColumn19.Caption = "Jenis Barang"
-        GridColumn19.Width = 10
+        'GridColumn19.FieldName = "jenis_barang"
+        'GridColumn19.Caption = "Jenis Barang"
+        'GridColumn19.Width = 10
 
-        GridColumn20.FieldName = "harga_satuan"
-        GridColumn20.Caption = "Harga Satuan"
-        GridColumn20.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn20.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn20.Width = 20
+        'GridColumn20.FieldName = "harga_satuan"
+        'GridColumn20.Caption = "Harga Satuan"
+        'GridColumn20.DisplayFormat.FormatType = FormatType.Numeric
+        'GridColumn20.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn20.Width = 20
 
-        GridColumn21.FieldName = "diskon_persen"
-        GridColumn21.Caption = "Diskon %"
-        GridColumn21.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn21.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn21.Width = 20
+        'GridColumn21.FieldName = "diskon_persen"
+        'GridColumn21.Caption = "Diskon %"
+        'GridColumn21.DisplayFormat.FormatType = FormatType.Numeric
+        'GridColumn21.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn21.Width = 20
 
-        GridColumn22.FieldName = "diskon_nominal"
-        GridColumn22.Caption = "Diskon Nominal"
-        GridColumn22.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn22.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn22.Width = 30
+        'GridColumn22.FieldName = "diskon_nominal"
+        'GridColumn22.Caption = "Diskon Nominal"
+        'GridColumn22.DisplayFormat.FormatType = FormatType.Numeric
+        'GridColumn22.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn22.Width = 30
 
-        GridColumn23.FieldName = "harga_diskon"
-        GridColumn23.Caption = "Harga Diskon"
-        GridColumn23.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn23.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn23.Width = 30
+        'GridColumn23.FieldName = "harga_diskon"
+        'GridColumn23.Caption = "Harga Diskon"
+        'GridColumn23.DisplayFormat.FormatType = FormatType.Numeric
+        'GridColumn23.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn23.Width = 30
 
-        GridColumn24.FieldName = "subtotal"
-        GridColumn24.Caption = "Subtotal"
-        GridColumn24.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn24.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn24.Width = 30
+        'GridColumn24.FieldName = "subtotal"
+        'GridColumn24.Caption = "Subtotal"
+        'GridColumn24.DisplayFormat.FormatType = FormatType.Numeric
+        'GridColumn24.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn24.Width = 30
 
-        GridColumn25.FieldName = "laba"
-        GridColumn25.Caption = "Laba"
-        GridColumn25.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn25.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn25.Width = 20
-        GridColumn25.Visible = False
+        'GridColumn25.FieldName = "laba"
+        'GridColumn25.Caption = "Laba"
+        'GridColumn25.DisplayFormat.FormatType = FormatType.Numeric
+        'GridColumn25.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn25.Width = 20
+        'GridColumn25.Visible = False
 
-        GridColumn26.FieldName = "modal_barang"
-        GridColumn26.Caption = "Modal Barang"
-        GridColumn26.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn26.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn26.Width = 20
-        GridColumn26.Visible = False
+        'GridColumn26.FieldName = "modal_barang"
+        'GridColumn26.Caption = "Modal Barang"
+        'GridColumn26.DisplayFormat.FormatType = FormatType.Numeric
+        'GridColumn26.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn26.Width = 20
+        'GridColumn26.Visible = False
     End Sub
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
