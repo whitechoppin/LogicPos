@@ -39,22 +39,22 @@ Partial Class ftransferbarang
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtdarigudang = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.btncaridarigudang = New System.Windows.Forms.Button()
+        Me.cmbdarigudang = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
-        Me.txtgudang = New System.Windows.Forms.TextBox()
+        Me.txtkegudang = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.cbposted = New System.Windows.Forms.CheckBox()
         Me.cbprinted = New System.Windows.Forms.CheckBox()
-        Me.btncarigudang = New System.Windows.Forms.Button()
-        Me.cmbgudang = New System.Windows.Forms.ComboBox()
+        Me.btncarikegudang = New System.Windows.Forms.Button()
+        Me.cmbkegudang = New System.Windows.Forms.ComboBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.dtbarangkeluar = New System.Windows.Forms.DateTimePicker()
+        Me.dttransferbarang = New System.Windows.Forms.DateTimePicker()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
@@ -234,20 +234,20 @@ Partial Class ftransferbarang
         '
         Me.GroupBox3.Controls.Add(Me.Label8)
         Me.GroupBox3.Controls.Add(Me.Label6)
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
+        Me.GroupBox3.Controls.Add(Me.txtdarigudang)
         Me.GroupBox3.Controls.Add(Me.Label1)
-        Me.GroupBox3.Controls.Add(Me.Button1)
-        Me.GroupBox3.Controls.Add(Me.ComboBox1)
+        Me.GroupBox3.Controls.Add(Me.btncaridarigudang)
+        Me.GroupBox3.Controls.Add(Me.cmbdarigudang)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(Me.cmbsales)
-        Me.GroupBox3.Controls.Add(Me.txtgudang)
+        Me.GroupBox3.Controls.Add(Me.txtkegudang)
         Me.GroupBox3.Controls.Add(Me.Label18)
         Me.GroupBox3.Controls.Add(Me.Label16)
         Me.GroupBox3.Controls.Add(Me.GroupBox6)
-        Me.GroupBox3.Controls.Add(Me.btncarigudang)
-        Me.GroupBox3.Controls.Add(Me.cmbgudang)
+        Me.GroupBox3.Controls.Add(Me.btncarikegudang)
+        Me.GroupBox3.Controls.Add(Me.cmbkegudang)
         Me.GroupBox3.Controls.Add(Me.Label14)
-        Me.GroupBox3.Controls.Add(Me.dtbarangkeluar)
+        Me.GroupBox3.Controls.Add(Me.dttransferbarang)
         Me.GroupBox3.Controls.Add(Me.Label17)
         Me.GroupBox3.Controls.Add(Me.txtnonota)
         Me.GroupBox3.Controls.Add(Me.Label19)
@@ -283,14 +283,14 @@ Partial Class ftransferbarang
         Me.Label6.TabIndex = 46
         Me.Label6.Text = "Dari Gudang"
         '
-        'TextBox1
+        'txtdarigudang
         '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(405, 81)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(193, 24)
-        Me.TextBox1.TabIndex = 43
+        Me.txtdarigudang.Enabled = False
+        Me.txtdarigudang.Location = New System.Drawing.Point(405, 81)
+        Me.txtdarigudang.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtdarigudang.Name = "txtdarigudang"
+        Me.txtdarigudang.Size = New System.Drawing.Size(193, 24)
+        Me.txtdarigudang.TabIndex = 43
         '
         'Label1
         '
@@ -303,28 +303,28 @@ Partial Class ftransferbarang
         Me.Label1.TabIndex = 45
         Me.Label1.Text = "Nama Gudang"
         '
-        'Button1
+        'btncaridarigudang
         '
-        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.ImageIndex = 0
-        Me.Button1.Location = New System.Drawing.Point(566, 49)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(32, 28)
-        Me.Button1.TabIndex = 42
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btncaridarigudang.BackgroundImage = CType(resources.GetObject("btncaridarigudang.BackgroundImage"), System.Drawing.Image)
+        Me.btncaridarigudang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncaridarigudang.ImageIndex = 0
+        Me.btncaridarigudang.Location = New System.Drawing.Point(566, 49)
+        Me.btncaridarigudang.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncaridarigudang.Name = "btncaridarigudang"
+        Me.btncaridarigudang.Size = New System.Drawing.Size(32, 28)
+        Me.btncaridarigudang.TabIndex = 42
+        Me.btncaridarigudang.UseVisualStyleBackColor = True
         '
-        'ComboBox1
+        'cmbdarigudang
         '
-        Me.ComboBox1.BackColor = System.Drawing.SystemColors.Window
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(405, 50)
-        Me.ComboBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.ComboBox1.MaxLength = 99
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(163, 25)
-        Me.ComboBox1.TabIndex = 41
+        Me.cmbdarigudang.BackColor = System.Drawing.SystemColors.Window
+        Me.cmbdarigudang.FormattingEnabled = True
+        Me.cmbdarigudang.Location = New System.Drawing.Point(405, 50)
+        Me.cmbdarigudang.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbdarigudang.MaxLength = 99
+        Me.cmbdarigudang.Name = "cmbdarigudang"
+        Me.cmbdarigudang.Size = New System.Drawing.Size(163, 25)
+        Me.cmbdarigudang.TabIndex = 41
         '
         'Label4
         '
@@ -347,14 +347,14 @@ Partial Class ftransferbarang
         Me.cmbsales.Size = New System.Drawing.Size(188, 25)
         Me.cmbsales.TabIndex = 13
         '
-        'txtgudang
+        'txtkegudang
         '
-        Me.txtgudang.Enabled = False
-        Me.txtgudang.Location = New System.Drawing.Point(706, 81)
-        Me.txtgudang.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtgudang.Name = "txtgudang"
-        Me.txtgudang.Size = New System.Drawing.Size(193, 24)
-        Me.txtgudang.TabIndex = 16
+        Me.txtkegudang.Enabled = False
+        Me.txtkegudang.Location = New System.Drawing.Point(706, 81)
+        Me.txtkegudang.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtkegudang.Name = "txtkegudang"
+        Me.txtkegudang.Size = New System.Drawing.Size(193, 24)
+        Me.txtkegudang.TabIndex = 16
         '
         'Label18
         '
@@ -417,28 +417,28 @@ Partial Class ftransferbarang
         Me.cbprinted.Text = "Printed"
         Me.cbprinted.UseVisualStyleBackColor = True
         '
-        'btncarigudang
+        'btncarikegudang
         '
-        Me.btncarigudang.BackgroundImage = CType(resources.GetObject("btncarigudang.BackgroundImage"), System.Drawing.Image)
-        Me.btncarigudang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btncarigudang.ImageIndex = 0
-        Me.btncarigudang.Location = New System.Drawing.Point(867, 49)
-        Me.btncarigudang.Margin = New System.Windows.Forms.Padding(4)
-        Me.btncarigudang.Name = "btncarigudang"
-        Me.btncarigudang.Size = New System.Drawing.Size(32, 28)
-        Me.btncarigudang.TabIndex = 15
-        Me.btncarigudang.UseVisualStyleBackColor = True
+        Me.btncarikegudang.BackgroundImage = CType(resources.GetObject("btncarikegudang.BackgroundImage"), System.Drawing.Image)
+        Me.btncarikegudang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarikegudang.ImageIndex = 0
+        Me.btncarikegudang.Location = New System.Drawing.Point(867, 49)
+        Me.btncarikegudang.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncarikegudang.Name = "btncarikegudang"
+        Me.btncarikegudang.Size = New System.Drawing.Size(32, 28)
+        Me.btncarikegudang.TabIndex = 15
+        Me.btncarikegudang.UseVisualStyleBackColor = True
         '
-        'cmbgudang
+        'cmbkegudang
         '
-        Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
-        Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(706, 50)
-        Me.cmbgudang.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbgudang.MaxLength = 99
-        Me.cmbgudang.Name = "cmbgudang"
-        Me.cmbgudang.Size = New System.Drawing.Size(163, 25)
-        Me.cmbgudang.TabIndex = 14
+        Me.cmbkegudang.BackColor = System.Drawing.SystemColors.Window
+        Me.cmbkegudang.FormattingEnabled = True
+        Me.cmbkegudang.Location = New System.Drawing.Point(706, 50)
+        Me.cmbkegudang.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbkegudang.MaxLength = 99
+        Me.cmbkegudang.Name = "cmbkegudang"
+        Me.cmbkegudang.Size = New System.Drawing.Size(163, 25)
+        Me.cmbkegudang.TabIndex = 14
         '
         'Label14
         '
@@ -451,14 +451,14 @@ Partial Class ftransferbarang
         Me.Label14.TabIndex = 18
         Me.Label14.Text = "Kode Gudang"
         '
-        'dtbarangkeluar
+        'dttransferbarang
         '
-        Me.dtbarangkeluar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtbarangkeluar.Location = New System.Drawing.Point(96, 79)
-        Me.dtbarangkeluar.Margin = New System.Windows.Forms.Padding(4)
-        Me.dtbarangkeluar.Name = "dtbarangkeluar"
-        Me.dtbarangkeluar.Size = New System.Drawing.Size(188, 23)
-        Me.dtbarangkeluar.TabIndex = 17
+        Me.dttransferbarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.dttransferbarang.Location = New System.Drawing.Point(96, 79)
+        Me.dttransferbarang.Margin = New System.Windows.Forms.Padding(4)
+        Me.dttransferbarang.Name = "dttransferbarang"
+        Me.dttransferbarang.Size = New System.Drawing.Size(188, 23)
+        Me.dttransferbarang.TabIndex = 17
         '
         'Label17
         '
@@ -774,22 +774,22 @@ Partial Class ftransferbarang
     Friend WithEvents btnprint As Button
     Friend WithEvents btnsimpan As Button
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtdarigudang As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents btncaridarigudang As Button
+    Friend WithEvents cmbdarigudang As ComboBox
     Friend WithEvents Label4 As Label
     Friend WithEvents cmbsales As ComboBox
-    Friend WithEvents txtgudang As TextBox
+    Friend WithEvents txtkegudang As TextBox
     Friend WithEvents Label18 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents GroupBox6 As GroupBox
     Friend WithEvents cbposted As CheckBox
     Friend WithEvents cbprinted As CheckBox
-    Friend WithEvents btncarigudang As Button
-    Friend WithEvents cmbgudang As ComboBox
+    Friend WithEvents btncarikegudang As Button
+    Friend WithEvents cmbkegudang As ComboBox
     Friend WithEvents Label14 As Label
-    Friend WithEvents dtbarangkeluar As DateTimePicker
+    Friend WithEvents dttransferbarang As DateTimePicker
     Friend WithEvents Label17 As Label
     Friend WithEvents txtnonota As TextBox
     Friend WithEvents Label19 As Label
