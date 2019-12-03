@@ -24,12 +24,10 @@ Partial Class freturbeli
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(freturbeli))
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.txtcustomer = New System.Windows.Forms.TextBox()
         Me.btncarinota = New System.Windows.Forms.Button()
         Me.btngo = New System.Windows.Forms.Button()
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnproses = New System.Windows.Forms.Button()
@@ -62,12 +60,10 @@ Partial Class freturbeli
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.txtcustomer)
         Me.GroupBox3.Controls.Add(Me.btncarinota)
         Me.GroupBox3.Controls.Add(Me.btngo)
         Me.GroupBox3.Controls.Add(Me.txtnonota)
         Me.GroupBox3.Controls.Add(Me.Label19)
-        Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(19, 44)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
@@ -77,15 +73,6 @@ Partial Class freturbeli
         Me.GroupBox3.TabIndex = 52
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Pencarian Faktur"
-        '
-        'txtcustomer
-        '
-        Me.txtcustomer.Enabled = False
-        Me.txtcustomer.Location = New System.Drawing.Point(95, 56)
-        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(169, 24)
-        Me.txtcustomer.TabIndex = 46
         '
         'btncarinota
         '
@@ -101,7 +88,7 @@ Partial Class freturbeli
         '
         'btngo
         '
-        Me.btngo.Location = New System.Drawing.Point(269, 56)
+        Me.btngo.Location = New System.Drawing.Point(212, 56)
         Me.btngo.Margin = New System.Windows.Forms.Padding(4)
         Me.btngo.Name = "btngo"
         Me.btngo.Size = New System.Drawing.Size(52, 26)
@@ -129,17 +116,6 @@ Partial Class freturbeli
         Me.Label19.Size = New System.Drawing.Size(78, 18)
         Me.Label19.TabIndex = 7
         Me.Label19.Text = "No. Faktur"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label4.Location = New System.Drawing.Point(8, 59)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(83, 18)
-        Me.Label4.TabIndex = 19
-        Me.Label4.Text = "Nama Cust"
         '
         'Label7
         '
@@ -412,9 +388,7 @@ Partial Class freturbeli
     End Sub
 
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents txtcustomer As TextBox
     Friend WithEvents Label19 As Label
-    Friend WithEvents Label4 As Label
     Friend WithEvents btngo As Button
     Friend WithEvents Label7 As Label
     Friend WithEvents Label1 As Label

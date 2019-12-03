@@ -74,4 +74,8 @@ Public Class fmenu
     Private Sub ReturPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturPenjualanToolStripMenuItem.Click
         freturjual.Show()
     End Sub
+
+    Private Sub ReturPembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturPembelianToolStripMenuItem.Click
+        freturbeli.Show()
+    End Sub
 End Class

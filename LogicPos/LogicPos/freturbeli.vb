@@ -102,14 +102,14 @@ Public Class freturbeli
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
             'buat sum harga
-            .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
+            .Columns("qty").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "qty", "{0:n0}")
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
         With GridView2
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
             'buat sum harga
-            .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
+            .Columns("qty").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "qty", "{0:n0}")
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
     End Sub
@@ -117,10 +117,6 @@ Public Class freturbeli
         'header
         txtnonota.Clear()
         txtnonota.Enabled = True
-        btncarinota.Enabled = True
-
-        txtcustomer.Enabled = False
-        txtcustomer.Clear()
 
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = False
@@ -182,25 +178,19 @@ Public Class freturbeli
     End Sub
     Sub tabel_retur()
         tabel2 = New DataTable
-
         With tabel2
-            .Columns.Add("kode_barang")
             .Columns.Add("kode_stok")
+            .Columns.Add("kode_barang")
             .Columns.Add("nama_barang")
-            .Columns.Add("banyak", GetType(Double))
+            .Columns.Add("qty", GetType(Double))
             .Columns.Add("satuan_barang")
             .Columns.Add("jenis_barang")
-            .Columns.Add("harga_satuan", GetType(Double))
-            .Columns.Add("diskon_persen", GetType(Double))
-            .Columns.Add("diskon_nominal", GetType(Double))
-            .Columns.Add("harga_diskon", GetType(Double))
+            .Columns.Add("harga", GetType(Double))
             .Columns.Add("subtotal", GetType(Double))
-            .Columns.Add("laba", GetType(Double))
-            .Columns.Add("modal_barang", GetType(Double))
 
         End With
-
         GridControl2.DataSource = tabel2
+<<<<<<< Updated upstream
 
         GridColumn14.FieldName = "kode_barang"
         GridColumn14.Caption = "Kode Barang"
@@ -271,18 +261,55 @@ Public Class freturbeli
         'GridColumn26.DisplayFormat.FormatString = "{0:n0}"
         'GridColumn26.Width = 20
         'GridColumn26.Visible = False
+=======
+        GridColumn9.FieldName = "kode_stok"
+        GridColumn9.Caption = "Kode Stok"
+        GridColumn9.Width = 30
+
+        GridColumn10.FieldName = "kode_barang"
+        GridColumn10.Caption = "Kode Barang"
+        GridColumn10.Visible = False
+
+        GridColumn11.FieldName = "nama_barang"
+        GridColumn11.Caption = "Nama Barang"
+        GridColumn11.Width = 70
+
+        GridColumn12.Caption = "Qty"
+        GridColumn12.FieldName = "qty"
+        GridColumn12.Width = 20
+
+        GridColumn13.FieldName = "satuan_barang"
+        GridColumn13.Caption = "Satuan Barang"
+        GridColumn13.Width = 30
+
+        GridColumn14.FieldName = "jenis_barang"
+        GridColumn14.Caption = "Jenis Barang"
+        GridColumn14.Width = 30
+
+        GridColumn15.FieldName = "harga"
+        GridColumn15.Caption = "Harga Satuan"
+        GridColumn15.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn15.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn15.Width = 50
+
+        GridColumn16.FieldName = "subtotal"
+        GridColumn16.Caption = "Subtotal"
+        GridColumn16.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn16.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn16.Width = 55
+>>>>>>> Stashed changes
     End Sub
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
         txtnonota.Clear()
-        txtcustomer.Clear()
+
     End Sub
-    Sub previewpenjualan(lihat As String)
-        sql = "SELECT * FROM tb_penjualan_detail WHERE kode_penjualan ='" & lihat & "'"
+    Sub previewpembelian(lihat As String)
+        sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel1.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - dr("diskon") / 100, Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
+            tabel1.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_beli")), Val(dr("subtotal")))
             'tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), dr("diskon"), 0, dr("harga_diskon"), dr("subtotal"), 0, 0)
             GridControl1.RefreshDataSource()
         End While
@@ -290,17 +317,12 @@ Public Class freturbeli
     End Sub
     Sub cari_nota()
         Call koneksii()
-        sql = "Select * From tb_penjualan Join tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan where tb_penjualan.kode_penjualan = '" & txtnonota.Text & "'"
+        sql = "Select * From tb_pembelian where tb_pembelian.kode_pembelian = '" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             'jika ditemukan
-            txtcustomer.Text = dr("nama_pelanggan")
-
-            Call previewpenjualan(txtnonota.Text)
-        Else
-            'jika tidak ditemukan
-            txtcustomer.Text = ""
+            Call previewpembelian(txtnonota.Text)
         End If
 
     End Sub
@@ -314,24 +336,12 @@ Public Class freturbeli
         fretjual.nama_barang = GridView1.GetFocusedRowCellValue("nama_barang")
         fretjual.satuan_barang = GridView1.GetFocusedRowCellValue("satuan_barang")
         fretjual.jenis_barang = GridView1.GetFocusedRowCellValue("jenis_barang")
-        fretjual.banyak = GridView1.GetFocusedRowCellValue("banyak")
-        fretjual.harga_satuan = GridView1.GetFocusedRowCellValue("harga_satuan")
-        fretjual.diskon_persen = GridView1.GetFocusedRowCellValue("diskon_persen")
-        fretjual.diskon_nominal = GridView1.GetFocusedRowCellValue("diskon_nominal")
-        fretjual.harga_diskon = GridView1.GetFocusedRowCellValue("harga_diskon")
+        fretjual.banyak = GridView1.GetFocusedRowCellValue("qty")
+        fretjual.harga_satuan = GridView1.GetFocusedRowCellValue("harga_beli")
         fretjual.subtotal = GridView1.GetFocusedRowCellValue("subtotal")
-        fretjual.laba = GridView1.GetFocusedRowCellValue("laba")
-        fretjual.modal_barang = GridView1.GetFocusedRowCellValue("modal_barang")
 
-        Dim ea As DXMouseEventArgs = TryCast(e, DXMouseEventArgs)
-        Dim view As GridView = TryCast(sender, GridView)
-        Dim info As DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitInfo = view.CalcHitInfo(ea.Location)
-        If info.InRow OrElse info.InRowCell Then
-            Dim colCaption As String = If(info.Column Is Nothing, "N/A", info.Column.GetCaption())
-            'MessageBox.Show(String.Format("DoubleClick on row: {0}, column: {1}.", info.RowHandle, colCaption))
-        End If
         'GridView1.DeleteRow(GridView1.GetRowHandle(info.RowHandle))
-        fretjual.ShowDialog()
+        'fretbeli.ShowDialog()
     End Sub
     Private Sub GridView2_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Delete Then

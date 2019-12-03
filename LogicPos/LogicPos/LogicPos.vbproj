@@ -280,6 +280,12 @@
     <Compile Include="frekeningsupplier.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fretbeli.designer.vb">
+      <DependentUpon>fretbeli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fretbeli.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fretjual.Designer.vb">
       <DependentUpon>fretjual.vb</DependentUpon>
     </Compile>
@@ -404,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frekeningsupplier.resx">
       <DependentUpon>frekeningsupplier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fretbeli.resx">
+      <DependentUpon>fretbeli.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fretjual.resx">
       <DependentUpon>fretjual.vb</DependentUpon>
