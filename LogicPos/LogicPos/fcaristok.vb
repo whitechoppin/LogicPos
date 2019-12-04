@@ -65,6 +65,8 @@ Public Class fcaristok
             fpenjualan.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
         ElseIf tutupstok = 2 Then
             fbarangkeluar.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
+        ElseIf tutupstok = 3 Then
+            ftransferbarang.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
         End If
         Me.Hide()
     End Sub

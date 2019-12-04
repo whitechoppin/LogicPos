@@ -22,6 +22,7 @@ Partial Class fmenu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fmenu))
         Me.MenuUtama = New System.Windows.Forms.MenuStrip()
         Me.MasterMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -67,7 +68,7 @@ Partial Class fmenu
         Me.statususer = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusjam = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Timer = New System.Windows.Forms.Timer()
+        Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()

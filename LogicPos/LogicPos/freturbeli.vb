@@ -190,7 +190,6 @@ Public Class freturbeli
 
         End With
         GridControl2.DataSource = tabel2
-<<<<<<< Updated upstream
 
         GridColumn14.FieldName = "kode_barang"
         GridColumn14.Caption = "Kode Barang"
@@ -261,7 +260,7 @@ Public Class freturbeli
         'GridColumn26.DisplayFormat.FormatString = "{0:n0}"
         'GridColumn26.Width = 20
         'GridColumn26.Visible = False
-=======
+
         GridColumn9.FieldName = "kode_stok"
         GridColumn9.Caption = "Kode Stok"
         GridColumn9.Width = 30
@@ -297,7 +296,6 @@ Public Class freturbeli
         GridColumn16.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn16.DisplayFormat.FormatString = "{0:n0}"
         GridColumn16.Width = 55
->>>>>>> Stashed changes
     End Sub
     Sub reload_tabel()
         GridControl1.RefreshDataSource()

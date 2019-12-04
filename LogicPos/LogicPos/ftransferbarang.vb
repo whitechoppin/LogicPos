@@ -533,7 +533,7 @@ Public Class ftransferbarang
 
     Sub caribarang()
         Call koneksii()
-        sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan ='" & cmbcustomer.Text & "' AND tb_stok.kode_gudang ='" & cmbgudang.Text & "'"
+        sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan ='00000000' AND tb_stok.kode_gudang ='" & cmbdarigudang.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
@@ -543,7 +543,7 @@ Public Class ftransferbarang
             lblsatuan.Text = satuan
             jenis = dr("jenis_barang")
         Else
-            sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok= '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan = '00000000' AND tb_stok.kode_gudang ='" & cmbgudang.Text & "'"
+            sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok= '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan = '00000000' AND tb_stok.kode_gudang ='" & cmbdarigudang.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
@@ -562,12 +562,84 @@ Public Class ftransferbarang
         End If
     End Sub
 
-    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+    Private Sub cmbdarigudang_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbdarigudang.SelectedIndexChanged
+        Call caridarigudang()
+    End Sub
 
+    Private Sub cmbkegudang_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbkegudang.SelectedIndexChanged
+        Call carikegudang()
+    End Sub
+
+    Private Sub cmbdarigudang_TextChanged(sender As Object, e As EventArgs) Handles cmbdarigudang.TextChanged
+        Call caridarigudang()
+    End Sub
+
+    Private Sub cmbkegudang_TextChanged(sender As Object, e As EventArgs) Handles cmbkegudang.TextChanged
+        Call carikegudang()
+    End Sub
+
+    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+        If btnedit.Text.Equals("Edit") Then
+            btnedit.Text = "Update"
+            Call awaledit()
+        ElseIf btnedit.Text.Equals("Update") Then
+            If GridView1.DataRowCount > 0 Then
+                If txtdarigudang.Text IsNot "" Then
+                    If txtkegudang.Text IsNot "" Then
+                        If cmbsales.Text IsNot "" Then
+                            'isi disini sub updatenya
+                            Call perbarui(txtnonota.Text)
+                        Else
+                            MsgBox("Isi Sales")
+                        End If
+                    Else
+                        MsgBox("Isi Ke Gudang")
+                    End If
+                Else
+                    MsgBox("Isi Dari Gudang")
+                End If
+            Else
+                MsgBox("Keranjang Masih Kosong")
+            End If
+        End If
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
+        If btnedit.Text.Equals("Edit") Then
+            Call inisialisasi(kodetransferbarang)
+        ElseIf btnedit.Text.Equals("Update") Then
+            btnedit.Text = "Edit"
+            Call inisialisasi(txtnonota.Text)
+        End If
+    End Sub
 
+
+    Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+
+    End Sub
+
+    Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
+        If GridView1.DataRowCount > 0 Then
+            If txtdarigudang.Text IsNot "" Then
+                If txtkegudang.Text IsNot "" Then
+                    If cmbsales.Text IsNot "" Then
+                        Call proses()
+                    Else
+                        MsgBox("Isi Sales")
+                    End If
+                Else
+                    MsgBox("Isi Ke Gudang")
+                End If
+            Else
+                MsgBox("Isi Dari Gudang")
+            End If
+        Else
+            MsgBox("Keranjang Masih Kosong")
+        End If
+    End Sub
+
+    Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
+        Call awalbaru()
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
@@ -582,16 +654,304 @@ Public Class ftransferbarang
 
     End Sub
 
-    Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+
+
+    Private Sub btncaridarigudang_Click(sender As Object, e As EventArgs) Handles btncaridarigudang.Click
+        tutupgudang = 5
+        fcarigudang.ShowDialog()
+    End Sub
+
+    Private Sub btncarikegudang_Click(sender As Object, e As EventArgs) Handles btncarikegudang.Click
+        tutupgudang = 6
+        fcarigudang.ShowDialog()
+    End Sub
+
+    Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
+        tutupstok = 3
+        kodegudang = cmbdarigudang.Text
+        fcaristok.ShowDialog()
+    End Sub
+
+    Private Sub txtkodestok_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
+        Call caribarang()
+    End Sub
+
+    Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
+        Call tambah()
+    End Sub
+
+    Sub tambah()
+        'Columns.Add("kode_barang")
+        'Columns.Add("kode_stok")
+        'Columns.Add("nama_barang")
+        'Columns.Add("banyak", GetType(Double))
+        'Columns.Add("satuan_barang")
+        'Columns.Add("jenis_barang")
+
+        If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txtbanyak.Text = "" Then
+            MsgBox("Barang Kosong", MsgBoxStyle.Information, "Informasi")
+            'Exit Sub
+        Else
+            If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
+                sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND kode_gudang ='" & cmbdarigudang.Text & "' LIMIT 1"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
+                If dr.HasRows Then
+                    If dr("jumlah_stok") < banyak Then
+                        MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
+                        'Exit Sub
+                    Else
+                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak, satuan, jenis)
+                        Call reload_tabel()
+                    End If
+                End If
+            Else 'kalau ada isi
+                Dim tbbanyak As Integer = 0
+                Dim tbnilaipersen As Double = 0
+                Dim tbnilainominal As Double = 0
+                Dim lokasi As Integer = -1
+
+                sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND kode_gudang ='" & cmbdarigudang.Text & "' LIMIT 1"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    For i As Integer = 0 To GridView1.RowCount - 1
+                        If GridView1.GetRowCellValue(i, "kode_stok").Equals(txtkodestok.Text) Then
+                            lokasi = i
+                        End If
+                    Next
+
+                    tbbanyak = GridView1.GetRowCellValue(lokasi, "banyak")
+                    tbnilaipersen = GridView1.GetRowCellValue(lokasi, "diskon_persen")
+                    tbnilainominal = GridView1.GetRowCellValue(lokasi, "diskon_nominal")
+
+                    If lokasi = -1 Then
+                        If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                            MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                        Else
+                            tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis)
+                            Call reload_tabel()
+                        End If
+                    Else
+                        If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                            MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                        Else
+                            GridView1.DeleteRow(GridView1.GetRowHandle(lokasi))
+                            tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis)
+                            Call reload_tabel()
+                        End If
+                    End If
+                Else
+                    sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND kode_gudang ='" & cmbdarigudang.Text & "' LIMIT 1"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    dr.Read()
+
+                    If dr.HasRows Then
+                        For i As Integer = 0 To GridView1.RowCount - 1
+                            If GridView1.GetRowCellValue(i, "kode_stok").Equals(txtkodestok.Text) Then
+                                lokasi = i
+                            End If
+                        Next
+
+                        tbbanyak = GridView1.GetRowCellValue(lokasi, "banyak")
+                        tbnilaipersen = GridView1.GetRowCellValue(lokasi, "diskon_persen")
+                        tbnilainominal = GridView1.GetRowCellValue(lokasi, "diskon_nominal")
+
+                        If lokasi = -1 Then
+                            If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                            Else
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, Val(txtbanyak.Text) + tbbanyak, satuan, jenis)
+                                Call reload_tabel()
+                            End If
+                        Else
+                            If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                            Else
+                                GridView1.DeleteRow(GridView1.GetRowHandle(lokasi))
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, Val(txtbanyak.Text) + tbbanyak, satuan, jenis)
+                                Call reload_tabel()
+                            End If
+                        End If
+                    Else
+                        MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    Sub proses()
+        Dim stok As Integer
+        Dim stokdatabase As Integer
+        Dim statusavailable As Boolean = True
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbdarigudang.Text & "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            dr.Read()
+            If dr.HasRows Then
+                stok = GridView1.GetRowCellValue(i, "banyak")
+                stokdatabase = dr("jumlah_stok")
+                If stokdatabase < stok Then
+                    MsgBox("Stok dengan kode stok " + dr("kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                    statusavailable = False
+                    'Exit Sub
+                End If
+            Else
+                MsgBox("Kode Stok Barang ini " + GridView1.GetRowCellValue(i, "kode_stok") + " tidak ada di gudang.", MsgBoxStyle.Information, "Informasi")
+                statusavailable = False
+                'Exit Sub
+            End If
+        Next
+
+        If statusavailable = True Then
+            Call simpan()
+        End If
+    End Sub
+
+    Sub simpan()
+        kodetransferbarang = autonumber()
+        Call koneksii()
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbdarigudang.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+
+            sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang='" & cmbkegudang.Text & "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            If dr.HasRows Then
+                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbkegudang.Text & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            Else
+                sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','1', '" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & cmbkegudang.Text & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "', now(), now() )"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            End If
+
+
+        Next
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            sql = "INSERT INTO tb_transfer_barang_detail ( kode_transfer_barang, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, created_by, updated_by,date_created, last_updated) VALUES ('" & kodetransferbarang & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+        Next
+
+        sql = "INSERT INTO tb_transfer_barang (kode_transfer_barang, kode_dari_gudang, kode_ke_gudang, kode_user, tanggal_transfer_barang, print_transfer_barang, posted_transfer_barang, keterangan_transfer_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodetransferbarang & "','" & cmbdarigudang.Text & "','" & cmbkegudang.Text & "','" & cmbsales.Text & "' , '" & Format(dttransferbarang.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
+        Call inisialisasi(kodetransferbarang)
+    End Sub
+
+    Sub perbarui(nomornota As String)
+        kodetransferbarang = nomornota
+
+        'periksa di barang di stok dulu
+        Dim stok As Integer
+        Dim stokdatabase As Integer
+        Dim statusavailable As Boolean = True
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbdarigudang.Text & "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            dr.Read()
+            If dr.HasRows Then
+                stok = GridView1.GetRowCellValue(i, "banyak")
+                stokdatabase = dr("jumlah_stok")
+                If stokdatabase < stok Then
+                    MsgBox("Stok dengan kode stok " + dr("kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                    statusavailable = False
+                End If
+            Else
+                MsgBox("Kode Stok Barang ini " + GridView1.GetRowCellValue(i, "kode_stok") + " tidak ada di gudang.", MsgBoxStyle.Information, "Informasi")
+                statusavailable = False
+            End If
+        Next
+
+        If statusavailable = True Then
+
+            'hapus di tabel jual detail
+            Call koneksii()
+            sql = "DELETE FROM tb_transfer_barang_detail WHERE kode_transfer_barang = '" & nomornota & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+
+            'update stok kembalikan
+            Call koneksii()
+            sql = "SELECT * FROM tb_transfer_barang_detail_sementara WHERE kode_transfer_barang = '" & nomornota & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+
+            While dr.Read
+                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang ='" & dr("kode_dari_gudang") & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                drpenjualan = cmmd.ExecuteReader()
+
+                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang ='" & dr("kode_ke_gudang") & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                drpembelian = cmmd.ExecuteReader()
+            End While
+
+            'hapus di tabel jual sementara
+            Call koneksii()
+            sql = "DELETE FROM tb_transfer_barang_detail_sementara where kode_transfer_barang = '" & nomornota & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+
+            'gudang awal
+            For i As Integer = 0 To GridView1.RowCount - 1
+                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbdarigudang.Text & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            Next
+
+            'gudang tujuan
+            For i As Integer = 0 To GridView1.RowCount - 1
+                sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang='" & cmbkegudang.Text & "' LIMIT 1"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+                If dr.HasRows Then
+                    sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbkegudang.Text & "'"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
+                Else
+                    sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','1', '" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & cmbkegudang.Text & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "', now(), now() )"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
+                End If
+            Next
+
+            For i As Integer = 0 To GridView1.RowCount - 1
+                sql = "INSERT INTO tb_barang_keluar_detail ( kode_barang_keluar, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, created_by, updated_by, date_created, last_updated) VALUES ('" & kodetransferbarang & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            Next
+
+            sql = "UPDATE tb_transfer_barang SET kode_dari_gudang ='" & cmbdarigudang.Text & "', kode_ke_gudang ='" & cmbkegudang.Text & "', kode_user ='" & cmbsales.Text & "' , tgl_barang_keluar ='" & Format(dttransferbarang.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_barang_keluar ='" & txtketerangan.Text & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_barang_keluar ='" & kodetransferbarang & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+
+            MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
+            'Call inisialisasi(nomornota)
+            Call inisialisasi(txtnonota.Text)
+            btnedit.Text = "Edit"
+        End If
 
     End Sub
 
-    Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
-
+    Private Sub GridControl1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridControl1.KeyDown
+        If e.KeyCode = Keys.Delete And btnbatal.Enabled = True Then
+            GridView1.DeleteSelectedRows()
+        End If
     End Sub
-
-    Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
-
-    End Sub
-
 End Class
