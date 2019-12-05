@@ -867,6 +867,15 @@ Public Class fbarangkeluar
         Dim stok As Integer
         Dim stokdatabase As Integer
         Dim statusavailable As Boolean = True
+        Dim kodegudangupdate As String
+
+        'cari nota  yang sebelumnya (kembalikan stok dulu)
+        sql = "SELECT kode_gudang FROM tb_barang_keluar WHERE kode_barang_keluar = '" & kodebarangkeluar & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        dr.Read()
+
+        kodegudangupdate = dr("kode_gudang")
 
         For i As Integer = 0 To GridView1.RowCount - 1
             sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbgudang.Text & "' LIMIT 1"
@@ -901,7 +910,7 @@ Public Class fbarangkeluar
             dr = cmmd.ExecuteReader()
 
             While dr.Read
-                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang ='" & dr("kode_gudang") & "'"
+                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang ='" & kodegudangupdate & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 drpenjualan = cmmd.ExecuteReader()
             End While
@@ -913,7 +922,7 @@ Public Class fbarangkeluar
             dr = cmmd.ExecuteReader()
 
             For i As Integer = 0 To GridView1.RowCount - 1
-                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & dr("kode_gudang") & "'"
+                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbgudang.Text & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             Next
