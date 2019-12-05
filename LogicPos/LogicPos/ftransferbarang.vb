@@ -948,7 +948,7 @@ Public Class ftransferbarang
                 dr = cmmd.ExecuteReader()
             Next
 
-            sql = "UPDATE tb_transfer_barang SET kode_dari_gudang ='" & cmbdarigudang.Text & "', kode_ke_gudang ='" & cmbkegudang.Text & "', kode_user ='" & cmbsales.Text & "' , tgl_barang_keluar ='" & Format(dttransferbarang.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_barang_keluar ='" & txtketerangan.Text & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_barang_keluar ='" & kodetransferbarang & "'"
+            sql = "UPDATE tb_transfer_barang SET kode_dari_gudang ='" & cmbdarigudang.Text & "', kode_ke_gudang ='" & cmbkegudang.Text & "', kode_user ='" & cmbsales.Text & "' , tanggal_transfer_barang ='" & Format(dttransferbarang.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_transfer_barang ='" & txtketerangan.Text & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_transfer_barang ='" & kodetransferbarang & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
 
