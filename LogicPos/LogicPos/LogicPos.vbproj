@@ -292,7 +292,7 @@
     <Compile Include="frekeningsupplier.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fretbeli.designer.vb">
+    <Compile Include="fretbeli.Designer.vb">
       <DependentUpon>fretbeli.vb</DependentUpon>
     </Compile>
     <Compile Include="fretbeli.vb">
