@@ -124,6 +124,18 @@
     <Compile Include="fcarikas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fcaripembelian.Designer.vb">
+      <DependentUpon>fcaripembelian.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcaripembelian.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fcaripenjualan.Designer.vb">
+      <DependentUpon>fcaripenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcaripenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fcaristok.Designer.vb">
       <DependentUpon>fcaristok.vb</DependentUpon>
     </Compile>
@@ -374,6 +386,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fcarikas.resx">
       <DependentUpon>fcarikas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcaripembelian.resx">
+      <DependentUpon>fcaripembelian.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcaripenjualan.resx">
+      <DependentUpon>fcaripenjualan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fcaristok.resx">
       <DependentUpon>fcaristok.vb</DependentUpon>
