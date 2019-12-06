@@ -414,6 +414,9 @@
     <EmbeddedResource Include="flunaspiutang.resx">
       <DependentUpon>flunaspiutang.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flunasutang.resx">
+      <DependentUpon>flunasutang.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmenu.resx">
       <DependentUpon>fmenu.vb</DependentUpon>
     </EmbeddedResource>

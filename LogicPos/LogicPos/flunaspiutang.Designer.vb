@@ -28,7 +28,7 @@ Partial Class flunaspiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.ClientSize = New System.Drawing.Size(888, 520)
         Me.Name = "flunaspiutang"
         Me.Text = " "
         Me.ResumeLayout(False)
