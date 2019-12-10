@@ -31,33 +31,37 @@ Partial Class fretjual
         'lblnamaibarang
         '
         Me.lblnamaibarang.AutoSize = True
-        Me.lblnamaibarang.Location = New System.Drawing.Point(12, 18)
+        Me.lblnamaibarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblnamaibarang.Location = New System.Drawing.Point(39, 28)
         Me.lblnamaibarang.Name = "lblnamaibarang"
-        Me.lblnamaibarang.Size = New System.Drawing.Size(39, 13)
+        Me.lblnamaibarang.Size = New System.Drawing.Size(51, 18)
         Me.lblnamaibarang.TabIndex = 0
         Me.lblnamaibarang.Text = "Label1"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 43)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(16, 77)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 13)
+        Me.Label1.Size = New System.Drawing.Size(96, 18)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Jumlah Retur"
         '
         'txtretur
         '
-        Me.txtretur.Location = New System.Drawing.Point(87, 40)
+        Me.txtretur.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtretur.Location = New System.Drawing.Point(118, 77)
         Me.txtretur.Name = "txtretur"
-        Me.txtretur.Size = New System.Drawing.Size(100, 20)
+        Me.txtretur.Size = New System.Drawing.Size(100, 24)
         Me.txtretur.TabIndex = 1
         '
         'btnok
         '
-        Me.btnok.Location = New System.Drawing.Point(112, 66)
+        Me.btnok.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnok.Location = New System.Drawing.Point(118, 107)
         Me.btnok.Name = "btnok"
-        Me.btnok.Size = New System.Drawing.Size(75, 23)
+        Me.btnok.Size = New System.Drawing.Size(100, 27)
         Me.btnok.TabIndex = 2
         Me.btnok.Text = "OK"
         Me.btnok.UseVisualStyleBackColor = True
@@ -67,7 +71,7 @@ Partial Class fretjual
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(203, 101)
+        Me.ClientSize = New System.Drawing.Size(269, 160)
         Me.Controls.Add(Me.btnok)
         Me.Controls.Add(Me.txtretur)
         Me.Controls.Add(Me.Label1)

@@ -174,6 +174,65 @@ Public Class freturjual
 
     End Sub
 
+    Sub comboboxuser()
+        Call koneksii()
+        cmbsales.Items.Clear()
+        cmbsales.AutoCompleteCustomSource.Clear()
+        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbsales.AutoCompleteCustomSource.Add(dr("kode_user"))
+                cmbsales.Items.Add(dr("kode_user"))
+            End While
+        End If
+    End Sub
+    Sub awalbaru()
+        'bersihkan dan set default value
+        'button tools
+        btnbaru.Enabled = False
+        btnsimpan.Enabled = True
+        btnprint.Enabled = False
+        btnedit.Enabled = False
+        btnbatal.Enabled = True
+
+        'button navigations
+        btnprev.Enabled = False
+        btngoretur.Enabled = False
+        txtgoretur.Enabled = False
+        btnnext.Enabled = False
+
+        'header
+        txtnoretur.Clear()
+        txtnoretur.Text = autonumber()
+        txtnoretur.Enabled = False
+
+        txtnonota.Clear()
+        txtnonota.Enabled = True
+        btncarinota.Enabled = True
+
+        cmbsales.Enabled = True
+
+        txtcustomer.Clear()
+        txttelp.Clear()
+        txtalamat.Clear()
+
+        dtreturjual.Enabled = True
+        dtreturjual.Value = Date.Now
+
+        GridControl1.Enabled = True
+        GridView1.OptionsBehavior.Editable = False
+
+        GridControl2.Enabled = True
+        GridView2.OptionsBehavior.Editable = False
+
+        'buat tabel
+        Call tabel_utama()
+        Call tabel_retur()
+
+        Call comboboxuser()
+    End Sub
+
     Sub inisialisasi(nomorkode As String)
 
         'bersihkan dan set default value
@@ -271,6 +330,8 @@ Public Class freturjual
 
             dtpenjualan.Value = Date.Now
             dtjatuhtempo.Value = Date.Now
+
+            cmbgudang.Text = ""
 
             txtketerangan.Text = ""
         End If
@@ -462,48 +523,6 @@ Public Class freturjual
         GridColumn26.Visible = False
     End Sub
 
-    Sub awalbaru()
-        'bersihkan dan set default value
-        'button tools
-        btnbaru.Enabled = False
-        btnsimpan.Enabled = True
-        btnprint.Enabled = False
-        btnedit.Enabled = False
-        btnbatal.Enabled = True
-
-        'button navigations
-        btnprev.Enabled = False
-        btngoretur.Enabled = False
-        txtgoretur.Enabled = False
-        btnnext.Enabled = False
-
-        'header
-        txtnoretur.Clear()
-        txtnoretur.Text = autonumber()
-        txtnoretur.Enabled = False
-
-        txtnonota.Clear()
-        txtnonota.Enabled = True
-        btncarinota.Enabled = True
-
-        txtcustomer.Clear()
-        txttelp.Clear()
-        txtalamat.Clear()
-
-        dtreturjual.Enabled = True
-        dtreturjual.Value = Date.Now
-
-        GridControl1.Enabled = True
-        GridView1.OptionsBehavior.Editable = False
-
-        GridControl2.Enabled = True
-        GridView2.OptionsBehavior.Editable = False
-
-        'buat tabel
-        Call tabel_utama()
-        Call tabel_retur()
-    End Sub
-
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
         txtnonota.Clear()
@@ -564,7 +583,86 @@ Public Class freturjual
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
-        Call simpan()
+
+        If GridView2.DataRowCount > 0 Then
+            If txtnoretur.Text IsNot "" Then
+                If txtnonota.Text IsNot "" Then
+                    If cmbsales.Text IsNot "" Then
+                        Call simpan()
+                    Else
+                        MsgBox("Isi Sales")
+                    End If
+                Else
+                    MsgBox("Isi No Retur")
+                End If
+            Else
+                MsgBox("Isi No Nota")
+            End If
+        Else
+            MsgBox("Keranjang Retur Masih Kosong")
+        End If
+    End Sub
+
+    Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
+        Call awalbaru()
+    End Sub
+
+    Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+
+    End Sub
+
+    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+        'If btnedit.Text.Equals("Edit") Then
+        '    btnedit.Text = "Update"
+        '    Call awaledit()
+
+        'ElseIf btnedit.Text.Equals("Update") Then
+        '    If GridView1.DataRowCount > 0 Then
+        '        If txtcustomer.Text IsNot "" Then
+        '            If txtgudang.Text IsNot "" Then
+        '                If cmbsales.Text IsNot "" Then
+        '                    If txtrekening.Text IsNot "" Then
+
+        '                        'isi disini sub updatenya
+        '                        Call perbarui(txtnonota.Text)
+        '                        'Call inisialisasi(txtnonota.Text)
+        '                    Else
+        '                        MsgBox("Isi Pembayaran")
+        '                    End If
+        '                Else
+        '                    MsgBox("Isi Sales")
+        '                End If
+        '            Else
+        '                MsgBox("Isi Gudang")
+        '            End If
+        '        Else
+        '            MsgBox("Isi Customer")
+        '        End If
+        '    Else
+        '        MsgBox("Keranjang Masih Kosong")
+        '    End If
+        'End If
+    End Sub
+
+    Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
+        If btnedit.Text.Equals("Edit") Then
+            Call inisialisasi(kodereturjual)
+        ElseIf btnedit.Text.Equals("Update") Then
+            btnedit.Text = "Edit"
+            Call inisialisasi(txtnoretur.Text)
+        End If
+    End Sub
+
+    Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
+
+    End Sub
+
+    Private Sub btngoretur_Click(sender As Object, e As EventArgs) Handles btngoretur.Click
+
+    End Sub
+
+    Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
+
     End Sub
 
     Private Sub btncarinota_Click(sender As Object, e As EventArgs) Handles btncarinota.Click

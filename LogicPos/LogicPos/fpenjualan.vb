@@ -128,7 +128,7 @@ Public Class fpenjualan
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - dr("diskon") / 100, Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
+            tabel.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - (Val(dr("harga_jual")) * Val(dr("diskon")) / 100), Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
             GridControl1.RefreshDataSource()
         End While
     End Sub
@@ -1349,6 +1349,16 @@ Public Class fpenjualan
         Dim stokdatabase As Integer
         Dim statusavailable As Boolean = True
 
+        Dim kodegudangupdate As String
+
+        'cari nota  yang sebelumnya (kembalikan stok dulu)
+        sql = "SELECT kode_gudang FROM tb_penjualan WHERE kode_penjualan = '" & kodepenjualan & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        dr.Read()
+
+        kodegudangupdate = dr("kode_gudang")
+
         For i As Integer = 0 To GridView1.RowCount - 1
             sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbgudang.Text & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
@@ -1381,7 +1391,7 @@ Public Class fpenjualan
             dr = cmmd.ExecuteReader()
 
             While dr.Read
-                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang ='" & dr("kode_gudang") & "'"
+                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang ='" & kodegudangupdate & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 drpenjualan = cmmd.ExecuteReader()
             End While
