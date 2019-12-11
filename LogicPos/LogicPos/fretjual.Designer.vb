@@ -71,7 +71,7 @@ Partial Class fretjual
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(269, 160)
+        Me.ClientSize = New System.Drawing.Size(250, 160)
         Me.Controls.Add(Me.btnok)
         Me.Controls.Add(Me.txtretur)
         Me.Controls.Add(Me.Label1)
