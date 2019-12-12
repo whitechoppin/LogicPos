@@ -29,7 +29,7 @@ Partial Class flunasutang
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(820, 496)
+        Me.ClientSize = New System.Drawing.Size(1098, 613)
         Me.Name = "flunasutang"
         Me.Text = "s"
         Me.ResumeLayout(False)

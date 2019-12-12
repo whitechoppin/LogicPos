@@ -82,4 +82,24 @@ Public Class fmenu
     Private Sub TransferBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransferBarangToolStripMenuItem.Click
         ftransferbarang.Show()
     End Sub
+
+    Private Sub PelunasanPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PelunasanPiutangToolStripMenuItem.Click
+        flunaspiutang.Show()
+    End Sub
+
+    Private Sub PelunasanUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PelunasanUtangToolStripMenuItem.Click
+        flunasutang.Show()
+    End Sub
+
+    Private Sub KasMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KasMasukToolStripMenuItem.Click
+        fkasmasuk.Show()
+    End Sub
+
+    Private Sub KasKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KasKeluarToolStripMenuItem.Click
+        fkaskeluar.Show()
+    End Sub
+
+    Private Sub TransferKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransferKasToolStripMenuItem.Click
+        ftransferkas.Show()
+    End Sub
 End Class
