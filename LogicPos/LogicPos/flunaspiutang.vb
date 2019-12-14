@@ -8,11 +8,13 @@ Public Class flunaspiutang
         Me.MdiParent = fmenu
         Call koneksii()
 
+        Call loadingpenjualan()
+
         With GridView2
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
             'buat sum harga
-            .Columns("Bayar").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "Bayar", "{0:n0}")
+            '.Columns("Bayar").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "Bayar", "{0:n0}")
         End With
     End Sub
 
@@ -54,23 +56,23 @@ Public Class flunaspiutang
 
         GridColumn5.FieldName = "tgl_penjualan"
         GridColumn5.Caption = "Tgl Penjualan"
-        GridColumn5.Width = 20
+        GridColumn5.Width = 30
 
         GridColumn6.FieldName = "tgl_jatuhtempo_penjualan"
         GridColumn6.Caption = "Tgl Jatuh Tempo"
-        GridColumn6.Width = 20
+        GridColumn6.Width = 30
 
         GridColumn7.FieldName = "diskon_penjualan"
         GridColumn7.Caption = "Diskon"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn7.Width = 20
+        GridColumn7.Width = 15
 
         GridColumn8.FieldName = "pajak_penjualan"
         GridColumn8.Caption = "Pajak"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn8.Width = 20
+        GridColumn8.Width = 15
 
         GridColumn9.FieldName = "ongkir_penjualan"
         GridColumn9.Caption = "Ongkir"
@@ -112,27 +114,31 @@ Public Class flunaspiutang
 
         GridControl2.DataSource = tabel2
 
-        GridColumn14.FieldName = "kode_barang"
-        GridColumn14.Caption = "Kode Barang"
+        GridColumn13.FieldName = "kode_lunas"
+        GridColumn13.Caption = "Kode Lunas"
+        GridColumn13.Width = 20
+
+        GridColumn14.FieldName = "kode_penjualan"
+        GridColumn14.Caption = "Kode Penjualan"
         GridColumn14.Width = 20
 
-        GridColumn15.FieldName = "kode_stok"
-        GridColumn15.Caption = "Kode Stok"
+        GridColumn15.FieldName = "tanggal_transaksi"
+        GridColumn15.Caption = "Tanggal Transaksi"
         GridColumn15.Width = 20
 
-        GridColumn16.FieldName = "nama_barang"
-        GridColumn16.Caption = "Nama Barang"
-        GridColumn16.Width = 70
+        GridColumn16.FieldName = "kode_user"
+        GridColumn16.Caption = "Kode User"
+        GridColumn16.Width = 20
 
-        GridColumn17.FieldName = "banyak"
-        GridColumn17.Caption = "banyak"
-        GridColumn17.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn17.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn17.Width = 5
+        GridColumn17.FieldName = "kode_kas"
+        GridColumn17.Caption = "Kode Kas"
+        GridColumn17.Width = 20
 
-        GridColumn18.FieldName = "satuan_barang"
-        GridColumn18.Caption = "Satuan Barang"
-        GridColumn18.Width = 10
+        GridColumn18.FieldName = "bayar_kas"
+        GridColumn18.Caption = "Bayar Kas"
+        GridColumn18.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn18.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn18.Width = 20
 
     End Sub
 
@@ -141,18 +147,32 @@ Public Class flunaspiutang
         txtnonota.Clear()
         txtcustomer.Clear()
     End Sub
-    Sub loadingpenjualan(lihat As String)
+    Sub loadingpenjualan()
         Call tabel_utama()
-        Call tabel_lunas()
-        sql = "SELECT * FROM tb_penjualan WHERE kode_penjualan ='" & lihat & "'"
+        sql = "SELECT * FROM tb_penjualan"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel1.Rows.Add(dr("kode_penjualan"), dr("kode_pelanggan"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - (Val(dr("harga_jual")) * Val(dr("diskon")) / 100), Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
-            'tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), dr("diskon"), 0, dr("harga_diskon"), dr("subtotal"), 0, 0)
+            tabel1.Rows.Add(dr("kode_penjualan"), dr("kode_pelanggan"), dr("kode_gudang"), dr("kode_user"), dr("tgl_penjualan"), dr("tgl_jatuhtempo_penjualan"), Val(dr("diskon_penjualan")), Val(dr("pajak_penjualan")), Val(dr("ongkir_penjualan")), Val(dr("total_penjualan")), Val(dr("bayar_penjualan")), Val(dr("sisa_penjualan")))
             GridControl1.RefreshDataSource()
         End While
+    End Sub
 
+    Sub loadinglunas(lihat As String)
+        Call tabel_lunas()
+        sql = "SELECT * FROM tb_pelunasan_piutang WHERE kode_penjualan='" & lihat & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            tabel2.Rows.Add(dr("kode_lunas"), dr("kode_penjualan"), dr("tanggal_transaksi"), dr("kode_user"), dr("kode_kas"), Val(dr("bayar_kas")))
+            GridControl2.RefreshDataSource()
+        End While
+    End Sub
+
+    Sub cari()
+        Dim kodepenjualanfokus As String
+        kodepenjualanfokus = GridView1.GetFocusedRowCellValue("kode_penjualan")
+        Call loadinglunas(kodepenjualanfokus)
     End Sub
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
@@ -188,7 +208,7 @@ Public Class flunaspiutang
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-
+        Call cari()
     End Sub
 
     Private Sub GridView2_DoubleClick(sender As Object, e As EventArgs) Handles GridView2.DoubleClick

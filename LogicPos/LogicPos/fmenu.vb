@@ -84,11 +84,11 @@ Public Class fmenu
     End Sub
 
     Private Sub PelunasanPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PelunasanPiutangToolStripMenuItem.Click
-        'flunaspiutang.Show()
+        flunaspiutang.Show()
     End Sub
 
     Private Sub PelunasanUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PelunasanUtangToolStripMenuItem.Click
-        'flunasutang.Show()
+        flunasutang.Show()
     End Sub
 
     Private Sub KasMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KasMasukToolStripMenuItem.Click
