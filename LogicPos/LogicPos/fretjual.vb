@@ -30,7 +30,7 @@
                     Lokasi = -1
                     Me.Close()
                 End If
-                MsgBox("bagian 1")
+                'MsgBox("bagian 1")
             Else
                 For i As Integer = 0 To freturjual.GridView1.RowCount - 1
                     If freturjual.GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok) Then
@@ -39,7 +39,7 @@
                         Me.Close()
                     End If
                 Next
-                MsgBox("bagian 2")
+                'MsgBox("bagian 2")
             End If
         Else
             'jika bukan 0 di cari
@@ -59,12 +59,12 @@
                             If (banyak_potong - txtretur.Text).Equals(0) Then
                                 freturjual.GridView1.DeleteRow(lokasi1)
 
-                                MsgBox("bagian 3")
+                                'MsgBox("bagian 3")
                             Else
                                 freturjual.GridView1.SetRowCellValue(lokasi1, "banyak", freturjual.GridView1.GetRowCellValue(lokasi1, "banyak") - Val(txtretur.Text))
                                 freturjual.GridView1.SetRowCellValue(lokasi1, "subtotal", harga_diskon * freturjual.GridView1.GetRowCellValue(lokasi1, "banyak"))
 
-                                MsgBox("bagian 4")
+                                'MsgBox("bagian 4")
                             End If
                         End If
                     Next

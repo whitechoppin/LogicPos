@@ -662,15 +662,27 @@ Public Class freturjual
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
-
+        Call prevnumber(kodereturjual)
     End Sub
 
     Private Sub btngoretur_Click(sender As Object, e As EventArgs) Handles btngoretur.Click
-
+        If txtgoretur.Text = "" Then
+            MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+        Else
+            Call koneksii()
+            sql = "SELECT * FROM tb_retur_penjualan WHERE kode_retur = '" + txtgoretur.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                Call inisialisasi(txtgoretur.Text)
+            Else
+                MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+            End If
+        End If
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-
+        Call nextnumber(kodereturjual)
     End Sub
 
     Private Sub btncarinota_Click(sender As Object, e As EventArgs) Handles btncarinota.Click

@@ -43,7 +43,7 @@ Partial Class flunaspiutang
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txttotalbayar = New System.Windows.Forms.TextBox()
         Me.dtpelunasan = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtnolunaspiutang = New System.Windows.Forms.TextBox()
@@ -119,7 +119,7 @@ Partial Class flunaspiutang
         '
         'GridColumn2
         '
-        Me.GridColumn2.Caption = "Kode Costumer"
+        Me.GridColumn2.Caption = "Kode Customer"
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
@@ -201,7 +201,7 @@ Partial Class flunaspiutang
         Me.GroupBox3.Controls.Add(Me.txtketerangan)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.Label1)
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
+        Me.GroupBox3.Controls.Add(Me.txttotalbayar)
         Me.GroupBox3.Controls.Add(Me.dtpelunasan)
         Me.GroupBox3.Controls.Add(Me.Label3)
         Me.GroupBox3.Controls.Add(Me.txtnolunaspiutang)
@@ -277,14 +277,14 @@ Partial Class flunaspiutang
         Me.Label1.TabIndex = 78
         Me.Label1.Text = "Total Bayar"
         '
-        'TextBox1
+        'txttotalbayar
         '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(508, 67)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(267, 24)
-        Me.TextBox1.TabIndex = 77
+        Me.txttotalbayar.Enabled = False
+        Me.txttotalbayar.Location = New System.Drawing.Point(508, 67)
+        Me.txttotalbayar.Margin = New System.Windows.Forms.Padding(4)
+        Me.txttotalbayar.Name = "txttotalbayar"
+        Me.txttotalbayar.Size = New System.Drawing.Size(267, 24)
+        Me.txttotalbayar.TabIndex = 77
         '
         'dtpelunasan
         '
@@ -656,7 +656,7 @@ Partial Class flunaspiutang
         '
         'GridColumn15
         '
-        Me.GridColumn15.Caption = "Tgl Transaksi"
+        Me.GridColumn15.Caption = "Tanggal Transaksi"
         Me.GridColumn15.Name = "GridColumn15"
         Me.GridColumn15.Visible = True
         Me.GridColumn15.VisibleIndex = 2
@@ -677,7 +677,7 @@ Partial Class flunaspiutang
         '
         'GridColumn18
         '
-        Me.GridColumn18.Caption = "Bayar"
+        Me.GridColumn18.Caption = "Bayar Kas"
         Me.GridColumn18.Name = "GridColumn18"
         Me.GridColumn18.Visible = True
         Me.GridColumn18.VisibleIndex = 5
@@ -753,7 +753,7 @@ Partial Class flunaspiutang
     Friend WithEvents cmbbayar As ComboBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txttotalbayar As TextBox
     Friend WithEvents Label20 As Label
     Friend WithEvents txtalamat As RichTextBox
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
