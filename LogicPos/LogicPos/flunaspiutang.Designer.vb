@@ -22,7 +22,6 @@ Partial Class flunaspiutang
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(flunaspiutang))
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -54,8 +53,6 @@ Partial Class flunaspiutang
         Me.cbvoid = New System.Windows.Forms.CheckBox()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.btncarinota = New System.Windows.Forms.Button()
-        Me.btngo = New System.Windows.Forms.Button()
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -69,8 +66,8 @@ Partial Class flunaspiutang
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
-        Me.txtgoretur = New System.Windows.Forms.TextBox()
-        Me.btngoretur = New System.Windows.Forms.Button()
+        Me.txtgolunas = New System.Windows.Forms.TextBox()
+        Me.btngolunas = New System.Windows.Forms.Button()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
         Me.btnbaru = New System.Windows.Forms.Button()
@@ -209,8 +206,6 @@ Partial Class flunaspiutang
         Me.GroupBox3.Controls.Add(Me.GroupBox1)
         Me.GroupBox3.Controls.Add(Me.cmbsales)
         Me.GroupBox3.Controls.Add(Me.Label16)
-        Me.GroupBox3.Controls.Add(Me.btncarinota)
-        Me.GroupBox3.Controls.Add(Me.btngo)
         Me.GroupBox3.Controls.Add(Me.txtnonota)
         Me.GroupBox3.Controls.Add(Me.Label19)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -282,6 +277,7 @@ Partial Class flunaspiutang
         Me.txttotalbayar.Enabled = False
         Me.txttotalbayar.Location = New System.Drawing.Point(508, 67)
         Me.txttotalbayar.Margin = New System.Windows.Forms.Padding(4)
+        Me.txttotalbayar.MaxLength = 12
         Me.txttotalbayar.Name = "txttotalbayar"
         Me.txttotalbayar.Size = New System.Drawing.Size(267, 24)
         Me.txttotalbayar.TabIndex = 77
@@ -396,28 +392,6 @@ Partial Class flunaspiutang
         Me.Label16.TabIndex = 66
         Me.Label16.Text = "Kode Sales"
         '
-        'btncarinota
-        '
-        Me.btncarinota.BackgroundImage = CType(resources.GetObject("btncarinota.BackgroundImage"), System.Drawing.Image)
-        Me.btncarinota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btncarinota.ImageIndex = 0
-        Me.btncarinota.Location = New System.Drawing.Point(314, 51)
-        Me.btncarinota.Margin = New System.Windows.Forms.Padding(4)
-        Me.btncarinota.Name = "btncarinota"
-        Me.btncarinota.Size = New System.Drawing.Size(25, 26)
-        Me.btncarinota.TabIndex = 5
-        Me.btncarinota.UseVisualStyleBackColor = True
-        '
-        'btngo
-        '
-        Me.btngo.Location = New System.Drawing.Point(342, 51)
-        Me.btngo.Margin = New System.Windows.Forms.Padding(4)
-        Me.btngo.Name = "btngo"
-        Me.btngo.Size = New System.Drawing.Size(47, 27)
-        Me.btngo.TabIndex = 6
-        Me.btngo.Text = "Go"
-        Me.btngo.UseVisualStyleBackColor = True
-        '
         'txtnonota
         '
         Me.txtnonota.Enabled = False
@@ -425,7 +399,7 @@ Partial Class flunaspiutang
         Me.txtnonota.Location = New System.Drawing.Point(147, 52)
         Me.txtnonota.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnonota.Name = "txtnonota"
-        Me.txtnonota.Size = New System.Drawing.Size(168, 24)
+        Me.txtnonota.Size = New System.Drawing.Size(242, 24)
         Me.txtnonota.TabIndex = 9
         '
         'Label19
@@ -537,8 +511,8 @@ Partial Class flunaspiutang
         '
         Me.GroupBox5.Controls.Add(Me.btnprev)
         Me.GroupBox5.Controls.Add(Me.btnnext)
-        Me.GroupBox5.Controls.Add(Me.txtgoretur)
-        Me.GroupBox5.Controls.Add(Me.btngoretur)
+        Me.GroupBox5.Controls.Add(Me.txtgolunas)
+        Me.GroupBox5.Controls.Add(Me.btngolunas)
         Me.GroupBox5.Location = New System.Drawing.Point(507, 9)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(280, 52)
@@ -563,21 +537,21 @@ Partial Class flunaspiutang
         Me.btnnext.Text = ">>"
         Me.btnnext.UseVisualStyleBackColor = True
         '
-        'txtgoretur
+        'txtgolunas
         '
-        Me.txtgoretur.Location = New System.Drawing.Point(108, 18)
-        Me.txtgoretur.Name = "txtgoretur"
-        Me.txtgoretur.Size = New System.Drawing.Size(117, 24)
-        Me.txtgoretur.TabIndex = 7
+        Me.txtgolunas.Location = New System.Drawing.Point(108, 18)
+        Me.txtgolunas.Name = "txtgolunas"
+        Me.txtgolunas.Size = New System.Drawing.Size(117, 24)
+        Me.txtgolunas.TabIndex = 7
         '
-        'btngoretur
+        'btngolunas
         '
-        Me.btngoretur.Location = New System.Drawing.Point(53, 17)
-        Me.btngoretur.Name = "btngoretur"
-        Me.btngoretur.Size = New System.Drawing.Size(52, 26)
-        Me.btngoretur.TabIndex = 6
-        Me.btngoretur.Text = "Go"
-        Me.btngoretur.UseVisualStyleBackColor = True
+        Me.btngolunas.Location = New System.Drawing.Point(53, 17)
+        Me.btngolunas.Name = "btngolunas"
+        Me.btngolunas.Size = New System.Drawing.Size(52, 26)
+        Me.btngolunas.TabIndex = 6
+        Me.btngolunas.Text = "Go"
+        Me.btngolunas.UseVisualStyleBackColor = True
         '
         'btnbatal
         '
@@ -733,8 +707,6 @@ Partial Class flunaspiutang
     Friend WithEvents cmbsales As ComboBox
     Friend WithEvents Label16 As Label
     Friend WithEvents txtcustomer As TextBox
-    Friend WithEvents btncarinota As Button
-    Friend WithEvents btngo As Button
     Friend WithEvents txtnonota As TextBox
     Friend WithEvents Label19 As Label
     Friend WithEvents Label4 As Label
@@ -742,8 +714,8 @@ Partial Class flunaspiutang
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents btnprev As Button
     Friend WithEvents btnnext As Button
-    Friend WithEvents txtgoretur As TextBox
-    Friend WithEvents btngoretur As Button
+    Friend WithEvents txtgolunas As TextBox
+    Friend WithEvents btngolunas As Button
     Friend WithEvents btnbatal As Button
     Friend WithEvents btnedit As Button
     Friend WithEvents btnbaru As Button

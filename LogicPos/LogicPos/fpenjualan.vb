@@ -1325,15 +1325,9 @@ Public Class fpenjualan
         kodepembayaran = cmbpembayaran.Text
 
         If kodepembayaran IsNot "" Then
-            If kodepembayaran.Equals("KREDIT") Then
-                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'PANJAR', now(), 'Pembayaran Sebagian Nota Nomor " & kodepenjualan & "', '" & sisa & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-            Else
-                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'PANJAR', now(), 'Pembayaran Sebagian Nota Nomor " & kodepenjualan & "', '" & bayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-            End If
+            sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, debit_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'PANJAR', now(), 'Pembayaran Sebagian Nota Nomor " & kodepenjualan & "','" & sisa & "', '" & bayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
         End If
 
         MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
