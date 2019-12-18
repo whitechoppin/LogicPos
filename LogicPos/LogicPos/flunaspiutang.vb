@@ -359,8 +359,6 @@ Public Class flunaspiutang
             .Columns.Add("pajak_penjualan", GetType(Double))
             .Columns.Add("ongkir_penjualan", GetType(Double))
             .Columns.Add("total_penjualan", GetType(Double))
-            .Columns.Add("bayar_penjualan", GetType(Double))
-            .Columns.Add("sisa_penjualan", GetType(Double))
         End With
 
         GridControl1.DataSource = tabel1
@@ -413,18 +411,6 @@ Public Class flunaspiutang
         GridColumn10.DisplayFormat.FormatString = "{0:n0}"
         GridColumn10.Width = 30
 
-        GridColumn11.FieldName = "bayar_penjualan"
-        GridColumn11.Caption = "Bayar"
-        GridColumn11.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn11.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn11.Width = 30
-
-        GridColumn12.FieldName = "sisa_penjualan"
-        GridColumn12.Caption = "Sisa"
-        GridColumn12.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn12.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn12.Width = 30
-
     End Sub
     Sub tabel_lunas()
         tabel2 = New DataTable
@@ -441,31 +427,31 @@ Public Class flunaspiutang
 
         GridControl2.DataSource = tabel2
 
-        GridColumn13.FieldName = "kode_lunas"
-        GridColumn13.Caption = "Kode Lunas"
+        GridColumn11.FieldName = "kode_lunas"
+        GridColumn11.Caption = "Kode Lunas"
+        GridColumn11.Width = 20
+
+        GridColumn12.FieldName = "kode_penjualan"
+        GridColumn12.Caption = "Kode Penjualan"
+        GridColumn12.Width = 20
+
+        GridColumn13.FieldName = "tanggal_transaksi"
+        GridColumn13.Caption = "Tanggal Transaksi"
         GridColumn13.Width = 20
 
-        GridColumn14.FieldName = "kode_penjualan"
-        GridColumn14.Caption = "Kode Penjualan"
+        GridColumn14.FieldName = "kode_user"
+        GridColumn14.Caption = "Kode User"
         GridColumn14.Width = 20
 
-        GridColumn15.FieldName = "tanggal_transaksi"
-        GridColumn15.Caption = "Tanggal Transaksi"
+        GridColumn15.FieldName = "kode_kas"
+        GridColumn15.Caption = "Kode Kas"
         GridColumn15.Width = 20
 
-        GridColumn16.FieldName = "kode_user"
-        GridColumn16.Caption = "Kode User"
+        GridColumn16.FieldName = "bayar_kas"
+        GridColumn16.Caption = "Bayar Kas"
+        GridColumn16.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn16.DisplayFormat.FormatString = "{0:n0}"
         GridColumn16.Width = 20
-
-        GridColumn17.FieldName = "kode_kas"
-        GridColumn17.Caption = "Kode Kas"
-        GridColumn17.Width = 20
-
-        GridColumn18.FieldName = "bayar_kas"
-        GridColumn18.Caption = "Bayar Kas"
-        GridColumn18.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn18.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn18.Width = 20
 
     End Sub
 
@@ -481,7 +467,7 @@ Public Class flunaspiutang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel1.Rows.Add(dr("kode_penjualan"), dr("kode_pelanggan"), dr("kode_gudang"), dr("kode_user"), dr("tgl_penjualan"), dr("tgl_jatuhtempo_penjualan"), Val(dr("diskon_penjualan")), Val(dr("pajak_penjualan")), Val(dr("ongkir_penjualan")), Val(dr("total_penjualan")), Val(dr("bayar_penjualan")), Val(dr("sisa_penjualan")))
+            tabel1.Rows.Add(dr("kode_penjualan"), dr("kode_pelanggan"), dr("kode_gudang"), dr("kode_user"), dr("tgl_penjualan"), dr("tgl_jatuhtempo_penjualan"), Val(dr("diskon_penjualan")), Val(dr("pajak_penjualan")), Val(dr("ongkir_penjualan")), Val(dr("total_penjualan")))
             GridControl1.RefreshDataSource()
         End While
     End Sub
@@ -513,7 +499,7 @@ Public Class flunaspiutang
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
         Call awalbaru()
     End Sub
-    Sub proses()
+    Sub prosessimpan()
         Dim checkinglunas As Boolean
         Dim nilaihitung As String
         Dim sisajual, bayarjual As Double
@@ -566,10 +552,9 @@ Public Class flunaspiutang
         dr = cmmd.ExecuteReader()
 
 
-        sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & cmbbayar.Text & "','" & txtnonota.Text & "', 'BAYAR', now(), 'Transaksi Nota Nomor " & txtnonota.Text & "','" & 0 & "', '" & totalbayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+        sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, kode_piutang, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & cmbbayar.Text & "','" & txtnonota.Text & "','" & txtnolunaspiutang.Text & "', 'BAYAR', now(), 'Transaksi Nota Nomor " & txtnonota.Text & "','" & 0 & "', '" & totalbayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
-
 
         MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
         Me.Refresh()
@@ -583,7 +568,7 @@ Public Class flunaspiutang
             If cmbsales.Text IsNot "" Then
                 If cmbbayar.Text IsNot "" Then
                     If txttotalbayar.Text > 0 Then
-                        Call proses()
+                        Call prosessimpan()
                     Else
                         MsgBox("Isi Nominal Pembayaran")
                     End If
@@ -603,16 +588,65 @@ Public Class flunaspiutang
 
     End Sub
 
+    Sub prosesperbarui()
+        Dim checkinglunas As Boolean
+        Dim nilaihitung As String
+        Dim sisajual, bayarjual As Double
+
+        'cek ke penjualan
+        Call koneksii()
+        sql = "SELECT sisa_penjualan FROM tb_penjualan WHERE kode_penjualan = '" & txtnonota.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+
+        If dr.HasRows Then
+            sisajual = dr("sisa_penjualan")
+        Else
+            MsgBox("Penjualan tidak ditemukan !")
+        End If
+
+        'cek ke transaksi kas
+        Call koneksii()
+        sql = "SELECT SUM(kredit_kas) as total_kas FROM tb_transaksi_kas WHERE kode_penjualan = '" & txtnonota.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        dr.Read()
+
+        If dr.HasRows Then
+            bayarjual = Val(dr("total_kas"))
+        Else
+            bayarjual = 0
+        End If
+
+        'hitung pembayaran
+        If (sisajual - bayarjual) < totalbayar Then
+            checkinglunas = False
+        Else
+            checkinglunas = True
+        End If
+
+
+        If checkinglunas = True Then
+            Call perbarui()
+        Else
+            MsgBox("Total lebih Bayar")
+        End If
+    End Sub
+
     Sub perbarui()
         Call koneksii()
 
         sql = "UPDATE tb_pelunasan_piutang SET  kode_penjualan='" & txtnonota.Text & "', kode_user='" & cmbsales.Text & "', kode_kas='" & cmbbayar.Text & "', bayar_lunas='" & totalbayar & "', keterangan_lunas='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now()  WHERE  kode_lunas='" & txtnolunaspiutang.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
+
+        sql = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbbayar.Text & "', kode_penjualan='" & txtnonota.Text & "', kode_piutang='" & txtnolunaspiutang.Text & "', tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', kredit_kas='" & totalbayar & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_piutang='" & txtnolunaspiutang.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
         btnedit.Text = "Edit"
 
-        MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
         Call inisialisasi(kodelunaspiutang)
     End Sub
 
