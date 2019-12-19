@@ -636,6 +636,7 @@ Partial Class flunaspiutang
         'GridColumn16
         '
         Me.GridColumn16.Caption = "Bayar Kas"
+        Me.GridColumn16.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn16.Name = "GridColumn16"
         Me.GridColumn16.Visible = True
         Me.GridColumn16.VisibleIndex = 5
