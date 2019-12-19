@@ -7,7 +7,7 @@ Public Class fpembelian
     Dim satuan, jenis, supplier, kodepembelian As String
     Public isi As String
     'variabel bantuan view pembelian
-    Dim nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan, viewbayar As String
+    Dim nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan, viewbayar, kodepembayaran As String
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
     Dim viewtglpembelian, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir As Double
@@ -827,6 +827,15 @@ Public Class fpembelian
                         dr = cmmd.ExecuteReader()
                     End If
                 Next
+
+                kodepembayaran = cmbbayar.Text
+
+                If kodepembayaran IsNot "" Then
+                    sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_pembelian, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepembelian & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepembelian & "','" & 0 & "', '" & grandtotal & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
+                End If
+
                 MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
 
                 Call inisialisasi(kodepembelian)
@@ -1090,6 +1099,10 @@ Public Class fpembelian
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
+        'hapus panjar
+        sql = "DELETE FROM tb_transaksi_kas where kode_pembelian = '" & nomornota & "' and jenis_kas ='AWAL'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
         '========================================================================================
 
         'loop isi pembelian detail
@@ -1146,10 +1159,18 @@ Public Class fpembelian
                 End If
             Next
 
+            kodepembayaran = cmbbayar.Text
+
+            If kodepembayaran IsNot "" Then
+                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_pembelian, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepembelian & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepembelian & "','" & 0 & "', '" & grandtotal & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            End If
+
+            MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
+            Call inisialisasi(nomornota)
+
         End If
-        MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
-        Call inisialisasi(nomornota)
-        'Call inisialisasi(txtnonota.Text)
     End Sub
 
     Private Sub cmbsupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsupplier.SelectedIndexChanged
