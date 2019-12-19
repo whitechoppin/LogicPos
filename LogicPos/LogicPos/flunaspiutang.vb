@@ -12,15 +12,14 @@ Public Class flunaspiutang
         Call koneksii()
 
         kodelunaspiutang = currentnumber()
-
         Call loadingpenjualan()
-
         Call inisialisasi(kodelunaspiutang)
+
         With GridView2
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
             'buat sum harga
-            '.Columns("Bayar").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "Bayar", "{0:n0}")
+            .Columns("bayar_kas").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "bayar_kas", "{0:n0}")
         End With
     End Sub
 
@@ -257,43 +256,7 @@ Public Class flunaspiutang
         Call comboboxpembayaran()
 
         If nomorkode IsNot "" Then
-            'Using cnn As New OdbcConnection(strConn)
-            '    sql = "SELECT * FROM tb_penjualan WHERE kode_penjualan = '" + nomorkode.ToString + "'"
-            '    cmmd = New OdbcCommand(sql, cnn)
-            '    cnn.Open()
-            '    dr = cmmd.ExecuteReader
-            '    dr.Read()
-            '    If dr.HasRows Then
-            '        'header
-            '        nomornota = dr("kode_penjualan")
-            '        nomorsales = dr("kode_user")
-            '        nomorgudang = dr("kode_gudang")
-
-            '        statusvoid = dr("void_penjualan")
-            '        statusprint = dr("print_penjualan")
-            '        statusposted = dr("posted_penjualan")
-
-            '        viewtglpenjualan = dr("tgl_penjualan")
-
-
-            '        viewketerangan = dr("keterangan_penjualan")
-
-            '        'isi masuk data
-
-            '        txtnonota.Text = nomornota
-            '        cmbsales.Text = nomorsales
-
-            '        cbvoid.Checked = statusvoid
-            '        cbprinted.Checked = statusprint
-            '        cbposted.Checked = statusposted
-
-            '        dtpelunasan.Value = viewtglpenjualan
-
-            '        txtketerangan.Text = viewketerangan
-
-            '        cnn.Close()
-            '    End If
-            'End Using
+            Call caripiutang(nomorkode)
         Else
             cbvoid.Checked = False
             cbprinted.Checked = False
@@ -462,6 +425,7 @@ Public Class flunaspiutang
     End Sub
     Sub loadingpenjualan()
         Call tabel_utama()
+        Call tabel_lunas()
         Call koneksii()
         sql = "SELECT * FROM tb_penjualan"
         cmmd = New OdbcCommand(sql, cnn)
@@ -607,7 +571,7 @@ Public Class flunaspiutang
 
         'cek ke transaksi kas
         Call koneksii()
-        sql = "SELECT SUM(kredit_kas) as total_kas FROM tb_transaksi_kas WHERE kode_penjualan = '" & txtnonota.Text & "'"
+        sql = "SELECT IFNULL(SUM(kredit_kas), 0) As total_kas FROM tb_transaksi_kas WHERE kode_penjualan = '" & txtnonota.Text & "' AND NOT kode_piutang ='" & txtnolunaspiutang.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()
@@ -651,7 +615,29 @@ Public Class flunaspiutang
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+        If btnedit.Text.Equals("Edit") Then
+            btnedit.Text = "Update"
+            Call awaledit()
 
+        ElseIf btnedit.Text.Equals("Update") Then
+            If txtnonota.Text IsNot "" Then
+                If cmbsales.Text IsNot "" Then
+                    If cmbbayar.Text IsNot "" Then
+                        If txttotalbayar.Text > 0 Then
+                            Call prosesperbarui()
+                        Else
+                            MsgBox("Isi Nominal Pembayaran")
+                        End If
+                    Else
+                        MsgBox("Isi Pembayaran")
+                    End If
+                Else
+                    MsgBox("Isi User")
+                End If
+            Else
+                MsgBox("Isi Nota Penjualan")
+            End If
+        End If
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
@@ -664,15 +650,27 @@ Public Class flunaspiutang
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
-
+        Call prevnumber(kodelunaspiutang)
     End Sub
 
     Private Sub btngolunas_Click(sender As Object, e As EventArgs) Handles btngolunas.Click
-
+        If txtgolunas.Text = "" Then
+            MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+        Else
+            Call koneksii()
+            sql = "SELECT kode_lunas FROM tb_pelunasan_piutang WHERE kode_lunas  = '" + txtgolunas.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                Call inisialisasi(txtgolunas.Text)
+            Else
+                MsgBox("Pelunasan Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+            End If
+        End If
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-
+        Call nextnumber(kodelunaspiutang)
     End Sub
 
     Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
@@ -683,8 +681,35 @@ Public Class flunaspiutang
         Call carijual()
     End Sub
 
-    Private Sub GridView2_DoubleClick(sender As Object, e As EventArgs) Handles GridView2.DoubleClick
+    Sub caripiutang(nopiutang As String)
+        sql = "SELECT * FROM tb_pelunasan_piutang WHERE kode_lunas  = '" + nopiutang + "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        dr.Read()
 
+        If dr.HasRows Then
+            txtnolunaspiutang.Text = dr("kode_lunas")
+            txtnonota.Text = dr("kode_penjualan")
+            dtpelunasan.Value = dr("tanggal_transaksi")
+            cmbsales.Text = dr("kode_user")
+            cmbbayar.Text = dr("kode_kas")
+            txttotalbayar.Text = dr("bayar_lunas")
+            txtketerangan.Text = dr("keterangan_lunas")
+            cbvoid.Checked = dr("void_lunas")
+            cbprinted.Checked = dr("print_lunas")
+            cbposted.Checked = dr("posted_lunas")
+            'cmbjenis.Text = dr("jenis_barang")
+            'kode = dr("kode_barang")
+            'modalbarang = dr("modal_barang")
+            'txtmodal.Text = Format(modalbarang, "##,##0")
+        End If
+
+    End Sub
+
+    Private Sub GridView2_DoubleClick(sender As Object, e As EventArgs) Handles GridView2.DoubleClick
+        If btnsimpan.Enabled = False Then
+            Call caripiutang(GridView2.GetFocusedRowCellValue("kode_lunas"))
+        End If
     End Sub
 
     Private Sub txttotalbayar_TextChanged(sender As Object, e As EventArgs) Handles txttotalbayar.TextChanged
