@@ -831,7 +831,7 @@ Public Class fpembelian
                 kodepembayaran = cmbbayar.Text
 
                 If kodepembayaran IsNot "" Then
-                    sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_pembelian, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepembelian & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepembelian & "','" & 0 & "', '" & grandtotal & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                    sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_pembelian, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepembelian & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepembelian & "','" & 0 & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
                 End If
@@ -1162,7 +1162,7 @@ Public Class fpembelian
             kodepembayaran = cmbbayar.Text
 
             If kodepembayaran IsNot "" Then
-                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_pembelian, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepembelian & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepembelian & "','" & 0 & "', '" & grandtotal & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_pembelian, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepembelian & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepembelian & "','" & 0 & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             End If

@@ -22,21 +22,20 @@ Partial Class flunasutang
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(flunasutang))
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn13 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn14 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn15 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn16 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn17 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn18 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
-        Me.txtgoretur = New System.Windows.Forms.TextBox()
-        Me.btngoretur = New System.Windows.Forms.Button()
+        Me.txtgolunas = New System.Windows.Forms.TextBox()
+        Me.btngolunas = New System.Windows.Forms.Button()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
         Me.btnbaru = New System.Windows.Forms.Button()
@@ -48,10 +47,10 @@ Partial Class flunasutang
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txttotalbayar = New System.Windows.Forms.TextBox()
         Me.dtpelunasan = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtnolunaspiutang = New System.Windows.Forms.TextBox()
+        Me.txtnolunasutang = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cbposted = New System.Windows.Forms.CheckBox()
@@ -59,8 +58,6 @@ Partial Class flunasutang
         Me.cbvoid = New System.Windows.Forms.CheckBox()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.btncarinota = New System.Windows.Forms.Button()
-        Me.btngo = New System.Windows.Forms.Button()
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
@@ -75,10 +72,8 @@ Partial Class flunasutang
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.txtcustomer = New System.Windows.Forms.TextBox()
+        Me.txtsupplier = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txttelp = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
@@ -97,7 +92,7 @@ Partial Class flunasutang
         '
         'GridControl2
         '
-        Me.GridControl2.Location = New System.Drawing.Point(8, 336)
+        Me.GridControl2.Location = New System.Drawing.Point(10, 337)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.Size = New System.Drawing.Size(579, 332)
@@ -106,51 +101,52 @@ Partial Class flunasutang
         '
         'GridView2
         '
-        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn13, Me.GridColumn14, Me.GridColumn15, Me.GridColumn16, Me.GridColumn17, Me.GridColumn18})
+        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn11, Me.GridColumn12, Me.GridColumn13, Me.GridColumn14, Me.GridColumn15, Me.GridColumn16})
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
         '
+        'GridColumn11
+        '
+        Me.GridColumn11.Caption = "Kode Lunas"
+        Me.GridColumn11.Name = "GridColumn11"
+        Me.GridColumn11.Visible = True
+        Me.GridColumn11.VisibleIndex = 0
+        '
+        'GridColumn12
+        '
+        Me.GridColumn12.Caption = "Kode Pembelian"
+        Me.GridColumn12.Name = "GridColumn12"
+        Me.GridColumn12.Visible = True
+        Me.GridColumn12.VisibleIndex = 1
+        '
         'GridColumn13
         '
-        Me.GridColumn13.Caption = "Kode Lunas"
+        Me.GridColumn13.Caption = "Tanggal Transaksi"
         Me.GridColumn13.Name = "GridColumn13"
         Me.GridColumn13.Visible = True
-        Me.GridColumn13.VisibleIndex = 0
+        Me.GridColumn13.VisibleIndex = 2
         '
         'GridColumn14
         '
-        Me.GridColumn14.Caption = "Kode Penjualan"
+        Me.GridColumn14.Caption = "Kode User"
         Me.GridColumn14.Name = "GridColumn14"
         Me.GridColumn14.Visible = True
-        Me.GridColumn14.VisibleIndex = 1
+        Me.GridColumn14.VisibleIndex = 3
         '
         'GridColumn15
         '
-        Me.GridColumn15.Caption = "Tgl Transaksi"
+        Me.GridColumn15.Caption = "Kode Kas"
         Me.GridColumn15.Name = "GridColumn15"
         Me.GridColumn15.Visible = True
-        Me.GridColumn15.VisibleIndex = 2
+        Me.GridColumn15.VisibleIndex = 4
         '
         'GridColumn16
         '
-        Me.GridColumn16.Caption = "Kode User"
+        Me.GridColumn16.Caption = "Bayar Kas"
+        Me.GridColumn16.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn16.Name = "GridColumn16"
         Me.GridColumn16.Visible = True
-        Me.GridColumn16.VisibleIndex = 3
-        '
-        'GridColumn17
-        '
-        Me.GridColumn17.Caption = "Kode Kas"
-        Me.GridColumn17.Name = "GridColumn17"
-        Me.GridColumn17.Visible = True
-        Me.GridColumn17.VisibleIndex = 4
-        '
-        'GridColumn18
-        '
-        Me.GridColumn18.Caption = "Bayar"
-        Me.GridColumn18.Name = "GridColumn18"
-        Me.GridColumn18.Visible = True
-        Me.GridColumn18.VisibleIndex = 5
+        Me.GridColumn16.VisibleIndex = 5
         '
         'GroupBox4
         '
@@ -161,7 +157,7 @@ Partial Class flunasutang
         Me.GroupBox4.Controls.Add(Me.btnprint)
         Me.GroupBox4.Controls.Add(Me.btnsimpan)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox4.Location = New System.Drawing.Point(596, 419)
+        Me.GroupBox4.Location = New System.Drawing.Point(598, 420)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(795, 72)
         Me.GroupBox4.TabIndex = 80
@@ -172,8 +168,8 @@ Partial Class flunasutang
         '
         Me.GroupBox5.Controls.Add(Me.btnprev)
         Me.GroupBox5.Controls.Add(Me.btnnext)
-        Me.GroupBox5.Controls.Add(Me.txtgoretur)
-        Me.GroupBox5.Controls.Add(Me.btngoretur)
+        Me.GroupBox5.Controls.Add(Me.txtgolunas)
+        Me.GroupBox5.Controls.Add(Me.btngolunas)
         Me.GroupBox5.Location = New System.Drawing.Point(507, 9)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(280, 52)
@@ -198,21 +194,21 @@ Partial Class flunasutang
         Me.btnnext.Text = ">>"
         Me.btnnext.UseVisualStyleBackColor = True
         '
-        'txtgoretur
+        'txtgolunas
         '
-        Me.txtgoretur.Location = New System.Drawing.Point(108, 18)
-        Me.txtgoretur.Name = "txtgoretur"
-        Me.txtgoretur.Size = New System.Drawing.Size(117, 24)
-        Me.txtgoretur.TabIndex = 7
+        Me.txtgolunas.Location = New System.Drawing.Point(108, 18)
+        Me.txtgolunas.Name = "txtgolunas"
+        Me.txtgolunas.Size = New System.Drawing.Size(117, 24)
+        Me.txtgolunas.TabIndex = 7
         '
-        'btngoretur
+        'btngolunas
         '
-        Me.btngoretur.Location = New System.Drawing.Point(53, 17)
-        Me.btngoretur.Name = "btngoretur"
-        Me.btngoretur.Size = New System.Drawing.Size(52, 26)
-        Me.btngoretur.TabIndex = 6
-        Me.btngoretur.Text = "Go"
-        Me.btngoretur.UseVisualStyleBackColor = True
+        Me.btngolunas.Location = New System.Drawing.Point(53, 17)
+        Me.btngolunas.Name = "btngolunas"
+        Me.btngolunas.Size = New System.Drawing.Size(52, 26)
+        Me.btngolunas.TabIndex = 6
+        Me.btngolunas.Text = "Go"
+        Me.btngolunas.UseVisualStyleBackColor = True
         '
         'btnbatal
         '
@@ -267,20 +263,18 @@ Partial Class flunasutang
         Me.GroupBox3.Controls.Add(Me.txtketerangan)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.Label1)
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
+        Me.GroupBox3.Controls.Add(Me.txttotalbayar)
         Me.GroupBox3.Controls.Add(Me.dtpelunasan)
         Me.GroupBox3.Controls.Add(Me.Label3)
-        Me.GroupBox3.Controls.Add(Me.txtnolunaspiutang)
+        Me.GroupBox3.Controls.Add(Me.txtnolunasutang)
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.GroupBox1)
         Me.GroupBox3.Controls.Add(Me.cmbsales)
         Me.GroupBox3.Controls.Add(Me.Label16)
-        Me.GroupBox3.Controls.Add(Me.btncarinota)
-        Me.GroupBox3.Controls.Add(Me.btngo)
         Me.GroupBox3.Controls.Add(Me.txtnonota)
         Me.GroupBox3.Controls.Add(Me.Label19)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(596, 491)
+        Me.GroupBox3.Location = New System.Drawing.Point(598, 492)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
@@ -343,14 +337,15 @@ Partial Class flunasutang
         Me.Label1.TabIndex = 78
         Me.Label1.Text = "Total Bayar"
         '
-        'TextBox1
+        'txttotalbayar
         '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(508, 67)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(267, 24)
-        Me.TextBox1.TabIndex = 77
+        Me.txttotalbayar.Enabled = False
+        Me.txttotalbayar.Location = New System.Drawing.Point(508, 67)
+        Me.txttotalbayar.Margin = New System.Windows.Forms.Padding(4)
+        Me.txttotalbayar.MaxLength = 12
+        Me.txttotalbayar.Name = "txttotalbayar"
+        Me.txttotalbayar.Size = New System.Drawing.Size(267, 24)
+        Me.txttotalbayar.TabIndex = 77
         '
         'dtpelunasan
         '
@@ -368,19 +363,19 @@ Partial Class flunasutang
         Me.Label3.Location = New System.Drawing.Point(14, 82)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(125, 18)
+        Me.Label3.Size = New System.Drawing.Size(115, 18)
         Me.Label3.TabIndex = 74
-        Me.Label3.Text = "Tgl Lunas Piutang"
+        Me.Label3.Text = "Tgl Lunas Utang"
         '
-        'txtnolunaspiutang
+        'txtnolunasutang
         '
-        Me.txtnolunaspiutang.Enabled = False
-        Me.txtnolunaspiutang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnolunaspiutang.Location = New System.Drawing.Point(147, 25)
-        Me.txtnolunaspiutang.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtnolunaspiutang.Name = "txtnolunaspiutang"
-        Me.txtnolunaspiutang.Size = New System.Drawing.Size(242, 24)
-        Me.txtnolunaspiutang.TabIndex = 73
+        Me.txtnolunasutang.Enabled = False
+        Me.txtnolunasutang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnolunasutang.Location = New System.Drawing.Point(147, 25)
+        Me.txtnolunasutang.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnolunasutang.Name = "txtnolunasutang"
+        Me.txtnolunasutang.Size = New System.Drawing.Size(242, 24)
+        Me.txtnolunasutang.TabIndex = 73
         '
         'Label2
         '
@@ -389,9 +384,9 @@ Partial Class flunasutang
         Me.Label2.Location = New System.Drawing.Point(13, 28)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(129, 18)
+        Me.Label2.Size = New System.Drawing.Size(119, 18)
         Me.Label2.TabIndex = 72
-        Me.Label2.Text = "No. Lunas Piutang"
+        Me.Label2.Text = "No. Lunas Utang"
         '
         'GroupBox1
         '
@@ -462,28 +457,6 @@ Partial Class flunasutang
         Me.Label16.TabIndex = 66
         Me.Label16.Text = "Kode Sales"
         '
-        'btncarinota
-        '
-        Me.btncarinota.BackgroundImage = CType(resources.GetObject("btncarinota.BackgroundImage"), System.Drawing.Image)
-        Me.btncarinota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btncarinota.ImageIndex = 0
-        Me.btncarinota.Location = New System.Drawing.Point(314, 51)
-        Me.btncarinota.Margin = New System.Windows.Forms.Padding(4)
-        Me.btncarinota.Name = "btncarinota"
-        Me.btncarinota.Size = New System.Drawing.Size(25, 26)
-        Me.btncarinota.TabIndex = 5
-        Me.btncarinota.UseVisualStyleBackColor = True
-        '
-        'btngo
-        '
-        Me.btngo.Location = New System.Drawing.Point(342, 51)
-        Me.btngo.Margin = New System.Windows.Forms.Padding(4)
-        Me.btngo.Name = "btngo"
-        Me.btngo.Size = New System.Drawing.Size(47, 27)
-        Me.btngo.TabIndex = 6
-        Me.btngo.Text = "Go"
-        Me.btngo.UseVisualStyleBackColor = True
-        '
         'txtnonota
         '
         Me.txtnonota.Enabled = False
@@ -491,7 +464,7 @@ Partial Class flunasutang
         Me.txtnonota.Location = New System.Drawing.Point(147, 52)
         Me.txtnonota.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnonota.Name = "txtnonota"
-        Me.txtnonota.Size = New System.Drawing.Size(168, 24)
+        Me.txtnonota.Size = New System.Drawing.Size(242, 24)
         Me.txtnonota.TabIndex = 9
         '
         'Label19
@@ -501,13 +474,13 @@ Partial Class flunasutang
         Me.Label19.Location = New System.Drawing.Point(13, 55)
         Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(109, 18)
+        Me.Label19.Size = New System.Drawing.Size(106, 18)
         Me.Label19.TabIndex = 7
-        Me.Label19.Text = "No. Faktur Jual"
+        Me.Label19.Text = "No. Faktur Beli"
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(10, 12)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 13)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(1381, 311)
@@ -516,20 +489,20 @@ Partial Class flunasutang
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
         'GridColumn1
         '
-        Me.GridColumn1.Caption = "Kode Penjualan"
+        Me.GridColumn1.Caption = "Kode Pembelian"
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.Visible = True
         Me.GridColumn1.VisibleIndex = 0
         '
         'GridColumn2
         '
-        Me.GridColumn2.Caption = "Kode Costumer"
+        Me.GridColumn2.Caption = "Kode Supplier"
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
@@ -550,7 +523,7 @@ Partial Class flunasutang
         '
         'GridColumn5
         '
-        Me.GridColumn5.Caption = "Tgl Penjualan"
+        Me.GridColumn5.Caption = "Tgl Pembelian"
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
@@ -590,44 +563,30 @@ Partial Class flunasutang
         Me.GridColumn10.Visible = True
         Me.GridColumn10.VisibleIndex = 9
         '
-        'GridColumn11
-        '
-        Me.GridColumn11.Caption = "Bayar"
-        Me.GridColumn11.Name = "GridColumn11"
-        Me.GridColumn11.Visible = True
-        Me.GridColumn11.VisibleIndex = 10
-        '
-        'GridColumn12
-        '
-        Me.GridColumn12.Caption = "Sisa"
-        Me.GridColumn12.Name = "GridColumn12"
-        Me.GridColumn12.Visible = True
-        Me.GridColumn12.VisibleIndex = 11
-        '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.txtcustomer)
+        Me.GroupBox2.Controls.Add(Me.txtsupplier)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.txttelp)
         Me.GroupBox2.Controls.Add(Me.Label20)
         Me.GroupBox2.Controls.Add(Me.txtalamat)
         Me.GroupBox2.Controls.Add(Me.Label22)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(596, 330)
+        Me.GroupBox2.Location = New System.Drawing.Point(598, 331)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(795, 90)
         Me.GroupBox2.TabIndex = 81
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Detail Nota Penjualan"
+        Me.GroupBox2.Text = "Detail Nota Pembelian"
         '
-        'txtcustomer
+        'txtsupplier
         '
-        Me.txtcustomer.Enabled = False
-        Me.txtcustomer.Location = New System.Drawing.Point(100, 24)
-        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(248, 24)
-        Me.txtcustomer.TabIndex = 46
+        Me.txtsupplier.Enabled = False
+        Me.txtsupplier.Location = New System.Drawing.Point(100, 24)
+        Me.txtsupplier.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtsupplier.Name = "txtsupplier"
+        Me.txtsupplier.Size = New System.Drawing.Size(248, 24)
+        Me.txtsupplier.TabIndex = 46
         '
         'Label4
         '
@@ -636,9 +595,9 @@ Partial Class flunasutang
         Me.Label4.Location = New System.Drawing.Point(12, 27)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(83, 18)
+        Me.Label4.Size = New System.Drawing.Size(86, 18)
         Me.Label4.TabIndex = 19
-        Me.Label4.Text = "Nama Cust"
+        Me.Label4.Text = "Nama Supp"
         '
         'txttelp
         '
@@ -656,9 +615,9 @@ Partial Class flunasutang
         Me.Label20.Location = New System.Drawing.Point(360, 28)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(88, 18)
+        Me.Label20.Size = New System.Drawing.Size(91, 18)
         Me.Label20.TabIndex = 68
-        Me.Label20.Text = "Alamat Cust"
+        Me.Label20.Text = "Alamat Supp"
         '
         'txtalamat
         '
@@ -678,9 +637,9 @@ Partial Class flunasutang
         Me.Label22.Location = New System.Drawing.Point(15, 54)
         Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(63, 18)
+        Me.Label22.Size = New System.Drawing.Size(66, 18)
         Me.Label22.TabIndex = 69
-        Me.Label22.Text = "Tlp Cust"
+        Me.Label22.Text = "Tlp Supp"
         '
         'flunasutang
         '
@@ -715,18 +674,18 @@ Partial Class flunasutang
 
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn13 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn14 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn15 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn16 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn17 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn18 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents btnprev As Button
     Friend WithEvents btnnext As Button
-    Friend WithEvents txtgoretur As TextBox
-    Friend WithEvents btngoretur As Button
+    Friend WithEvents txtgolunas As TextBox
+    Friend WithEvents btngolunas As Button
     Friend WithEvents btnbatal As Button
     Friend WithEvents btnedit As Button
     Friend WithEvents btnbaru As Button
@@ -738,10 +697,10 @@ Partial Class flunasutang
     Friend WithEvents txtketerangan As RichTextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txttotalbayar As TextBox
     Friend WithEvents dtpelunasan As DateTimePicker
     Friend WithEvents Label3 As Label
-    Friend WithEvents txtnolunaspiutang As TextBox
+    Friend WithEvents txtnolunasutang As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents cbposted As CheckBox
@@ -749,8 +708,6 @@ Partial Class flunasutang
     Friend WithEvents cbvoid As CheckBox
     Friend WithEvents cmbsales As ComboBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents btncarinota As Button
-    Friend WithEvents btngo As Button
     Friend WithEvents txtnonota As TextBox
     Friend WithEvents Label19 As Label
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
@@ -765,10 +722,8 @@ Partial Class flunasutang
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents txtcustomer As TextBox
+    Friend WithEvents txtsupplier As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents txttelp As TextBox
     Friend WithEvents Label20 As Label

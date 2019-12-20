@@ -465,7 +465,6 @@ Public Class flunaspiutang
     End Sub
     Sub prosessimpan()
         Dim checkinglunas As Boolean
-        Dim nilaihitung As String
         Dim sisajual, bayarjual As Double
 
         'cek ke penjualan
@@ -481,7 +480,7 @@ Public Class flunaspiutang
 
         'cek ke transaksi kas
         Call koneksii()
-        sql = "SELECT SUM(kredit_kas) as total_kas FROM tb_transaksi_kas WHERE kode_penjualan = '" & txtnonota.Text & "'"
+        sql = "SELECT IFNULL(SUM(kredit_kas), 0) As total_kas FROM tb_transaksi_kas WHERE kode_penjualan = '" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()
