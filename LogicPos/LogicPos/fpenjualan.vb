@@ -886,7 +886,59 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+        Call cetak_struk()
+    End Sub
+    Sub cetak_struk()
+        Dim tabel_struk As New DataTable
+        With tabel_struk
+            .Columns.Add("kode_barang")
+            .Columns.Add("kode_stok")
+            .Columns.Add("nama_barang")
+            .Columns.Add("banyak", GetType(Double))
+            .Columns.Add("satuan")
+            .Columns.Add("jenis")
+            .Columns.Add("harga_satuan", GetType(Double))
+            .Columns.Add("diskon_persen", GetType(Double))
+            .Columns.Add("harga_diskon", GetType(Double))
+            .Columns.Add("subtotal", GetType(Double))
+            .Columns.Add("diskon_nominal", GetType(Double))
+        End With
 
+        Dim baris As DataRow
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_struk.NewRow
+            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+            baris("banyak") = GridView1.GetRowCellValue(i, "banyak")
+            baris("satuan") = GridView1.GetRowCellValue(i, "satuan_barang")
+            baris("jenis") = GridView1.GetRowCellValue(i, "jenis_barang")
+            baris("harga_satuan") = GridView1.GetRowCellValue(i, "harga_satuan")
+            baris("diskon_persen") = GridView1.GetRowCellValue(i, "diskon_persen")
+            baris("harga_diskon") = GridView1.GetRowCellValue(i, "harga_diskon")
+            baris("subtotal") = GridView1.GetRowCellValue(i, "subtotal")
+            baris("diskon_nominal") = GridView1.GetRowCellValue(i, "diskon_nominal")
+            tabel_struk.Rows.Add(baris)
+        Next
+
+        Dim rpt As ReportDocument
+        rpt = New Struk_Penjualan
+        rpt.SetDataSource(tabel_struk)
+        'rpt.SetParameterValue("total", total2)
+        'rpt.SetParameterValue("nofaktur", autonumber)
+        'rpt.SetParameterValue("kasir", fmenu.statususer.Text)
+
+        'If cash = True Then
+        '    rpt.SetParameterValue("bayar", "CASH")
+        'Else
+        '    rpt.SetParameterValue("bayar", "CREDIT")
+        'End If
+
+        'fakturjual.CrystalReportViewer1.ReportSource = rpt
+        'rpt.PrintOptions.PrinterName = faktur
+        rpt.PrintToPrinter(1, False, 0, 0)
+        'fakturjual.ShowDialog()
+        'fakturjual.Dispose()
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
