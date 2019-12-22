@@ -80,7 +80,7 @@ Partial Class freturbeli
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.dtjatuhtempo = New System.Windows.Forms.DateTimePicker()
-        Me.txtcustomer = New System.Windows.Forms.TextBox()
+        Me.txtsupplier = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -491,7 +491,7 @@ Partial Class freturbeli
         Me.GroupBox1.Controls.Add(Me.Label17)
         Me.GroupBox1.Controls.Add(Me.Label21)
         Me.GroupBox1.Controls.Add(Me.dtjatuhtempo)
-        Me.GroupBox1.Controls.Add(Me.txtcustomer)
+        Me.GroupBox1.Controls.Add(Me.txtsupplier)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -722,14 +722,14 @@ Partial Class freturbeli
         Me.dtjatuhtempo.Size = New System.Drawing.Size(193, 23)
         Me.dtjatuhtempo.TabIndex = 65
         '
-        'txtcustomer
+        'txtsupplier
         '
-        Me.txtcustomer.Enabled = False
-        Me.txtcustomer.Location = New System.Drawing.Point(484, 18)
-        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(248, 24)
-        Me.txtcustomer.TabIndex = 46
+        Me.txtsupplier.Enabled = False
+        Me.txtsupplier.Location = New System.Drawing.Point(484, 18)
+        Me.txtsupplier.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtsupplier.Name = "txtsupplier"
+        Me.txtsupplier.Size = New System.Drawing.Size(248, 24)
+        Me.txtsupplier.TabIndex = 46
         '
         'Label4
         '
@@ -789,8 +789,8 @@ Partial Class freturbeli
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label7)
         Me.Name = "freturbeli"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Retur Pembelian"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -863,7 +863,7 @@ Partial Class freturbeli
     Friend WithEvents Label17 As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents dtjatuhtempo As DateTimePicker
-    Friend WithEvents txtcustomer As TextBox
+    Friend WithEvents txtsupplier As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label15 As Label

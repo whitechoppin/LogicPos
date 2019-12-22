@@ -82,7 +82,7 @@ Public Class freturbeli
             dr = cmmd.ExecuteReader()
         Next
 
-        sql = "delete from tb_pembelian_detail where kode_pembelian = '" & txtnonota.Text & "'"
+        sql = "DELETE FROM tb_pembelian_detail WHERE kode_pembelian = '" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
@@ -93,12 +93,12 @@ Public Class freturbeli
         Next
 
         Dim total_pembelian As Double = GridView1.Columns("subtotal").SummaryItem.SummaryValue
-        sql = "update tb_pembelian set total_pembelian = '" & total_pembelian & "'"
+        sql = "UPDATE tb_pembelian SET total_pembelian = '" & total_pembelian & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
         For i As Integer = 0 To GridView2.RowCount - 1
-            sql = "INSERT INTO tb_retur_pembelian_detail ( kode_retur, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_beli, subtotal, created_by, updated_by,date_created, last_updated) VALUES ('" & koderetur & "', '" & GridView2.GetRowCellValue(i, "kode_stok") & "', '" & GridView2.GetRowCellValue(i, "kode_barang") & "', '" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView2.GetRowCellValue(i, "harga_beli") & "','" & GridView2.GetRowCellValue(i, "subtotal") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_retur_pembelian_detail (kode_retur, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty, harga_beli, subtotal, created_by, updated_by, date_created, last_updated) VALUES ('" & koderetur & "','" & GridView2.GetRowCellValue(i, "kode_barang") & "','" & GridView2.GetRowCellValue(i, "kode_stok") & "','" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView2.GetRowCellValue(i, "harga_beli") & "','" & GridView2.GetRowCellValue(i, "subtotal") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Next
@@ -228,6 +228,42 @@ Public Class freturbeli
         GridColumn16.Width = 55
     End Sub
 
+    Sub reload_tabel()
+        GridControl1.RefreshDataSource()
+        txtnonota.Clear()
+        txtsupplier.Clear()
+    End Sub
+    Sub previewpembelian(lihat As String)
+        sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            tabel1.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_beli")), Val(dr("subtotal")))
+            'tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), dr("diskon"), 0, dr("harga_diskon"), dr("subtotal"), 0, 0)
+            GridControl1.RefreshDataSource()
+        End While
+
+    End Sub
+    Sub cari_nota()
+        Call koneksii()
+        sql = "Select * From tb_pembelian where tb_pembelian.kode_pembelian = '" & txtnonota.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            'jika ditemukan
+            Call previewpembelian(txtnonota.Text)
+        End If
+
+    End Sub
+
+    Private Sub btncarinota_Click(sender As Object, e As EventArgs) Handles btncarinota.Click
+
+    End Sub
+
+    Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
+        Call cari_nota()
+    End Sub
+
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
 
     End Sub
@@ -259,37 +295,6 @@ Public Class freturbeli
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
 
     End Sub
-
-    Sub reload_tabel()
-        GridControl1.RefreshDataSource()
-        txtnonota.Clear()
-
-    End Sub
-    Sub previewpembelian(lihat As String)
-        sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        While dr.Read
-            tabel1.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_beli")), Val(dr("subtotal")))
-            'tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), dr("diskon"), 0, dr("harga_diskon"), dr("subtotal"), 0, 0)
-            GridControl1.RefreshDataSource()
-        End While
-
-    End Sub
-    Sub cari_nota()
-        Call koneksii()
-        sql = "Select * From tb_pembelian where tb_pembelian.kode_pembelian = '" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-        If dr.HasRows Then
-            'jika ditemukan
-            Call previewpembelian(txtnonota.Text)
-        End If
-
-    End Sub
-    Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
-        Call cari_nota()
-    End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         fretbeli.kode_barang = GridView1.GetFocusedRowCellValue("kode_barang")
         fretbeli.kode_stok = GridView1.GetFocusedRowCellValue("kode_stok")
@@ -298,9 +303,8 @@ Public Class freturbeli
         fretbeli.jenis_barang = GridView1.GetFocusedRowCellValue("jenis_barang")
         fretbeli.banyak = GridView1.GetFocusedRowCellValue("qty")
         fretbeli.harga_beli = GridView1.GetFocusedRowCellValue("harga_beli")
-
         fretbeli.subtotal = GridView1.GetFocusedRowCellValue("subtotal")
-        'GridView1.DeleteRow(GridView1.GetRowHandle(info.RowHandle))
+
         fretbeli.ShowDialog()
     End Sub
     Private Sub GridView2_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView2.KeyDown
