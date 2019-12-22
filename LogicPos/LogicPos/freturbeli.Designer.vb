@@ -23,14 +23,11 @@ Partial Class freturbeli
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(freturbeli))
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btncarinota = New System.Windows.Forms.Button()
         Me.btngo = New System.Windows.Forms.Button()
         Me.txtnonota = New System.Windows.Forms.TextBox()
-        Me.Label19 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnproses = New System.Windows.Forms.Button()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -51,47 +48,71 @@ Partial Class freturbeli
         Me.GridColumn14 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn15 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn16 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.btnprev = New System.Windows.Forms.Button()
+        Me.btnnext = New System.Windows.Forms.Button()
+        Me.txtgoretur = New System.Windows.Forms.TextBox()
+        Me.btngoretur = New System.Windows.Forms.Button()
+        Me.btnbatal = New System.Windows.Forms.Button()
+        Me.btnedit = New System.Windows.Forms.Button()
+        Me.btnbaru = New System.Windows.Forms.Button()
+        Me.btnprint = New System.Windows.Forms.Button()
+        Me.btnsimpan = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.dtreturbeli = New System.Windows.Forms.DateTimePicker()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtnoretur = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cbposted = New System.Windows.Forms.CheckBox()
+        Me.cbprinted = New System.Windows.Forms.CheckBox()
+        Me.cbvoid = New System.Windows.Forms.CheckBox()
+        Me.txttelp = New System.Windows.Forms.TextBox()
+        Me.txtalamat = New System.Windows.Forms.RichTextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.cmbsales = New System.Windows.Forms.ComboBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.cmbgudang = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.dtpembelian = New System.Windows.Forms.DateTimePicker()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.dtjatuhtempo = New System.Windows.Forms.DateTimePicker()
+        Me.txtcustomer = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox4.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.btncarinota)
-        Me.GroupBox3.Controls.Add(Me.btngo)
-        Me.GroupBox3.Controls.Add(Me.txtnonota)
-        Me.GroupBox3.Controls.Add(Me.Label19)
-        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(19, 44)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(324, 89)
-        Me.GroupBox3.TabIndex = 52
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Pencarian Faktur"
         '
         'btncarinota
         '
         Me.btncarinota.BackgroundImage = CType(resources.GetObject("btncarinota.BackgroundImage"), System.Drawing.Image)
         Me.btncarinota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarinota.ImageIndex = 0
-        Me.btncarinota.Location = New System.Drawing.Point(269, 22)
+        Me.btncarinota.Location = New System.Drawing.Point(309, 55)
         Me.btncarinota.Margin = New System.Windows.Forms.Padding(4)
         Me.btncarinota.Name = "btncarinota"
-        Me.btncarinota.Size = New System.Drawing.Size(30, 29)
+        Me.btncarinota.Size = New System.Drawing.Size(25, 26)
         Me.btncarinota.TabIndex = 5
         Me.btncarinota.UseVisualStyleBackColor = True
         '
         'btngo
         '
-        Me.btngo.Location = New System.Drawing.Point(212, 56)
+        Me.btngo.Location = New System.Drawing.Point(337, 55)
         Me.btngo.Margin = New System.Windows.Forms.Padding(4)
         Me.btngo.Name = "btngo"
-        Me.btngo.Size = New System.Drawing.Size(52, 26)
+        Me.btngo.Size = New System.Drawing.Size(47, 27)
         Me.btngo.TabIndex = 6
         Me.btngo.Text = "Go"
         Me.btngo.UseVisualStyleBackColor = True
@@ -100,28 +121,17 @@ Partial Class freturbeli
         '
         Me.txtnonota.Enabled = False
         Me.txtnonota.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnonota.Location = New System.Drawing.Point(96, 24)
+        Me.txtnonota.Location = New System.Drawing.Point(142, 56)
         Me.txtnonota.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnonota.Name = "txtnonota"
         Me.txtnonota.Size = New System.Drawing.Size(168, 24)
         Me.txtnonota.TabIndex = 9
         '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label19.Location = New System.Drawing.Point(8, 26)
-        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(78, 18)
-        Me.Label19.TabIndex = 7
-        Me.Label19.Text = "No. Faktur"
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(13, 9)
+        Me.Label7.Location = New System.Drawing.Point(13, 25)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(230, 31)
@@ -131,30 +141,20 @@ Partial Class freturbeli
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(13, 411)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(20, 452)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(223, 31)
+        Me.Label1.Size = New System.Drawing.Size(128, 18)
         Me.Label1.TabIndex = 56
         Me.Label1.Text = "Barang Di Retur"
         '
-        'btnproses
-        '
-        Me.btnproses.Location = New System.Drawing.Point(351, 83)
-        Me.btnproses.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnproses.Name = "btnproses"
-        Me.btnproses.Size = New System.Drawing.Size(56, 50)
-        Me.btnproses.TabIndex = 58
-        Me.btnproses.Text = "Proses"
-        Me.btnproses.UseVisualStyleBackColor = True
-        '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(19, 140)
+        Me.GridControl1.Location = New System.Drawing.Point(19, 227)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1118, 257)
+        Me.GridControl1.Size = New System.Drawing.Size(1088, 223)
         Me.GridControl1.TabIndex = 59
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -257,10 +257,10 @@ Partial Class freturbeli
         '
         'GridControl2
         '
-        Me.GridControl2.Location = New System.Drawing.Point(19, 445)
+        Me.GridControl2.Location = New System.Drawing.Point(19, 472)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(1118, 200)
+        Me.GridControl2.Size = New System.Drawing.Size(1090, 221)
         Me.GridControl2.TabIndex = 60
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -361,38 +361,454 @@ Partial Class freturbeli
         Me.GridColumn16.Visible = True
         Me.GridColumn16.VisibleIndex = 7
         '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.GroupBox5)
+        Me.GroupBox4.Controls.Add(Me.btnbatal)
+        Me.GroupBox4.Controls.Add(Me.btnedit)
+        Me.GroupBox4.Controls.Add(Me.btnbaru)
+        Me.GroupBox4.Controls.Add(Me.btnprint)
+        Me.GroupBox4.Controls.Add(Me.btnsimpan)
+        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.GroupBox4.Location = New System.Drawing.Point(255, 4)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(854, 72)
+        Me.GroupBox4.TabIndex = 62
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Tools"
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.btnprev)
+        Me.GroupBox5.Controls.Add(Me.btnnext)
+        Me.GroupBox5.Controls.Add(Me.txtgoretur)
+        Me.GroupBox5.Controls.Add(Me.btngoretur)
+        Me.GroupBox5.Location = New System.Drawing.Point(507, 10)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(339, 52)
+        Me.GroupBox5.TabIndex = 37
+        Me.GroupBox5.TabStop = False
+        '
+        'btnprev
+        '
+        Me.btnprev.Location = New System.Drawing.Point(7, 17)
+        Me.btnprev.Name = "btnprev"
+        Me.btnprev.Size = New System.Drawing.Size(75, 26)
+        Me.btnprev.TabIndex = 5
+        Me.btnprev.Text = "<< Prev"
+        Me.btnprev.UseVisualStyleBackColor = True
+        '
+        'btnnext
+        '
+        Me.btnnext.Location = New System.Drawing.Point(258, 17)
+        Me.btnnext.Name = "btnnext"
+        Me.btnnext.Size = New System.Drawing.Size(75, 26)
+        Me.btnnext.TabIndex = 8
+        Me.btnnext.Text = "Next >>"
+        Me.btnnext.UseVisualStyleBackColor = True
+        '
+        'txtgoretur
+        '
+        Me.txtgoretur.Location = New System.Drawing.Point(137, 18)
+        Me.txtgoretur.Name = "txtgoretur"
+        Me.txtgoretur.Size = New System.Drawing.Size(117, 24)
+        Me.txtgoretur.TabIndex = 7
+        '
+        'btngoretur
+        '
+        Me.btngoretur.Location = New System.Drawing.Point(85, 17)
+        Me.btngoretur.Name = "btngoretur"
+        Me.btngoretur.Size = New System.Drawing.Size(52, 26)
+        Me.btngoretur.TabIndex = 6
+        Me.btngoretur.Text = "Go"
+        Me.btngoretur.UseVisualStyleBackColor = True
+        '
+        'btnbatal
+        '
+        Me.btnbatal.Location = New System.Drawing.Point(412, 23)
+        Me.btnbatal.Name = "btnbatal"
+        Me.btnbatal.Size = New System.Drawing.Size(93, 35)
+        Me.btnbatal.TabIndex = 4
+        Me.btnbatal.Text = "Batal"
+        Me.btnbatal.UseVisualStyleBackColor = True
+        '
+        'btnedit
+        '
+        Me.btnedit.Location = New System.Drawing.Point(313, 23)
+        Me.btnedit.Name = "btnedit"
+        Me.btnedit.Size = New System.Drawing.Size(93, 35)
+        Me.btnedit.TabIndex = 1
+        Me.btnedit.Text = "Edit"
+        Me.btnedit.UseVisualStyleBackColor = True
+        '
+        'btnbaru
+        '
+        Me.btnbaru.Location = New System.Drawing.Point(16, 23)
+        Me.btnbaru.Name = "btnbaru"
+        Me.btnbaru.Size = New System.Drawing.Size(93, 35)
+        Me.btnbaru.TabIndex = 1
+        Me.btnbaru.Text = "Baru"
+        Me.btnbaru.UseVisualStyleBackColor = True
+        '
+        'btnprint
+        '
+        Me.btnprint.Location = New System.Drawing.Point(214, 23)
+        Me.btnprint.Name = "btnprint"
+        Me.btnprint.Size = New System.Drawing.Size(92, 35)
+        Me.btnprint.TabIndex = 3
+        Me.btnprint.Text = "Print"
+        Me.btnprint.UseVisualStyleBackColor = True
+        '
+        'btnsimpan
+        '
+        Me.btnsimpan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnsimpan.Location = New System.Drawing.Point(115, 23)
+        Me.btnsimpan.Name = "btnsimpan"
+        Me.btnsimpan.Size = New System.Drawing.Size(93, 35)
+        Me.btnsimpan.TabIndex = 2
+        Me.btnsimpan.Text = "Simpan"
+        Me.btnsimpan.UseVisualStyleBackColor = True
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.btncarinota)
+        Me.GroupBox1.Controls.Add(Me.dtreturbeli)
+        Me.GroupBox1.Controls.Add(Me.btngo)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.txtnonota)
+        Me.GroupBox1.Controls.Add(Me.txtnoretur)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
+        Me.GroupBox1.Controls.Add(Me.txttelp)
+        Me.GroupBox1.Controls.Add(Me.txtalamat)
+        Me.GroupBox1.Controls.Add(Me.Label22)
+        Me.GroupBox1.Controls.Add(Me.Label20)
+        Me.GroupBox1.Controls.Add(Me.cmbsales)
+        Me.GroupBox1.Controls.Add(Me.Label16)
+        Me.GroupBox1.Controls.Add(Me.cmbgudang)
+        Me.GroupBox1.Controls.Add(Me.Label14)
+        Me.GroupBox1.Controls.Add(Me.dtpembelian)
+        Me.GroupBox1.Controls.Add(Me.Label17)
+        Me.GroupBox1.Controls.Add(Me.Label21)
+        Me.GroupBox1.Controls.Add(Me.dtjatuhtempo)
+        Me.GroupBox1.Controls.Add(Me.txtcustomer)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(21, 71)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Size = New System.Drawing.Size(1088, 148)
+        Me.GroupBox1.TabIndex = 61
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Retur Faktur"
+        '
+        'dtreturbeli
+        '
+        Me.dtreturbeli.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.dtreturbeli.Location = New System.Drawing.Point(142, 84)
+        Me.dtreturbeli.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtreturbeli.Name = "dtreturbeli"
+        Me.dtreturbeli.Size = New System.Drawing.Size(242, 23)
+        Me.dtreturbeli.TabIndex = 75
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label3.Location = New System.Drawing.Point(31, 86)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(84, 18)
+        Me.Label3.TabIndex = 74
+        Me.Label3.Text = "Tgl Returan"
+        '
+        'txtnoretur
+        '
+        Me.txtnoretur.Enabled = False
+        Me.txtnoretur.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnoretur.Location = New System.Drawing.Point(142, 29)
+        Me.txtnoretur.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnoretur.Name = "txtnoretur"
+        Me.txtnoretur.Size = New System.Drawing.Size(242, 24)
+        Me.txtnoretur.TabIndex = 73
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label2.Location = New System.Drawing.Point(31, 32)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(100, 18)
+        Me.Label2.TabIndex = 72
+        Me.Label2.Text = "No. Retur Beli"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.cbposted)
+        Me.GroupBox2.Controls.Add(Me.cbprinted)
+        Me.GroupBox2.Controls.Add(Me.cbvoid)
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.GroupBox2.Location = New System.Drawing.Point(761, 11)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(319, 43)
+        Me.GroupBox2.TabIndex = 59
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Status"
+        '
+        'cbposted
+        '
+        Me.cbposted.AutoSize = True
+        Me.cbposted.Enabled = False
+        Me.cbposted.Location = New System.Drawing.Point(237, 15)
+        Me.cbposted.Name = "cbposted"
+        Me.cbposted.Size = New System.Drawing.Size(74, 22)
+        Me.cbposted.TabIndex = 41
+        Me.cbposted.Text = "Posted"
+        Me.cbposted.UseVisualStyleBackColor = True
+        '
+        'cbprinted
+        '
+        Me.cbprinted.AutoSize = True
+        Me.cbprinted.Enabled = False
+        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.cbprinted.Location = New System.Drawing.Point(149, 15)
+        Me.cbprinted.Name = "cbprinted"
+        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
+        Me.cbprinted.TabIndex = 40
+        Me.cbprinted.Text = "Printed"
+        Me.cbprinted.UseVisualStyleBackColor = True
+        '
+        'cbvoid
+        '
+        Me.cbvoid.AutoSize = True
+        Me.cbvoid.Enabled = False
+        Me.cbvoid.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.cbvoid.Location = New System.Drawing.Point(78, 15)
+        Me.cbvoid.Name = "cbvoid"
+        Me.cbvoid.Size = New System.Drawing.Size(56, 22)
+        Me.cbvoid.TabIndex = 39
+        Me.cbvoid.Text = "Void"
+        Me.cbvoid.UseVisualStyleBackColor = True
+        '
+        'txttelp
+        '
+        Me.txttelp.Enabled = False
+        Me.txttelp.Location = New System.Drawing.Point(484, 45)
+        Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
+        Me.txttelp.Name = "txttelp"
+        Me.txttelp.Size = New System.Drawing.Size(248, 24)
+        Me.txttelp.TabIndex = 71
+        '
+        'txtalamat
+        '
+        Me.txtalamat.Enabled = False
+        Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.txtalamat.Location = New System.Drawing.Point(484, 72)
+        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtalamat.Name = "txtalamat"
+        Me.txtalamat.Size = New System.Drawing.Size(248, 70)
+        Me.txtalamat.TabIndex = 70
+        Me.txtalamat.Text = ""
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label22.Location = New System.Drawing.Point(399, 48)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(66, 18)
+        Me.Label22.TabIndex = 69
+        Me.Label22.Text = "Tlp Supp"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label20.Location = New System.Drawing.Point(396, 76)
+        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(91, 18)
+        Me.Label20.TabIndex = 68
+        Me.Label20.Text = "Alamat Supp"
+        '
+        'cmbsales
+        '
+        Me.cmbsales.FormattingEnabled = True
+        Me.cmbsales.Location = New System.Drawing.Point(142, 111)
+        Me.cmbsales.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbsales.MaxLength = 99
+        Me.cmbsales.Name = "cmbsales"
+        Me.cmbsales.Size = New System.Drawing.Size(242, 26)
+        Me.cmbsales.TabIndex = 57
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label16.Location = New System.Drawing.Point(31, 113)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(84, 18)
+        Me.Label16.TabIndex = 66
+        Me.Label16.Text = "Kode Sales"
+        '
+        'cmbgudang
+        '
+        Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
+        Me.cmbgudang.Enabled = False
+        Me.cmbgudang.FormattingEnabled = True
+        Me.cmbgudang.Location = New System.Drawing.Point(885, 114)
+        Me.cmbgudang.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbgudang.MaxLength = 99
+        Me.cmbgudang.Name = "cmbgudang"
+        Me.cmbgudang.Size = New System.Drawing.Size(193, 26)
+        Me.cmbgudang.TabIndex = 58
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label14.Location = New System.Drawing.Point(763, 117)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(99, 18)
+        Me.Label14.TabIndex = 64
+        Me.Label14.Text = "Kode Gudang"
+        '
+        'dtpembelian
+        '
+        Me.dtpembelian.Enabled = False
+        Me.dtpembelian.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.dtpembelian.Location = New System.Drawing.Point(885, 59)
+        Me.dtpembelian.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtpembelian.Name = "dtpembelian"
+        Me.dtpembelian.Size = New System.Drawing.Size(193, 23)
+        Me.dtpembelian.TabIndex = 63
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label17.Location = New System.Drawing.Point(759, 62)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(101, 18)
+        Me.Label17.TabIndex = 62
+        Me.Label17.Text = "Tgl Pembelian"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label21.Location = New System.Drawing.Point(759, 89)
+        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(119, 18)
+        Me.Label21.TabIndex = 59
+        Me.Label21.Text = "Tgl Jatuh Tempo"
+        '
+        'dtjatuhtempo
+        '
+        Me.dtjatuhtempo.CustomFormat = ""
+        Me.dtjatuhtempo.Enabled = False
+        Me.dtjatuhtempo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.dtjatuhtempo.Location = New System.Drawing.Point(885, 87)
+        Me.dtjatuhtempo.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtjatuhtempo.Name = "dtjatuhtempo"
+        Me.dtjatuhtempo.Size = New System.Drawing.Size(193, 23)
+        Me.dtjatuhtempo.TabIndex = 65
+        '
+        'txtcustomer
+        '
+        Me.txtcustomer.Enabled = False
+        Me.txtcustomer.Location = New System.Drawing.Point(484, 18)
+        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtcustomer.Name = "txtcustomer"
+        Me.txtcustomer.Size = New System.Drawing.Size(248, 24)
+        Me.txtcustomer.TabIndex = 46
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label4.Location = New System.Drawing.Point(31, 59)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(78, 18)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "No. Faktur"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label5.Location = New System.Drawing.Point(396, 21)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(86, 18)
+        Me.Label5.TabIndex = 19
+        Me.Label5.Text = "Nama Supp"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label15.Location = New System.Drawing.Point(19, 693)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(83, 18)
+        Me.Label15.TabIndex = 63
+        Me.Label15.Text = "Keterangan"
+        '
+        'txtketerangan
+        '
+        Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.txtketerangan.Location = New System.Drawing.Point(20, 712)
+        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtketerangan.Name = "txtketerangan"
+        Me.txtketerangan.Size = New System.Drawing.Size(1090, 92)
+        Me.txtketerangan.TabIndex = 64
+        Me.txtketerangan.Text = ""
+        '
         'freturbeli
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1213, 677)
+        Me.ClientSize = New System.Drawing.Size(1123, 814)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.txtketerangan)
+        Me.Controls.Add(Me.GroupBox4)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl2)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.btnproses)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.GroupBox3)
         Me.Name = "freturbeli"
         Me.Text = "Retur Pembelian"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents Label19 As Label
     Friend WithEvents btngo As Button
     Friend WithEvents Label7 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents btnproses As Button
     Friend WithEvents btncarinota As Button
     Friend WithEvents txtnonota As TextBox
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
@@ -415,4 +831,41 @@ Partial Class freturbeli
     Friend WithEvents GridColumn14 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn15 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn16 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents btnprev As Button
+    Friend WithEvents btnnext As Button
+    Friend WithEvents txtgoretur As TextBox
+    Friend WithEvents btngoretur As Button
+    Friend WithEvents btnbatal As Button
+    Friend WithEvents btnedit As Button
+    Friend WithEvents btnbaru As Button
+    Friend WithEvents btnprint As Button
+    Friend WithEvents btnsimpan As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents dtreturbeli As DateTimePicker
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txtnoretur As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents cbposted As CheckBox
+    Friend WithEvents cbprinted As CheckBox
+    Friend WithEvents cbvoid As CheckBox
+    Friend WithEvents txttelp As TextBox
+    Friend WithEvents txtalamat As RichTextBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents Label20 As Label
+    Friend WithEvents cmbsales As ComboBox
+    Friend WithEvents Label16 As Label
+    Friend WithEvents cmbgudang As ComboBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents dtpembelian As DateTimePicker
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label21 As Label
+    Friend WithEvents dtjatuhtempo As DateTimePicker
+    Friend WithEvents txtcustomer As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents txtketerangan As RichTextBox
 End Class
