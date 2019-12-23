@@ -1041,7 +1041,7 @@ Public Class fpenjualan
         'Columns.Add("laba", GetType(Double))
         'Columns.Add("modal_barang", GetType(Double))
 
-        If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txtharga.Text = "" Or txtbanyak.Text = "" Then
+        If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txtharga.Text = "" Or txtbanyak.Text = "" Or banyak <= 0 Then
             MsgBox("Barang Kosong", MsgBoxStyle.Information, "Informasi")
             'Exit Sub
         Else

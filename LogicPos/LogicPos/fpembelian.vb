@@ -629,7 +629,7 @@ Public Class fpembelian
         Dim total_karakter, total_karakter_kode, tambah_counter As Integer
 
         Call koneksii()
-        If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txthargabarang.Text = "" Or txtbanyakbarang.Text = "" Then
+        If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txthargabarang.Text = "" Or txtbanyakbarang.Text = "" Or banyak <= 0 Then
             Exit Sub
         End If
 

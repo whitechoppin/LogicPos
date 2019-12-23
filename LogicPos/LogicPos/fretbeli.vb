@@ -10,31 +10,33 @@
         txtretur.Focus()
     End Sub
     Sub proses_pindah()
-        MsgBox(Val(harga_beli))
         If freturbeli.GridView2.RowCount = 0 Then
+            Dim Lokasi As Integer
             'jika 0 di tambah
             freturbeli.tabel2.Rows.Add(kode_stok, kode_barang, nama_barang, Val(txtretur.Text), satuan_barang, jenis_barang, harga_beli, harga_beli * Val(txtretur.Text))
             freturbeli.GridControl2.RefreshDataSource()
-            If banyak - txtretur.Text = 0 Then
+            If (banyak - Val(txtretur.Text)).Equals(0) Then
                 For i As Integer = 0 To freturbeli.GridView1.RowCount - 1
-                    Dim lokasi1 As Integer
-                    If freturbeli.GridView1.GetRowCellValue(lokasi1, "kode_stok") = kode_stok Then
-                        lokasi1 = i
-                        freturbeli.GridView1.DeleteRow(lokasi1)
-                        Me.Close()
+                    If freturbeli.GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok) Then
+                        Lokasi = i
                     End If
                 Next
+
+                If Lokasi > -1 Then
+                    freturbeli.GridView1.DeleteRow(Lokasi)
+                    Lokasi = -1
+                    Me.Close()
+                End If
+                MsgBox("bagian 1")
             Else
                 For i As Integer = 0 To freturbeli.GridView1.RowCount - 1
-
-                    Dim lokasi1 As Integer
-                    If freturbeli.GridView1.GetRowCellValue(i, "kode_stok") = kode_stok Then
-                        lokasi1 = i
+                    If freturbeli.GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok) Then
                         freturbeli.GridView1.SetRowCellValue(i, "qty", banyak - Val(txtretur.Text))
                         freturbeli.GridView1.SetRowCellValue(i, "subtotal", (banyak - Val(txtretur.Text)) * harga_beli)
                         Me.Close()
                     End If
                 Next
+                MsgBox("bagian 2")
             End If
         Else
             'jika bukan 0 di cari
@@ -52,29 +54,35 @@
                         If freturbeli.GridView1.GetRowCellValue(a, "kode_stok") = kode_stok Then
                             lokasi1 = a
                             Dim banyak_potong As Integer = freturbeli.GridView1.GetRowCellValue(lokasi1, "banyak")
-                            If banyak_potong - txtretur.Text = 0 Then
+                            If (banyak_potong - Val(txtretur.Text)).Equals(0) Then
                                 freturbeli.GridView1.DeleteRow(lokasi1)
+                                MsgBox("bagian 3")
+                            Else
+                                freturbeli.GridView1.SetRowCellValue(lokasi1, "qty", freturbeli.GridView1.GetRowCellValue(lokasi1, "qty") - txtretur.Text)
+                                freturbeli.GridView1.SetRowCellValue(lokasi1, "subtototal", (freturbeli.GridView1.GetRowCellValue(lokasi1, "qty") - txtretur.Text) * harga_beli)
+                                MsgBox("bagian 4")
                             End If
                         End If
                     Next
                     'tambah jika tidak 0
-                    For a As Integer = 0 To freturbeli.GridView1.RowCount - 1
-                        If freturbeli.GridView1.GetRowCellValue(a, "kode_stok") = kode_stok Then
-                            lokasi1 = a
-                            Dim banyak_potong As Integer = freturbeli.GridView1.GetRowCellValue(lokasi1, "qty")
-                            If banyak_potong - txtretur.Text <> 0 Then
-                                freturbeli.GridView1.SetRowCellValue(lokasi1, "qty", freturbeli.GridView1.GetRowCellValue(lokasi1, "qty") - txtretur.Text)
-                                freturbeli.GridView1.SetRowCellValue(lokasi1, "subtototal", (freturbeli.GridView1.GetRowCellValue(lokasi1, "qty") - txtretur.Text) * harga_beli)
-                            End If
-                        End If
-                    Next
+                    'For a As Integer = 0 To freturbeli.GridView1.RowCount - 1
+                    '    If freturbeli.GridView1.GetRowCellValue(a, "kode_stok") = kode_stok Then
+                    '        lokasi1 = a
+                    '        Dim banyak_potong As Integer = freturbeli.GridView1.GetRowCellValue(lokasi1, "qty")
+                    '        If banyak_potong - txtretur.Text <> 0 Then
+                    '            freturbeli.GridView1.SetRowCellValue(lokasi1, "qty", freturbeli.GridView1.GetRowCellValue(lokasi1, "qty") - txtretur.Text)
+                    '            freturbeli.GridView1.SetRowCellValue(lokasi1, "subtototal", (freturbeli.GridView1.GetRowCellValue(lokasi1, "qty") - txtretur.Text) * harga_beli)
+                    '        End If
+                    '    End If
+                    'Next
                     Me.Close()
-
                     Exit Sub
                 End If
             Next
+
             freturbeli.tabel2.Rows.Add(kode_stok, kode_barang, nama_barang, Val(txtretur.Text), satuan_barang, jenis_barang, harga_beli, harga_beli * Val(txtretur.Text))
             freturbeli.GridControl2.RefreshDataSource()
+
             For i As Integer = 0 To freturbeli.GridView1.RowCount - 1
                 Dim lokasi2 As Integer
                 If freturbeli.GridView1.GetRowCellValue(i, "kode_stok") = kode_stok Then

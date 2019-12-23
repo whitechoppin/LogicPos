@@ -15,7 +15,6 @@
             'jika 0 di tambah
             freturjual.tabel2.Rows.Add(kode_barang, kode_stok, nama_barang, Val(txtretur.Text), satuan_barang, jenis_barang, harga_satuan, diskon_persen, diskon_nominal, harga_diskon, Val(harga_diskon * Val(txtretur.Text)), laba, modal_barang)
             freturjual.GridControl2.RefreshDataSource()
-
             If (banyak - Val(txtretur.Text)).Equals(0) Then
                 For i As Integer = 0 To freturjual.GridView1.RowCount - 1
                     If freturjual.GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok) Then
@@ -30,7 +29,6 @@
                     Lokasi = -1
                     Me.Close()
                 End If
-                'MsgBox("bagian 1")
             Else
                 For i As Integer = 0 To freturjual.GridView1.RowCount - 1
                     If freturjual.GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok) Then
@@ -80,7 +78,6 @@
                     '    End If
                     'Next
                     Me.Close()
-
                     Exit Sub
                 End If
             Next

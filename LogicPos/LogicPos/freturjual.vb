@@ -738,19 +738,11 @@ Public Class freturjual
             fretjual.laba = GridView1.GetFocusedRowCellValue("laba")
             fretjual.modal_barang = GridView1.GetFocusedRowCellValue("modal_barang")
 
-            Dim ea As DXMouseEventArgs = TryCast(e, DXMouseEventArgs)
-            Dim view As GridView = TryCast(sender, GridView)
-            Dim info As DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitInfo = view.CalcHitInfo(ea.Location)
-
-            If info.InRow OrElse info.InRowCell Then
-                Dim colCaption As String = If(info.Column Is Nothing, "N/A", info.Column.GetCaption())
-            End If
-
             fretjual.ShowDialog()
         End If
     End Sub
     Private Sub GridView2_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView2.KeyDown
-        'Dim kode_stok As String = GridView1.GetFocusedRowCellValue("kode_stok")
+        Dim kode_stok As String = GridView1.GetFocusedRowCellValue("kode_stok")
         Dim kode_stok2 As String = GridView2.GetFocusedRowCellValue("kode_stok")
         Dim banyak2 As Integer = GridView2.GetFocusedRowCellValue("banyak")
 
@@ -766,7 +758,6 @@ Public Class freturjual
             Else
                 counting = False
                 For i As Integer = 0 To GridView1.RowCount - 1
-
                     If GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok2) Then
                         For a As Integer = 0 To GridView1.RowCount - 1
                             Dim banyak As Integer = GridView1.GetRowCellValue(a, "banyak")
@@ -791,17 +782,6 @@ Public Class freturjual
                     tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("banyak"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"))
                     GridView2.DeleteSelectedRows()
                 End If
-
-                'For i As Integer = 0 To GridView1.RowCount - 1
-                '    If GridView1.GetRowCellValue(i, "kode_stok") <> kode_stok2 Then
-
-                '        'Dim banyak1 As Integer = GridView2.GetFocusedRowCellValue("banyak")
-                '        'GridView1.SetRowCellValue(lokasi1, "banyak", Val(banyak) + Val(banyak1))
-                '        tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("banyak"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"))
-                '        GridView2.DeleteSelectedRows()
-                '        'Exit Sub
-                '    End If
-                'Next
             End If
         End If
     End Sub

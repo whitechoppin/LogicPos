@@ -78,6 +78,7 @@ Partial Class fretbeli
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblnamaibarang)
         Me.Name = "fretbeli"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Jumlah Retur"
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -296,56 +296,72 @@ Public Class freturbeli
 
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        fretbeli.kode_barang = GridView1.GetFocusedRowCellValue("kode_barang")
-        fretbeli.kode_stok = GridView1.GetFocusedRowCellValue("kode_stok")
-        fretbeli.nama_barang = GridView1.GetFocusedRowCellValue("nama_barang")
-        fretbeli.satuan_barang = GridView1.GetFocusedRowCellValue("satuan_barang")
-        fretbeli.jenis_barang = GridView1.GetFocusedRowCellValue("jenis_barang")
-        fretbeli.banyak = GridView1.GetFocusedRowCellValue("qty")
-        fretbeli.harga_beli = GridView1.GetFocusedRowCellValue("harga_beli")
-        fretbeli.subtotal = GridView1.GetFocusedRowCellValue("subtotal")
+        If btnsimpan.Enabled = True Then
+            fretbeli.kode_barang = GridView1.GetFocusedRowCellValue("kode_barang")
+            fretbeli.kode_stok = GridView1.GetFocusedRowCellValue("kode_stok")
+            fretbeli.nama_barang = GridView1.GetFocusedRowCellValue("nama_barang")
+            fretbeli.satuan_barang = GridView1.GetFocusedRowCellValue("satuan_barang")
+            fretbeli.jenis_barang = GridView1.GetFocusedRowCellValue("jenis_barang")
+            fretbeli.banyak = GridView1.GetFocusedRowCellValue("qty")
+            fretbeli.harga_beli = GridView1.GetFocusedRowCellValue("harga_beli")
+            fretbeli.subtotal = GridView1.GetFocusedRowCellValue("subtotal")
 
-        fretbeli.ShowDialog()
+            fretbeli.ShowDialog()
+        End If
     End Sub
     Private Sub GridView2_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView2.KeyDown
-        If e.KeyCode = Keys.Delete Then
-            Dim kode_stok As String = GridView1.GetFocusedRowCellValue("kode_stok")
+        Dim kode_stok As String = GridView1.GetFocusedRowCellValue("kode_stok")
+        Dim kode_stok2 As String = GridView2.GetFocusedRowCellValue("kode_stok")
+        Dim banyak2 As Integer = GridView2.GetFocusedRowCellValue("banyak")
 
-            Dim kode_stok2 As String = GridView2.GetFocusedRowCellValue("kode_stok")
-            Dim banyak2 As Integer = GridView2.GetFocusedRowCellValue("qty")
-            MsgBox(kode_stok2)
-            For i As Integer = 0 To GridView1.RowCount - 1
-                Dim lokasi1 As Integer
-                If GridView1.GetRowCellValue(i, "kode_stok") = kode_stok2 Then
-                    For a As Integer = 0 To GridView1.RowCount - 1
-                        Dim banyak As Integer = GridView1.GetRowCellValue(a, "qty")
-                        Dim lokasi2 As Integer
-                        If GridView1.GetRowCellValue(a, "kode_stok") = kode_stok2 Then
-                            lokasi2 = a
-                            Dim banyak1 As Integer = GridView2.GetFocusedRowCellValue("qty")
-                            GridView1.SetRowCellValue(lokasi2, "qty", Val(banyak) + Val(banyak1))
-                            GridView1.SetRowCellValue(lokasi2, "subtotal", (Val(banyak) + Val(banyak1)) * GridView1.GetRowCellValue(lokasi2, "harga_beli"))
-                            'tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("banyak"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"))
-                            GridControl1.RefreshDataSource()
-                            GridView2.DeleteSelectedRows()
-                            Exit Sub
-                        End If
-                    Next
+        Dim hargadiskon As Integer = GridView1.GetFocusedRowCellValue("harga_diskon")
+        'MsgBox(kode_stok2)
+        Dim lokasi As Integer
+        Dim counting As Boolean = False
 
-                End If
-            Next
+        If e.KeyCode = Keys.Delete And btnsimpan.Enabled = True Then
+            If GridView1.RowCount = 0 Then
+                tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("banyak"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"))
+                GridView2.DeleteSelectedRows()
+            Else
+                counting = False
 
-            For i As Integer = 0 To GridView1.RowCount - 1
-                Dim lokasi1 As Integer
-                If GridView1.GetRowCellValue(i, "kode_stok") <> kode_stok2 Then
-                    lokasi1 = i
-                    Dim banyak1 As Integer = GridView2.GetFocusedRowCellValue("qty")
-                    'GridView1.SetRowCellValue(lokasi1, "banyak", Val(banyak) + Val(banyak1))
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    If GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok2) Then
+                        For a As Integer = 0 To GridView1.RowCount - 1
+                            Dim banyak As Integer = GridView1.GetRowCellValue(a, "qty")
+                            If GridView1.GetRowCellValue(a, "kode_stok") = kode_stok2 Then
+                                lokasi = a
+                                Dim banyak1 As Integer = GridView2.GetFocusedRowCellValue("qty")
+                                GridView1.SetRowCellValue(lokasi, "qty", Val(banyak) + Val(banyak1))
+                                GridView1.SetRowCellValue(lokasi, "subtotal", (Val(banyak) + Val(banyak1)) * GridView1.GetRowCellValue(lokasi, "harga_beli"))
+
+                                GridControl1.RefreshDataSource()
+                                GridView2.DeleteSelectedRows()
+
+                                counting = True
+                            End If
+                        Next
+                    End If
+                Next
+
+                If counting = False Then
                     tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("qty"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_beli"), GridView2.GetFocusedRowCellValue("subtotal"))
                     GridView2.DeleteSelectedRows()
-                    Exit Sub
                 End If
-            Next
+
+                'For i As Integer = 0 To GridView1.RowCount - 1
+                '    Dim lokasi1 As Integer
+                '    If GridView1.GetRowCellValue(i, "kode_stok") <> kode_stok2 Then
+                '        lokasi1 = i
+                '        Dim banyak1 As Integer = GridView2.GetFocusedRowCellValue("qty")
+                '        'GridView1.SetRowCellValue(lokasi1, "banyak", Val(banyak) + Val(banyak1))
+                '        tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("qty"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_beli"), GridView2.GetFocusedRowCellValue("subtotal"))
+                '        GridView2.DeleteSelectedRows()
+                '        Exit Sub
+                '    End If
+                'Next
+            End If
         End If
     End Sub
 End Class
