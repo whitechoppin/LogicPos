@@ -935,7 +935,8 @@ Public Class fpenjualan
         'End If
 
         'fakturjual.CrystalReportViewer1.ReportSource = rpt
-        'rpt.PrintOptions.PrinterName = faktur
+        'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
+        rpt.PrintOptions.PrinterName = "58 Printer"
         rpt.PrintToPrinter(1, False, 0, 0)
         'fakturjual.ShowDialog()
         'fakturjual.Dispose()
