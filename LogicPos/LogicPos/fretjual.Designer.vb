@@ -42,7 +42,7 @@ Partial Class fretjual
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(16, 77)
+        Me.Label1.Location = New System.Drawing.Point(16, 80)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(96, 18)
         Me.Label1.TabIndex = 0
@@ -52,6 +52,7 @@ Partial Class fretjual
         '
         Me.txtretur.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtretur.Location = New System.Drawing.Point(118, 77)
+        Me.txtretur.MaxLength = 12
         Me.txtretur.Name = "txtretur"
         Me.txtretur.Size = New System.Drawing.Size(100, 24)
         Me.txtretur.TabIndex = 1

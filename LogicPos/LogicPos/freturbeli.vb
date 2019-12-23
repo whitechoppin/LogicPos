@@ -5,18 +5,44 @@ Imports DevExpress.XtraGrid.Views.Grid
 Public Class freturbeli
     Public tabel1, tabel2 As DataTable
     'variabel dalam penjualan
-    Dim jenis, satuan, kodepenjualan As String
+    Dim jenis, satuan, kodereturbeli As String
     Dim banyak As Double
-    'variabel bantuan view penjualan
+
+    'variabel bantuan view pembelian
     'Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan, viewpembayaran As String
     'Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
     'Dim viewtglpenjualan, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
-    'variabel edit penjualan
-    'Dim countingbarang As Integer
+
+    Private Sub freturbeli_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.MdiParent = fmenu
+        Call koneksii()
+        'Call printer()
+        'Call cek_kas()
+
+        'kodereturbeli = currentnumber()
+        'Call inisialisasi(kodereturbeli)
+
+        Call awalbaru()
+        With GridView1
+            'agar muncul footer untuk sum/avg/count
+            .OptionsView.ShowFooter = True
+            'buat sum harga
+            .Columns("qty").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "qty", "{0:n0}")
+            .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
+        End With
+        With GridView2
+            'agar muncul footer untuk sum/avg/count
+            .OptionsView.ShowFooter = True
+            'buat sum harga
+            .Columns("qty").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "qty", "{0:n0}")
+            .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
+        End With
+    End Sub
+
     Function autonumber()
         Call koneksii()
-        sql = "SELECT RIGHT(kode_retur_beli,3) FROM tb_retur_pembelian WHERE DATE_FORMAT(MID(`kode_retur_beli`, 3 , 6), ' %y ')+ MONTH(MID(`kode_retur_beli`,3 , 6)) + DAY(MID(`kode_retur_beli`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_retur_beli,3) DESC"
+        sql = "SELECT RIGHT(kode_retur,3) FROM tb_retur_pembelian WHERE DATE_FORMAT(MID(`kode_retur`, 3 , 6), ' %y ')+ MONTH(MID(`kode_retur`,3 , 6)) + DAY(MID(`kode_retur`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_retur,3) DESC"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -56,7 +82,7 @@ Public Class freturbeli
             dr = cmmd.ExecuteReader()
         Next
 
-        sql = "delete from tb_pembelian_detail where kode_pembelian = '" & txtnonota.Text & "'"
+        sql = "DELETE FROM tb_pembelian_detail WHERE kode_pembelian = '" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
@@ -67,51 +93,25 @@ Public Class freturbeli
         Next
 
         Dim total_pembelian As Double = GridView1.Columns("subtotal").SummaryItem.SummaryValue
-        sql = "update tb_pembelian set total_pembelian = '" & total_pembelian & "'"
+        sql = "UPDATE tb_pembelian SET total_pembelian = '" & total_pembelian & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
         For i As Integer = 0 To GridView2.RowCount - 1
-            sql = "INSERT INTO tb_retur_pembelian_detail ( kode_retur_beli, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_beli, subtotal, created_by, updated_by,date_created, last_updated) VALUES ('" & koderetur & "', '" & GridView2.GetRowCellValue(i, "kode_stok") & "', '" & GridView2.GetRowCellValue(i, "kode_barang") & "', '" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView2.GetRowCellValue(i, "harga_beli") & "','" & GridView2.GetRowCellValue(i, "subtotal") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_retur_pembelian_detail (kode_retur, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty, harga_beli, subtotal, created_by, updated_by, date_created, last_updated) VALUES ('" & koderetur & "','" & GridView2.GetRowCellValue(i, "kode_barang") & "','" & GridView2.GetRowCellValue(i, "kode_stok") & "','" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView2.GetRowCellValue(i, "harga_beli") & "','" & GridView2.GetRowCellValue(i, "subtotal") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Next
 
         Dim total_retur As Double = GridView2.Columns("subtotal").SummaryItem.SummaryValue
-        sql = "INSERT INTO tb_retur_pembelian (kode_retur_beli, kode_user,kode_pembelian ,total_retur_beli ,created_by, updated_by, date_created, last_updated) VALUES ('" & koderetur & "','Testing','" & txtnonota.Text & "','" & total_retur & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+        sql = "INSERT INTO tb_retur_pembelian (kode_retur, kode_user,kode_pembelian ,total_retur ,created_by, updated_by, date_created, last_updated) VALUES ('" & koderetur & "','Testing','" & txtnonota.Text & "','" & total_retur & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
         MsgBox("Retur Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
         Call awalbaru()
     End Sub
-    Private Sub btnproses_Click(sender As Object, e As EventArgs) Handles btnproses.Click
-        Call simpan()
-    End Sub
 
-    Private Sub freturbeli_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.MdiParent = fmenu
-        Call koneksii()
-        'Call printer()
-        'Call cek_kas()
-        'kodepenjualan = currentnumber()
-        'Call inisialisasi(kodepenjualan)
-        Call awalbaru()
-        With GridView1
-            'agar muncul footer untuk sum/avg/count
-            .OptionsView.ShowFooter = True
-            'buat sum harga
-            .Columns("qty").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "qty", "{0:n0}")
-            .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
-        End With
-        With GridView2
-            'agar muncul footer untuk sum/avg/count
-            .OptionsView.ShowFooter = True
-            'buat sum harga
-            .Columns("qty").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "qty", "{0:n0}")
-            .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
-        End With
-    End Sub
     Sub awalbaru()
         'header
         txtnonota.Clear()
@@ -138,6 +138,7 @@ Public Class freturbeli
 
         End With
         GridControl1.DataSource = tabel1
+
         GridColumn1.FieldName = "kode_stok"
         GridColumn1.Caption = "Kode Stok"
         GridColumn1.Width = 30
@@ -226,10 +227,11 @@ Public Class freturbeli
         GridColumn16.DisplayFormat.FormatString = "{0:n0}"
         GridColumn16.Width = 55
     End Sub
+
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
         txtnonota.Clear()
-
+        txtsupplier.Clear()
     End Sub
     Sub previewpembelian(lihat As String)
         sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
@@ -253,8 +255,45 @@ Public Class freturbeli
         End If
 
     End Sub
+
+    Private Sub btncarinota_Click(sender As Object, e As EventArgs) Handles btncarinota.Click
+
+    End Sub
+
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
         Call cari_nota()
+    End Sub
+
+    Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
+
+    End Sub
+
+    Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
+        Call simpan()
+    End Sub
+
+    Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+
+    End Sub
+
+    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+
+    End Sub
+
+    Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
+
+    End Sub
+
+    Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
+
+    End Sub
+
+    Private Sub btngoretur_Click(sender As Object, e As EventArgs) Handles btngoretur.Click
+
+    End Sub
+
+    Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
+
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         fretbeli.kode_barang = GridView1.GetFocusedRowCellValue("kode_barang")
@@ -264,9 +303,8 @@ Public Class freturbeli
         fretbeli.jenis_barang = GridView1.GetFocusedRowCellValue("jenis_barang")
         fretbeli.banyak = GridView1.GetFocusedRowCellValue("qty")
         fretbeli.harga_beli = GridView1.GetFocusedRowCellValue("harga_beli")
-
         fretbeli.subtotal = GridView1.GetFocusedRowCellValue("subtotal")
-        'GridView1.DeleteRow(GridView1.GetRowHandle(info.RowHandle))
+
         fretbeli.ShowDialog()
     End Sub
     Private Sub GridView2_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView2.KeyDown

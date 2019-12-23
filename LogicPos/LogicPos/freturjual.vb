@@ -744,9 +744,8 @@ Public Class freturjual
 
             If info.InRow OrElse info.InRowCell Then
                 Dim colCaption As String = If(info.Column Is Nothing, "N/A", info.Column.GetCaption())
-                'MessageBox.Show(String.Format("DoubleClick on row: {0}, column: {1}.", info.RowHandle, colCaption))
             End If
-            'GridView1.DeleteRow(GridView1.GetRowHandle(info.RowHandle))
+
             fretjual.ShowDialog()
         End If
     End Sub
