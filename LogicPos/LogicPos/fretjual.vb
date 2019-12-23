@@ -1,6 +1,7 @@
 ﻿Public Class fretjual
     Public kode_barang, kode_stok, nama_barang, satuan_barang, jenis_barang As String
-    Public banyak, harga_satuan, diskon_persen, diskon_nominal, harga_diskon, subtotal, laba, modal_barang, banyak_selisih As Double
+    Public banyak, harga_satuan, diskon_persen, diskon_nominal, harga_diskon, subtotal, laba, modal_barang, banyak_selisih, banyak_retur As Double
+
     Private Sub fretjual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call awal()
     End Sub
@@ -116,6 +117,16 @@
     End Sub
     Private Sub txtretur_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtretur.KeyPress
         e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtretur_TextChanged(sender As Object, e As EventArgs) Handles txtretur.TextChanged
+        If txtretur.Text = "" Then
+            txtretur.Text = 0
+        Else
+            banyak_retur = txtretur.Text
+            txtretur.Text = Format(banyak_retur, "##,##0")
+            txtretur.SelectionStart = Len(txtretur.Text)
+        End If
     End Sub
 
 End Class

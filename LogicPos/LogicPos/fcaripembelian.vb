@@ -16,7 +16,7 @@ Public Class fcaripembelian
     Sub tabel()
         'Call koneksii()
         Using cnn As New OdbcConnection(strConn)
-            sql = "Select tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian from tb_pembelian"
+            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian FROM tb_pembelian"
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet
@@ -29,8 +29,8 @@ Public Class fcaripembelian
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        If tutupjual = 1 Then
-            fpembelian.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+        If tutupbeli = 1 Then
+            freturbeli.txtnonota.Text = Me.GridView1.GetFocusedRowCellValue("kode_pembelian")
         End If
         Me.Hide()
     End Sub

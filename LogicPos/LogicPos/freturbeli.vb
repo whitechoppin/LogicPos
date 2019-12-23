@@ -9,9 +9,9 @@ Public Class freturbeli
     Dim banyak As Double
 
     'variabel bantuan view pembelian
-    'Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan, viewpembayaran As String
-    'Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
-    'Dim viewtglpenjualan, viewtgljatuhtempo As DateTime
+    Dim nomorretur, nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan As String
+    Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
+    Dim viewtglretur, viewtglpembelian, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
 
     Private Sub freturbeli_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -20,8 +20,8 @@ Public Class freturbeli
         'Call printer()
         'Call cek_kas()
 
-        'kodereturbeli = currentnumber()
-        'Call inisialisasi(kodereturbeli)
+        kodereturbeli = currentnumber()
+        Call inisialisasi(kodereturbeli)
 
         Call awalbaru()
         With GridView1
@@ -71,6 +71,284 @@ Public Class freturbeli
         End Try
         Return pesan
     End Function
+
+    Function currentnumber()
+        Call koneksii()
+        sql = "SELECT kode_retur FROM tb_retur_pembelian ORDER BY kode_retur DESC LIMIT 1;"
+        Dim pesan As String = ""
+        Try
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                dr.Read()
+                Return dr.Item(0).ToString
+            Else
+                Return ""
+            End If
+
+        Catch ex As Exception
+            pesan = ex.Message.ToString
+        Finally
+            cnn.Close()
+        End Try
+        Return pesan
+    End Function
+
+    Private Sub prevnumber(previousnumber As String)
+        Call koneksii()
+        sql = "SELECT kode_retur FROM tb_retur_pembelian WHERE date_created < (SELECT date_created FROM tb_retur_pembelian WHERE kode_retur = '" + previousnumber + "') ORDER BY date_created DESC LIMIT 1"
+        Dim pesan As String = ""
+        Try
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                dr.Read()
+                Call inisialisasi(dr.Item(0).ToString)
+            Else
+                Call inisialisasi(previousnumber)
+            End If
+        Catch ex As Exception
+            pesan = ex.Message.ToString
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+    Private Sub nextnumber(nextingnumber As String)
+        Call koneksii()
+        sql = "SELECT kode_retur FROM tb_retur_pembelian WHERE date_created > (SELECT date_created FROM tb_retur_pembelian WHERE kode_retur = '" + nextingnumber + "') ORDER BY date_created ASC LIMIT 1"
+        Dim pesan As String = ""
+        Try
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                dr.Read()
+                Call inisialisasi(dr.Item(0).ToString)
+            Else
+                Call inisialisasi(nextingnumber)
+            End If
+        Catch ex As Exception
+            pesan = ex.Message.ToString
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Sub previewreturpembelian(lihatbeli As String, lihatretur As String)
+        Call koneksii()
+        sql = "SELECT * FROM tb_pembelian WHERE kode_pembelian ='" & lihatbeli & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            nomorsupplier = dr("kode_supplier")
+            nomorgudang = dr("kode_gudang")
+            viewtglpembelian = dr("tgl_pembelian")
+            viewtgljatuhtempo = dr("tgl_jatuhtempo_pembelian")
+
+            cmbgudang.Text = nomorgudang
+            dtpembelian.Value = viewtglpembelian
+            dtjatuhtempo.Value = viewtgljatuhtempo
+        End While
+
+        sql = "SELECT * FROM tb_supplier WHERE kode_supplier ='" & nomorsupplier & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            txtsupplier.Text = dr("nama_supplier")
+            txttelp.Text = dr("telepon_supplier")
+            txtalamat.Text = dr("alamat_supplier")
+        End While
+
+        sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihatbeli & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            tabel1.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - dr("diskon") / 100, Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
+            GridControl1.RefreshDataSource()
+        End While
+
+        sql = "SELECT * FROM tb_retur_pembelian_detail WHERE kode_retur ='" & lihatretur & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            tabel2.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - dr("diskon") / 100, Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
+            GridControl2.RefreshDataSource()
+        End While
+
+    End Sub
+
+    Sub comboboxuser()
+        Call koneksii()
+        cmbsales.Items.Clear()
+        cmbsales.AutoCompleteCustomSource.Clear()
+        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbsales.AutoCompleteCustomSource.Add(dr("kode_user"))
+                cmbsales.Items.Add(dr("kode_user"))
+            End While
+        End If
+    End Sub
+
+    Sub awalbaru()
+        'bersihkan dan set default value
+        'button tools
+        btnbaru.Enabled = False
+        btnsimpan.Enabled = True
+        btnprint.Enabled = False
+        btnedit.Enabled = False
+        btnbatal.Enabled = True
+
+        'button navigations
+        btnprev.Enabled = False
+        btngoretur.Enabled = False
+        txtgoretur.Enabled = False
+        btnnext.Enabled = False
+
+        'header
+        txtnoretur.Clear()
+        txtnoretur.Text = autonumber()
+        txtnoretur.Enabled = False
+
+        txtnonota.Clear()
+        txtnonota.Enabled = True
+        btncarinota.Enabled = True
+        btngo.Enabled = True
+
+        cmbsales.Enabled = True
+
+        txtsupplier.Clear()
+        txttelp.Clear()
+        txtalamat.Clear()
+
+        dtreturbeli.Enabled = True
+        dtreturbeli.Value = Date.Now
+
+        GridControl1.Enabled = True
+        GridView1.OptionsBehavior.Editable = False
+
+        GridControl2.Enabled = True
+        GridView2.OptionsBehavior.Editable = False
+
+        'buat tabel
+        Call tabel_utama()
+        Call tabel_retur()
+
+        Call comboboxuser()
+    End Sub
+
+    Sub inisialisasi(nomorkode As String)
+
+        'bersihkan dan set default value
+        'button tools
+        btnbaru.Enabled = True
+        btnsimpan.Enabled = False
+        btnprint.Enabled = True
+        btnedit.Enabled = True
+        btnbatal.Enabled = False
+
+        'button navigations
+        btnprev.Enabled = True
+        btngoretur.Enabled = True
+        txtgoretur.Enabled = True
+        btnnext.Enabled = True
+
+        'header
+        txtnoretur.Clear()
+        txtnoretur.Text = autonumber()
+        txtnoretur.Enabled = False
+
+        txtnonota.Clear()
+        txtnonota.Enabled = False
+        btncarinota.Enabled = False
+        btngo.Enabled = False
+
+        cmbsales.Enabled = False
+
+        txtsupplier.Clear()
+        txttelp.Clear()
+        txtalamat.Clear()
+
+        dtreturbeli.Enabled = False
+        dtreturbeli.Value = Date.Now
+
+        GridControl1.Enabled = True
+        GridView1.OptionsBehavior.Editable = False
+
+        GridControl2.Enabled = True
+        GridView2.OptionsBehavior.Editable = False
+
+        Call tabel_utama()
+        Call tabel_retur()
+
+        'total tabel penjualan
+        txtketerangan.Enabled = False
+        txtketerangan.Clear()
+
+        If nomorkode IsNot "" Then
+            Using cnn As New OdbcConnection(strConn)
+                sql = "SELECT * FROM tb_retur_pembelian WHERE kode_retur = '" + nomorkode.ToString + "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                cnn.Open()
+                dr = cmmd.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    'header
+                    nomorretur = dr("kode_retur")
+                    nomorsales = dr("kode_user")
+                    nomornota = dr("kode_pembelian")
+                    viewtglretur = dr("tgl_returbeli")
+
+                    statusvoid = dr("void_returbeli")
+                    statusprint = dr("print_returbeli")
+                    statusposted = dr("posted_returbeli")
+
+                    viewketerangan = dr("keterangan_returbeli")
+
+                    txtnoretur.Text = nomorretur
+                    cmbsales.Text = nomorsales
+                    txtnonota.Text = nomornota
+                    dtreturbeli.Value = viewtglretur
+
+                    cbvoid.Checked = statusvoid
+                    cbprinted.Checked = statusprint
+                    cbposted.Checked = statusposted
+
+                    'isi tabel view pembelian
+
+                    Call previewreturpembelian(nomornota, nomorkode)
+
+                    'total tabel pembelian
+
+                    txtketerangan.Text = viewketerangan
+
+                    cnn.Close()
+                End If
+            End Using
+        Else
+            txtnoretur.Clear()
+            txtnonota.Clear()
+            dtreturbeli.Value = Date.Now
+            cmbsales.Text = ""
+
+            cbvoid.Checked = False
+            cbprinted.Checked = False
+            cbposted.Checked = False
+
+            txtsupplier.Clear()
+            txttelp.Clear()
+            txtalamat.Clear()
+
+            dtpembelian.Value = Date.Now
+            dtjatuhtempo.Value = Date.Now
+
+            cmbgudang.Text = ""
+
+            txtketerangan.Text = ""
+        End If
+
+    End Sub
+
     Sub simpan()
         Call koneksii()
         Dim koderetur As String = autonumber()
@@ -112,18 +390,6 @@ Public Class freturbeli
         Call awalbaru()
     End Sub
 
-    Sub awalbaru()
-        'header
-        txtnonota.Clear()
-        txtnonota.Enabled = True
-
-        GridControl1.Enabled = True
-        GridView1.OptionsBehavior.Editable = False
-
-        'buat tabel
-        Call tabel_utama()
-        Call tabel_retur()
-    End Sub
     Sub tabel_utama()
         tabel1 = New DataTable
         With tabel1
@@ -233,7 +499,9 @@ Public Class freturbeli
         txtnonota.Clear()
         txtsupplier.Clear()
     End Sub
-    Sub previewpembelian(lihat As String)
+    Sub loadingpembelian(lihat As String)
+        Call tabel_utama()
+        Call tabel_retur()
         sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -246,18 +514,38 @@ Public Class freturbeli
     End Sub
     Sub cari_nota()
         Call koneksii()
-        sql = "Select * From tb_pembelian where tb_pembelian.kode_pembelian = '" & txtnonota.Text & "'"
+        sql = "SELECT * FROM tb_pembelian JOIN tb_supplier ON tb_supplier.kode_supplier = tb_pembelian.kode_supplier WHERE tb_pembelian.kode_pembelian = '" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             'jika ditemukan
-            Call previewpembelian(txtnonota.Text)
+            txtsupplier.Text = dr("nama_supplier")
+            txttelp.Text = dr("telepon_supplier")
+            txtalamat.Text = dr("alamat_supplier")
+
+            viewtglpembelian = dr("tgl_pembelian")
+            viewtgljatuhtempo = dr("tgl_jatuhtempo_pembelian")
+
+            dtpembelian.Value = viewtglpembelian
+            dtjatuhtempo.Value = viewtgljatuhtempo
+            cmbgudang.Text = dr("kode_gudang")
+
+            Call loadingpembelian(txtnonota.Text)
+        Else
+            'jika tidak ditemukan
+
+            txtsupplier.Text = ""
+            txttelp.Text = ""
+            txtalamat.Text = ""
+
+            MsgBox("Nota Tidak Ditemukan", MsgBoxStyle.Information, "Gagal")
         End If
 
     End Sub
 
     Private Sub btncarinota_Click(sender As Object, e As EventArgs) Handles btncarinota.Click
-
+        tutupbeli = 1
+        fcaripembelian.Show()
     End Sub
 
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
@@ -265,11 +553,27 @@ Public Class freturbeli
     End Sub
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
-
+        Call awalbaru()
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
-        Call simpan()
+        If GridView2.DataRowCount > 0 Then
+            If txtnoretur.Text IsNot "" Then
+                If txtnonota.Text IsNot "" Then
+                    If cmbsales.Text IsNot "" Then
+                        Call simpan()
+                    Else
+                        MsgBox("Isi Sales")
+                    End If
+                Else
+                    MsgBox("Isi No Retur")
+                End If
+            Else
+                MsgBox("Isi No Nota")
+            End If
+        Else
+            MsgBox("Keranjang Retur Masih Kosong")
+        End If
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
@@ -277,7 +581,12 @@ Public Class freturbeli
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-
+        If btnedit.Text.Equals("Edit") Then
+            Call inisialisasi(kodereturbeli)
+        ElseIf btnedit.Text.Equals("Update") Then
+            btnedit.Text = "Edit"
+            Call inisialisasi(txtnoretur.Text)
+        End If
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click

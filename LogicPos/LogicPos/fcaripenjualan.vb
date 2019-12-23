@@ -16,7 +16,7 @@ Public Class fcaripenjualan
     Sub tabel()
         'Call koneksii()
         Using cnn As New OdbcConnection(strConn)
-            sql = "Select tb_penjualan.kode_penjualan, tb_penjualan.total_penjualan from tb_penjualan"
+            sql = "SELECT tb_penjualan.kode_penjualan, tb_penjualan.total_penjualan FROM tb_penjualan"
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet
