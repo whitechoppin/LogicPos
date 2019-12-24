@@ -14,9 +14,9 @@
         If freturjual.GridView2.RowCount = 0 Then
             Dim Lokasi As Integer
             'jika 0 di tambah
-            freturjual.tabel2.Rows.Add(kode_barang, kode_stok, nama_barang, Val(txtretur.Text), satuan_barang, jenis_barang, harga_satuan, diskon_persen, diskon_nominal, harga_diskon, Val(harga_diskon * Val(txtretur.Text)), laba, modal_barang)
+            freturjual.tabel2.Rows.Add(kode_barang, kode_stok, nama_barang, banyak_retur, satuan_barang, jenis_barang, harga_satuan, diskon_persen, diskon_nominal, harga_diskon, Val(harga_diskon * banyak_retur), laba, modal_barang)
             freturjual.GridControl2.RefreshDataSource()
-            If (banyak - Val(txtretur.Text)).Equals(0) Then
+            If (banyak - banyak_retur).Equals(0) Then
                 For i As Integer = 0 To freturjual.GridView1.RowCount - 1
                     If freturjual.GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok) Then
                         'freturjual.GridView1.DeleteRow(i)
@@ -33,8 +33,8 @@
             Else
                 For i As Integer = 0 To freturjual.GridView1.RowCount - 1
                     If freturjual.GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok) Then
-                        freturjual.GridView1.SetRowCellValue(i, "banyak", banyak - Val(txtretur.Text))
-                        freturjual.GridView1.SetRowCellValue(i, "subtotal", harga_diskon * (banyak - Val(txtretur.Text)))
+                        freturjual.GridView1.SetRowCellValue(i, "banyak", banyak - banyak_retur)
+                        freturjual.GridView1.SetRowCellValue(i, "subtotal", harga_diskon * (banyak - banyak_retur))
                         Me.Close()
                     End If
                 Next
@@ -48,19 +48,19 @@
                 If freturjual.GridView2.GetRowCellValue(i, "kode_stok") = kode_stok Then
                     lokasi = i
                     Dim banyak As Integer = freturjual.GridView2.GetRowCellValue(lokasi, "banyak")
-                    freturjual.GridView2.SetRowCellValue(i, "banyak", banyak + Val(txtretur.Text))
-                    freturjual.GridView2.SetRowCellValue(i, "subtotal", harga_diskon * (banyak + Val(txtretur.Text)))
+                    freturjual.GridView2.SetRowCellValue(i, "banyak", banyak + banyak_retur)
+                    freturjual.GridView2.SetRowCellValue(i, "subtotal", harga_diskon * (banyak + banyak_retur))
                     'hapus jika banyak = 0
                     For a As Integer = 0 To freturjual.GridView1.RowCount - 1
                         If freturjual.GridView1.GetRowCellValue(a, "kode_stok") = kode_stok Then
                             lokasi1 = a
                             Dim banyak_potong As Integer = freturjual.GridView1.GetRowCellValue(lokasi1, "banyak")
-                            If (banyak_potong - txtretur.Text).Equals(0) Then
+                            If (banyak_potong - banyak_retur).Equals(0) Then
                                 freturjual.GridView1.DeleteRow(lokasi1)
 
                                 'MsgBox("bagian 3")
                             Else
-                                freturjual.GridView1.SetRowCellValue(lokasi1, "banyak", freturjual.GridView1.GetRowCellValue(lokasi1, "banyak") - Val(txtretur.Text))
+                                freturjual.GridView1.SetRowCellValue(lokasi1, "banyak", freturjual.GridView1.GetRowCellValue(lokasi1, "banyak") - banyak_retur)
                                 freturjual.GridView1.SetRowCellValue(lokasi1, "subtotal", harga_diskon * freturjual.GridView1.GetRowCellValue(lokasi1, "banyak"))
 
                                 'MsgBox("bagian 4")
@@ -83,18 +83,18 @@
                 End If
             Next
 
-            freturjual.tabel2.Rows.Add(kode_barang, kode_stok, nama_barang, Val(txtretur.Text), satuan_barang, jenis_barang, harga_satuan, diskon_persen, diskon_nominal, harga_diskon, subtotal, laba, modal_barang)
+            freturjual.tabel2.Rows.Add(kode_barang, kode_stok, nama_barang, banyak_retur, satuan_barang, jenis_barang, harga_satuan, diskon_persen, diskon_nominal, harga_diskon, subtotal, laba, modal_barang)
             freturjual.GridControl2.RefreshDataSource()
 
             For i As Integer = 0 To freturjual.GridView1.RowCount - 1
                 Dim lokasi2 As Integer
                 If freturjual.GridView1.GetRowCellValue(i, "kode_stok") = kode_stok Then
                     lokasi2 = i
-                    If banyak - Val(txtretur.Text) = 0 Then
+                    If banyak - banyak_retur = 0 Then
                         freturjual.GridView1.DeleteRow(lokasi2)
                     Else
-                        freturjual.GridView1.SetRowCellValue(lokasi2, "banyak", banyak - Val(txtretur.Text))
-                        freturjual.GridView1.SetRowCellValue(lokasi2, "subtotal", harga_diskon * (banyak - Val(txtretur.Text)))
+                        freturjual.GridView1.SetRowCellValue(lokasi2, "banyak", banyak - banyak_retur)
+                        freturjual.GridView1.SetRowCellValue(lokasi2, "subtotal", harga_diskon * (banyak - banyak_retur))
                     End If
                     Me.Close()
                     Exit Sub
@@ -105,8 +105,9 @@
     End Sub
     Private Sub btnok_Click(sender As Object, e As EventArgs) Handles btnok.Click
 
-        If Val(txtretur.Text) > banyak Or txtretur.Text.Trim.Length = 0 Then
-            Exit Sub
+        If banyak_retur > banyak Or txtretur.Text.Trim.Length = 0 Then
+            MsgBox("Retur Kelebihan !")
+            'Exit Sub
         Else
             banyak_selisih = banyak - Val(txtretur.Text)
             'freturjual.tabel1.Rows.Add(kode_stok, kode_barang, nama_barang, banyak_selisih, satuan_barang, jenis_barang, harga_satuan, diskon_persen, diskon_nominal, harga_diskon, subtotal, laba, modal_barang)
