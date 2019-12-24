@@ -196,7 +196,7 @@ Public Class freturbeli
         btnbaru.Enabled = False
         btnsimpan.Enabled = True
         btnprint.Enabled = False
-        btnedit.Enabled = False
+        'btnedit.Enabled = False
         btnbatal.Enabled = True
 
         'button navigations
@@ -248,7 +248,7 @@ Public Class freturbeli
         btnbaru.Enabled = True
         btnsimpan.Enabled = False
         btnprint.Enabled = True
-        btnedit.Enabled = True
+        'btnedit.Enabled = True
         btnbatal.Enabled = False
 
         'button navigations
@@ -582,7 +582,7 @@ Public Class freturbeli
 
     End Sub
 
-    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+    Private Sub btnedit_Click(sender As Object, e As EventArgs)
         'If btnedit.Text.Equals("Edit") Then
         '    btnedit.Text = "Update"
         '    Call awaledit()
@@ -616,12 +616,9 @@ Public Class freturbeli
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
-        If btnedit.Text.Equals("Edit") Then
-            Call inisialisasi(kodereturbeli)
-        ElseIf btnedit.Text.Equals("Update") Then
-            btnedit.Text = "Edit"
-            Call inisialisasi(txtnoretur.Text)
-        End If
+
+        Call inisialisasi(kodereturbeli)
+
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click

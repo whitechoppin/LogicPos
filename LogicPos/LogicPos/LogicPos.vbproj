@@ -394,6 +394,12 @@
     <Compile Include="validasiangka.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="fkaskeluar.resx">
+      <DependentUpon>fkaskeluar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fkasmasuk.resx">
+      <DependentUpon>fkasmasuk.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Struk_Penjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Struk_Penjualan.vb</LastGenOutput>

@@ -22,8 +22,17 @@ Partial Class fkaskeluar
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container
+        Me.SuspendLayout()
+        '
+        'fkaskeluar
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ClientSize = New System.Drawing.Size(1030, 483)
+        Me.Name = "fkaskeluar"
         Me.Text = "fkaskeluar"
+        Me.ResumeLayout(False)
+
     End Sub
 End Class

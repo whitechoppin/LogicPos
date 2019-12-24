@@ -93,7 +93,6 @@ Partial Class freturjual
         Me.txtgoretur = New System.Windows.Forms.TextBox()
         Me.btngoretur = New System.Windows.Forms.Button()
         Me.btnbatal = New System.Windows.Forms.Button()
-        Me.btnedit = New System.Windows.Forms.Button()
         Me.btnbaru = New System.Windows.Forms.Button()
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnsimpan = New System.Windows.Forms.Button()
@@ -822,7 +821,6 @@ Partial Class freturjual
         '
         Me.GroupBox4.Controls.Add(Me.GroupBox5)
         Me.GroupBox4.Controls.Add(Me.btnbatal)
-        Me.GroupBox4.Controls.Add(Me.btnedit)
         Me.GroupBox4.Controls.Add(Me.btnbaru)
         Me.GroupBox4.Controls.Add(Me.btnprint)
         Me.GroupBox4.Controls.Add(Me.btnsimpan)
@@ -882,21 +880,12 @@ Partial Class freturjual
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(412, 23)
+        Me.btnbatal.Location = New System.Drawing.Point(311, 23)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(93, 35)
         Me.btnbatal.TabIndex = 4
         Me.btnbatal.Text = "Batal"
         Me.btnbatal.UseVisualStyleBackColor = True
-        '
-        'btnedit
-        '
-        Me.btnedit.Location = New System.Drawing.Point(313, 23)
-        Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(93, 35)
-        Me.btnedit.TabIndex = 1
-        Me.btnedit.Text = "Edit"
-        Me.btnedit.UseVisualStyleBackColor = True
         '
         'btnbaru
         '
@@ -1035,7 +1024,6 @@ Partial Class freturjual
     Friend WithEvents txtgoretur As TextBox
     Friend WithEvents btngoretur As Button
     Friend WithEvents btnbatal As Button
-    Friend WithEvents btnedit As Button
     Friend WithEvents btnbaru As Button
     Friend WithEvents btnprint As Button
     Friend WithEvents btnsimpan As Button
