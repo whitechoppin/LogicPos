@@ -925,8 +925,9 @@ Public Class fpenjualan
         rpt = New Struk_Penjualan
         rpt.SetDataSource(tabel_struk)
         'rpt.SetParameterValue("total", total2)
-        'rpt.SetParameterValue("nofaktur", autonumber)
-        'rpt.SetParameterValue("kasir", fmenu.statususer.Text)
+        rpt.SetParameterValue("nofaktur", autonumber)
+        rpt.SetParameterValue("kasir", fmenu.statususer.Text)
+        rpt.SetParameterValue("customer", txtcustomer.Text)
 
         'If cash = True Then
         '    rpt.SetParameterValue("bayar", "CASH")
