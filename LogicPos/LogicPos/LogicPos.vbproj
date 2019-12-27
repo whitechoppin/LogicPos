@@ -97,6 +97,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fakturpenjualan.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fakturpenjualan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Struk_Penjualan.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -395,6 +401,10 @@
     <Compile Include="validasiangka.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="fakturpenjualan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>fakturpenjualan.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="fkaskeluar.resx">
       <DependentUpon>fkaskeluar.vb</DependentUpon>
     </EmbeddedResource>
