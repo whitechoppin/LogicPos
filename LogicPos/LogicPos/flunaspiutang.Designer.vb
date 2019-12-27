@@ -107,6 +107,10 @@ Partial Class flunaspiutang
         '
         'GridColumn1
         '
+        Me.GridColumn1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn1.AppearanceCell.Options.UseFont = True
+        Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn1.AppearanceHeader.Options.UseFont = True
         Me.GridColumn1.Caption = "Kode Penjualan"
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.Visible = True
@@ -114,6 +118,10 @@ Partial Class flunaspiutang
         '
         'GridColumn2
         '
+        Me.GridColumn2.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn2.AppearanceCell.Options.UseFont = True
+        Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn2.AppearanceHeader.Options.UseFont = True
         Me.GridColumn2.Caption = "Kode Customer"
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
@@ -121,6 +129,10 @@ Partial Class flunaspiutang
         '
         'GridColumn3
         '
+        Me.GridColumn3.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn3.AppearanceCell.Options.UseFont = True
+        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn3.AppearanceHeader.Options.UseFont = True
         Me.GridColumn3.Caption = "Kode Gudang"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
@@ -128,6 +140,10 @@ Partial Class flunaspiutang
         '
         'GridColumn4
         '
+        Me.GridColumn4.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn4.AppearanceCell.Options.UseFont = True
+        Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn4.AppearanceHeader.Options.UseFont = True
         Me.GridColumn4.Caption = "Kode User"
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
@@ -135,6 +151,10 @@ Partial Class flunaspiutang
         '
         'GridColumn5
         '
+        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceCell.Options.UseFont = True
+        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
         Me.GridColumn5.Caption = "Tgl Penjualan"
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
@@ -142,6 +162,10 @@ Partial Class flunaspiutang
         '
         'GridColumn6
         '
+        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceCell.Options.UseFont = True
+        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
         Me.GridColumn6.Caption = "Tgl Jatuh Tempo"
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.Visible = True
@@ -149,6 +173,10 @@ Partial Class flunaspiutang
         '
         'GridColumn7
         '
+        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceCell.Options.UseFont = True
+        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
         Me.GridColumn7.Caption = "Diskon"
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
@@ -156,6 +184,10 @@ Partial Class flunaspiutang
         '
         'GridColumn8
         '
+        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceCell.Options.UseFont = True
+        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
         Me.GridColumn8.Caption = "Pajak"
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.Visible = True
@@ -163,6 +195,10 @@ Partial Class flunaspiutang
         '
         'GridColumn9
         '
+        Me.GridColumn9.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceCell.Options.UseFont = True
+        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceHeader.Options.UseFont = True
         Me.GridColumn9.Caption = "Ongkir"
         Me.GridColumn9.Name = "GridColumn9"
         Me.GridColumn9.Visible = True
@@ -170,6 +206,10 @@ Partial Class flunaspiutang
         '
         'GridColumn10
         '
+        Me.GridColumn10.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn10.AppearanceCell.Options.UseFont = True
+        Me.GridColumn10.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn10.AppearanceHeader.Options.UseFont = True
         Me.GridColumn10.Caption = "Total"
         Me.GridColumn10.Name = "GridColumn10"
         Me.GridColumn10.Visible = True
@@ -600,6 +640,10 @@ Partial Class flunaspiutang
         '
         'GridColumn11
         '
+        Me.GridColumn11.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn11.AppearanceCell.Options.UseFont = True
+        Me.GridColumn11.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn11.AppearanceHeader.Options.UseFont = True
         Me.GridColumn11.Caption = "Kode Lunas"
         Me.GridColumn11.Name = "GridColumn11"
         Me.GridColumn11.Visible = True
@@ -607,6 +651,10 @@ Partial Class flunaspiutang
         '
         'GridColumn12
         '
+        Me.GridColumn12.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn12.AppearanceCell.Options.UseFont = True
+        Me.GridColumn12.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn12.AppearanceHeader.Options.UseFont = True
         Me.GridColumn12.Caption = "Kode Penjualan"
         Me.GridColumn12.Name = "GridColumn12"
         Me.GridColumn12.Visible = True
@@ -614,6 +662,10 @@ Partial Class flunaspiutang
         '
         'GridColumn13
         '
+        Me.GridColumn13.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn13.AppearanceCell.Options.UseFont = True
+        Me.GridColumn13.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn13.AppearanceHeader.Options.UseFont = True
         Me.GridColumn13.Caption = "Tanggal Transaksi"
         Me.GridColumn13.Name = "GridColumn13"
         Me.GridColumn13.Visible = True
@@ -621,6 +673,10 @@ Partial Class flunaspiutang
         '
         'GridColumn14
         '
+        Me.GridColumn14.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn14.AppearanceCell.Options.UseFont = True
+        Me.GridColumn14.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn14.AppearanceHeader.Options.UseFont = True
         Me.GridColumn14.Caption = "Kode User"
         Me.GridColumn14.Name = "GridColumn14"
         Me.GridColumn14.Visible = True
@@ -628,6 +684,10 @@ Partial Class flunaspiutang
         '
         'GridColumn15
         '
+        Me.GridColumn15.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn15.AppearanceCell.Options.UseFont = True
+        Me.GridColumn15.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn15.AppearanceHeader.Options.UseFont = True
         Me.GridColumn15.Caption = "Kode Kas"
         Me.GridColumn15.Name = "GridColumn15"
         Me.GridColumn15.Visible = True
@@ -635,6 +695,10 @@ Partial Class flunaspiutang
         '
         'GridColumn16
         '
+        Me.GridColumn16.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn16.AppearanceCell.Options.UseFont = True
+        Me.GridColumn16.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn16.AppearanceHeader.Options.UseFont = True
         Me.GridColumn16.Caption = "Bayar Kas"
         Me.GridColumn16.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn16.Name = "GridColumn16"

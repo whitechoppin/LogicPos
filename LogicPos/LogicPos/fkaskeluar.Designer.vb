@@ -31,6 +31,7 @@ Partial Class fkaskeluar
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1030, 483)
         Me.Name = "fkaskeluar"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Akun Kas Keluar"
         Me.ResumeLayout(False)
 
