@@ -66,8 +66,103 @@ Public Class fkasmasuk
         Call kolom()
     End Sub
 
-    Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
+    Sub index()
+        btntambah.TabIndex = 1
+        btnedit.TabIndex = 2
+        btnhapus.TabIndex = 3
+        btnbatal.TabIndex = 4
+        btnprint.TabIndex = 5
+        cmbsales.TabIndex = 6
+        cmbkas.TabIndex = 7
+        txtsaldomasuk.TabIndex = 8
+        txtketerangan.TabIndex = 9
+    End Sub
 
+    Function autonumber()
+        Call koneksii()
+        sql = "SELECT RIGHT(kode_kas_masuk,3) FROM tb_kas_masuk WHERE DATE_FORMAT(MID(`kode_kas_masuk`, 3 , 6), ' %y ')+ MONTH(MID(`kode_kas_masuk`,3 , 6)) + DAY(MID(`kode_kas_masuk`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_kas_masuk,3) DESC"
+        Dim pesan As String = ""
+        Try
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                dr.Read()
+                If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
+                    Return "KM" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                Else
+                    If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
+                        Return "KM" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                    Else
+                        If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
+                            Return "KM" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                        End If
+                    End If
+                End If
+            Else
+                Return "KM" + Format(Now.Date, "yyMMdd") + "001"
+            End If
+
+        Catch ex As Exception
+            pesan = ex.Message.ToString
+        Finally
+            cnn.Close()
+        End Try
+        Return pesan
+    End Function
+    Sub enable_text()
+        cmbsales.Enabled = True
+        cmbkas.Enabled = True
+        txtsaldomasuk.Enabled = True
+        txtketerangan.Enabled = True
+        cmbsales.Focus()
+    End Sub
+
+    Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
+        If btntambah.Text = "Tambah" Then
+            btnbatal.Enabled = True
+            btntambah.Text = "Simpan"
+            Call enable_text()
+            Call index()
+            txtkodemasuk.Text = autonumber()
+            GridControl1.Enabled = False
+        Else
+            If txtkodemasuk.Text.Length = 0 Then
+                MsgBox("Kode belum terisi !")
+            Else
+                If cmbsales.SelectedIndex = -1 Then
+                    MsgBox("Sales belum terisi !")
+                Else
+                    If cmbkas.SelectedIndex = -1 Then
+                        MsgBox("Kas belum terisi !")
+                    Else
+                        If txtsaldomasuk.Text.Length = 0 Then
+                            MsgBox("Saldo belum terisi !")
+                        Else
+                            Call simpan()
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    Sub simpan()
+        Call koneksii()
+        sql = "SELECT * FROM tb_gudang WHERE kode_gudang  = '" + txtkodemasuk.Text + "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            MsgBox("Kode Gudang Sudah ada dengan nama " + dr("nama_gudang"), MsgBoxStyle.Information, "Pemberitahuan")
+        Else
+            sql = "INSERT INTO tb_gudang (kode_gudang, nama_gudang, telepon_gudang, alamat_gudang, keterangan_gudang, created_by, updated_by,date_created, last_updated) VALUES ('" & txtkodemasuk.Text & "', '" & cmbsales.Text & "', '" & cmbkas.Text & "', '" & txtsaldomasuk.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+            btntambah.Text = "Tambah"
+            Me.Refresh()
+            Call awal()
+        End If
+        'Call koneksii()
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
@@ -90,5 +185,11 @@ Public Class fkasmasuk
 
     End Sub
 
+    Private Sub txtsaldomasuk_TextChanged(sender As Object, e As EventArgs) Handles txtsaldomasuk.TextChanged
 
+    End Sub
+
+    Private Sub txtsaldomasuk_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtsaldomasuk.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
 End Class

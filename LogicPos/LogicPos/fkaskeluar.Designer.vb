@@ -46,13 +46,18 @@ Partial Class fkaskeluar
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.cbposted = New System.Windows.Forms.CheckBox()
+        Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.GroupBox6)
         Me.GroupBox1.Controls.Add(Me.btnprint)
         Me.GroupBox1.Controls.Add(Me.txtketerangan)
         Me.GroupBox1.Controls.Add(Me.Label9)
@@ -80,10 +85,10 @@ Partial Class fkaskeluar
         '
         'btnprint
         '
-        Me.btnprint.Location = New System.Drawing.Point(580, 32)
+        Me.btnprint.Location = New System.Drawing.Point(440, 32)
         Me.btnprint.Margin = New System.Windows.Forms.Padding(4)
         Me.btnprint.Name = "btnprint"
-        Me.btnprint.Size = New System.Drawing.Size(135, 50)
+        Me.btnprint.Size = New System.Drawing.Size(100, 50)
         Me.btnprint.TabIndex = 30
         Me.btnprint.Text = "Print"
         Me.btnprint.UseVisualStyleBackColor = True
@@ -91,7 +96,7 @@ Partial Class fkaskeluar
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangan.Location = New System.Drawing.Point(322, 170)
+        Me.txtketerangan.Location = New System.Drawing.Point(320, 168)
         Me.txtketerangan.Name = "txtketerangan"
         Me.txtketerangan.Size = New System.Drawing.Size(390, 46)
         Me.txtketerangan.TabIndex = 29
@@ -101,7 +106,7 @@ Partial Class fkaskeluar
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(322, 147)
+        Me.Label9.Location = New System.Drawing.Point(320, 145)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(92, 20)
         Me.Label9.TabIndex = 28
@@ -110,7 +115,7 @@ Partial Class fkaskeluar
         'txtsaldomasuk
         '
         Me.txtsaldomasuk.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsaldomasuk.Location = New System.Drawing.Point(322, 120)
+        Me.txtsaldomasuk.Location = New System.Drawing.Point(320, 118)
         Me.txtsaldomasuk.Name = "txtsaldomasuk"
         Me.txtsaldomasuk.Size = New System.Drawing.Size(390, 24)
         Me.txtsaldomasuk.TabIndex = 26
@@ -119,7 +124,7 @@ Partial Class fkaskeluar
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(318, 97)
+        Me.Label8.Location = New System.Drawing.Point(316, 95)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(99, 20)
         Me.Label8.TabIndex = 27
@@ -176,27 +181,27 @@ Partial Class fkaskeluar
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(438, 32)
+        Me.btnbatal.Location = New System.Drawing.Point(333, 32)
         Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(135, 50)
+        Me.btnbatal.Size = New System.Drawing.Size(100, 50)
         Me.btnbatal.TabIndex = 13
         Me.btnbatal.Text = "Batal"
         Me.btnbatal.UseVisualStyleBackColor = True
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(297, 32)
+        Me.btnhapus.Location = New System.Drawing.Point(227, 32)
         Me.btnhapus.Name = "btnhapus"
-        Me.btnhapus.Size = New System.Drawing.Size(135, 50)
+        Me.btnhapus.Size = New System.Drawing.Size(100, 50)
         Me.btnhapus.TabIndex = 14
         Me.btnhapus.Text = "Hapus"
         Me.btnhapus.UseVisualStyleBackColor = True
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(156, 32)
+        Me.btnedit.Location = New System.Drawing.Point(121, 32)
         Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(135, 50)
+        Me.btnedit.Size = New System.Drawing.Size(100, 50)
         Me.btnedit.TabIndex = 15
         Me.btnedit.Text = "Edit"
         Me.btnedit.UseVisualStyleBackColor = True
@@ -205,7 +210,7 @@ Partial Class fkaskeluar
         '
         Me.btntambah.Location = New System.Drawing.Point(15, 32)
         Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(135, 50)
+        Me.btntambah.Size = New System.Drawing.Size(100, 50)
         Me.btntambah.TabIndex = 16
         Me.btntambah.Text = "Tambah"
         Me.btntambah.UseVisualStyleBackColor = True
@@ -298,6 +303,45 @@ Partial Class fkaskeluar
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.cbposted)
+        Me.GroupBox6.Controls.Add(Me.cbprinted)
+        Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.GroupBox6.Location = New System.Drawing.Point(548, 24)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox6.Size = New System.Drawing.Size(168, 58)
+        Me.GroupBox6.TabIndex = 39
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Status"
+        '
+        'cbposted
+        '
+        Me.cbposted.AutoSize = True
+        Me.cbposted.Enabled = False
+        Me.cbposted.Location = New System.Drawing.Point(79, 23)
+        Me.cbposted.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbposted.Name = "cbposted"
+        Me.cbposted.Size = New System.Drawing.Size(74, 22)
+        Me.cbposted.TabIndex = 41
+        Me.cbposted.Text = "Posted"
+        Me.cbposted.UseVisualStyleBackColor = True
+        '
+        'cbprinted
+        '
+        Me.cbprinted.AutoSize = True
+        Me.cbprinted.Enabled = False
+        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.cbprinted.Location = New System.Drawing.Point(7, 23)
+        Me.cbprinted.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbprinted.Name = "cbprinted"
+        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
+        Me.cbprinted.TabIndex = 40
+        Me.cbprinted.Text = "Printed"
+        Me.cbprinted.UseVisualStyleBackColor = True
+        '
         'fkaskeluar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -306,6 +350,7 @@ Partial Class fkaskeluar
         Me.ClientSize = New System.Drawing.Size(756, 464)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl1)
+        Me.MaximizeBox = False
         Me.Name = "fkaskeluar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Akun Kas Keluar"
@@ -313,6 +358,8 @@ Partial Class fkaskeluar
         Me.GroupBox1.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -341,4 +388,7 @@ Partial Class fkaskeluar
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnprint As Button
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents cbposted As CheckBox
+    Friend WithEvents cbprinted As CheckBox
 End Class

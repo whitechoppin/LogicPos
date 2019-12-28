@@ -29,6 +29,9 @@ Partial Class fkasmasuk
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.cbposted = New System.Windows.Forms.CheckBox()
+        Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.btnprint = New System.Windows.Forms.Button()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -49,6 +52,7 @@ Partial Class fkasmasuk
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'GridControl1
@@ -112,6 +116,7 @@ Partial Class fkasmasuk
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.GroupBox6)
         Me.GroupBox1.Controls.Add(Me.btnprint)
         Me.GroupBox1.Controls.Add(Me.txtketerangan)
         Me.GroupBox1.Controls.Add(Me.Label9)
@@ -137,12 +142,51 @@ Partial Class fkasmasuk
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Kas Masuk"
         '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.cbposted)
+        Me.GroupBox6.Controls.Add(Me.cbprinted)
+        Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.GroupBox6.Location = New System.Drawing.Point(548, 24)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox6.Size = New System.Drawing.Size(168, 58)
+        Me.GroupBox6.TabIndex = 38
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Status"
+        '
+        'cbposted
+        '
+        Me.cbposted.AutoSize = True
+        Me.cbposted.Enabled = False
+        Me.cbposted.Location = New System.Drawing.Point(79, 23)
+        Me.cbposted.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbposted.Name = "cbposted"
+        Me.cbposted.Size = New System.Drawing.Size(74, 22)
+        Me.cbposted.TabIndex = 41
+        Me.cbposted.Text = "Posted"
+        Me.cbposted.UseVisualStyleBackColor = True
+        '
+        'cbprinted
+        '
+        Me.cbprinted.AutoSize = True
+        Me.cbprinted.Enabled = False
+        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.cbprinted.Location = New System.Drawing.Point(7, 23)
+        Me.cbprinted.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbprinted.Name = "cbprinted"
+        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
+        Me.cbprinted.TabIndex = 40
+        Me.cbprinted.Text = "Printed"
+        Me.cbprinted.UseVisualStyleBackColor = True
+        '
         'btnprint
         '
-        Me.btnprint.Location = New System.Drawing.Point(580, 32)
+        Me.btnprint.Location = New System.Drawing.Point(440, 32)
         Me.btnprint.Margin = New System.Windows.Forms.Padding(4)
         Me.btnprint.Name = "btnprint"
-        Me.btnprint.Size = New System.Drawing.Size(135, 50)
+        Me.btnprint.Size = New System.Drawing.Size(100, 50)
         Me.btnprint.TabIndex = 31
         Me.btnprint.Text = "Print"
         Me.btnprint.UseVisualStyleBackColor = True
@@ -150,7 +194,7 @@ Partial Class fkasmasuk
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangan.Location = New System.Drawing.Point(324, 169)
+        Me.txtketerangan.Location = New System.Drawing.Point(320, 168)
         Me.txtketerangan.Name = "txtketerangan"
         Me.txtketerangan.Size = New System.Drawing.Size(388, 46)
         Me.txtketerangan.TabIndex = 29
@@ -160,7 +204,7 @@ Partial Class fkasmasuk
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(324, 146)
+        Me.Label9.Location = New System.Drawing.Point(320, 145)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(92, 20)
         Me.Label9.TabIndex = 28
@@ -169,7 +213,7 @@ Partial Class fkasmasuk
         'txtsaldomasuk
         '
         Me.txtsaldomasuk.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsaldomasuk.Location = New System.Drawing.Point(324, 119)
+        Me.txtsaldomasuk.Location = New System.Drawing.Point(320, 118)
         Me.txtsaldomasuk.Name = "txtsaldomasuk"
         Me.txtsaldomasuk.Size = New System.Drawing.Size(388, 24)
         Me.txtsaldomasuk.TabIndex = 26
@@ -178,7 +222,7 @@ Partial Class fkasmasuk
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(324, 96)
+        Me.Label8.Location = New System.Drawing.Point(316, 95)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(101, 20)
         Me.Label8.TabIndex = 27
@@ -235,27 +279,27 @@ Partial Class fkasmasuk
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(438, 32)
+        Me.btnbatal.Location = New System.Drawing.Point(333, 32)
         Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(135, 50)
+        Me.btnbatal.Size = New System.Drawing.Size(100, 50)
         Me.btnbatal.TabIndex = 13
         Me.btnbatal.Text = "Batal"
         Me.btnbatal.UseVisualStyleBackColor = True
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(297, 32)
+        Me.btnhapus.Location = New System.Drawing.Point(227, 32)
         Me.btnhapus.Name = "btnhapus"
-        Me.btnhapus.Size = New System.Drawing.Size(135, 50)
+        Me.btnhapus.Size = New System.Drawing.Size(100, 50)
         Me.btnhapus.TabIndex = 14
         Me.btnhapus.Text = "Hapus"
         Me.btnhapus.UseVisualStyleBackColor = True
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(156, 32)
+        Me.btnedit.Location = New System.Drawing.Point(121, 32)
         Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(135, 50)
+        Me.btnedit.Size = New System.Drawing.Size(100, 50)
         Me.btnedit.TabIndex = 15
         Me.btnedit.Text = "Edit"
         Me.btnedit.UseVisualStyleBackColor = True
@@ -264,7 +308,7 @@ Partial Class fkasmasuk
         '
         Me.btntambah.Location = New System.Drawing.Point(15, 32)
         Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(135, 50)
+        Me.btntambah.Size = New System.Drawing.Size(100, 50)
         Me.btntambah.TabIndex = 16
         Me.btntambah.Text = "Tambah"
         Me.btntambah.UseVisualStyleBackColor = True
@@ -303,9 +347,10 @@ Partial Class fkasmasuk
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(756, 460)
+        Me.ClientSize = New System.Drawing.Size(753, 460)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl1)
+        Me.MaximizeBox = False
         Me.Name = "fkasmasuk"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Akun Kas Masuk"
@@ -313,6 +358,8 @@ Partial Class fkasmasuk
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -341,4 +388,7 @@ Partial Class fkasmasuk
     Friend WithEvents txtketerangan As RichTextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents btnprint As Button
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents cbposted As CheckBox
+    Friend WithEvents cbprinted As CheckBox
 End Class

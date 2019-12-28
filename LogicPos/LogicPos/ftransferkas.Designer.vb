@@ -417,7 +417,9 @@ Partial Class ftransferkas
         Me.ClientSize = New System.Drawing.Size(949, 477)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl1)
+        Me.MaximizeBox = False
         Me.Name = "ftransferkas"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Transfer Akun Kas"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
