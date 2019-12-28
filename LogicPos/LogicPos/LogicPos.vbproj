@@ -411,6 +411,9 @@
     <EmbeddedResource Include="fkasmasuk.resx">
       <DependentUpon>fkasmasuk.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ftransferkas.resx">
+      <DependentUpon>ftransferkas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Struk_Penjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Struk_Penjualan.vb</LastGenOutput>
