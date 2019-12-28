@@ -28,22 +28,16 @@ Partial Class fkaskeluar
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtsaldomasuk = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtsaldokas = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.txtnamakas = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cmbkas = New System.Windows.Forms.ComboBox()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
-        Me.txtketerangankas = New System.Windows.Forms.RichTextBox()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnhapus = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
         Me.btntambah = New System.Windows.Forms.Button()
-        Me.txtsaldoawal = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.txtkodekeluar = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
@@ -52,7 +46,6 @@ Partial Class fkaskeluar
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,28 +58,22 @@ Partial Class fkaskeluar
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.txtsaldomasuk)
         Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.txtsaldokas)
-        Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.txtnamakas)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.cmbkas)
         Me.GroupBox1.Controls.Add(Me.cmbsales)
-        Me.GroupBox1.Controls.Add(Me.txtketerangankas)
         Me.GroupBox1.Controls.Add(Me.btnbatal)
         Me.GroupBox1.Controls.Add(Me.btnhapus)
         Me.GroupBox1.Controls.Add(Me.btnedit)
         Me.GroupBox1.Controls.Add(Me.btntambah)
-        Me.GroupBox1.Controls.Add(Me.txtsaldoawal)
-        Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.txtkodekeluar)
-        Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 218)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(730, 263)
+        Me.GroupBox1.Size = New System.Drawing.Size(730, 235)
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Kas Masuk"
@@ -104,9 +91,9 @@ Partial Class fkaskeluar
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangan.Location = New System.Drawing.Point(525, 170)
+        Me.txtketerangan.Location = New System.Drawing.Point(322, 170)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(186, 76)
+        Me.txtketerangan.Size = New System.Drawing.Size(390, 46)
         Me.txtketerangan.TabIndex = 29
         Me.txtketerangan.Text = ""
         '
@@ -114,7 +101,7 @@ Partial Class fkaskeluar
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(525, 147)
+        Me.Label9.Location = New System.Drawing.Point(322, 147)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(92, 20)
         Me.Label9.TabIndex = 28
@@ -123,39 +110,20 @@ Partial Class fkaskeluar
         'txtsaldomasuk
         '
         Me.txtsaldomasuk.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsaldomasuk.Location = New System.Drawing.Point(525, 120)
+        Me.txtsaldomasuk.Location = New System.Drawing.Point(322, 120)
         Me.txtsaldomasuk.Name = "txtsaldomasuk"
-        Me.txtsaldomasuk.Size = New System.Drawing.Size(186, 24)
+        Me.txtsaldomasuk.Size = New System.Drawing.Size(390, 24)
         Me.txtsaldomasuk.TabIndex = 26
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(521, 97)
+        Me.Label8.Location = New System.Drawing.Point(318, 97)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(99, 20)
         Me.Label8.TabIndex = 27
         Me.Label8.Text = "Saldo Keluar"
-        '
-        'txtsaldokas
-        '
-        Me.txtsaldokas.Enabled = False
-        Me.txtsaldokas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsaldokas.Location = New System.Drawing.Point(123, 222)
-        Me.txtsaldokas.Name = "txtsaldokas"
-        Me.txtsaldokas.Size = New System.Drawing.Size(186, 24)
-        Me.txtsaldokas.TabIndex = 24
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(11, 222)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(81, 20)
-        Me.Label7.TabIndex = 25
-        Me.Label7.Text = "Saldo Kas"
         '
         'txtnamakas
         '
@@ -206,16 +174,6 @@ Partial Class fkaskeluar
         Me.cmbsales.Size = New System.Drawing.Size(186, 26)
         Me.cmbsales.TabIndex = 19
         '
-        'txtketerangankas
-        '
-        Me.txtketerangankas.Enabled = False
-        Me.txtketerangankas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangankas.Location = New System.Drawing.Point(318, 168)
-        Me.txtketerangankas.Name = "txtketerangankas"
-        Me.txtketerangankas.Size = New System.Drawing.Size(186, 76)
-        Me.txtketerangankas.TabIndex = 17
-        Me.txtketerangankas.Text = ""
-        '
         'btnbatal
         '
         Me.btnbatal.Location = New System.Drawing.Point(438, 32)
@@ -252,25 +210,6 @@ Partial Class fkaskeluar
         Me.btntambah.Text = "Tambah"
         Me.btntambah.UseVisualStyleBackColor = True
         '
-        'txtsaldoawal
-        '
-        Me.txtsaldoawal.Enabled = False
-        Me.txtsaldoawal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsaldoawal.Location = New System.Drawing.Point(318, 120)
-        Me.txtsaldoawal.Name = "txtsaldoawal"
-        Me.txtsaldoawal.Size = New System.Drawing.Size(186, 22)
-        Me.txtsaldoawal.TabIndex = 2
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(318, 145)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(123, 20)
-        Me.Label5.TabIndex = 7
-        Me.Label5.Text = "Keterangan Kas"
-        '
         'txtkodekeluar
         '
         Me.txtkodekeluar.Enabled = False
@@ -279,16 +218,6 @@ Partial Class fkaskeluar
         Me.txtkodekeluar.Name = "txtkodekeluar"
         Me.txtkodekeluar.Size = New System.Drawing.Size(186, 24)
         Me.txtkodekeluar.TabIndex = 1
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(318, 97)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(88, 20)
-        Me.Label3.TabIndex = 7
-        Me.Label3.Text = "Saldo Awal"
         '
         'Label2
         '
@@ -321,7 +250,7 @@ Partial Class fkaskeluar
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -331,7 +260,7 @@ Partial Class fkaskeluar
         Me.GridColumn1.AppearanceCell.Options.UseFont = True
         Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn1.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn1.Caption = "Kode Transaksi"
+        Me.GridColumn1.Caption = "Kode Kas Keluar"
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.Visible = True
         Me.GridColumn1.VisibleIndex = 0
@@ -353,7 +282,7 @@ Partial Class fkaskeluar
         Me.GridColumn3.AppearanceCell.Options.UseFont = True
         Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn3.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn3.Caption = "Jenis Kas"
+        Me.GridColumn3.Caption = "Tanggal Transaksi"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
         Me.GridColumn3.VisibleIndex = 2
@@ -364,28 +293,17 @@ Partial Class fkaskeluar
         Me.GridColumn4.AppearanceCell.Options.UseFont = True
         Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn4.Caption = "Tanggal Transaksi"
+        Me.GridColumn4.Caption = "Saldo Kas"
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
-        '
-        'GridColumn5
-        '
-        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn5.AppearanceCell.Options.UseFont = True
-        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn5.Caption = "Kredit Kas"
-        Me.GridColumn5.Name = "GridColumn5"
-        Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 4
         '
         'fkaskeluar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(756, 491)
+        Me.ClientSize = New System.Drawing.Size(756, 464)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl1)
         Me.Name = "fkaskeluar"
@@ -404,22 +322,16 @@ Partial Class fkaskeluar
     Friend WithEvents Label9 As Label
     Friend WithEvents txtsaldomasuk As TextBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents txtsaldokas As TextBox
-    Friend WithEvents Label7 As Label
     Friend WithEvents txtnamakas As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents cmbkas As ComboBox
     Friend WithEvents cmbsales As ComboBox
-    Friend WithEvents txtketerangankas As RichTextBox
     Friend WithEvents btnbatal As Button
     Friend WithEvents btnhapus As Button
     Friend WithEvents btnedit As Button
     Friend WithEvents btntambah As Button
-    Friend WithEvents txtsaldoawal As TextBox
-    Friend WithEvents Label5 As Label
     Friend WithEvents txtkodekeluar As TextBox
-    Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
@@ -428,6 +340,5 @@ Partial Class fkaskeluar
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnprint As Button
 End Class

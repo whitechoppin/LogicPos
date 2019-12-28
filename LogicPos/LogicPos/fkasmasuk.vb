@@ -7,22 +7,7 @@ Public Class fkasmasuk
     End Sub
 
     Sub awal()
-        'txtkodemasuk.Clear()
-        'cmbsales.SelectedIndex = -1
-        'cmbkas.SelectedIndex = -1
-        'txtalamat.Clear()
-        'txtnama.Clear()
-        'txttelp.Clear()
-        'txtketerangan.Clear()
-
-        'Call koneksii()
-
-        'txtalamat.Enabled = False
-        'txttelp.Enabled = False
-        'txtkodemasuk.Enabled = False
-        'txtnama.Enabled = False
-        'txtketerangan.Enabled = False
-
+        'button 
         btntambah.Enabled = True
         btnbatal.Enabled = False
         btnedit.Enabled = False
@@ -32,33 +17,47 @@ Public Class fkasmasuk
         btntambah.Text = "Tambah"
         btnedit.Text = "Edit"
 
+        'bersihkan form
+        txtkodemasuk.Clear()
+        cmbsales.SelectedIndex = -1
+        cmbkas.SelectedIndex = -1
+        txtnamakas.Clear()
+
+        txtsaldomasuk.Clear()
+        txtketerangan.Clear()
+
+        Call koneksii()
+
+        cmbsales.Enabled = False
+        cmbkas.Enabled = False
+        txtsaldomasuk.Enabled = False
+        txtketerangan.Enabled = False
+
         GridControl1.Enabled = True
         Call isitabel()
     End Sub
     Sub kolom()
-        GridColumn1.Caption = "Kode Gudang"
-        GridColumn1.Width = 40
-        GridColumn1.FieldName = "kode_gudang"
+        GridColumn1.Caption = "Kode Kas Masuk"
+        GridColumn1.FieldName = "kode_kas_masuk"
+        GridColumn1.Width = "40"
 
-        GridColumn2.Caption = "Nama Gudang"
-        GridColumn2.Width = 60
-        GridColumn2.FieldName = "nama_gudang"
+        GridColumn2.Caption = "Kode Kas"
+        GridColumn2.FieldName = "kode_kas"
+        GridColumn2.Width = "40"
 
-        GridColumn3.Caption = "Alamat"
-        GridColumn3.Width = 80
-        GridColumn3.FieldName = "alamat_gudang"
+        GridColumn3.Caption = "Tanggal Transaksi"
+        GridColumn3.FieldName = "tanggal_transaksi"
+        GridColumn3.Width = "40"
 
-        GridColumn4.Caption = "Telepon"
-        GridColumn4.Width = 40
-        GridColumn4.FieldName = "telepon_gudang"
-
-        GridColumn5.Caption = "Keterangan"
-        GridColumn5.Width = 70
-        GridColumn5.FieldName = "keterangan_gudang"
+        GridColumn4.Caption = "Saldo Kas"
+        GridColumn4.FieldName = "saldo_kas"
+        GridColumn4.Width = "60"
+        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
     End Sub
     Sub isitabel()
         'Call koneksii()
-        sql = "Select * from tb_gudang"
+        sql = "SELECT * FROM tb_kas_masuk"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)

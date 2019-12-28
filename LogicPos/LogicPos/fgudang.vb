@@ -51,7 +51,7 @@ Public Class fgudang
     End Sub
     Sub isitabel()
         'Call koneksii()
-        sql = "Select * from tb_gudang"
+        sql = "SELECT * FROM tb_gudang"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
