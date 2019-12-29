@@ -9,14 +9,20 @@ Public Class fcaripembelian
     Sub grid()
         GridColumn1.Caption = "Kode"
         GridColumn1.FieldName = "kode_pembelian"
-        GridColumn2.Caption = "Total Pembelian"
-        GridColumn2.FieldName = "total_pembelian"
+        GridColumn2.Caption = "Tanggal"
+        GridColumn2.FieldName = "tgl_pembelian"
+        GridColumn3.Caption = "Nama Supplier"
+        GridColumn3.FieldName = "nama_supplier"
+        GridColumn4.Caption = "Total Pembelian"
+        GridColumn4.FieldName = "total_pembelian"
+        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
         GridControl1.Visible = True
     End Sub
     Sub tabel()
         'Call koneksii()
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian FROM tb_pembelian"
+            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian FROM tb_pembelian"
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet

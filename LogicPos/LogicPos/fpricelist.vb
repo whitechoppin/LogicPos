@@ -28,7 +28,7 @@ Public Class fpricelist
         btnedit.Enabled = False
         btnhapus.Enabled = False
     End Sub
-    Sub awal1()
+    Sub awaledit()
         txtkode.Clear()
         txtnama.Clear()
         txtnama.Enabled = False
@@ -63,7 +63,7 @@ Public Class fpricelist
     Sub caricust()
         'Call koneksii()
         Using cnn As New OdbcConnection(strConn)
-            sql = "Select tb_barang.kode_barang, tb_barang.nama_barang , tb_barang.jenis_barang ,tb_barang.satuan_barang , tb_price_group.harga_jual, tb_pelanggan.kode_pelanggan, tb_pelanggan.nama_pelanggan as cust from tb_price_group join tb_barang on tb_barang.kode_barang=tb_price_group.kode_barang join tb_pelanggan on tb_pelanggan.kode_pelanggan=tb_price_group.kode_pelanggan where tb_pelanggan.kode_pelanggan = '" & txtkodecus.Text & "' "
+            sql = "SELECT tb_barang.kode_barang, tb_barang.nama_barang , tb_barang.jenis_barang ,tb_barang.satuan_barang , tb_price_group.harga_jual, tb_pelanggan.kode_pelanggan, tb_pelanggan.nama_pelanggan AS cust FROM tb_price_group JOIN tb_barang ON tb_barang.kode_barang=tb_price_group.kode_barang JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_price_group.kode_pelanggan WHERE tb_pelanggan.kode_pelanggan = '" & txtkodecus.Text & "' "
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet
@@ -73,8 +73,9 @@ Public Class fpricelist
             Call grid()
             cnn.Close()
         End Using
+
         Call koneksii()
-        sql = "Select tb_pelanggan.nama_pelanggan from tb_pelanggan where tb_pelanggan.kode_pelanggan = '" & txtkodecus.Text & "' "
+        sql = "SELECT tb_pelanggan.nama_pelanggan FROM tb_pelanggan WHERE tb_pelanggan.kode_pelanggan = '" & txtkodecus.Text & "' "
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
@@ -108,15 +109,8 @@ Public Class fpricelist
     Sub cari()
         Call koneksii()
         Dim kataCari As String = txtkode.Text
-        'sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kataCari & "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader
-        'If dr.HasRows Then
-        '    txtnama.Text = dr("nama_barang")
-        'Else
-        '    txtnama.Text = ""
-        'End If
-        sql = "select * from tb_price_group join tb_barang on tb_barang.kode_barang = tb_price_group.kode_barang  where tb_price_group.kode_barang='" & txtkode.Text & "' and tb_price_group.kode_pelanggan='" & txtkodecus.Text & "'"
+
+        sql = "SELECT * FROM tb_price_group JOIN tb_barang ON tb_barang.kode_barang = tb_price_group.kode_barang  WHERE tb_price_group.kode_barang='" & txtkode.Text & "' AND tb_price_group.kode_pelanggan='" & txtkodecus.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
@@ -141,10 +135,10 @@ Public Class fpricelist
             End If
 
             btnedit.Enabled = False
-                btnhapus.Enabled = False
-                btntambah.Enabled = True
-                txtharga.Text = 0
-            End If
+            btnhapus.Enabled = False
+            btntambah.Enabled = True
+            txtharga.Text = 0
+        End If
     End Sub
     Private Sub txtharga_TextChanged(sender As Object, e As EventArgs) Handles txtharga.TextChanged
         If txtharga.Text = "" Then
@@ -157,20 +151,28 @@ Public Class fpricelist
     End Sub
     Sub save_new_item()
         Call koneksii()
-        sql = "select * from tb_price_group where kode_barang='" & txtkode.Text & "' and kode_pelanggan='" & txtkodecus.Text & "'"
+        sql = "SELECT * FROM tb_price_group WHERE kode_barang='" & txtkode.Text & "' AND kode_pelanggan='" & txtkodecus.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.Read Then
-            MsgBox("Item Sudah ada")
+            MsgBox("Harga Sudah ada")
             Exit Sub
         Else
-            sql = "insert into tb_price_group (kode_barang, kode_pelanggan, harga_jual) values ('" & txtkode.Text & "', '" & txtkodecus.Text & "', '" & harga & "')"
+            sql = "INSERT INTO tb_price_group (kode_barang, kode_pelanggan, harga_jual) VALUES ('" & txtkode.Text & "', '" & txtkodecus.Text & "', '" & harga & "')"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             MsgBox("Data Tersimpan")
             Call clearbrg()
         End If
         Call caricust()
+    End Sub
+
+    Sub save_exist_item()
+        Call koneksii()
+        sql = "UPDATE tb_price_group SET harga_jual='" & harga & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_barang='" & txtkode.Text & "' AND kode_pelanggan='" & txtkodecus.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        MsgBox("Data Terupdate", MsgBoxStyle.Information, "Success")
     End Sub
     Sub clearbrg()
         txtnama.Clear()
@@ -180,17 +182,18 @@ Public Class fpricelist
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If txtkodecus.Text.Length = 0 Then
             MsgBox("Customer Belum Di pilih")
-            Exit Sub
         Else
             If txtkode.Text.Length = 0 Then
                 MsgBox("Item Belum Di isi")
-                Exit Sub
             Else
                 If txtharga.Text.Length = 0 Then
                     MsgBox("Harga jual Belum Di isi")
-                    Exit Sub
                 Else
-                    Call save_new_item()
+                    If modalbarang >= harga Then
+                        MsgBox("Harga jual dibawah modal")
+                    Else
+                        Call save_new_item()
+                    End If
                 End If
             End If
         End If
@@ -215,9 +218,7 @@ Public Class fpricelist
             btnedit.Enabled = True
             btnhapus.Enabled = True
             btntambah.Enabled = False
-            'harga = dr("harga")
-            'txtharga.Text = Format(harga, "##,##0")
-            'txtharga.SelectionStart = Len(txtharga.Text)
+
         Else
             btnedit.Enabled = False
             btnhapus.Enabled = False
@@ -243,11 +244,6 @@ Public Class fpricelist
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         txtkode.Text = GridView1.GetFocusedRowCellValue("kode_barang")
         Call cari()
-        'txtnama.Text = GridView1.GetFocusedRowCellValue("nama_barang")
-        'harga = GridView1.GetFocusedRowCellValue("harga")
-        'txtharga.Text = Format(harga, "##,##0")
-        'txtharga.SelectionStart = Len(txtharga.Text)
-        'Call cek_item()
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         Call koneksii()
@@ -267,13 +263,26 @@ Public Class fpricelist
         dr = cmmd.ExecuteReader
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        Call koneksii()
-        sql = "Update tb_price_group Set harga_jual='" & harga & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() where kode_barang='" & txtkode.Text & "' and kode_pelanggan='" & txtkodecus.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-        MsgBox("Data terupdate", MsgBoxStyle.Information, "Success")
-        Call awal1()
-        Call caricust()
+
+        If txtkodecus.Text.Length = 0 Then
+            MsgBox("Customer Belum Di pilih")
+        Else
+            If txtkode.Text.Length = 0 Then
+                MsgBox("Item Belum Di isi")
+            Else
+                If txtharga.Text.Length = 0 Then
+                    MsgBox("Harga jual Belum Di isi")
+                Else
+                    If modalbarang >= harga Then
+                        MsgBox("Harga jual dibawah modal")
+                    Else
+                        Call save_exist_item()
+                        Call awaledit()
+                        Call caricust()
+                    End If
+                End If
+            End If
+        End If
     End Sub
 
     Private Sub txtmodal_TextChanged(sender As Object, e As EventArgs) Handles txtmodal.TextChanged

@@ -9,14 +9,20 @@ Public Class fcaripenjualan
     Sub grid()
         GridColumn1.Caption = "Kode"
         GridColumn1.FieldName = "kode_penjualan"
-        GridColumn2.Caption = "Total Penjualan"
-        GridColumn2.FieldName = "total_penjualan"
+        GridColumn2.Caption = "Tanggal"
+        GridColumn2.FieldName = "tgl_penjualan"
+        GridColumn3.Caption = "Nama Pelanggan"
+        GridColumn3.FieldName = "nama_pelanggan"
+        GridColumn4.Caption = "Total Penjualan"
+        GridColumn4.FieldName = "total_penjualan"
+        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
         GridControl1.Visible = True
     End Sub
     Sub tabel()
         'Call koneksii()
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT tb_penjualan.kode_penjualan, tb_penjualan.total_penjualan FROM tb_penjualan"
+            sql = "SELECT tb_penjualan.kode_penjualan, tb_penjualan.total_penjualan, tb_penjualan.tgl_penjualan FROM tb_penjualan"
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet

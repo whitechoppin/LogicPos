@@ -10,6 +10,34 @@ Public Class fkasmasuk
         Call awal()
     End Sub
 
+    Sub comboboxuser()
+        Call koneksii()
+        cmbsales.Items.Clear()
+        cmbsales.AutoCompleteCustomSource.Clear()
+        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbsales.AutoCompleteCustomSource.Add(dr("kode_user"))
+                cmbsales.Items.Add(dr("kode_user"))
+            End While
+        End If
+    End Sub
+
+    Sub comboboxkas()
+        Call koneksii()
+        cmbkas.Items.Clear()
+        cmbkas.AutoCompleteCustomSource.Clear()
+        cmmd = New OdbcCommand("SELECT * FROM tb_kas", cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbkas.AutoCompleteCustomSource.Add(dr("kode_kas"))
+                cmbkas.Items.Add(dr("kode_kas"))
+            End While
+        End If
+    End Sub
+
     Sub awal()
         'button 
         btntambah.Enabled = True
@@ -39,6 +67,9 @@ Public Class fkasmasuk
 
         GridControl1.Enabled = True
         Call isitabel()
+
+        Call comboboxuser()
+        Call comboboxkas()
     End Sub
     Sub kolom()
         GridColumn1.Caption = "Kode Kas Masuk"

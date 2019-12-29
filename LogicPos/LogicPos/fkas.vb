@@ -1,6 +1,7 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fkas
+    Dim kodekasedit As String
     Dim saldoawal As Double
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If btntambah.Text = "Tambah" Then
@@ -36,13 +37,17 @@ Public Class fkas
         txtkode.Clear()
         txtnama.Clear()
         txtsaldo.Clear()
+        txtrekening.Clear()
         txtketerangan.Clear()
 
         Call koneksii()
 
         txtsaldo.Enabled = False
         txtkode.Enabled = False
+        btnauto.Enabled = False
+        btngenerate.Enabled = False
         txtnama.Enabled = False
+        txtrekening.Enabled = False
         txtketerangan.Enabled = False
 
         btntambah.Enabled = True
@@ -60,12 +65,15 @@ Public Class fkas
         GridColumn1.Caption = "Kode Kas"
         GridColumn1.Width = 100
         GridColumn1.FieldName = "kode_kas"
+
         GridColumn2.Caption = "Nama Kas"
         GridColumn2.Width = 100
         GridColumn2.FieldName = "nama_kas"
+
         GridColumn3.Caption = "Keterangan"
         GridColumn3.FieldName = "keterangan_kas"
         GridColumn3.Width = 200
+
         GridColumn4.Caption = "Saldo Awal"
         GridColumn4.FieldName = "saldo_awal"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
@@ -73,7 +81,7 @@ Public Class fkas
     End Sub
     Sub isitabel()
         'Call koneksii()
-        sql = "Select * from tb_kas"
+        sql = "SELECT * FROM tb_kas"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -83,14 +91,20 @@ Public Class fkas
     End Sub
     Sub index()
         txtkode.TabIndex = 1
-        txtnama.TabIndex = 2
-        txtsaldo.TabIndex = 3
-        txtketerangan.TabIndex = 4
+        btnauto.TabIndex = 2
+        btngenerate.TabIndex = 3
+        txtnama.TabIndex = 4
+        txtsaldo.TabIndex = 5
+        txtrekening.TabIndex = 6
+        txtketerangan.TabIndex = 7
     End Sub
     Sub enable_text()
-        txtkode.Enabled = False
+        txtkode.Enabled = True
+        btnauto.Enabled = True
+        btngenerate.Enabled = True
         txtnama.Enabled = True
         txtsaldo.Enabled = True
+        txtrekening.Enabled = True
         txtketerangan.Enabled = True
         txtnama.Focus()
     End Sub
@@ -102,7 +116,7 @@ Public Class fkas
         If dr.HasRows Then
             MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_kas (kode_kas, nama_kas, keterangan_kas, saldo_awal, total_saldo, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & saldoawal & "','" & saldoawal & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_kas (kode_kas, nama_kas, keterangan_kas, saldo_awal, total_saldo, rekening_kas, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & saldoawal & "','" & 0 & "','" & txtrekening.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -131,6 +145,7 @@ Public Class fkas
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         txtkode.Text = GridView1.GetFocusedRowCellValue("kode_kas")
+        kodekasedit = GridView1.GetFocusedRowCellValue("kode_kas")
         txtnama.Text = GridView1.GetFocusedRowCellValue("nama_kas")
         txtsaldo.Text = GridView1.GetFocusedRowCellValue("saldo_awal")
         txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_kas")
@@ -147,7 +162,7 @@ Public Class fkas
 
     Sub edit()
         Call koneksii()
-        sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', saldo_awal='" & saldoawal & "', total_saldo='" & saldoawal & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & txtkode.Text & "'"
+        sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', saldo_awal='" & saldoawal & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & kodekasedit & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -220,5 +235,20 @@ Public Class fkas
             txtsaldo.Text = Format(saldoawal, "##,##0")
             txtsaldo.SelectionStart = Len(txtsaldo.Text)
         End If
+    End Sub
+
+    Private Sub btnauto_Click(sender As Object, e As EventArgs) Handles btnauto.Click
+        txtkode.Text = autonumber()
+    End Sub
+
+    Private Sub btngenerate_Click(sender As Object, e As EventArgs) Handles btngenerate.Click
+        Dim r As New Random
+        Dim s As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        Dim sb As New System.Text.StringBuilder
+        For i As Integer = 1 To 8
+            Dim idx As Integer = r.Next(0, 35)
+            sb.Append(s.Substring(idx, 1))
+        Next
+        txtkode.Text = sb.ToString()
     End Sub
 End Class
