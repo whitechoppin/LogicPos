@@ -1435,7 +1435,7 @@ Public Class fpenjualan
         kodepembayaran = cmbpembayaran.Text
 
         If kodepembayaran IsNot "" Then
-            sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepenjualan & "','" & sisa & "', '" & bayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+            sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'AWAL','" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Nota Nomor " & kodepenjualan & "','" & sisa & "', '" & bayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         End If

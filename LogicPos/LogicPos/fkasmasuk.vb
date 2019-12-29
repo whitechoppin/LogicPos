@@ -1,6 +1,10 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fkasmasuk
+
+    Dim kodemasuk As String
+    Dim saldomasuk As Double
+
     Private Sub fkasmasuk_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -147,22 +151,17 @@ Public Class fkasmasuk
     End Sub
 
     Sub simpan()
+        kodemasuk = autonumber()
+
         Call koneksii()
-        sql = "SELECT * FROM tb_gudang WHERE kode_gudang  = '" + txtkodemasuk.Text + "'"
+        sql = "INSERT INTO tb_kas_masuk (kode_kas_masuk, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodemasuk & "','" & cmbkas.Text & "','" & cmbsales.Text & "','MASUK', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & txtsaldomasuk.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
         cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-        If dr.HasRows Then
-            MsgBox("Kode Gudang Sudah ada dengan nama " + dr("nama_gudang"), MsgBoxStyle.Information, "Pemberitahuan")
-        Else
-            sql = "INSERT INTO tb_gudang (kode_gudang, nama_gudang, telepon_gudang, alamat_gudang, keterangan_gudang, created_by, updated_by,date_created, last_updated) VALUES ('" & txtkodemasuk.Text & "', '" & cmbsales.Text & "', '" & cmbkas.Text & "', '" & txtsaldomasuk.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-            btntambah.Text = "Tambah"
-            Me.Refresh()
-            Call awal()
-        End If
-        'Call koneksii()
+        dr = cmmd.ExecuteReader()
+        MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+        btntambah.Text = "Tambah"
+        Me.Refresh()
+        Call awal()
+
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
@@ -186,7 +185,13 @@ Public Class fkasmasuk
     End Sub
 
     Private Sub txtsaldomasuk_TextChanged(sender As Object, e As EventArgs) Handles txtsaldomasuk.TextChanged
-
+        If txtsaldomasuk.Text = "" Then
+            txtsaldomasuk.Text = 0
+        Else
+            saldomasuk = txtsaldomasuk.Text
+            txtsaldomasuk.Text = Format(saldomasuk, "##,##0")
+            txtsaldomasuk.SelectionStart = Len(txtsaldomasuk.Text)
+        End If
     End Sub
 
     Private Sub txtsaldomasuk_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtsaldomasuk.KeyPress

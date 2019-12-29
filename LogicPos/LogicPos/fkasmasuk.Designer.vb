@@ -29,6 +29,8 @@ Partial Class fkasmasuk
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.dttransaksi = New System.Windows.Forms.DateTimePicker()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.cbposted = New System.Windows.Forms.CheckBox()
         Me.cbprinted = New System.Windows.Forms.CheckBox()
@@ -60,7 +62,7 @@ Partial Class fkasmasuk
         Me.GridControl1.Location = New System.Drawing.Point(12, 12)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(730, 200)
+        Me.GridControl1.Size = New System.Drawing.Size(748, 200)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -116,6 +118,8 @@ Partial Class fkasmasuk
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.dttransaksi)
+        Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.GroupBox6)
         Me.GroupBox1.Controls.Add(Me.btnprint)
         Me.GroupBox1.Controls.Add(Me.txtketerangan)
@@ -137,17 +141,36 @@ Partial Class fkasmasuk
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 218)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(730, 230)
+        Me.GroupBox1.Size = New System.Drawing.Size(748, 230)
         Me.GroupBox1.TabIndex = 15
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Kas Masuk"
+        '
+        'dttransaksi
+        '
+        Me.dttransaksi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dttransaksi.Location = New System.Drawing.Point(315, 127)
+        Me.dttransaksi.Margin = New System.Windows.Forms.Padding(4)
+        Me.dttransaksi.Name = "dttransaksi"
+        Me.dttransaksi.Size = New System.Drawing.Size(205, 24)
+        Me.dttransaksi.TabIndex = 41
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(316, 165)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(101, 20)
+        Me.Label3.TabIndex = 40
+        Me.Label3.Text = "Saldo Masuk"
         '
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.cbposted)
         Me.GroupBox6.Controls.Add(Me.cbprinted)
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox6.Location = New System.Drawing.Point(548, 24)
+        Me.GroupBox6.Location = New System.Drawing.Point(564, 24)
         Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
@@ -194,9 +217,9 @@ Partial Class fkasmasuk
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangan.Location = New System.Drawing.Point(320, 168)
+        Me.txtketerangan.Location = New System.Drawing.Point(529, 118)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(388, 46)
+        Me.txtketerangan.Size = New System.Drawing.Size(203, 96)
         Me.txtketerangan.TabIndex = 29
         Me.txtketerangan.Text = ""
         '
@@ -204,7 +227,7 @@ Partial Class fkasmasuk
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(320, 145)
+        Me.Label9.Location = New System.Drawing.Point(525, 96)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(92, 20)
         Me.Label9.TabIndex = 28
@@ -213,9 +236,9 @@ Partial Class fkasmasuk
         'txtsaldomasuk
         '
         Me.txtsaldomasuk.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsaldomasuk.Location = New System.Drawing.Point(320, 118)
+        Me.txtsaldomasuk.Location = New System.Drawing.Point(315, 192)
         Me.txtsaldomasuk.Name = "txtsaldomasuk"
-        Me.txtsaldomasuk.Size = New System.Drawing.Size(388, 24)
+        Me.txtsaldomasuk.Size = New System.Drawing.Size(205, 24)
         Me.txtsaldomasuk.TabIndex = 26
         '
         'Label8
@@ -224,9 +247,9 @@ Partial Class fkasmasuk
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(316, 95)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(101, 20)
+        Me.Label8.Size = New System.Drawing.Size(138, 20)
         Me.Label8.TabIndex = 27
-        Me.Label8.Text = "Saldo Masuk"
+        Me.Label8.Text = "Tanggal Transaksi"
         '
         'txtnamakas
         '
@@ -347,7 +370,7 @@ Partial Class fkasmasuk
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(753, 460)
+        Me.ClientSize = New System.Drawing.Size(772, 461)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl1)
         Me.MaximizeBox = False
@@ -391,4 +414,6 @@ Partial Class fkasmasuk
     Friend WithEvents GroupBox6 As GroupBox
     Friend WithEvents cbposted As CheckBox
     Friend WithEvents cbprinted As CheckBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents dttransaksi As DateTimePicker
 End Class

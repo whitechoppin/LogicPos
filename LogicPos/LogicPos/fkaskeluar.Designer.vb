@@ -22,11 +22,22 @@ Partial Class fkaskeluar
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.dttransaksi = New System.Windows.Forms.DateTimePicker()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.cbposted = New System.Windows.Forms.CheckBox()
+        Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.btnprint = New System.Windows.Forms.Button()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.txtsaldomasuk = New System.Windows.Forms.TextBox()
+        Me.txtsaldokeluar = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtnamakas = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -40,28 +51,80 @@ Partial Class fkaskeluar
         Me.txtkodekeluar = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.cbposted = New System.Windows.Forms.CheckBox()
-        Me.cbprinted = New System.Windows.Forms.CheckBox()
-        Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
+        'GridControl1
+        '
+        Me.GridControl1.Location = New System.Drawing.Point(12, 12)
+        Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.Size = New System.Drawing.Size(748, 200)
+        Me.GridControl1.TabIndex = 16
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        '
+        'GridView1
+        '
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
+        Me.GridView1.GridControl = Me.GridControl1
+        Me.GridView1.Name = "GridView1"
+        '
+        'GridColumn1
+        '
+        Me.GridColumn1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn1.AppearanceCell.Options.UseFont = True
+        Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn1.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn1.Caption = "Kode Kas Keluar"
+        Me.GridColumn1.Name = "GridColumn1"
+        Me.GridColumn1.Visible = True
+        Me.GridColumn1.VisibleIndex = 0
+        '
+        'GridColumn2
+        '
+        Me.GridColumn2.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn2.AppearanceCell.Options.UseFont = True
+        Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn2.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn2.Caption = "Kode Kas"
+        Me.GridColumn2.Name = "GridColumn2"
+        Me.GridColumn2.Visible = True
+        Me.GridColumn2.VisibleIndex = 1
+        '
+        'GridColumn3
+        '
+        Me.GridColumn3.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn3.AppearanceCell.Options.UseFont = True
+        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn3.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn3.Caption = "Tanggal Transaksi"
+        Me.GridColumn3.Name = "GridColumn3"
+        Me.GridColumn3.Visible = True
+        Me.GridColumn3.VisibleIndex = 2
+        '
+        'GridColumn4
+        '
+        Me.GridColumn4.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn4.AppearanceCell.Options.UseFont = True
+        Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn4.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn4.Caption = "Saldo Kas"
+        Me.GridColumn4.Name = "GridColumn4"
+        Me.GridColumn4.Visible = True
+        Me.GridColumn4.VisibleIndex = 3
+        '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.dttransaksi)
+        Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.GroupBox6)
         Me.GroupBox1.Controls.Add(Me.btnprint)
         Me.GroupBox1.Controls.Add(Me.txtketerangan)
         Me.GroupBox1.Controls.Add(Me.Label9)
-        Me.GroupBox1.Controls.Add(Me.txtsaldomasuk)
+        Me.GroupBox1.Controls.Add(Me.txtsaldokeluar)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.txtnamakas)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -76,12 +139,70 @@ Partial Class fkaskeluar
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 218)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 219)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(730, 235)
+        Me.GroupBox1.Size = New System.Drawing.Size(748, 230)
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Input Kas Masuk"
+        Me.GroupBox1.Text = "Input Kas Keluar"
+        '
+        'dttransaksi
+        '
+        Me.dttransaksi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dttransaksi.Location = New System.Drawing.Point(315, 127)
+        Me.dttransaksi.Margin = New System.Windows.Forms.Padding(4)
+        Me.dttransaksi.Name = "dttransaksi"
+        Me.dttransaksi.Size = New System.Drawing.Size(205, 24)
+        Me.dttransaksi.TabIndex = 41
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(316, 165)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(99, 20)
+        Me.Label3.TabIndex = 40
+        Me.Label3.Text = "Saldo Keluar"
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.cbposted)
+        Me.GroupBox6.Controls.Add(Me.cbprinted)
+        Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.GroupBox6.Location = New System.Drawing.Point(564, 24)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox6.Size = New System.Drawing.Size(168, 58)
+        Me.GroupBox6.TabIndex = 38
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Status"
+        '
+        'cbposted
+        '
+        Me.cbposted.AutoSize = True
+        Me.cbposted.Enabled = False
+        Me.cbposted.Location = New System.Drawing.Point(79, 23)
+        Me.cbposted.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbposted.Name = "cbposted"
+        Me.cbposted.Size = New System.Drawing.Size(74, 22)
+        Me.cbposted.TabIndex = 41
+        Me.cbposted.Text = "Posted"
+        Me.cbposted.UseVisualStyleBackColor = True
+        '
+        'cbprinted
+        '
+        Me.cbprinted.AutoSize = True
+        Me.cbprinted.Enabled = False
+        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.cbprinted.Location = New System.Drawing.Point(7, 23)
+        Me.cbprinted.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbprinted.Name = "cbprinted"
+        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
+        Me.cbprinted.TabIndex = 40
+        Me.cbprinted.Text = "Printed"
+        Me.cbprinted.UseVisualStyleBackColor = True
         '
         'btnprint
         '
@@ -89,16 +210,16 @@ Partial Class fkaskeluar
         Me.btnprint.Margin = New System.Windows.Forms.Padding(4)
         Me.btnprint.Name = "btnprint"
         Me.btnprint.Size = New System.Drawing.Size(100, 50)
-        Me.btnprint.TabIndex = 30
+        Me.btnprint.TabIndex = 31
         Me.btnprint.Text = "Print"
         Me.btnprint.UseVisualStyleBackColor = True
         '
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangan.Location = New System.Drawing.Point(320, 168)
+        Me.txtketerangan.Location = New System.Drawing.Point(529, 118)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(390, 46)
+        Me.txtketerangan.Size = New System.Drawing.Size(203, 96)
         Me.txtketerangan.TabIndex = 29
         Me.txtketerangan.Text = ""
         '
@@ -106,19 +227,19 @@ Partial Class fkaskeluar
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(320, 145)
+        Me.Label9.Location = New System.Drawing.Point(525, 96)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(92, 20)
         Me.Label9.TabIndex = 28
         Me.Label9.Text = "Keterangan"
         '
-        'txtsaldomasuk
+        'txtsaldokeluar
         '
-        Me.txtsaldomasuk.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsaldomasuk.Location = New System.Drawing.Point(320, 118)
-        Me.txtsaldomasuk.Name = "txtsaldomasuk"
-        Me.txtsaldomasuk.Size = New System.Drawing.Size(390, 24)
-        Me.txtsaldomasuk.TabIndex = 26
+        Me.txtsaldokeluar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtsaldokeluar.Location = New System.Drawing.Point(315, 192)
+        Me.txtsaldokeluar.Name = "txtsaldokeluar"
+        Me.txtsaldokeluar.Size = New System.Drawing.Size(205, 24)
+        Me.txtsaldokeluar.TabIndex = 26
         '
         'Label8
         '
@@ -126,9 +247,9 @@ Partial Class fkaskeluar
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(316, 95)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(99, 20)
+        Me.Label8.Size = New System.Drawing.Size(138, 20)
         Me.Label8.TabIndex = 27
-        Me.Label8.Text = "Saldo Keluar"
+        Me.Label8.Text = "Tanggal Transaksi"
         '
         'txtnamakas
         '
@@ -244,130 +365,43 @@ Partial Class fkaskeluar
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Kode K.Keluar"
         '
-        'GridControl1
-        '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 12)
-        Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(730, 200)
-        Me.GridControl1.TabIndex = 16
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GridView1
-        '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
-        '
-        'GridColumn1
-        '
-        Me.GridColumn1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn1.AppearanceCell.Options.UseFont = True
-        Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn1.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn1.Caption = "Kode Kas Keluar"
-        Me.GridColumn1.Name = "GridColumn1"
-        Me.GridColumn1.Visible = True
-        Me.GridColumn1.VisibleIndex = 0
-        '
-        'GridColumn2
-        '
-        Me.GridColumn2.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn2.AppearanceCell.Options.UseFont = True
-        Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn2.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn2.Caption = "Kode Kas"
-        Me.GridColumn2.Name = "GridColumn2"
-        Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 1
-        '
-        'GridColumn3
-        '
-        Me.GridColumn3.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn3.AppearanceCell.Options.UseFont = True
-        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn3.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn3.Caption = "Tanggal Transaksi"
-        Me.GridColumn3.Name = "GridColumn3"
-        Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 2
-        '
-        'GridColumn4
-        '
-        Me.GridColumn4.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn4.AppearanceCell.Options.UseFont = True
-        Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn4.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn4.Caption = "Saldo Kas"
-        Me.GridColumn4.Name = "GridColumn4"
-        Me.GridColumn4.Visible = True
-        Me.GridColumn4.VisibleIndex = 3
-        '
-        'GroupBox6
-        '
-        Me.GroupBox6.Controls.Add(Me.cbposted)
-        Me.GroupBox6.Controls.Add(Me.cbprinted)
-        Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox6.Location = New System.Drawing.Point(548, 24)
-        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox6.Size = New System.Drawing.Size(168, 58)
-        Me.GroupBox6.TabIndex = 39
-        Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "Status"
-        '
-        'cbposted
-        '
-        Me.cbposted.AutoSize = True
-        Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(79, 23)
-        Me.cbposted.Margin = New System.Windows.Forms.Padding(4)
-        Me.cbposted.Name = "cbposted"
-        Me.cbposted.Size = New System.Drawing.Size(74, 22)
-        Me.cbposted.TabIndex = 41
-        Me.cbposted.Text = "Posted"
-        Me.cbposted.UseVisualStyleBackColor = True
-        '
-        'cbprinted
-        '
-        Me.cbprinted.AutoSize = True
-        Me.cbprinted.Enabled = False
-        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(7, 23)
-        Me.cbprinted.Margin = New System.Windows.Forms.Padding(4)
-        Me.cbprinted.Name = "cbprinted"
-        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
-        Me.cbprinted.TabIndex = 40
-        Me.cbprinted.Text = "Printed"
-        Me.cbprinted.UseVisualStyleBackColor = True
-        '
         'fkaskeluar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(756, 464)
+        Me.ClientSize = New System.Drawing.Size(772, 461)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl1)
         Me.MaximizeBox = False
         Me.Name = "fkaskeluar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Akun Kas Keluar"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-
+    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents dttransaksi As DateTimePicker
+    Friend WithEvents Label3 As Label
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents cbposted As CheckBox
+    Friend WithEvents cbprinted As CheckBox
+    Friend WithEvents btnprint As Button
     Friend WithEvents txtketerangan As RichTextBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents txtsaldomasuk As TextBox
+    Friend WithEvents txtsaldokeluar As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents txtnamakas As TextBox
     Friend WithEvents Label4 As Label
@@ -381,14 +415,4 @@ Partial Class fkaskeluar
     Friend WithEvents txtkodekeluar As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents btnprint As Button
-    Friend WithEvents GroupBox6 As GroupBox
-    Friend WithEvents cbposted As CheckBox
-    Friend WithEvents cbprinted As CheckBox
 End Class
