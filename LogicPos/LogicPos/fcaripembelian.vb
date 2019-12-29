@@ -22,7 +22,7 @@ Public Class fcaripembelian
     Sub tabel()
         'Call koneksii()
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian FROM tb_pembelian"
+            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier"
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet
