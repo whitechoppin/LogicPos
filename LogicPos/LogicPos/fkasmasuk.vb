@@ -223,19 +223,35 @@ Public Class fkasmasuk
 
     End Sub
 
-    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+    Sub cari()
         txtkodemasuk.Text = GridView1.GetFocusedRowCellValue("kode_kas_masuk")
-        cmbsales.Text = GridView1.GetFocusedRowCellValue("nama_user")
-        cmbkas.Text = GridView1.GetFocusedRowCellValue("alamat_gudang")
-        dttransaksi.Text = GridView1.GetFocusedRowCellValue("telepon_gudang")
-        txtsaldomasuk.Text = GridView1.GetFocusedRowCellValue("telepon_gudang")
-        txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_gudang")
 
-        btnedit.Enabled = True
-        btnbatal.Enabled = True
-        btnhapus.Enabled = True
-        btntambah.Enabled = False
-        btntambah.Text = "Tambah"
+        Using cnn As New OdbcConnection(strConn)
+            sql = "SELECT * FROM tb_kas_masuk WHERE kode_kas_masuk  = '" + txtkodemasuk.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            cnn.Open()
+            dr = cmmd.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                cmbsales.Text = dr("kode_user")
+                cmbkas.Text = dr("kode_kas")
+                dttransaksi.Value = dr("tanggal_transaksi")
+                saldomasuk = dr("saldo_kas")
+                txtsaldomasuk.Text = Format(saldomasuk, "##,##0")
+                txtketerangan.Text = dr("keterangan_kas")
+                cnn.Close()
+
+                btnedit.Enabled = True
+                btnbatal.Enabled = True
+                btnhapus.Enabled = True
+                btntambah.Enabled = False
+                btntambah.Text = "Tambah"
+            End If
+        End Using
+    End Sub
+
+    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+        Call cari()
     End Sub
 
     Private Sub cmbkas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbkas.SelectedIndexChanged
