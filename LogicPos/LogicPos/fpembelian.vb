@@ -881,6 +881,7 @@ Public Class fpembelian
         Call cetak_faktur()
     End Sub
     Sub cetak_faktur()
+        Dim faktur As String
         Dim tabel_faktur As New DataTable
         With tabel_faktur
             .Columns.Add("kode_stok")
@@ -906,6 +907,17 @@ Public Class fpembelian
             baris("subtotal") = GridView1.GetRowCellValue(i, "subtotal")
             tabel_faktur.Rows.Add(baris)
         Next
+
+        Call koneksii()
+        sql = "select * from tb_printer where nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
+
+        Else
+            faktur = ""
+        End If
 
         Dim rpt As ReportDocument
         rpt = New fakturpembelian

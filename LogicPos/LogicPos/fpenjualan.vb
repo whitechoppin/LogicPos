@@ -895,6 +895,7 @@ Public Class fpenjualan
         End If
     End Sub
     Sub cetak_struk()
+        Dim struk As Integer
         Dim tabel_struk As New DataTable
         With tabel_struk
             .Columns.Add("kode_barang")
@@ -927,6 +928,16 @@ Public Class fpenjualan
             tabel_struk.Rows.Add(baris)
         Next
 
+        Call koneksii()
+        sql = "select * from tb_printer where nomor='1'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            struk = dr("nama_printer")
+        Else
+            struk = ""
+        End If
+
         Dim rpt As ReportDocument
         rpt = New Struk_Penjualan
         rpt.SetDataSource(tabel_struk)
@@ -943,14 +954,16 @@ Public Class fpenjualan
         'End If
 
         'fakturjual.CrystalReportViewer1.ReportSource = rpt
-        rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
+        'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
         'rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
         'rpt.PrintOptions.PrinterName = "58 Printer"
+        rpt.PrintOptions.PrinterName = struk
         rpt.PrintToPrinter(1, False, 0, 0)
         'fakturjual.ShowDialog()
         'fakturjual.Dispose()
     End Sub
     Sub cetak_faktur()
+        Dim faktur As String
         Dim tabel_faktur As New DataTable
         With tabel_faktur
             .Columns.Add("kode_barang")
@@ -982,6 +995,16 @@ Public Class fpenjualan
             baris("diskon_nominal") = GridView1.GetRowCellValue(i, "diskon_nominal")
             tabel_faktur.Rows.Add(baris)
         Next
+        Call koneksii()
+        sql = "select * from tb_printer where nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
+
+        Else
+            faktur = ""
+        End If
 
         Dim rpt As ReportDocument
         rpt = New fakturpenjualan
@@ -990,11 +1013,10 @@ Public Class fpenjualan
         rpt.SetParameterValue("nofaktur", autonumber)
         rpt.SetParameterValue("namakasir", fmenu.statususer.Text)
         rpt.SetParameterValue("pembeli", txtcustomer.Text)
-
         'fakturjual.CrystalReportViewer1.ReportSource = rpt
         'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
-        rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
-        'rpt.PrintOptions.PrinterName = "58 Printer"
+        'rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
+        rpt.PrintOptions.PrinterName = faktur
         rpt.PrintToPrinter(1, False, 0, 0)
         'fakturjual.ShowDialog()
         'fakturjual.Dispose()

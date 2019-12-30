@@ -47,7 +47,7 @@ Public Class fmenu
         Application.Exit()
     End Sub
     Private Sub PrinterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrinterToolStripMenuItem.Click
-        'fsetprinter.Show()
+        fprinter.Show()
     End Sub
     Private Sub PricelistGroupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PricelistGroupToolStripMenuItem.Click
         fpricelist.Show()

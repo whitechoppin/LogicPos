@@ -109,6 +109,12 @@
       <DependentUpon>fakturpenjualan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="fprinter.Designer.vb">
+      <DependentUpon>fprinter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fprinter.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Struk_Penjualan.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -420,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fkasmasuk.resx">
       <DependentUpon>fkasmasuk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fprinter.resx">
+      <DependentUpon>fprinter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ftransferkas.resx">
       <DependentUpon>ftransferkas.vb</DependentUpon>
