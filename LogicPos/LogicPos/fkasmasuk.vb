@@ -38,6 +38,18 @@ Public Class fkasmasuk
         End If
     End Sub
 
+    Sub carikas()
+        Call koneksii()
+        sql = "SELECT * FROM tb_kas WHERE kode_kas='" & cmbkas.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            txtnamakas.Text = dr("nama_kas")
+        Else
+            txtnamakas.Text = ""
+        End If
+    End Sub
+
     Sub awal()
         'button 
         btntambah.Enabled = True
@@ -185,7 +197,7 @@ Public Class fkasmasuk
         kodemasuk = autonumber()
 
         Call koneksii()
-        sql = "INSERT INTO tb_kas_masuk (kode_kas_masuk, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodemasuk & "','" & cmbkas.Text & "','" & cmbsales.Text & "','MASUK', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & txtsaldomasuk.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+        sql = "INSERT INTO tb_kas_masuk (kode_kas_masuk, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodemasuk & "','" & cmbkas.Text & "','" & cmbsales.Text & "','MASUK', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldomasuk & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -204,7 +216,7 @@ Public Class fkasmasuk
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
-
+        Call awal()
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
@@ -212,7 +224,26 @@ Public Class fkasmasuk
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+        txtkodemasuk.Text = GridView1.GetFocusedRowCellValue("kode_kas_masuk")
+        cmbsales.Text = GridView1.GetFocusedRowCellValue("nama_user")
+        cmbkas.Text = GridView1.GetFocusedRowCellValue("alamat_gudang")
+        dttransaksi.Text = GridView1.GetFocusedRowCellValue("telepon_gudang")
+        txtsaldomasuk.Text = GridView1.GetFocusedRowCellValue("telepon_gudang")
+        txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_gudang")
 
+        btnedit.Enabled = True
+        btnbatal.Enabled = True
+        btnhapus.Enabled = True
+        btntambah.Enabled = False
+        btntambah.Text = "Tambah"
+    End Sub
+
+    Private Sub cmbkas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbkas.SelectedIndexChanged
+        Call carikas()
+    End Sub
+
+    Private Sub cmbkas_TextChanged(sender As Object, e As EventArgs) Handles cmbkas.TextChanged
+        Call carikas()
     End Sub
 
     Private Sub txtsaldomasuk_TextChanged(sender As Object, e As EventArgs) Handles txtsaldomasuk.TextChanged
@@ -228,4 +259,5 @@ Public Class fkasmasuk
     Private Sub txtsaldomasuk_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtsaldomasuk.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
+
 End Class

@@ -162,13 +162,30 @@ Public Class fkas
 
     Sub edit()
         Call koneksii()
-        sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', saldo_awal='" & saldoawal & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & kodekasedit & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-        btnedit.Text = "Edit"
-        Me.Refresh()
-        Call awal()
+        If txtkode.Text.Equals(kodekasedit) Then
+            sql = "UPDATE tb_kas SET  nama_kas='" & txtnama.Text & "', saldo_awal='" & saldoawal & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & kodekasedit & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
+            Me.Refresh()
+            Call awal()
+        Else
+            sql = "SELECT * FROM tb_kas WHERE kode_kas  = '" + txtkode.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
+            Else
+                sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', saldo_awal='" & saldoawal & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & kodekasedit & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+                MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+                btnedit.Text = "Edit"
+                Me.Refresh()
+                Call awal()
+            End If
+        End If
     End Sub
 
     Function autonumber()

@@ -189,28 +189,60 @@ Public Class fuser
     End Sub
 
     Sub edit()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
+        If txtkode.Text.Equals(kode) Then
+            Using cnn As New OdbcConnection(strConn)
+                sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
+                cmmd.Parameters.AddWithValue("@password_user", txtpassword.Text)
+                cmmd.Parameters.AddWithValue("@jabatan_user", cmbjabatan.Text)
+                cmmd.Parameters.AddWithValue("@email_user", txtemail.Text)
+                cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
+                cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
+                cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
+                cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+                cnn.Open()
+                cmmd.ExecuteNonQuery()
+                cnn.Close()
+                MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
+                btnedit.Text = "Edit"
+                cnn.Close()
+                Me.Refresh()
+                Call awal()
+            End Using
+        Else
+
+            sql = "SELECT * FROM tb_user WHERE kode_user  = '" + txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
-            cmmd.Parameters.AddWithValue("@kode_user", txtkode.Text)
-            cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
-            cmmd.Parameters.AddWithValue("@password_user", txtpassword.Text)
-            cmmd.Parameters.AddWithValue("@jabatan_user", cmbjabatan.Text)
-            cmmd.Parameters.AddWithValue("@email_user", txtemail.Text)
-            cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
-            cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
-            cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
-            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
-            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
-            cnn.Open()
-            cmmd.ExecuteNonQuery()
-            cnn.Close()
-            MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
-            btnedit.Text = "Edit"
-            cnn.Close()
-            Me.Refresh()
-            Call awal()
-        End Using
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                MsgBox("Kode User Sudah ada dengan nama " + dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
+            Else
+                Using cnn As New OdbcConnection(strConn)
+                    sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    cmmd.Parameters.AddWithValue("@kode_user", txtkode.Text)
+                    cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
+                    cmmd.Parameters.AddWithValue("@password_user", txtpassword.Text)
+                    cmmd.Parameters.AddWithValue("@jabatan_user", cmbjabatan.Text)
+                    cmmd.Parameters.AddWithValue("@email_user", txtemail.Text)
+                    cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
+                    cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
+                    cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
+                    cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+                    cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+                    cnn.Open()
+                    cmmd.ExecuteNonQuery()
+                    cnn.Close()
+                    MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
+                    btnedit.Text = "Edit"
+                    cnn.Close()
+                    Me.Refresh()
+                    Call awal()
+                End Using
+            End If
+        End If
     End Sub
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click

@@ -23,6 +23,10 @@ Partial Class fkas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btngenerate = New System.Windows.Forms.Button()
+        Me.txtrekening = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.btnauto = New System.Windows.Forms.Button()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnhapus = New System.Windows.Forms.Button()
@@ -41,10 +45,6 @@ Partial Class fkas
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.btnauto = New System.Windows.Forms.Button()
-        Me.txtrekening = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.btngenerate = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,6 +75,44 @@ Partial Class fkas
         Me.GroupBox1.TabIndex = 11
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data Kas"
+        '
+        'btngenerate
+        '
+        Me.btngenerate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btngenerate.Location = New System.Drawing.Point(213, 133)
+        Me.btngenerate.Name = "btngenerate"
+        Me.btngenerate.Size = New System.Drawing.Size(91, 27)
+        Me.btngenerate.TabIndex = 26
+        Me.btngenerate.Text = "Generate"
+        Me.btngenerate.UseVisualStyleBackColor = True
+        '
+        'txtrekening
+        '
+        Me.txtrekening.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtrekening.Location = New System.Drawing.Point(118, 222)
+        Me.txtrekening.Name = "txtrekening"
+        Me.txtrekening.Size = New System.Drawing.Size(186, 22)
+        Me.txtrekening.TabIndex = 24
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(6, 222)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(77, 20)
+        Me.Label5.TabIndex = 25
+        Me.Label5.Text = "Rekening"
+        '
+        'btnauto
+        '
+        Me.btnauto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnauto.Location = New System.Drawing.Point(118, 133)
+        Me.btnauto.Name = "btnauto"
+        Me.btnauto.Size = New System.Drawing.Size(91, 27)
+        Me.btnauto.TabIndex = 23
+        Me.btnauto.Text = "Auto"
+        Me.btnauto.UseVisualStyleBackColor = True
         '
         'txtketerangan
         '
@@ -241,44 +279,6 @@ Partial Class fkas
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
-        '
-        'btnauto
-        '
-        Me.btnauto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnauto.Location = New System.Drawing.Point(118, 133)
-        Me.btnauto.Name = "btnauto"
-        Me.btnauto.Size = New System.Drawing.Size(91, 27)
-        Me.btnauto.TabIndex = 23
-        Me.btnauto.Text = "Auto"
-        Me.btnauto.UseVisualStyleBackColor = True
-        '
-        'txtrekening
-        '
-        Me.txtrekening.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtrekening.Location = New System.Drawing.Point(118, 222)
-        Me.txtrekening.Name = "txtrekening"
-        Me.txtrekening.Size = New System.Drawing.Size(186, 22)
-        Me.txtrekening.TabIndex = 24
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(6, 222)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(77, 20)
-        Me.Label5.TabIndex = 25
-        Me.Label5.Text = "Rekening"
-        '
-        'btngenerate
-        '
-        Me.btngenerate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btngenerate.Location = New System.Drawing.Point(213, 133)
-        Me.btngenerate.Name = "btngenerate"
-        Me.btngenerate.Size = New System.Drawing.Size(91, 27)
-        Me.btngenerate.TabIndex = 26
-        Me.btngenerate.Text = "Generate"
-        Me.btngenerate.UseVisualStyleBackColor = True
         '
         'fkas
         '

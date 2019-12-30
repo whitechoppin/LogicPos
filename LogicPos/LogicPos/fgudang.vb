@@ -2,6 +2,7 @@
 Imports System.Drawing.Drawing2D
 Imports System.IO
 Public Class fgudang
+    Dim kodegudangedit As String
     Private Sub fgudang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -15,10 +16,12 @@ Public Class fgudang
 
         Call koneksii()
 
+        txtkode.Enabled = False
+        btnauto.Enabled = False
+        btngenerate.Enabled = False
+        txtnama.Enabled = False
         txtalamat.Enabled = False
         txttelp.Enabled = False
-        txtkode.Enabled = False
-        txtnama.Enabled = False
         txtketerangan.Enabled = False
 
         btntambah.Enabled = True
@@ -97,7 +100,9 @@ Public Class fgudang
         Return pesan
     End Function
     Sub enable_text()
-        txtkode.Enabled = False
+        txtkode.Enabled = True
+        btnauto.Enabled = True
+        btngenerate.Enabled = True
         txtnama.Enabled = True
         txttelp.Enabled = True
         txtalamat.Enabled = True
@@ -179,19 +184,37 @@ Public Class fgudang
     End Sub
     Sub edit()
         Call koneksii()
-        sql = "UPDATE tb_gudang SET  nama_gudang='" & txtnama.Text & "',alamat_gudang='" & txtalamat.Text & "', telepon_gudang='" & txttelp.Text & "',keterangan_gudang='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_gudang='" & txtkode.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-        btnedit.Text = "Edit"
-        Me.Refresh()
-        Call awal()
+        If txtkode.Text.Equals(kodegudangedit) Then
+            sql = "UPDATE tb_gudang SET nama_gudang='" & txtnama.Text & "',alamat_gudang='" & txtalamat.Text & "', telepon_gudang='" & txttelp.Text & "',keterangan_gudang='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_gudang='" & kodegudangedit & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
+            Me.Refresh()
+            Call awal()
+        Else
+            sql = "SELECT * FROM tb_gudang WHERE kode_gudang  = '" + txtkode.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                MsgBox("Kode Gudang Sudah ada dengan nama " + dr("nama_gudang"), MsgBoxStyle.Information, "Pemberitahuan")
+            Else
+                sql = "UPDATE tb_gudang SET  kode_gudang='" & txtkode.Text & "',nama_gudang='" & txtnama.Text & "',alamat_gudang='" & txtalamat.Text & "', telepon_gudang='" & txttelp.Text & "',keterangan_gudang='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_gudang='" & kodegudangedit & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+                MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+                btnedit.Text = "Edit"
+                Me.Refresh()
+                Call awal()
+            End If
+        End If
     End Sub
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
     End Sub
     Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
         txtkode.Text = GridView.GetFocusedRowCellValue("kode_gudang")
+        kodegudangedit = GridView.GetFocusedRowCellValue("kode_gudang")
         txtnama.Text = GridView.GetFocusedRowCellValue("nama_gudang")
         txtalamat.Text = GridView.GetFocusedRowCellValue("alamat_gudang")
         txttelp.Text = GridView.GetFocusedRowCellValue("telepon_gudang")
@@ -215,5 +238,20 @@ Public Class fgudang
     End Sub
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
         e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub btnauto_Click(sender As Object, e As EventArgs) Handles btnauto.Click
+        txtkode.Text = autonumber()
+    End Sub
+
+    Private Sub btngenerate_Click(sender As Object, e As EventArgs) Handles btngenerate.Click
+        Dim r As New Random
+        Dim s As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        Dim sb As New System.Text.StringBuilder
+        For i As Integer = 1 To 8
+            Dim idx As Integer = r.Next(0, 35)
+            sb.Append(s.Substring(idx, 1))
+        Next
+        txtkode.Text = sb.ToString()
     End Sub
 End Class

@@ -44,6 +44,8 @@ Partial Class fgudang
         Me.GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btngenerate = New System.Windows.Forms.Button()
+        Me.btnauto = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,14 +56,14 @@ Partial Class fgudang
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtketerangan.Location = New System.Drawing.Point(413, 136)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(186, 110)
+        Me.txtketerangan.Size = New System.Drawing.Size(186, 140)
         Me.txtketerangan.TabIndex = 17
         Me.txtketerangan.Text = ""
         '
         'txtalamat
         '
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtalamat.Location = New System.Drawing.Point(123, 167)
+        Me.txtalamat.Location = New System.Drawing.Point(123, 196)
         Me.txtalamat.Name = "txtalamat"
         Me.txtalamat.Size = New System.Drawing.Size(186, 80)
         Me.txtalamat.TabIndex = 17
@@ -69,6 +71,8 @@ Partial Class fgudang
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btngenerate)
+        Me.GroupBox1.Controls.Add(Me.btnauto)
         Me.GroupBox1.Controls.Add(Me.txtketerangan)
         Me.GroupBox1.Controls.Add(Me.txtalamat)
         Me.GroupBox1.Controls.Add(Me.btnbatal)
@@ -86,7 +90,7 @@ Partial Class fgudang
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(615, 265)
+        Me.GroupBox1.Size = New System.Drawing.Size(615, 286)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data Gudang"
@@ -138,7 +142,7 @@ Partial Class fgudang
         'txtnama
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(123, 135)
+        Me.txtnama.Location = New System.Drawing.Point(123, 164)
         Me.txtnama.Name = "txtnama"
         Me.txtnama.Size = New System.Drawing.Size(186, 22)
         Me.txtnama.TabIndex = 2
@@ -155,7 +159,6 @@ Partial Class fgudang
         '
         'txtkode
         '
-        Me.txtkode.Enabled = False
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkode.Location = New System.Drawing.Point(123, 108)
         Me.txtkode.Name = "txtkode"
@@ -166,7 +169,7 @@ Partial Class fgudang
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(11, 167)
+        Me.Label4.Location = New System.Drawing.Point(11, 196)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(59, 20)
         Me.Label4.TabIndex = 7
@@ -186,7 +189,7 @@ Partial Class fgudang
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 135)
+        Me.Label2.Location = New System.Drawing.Point(10, 164)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(113, 20)
         Me.Label2.TabIndex = 7
@@ -234,7 +237,7 @@ Partial Class fgudang
         '
         'GridControl
         '
-        Me.GridControl.Location = New System.Drawing.Point(10, 284)
+        Me.GridControl.Location = New System.Drawing.Point(10, 304)
         Me.GridControl.MainView = Me.GridView
         Me.GridControl.Name = "GridControl"
         Me.GridControl.Size = New System.Drawing.Size(617, 258)
@@ -268,12 +271,32 @@ Partial Class fgudang
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
         '
+        'btngenerate
+        '
+        Me.btngenerate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btngenerate.Location = New System.Drawing.Point(218, 131)
+        Me.btngenerate.Name = "btngenerate"
+        Me.btngenerate.Size = New System.Drawing.Size(91, 27)
+        Me.btngenerate.TabIndex = 28
+        Me.btngenerate.Text = "Generate"
+        Me.btngenerate.UseVisualStyleBackColor = True
+        '
+        'btnauto
+        '
+        Me.btnauto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnauto.Location = New System.Drawing.Point(123, 131)
+        Me.btnauto.Name = "btnauto"
+        Me.btnauto.Size = New System.Drawing.Size(91, 27)
+        Me.btnauto.TabIndex = 27
+        Me.btnauto.Text = "Auto"
+        Me.btnauto.UseVisualStyleBackColor = True
+        '
         'fgudang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(637, 552)
+        Me.ClientSize = New System.Drawing.Size(637, 571)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl)
         Me.MaximizeBox = False
@@ -309,4 +332,6 @@ Partial Class fgudang
     Friend WithEvents GridView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents btngenerate As Button
+    Friend WithEvents btnauto As Button
 End Class
