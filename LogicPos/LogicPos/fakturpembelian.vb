@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class fakturpenjualan
+Public Class fakturpembelian
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class fakturpenjualan
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "fakturpenjualan.rpt"
+            Return "fakturpembelian.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class fakturpenjualan
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "LogicPos.fakturpenjualan.rpt"
+            Return "LogicPos.fakturpembelian.rpt"
         End Get
         Set
             'Do nothing
@@ -91,34 +91,10 @@ Public Class fakturpenjualan
             Return Me.ReportDefinition.Sections(4)
         End Get
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_namakasir() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(0)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_pembeli() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(1)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_nofaktur() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(2)
-        End Get
-    End Property
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class Cachedfakturpenjualan
+Public Class Cachedfakturpembelian
     Inherits Component
     Implements ICachedReport
     
@@ -160,7 +136,7 @@ Public Class Cachedfakturpenjualan
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As fakturpenjualan = New fakturpenjualan()
+        Dim rpt As fakturpembelian = New fakturpembelian()
         rpt.Site = Me.Site
         Return rpt
     End Function

@@ -1,5 +1,6 @@
 ﻿Imports System.Data.Odbc
 Imports DevExpress.Utils
+Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class fpembelian
     Dim tabel As DataTable
@@ -512,7 +513,6 @@ Public Class fpembelian
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
         GridColumn8.Width = 55
     End Sub
-
     Sub comboboxsupplier()
         Call koneksii()
         cmmd = New OdbcCommand("SELECT * FROM tb_supplier", cnn)
@@ -610,7 +610,6 @@ Public Class fpembelian
             txtgudang.Text = ""
         End If
     End Sub
-
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
 
@@ -879,7 +878,50 @@ Public Class fpembelian
 
     End Sub
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+        Call cetak_faktur()
+    End Sub
+    Sub cetak_faktur()
+        Dim tabel_faktur As New DataTable
+        With tabel_faktur
+            .Columns.Add("kode_stok")
+            .Columns.Add("kode_barang")
+            .Columns.Add("nama_barang")
+            .Columns.Add("qty", GetType(Double))
+            .Columns.Add("satuan_barang")
+            .Columns.Add("jenis_barang")
+            .Columns.Add("harga", GetType(Double))
+            .Columns.Add("subtotal", GetType(Double))
+        End With
 
+        Dim baris As DataRow
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_faktur.NewRow
+            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+            baris("qty") = GridView1.GetRowCellValue(i, "qty")
+            baris("satuan_barang") = GridView1.GetRowCellValue(i, "satuan_barang")
+            baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
+            baris("harga") = GridView1.GetRowCellValue(i, "harga")
+            baris("subtotal") = GridView1.GetRowCellValue(i, "subtotal")
+            tabel_faktur.Rows.Add(baris)
+        Next
+
+        Dim rpt As ReportDocument
+        rpt = New fakturpembelian
+        rpt.SetDataSource(tabel_faktur)
+        'rpt.SetParameterValue("total", total2)
+        'rpt.SetParameterValue("nofaktur", autonumber)
+        'rpt.SetParameterValue("kasir", fmenu.statususer.Text)
+        'rpt.SetParameterValue("customer", txtcustomer.Text)
+
+        'fakturjual.CrystalReportViewer1.ReportSource = rpt
+        'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
+        rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
+        'rpt.PrintOptions.PrinterName = "58 Printer"
+        rpt.PrintToPrinter(1, False, 0, 0)
+        'fakturjual.ShowDialog()
+        'fakturjual.Dispose()
     End Sub
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
         Call prevnumber(txtnonota.Text)
@@ -1066,11 +1108,9 @@ Public Class fpembelian
         dr = cmmd.ExecuteReader()
 
     End Sub
-
     Private Sub dtpembelian_ValueChanged(sender As Object, e As EventArgs) Handles dtpembelian.ValueChanged
         dtjatuhtempo.MinDate = dtpembelian.Value
     End Sub
-
     Sub perbarui(nomornota As String)
         Call koneksii()
         Dim kodegudangupdate As String
@@ -1172,7 +1212,6 @@ Public Class fpembelian
 
         End If
     End Sub
-
     Private Sub cmbsupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsupplier.SelectedIndexChanged
         Call comboboxpembayaran()
     End Sub

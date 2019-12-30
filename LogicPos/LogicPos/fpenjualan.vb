@@ -987,9 +987,9 @@ Public Class fpenjualan
         rpt = New fakturpenjualan
         rpt.SetDataSource(tabel_faktur)
         'rpt.SetParameterValue("total", total2)
-        'rpt.SetParameterValue("nofaktur", autonumber)
-        'rpt.SetParameterValue("kasir", fmenu.statususer.Text)
-        'rpt.SetParameterValue("customer", txtcustomer.Text)
+        rpt.SetParameterValue("nofaktur", autonumber)
+        rpt.SetParameterValue("namakasir", fmenu.statususer.Text)
+        rpt.SetParameterValue("pembeli", txtcustomer.Text)
 
         'fakturjual.CrystalReportViewer1.ReportSource = rpt
         'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
