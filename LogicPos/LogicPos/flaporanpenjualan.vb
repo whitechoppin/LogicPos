@@ -282,7 +282,7 @@ Public Class flaporanpenjualan
         Dim crParameterValues As ParameterValues
         Dim crParameterDiscreteValue As ParameterDiscreteValue
 
-        sql = "select * from tb_penjualan where tgl_penjualan between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
+        sql = "select * from tb_penjualan where tgl_penjualan between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
