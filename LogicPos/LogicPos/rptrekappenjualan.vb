@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class fakturpenjualan
+Public Class rptrekappenjualan
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class fakturpenjualan
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "fakturpenjualan.rpt"
+            Return "rptrekappenjualan.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class fakturpenjualan
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "LogicPos.fakturpenjualan.rpt"
+            Return "LogicPos.rptrekappenjualan.rpt"
         End Get
         Set
             'Do nothing
@@ -94,7 +94,7 @@ Public Class fakturpenjualan
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_namakasir() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_tglawal() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(0)
         End Get
@@ -102,55 +102,15 @@ Public Class fakturpenjualan
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_pembeli() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_tglakhir() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(1)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_nofaktur() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(2)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_bayar() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(3)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_sisa() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(4)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_jatem() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(5)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_alamat() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(6)
         End Get
     End Property
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class Cachedfakturpenjualan
+Public Class Cachedrptrekappenjualan
     Inherits Component
     Implements ICachedReport
     
@@ -192,7 +152,7 @@ Public Class Cachedfakturpenjualan
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As fakturpenjualan = New fakturpenjualan()
+        Dim rpt As rptrekappenjualan = New rptrekappenjualan()
         rpt.Site = Me.Site
         Return rpt
     End Function

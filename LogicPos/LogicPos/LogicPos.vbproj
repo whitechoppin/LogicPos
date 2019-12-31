@@ -109,11 +109,29 @@
       <DependentUpon>fakturpenjualan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="flaporanpenjualan.designer.vb">
+      <DependentUpon>flaporanpenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanpenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flappenjualan.designer.vb">
+      <DependentUpon>flappenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flappenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fprinter.Designer.vb">
       <DependentUpon>fprinter.vb</DependentUpon>
     </Compile>
     <Compile Include="fprinter.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rptrekappenjualan.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekappenjualan.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Struk_Penjualan.vb">
       <AutoGen>True</AutoGen>
@@ -239,12 +257,6 @@
       <DependentUpon>flaporbeli.vb</DependentUpon>
     </Compile>
     <Compile Include="flaporbeli.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="flaporjual.Designer.vb">
-      <DependentUpon>flaporjual.vb</DependentUpon>
-    </Compile>
-    <Compile Include="flaporjual.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flaporpiutang.Designer.vb">
@@ -427,11 +439,21 @@
     <EmbeddedResource Include="fkasmasuk.resx">
       <DependentUpon>fkasmasuk.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flaporanpenjualan.resx">
+      <DependentUpon>flaporanpenjualan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flappenjualan.resx">
+      <DependentUpon>flappenjualan.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fprinter.resx">
       <DependentUpon>fprinter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ftransferkas.resx">
       <DependentUpon>ftransferkas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekappenjualan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekappenjualan.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Struk_Penjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

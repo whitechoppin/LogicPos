@@ -1013,6 +1013,10 @@ Public Class fpenjualan
         rpt.SetParameterValue("nofaktur", autonumber)
         rpt.SetParameterValue("namakasir", fmenu.statususer.Text)
         rpt.SetParameterValue("pembeli", txtcustomer.Text)
+        rpt.SetParameterValue("jatem", dtjatuhtempo.Text)
+        rpt.SetParameterValue("bayar", txtbayar.Text)
+        rpt.SetParameterValue("sisa", txtsisa.Text)
+        rpt.SetParameterValue("alamat", txtalamat.Text)
         'fakturjual.CrystalReportViewer1.ReportSource = rpt
         'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
         'rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"

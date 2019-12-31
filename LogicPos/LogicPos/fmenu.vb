@@ -35,7 +35,7 @@ Public Class fmenu
         'flaporanpembelian.Show()
     End Sub
     Private Sub PenjualanToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPenjualanToolStripMenuItem.Click
-        'flaporanpenjualan.Show()
+        flaporanpenjualan.Show()
     End Sub
     Private Sub InfoStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LStokBarangToolStripMenuItem.Click
         'fminstok.Show()
