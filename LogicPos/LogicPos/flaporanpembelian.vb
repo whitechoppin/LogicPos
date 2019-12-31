@@ -3,10 +3,10 @@ Imports System.Globalization
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
-Public Class flaporanpenjualan
+Public Class flaporanpembelian
     Public isi As String
     Public isi2 As String
-    Private Sub flaporanpembelian_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub flaporanpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
         Me.WindowState = WindowState.Maximized
@@ -22,19 +22,19 @@ Public Class flaporanpenjualan
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
-            .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
+            ' .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
 
         End With
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Nota"
-        GridColumn1.FieldName = "kode_penjualan"
+        GridColumn1.FieldName = "kode_pembelian"
 
-        GridColumn2.Caption = "Pelangan"
-        GridColumn2.FieldName = "nama_pelanggan"
+        GridColumn2.Caption = "Supplier"
+        GridColumn2.FieldName = "nama_supplier"
 
-        GridColumn3.Caption = "Tanggal Penjualan"
-        GridColumn3.FieldName = "tgl_penjualan"
+        GridColumn3.Caption = "Tanggal Pembelian"
+        GridColumn3.FieldName = "tgl_pembelian"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
 
@@ -50,8 +50,8 @@ Public Class flaporanpenjualan
         'GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         'GridColumn6.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn7.Caption = "Harga Jual"
-        GridColumn7.FieldName = "harga_jual"
+        GridColumn7.Caption = "Harga Beli"
+        GridColumn7.FieldName = "harga_beli"
         GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn7.DisplayFormat.FormatString = "##,##0"
 
@@ -60,18 +60,17 @@ Public Class flaporanpenjualan
         GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn8.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn9.Caption = "Laba"
-        GridColumn9.FieldName = "keuntungan"
-        GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn9.DisplayFormat.FormatString = "##,##0"
+        GridColumn9.Caption = "Kasir Penerima"
+        GridColumn9.FieldName = "kode_user"
+        'GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        'GridColumn9.DisplayFormat.FormatString = "##,##0"
 
         'GridColumn10.Caption = "Idbrg"
         'GridColumn10.FieldName = "idbarang"
         GridColumn10.Visible = False
-        GridColumn11.Caption = "Kasir"
-        GridColumn11.FieldName = "kode_user"
+        GridColumn11.Visible = False
         GridColumn12.Caption = "Metode Bayar"
-        GridColumn12.FieldName = "metode_pembayaran"
+        GridColumn12.FieldName = "pembayaran_pembelian"
 
 
         '        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
@@ -97,7 +96,9 @@ Public Class flaporanpenjualan
             'If listkasir.Items.Count = 0 Then
             '    sql = "select * from tb_penjualan_detail join tb_penjualan on tb_penjualan.idjual=tb_penjualan_detail.idjual join tb_barang on tb_barang.kode=tb_penjualan_detail.idbarang where  tgljual between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' "
             'Else
-            sql = "select * from tb_penjualan_detail join tb_penjualan on tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan where  tgl_penjualan between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
+            'sql = "select * from tb_penjualan_detail join tb_penjualan on tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan where  tgl_penjualan between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
+            sql = "SELECT * FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.kode_pembelian=tb_pembelian_detail.kode_pembelian join tb_supplier on tb_supplier.kode_supplier = tb_pembelian.kode_supplier where  tgl_pembelian between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
+
             'End If
             'MsgBox(sql)
             da = New OdbcDataAdapter(sql, cnn)

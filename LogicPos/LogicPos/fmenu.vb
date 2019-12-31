@@ -32,7 +32,7 @@ Public Class fmenu
         fpenjualan.Show()
     End Sub
     Private Sub PembelianToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPembelianToolStripMenuItem.Click
-        'flaporanpembelian.Show()
+        flaporanpembelian.Show()
     End Sub
     Private Sub PenjualanToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPenjualanToolStripMenuItem.Click
         flaporanpenjualan.Show()

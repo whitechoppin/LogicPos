@@ -109,6 +109,12 @@
       <DependentUpon>fakturpenjualan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="flaporanpembelian.designer.vb">
+      <DependentUpon>flaporanpembelian.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanpembelian.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanpenjualan.designer.vb">
       <DependentUpon>flaporanpenjualan.vb</DependentUpon>
     </Compile>
@@ -438,6 +444,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fkasmasuk.resx">
       <DependentUpon>fkasmasuk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporanpembelian.resx">
+      <DependentUpon>flaporanpembelian.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanpenjualan.resx">
       <DependentUpon>flaporanpenjualan.vb</DependentUpon>

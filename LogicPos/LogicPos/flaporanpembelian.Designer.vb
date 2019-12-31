@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class flaporanpenjualan
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class flaporanpembelian
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class flaporanpenjualan
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -28,6 +28,7 @@ Partial Class flaporanpenjualan
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.btnrekap = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.btnexcel = New System.Windows.Forms.Button()
         Me.btntabel = New System.Windows.Forms.Button()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -43,11 +44,12 @@ Partial Class flaporanpenjualan
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.btnexcel = New System.Windows.Forms.Button()
+        Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -105,6 +107,15 @@ Partial Class flaporanpenjualan
         Me.GroupBox4.Size = New System.Drawing.Size(188, 81)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
+        '
+        'btnexcel
+        '
+        Me.btnexcel.Location = New System.Drawing.Point(13, 46)
+        Me.btnexcel.Name = "btnexcel"
+        Me.btnexcel.Size = New System.Drawing.Size(156, 27)
+        Me.btnexcel.TabIndex = 17
+        Me.btnexcel.Text = "Convert Excel"
+        Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btntabel
         '
@@ -212,16 +223,12 @@ Partial Class flaporanpenjualan
         Me.GridColumn12.Visible = True
         Me.GridColumn12.VisibleIndex = 11
         '
-        'btnexcel
+        'FileSystemWatcher1
         '
-        Me.btnexcel.Location = New System.Drawing.Point(13, 46)
-        Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(156, 27)
-        Me.btnexcel.TabIndex = 17
-        Me.btnexcel.Text = "Convert Excel"
-        Me.btnexcel.UseVisualStyleBackColor = True
+        Me.FileSystemWatcher1.EnableRaisingEvents = True
+        Me.FileSystemWatcher1.SynchronizingObject = Me
         '
-        'flaporanpenjualan
+        'flaporanpembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -230,13 +237,14 @@ Partial Class flaporanpenjualan
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Name = "flaporanpenjualan"
-        Me.Text = "Laporan Penjualan"
+        Me.Name = "flaporanpembelian"
+        Me.Text = "Laporan Pembelian"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -263,4 +271,5 @@ Partial Class flaporanpenjualan
     Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnexcel As Button
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
 End Class
