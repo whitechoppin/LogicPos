@@ -2,8 +2,9 @@
 
 Public Class fkasmasuk
 
-    Dim kodemasuk As String
+    Dim kodemasuk, viewketerangan, viewkodekas, viewkodesales As String
     Dim saldomasuk As Double
+    Dim viewtglkas As DateTime
 
     Private Sub fkasmasuk_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
@@ -197,7 +198,7 @@ Public Class fkasmasuk
         kodemasuk = autonumber()
 
         Call koneksii()
-        sql = "INSERT INTO tb_kas_masuk (kode_kas_masuk, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodemasuk & "','" & cmbkas.Text & "','" & cmbsales.Text & "','MASUK', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldomasuk & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+        sql = "INSERT INTO tb_kas_masuk (kode_kas_masuk, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodemasuk & "','" & cmbkas.Text & "','" & cmbsales.Text & "','MASUK', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldomasuk & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -207,12 +208,54 @@ Public Class fkasmasuk
 
     End Sub
 
-    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+    Sub edit()
+        sql = "UPDATE tb_kas_masuk SET kode_user='" & cmbsales.Text & "',kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', saldo_kas='" & saldomasuk & "', keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_kas_masuk='" & txtkodemasuk.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+        btnedit.Text = "Edit"
+        Me.Refresh()
+        Call awal()
+    End Sub
 
+    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+        If btnedit.Text = "Edit" Then
+            btnedit.Text = "Simpan"
+            btnhapus.Enabled = False
+            Call enable_text()
+            Call index()
+            GridControl1.Enabled = False
+        Else
+            If txtkodemasuk.Text.Length = 0 Then
+                MsgBox("Kode belum terisi !")
+            Else
+                If cmbsales.SelectedIndex = -1 Then
+                    MsgBox("Sales belum terisi !")
+                Else
+                    If cmbkas.SelectedIndex = -1 Then
+                        MsgBox("Kas belum terisi !")
+                    Else
+                        If txtsaldomasuk.Text.Length = 0 Then
+                            MsgBox("Saldo belum terisi !")
+                        Else
+                            Call edit()
+                        End If
+                    End If
+                End If
+            End If
+        End If
     End Sub
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-
+        Call koneksii()
+        If MessageBox.Show("Hapus Data Kas Masuk " & Me.txtkodemasuk.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+            sql = "DELETE FROM tb_kas_masuk WHERE  kode_kas_masuk='" & txtkodemasuk.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            MessageBox.Show(txtkodemasuk.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Me.Refresh()
+            Call awal()
+        End If
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
@@ -227,19 +270,23 @@ Public Class fkasmasuk
         txtkodemasuk.Text = GridView1.GetFocusedRowCellValue("kode_kas_masuk")
 
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_kas_masuk WHERE kode_kas_masuk  = '" + txtkodemasuk.Text + "'"
+            sql = "SELECT * FROM tb_kas_masuk WHERE kode_kas_masuk  = '" & txtkodemasuk.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             cnn.Open()
             dr = cmmd.ExecuteReader
             dr.Read()
             If dr.HasRows Then
-                cmbsales.Text = dr("kode_user")
-                cmbkas.Text = dr("kode_kas")
-                dttransaksi.Value = dr("tanggal_transaksi")
+                viewkodesales = dr("kode_user")
+                viewkodekas = dr("kode_kas")
+                viewtglkas = dr("tanggal_transaksi")
                 saldomasuk = dr("saldo_kas")
+                viewketerangan = dr("keterangan_kas")
+
+                cmbsales.Text = viewkodesales
+                cmbkas.Text = viewkodekas
+                dttransaksi.Value = viewtglkas
                 txtsaldomasuk.Text = Format(saldomasuk, "##,##0")
-                txtketerangan.Text = dr("keterangan_kas")
-                cnn.Close()
+                txtketerangan.Text = viewketerangan
 
                 btnedit.Enabled = True
                 btnbatal.Enabled = True
@@ -247,6 +294,7 @@ Public Class fkasmasuk
                 btntambah.Enabled = False
                 btntambah.Text = "Tambah"
             End If
+            cnn.Close()
         End Using
     End Sub
 
