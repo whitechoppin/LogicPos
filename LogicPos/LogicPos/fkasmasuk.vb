@@ -77,12 +77,15 @@ Public Class fkasmasuk
         cmbsales.Enabled = False
         cmbkas.Enabled = False
         txtsaldomasuk.Enabled = False
+        dttransaksi.Value = Date.Now
+        dttransaksi.Enabled = False
         txtketerangan.Enabled = False
 
         cbposted.Checked = False
         cbprinted.Checked = False
 
         GridControl1.Enabled = True
+        GridView1.OptionsBehavior.Editable = False
         Call isitabel()
 
         Call comboboxuser()
@@ -126,8 +129,9 @@ Public Class fkasmasuk
         btnprint.TabIndex = 5
         cmbsales.TabIndex = 6
         cmbkas.TabIndex = 7
-        txtsaldomasuk.TabIndex = 8
-        txtketerangan.TabIndex = 9
+        dttransaksi.TabIndex = 8
+        txtsaldomasuk.TabIndex = 9
+        txtketerangan.TabIndex = 10
     End Sub
 
     Function autonumber()
@@ -164,6 +168,7 @@ Public Class fkasmasuk
     Sub enable_text()
         cmbsales.Enabled = True
         cmbkas.Enabled = True
+        dttransaksi.Enabled = True
         txtsaldomasuk.Enabled = True
         txtketerangan.Enabled = True
         cmbsales.Focus()
@@ -210,7 +215,7 @@ Public Class fkasmasuk
 
         If kodekas IsNot "" Then
             Call koneksii()
-            sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_kas_masuk, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekas & "','" & kodemasuk & "', 'MASUK','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas MAsuk Nomor " & kodemasuk & "','" & 0 & "', '" & saldomasuk & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+            sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_kas_masuk, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekas & "','" & kodemasuk & "', 'MASUK','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas Masuk Nomor " & kodemasuk & "','" & 0 & "', '" & saldomasuk & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         End If
