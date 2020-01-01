@@ -2,9 +2,10 @@
 
 Public Class fkasmasuk
 
-    Dim kodemasuk, viewketerangan, viewkodekas, viewkodesales As String
+    Dim kodemasuk, kodekas, viewketerangan, viewkodekas, viewkodesales As String
     Dim saldomasuk As Double
     Dim viewtglkas As DateTime
+    Dim statusprint, statusposted As Boolean
 
     Private Sub fkasmasuk_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
@@ -77,6 +78,9 @@ Public Class fkasmasuk
         cmbkas.Enabled = False
         txtsaldomasuk.Enabled = False
         txtketerangan.Enabled = False
+
+        cbposted.Checked = False
+        cbprinted.Checked = False
 
         GridControl1.Enabled = True
         Call isitabel()
@@ -201,6 +205,16 @@ Public Class fkasmasuk
         sql = "INSERT INTO tb_kas_masuk (kode_kas_masuk, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodemasuk & "','" & cmbkas.Text & "','" & cmbsales.Text & "','MASUK', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldomasuk & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
+
+        kodekas = cmbkas.Text
+
+        If kodekas IsNot "" Then
+            Call koneksii()
+            sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_kas_masuk, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekas & "','" & kodemasuk & "', 'MASUK','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas MAsuk Nomor " & kodemasuk & "','" & 0 & "', '" & saldomasuk & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+        End If
+
         MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
         btntambah.Text = "Tambah"
         Me.Refresh()
@@ -209,9 +223,20 @@ Public Class fkasmasuk
     End Sub
 
     Sub edit()
+        Call koneksii()
         sql = "UPDATE tb_kas_masuk SET kode_user='" & cmbsales.Text & "',kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', saldo_kas='" & saldomasuk & "', keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_kas_masuk='" & txtkodemasuk.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
+
+        kodekas = cmbkas.Text
+
+        If kodekas IsNot "" Then
+            Call koneksii()
+            sql = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & 0 & "', kredit_kas='" & saldomasuk & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_kas_masuk='" & txtkodemasuk.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+        End If
+
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
         btnedit.Text = "Edit"
         Me.Refresh()
@@ -252,6 +277,11 @@ Public Class fkasmasuk
             sql = "DELETE FROM tb_kas_masuk WHERE  kode_kas_masuk='" & txtkodemasuk.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
+
+            sql = "DELETE FROM tb_transaksi_kas WHERE  kode_kas_masuk='" & txtkodemasuk.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+
             MessageBox.Show(txtkodemasuk.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Me.Refresh()
             Call awal()
@@ -281,12 +311,16 @@ Public Class fkasmasuk
                 viewtglkas = dr("tanggal_transaksi")
                 saldomasuk = dr("saldo_kas")
                 viewketerangan = dr("keterangan_kas")
+                statusprint = dr("print_kas")
+                statusposted = dr("posted_kas")
 
                 cmbsales.Text = viewkodesales
                 cmbkas.Text = viewkodekas
                 dttransaksi.Value = viewtglkas
                 txtsaldomasuk.Text = Format(saldomasuk, "##,##0")
                 txtketerangan.Text = viewketerangan
+                cbprinted.Checked = statusprint
+                cbposted.Checked = statusposted
 
                 btnedit.Enabled = True
                 btnbatal.Enabled = True
