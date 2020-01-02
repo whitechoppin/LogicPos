@@ -55,6 +55,8 @@ Partial Class ftransferkas
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.dttransaksi = New System.Windows.Forms.DateTimePicker()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,6 +65,8 @@ Partial Class ftransferkas
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.dttransaksi)
+        Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.GroupBox6)
         Me.GroupBox1.Controls.Add(Me.txtnamakekas)
         Me.GroupBox1.Controls.Add(Me.Label3)
@@ -88,7 +92,7 @@ Partial Class ftransferkas
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 218)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(930, 250)
+        Me.GroupBox1.Size = New System.Drawing.Size(925, 285)
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Transfer Kas"
@@ -98,7 +102,7 @@ Partial Class ftransferkas
         Me.GroupBox6.Controls.Add(Me.cbposted)
         Me.GroupBox6.Controls.Add(Me.cbprinted)
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox6.Location = New System.Drawing.Point(734, 24)
+        Me.GroupBox6.Location = New System.Drawing.Point(725, 24)
         Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
@@ -136,7 +140,7 @@ Partial Class ftransferkas
         '
         Me.txtnamakekas.Enabled = False
         Me.txtnamakekas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamakekas.Location = New System.Drawing.Point(736, 135)
+        Me.txtnamakekas.Location = New System.Drawing.Point(727, 135)
         Me.txtnamakekas.Name = "txtnamakekas"
         Me.txtnamakekas.Size = New System.Drawing.Size(186, 24)
         Me.txtnamakekas.TabIndex = 34
@@ -145,7 +149,7 @@ Partial Class ftransferkas
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(627, 135)
+        Me.Label3.Location = New System.Drawing.Point(621, 135)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(105, 20)
         Me.Label3.TabIndex = 35
@@ -155,7 +159,7 @@ Partial Class ftransferkas
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(627, 104)
+        Me.Label5.Location = New System.Drawing.Point(621, 104)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(100, 20)
         Me.Label5.TabIndex = 33
@@ -164,7 +168,7 @@ Partial Class ftransferkas
         'cmbkekas
         '
         Me.cmbkekas.FormattingEnabled = True
-        Me.cmbkekas.Location = New System.Drawing.Point(736, 102)
+        Me.cmbkekas.Location = New System.Drawing.Point(727, 102)
         Me.cmbkekas.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbkekas.MaxLength = 99
         Me.cmbkekas.Name = "cmbkekas"
@@ -184,9 +188,9 @@ Partial Class ftransferkas
         'txtketerangantransfer
         '
         Me.txtketerangantransfer.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangantransfer.Location = New System.Drawing.Point(435, 193)
+        Me.txtketerangantransfer.Location = New System.Drawing.Point(424, 193)
         Me.txtketerangantransfer.Name = "txtketerangantransfer"
-        Me.txtketerangantransfer.Size = New System.Drawing.Size(487, 48)
+        Me.txtketerangantransfer.Size = New System.Drawing.Size(487, 79)
         Me.txtketerangantransfer.TabIndex = 29
         Me.txtketerangantransfer.Text = ""
         '
@@ -194,7 +198,7 @@ Partial Class ftransferkas
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(435, 170)
+        Me.Label9.Location = New System.Drawing.Point(424, 170)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(155, 20)
         Me.Label9.TabIndex = 28
@@ -203,7 +207,7 @@ Partial Class ftransferkas
         'txtsaldotransfer
         '
         Me.txtsaldotransfer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsaldotransfer.Location = New System.Drawing.Point(14, 193)
+        Me.txtsaldotransfer.Location = New System.Drawing.Point(11, 248)
         Me.txtsaldotransfer.Name = "txtsaldotransfer"
         Me.txtsaldotransfer.Size = New System.Drawing.Size(390, 24)
         Me.txtsaldotransfer.TabIndex = 26
@@ -212,7 +216,7 @@ Partial Class ftransferkas
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(10, 170)
+        Me.Label8.Location = New System.Drawing.Point(11, 223)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(113, 20)
         Me.Label8.TabIndex = 27
@@ -222,7 +226,7 @@ Partial Class ftransferkas
         '
         Me.txtnamadarikas.Enabled = False
         Me.txtnamadarikas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamadarikas.Location = New System.Drawing.Point(435, 135)
+        Me.txtnamadarikas.Location = New System.Drawing.Point(431, 135)
         Me.txtnamadarikas.Name = "txtnamadarikas"
         Me.txtnamadarikas.Size = New System.Drawing.Size(186, 24)
         Me.txtnamadarikas.TabIndex = 22
@@ -231,7 +235,7 @@ Partial Class ftransferkas
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(317, 135)
+        Me.Label4.Location = New System.Drawing.Point(315, 135)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(115, 20)
         Me.Label4.TabIndex = 23
@@ -241,7 +245,7 @@ Partial Class ftransferkas
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(317, 104)
+        Me.Label6.Location = New System.Drawing.Point(315, 104)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(110, 20)
         Me.Label6.TabIndex = 21
@@ -250,7 +254,7 @@ Partial Class ftransferkas
         'cmbdarikas
         '
         Me.cmbdarikas.FormattingEnabled = True
-        Me.cmbdarikas.Location = New System.Drawing.Point(435, 102)
+        Me.cmbdarikas.Location = New System.Drawing.Point(431, 102)
         Me.cmbdarikas.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbdarikas.MaxLength = 99
         Me.cmbdarikas.Name = "cmbdarikas"
@@ -337,7 +341,7 @@ Partial Class ftransferkas
         Me.GridControl1.Location = New System.Drawing.Point(12, 12)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(930, 200)
+        Me.GridControl1.Size = New System.Drawing.Size(925, 200)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -409,12 +413,31 @@ Partial Class ftransferkas
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 5
         '
+        'dttransaksi
+        '
+        Me.dttransaksi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dttransaksi.Location = New System.Drawing.Point(11, 195)
+        Me.dttransaksi.Margin = New System.Windows.Forms.Padding(4)
+        Me.dttransaksi.Name = "dttransaksi"
+        Me.dttransaksi.Size = New System.Drawing.Size(389, 24)
+        Me.dttransaksi.TabIndex = 43
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(12, 170)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(138, 20)
+        Me.Label7.TabIndex = 42
+        Me.Label7.Text = "Tanggal Transaksi"
+        '
         'ftransferkas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(949, 477)
+        Me.ClientSize = New System.Drawing.Size(947, 515)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl1)
         Me.MaximizeBox = False
@@ -464,4 +487,6 @@ Partial Class ftransferkas
     Friend WithEvents cbposted As CheckBox
     Friend WithEvents cbprinted As CheckBox
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents dttransaksi As DateTimePicker
+    Friend WithEvents Label7 As Label
 End Class
