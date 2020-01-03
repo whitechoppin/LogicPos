@@ -288,14 +288,14 @@ Public Class flaporanpenjualan
         If dr.HasRows Then
             rptrekap = New rptrekappenjualan
 
-            awalPDV.Value = DateTimePicker1.Value.ToString("MM/dd/yyyy", DateTimeFormatInfo.InvariantInfo)
+            awalPDV.Value = DateTimePicker1.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
             awalPFDs = rptrekap.DataDefinition.ParameterFields
             awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
             awalPVs.Clear()
             awalPVs.Add(awalPDV)
             awalPFD.ApplyCurrentValues(awalPVs)
 
-            akhirPDV.Value = DateTimePicker2.Value.ToString("MM/dd/yyyy", DateTimeFormatInfo.InvariantInfo)
+            akhirPDV.Value = DateTimePicker2.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
             akhirPFDs = rptrekap.DataDefinition.ParameterFields
             akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
             akhirPVs.Clear()

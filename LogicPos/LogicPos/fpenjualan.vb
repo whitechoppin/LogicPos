@@ -15,6 +15,7 @@ Public Class fpenjualan
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
     Dim viewtglpenjualan, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
+    Dim rpt_faktur As New ReportDocument
 
     'variabel edit penjualan
     Dim countingbarang As Integer
@@ -1036,7 +1037,7 @@ Public Class fpenjualan
         e.Graphics.DrawString("_________________________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 2, tinggi)
     End Sub
 
-    Sub cetak_faktur()
+    Public Sub cetak_faktur()
         Dim faktur As String
         Dim tabel_faktur As New DataTable
         With tabel_faktur
@@ -1080,25 +1081,59 @@ Public Class fpenjualan
             faktur = ""
         End If
 
-        Dim rpt As ReportDocument
-        rpt = New fakturpenjualan
-        rpt.SetDataSource(tabel_faktur)
+        rpt_faktur = New fakturpenjualan
+        rpt_faktur.SetDataSource(tabel_faktur)
         'rpt.SetParameterValue("total", total2)
-        rpt.SetParameterValue("nofaktur", autonumber)
-        rpt.SetParameterValue("namakasir", fmenu.statususer.Text)
-        rpt.SetParameterValue("pembeli", txtcustomer.Text)
-        rpt.SetParameterValue("jatem", dtjatuhtempo.Text)
-        rpt.SetParameterValue("bayar", txtbayar.Text)
-        rpt.SetParameterValue("sisa", txtsisa.Text)
-        rpt.SetParameterValue("alamat", txtalamat.Text)
+        rpt_faktur.SetParameterValue("nofaktur", autonumber)
+        rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
+        rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
+        rpt_faktur.SetParameterValue("bayar", txtbayar.Text)
+        rpt_faktur.SetParameterValue("sisa", txtsisa.Text)
+        rpt_faktur.SetParameterValue("alamat", txtalamat.Text)
         'fakturjual.CrystalReportViewer1.ReportSource = rpt
         'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
         'rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
-        rpt.PrintOptions.PrinterName = faktur
-
-        rpt.PrintToPrinter(1, False, 0, 0)
+        'rpt_faktur.PrintOptions.PrinterName = faktur
+        SetReportPageSize("Faktur", 1)
+        rpt_faktur.PrintToPrinter(1, False, 0, 0)
         'fakturjual.ShowDialog()
         'fakturjual.Dispose()
+    End Sub
+    Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
+        Dim faktur As String
+        Call koneksii()
+        sql = "select * from tb_printer where nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
+
+        Else
+            faktur = ""
+        End If
+
+        Try
+            Dim ObjPrinterSetting As New System.Drawing.Printing.PrinterSettings
+            Dim PkSize As New System.Drawing.Printing.PaperSize
+            ObjPrinterSetting.PrinterName = faktur
+            For i As Integer = 0 To ObjPrinterSetting.PaperSizes.Count - 1
+                If ObjPrinterSetting.PaperSizes.Item(i).PaperName = mPaperSize.Trim Then
+                    PkSize = ObjPrinterSetting.PaperSizes.Item(i)
+                    Exit For
+                End If
+            Next
+
+            If PkSize IsNot Nothing Then
+                Dim myAppPrintOptions As CrystalDecisions.CrystalReports.Engine.PrintOptions = rpt_faktur.PrintOptions
+                myAppPrintOptions.PrinterName = faktur
+                myAppPrintOptions.PaperSize = CType(PkSize.RawKind, CrystalDecisions.Shared.PaperSize)
+                rpt_faktur.PrintOptions.PaperOrientation = IIf(PaperOrientation = 1, CrystalDecisions.Shared.PaperOrientation.Portrait, CrystalDecisions.Shared.PaperOrientation.Landscape)
+            End If
+            PkSize = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If btnedit.Text.Equals("Edit") Then

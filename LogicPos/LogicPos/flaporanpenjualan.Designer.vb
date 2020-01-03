@@ -28,6 +28,7 @@ Partial Class flaporanpenjualan
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.btnrekap = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.btnexcel = New System.Windows.Forms.Button()
         Me.btntabel = New System.Windows.Forms.Button()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -43,7 +44,7 @@ Partial Class flaporanpenjualan
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.btnexcel = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,6 +106,15 @@ Partial Class flaporanpenjualan
         Me.GroupBox4.Size = New System.Drawing.Size(188, 81)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
+        '
+        'btnexcel
+        '
+        Me.btnexcel.Location = New System.Drawing.Point(13, 46)
+        Me.btnexcel.Name = "btnexcel"
+        Me.btnexcel.Size = New System.Drawing.Size(156, 27)
+        Me.btnexcel.TabIndex = 17
+        Me.btnexcel.Text = "Convert Excel"
+        Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btntabel
         '
@@ -212,14 +222,15 @@ Partial Class flaporanpenjualan
         Me.GridColumn12.Visible = True
         Me.GridColumn12.VisibleIndex = 11
         '
-        'btnexcel
+        'Label2
         '
-        Me.btnexcel.Location = New System.Drawing.Point(13, 46)
-        Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(156, 27)
-        Me.btnexcel.TabIndex = 17
-        Me.btnexcel.Text = "Convert Excel"
-        Me.btnexcel.UseVisualStyleBackColor = True
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(467, 51)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(350, 42)
+        Me.Label2.TabIndex = 17
+        Me.Label2.Text = "Laporan Penjualan"
         '
         'flaporanpenjualan
         '
@@ -227,6 +238,7 @@ Partial Class flaporanpenjualan
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1018, 661)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
@@ -238,6 +250,7 @@ Partial Class flaporanpenjualan
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -263,4 +276,5 @@ Partial Class flaporanpenjualan
     Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnexcel As Button
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Label2 As Label
 End Class
