@@ -4,6 +4,7 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports System.Data
 Imports CrystalDecisions.Shared
 Public Class fpenjualan
+    Public tinggi As Integer
     Public tabel As DataTable
     'variabel dalam penjualan
     Public jenis, satuan, kodepenjualan, kodetransaksi As String
@@ -887,7 +888,8 @@ Public Class fpenjualan
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If rbstruk.Checked Then
-            Call cetak_struk()
+            'Call cetak_struk()
+            call PrintTransaksi
         Else
             If rbfaktur.Checked Then
                 Call cetak_faktur()
@@ -942,10 +944,10 @@ Public Class fpenjualan
         rpt = New Struk_Penjualan
         rpt.SetDataSource(tabel_struk)
         'rpt.SetParameterValue("total", total2)
-        rpt.SetParameterValue("nofaktur", autonumber)
+        rpt.SetParameterValue("nofaktur", txtnonota.Text)
         rpt.SetParameterValue("kasir", fmenu.statususer.Text)
         rpt.SetParameterValue("customer", txtcustomer.Text)
-
+        rpt.SetParameterValue("tgl", dtpenjualan.Text)
 
         'If cash = True Then
         '    rpt.SetParameterValue("bayar", "CASH")
@@ -962,6 +964,78 @@ Public Class fpenjualan
         'fakturjual.ShowDialog()
         'fakturjual.Dispose()
     End Sub
+    Public Sub PrintTransaksi()
+        Tinggi = 0
+        With Me.PrintDocument1
+            .PrinterSettings.DefaultPageSettings.Landscape = False
+            .Print()
+        End With
+        'MsgBox("Transaksi Tersimpan!", MsgBoxStyle.Exclamation, "Berhasil")
+    End Sub
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        'Dim sumObject As Object
+        'sumObject = Tabel1.Compute("Sum(total)", String.Empty)
+        'Label8.Text = sumObject
+
+        tinggi += 15
+        e.Graphics.DrawString("SJT", New System.Drawing.Font("Arial", 16), Brushes.Black, 100, tinggi)
+
+        tinggi += 25
+        e.Graphics.DrawString("Jl. Tentara Pelajar No.2B", New System.Drawing.Font("verdana", 8), Brushes.Black, 50, tinggi)
+        tinggi += 20
+        e.Graphics.DrawString("Makassar", New System.Drawing.Font("verdana", 8), Brushes.Black, 90, tinggi)
+        tinggi += 20
+        e.Graphics.DrawString("Telp 085 363 930 370", New System.Drawing.Font("verdana", 8), Brushes.Black, 55, tinggi)
+
+        tinggi += 30
+        e.Graphics.DrawString("No.Nota", New System.Drawing.Font("verdana", 7), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString(": " + txtnonota.Text, New System.Drawing.Font("verdana", 7), Brushes.Black, 60, tinggi)
+
+        tinggi += 15
+        e.Graphics.DrawString("Customer", New System.Drawing.Font("verdana", 7), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString(": " + txtcustomer.Text, New System.Drawing.Font("verdana", 7), Brushes.Black, 60, tinggi)
+
+        tinggi += 15
+        e.Graphics.DrawString("Tanggal", New System.Drawing.Font("verdana", 7), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString(": " + dtpenjualan.Text, New System.Drawing.Font("verdana", 7), Brushes.Black, 60, tinggi)
+
+        tinggi += 15
+        e.Graphics.DrawString("Kasir", New System.Drawing.Font("verdana", 7), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString(": " + fmenu.statususer.Text, New System.Drawing.Font("verdana", 7), Brushes.Black, 60, tinggi)
+
+        tinggi += 15
+        e.Graphics.DrawString("_________________________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 2, tinggi)
+
+        For itm As Integer = 0 To GridView1.RowCount - 1
+            tinggi += 15
+            e.Graphics.DrawString(GridView1.GetRowCellValue(itm, "nama_barang"), New System.Drawing.Font("verdana", 8), Brushes.Black, 2, tinggi)
+
+            tinggi += 15
+            e.Graphics.DrawString(FormatNumber(GridView1.GetRowCellValue(itm, "banyak").ToString, 0) + " " + GridView1.GetRowCellValue(itm, "satuan_barang") + " x " + FormatNumber(GridView1.GetRowCellValue(itm, "harga_diskon").ToString, 0), New System.Drawing.Font("verdana", 8), Brushes.Black, 10, tinggi)
+            e.Graphics.DrawString(" = " + FormatNumber(GridView1.GetRowCellValue(itm, "subtotal").ToString, 0), New System.Drawing.Font("verdana", 8), Brushes.Black, 150, tinggi)
+        Next
+
+        tinggi += 20
+        e.Graphics.DrawString("_________________________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 2, tinggi)
+
+        tinggi += 20
+        e.Graphics.DrawString("Total ", New System.Drawing.Font("Verdana", 8), Brushes.Black, 100, tinggi)
+        e.Graphics.DrawString(FormatNumber(txttotal.Text, 0), New System.Drawing.Font("Verdana", 8), Brushes.Black, 160, tinggi)
+
+        tinggi += 30
+        e.Graphics.DrawString("Terima Kasih Sudah berbelanja di toko kami", New System.Drawing.Font("verdana", 6), Brushes.Black, 35, tinggi)
+
+        tinggi += 15
+        e.Graphics.DrawString("Barang yang sudah di beli tidak dapat di kembalikan atau ", New System.Drawing.Font("verdana", 6), Brushes.Black, 2, tinggi)
+        tinggi += 15
+        e.Graphics.DrawString("di tukar dengan alasan apapun ", New System.Drawing.Font("verdana", 6), Brushes.Black, 60, tinggi)
+
+        tinggi += 25
+        e.Graphics.DrawString("Barang yang sudah di beli dianggap sudah di cek", New System.Drawing.Font("verdana", 6), Brushes.Black, 25, tinggi)
+        tinggi += 25
+        e.Graphics.DrawString("_________________________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 2, tinggi)
+    End Sub
+
     Sub cetak_faktur()
         Dim faktur As String
         Dim tabel_faktur As New DataTable
@@ -1021,6 +1095,7 @@ Public Class fpenjualan
         'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
         'rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
         rpt.PrintOptions.PrinterName = faktur
+
         rpt.PrintToPrinter(1, False, 0, 0)
         'fakturjual.ShowDialog()
         'fakturjual.Dispose()

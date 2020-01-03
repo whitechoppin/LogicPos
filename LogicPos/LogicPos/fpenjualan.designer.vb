@@ -122,6 +122,7 @@ Partial Class fpenjualan
         Me.cmbpembayaran = New System.Windows.Forms.ComboBox()
         Me.txtrekening = New System.Windows.Forms.TextBox()
         Me.btncarikas = New System.Windows.Forms.Button()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1256,6 +1257,9 @@ Partial Class fpenjualan
         Me.btncarikas.TabIndex = 31
         Me.btncarikas.UseVisualStyleBackColor = True
         '
+        'PrintDocument1
+        '
+        '
         'fpenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1412,4 +1416,5 @@ Partial Class fpenjualan
     Friend WithEvents cmbpembayaran As ComboBox
     Friend WithEvents txtrekening As TextBox
     Friend WithEvents btncarikas As Button
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
 End Class
