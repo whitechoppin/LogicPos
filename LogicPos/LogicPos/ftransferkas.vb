@@ -206,10 +206,10 @@ Public Class ftransferkas
     End Function
     Sub enable_text()
         cmbsales.Enabled = True
-        cmbkas.Enabled = True
+        'cmbkas.Enabled = True
         dttransaksi.Enabled = True
-        txtsaldomasuk.Enabled = True
-        txtketerangan.Enabled = True
+        'txtsaldomasuk.Enabled = True
+        'txtketerangan.Enabled = True
         cmbsales.Focus()
     End Sub
 

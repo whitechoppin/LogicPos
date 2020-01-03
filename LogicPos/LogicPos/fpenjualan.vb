@@ -895,7 +895,7 @@ Public Class fpenjualan
         End If
     End Sub
     Sub cetak_struk()
-        Dim struk As Integer
+        Dim struk As String
         Dim tabel_struk As New DataTable
         With tabel_struk
             .Columns.Add("kode_barang")
