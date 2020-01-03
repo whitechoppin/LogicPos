@@ -206,15 +206,95 @@ Public Class ftransferkas
     End Function
     Sub enable_text()
         cmbsales.Enabled = True
-        'cmbkas.Enabled = True
+        cmbdarikas.Enabled = True
+        cmbkekas.Enabled = True
         dttransaksi.Enabled = True
-        'txtsaldomasuk.Enabled = True
-        'txtketerangan.Enabled = True
+        txtsaldotransfer.Enabled = True
+        txtketerangantransfer.Enabled = True
         cmbsales.Focus()
     End Sub
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
+        If btntambah.Text = "Tambah" Then
+            btnbatal.Enabled = True
+            btntambah.Text = "Simpan"
+            Call enable_text()
+            Call index()
+            txtkodetransfer.Text = autonumber()
+            GridControl1.Enabled = False
+        Else
+            If txtkodetransfer.Text.Length = 0 Then
+                MsgBox("Kode belum terisi !")
+            Else
+                If cmbsales.SelectedIndex = -1 Then
+                    MsgBox("Sales belum terisi !")
+                Else
+                    If cmbdarikas.SelectedIndex = -1 And cmbkekas.SelectedIndex = -1 Then
+                        MsgBox("Salah Satu Kas belum terisi !")
+                    Else
+                        If txtsaldotransfer.Text.Length = 0 Then
+                            MsgBox("Saldo belum terisi !")
+                        Else
+                            Call simpan()
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    End Sub
 
+    Sub simpan()
+        kodetransfer = autonumber()
+
+        'Call koneksii()
+        'sql = "INSERT INTO tb_transfer_kas (kode_transfer_kas, kode_dari_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodemasuk & "','" & cmbkas.Text & "','" & cmbsales.Text & "','MASUK', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldomasuk & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+        'cmmd = New OdbcCommand(sql, cnn)
+        'dr = cmmd.ExecuteReader()
+
+        'kodedarikas = cmbdarikas.Text
+
+        'If kodedarikas IsNot "" Then
+        '    Call koneksii()
+        '    sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_transfer_kas, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodedarikas & "','" & kodetransfer & "', 'KELUAR','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Transfer Kas Nomor " & kodetransfer & "','" & saldotransfer & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+        '    cmmd = New OdbcCommand(sql, cnn)
+        '    dr = cmmd.ExecuteReader()
+        'End If
+
+        'kodekekas = cmbkekas.Text
+
+        'If kodekekas IsNot "" Then
+        '    Call koneksii()
+        '    sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_transfer_kas, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekekas & "','" & kodetransfer & "', 'MASUK','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Transfer Kas Nomor " & kodetransfer & "','" & 0 & "', '" & saldotransfer & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+        '    cmmd = New OdbcCommand(sql, cnn)
+        '    dr = cmmd.ExecuteReader()
+        'End If
+
+        'MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+        'btntambah.Text = "Tambah"
+        'Me.Refresh()
+        'Call awal()
+
+    End Sub
+
+    Sub edit()
+        'Call koneksii()
+        'sql = "UPDATE tb_kas_masuk SET kode_user='" & cmbsales.Text & "',kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', saldo_kas='" & saldomasuk & "', keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_kas_masuk='" & txtkodemasuk.Text & "'"
+        'cmmd = New OdbcCommand(sql, cnn)
+        'dr = cmmd.ExecuteReader()
+
+        'kodekas = cmbkas.Text
+
+        'If kodekas IsNot "" Then
+        '    Call koneksii()
+        '    sql = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & 0 & "', kredit_kas='" & saldomasuk & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_kas_masuk='" & txtkodemasuk.Text & "'"
+        '    cmmd = New OdbcCommand(sql, cnn)
+        '    dr = cmmd.ExecuteReader()
+        'End If
+
+        'MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+        'btnedit.Text = "Edit"
+        'Me.Refresh()
+        'Call awal()
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
