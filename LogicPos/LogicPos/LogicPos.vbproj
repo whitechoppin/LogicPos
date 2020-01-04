@@ -115,6 +115,12 @@
     <Compile Include="flaporanpembelian.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flaporanutang.designer.vb">
+      <DependentUpon>flaporanutang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanpenjualan.designer.vb">
       <DependentUpon>flaporanpenjualan.vb</DependentUpon>
     </Compile>
@@ -289,12 +295,6 @@
     <Compile Include="flaportransferkas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="flaporutang.Designer.vb">
-      <DependentUpon>flaporutang.vb</DependentUpon>
-    </Compile>
-    <Compile Include="flaporutang.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="flogichouse.Designer.vb">
       <DependentUpon>flogichouse.vb</DependentUpon>
     </Compile>
@@ -447,6 +447,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanpembelian.resx">
       <DependentUpon>flaporanpembelian.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporanutang.resx">
+      <DependentUpon>flaporanutang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanpenjualan.resx">
       <DependentUpon>flaporanpenjualan.vb</DependentUpon>
