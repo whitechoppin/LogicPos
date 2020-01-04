@@ -22,7 +22,6 @@ Partial Class fmenu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fmenu))
         Me.MenuUtama = New System.Windows.Forms.MenuStrip()
         Me.MasterMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -68,7 +67,7 @@ Partial Class fmenu
         Me.statususer = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusjam = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer = New System.Windows.Forms.Timer()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -391,10 +390,10 @@ Partial Class fmenu
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(437, 69)
+        Me.GridControl1.Location = New System.Drawing.Point(556, 69)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(601, 332)
+        Me.GridControl1.Size = New System.Drawing.Size(482, 263)
         Me.GridControl1.TabIndex = 18
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '

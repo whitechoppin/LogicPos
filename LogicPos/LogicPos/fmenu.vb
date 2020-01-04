@@ -191,4 +191,8 @@ Public Class fmenu
         Label2.Location = New System.Drawing.Point(Me.Size.Width - Label2.Size.Width - 20, 35)
         GridControl1.Location = New System.Drawing.Point(Me.Size.Width - GridControl1.Size.Width - 20, 70)
     End Sub
+
+    Private Sub LPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LPiutangToolStripMenuItem.Click
+        flaporanpiutang.Show()
+    End Sub
 End Class

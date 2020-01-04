@@ -115,6 +115,12 @@
     <Compile Include="flaporanpembelian.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flaporanpiutang.designer.vb">
+      <DependentUpon>flaporanpiutang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanpiutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanutang.designer.vb">
       <DependentUpon>flaporanutang.vb</DependentUpon>
     </Compile>
@@ -448,6 +454,9 @@
     <EmbeddedResource Include="flaporanpembelian.resx">
       <DependentUpon>flaporanpembelian.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flaporanpiutang.resx">
+      <DependentUpon>flaporanpiutang.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flaporanutang.resx">
       <DependentUpon>flaporanutang.vb</DependentUpon>
     </EmbeddedResource>
@@ -574,6 +583,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
