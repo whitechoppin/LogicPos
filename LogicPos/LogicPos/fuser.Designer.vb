@@ -51,6 +51,32 @@ Partial Class fuser
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gbaksesuser = New System.Windows.Forms.GroupBox()
+        Me.CheckedListBox13 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
+        Me.CheckedListBox24 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckBox19 = New System.Windows.Forms.CheckBox()
+        Me.CheckedListBox25 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckBox23 = New System.Windows.Forms.CheckBox()
+        Me.CheckedListBox26 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckBox24 = New System.Windows.Forms.CheckBox()
+        Me.CheckedListBox27 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckBox25 = New System.Windows.Forms.CheckBox()
+        Me.CheckedListBox17 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckedListBox18 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox15 = New System.Windows.Forms.CheckBox()
+        Me.CheckedListBox19 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckedListBox20 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckBox16 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox17 = New System.Windows.Forms.CheckBox()
+        Me.CheckedListBox31 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckBox18 = New System.Windows.Forms.CheckBox()
+        Me.CheckedListBox8 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckedListBox10 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckedListBox15 = New System.Windows.Forms.CheckedListBox()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
         Me.CheckedListBox29 = New System.Windows.Forms.CheckedListBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.CheckedListBox30 = New System.Windows.Forms.CheckedListBox()
@@ -87,32 +113,6 @@ Partial Class fuser
         Me.cbmastergudang = New System.Windows.Forms.CheckBox()
         Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.cbmasterbarang = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox8 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox10 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox15 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox13 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox17 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox18 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox15 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox19 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox20 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox16 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox17 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox31 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox18 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox24 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox19 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox25 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox23 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox26 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox24 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox27 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox25 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -400,6 +400,8 @@ Partial Class fuser
         '
         'gbaksesuser
         '
+        Me.gbaksesuser.Controls.Add(Me.CheckedListBox13)
+        Me.gbaksesuser.Controls.Add(Me.CheckBox8)
         Me.gbaksesuser.Controls.Add(Me.CheckedListBox24)
         Me.gbaksesuser.Controls.Add(Me.CheckBox19)
         Me.gbaksesuser.Controls.Add(Me.CheckedListBox25)
@@ -408,10 +410,8 @@ Partial Class fuser
         Me.gbaksesuser.Controls.Add(Me.CheckBox24)
         Me.gbaksesuser.Controls.Add(Me.CheckedListBox27)
         Me.gbaksesuser.Controls.Add(Me.CheckBox25)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox13)
         Me.gbaksesuser.Controls.Add(Me.CheckedListBox17)
         Me.gbaksesuser.Controls.Add(Me.CheckedListBox18)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox8)
         Me.gbaksesuser.Controls.Add(Me.CheckBox9)
         Me.gbaksesuser.Controls.Add(Me.CheckBox15)
         Me.gbaksesuser.Controls.Add(Me.CheckedListBox19)
@@ -470,12 +470,286 @@ Partial Class fuser
         Me.gbaksesuser.TabStop = False
         Me.gbaksesuser.Text = "Akses User"
         '
+        'CheckedListBox13
+        '
+        Me.CheckedListBox13.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox13.CheckOnClick = True
+        Me.CheckedListBox13.FormattingEnabled = True
+        Me.CheckedListBox13.Items.AddRange(New Object() {"Print", "Export"})
+        Me.CheckedListBox13.Location = New System.Drawing.Point(1073, 355)
+        Me.CheckedListBox13.Name = "CheckedListBox13"
+        Me.CheckedListBox13.Size = New System.Drawing.Size(91, 42)
+        Me.CheckedListBox13.TabIndex = 101
+        '
+        'CheckBox8
+        '
+        Me.CheckBox8.AutoSize = True
+        Me.CheckBox8.Location = New System.Drawing.Point(1055, 327)
+        Me.CheckBox8.Name = "CheckBox8"
+        Me.CheckBox8.Size = New System.Drawing.Size(154, 22)
+        Me.CheckBox8.TabIndex = 100
+        Me.CheckBox8.Text = "Lap. Transaksi Kas"
+        Me.CheckBox8.UseVisualStyleBackColor = True
+        '
+        'CheckedListBox24
+        '
+        Me.CheckedListBox24.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox24.CheckOnClick = True
+        Me.CheckedListBox24.FormattingEnabled = True
+        Me.CheckedListBox24.Items.AddRange(New Object() {"Print", "Export"})
+        Me.CheckedListBox24.Location = New System.Drawing.Point(1073, 279)
+        Me.CheckedListBox24.Name = "CheckedListBox24"
+        Me.CheckedListBox24.Size = New System.Drawing.Size(91, 42)
+        Me.CheckedListBox24.TabIndex = 99
+        '
+        'CheckBox19
+        '
+        Me.CheckBox19.AutoSize = True
+        Me.CheckBox19.Location = New System.Drawing.Point(1055, 251)
+        Me.CheckBox19.Name = "CheckBox19"
+        Me.CheckBox19.Size = New System.Drawing.Size(165, 22)
+        Me.CheckBox19.TabIndex = 98
+        Me.CheckBox19.Text = "Lap. Transfer Barang"
+        Me.CheckBox19.UseVisualStyleBackColor = True
+        '
+        'CheckedListBox25
+        '
+        Me.CheckedListBox25.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox25.CheckOnClick = True
+        Me.CheckedListBox25.FormattingEnabled = True
+        Me.CheckedListBox25.Items.AddRange(New Object() {"Print", "Export"})
+        Me.CheckedListBox25.Location = New System.Drawing.Point(1073, 203)
+        Me.CheckedListBox25.Name = "CheckedListBox25"
+        Me.CheckedListBox25.Size = New System.Drawing.Size(91, 42)
+        Me.CheckedListBox25.TabIndex = 97
+        '
+        'CheckBox23
+        '
+        Me.CheckBox23.AutoSize = True
+        Me.CheckBox23.Location = New System.Drawing.Point(1055, 175)
+        Me.CheckBox23.Name = "CheckBox23"
+        Me.CheckBox23.Size = New System.Drawing.Size(144, 22)
+        Me.CheckBox23.TabIndex = 96
+        Me.CheckBox23.Text = "Lap. Transfer Kas"
+        Me.CheckBox23.UseVisualStyleBackColor = True
+        '
+        'CheckedListBox26
+        '
+        Me.CheckedListBox26.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox26.CheckOnClick = True
+        Me.CheckedListBox26.FormattingEnabled = True
+        Me.CheckedListBox26.Items.AddRange(New Object() {"Print", "Export"})
+        Me.CheckedListBox26.Location = New System.Drawing.Point(1073, 127)
+        Me.CheckedListBox26.Name = "CheckedListBox26"
+        Me.CheckedListBox26.Size = New System.Drawing.Size(91, 42)
+        Me.CheckedListBox26.TabIndex = 95
+        '
+        'CheckBox24
+        '
+        Me.CheckBox24.AutoSize = True
+        Me.CheckBox24.Location = New System.Drawing.Point(1055, 99)
+        Me.CheckBox24.Name = "CheckBox24"
+        Me.CheckBox24.Size = New System.Drawing.Size(138, 22)
+        Me.CheckBox24.TabIndex = 94
+        Me.CheckBox24.Text = "Lap. Akun Keluar"
+        Me.CheckBox24.UseVisualStyleBackColor = True
+        '
+        'CheckedListBox27
+        '
+        Me.CheckedListBox27.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox27.CheckOnClick = True
+        Me.CheckedListBox27.FormattingEnabled = True
+        Me.CheckedListBox27.Items.AddRange(New Object() {"Print", "Export"})
+        Me.CheckedListBox27.Location = New System.Drawing.Point(1073, 51)
+        Me.CheckedListBox27.Name = "CheckedListBox27"
+        Me.CheckedListBox27.Size = New System.Drawing.Size(91, 42)
+        Me.CheckedListBox27.TabIndex = 93
+        '
+        'CheckBox25
+        '
+        Me.CheckBox25.AutoSize = True
+        Me.CheckBox25.Location = New System.Drawing.Point(1055, 23)
+        Me.CheckBox25.Name = "CheckBox25"
+        Me.CheckBox25.Size = New System.Drawing.Size(141, 22)
+        Me.CheckBox25.TabIndex = 92
+        Me.CheckBox25.Text = "Lap. Akun Masuk"
+        Me.CheckBox25.UseVisualStyleBackColor = True
+        '
+        'CheckedListBox17
+        '
+        Me.CheckedListBox17.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox17.CheckOnClick = True
+        Me.CheckedListBox17.FormattingEnabled = True
+        Me.CheckedListBox17.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.CheckedListBox17.Location = New System.Drawing.Point(789, 146)
+        Me.CheckedListBox17.Name = "CheckedListBox17"
+        Me.CheckedListBox17.Size = New System.Drawing.Size(91, 61)
+        Me.CheckedListBox17.TabIndex = 90
+        '
+        'CheckedListBox18
+        '
+        Me.CheckedListBox18.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox18.CheckOnClick = True
+        Me.CheckedListBox18.FormattingEnabled = True
+        Me.CheckedListBox18.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.CheckedListBox18.Location = New System.Drawing.Point(789, 51)
+        Me.CheckedListBox18.Name = "CheckedListBox18"
+        Me.CheckedListBox18.Size = New System.Drawing.Size(91, 61)
+        Me.CheckedListBox18.TabIndex = 89
+        '
+        'CheckBox9
+        '
+        Me.CheckBox9.AutoSize = True
+        Me.CheckBox9.Location = New System.Drawing.Point(771, 118)
+        Me.CheckBox9.Name = "CheckBox9"
+        Me.CheckBox9.Size = New System.Drawing.Size(106, 22)
+        Me.CheckBox9.TabIndex = 87
+        Me.CheckBox9.Text = "Akun Keluar"
+        Me.CheckBox9.UseVisualStyleBackColor = True
+        '
+        'CheckBox15
+        '
+        Me.CheckBox15.AutoSize = True
+        Me.CheckBox15.Location = New System.Drawing.Point(771, 23)
+        Me.CheckBox15.Name = "CheckBox15"
+        Me.CheckBox15.Size = New System.Drawing.Size(109, 22)
+        Me.CheckBox15.TabIndex = 86
+        Me.CheckBox15.Text = "Akun Masuk"
+        Me.CheckBox15.UseVisualStyleBackColor = True
+        '
+        'CheckedListBox19
+        '
+        Me.CheckedListBox19.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox19.CheckOnClick = True
+        Me.CheckedListBox19.FormattingEnabled = True
+        Me.CheckedListBox19.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.CheckedListBox19.Location = New System.Drawing.Point(656, 241)
+        Me.CheckedListBox19.Name = "CheckedListBox19"
+        Me.CheckedListBox19.Size = New System.Drawing.Size(91, 61)
+        Me.CheckedListBox19.TabIndex = 85
+        '
+        'CheckedListBox20
+        '
+        Me.CheckedListBox20.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox20.CheckOnClick = True
+        Me.CheckedListBox20.FormattingEnabled = True
+        Me.CheckedListBox20.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.CheckedListBox20.Location = New System.Drawing.Point(656, 146)
+        Me.CheckedListBox20.Name = "CheckedListBox20"
+        Me.CheckedListBox20.Size = New System.Drawing.Size(91, 61)
+        Me.CheckedListBox20.TabIndex = 84
+        '
+        'CheckBox16
+        '
+        Me.CheckBox16.AutoSize = True
+        Me.CheckBox16.Location = New System.Drawing.Point(638, 213)
+        Me.CheckBox16.Name = "CheckBox16"
+        Me.CheckBox16.Size = New System.Drawing.Size(112, 22)
+        Me.CheckBox16.TabIndex = 83
+        Me.CheckBox16.Text = "Transfer Kas"
+        Me.CheckBox16.UseVisualStyleBackColor = True
+        '
+        'CheckBox17
+        '
+        Me.CheckBox17.AutoSize = True
+        Me.CheckBox17.Location = New System.Drawing.Point(638, 118)
+        Me.CheckBox17.Name = "CheckBox17"
+        Me.CheckBox17.Size = New System.Drawing.Size(120, 22)
+        Me.CheckBox17.TabIndex = 82
+        Me.CheckBox17.Text = "Lunas Piutang"
+        Me.CheckBox17.UseVisualStyleBackColor = True
+        '
+        'CheckedListBox31
+        '
+        Me.CheckedListBox31.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox31.CheckOnClick = True
+        Me.CheckedListBox31.FormattingEnabled = True
+        Me.CheckedListBox31.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.CheckedListBox31.Location = New System.Drawing.Point(656, 51)
+        Me.CheckedListBox31.Name = "CheckedListBox31"
+        Me.CheckedListBox31.Size = New System.Drawing.Size(91, 61)
+        Me.CheckedListBox31.TabIndex = 81
+        '
+        'CheckBox18
+        '
+        Me.CheckBox18.AutoSize = True
+        Me.CheckBox18.Location = New System.Drawing.Point(638, 23)
+        Me.CheckBox18.Name = "CheckBox18"
+        Me.CheckBox18.Size = New System.Drawing.Size(110, 22)
+        Me.CheckBox18.TabIndex = 80
+        Me.CheckBox18.Text = "Lunas Utang"
+        Me.CheckBox18.UseVisualStyleBackColor = True
+        '
+        'CheckedListBox8
+        '
+        Me.CheckedListBox8.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox8.CheckOnClick = True
+        Me.CheckedListBox8.FormattingEnabled = True
+        Me.CheckedListBox8.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.CheckedListBox8.Location = New System.Drawing.Point(493, 241)
+        Me.CheckedListBox8.Name = "CheckedListBox8"
+        Me.CheckedListBox8.Size = New System.Drawing.Size(91, 61)
+        Me.CheckedListBox8.TabIndex = 79
+        '
+        'CheckedListBox10
+        '
+        Me.CheckedListBox10.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox10.CheckOnClick = True
+        Me.CheckedListBox10.FormattingEnabled = True
+        Me.CheckedListBox10.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.CheckedListBox10.Location = New System.Drawing.Point(493, 146)
+        Me.CheckedListBox10.Name = "CheckedListBox10"
+        Me.CheckedListBox10.Size = New System.Drawing.Size(91, 61)
+        Me.CheckedListBox10.TabIndex = 78
+        '
+        'CheckedListBox15
+        '
+        Me.CheckedListBox15.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox15.CheckOnClick = True
+        Me.CheckedListBox15.FormattingEnabled = True
+        Me.CheckedListBox15.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.CheckedListBox15.Location = New System.Drawing.Point(493, 51)
+        Me.CheckedListBox15.Name = "CheckedListBox15"
+        Me.CheckedListBox15.Size = New System.Drawing.Size(91, 61)
+        Me.CheckedListBox15.TabIndex = 77
+        '
+        'CheckBox3
+        '
+        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.Location = New System.Drawing.Point(475, 213)
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.Size = New System.Drawing.Size(133, 22)
+        Me.CheckBox3.TabIndex = 76
+        Me.CheckBox3.Text = "Transfer Barang"
+        Me.CheckBox3.UseVisualStyleBackColor = True
+        '
+        'CheckBox4
+        '
+        Me.CheckBox4.AutoSize = True
+        Me.CheckBox4.Location = New System.Drawing.Point(475, 118)
+        Me.CheckBox4.Name = "CheckBox4"
+        Me.CheckBox4.Size = New System.Drawing.Size(120, 22)
+        Me.CheckBox4.TabIndex = 75
+        Me.CheckBox4.Text = "Barang Keluar"
+        Me.CheckBox4.UseVisualStyleBackColor = True
+        '
+        'CheckBox7
+        '
+        Me.CheckBox7.AutoSize = True
+        Me.CheckBox7.Location = New System.Drawing.Point(475, 23)
+        Me.CheckBox7.Name = "CheckBox7"
+        Me.CheckBox7.Size = New System.Drawing.Size(123, 22)
+        Me.CheckBox7.TabIndex = 74
+        Me.CheckBox7.Text = "Barang Masuk"
+        Me.CheckBox7.UseVisualStyleBackColor = True
+        '
         'CheckedListBox29
         '
         Me.CheckedListBox29.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox29.CheckOnClick = True
         Me.CheckedListBox29.FormattingEnabled = True
         Me.CheckedListBox29.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.CheckedListBox29.Location = New System.Drawing.Point(187, 336)
+        Me.CheckedListBox29.Location = New System.Drawing.Point(184, 336)
         Me.CheckedListBox29.Name = "CheckedListBox29"
         Me.CheckedListBox29.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox29.TabIndex = 73
@@ -483,7 +757,7 @@ Partial Class fuser
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(169, 308)
+        Me.CheckBox1.Location = New System.Drawing.Point(166, 308)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(139, 22)
         Me.CheckBox1.TabIndex = 72
@@ -493,9 +767,10 @@ Partial Class fuser
         'CheckedListBox30
         '
         Me.CheckedListBox30.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox30.CheckOnClick = True
         Me.CheckedListBox30.FormattingEnabled = True
         Me.CheckedListBox30.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.CheckedListBox30.Location = New System.Drawing.Point(187, 241)
+        Me.CheckedListBox30.Location = New System.Drawing.Point(184, 241)
         Me.CheckedListBox30.Name = "CheckedListBox30"
         Me.CheckedListBox30.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox30.TabIndex = 71
@@ -503,7 +778,7 @@ Partial Class fuser
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(169, 213)
+        Me.CheckBox2.Location = New System.Drawing.Point(166, 213)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(134, 22)
         Me.CheckBox2.TabIndex = 70
@@ -513,9 +788,10 @@ Partial Class fuser
         'CheckedListBox28
         '
         Me.CheckedListBox28.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox28.CheckOnClick = True
         Me.CheckedListBox28.FormattingEnabled = True
         Me.CheckedListBox28.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox28.Location = New System.Drawing.Point(971, 355)
+        Me.CheckedListBox28.Location = New System.Drawing.Point(928, 355)
         Me.CheckedListBox28.Name = "CheckedListBox28"
         Me.CheckedListBox28.Size = New System.Drawing.Size(91, 42)
         Me.CheckedListBox28.TabIndex = 69
@@ -523,19 +799,20 @@ Partial Class fuser
         'CheckBox27
         '
         Me.CheckBox27.AutoSize = True
-        Me.CheckBox27.Location = New System.Drawing.Point(953, 327)
+        Me.CheckBox27.Location = New System.Drawing.Point(910, 327)
         Me.CheckBox27.Name = "CheckBox27"
-        Me.CheckBox27.Size = New System.Drawing.Size(109, 22)
+        Me.CheckBox27.Size = New System.Drawing.Size(141, 22)
         Me.CheckBox27.TabIndex = 68
-        Me.CheckBox27.Text = "Master User"
+        Me.CheckBox27.Text = "Lap. Stok Barang"
         Me.CheckBox27.UseVisualStyleBackColor = True
         '
         'CheckedListBox22
         '
         Me.CheckedListBox22.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox22.CheckOnClick = True
         Me.CheckedListBox22.FormattingEnabled = True
         Me.CheckedListBox22.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox22.Location = New System.Drawing.Point(971, 279)
+        Me.CheckedListBox22.Location = New System.Drawing.Point(928, 279)
         Me.CheckedListBox22.Name = "CheckedListBox22"
         Me.CheckedListBox22.Size = New System.Drawing.Size(91, 42)
         Me.CheckedListBox22.TabIndex = 59
@@ -543,19 +820,20 @@ Partial Class fuser
         'CheckBox21
         '
         Me.CheckBox21.AutoSize = True
-        Me.CheckBox21.Location = New System.Drawing.Point(953, 251)
+        Me.CheckBox21.Location = New System.Drawing.Point(910, 251)
         Me.CheckBox21.Name = "CheckBox21"
-        Me.CheckBox21.Size = New System.Drawing.Size(109, 22)
+        Me.CheckBox21.Size = New System.Drawing.Size(108, 22)
         Me.CheckBox21.TabIndex = 58
-        Me.CheckBox21.Text = "Master User"
+        Me.CheckBox21.Text = "Lap. Piutang"
         Me.CheckBox21.UseVisualStyleBackColor = True
         '
         'CheckedListBox23
         '
         Me.CheckedListBox23.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox23.CheckOnClick = True
         Me.CheckedListBox23.FormattingEnabled = True
         Me.CheckedListBox23.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox23.Location = New System.Drawing.Point(971, 203)
+        Me.CheckedListBox23.Location = New System.Drawing.Point(928, 203)
         Me.CheckedListBox23.Name = "CheckedListBox23"
         Me.CheckedListBox23.Size = New System.Drawing.Size(91, 42)
         Me.CheckedListBox23.TabIndex = 57
@@ -563,19 +841,20 @@ Partial Class fuser
         'CheckBox22
         '
         Me.CheckBox22.AutoSize = True
-        Me.CheckBox22.Location = New System.Drawing.Point(953, 175)
+        Me.CheckBox22.Location = New System.Drawing.Point(910, 175)
         Me.CheckBox22.Name = "CheckBox22"
-        Me.CheckBox22.Size = New System.Drawing.Size(109, 22)
+        Me.CheckBox22.Size = New System.Drawing.Size(98, 22)
         Me.CheckBox22.TabIndex = 56
-        Me.CheckBox22.Text = "Master User"
+        Me.CheckBox22.Text = "Lap. Utang"
         Me.CheckBox22.UseVisualStyleBackColor = True
         '
         'CheckedListBox21
         '
         Me.CheckedListBox21.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox21.CheckOnClick = True
         Me.CheckedListBox21.FormattingEnabled = True
         Me.CheckedListBox21.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox21.Location = New System.Drawing.Point(971, 127)
+        Me.CheckedListBox21.Location = New System.Drawing.Point(928, 127)
         Me.CheckedListBox21.Name = "CheckedListBox21"
         Me.CheckedListBox21.Size = New System.Drawing.Size(91, 42)
         Me.CheckedListBox21.TabIndex = 55
@@ -583,19 +862,20 @@ Partial Class fuser
         'CheckBox20
         '
         Me.CheckBox20.AutoSize = True
-        Me.CheckBox20.Location = New System.Drawing.Point(953, 99)
+        Me.CheckBox20.Location = New System.Drawing.Point(910, 99)
         Me.CheckBox20.Name = "CheckBox20"
-        Me.CheckBox20.Size = New System.Drawing.Size(109, 22)
+        Me.CheckBox20.Size = New System.Drawing.Size(128, 22)
         Me.CheckBox20.TabIndex = 54
-        Me.CheckBox20.Text = "Master User"
+        Me.CheckBox20.Text = "Lap. Pembelian"
         Me.CheckBox20.UseVisualStyleBackColor = True
         '
         'CheckedListBox11
         '
         Me.CheckedListBox11.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox11.CheckOnClick = True
         Me.CheckedListBox11.FormattingEnabled = True
         Me.CheckedListBox11.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox11.Location = New System.Drawing.Point(971, 51)
+        Me.CheckedListBox11.Location = New System.Drawing.Point(928, 51)
         Me.CheckedListBox11.Name = "CheckedListBox11"
         Me.CheckedListBox11.Size = New System.Drawing.Size(91, 42)
         Me.CheckedListBox11.TabIndex = 53
@@ -603,19 +883,20 @@ Partial Class fuser
         'CheckBox14
         '
         Me.CheckBox14.AutoSize = True
-        Me.CheckBox14.Location = New System.Drawing.Point(953, 23)
+        Me.CheckBox14.Location = New System.Drawing.Point(910, 23)
         Me.CheckBox14.Name = "CheckBox14"
-        Me.CheckBox14.Size = New System.Drawing.Size(109, 22)
+        Me.CheckBox14.Size = New System.Drawing.Size(123, 22)
         Me.CheckBox14.TabIndex = 52
-        Me.CheckBox14.Text = "Master User"
+        Me.CheckBox14.Text = "Lap. Penjualan"
         Me.CheckBox14.UseVisualStyleBackColor = True
         '
         'CheckedListBox12
         '
         Me.CheckedListBox12.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox12.CheckOnClick = True
         Me.CheckedListBox12.FormattingEnabled = True
         Me.CheckedListBox12.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox12.Location = New System.Drawing.Point(358, 336)
+        Me.CheckedListBox12.Location = New System.Drawing.Point(363, 336)
         Me.CheckedListBox12.Name = "CheckedListBox12"
         Me.CheckedListBox12.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox12.TabIndex = 40
@@ -623,9 +904,10 @@ Partial Class fuser
         'CheckedListBox9
         '
         Me.CheckedListBox9.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox9.CheckOnClick = True
         Me.CheckedListBox9.FormattingEnabled = True
         Me.CheckedListBox9.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox9.Location = New System.Drawing.Point(358, 241)
+        Me.CheckedListBox9.Location = New System.Drawing.Point(363, 241)
         Me.CheckedListBox9.Name = "CheckedListBox9"
         Me.CheckedListBox9.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox9.TabIndex = 38
@@ -633,9 +915,10 @@ Partial Class fuser
         'CheckedListBox16
         '
         Me.CheckedListBox16.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox16.CheckOnClick = True
         Me.CheckedListBox16.FormattingEnabled = True
         Me.CheckedListBox16.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox16.Location = New System.Drawing.Point(358, 146)
+        Me.CheckedListBox16.Location = New System.Drawing.Point(363, 146)
         Me.CheckedListBox16.Name = "CheckedListBox16"
         Me.CheckedListBox16.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox16.TabIndex = 36
@@ -643,39 +926,40 @@ Partial Class fuser
         'CheckBox10
         '
         Me.CheckBox10.AutoSize = True
-        Me.CheckBox10.Location = New System.Drawing.Point(340, 308)
+        Me.CheckBox10.Location = New System.Drawing.Point(345, 308)
         Me.CheckBox10.Name = "CheckBox10"
-        Me.CheckBox10.Size = New System.Drawing.Size(109, 22)
+        Me.CheckBox10.Size = New System.Drawing.Size(94, 22)
         Me.CheckBox10.TabIndex = 28
-        Me.CheckBox10.Text = "Master User"
+        Me.CheckBox10.Text = "Retur Jual"
         Me.CheckBox10.UseVisualStyleBackColor = True
         '
         'CheckBox11
         '
         Me.CheckBox11.AutoSize = True
-        Me.CheckBox11.Location = New System.Drawing.Point(340, 213)
+        Me.CheckBox11.Location = New System.Drawing.Point(345, 213)
         Me.CheckBox11.Name = "CheckBox11"
-        Me.CheckBox11.Size = New System.Drawing.Size(109, 22)
+        Me.CheckBox11.Size = New System.Drawing.Size(91, 22)
         Me.CheckBox11.TabIndex = 26
-        Me.CheckBox11.Text = "Master User"
+        Me.CheckBox11.Text = "Retur Beli"
         Me.CheckBox11.UseVisualStyleBackColor = True
         '
         'CheckBox12
         '
         Me.CheckBox12.AutoSize = True
-        Me.CheckBox12.Location = New System.Drawing.Point(340, 118)
+        Me.CheckBox12.Location = New System.Drawing.Point(345, 118)
         Me.CheckBox12.Name = "CheckBox12"
-        Me.CheckBox12.Size = New System.Drawing.Size(109, 22)
+        Me.CheckBox12.Size = New System.Drawing.Size(91, 22)
         Me.CheckBox12.TabIndex = 24
-        Me.CheckBox12.Text = "Master User"
+        Me.CheckBox12.Text = "Penjualan"
         Me.CheckBox12.UseVisualStyleBackColor = True
         '
         'CheckedListBox14
         '
         Me.CheckedListBox14.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox14.CheckOnClick = True
         Me.CheckedListBox14.FormattingEnabled = True
         Me.CheckedListBox14.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox14.Location = New System.Drawing.Point(358, 51)
+        Me.CheckedListBox14.Location = New System.Drawing.Point(363, 51)
         Me.CheckedListBox14.Name = "CheckedListBox14"
         Me.CheckedListBox14.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox14.TabIndex = 23
@@ -683,19 +967,20 @@ Partial Class fuser
         'CheckBox13
         '
         Me.CheckBox13.AutoSize = True
-        Me.CheckBox13.Location = New System.Drawing.Point(340, 23)
+        Me.CheckBox13.Location = New System.Drawing.Point(345, 23)
         Me.CheckBox13.Name = "CheckBox13"
-        Me.CheckBox13.Size = New System.Drawing.Size(109, 22)
+        Me.CheckBox13.Size = New System.Drawing.Size(96, 22)
         Me.CheckBox13.TabIndex = 22
-        Me.CheckBox13.Text = "Master User"
+        Me.CheckBox13.Text = "Pembelian"
         Me.CheckBox13.UseVisualStyleBackColor = True
         '
         'CheckedListBox5
         '
         Me.CheckedListBox5.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox5.CheckOnClick = True
         Me.CheckedListBox5.FormattingEnabled = True
         Me.CheckedListBox5.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.CheckedListBox5.Location = New System.Drawing.Point(28, 431)
+        Me.CheckedListBox5.Location = New System.Drawing.Point(37, 431)
         Me.CheckedListBox5.Name = "CheckedListBox5"
         Me.CheckedListBox5.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox5.TabIndex = 21
@@ -703,7 +988,7 @@ Partial Class fuser
         'cbmasteruser
         '
         Me.cbmasteruser.AutoSize = True
-        Me.cbmasteruser.Location = New System.Drawing.Point(10, 403)
+        Me.cbmasteruser.Location = New System.Drawing.Point(19, 403)
         Me.cbmasteruser.Name = "cbmasteruser"
         Me.cbmasteruser.Size = New System.Drawing.Size(109, 22)
         Me.cbmasteruser.TabIndex = 20
@@ -713,9 +998,10 @@ Partial Class fuser
         'CheckedListBox6
         '
         Me.CheckedListBox6.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox6.CheckOnClick = True
         Me.CheckedListBox6.FormattingEnabled = True
         Me.CheckedListBox6.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.CheckedListBox6.Location = New System.Drawing.Point(187, 146)
+        Me.CheckedListBox6.Location = New System.Drawing.Point(184, 146)
         Me.CheckedListBox6.Name = "CheckedListBox6"
         Me.CheckedListBox6.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox6.TabIndex = 19
@@ -723,7 +1009,7 @@ Partial Class fuser
         'CheckBox5
         '
         Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(169, 118)
+        Me.CheckBox5.Location = New System.Drawing.Point(166, 118)
         Me.CheckBox5.Name = "CheckBox5"
         Me.CheckBox5.Size = New System.Drawing.Size(129, 22)
         Me.CheckBox5.TabIndex = 18
@@ -733,9 +1019,10 @@ Partial Class fuser
         'CheckedListBox7
         '
         Me.CheckedListBox7.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox7.CheckOnClick = True
         Me.CheckedListBox7.FormattingEnabled = True
         Me.CheckedListBox7.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.CheckedListBox7.Location = New System.Drawing.Point(187, 51)
+        Me.CheckedListBox7.Location = New System.Drawing.Point(184, 51)
         Me.CheckedListBox7.Name = "CheckedListBox7"
         Me.CheckedListBox7.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox7.TabIndex = 17
@@ -743,7 +1030,7 @@ Partial Class fuser
         'CheckBox6
         '
         Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(169, 23)
+        Me.CheckBox6.Location = New System.Drawing.Point(166, 23)
         Me.CheckBox6.Name = "CheckBox6"
         Me.CheckBox6.Size = New System.Drawing.Size(103, 22)
         Me.CheckBox6.TabIndex = 16
@@ -753,9 +1040,10 @@ Partial Class fuser
         'CheckedListBox4
         '
         Me.CheckedListBox4.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox4.CheckOnClick = True
         Me.CheckedListBox4.FormattingEnabled = True
         Me.CheckedListBox4.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.CheckedListBox4.Location = New System.Drawing.Point(28, 336)
+        Me.CheckedListBox4.Location = New System.Drawing.Point(37, 336)
         Me.CheckedListBox4.Name = "CheckedListBox4"
         Me.CheckedListBox4.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox4.TabIndex = 15
@@ -763,7 +1051,7 @@ Partial Class fuser
         'cbmastersupplier
         '
         Me.cbmastersupplier.AutoSize = True
-        Me.cbmastersupplier.Location = New System.Drawing.Point(13, 308)
+        Me.cbmastersupplier.Location = New System.Drawing.Point(22, 308)
         Me.cbmastersupplier.Name = "cbmastersupplier"
         Me.cbmastersupplier.Size = New System.Drawing.Size(130, 22)
         Me.cbmastersupplier.TabIndex = 14
@@ -773,9 +1061,10 @@ Partial Class fuser
         'CheckedListBox3
         '
         Me.CheckedListBox3.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox3.CheckOnClick = True
         Me.CheckedListBox3.FormattingEnabled = True
         Me.CheckedListBox3.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.CheckedListBox3.Location = New System.Drawing.Point(28, 241)
+        Me.CheckedListBox3.Location = New System.Drawing.Point(37, 241)
         Me.CheckedListBox3.Name = "CheckedListBox3"
         Me.CheckedListBox3.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox3.TabIndex = 13
@@ -783,7 +1072,7 @@ Partial Class fuser
         'cbmastercustomer
         '
         Me.cbmastercustomer.AutoSize = True
-        Me.cbmastercustomer.Location = New System.Drawing.Point(10, 213)
+        Me.cbmastercustomer.Location = New System.Drawing.Point(19, 213)
         Me.cbmastercustomer.Name = "cbmastercustomer"
         Me.cbmastercustomer.Size = New System.Drawing.Size(143, 22)
         Me.cbmastercustomer.TabIndex = 12
@@ -793,9 +1082,10 @@ Partial Class fuser
         'CheckedListBox2
         '
         Me.CheckedListBox2.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox2.CheckOnClick = True
         Me.CheckedListBox2.FormattingEnabled = True
         Me.CheckedListBox2.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.CheckedListBox2.Location = New System.Drawing.Point(28, 146)
+        Me.CheckedListBox2.Location = New System.Drawing.Point(37, 146)
         Me.CheckedListBox2.Name = "CheckedListBox2"
         Me.CheckedListBox2.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox2.TabIndex = 11
@@ -803,7 +1093,7 @@ Partial Class fuser
         'cbmastergudang
         '
         Me.cbmastergudang.AutoSize = True
-        Me.cbmastergudang.Location = New System.Drawing.Point(10, 118)
+        Me.cbmastergudang.Location = New System.Drawing.Point(19, 118)
         Me.cbmastergudang.Name = "cbmastergudang"
         Me.cbmastergudang.Size = New System.Drawing.Size(129, 22)
         Me.cbmastergudang.TabIndex = 10
@@ -813,9 +1103,10 @@ Partial Class fuser
         'CheckedListBox1
         '
         Me.CheckedListBox1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.CheckedListBox1.CheckOnClick = True
         Me.CheckedListBox1.FormattingEnabled = True
         Me.CheckedListBox1.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.CheckedListBox1.Location = New System.Drawing.Point(28, 51)
+        Me.CheckedListBox1.Location = New System.Drawing.Point(37, 51)
         Me.CheckedListBox1.Name = "CheckedListBox1"
         Me.CheckedListBox1.Size = New System.Drawing.Size(91, 61)
         Me.CheckedListBox1.TabIndex = 9
@@ -823,272 +1114,12 @@ Partial Class fuser
         'cbmasterbarang
         '
         Me.cbmasterbarang.AutoSize = True
-        Me.cbmasterbarang.Location = New System.Drawing.Point(10, 23)
+        Me.cbmasterbarang.Location = New System.Drawing.Point(19, 23)
         Me.cbmasterbarang.Name = "cbmasterbarang"
         Me.cbmasterbarang.Size = New System.Drawing.Size(124, 22)
         Me.cbmasterbarang.TabIndex = 8
         Me.cbmasterbarang.Text = "Master Barang"
         Me.cbmasterbarang.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox8
-        '
-        Me.CheckedListBox8.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox8.FormattingEnabled = True
-        Me.CheckedListBox8.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox8.Location = New System.Drawing.Point(507, 241)
-        Me.CheckedListBox8.Name = "CheckedListBox8"
-        Me.CheckedListBox8.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox8.TabIndex = 79
-        '
-        'CheckedListBox10
-        '
-        Me.CheckedListBox10.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox10.FormattingEnabled = True
-        Me.CheckedListBox10.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox10.Location = New System.Drawing.Point(507, 146)
-        Me.CheckedListBox10.Name = "CheckedListBox10"
-        Me.CheckedListBox10.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox10.TabIndex = 78
-        '
-        'CheckedListBox15
-        '
-        Me.CheckedListBox15.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox15.FormattingEnabled = True
-        Me.CheckedListBox15.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox15.Location = New System.Drawing.Point(507, 51)
-        Me.CheckedListBox15.Name = "CheckedListBox15"
-        Me.CheckedListBox15.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox15.TabIndex = 77
-        '
-        'CheckBox3
-        '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(489, 213)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox3.TabIndex = 76
-        Me.CheckBox3.Text = "Master User"
-        Me.CheckBox3.UseVisualStyleBackColor = True
-        '
-        'CheckBox4
-        '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(489, 118)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox4.TabIndex = 75
-        Me.CheckBox4.Text = "Master User"
-        Me.CheckBox4.UseVisualStyleBackColor = True
-        '
-        'CheckBox7
-        '
-        Me.CheckBox7.AutoSize = True
-        Me.CheckBox7.Location = New System.Drawing.Point(489, 23)
-        Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox7.TabIndex = 74
-        Me.CheckBox7.Text = "Master User"
-        Me.CheckBox7.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox13
-        '
-        Me.CheckedListBox13.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox13.FormattingEnabled = True
-        Me.CheckedListBox13.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox13.Location = New System.Drawing.Point(813, 241)
-        Me.CheckedListBox13.Name = "CheckedListBox13"
-        Me.CheckedListBox13.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox13.TabIndex = 91
-        '
-        'CheckedListBox17
-        '
-        Me.CheckedListBox17.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox17.FormattingEnabled = True
-        Me.CheckedListBox17.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox17.Location = New System.Drawing.Point(813, 146)
-        Me.CheckedListBox17.Name = "CheckedListBox17"
-        Me.CheckedListBox17.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox17.TabIndex = 90
-        '
-        'CheckedListBox18
-        '
-        Me.CheckedListBox18.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox18.FormattingEnabled = True
-        Me.CheckedListBox18.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox18.Location = New System.Drawing.Point(813, 51)
-        Me.CheckedListBox18.Name = "CheckedListBox18"
-        Me.CheckedListBox18.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox18.TabIndex = 89
-        '
-        'CheckBox8
-        '
-        Me.CheckBox8.AutoSize = True
-        Me.CheckBox8.Location = New System.Drawing.Point(795, 213)
-        Me.CheckBox8.Name = "CheckBox8"
-        Me.CheckBox8.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox8.TabIndex = 88
-        Me.CheckBox8.Text = "Master User"
-        Me.CheckBox8.UseVisualStyleBackColor = True
-        '
-        'CheckBox9
-        '
-        Me.CheckBox9.AutoSize = True
-        Me.CheckBox9.Location = New System.Drawing.Point(795, 118)
-        Me.CheckBox9.Name = "CheckBox9"
-        Me.CheckBox9.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox9.TabIndex = 87
-        Me.CheckBox9.Text = "Master User"
-        Me.CheckBox9.UseVisualStyleBackColor = True
-        '
-        'CheckBox15
-        '
-        Me.CheckBox15.AutoSize = True
-        Me.CheckBox15.Location = New System.Drawing.Point(795, 23)
-        Me.CheckBox15.Name = "CheckBox15"
-        Me.CheckBox15.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox15.TabIndex = 86
-        Me.CheckBox15.Text = "Master User"
-        Me.CheckBox15.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox19
-        '
-        Me.CheckedListBox19.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox19.FormattingEnabled = True
-        Me.CheckedListBox19.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox19.Location = New System.Drawing.Point(664, 241)
-        Me.CheckedListBox19.Name = "CheckedListBox19"
-        Me.CheckedListBox19.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox19.TabIndex = 85
-        '
-        'CheckedListBox20
-        '
-        Me.CheckedListBox20.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox20.FormattingEnabled = True
-        Me.CheckedListBox20.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox20.Location = New System.Drawing.Point(664, 146)
-        Me.CheckedListBox20.Name = "CheckedListBox20"
-        Me.CheckedListBox20.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox20.TabIndex = 84
-        '
-        'CheckBox16
-        '
-        Me.CheckBox16.AutoSize = True
-        Me.CheckBox16.Location = New System.Drawing.Point(646, 213)
-        Me.CheckBox16.Name = "CheckBox16"
-        Me.CheckBox16.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox16.TabIndex = 83
-        Me.CheckBox16.Text = "Master User"
-        Me.CheckBox16.UseVisualStyleBackColor = True
-        '
-        'CheckBox17
-        '
-        Me.CheckBox17.AutoSize = True
-        Me.CheckBox17.Location = New System.Drawing.Point(646, 118)
-        Me.CheckBox17.Name = "CheckBox17"
-        Me.CheckBox17.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox17.TabIndex = 82
-        Me.CheckBox17.Text = "Master User"
-        Me.CheckBox17.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox31
-        '
-        Me.CheckedListBox31.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox31.FormattingEnabled = True
-        Me.CheckedListBox31.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox31.Location = New System.Drawing.Point(664, 51)
-        Me.CheckedListBox31.Name = "CheckedListBox31"
-        Me.CheckedListBox31.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox31.TabIndex = 81
-        '
-        'CheckBox18
-        '
-        Me.CheckBox18.AutoSize = True
-        Me.CheckBox18.Location = New System.Drawing.Point(646, 23)
-        Me.CheckBox18.Name = "CheckBox18"
-        Me.CheckBox18.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox18.TabIndex = 80
-        Me.CheckBox18.Text = "Master User"
-        Me.CheckBox18.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox24
-        '
-        Me.CheckedListBox24.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox24.FormattingEnabled = True
-        Me.CheckedListBox24.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox24.Location = New System.Drawing.Point(1106, 279)
-        Me.CheckedListBox24.Name = "CheckedListBox24"
-        Me.CheckedListBox24.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox24.TabIndex = 99
-        '
-        'CheckBox19
-        '
-        Me.CheckBox19.AutoSize = True
-        Me.CheckBox19.Location = New System.Drawing.Point(1088, 251)
-        Me.CheckBox19.Name = "CheckBox19"
-        Me.CheckBox19.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox19.TabIndex = 98
-        Me.CheckBox19.Text = "Master User"
-        Me.CheckBox19.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox25
-        '
-        Me.CheckedListBox25.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox25.FormattingEnabled = True
-        Me.CheckedListBox25.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox25.Location = New System.Drawing.Point(1106, 203)
-        Me.CheckedListBox25.Name = "CheckedListBox25"
-        Me.CheckedListBox25.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox25.TabIndex = 97
-        '
-        'CheckBox23
-        '
-        Me.CheckBox23.AutoSize = True
-        Me.CheckBox23.Location = New System.Drawing.Point(1088, 175)
-        Me.CheckBox23.Name = "CheckBox23"
-        Me.CheckBox23.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox23.TabIndex = 96
-        Me.CheckBox23.Text = "Master User"
-        Me.CheckBox23.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox26
-        '
-        Me.CheckedListBox26.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox26.FormattingEnabled = True
-        Me.CheckedListBox26.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox26.Location = New System.Drawing.Point(1106, 127)
-        Me.CheckedListBox26.Name = "CheckedListBox26"
-        Me.CheckedListBox26.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox26.TabIndex = 95
-        '
-        'CheckBox24
-        '
-        Me.CheckBox24.AutoSize = True
-        Me.CheckBox24.Location = New System.Drawing.Point(1088, 99)
-        Me.CheckBox24.Name = "CheckBox24"
-        Me.CheckBox24.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox24.TabIndex = 94
-        Me.CheckBox24.Text = "Master User"
-        Me.CheckBox24.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox27
-        '
-        Me.CheckedListBox27.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox27.FormattingEnabled = True
-        Me.CheckedListBox27.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox27.Location = New System.Drawing.Point(1106, 51)
-        Me.CheckedListBox27.Name = "CheckedListBox27"
-        Me.CheckedListBox27.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox27.TabIndex = 93
-        '
-        'CheckBox25
-        '
-        Me.CheckBox25.AutoSize = True
-        Me.CheckBox25.Location = New System.Drawing.Point(1088, 23)
-        Me.CheckBox25.Name = "CheckBox25"
-        Me.CheckBox25.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox25.TabIndex = 92
-        Me.CheckBox25.Text = "Master User"
-        Me.CheckBox25.UseVisualStyleBackColor = True
         '
         'fuser
         '
@@ -1183,10 +1214,8 @@ Partial Class fuser
     Friend WithEvents CheckBox3 As CheckBox
     Friend WithEvents CheckBox4 As CheckBox
     Friend WithEvents CheckBox7 As CheckBox
-    Friend WithEvents CheckedListBox13 As CheckedListBox
     Friend WithEvents CheckedListBox17 As CheckedListBox
     Friend WithEvents CheckedListBox18 As CheckedListBox
-    Friend WithEvents CheckBox8 As CheckBox
     Friend WithEvents CheckBox9 As CheckBox
     Friend WithEvents CheckBox15 As CheckBox
     Friend WithEvents CheckedListBox19 As CheckedListBox
@@ -1203,4 +1232,6 @@ Partial Class fuser
     Friend WithEvents CheckBox24 As CheckBox
     Friend WithEvents CheckedListBox27 As CheckedListBox
     Friend WithEvents CheckBox25 As CheckBox
+    Friend WithEvents CheckedListBox13 As CheckedListBox
+    Friend WithEvents CheckBox8 As CheckBox
 End Class

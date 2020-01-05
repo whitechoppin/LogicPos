@@ -195,4 +195,8 @@ Public Class fmenu
     Private Sub LPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LPiutangToolStripMenuItem.Click
         flaporanpiutang.Show()
     End Sub
+
+    Private Sub LaporanTransaksiKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanTransaksiKasToolStripMenuItem.Click
+        flaportransaksikas.Show()
+    End Sub
 End Class
