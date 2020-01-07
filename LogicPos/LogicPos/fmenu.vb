@@ -13,8 +13,9 @@ Public Class fmenu
         'Call koneksii()
         'statususer.Text = flogin.
         Call tabel_pembelian()
-        Label2.Location = New System.Drawing.Point(Me.Size.Width - Label2.Size.Width - 20, 35)
-        GridControl1.Location = New System.Drawing.Point(Me.Size.Width - GridControl1.Size.Width - 20, 70)
+        'Label2.Location = New System.Drawing.Point(Me.Size.Width - Label2.Size.Width - 20, 35)
+        'GridControl1.Location = New System.Drawing.Point(Me.Size.Width - GridControl1.Size.Width - 20, 70)
+        GridControl1.Visible = False
     End Sub
     Sub grid_pembelian()
         GridColumn1.Caption = "No.Nota"
@@ -188,8 +189,8 @@ Public Class fmenu
     End Sub
 
     Private Sub fmenu_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
-        Label2.Location = New System.Drawing.Point(Me.Size.Width - Label2.Size.Width - 20, 35)
-        GridControl1.Location = New System.Drawing.Point(Me.Size.Width - GridControl1.Size.Width - 20, 70)
+        'Label2.Location = New System.Drawing.Point(Me.Size.Width - Label2.Size.Width - 20, 35)
+        'GridControl1.Location = New System.Drawing.Point(Me.Size.Width - GridControl1.Size.Width - 20, 70)
     End Sub
 
     Private Sub LPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LPiutangToolStripMenuItem.Click
@@ -198,5 +199,17 @@ Public Class fmenu
 
     Private Sub LaporanTransaksiKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanTransaksiKasToolStripMenuItem.Click
         flaportransaksikas.Show()
+    End Sub
+
+    Private Sub LAkunMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LAkunMasukToolStripMenuItem.Click
+        flaporankasmasuk.Show()
+    End Sub
+
+    Private Sub LAkunKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LAkunKeluarToolStripMenuItem.Click
+        flaporankaskeluar.Show()
+    End Sub
+
+    Private Sub LTransferKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferKasToolStripMenuItem.Click
+        flaporankas.Show()
     End Sub
 End Class

@@ -1,5 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class flaporanutang
+Partial Class flaporankas
+
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -217,11 +218,11 @@ Partial Class flaporanutang
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(377, 47)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(241, 42)
+        Me.Label2.Size = New System.Drawing.Size(365, 42)
         Me.Label2.TabIndex = 17
-        Me.Label2.Text = "Daftar Utang"
+        Me.Label2.Text = "Laporan Histori Kas"
         '
-        'flaporanutang
+        'flaporankas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -231,8 +232,8 @@ Partial Class flaporanutang
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Name = "flaporanutang"
-        Me.Text = "Laporan Utang"
+        Me.Name = "flaporankas"
+        Me.Text = "Laporan Kas"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)

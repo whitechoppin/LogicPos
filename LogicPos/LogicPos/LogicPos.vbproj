@@ -109,6 +109,18 @@
       <DependentUpon>fakturpenjualan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="flaporankas.designer.vb">
+      <DependentUpon>flaporankas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporankas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporankaskeluar.designer.vb">
+      <DependentUpon>flaporankaskeluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporankaskeluar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanpembelian.designer.vb">
       <DependentUpon>flaporanpembelian.vb</DependentUpon>
     </Compile>
@@ -119,6 +131,12 @@
       <DependentUpon>flaporanpiutang.vb</DependentUpon>
     </Compile>
     <Compile Include="flaporanpiutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporankasmasuk.designer.vb">
+      <DependentUpon>flaporankasmasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporankasmasuk.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flaporanutang.designer.vb">
@@ -281,12 +299,6 @@
       <DependentUpon>flaporakunmasuk.vb</DependentUpon>
     </Compile>
     <Compile Include="flaporakunmasuk.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="flaporpiutang.Designer.vb">
-      <DependentUpon>flaporpiutang.vb</DependentUpon>
-    </Compile>
-    <Compile Include="flaporpiutang.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flaporstokbarang.Designer.vb">
@@ -457,11 +469,20 @@
     <EmbeddedResource Include="fkasmasuk.resx">
       <DependentUpon>fkasmasuk.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flaporankas.resx">
+      <DependentUpon>flaporankas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporankaskeluar.resx">
+      <DependentUpon>flaporankaskeluar.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flaporanpembelian.resx">
       <DependentUpon>flaporanpembelian.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanpiutang.resx">
       <DependentUpon>flaporanpiutang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporankasmasuk.resx">
+      <DependentUpon>flaporankasmasuk.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanutang.resx">
       <DependentUpon>flaporanutang.vb</DependentUpon>

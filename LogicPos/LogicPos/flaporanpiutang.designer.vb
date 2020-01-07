@@ -232,7 +232,7 @@ Partial Class flaporanpiutang
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "flaporanpiutang"
-        Me.Text = "Laporan Penjualan"
+        Me.Text = "Laporan Piutang"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)

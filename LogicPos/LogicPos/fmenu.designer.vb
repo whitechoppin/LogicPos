@@ -59,6 +59,7 @@ Partial Class fmenu
         Me.LTransferKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LTransferBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LStokBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanTransaksiKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrinterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -84,7 +85,6 @@ Partial Class fmenu
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.LaporanTransaksiKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -310,6 +310,12 @@ Partial Class fmenu
         Me.LStokBarangToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.LStokBarangToolStripMenuItem.Text = "Laporan Stok Barang"
         '
+        'LaporanTransaksiKasToolStripMenuItem
+        '
+        Me.LaporanTransaksiKasToolStripMenuItem.Name = "LaporanTransaksiKasToolStripMenuItem"
+        Me.LaporanTransaksiKasToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.LaporanTransaksiKasToolStripMenuItem.Text = "Laporan Transaksi Kas"
+        '
         'SettingMenu
         '
         Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrinterToolStripMenuItem})
@@ -320,7 +326,7 @@ Partial Class fmenu
         'PrinterToolStripMenuItem
         '
         Me.PrinterToolStripMenuItem.Name = "PrinterToolStripMenuItem"
-        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.PrinterToolStripMenuItem.Text = "Printer"
         '
         'AboutMenu
@@ -333,13 +339,13 @@ Partial Class fmenu
         'LogicHouseToolStripMenuItem
         '
         Me.LogicHouseToolStripMenuItem.Name = "LogicHouseToolStripMenuItem"
-        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.LogicHouseToolStripMenuItem.Text = "Logic House"
         '
         'TokoSejatiToolStripMenuItem
         '
         Me.TokoSejatiToolStripMenuItem.Name = "TokoSejatiToolStripMenuItem"
-        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.TokoSejatiToolStripMenuItem.Text = "Toko Sejati"
         '
         'StatusStrip
@@ -389,6 +395,7 @@ Partial Class fmenu
         Me.Label2.Size = New System.Drawing.Size(482, 31)
         Me.Label2.TabIndex = 19
         Me.Label2.Text = "List Pembelian Jatuh Tempo Hari ini"
+        Me.Label2.Visible = False
         '
         'GridControl1
         '
@@ -398,6 +405,7 @@ Partial Class fmenu
         Me.GridControl1.Size = New System.Drawing.Size(482, 263)
         Me.GridControl1.TabIndex = 18
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        Me.GridControl1.Visible = False
         '
         'GridView1
         '
@@ -486,12 +494,6 @@ Partial Class fmenu
         Me.GridColumn12.Name = "GridColumn12"
         Me.GridColumn12.Visible = True
         Me.GridColumn12.VisibleIndex = 11
-        '
-        'LaporanTransaksiKasToolStripMenuItem
-        '
-        Me.LaporanTransaksiKasToolStripMenuItem.Name = "LaporanTransaksiKasToolStripMenuItem"
-        Me.LaporanTransaksiKasToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.LaporanTransaksiKasToolStripMenuItem.Text = "Laporan Transaksi Kas"
         '
         'fmenu
         '
