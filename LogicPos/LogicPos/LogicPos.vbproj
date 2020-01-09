@@ -313,12 +313,6 @@
     <Compile Include="flaportransferbarang.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="flaportransferkas.Designer.vb">
-      <DependentUpon>flaportransferkas.vb</DependentUpon>
-    </Compile>
-    <Compile Include="flaportransferkas.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="flogichouse.Designer.vb">
       <DependentUpon>flogichouse.vb</DependentUpon>
     </Compile>
@@ -489,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanpenjualan.resx">
       <DependentUpon>flaporanpenjualan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporstokbarang.resx">
+      <DependentUpon>flaporstokbarang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaportransaksikas.resx">
       <DependentUpon>flaportransaksikas.vb</DependentUpon>

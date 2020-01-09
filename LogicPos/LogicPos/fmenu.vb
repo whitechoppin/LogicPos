@@ -119,7 +119,7 @@ Public Class fmenu
         flaporanpenjualan.Show()
     End Sub
     Private Sub InfoStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LStokBarangToolStripMenuItem.Click
-        'fminstok.Show()
+        flaporstokbarang.Show()
     End Sub
     Private Sub ManageUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataUserToolStripMenuItem.Click
         fuser.Show()
@@ -211,5 +211,9 @@ Public Class fmenu
 
     Private Sub LTransferKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferKasToolStripMenuItem.Click
         flaporankas.Show()
+    End Sub
+
+    Private Sub LTransferBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferBarangToolStripMenuItem.Click
+
     End Sub
 End Class

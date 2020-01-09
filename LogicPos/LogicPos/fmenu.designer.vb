@@ -326,7 +326,7 @@ Partial Class fmenu
         'PrinterToolStripMenuItem
         '
         Me.PrinterToolStripMenuItem.Name = "PrinterToolStripMenuItem"
-        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
+        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PrinterToolStripMenuItem.Text = "Printer"
         '
         'AboutMenu
