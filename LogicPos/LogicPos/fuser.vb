@@ -2,6 +2,7 @@
 
 Public Class fuser
     Dim kode As String
+    Dim cekmasterbarang, cbmstrbarang As Integer
     Private Sub fuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -86,6 +87,9 @@ Public Class fuser
         txtalamat.Enabled = True
         txttelp.Enabled = True
         txtketerangan.Enabled = True
+
+        'batas akses user
+
         txtkode.Focus()
     End Sub
 
@@ -128,7 +132,31 @@ Public Class fuser
             End If
         End If
     End Sub
+    Sub aksesuser()
+        cekmasterbarang = 0
+        'We will run through each indice
+        For i = 0 To clbmasterbarang.Items.Count - 1
+            'You can replace As Object by your object type
+            'ex : Dim Item As String = CType(CheckedListBox1.Items(i), String)
+            'Dim Item As Object = clbmasterbarang.Items(i)
 
+            'We ask if this item is checked or not
+            If clbmasterbarang.GetItemChecked(i) Then
+                If clbmasterbarang.Items(i).Equals("Tambah") Then
+                    cekmasterbarang = cekmasterbarang + 1
+                ElseIf clbmasterbarang.Items(i).Equals("Edit") Then
+                    cekmasterbarang = cekmasterbarang + 3
+                ElseIf clbmasterbarang.Items(i).Equals("Hapus") Then
+                    cekmasterbarang = cekmasterbarang + 5
+                End If
+                'Do something if Item is checked
+            Else
+                cekmasterbarang = cekmasterbarang + 0
+                'Do something else if Item is not checked
+            End If
+        Next
+        'MsgBox(cekmasterbarang)
+    End Sub
     Sub simpan()
         Call koneksii()
         sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtkode.Text + "'"
@@ -137,10 +165,11 @@ Public Class fuser
         If dr.HasRows Then
             MsgBox("Kode User Sudah ada dengan nama " + dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
+            Call aksesuser()
             sql = "INSERT INTO tb_user (kode_user, nama_user, password_user, jabatan_user, email_user, telepon_user, alamat_user, keterangan_user, created_by, updated_by,date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtpassword.Text & "', '" & cmbjabatan.Text & "', '" & txtemail.Text & "', '" & txttelp.Text & "','" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
-            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+            MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Berhasil")
             btntambah.Text = "Tambah"
             Me.Refresh()
             Call awal()
@@ -190,6 +219,7 @@ Public Class fuser
 
     Sub edit()
         If txtkode.Text.Equals(kode) Then
+            Call aksesuser()
             Using cnn As New OdbcConnection(strConn)
                 sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
                 cmmd = New OdbcCommand(sql, cnn)
@@ -205,7 +235,7 @@ Public Class fuser
                 cnn.Open()
                 cmmd.ExecuteNonQuery()
                 cnn.Close()
-                MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
+                MsgBox("Data Terupdate", MsgBoxStyle.Information, "Berhasil")
                 btnedit.Text = "Edit"
                 cnn.Close()
                 Me.Refresh()
@@ -219,6 +249,7 @@ Public Class fuser
             If dr.HasRows Then
                 MsgBox("Kode User Sudah ada dengan nama " + dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
             Else
+                Call aksesuser()
                 Using cnn As New OdbcConnection(strConn)
                     sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
                     cmmd = New OdbcCommand(sql, cnn)
@@ -297,4 +328,22 @@ Public Class fuser
         e.Handled = ValidAngka(e)
     End Sub
 
+    Private Sub cbmasterbarang_CheckedChanged(sender As Object, e As EventArgs) Handles cbmasterbarang.CheckedChanged
+        If cbmasterbarang.Checked = True Then
+            clbmasterbarang.Enabled = True
+            For id As Integer = 0 To clbmasterbarang.Items.Count - 1
+                Me.clbmasterbarang.SetItemChecked(id, True)
+            Next
+        ElseIf cbmasterbarang.Checked = False Then
+            clbmasterbarang.Enabled = False
+            For id As Integer = 0 To clbmasterbarang.Items.Count - 1
+                Me.clbmasterbarang.SetItemChecked(id, False)
+            Next
+        End If
+    End Sub
+
+    Private Sub clbmasterbarang_MouseDown(sender As Object, e As MouseEventArgs) Handles clbmasterbarang.MouseDown
+        Dim Index As Integer = clbmasterbarang.IndexFromPoint(e.Location)
+        clbmasterbarang.SetItemChecked(Index, Not clbmasterbarang.GetItemChecked(Index))
+    End Sub
 End Class
