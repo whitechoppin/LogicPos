@@ -2,7 +2,8 @@
 
 Public Class fuser
     Dim kode As String
-    Dim cekmasterbarang, cbmstrbarang As Integer
+    Dim cekmasterbarang, cekmastergudang, cekmastercustomer, cekmastersupplier, cekmasteruser, cekmasterkas, cekmasterpricelist, cekmasterreksupp, cekmasterrekcust As Integer
+    Dim aksesbarang, aksesgudang, aksescustomer, aksessupplier, aksesuser, akseskas, aksespricelist, aksesreksupp, aksesrekcust As Integer
     Private Sub fuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -18,6 +19,49 @@ Public Class fuser
         txttelp.Clear()
         txtalamat.Clear()
         txtketerangan.Clear()
+
+        'akses user
+        cbmasterbarang.Checked = False
+        cbmastergudang.Checked = False
+        cbmastercustomer.Checked = False
+        cbmastersupplier.Checked = False
+        cbmasteruser.Checked = False
+        cbmasterkas.Checked = False
+        cbmasterpricelist.Checked = False
+        cbmasterreksupp.Checked = False
+        cbmasterrekcust.Checked = False
+
+        For id As Integer = 0 To 2
+            clbmasterbarang.SetItemChecked(id, False)
+            clbmastergudang.SetItemChecked(id, False)
+            clbmastercustomer.SetItemChecked(id, False)
+            clbmastersupplier.SetItemChecked(id, False)
+            clbmasteruser.SetItemChecked(id, False)
+            clbmasterkas.SetItemChecked(id, False)
+            clbmasterpricelist.SetItemChecked(id, False)
+            clbmasterreksupp.SetItemChecked(id, False)
+            clbmasterrekcust.SetItemChecked(id, False)
+        Next
+
+        cbmasterbarang.Enabled = False
+        cbmastergudang.Enabled = False
+        cbmastercustomer.Enabled = False
+        cbmastersupplier.Enabled = False
+        cbmasteruser.Enabled = False
+        cbmasterkas.Enabled = False
+        cbmasterpricelist.Enabled = False
+        cbmasterreksupp.Enabled = False
+        cbmasterrekcust.Enabled = False
+
+        clbmasterbarang.Enabled = False
+        clbmastergudang.Enabled = False
+        clbmastercustomer.Enabled = False
+        clbmastersupplier.Enabled = False
+        clbmasteruser.Enabled = False
+        clbmasterkas.Enabled = False
+        clbmasterpricelist.Enabled = False
+        clbmasterreksupp.Enabled = False
+        clbmasterrekcust.Enabled = False
 
         Call koneksii()
 
@@ -88,11 +132,101 @@ Public Class fuser
         txttelp.Enabled = True
         txtketerangan.Enabled = True
 
+        'akses user
+        cbmasterbarang.Enabled = True
+        cbmastergudang.Enabled = True
+        cbmastercustomer.Enabled = True
+        cbmastersupplier.Enabled = True
+        cbmasteruser.Enabled = True
+        cbmasterkas.Enabled = True
+        cbmasterpricelist.Enabled = True
+        cbmasterreksupp.Enabled = True
+        cbmasterrekcust.Enabled = True
+
         'batas akses user
 
         txtkode.Focus()
     End Sub
 
+    Sub enable_text_edit()
+        txtkode.Enabled = True
+        txtnama.Enabled = True
+        txtpassword.Enabled = True
+        cmbjabatan.Enabled = True
+        txtemail.Enabled = True
+        txtalamat.Enabled = True
+        txttelp.Enabled = True
+        txtketerangan.Enabled = True
+
+
+        'akses user
+        cbmasterbarang.Enabled = True
+        cbmastergudang.Enabled = True
+        cbmastercustomer.Enabled = True
+        cbmastersupplier.Enabled = True
+        cbmasteruser.Enabled = True
+        cbmasterkas.Enabled = True
+        cbmasterpricelist.Enabled = True
+        cbmasterreksupp.Enabled = True
+        cbmasterrekcust.Enabled = True
+
+        If aksesbarang > 0 Then
+            clbmasterbarang.Enabled = True
+        Else
+            clbmasterbarang.Enabled = False
+        End If
+
+        If aksesgudang > 0 Then
+            clbmastergudang.Enabled = True
+        Else
+            clbmastergudang.Enabled = False
+        End If
+
+        If aksescustomer > 0 Then
+            clbmastercustomer.Enabled = True
+        Else
+            clbmastercustomer.Enabled = False
+        End If
+
+        If aksessupplier > 0 Then
+            clbmastersupplier.Enabled = True
+        Else
+            clbmastersupplier.Enabled = False
+        End If
+
+        If aksesuser > 0 Then
+            clbmasteruser.Enabled = True
+        Else
+            clbmasteruser.Enabled = False
+        End If
+
+        If akseskas > 0 Then
+            clbmasterkas.Enabled = True
+        Else
+            clbmasterkas.Enabled = False
+        End If
+
+        If aksespricelist > 0 Then
+            clbmasterpricelist.Enabled = True
+        Else
+            clbmasterpricelist.Enabled = False
+        End If
+
+        If aksesreksupp > 0 Then
+            clbmasterreksupp.Enabled = True
+        Else
+            clbmasterreksupp.Enabled = False
+        End If
+
+        If aksesrekcust > 0 Then
+            clbmasterrekcust.Enabled = True
+        Else
+            clbmasterrekcust.Enabled = False
+        End If
+        'batas akses user
+
+        txtkode.Focus()
+    End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If btntambah.Text = "Tambah" Then
             btnbatal.Enabled = True
@@ -132,15 +266,20 @@ Public Class fuser
             End If
         End If
     End Sub
-    Sub aksesuser()
+    Sub aksesadmin()
         cekmasterbarang = 0
-        'We will run through each indice
-        For i = 0 To clbmasterbarang.Items.Count - 1
-            'You can replace As Object by your object type
-            'ex : Dim Item As String = CType(CheckedListBox1.Items(i), String)
-            'Dim Item As Object = clbmasterbarang.Items(i)
+        cekmastergudang = 0
+        cekmastercustomer = 0
+        cekmastersupplier = 0
+        cekmasteruser = 0
+        cekmasterkas = 0
+        cekmasterpricelist = 0
+        cekmasterreksupp = 0
+        cekmasterrekcust = 0
 
-            'We ask if this item is checked or not
+        'We will run through each indice
+        For i = 0 To 2
+            'barang
             If clbmasterbarang.GetItemChecked(i) Then
                 If clbmasterbarang.Items(i).Equals("Tambah") Then
                     cekmasterbarang = cekmasterbarang + 1
@@ -149,13 +288,106 @@ Public Class fuser
                 ElseIf clbmasterbarang.Items(i).Equals("Hapus") Then
                     cekmasterbarang = cekmasterbarang + 5
                 End If
-                'Do something if Item is checked
             Else
                 cekmasterbarang = cekmasterbarang + 0
-                'Do something else if Item is not checked
+            End If
+            'gudang
+            If clbmastergudang.GetItemChecked(i) Then
+                If clbmastergudang.Items(i).Equals("Tambah") Then
+                    cekmastergudang = cekmastergudang + 1
+                ElseIf clbmastergudang.Items(i).Equals("Edit") Then
+                    cekmastergudang = cekmastergudang + 3
+                ElseIf clbmastergudang.Items(i).Equals("Hapus") Then
+                    cekmastergudang = cekmastergudang + 5
+                End If
+            Else
+                cekmastergudang = cekmastergudang + 0
+            End If
+            'customer
+            If clbmastercustomer.GetItemChecked(i) Then
+                If clbmastercustomer.Items(i).Equals("Tambah") Then
+                    cekmastercustomer = cekmastercustomer + 1
+                ElseIf clbmastercustomer.Items(i).Equals("Edit") Then
+                    cekmastercustomer = cekmastercustomer + 3
+                ElseIf clbmastercustomer.Items(i).Equals("Hapus") Then
+                    cekmastercustomer = cekmastercustomer + 5
+                End If
+            Else
+                cekmastercustomer = cekmastercustomer + 0
+            End If
+            'supplier
+            If clbmastersupplier.GetItemChecked(i) Then
+                If clbmastersupplier.Items(i).Equals("Tambah") Then
+                    cekmastersupplier = cekmastersupplier + 1
+                ElseIf clbmastersupplier.Items(i).Equals("Edit") Then
+                    cekmastersupplier = cekmastersupplier + 3
+                ElseIf clbmastersupplier.Items(i).Equals("Hapus") Then
+                    cekmastersupplier = cekmastersupplier + 5
+                End If
+            Else
+                cekmastersupplier = cekmastersupplier + 0
+            End If
+            'user
+            If clbmasteruser.GetItemChecked(i) Then
+                If clbmasteruser.Items(i).Equals("Tambah") Then
+                    cekmasteruser = cekmasteruser + 1
+                ElseIf clbmasteruser.Items(i).Equals("Edit") Then
+                    cekmasteruser = cekmasteruser + 3
+                ElseIf clbmasteruser.Items(i).Equals("Hapus") Then
+                    cekmasteruser = cekmasteruser + 5
+                End If
+            Else
+                cekmasteruser = cekmasteruser + 0
+            End If
+            'kas
+            If clbmasterkas.GetItemChecked(i) Then
+                If clbmasterkas.Items(i).Equals("Tambah") Then
+                    cekmasterkas = cekmasterkas + 1
+                ElseIf clbmasterkas.Items(i).Equals("Edit") Then
+                    cekmasterkas = cekmasterkas + 3
+                ElseIf clbmasterkas.Items(i).Equals("Hapus") Then
+                    cekmasterkas = cekmasterkas + 5
+                End If
+            Else
+                cekmasterkas = cekmasterkas + 0
+            End If
+            'pricelist
+            If clbmasterpricelist.GetItemChecked(i) Then
+                If clbmasterpricelist.Items(i).Equals("Tambah") Then
+                    cekmasterpricelist = cekmasterpricelist + 1
+                ElseIf clbmasterpricelist.Items(i).Equals("Edit") Then
+                    cekmasterpricelist = cekmasterpricelist + 3
+                ElseIf clbmasterpricelist.Items(i).Equals("Hapus") Then
+                    cekmasterpricelist = cekmasterpricelist + 5
+                End If
+            Else
+                cekmasterpricelist = cekmasterpricelist + 0
+            End If
+            'rekening supp
+            If clbmasterreksupp.GetItemChecked(i) Then
+                If clbmasterreksupp.Items(i).Equals("Tambah") Then
+                    cekmasterreksupp = cekmasterreksupp + 1
+                ElseIf clbmasterreksupp.Items(i).Equals("Edit") Then
+                    cekmasterreksupp = cekmasterreksupp + 3
+                ElseIf clbmasterreksupp.Items(i).Equals("Hapus") Then
+                    cekmasterreksupp = cekmasterreksupp + 5
+                End If
+            Else
+                cekmasterreksupp = cekmasterreksupp + 0
+            End If
+            'rekening cust
+            If clbmasterrekcust.GetItemChecked(i) Then
+                If clbmasterrekcust.Items(i).Equals("Tambah") Then
+                    cekmasterrekcust = cekmasterrekcust + 1
+                ElseIf clbmasterrekcust.Items(i).Equals("Edit") Then
+                    cekmasterrekcust = cekmasterrekcust + 3
+                ElseIf clbmasterrekcust.Items(i).Equals("Hapus") Then
+                    cekmasterrekcust = cekmasterrekcust + 5
+                End If
+            Else
+                cekmasterrekcust = cekmasterrekcust + 0
             End If
         Next
-        'MsgBox(cekmasterbarang)
     End Sub
     Sub simpan()
         Call koneksii()
@@ -165,8 +397,8 @@ Public Class fuser
         If dr.HasRows Then
             MsgBox("Kode User Sudah ada dengan nama " + dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            Call aksesuser()
-            sql = "INSERT INTO tb_user (kode_user, nama_user, password_user, jabatan_user, email_user, telepon_user, alamat_user, keterangan_user, created_by, updated_by,date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtpassword.Text & "', '" & cmbjabatan.Text & "', '" & txtemail.Text & "', '" & txttelp.Text & "','" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            Call aksesadmin()
+            sql = "INSERT INTO tb_user (kode_user, nama_user, password_user, jabatan_user, email_user, telepon_user, alamat_user, keterangan_user, master_barang, created_by, updated_by,date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtpassword.Text & "', '" & cmbjabatan.Text & "', '" & txtemail.Text & "', '" & txttelp.Text & "','" & txtalamat.Text & "','" & txtketerangan.Text & "','" & cekmasterbarang & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -181,7 +413,7 @@ Public Class fuser
         If btnedit.Text = "Edit" Then
             btnedit.Text = "Simpan"
             btnhapus.Enabled = False
-            Call enable_text()
+            Call enable_text_edit()
             Call index()
             GridControl.Enabled = False
         Else
@@ -219,9 +451,9 @@ Public Class fuser
 
     Sub edit()
         If txtkode.Text.Equals(kode) Then
-            Call aksesuser()
+            Call aksesadmin()
             Using cnn As New OdbcConnection(strConn)
-                sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
+                sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
                 cmmd.Parameters.AddWithValue("@password_user", txtpassword.Text)
@@ -230,6 +462,7 @@ Public Class fuser
                 cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
                 cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
                 cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
+                cmmd.Parameters.AddWithValue("@master_barang", cekmasterbarang)
                 cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
                 cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
                 cnn.Open()
@@ -249,9 +482,9 @@ Public Class fuser
             If dr.HasRows Then
                 MsgBox("Kode User Sudah ada dengan nama " + dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
             Else
-                Call aksesuser()
+                Call aksesadmin()
                 Using cnn As New OdbcConnection(strConn)
-                    sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
+                    sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     cmmd.Parameters.AddWithValue("@kode_user", txtkode.Text)
                     cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
@@ -261,6 +494,7 @@ Public Class fuser
                     cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
                     cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
                     cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
+                    cmmd.Parameters.AddWithValue("@master_barang", cekmasterbarang)
                     cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
                     cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
                     cnn.Open()
@@ -293,6 +527,8 @@ Public Class fuser
     End Sub
 
     Sub cari()
+
+
         txtkode.Text = GridView.GetFocusedRowCellValue("kode_user")
         Using cnn As New OdbcConnection(strConn)
             sql = "SELECT * FROM tb_user WHERE kode_user  = '" + txtkode.Text + "'"
@@ -309,6 +545,57 @@ Public Class fuser
                 txttelp.Text = dr("telepon_user")
                 txtalamat.Text = dr("alamat_user")
                 txtketerangan.Text = dr("keterangan_user")
+
+                'akses user
+                aksesbarang = Val(dr("master_barang"))
+
+
+
+                Select Case aksesbarang
+                    Case 0
+                        cbmasterbarang.Checked = False
+                        clbmasterbarang.SetItemChecked(0, False)
+                        clbmasterbarang.SetItemChecked(1, False)
+                        clbmasterbarang.SetItemChecked(2, False)
+                    Case 1
+                        cbmasterbarang.Checked = True
+                        clbmasterbarang.SetItemChecked(0, True)
+                        clbmasterbarang.SetItemChecked(1, False)
+                        clbmasterbarang.SetItemChecked(2, False)
+                    Case 3
+                        cbmasterbarang.Checked = True
+                        clbmasterbarang.SetItemChecked(0, False)
+                        clbmasterbarang.SetItemChecked(1, True)
+                        clbmasterbarang.SetItemChecked(2, False)
+                    Case 5
+                        cbmasterbarang.Checked = True
+                        clbmasterbarang.SetItemChecked(0, False)
+                        clbmasterbarang.SetItemChecked(1, False)
+                        clbmasterbarang.SetItemChecked(2, True)
+                    Case 4
+                        cbmasterbarang.Checked = True
+                        clbmasterbarang.SetItemChecked(0, True)
+                        clbmasterbarang.SetItemChecked(1, True)
+                        clbmasterbarang.SetItemChecked(2, False)
+                    Case 6
+                        cbmasterbarang.Checked = True
+                        clbmasterbarang.SetItemChecked(0, True)
+                        clbmasterbarang.SetItemChecked(1, False)
+                        clbmasterbarang.SetItemChecked(2, True)
+                    Case 8
+                        cbmasterbarang.Checked = True
+                        clbmasterbarang.SetItemChecked(0, False)
+                        clbmasterbarang.SetItemChecked(1, True)
+                        clbmasterbarang.SetItemChecked(2, True)
+                    Case 9
+                        cbmasterbarang.Checked = True
+                        clbmasterbarang.SetItemChecked(0, True)
+                        clbmasterbarang.SetItemChecked(1, True)
+                        clbmasterbarang.SetItemChecked(2, True)
+                End Select
+                clbmasterbarang.Enabled = False
+
+                'end
 
                 btnedit.Enabled = True
                 btnbatal.Enabled = True
@@ -344,6 +631,19 @@ Public Class fuser
 
     Private Sub clbmasterbarang_MouseDown(sender As Object, e As MouseEventArgs) Handles clbmasterbarang.MouseDown
         Dim Index As Integer = clbmasterbarang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
         clbmasterbarang.SetItemChecked(Index, Not clbmasterbarang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbmasterbarang.Items.Count - 1
+            If clbmasterbarang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbmasterbarang.Enabled = False
+            cbmasterbarang.Checked = False
+        End If
     End Sub
 End Class
