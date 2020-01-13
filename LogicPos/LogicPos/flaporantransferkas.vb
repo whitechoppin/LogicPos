@@ -3,7 +3,7 @@ Imports System.Globalization
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
-Public Class flaporankas
+Public Class flaporantransferkas
     Dim tabel1 As DataTable
     Public isi As String
     Public isi2 As String
@@ -19,8 +19,7 @@ Public Class flaporankas
         With GridView1
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
-            .Columns("debet_kas").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "debet_kas", "{0:n0}")
-            .Columns("kredit_kas").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "kredit_kas", "{0:n0}")
+            .Columns("saldo_kas").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "saldo_kas", "{0:n0}")
 
         End With
     End Sub
@@ -41,24 +40,26 @@ Public Class flaporankas
         Next
     End Sub
     Sub grid()
-        GridColumn1.Caption = "Tanggal Transaksi"
-        GridColumn1.FieldName = "tanggal_transaksi"
+        GridColumn1.Caption = "Tanggal Transfer Kas"
+        GridColumn1.FieldName = "tanggal_transfer_kas"
         GridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn1.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn2.Caption = "Kode Kas"
-        GridColumn2.FieldName = "kode_kas"
+        GridColumn2.Caption = "Kode Kas Dari"
+        GridColumn2.FieldName = "kode_dari_kas"
 
-        GridColumn3.Caption = "User"
-        GridColumn3.FieldName = "kode_user"
-        GridColumn3.Visible = False
+        GridColumn3.Caption = "Kode Kas Ke-"
+        GridColumn3.FieldName = "kode_ke_kas"
+
 
         GridColumn4.Caption = "Jenis Kas"
         GridColumn4.FieldName = "jenis_kas"
 
-        GridColumn5.Caption = "Tanggal Transaksi"
-        GridColumn5.FieldName = "tanggal_transaksi"
-        GridColumn5.Visible = False
+        GridColumn5.Caption = "Saldo Kas"
+        GridColumn5.FieldName = "saldo_kas"
+        GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn5.DisplayFormat.FormatString = "##,##0"
+
 
         GridColumn6.Caption = "Debet"
         GridColumn6.FieldName = "debet_kas"
@@ -69,10 +70,11 @@ Public Class flaporankas
         GridColumn7.DisplayFormat.FormatString = "##,##0"
         GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn6.DisplayFormat.FormatString = "##,##0"
-
+        GridColumn6.Visible = False
+        GridColumn7.Visible = False
 
         GridColumn8.Caption = "Keterangan"
-        GridColumn8.FieldName = "keterangan_kas"
+        GridColumn8.FieldName = "keterangan_transfer_kas"
 
         GridColumn9.Caption = "Laba"
         GridColumn9.FieldName = "keuntungan"
@@ -129,7 +131,7 @@ Public Class flaporankas
     End Sub
     Sub tabel()
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT tb_transaksi_kas.kode_kas , tb_transaksi_kas.tanggal_transaksi,tb_transaksi_kas.jenis_kas, tb_transaksi_kas.debet_kas, tb_transaksi_kas.kredit_kas, tb_transaksi_kas.keterangan_kas FROM tb_transaksi_kas where tanggal_transaksi between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
+            sql = "SELECT * FROM tb_transfer_kas where tanggal_transfer_kas between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet

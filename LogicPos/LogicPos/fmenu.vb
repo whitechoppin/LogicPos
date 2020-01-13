@@ -198,7 +198,7 @@ Public Class fmenu
     End Sub
 
     Private Sub LaporanTransaksiKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanTransaksiKasToolStripMenuItem.Click
-        flaportransaksikas.Show()
+        flaporankas.Show()
     End Sub
 
     Private Sub LAkunMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LAkunMasukToolStripMenuItem.Click
@@ -210,7 +210,7 @@ Public Class fmenu
     End Sub
 
     Private Sub LTransferKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferKasToolStripMenuItem.Click
-        flaporankas.Show()
+        flaporantransferkas.Show()
     End Sub
 
     Private Sub LTransferBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferBarangToolStripMenuItem.Click
