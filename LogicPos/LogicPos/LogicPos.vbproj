@@ -103,6 +103,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="fakturreturpenjualan.vb">
+      <DependentUpon>fakturreturpenjualan.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="fakturpenjualan.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -453,6 +459,10 @@
     <EmbeddedResource Include="fakturpembelian.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpembelian.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fakturreturpenjualan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>fakturreturpenjualan.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="fakturpenjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

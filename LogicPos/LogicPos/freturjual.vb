@@ -1,6 +1,7 @@
 ﻿Imports System.Data.Odbc
 Imports DevExpress.Utils
 Imports DevExpress.XtraGrid.Views.Grid
+Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class freturjual
     Public tabel1, tabel2 As DataTable
@@ -13,6 +14,7 @@ Public Class freturjual
     Dim statusvoid, statusprint, statusposted, statusedit As Boolean
     Dim viewtglretur, viewtglpenjualan, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
+    Dim rpt_faktur As New ReportDocument
 
     Private Sub freturjual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
@@ -69,7 +71,6 @@ Public Class freturjual
         End Try
         Return pesan
     End Function
-
     Function currentnumber()
         Call koneksii()
         sql = "SELECT kode_retur FROM tb_retur_penjualan ORDER BY kode_retur DESC LIMIT 1;"
@@ -91,7 +92,6 @@ Public Class freturjual
         End Try
         Return pesan
     End Function
-
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
         sql = "SELECT kode_retur FROM tb_retur_penjualan WHERE date_created < (SELECT date_created FROM tb_retur_penjualan WHERE kode_retur = '" + previousnumber + "') ORDER BY date_created DESC LIMIT 1"
@@ -130,7 +130,6 @@ Public Class freturjual
             cnn.Close()
         End Try
     End Sub
-
     Sub previewreturpenjualan(lihatjual As String, lihatretur As String)
         Call koneksii()
         sql = "SELECT * FROM tb_penjualan WHERE kode_penjualan ='" & lihatjual & "'"
@@ -173,7 +172,6 @@ Public Class freturjual
         End While
 
     End Sub
-
     Sub comboboxuser()
         Call koneksii()
         cmbsales.Items.Clear()
@@ -237,7 +235,6 @@ Public Class freturjual
 
         Call comboboxuser()
     End Sub
-
     Sub inisialisasi(nomorkode As String)
 
         'bersihkan dan set default value
@@ -349,7 +346,6 @@ Public Class freturjual
         End If
 
     End Sub
-
     Sub tabel_utama()
         tabel1 = New DataTable
 
@@ -534,7 +530,6 @@ Public Class freturjual
         GridColumn26.Width = 20
         GridColumn26.Visible = False
     End Sub
-
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
         txtnonota.Clear()
@@ -619,9 +614,167 @@ Public Class freturjual
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-
+        Call cetak_faktur()
     End Sub
+    Public Sub cetak_faktur()
+        Dim faktur As String
+        Dim tabel_lama As New DataTable
+        With tabel_lama
+            .Columns.Add("kode_barang")
+            .Columns.Add("kode_stok")
+            .Columns.Add("nama_barang")
+            .Columns.Add("banyak", GetType(Double))
+            .Columns.Add("satuan")
+            .Columns.Add("jenis")
+            .Columns.Add("harga_satuan", GetType(Double))
+            .Columns.Add("diskon_persen", GetType(Double))
+            .Columns.Add("harga_diskon", GetType(Double))
+            .Columns.Add("subtotal", GetType(Double))
+            .Columns.Add("diskon_nominal", GetType(Double))
 
+            .Columns.Add("kode_barang1")
+            .Columns.Add("kode_stok1")
+            .Columns.Add("nama_barang1")
+            .Columns.Add("banyak1", GetType(Double))
+            .Columns.Add("satuan1")
+            .Columns.Add("jenis1")
+            .Columns.Add("harga_satuan1", GetType(Double))
+            .Columns.Add("diskon_persen1", GetType(Double))
+            .Columns.Add("harga_diskon1", GetType(Double))
+            .Columns.Add("subtotal1", GetType(Double))
+            .Columns.Add("diskon_nominal1", GetType(Double))
+        End With
+
+        Dim baris As DataRow
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_lama.NewRow
+            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+            baris("banyak") = GridView1.GetRowCellValue(i, "banyak")
+            baris("satuan") = GridView1.GetRowCellValue(i, "satuan_barang")
+            baris("jenis") = GridView1.GetRowCellValue(i, "jenis_barang")
+            baris("harga_satuan") = GridView1.GetRowCellValue(i, "harga_satuan")
+            baris("diskon_persen") = GridView1.GetRowCellValue(i, "diskon_persen")
+            baris("harga_diskon") = GridView1.GetRowCellValue(i, "harga_diskon")
+            baris("subtotal") = GridView1.GetRowCellValue(i, "subtotal")
+            baris("diskon_nominal") = GridView1.GetRowCellValue(i, "diskon_nominal")
+            tabel_lama.Rows.Add(baris)
+        Next
+        For a As Integer = 0 To GridView2.RowCount - 1
+            baris = tabel_lama.NewRow
+            baris("kode_barang1") = GridView2.GetRowCellValue(a, "kode_barang")
+            baris("kode_stok1") = GridView2.GetRowCellValue(a, "kode_stok")
+            baris("nama_barang1") = GridView2.GetRowCellValue(a, "nama_barang")
+            baris("banyak1") = GridView2.GetRowCellValue(a, "banyak")
+            baris("satuan1") = GridView2.GetRowCellValue(a, "satuan_barang")
+            baris("jenis1") = GridView2.GetRowCellValue(a, "jenis_barang")
+            baris("harga_satuan1") = GridView2.GetRowCellValue(a, "harga_satuan")
+            baris("diskon_persen1") = GridView2.GetRowCellValue(a, "diskon_persen")
+            baris("harga_diskon1") = GridView2.GetRowCellValue(a, "harga_diskon")
+            baris("subtotal1") = GridView2.GetRowCellValue(a, "subtotal")
+            baris("diskon_nominal1") = GridView2.GetRowCellValue(a, "diskon_nominal")
+            tabel_lama.Rows.Add(baris)
+        Next
+        'Dim tabel_baru As New DataTable
+        'With tabel_baru
+        '    .Columns.Add("kode_barang1")
+        '    .Columns.Add("kode_stok1")
+        '    .Columns.Add("nama_barang1")
+        '    .Columns.Add("banyak1", GetType(Double))
+        '    .Columns.Add("satuan1")
+        '    .Columns.Add("jenis1")
+        '    .Columns.Add("harga_satuan1", GetType(Double))
+        '    .Columns.Add("diskon_persen1", GetType(Double))
+        '    .Columns.Add("harga_diskon1", GetType(Double))
+        '    .Columns.Add("subtotal1", GetType(Double))
+        '    .Columns.Add("diskon_nominal1", GetType(Double))
+        'End With
+
+        'Dim baris1 As DataRow
+        'For a As Integer = 0 To GridView2.RowCount - 1
+        '    baris1 = tabel_baru.NewRow
+        '    baris1("kode_barang1") = GridView2.GetRowCellValue(a, "kode_barang")
+        '    baris1("kode_stok1") = GridView2.GetRowCellValue(a, "kode_stok")
+        '    baris1("nama_barang1") = GridView2.GetRowCellValue(a, "nama_barang")
+        '    baris1("banyak1") = GridView2.GetRowCellValue(a, "banyak")
+        '    baris1("satuan1") = GridView2.GetRowCellValue(a, "satuan_barang")
+        '    baris1("jenis1") = GridView2.GetRowCellValue(a, "jenis_barang")
+        '    baris1("harga_satuan1") = GridView2.GetRowCellValue(a, "harga_satuan")
+        '    baris1("diskon_persen1") = GridView2.GetRowCellValue(a, "diskon_persen")
+        '    baris1("harga_diskon1") = GridView2.GetRowCellValue(a, "harga_diskon")
+        '    baris1("subtotal1") = GridView2.GetRowCellValue(a, "subtotal")
+        '    baris1("diskon_nominal1") = GridView2.GetRowCellValue(a, "diskon_nominal")
+        '    tabel_baru.Rows.Add(baris1)
+        'Next
+        Call koneksii()
+        sql = "select * from tb_printer where nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
+
+        Else
+            faktur = ""
+        End If
+
+        rpt_faktur = New fakturreturpenjualan
+        'Dim ds As New DataSet
+        'ds.Tables.Add(tabel_lama)
+        'ds.Tables.Add(tabel_baru)
+        rpt_faktur.SetDataSource(tabel_lama)
+        'rpt.SetParameterValue("total", total2)
+        rpt_faktur.SetParameterValue("nofaktur", autonumber)
+        rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
+        rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
+        'rpt_faktur.SetParameterValue("bayar", txtbayar.Text)
+        'rpt_faktur.SetParameterValue("sisa", txtsisa.Text)
+        rpt_faktur.SetParameterValue("alamat", txtalamat.Text)
+        'fakturjual.CrystalReportViewer1.ReportSource = rpt
+        'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
+        'rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
+        'rpt_faktur.PrintOptions.PrinterName = faktur
+        SetReportPageSize("Faktur", 1)
+        rpt_faktur.PrintToPrinter(1, False, 0, 0)
+        'fakturjual.ShowDialog()
+        'fakturjual.Dispose()
+    End Sub
+    Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
+        Dim faktur As String
+        Call koneksii()
+        sql = "select * from tb_printer where nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
+
+        Else
+            faktur = ""
+        End If
+
+        Try
+            Dim ObjPrinterSetting As New System.Drawing.Printing.PrinterSettings
+            Dim PkSize As New System.Drawing.Printing.PaperSize
+            ObjPrinterSetting.PrinterName = faktur
+            For i As Integer = 0 To ObjPrinterSetting.PaperSizes.Count - 1
+                If ObjPrinterSetting.PaperSizes.Item(i).PaperName = mPaperSize.Trim Then
+                    PkSize = ObjPrinterSetting.PaperSizes.Item(i)
+                    Exit For
+                End If
+            Next
+
+            If PkSize IsNot Nothing Then
+                Dim myAppPrintOptions As CrystalDecisions.CrystalReports.Engine.PrintOptions = rpt_faktur.PrintOptions
+                myAppPrintOptions.PrinterName = faktur
+                myAppPrintOptions.PaperSize = CType(PkSize.RawKind, CrystalDecisions.Shared.PaperSize)
+                rpt_faktur.PrintOptions.PaperOrientation = IIf(PaperOrientation = 1, CrystalDecisions.Shared.PaperOrientation.Portrait, CrystalDecisions.Shared.PaperOrientation.Landscape)
+            End If
+            PkSize = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs)
         'If btnedit.Text.Equals("Edit") Then
         '    btnedit.Text = "Update"
