@@ -170,6 +170,12 @@
     <Compile Include="flappenjualan.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flogin.designer.vb">
+      <DependentUpon>flogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fprinter.Designer.vb">
       <DependentUpon>fprinter.vb</DependentUpon>
     </Compile>
@@ -503,6 +509,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="flappenjualan.resx">
       <DependentUpon>flappenjualan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flogin.resx">
+      <DependentUpon>flogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fprinter.resx">
       <DependentUpon>fprinter.vb</DependentUpon>
