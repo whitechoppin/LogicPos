@@ -56,7 +56,7 @@ Partial Class flaporanpenjualan
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker2)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(14, 64)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(255, 81)
         Me.GroupBox1.TabIndex = 9
@@ -101,7 +101,7 @@ Partial Class flaporanpenjualan
         Me.GroupBox4.Controls.Add(Me.btnexcel)
         Me.GroupBox4.Controls.Add(Me.btntabel)
         Me.GroupBox4.Controls.Add(Me.btnrekap)
-        Me.GroupBox4.Location = New System.Drawing.Point(273, 12)
+        Me.GroupBox4.Location = New System.Drawing.Point(275, 64)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(188, 81)
         Me.GroupBox4.TabIndex = 15
@@ -127,7 +127,7 @@ Partial Class flaporanpenjualan
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 99)
+        Me.GridControl1.Location = New System.Drawing.Point(14, 151)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(994, 332)
@@ -225,10 +225,10 @@ Partial Class flaporanpenjualan
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(467, 51)
+        Me.Label2.Font = New System.Drawing.Font("Arial Black", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(12, 9)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(350, 42)
+        Me.Label2.Size = New System.Drawing.Size(402, 52)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Penjualan"
         '

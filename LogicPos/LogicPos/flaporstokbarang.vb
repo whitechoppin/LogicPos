@@ -4,6 +4,7 @@ Public Class flaporstokbarang
     Dim kode As String
     Dim modalbarang As Double
     Private Sub flaporbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.MdiParent = fmenu
         Call tabel()
     End Sub
     Sub grid()

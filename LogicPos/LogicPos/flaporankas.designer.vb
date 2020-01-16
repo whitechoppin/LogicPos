@@ -56,7 +56,7 @@ Partial Class flaporankas
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker2)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 58)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(255, 81)
         Me.GroupBox1.TabIndex = 9
@@ -91,7 +91,7 @@ Partial Class flaporankas
         '
         Me.GroupBox4.Controls.Add(Me.btnexcel)
         Me.GroupBox4.Controls.Add(Me.btntabel)
-        Me.GroupBox4.Location = New System.Drawing.Point(273, 12)
+        Me.GroupBox4.Location = New System.Drawing.Point(273, 58)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(98, 81)
         Me.GroupBox4.TabIndex = 15
@@ -117,7 +117,7 @@ Partial Class flaporankas
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 99)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 151)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(994, 332)
@@ -215,19 +215,19 @@ Partial Class flaporankas
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(377, 47)
+        Me.Label2.Font = New System.Drawing.Font("Arial Black", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(12, 3)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(365, 42)
+        Me.Label2.Size = New System.Drawing.Size(281, 52)
         Me.Label2.TabIndex = 17
-        Me.Label2.Text = "Laporan Histori Kas"
+        Me.Label2.Text = "Laporan Kas"
         '
         'flaporankas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1018, 661)
+        Me.ClientSize = New System.Drawing.Size(1018, 500)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox4)

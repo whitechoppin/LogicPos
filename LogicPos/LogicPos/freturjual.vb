@@ -676,37 +676,7 @@ Public Class freturjual
             baris("diskon_nominal1") = GridView2.GetRowCellValue(a, "diskon_nominal")
             tabel_lama.Rows.Add(baris)
         Next
-        'Dim tabel_baru As New DataTable
-        'With tabel_baru
-        '    .Columns.Add("kode_barang1")
-        '    .Columns.Add("kode_stok1")
-        '    .Columns.Add("nama_barang1")
-        '    .Columns.Add("banyak1", GetType(Double))
-        '    .Columns.Add("satuan1")
-        '    .Columns.Add("jenis1")
-        '    .Columns.Add("harga_satuan1", GetType(Double))
-        '    .Columns.Add("diskon_persen1", GetType(Double))
-        '    .Columns.Add("harga_diskon1", GetType(Double))
-        '    .Columns.Add("subtotal1", GetType(Double))
-        '    .Columns.Add("diskon_nominal1", GetType(Double))
-        'End With
 
-        'Dim baris1 As DataRow
-        'For a As Integer = 0 To GridView2.RowCount - 1
-        '    baris1 = tabel_baru.NewRow
-        '    baris1("kode_barang1") = GridView2.GetRowCellValue(a, "kode_barang")
-        '    baris1("kode_stok1") = GridView2.GetRowCellValue(a, "kode_stok")
-        '    baris1("nama_barang1") = GridView2.GetRowCellValue(a, "nama_barang")
-        '    baris1("banyak1") = GridView2.GetRowCellValue(a, "banyak")
-        '    baris1("satuan1") = GridView2.GetRowCellValue(a, "satuan_barang")
-        '    baris1("jenis1") = GridView2.GetRowCellValue(a, "jenis_barang")
-        '    baris1("harga_satuan1") = GridView2.GetRowCellValue(a, "harga_satuan")
-        '    baris1("diskon_persen1") = GridView2.GetRowCellValue(a, "diskon_persen")
-        '    baris1("harga_diskon1") = GridView2.GetRowCellValue(a, "harga_diskon")
-        '    baris1("subtotal1") = GridView2.GetRowCellValue(a, "subtotal")
-        '    baris1("diskon_nominal1") = GridView2.GetRowCellValue(a, "diskon_nominal")
-        '    tabel_baru.Rows.Add(baris1)
-        'Next
         Call koneksii()
         sql = "select * from tb_printer where nomor='2'"
         cmmd = New OdbcCommand(sql, cnn)
