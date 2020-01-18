@@ -51,54 +51,54 @@ Partial Class fuser
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gbaksesuser = New System.Windows.Forms.GroupBox()
-        Me.CheckedListBox13 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox24 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox19 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox25 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox23 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox26 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox24 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox27 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox25 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox17 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox18 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox15 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox19 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox20 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox16 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox17 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox31 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox18 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox8 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox10 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox15 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
+        Me.clblaptransaksikas = New System.Windows.Forms.CheckedListBox()
+        Me.cblaptransaksikas = New System.Windows.Forms.CheckBox()
+        Me.clblaptransferbarang = New System.Windows.Forms.CheckedListBox()
+        Me.cblaptransferbarang = New System.Windows.Forms.CheckBox()
+        Me.clblaptransferkas = New System.Windows.Forms.CheckedListBox()
+        Me.cblaptransferkas = New System.Windows.Forms.CheckBox()
+        Me.clblapakunkeluar = New System.Windows.Forms.CheckedListBox()
+        Me.cblapakunkeluar = New System.Windows.Forms.CheckBox()
+        Me.clblapakunmasuk = New System.Windows.Forms.CheckedListBox()
+        Me.cblapakunmasuk = New System.Windows.Forms.CheckBox()
+        Me.clbakunkeluar = New System.Windows.Forms.CheckedListBox()
+        Me.clbakunmasuk = New System.Windows.Forms.CheckedListBox()
+        Me.cbakunkeluar = New System.Windows.Forms.CheckBox()
+        Me.cbakunmasuk = New System.Windows.Forms.CheckBox()
+        Me.clbtransferkas = New System.Windows.Forms.CheckedListBox()
+        Me.clblunaspiutang = New System.Windows.Forms.CheckedListBox()
+        Me.cbtransferkas = New System.Windows.Forms.CheckBox()
+        Me.cblunaspiutang = New System.Windows.Forms.CheckBox()
+        Me.clblunasutang = New System.Windows.Forms.CheckedListBox()
+        Me.cblunasutang = New System.Windows.Forms.CheckBox()
+        Me.clbtransferbarang = New System.Windows.Forms.CheckedListBox()
+        Me.clbbarangkeluar = New System.Windows.Forms.CheckedListBox()
+        Me.clbbarangmasuk = New System.Windows.Forms.CheckedListBox()
+        Me.cbtransferbarang = New System.Windows.Forms.CheckBox()
+        Me.cbbarangkeluar = New System.Windows.Forms.CheckBox()
+        Me.cbbarangmasuk = New System.Windows.Forms.CheckBox()
         Me.clbmasterrekcust = New System.Windows.Forms.CheckedListBox()
         Me.cbmasterrekcust = New System.Windows.Forms.CheckBox()
         Me.clbmasterreksupp = New System.Windows.Forms.CheckedListBox()
         Me.cbmasterreksupp = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox28 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox27 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox22 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox21 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox23 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox22 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox21 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox20 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox11 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox14 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox12 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox9 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox16 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox10 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox11 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox12 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox14 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox13 = New System.Windows.Forms.CheckBox()
+        Me.clblapstokbarang = New System.Windows.Forms.CheckedListBox()
+        Me.cblapstokbarang = New System.Windows.Forms.CheckBox()
+        Me.clblappiutang = New System.Windows.Forms.CheckedListBox()
+        Me.cblappiutang = New System.Windows.Forms.CheckBox()
+        Me.clblaputang = New System.Windows.Forms.CheckedListBox()
+        Me.cblaputang = New System.Windows.Forms.CheckBox()
+        Me.clblappembelian = New System.Windows.Forms.CheckedListBox()
+        Me.cblappembelian = New System.Windows.Forms.CheckBox()
+        Me.clblappenjualan = New System.Windows.Forms.CheckedListBox()
+        Me.cblappenjualan = New System.Windows.Forms.CheckBox()
+        Me.clbreturjual = New System.Windows.Forms.CheckedListBox()
+        Me.clbreturbeli = New System.Windows.Forms.CheckedListBox()
+        Me.clbpenjualan = New System.Windows.Forms.CheckedListBox()
+        Me.cbreturjual = New System.Windows.Forms.CheckBox()
+        Me.cbreturbeli = New System.Windows.Forms.CheckBox()
+        Me.cbpenjualan = New System.Windows.Forms.CheckBox()
+        Me.clbpembelian = New System.Windows.Forms.CheckedListBox()
+        Me.cbpembelian = New System.Windows.Forms.CheckBox()
         Me.clbmasteruser = New System.Windows.Forms.CheckedListBox()
         Me.cbmasteruser = New System.Windows.Forms.CheckBox()
         Me.clbmasterpricelist = New System.Windows.Forms.CheckedListBox()
@@ -400,54 +400,54 @@ Partial Class fuser
         '
         'gbaksesuser
         '
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox13)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox8)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox24)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox19)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox25)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox23)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox26)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox24)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox27)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox25)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox17)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox18)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox9)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox15)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox19)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox20)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox16)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox17)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox31)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox18)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox8)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox10)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox15)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox3)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox4)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox7)
+        Me.gbaksesuser.Controls.Add(Me.clblaptransaksikas)
+        Me.gbaksesuser.Controls.Add(Me.cblaptransaksikas)
+        Me.gbaksesuser.Controls.Add(Me.clblaptransferbarang)
+        Me.gbaksesuser.Controls.Add(Me.cblaptransferbarang)
+        Me.gbaksesuser.Controls.Add(Me.clblaptransferkas)
+        Me.gbaksesuser.Controls.Add(Me.cblaptransferkas)
+        Me.gbaksesuser.Controls.Add(Me.clblapakunkeluar)
+        Me.gbaksesuser.Controls.Add(Me.cblapakunkeluar)
+        Me.gbaksesuser.Controls.Add(Me.clblapakunmasuk)
+        Me.gbaksesuser.Controls.Add(Me.cblapakunmasuk)
+        Me.gbaksesuser.Controls.Add(Me.clbakunkeluar)
+        Me.gbaksesuser.Controls.Add(Me.clbakunmasuk)
+        Me.gbaksesuser.Controls.Add(Me.cbakunkeluar)
+        Me.gbaksesuser.Controls.Add(Me.cbakunmasuk)
+        Me.gbaksesuser.Controls.Add(Me.clbtransferkas)
+        Me.gbaksesuser.Controls.Add(Me.clblunaspiutang)
+        Me.gbaksesuser.Controls.Add(Me.cbtransferkas)
+        Me.gbaksesuser.Controls.Add(Me.cblunaspiutang)
+        Me.gbaksesuser.Controls.Add(Me.clblunasutang)
+        Me.gbaksesuser.Controls.Add(Me.cblunasutang)
+        Me.gbaksesuser.Controls.Add(Me.clbtransferbarang)
+        Me.gbaksesuser.Controls.Add(Me.clbbarangkeluar)
+        Me.gbaksesuser.Controls.Add(Me.clbbarangmasuk)
+        Me.gbaksesuser.Controls.Add(Me.cbtransferbarang)
+        Me.gbaksesuser.Controls.Add(Me.cbbarangkeluar)
+        Me.gbaksesuser.Controls.Add(Me.cbbarangmasuk)
         Me.gbaksesuser.Controls.Add(Me.clbmasterrekcust)
         Me.gbaksesuser.Controls.Add(Me.cbmasterrekcust)
         Me.gbaksesuser.Controls.Add(Me.clbmasterreksupp)
         Me.gbaksesuser.Controls.Add(Me.cbmasterreksupp)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox28)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox27)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox22)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox21)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox23)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox22)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox21)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox20)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox11)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox14)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox12)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox9)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox16)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox10)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox11)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox12)
-        Me.gbaksesuser.Controls.Add(Me.CheckedListBox14)
-        Me.gbaksesuser.Controls.Add(Me.CheckBox13)
+        Me.gbaksesuser.Controls.Add(Me.clblapstokbarang)
+        Me.gbaksesuser.Controls.Add(Me.cblapstokbarang)
+        Me.gbaksesuser.Controls.Add(Me.clblappiutang)
+        Me.gbaksesuser.Controls.Add(Me.cblappiutang)
+        Me.gbaksesuser.Controls.Add(Me.clblaputang)
+        Me.gbaksesuser.Controls.Add(Me.cblaputang)
+        Me.gbaksesuser.Controls.Add(Me.clblappembelian)
+        Me.gbaksesuser.Controls.Add(Me.cblappembelian)
+        Me.gbaksesuser.Controls.Add(Me.clblappenjualan)
+        Me.gbaksesuser.Controls.Add(Me.cblappenjualan)
+        Me.gbaksesuser.Controls.Add(Me.clbreturjual)
+        Me.gbaksesuser.Controls.Add(Me.clbreturbeli)
+        Me.gbaksesuser.Controls.Add(Me.clbpenjualan)
+        Me.gbaksesuser.Controls.Add(Me.cbreturjual)
+        Me.gbaksesuser.Controls.Add(Me.cbreturbeli)
+        Me.gbaksesuser.Controls.Add(Me.cbpenjualan)
+        Me.gbaksesuser.Controls.Add(Me.clbpembelian)
+        Me.gbaksesuser.Controls.Add(Me.cbpembelian)
         Me.gbaksesuser.Controls.Add(Me.clbmasteruser)
         Me.gbaksesuser.Controls.Add(Me.cbmasteruser)
         Me.gbaksesuser.Controls.Add(Me.clbmasterpricelist)
@@ -470,291 +470,291 @@ Partial Class fuser
         Me.gbaksesuser.TabStop = False
         Me.gbaksesuser.Text = "Akses User"
         '
-        'CheckedListBox13
+        'clblaptransaksikas
         '
-        Me.CheckedListBox13.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox13.CheckOnClick = True
-        Me.CheckedListBox13.FormattingEnabled = True
-        Me.CheckedListBox13.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox13.Location = New System.Drawing.Point(1073, 355)
-        Me.CheckedListBox13.Name = "CheckedListBox13"
-        Me.CheckedListBox13.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox13.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox13.TabIndex = 101
+        Me.clblaptransaksikas.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblaptransaksikas.CheckOnClick = True
+        Me.clblaptransaksikas.FormattingEnabled = True
+        Me.clblaptransaksikas.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblaptransaksikas.Location = New System.Drawing.Point(1073, 355)
+        Me.clblaptransaksikas.Name = "clblaptransaksikas"
+        Me.clblaptransaksikas.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblaptransaksikas.Size = New System.Drawing.Size(91, 42)
+        Me.clblaptransaksikas.TabIndex = 101
         '
-        'CheckBox8
+        'cblaptransaksikas
         '
-        Me.CheckBox8.AutoSize = True
-        Me.CheckBox8.Location = New System.Drawing.Point(1055, 327)
-        Me.CheckBox8.Name = "CheckBox8"
-        Me.CheckBox8.Size = New System.Drawing.Size(154, 22)
-        Me.CheckBox8.TabIndex = 100
-        Me.CheckBox8.Text = "Lap. Transaksi Kas"
-        Me.CheckBox8.UseVisualStyleBackColor = True
+        Me.cblaptransaksikas.AutoSize = True
+        Me.cblaptransaksikas.Location = New System.Drawing.Point(1055, 327)
+        Me.cblaptransaksikas.Name = "cblaptransaksikas"
+        Me.cblaptransaksikas.Size = New System.Drawing.Size(154, 22)
+        Me.cblaptransaksikas.TabIndex = 100
+        Me.cblaptransaksikas.Text = "Lap. Transaksi Kas"
+        Me.cblaptransaksikas.UseVisualStyleBackColor = True
         '
-        'CheckedListBox24
+        'clblaptransferbarang
         '
-        Me.CheckedListBox24.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox24.CheckOnClick = True
-        Me.CheckedListBox24.FormattingEnabled = True
-        Me.CheckedListBox24.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox24.Location = New System.Drawing.Point(1073, 279)
-        Me.CheckedListBox24.Name = "CheckedListBox24"
-        Me.CheckedListBox24.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox24.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox24.TabIndex = 99
+        Me.clblaptransferbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblaptransferbarang.CheckOnClick = True
+        Me.clblaptransferbarang.FormattingEnabled = True
+        Me.clblaptransferbarang.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblaptransferbarang.Location = New System.Drawing.Point(1073, 279)
+        Me.clblaptransferbarang.Name = "clblaptransferbarang"
+        Me.clblaptransferbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblaptransferbarang.Size = New System.Drawing.Size(91, 42)
+        Me.clblaptransferbarang.TabIndex = 99
         '
-        'CheckBox19
+        'cblaptransferbarang
         '
-        Me.CheckBox19.AutoSize = True
-        Me.CheckBox19.Location = New System.Drawing.Point(1055, 251)
-        Me.CheckBox19.Name = "CheckBox19"
-        Me.CheckBox19.Size = New System.Drawing.Size(165, 22)
-        Me.CheckBox19.TabIndex = 98
-        Me.CheckBox19.Text = "Lap. Transfer Barang"
-        Me.CheckBox19.UseVisualStyleBackColor = True
+        Me.cblaptransferbarang.AutoSize = True
+        Me.cblaptransferbarang.Location = New System.Drawing.Point(1055, 251)
+        Me.cblaptransferbarang.Name = "cblaptransferbarang"
+        Me.cblaptransferbarang.Size = New System.Drawing.Size(165, 22)
+        Me.cblaptransferbarang.TabIndex = 98
+        Me.cblaptransferbarang.Text = "Lap. Transfer Barang"
+        Me.cblaptransferbarang.UseVisualStyleBackColor = True
         '
-        'CheckedListBox25
+        'clblaptransferkas
         '
-        Me.CheckedListBox25.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox25.CheckOnClick = True
-        Me.CheckedListBox25.FormattingEnabled = True
-        Me.CheckedListBox25.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox25.Location = New System.Drawing.Point(1073, 203)
-        Me.CheckedListBox25.Name = "CheckedListBox25"
-        Me.CheckedListBox25.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox25.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox25.TabIndex = 97
+        Me.clblaptransferkas.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblaptransferkas.CheckOnClick = True
+        Me.clblaptransferkas.FormattingEnabled = True
+        Me.clblaptransferkas.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblaptransferkas.Location = New System.Drawing.Point(1073, 203)
+        Me.clblaptransferkas.Name = "clblaptransferkas"
+        Me.clblaptransferkas.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblaptransferkas.Size = New System.Drawing.Size(91, 42)
+        Me.clblaptransferkas.TabIndex = 97
         '
-        'CheckBox23
+        'cblaptransferkas
         '
-        Me.CheckBox23.AutoSize = True
-        Me.CheckBox23.Location = New System.Drawing.Point(1055, 175)
-        Me.CheckBox23.Name = "CheckBox23"
-        Me.CheckBox23.Size = New System.Drawing.Size(144, 22)
-        Me.CheckBox23.TabIndex = 96
-        Me.CheckBox23.Text = "Lap. Transfer Kas"
-        Me.CheckBox23.UseVisualStyleBackColor = True
+        Me.cblaptransferkas.AutoSize = True
+        Me.cblaptransferkas.Location = New System.Drawing.Point(1055, 175)
+        Me.cblaptransferkas.Name = "cblaptransferkas"
+        Me.cblaptransferkas.Size = New System.Drawing.Size(144, 22)
+        Me.cblaptransferkas.TabIndex = 96
+        Me.cblaptransferkas.Text = "Lap. Transfer Kas"
+        Me.cblaptransferkas.UseVisualStyleBackColor = True
         '
-        'CheckedListBox26
+        'clblapakunkeluar
         '
-        Me.CheckedListBox26.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox26.CheckOnClick = True
-        Me.CheckedListBox26.FormattingEnabled = True
-        Me.CheckedListBox26.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox26.Location = New System.Drawing.Point(1073, 127)
-        Me.CheckedListBox26.Name = "CheckedListBox26"
-        Me.CheckedListBox26.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox26.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox26.TabIndex = 95
+        Me.clblapakunkeluar.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblapakunkeluar.CheckOnClick = True
+        Me.clblapakunkeluar.FormattingEnabled = True
+        Me.clblapakunkeluar.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblapakunkeluar.Location = New System.Drawing.Point(1073, 127)
+        Me.clblapakunkeluar.Name = "clblapakunkeluar"
+        Me.clblapakunkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblapakunkeluar.Size = New System.Drawing.Size(91, 42)
+        Me.clblapakunkeluar.TabIndex = 95
         '
-        'CheckBox24
+        'cblapakunkeluar
         '
-        Me.CheckBox24.AutoSize = True
-        Me.CheckBox24.Location = New System.Drawing.Point(1055, 99)
-        Me.CheckBox24.Name = "CheckBox24"
-        Me.CheckBox24.Size = New System.Drawing.Size(138, 22)
-        Me.CheckBox24.TabIndex = 94
-        Me.CheckBox24.Text = "Lap. Akun Keluar"
-        Me.CheckBox24.UseVisualStyleBackColor = True
+        Me.cblapakunkeluar.AutoSize = True
+        Me.cblapakunkeluar.Location = New System.Drawing.Point(1055, 99)
+        Me.cblapakunkeluar.Name = "cblapakunkeluar"
+        Me.cblapakunkeluar.Size = New System.Drawing.Size(138, 22)
+        Me.cblapakunkeluar.TabIndex = 94
+        Me.cblapakunkeluar.Text = "Lap. Akun Keluar"
+        Me.cblapakunkeluar.UseVisualStyleBackColor = True
         '
-        'CheckedListBox27
+        'clblapakunmasuk
         '
-        Me.CheckedListBox27.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox27.CheckOnClick = True
-        Me.CheckedListBox27.FormattingEnabled = True
-        Me.CheckedListBox27.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox27.Location = New System.Drawing.Point(1073, 51)
-        Me.CheckedListBox27.Name = "CheckedListBox27"
-        Me.CheckedListBox27.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox27.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox27.TabIndex = 93
+        Me.clblapakunmasuk.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblapakunmasuk.CheckOnClick = True
+        Me.clblapakunmasuk.FormattingEnabled = True
+        Me.clblapakunmasuk.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblapakunmasuk.Location = New System.Drawing.Point(1073, 51)
+        Me.clblapakunmasuk.Name = "clblapakunmasuk"
+        Me.clblapakunmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblapakunmasuk.Size = New System.Drawing.Size(91, 42)
+        Me.clblapakunmasuk.TabIndex = 93
         '
-        'CheckBox25
+        'cblapakunmasuk
         '
-        Me.CheckBox25.AutoSize = True
-        Me.CheckBox25.Location = New System.Drawing.Point(1055, 23)
-        Me.CheckBox25.Name = "CheckBox25"
-        Me.CheckBox25.Size = New System.Drawing.Size(141, 22)
-        Me.CheckBox25.TabIndex = 92
-        Me.CheckBox25.Text = "Lap. Akun Masuk"
-        Me.CheckBox25.UseVisualStyleBackColor = True
+        Me.cblapakunmasuk.AutoSize = True
+        Me.cblapakunmasuk.Location = New System.Drawing.Point(1055, 23)
+        Me.cblapakunmasuk.Name = "cblapakunmasuk"
+        Me.cblapakunmasuk.Size = New System.Drawing.Size(141, 22)
+        Me.cblapakunmasuk.TabIndex = 92
+        Me.cblapakunmasuk.Text = "Lap. Akun Masuk"
+        Me.cblapakunmasuk.UseVisualStyleBackColor = True
         '
-        'CheckedListBox17
+        'clbakunkeluar
         '
-        Me.CheckedListBox17.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox17.CheckOnClick = True
-        Me.CheckedListBox17.FormattingEnabled = True
-        Me.CheckedListBox17.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox17.Location = New System.Drawing.Point(789, 146)
-        Me.CheckedListBox17.Name = "CheckedListBox17"
-        Me.CheckedListBox17.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox17.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox17.TabIndex = 90
+        Me.clbakunkeluar.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbakunkeluar.CheckOnClick = True
+        Me.clbakunkeluar.FormattingEnabled = True
+        Me.clbakunkeluar.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbakunkeluar.Location = New System.Drawing.Point(789, 146)
+        Me.clbakunkeluar.Name = "clbakunkeluar"
+        Me.clbakunkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbakunkeluar.Size = New System.Drawing.Size(91, 61)
+        Me.clbakunkeluar.TabIndex = 90
         '
-        'CheckedListBox18
+        'clbakunmasuk
         '
-        Me.CheckedListBox18.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox18.CheckOnClick = True
-        Me.CheckedListBox18.FormattingEnabled = True
-        Me.CheckedListBox18.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox18.Location = New System.Drawing.Point(789, 51)
-        Me.CheckedListBox18.Name = "CheckedListBox18"
-        Me.CheckedListBox18.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox18.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox18.TabIndex = 89
+        Me.clbakunmasuk.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbakunmasuk.CheckOnClick = True
+        Me.clbakunmasuk.FormattingEnabled = True
+        Me.clbakunmasuk.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbakunmasuk.Location = New System.Drawing.Point(789, 51)
+        Me.clbakunmasuk.Name = "clbakunmasuk"
+        Me.clbakunmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbakunmasuk.Size = New System.Drawing.Size(91, 61)
+        Me.clbakunmasuk.TabIndex = 89
         '
-        'CheckBox9
+        'cbakunkeluar
         '
-        Me.CheckBox9.AutoSize = True
-        Me.CheckBox9.Location = New System.Drawing.Point(771, 118)
-        Me.CheckBox9.Name = "CheckBox9"
-        Me.CheckBox9.Size = New System.Drawing.Size(106, 22)
-        Me.CheckBox9.TabIndex = 87
-        Me.CheckBox9.Text = "Akun Keluar"
-        Me.CheckBox9.UseVisualStyleBackColor = True
+        Me.cbakunkeluar.AutoSize = True
+        Me.cbakunkeluar.Location = New System.Drawing.Point(771, 118)
+        Me.cbakunkeluar.Name = "cbakunkeluar"
+        Me.cbakunkeluar.Size = New System.Drawing.Size(106, 22)
+        Me.cbakunkeluar.TabIndex = 87
+        Me.cbakunkeluar.Text = "Akun Keluar"
+        Me.cbakunkeluar.UseVisualStyleBackColor = True
         '
-        'CheckBox15
+        'cbakunmasuk
         '
-        Me.CheckBox15.AutoSize = True
-        Me.CheckBox15.Location = New System.Drawing.Point(771, 23)
-        Me.CheckBox15.Name = "CheckBox15"
-        Me.CheckBox15.Size = New System.Drawing.Size(109, 22)
-        Me.CheckBox15.TabIndex = 86
-        Me.CheckBox15.Text = "Akun Masuk"
-        Me.CheckBox15.UseVisualStyleBackColor = True
+        Me.cbakunmasuk.AutoSize = True
+        Me.cbakunmasuk.Location = New System.Drawing.Point(771, 23)
+        Me.cbakunmasuk.Name = "cbakunmasuk"
+        Me.cbakunmasuk.Size = New System.Drawing.Size(109, 22)
+        Me.cbakunmasuk.TabIndex = 86
+        Me.cbakunmasuk.Text = "Akun Masuk"
+        Me.cbakunmasuk.UseVisualStyleBackColor = True
         '
-        'CheckedListBox19
+        'clbtransferkas
         '
-        Me.CheckedListBox19.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox19.CheckOnClick = True
-        Me.CheckedListBox19.FormattingEnabled = True
-        Me.CheckedListBox19.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox19.Location = New System.Drawing.Point(656, 241)
-        Me.CheckedListBox19.Name = "CheckedListBox19"
-        Me.CheckedListBox19.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox19.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox19.TabIndex = 85
+        Me.clbtransferkas.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbtransferkas.CheckOnClick = True
+        Me.clbtransferkas.FormattingEnabled = True
+        Me.clbtransferkas.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbtransferkas.Location = New System.Drawing.Point(656, 241)
+        Me.clbtransferkas.Name = "clbtransferkas"
+        Me.clbtransferkas.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbtransferkas.Size = New System.Drawing.Size(91, 61)
+        Me.clbtransferkas.TabIndex = 85
         '
-        'CheckedListBox20
+        'clblunaspiutang
         '
-        Me.CheckedListBox20.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox20.CheckOnClick = True
-        Me.CheckedListBox20.FormattingEnabled = True
-        Me.CheckedListBox20.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox20.Location = New System.Drawing.Point(656, 146)
-        Me.CheckedListBox20.Name = "CheckedListBox20"
-        Me.CheckedListBox20.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox20.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox20.TabIndex = 84
+        Me.clblunaspiutang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblunaspiutang.CheckOnClick = True
+        Me.clblunaspiutang.FormattingEnabled = True
+        Me.clblunaspiutang.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clblunaspiutang.Location = New System.Drawing.Point(656, 146)
+        Me.clblunaspiutang.Name = "clblunaspiutang"
+        Me.clblunaspiutang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblunaspiutang.Size = New System.Drawing.Size(91, 61)
+        Me.clblunaspiutang.TabIndex = 84
         '
-        'CheckBox16
+        'cbtransferkas
         '
-        Me.CheckBox16.AutoSize = True
-        Me.CheckBox16.Location = New System.Drawing.Point(638, 213)
-        Me.CheckBox16.Name = "CheckBox16"
-        Me.CheckBox16.Size = New System.Drawing.Size(112, 22)
-        Me.CheckBox16.TabIndex = 83
-        Me.CheckBox16.Text = "Transfer Kas"
-        Me.CheckBox16.UseVisualStyleBackColor = True
+        Me.cbtransferkas.AutoSize = True
+        Me.cbtransferkas.Location = New System.Drawing.Point(638, 213)
+        Me.cbtransferkas.Name = "cbtransferkas"
+        Me.cbtransferkas.Size = New System.Drawing.Size(112, 22)
+        Me.cbtransferkas.TabIndex = 83
+        Me.cbtransferkas.Text = "Transfer Kas"
+        Me.cbtransferkas.UseVisualStyleBackColor = True
         '
-        'CheckBox17
+        'cblunaspiutang
         '
-        Me.CheckBox17.AutoSize = True
-        Me.CheckBox17.Location = New System.Drawing.Point(638, 118)
-        Me.CheckBox17.Name = "CheckBox17"
-        Me.CheckBox17.Size = New System.Drawing.Size(120, 22)
-        Me.CheckBox17.TabIndex = 82
-        Me.CheckBox17.Text = "Lunas Piutang"
-        Me.CheckBox17.UseVisualStyleBackColor = True
+        Me.cblunaspiutang.AutoSize = True
+        Me.cblunaspiutang.Location = New System.Drawing.Point(638, 118)
+        Me.cblunaspiutang.Name = "cblunaspiutang"
+        Me.cblunaspiutang.Size = New System.Drawing.Size(120, 22)
+        Me.cblunaspiutang.TabIndex = 82
+        Me.cblunaspiutang.Text = "Lunas Piutang"
+        Me.cblunaspiutang.UseVisualStyleBackColor = True
         '
-        'CheckedListBox31
+        'clblunasutang
         '
-        Me.CheckedListBox31.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox31.CheckOnClick = True
-        Me.CheckedListBox31.FormattingEnabled = True
-        Me.CheckedListBox31.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox31.Location = New System.Drawing.Point(656, 51)
-        Me.CheckedListBox31.Name = "CheckedListBox31"
-        Me.CheckedListBox31.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox31.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox31.TabIndex = 81
+        Me.clblunasutang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblunasutang.CheckOnClick = True
+        Me.clblunasutang.FormattingEnabled = True
+        Me.clblunasutang.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clblunasutang.Location = New System.Drawing.Point(656, 51)
+        Me.clblunasutang.Name = "clblunasutang"
+        Me.clblunasutang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblunasutang.Size = New System.Drawing.Size(91, 61)
+        Me.clblunasutang.TabIndex = 81
         '
-        'CheckBox18
+        'cblunasutang
         '
-        Me.CheckBox18.AutoSize = True
-        Me.CheckBox18.Location = New System.Drawing.Point(638, 23)
-        Me.CheckBox18.Name = "CheckBox18"
-        Me.CheckBox18.Size = New System.Drawing.Size(110, 22)
-        Me.CheckBox18.TabIndex = 80
-        Me.CheckBox18.Text = "Lunas Utang"
-        Me.CheckBox18.UseVisualStyleBackColor = True
+        Me.cblunasutang.AutoSize = True
+        Me.cblunasutang.Location = New System.Drawing.Point(638, 23)
+        Me.cblunasutang.Name = "cblunasutang"
+        Me.cblunasutang.Size = New System.Drawing.Size(110, 22)
+        Me.cblunasutang.TabIndex = 80
+        Me.cblunasutang.Text = "Lunas Utang"
+        Me.cblunasutang.UseVisualStyleBackColor = True
         '
-        'CheckedListBox8
+        'clbtransferbarang
         '
-        Me.CheckedListBox8.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox8.CheckOnClick = True
-        Me.CheckedListBox8.FormattingEnabled = True
-        Me.CheckedListBox8.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox8.Location = New System.Drawing.Point(493, 241)
-        Me.CheckedListBox8.Name = "CheckedListBox8"
-        Me.CheckedListBox8.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox8.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox8.TabIndex = 79
+        Me.clbtransferbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbtransferbarang.CheckOnClick = True
+        Me.clbtransferbarang.FormattingEnabled = True
+        Me.clbtransferbarang.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbtransferbarang.Location = New System.Drawing.Point(493, 241)
+        Me.clbtransferbarang.Name = "clbtransferbarang"
+        Me.clbtransferbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbtransferbarang.Size = New System.Drawing.Size(91, 61)
+        Me.clbtransferbarang.TabIndex = 79
         '
-        'CheckedListBox10
+        'clbbarangkeluar
         '
-        Me.CheckedListBox10.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox10.CheckOnClick = True
-        Me.CheckedListBox10.FormattingEnabled = True
-        Me.CheckedListBox10.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox10.Location = New System.Drawing.Point(493, 146)
-        Me.CheckedListBox10.Name = "CheckedListBox10"
-        Me.CheckedListBox10.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox10.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox10.TabIndex = 78
+        Me.clbbarangkeluar.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbbarangkeluar.CheckOnClick = True
+        Me.clbbarangkeluar.FormattingEnabled = True
+        Me.clbbarangkeluar.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbbarangkeluar.Location = New System.Drawing.Point(493, 146)
+        Me.clbbarangkeluar.Name = "clbbarangkeluar"
+        Me.clbbarangkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbbarangkeluar.Size = New System.Drawing.Size(91, 61)
+        Me.clbbarangkeluar.TabIndex = 78
         '
-        'CheckedListBox15
+        'clbbarangmasuk
         '
-        Me.CheckedListBox15.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox15.CheckOnClick = True
-        Me.CheckedListBox15.FormattingEnabled = True
-        Me.CheckedListBox15.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox15.Location = New System.Drawing.Point(493, 51)
-        Me.CheckedListBox15.Name = "CheckedListBox15"
-        Me.CheckedListBox15.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox15.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox15.TabIndex = 77
+        Me.clbbarangmasuk.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbbarangmasuk.CheckOnClick = True
+        Me.clbbarangmasuk.FormattingEnabled = True
+        Me.clbbarangmasuk.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbbarangmasuk.Location = New System.Drawing.Point(493, 51)
+        Me.clbbarangmasuk.Name = "clbbarangmasuk"
+        Me.clbbarangmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbbarangmasuk.Size = New System.Drawing.Size(91, 61)
+        Me.clbbarangmasuk.TabIndex = 77
         '
-        'CheckBox3
+        'cbtransferbarang
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(475, 213)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(133, 22)
-        Me.CheckBox3.TabIndex = 76
-        Me.CheckBox3.Text = "Transfer Barang"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.cbtransferbarang.AutoSize = True
+        Me.cbtransferbarang.Location = New System.Drawing.Point(475, 213)
+        Me.cbtransferbarang.Name = "cbtransferbarang"
+        Me.cbtransferbarang.Size = New System.Drawing.Size(133, 22)
+        Me.cbtransferbarang.TabIndex = 76
+        Me.cbtransferbarang.Text = "Transfer Barang"
+        Me.cbtransferbarang.UseVisualStyleBackColor = True
         '
-        'CheckBox4
+        'cbbarangkeluar
         '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(475, 118)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(120, 22)
-        Me.CheckBox4.TabIndex = 75
-        Me.CheckBox4.Text = "Barang Keluar"
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.cbbarangkeluar.AutoSize = True
+        Me.cbbarangkeluar.Location = New System.Drawing.Point(475, 118)
+        Me.cbbarangkeluar.Name = "cbbarangkeluar"
+        Me.cbbarangkeluar.Size = New System.Drawing.Size(120, 22)
+        Me.cbbarangkeluar.TabIndex = 75
+        Me.cbbarangkeluar.Text = "Barang Keluar"
+        Me.cbbarangkeluar.UseVisualStyleBackColor = True
         '
-        'CheckBox7
+        'cbbarangmasuk
         '
-        Me.CheckBox7.AutoSize = True
-        Me.CheckBox7.Location = New System.Drawing.Point(475, 23)
-        Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(123, 22)
-        Me.CheckBox7.TabIndex = 74
-        Me.CheckBox7.Text = "Barang Masuk"
-        Me.CheckBox7.UseVisualStyleBackColor = True
+        Me.cbbarangmasuk.AutoSize = True
+        Me.cbbarangmasuk.Location = New System.Drawing.Point(475, 23)
+        Me.cbbarangmasuk.Name = "cbbarangmasuk"
+        Me.cbbarangmasuk.Size = New System.Drawing.Size(123, 22)
+        Me.cbbarangmasuk.TabIndex = 74
+        Me.cbbarangmasuk.Text = "Barang Masuk"
+        Me.cbbarangmasuk.UseVisualStyleBackColor = True
         '
         'clbmasterrekcust
         '
@@ -800,203 +800,203 @@ Partial Class fuser
         Me.cbmasterreksupp.Text = "Master Rek Supp"
         Me.cbmasterreksupp.UseVisualStyleBackColor = True
         '
-        'CheckedListBox28
+        'clblapstokbarang
         '
-        Me.CheckedListBox28.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox28.CheckOnClick = True
-        Me.CheckedListBox28.FormattingEnabled = True
-        Me.CheckedListBox28.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox28.Location = New System.Drawing.Point(928, 355)
-        Me.CheckedListBox28.Name = "CheckedListBox28"
-        Me.CheckedListBox28.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox28.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox28.TabIndex = 69
+        Me.clblapstokbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblapstokbarang.CheckOnClick = True
+        Me.clblapstokbarang.FormattingEnabled = True
+        Me.clblapstokbarang.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblapstokbarang.Location = New System.Drawing.Point(928, 355)
+        Me.clblapstokbarang.Name = "clblapstokbarang"
+        Me.clblapstokbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblapstokbarang.Size = New System.Drawing.Size(91, 42)
+        Me.clblapstokbarang.TabIndex = 69
         '
-        'CheckBox27
+        'cblapstokbarang
         '
-        Me.CheckBox27.AutoSize = True
-        Me.CheckBox27.Location = New System.Drawing.Point(910, 327)
-        Me.CheckBox27.Name = "CheckBox27"
-        Me.CheckBox27.Size = New System.Drawing.Size(141, 22)
-        Me.CheckBox27.TabIndex = 68
-        Me.CheckBox27.Text = "Lap. Stok Barang"
-        Me.CheckBox27.UseVisualStyleBackColor = True
+        Me.cblapstokbarang.AutoSize = True
+        Me.cblapstokbarang.Location = New System.Drawing.Point(910, 327)
+        Me.cblapstokbarang.Name = "cblapstokbarang"
+        Me.cblapstokbarang.Size = New System.Drawing.Size(141, 22)
+        Me.cblapstokbarang.TabIndex = 68
+        Me.cblapstokbarang.Text = "Lap. Stok Barang"
+        Me.cblapstokbarang.UseVisualStyleBackColor = True
         '
-        'CheckedListBox22
+        'clblappiutang
         '
-        Me.CheckedListBox22.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox22.CheckOnClick = True
-        Me.CheckedListBox22.FormattingEnabled = True
-        Me.CheckedListBox22.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox22.Location = New System.Drawing.Point(928, 279)
-        Me.CheckedListBox22.Name = "CheckedListBox22"
-        Me.CheckedListBox22.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox22.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox22.TabIndex = 59
+        Me.clblappiutang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblappiutang.CheckOnClick = True
+        Me.clblappiutang.FormattingEnabled = True
+        Me.clblappiutang.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblappiutang.Location = New System.Drawing.Point(928, 279)
+        Me.clblappiutang.Name = "clblappiutang"
+        Me.clblappiutang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblappiutang.Size = New System.Drawing.Size(91, 42)
+        Me.clblappiutang.TabIndex = 59
         '
-        'CheckBox21
+        'cblappiutang
         '
-        Me.CheckBox21.AutoSize = True
-        Me.CheckBox21.Location = New System.Drawing.Point(910, 251)
-        Me.CheckBox21.Name = "CheckBox21"
-        Me.CheckBox21.Size = New System.Drawing.Size(108, 22)
-        Me.CheckBox21.TabIndex = 58
-        Me.CheckBox21.Text = "Lap. Piutang"
-        Me.CheckBox21.UseVisualStyleBackColor = True
+        Me.cblappiutang.AutoSize = True
+        Me.cblappiutang.Location = New System.Drawing.Point(910, 251)
+        Me.cblappiutang.Name = "cblappiutang"
+        Me.cblappiutang.Size = New System.Drawing.Size(108, 22)
+        Me.cblappiutang.TabIndex = 58
+        Me.cblappiutang.Text = "Lap. Piutang"
+        Me.cblappiutang.UseVisualStyleBackColor = True
         '
-        'CheckedListBox23
+        'clblaputang
         '
-        Me.CheckedListBox23.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox23.CheckOnClick = True
-        Me.CheckedListBox23.FormattingEnabled = True
-        Me.CheckedListBox23.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox23.Location = New System.Drawing.Point(928, 203)
-        Me.CheckedListBox23.Name = "CheckedListBox23"
-        Me.CheckedListBox23.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox23.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox23.TabIndex = 57
+        Me.clblaputang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblaputang.CheckOnClick = True
+        Me.clblaputang.FormattingEnabled = True
+        Me.clblaputang.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblaputang.Location = New System.Drawing.Point(928, 203)
+        Me.clblaputang.Name = "clblaputang"
+        Me.clblaputang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblaputang.Size = New System.Drawing.Size(91, 42)
+        Me.clblaputang.TabIndex = 57
         '
-        'CheckBox22
+        'cblaputang
         '
-        Me.CheckBox22.AutoSize = True
-        Me.CheckBox22.Location = New System.Drawing.Point(910, 175)
-        Me.CheckBox22.Name = "CheckBox22"
-        Me.CheckBox22.Size = New System.Drawing.Size(98, 22)
-        Me.CheckBox22.TabIndex = 56
-        Me.CheckBox22.Text = "Lap. Utang"
-        Me.CheckBox22.UseVisualStyleBackColor = True
+        Me.cblaputang.AutoSize = True
+        Me.cblaputang.Location = New System.Drawing.Point(910, 175)
+        Me.cblaputang.Name = "cblaputang"
+        Me.cblaputang.Size = New System.Drawing.Size(98, 22)
+        Me.cblaputang.TabIndex = 56
+        Me.cblaputang.Text = "Lap. Utang"
+        Me.cblaputang.UseVisualStyleBackColor = True
         '
-        'CheckedListBox21
+        'clblappembelian
         '
-        Me.CheckedListBox21.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox21.CheckOnClick = True
-        Me.CheckedListBox21.FormattingEnabled = True
-        Me.CheckedListBox21.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox21.Location = New System.Drawing.Point(928, 127)
-        Me.CheckedListBox21.Name = "CheckedListBox21"
-        Me.CheckedListBox21.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox21.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox21.TabIndex = 55
+        Me.clblappembelian.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblappembelian.CheckOnClick = True
+        Me.clblappembelian.FormattingEnabled = True
+        Me.clblappembelian.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblappembelian.Location = New System.Drawing.Point(928, 51)
+        Me.clblappembelian.Name = "clblappembelian"
+        Me.clblappembelian.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblappembelian.Size = New System.Drawing.Size(91, 42)
+        Me.clblappembelian.TabIndex = 55
         '
-        'CheckBox20
+        'cblappembelian
         '
-        Me.CheckBox20.AutoSize = True
-        Me.CheckBox20.Location = New System.Drawing.Point(910, 99)
-        Me.CheckBox20.Name = "CheckBox20"
-        Me.CheckBox20.Size = New System.Drawing.Size(128, 22)
-        Me.CheckBox20.TabIndex = 54
-        Me.CheckBox20.Text = "Lap. Pembelian"
-        Me.CheckBox20.UseVisualStyleBackColor = True
+        Me.cblappembelian.AutoSize = True
+        Me.cblappembelian.Location = New System.Drawing.Point(910, 23)
+        Me.cblappembelian.Name = "cblappembelian"
+        Me.cblappembelian.Size = New System.Drawing.Size(128, 22)
+        Me.cblappembelian.TabIndex = 54
+        Me.cblappembelian.Text = "Lap. Pembelian"
+        Me.cblappembelian.UseVisualStyleBackColor = True
         '
-        'CheckedListBox11
+        'clblappenjualan
         '
-        Me.CheckedListBox11.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox11.CheckOnClick = True
-        Me.CheckedListBox11.FormattingEnabled = True
-        Me.CheckedListBox11.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox11.Location = New System.Drawing.Point(928, 51)
-        Me.CheckedListBox11.Name = "CheckedListBox11"
-        Me.CheckedListBox11.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox11.Size = New System.Drawing.Size(91, 42)
-        Me.CheckedListBox11.TabIndex = 53
+        Me.clblappenjualan.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblappenjualan.CheckOnClick = True
+        Me.clblappenjualan.FormattingEnabled = True
+        Me.clblappenjualan.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblappenjualan.Location = New System.Drawing.Point(928, 127)
+        Me.clblappenjualan.Name = "clblappenjualan"
+        Me.clblappenjualan.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblappenjualan.Size = New System.Drawing.Size(91, 42)
+        Me.clblappenjualan.TabIndex = 53
         '
-        'CheckBox14
+        'cblappenjualan
         '
-        Me.CheckBox14.AutoSize = True
-        Me.CheckBox14.Location = New System.Drawing.Point(910, 23)
-        Me.CheckBox14.Name = "CheckBox14"
-        Me.CheckBox14.Size = New System.Drawing.Size(123, 22)
-        Me.CheckBox14.TabIndex = 52
-        Me.CheckBox14.Text = "Lap. Penjualan"
-        Me.CheckBox14.UseVisualStyleBackColor = True
+        Me.cblappenjualan.AutoSize = True
+        Me.cblappenjualan.Location = New System.Drawing.Point(910, 99)
+        Me.cblappenjualan.Name = "cblappenjualan"
+        Me.cblappenjualan.Size = New System.Drawing.Size(123, 22)
+        Me.cblappenjualan.TabIndex = 52
+        Me.cblappenjualan.Text = "Lap. Penjualan"
+        Me.cblappenjualan.UseVisualStyleBackColor = True
         '
-        'CheckedListBox12
+        'clbreturjual
         '
-        Me.CheckedListBox12.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox12.CheckOnClick = True
-        Me.CheckedListBox12.FormattingEnabled = True
-        Me.CheckedListBox12.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox12.Location = New System.Drawing.Point(363, 336)
-        Me.CheckedListBox12.Name = "CheckedListBox12"
-        Me.CheckedListBox12.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox12.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox12.TabIndex = 40
+        Me.clbreturjual.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbreturjual.CheckOnClick = True
+        Me.clbreturjual.FormattingEnabled = True
+        Me.clbreturjual.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbreturjual.Location = New System.Drawing.Point(363, 336)
+        Me.clbreturjual.Name = "clbreturjual"
+        Me.clbreturjual.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbreturjual.Size = New System.Drawing.Size(91, 61)
+        Me.clbreturjual.TabIndex = 40
         '
-        'CheckedListBox9
+        'clbreturbeli
         '
-        Me.CheckedListBox9.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox9.CheckOnClick = True
-        Me.CheckedListBox9.FormattingEnabled = True
-        Me.CheckedListBox9.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox9.Location = New System.Drawing.Point(363, 241)
-        Me.CheckedListBox9.Name = "CheckedListBox9"
-        Me.CheckedListBox9.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox9.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox9.TabIndex = 38
+        Me.clbreturbeli.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbreturbeli.CheckOnClick = True
+        Me.clbreturbeli.FormattingEnabled = True
+        Me.clbreturbeli.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbreturbeli.Location = New System.Drawing.Point(363, 241)
+        Me.clbreturbeli.Name = "clbreturbeli"
+        Me.clbreturbeli.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbreturbeli.Size = New System.Drawing.Size(91, 61)
+        Me.clbreturbeli.TabIndex = 38
         '
-        'CheckedListBox16
+        'clbpenjualan
         '
-        Me.CheckedListBox16.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox16.CheckOnClick = True
-        Me.CheckedListBox16.FormattingEnabled = True
-        Me.CheckedListBox16.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox16.Location = New System.Drawing.Point(363, 146)
-        Me.CheckedListBox16.Name = "CheckedListBox16"
-        Me.CheckedListBox16.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox16.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox16.TabIndex = 36
+        Me.clbpenjualan.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbpenjualan.CheckOnClick = True
+        Me.clbpenjualan.FormattingEnabled = True
+        Me.clbpenjualan.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbpenjualan.Location = New System.Drawing.Point(363, 146)
+        Me.clbpenjualan.Name = "clbpenjualan"
+        Me.clbpenjualan.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbpenjualan.Size = New System.Drawing.Size(91, 61)
+        Me.clbpenjualan.TabIndex = 36
         '
-        'CheckBox10
+        'cbreturjual
         '
-        Me.CheckBox10.AutoSize = True
-        Me.CheckBox10.Location = New System.Drawing.Point(345, 308)
-        Me.CheckBox10.Name = "CheckBox10"
-        Me.CheckBox10.Size = New System.Drawing.Size(94, 22)
-        Me.CheckBox10.TabIndex = 28
-        Me.CheckBox10.Text = "Retur Jual"
-        Me.CheckBox10.UseVisualStyleBackColor = True
+        Me.cbreturjual.AutoSize = True
+        Me.cbreturjual.Location = New System.Drawing.Point(345, 308)
+        Me.cbreturjual.Name = "cbreturjual"
+        Me.cbreturjual.Size = New System.Drawing.Size(94, 22)
+        Me.cbreturjual.TabIndex = 28
+        Me.cbreturjual.Text = "Retur Jual"
+        Me.cbreturjual.UseVisualStyleBackColor = True
         '
-        'CheckBox11
+        'cbreturbeli
         '
-        Me.CheckBox11.AutoSize = True
-        Me.CheckBox11.Location = New System.Drawing.Point(345, 213)
-        Me.CheckBox11.Name = "CheckBox11"
-        Me.CheckBox11.Size = New System.Drawing.Size(91, 22)
-        Me.CheckBox11.TabIndex = 26
-        Me.CheckBox11.Text = "Retur Beli"
-        Me.CheckBox11.UseVisualStyleBackColor = True
+        Me.cbreturbeli.AutoSize = True
+        Me.cbreturbeli.Location = New System.Drawing.Point(345, 213)
+        Me.cbreturbeli.Name = "cbreturbeli"
+        Me.cbreturbeli.Size = New System.Drawing.Size(91, 22)
+        Me.cbreturbeli.TabIndex = 26
+        Me.cbreturbeli.Text = "Retur Beli"
+        Me.cbreturbeli.UseVisualStyleBackColor = True
         '
-        'CheckBox12
+        'cbpenjualan
         '
-        Me.CheckBox12.AutoSize = True
-        Me.CheckBox12.Location = New System.Drawing.Point(345, 118)
-        Me.CheckBox12.Name = "CheckBox12"
-        Me.CheckBox12.Size = New System.Drawing.Size(91, 22)
-        Me.CheckBox12.TabIndex = 24
-        Me.CheckBox12.Text = "Penjualan"
-        Me.CheckBox12.UseVisualStyleBackColor = True
+        Me.cbpenjualan.AutoSize = True
+        Me.cbpenjualan.Location = New System.Drawing.Point(345, 118)
+        Me.cbpenjualan.Name = "cbpenjualan"
+        Me.cbpenjualan.Size = New System.Drawing.Size(91, 22)
+        Me.cbpenjualan.TabIndex = 24
+        Me.cbpenjualan.Text = "Penjualan"
+        Me.cbpenjualan.UseVisualStyleBackColor = True
         '
-        'CheckedListBox14
+        'clbpembelian
         '
-        Me.CheckedListBox14.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox14.CheckOnClick = True
-        Me.CheckedListBox14.FormattingEnabled = True
-        Me.CheckedListBox14.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
-        Me.CheckedListBox14.Location = New System.Drawing.Point(363, 51)
-        Me.CheckedListBox14.Name = "CheckedListBox14"
-        Me.CheckedListBox14.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox14.Size = New System.Drawing.Size(91, 61)
-        Me.CheckedListBox14.TabIndex = 23
+        Me.clbpembelian.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbpembelian.CheckOnClick = True
+        Me.clbpembelian.FormattingEnabled = True
+        Me.clbpembelian.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbpembelian.Location = New System.Drawing.Point(363, 51)
+        Me.clbpembelian.Name = "clbpembelian"
+        Me.clbpembelian.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbpembelian.Size = New System.Drawing.Size(91, 61)
+        Me.clbpembelian.TabIndex = 23
         '
-        'CheckBox13
+        'cbpembelian
         '
-        Me.CheckBox13.AutoSize = True
-        Me.CheckBox13.Location = New System.Drawing.Point(345, 23)
-        Me.CheckBox13.Name = "CheckBox13"
-        Me.CheckBox13.Size = New System.Drawing.Size(96, 22)
-        Me.CheckBox13.TabIndex = 22
-        Me.CheckBox13.Text = "Pembelian"
-        Me.CheckBox13.UseVisualStyleBackColor = True
+        Me.cbpembelian.AutoSize = True
+        Me.cbpembelian.Location = New System.Drawing.Point(345, 23)
+        Me.cbpembelian.Name = "cbpembelian"
+        Me.cbpembelian.Size = New System.Drawing.Size(96, 22)
+        Me.cbpembelian.TabIndex = 22
+        Me.cbpembelian.Text = "Pembelian"
+        Me.cbpembelian.UseVisualStyleBackColor = True
         '
         'clbmasteruser
         '
@@ -1217,52 +1217,52 @@ Partial Class fuser
     Friend WithEvents cbmasterpricelist As CheckBox
     Friend WithEvents clbmasterkas As CheckedListBox
     Friend WithEvents cbmasterkas As CheckBox
-    Friend WithEvents CheckedListBox12 As CheckedListBox
-    Friend WithEvents CheckedListBox9 As CheckedListBox
-    Friend WithEvents CheckedListBox16 As CheckedListBox
-    Friend WithEvents CheckBox10 As CheckBox
-    Friend WithEvents CheckBox11 As CheckBox
-    Friend WithEvents CheckBox12 As CheckBox
-    Friend WithEvents CheckedListBox14 As CheckedListBox
-    Friend WithEvents CheckBox13 As CheckBox
-    Friend WithEvents CheckedListBox11 As CheckedListBox
-    Friend WithEvents CheckBox14 As CheckBox
-    Friend WithEvents CheckedListBox28 As CheckedListBox
-    Friend WithEvents CheckBox27 As CheckBox
-    Friend WithEvents CheckedListBox22 As CheckedListBox
-    Friend WithEvents CheckBox21 As CheckBox
-    Friend WithEvents CheckedListBox23 As CheckedListBox
-    Friend WithEvents CheckBox22 As CheckBox
-    Friend WithEvents CheckedListBox21 As CheckedListBox
-    Friend WithEvents CheckBox20 As CheckBox
+    Friend WithEvents clbreturjual As CheckedListBox
+    Friend WithEvents clbreturbeli As CheckedListBox
+    Friend WithEvents clbpenjualan As CheckedListBox
+    Friend WithEvents cbreturjual As CheckBox
+    Friend WithEvents cbreturbeli As CheckBox
+    Friend WithEvents cbpenjualan As CheckBox
+    Friend WithEvents clbpembelian As CheckedListBox
+    Friend WithEvents cbpembelian As CheckBox
+    Friend WithEvents clblappenjualan As CheckedListBox
+    Friend WithEvents cblappenjualan As CheckBox
+    Friend WithEvents clblapstokbarang As CheckedListBox
+    Friend WithEvents cblapstokbarang As CheckBox
+    Friend WithEvents clblappiutang As CheckedListBox
+    Friend WithEvents cblappiutang As CheckBox
+    Friend WithEvents clblaputang As CheckedListBox
+    Friend WithEvents cblaputang As CheckBox
+    Friend WithEvents clblappembelian As CheckedListBox
+    Friend WithEvents cblappembelian As CheckBox
     Friend WithEvents clbmasterrekcust As CheckedListBox
     Friend WithEvents cbmasterrekcust As CheckBox
     Friend WithEvents clbmasterreksupp As CheckedListBox
     Friend WithEvents cbmasterreksupp As CheckBox
-    Friend WithEvents CheckedListBox8 As CheckedListBox
-    Friend WithEvents CheckedListBox10 As CheckedListBox
-    Friend WithEvents CheckedListBox15 As CheckedListBox
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents CheckBox4 As CheckBox
-    Friend WithEvents CheckBox7 As CheckBox
-    Friend WithEvents CheckedListBox17 As CheckedListBox
-    Friend WithEvents CheckedListBox18 As CheckedListBox
-    Friend WithEvents CheckBox9 As CheckBox
-    Friend WithEvents CheckBox15 As CheckBox
-    Friend WithEvents CheckedListBox19 As CheckedListBox
-    Friend WithEvents CheckedListBox20 As CheckedListBox
-    Friend WithEvents CheckBox16 As CheckBox
-    Friend WithEvents CheckBox17 As CheckBox
-    Friend WithEvents CheckedListBox31 As CheckedListBox
-    Friend WithEvents CheckBox18 As CheckBox
-    Friend WithEvents CheckedListBox24 As CheckedListBox
-    Friend WithEvents CheckBox19 As CheckBox
-    Friend WithEvents CheckedListBox25 As CheckedListBox
-    Friend WithEvents CheckBox23 As CheckBox
-    Friend WithEvents CheckedListBox26 As CheckedListBox
-    Friend WithEvents CheckBox24 As CheckBox
-    Friend WithEvents CheckedListBox27 As CheckedListBox
-    Friend WithEvents CheckBox25 As CheckBox
-    Friend WithEvents CheckedListBox13 As CheckedListBox
-    Friend WithEvents CheckBox8 As CheckBox
+    Friend WithEvents clbtransferbarang As CheckedListBox
+    Friend WithEvents clbbarangkeluar As CheckedListBox
+    Friend WithEvents clbbarangmasuk As CheckedListBox
+    Friend WithEvents cbtransferbarang As CheckBox
+    Friend WithEvents cbbarangkeluar As CheckBox
+    Friend WithEvents cbbarangmasuk As CheckBox
+    Friend WithEvents clbakunkeluar As CheckedListBox
+    Friend WithEvents clbakunmasuk As CheckedListBox
+    Friend WithEvents cbakunkeluar As CheckBox
+    Friend WithEvents cbakunmasuk As CheckBox
+    Friend WithEvents clbtransferkas As CheckedListBox
+    Friend WithEvents clblunaspiutang As CheckedListBox
+    Friend WithEvents cbtransferkas As CheckBox
+    Friend WithEvents cblunaspiutang As CheckBox
+    Friend WithEvents clblunasutang As CheckedListBox
+    Friend WithEvents cblunasutang As CheckBox
+    Friend WithEvents clblaptransferbarang As CheckedListBox
+    Friend WithEvents cblaptransferbarang As CheckBox
+    Friend WithEvents clblaptransferkas As CheckedListBox
+    Friend WithEvents cblaptransferkas As CheckBox
+    Friend WithEvents clblapakunkeluar As CheckedListBox
+    Friend WithEvents cblapakunkeluar As CheckBox
+    Friend WithEvents clblapakunmasuk As CheckedListBox
+    Friend WithEvents cblapakunmasuk As CheckBox
+    Friend WithEvents clblaptransaksikas As CheckedListBox
+    Friend WithEvents cblaptransaksikas As CheckBox
 End Class

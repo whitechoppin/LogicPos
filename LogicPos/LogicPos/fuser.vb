@@ -2,8 +2,19 @@
 
 Public Class fuser
     Dim kode As String
+    'master
     Dim cekmasterbarang, cekmastergudang, cekmastercustomer, cekmastersupplier, cekmasteruser, cekmasterkas, cekmasterpricelist, cekmasterreksupp, cekmasterrekcust As Integer
     Dim aksesbarang, aksesgudang, aksescustomer, aksessupplier, aksesuser, akseskas, aksespricelist, aksesreksupp, aksesrekcust As Integer
+    'transaksi
+    Dim cekpembelian, cekpenjualan, cekreturbeli, cekreturjual, cekbarangmasuk, cekbarangkeluar, cektransferbarang As Integer
+    Dim aksespembelian, aksespenjualan, aksesreturbeli, aksesreturjual, aksesbarangmasuk, aksesbarangkeluar, aksestransferbarang As Integer
+    'administrasi
+    Dim ceklunasutang, ceklunaspiutang, cektransferkas, cekakunmasuk, cekakunkeluar As Integer
+    Dim akseslunasutang, akseslunaspiutang, aksestransferkas, aksesakunmasuk, aksesakunkeluar As Integer
+    'laporan
+    Dim ceklappembelian, ceklappenjualan, ceklaputang, ceklappiutang, ceklapstokbarang, ceklapakunmasuk, ceklapakunkeluar, ceklaptransferkas, ceklaptransferbarang, ceklaptransaksikas As Integer
+    Dim akseslappembelian, akseslappenjualan, akseslaputang, akseslappiutang, akseslapstokbarang, akseslapakunmasuk, akseslapakunkeluar, akseslaptransferkas, akseslaptransferbarang, akseslaptransaksikas As Integer
+
     Private Sub fuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -21,6 +32,7 @@ Public Class fuser
         txtketerangan.Clear()
 
         'akses user
+        'master
         cbmasterbarang.Checked = False
         cbmastergudang.Checked = False
         cbmastercustomer.Checked = False
@@ -31,7 +43,36 @@ Public Class fuser
         cbmasterreksupp.Checked = False
         cbmasterrekcust.Checked = False
 
+        'transaksi
+        cbpembelian.Checked = False
+        cbpenjualan.Checked = False
+        cbreturbeli.Checked = False
+        cbreturjual.Checked = False
+        cbbarangmasuk.Checked = False
+        cbbarangkeluar.Checked = False
+        cbtransferbarang.Checked = False
+
+        'administrasi
+        cblunasutang.Checked = False
+        cblunaspiutang.Checked = False
+        cbtransferkas.Checked = False
+        cbakunmasuk.Checked = False
+        cbakunkeluar.Checked = False
+
+        'laporan
+        cblappembelian.Checked = False
+        cblappenjualan.Checked = False
+        cblaputang.Checked = False
+        cblappiutang.Checked = False
+        cblapstokbarang.Checked = False
+        cblapakunmasuk.Checked = False
+        cblapakunkeluar.Checked = False
+        cblaptransferkas.Checked = False
+        cblaptransferbarang.Checked = False
+        cblaptransaksikas.Checked = False
+
         For id As Integer = 0 To 2
+            'master
             clbmasterbarang.SetItemChecked(id, False)
             clbmastergudang.SetItemChecked(id, False)
             clbmastercustomer.SetItemChecked(id, False)
@@ -41,8 +82,40 @@ Public Class fuser
             clbmasterpricelist.SetItemChecked(id, False)
             clbmasterreksupp.SetItemChecked(id, False)
             clbmasterrekcust.SetItemChecked(id, False)
+
+            'transaksi
+            clbpembelian.SetItemChecked(id, False)
+            clbpenjualan.SetItemChecked(id, False)
+            clbreturbeli.SetItemChecked(id, False)
+            clbreturjual.SetItemChecked(id, False)
+            clbbarangmasuk.SetItemChecked(id, False)
+            clbbarangkeluar.SetItemChecked(id, False)
+            clbtransferbarang.SetItemChecked(id, False)
+
+            'administrasi
+            clblunasutang.SetItemChecked(id, False)
+            clblunaspiutang.SetItemChecked(id, False)
+            clbtransferkas.SetItemChecked(id, False)
+            clbakunmasuk.SetItemChecked(id, False)
+            clbakunkeluar.SetItemChecked(id, False)
+
+            'laporan
+            If id <= 1 Then
+                clblappembelian.SetItemChecked(id, False)
+                clblappenjualan.SetItemChecked(id, False)
+                clblaputang.SetItemChecked(id, False)
+                clblappiutang.SetItemChecked(id, False)
+                clblapstokbarang.SetItemChecked(id, False)
+                clblapakunmasuk.SetItemChecked(id, False)
+                clblapakunkeluar.SetItemChecked(id, False)
+                clblaptransferkas.SetItemChecked(id, False)
+                clblaptransferbarang.SetItemChecked(id, False)
+                clblaptransaksikas.SetItemChecked(id, False)
+            End If
         Next
 
+        'combo box 
+        'master
         cbmasterbarang.Enabled = False
         cbmastergudang.Enabled = False
         cbmastercustomer.Enabled = False
@@ -53,6 +126,35 @@ Public Class fuser
         cbmasterreksupp.Enabled = False
         cbmasterrekcust.Enabled = False
 
+        'transaksi
+        cbpembelian.Enabled = False
+        cbpenjualan.Enabled = False
+        cbreturbeli.Enabled = False
+        cbreturjual.Enabled = False
+        cbbarangmasuk.Enabled = False
+        cbbarangkeluar.Enabled = False
+        cbtransferbarang.Enabled = False
+
+        'administrasi
+        cblunasutang.Enabled = False
+        cblunaspiutang.Enabled = False
+        cbtransferkas.Enabled = False
+        cbakunmasuk.Enabled = False
+        cbakunkeluar.Enabled = False
+
+        'laporan
+        cblappembelian.Enabled = False
+        cblappenjualan.Enabled = False
+        cblaputang.Enabled = False
+        cblappiutang.Enabled = False
+        cblapstokbarang.Enabled = False
+        cblapakunmasuk.Enabled = False
+        cblapakunkeluar.Enabled = False
+        cblaptransferkas.Enabled = False
+        cblaptransferbarang.Enabled = False
+        cblaptransaksikas.Enabled = False
+
+        'combo box list
         clbmasterbarang.Enabled = False
         clbmastergudang.Enabled = False
         clbmastercustomer.Enabled = False
@@ -62,6 +164,35 @@ Public Class fuser
         clbmasterpricelist.Enabled = False
         clbmasterreksupp.Enabled = False
         clbmasterrekcust.Enabled = False
+
+        'transaksi
+        clbpembelian.Enabled = False
+        clbpenjualan.Enabled = False
+        clbreturbeli.Enabled = False
+        clbreturjual.Enabled = False
+        clbbarangmasuk.Enabled = False
+        clbbarangkeluar.Enabled = False
+        clbtransferbarang.Enabled = False
+
+        'administrasi
+        clblunasutang.Enabled = False
+        clblunaspiutang.Enabled = False
+        clbtransferkas.Enabled = False
+        clbakunmasuk.Enabled = False
+        clbakunkeluar.Enabled = False
+
+        'laporan
+        clblappembelian.Enabled = False
+        clblappenjualan.Enabled = False
+        clblaputang.Enabled = False
+        clblappiutang.Enabled = False
+        clblapstokbarang.Enabled = False
+        clblapakunmasuk.Enabled = False
+        clblapakunkeluar.Enabled = False
+        clblaptransferkas.Enabled = False
+        clblaptransferbarang.Enabled = False
+        clblaptransaksikas.Enabled = False
+
 
         Call koneksii()
 
@@ -134,6 +265,7 @@ Public Class fuser
         txtketerangan.Enabled = True
 
         'akses user
+        'master
         cbmasterbarang.Enabled = True
         cbmastergudang.Enabled = True
         cbmastercustomer.Enabled = True
@@ -144,6 +276,33 @@ Public Class fuser
         cbmasterreksupp.Enabled = True
         cbmasterrekcust.Enabled = True
 
+        'transaksi
+        cbpembelian.Enabled = True
+        cbpenjualan.Enabled = True
+        cbreturbeli.Enabled = True
+        cbreturjual.Enabled = True
+        cbbarangmasuk.Enabled = True
+        cbbarangkeluar.Enabled = True
+        cbtransferbarang.Enabled = True
+
+        'administrasi
+        cblunasutang.Enabled = True
+        cblunaspiutang.Enabled = True
+        cbtransferkas.Enabled = True
+        cbakunmasuk.Enabled = True
+        cbakunkeluar.Enabled = True
+
+        'laporan
+        cblappembelian.Enabled = True
+        cblappenjualan.Enabled = True
+        cblaputang.Enabled = True
+        cblappiutang.Enabled = True
+        cblapstokbarang.Enabled = True
+        cblapakunmasuk.Enabled = True
+        cblapakunkeluar.Enabled = True
+        cblaptransferkas.Enabled = True
+        cblaptransferbarang.Enabled = True
+        cblaptransaksikas.Enabled = True
         'batas akses user
 
         txtkode.Focus()
@@ -159,8 +318,8 @@ Public Class fuser
         txttelp.Enabled = True
         txtketerangan.Enabled = True
 
-
         'akses user
+        'master
         cbmasterbarang.Enabled = True
         cbmastergudang.Enabled = True
         cbmastercustomer.Enabled = True
@@ -171,6 +330,36 @@ Public Class fuser
         cbmasterreksupp.Enabled = True
         cbmasterrekcust.Enabled = True
 
+        'transaksi
+        cbpembelian.Enabled = True
+        cbpenjualan.Enabled = True
+        cbreturbeli.Enabled = True
+        cbreturjual.Enabled = True
+        cbbarangmasuk.Enabled = True
+        cbbarangkeluar.Enabled = True
+        cbtransferbarang.Enabled = True
+
+        'administrasi
+        cblunasutang.Enabled = True
+        cblunaspiutang.Enabled = True
+        cbtransferkas.Enabled = True
+        cbakunmasuk.Enabled = True
+        cbakunkeluar.Enabled = True
+
+        'laporan
+        cblappembelian.Enabled = True
+        cblappenjualan.Enabled = True
+        cblaputang.Enabled = True
+        cblappiutang.Enabled = True
+        cblapstokbarang.Enabled = True
+        cblapakunmasuk.Enabled = True
+        cblapakunkeluar.Enabled = True
+        cblaptransferkas.Enabled = True
+        cblaptransferbarang.Enabled = True
+        cblaptransaksikas.Enabled = True
+
+        'combo box list
+        'master barang 
         If aksesbarang > 0 Then
             clbmasterbarang.Enabled = True
         Else
@@ -224,6 +413,142 @@ Public Class fuser
         Else
             clbmasterrekcust.Enabled = False
         End If
+
+        'transaksi
+        If aksespembelian > 0 Then
+            clbpembelian.Enabled = True
+        Else
+            clbpembelian.Enabled = False
+        End If
+
+        If aksespenjualan > 0 Then
+            clbpenjualan.Enabled = True
+        Else
+            clbpenjualan.Enabled = False
+        End If
+
+        If aksesreturbeli > 0 Then
+            clbreturbeli.Enabled = True
+        Else
+            clbreturbeli.Enabled = False
+        End If
+
+        If aksesreturjual > 0 Then
+            clbreturjual.Enabled = True
+        Else
+            clbreturjual.Enabled = False
+        End If
+
+        If aksesbarangmasuk > 0 Then
+            clbbarangmasuk.Enabled = True
+        Else
+            clbbarangmasuk.Enabled = False
+        End If
+
+        If aksesbarangkeluar > 0 Then
+            clbbarangkeluar.Enabled = True
+        Else
+            clbbarangkeluar.Enabled = False
+        End If
+
+        If aksestransferbarang > 0 Then
+            clbtransferbarang.Enabled = True
+        Else
+            clbtransferbarang.Enabled = False
+        End If
+
+        'administrasi
+        If akseslunasutang > 0 Then
+            clblunasutang.Enabled = True
+        Else
+            clblunasutang.Enabled = False
+        End If
+
+        If akseslunaspiutang > 0 Then
+            clblunaspiutang.Enabled = True
+        Else
+            clblunaspiutang.Enabled = False
+        End If
+
+        If aksestransferkas > 0 Then
+            clbtransferkas.Enabled = True
+        Else
+            clbtransferkas.Enabled = False
+        End If
+
+        If aksesakunmasuk > 0 Then
+            clbakunmasuk.Enabled = True
+        Else
+            clbakunmasuk.Enabled = False
+        End If
+
+        If aksesakunkeluar > 0 Then
+            clbakunkeluar.Enabled = True
+        Else
+            clbakunkeluar.Enabled = False
+        End If
+
+        'laporan
+        If akseslappembelian > 0 Then
+            clblappembelian.Enabled = True
+        Else
+            clblappembelian.Enabled = False
+        End If
+
+        If akseslappenjualan > 0 Then
+            clblappenjualan.Enabled = True
+        Else
+            clblappenjualan.Enabled = False
+        End If
+
+        If akseslaputang > 0 Then
+            clblaputang.Enabled = True
+        Else
+            clblaputang.Enabled = False
+        End If
+
+        If akseslappiutang > 0 Then
+            clblappiutang.Enabled = True
+        Else
+            clblappiutang.Enabled = False
+        End If
+
+        If akseslapstokbarang > 0 Then
+            clblapstokbarang.Enabled = True
+        Else
+            clblapstokbarang.Enabled = False
+        End If
+
+        If akseslapakunmasuk > 0 Then
+            clblapakunmasuk.Enabled = True
+        Else
+            clblapakunmasuk.Enabled = False
+        End If
+
+        If akseslapakunkeluar > 0 Then
+            clblapakunkeluar.Enabled = True
+        Else
+            clblapakunkeluar.Enabled = False
+        End If
+
+        If akseslaptransferkas > 0 Then
+            clblaptransferkas.Enabled = True
+        Else
+            clblaptransferkas.Enabled = False
+        End If
+
+        If akseslaptransferbarang > 0 Then
+            clblaptransferbarang.Enabled = True
+        Else
+            clblaptransferbarang.Enabled = False
+        End If
+
+        If akseslaptransaksikas > 0 Then
+            clblaptransaksikas.Enabled = True
+        Else
+            clblaptransaksikas.Enabled = False
+        End If
+
         'batas akses user
 
         txtkode.Focus()
@@ -268,6 +593,7 @@ Public Class fuser
         End If
     End Sub
     Sub aksesadmin()
+        'master
         cekmasterbarang = 0
         cekmastergudang = 0
         cekmastercustomer = 0
@@ -278,7 +604,36 @@ Public Class fuser
         cekmasterreksupp = 0
         cekmasterrekcust = 0
 
+        'transaksi
+        cekpembelian = 0
+        cekpenjualan = 0
+        cekreturbeli = 0
+        cekreturjual = 0
+        cekbarangmasuk = 0
+        cekbarangkeluar = 0
+        cektransferbarang = 0
+
+        'administrasi
+        ceklunasutang = 0
+        ceklunaspiutang = 0
+        cektransferkas = 0
+        cekakunmasuk = 0
+        cekakunkeluar = 0
+
+        'laporan
+        ceklappembelian = 0
+        ceklappenjualan = 0
+        ceklaputang = 0
+        ceklappiutang = 0
+        ceklapstokbarang = 0
+        ceklapakunmasuk = 0
+        ceklapakunkeluar = 0
+        ceklaptransferkas = 0
+        ceklaptransferbarang = 0
+        ceklaptransaksikas = 0
+
         'We will run through each indice
+        'master
         For i = 0 To 2
             'barang
             If clbmasterbarang.GetItemChecked(i) Then
@@ -389,6 +744,11 @@ Public Class fuser
                 cekmasterrekcust = cekmasterrekcust + 0
             End If
         Next
+        'transaksi
+
+        'administrasi
+
+        'laporan
     End Sub
     Sub simpan()
         Call koneksii()
@@ -991,6 +1351,7 @@ Public Class fuser
         e.Handled = ValidAngka(e)
     End Sub
 
+    'master menu
     Private Sub cbmasterbarang_CheckedChanged(sender As Object, e As EventArgs) Handles cbmasterbarang.CheckedChanged
         If cbmasterbarang.Checked = True Then
             clbmasterbarang.Enabled = True
@@ -1117,6 +1478,86 @@ Public Class fuser
         End If
     End Sub
 
+    'transaksi
+    Private Sub cbpembelian_CheckedChanged(sender As Object, e As EventArgs) Handles cbpembelian.CheckedChanged
+
+    End Sub
+    Private Sub cbpenjualan_CheckedChanged(sender As Object, e As EventArgs) Handles cbpenjualan.CheckedChanged
+
+    End Sub
+    Private Sub cbreturbeli_CheckedChanged(sender As Object, e As EventArgs) Handles cbreturbeli.CheckedChanged
+
+    End Sub
+
+    Private Sub cbreturjual_CheckedChanged(sender As Object, e As EventArgs) Handles cbreturjual.CheckedChanged
+
+    End Sub
+
+    Private Sub cbbarangmasuk_CheckedChanged(sender As Object, e As EventArgs) Handles cbbarangmasuk.CheckedChanged
+
+    End Sub
+
+    Private Sub cbbarangkeluar_CheckedChanged(sender As Object, e As EventArgs) Handles cbbarangkeluar.CheckedChanged
+
+    End Sub
+
+    Private Sub cbtransferbarang_CheckedChanged(sender As Object, e As EventArgs) Handles cbtransferbarang.CheckedChanged
+
+    End Sub
+    'administrasi
+    Private Sub cblunasutang_CheckedChanged(sender As Object, e As EventArgs) Handles cblunasutang.CheckedChanged
+
+    End Sub
+    Private Sub cblunaspiutang_CheckedChanged(sender As Object, e As EventArgs) Handles cblunaspiutang.CheckedChanged
+
+    End Sub
+    Private Sub cbakunkeluar_CheckedChanged(sender As Object, e As EventArgs) Handles cbakunkeluar.CheckedChanged
+
+    End Sub
+    Private Sub cbakunmasuk_CheckedChanged(sender As Object, e As EventArgs) Handles cbakunmasuk.CheckedChanged
+
+    End Sub
+    Private Sub cbtransferkas_CheckedChanged(sender As Object, e As EventArgs) Handles cbtransferkas.CheckedChanged
+
+    End Sub
+
+    'laporan
+    Private Sub cblappembelian_CheckedChanged(sender As Object, e As EventArgs) Handles cblappembelian.CheckedChanged
+
+    End Sub
+    Private Sub cblappenjualan_CheckedChanged(sender As Object, e As EventArgs) Handles cblappenjualan.CheckedChanged
+
+    End Sub
+    Private Sub cblaputang_CheckedChanged(sender As Object, e As EventArgs) Handles cblaputang.CheckedChanged
+
+    End Sub
+    Private Sub cblappiutang_CheckedChanged(sender As Object, e As EventArgs) Handles cblappiutang.CheckedChanged
+
+    End Sub
+    Private Sub cblapstokbarang_CheckedChanged(sender As Object, e As EventArgs) Handles cblapstokbarang.CheckedChanged
+
+    End Sub
+
+    Private Sub cblapakunmasuk_CheckedChanged(sender As Object, e As EventArgs) Handles cblapakunmasuk.CheckedChanged
+
+    End Sub
+    Private Sub cblapakunkeluar_CheckedChanged(sender As Object, e As EventArgs) Handles cblapakunkeluar.CheckedChanged
+
+    End Sub
+    Private Sub cblaptransferkas_CheckedChanged(sender As Object, e As EventArgs) Handles cblaptransferkas.CheckedChanged
+
+    End Sub
+
+    Private Sub cblaptransferbarang_CheckedChanged(sender As Object, e As EventArgs) Handles cblaptransferbarang.CheckedChanged
+
+    End Sub
+
+    Private Sub cblaptransaksikas_CheckedChanged(sender As Object, e As EventArgs) Handles cblaptransaksikas.CheckedChanged
+
+    End Sub
+
+    'combobox list
+    'master
     Private Sub clbmasterbarang_MouseDown(sender As Object, e As MouseEventArgs) Handles clbmasterbarang.MouseDown
         Dim Index As Integer = clbmasterbarang.IndexFromPoint(e.Location)
         Dim Counter As Integer = 0
@@ -1278,4 +1719,11 @@ Public Class fuser
             cbmasterrekcust.Checked = False
         End If
     End Sub
+
+    'transaksi
+
+    'administrasi
+
+    'laporan
+
 End Class

@@ -100,7 +100,7 @@ Public Class flogin
         If txtpassword.Text = "" Then
             MessageBox.Show("Password masih kosong", "password", MessageBoxButtons.OK, MessageBoxIcon.Stop)
             txtpassword.Focus()
-        Else
+            Exit Sub
         End If
         Call login()
     End Sub
@@ -109,5 +109,11 @@ Public Class flogin
     Private Sub flogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtpassword.UseSystemPasswordChar = False
         txtpassword.PasswordChar = "•"
+    End Sub
+
+    Private Sub txtpassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtpassword.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Call login()
+        End If
     End Sub
 End Class
