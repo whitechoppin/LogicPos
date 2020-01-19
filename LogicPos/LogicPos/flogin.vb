@@ -86,8 +86,10 @@ Public Class flogin
             '    End While
             'End While
 
+            Me.Hide()
             fmenu.statususer.Text = txtusername.Text.ToUpper
             fmenu.Show()
+
         End If
     End Sub
 

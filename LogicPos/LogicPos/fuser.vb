@@ -633,8 +633,9 @@ Public Class fuser
         ceklaptransaksikas = 0
 
         'We will run through each indice
-        'master
+
         For i = 0 To 2
+            'master ===
             'barang
             If clbmasterbarang.GetItemChecked(i) Then
                 If clbmasterbarang.Items(i).Equals("Tambah") Then
@@ -743,10 +744,279 @@ Public Class fuser
             Else
                 cekmasterrekcust = cekmasterrekcust + 0
             End If
-        Next
-        'transaksi
 
-        'administrasi
+            'transaksi ===
+            'pembelian
+            If clbpembelian.GetItemChecked(i) Then
+                If clbpembelian.Items(i).Equals("Tambah") Then
+                    cekpembelian = cekpembelian + 1
+                ElseIf clbpembelian.Items(i).Equals("Edit") Then
+                    cekpembelian = cekpembelian + 3
+                ElseIf clbpembelian.Items(i).Equals("Hapus") Then
+                    cekpembelian = cekpembelian + 5
+                End If
+            Else
+                cekpembelian = cekpembelian + 0
+            End If
+
+            'penjualan
+            If clbpenjualan.GetItemChecked(i) Then
+                If clbpenjualan.Items(i).Equals("Tambah") Then
+                    cekpenjualan = cekpenjualan + 1
+                ElseIf clbpenjualan.Items(i).Equals("Edit") Then
+                    cekpenjualan = cekpenjualan + 3
+                ElseIf clbpenjualan.Items(i).Equals("Hapus") Then
+                    cekpenjualan = cekpenjualan + 5
+                End If
+            Else
+                cekpenjualan = cekpenjualan + 0
+            End If
+
+            'returbeli
+            If clbreturbeli.GetItemChecked(i) Then
+                If clbreturbeli.Items(i).Equals("Tambah") Then
+                    cekreturbeli = cekreturbeli + 1
+                ElseIf clbreturbeli.Items(i).Equals("Edit") Then
+                    cekreturbeli = cekreturbeli + 3
+                ElseIf clbreturbeli.Items(i).Equals("Hapus") Then
+                    cekreturbeli = cekreturbeli + 5
+                End If
+            Else
+                cekreturbeli = cekreturbeli + 0
+            End If
+
+            'returjual
+            If clbreturjual.GetItemChecked(i) Then
+                If clbreturjual.Items(i).Equals("Tambah") Then
+                    cekreturjual = cekreturjual + 1
+                ElseIf clbreturjual.Items(i).Equals("Edit") Then
+                    cekreturjual = cekreturjual + 3
+                ElseIf clbreturjual.Items(i).Equals("Hapus") Then
+                    cekreturjual = cekreturjual + 5
+                End If
+            Else
+                cekreturjual = cekreturjual + 0
+            End If
+
+            'barangmasuk
+            If clbbarangmasuk.GetItemChecked(i) Then
+                If clbbarangmasuk.Items(i).Equals("Tambah") Then
+                    cekbarangmasuk = cekbarangmasuk + 1
+                ElseIf clbbarangmasuk.Items(i).Equals("Edit") Then
+                    cekbarangmasuk = cekbarangmasuk + 3
+                ElseIf clbbarangmasuk.Items(i).Equals("Hapus") Then
+                    cekbarangmasuk = cekbarangmasuk + 5
+                End If
+            Else
+                cekbarangmasuk = cekbarangmasuk + 0
+            End If
+
+            'barangkeluar
+            If clbbarangkeluar.GetItemChecked(i) Then
+                If clbbarangkeluar.Items(i).Equals("Tambah") Then
+                    cekbarangkeluar = cekbarangkeluar + 1
+                ElseIf clbbarangkeluar.Items(i).Equals("Edit") Then
+                    cekbarangkeluar = cekbarangkeluar + 3
+                ElseIf clbbarangkeluar.Items(i).Equals("Hapus") Then
+                    cekbarangkeluar = cekbarangkeluar + 5
+                End If
+            Else
+                cekbarangkeluar = cekbarangkeluar + 0
+            End If
+
+            'transferbarang
+            If clbtransferbarang.GetItemChecked(i) Then
+                If clbtransferbarang.Items(i).Equals("Tambah") Then
+                    cektransferbarang = cektransferbarang + 1
+                ElseIf clbtransferbarang.Items(i).Equals("Edit") Then
+                    cektransferbarang = cektransferbarang + 3
+                ElseIf clbtransferbarang.Items(i).Equals("Hapus") Then
+                    cektransferbarang = cektransferbarang + 5
+                End If
+            Else
+                cektransferbarang = cektransferbarang + 0
+            End If
+
+            'administrasi ===
+            'lunasutang
+            If clblunasutang.GetItemChecked(i) Then
+                If clblunasutang.Items(i).Equals("Tambah") Then
+                    ceklunasutang = ceklunasutang + 1
+                ElseIf clblunasutang.Items(i).Equals("Edit") Then
+                    ceklunasutang = ceklunasutang + 3
+                ElseIf clblunasutang.Items(i).Equals("Hapus") Then
+                    ceklunasutang = ceklunasutang + 5
+                End If
+            Else
+                ceklunasutang = ceklunasutang + 0
+            End If
+
+            'lunaspiutang
+            If clblunaspiutang.GetItemChecked(i) Then
+                If clblunaspiutang.Items(i).Equals("Tambah") Then
+                    ceklunaspiutang = ceklunaspiutang + 1
+                ElseIf clblunaspiutang.Items(i).Equals("Edit") Then
+                    ceklunaspiutang = ceklunaspiutang + 3
+                ElseIf clblunaspiutang.Items(i).Equals("Hapus") Then
+                    ceklunaspiutang = ceklunaspiutang + 5
+                End If
+            Else
+                ceklunaspiutang = ceklunaspiutang + 0
+            End If
+
+            'transferkas
+            If clbtransferkas.GetItemChecked(i) Then
+                If clbtransferkas.Items(i).Equals("Tambah") Then
+                    cektransferkas = cektransferkas + 1
+                ElseIf clbtransferkas.Items(i).Equals("Edit") Then
+                    cektransferkas = cektransferkas + 3
+                ElseIf clbtransferkas.Items(i).Equals("Hapus") Then
+                    cektransferkas = cektransferkas + 5
+                End If
+            Else
+                cektransferkas = cektransferkas + 0
+            End If
+
+            'akunmasuk
+            If clbakunmasuk.GetItemChecked(i) Then
+                If clbakunmasuk.Items(i).Equals("Tambah") Then
+                    cekakunmasuk = cekakunmasuk + 1
+                ElseIf clbakunmasuk.Items(i).Equals("Edit") Then
+                    cekakunmasuk = cekakunmasuk + 3
+                ElseIf clbakunmasuk.Items(i).Equals("Hapus") Then
+                    cekakunmasuk = cekakunmasuk + 5
+                End If
+            Else
+                cekakunmasuk = cekakunmasuk + 0
+            End If
+
+            'akunkeluar
+            If clbakunkeluar.GetItemChecked(i) Then
+                If clbakunkeluar.Items(i).Equals("Tambah") Then
+                    cekakunkeluar = cekakunkeluar + 1
+                ElseIf clbakunkeluar.Items(i).Equals("Edit") Then
+                    cekakunkeluar = cekakunkeluar + 3
+                ElseIf clbakunkeluar.Items(i).Equals("Hapus") Then
+                    cekakunkeluar = cekakunkeluar + 5
+                End If
+            Else
+                cekakunkeluar = cekakunkeluar + 0
+            End If
+
+            'laporan ===
+            If i <= 1 Then
+                'lappembelian
+                If clblappembelian.GetItemChecked(i) Then
+                    If clblappembelian.Items(i).Equals("Print") Then
+                        ceklappembelian = ceklappembelian + 1
+                    ElseIf clblappembelian.Items(i).Equals("Export") Then
+                        ceklappembelian = ceklappembelian + 3
+                    End If
+                Else
+                    ceklappembelian = ceklappembelian + 0
+                End If
+                'lappenjualan
+                If clblappenjualan.GetItemChecked(i) Then
+                    If clblappenjualan.Items(i).Equals("Print") Then
+                        ceklappenjualan = ceklappenjualan + 1
+                    ElseIf clblappenjualan.Items(i).Equals("Export") Then
+                        ceklappenjualan = ceklappenjualan + 3
+                    End If
+                Else
+                    ceklappenjualan = ceklappenjualan + 0
+                End If
+
+                'laputang
+                If clblaputang.GetItemChecked(i) Then
+                    If clblaputang.Items(i).Equals("Print") Then
+                        ceklaputang = ceklaputang + 1
+                    ElseIf clblaputang.Items(i).Equals("Export") Then
+                        ceklaputang = ceklaputang + 3
+                    End If
+                Else
+                    ceklaputang = ceklaputang + 0
+                End If
+
+                'lappiutang
+                If clblappiutang.GetItemChecked(i) Then
+                    If clblappiutang.Items(i).Equals("Print") Then
+                        ceklappiutang = ceklappiutang + 1
+                    ElseIf clblappiutang.Items(i).Equals("Export") Then
+                        ceklappiutang = ceklappiutang + 3
+                    End If
+                Else
+                    ceklappiutang = ceklappiutang + 0
+                End If
+
+                'lapstokbarang
+                If clblapstokbarang.GetItemChecked(i) Then
+                    If clblapstokbarang.Items(i).Equals("Print") Then
+                        ceklapstokbarang = ceklapstokbarang + 1
+                    ElseIf clblapstokbarang.Items(i).Equals("Export") Then
+                        ceklapstokbarang = ceklapstokbarang + 3
+                    End If
+                Else
+                    ceklapstokbarang = ceklapstokbarang + 0
+                End If
+
+                'lapakunmasuk
+                If clblapakunmasuk.GetItemChecked(i) Then
+                    If clblapakunmasuk.Items(i).Equals("Print") Then
+                        ceklapakunmasuk = ceklapakunmasuk + 1
+                    ElseIf clblapakunmasuk.Items(i).Equals("Export") Then
+                        ceklapakunmasuk = ceklapakunmasuk + 3
+                    End If
+                Else
+                    ceklapakunmasuk = ceklapakunmasuk + 0
+                End If
+
+                'lapakunkeluar
+                If clblapakunkeluar.GetItemChecked(i) Then
+                    If clblapakunkeluar.Items(i).Equals("Print") Then
+                        ceklapakunkeluar = ceklapakunkeluar + 1
+                    ElseIf clblapakunkeluar.Items(i).Equals("Export") Then
+                        ceklapakunkeluar = ceklapakunkeluar + 3
+                    End If
+                Else
+                    ceklapakunkeluar = ceklapakunkeluar + 0
+                End If
+
+                'laptransferkas
+                If clblaptransferkas.GetItemChecked(i) Then
+                    If clblaptransferkas.Items(i).Equals("Print") Then
+                        ceklaptransferkas = ceklaptransferkas + 1
+                    ElseIf clblaptransferkas.Items(i).Equals("Export") Then
+                        ceklaptransferkas = ceklaptransferkas + 3
+                    End If
+                Else
+                    ceklaptransferkas = ceklaptransferkas + 0
+                End If
+
+                'laptransferbarang
+                If clblaptransferbarang.GetItemChecked(i) Then
+                    If clblaptransferbarang.Items(i).Equals("Print") Then
+                        ceklaptransferbarang = ceklaptransferbarang + 1
+                    ElseIf clblaptransferbarang.Items(i).Equals("Export") Then
+                        ceklaptransferbarang = ceklaptransferbarang + 3
+                    End If
+                Else
+                    ceklaptransferbarang = ceklaptransferbarang + 0
+                End If
+
+                'laptransaksikas
+                If clblaptransaksikas.GetItemChecked(i) Then
+                    If clblaptransaksikas.Items(i).Equals("Print") Then
+                        ceklaptransaksikas = ceklaptransaksikas + 1
+                    ElseIf clblaptransaksikas.Items(i).Equals("Export") Then
+                        ceklaptransaksikas = ceklaptransaksikas + 3
+                    End If
+                Else
+                    ceklaptransaksikas = ceklaptransaksikas + 0
+                End If
+            End If
+
+        Next
+
 
         'laporan
     End Sub
@@ -924,6 +1194,7 @@ Public Class fuser
                 txtketerangan.Text = dr("keterangan_user")
 
                 'akses user
+                'master
                 aksesbarang = Val(dr("master_barang"))
                 aksesgudang = Val(dr("master_gudang"))
                 aksescustomer = Val(dr("master_customer"))
@@ -934,6 +1205,36 @@ Public Class fuser
                 aksesreksupp = Val(dr("master_rek_supp"))
                 aksesrekcust = Val(dr("master_rek_cust"))
 
+                'transaksi
+                aksespembelian = Val(dr("pembelian"))
+                aksespenjualan = Val(dr("penjualan"))
+                aksesreturbeli = Val(dr("retur_beli"))
+                aksesreturjual = Val(dr("retur_jual"))
+                aksesbarangmasuk = Val(dr("barang_masuk"))
+                aksesbarangkeluar = Val(dr("barang_keluar"))
+                aksestransferbarang = Val(dr("transfer_barang"))
+
+                'administrasi
+                akseslunasutang = Val(dr("lunas_utang"))
+                akseslunaspiutang = Val(dr("lunas_piutang"))
+                aksestransferkas = Val(dr("transfer_kas"))
+                aksesakunmasuk = Val(dr("akun_masuk"))
+                aksesakunkeluar = Val(dr("akun_keluar"))
+
+                'laporan
+                akseslappembelian = Val(dr("lap_pembelian"))
+                akseslappenjualan = Val(dr("lap_penjualan"))
+                akseslaputang = Val(dr("lap_utang"))
+                akseslappiutang = Val(dr("lap_piutang"))
+                akseslapstokbarang = Val(dr("lap_stok_barang"))
+                akseslapakunmasuk = Val(dr("lap_akun_masuk"))
+                akseslapakunkeluar = Val(dr("lap_akun_keluar"))
+                akseslaptransferkas = Val(dr("lap_transfer_kas"))
+                akseslaptransferbarang = Val(dr("lap_transfer_barang"))
+                akseslaptransaksikas = Val(dr("lap_transaksi_kas"))
+
+                '== mulai case ==
+                'master
                 Select Case aksesbarang
                     Case 0
                         cbmasterbarang.Checked = False
@@ -1321,6 +1622,718 @@ Public Class fuser
                         clbmasterrekcust.SetItemChecked(2, True)
                 End Select
 
+                'transaksi
+                Select Case aksespembelian
+                    Case 0
+                        cbpembelian.Checked = False
+                        clbpembelian.SetItemChecked(0, False)
+                        clbpembelian.SetItemChecked(1, False)
+                        clbpembelian.SetItemChecked(2, False)
+                    Case 1
+                        cbpembelian.Checked = True
+                        clbpembelian.SetItemChecked(0, True)
+                        clbpembelian.SetItemChecked(1, False)
+                        clbpembelian.SetItemChecked(2, False)
+                    Case 3
+                        cbpembelian.Checked = True
+                        clbpembelian.SetItemChecked(0, False)
+                        clbpembelian.SetItemChecked(1, True)
+                        clbpembelian.SetItemChecked(2, False)
+                    Case 5
+                        cbpembelian.Checked = True
+                        clbpembelian.SetItemChecked(0, False)
+                        clbpembelian.SetItemChecked(1, False)
+                        clbpembelian.SetItemChecked(2, True)
+                    Case 4
+                        cbpembelian.Checked = True
+                        clbpembelian.SetItemChecked(0, True)
+                        clbpembelian.SetItemChecked(1, True)
+                        clbpembelian.SetItemChecked(2, False)
+                    Case 6
+                        cbpembelian.Checked = True
+                        clbpembelian.SetItemChecked(0, True)
+                        clbpembelian.SetItemChecked(1, False)
+                        clbpembelian.SetItemChecked(2, True)
+                    Case 8
+                        cbpembelian.Checked = True
+                        clbpembelian.SetItemChecked(0, False)
+                        clbpembelian.SetItemChecked(1, True)
+                        clbpembelian.SetItemChecked(2, True)
+                    Case 9
+                        cbpembelian.Checked = True
+                        clbpembelian.SetItemChecked(0, True)
+                        clbpembelian.SetItemChecked(1, True)
+                        clbpembelian.SetItemChecked(2, True)
+                End Select
+
+                Select Case aksespenjualan
+                    Case 0
+                        cbpenjualan.Checked = False
+                        clbpenjualan.SetItemChecked(0, False)
+                        clbpenjualan.SetItemChecked(1, False)
+                        clbpenjualan.SetItemChecked(2, False)
+                    Case 1
+                        cbpenjualan.Checked = True
+                        clbpenjualan.SetItemChecked(0, True)
+                        clbpenjualan.SetItemChecked(1, False)
+                        clbpenjualan.SetItemChecked(2, False)
+                    Case 3
+                        cbpenjualan.Checked = True
+                        clbpenjualan.SetItemChecked(0, False)
+                        clbpenjualan.SetItemChecked(1, True)
+                        clbpenjualan.SetItemChecked(2, False)
+                    Case 5
+                        cbpenjualan.Checked = True
+                        clbpenjualan.SetItemChecked(0, False)
+                        clbpenjualan.SetItemChecked(1, False)
+                        clbpenjualan.SetItemChecked(2, True)
+                    Case 4
+                        cbpenjualan.Checked = True
+                        clbpenjualan.SetItemChecked(0, True)
+                        clbpenjualan.SetItemChecked(1, True)
+                        clbpenjualan.SetItemChecked(2, False)
+                    Case 6
+                        cbpenjualan.Checked = True
+                        clbpenjualan.SetItemChecked(0, True)
+                        clbpenjualan.SetItemChecked(1, False)
+                        clbpenjualan.SetItemChecked(2, True)
+                    Case 8
+                        cbpenjualan.Checked = True
+                        clbpenjualan.SetItemChecked(0, False)
+                        clbpenjualan.SetItemChecked(1, True)
+                        clbpenjualan.SetItemChecked(2, True)
+                    Case 9
+                        cbpenjualan.Checked = True
+                        clbpenjualan.SetItemChecked(0, True)
+                        clbpenjualan.SetItemChecked(1, True)
+                        clbpenjualan.SetItemChecked(2, True)
+                End Select
+
+                Select Case aksesreturbeli
+                    Case 0
+                        cbreturbeli.Checked = False
+                        clbreturbeli.SetItemChecked(0, False)
+                        clbreturbeli.SetItemChecked(1, False)
+                        clbreturbeli.SetItemChecked(2, False)
+                    Case 1
+                        cbreturbeli.Checked = True
+                        clbreturbeli.SetItemChecked(0, True)
+                        clbreturbeli.SetItemChecked(1, False)
+                        clbreturbeli.SetItemChecked(2, False)
+                    Case 3
+                        cbreturbeli.Checked = True
+                        clbreturbeli.SetItemChecked(0, False)
+                        clbreturbeli.SetItemChecked(1, True)
+                        clbreturbeli.SetItemChecked(2, False)
+                    Case 5
+                        cbreturbeli.Checked = True
+                        clbreturbeli.SetItemChecked(0, False)
+                        clbreturbeli.SetItemChecked(1, False)
+                        clbreturbeli.SetItemChecked(2, True)
+                    Case 4
+                        cbreturbeli.Checked = True
+                        clbreturbeli.SetItemChecked(0, True)
+                        clbreturbeli.SetItemChecked(1, True)
+                        clbreturbeli.SetItemChecked(2, False)
+                    Case 6
+                        cbreturbeli.Checked = True
+                        clbreturbeli.SetItemChecked(0, True)
+                        clbreturbeli.SetItemChecked(1, False)
+                        clbreturbeli.SetItemChecked(2, True)
+                    Case 8
+                        cbreturbeli.Checked = True
+                        clbreturbeli.SetItemChecked(0, False)
+                        clbreturbeli.SetItemChecked(1, True)
+                        clbreturbeli.SetItemChecked(2, True)
+                    Case 9
+                        cbreturbeli.Checked = True
+                        clbreturbeli.SetItemChecked(0, True)
+                        clbreturbeli.SetItemChecked(1, True)
+                        clbreturbeli.SetItemChecked(2, True)
+                End Select
+
+                Select Case aksesreturjual
+                    Case 0
+                        cbreturjual.Checked = False
+                        clbreturjual.SetItemChecked(0, False)
+                        clbreturjual.SetItemChecked(1, False)
+                        clbreturjual.SetItemChecked(2, False)
+                    Case 1
+                        cbreturjual.Checked = True
+                        clbreturjual.SetItemChecked(0, True)
+                        clbreturjual.SetItemChecked(1, False)
+                        clbreturjual.SetItemChecked(2, False)
+                    Case 3
+                        cbreturjual.Checked = True
+                        clbreturjual.SetItemChecked(0, False)
+                        clbreturjual.SetItemChecked(1, True)
+                        clbreturjual.SetItemChecked(2, False)
+                    Case 5
+                        cbreturjual.Checked = True
+                        clbreturjual.SetItemChecked(0, False)
+                        clbreturjual.SetItemChecked(1, False)
+                        clbreturjual.SetItemChecked(2, True)
+                    Case 4
+                        cbreturjual.Checked = True
+                        clbreturjual.SetItemChecked(0, True)
+                        clbreturjual.SetItemChecked(1, True)
+                        clbreturjual.SetItemChecked(2, False)
+                    Case 6
+                        cbreturjual.Checked = True
+                        clbreturjual.SetItemChecked(0, True)
+                        clbreturjual.SetItemChecked(1, False)
+                        clbreturjual.SetItemChecked(2, True)
+                    Case 8
+                        cbreturjual.Checked = True
+                        clbreturjual.SetItemChecked(0, False)
+                        clbreturjual.SetItemChecked(1, True)
+                        clbreturjual.SetItemChecked(2, True)
+                    Case 9
+                        cbreturjual.Checked = True
+                        clbreturjual.SetItemChecked(0, True)
+                        clbreturjual.SetItemChecked(1, True)
+                        clbreturjual.SetItemChecked(2, True)
+                End Select
+
+                Select Case aksesbarangmasuk
+                    Case 0
+                        cbbarangmasuk.Checked = False
+                        clbbarangmasuk.SetItemChecked(0, False)
+                        clbbarangmasuk.SetItemChecked(1, False)
+                        clbbarangmasuk.SetItemChecked(2, False)
+                    Case 1
+                        cbbarangmasuk.Checked = True
+                        clbbarangmasuk.SetItemChecked(0, True)
+                        clbbarangmasuk.SetItemChecked(1, False)
+                        clbbarangmasuk.SetItemChecked(2, False)
+                    Case 3
+                        cbbarangmasuk.Checked = True
+                        clbbarangmasuk.SetItemChecked(0, False)
+                        clbbarangmasuk.SetItemChecked(1, True)
+                        clbbarangmasuk.SetItemChecked(2, False)
+                    Case 5
+                        cbbarangmasuk.Checked = True
+                        clbbarangmasuk.SetItemChecked(0, False)
+                        clbbarangmasuk.SetItemChecked(1, False)
+                        clbbarangmasuk.SetItemChecked(2, True)
+                    Case 4
+                        cbbarangmasuk.Checked = True
+                        clbbarangmasuk.SetItemChecked(0, True)
+                        clbbarangmasuk.SetItemChecked(1, True)
+                        clbbarangmasuk.SetItemChecked(2, False)
+                    Case 6
+                        cbbarangmasuk.Checked = True
+                        clbbarangmasuk.SetItemChecked(0, True)
+                        clbbarangmasuk.SetItemChecked(1, False)
+                        clbbarangmasuk.SetItemChecked(2, True)
+                    Case 8
+                        cbbarangmasuk.Checked = True
+                        clbbarangmasuk.SetItemChecked(0, False)
+                        clbbarangmasuk.SetItemChecked(1, True)
+                        clbbarangmasuk.SetItemChecked(2, True)
+                    Case 9
+                        cbbarangmasuk.Checked = True
+                        clbbarangmasuk.SetItemChecked(0, True)
+                        clbbarangmasuk.SetItemChecked(1, True)
+                        clbbarangmasuk.SetItemChecked(2, True)
+                End Select
+
+                Select Case aksesbarangkeluar
+                    Case 0
+                        cbbarangkeluar.Checked = False
+                        clbbarangkeluar.SetItemChecked(0, False)
+                        clbbarangkeluar.SetItemChecked(1, False)
+                        clbbarangkeluar.SetItemChecked(2, False)
+                    Case 1
+                        cbbarangkeluar.Checked = True
+                        clbbarangkeluar.SetItemChecked(0, True)
+                        clbbarangkeluar.SetItemChecked(1, False)
+                        clbbarangkeluar.SetItemChecked(2, False)
+                    Case 3
+                        cbbarangkeluar.Checked = True
+                        clbbarangkeluar.SetItemChecked(0, False)
+                        clbbarangkeluar.SetItemChecked(1, True)
+                        clbbarangkeluar.SetItemChecked(2, False)
+                    Case 5
+                        cbbarangkeluar.Checked = True
+                        clbbarangkeluar.SetItemChecked(0, False)
+                        clbbarangkeluar.SetItemChecked(1, False)
+                        clbbarangkeluar.SetItemChecked(2, True)
+                    Case 4
+                        cbbarangkeluar.Checked = True
+                        clbbarangkeluar.SetItemChecked(0, True)
+                        clbbarangkeluar.SetItemChecked(1, True)
+                        clbbarangkeluar.SetItemChecked(2, False)
+                    Case 6
+                        cbbarangkeluar.Checked = True
+                        clbbarangkeluar.SetItemChecked(0, True)
+                        clbbarangkeluar.SetItemChecked(1, False)
+                        clbbarangkeluar.SetItemChecked(2, True)
+                    Case 8
+                        cbbarangkeluar.Checked = True
+                        clbbarangkeluar.SetItemChecked(0, False)
+                        clbbarangkeluar.SetItemChecked(1, True)
+                        clbbarangkeluar.SetItemChecked(2, True)
+                    Case 9
+                        cbbarangkeluar.Checked = True
+                        clbbarangkeluar.SetItemChecked(0, True)
+                        clbbarangkeluar.SetItemChecked(1, True)
+                        clbbarangkeluar.SetItemChecked(2, True)
+                End Select
+
+                Select Case aksestransferbarang
+                    Case 0
+                        cbtransferbarang.Checked = False
+                        clbtransferbarang.SetItemChecked(0, False)
+                        clbtransferbarang.SetItemChecked(1, False)
+                        clbtransferbarang.SetItemChecked(2, False)
+                    Case 1
+                        cbtransferbarang.Checked = True
+                        clbtransferbarang.SetItemChecked(0, True)
+                        clbtransferbarang.SetItemChecked(1, False)
+                        clbtransferbarang.SetItemChecked(2, False)
+                    Case 3
+                        cbtransferbarang.Checked = True
+                        clbtransferbarang.SetItemChecked(0, False)
+                        clbtransferbarang.SetItemChecked(1, True)
+                        clbtransferbarang.SetItemChecked(2, False)
+                    Case 5
+                        cbtransferbarang.Checked = True
+                        clbtransferbarang.SetItemChecked(0, False)
+                        clbtransferbarang.SetItemChecked(1, False)
+                        clbtransferbarang.SetItemChecked(2, True)
+                    Case 4
+                        cbtransferbarang.Checked = True
+                        clbtransferbarang.SetItemChecked(0, True)
+                        clbtransferbarang.SetItemChecked(1, True)
+                        clbtransferbarang.SetItemChecked(2, False)
+                    Case 6
+                        cbtransferbarang.Checked = True
+                        clbtransferbarang.SetItemChecked(0, True)
+                        clbtransferbarang.SetItemChecked(1, False)
+                        clbtransferbarang.SetItemChecked(2, True)
+                    Case 8
+                        cbtransferbarang.Checked = True
+                        clbtransferbarang.SetItemChecked(0, False)
+                        clbtransferbarang.SetItemChecked(1, True)
+                        clbtransferbarang.SetItemChecked(2, True)
+                    Case 9
+                        cbtransferbarang.Checked = True
+                        clbtransferbarang.SetItemChecked(0, True)
+                        clbtransferbarang.SetItemChecked(1, True)
+                        clbtransferbarang.SetItemChecked(2, True)
+                End Select
+
+                'administrasi
+
+                Select Case akseslunasutang
+                    Case 0
+                        cblunasutang.Checked = False
+                        clblunasutang.SetItemChecked(0, False)
+                        clblunasutang.SetItemChecked(1, False)
+                        clblunasutang.SetItemChecked(2, False)
+                    Case 1
+                        cblunasutang.Checked = True
+                        clblunasutang.SetItemChecked(0, True)
+                        clblunasutang.SetItemChecked(1, False)
+                        clblunasutang.SetItemChecked(2, False)
+                    Case 3
+                        cblunasutang.Checked = True
+                        clblunasutang.SetItemChecked(0, False)
+                        clblunasutang.SetItemChecked(1, True)
+                        clblunasutang.SetItemChecked(2, False)
+                    Case 5
+                        cblunasutang.Checked = True
+                        clblunasutang.SetItemChecked(0, False)
+                        clblunasutang.SetItemChecked(1, False)
+                        clblunasutang.SetItemChecked(2, True)
+                    Case 4
+                        cblunasutang.Checked = True
+                        clblunasutang.SetItemChecked(0, True)
+                        clblunasutang.SetItemChecked(1, True)
+                        clblunasutang.SetItemChecked(2, False)
+                    Case 6
+                        cblunasutang.Checked = True
+                        clblunasutang.SetItemChecked(0, True)
+                        clblunasutang.SetItemChecked(1, False)
+                        clblunasutang.SetItemChecked(2, True)
+                    Case 8
+                        cblunasutang.Checked = True
+                        clblunasutang.SetItemChecked(0, False)
+                        clblunasutang.SetItemChecked(1, True)
+                        clblunasutang.SetItemChecked(2, True)
+                    Case 9
+                        cblunasutang.Checked = True
+                        clblunasutang.SetItemChecked(0, True)
+                        clblunasutang.SetItemChecked(1, True)
+                        clblunasutang.SetItemChecked(2, True)
+                End Select
+
+                Select Case akseslunaspiutang
+                    Case 0
+                        cblunaspiutang.Checked = False
+                        clblunaspiutang.SetItemChecked(0, False)
+                        clblunaspiutang.SetItemChecked(1, False)
+                        clblunaspiutang.SetItemChecked(2, False)
+                    Case 1
+                        cblunaspiutang.Checked = True
+                        clblunaspiutang.SetItemChecked(0, True)
+                        clblunaspiutang.SetItemChecked(1, False)
+                        clblunaspiutang.SetItemChecked(2, False)
+                    Case 3
+                        cblunaspiutang.Checked = True
+                        clblunaspiutang.SetItemChecked(0, False)
+                        clblunaspiutang.SetItemChecked(1, True)
+                        clblunaspiutang.SetItemChecked(2, False)
+                    Case 5
+                        cblunaspiutang.Checked = True
+                        clblunaspiutang.SetItemChecked(0, False)
+                        clblunaspiutang.SetItemChecked(1, False)
+                        clblunaspiutang.SetItemChecked(2, True)
+                    Case 4
+                        cblunaspiutang.Checked = True
+                        clblunaspiutang.SetItemChecked(0, True)
+                        clblunaspiutang.SetItemChecked(1, True)
+                        clblunaspiutang.SetItemChecked(2, False)
+                    Case 6
+                        cblunaspiutang.Checked = True
+                        clblunaspiutang.SetItemChecked(0, True)
+                        clblunaspiutang.SetItemChecked(1, False)
+                        clblunaspiutang.SetItemChecked(2, True)
+                    Case 8
+                        cblunaspiutang.Checked = True
+                        clblunaspiutang.SetItemChecked(0, False)
+                        clblunaspiutang.SetItemChecked(1, True)
+                        clblunaspiutang.SetItemChecked(2, True)
+                    Case 9
+                        cblunaspiutang.Checked = True
+                        clblunaspiutang.SetItemChecked(0, True)
+                        clblunaspiutang.SetItemChecked(1, True)
+                        clblunaspiutang.SetItemChecked(2, True)
+                End Select
+
+                Select Case aksestransferkas
+                    Case 0
+                        cbtransferkas.Checked = False
+                        clbtransferkas.SetItemChecked(0, False)
+                        clbtransferkas.SetItemChecked(1, False)
+                        clbtransferkas.SetItemChecked(2, False)
+                    Case 1
+                        cbtransferkas.Checked = True
+                        clbtransferkas.SetItemChecked(0, True)
+                        clbtransferkas.SetItemChecked(1, False)
+                        clbtransferkas.SetItemChecked(2, False)
+                    Case 3
+                        cbtransferkas.Checked = True
+                        clbtransferkas.SetItemChecked(0, False)
+                        clbtransferkas.SetItemChecked(1, True)
+                        clbtransferkas.SetItemChecked(2, False)
+                    Case 5
+                        cbtransferkas.Checked = True
+                        clbtransferkas.SetItemChecked(0, False)
+                        clbtransferkas.SetItemChecked(1, False)
+                        clbtransferkas.SetItemChecked(2, True)
+                    Case 4
+                        cbtransferkas.Checked = True
+                        clbtransferkas.SetItemChecked(0, True)
+                        clbtransferkas.SetItemChecked(1, True)
+                        clbtransferkas.SetItemChecked(2, False)
+                    Case 6
+                        cbtransferkas.Checked = True
+                        clbtransferkas.SetItemChecked(0, True)
+                        clbtransferkas.SetItemChecked(1, False)
+                        clbtransferkas.SetItemChecked(2, True)
+                    Case 8
+                        cbtransferkas.Checked = True
+                        clbtransferkas.SetItemChecked(0, False)
+                        clbtransferkas.SetItemChecked(1, True)
+                        clbtransferkas.SetItemChecked(2, True)
+                    Case 9
+                        cbtransferkas.Checked = True
+                        clbtransferkas.SetItemChecked(0, True)
+                        clbtransferkas.SetItemChecked(1, True)
+                        clbtransferkas.SetItemChecked(2, True)
+                End Select
+
+                Select Case aksesakunmasuk
+                    Case 0
+                        cbakunmasuk.Checked = False
+                        clbakunmasuk.SetItemChecked(0, False)
+                        clbakunmasuk.SetItemChecked(1, False)
+                        clbakunmasuk.SetItemChecked(2, False)
+                    Case 1
+                        cbakunmasuk.Checked = True
+                        clbakunmasuk.SetItemChecked(0, True)
+                        clbakunmasuk.SetItemChecked(1, False)
+                        clbakunmasuk.SetItemChecked(2, False)
+                    Case 3
+                        cbakunmasuk.Checked = True
+                        clbakunmasuk.SetItemChecked(0, False)
+                        clbakunmasuk.SetItemChecked(1, True)
+                        clbakunmasuk.SetItemChecked(2, False)
+                    Case 5
+                        cbakunmasuk.Checked = True
+                        clbakunmasuk.SetItemChecked(0, False)
+                        clbakunmasuk.SetItemChecked(1, False)
+                        clbakunmasuk.SetItemChecked(2, True)
+                    Case 4
+                        cbakunmasuk.Checked = True
+                        clbakunmasuk.SetItemChecked(0, True)
+                        clbakunmasuk.SetItemChecked(1, True)
+                        clbakunmasuk.SetItemChecked(2, False)
+                    Case 6
+                        cbakunmasuk.Checked = True
+                        clbakunmasuk.SetItemChecked(0, True)
+                        clbakunmasuk.SetItemChecked(1, False)
+                        clbakunmasuk.SetItemChecked(2, True)
+                    Case 8
+                        cbakunmasuk.Checked = True
+                        clbakunmasuk.SetItemChecked(0, False)
+                        clbakunmasuk.SetItemChecked(1, True)
+                        clbakunmasuk.SetItemChecked(2, True)
+                    Case 9
+                        cbakunmasuk.Checked = True
+                        clbakunmasuk.SetItemChecked(0, True)
+                        clbakunmasuk.SetItemChecked(1, True)
+                        clbakunmasuk.SetItemChecked(2, True)
+                End Select
+
+                Select Case aksesakunkeluar
+                    Case 0
+                        cbakunkeluar.Checked = False
+                        clbakunkeluar.SetItemChecked(0, False)
+                        clbakunkeluar.SetItemChecked(1, False)
+                        clbakunkeluar.SetItemChecked(2, False)
+                    Case 1
+                        cbakunkeluar.Checked = True
+                        clbakunkeluar.SetItemChecked(0, True)
+                        clbakunkeluar.SetItemChecked(1, False)
+                        clbakunkeluar.SetItemChecked(2, False)
+                    Case 3
+                        cbakunkeluar.Checked = True
+                        clbakunkeluar.SetItemChecked(0, False)
+                        clbakunkeluar.SetItemChecked(1, True)
+                        clbakunkeluar.SetItemChecked(2, False)
+                    Case 5
+                        cbakunkeluar.Checked = True
+                        clbakunkeluar.SetItemChecked(0, False)
+                        clbakunkeluar.SetItemChecked(1, False)
+                        clbakunkeluar.SetItemChecked(2, True)
+                    Case 4
+                        cbakunkeluar.Checked = True
+                        clbakunkeluar.SetItemChecked(0, True)
+                        clbakunkeluar.SetItemChecked(1, True)
+                        clbakunkeluar.SetItemChecked(2, False)
+                    Case 6
+                        cbakunkeluar.Checked = True
+                        clbakunkeluar.SetItemChecked(0, True)
+                        clbakunkeluar.SetItemChecked(1, False)
+                        clbakunkeluar.SetItemChecked(2, True)
+                    Case 8
+                        cbakunkeluar.Checked = True
+                        clbakunkeluar.SetItemChecked(0, False)
+                        clbakunkeluar.SetItemChecked(1, True)
+                        clbakunkeluar.SetItemChecked(2, True)
+                    Case 9
+                        cbakunkeluar.Checked = True
+                        clbakunkeluar.SetItemChecked(0, True)
+                        clbakunkeluar.SetItemChecked(1, True)
+                        clbakunkeluar.SetItemChecked(2, True)
+                End Select
+                'laporan
+                Select Case akseslappembelian
+                    Case 0
+                        cblappembelian.Checked = False
+                        clblappembelian.SetItemChecked(0, False)
+                        clblappembelian.SetItemChecked(1, False)
+                    Case 1
+                        cblappembelian.Checked = True
+                        clblappembelian.SetItemChecked(0, True)
+                        clblappembelian.SetItemChecked(1, False)
+                    Case 3
+                        cblappembelian.Checked = True
+                        clblappembelian.SetItemChecked(0, False)
+                        clblappembelian.SetItemChecked(1, True)
+                    Case 4
+                        cblappembelian.Checked = True
+                        clblappembelian.SetItemChecked(0, True)
+                        clblappembelian.SetItemChecked(1, True)
+                End Select
+
+                Select Case akseslappenjualan
+                    Case 0
+                        cblappenjualan.Checked = False
+                        clblappenjualan.SetItemChecked(0, False)
+                        clblappenjualan.SetItemChecked(1, False)
+                    Case 1
+                        cblappenjualan.Checked = True
+                        clblappenjualan.SetItemChecked(0, True)
+                        clblappenjualan.SetItemChecked(1, False)
+                    Case 3
+                        cblappenjualan.Checked = True
+                        clblappenjualan.SetItemChecked(0, False)
+                        clblappenjualan.SetItemChecked(1, True)
+                    Case 4
+                        cblappenjualan.Checked = True
+                        clblappenjualan.SetItemChecked(0, True)
+                        clblappenjualan.SetItemChecked(1, True)
+                End Select
+
+                Select Case akseslaputang
+                    Case 0
+                        cblaputang.Checked = False
+                        clblaputang.SetItemChecked(0, False)
+                        clblaputang.SetItemChecked(1, False)
+                    Case 1
+                        cblaputang.Checked = True
+                        clblaputang.SetItemChecked(0, True)
+                        clblaputang.SetItemChecked(1, False)
+                    Case 3
+                        cblaputang.Checked = True
+                        clblaputang.SetItemChecked(0, False)
+                        clblaputang.SetItemChecked(1, True)
+                    Case 4
+                        cblaputang.Checked = True
+                        clblaputang.SetItemChecked(0, True)
+                        clblaputang.SetItemChecked(1, True)
+                End Select
+
+                Select Case akseslappiutang
+                    Case 0
+                        cblappiutang.Checked = False
+                        clblappiutang.SetItemChecked(0, False)
+                        clblappiutang.SetItemChecked(1, False)
+                    Case 1
+                        cblappiutang.Checked = True
+                        clblappiutang.SetItemChecked(0, True)
+                        clblappiutang.SetItemChecked(1, False)
+                    Case 3
+                        cblappiutang.Checked = True
+                        clblappiutang.SetItemChecked(0, False)
+                        clblappiutang.SetItemChecked(1, True)
+                    Case 4
+                        cblappiutang.Checked = True
+                        clblappiutang.SetItemChecked(0, True)
+                        clblappiutang.SetItemChecked(1, True)
+                End Select
+
+                Select Case akseslapstokbarang
+                    Case 0
+                        cblapstokbarang.Checked = False
+                        clblapstokbarang.SetItemChecked(0, False)
+                        clblapstokbarang.SetItemChecked(1, False)
+                    Case 1
+                        cblapstokbarang.Checked = True
+                        clblapstokbarang.SetItemChecked(0, True)
+                        clblapstokbarang.SetItemChecked(1, False)
+                    Case 3
+                        cblapstokbarang.Checked = True
+                        clblapstokbarang.SetItemChecked(0, False)
+                        clblapstokbarang.SetItemChecked(1, True)
+                    Case 4
+                        cblapstokbarang.Checked = True
+                        clblapstokbarang.SetItemChecked(0, True)
+                        clblapstokbarang.SetItemChecked(1, True)
+                End Select
+
+                Select Case akseslapakunmasuk
+                    Case 0
+                        cblapakunmasuk.Checked = False
+                        clblapakunmasuk.SetItemChecked(0, False)
+                        clblapakunmasuk.SetItemChecked(1, False)
+                    Case 1
+                        cblapakunmasuk.Checked = True
+                        clblapakunmasuk.SetItemChecked(0, True)
+                        clblapakunmasuk.SetItemChecked(1, False)
+                    Case 3
+                        cblapakunmasuk.Checked = True
+                        clblapakunmasuk.SetItemChecked(0, False)
+                        clblapakunmasuk.SetItemChecked(1, True)
+                    Case 4
+                        cblapakunmasuk.Checked = True
+                        clblapakunmasuk.SetItemChecked(0, True)
+                        clblapakunmasuk.SetItemChecked(1, True)
+                End Select
+
+                Select Case akseslapakunkeluar
+                    Case 0
+                        cblapakunkeluar.Checked = False
+                        clblapakunkeluar.SetItemChecked(0, False)
+                        clblapakunkeluar.SetItemChecked(1, False)
+                    Case 1
+                        cblapakunkeluar.Checked = True
+                        clblapakunkeluar.SetItemChecked(0, True)
+                        clblapakunkeluar.SetItemChecked(1, False)
+                    Case 3
+                        cblapakunkeluar.Checked = True
+                        clblapakunkeluar.SetItemChecked(0, False)
+                        clblapakunkeluar.SetItemChecked(1, True)
+                    Case 4
+                        cblapakunkeluar.Checked = True
+                        clblapakunkeluar.SetItemChecked(0, True)
+                        clblapakunkeluar.SetItemChecked(1, True)
+                End Select
+
+                Select Case akseslaptransferkas
+                    Case 0
+                        cblaptransferkas.Checked = False
+                        clblaptransferkas.SetItemChecked(0, False)
+                        clblaptransferkas.SetItemChecked(1, False)
+                    Case 1
+                        cblaptransferkas.Checked = True
+                        clblaptransferkas.SetItemChecked(0, True)
+                        clblaptransferkas.SetItemChecked(1, False)
+                    Case 3
+                        cblaptransferkas.Checked = True
+                        clblaptransferkas.SetItemChecked(0, False)
+                        clblaptransferkas.SetItemChecked(1, True)
+                    Case 4
+                        cblaptransferkas.Checked = True
+                        clblaptransferkas.SetItemChecked(0, True)
+                        clblaptransferkas.SetItemChecked(1, True)
+                End Select
+
+                Select Case akseslaptransferbarang
+                    Case 0
+                        cblaptransferbarang.Checked = False
+                        clblaptransferbarang.SetItemChecked(0, False)
+                        clblaptransferbarang.SetItemChecked(1, False)
+                    Case 1
+                        cblaptransferbarang.Checked = True
+                        clblaptransferbarang.SetItemChecked(0, True)
+                        clblaptransferbarang.SetItemChecked(1, False)
+                    Case 3
+                        cblaptransferbarang.Checked = True
+                        clblaptransferbarang.SetItemChecked(0, False)
+                        clblaptransferbarang.SetItemChecked(1, True)
+                    Case 4
+                        cblaptransferbarang.Checked = True
+                        clblaptransferbarang.SetItemChecked(0, True)
+                        clblaptransferbarang.SetItemChecked(1, True)
+                End Select
+
+                Select Case akseslaptransaksikas
+                    Case 0
+                        cblaptransaksikas.Checked = False
+                        clblaptransaksikas.SetItemChecked(0, False)
+                        clblaptransaksikas.SetItemChecked(1, False)
+                    Case 1
+                        cblaptransaksikas.Checked = True
+                        clblaptransaksikas.SetItemChecked(0, True)
+                        clblaptransaksikas.SetItemChecked(1, False)
+                    Case 3
+                        cblaptransaksikas.Checked = True
+                        clblaptransaksikas.SetItemChecked(0, False)
+                        clblaptransaksikas.SetItemChecked(1, True)
+                    Case 4
+                        cblaptransaksikas.Checked = True
+                        clblaptransaksikas.SetItemChecked(0, True)
+                        clblaptransaksikas.SetItemChecked(1, True)
+                End Select
+
+                '==batas case==
+
+                'master
                 clbmasterbarang.Enabled = False
                 clbmastergudang.Enabled = False
                 clbmastercustomer.Enabled = False
@@ -1330,6 +2343,34 @@ Public Class fuser
                 clbmasterpricelist.Enabled = False
                 clbmasterreksupp.Enabled = False
                 clbmasterrekcust.Enabled = False
+
+                'transaksi
+                clbpembelian.Enabled = False
+                clbpenjualan.Enabled = False
+                clbreturbeli.Enabled = False
+                clbreturjual.Enabled = False
+                clbbarangmasuk.Enabled = False
+                clbbarangkeluar.Enabled = False
+                clbtransferbarang.Enabled = False
+
+                'administrasi
+                clblunasutang.Enabled = False
+                clblunaspiutang.Enabled = False
+                clbtransferkas.Enabled = False
+                clbakunmasuk.Enabled = False
+                clbakunkeluar.Enabled = False
+
+                'laporan
+                clblappembelian.Enabled = False
+                clblappenjualan.Enabled = False
+                clblaputang.Enabled = False
+                clblappiutang.Enabled = False
+                clblapstokbarang.Enabled = False
+                clblapakunmasuk.Enabled = False
+                clblapakunkeluar.Enabled = False
+                clblaptransferkas.Enabled = False
+                clblaptransferbarang.Enabled = False
+                clblaptransaksikas.Enabled = False
 
                 'end
 
@@ -1480,80 +2521,302 @@ Public Class fuser
 
     'transaksi
     Private Sub cbpembelian_CheckedChanged(sender As Object, e As EventArgs) Handles cbpembelian.CheckedChanged
-
+        If cbpembelian.Checked = True Then
+            clbpembelian.Enabled = True
+            For id As Integer = 0 To clbpembelian.Items.Count - 1
+                Me.clbpembelian.SetItemChecked(id, True)
+            Next
+        ElseIf cbpembelian.Checked = False Then
+            clbpembelian.Enabled = False
+            For id As Integer = 0 To clbpembelian.Items.Count - 1
+                Me.clbpembelian.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     Private Sub cbpenjualan_CheckedChanged(sender As Object, e As EventArgs) Handles cbpenjualan.CheckedChanged
-
+        If cbpenjualan.Checked = True Then
+            clbpenjualan.Enabled = True
+            For id As Integer = 0 To clbpenjualan.Items.Count - 1
+                Me.clbpenjualan.SetItemChecked(id, True)
+            Next
+        ElseIf cbpenjualan.Checked = False Then
+            clbpenjualan.Enabled = False
+            For id As Integer = 0 To clbpenjualan.Items.Count - 1
+                Me.clbpenjualan.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     Private Sub cbreturbeli_CheckedChanged(sender As Object, e As EventArgs) Handles cbreturbeli.CheckedChanged
-
+        If cbreturbeli.Checked = True Then
+            clbreturbeli.Enabled = True
+            For id As Integer = 0 To clbreturbeli.Items.Count - 1
+                Me.clbreturbeli.SetItemChecked(id, True)
+            Next
+        ElseIf cbreturbeli.Checked = False Then
+            clbreturbeli.Enabled = False
+            For id As Integer = 0 To clbreturbeli.Items.Count - 1
+                Me.clbreturbeli.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
 
     Private Sub cbreturjual_CheckedChanged(sender As Object, e As EventArgs) Handles cbreturjual.CheckedChanged
-
+        If cbreturjual.Checked = True Then
+            clbreturjual.Enabled = True
+            For id As Integer = 0 To clbreturjual.Items.Count - 1
+                Me.clbreturjual.SetItemChecked(id, True)
+            Next
+        ElseIf cbreturjual.Checked = False Then
+            clbreturjual.Enabled = False
+            For id As Integer = 0 To clbreturjual.Items.Count - 1
+                Me.clbreturjual.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
 
     Private Sub cbbarangmasuk_CheckedChanged(sender As Object, e As EventArgs) Handles cbbarangmasuk.CheckedChanged
-
+        If cbbarangmasuk.Checked = True Then
+            clbbarangmasuk.Enabled = True
+            For id As Integer = 0 To clbbarangmasuk.Items.Count - 1
+                Me.clbbarangmasuk.SetItemChecked(id, True)
+            Next
+        ElseIf cbbarangmasuk.Checked = False Then
+            clbbarangmasuk.Enabled = False
+            For id As Integer = 0 To clbbarangmasuk.Items.Count - 1
+                Me.clbbarangmasuk.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
 
     Private Sub cbbarangkeluar_CheckedChanged(sender As Object, e As EventArgs) Handles cbbarangkeluar.CheckedChanged
-
+        If cbbarangkeluar.Checked = True Then
+            clbbarangkeluar.Enabled = True
+            For id As Integer = 0 To clbbarangkeluar.Items.Count - 1
+                Me.clbbarangkeluar.SetItemChecked(id, True)
+            Next
+        ElseIf cbbarangkeluar.Checked = False Then
+            clbbarangkeluar.Enabled = False
+            For id As Integer = 0 To clbbarangkeluar.Items.Count - 1
+                Me.clbbarangkeluar.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
 
     Private Sub cbtransferbarang_CheckedChanged(sender As Object, e As EventArgs) Handles cbtransferbarang.CheckedChanged
-
+        If cbtransferbarang.Checked = True Then
+            clbtransferbarang.Enabled = True
+            For id As Integer = 0 To clbtransferbarang.Items.Count - 1
+                Me.clbtransferbarang.SetItemChecked(id, True)
+            Next
+        ElseIf cbtransferbarang.Checked = False Then
+            clbtransferbarang.Enabled = False
+            For id As Integer = 0 To clbtransferbarang.Items.Count - 1
+                Me.clbtransferbarang.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     'administrasi
     Private Sub cblunasutang_CheckedChanged(sender As Object, e As EventArgs) Handles cblunasutang.CheckedChanged
-
+        If cblunasutang.Checked = True Then
+            clblunasutang.Enabled = True
+            For id As Integer = 0 To clblunasutang.Items.Count - 1
+                Me.clblunasutang.SetItemChecked(id, True)
+            Next
+        ElseIf cblunasutang.Checked = False Then
+            clblunasutang.Enabled = False
+            For id As Integer = 0 To clblunasutang.Items.Count - 1
+                Me.clblunasutang.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     Private Sub cblunaspiutang_CheckedChanged(sender As Object, e As EventArgs) Handles cblunaspiutang.CheckedChanged
-
+        If cblunaspiutang.Checked = True Then
+            clblunaspiutang.Enabled = True
+            For id As Integer = 0 To clblunaspiutang.Items.Count - 1
+                Me.clblunaspiutang.SetItemChecked(id, True)
+            Next
+        ElseIf cblunaspiutang.Checked = False Then
+            clblunaspiutang.Enabled = False
+            For id As Integer = 0 To clblunaspiutang.Items.Count - 1
+                Me.clblunaspiutang.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
-    Private Sub cbakunkeluar_CheckedChanged(sender As Object, e As EventArgs) Handles cbakunkeluar.CheckedChanged
 
-    End Sub
     Private Sub cbakunmasuk_CheckedChanged(sender As Object, e As EventArgs) Handles cbakunmasuk.CheckedChanged
+        If cbakunmasuk.Checked = True Then
+            clbakunmasuk.Enabled = True
+            For id As Integer = 0 To clbakunmasuk.Items.Count - 1
+                Me.clbakunmasuk.SetItemChecked(id, True)
+            Next
+        ElseIf cbakunmasuk.Checked = False Then
+            clbakunmasuk.Enabled = False
+            For id As Integer = 0 To clbakunmasuk.Items.Count - 1
+                Me.clbakunmasuk.SetItemChecked(id, False)
+            Next
+        End If
+    End Sub
 
+    Private Sub cbakunkeluar_CheckedChanged(sender As Object, e As EventArgs) Handles cbakunkeluar.CheckedChanged
+        If cbakunkeluar.Checked = True Then
+            clbakunkeluar.Enabled = True
+            For id As Integer = 0 To clbakunkeluar.Items.Count - 1
+                Me.clbakunkeluar.SetItemChecked(id, True)
+            Next
+        ElseIf cbakunkeluar.Checked = False Then
+            clbakunkeluar.Enabled = False
+            For id As Integer = 0 To clbakunkeluar.Items.Count - 1
+                Me.clbakunkeluar.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     Private Sub cbtransferkas_CheckedChanged(sender As Object, e As EventArgs) Handles cbtransferkas.CheckedChanged
-
+        If cbtransferkas.Checked = True Then
+            clbtransferkas.Enabled = True
+            For id As Integer = 0 To clbtransferkas.Items.Count - 1
+                Me.clbtransferkas.SetItemChecked(id, True)
+            Next
+        ElseIf cbtransferkas.Checked = False Then
+            clbtransferkas.Enabled = False
+            For id As Integer = 0 To clbtransferkas.Items.Count - 1
+                Me.clbtransferkas.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
 
     'laporan
     Private Sub cblappembelian_CheckedChanged(sender As Object, e As EventArgs) Handles cblappembelian.CheckedChanged
-
+        If cblappembelian.Checked = True Then
+            clblappembelian.Enabled = True
+            For id As Integer = 0 To clblappembelian.Items.Count - 1
+                Me.clblappembelian.SetItemChecked(id, True)
+            Next
+        ElseIf cblappembelian.Checked = False Then
+            clblappembelian.Enabled = False
+            For id As Integer = 0 To clblappembelian.Items.Count - 1
+                Me.clblappembelian.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     Private Sub cblappenjualan_CheckedChanged(sender As Object, e As EventArgs) Handles cblappenjualan.CheckedChanged
-
+        If cblappenjualan.Checked = True Then
+            clblappenjualan.Enabled = True
+            For id As Integer = 0 To clblappenjualan.Items.Count - 1
+                Me.clblappenjualan.SetItemChecked(id, True)
+            Next
+        ElseIf cblappenjualan.Checked = False Then
+            clblappenjualan.Enabled = False
+            For id As Integer = 0 To clblappenjualan.Items.Count - 1
+                Me.clblappenjualan.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     Private Sub cblaputang_CheckedChanged(sender As Object, e As EventArgs) Handles cblaputang.CheckedChanged
-
+        If cblaputang.Checked = True Then
+            clblaputang.Enabled = True
+            For id As Integer = 0 To clblaputang.Items.Count - 1
+                Me.clblaputang.SetItemChecked(id, True)
+            Next
+        ElseIf cblaputang.Checked = False Then
+            clblaputang.Enabled = False
+            For id As Integer = 0 To clblaputang.Items.Count - 1
+                Me.clblaputang.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     Private Sub cblappiutang_CheckedChanged(sender As Object, e As EventArgs) Handles cblappiutang.CheckedChanged
-
+        If cblappiutang.Checked = True Then
+            clblappiutang.Enabled = True
+            For id As Integer = 0 To clblappiutang.Items.Count - 1
+                Me.clblappiutang.SetItemChecked(id, True)
+            Next
+        ElseIf cblappiutang.Checked = False Then
+            clblappiutang.Enabled = False
+            For id As Integer = 0 To clblappiutang.Items.Count - 1
+                Me.clblappiutang.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     Private Sub cblapstokbarang_CheckedChanged(sender As Object, e As EventArgs) Handles cblapstokbarang.CheckedChanged
-
+        If cblapstokbarang.Checked = True Then
+            clblapstokbarang.Enabled = True
+            For id As Integer = 0 To clblapstokbarang.Items.Count - 1
+                Me.clblapstokbarang.SetItemChecked(id, True)
+            Next
+        ElseIf cblapstokbarang.Checked = False Then
+            clblapstokbarang.Enabled = False
+            For id As Integer = 0 To clblapstokbarang.Items.Count - 1
+                Me.clblapstokbarang.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
 
     Private Sub cblapakunmasuk_CheckedChanged(sender As Object, e As EventArgs) Handles cblapakunmasuk.CheckedChanged
-
+        If cblapakunmasuk.Checked = True Then
+            clblapakunmasuk.Enabled = True
+            For id As Integer = 0 To clblapakunmasuk.Items.Count - 1
+                Me.clblapakunmasuk.SetItemChecked(id, True)
+            Next
+        ElseIf cblapakunmasuk.Checked = False Then
+            clblapakunmasuk.Enabled = False
+            For id As Integer = 0 To clblapakunmasuk.Items.Count - 1
+                Me.clblapakunmasuk.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     Private Sub cblapakunkeluar_CheckedChanged(sender As Object, e As EventArgs) Handles cblapakunkeluar.CheckedChanged
-
+        If cblapakunkeluar.Checked = True Then
+            clblapakunkeluar.Enabled = True
+            For id As Integer = 0 To clblapakunkeluar.Items.Count - 1
+                Me.clblapakunkeluar.SetItemChecked(id, True)
+            Next
+        ElseIf cblapakunkeluar.Checked = False Then
+            clblapakunkeluar.Enabled = False
+            For id As Integer = 0 To clblapakunkeluar.Items.Count - 1
+                Me.clblapakunkeluar.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
     Private Sub cblaptransferkas_CheckedChanged(sender As Object, e As EventArgs) Handles cblaptransferkas.CheckedChanged
-
+        If cblaptransferkas.Checked = True Then
+            clblaptransferkas.Enabled = True
+            For id As Integer = 0 To clblaptransferkas.Items.Count - 1
+                Me.clblaptransferkas.SetItemChecked(id, True)
+            Next
+        ElseIf cblaptransferkas.Checked = False Then
+            clblaptransferkas.Enabled = False
+            For id As Integer = 0 To clblaptransferkas.Items.Count - 1
+                Me.clblaptransferkas.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
 
     Private Sub cblaptransferbarang_CheckedChanged(sender As Object, e As EventArgs) Handles cblaptransferbarang.CheckedChanged
-
+        If cblaptransferbarang.Checked = True Then
+            clblaptransferbarang.Enabled = True
+            For id As Integer = 0 To clblaptransferbarang.Items.Count - 1
+                Me.clblaptransferbarang.SetItemChecked(id, True)
+            Next
+        ElseIf cblaptransferbarang.Checked = False Then
+            clblaptransferbarang.Enabled = False
+            For id As Integer = 0 To clblaptransferbarang.Items.Count - 1
+                Me.clblaptransferbarang.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
 
     Private Sub cblaptransaksikas_CheckedChanged(sender As Object, e As EventArgs) Handles cblaptransaksikas.CheckedChanged
-
+        If cblaptransaksikas.Checked = True Then
+            clblaptransaksikas.Enabled = True
+            For id As Integer = 0 To clblaptransaksikas.Items.Count - 1
+                Me.clblaptransaksikas.SetItemChecked(id, True)
+            Next
+        ElseIf cblaptransaksikas.Checked = False Then
+            clblaptransaksikas.Enabled = False
+            For id As Integer = 0 To clblaptransaksikas.Items.Count - 1
+                Me.clblaptransaksikas.SetItemChecked(id, False)
+            Next
+        End If
     End Sub
 
     'combobox list
@@ -1721,9 +2984,402 @@ Public Class fuser
     End Sub
 
     'transaksi
+    Private Sub clbpembelian_MouseDown(sender As Object, e As MouseEventArgs) Handles clbpembelian.MouseDown
+        Dim Index As Integer = clbpembelian.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbpembelian.SetItemChecked(Index, Not clbpembelian.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbpembelian.Items.Count - 1
+            If clbpembelian.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbpembelian.Enabled = False
+            cbpembelian.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbpenjualan_MouseDown(sender As Object, e As MouseEventArgs) Handles clbpenjualan.MouseDown
+        Dim Index As Integer = clbpenjualan.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbpenjualan.SetItemChecked(Index, Not clbpenjualan.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbpenjualan.Items.Count - 1
+            If clbpenjualan.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbpenjualan.Enabled = False
+            cbpenjualan.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbreturbeli_MouseDown(sender As Object, e As MouseEventArgs) Handles clbreturbeli.MouseDown
+        Dim Index As Integer = clbreturbeli.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbreturbeli.SetItemChecked(Index, Not clbreturbeli.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbreturbeli.Items.Count - 1
+            If clbreturbeli.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbreturbeli.Enabled = False
+            cbreturbeli.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbreturjual_MouseDown(sender As Object, e As MouseEventArgs) Handles clbreturjual.MouseDown
+        Dim Index As Integer = clbreturjual.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbreturjual.SetItemChecked(Index, Not clbreturjual.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbreturjual.Items.Count - 1
+            If clbreturjual.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbreturjual.Enabled = False
+            cbreturjual.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbbarangmasuk_MouseDown(sender As Object, e As MouseEventArgs) Handles clbbarangmasuk.MouseDown
+        Dim Index As Integer = clbbarangmasuk.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbbarangmasuk.SetItemChecked(Index, Not clbbarangmasuk.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbbarangmasuk.Items.Count - 1
+            If clbbarangmasuk.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbbarangmasuk.Enabled = False
+            cbbarangmasuk.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbbarangkeluar_MouseDown(sender As Object, e As MouseEventArgs) Handles clbbarangkeluar.MouseDown
+        Dim Index As Integer = clbbarangkeluar.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbbarangkeluar.SetItemChecked(Index, Not clbbarangkeluar.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbbarangkeluar.Items.Count - 1
+            If clbbarangkeluar.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbbarangkeluar.Enabled = False
+            cbbarangkeluar.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbtransferbarang_MouseDown(sender As Object, e As MouseEventArgs) Handles clbtransferbarang.MouseDown
+        Dim Index As Integer = clbtransferbarang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbtransferbarang.SetItemChecked(Index, Not clbtransferbarang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbtransferbarang.Items.Count - 1
+            If clbtransferbarang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbtransferbarang.Enabled = False
+            cbtransferbarang.Checked = False
+        End If
+    End Sub
 
     'administrasi
 
-    'laporan
+    Private Sub clblunasutang_MouseDown(sender As Object, e As MouseEventArgs) Handles clblunasutang.MouseDown
+        Dim Index As Integer = clblunasutang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
 
+        clblunasutang.SetItemChecked(Index, Not clblunasutang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblunasutang.Items.Count - 1
+            If clblunasutang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblunasutang.Enabled = False
+            cblunasutang.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblunaspiutang_MouseDown(sender As Object, e As MouseEventArgs) Handles clblunaspiutang.MouseDown
+        Dim Index As Integer = clblunaspiutang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblunaspiutang.SetItemChecked(Index, Not clblunaspiutang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblunaspiutang.Items.Count - 1
+            If clblunaspiutang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblunaspiutang.Enabled = False
+            cblunaspiutang.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbtransferkas_MouseDown(sender As Object, e As MouseEventArgs) Handles clbtransferkas.MouseDown
+        Dim Index As Integer = clbtransferkas.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbtransferkas.SetItemChecked(Index, Not clbtransferkas.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbtransferkas.Items.Count - 1
+            If clbtransferkas.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbtransferkas.Enabled = False
+            cbtransferkas.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbakunmasuk_MouseDown(sender As Object, e As MouseEventArgs) Handles clbakunmasuk.MouseDown
+        Dim Index As Integer = clbakunmasuk.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbakunmasuk.SetItemChecked(Index, Not clbakunmasuk.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbakunmasuk.Items.Count - 1
+            If clbakunmasuk.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbakunmasuk.Enabled = False
+            cbakunmasuk.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbakunkeluar_MouseDown(sender As Object, e As MouseEventArgs) Handles clbakunkeluar.MouseDown
+        Dim Index As Integer = clbakunkeluar.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbakunkeluar.SetItemChecked(Index, Not clbakunkeluar.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbakunkeluar.Items.Count - 1
+            If clbakunkeluar.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbakunkeluar.Enabled = False
+            cbakunkeluar.Checked = False
+        End If
+    End Sub
+
+    'laporan
+    Private Sub clblappembelian_MouseDown(sender As Object, e As MouseEventArgs) Handles clblappembelian.MouseDown
+        Dim Index As Integer = clblappembelian.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblappembelian.SetItemChecked(Index, Not clblappembelian.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblappembelian.Items.Count - 1
+            If clblappembelian.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblappembelian.Enabled = False
+            cblappembelian.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblappenjualan_MouseDown(sender As Object, e As MouseEventArgs) Handles clblappenjualan.MouseDown
+        Dim Index As Integer = clblappenjualan.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblappenjualan.SetItemChecked(Index, Not clblappenjualan.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblappenjualan.Items.Count - 1
+            If clblappenjualan.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblappenjualan.Enabled = False
+            cblappenjualan.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblaputang_MouseDown(sender As Object, e As MouseEventArgs) Handles clblaputang.MouseDown
+        Dim Index As Integer = clblaputang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblaputang.SetItemChecked(Index, Not clblaputang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblaputang.Items.Count - 1
+            If clblaputang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblaputang.Enabled = False
+            cblaputang.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblappiutang_MouseDown(sender As Object, e As MouseEventArgs) Handles clblappiutang.MouseDown
+        Dim Index As Integer = clblappiutang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblappiutang.SetItemChecked(Index, Not clblappiutang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblappiutang.Items.Count - 1
+            If clblappiutang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblappiutang.Enabled = False
+            cblappiutang.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblapstokbarang_MouseDown(sender As Object, e As MouseEventArgs) Handles clblapstokbarang.MouseDown
+        Dim Index As Integer = clblapstokbarang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblapstokbarang.SetItemChecked(Index, Not clblapstokbarang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblapstokbarang.Items.Count - 1
+            If clblapstokbarang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblapstokbarang.Enabled = False
+            cblapstokbarang.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblapakunmasuk_MouseDown(sender As Object, e As MouseEventArgs) Handles clblapakunmasuk.MouseDown
+        Dim Index As Integer = clblapakunmasuk.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblapakunmasuk.SetItemChecked(Index, Not clblapakunmasuk.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblapakunmasuk.Items.Count - 1
+            If clblapakunmasuk.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblapakunmasuk.Enabled = False
+            cblapakunmasuk.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblapakunkeluar_MouseDown(sender As Object, e As MouseEventArgs) Handles clblapakunkeluar.MouseDown
+        Dim Index As Integer = clblapakunkeluar.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblapakunkeluar.SetItemChecked(Index, Not clblapakunkeluar.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblapakunkeluar.Items.Count - 1
+            If clblapakunkeluar.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblapakunkeluar.Enabled = False
+            cblapakunkeluar.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblaptransferkas_MouseDown(sender As Object, e As MouseEventArgs) Handles clblaptransferkas.MouseDown
+        Dim Index As Integer = clblaptransferkas.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblaptransferkas.SetItemChecked(Index, Not clblaptransferkas.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblaptransferkas.Items.Count - 1
+            If clblaptransferkas.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblaptransferkas.Enabled = False
+            cblaptransferkas.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblaptransferbarang_MouseDown(sender As Object, e As MouseEventArgs) Handles clblaptransferbarang.MouseDown
+        Dim Index As Integer = clblaptransferbarang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblaptransferbarang.SetItemChecked(Index, Not clblaptransferbarang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblaptransferbarang.Items.Count - 1
+            If clblaptransferbarang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblaptransferbarang.Enabled = False
+            cblaptransferbarang.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblaptransaksikas_MouseDown(sender As Object, e As MouseEventArgs) Handles clblaptransaksikas.MouseDown
+        Dim Index As Integer = clblaptransaksikas.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblaptransaksikas.SetItemChecked(Index, Not clblaptransaksikas.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblaptransaksikas.Items.Count - 1
+            If clblaptransaksikas.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblaptransaksikas.Enabled = False
+            cblaptransaksikas.Checked = False
+        End If
+    End Sub
 End Class

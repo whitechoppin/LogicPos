@@ -216,4 +216,11 @@ Public Class fmenu
     Private Sub LTransferBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferBarangToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub LogOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOutToolStripMenuItem.Click
+        Me.Hide()
+        flogin.Show()
+        flogin.txtusername.Text = ""
+        flogin.txtpassword.Text = ""
+    End Sub
 End Class

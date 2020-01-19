@@ -85,6 +85,7 @@ Partial Class fmenu
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,7 +104,7 @@ Partial Class fmenu
         '
         'MasterMenu
         '
-        Me.MasterMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataBarangToolStripMenuItem, Me.DataGudangToolStripMenuItem, Me.DataCustomerToolStripMenuItem, Me.DataSupplierToolStripMenuItem, Me.DataUserToolStripMenuItem, Me.DataKasToolStripMenuItem, Me.PricelistGroupToolStripMenuItem, Me.ToolStripSeparator, Me.ExitStripMenuItem})
+        Me.MasterMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataBarangToolStripMenuItem, Me.DataGudangToolStripMenuItem, Me.DataCustomerToolStripMenuItem, Me.DataSupplierToolStripMenuItem, Me.DataUserToolStripMenuItem, Me.DataKasToolStripMenuItem, Me.PricelistGroupToolStripMenuItem, Me.ToolStripSeparator, Me.LogOutToolStripMenuItem, Me.ExitStripMenuItem})
         Me.MasterMenu.Name = "MasterMenu"
         Me.MasterMenu.Size = New System.Drawing.Size(55, 20)
         Me.MasterMenu.Text = "&Master"
@@ -326,7 +327,7 @@ Partial Class fmenu
         'PrinterToolStripMenuItem
         '
         Me.PrinterToolStripMenuItem.Name = "PrinterToolStripMenuItem"
-        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.PrinterToolStripMenuItem.Text = "Printer"
         '
         'AboutMenu
@@ -495,6 +496,12 @@ Partial Class fmenu
         Me.GridColumn12.Visible = True
         Me.GridColumn12.VisibleIndex = 11
         '
+        'LogOutToolStripMenuItem
+        '
+        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
+        Me.LogOutToolStripMenuItem.Text = "&Log Out"
+        '
         'fmenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -583,4 +590,5 @@ Partial Class fmenu
     Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents LaporanTransaksiKasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LogOutToolStripMenuItem As ToolStripMenuItem
 End Class
