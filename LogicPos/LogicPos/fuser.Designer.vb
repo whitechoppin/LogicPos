@@ -476,7 +476,7 @@ Partial Class fuser
         Me.clblaptransaksikas.CheckOnClick = True
         Me.clblaptransaksikas.FormattingEnabled = True
         Me.clblaptransaksikas.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblaptransaksikas.Location = New System.Drawing.Point(1073, 355)
+        Me.clblaptransaksikas.Location = New System.Drawing.Point(1079, 355)
         Me.clblaptransaksikas.Name = "clblaptransaksikas"
         Me.clblaptransaksikas.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblaptransaksikas.Size = New System.Drawing.Size(91, 42)
@@ -485,7 +485,7 @@ Partial Class fuser
         'cblaptransaksikas
         '
         Me.cblaptransaksikas.AutoSize = True
-        Me.cblaptransaksikas.Location = New System.Drawing.Point(1055, 327)
+        Me.cblaptransaksikas.Location = New System.Drawing.Point(1061, 327)
         Me.cblaptransaksikas.Name = "cblaptransaksikas"
         Me.cblaptransaksikas.Size = New System.Drawing.Size(154, 22)
         Me.cblaptransaksikas.TabIndex = 100
@@ -498,7 +498,7 @@ Partial Class fuser
         Me.clblaptransferbarang.CheckOnClick = True
         Me.clblaptransferbarang.FormattingEnabled = True
         Me.clblaptransferbarang.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblaptransferbarang.Location = New System.Drawing.Point(1073, 279)
+        Me.clblaptransferbarang.Location = New System.Drawing.Point(1079, 279)
         Me.clblaptransferbarang.Name = "clblaptransferbarang"
         Me.clblaptransferbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblaptransferbarang.Size = New System.Drawing.Size(91, 42)
@@ -507,7 +507,7 @@ Partial Class fuser
         'cblaptransferbarang
         '
         Me.cblaptransferbarang.AutoSize = True
-        Me.cblaptransferbarang.Location = New System.Drawing.Point(1055, 251)
+        Me.cblaptransferbarang.Location = New System.Drawing.Point(1061, 251)
         Me.cblaptransferbarang.Name = "cblaptransferbarang"
         Me.cblaptransferbarang.Size = New System.Drawing.Size(165, 22)
         Me.cblaptransferbarang.TabIndex = 98
@@ -520,7 +520,7 @@ Partial Class fuser
         Me.clblaptransferkas.CheckOnClick = True
         Me.clblaptransferkas.FormattingEnabled = True
         Me.clblaptransferkas.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblaptransferkas.Location = New System.Drawing.Point(1073, 203)
+        Me.clblaptransferkas.Location = New System.Drawing.Point(1079, 203)
         Me.clblaptransferkas.Name = "clblaptransferkas"
         Me.clblaptransferkas.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblaptransferkas.Size = New System.Drawing.Size(91, 42)
@@ -529,7 +529,7 @@ Partial Class fuser
         'cblaptransferkas
         '
         Me.cblaptransferkas.AutoSize = True
-        Me.cblaptransferkas.Location = New System.Drawing.Point(1055, 175)
+        Me.cblaptransferkas.Location = New System.Drawing.Point(1061, 175)
         Me.cblaptransferkas.Name = "cblaptransferkas"
         Me.cblaptransferkas.Size = New System.Drawing.Size(144, 22)
         Me.cblaptransferkas.TabIndex = 96
@@ -542,7 +542,7 @@ Partial Class fuser
         Me.clblapakunkeluar.CheckOnClick = True
         Me.clblapakunkeluar.FormattingEnabled = True
         Me.clblapakunkeluar.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblapakunkeluar.Location = New System.Drawing.Point(1073, 127)
+        Me.clblapakunkeluar.Location = New System.Drawing.Point(1079, 127)
         Me.clblapakunkeluar.Name = "clblapakunkeluar"
         Me.clblapakunkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblapakunkeluar.Size = New System.Drawing.Size(91, 42)
@@ -551,7 +551,7 @@ Partial Class fuser
         'cblapakunkeluar
         '
         Me.cblapakunkeluar.AutoSize = True
-        Me.cblapakunkeluar.Location = New System.Drawing.Point(1055, 99)
+        Me.cblapakunkeluar.Location = New System.Drawing.Point(1061, 99)
         Me.cblapakunkeluar.Name = "cblapakunkeluar"
         Me.cblapakunkeluar.Size = New System.Drawing.Size(138, 22)
         Me.cblapakunkeluar.TabIndex = 94
@@ -564,7 +564,7 @@ Partial Class fuser
         Me.clblapakunmasuk.CheckOnClick = True
         Me.clblapakunmasuk.FormattingEnabled = True
         Me.clblapakunmasuk.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblapakunmasuk.Location = New System.Drawing.Point(1073, 51)
+        Me.clblapakunmasuk.Location = New System.Drawing.Point(1079, 51)
         Me.clblapakunmasuk.Name = "clblapakunmasuk"
         Me.clblapakunmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblapakunmasuk.Size = New System.Drawing.Size(91, 42)
@@ -573,7 +573,7 @@ Partial Class fuser
         'cblapakunmasuk
         '
         Me.cblapakunmasuk.AutoSize = True
-        Me.cblapakunmasuk.Location = New System.Drawing.Point(1055, 23)
+        Me.cblapakunmasuk.Location = New System.Drawing.Point(1061, 23)
         Me.cblapakunmasuk.Name = "cblapakunmasuk"
         Me.cblapakunmasuk.Size = New System.Drawing.Size(141, 22)
         Me.cblapakunmasuk.TabIndex = 92
@@ -839,9 +839,9 @@ Partial Class fuser
         Me.cblappiutang.AutoSize = True
         Me.cblappiutang.Location = New System.Drawing.Point(910, 251)
         Me.cblappiutang.Name = "cblappiutang"
-        Me.cblappiutang.Size = New System.Drawing.Size(108, 22)
+        Me.cblappiutang.Size = New System.Drawing.Size(152, 22)
         Me.cblappiutang.TabIndex = 58
-        Me.cblappiutang.Text = "Lap. Piutang"
+        Me.cblappiutang.Text = "Lap. Lunas Piutang"
         Me.cblappiutang.UseVisualStyleBackColor = True
         '
         'clblaputang
@@ -861,9 +861,9 @@ Partial Class fuser
         Me.cblaputang.AutoSize = True
         Me.cblaputang.Location = New System.Drawing.Point(910, 175)
         Me.cblaputang.Name = "cblaputang"
-        Me.cblaputang.Size = New System.Drawing.Size(98, 22)
+        Me.cblaputang.Size = New System.Drawing.Size(142, 22)
         Me.cblaputang.TabIndex = 56
-        Me.cblaputang.Text = "Lap. Utang"
+        Me.cblaputang.Text = "Lap. Lunas Utang"
         Me.cblaputang.UseVisualStyleBackColor = True
         '
         'clblappembelian

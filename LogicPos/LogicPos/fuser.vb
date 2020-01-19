@@ -752,7 +752,7 @@ Public Class fuser
                     cekpembelian = cekpembelian + 1
                 ElseIf clbpembelian.Items(i).Equals("Edit") Then
                     cekpembelian = cekpembelian + 3
-                ElseIf clbpembelian.Items(i).Equals("Hapus") Then
+                ElseIf clbpembelian.Items(i).Equals("Print") Then
                     cekpembelian = cekpembelian + 5
                 End If
             Else
@@ -765,7 +765,7 @@ Public Class fuser
                     cekpenjualan = cekpenjualan + 1
                 ElseIf clbpenjualan.Items(i).Equals("Edit") Then
                     cekpenjualan = cekpenjualan + 3
-                ElseIf clbpenjualan.Items(i).Equals("Hapus") Then
+                ElseIf clbpenjualan.Items(i).Equals("Print") Then
                     cekpenjualan = cekpenjualan + 5
                 End If
             Else
@@ -778,7 +778,7 @@ Public Class fuser
                     cekreturbeli = cekreturbeli + 1
                 ElseIf clbreturbeli.Items(i).Equals("Edit") Then
                     cekreturbeli = cekreturbeli + 3
-                ElseIf clbreturbeli.Items(i).Equals("Hapus") Then
+                ElseIf clbreturbeli.Items(i).Equals("Print") Then
                     cekreturbeli = cekreturbeli + 5
                 End If
             Else
@@ -791,7 +791,7 @@ Public Class fuser
                     cekreturjual = cekreturjual + 1
                 ElseIf clbreturjual.Items(i).Equals("Edit") Then
                     cekreturjual = cekreturjual + 3
-                ElseIf clbreturjual.Items(i).Equals("Hapus") Then
+                ElseIf clbreturjual.Items(i).Equals("Print") Then
                     cekreturjual = cekreturjual + 5
                 End If
             Else
@@ -804,7 +804,7 @@ Public Class fuser
                     cekbarangmasuk = cekbarangmasuk + 1
                 ElseIf clbbarangmasuk.Items(i).Equals("Edit") Then
                     cekbarangmasuk = cekbarangmasuk + 3
-                ElseIf clbbarangmasuk.Items(i).Equals("Hapus") Then
+                ElseIf clbbarangmasuk.Items(i).Equals("Print") Then
                     cekbarangmasuk = cekbarangmasuk + 5
                 End If
             Else
@@ -817,7 +817,7 @@ Public Class fuser
                     cekbarangkeluar = cekbarangkeluar + 1
                 ElseIf clbbarangkeluar.Items(i).Equals("Edit") Then
                     cekbarangkeluar = cekbarangkeluar + 3
-                ElseIf clbbarangkeluar.Items(i).Equals("Hapus") Then
+                ElseIf clbbarangkeluar.Items(i).Equals("Print") Then
                     cekbarangkeluar = cekbarangkeluar + 5
                 End If
             Else
@@ -830,7 +830,7 @@ Public Class fuser
                     cektransferbarang = cektransferbarang + 1
                 ElseIf clbtransferbarang.Items(i).Equals("Edit") Then
                     cektransferbarang = cektransferbarang + 3
-                ElseIf clbtransferbarang.Items(i).Equals("Hapus") Then
+                ElseIf clbtransferbarang.Items(i).Equals("Print") Then
                     cektransferbarang = cektransferbarang + 5
                 End If
             Else
@@ -844,7 +844,7 @@ Public Class fuser
                     ceklunasutang = ceklunasutang + 1
                 ElseIf clblunasutang.Items(i).Equals("Edit") Then
                     ceklunasutang = ceklunasutang + 3
-                ElseIf clblunasutang.Items(i).Equals("Hapus") Then
+                ElseIf clblunasutang.Items(i).Equals("Print") Then
                     ceklunasutang = ceklunasutang + 5
                 End If
             Else
@@ -857,7 +857,7 @@ Public Class fuser
                     ceklunaspiutang = ceklunaspiutang + 1
                 ElseIf clblunaspiutang.Items(i).Equals("Edit") Then
                     ceklunaspiutang = ceklunaspiutang + 3
-                ElseIf clblunaspiutang.Items(i).Equals("Hapus") Then
+                ElseIf clblunaspiutang.Items(i).Equals("Print") Then
                     ceklunaspiutang = ceklunaspiutang + 5
                 End If
             Else
@@ -870,7 +870,7 @@ Public Class fuser
                     cektransferkas = cektransferkas + 1
                 ElseIf clbtransferkas.Items(i).Equals("Edit") Then
                     cektransferkas = cektransferkas + 3
-                ElseIf clbtransferkas.Items(i).Equals("Hapus") Then
+                ElseIf clbtransferkas.Items(i).Equals("Print") Then
                     cektransferkas = cektransferkas + 5
                 End If
             Else
@@ -883,7 +883,7 @@ Public Class fuser
                     cekakunmasuk = cekakunmasuk + 1
                 ElseIf clbakunmasuk.Items(i).Equals("Edit") Then
                     cekakunmasuk = cekakunmasuk + 3
-                ElseIf clbakunmasuk.Items(i).Equals("Hapus") Then
+                ElseIf clbakunmasuk.Items(i).Equals("Print") Then
                     cekakunmasuk = cekakunmasuk + 5
                 End If
             Else
@@ -896,7 +896,7 @@ Public Class fuser
                     cekakunkeluar = cekakunkeluar + 1
                 ElseIf clbakunkeluar.Items(i).Equals("Edit") Then
                     cekakunkeluar = cekakunkeluar + 3
-                ElseIf clbakunkeluar.Items(i).Equals("Hapus") Then
+                ElseIf clbakunkeluar.Items(i).Equals("Print") Then
                     cekakunkeluar = cekakunkeluar + 5
                 End If
             Else
@@ -1084,7 +1084,11 @@ Public Class fuser
         If txtkode.Text.Equals(kode) Then
             Call aksesadmin()
             Using cnn As New OdbcConnection(strConn)
-                sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
+                sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?,
+                        pembelian=? ,penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?,
+                        lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?, 
+                        lap_pembelian=?, lap_penjualan=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?,
+                        updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
                 cmmd.Parameters.AddWithValue("@password_user", txtpassword.Text)
@@ -1093,6 +1097,8 @@ Public Class fuser
                 cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
                 cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
                 cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
+                'akses 
+                'master
                 cmmd.Parameters.AddWithValue("@master_barang", cekmasterbarang)
                 cmmd.Parameters.AddWithValue("@master_gudang", cekmastergudang)
                 cmmd.Parameters.AddWithValue("@master_customer", cekmastercustomer)
@@ -1102,6 +1108,32 @@ Public Class fuser
                 cmmd.Parameters.AddWithValue("@master_pricelist", cekmasterpricelist)
                 cmmd.Parameters.AddWithValue("@master_rek_supp", cekmasterreksupp)
                 cmmd.Parameters.AddWithValue("@master_rek_cust", cekmastercustomer)
+                'transaksi
+                cmmd.Parameters.AddWithValue("@pembelian", cekpembelian)
+                cmmd.Parameters.AddWithValue("@penjualan", cekpenjualan)
+                cmmd.Parameters.AddWithValue("@retur_beli", cekreturbeli)
+                cmmd.Parameters.AddWithValue("@retur_jual", cekreturjual)
+                cmmd.Parameters.AddWithValue("@barang_masuk", cekbarangmasuk)
+                cmmd.Parameters.AddWithValue("@barang_keluar", cekbarangkeluar)
+                cmmd.Parameters.AddWithValue("@transfer_barang", cektransferbarang)
+                'administrasi
+                cmmd.Parameters.AddWithValue("@lunas_utang", ceklunasutang)
+                cmmd.Parameters.AddWithValue("@lunas_piutang", ceklunaspiutang)
+                cmmd.Parameters.AddWithValue("@transfer_kas", cektransferkas)
+                cmmd.Parameters.AddWithValue("@akun_masuk", cekakunmasuk)
+                cmmd.Parameters.AddWithValue("@akun_keluar", cekakunkeluar)
+                'laporan
+                cmmd.Parameters.AddWithValue("@lap_pembelian", ceklappembelian)
+                cmmd.Parameters.AddWithValue("@lap_penjualan", ceklappenjualan)
+                cmmd.Parameters.AddWithValue("@lap_utang", ceklaputang)
+                cmmd.Parameters.AddWithValue("@lap_piutang", ceklappiutang)
+                cmmd.Parameters.AddWithValue("@lap_stok_barang", ceklapstokbarang)
+                cmmd.Parameters.AddWithValue("@lap_akun_masuk", ceklapakunmasuk)
+                cmmd.Parameters.AddWithValue("@lap_akun_keluar", ceklapakunkeluar)
+                cmmd.Parameters.AddWithValue("@lap_transfer_kas", ceklaptransferkas)
+                cmmd.Parameters.AddWithValue("@lap_transfer_barang", ceklaptransferbarang)
+                cmmd.Parameters.AddWithValue("@lap_transaksi_kas", ceklaptransaksikas)
+                ' end akses
                 cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
                 cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
                 cnn.Open()
@@ -1123,7 +1155,11 @@ Public Class fuser
             Else
                 Call aksesadmin()
                 Using cnn As New OdbcConnection(strConn)
-                    sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?, updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
+                    sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?, 
+                            pembelian=?, penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?,
+                            lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?,
+                            lap_pembelian=?, lap_penjualan=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?,
+                            updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     cmmd.Parameters.AddWithValue("@kode_user", txtkode.Text)
                     cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
@@ -1133,6 +1169,8 @@ Public Class fuser
                     cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
                     cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
                     cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
+                    'akses 
+                    'master
                     cmmd.Parameters.AddWithValue("@master_barang", cekmasterbarang)
                     cmmd.Parameters.AddWithValue("@master_gudang", cekmastergudang)
                     cmmd.Parameters.AddWithValue("@master_customer", cekmastercustomer)
@@ -1142,6 +1180,32 @@ Public Class fuser
                     cmmd.Parameters.AddWithValue("@master_pricelist", cekmasterpricelist)
                     cmmd.Parameters.AddWithValue("@master_rek_supp", cekmasterreksupp)
                     cmmd.Parameters.AddWithValue("@master_rek_cust", cekmastercustomer)
+                    'transaksi
+                    cmmd.Parameters.AddWithValue("@pembelian", cekpembelian)
+                    cmmd.Parameters.AddWithValue("@penjualan", cekpenjualan)
+                    cmmd.Parameters.AddWithValue("@retur_beli", cekreturbeli)
+                    cmmd.Parameters.AddWithValue("@retur_jual", cekreturjual)
+                    cmmd.Parameters.AddWithValue("@barang_masuk", cekbarangmasuk)
+                    cmmd.Parameters.AddWithValue("@barang_keluar", cekbarangkeluar)
+                    cmmd.Parameters.AddWithValue("@transfer_barang", cektransferbarang)
+                    'administrasi
+                    cmmd.Parameters.AddWithValue("@lunas_utang", ceklunasutang)
+                    cmmd.Parameters.AddWithValue("@lunas_piutang", ceklunaspiutang)
+                    cmmd.Parameters.AddWithValue("@transfer_kas", cektransferkas)
+                    cmmd.Parameters.AddWithValue("@akun_masuk", cekakunmasuk)
+                    cmmd.Parameters.AddWithValue("@akun_keluar", cekakunkeluar)
+                    'laporan
+                    cmmd.Parameters.AddWithValue("@lap_pembelian", ceklappembelian)
+                    cmmd.Parameters.AddWithValue("@lap_penjualan", ceklappenjualan)
+                    cmmd.Parameters.AddWithValue("@lap_utang", ceklaputang)
+                    cmmd.Parameters.AddWithValue("@lap_piutang", ceklappiutang)
+                    cmmd.Parameters.AddWithValue("@lap_stok_barang", ceklapstokbarang)
+                    cmmd.Parameters.AddWithValue("@lap_akun_masuk", ceklapakunmasuk)
+                    cmmd.Parameters.AddWithValue("@lap_akun_keluar", ceklapakunkeluar)
+                    cmmd.Parameters.AddWithValue("@lap_transfer_kas", ceklaptransferkas)
+                    cmmd.Parameters.AddWithValue("@lap_transfer_barang", ceklaptransferbarang)
+                    cmmd.Parameters.AddWithValue("@lap_transaksi_kas", ceklaptransaksikas)
+                    ' end akses
                     cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
                     cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
 
