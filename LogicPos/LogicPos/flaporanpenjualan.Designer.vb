@@ -45,6 +45,7 @@ Partial Class flaporanpenjualan
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnfaktur = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,7 +104,7 @@ Partial Class flaporanpenjualan
         Me.GroupBox4.Controls.Add(Me.btnrekap)
         Me.GroupBox4.Location = New System.Drawing.Point(275, 64)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(188, 81)
+        Me.GroupBox4.Size = New System.Drawing.Size(261, 81)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
         '
@@ -111,7 +112,7 @@ Partial Class flaporanpenjualan
         '
         Me.btnexcel.Location = New System.Drawing.Point(13, 46)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(156, 27)
+        Me.btnexcel.Size = New System.Drawing.Size(237, 27)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
@@ -232,6 +233,15 @@ Partial Class flaporanpenjualan
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Penjualan"
         '
+        'btnfaktur
+        '
+        Me.btnfaktur.Location = New System.Drawing.Point(450, 77)
+        Me.btnfaktur.Name = "btnfaktur"
+        Me.btnfaktur.Size = New System.Drawing.Size(75, 27)
+        Me.btnfaktur.TabIndex = 10
+        Me.btnfaktur.Text = "Detail Faktur"
+        Me.btnfaktur.UseVisualStyleBackColor = True
+        '
         'flaporanpenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -240,6 +250,7 @@ Partial Class flaporanpenjualan
         Me.ClientSize = New System.Drawing.Size(1018, 661)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
+        Me.Controls.Add(Me.btnfaktur)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "flaporanpenjualan"
@@ -277,4 +288,5 @@ Partial Class flaporanpenjualan
     Friend WithEvents btnexcel As Button
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label2 As Label
+    Friend WithEvents btnfaktur As Button
 End Class
