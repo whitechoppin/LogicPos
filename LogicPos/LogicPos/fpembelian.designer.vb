@@ -100,6 +100,7 @@ Partial Class fpembelian
         Me.txtdiskonnominal = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtppnnominal = New System.Windows.Forms.TextBox()
+        Me.ritenumber = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -107,6 +108,7 @@ Partial Class fpembelian
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
+        CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -289,6 +291,7 @@ Partial Class fpembelian
         Me.GridControl1.Location = New System.Drawing.Point(12, 259)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ritenumber})
         Me.GridControl1.Size = New System.Drawing.Size(1118, 257)
         Me.GridControl1.TabIndex = 25
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -342,6 +345,7 @@ Partial Class fpembelian
         Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
         Me.GridColumn4.Caption = "Qty"
+        Me.GridColumn4.ColumnEdit = Me.ritenumber
         Me.GridColumn4.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
@@ -375,7 +379,10 @@ Partial Class fpembelian
         '
         Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn7.AppearanceCell.Options.UseFont = True
+        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
         Me.GridColumn7.Caption = "Harga Satuan"
+        Me.GridColumn7.ColumnEdit = Me.ritenumber
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
@@ -384,6 +391,8 @@ Partial Class fpembelian
         '
         Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn8.AppearanceCell.Options.UseFont = True
+        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
         Me.GridColumn8.Caption = "Sub Total"
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.OptionsColumn.AllowEdit = False
@@ -904,6 +913,11 @@ Partial Class fpembelian
         Me.txtppnnominal.Size = New System.Drawing.Size(148, 24)
         Me.txtppnnominal.TabIndex = 31
         '
+        'ritenumber
+        '
+        Me.ritenumber.AutoHeight = False
+        Me.ritenumber.Name = "ritenumber"
+        '
         'fpembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -948,6 +962,7 @@ Partial Class fpembelian
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
+        CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1029,4 +1044,5 @@ Partial Class fpembelian
     Friend WithEvents Label19 As Label
     Friend WithEvents txtppnnominal As TextBox
     Friend WithEvents btnedit As Button
+    Friend WithEvents ritenumber As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
 End Class

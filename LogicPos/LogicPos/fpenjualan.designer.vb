@@ -429,7 +429,6 @@ Partial Class fpenjualan
         Me.GridColumn7.AppearanceHeader.Options.UseFont = True
         Me.GridColumn7.Caption = "Harga Satuan"
         Me.GridColumn7.Name = "GridColumn7"
-        Me.GridColumn7.OptionsColumn.AllowEdit = False
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
         '
@@ -550,7 +549,7 @@ Partial Class fpenjualan
         'rbfaktur
         '
         Me.rbfaktur.AutoSize = True
-        Me.rbfaktur.Location = New System.Drawing.Point(6, 21)
+        Me.rbfaktur.Location = New System.Drawing.Point(68, 21)
         Me.rbfaktur.Margin = New System.Windows.Forms.Padding(4)
         Me.rbfaktur.Name = "rbfaktur"
         Me.rbfaktur.Size = New System.Drawing.Size(68, 22)
@@ -562,7 +561,7 @@ Partial Class fpenjualan
         'rbstruk
         '
         Me.rbstruk.AutoSize = True
-        Me.rbstruk.Location = New System.Drawing.Point(76, 21)
+        Me.rbstruk.Location = New System.Drawing.Point(5, 20)
         Me.rbstruk.Margin = New System.Windows.Forms.Padding(4)
         Me.rbstruk.Name = "rbstruk"
         Me.rbstruk.Size = New System.Drawing.Size(61, 22)

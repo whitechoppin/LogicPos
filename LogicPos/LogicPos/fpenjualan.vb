@@ -89,7 +89,7 @@ Public Class fpenjualan
     End Function
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
-        sql = "SELECT kode_penjualan FROM tb_penjualan WHERE date_created < (SELECT date_created FROM tb_penjualan WHERE kode_penjualan = '" + previousnumber + "')ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT kode_penjualan FROM tb_penjualan WHERE date_created < (SELECT date_created FROM tb_penjualan WHERE kode_penjualan = '" + previousnumber + "' LIMIT 1 ) ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -108,7 +108,7 @@ Public Class fpenjualan
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT kode_penjualan FROM tb_penjualan WHERE date_created > (SELECT date_created FROM tb_penjualan WHERE kode_penjualan = '" + nextingnumber + "')ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT kode_penjualan FROM tb_penjualan WHERE date_created > (SELECT date_created FROM tb_penjualan WHERE kode_penjualan = '" + nextingnumber + "' LIMIT 1 ) ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -316,8 +316,8 @@ Public Class fpenjualan
         txtgopenjualan.Enabled = True
         btnnext.Enabled = True
 
-        rbfaktur.Checked = True
-        rbstruk.Checked = False
+        rbfaktur.Checked = False
+        rbstruk.Checked = True
 
         'header
         txtnonota.Clear()
@@ -786,6 +786,13 @@ Public Class fpenjualan
         End If
     End Sub
 
+    Private Sub rbfaktur_CheckedChanged(sender As Object, e As EventArgs) Handles rbfaktur.CheckedChanged
+
+    End Sub
+
+    Private Sub rbstruk_CheckedChanged(sender As Object, e As EventArgs) Handles rbstruk.CheckedChanged
+
+    End Sub
     Private Sub cmbcustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbcustomer.SelectedIndexChanged
         Call caripelanggan()
     End Sub

@@ -4,6 +4,7 @@ Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class fpembelian
     Dim tabel As DataTable
+    Dim hargamodalbarang As Double
     Dim harga, modalpembelian, ongkir, ppn, diskonpersen, diskonnominal, ppnpersen, ppnnominal, subtotalsummary, grandtotal, banyak As Double
     Dim satuan, jenis, supplier, kodepembelian As String
     Public isi As String
@@ -83,7 +84,7 @@ Public Class fpembelian
     End Function
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
-        sql = "SELECT kode_pembelian FROM tb_pembelian WHERE date_created < (SELECT date_created FROM tb_pembelian WHERE kode_pembelian = '" + previousnumber + "')ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT kode_pembelian FROM tb_pembelian WHERE date_created < (SELECT date_created FROM tb_pembelian WHERE kode_pembelian = '" + previousnumber + "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -102,7 +103,7 @@ Public Class fpembelian
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT kode_pembelian FROM tb_pembelian WHERE date_created > (SELECT date_created FROM tb_pembelian WHERE kode_pembelian = '" + nextingnumber + "')ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT kode_pembelian FROM tb_pembelian WHERE date_created > (SELECT date_created FROM tb_pembelian WHERE kode_pembelian = '" + nextingnumber + "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -811,19 +812,35 @@ Public Class fpembelian
                             dr = cmmd.ExecuteReader()
                         End If
 
-                        sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
+                        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "' LIMIT 1"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
+                        If dr.HasRows Then
+                            hargamodalbarang = dr("modal_barang")
 
+                            If hargamodalbarang < Val(GridView1.GetRowCellValue(i, "harga")) Then
+                                sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
+                                cmmd = New OdbcCommand(sql, cnn)
+                                dr = cmmd.ExecuteReader()
+                            End If
+                        End If
                     Else
                         sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & cmbgudang.Text & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now() )"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
 
-                        'update modal pada barang apabila ada harga baru
-                        sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
+                        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "' LIMIT 1"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
+                        If dr.HasRows Then
+                            hargamodalbarang = dr("modal_barang")
+
+                            If hargamodalbarang < Val(GridView1.GetRowCellValue(i, "harga")) Then
+                                sql = "UPDATE tb_barang SET modal_barang = '" & GridView1.GetRowCellValue(i, "harga") & "' WHERE kode_barang = '" & GridView1.GetRowCellValue(i, "kode_barang") & "'"
+                                cmmd = New OdbcCommand(sql, cnn)
+                                dr = cmmd.ExecuteReader()
+                            End If
+                        End If
                     End If
                 Next
 
@@ -1120,6 +1137,11 @@ Public Class fpembelian
         dr = cmmd.ExecuteReader()
 
     End Sub
+
+    Private Sub ritenumber_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritenumber.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
     Private Sub dtpembelian_ValueChanged(sender As Object, e As EventArgs) Handles dtpembelian.ValueChanged
         dtjatuhtempo.MinDate = dtpembelian.Value
     End Sub
