@@ -11,6 +11,7 @@ Public Class fcustomer
         txtalamat.Clear()
         txtnama.Clear()
         txttelp.Clear()
+        txtketerangan.Clear()
 
         Call koneksii()
 
@@ -18,6 +19,7 @@ Public Class fcustomer
         txttelp.Enabled = False
         txtkode.Enabled = False
         txtnama.Enabled = False
+        txtketerangan.Enabled = False
 
         btntambah.Enabled = True
         btnbatal.Enabled = False
@@ -37,21 +39,24 @@ Public Class fcustomer
     End Sub
     Sub kolom()
         GridColumn1.Caption = "Kode"
-        GridColumn1.Width = 65
+        GridColumn1.Width = 40
         GridColumn1.FieldName = "kode_pelanggan"
         GridColumn2.Caption = "Nama"
-        GridColumn2.Width = 65
+        GridColumn2.Width = 40
         GridColumn2.FieldName = "nama_pelanggan"
         GridColumn3.Caption = "Alamat"
         GridColumn3.Width = 65
         GridColumn3.FieldName = "alamat_pelanggan"
         GridColumn4.Caption = "Telepon"
-        GridColumn4.Width = 73
+        GridColumn4.Width = 40
         GridColumn4.FieldName = "telepon_pelanggan"
+        GridColumn5.Caption = "Keterangan"
+        GridColumn5.Width = 40
+        GridColumn5.FieldName = "keterangan_pelanggan"
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "Select * from tb_pelanggan"
+        sql = "SELECT * FROM tb_pelanggan"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -64,7 +69,8 @@ Public Class fcustomer
         txtnama.TabIndex = 1
         txtalamat.TabIndex = 2
         txttelp.TabIndex = 3
-        btnupload.TabIndex = 4
+        txtketerangan.TabIndex = 4
+        btnupload.TabIndex = 5
     End Sub
     Function autonumber()
         Call koneksii()
@@ -102,6 +108,7 @@ Public Class fcustomer
         txtnama.Enabled = True
         txttelp.Enabled = True
         txtalamat.Enabled = True
+        txtketerangan.Enabled = True
         txtnama.Focus()
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
@@ -145,12 +152,13 @@ Public Class fcustomer
                 PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
                 'merubah gambar pada ms ke array
                 ms.ToArray()
-                sql = "INSERT INTO tb_pelanggan (kode_pelanggan,nama_pelanggan,alamat_pelanggan,telepon_pelanggan,foto_pelanggan,created_by,updated_by,date_created,last_updated) VALUES ( ?,?,?,?,?,?,?,?,?)"
+                sql = "INSERT INTO tb_pelanggan (kode_pelanggan,nama_pelanggan,alamat_pelanggan,telepon_pelanggan,keterangan_pelanggan,foto_pelanggan,created_by,updated_by,date_created,last_updated) VALUES ( ?,?,?,?,?,?,?,?,?)"
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
                 cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
                 cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
                 cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
+                cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
                 cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
                 cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
                 cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
@@ -217,12 +225,13 @@ Public Class fcustomer
         'merubah gambar pada ms ke array
         ms.ToArray()
         Using cnn As New OdbcConnection(strConn)
-            sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & txtkode.Text & "'"
+            sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & txtkode.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
             cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
             cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
             cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
+            cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
             cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
             cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
             cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
@@ -278,6 +287,7 @@ Public Class fcustomer
                 txtnama.Text = dr("nama_pelanggan")
                 txtalamat.Text = dr("alamat_pelanggan")
                 txttelp.Text = dr("telepon_pelanggan")
+                txtketerangan.Text = dr("keterangan_pelanggan")
                 foto = dr("foto_pelanggan")
                 PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
                 PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))

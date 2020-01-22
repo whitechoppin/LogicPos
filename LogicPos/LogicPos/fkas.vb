@@ -2,7 +2,6 @@
 
 Public Class fkas
     Dim kodekasedit As String
-    Dim saldoawal As Double
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If btntambah.Text = "Tambah" Then
             btnbatal.Enabled = True
@@ -18,8 +17,8 @@ Public Class fkas
                 If txtnama.Text.Length = 0 Then
                     MsgBox("Nama belum terisi !")
                 Else
-                    If txtsaldo.Text.Length = 0 Then
-                        MsgBox("Saldo belum terisi !")
+                    If cbjeniskas.SelectedIndex = -1 Then
+                        MsgBox("Jenis belum terisi !")
                     Else
                         Call simpan()
                     End If
@@ -36,13 +35,13 @@ Public Class fkas
     Sub awal()
         txtkode.Clear()
         txtnama.Clear()
-        txtsaldo.Clear()
+        cbjeniskas.SelectedIndex = -1
         txtrekening.Clear()
         txtketerangan.Clear()
 
         Call koneksii()
 
-        txtsaldo.Enabled = False
+        cbjeniskas.Enabled = False
         txtkode.Enabled = False
         btnauto.Enabled = False
         btngenerate.Enabled = False
@@ -67,17 +66,16 @@ Public Class fkas
         GridColumn1.FieldName = "kode_kas"
 
         GridColumn2.Caption = "Nama Kas"
-        GridColumn2.Width = 100
+        GridColumn2.Width = 200
         GridColumn2.FieldName = "nama_kas"
 
-        GridColumn3.Caption = "Keterangan"
-        GridColumn3.FieldName = "keterangan_kas"
-        GridColumn3.Width = 200
+        GridColumn3.Caption = "Jenis Kas"
+        GridColumn3.FieldName = "jenis_kas"
+        GridColumn3.Width = 100
 
-        GridColumn4.Caption = "Saldo Awal"
-        GridColumn4.FieldName = "saldo_awal"
-        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
+        GridColumn4.Caption = "Keterangan Kas"
+        GridColumn4.FieldName = "keterangan_kas"
+        GridColumn4.Width = 300
     End Sub
     Sub isitabel()
         'Call koneksii()
@@ -94,7 +92,7 @@ Public Class fkas
         btnauto.TabIndex = 2
         btngenerate.TabIndex = 3
         txtnama.TabIndex = 4
-        txtsaldo.TabIndex = 5
+        cbjeniskas.TabIndex = 5
         txtrekening.TabIndex = 6
         txtketerangan.TabIndex = 7
     End Sub
@@ -103,7 +101,7 @@ Public Class fkas
         btnauto.Enabled = True
         btngenerate.Enabled = True
         txtnama.Enabled = True
-        txtsaldo.Enabled = True
+        cbjeniskas.Enabled = True
         txtrekening.Enabled = True
         txtketerangan.Enabled = True
         txtnama.Focus()
@@ -116,7 +114,7 @@ Public Class fkas
         If dr.HasRows Then
             MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_kas (kode_kas, nama_kas, keterangan_kas, saldo_awal, total_saldo, rekening_kas, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & saldoawal & "','" & 0 & "','" & txtrekening.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_kas (kode_kas, nama_kas, keterangan_kas, jenis_kas, rekening_kas, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & cbjeniskas.Text & "','" & txtrekening.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -139,7 +137,7 @@ Public Class fkas
         End If
     End Sub
 
-    Private Sub txtsaldo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtsaldo.KeyPress
+    Private Sub txtsaldo_KeyPress(sender As Object, e As KeyPressEventArgs)
         e.Handled = ValidAngka(e)
     End Sub
 
@@ -147,7 +145,7 @@ Public Class fkas
         txtkode.Text = GridView1.GetFocusedRowCellValue("kode_kas")
         kodekasedit = GridView1.GetFocusedRowCellValue("kode_kas")
         txtnama.Text = GridView1.GetFocusedRowCellValue("nama_kas")
-        txtsaldo.Text = GridView1.GetFocusedRowCellValue("saldo_awal")
+        cbjeniskas.Text = GridView1.GetFocusedRowCellValue("saldo_awal")
         txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_kas")
         btnedit.Enabled = True
         btnbatal.Enabled = True
@@ -163,7 +161,7 @@ Public Class fkas
     Sub edit()
         Call koneksii()
         If txtkode.Text.Equals(kodekasedit) Then
-            sql = "UPDATE tb_kas SET  nama_kas='" & txtnama.Text & "', saldo_awal='" & saldoawal & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & kodekasedit & "'"
+            sql = "UPDATE tb_kas SET  nama_kas='" & txtnama.Text & "', jenis_kas='" & cbjeniskas.Text & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & kodekasedit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -177,7 +175,7 @@ Public Class fkas
             If dr.HasRows Then
                 MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
             Else
-                sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', saldo_awal='" & saldoawal & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & kodekasedit & "'"
+                sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', jenis_kas='" & cbjeniskas.Text & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & kodekasedit & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -229,28 +227,18 @@ Public Class fkas
             GridControl.Enabled = False
         Else
             If txtkode.Text.Length = 0 Then
-                MsgBox("ID belum terisi!!!")
+                MsgBox("ID belum terisi !")
             Else
                 If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama belum terisi!!!")
+                    MsgBox("Nama belum terisi !")
                 Else
-                    If txtsaldo.Text.Length = 0 Then
-                        MsgBox("saldo belum terisi!!!")
+                    If cbjeniskas.SelectedIndex = -1 Then
+                        MsgBox("Jenis belum terisi !")
                     Else
                         Call edit()
                     End If
                 End If
             End If
-        End If
-    End Sub
-
-    Private Sub txtsaldo_TextChanged(sender As Object, e As EventArgs) Handles txtsaldo.TextChanged
-        If txtsaldo.Text = "" Then
-            txtsaldo.Text = 0
-        Else
-            saldoawal = txtsaldo.Text
-            txtsaldo.Text = Format(saldoawal, "##,##0")
-            txtsaldo.SelectionStart = Len(txtsaldo.Text)
         End If
     End Sub
 

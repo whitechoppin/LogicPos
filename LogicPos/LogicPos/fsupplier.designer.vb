@@ -52,10 +52,10 @@ Partial Class fsupplier
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(10, 301)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 301)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(617, 240)
+        Me.GridControl1.Size = New System.Drawing.Size(808, 240)
         Me.GridControl1.TabIndex = 11
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -137,35 +137,35 @@ Partial Class fsupplier
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(13, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(614, 283)
+        Me.GroupBox1.Size = New System.Drawing.Size(807, 283)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data Supplier"
         '
         'btnrekening
         '
-        Me.btnrekening.Location = New System.Drawing.Point(418, 224)
+        Me.btnrekening.Location = New System.Drawing.Point(609, 28)
         Me.btnrekening.Name = "btnrekening"
-        Me.btnrekening.Size = New System.Drawing.Size(185, 37)
+        Me.btnrekening.Size = New System.Drawing.Size(185, 49)
         Me.btnrekening.TabIndex = 18
         Me.btnrekening.Text = "Data Rekening"
         Me.btnrekening.UseVisualStyleBackColor = True
         '
         'txtketerangan
         '
-        Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangan.Location = New System.Drawing.Point(418, 139)
+        Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtketerangan.Location = New System.Drawing.Point(535, 140)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(186, 80)
+        Me.txtketerangan.Size = New System.Drawing.Size(257, 116)
         Me.txtketerangan.TabIndex = 17
         Me.txtketerangan.Text = ""
         '
         'txtalamat
         '
-        Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtalamat.Location = New System.Drawing.Point(118, 176)
+        Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtalamat.Location = New System.Drawing.Point(128, 170)
         Me.txtalamat.Name = "txtalamat"
-        Me.txtalamat.Size = New System.Drawing.Size(186, 86)
+        Me.txtalamat.Size = New System.Drawing.Size(281, 86)
         Me.txtalamat.TabIndex = 17
         Me.txtalamat.Text = ""
         '
@@ -207,25 +207,25 @@ Partial Class fsupplier
         '
         'txttelp
         '
-        Me.txttelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttelp.Location = New System.Drawing.Point(418, 111)
+        Me.txttelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttelp.Location = New System.Drawing.Point(535, 107)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(186, 22)
+        Me.txttelp.Size = New System.Drawing.Size(257, 24)
         Me.txttelp.TabIndex = 2
         '
         'txtnama
         '
-        Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(118, 138)
+        Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnama.Location = New System.Drawing.Point(128, 140)
         Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(186, 22)
+        Me.txtnama.Size = New System.Drawing.Size(281, 24)
         Me.txtnama.TabIndex = 2
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(312, 140)
+        Me.Label5.Location = New System.Drawing.Point(426, 140)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(92, 20)
         Me.Label5.TabIndex = 7
@@ -233,17 +233,17 @@ Partial Class fsupplier
         '
         'txtkode
         '
-        Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkode.Location = New System.Drawing.Point(118, 110)
+        Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtkode.Location = New System.Drawing.Point(128, 110)
         Me.txtkode.Name = "txtkode"
-        Me.txtkode.Size = New System.Drawing.Size(186, 22)
+        Me.txtkode.Size = New System.Drawing.Size(281, 24)
         Me.txtkode.TabIndex = 1
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 175)
+        Me.Label4.Location = New System.Drawing.Point(6, 166)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(59, 20)
         Me.Label4.TabIndex = 7
@@ -253,7 +253,7 @@ Partial Class fsupplier
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(312, 109)
+        Me.Label3.Location = New System.Drawing.Point(426, 109)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(66, 20)
         Me.Label3.TabIndex = 7
@@ -263,7 +263,7 @@ Partial Class fsupplier
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 139)
+        Me.Label2.Location = New System.Drawing.Point(6, 138)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(113, 20)
         Me.Label2.TabIndex = 7
@@ -284,7 +284,7 @@ Partial Class fsupplier
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(637, 552)
+        Me.ClientSize = New System.Drawing.Size(835, 552)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "fsupplier"

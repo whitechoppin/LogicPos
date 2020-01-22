@@ -36,7 +36,6 @@ Partial Class fbarang
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnhapus = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
-        Me.btntambah = New System.Windows.Forms.Button()
         Me.cmbjenis = New System.Windows.Forms.ComboBox()
         Me.cmbsatuan = New System.Windows.Forms.ComboBox()
         Me.txtmodal = New System.Windows.Forms.TextBox()
@@ -45,6 +44,7 @@ Partial Class fbarang
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btntambah = New System.Windows.Forms.Button()
         Me.GridControl = New DevExpress.XtraGrid.GridControl()
         Me.GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -84,7 +84,7 @@ Partial Class fbarang
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 7)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(613, 299)
+        Me.GroupBox1.Size = New System.Drawing.Size(817, 291)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data Barang"
@@ -92,9 +92,9 @@ Partial Class fbarang
         'btnauto
         '
         Me.btnauto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnauto.Location = New System.Drawing.Point(304, 100)
+        Me.btnauto.Location = New System.Drawing.Point(408, 99)
         Me.btnauto.Name = "btnauto"
-        Me.btnauto.Size = New System.Drawing.Size(84, 23)
+        Me.btnauto.Size = New System.Drawing.Size(84, 25)
         Me.btnauto.TabIndex = 22
         Me.btnauto.Text = "Generate"
         Me.btnauto.UseVisualStyleBackColor = True
@@ -123,9 +123,9 @@ Partial Class fbarang
         '
         Me.GroupBox2.Controls.Add(Me.PictureBox1)
         Me.GroupBox2.Controls.Add(Me.Panel1)
-        Me.GroupBox2.Location = New System.Drawing.Point(394, 86)
+        Me.GroupBox2.Location = New System.Drawing.Point(510, 23)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(207, 206)
+        Me.GroupBox2.Size = New System.Drawing.Size(295, 257)
         Me.GroupBox2.TabIndex = 20
         Me.GroupBox2.TabStop = False
         '
@@ -133,7 +133,7 @@ Partial Class fbarang
         '
         Me.PictureBox1.Location = New System.Drawing.Point(6, 15)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(195, 158)
+        Me.PictureBox1.Size = New System.Drawing.Size(283, 203)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 22
         Me.PictureBox1.TabStop = False
@@ -141,9 +141,9 @@ Partial Class fbarang
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.txtgbr)
-        Me.Panel1.Location = New System.Drawing.Point(6, 176)
+        Me.Panel1.Location = New System.Drawing.Point(6, 224)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(195, 23)
+        Me.Panel1.Size = New System.Drawing.Size(283, 23)
         Me.Panel1.TabIndex = 19
         '
         'txtgbr
@@ -162,48 +162,39 @@ Partial Class fbarang
         '
         'btnupload
         '
-        Me.btnupload.Location = New System.Drawing.Point(394, 31)
+        Me.btnupload.Location = New System.Drawing.Point(118, 247)
         Me.btnupload.Name = "btnupload"
-        Me.btnupload.Size = New System.Drawing.Size(207, 49)
+        Me.btnupload.Size = New System.Drawing.Size(374, 33)
         Me.btnupload.TabIndex = 17
         Me.btnupload.Text = "Upload Gambar"
         Me.btnupload.UseVisualStyleBackColor = True
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(302, 31)
+        Me.btnbatal.Location = New System.Drawing.Point(377, 31)
         Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(86, 49)
+        Me.btnbatal.Size = New System.Drawing.Size(115, 50)
         Me.btnbatal.TabIndex = 13
         Me.btnbatal.Text = "Batal"
         Me.btnbatal.UseVisualStyleBackColor = True
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(210, 31)
+        Me.btnhapus.Location = New System.Drawing.Point(256, 31)
         Me.btnhapus.Name = "btnhapus"
-        Me.btnhapus.Size = New System.Drawing.Size(86, 49)
+        Me.btnhapus.Size = New System.Drawing.Size(115, 50)
         Me.btnhapus.TabIndex = 14
         Me.btnhapus.Text = "Hapus"
         Me.btnhapus.UseVisualStyleBackColor = True
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(118, 31)
+        Me.btnedit.Location = New System.Drawing.Point(135, 31)
         Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(86, 49)
+        Me.btnedit.Size = New System.Drawing.Size(115, 50)
         Me.btnedit.TabIndex = 15
         Me.btnedit.Text = "Edit"
         Me.btnedit.UseVisualStyleBackColor = True
-        '
-        'btntambah
-        '
-        Me.btntambah.Location = New System.Drawing.Point(14, 31)
-        Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(98, 49)
-        Me.btntambah.TabIndex = 16
-        Me.btntambah.Text = "Tambah"
-        Me.btntambah.UseVisualStyleBackColor = True
         '
         'cmbjenis
         '
@@ -212,7 +203,7 @@ Partial Class fbarang
         Me.cmbjenis.Items.AddRange(New Object() {"Lembaran", "Rol"})
         Me.cmbjenis.Location = New System.Drawing.Point(118, 156)
         Me.cmbjenis.Name = "cmbjenis"
-        Me.cmbjenis.Size = New System.Drawing.Size(272, 26)
+        Me.cmbjenis.Size = New System.Drawing.Size(374, 26)
         Me.cmbjenis.TabIndex = 12
         '
         'cmbsatuan
@@ -221,7 +212,7 @@ Partial Class fbarang
         Me.cmbsatuan.FormattingEnabled = True
         Me.cmbsatuan.Location = New System.Drawing.Point(118, 188)
         Me.cmbsatuan.Name = "cmbsatuan"
-        Me.cmbsatuan.Size = New System.Drawing.Size(272, 26)
+        Me.cmbsatuan.Size = New System.Drawing.Size(374, 26)
         Me.cmbsatuan.TabIndex = 12
         '
         'txtmodal
@@ -229,7 +220,7 @@ Partial Class fbarang
         Me.txtmodal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtmodal.Location = New System.Drawing.Point(118, 219)
         Me.txtmodal.Name = "txtmodal"
-        Me.txtmodal.Size = New System.Drawing.Size(272, 22)
+        Me.txtmodal.Size = New System.Drawing.Size(374, 22)
         Me.txtmodal.TabIndex = 2
         '
         'txtnama
@@ -237,7 +228,7 @@ Partial Class fbarang
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnama.Location = New System.Drawing.Point(118, 128)
         Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(272, 22)
+        Me.txtnama.Size = New System.Drawing.Size(374, 22)
         Me.txtnama.TabIndex = 2
         '
         'txtkode
@@ -245,7 +236,7 @@ Partial Class fbarang
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkode.Location = New System.Drawing.Point(118, 101)
         Me.txtkode.Name = "txtkode"
-        Me.txtkode.Size = New System.Drawing.Size(188, 22)
+        Me.txtkode.Size = New System.Drawing.Size(293, 22)
         Me.txtkode.TabIndex = 1
         '
         'Label4
@@ -278,12 +269,21 @@ Partial Class fbarang
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Kode Barang"
         '
+        'btntambah
+        '
+        Me.btntambah.Location = New System.Drawing.Point(14, 31)
+        Me.btntambah.Name = "btntambah"
+        Me.btntambah.Size = New System.Drawing.Size(115, 50)
+        Me.btntambah.TabIndex = 16
+        Me.btntambah.Text = "Tambah"
+        Me.btntambah.UseVisualStyleBackColor = True
+        '
         'GridControl
         '
         Me.GridControl.Location = New System.Drawing.Point(12, 313)
         Me.GridControl.MainView = Me.GridView
         Me.GridControl.Name = "GridControl"
-        Me.GridControl.Size = New System.Drawing.Size(613, 228)
+        Me.GridControl.Size = New System.Drawing.Size(817, 228)
         Me.GridControl.TabIndex = 5
         Me.GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
@@ -362,7 +362,7 @@ Partial Class fbarang
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(637, 552)
+        Me.ClientSize = New System.Drawing.Size(843, 552)
         Me.Controls.Add(Me.GridControl)
         Me.Controls.Add(Me.GroupBox1)
         Me.MaximizeBox = False
