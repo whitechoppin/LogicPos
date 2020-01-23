@@ -876,7 +876,6 @@ Public Class fpenjualan
                 lblsatuanjual.Text = satuan
                 jenis = ""
                 txtharga.Text = ""
-                MsgBox("Price list Masih Kosong !", MsgBoxStyle.Information, "Gagal")
             End If
         End If
     End Sub
@@ -1257,7 +1256,7 @@ Public Class fpenjualan
         'Columns.Add("modal_barang", GetType(Double))
 
         If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txtharga.Text = "" Or txtbanyak.Text = "" Or banyak <= 0 Then
-            MsgBox("Barang Kosong", MsgBoxStyle.Information, "Informasi")
+            MsgBox("Barang Kosong Atau Pricelist Group belum terisi", MsgBoxStyle.Information, "Informasi")
             'Exit Sub
         Else
             If GridView1.RowCount = 0 Then 'kondisi keranjang kosong

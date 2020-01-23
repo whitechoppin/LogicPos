@@ -57,6 +57,7 @@ Partial Class flaporanpenjualan
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker2)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(14, 64)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(255, 81)
@@ -78,21 +79,21 @@ Partial Class flaporanpenjualan
         '
         Me.DateTimePicker2.Location = New System.Drawing.Point(6, 47)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(200, 24)
         Me.DateTimePicker2.TabIndex = 3
         '
         'DateTimePicker1
         '
         Me.DateTimePicker1.Location = New System.Drawing.Point(6, 19)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 24)
         Me.DateTimePicker1.TabIndex = 2
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(13, 13)
+        Me.btnrekap.Location = New System.Drawing.Point(13, 23)
         Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(75, 27)
+        Me.btnrekap.Size = New System.Drawing.Size(100, 45)
         Me.btnrekap.TabIndex = 10
         Me.btnrekap.Text = "Rekap"
         Me.btnrekap.UseVisualStyleBackColor = True
@@ -101,27 +102,29 @@ Partial Class flaporanpenjualan
         '
         Me.GroupBox4.Controls.Add(Me.btnexcel)
         Me.GroupBox4.Controls.Add(Me.btntabel)
+        Me.GroupBox4.Controls.Add(Me.btnfaktur)
         Me.GroupBox4.Controls.Add(Me.btnrekap)
-        Me.GroupBox4.Location = New System.Drawing.Point(275, 64)
+        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox4.Location = New System.Drawing.Point(331, 16)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(261, 81)
+        Me.GroupBox4.Size = New System.Drawing.Size(553, 91)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(13, 46)
+        Me.btnexcel.Location = New System.Drawing.Point(330, 23)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(237, 27)
+        Me.btnexcel.Size = New System.Drawing.Size(200, 45)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(94, 12)
+        Me.btntabel.Location = New System.Drawing.Point(118, 23)
         Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(75, 27)
+        Me.btntabel.Size = New System.Drawing.Size(100, 45)
         Me.btntabel.TabIndex = 17
         Me.btntabel.Text = "Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
@@ -131,7 +134,7 @@ Partial Class flaporanpenjualan
         Me.GridControl1.Location = New System.Drawing.Point(14, 151)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(994, 332)
+        Me.GridControl1.Size = New System.Drawing.Size(870, 332)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -226,18 +229,18 @@ Partial Class flaporanpenjualan
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial Black", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(12, 9)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(402, 52)
+        Me.Label2.Size = New System.Drawing.Size(257, 31)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Penjualan"
         '
         'btnfaktur
         '
-        Me.btnfaktur.Location = New System.Drawing.Point(450, 77)
+        Me.btnfaktur.Location = New System.Drawing.Point(224, 23)
         Me.btnfaktur.Name = "btnfaktur"
-        Me.btnfaktur.Size = New System.Drawing.Size(75, 27)
+        Me.btnfaktur.Size = New System.Drawing.Size(100, 45)
         Me.btnfaktur.TabIndex = 10
         Me.btnfaktur.Text = "Detail Faktur"
         Me.btnfaktur.UseVisualStyleBackColor = True
@@ -247,10 +250,9 @@ Partial Class flaporanpenjualan
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1018, 661)
+        Me.ClientSize = New System.Drawing.Size(903, 661)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.btnfaktur)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "flaporanpenjualan"

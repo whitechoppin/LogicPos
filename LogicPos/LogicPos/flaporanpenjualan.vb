@@ -9,11 +9,7 @@ Public Class flaporanpenjualan
     Private Sub flaporanpembelian_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
-        Me.WindowState = WindowState.Maximized
 
-        'txtnama.Enabled = False
-        'txtnama.Clear()
-        'txtkode.Clear()
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
         Call grid()
@@ -73,108 +69,21 @@ Public Class flaporanpenjualan
         GridColumn12.Caption = "Metode Bayar"
         GridColumn12.FieldName = "metode_pembayaran"
 
-
-        '        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        '       GridColumn7.DisplayFormat.FormatString = "##,##0"
-
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Dim def = " iduser="
-        Dim user As String
-        'For x As Integer = 0 To listkasir.Items.Count - 1
-        '    If x = 0 Then
-        '        user = def + "'" + listkasir.Items(x).ToString + "'"
-        '    Else
-        '        user = user + "or" + def + "'" + listkasir.Items(x).ToString + "'"
-
-        '    End If
-        '    'MsgBox(listkasir.Items(x).ToString)
-        'Next
-        'MsgBox(user)
+        Call koneksii()
         Using cnn As New OdbcConnection(strConn)
-            'sql = "SELECT tb_barang.kode, tb_barang.nama, tb_barang.satuan, tb_barang.kategori, tb_barang.stok, tb_price.harga as harga from tb_barang join tb_price on tb_barang.kode = tb_price.idbrg where tb_price.idcustomer='" & Strings.Right(fpenjualan.cmbcustomer.Text, 8) & "'"
-            'If listkasir.Items.Count = 0 Then
-            '    sql = "select * from tb_penjualan_detail join tb_penjualan on tb_penjualan.idjual=tb_penjualan_detail.idjual join tb_barang on tb_barang.kode=tb_penjualan_detail.idbarang where  tgljual between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' "
-            'Else
-            sql = "select * from tb_penjualan_detail join tb_penjualan on tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan where  tgl_penjualan between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
-            'End If
-            'MsgBox(sql)
+            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE tgl_penjualan BETWEEN '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' AND '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
             da = New OdbcDataAdapter(sql, cnn)
-            cnn.Open()
             ds = New DataSet
             da.Fill(ds)
             GridControl1.DataSource = Nothing
             GridControl1.DataSource = ds.Tables(0)
             Call grid()
-            cnn.Close()
         End Using
     End Sub
-    Sub cari()
-        'Call koneksii()
-        'sql = "SELECT * FROM tb_barang WHERE kode='" & txtkode.Text & "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader
-        'If dr.HasRows Then
-        '    txtnama.Text = dr("nama")
 
-        'Else
-        '    txtnama.Text = ""
-
-        'End If
-    End Sub
-    Sub carikasir()
-        'Call koneksii()
-        'sql = "SELECT * FROM tb_user WHERE username='" & txtkodekasir.Text & "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader
-        'If dr.HasRows Then
-        '    txtnamakasir.Text = dr("username")
-
-        'Else
-        '    txtnama.Text = ""
-
-        'End If
-    End Sub
-    Sub search()
-        'tutup = 4
-        'Dim panjang As Integer = txtkode.Text.Length
-        'fcaribarang.Show()
-        'fcaribarang.txtcari.Focus()
-        'fcaribarang.txtcari.DeselectAll()
-        'fcaribarang.txtcari.SelectionStart = panjang
-        'Me.txtkode.Clear()
-    End Sub
-    Sub searchcust()
-        'Dim panjang As Integer = txtkode.Text.Length
-        'fcaricust.Show()
-        'fcaricust.txtcari.Focus()
-        'fcaricust.txtcari.DeselectAll()
-        'fcaricust.txtcari.SelectionStart = panjang
-        'Me.txtkode.Clear()
-    End Sub
-    Private Sub txtkode_TextChanged(sender As Object, e As EventArgs)
-        'isi = txtkode.Text
-        'isicari = isi
-        'If Strings.Left(txtkode.Text, 1) Like "[A-Z, a-z]" Then
-
-        '    Call search()
-        '    'fcaribarang.txtcari.Focus()
-        '    'fcaribarang.txtcari.DeselectAll()
-        'Else
-        '    Call cari()
-        'End If
-    End Sub
-    Private Sub btntambah_Click(sender As Object, e As EventArgs)
-        'If txtnama.Text.Length = 0 Then
-        '    Exit Sub
-        'Else
-        '    listitem.Items.Add(txtnama.Text)
-        '    txtkode.Clear()
-        '    txtnama.Clear()
-        'End If
-
-    End Sub
     Private Sub btncari_Click(sender As Object, e As EventArgs)
         'Dim rpt As ReportDocument
         'Dim crParameterFieldDefinitions As ParameterFieldDefinitions
@@ -281,7 +190,7 @@ Public Class flaporanpenjualan
         Dim crParameterValues As ParameterValues
         Dim crParameterDiscreteValue As ParameterDiscreteValue
 
-        sql = "select * from tb_penjualan where tgl_penjualan between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
+        sql = "SELECT * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day AND '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
@@ -341,46 +250,12 @@ Public Class flaporanpenjualan
 
             flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
             flappenjualan.ShowDialog()
-            'flappenjualan.WindowState = FormWindowState.Maximized
+            flappenjualan.WindowState = FormWindowState.Maximized
         Else
             MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
         End If
     End Sub
-    Private Sub btncariitem_Click(sender As Object, e As EventArgs)
-        'isi = txtkode.Text
-        'Call search()
-    End Sub
-    Private Sub btnhapus_Click(sender As Object, e As EventArgs)
-        'listitem.Items.Clear()
-    End Sub
-    Private Sub btncaricust_Click(sender As Object, e As EventArgs)
-        'isi = txtkode.Text
-        'Call searchcust()
-    End Sub
-    Private Sub btntambahcust_Click(sender As Object, e As EventArgs)
-        'If txtnamakasir.Text.Length = 0 Then
-        '    Exit Sub
-        'Else
-        '    listkasir.Items.Add(txtnamakasir.Text)
-        '    txtkodekasir.Clear()
-        '    txtnamakasir.Clear()
-        'End If
-    End Sub
-    Private Sub btnhapuscust_Click(sender As Object, e As EventArgs)
-        'listkasir.Items.Clear()
-    End Sub
-    Private Sub txtkodecust_TextChanged(sender As Object, e As EventArgs)
-        'isi2 = txtkodekasir.Text
-        'isicari2 = isi2
-        'If Strings.Left(txtkode.Text, 1) Like "[A-Z, a-z]" Then
-        '    Call searchcust()
-        '    'fcaribarang.txtcari.Focus()
-        '    'fcaribarang.txtcari.DeselectAll()
-        'Else
-        Call carikasir()
 
-        ' End If
-    End Sub
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
     End Sub
@@ -400,7 +275,7 @@ Public Class flaporanpenjualan
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
 
         ExportToExcel()
-        MsgBox("Export successfull!")
+        MsgBox("Export successfull !")
 
     End Sub
 
@@ -421,7 +296,7 @@ Public Class flaporanpenjualan
         Dim crParameterValues As ParameterValues
         Dim crParameterDiscreteValue As ParameterDiscreteValue
 
-        sql = "select * from tb_penjualan where tgl_penjualan between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
+        sql = "SELECT * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day AND '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
