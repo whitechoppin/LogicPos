@@ -6,6 +6,7 @@ Imports CrystalDecisions.Shared
 Public Class fpenjualan
     Public tinggi As Integer
     Public tabel As DataTable
+    Dim hitnumber As Integer
     'variabel dalam penjualan
     Public jenis, satuan, kodepenjualan, kodetransaksi As String
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
@@ -83,13 +84,13 @@ Public Class fpenjualan
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
-        sql = "SELECT kode_penjualan FROM tb_penjualan WHERE date_created < (SELECT date_created FROM tb_penjualan WHERE kode_penjualan = '" + previousnumber + "' LIMIT 1 ) ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT kode_penjualan FROM tb_penjualan WHERE date_created < (SELECT date_created FROM tb_penjualan WHERE kode_penjualan = '" + previousnumber + "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -97,18 +98,24 @@ Public Class fpenjualan
             If dr.HasRows Then
                 dr.Read()
                 Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                Call inisialisasi(previousnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(previousnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT kode_penjualan FROM tb_penjualan WHERE date_created > (SELECT date_created FROM tb_penjualan WHERE kode_penjualan = '" + nextingnumber + "' LIMIT 1 ) ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT kode_penjualan FROM tb_penjualan WHERE date_created > (SELECT date_created FROM tb_penjualan WHERE kode_penjualan = '" + nextingnumber + "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -116,13 +123,19 @@ Public Class fpenjualan
             If dr.HasRows Then
                 dr.Read()
                 Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                Call inisialisasi(nextingnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(nextingnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
     Sub previewpenjualan(lihat As String)
@@ -862,6 +875,7 @@ Public Class fpenjualan
                 lblsatuanjual.Text = satuan
                 jenis = ""
                 txtharga.Text = ""
+                MsgBox("Price list Masih Kosong !", MsgBoxStyle.Information, "Gagal")
             End If
         End If
     End Sub

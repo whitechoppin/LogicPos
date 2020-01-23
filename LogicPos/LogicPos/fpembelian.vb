@@ -5,6 +5,7 @@ Imports CrystalDecisions.CrystalReports.Engine
 Public Class fpembelian
     Dim tabel As DataTable
     Dim hargamodalbarang As Double
+    Dim hitnumber As Integer
     Dim harga, modalpembelian, ongkir, ppn, diskonpersen, diskonnominal, ppnpersen, ppnnominal, subtotalsummary, grandtotal, banyak As Double
     Dim satuan, jenis, supplier, kodepembelian As String
     Public isi As String
@@ -17,6 +18,7 @@ Public Class fpembelian
         Me.MdiParent = fmenu
         Call koneksii()
         'mulai
+        hitnumber = 0
         kodepembelian = currentnumber()
         Call inisialisasi(kodepembelian)
         With GridView1
@@ -78,7 +80,7 @@ Public Class fpembelian
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
@@ -92,13 +94,19 @@ Public Class fpembelian
             If dr.HasRows Then
                 dr.Read()
                 Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                Call inisialisasi(previousnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(previousnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
     Private Sub nextnumber(nextingnumber As String)
@@ -111,13 +119,19 @@ Public Class fpembelian
             If dr.HasRows Then
                 dr.Read()
                 Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                Call inisialisasi(nextingnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(nextingnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
     Sub previewpembelian(lihat As String)
