@@ -340,9 +340,9 @@ Public Class flaporanpembelian
             'End If
             'statPFD.ApplyCurrentValues(statPVs)
 
-            flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
-            flappenjualan.ShowDialog()
-            flappenjualan.WindowState = FormWindowState.Maximized
+            flappembelian.CrystalReportViewer1.ReportSource = rptrekap
+            flappembelian.ShowDialog()
+            flappembelian.WindowState = FormWindowState.Maximized
         Else
             MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
         End If

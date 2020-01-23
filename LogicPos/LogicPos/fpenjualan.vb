@@ -1370,7 +1370,9 @@ Public Class fpenjualan
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
         If e.Column.FieldName = "banyak" Then
             Try
+                'GridView1.SetRowCellValue(e.RowHandle, "harga_diskon", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value / 100 * GridView1.GetRowCellValue(e.RowHandle, "harga_satuan"))
                 GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga_diskon"))
+                GridView1.SetRowCellValue(e.RowHandle, "laba", (GridView1.GetRowCellValue(e.RowHandle, "harga_diskon") - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * e.Value)
             Catch ex As Exception
                 'error jika nulai qty=blank
                 GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
