@@ -25,6 +25,7 @@ Public Class fpenjualan
         Call koneksii()
         'Call printer()
         'Call cek_kas()
+        hitnumber = 0
         kodepenjualan = currentnumber()
         Call inisialisasi(kodepenjualan)
         With GridView1

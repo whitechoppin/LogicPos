@@ -341,7 +341,7 @@ Public Class flaporanpenjualan
 
             flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
             flappenjualan.ShowDialog()
-            flappenjualan.WindowState = FormWindowState.Maximized
+            'flappenjualan.WindowState = FormWindowState.Maximized
         Else
             MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
         End If
@@ -385,20 +385,17 @@ Public Class flaporanpenjualan
         Call tabel()
     End Sub
     Sub ExportToExcel()
-        'https://www.devexpress.com/Support/Center/Question/Details/Q430217
-        'https://documentation.devexpress.com/#WindowsForms/CustomDocument1874
-        'storing current layout
-        'GridView1.SaveLayoutToXml("C:\data\tempLayout.xml")
-        'For Each column As GridColumn In GridView1.Columns
-        'make all export columns visible
-        'column.Visible = True
-        'Next
-        Dim a As String = InputBox("Nama File", "Input Nama file ")
-        Dim b As String = "C:\data\" + a + ".xls"
-        GridView1.ExportToXls(b)
-        MsgBox("Data tersimpan di " + b, MsgBoxStyle.Information, "Success")
-        'restoring the layout, the layout file needs to be deleted manually
-        'GridView1.RestoreLayoutFromXml("C:\data\tempLayout.xml")
+
+        Dim filename As String = InputBox("Nama File", "Input Nama file ")
+        Dim pathdata As String = "C:\ExportLogicPos"
+        Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"
+
+        If (Not System.IO.Directory.Exists(pathdata)) Then
+            System.IO.Directory.CreateDirectory(pathdata)
+        End If
+
+        GridView1.ExportToXls(yourpath)
+        MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
     End Sub
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
 

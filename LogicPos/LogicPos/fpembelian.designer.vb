@@ -46,6 +46,7 @@ Partial Class fpembelian
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ritenumber = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -100,15 +101,14 @@ Partial Class fpembelian
         Me.txtdiskonnominal = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtppnnominal = New System.Windows.Forms.TextBox()
-        Me.ritenumber = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -351,6 +351,11 @@ Partial Class fpembelian
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
+        'ritenumber
+        '
+        Me.ritenumber.AutoHeight = False
+        Me.ritenumber.Name = "ritenumber"
+        '
         'GridColumn5
         '
         Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
@@ -454,7 +459,7 @@ Partial Class fpembelian
         Me.txtinformasi.Name = "txtinformasi"
         Me.txtinformasi.Size = New System.Drawing.Size(599, 71)
         Me.txtinformasi.TabIndex = 37
-        Me.txtinformasi.Text = "Fungsi Tombol" & Global.Microsoft.VisualBasic.ChrW(10) & "- F2 pada kolom Kode Item untuk membatalkan Transaksi"
+        Me.txtinformasi.Text = "Fungsi Tombol" & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'txtketerangan
         '
@@ -913,11 +918,6 @@ Partial Class fpembelian
         Me.txtppnnominal.Size = New System.Drawing.Size(148, 24)
         Me.txtppnnominal.TabIndex = 31
         '
-        'ritenumber
-        '
-        Me.ritenumber.AutoHeight = False
-        Me.ritenumber.Name = "ritenumber"
-        '
         'fpembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -955,6 +955,7 @@ Partial Class fpembelian
         Me.GroupBox1.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
@@ -962,7 +963,6 @@ Partial Class fpembelian
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
-        CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

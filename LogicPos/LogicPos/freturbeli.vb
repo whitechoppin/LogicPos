@@ -4,6 +4,7 @@ Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class freturbeli
     Public tabel1, tabel2 As DataTable
+    Dim hitnumber As Integer
     'variabel dalam penjualan
     Dim jenis, satuan, kodereturbeli As String
     Dim banyak As Double
@@ -19,7 +20,7 @@ Public Class freturbeli
         Call koneksii()
         'Call printer()
         'Call cek_kas()
-
+        hitnumber = 0
         kodereturbeli = currentnumber()
         Call inisialisasi(kodereturbeli)
 
@@ -96,7 +97,7 @@ Public Class freturbeli
 
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
-        sql = "SELECT kode_retur FROM tb_retur_pembelian WHERE date_created < (SELECT date_created FROM tb_retur_pembelian WHERE kode_retur = '" + previousnumber + "') ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT kode_retur FROM tb_retur_pembelian WHERE date_created < (SELECT date_created FROM tb_retur_pembelian WHERE kode_retur = '" + previousnumber + "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -104,8 +105,14 @@ Public Class freturbeli
             If dr.HasRows Then
                 dr.Read()
                 Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                Call inisialisasi(previousnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(previousnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
@@ -115,7 +122,7 @@ Public Class freturbeli
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT kode_retur FROM tb_retur_pembelian WHERE date_created > (SELECT date_created FROM tb_retur_pembelian WHERE kode_retur = '" + nextingnumber + "') ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT kode_retur FROM tb_retur_pembelian WHERE date_created > (SELECT date_created FROM tb_retur_pembelian WHERE kode_retur = '" + nextingnumber + "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -123,8 +130,14 @@ Public Class freturbeli
             If dr.HasRows Then
                 dr.Read()
                 Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                Call inisialisasi(nextingnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(nextingnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
