@@ -3,6 +3,7 @@ Imports DevExpress.Utils
 
 Public Class fbarangkeluar
     Public tabel As DataTable
+    Dim hitnumber As Integer
     'variabel dalam penjualan
     Public jenis, satuan, kodebarangkeluar, kodetransaksi As String
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
@@ -17,7 +18,7 @@ Public Class fbarangkeluar
 
     Private Sub fbarangkeluar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-
+        hitnumber = 0
         kodebarangkeluar = currentnumber()
         Call inisialisasi(kodebarangkeluar)
         With GridView1
@@ -77,7 +78,7 @@ Public Class fbarangkeluar
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
@@ -92,13 +93,19 @@ Public Class fbarangkeluar
             If dr.HasRows Then
                 dr.Read()
                 Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                Call inisialisasi(previousnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(previousnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
     Private Sub nextnumber(nextingnumber As String)
@@ -111,13 +118,19 @@ Public Class fbarangkeluar
             If dr.HasRows Then
                 dr.Read()
                 Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                Call inisialisasi(nextingnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(nextingnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
 

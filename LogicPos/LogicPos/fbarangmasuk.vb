@@ -2,6 +2,7 @@
 
 Public Class fbarangmasuk
     Dim tabel As DataTable
+    Dim hitnumber As Integer
     Dim harga, modalpembelian, ongkir, ppn, diskonpersen, diskonnominal, ppnpersen, ppnnominal, total1, total2, grandtotal, banyak As Double
     Dim satuan, jenis, supplier, kodebarangmasuk As String
     Public isi As String
@@ -15,6 +16,7 @@ Public Class fbarangmasuk
         Me.MdiParent = fmenu
         Call koneksii()
         'mulai
+        hitnumber = 0
         kodebarangmasuk = currentnumber()
         Call inisialisasi(kodebarangmasuk)
         With GridView1
@@ -76,7 +78,7 @@ Public Class fbarangmasuk
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
@@ -90,13 +92,19 @@ Public Class fbarangmasuk
             If dr.HasRows Then
                 dr.Read()
                 Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                Call inisialisasi(previousnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(previousnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
 
@@ -110,13 +118,19 @@ Public Class fbarangmasuk
             If dr.HasRows Then
                 dr.Read()
                 Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                Call inisialisasi(nextingnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(nextingnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
     Sub previewpembelian(lihat As String)
