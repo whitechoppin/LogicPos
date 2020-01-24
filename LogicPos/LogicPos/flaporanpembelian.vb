@@ -407,4 +407,52 @@ Public Class flaporanpembelian
         MsgBox("Export successfull!")
 
     End Sub
+
+    Private Sub btnperfaktur_Click(sender As Object, e As EventArgs) Handles btnperfaktur.Click
+        Dim rptrekap As ReportDocument
+        Dim awalPFDs As ParameterFieldDefinitions
+        Dim awalPFD As ParameterFieldDefinition
+        Dim awalPVs As New ParameterValues
+        Dim awalPDV As New ParameterDiscreteValue
+
+        Dim akhirPFDs As ParameterFieldDefinitions
+        Dim akhirPFD As ParameterFieldDefinition
+        Dim akhirPVs As New ParameterValues
+        Dim akhirPDV As New ParameterDiscreteValue
+
+        Dim crParameterFieldDefinitions As ParameterFieldDefinitions
+        Dim crParameterFieldDefinition As ParameterFieldDefinition
+        Dim crParameterValues As ParameterValues
+        Dim crParameterDiscreteValue As ParameterDiscreteValue
+
+        'sql = "SELECT * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day AND '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
+        sql = "select * from tb_pembelian where tgl_pembelian between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
+
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+
+        If dr.HasRows Then
+            rptrekap = New rptperfakturbeli
+
+            awalPDV.Value = DateTimePicker1.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
+            awalPFDs = rptrekap.DataDefinition.ParameterFields
+            awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
+            awalPVs.Clear()
+            awalPVs.Add(awalPDV)
+            awalPFD.ApplyCurrentValues(awalPVs)
+
+            akhirPDV.Value = DateTimePicker2.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
+            akhirPFDs = rptrekap.DataDefinition.ParameterFields
+            akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
+            akhirPVs.Clear()
+            akhirPVs.Add(akhirPDV)
+            akhirPFD.ApplyCurrentValues(akhirPVs)
+
+            flappembelian.CrystalReportViewer1.ReportSource = rptrekap
+            flappembelian.ShowDialog()
+            flappembelian.WindowState = FormWindowState.Maximized
+        Else
+            MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
+        End If
+    End Sub
 End Class

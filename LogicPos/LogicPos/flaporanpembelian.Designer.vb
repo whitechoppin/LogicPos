@@ -30,6 +30,7 @@ Partial Class flaporanpembelian
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btntabel = New System.Windows.Forms.Button()
+        Me.btnperfaktur = New System.Windows.Forms.Button()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -103,10 +104,11 @@ Partial Class flaporanpembelian
         '
         Me.GroupBox4.Controls.Add(Me.btnexcel)
         Me.GroupBox4.Controls.Add(Me.btntabel)
+        Me.GroupBox4.Controls.Add(Me.btnperfaktur)
         Me.GroupBox4.Controls.Add(Me.btnrekap)
         Me.GroupBox4.Location = New System.Drawing.Point(273, 56)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(188, 81)
+        Me.GroupBox4.Size = New System.Drawing.Size(273, 81)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
         '
@@ -127,6 +129,15 @@ Partial Class flaporanpembelian
         Me.btntabel.TabIndex = 17
         Me.btntabel.Text = "Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
+        '
+        'btnperfaktur
+        '
+        Me.btnperfaktur.Location = New System.Drawing.Point(175, 13)
+        Me.btnperfaktur.Name = "btnperfaktur"
+        Me.btnperfaktur.Size = New System.Drawing.Size(75, 60)
+        Me.btnperfaktur.TabIndex = 10
+        Me.btnperfaktur.Text = "Rekap Detail Faktur"
+        Me.btnperfaktur.UseVisualStyleBackColor = True
         '
         'GridControl1
         '
@@ -292,4 +303,5 @@ Partial Class flaporanpembelian
     Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents Label2 As Label
+    Friend WithEvents btnperfaktur As Button
 End Class
