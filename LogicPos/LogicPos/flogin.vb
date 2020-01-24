@@ -54,6 +54,8 @@ Public Class flogin
             End If
 
             Dim pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang As Integer
+            Dim lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar As Integer
+            Dim lap_pembelian, lap_penjualan, lap_utang, lap_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas As Integer
             pembelian = dr("pembelian")
             penjualan = dr("penjualan")
             retur_beli = dr("retur_beli")
@@ -90,29 +92,88 @@ Public Class flogin
                 fmenu.TransaksiMenu.DropDownItems.Item(6).Visible = True 'transfer barang
             End If
 
-            fmenu.AdministrasiMenu.DropDownItems.Item(0).Visible = True 'pelunasan utang
-            fmenu.AdministrasiMenu.DropDownItems.Item(1).Visible = True 'pelunasan piutang
-            fmenu.AdministrasiMenu.DropDownItems.Item(2).Visible = True 'kas masuk
-            fmenu.AdministrasiMenu.DropDownItems.Item(3).Visible = True 'kas keluar
-            fmenu.AdministrasiMenu.DropDownItems.Item(4).Visible = True 'transfer kas
+            lunas_utang = dr("lunas_utang")
+            lunas_piutang = dr("lunas_piutang")
+            transfer_kas = dr("transfer_kas")
+            akun_masuk = dr("akun_masuk")
+            akun_keluar = dr("akun_keluar")
 
-            fmenu.LaporanMenu.DropDownItems.Item(0).Visible = True 'lap penjualan
-            fmenu.LaporanMenu.DropDownItems.Item(1).Visible = True 'lap pembelian
-            fmenu.LaporanMenu.DropDownItems.Item(2).Visible = True 'lap utang
-            fmenu.LaporanMenu.DropDownItems.Item(3).Visible = True 'lap piutang
-            fmenu.LaporanMenu.DropDownItems.Item(4).Visible = True 'lap akun masuk
-            fmenu.LaporanMenu.DropDownItems.Item(5).Visible = True 'lap akun keluar
-            fmenu.LaporanMenu.DropDownItems.Item(6).Visible = True 'lap transfer kas
-            fmenu.LaporanMenu.DropDownItems.Item(7).Visible = True 'lap transfer brg
-            fmenu.LaporanMenu.DropDownItems.Item(8).Visible = True 'lap stok barang
-            fmenu.LaporanMenu.DropDownItems.Item(9).Visible = True 'lap transaksi kas 
+            If lunas_utang > 0 Then
+                fmenu.AdministrasiMenu.DropDownItems.Item(0).Visible = True 'pelunasan utang
+            End If
+
+            If lunas_piutang > 0 Then
+                fmenu.AdministrasiMenu.DropDownItems.Item(1).Visible = True 'pelunasan piutang
+            End If
+
+            If transfer_kas > 0 Then
+                fmenu.AdministrasiMenu.DropDownItems.Item(4).Visible = True 'transfer kas
+            End If
+
+            If akun_masuk > 0 Then
+                fmenu.AdministrasiMenu.DropDownItems.Item(2).Visible = True 'kas masuk
+            End If
+
+            If akun_keluar > 0 Then
+                fmenu.AdministrasiMenu.DropDownItems.Item(3).Visible = True 'kas keluar
+            End If
+
+            lap_pembelian = dr("lap_pemblian")
+            lap_penjualan = dr("lap_penjualan")
+            lap_utang = dr("lap_utang")
+            lap_piutang = dr("lap_piutang")
+            lap_stok_barang = dr("lap_stok_barang")
+            lap_akun_masuk = dr("lap_akun_masuk")
+            lap_akun_keluar = dr("lap_akun_keluar")
+            lap_transfer_kas = dr("lap_transfer_kas")
+            lap_transfer_barang = dr("lap_transfer_barang")
+            lap_transaksi_kas = dr("lap_transaksi_kas")
+
+            If lap_pembelian > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(1).Visible = True 'lap pembelian
+            End If
+
+            If lap_penjualan > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(0).Visible = True 'lap penjualan
+            End If
+
+            If lap_utang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(2).Visible = True 'lap utang
+            End If
+
+            If lap_piutang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(3).Visible = True 'lap piutang
+            End If
+
+            If lap_stok_barang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(8).Visible = True 'lap stok barang
+            End If
+
+            If lap_akun_masuk > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(4).Visible = True 'lap akun masuk
+            End If
+
+            If lap_akun_keluar > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(5).Visible = True 'lap akun keluar
+            End If
+
+            If lap_transfer_barang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(7).Visible = True 'lap transfer brg
+            End If
+
+            If lap_transaksi_kas > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(9).Visible = True 'lap transaksi kas 
+            End If
+
+            If lap_transaksi_kas > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(6).Visible = True 'lap transfer kas
+            End If
 
             fmenu.SettingMenu.DropDownItems.Item(0).Visible = True 'set printer
 
             Me.Hide()
                 fmenu.statususer.Text = txtusername.Text.ToUpper
                 fmenu.Show()
-
             End If
     End Sub
 
