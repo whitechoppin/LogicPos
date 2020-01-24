@@ -118,7 +118,7 @@ Public Class flogin
                 fmenu.AdministrasiMenu.DropDownItems.Item(3).Visible = True 'kas keluar
             End If
 
-            lap_pembelian = dr("lap_pemblian")
+            lap_pembelian = dr("lap_pembelian")
             lap_penjualan = dr("lap_penjualan")
             lap_utang = dr("lap_utang")
             lap_piutang = dr("lap_piutang")
