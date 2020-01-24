@@ -45,14 +45,11 @@ Partial Class flaporanpembelian
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
-        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -238,15 +235,6 @@ Partial Class flaporanpembelian
         Me.GridColumn12.Visible = True
         Me.GridColumn12.VisibleIndex = 11
         '
-        'FileSystemWatcher1
-        '
-        Me.FileSystemWatcher1.EnableRaisingEvents = True
-        Me.FileSystemWatcher1.SynchronizingObject = Me
-        '
-        'PrintDialog1
-        '
-        Me.PrintDialog1.UseEXDialog = True
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -274,7 +262,6 @@ Partial Class flaporanpembelian
         Me.GroupBox4.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -302,8 +289,6 @@ Partial Class flaporanpembelian
     Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnexcel As Button
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
-    Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents Label2 As Label
     Friend WithEvents btnperfaktur As Button
 End Class
