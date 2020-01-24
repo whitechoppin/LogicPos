@@ -34,6 +34,7 @@ Partial Class fmenu
         Me.DataKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PricelistGroupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator = New System.Windows.Forms.ToolStripSeparator()
+        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransaksiMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.PembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -85,7 +86,6 @@ Partial Class fmenu
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -155,6 +155,12 @@ Partial Class fmenu
         '
         Me.ToolStripSeparator.Name = "ToolStripSeparator"
         Me.ToolStripSeparator.Size = New System.Drawing.Size(150, 6)
+        '
+        'LogOutToolStripMenuItem
+        '
+        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
+        Me.LogOutToolStripMenuItem.Text = "&Log Out"
         '
         'ExitStripMenuItem
         '
@@ -327,7 +333,7 @@ Partial Class fmenu
         'PrinterToolStripMenuItem
         '
         Me.PrinterToolStripMenuItem.Name = "PrinterToolStripMenuItem"
-        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
+        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PrinterToolStripMenuItem.Text = "Printer"
         '
         'AboutMenu
@@ -495,12 +501,6 @@ Partial Class fmenu
         Me.GridColumn12.Name = "GridColumn12"
         Me.GridColumn12.Visible = True
         Me.GridColumn12.VisibleIndex = 11
-        '
-        'LogOutToolStripMenuItem
-        '
-        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
-        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
-        Me.LogOutToolStripMenuItem.Text = "&Log Out"
         '
         'fmenu
         '
