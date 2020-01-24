@@ -60,9 +60,10 @@ Partial Class flaporanpembelian
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker2)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 56)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(278, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(255, 81)
+        Me.GroupBox1.Size = New System.Drawing.Size(780, 56)
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Periode"
@@ -71,31 +72,31 @@ Partial Class flaporanpembelian
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(212, 35)
+        Me.Label1.Location = New System.Drawing.Point(360, 23)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(30, 16)
+        Me.Label1.Size = New System.Drawing.Size(119, 16)
         Me.Label1.TabIndex = 7
-        Me.Label1.Text = "s/d"
+        Me.Label1.Text = "Sampai Dengan"
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(6, 47)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(489, 19)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(275, 24)
         Me.DateTimePicker2.TabIndex = 3
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(6, 19)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(76, 19)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(275, 24)
         Me.DateTimePicker1.TabIndex = 2
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(13, 13)
+        Me.btnrekap.Location = New System.Drawing.Point(210, 23)
         Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(75, 27)
+        Me.btnrekap.Size = New System.Drawing.Size(180, 50)
         Me.btnrekap.TabIndex = 10
         Me.btnrekap.Text = "Rekap"
         Me.btnrekap.UseVisualStyleBackColor = True
@@ -106,45 +107,46 @@ Partial Class flaporanpembelian
         Me.GroupBox4.Controls.Add(Me.btntabel)
         Me.GroupBox4.Controls.Add(Me.btnperfaktur)
         Me.GroupBox4.Controls.Add(Me.btnrekap)
-        Me.GroupBox4.Location = New System.Drawing.Point(273, 56)
+        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox4.Location = New System.Drawing.Point(14, 74)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(273, 81)
+        Me.GroupBox4.Size = New System.Drawing.Size(1044, 83)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(13, 46)
+        Me.btnexcel.Location = New System.Drawing.Point(829, 23)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(156, 27)
+        Me.btnexcel.Size = New System.Drawing.Size(200, 50)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(94, 12)
+        Me.btntabel.Location = New System.Drawing.Point(24, 23)
         Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(75, 27)
+        Me.btntabel.Size = New System.Drawing.Size(180, 50)
         Me.btntabel.TabIndex = 17
         Me.btntabel.Text = "Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
         '
         'btnperfaktur
         '
-        Me.btnperfaktur.Location = New System.Drawing.Point(175, 13)
+        Me.btnperfaktur.Location = New System.Drawing.Point(396, 23)
         Me.btnperfaktur.Name = "btnperfaktur"
-        Me.btnperfaktur.Size = New System.Drawing.Size(75, 60)
+        Me.btnperfaktur.Size = New System.Drawing.Size(180, 50)
         Me.btnperfaktur.TabIndex = 10
         Me.btnperfaktur.Text = "Rekap Detail Faktur"
         Me.btnperfaktur.UseVisualStyleBackColor = True
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 143)
+        Me.GridControl1.Location = New System.Drawing.Point(14, 163)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(994, 332)
+        Me.GridControl1.Size = New System.Drawing.Size(1044, 486)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -248,10 +250,10 @@ Partial Class flaporanpembelian
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial Black", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 8)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(8, 25)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(353, 45)
+        Me.Label2.Size = New System.Drawing.Size(264, 31)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Pembelian"
         '
@@ -260,7 +262,7 @@ Partial Class flaporanpembelian
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1018, 661)
+        Me.ClientSize = New System.Drawing.Size(1070, 661)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox4)
