@@ -95,7 +95,7 @@ Partial Class flaporanpembelian
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(180, 50)
         Me.btnrekap.TabIndex = 10
-        Me.btnrekap.Text = "Rekap"
+        Me.btnrekap.Text = "Rekap Faktur"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
         'GroupBox4
@@ -126,7 +126,7 @@ Partial Class flaporanpembelian
         Me.btntabel.Name = "btntabel"
         Me.btntabel.Size = New System.Drawing.Size(180, 50)
         Me.btntabel.TabIndex = 17
-        Me.btntabel.Text = "Tabel"
+        Me.btntabel.Text = "Rekap Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
         '
         'btnperfaktur
@@ -256,6 +256,7 @@ Partial Class flaporanpembelian
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "flaporanpembelian"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Laporan Pembelian"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

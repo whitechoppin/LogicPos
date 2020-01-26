@@ -256,6 +256,7 @@ Partial Class flaporanpenjualan
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "flaporanpenjualan"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Laporan Penjualan"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

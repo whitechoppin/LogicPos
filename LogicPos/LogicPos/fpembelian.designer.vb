@@ -706,16 +706,16 @@ Partial Class fpembelian
         Me.cmbbayar.BackColor = System.Drawing.SystemColors.Window
         Me.cmbbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cmbbayar.FormattingEnabled = True
-        Me.cmbbayar.Location = New System.Drawing.Point(934, 639)
+        Me.cmbbayar.Location = New System.Drawing.Point(753, 640)
         Me.cmbbayar.Name = "cmbbayar"
-        Me.cmbbayar.Size = New System.Drawing.Size(198, 26)
+        Me.cmbbayar.Size = New System.Drawing.Size(379, 26)
         Me.cmbbayar.TabIndex = 35
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label11.Location = New System.Drawing.Point(808, 643)
+        Me.Label11.Location = New System.Drawing.Point(627, 644)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(113, 18)
         Me.Label11.TabIndex = 26

@@ -131,17 +131,25 @@ Public Class flaporanpembelian
         Dim pathdata As String = "C:\ExportLogicPos"
         Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"
 
-        If (Not System.IO.Directory.Exists(pathdata)) Then
-            System.IO.Directory.CreateDirectory(pathdata)
-        End If
+        If filename <> "" Then
+            If (Not System.IO.Directory.Exists(pathdata)) Then
+                System.IO.Directory.CreateDirectory(pathdata)
+            End If
 
-        GridView1.ExportToXls(yourpath)
-        MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
+            GridView1.ExportToXls(yourpath)
+            MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
+            ' Do something
+        ElseIf DialogResult.Cancel Then
+            MsgBox("You've canceled")
+        End If
     End Sub
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
 
-        ExportToExcel()
-        MsgBox("Export successfull!")
+        If GridView1.DataRowCount > 0 Then
+            ExportToExcel()
+        Else
+            MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
+        End If
 
     End Sub
 

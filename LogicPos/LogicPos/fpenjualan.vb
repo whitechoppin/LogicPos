@@ -985,7 +985,7 @@ Public Class fpenjualan
         'sumObject = Tabel1.Compute("Sum(total)", String.Empty)
         'Label8.Text = sumObject
 
-        tinggi += 15
+        tinggi += 10
         e.Graphics.DrawString("SJT", New System.Drawing.Font("Arial", 16), Brushes.Black, 100, tinggi)
 
         tinggi += 25
