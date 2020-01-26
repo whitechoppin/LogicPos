@@ -14,6 +14,8 @@ Public Class fpembelian
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
     Dim viewtglpembelian, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir As Double
+    Dim rpt_faktur As New ReportDocument
+
     Private Sub fpembelian_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
@@ -858,14 +860,6 @@ Public Class fpembelian
                     End If
                 Next
 
-                kodepembayaran = cmbbayar.Text
-
-                If kodepembayaran IsNot "" Then
-                    sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_pembelian, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepembelian & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepembelian & "','" & 0 & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
-                    cmmd = New OdbcCommand(sql, cnn)
-                    dr = cmmd.ExecuteReader()
-                End If
-
                 MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
 
                 Call inisialisasi(kodepembelian)
@@ -940,7 +934,7 @@ Public Class fpembelian
         Next
 
         Call koneksii()
-        sql = "select * from tb_printer where nomor='2'"
+        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
@@ -950,9 +944,8 @@ Public Class fpembelian
             faktur = ""
         End If
 
-        Dim rpt As ReportDocument
-        rpt = New fakturpembelian
-        rpt.SetDataSource(tabel_faktur)
+        rpt_faktur = New fakturpembelian
+        rpt_faktur.SetDataSource(tabel_faktur)
         'rpt.SetParameterValue("total", total2)
         'rpt.SetParameterValue("nofaktur", autonumber)
         'rpt.SetParameterValue("kasir", fmenu.statususer.Text)
@@ -960,11 +953,47 @@ Public Class fpembelian
 
         'fakturjual.CrystalReportViewer1.ReportSource = rpt
         'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
-        rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
+        rpt_faktur.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
         'rpt.PrintOptions.PrinterName = "58 Printer"
-        rpt.PrintToPrinter(1, False, 0, 0)
+        rpt_faktur.PrintToPrinter(1, False, 0, 0)
         'fakturjual.ShowDialog()
         'fakturjual.Dispose()
+    End Sub
+
+    Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
+        Dim faktur As String
+        Call koneksii()
+        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
+
+        Else
+            faktur = ""
+        End If
+
+        Try
+            Dim ObjPrinterSetting As New System.Drawing.Printing.PrinterSettings
+            Dim PkSize As New System.Drawing.Printing.PaperSize
+            ObjPrinterSetting.PrinterName = faktur
+            For i As Integer = 0 To ObjPrinterSetting.PaperSizes.Count - 1
+                If ObjPrinterSetting.PaperSizes.Item(i).PaperName = mPaperSize.Trim Then
+                    PkSize = ObjPrinterSetting.PaperSizes.Item(i)
+                    Exit For
+                End If
+            Next
+
+            If PkSize IsNot Nothing Then
+                Dim myAppPrintOptions As CrystalDecisions.CrystalReports.Engine.PrintOptions = rpt_faktur.PrintOptions
+                myAppPrintOptions.PrinterName = faktur
+                myAppPrintOptions.PaperSize = CType(PkSize.RawKind, CrystalDecisions.Shared.PaperSize)
+                rpt_faktur.PrintOptions.PaperOrientation = IIf(PaperOrientation = 1, CrystalDecisions.Shared.PaperOrientation.Portrait, CrystalDecisions.Shared.PaperOrientation.Landscape)
+            End If
+            PkSize = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
         Call prevnumber(txtnonota.Text)
@@ -1187,12 +1216,6 @@ Public Class fpembelian
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
-        'hapus panjar
-        sql = "DELETE FROM tb_transaksi_kas where kode_pembelian = '" & nomornota & "' and jenis_kas ='AWAL'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        '========================================================================================
-
         'loop isi pembelian detail
 
         If GridView1.RowCount = 0 Then
@@ -1246,14 +1269,6 @@ Public Class fpembelian
                     dr = cmmd.ExecuteReader()
                 End If
             Next
-
-            kodepembayaran = cmbbayar.Text
-
-            If kodepembayaran IsNot "" Then
-                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_pembelian, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepembelian & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepembelian & "','" & 0 & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-            End If
 
             MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(nomornota)

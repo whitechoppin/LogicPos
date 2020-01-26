@@ -279,13 +279,13 @@ Partial Class fmenu
         '
         Me.LUtangToolStripMenuItem.Name = "LUtangToolStripMenuItem"
         Me.LUtangToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.LUtangToolStripMenuItem.Text = "Laporan Utang"
+        Me.LUtangToolStripMenuItem.Text = "Laporan Lunas Utang"
         '
         'LPiutangToolStripMenuItem
         '
         Me.LPiutangToolStripMenuItem.Name = "LPiutangToolStripMenuItem"
         Me.LPiutangToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.LPiutangToolStripMenuItem.Text = "Laporan Piutang"
+        Me.LPiutangToolStripMenuItem.Text = "Laporan Lunas Piutang"
         '
         'LAkunMasukToolStripMenuItem
         '
@@ -333,7 +333,7 @@ Partial Class fmenu
         'PrinterToolStripMenuItem
         '
         Me.PrinterToolStripMenuItem.Name = "PrinterToolStripMenuItem"
-        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.PrinterToolStripMenuItem.Text = "Printer"
         '
         'AboutMenu

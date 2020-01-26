@@ -953,7 +953,7 @@ Public Class fpenjualan
         Next
 
         Call koneksii()
-        sql = "select * from tb_printer where nomor='1'"
+        sql = "SELECT * FROM tb_printer WHERE nomor='1'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
@@ -965,26 +965,12 @@ Public Class fpenjualan
         Dim rpt As ReportDocument
         rpt = New Struk_Penjualan
         rpt.SetDataSource(tabel_struk)
-        'rpt.SetParameterValue("total", total2)
         rpt.SetParameterValue("nofaktur", txtnonota.Text)
         rpt.SetParameterValue("kasir", fmenu.statususer.Text)
         rpt.SetParameterValue("customer", txtcustomer.Text)
         rpt.SetParameterValue("tgl", dtpenjualan.Text)
-
-        'If cash = True Then
-        '    rpt.SetParameterValue("bayar", "CASH")
-        'Else
-        '    rpt.SetParameterValue("bayar", "CREDIT")
-        'End If
-
-        'fakturjual.CrystalReportViewer1.ReportSource = rpt
-        'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
-        'rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
-        'rpt.PrintOptions.PrinterName = "58 Printer"
         rpt.PrintOptions.PrinterName = struk
         rpt.PrintToPrinter(1, False, 0, 0)
-        'fakturjual.ShowDialog()
-        'fakturjual.Dispose()
     End Sub
     Public Sub PrintTransaksi()
         Tinggi = 0
@@ -1092,7 +1078,7 @@ Public Class fpenjualan
             tabel_faktur.Rows.Add(baris)
         Next
         Call koneksii()
-        sql = "select * from tb_printer where nomor='2'"
+        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
@@ -1104,27 +1090,24 @@ Public Class fpenjualan
 
         rpt_faktur = New fakturpenjualan
         rpt_faktur.SetDataSource(tabel_faktur)
-        'rpt.SetParameterValue("total", total2)
-        rpt_faktur.SetParameterValue("nofaktur", autonumber)
+
+        rpt_faktur.SetParameterValue("nofaktur", kodepenjualan)
         rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
         rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
         rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
-        rpt_faktur.SetParameterValue("bayar", txtbayar.Text)
-        rpt_faktur.SetParameterValue("sisa", txtsisa.Text)
+        rpt_faktur.SetParameterValue("bayar", bayar)
+        rpt_faktur.SetParameterValue("sisa", sisa)
         rpt_faktur.SetParameterValue("alamat", txtalamat.Text)
-        'fakturjual.CrystalReportViewer1.ReportSource = rpt
-        'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
-        'rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
-        'rpt_faktur.PrintOptions.PrinterName = faktur
+        rpt_faktur.SetParameterValue("diskon", diskonnominal)
+        rpt_faktur.SetParameterValue("grandtotal", grandtotal)
+
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
-        'fakturjual.ShowDialog()
-        'fakturjual.Dispose()
     End Sub
     Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
         Dim faktur As String
         Call koneksii()
-        sql = "select * from tb_printer where nomor='2'"
+        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then

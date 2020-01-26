@@ -539,12 +539,12 @@ Partial Class fpenjualan
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(886, 584)
+        Me.Label13.Location = New System.Drawing.Point(842, 580)
         Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(41, 18)
+        Me.Label13.Size = New System.Drawing.Size(86, 18)
         Me.Label13.TabIndex = 37
-        Me.Label13.Text = "Total"
+        Me.Label13.Text = "Grand Total"
         '
         'rbfaktur
         '
