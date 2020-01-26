@@ -1026,8 +1026,26 @@ Public Class fpenjualan
         tinggi += 20
         e.Graphics.DrawString("_________________________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 2, tinggi)
 
+        If cbdiskon.Checked = True Then
+            tinggi += 20
+            e.Graphics.DrawString("Diskon : ", New System.Drawing.Font("Verdana", 8), Brushes.Black, 100, tinggi)
+            e.Graphics.DrawString(FormatNumber(txtdiskonnominal.Text, 0), New System.Drawing.Font("Verdana", 8), Brushes.Black, 160, tinggi)
+        End If
+
+        If cbppn.Checked = True Then
+            tinggi += 20
+            e.Graphics.DrawString("PPN : ", New System.Drawing.Font("Verdana", 8), Brushes.Black, 100, tinggi)
+            e.Graphics.DrawString(FormatNumber(txtppnnominal.Text, 0), New System.Drawing.Font("Verdana", 8), Brushes.Black, 160, tinggi)
+        End If
+
+        If cbongkir.Checked = True Then
+            tinggi += 20
+            e.Graphics.DrawString("Ongkir : ", New System.Drawing.Font("Verdana", 8), Brushes.Black, 100, tinggi)
+            e.Graphics.DrawString(FormatNumber(txtongkir.Text, 0), New System.Drawing.Font("Verdana", 8), Brushes.Black, 160, tinggi)
+        End If
+
         tinggi += 20
-        e.Graphics.DrawString("Total ", New System.Drawing.Font("Verdana", 8), Brushes.Black, 100, tinggi)
+        e.Graphics.DrawString("Total : ", New System.Drawing.Font("Verdana", 8), Brushes.Black, 100, tinggi)
         e.Graphics.DrawString(FormatNumber(txttotal.Text, 0), New System.Drawing.Font("Verdana", 8), Brushes.Black, 160, tinggi)
 
         tinggi += 30
