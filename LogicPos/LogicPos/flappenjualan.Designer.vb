@@ -33,7 +33,7 @@ Partial Class flappenjualan
         Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(691, 261)
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(984, 461)
         Me.CrystalReportViewer1.TabIndex = 0
         Me.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
@@ -41,11 +41,11 @@ Partial Class flappenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(691, 261)
+        Me.ClientSize = New System.Drawing.Size(984, 461)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Name = "flappenjualan"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Laporan Penjualan"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub
