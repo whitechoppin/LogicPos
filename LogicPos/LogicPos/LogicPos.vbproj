@@ -119,6 +119,18 @@
       <DependentUpon>flaporantransferkas.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fjatuhtempopembelian.Designer.vb">
+      <DependentUpon>fjatuhtempopembelian.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fjatuhtempopembelian.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fjatuhtempopenjualan.Designer.vb">
+      <DependentUpon>fjatuhtempopenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fjatuhtempopenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporantransferkas.vb">
       <SubType>Form</SubType>
     </Compile>
