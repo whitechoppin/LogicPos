@@ -1139,6 +1139,7 @@ Public Class fpenjualan
         rpt_faktur.SetParameterValue("ppn", ppnnominal)
         rpt_faktur.SetParameterValue("ongkir", ongkir)
         rpt_faktur.SetParameterValue("tanggal", dtpenjualan.Text)
+        rpt_faktur.SetParameterValue("subtotal", totalbelanja)
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
