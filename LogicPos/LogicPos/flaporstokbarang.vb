@@ -1,4 +1,6 @@
 ﻿Imports System.Data.Odbc
+Imports CrystalDecisions.CrystalReports.Engine
+
 Public Class flaporstokbarang
     Dim pilih As String
     Dim kode As String
@@ -76,4 +78,39 @@ Public Class flaporstokbarang
         Call ambil_gbr()
     End Sub
 
- End Class
+    Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
+        If GridView1.DataRowCount > 0 Then
+            ExportToExcel()
+        Else
+            MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
+        End If
+    End Sub
+    Sub ExportToExcel()
+
+        Dim filename As String = InputBox("Nama File", "Input Nama file ")
+        Dim pathdata As String = "C:\ExportLogicPos"
+        Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"
+
+        If filename <> "" Then
+            If (Not System.IO.Directory.Exists(pathdata)) Then
+                System.IO.Directory.CreateDirectory(pathdata)
+            End If
+
+            GridView1.ExportToXls(yourpath)
+            MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
+            ' Do something
+        ElseIf DialogResult.Cancel Then
+            MsgBox("You've canceled")
+        End If
+    End Sub
+
+    Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
+        Dim rptstok As ReportDocument
+        rptstok = New rptlaporstok
+
+        flappembelian.CrystalReportViewer1.ReportSource = rptstok
+        flappembelian.Text = "Laporan Stok Barang"
+        flappembelian.ShowDialog()
+        flappembelian.WindowState = FormWindowState.Maximized
+    End Sub
+End Class

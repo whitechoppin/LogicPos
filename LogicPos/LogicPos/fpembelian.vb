@@ -954,6 +954,8 @@ Public Class fpembelian
         rpt_faktur.SetParameterValue("ppn", ppnnominal)
         rpt_faktur.SetParameterValue("ongkir", ongkir)
         rpt_faktur.SetParameterValue("tanggal", dtpembelian.Text)
+        rpt_faktur.SetParameterValue("supplier", txtsupplier.Text)
+        rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
         'rpt.SetParameterValue("kasir", fmenu.statususer.Text)
         'rpt.SetParameterValue("customer", txtcustomer.Text)
 

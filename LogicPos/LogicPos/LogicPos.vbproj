@@ -201,6 +201,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mform.vb" />
+    <Compile Include="rptlaporstok.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptlaporstok.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptperfakturbeli.vb">
       <DependentUpon>rptperfakturbeli.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -561,6 +567,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ftransferkas.resx">
       <DependentUpon>ftransferkas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptlaporstok.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptlaporstok.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptperfakturbeli.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
