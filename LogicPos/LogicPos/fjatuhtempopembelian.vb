@@ -2,6 +2,8 @@
 
 Public Class fjatuhtempopembelian
     Private Sub fjatuhtempopembelian_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.MdiParent = fmenu
+        Call koneksii()
         Call tabel_pembelian()
     End Sub
 
@@ -27,51 +29,15 @@ Public Class fjatuhtempopembelian
         GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn5.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn6.Caption = "Satuan"
-        GridColumn6.FieldName = "satuan_barang"
-        GridColumn6.Visible = False
-
-        'GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        'GridColumn6.DisplayFormat.FormatString = "##,##0"
-
-        GridColumn7.Caption = "Harga Jual"
-        GridColumn7.FieldName = "harga_jual"
-        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn7.DisplayFormat.FormatString = "##,##0"
-        GridColumn7.Visible = False
-
-        GridColumn8.Caption = "Subtotal"
-        GridColumn8.FieldName = "subtotal"
-        GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn8.DisplayFormat.FormatString = "##,##0"
-        GridColumn8.Visible = False
-
-        GridColumn9.Caption = "Laba"
-        GridColumn9.FieldName = "keuntungan"
-        GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn9.DisplayFormat.FormatString = "##,##0"
-        GridColumn9.Visible = False
-
-        'GridColumn10.Caption = "Idbrg"
-        'GridColumn10.FieldName = "idbarang"
-        GridColumn10.Visible = False
-        GridColumn11.Caption = "Kasir"
-        GridColumn11.FieldName = "kode_user"
-        GridColumn11.Visible = False
-
-        GridColumn12.Caption = "Metode Bayar"
-        GridColumn12.FieldName = "metode_pembayaran"
-        GridColumn12.Visible = False
-
-        '        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        '       GridColumn7.DisplayFormat.FormatString = "##,##0"
-
-        GridControl1.Visible = True
+        GridColumn6.Caption = "Pembayaran Ke"
+        GridColumn6.FieldName = "pembayaran_pembelian"
 
     End Sub
     Sub tabel_pembelian()
+        Call koneksii()
+
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_pembelian JOIN tb_supplier ON tb_supplier.kode_supplier = tb_pembelian.kode_supplier WHERE tb_pembelian.lunas_pembelian = 0 AND tb_pembelian.tgl_jatuhtempo_pembelian = now() "
+            sql = "SELECT * FROM tb_pembelian JOIN tb_supplier ON tb_supplier.kode_supplier = tb_pembelian.kode_supplier WHERE tb_pembelian.lunas_pembelian = 0 AND tb_pembelian.tgl_jatuhtempo_pembelian < now()"
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet

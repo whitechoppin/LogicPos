@@ -8,10 +8,6 @@ Public Class fmenu
     Private Sub main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         statustgl.Text = Now.ToLongDateString
         Timer.Start()
-        'frmlogin.show()
-        'frmlogin.mdiparent=me
-        'Call koneksii()
-        'statususer.Text = flogin.
 
     End Sub
 
@@ -109,11 +105,6 @@ Public Class fmenu
         flaporanutang.Show()
     End Sub
 
-    Private Sub fmenu_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
-        'Label2.Location = New System.Drawing.Point(Me.Size.Width - Label2.Size.Width - 20, 35)
-        'GridControl1.Location = New System.Drawing.Point(Me.Size.Width - GridControl1.Size.Width - 20, 70)
-    End Sub
-
     Private Sub LPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LPiutangToolStripMenuItem.Click
         flaporanpiutang.Show()
     End Sub
@@ -135,7 +126,7 @@ Public Class fmenu
     End Sub
 
     Private Sub LTransferBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferBarangToolStripMenuItem.Click
-
+        ftransferbarang.Show()
     End Sub
 
     Private Sub LogOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOutToolStripMenuItem.Click
@@ -143,5 +134,13 @@ Public Class fmenu
         flogin.Show()
         flogin.txtusername.Text = ""
         flogin.txtpassword.Text = ""
+    End Sub
+
+    Private Sub JatuhTempoPembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JatuhTempoPembelianToolStripMenuItem.Click
+        fjatuhtempopembelian.Show()
+    End Sub
+
+    Private Sub JatuhTempoPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JatuhTempoPenjualanToolStripMenuItem.Click
+        fjatuhtempopenjualan.Show()
     End Sub
 End Class
