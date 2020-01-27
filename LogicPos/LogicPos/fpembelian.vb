@@ -947,7 +947,13 @@ Public Class fpembelian
         rpt_faktur = New fakturpembelian
         rpt_faktur.SetDataSource(tabel_faktur)
         'rpt.SetParameterValue("total", total2)
-        'rpt.SetParameterValue("nofaktur", autonumber)
+        rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
+        rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
+        rpt_faktur.SetParameterValue("diskon", diskonnominal)
+        rpt_faktur.SetParameterValue("grandtotal", grandtotal)
+        rpt_faktur.SetParameterValue("ppn", ppnnominal)
+        rpt_faktur.SetParameterValue("ongkir", ongkir)
+        rpt_faktur.SetParameterValue("tanggal", dtpembelian.Text)
         'rpt.SetParameterValue("kasir", fmenu.statususer.Text)
         'rpt.SetParameterValue("customer", txtcustomer.Text)
 
