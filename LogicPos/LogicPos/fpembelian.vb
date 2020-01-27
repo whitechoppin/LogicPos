@@ -953,8 +953,9 @@ Public Class fpembelian
 
         'fakturjual.CrystalReportViewer1.ReportSource = rpt
         'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
-        rpt_faktur.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
+        'rpt_faktur.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
         'rpt.PrintOptions.PrinterName = "58 Printer"
+        SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
         'fakturjual.ShowDialog()
         'fakturjual.Dispose()
