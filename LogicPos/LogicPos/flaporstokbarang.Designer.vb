@@ -135,6 +135,7 @@ Partial Class flaporstokbarang
         Me.GroupBox1.Size = New System.Drawing.Size(282, 318)
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Visible = False
         '
         'Label3
         '

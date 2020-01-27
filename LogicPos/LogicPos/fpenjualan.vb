@@ -975,6 +975,7 @@ Public Class fpenjualan
     Public Sub PrintTransaksi()
         Tinggi = 0
         With Me.PrintDocument1
+            .PrinterSettings.PrinterName =
             .PrinterSettings.DefaultPageSettings.Landscape = False
             .Print()
         End With

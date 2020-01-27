@@ -6,6 +6,12 @@ Public Class flaporstokbarang
     Private Sub flaporbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call tabel()
+        With GridView1
+            'agar muncul footer untuk sum/avg/count
+            .OptionsView.ShowFooter = True
+            'buat sum harga
+            .Columns("jumlah_stok").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "jumlah_stok", "{0:n0}")
+        End With
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"
@@ -69,4 +75,5 @@ Public Class flaporstokbarang
     Private Sub GridControl1_KeyUp(sender As Object, e As KeyEventArgs) Handles GridControl1.KeyUp
         Call ambil_gbr()
     End Sub
-End Class
+
+ End Class
