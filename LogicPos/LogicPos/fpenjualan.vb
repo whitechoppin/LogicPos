@@ -973,9 +973,20 @@ Public Class fpenjualan
         rpt.PrintToPrinter(1, False, 0, 0)
     End Sub
     Public Sub PrintTransaksi()
-        Tinggi = 0
+        Dim struk As String
+        Call koneksii()
+        sql = "SELECT * FROM tb_printer WHERE nomor='1'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            struk = dr("nama_printer")
+
+        Else
+            struk = ""
+        End If
+        tinggi = 0
         With Me.PrintDocument1
-            .PrinterSettings.PrinterName =
+            .PrinterSettings.PrinterName = struk
             .PrinterSettings.DefaultPageSettings.Landscape = False
             .Print()
         End With
