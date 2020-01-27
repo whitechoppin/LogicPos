@@ -505,6 +505,12 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpenjualan.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="fjatuhtempopembelian.resx">
+      <DependentUpon>fjatuhtempopembelian.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fjatuhtempopenjualan.resx">
+      <DependentUpon>fjatuhtempopenjualan.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fkaskeluar.resx">
       <DependentUpon>fkaskeluar.vb</DependentUpon>
     </EmbeddedResource>

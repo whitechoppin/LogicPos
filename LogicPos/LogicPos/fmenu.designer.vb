@@ -71,25 +71,10 @@ Partial Class fmenu
         Me.statusjam = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.JatuhTempoPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.JatuhTempoPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuUtama
@@ -325,7 +310,7 @@ Partial Class fmenu
         '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrinterToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
@@ -333,7 +318,7 @@ Partial Class fmenu
         'PrinterToolStripMenuItem
         '
         Me.PrinterToolStripMenuItem.Name = "PrinterToolStripMenuItem"
-        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
+        Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.PrinterToolStripMenuItem.Text = "Printer"
         '
         'AboutMenu
@@ -392,115 +377,17 @@ Partial Class fmenu
         '
         Me.Timer.Interval = 1000
         '
-        'Label2
+        'JatuhTempoPembelianToolStripMenuItem
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(556, 35)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(482, 31)
-        Me.Label2.TabIndex = 19
-        Me.Label2.Text = "List Pembelian Jatuh Tempo Hari ini"
-        Me.Label2.Visible = False
+        Me.JatuhTempoPembelianToolStripMenuItem.Name = "JatuhTempoPembelianToolStripMenuItem"
+        Me.JatuhTempoPembelianToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.JatuhTempoPembelianToolStripMenuItem.Text = "Jatuh Tempo Pembelian"
         '
-        'GridControl1
+        'JatuhTempoPenjualanToolStripMenuItem
         '
-        Me.GridControl1.Location = New System.Drawing.Point(556, 69)
-        Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(482, 263)
-        Me.GridControl1.TabIndex = 18
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        Me.GridControl1.Visible = False
-        '
-        'GridView1
-        '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12})
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
-        '
-        'GridColumn1
-        '
-        Me.GridColumn1.Name = "GridColumn1"
-        Me.GridColumn1.OptionsColumn.AllowEdit = False
-        Me.GridColumn1.Visible = True
-        Me.GridColumn1.VisibleIndex = 0
-        '
-        'GridColumn2
-        '
-        Me.GridColumn2.Name = "GridColumn2"
-        Me.GridColumn2.OptionsColumn.AllowEdit = False
-        Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 1
-        '
-        'GridColumn3
-        '
-        Me.GridColumn3.Name = "GridColumn3"
-        Me.GridColumn3.OptionsColumn.AllowEdit = False
-        Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 2
-        '
-        'GridColumn4
-        '
-        Me.GridColumn4.Name = "GridColumn4"
-        Me.GridColumn4.OptionsColumn.AllowEdit = False
-        Me.GridColumn4.Visible = True
-        Me.GridColumn4.VisibleIndex = 3
-        '
-        'GridColumn5
-        '
-        Me.GridColumn5.Name = "GridColumn5"
-        Me.GridColumn5.OptionsColumn.AllowEdit = False
-        Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 4
-        '
-        'GridColumn6
-        '
-        Me.GridColumn6.Name = "GridColumn6"
-        Me.GridColumn6.OptionsColumn.AllowEdit = False
-        Me.GridColumn6.Visible = True
-        Me.GridColumn6.VisibleIndex = 5
-        '
-        'GridColumn7
-        '
-        Me.GridColumn7.Name = "GridColumn7"
-        Me.GridColumn7.OptionsColumn.AllowEdit = False
-        Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 7
-        '
-        'GridColumn8
-        '
-        Me.GridColumn8.Name = "GridColumn8"
-        Me.GridColumn8.OptionsColumn.AllowEdit = False
-        Me.GridColumn8.Visible = True
-        Me.GridColumn8.VisibleIndex = 8
-        '
-        'GridColumn9
-        '
-        Me.GridColumn9.Name = "GridColumn9"
-        Me.GridColumn9.OptionsColumn.AllowEdit = False
-        Me.GridColumn9.Visible = True
-        Me.GridColumn9.VisibleIndex = 9
-        '
-        'GridColumn10
-        '
-        Me.GridColumn10.Name = "GridColumn10"
-        Me.GridColumn10.OptionsColumn.AllowEdit = False
-        Me.GridColumn10.Visible = True
-        Me.GridColumn10.VisibleIndex = 10
-        '
-        'GridColumn11
-        '
-        Me.GridColumn11.Name = "GridColumn11"
-        Me.GridColumn11.Visible = True
-        Me.GridColumn11.VisibleIndex = 6
-        '
-        'GridColumn12
-        '
-        Me.GridColumn12.Name = "GridColumn12"
-        Me.GridColumn12.Visible = True
-        Me.GridColumn12.VisibleIndex = 11
+        Me.JatuhTempoPenjualanToolStripMenuItem.Name = "JatuhTempoPenjualanToolStripMenuItem"
+        Me.JatuhTempoPenjualanToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.JatuhTempoPenjualanToolStripMenuItem.Text = "Jatuh Tempo Penjualan"
         '
         'fmenu
         '
@@ -508,8 +395,6 @@ Partial Class fmenu
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(1050, 603)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.MenuUtama)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -523,8 +408,6 @@ Partial Class fmenu
         Me.MenuUtama.PerformLayout()
         Me.StatusStrip.ResumeLayout(False)
         Me.StatusStrip.PerformLayout()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -574,21 +457,8 @@ Partial Class fmenu
     Friend WithEvents AboutMenu As ToolStripMenuItem
     Friend WithEvents LogicHouseToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TokoSejatiToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Label2 As Label
-    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents LaporanTransaksiKasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LogOutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents JatuhTempoPembelianToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents JatuhTempoPenjualanToolStripMenuItem As ToolStripMenuItem
 End Class
