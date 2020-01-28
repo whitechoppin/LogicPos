@@ -1,4 +1,5 @@
 ﻿Imports System.Data.Odbc
+Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.Utils
 Imports DevExpress.XtraGrid.Views.Grid
 
@@ -8,7 +9,7 @@ Public Class freturbeli
     'variabel dalam penjualan
     Dim jenis, satuan, kodereturbeli As String
     Dim banyak As Double
-
+    Dim rpt_faktur As New ReportDocument
     'variabel bantuan view pembelian
     Dim nomorretur, nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan As String
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
@@ -592,7 +593,81 @@ Public Class freturbeli
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+        Call cetak_faktur()
+    End Sub
+    Public Sub cetak_faktur()
+        Dim tabel_lama As New DataTable
+        With tabel_lama
+            .Columns.Add("kode_stok")
+            .Columns.Add("kode_barang")
+            .Columns.Add("nama_barang")
+            .Columns.Add("qty", GetType(Double))
+            .Columns.Add("satuan_barang")
+            .Columns.Add("jenis_barang")
+            .Columns.Add("harga", GetType(Double))
+            .Columns.Add("subtotal", GetType(Double))
+        End With
 
+        Dim baris As DataRow
+        For i As Integer = 0 To GridView2.RowCount - 1
+            baris = tabel_lama.NewRow
+            baris("kode_stok") = GridView2.GetRowCellValue(i, "kode_stok")
+            baris("kode_barang") = GridView2.GetRowCellValue(i, "kode_barang")
+            baris("nama_barang") = GridView2.GetRowCellValue(i, "nama_barang")
+            baris("qty") = GridView2.GetRowCellValue(i, "qty")
+            baris("satuan_barang") = GridView2.GetRowCellValue(i, "satuan_barang")
+            baris("jenis_barang") = GridView2.GetRowCellValue(i, "jenis_barang")
+            baris("harga") = GridView2.GetRowCellValue(i, "harga_beli")
+            baris("subtotal") = GridView2.GetRowCellValue(i, "subtotal")
+            tabel_lama.Rows.Add(baris)
+        Next
+
+        rpt_faktur = New fakturreturpembelian
+        rpt_faktur.SetDataSource(tabel_lama)
+
+        rpt_faktur.SetParameterValue("nofaktur", txtnoretur.Text)
+        rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("supplier", txtsupplier.Text)
+        rpt_faktur.SetParameterValue("alamat", txtalamat.Text)
+        rpt_faktur.SetParameterValue("tanggal", dtreturbeli.Text)
+        SetReportPageSize("Faktur", 1)
+        rpt_faktur.PrintToPrinter(1, False, 0, 0)
+
+    End Sub
+    Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
+        Dim faktur As String
+        Call koneksii()
+        sql = "select * from tb_printer where nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
+
+        Else
+            faktur = ""
+        End If
+
+        Try
+            Dim ObjPrinterSetting As New System.Drawing.Printing.PrinterSettings
+            Dim PkSize As New System.Drawing.Printing.PaperSize
+            ObjPrinterSetting.PrinterName = faktur
+            For i As Integer = 0 To ObjPrinterSetting.PaperSizes.Count - 1
+                If ObjPrinterSetting.PaperSizes.Item(i).PaperName = mPaperSize.Trim Then
+                    PkSize = ObjPrinterSetting.PaperSizes.Item(i)
+                    Exit For
+                End If
+            Next
+
+            If PkSize IsNot Nothing Then
+                Dim myAppPrintOptions As CrystalDecisions.CrystalReports.Engine.PrintOptions = rpt_faktur.PrintOptions
+                myAppPrintOptions.PrinterName = faktur
+                myAppPrintOptions.PaperSize = CType(PkSize.RawKind, CrystalDecisions.Shared.PaperSize)
+                rpt_faktur.PrintOptions.PaperOrientation = IIf(PaperOrientation = 1, CrystalDecisions.Shared.PaperOrientation.Portrait, CrystalDecisions.Shared.PaperOrientation.Landscape)
+            End If
+            PkSize = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs)

@@ -707,13 +707,14 @@ Public Class freturjual
         'ds.Tables.Add(tabel_baru)
         rpt_faktur.SetDataSource(tabel_lama)
         'rpt.SetParameterValue("total", total2)
-        rpt_faktur.SetParameterValue("nofaktur", autonumber)
+        rpt_faktur.SetParameterValue("nofaktur", txtnoretur)
         rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
         rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
         rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
         'rpt_faktur.SetParameterValue("bayar", txtbayar.Text)
         'rpt_faktur.SetParameterValue("sisa", txtsisa.Text)
         rpt_faktur.SetParameterValue("alamat", txtalamat.Text)
+        rpt_faktur.SetParameterValue("tanggal", dtreturjual.Text)
         'fakturjual.CrystalReportViewer1.ReportSource = rpt
         'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
         'rpt.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
