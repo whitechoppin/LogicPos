@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class fjatuhtempopenjualan
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class fjatuhtempopenjualan
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
@@ -32,11 +32,6 @@ Partial Class fjatuhtempopenjualan
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -51,7 +46,6 @@ Partial Class fjatuhtempopenjualan
         Me.Label2.Size = New System.Drawing.Size(320, 31)
         Me.Label2.TabIndex = 21
         Me.Label2.Text = "Penjualan Jatuh Tempo"
-        Me.Label2.Visible = False
         '
         'GridControl1
         '
@@ -61,11 +55,10 @@ Partial Class fjatuhtempopenjualan
         Me.GridControl1.Size = New System.Drawing.Size(762, 389)
         Me.GridControl1.TabIndex = 20
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        Me.GridControl1.Visible = False
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -116,40 +109,7 @@ Partial Class fjatuhtempopenjualan
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.OptionsColumn.AllowEdit = False
         Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 7
-        '
-        'GridColumn8
-        '
-        Me.GridColumn8.Name = "GridColumn8"
-        Me.GridColumn8.OptionsColumn.AllowEdit = False
-        Me.GridColumn8.Visible = True
-        Me.GridColumn8.VisibleIndex = 8
-        '
-        'GridColumn9
-        '
-        Me.GridColumn9.Name = "GridColumn9"
-        Me.GridColumn9.OptionsColumn.AllowEdit = False
-        Me.GridColumn9.Visible = True
-        Me.GridColumn9.VisibleIndex = 9
-        '
-        'GridColumn10
-        '
-        Me.GridColumn10.Name = "GridColumn10"
-        Me.GridColumn10.OptionsColumn.AllowEdit = False
-        Me.GridColumn10.Visible = True
-        Me.GridColumn10.VisibleIndex = 10
-        '
-        'GridColumn11
-        '
-        Me.GridColumn11.Name = "GridColumn11"
-        Me.GridColumn11.Visible = True
-        Me.GridColumn11.VisibleIndex = 6
-        '
-        'GridColumn12
-        '
-        Me.GridColumn12.Name = "GridColumn12"
-        Me.GridColumn12.Visible = True
-        Me.GridColumn12.VisibleIndex = 11
+        Me.GridColumn7.VisibleIndex = 6
         '
         'fjatuhtempopenjualan
         '
@@ -178,9 +138,4 @@ Partial Class fjatuhtempopenjualan
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
 End Class
