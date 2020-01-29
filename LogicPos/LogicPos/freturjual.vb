@@ -707,7 +707,7 @@ Public Class freturjual
         'ds.Tables.Add(tabel_baru)
         rpt_faktur.SetDataSource(tabel_lama)
         'rpt.SetParameterValue("total", total2)
-        rpt_faktur.SetParameterValue("nofaktur", txtnoretur)
+        rpt_faktur.SetParameterValue("nofaktur", txtnoretur.Text)
         rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
         rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
         rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
