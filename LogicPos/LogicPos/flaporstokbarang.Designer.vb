@@ -34,16 +34,16 @@ Partial Class flaporstokbarang
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LabelHarga = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btnrekap = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView1
@@ -121,10 +121,10 @@ Partial Class flaporstokbarang
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(11, 134)
+        Me.GridControl1.Location = New System.Drawing.Point(11, 68)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(975, 311)
+        Me.GridControl1.Size = New System.Drawing.Size(971, 515)
         Me.GridControl1.TabIndex = 18
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -134,12 +134,11 @@ Partial Class flaporstokbarang
         Me.GroupBox1.Controls.Add(Me.LabelHarga)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(704, 328)
+        Me.GroupBox1.Location = New System.Drawing.Point(988, 261)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(282, 318)
+        Me.GroupBox1.Size = New System.Drawing.Size(282, 322)
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Visible = False
         '
         'Label3
         '
@@ -171,6 +170,45 @@ Partial Class flaporstokbarang
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Modal Barang"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(8, 25)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(288, 31)
+        Me.Label1.TabIndex = 16
+        Me.Label1.Text = "Laporan Stok Barang"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.btnexcel)
+        Me.GroupBox4.Controls.Add(Me.btnrekap)
+        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox4.Location = New System.Drawing.Point(988, 59)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(282, 196)
+        Me.GroupBox4.TabIndex = 19
+        Me.GroupBox4.TabStop = False
+        '
+        'btnexcel
+        '
+        Me.btnexcel.Location = New System.Drawing.Point(9, 79)
+        Me.btnexcel.Name = "btnexcel"
+        Me.btnexcel.Size = New System.Drawing.Size(267, 50)
+        Me.btnexcel.TabIndex = 17
+        Me.btnexcel.Text = "Convert Excel"
+        Me.btnexcel.UseVisualStyleBackColor = True
+        '
+        'btnrekap
+        '
+        Me.btnrekap.Location = New System.Drawing.Point(9, 23)
+        Me.btnrekap.Name = "btnrekap"
+        Me.btnrekap.Size = New System.Drawing.Size(267, 50)
+        Me.btnrekap.TabIndex = 10
+        Me.btnrekap.Text = "Report"
+        Me.btnrekap.UseVisualStyleBackColor = True
+        '
         'PictureBox1
         '
         Me.PictureBox1.Location = New System.Drawing.Point(7, 14)
@@ -179,51 +217,12 @@ Partial Class flaporstokbarang
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 18)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(132, 24)
-        Me.Label1.TabIndex = 16
-        Me.Label1.Text = "Laporan Stok"
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.btnexcel)
-        Me.GroupBox4.Controls.Add(Me.btnrekap)
-        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(11, 45)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(975, 83)
-        Me.GroupBox4.TabIndex = 19
-        Me.GroupBox4.TabStop = False
-        '
-        'btnexcel
-        '
-        Me.btnexcel.Location = New System.Drawing.Point(192, 23)
-        Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(200, 50)
-        Me.btnexcel.TabIndex = 17
-        Me.btnexcel.Text = "Convert Excel"
-        Me.btnexcel.UseVisualStyleBackColor = True
-        '
-        'btnrekap
-        '
-        Me.btnrekap.Location = New System.Drawing.Point(6, 23)
-        Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(180, 50)
-        Me.btnrekap.TabIndex = 10
-        Me.btnrekap.Text = "Report"
-        Me.btnrekap.UseVisualStyleBackColor = True
-        '
         'flaporstokbarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1087, 389)
+        Me.ClientSize = New System.Drawing.Size(1279, 595)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
@@ -234,8 +233,8 @@ Partial Class flaporstokbarang
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -253,9 +252,9 @@ Partial Class flaporstokbarang
     Friend WithEvents Label3 As Label
     Friend WithEvents LabelHarga As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents btnexcel As Button
     Friend WithEvents btnrekap As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
