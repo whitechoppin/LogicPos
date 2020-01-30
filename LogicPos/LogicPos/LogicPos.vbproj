@@ -97,6 +97,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fakturlunasutang.vb">
+      <DependentUpon>fakturlunasutang.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="fakturtransferbarang.vb">
+      <DependentUpon>fakturtransferbarang.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="fakturbarangkeluar.vb">
       <DependentUpon>fakturbarangkeluar.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -517,6 +529,14 @@
     <Compile Include="validasiangka.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="fakturlunasutang.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>fakturlunasutang.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fakturtransferbarang.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>fakturtransferbarang.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="fakturbarangkeluar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturbarangkeluar.vb</LastGenOutput>

@@ -12,6 +12,8 @@ Public Class ftransferbarang
     Dim viewtgltransfer As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
     'variabel edit penjualan
+    'variabel report
+    Dim rpt_faktur As New CrystalDecisions.CrystalReports.Engine.ReportDocument
     Dim countingbarang As Integer
     Private Sub ftransferbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
@@ -153,7 +155,6 @@ Public Class ftransferbarang
             .Columns.Add("banyak", GetType(Double))
             .Columns.Add("satuan_barang")
             .Columns.Add("jenis_barang")
-
 
         End With
 
@@ -615,9 +616,82 @@ Public Class ftransferbarang
 
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+        Call cetak_faktur()
+    End Sub
+    Sub cetak_faktur()
+        Dim faktur As String
+        Dim tabel_faktur As New DataTable
+        With tabel_faktur
+            .Columns.Add("kode_stok")
+            .Columns.Add("kode_barang")
+            .Columns.Add("nama_barang")
+            .Columns.Add("qty", GetType(Double))
+            .Columns.Add("satuan_barang")
+            .Columns.Add("jenis_barang")
+        End With
+
+        Dim baris As DataRow
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_faktur.NewRow
+            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+            baris("qty") = GridView1.GetRowCellValue(i, "banyak")
+            baris("satuan_barang") = GridView1.GetRowCellValue(i, "satuan_barang")
+            baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
+            tabel_faktur.Rows.Add(baris)
+        Next
+
+        rpt_faktur = New fakturtransferbarang
+        rpt_faktur.SetDataSource(tabel_faktur)
+        'rpt.SetParameterValue("total", total2)
+        rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
+        rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
+
+        rpt_faktur.SetParameterValue("tanggal", dttransferbarang.Text)
+        rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("dari", txtdarigudang.Text)
+        rpt_faktur.SetParameterValue("ke", txtkegudang.Text)
+
+        SetReportPageSize("Faktur", 1)
+        rpt_faktur.PrintToPrinter(1, False, 0, 0)
 
     End Sub
+    Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
+        Dim faktur As String
+        Call koneksii()
+        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
 
+        Else
+            faktur = ""
+        End If
+
+        Try
+            Dim ObjPrinterSetting As New System.Drawing.Printing.PrinterSettings
+            Dim PkSize As New System.Drawing.Printing.PaperSize
+            ObjPrinterSetting.PrinterName = faktur
+            For i As Integer = 0 To ObjPrinterSetting.PaperSizes.Count - 1
+                If ObjPrinterSetting.PaperSizes.Item(i).PaperName = mPaperSize.Trim Then
+                    PkSize = ObjPrinterSetting.PaperSizes.Item(i)
+                    Exit For
+                End If
+            Next
+
+            If PkSize IsNot Nothing Then
+                Dim myAppPrintOptions As CrystalDecisions.CrystalReports.Engine.PrintOptions = rpt_faktur.PrintOptions
+                myAppPrintOptions.PrinterName = faktur
+                myAppPrintOptions.PaperSize = CType(PkSize.RawKind, CrystalDecisions.Shared.PaperSize)
+                rpt_faktur.PrintOptions.PaperOrientation = IIf(PaperOrientation = 1, CrystalDecisions.Shared.PaperOrientation.Portrait, CrystalDecisions.Shared.PaperOrientation.Landscape)
+            End If
+            PkSize = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         If GridView1.DataRowCount > 0 Then
             If txtdarigudang.Text IsNot "" Then
