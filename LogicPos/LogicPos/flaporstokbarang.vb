@@ -113,4 +113,8 @@ Public Class flaporstokbarang
         flappembelian.ShowDialog()
         flappembelian.WindowState = FormWindowState.Maximized
     End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call tabel()
+    End Sub
 End Class

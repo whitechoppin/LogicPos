@@ -34,16 +34,17 @@ Partial Class flaporstokbarang
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LabelHarga = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btnrekap = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'GridView1
@@ -170,6 +171,14 @@ Partial Class flaporstokbarang
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Modal Barang"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(7, 14)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(269, 219)
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -182,6 +191,7 @@ Partial Class flaporstokbarang
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.btnrefresh)
         Me.GroupBox4.Controls.Add(Me.btnexcel)
         Me.GroupBox4.Controls.Add(Me.btnrekap)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -209,13 +219,14 @@ Partial Class flaporstokbarang
         Me.btnrekap.Text = "Report"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
-        'PictureBox1
+        'btnrefresh
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(7, 14)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(269, 219)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
+        Me.btnrefresh.Location = New System.Drawing.Point(9, 135)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(267, 50)
+        Me.btnrefresh.TabIndex = 18
+        Me.btnrefresh.Text = "Refresh"
+        Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'flaporstokbarang
         '
@@ -233,8 +244,8 @@ Partial Class flaporstokbarang
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox4.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -257,4 +268,5 @@ Partial Class flaporstokbarang
     Friend WithEvents btnexcel As Button
     Friend WithEvents btnrekap As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnrefresh As Button
 End Class
