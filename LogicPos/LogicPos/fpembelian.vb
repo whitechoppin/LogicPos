@@ -904,6 +904,13 @@ Public Class fpembelian
     End Sub
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         Call cetak_faktur()
+
+        sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        cbprinted.Checked = True
+
     End Sub
     Sub cetak_faktur()
         Dim faktur As String

@@ -629,6 +629,12 @@ Public Class fbarangmasuk
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         Call cetak_faktur()
+
+        sql = "UPDATE tb_barang_masuk SET print_barang_masuk = 1 WHERE kode_barang_masuk = '" & txtnonota.Text & "' "
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        cbprinted.Checked = True
     End Sub
     Sub cetak_faktur()
         Dim faktur As String

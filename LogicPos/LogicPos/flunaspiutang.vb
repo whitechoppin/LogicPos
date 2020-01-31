@@ -531,6 +531,9 @@ Public Class flunaspiutang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
+        'proses centang lunas penjualan
+
+
         MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
         Me.Refresh()
 

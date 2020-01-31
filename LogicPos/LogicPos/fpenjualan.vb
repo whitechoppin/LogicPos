@@ -911,10 +911,22 @@ Public Class fpenjualan
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If rbstruk.Checked Then
             'Call cetak_struk()
-            call PrintTransaksi
+            Call PrintTransaksi()
+
+            sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+
+            cbprinted.Checked = True
         Else
             If rbfaktur.Checked Then
                 Call cetak_faktur()
+
+                sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
+                cbprinted.Checked = True
             End If
         End If
     End Sub
