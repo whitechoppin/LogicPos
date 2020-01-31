@@ -564,6 +564,12 @@ Public Class flunasutang
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         Call cetak_faktur()
+
+        sql = "UPDATE tb_pelunasan_utang SET print_lunas = 1 WHERE kode_lunas = '" & txtnonota.Text & "' "
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        cbprinted.Checked = True
     End Sub
     Public Sub cetak_faktur()
         Dim faktur As String

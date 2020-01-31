@@ -909,26 +909,32 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-        If rbstruk.Checked Then
-            'Call cetak_struk()
-            Call PrintTransaksi()
-
-            sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-
-            cbprinted.Checked = True
-        Else
-            If rbfaktur.Checked Then
-                Call cetak_faktur()
+        If cbvoid.Checked = False Then
+            If rbstruk.Checked Then
+                'Call cetak_struk()
+                Call PrintTransaksi()
 
                 sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
                 cbprinted.Checked = True
+            Else
+                If rbfaktur.Checked Then
+                    Call cetak_faktur()
+
+                    sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
+
+                    cbprinted.Checked = True
+                End If
             End If
+        Else
+            MsgBox("Nota sudah void !")
         End If
+
+
     End Sub
     Sub cetak_struk()
         Dim struk As String
@@ -1192,36 +1198,45 @@ Public Class fpenjualan
         End Try
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text.Equals("Edit") Then
-            btnedit.Text = "Update"
-            Call awaledit()
+        If cblunas.Checked = False Then
+            If cbvoid.Checked = False Then
+                If btnedit.Text.Equals("Edit") Then
+                    btnedit.Text = "Update"
+                    Call awaledit()
 
-        ElseIf btnedit.Text.Equals("Update") Then
-            If GridView1.DataRowCount > 0 Then
-                If txtcustomer.Text IsNot "" Then
-                    If txtgudang.Text IsNot "" Then
-                        If cmbsales.Text IsNot "" Then
-                            If txtrekening.Text IsNot "" Then
+                ElseIf btnedit.Text.Equals("Update") Then
+                    If GridView1.DataRowCount > 0 Then
+                        If txtcustomer.Text IsNot "" Then
+                            If txtgudang.Text IsNot "" Then
+                                If cmbsales.Text IsNot "" Then
+                                    If txtrekening.Text IsNot "" Then
 
-                                'isi disini sub updatenya
-                                Call perbarui(txtnonota.Text)
-                                'Call inisialisasi(txtnonota.Text)
+                                        'isi disini sub updatenya
+                                        Call perbarui(txtnonota.Text)
+                                        'Call inisialisasi(txtnonota.Text)
+                                    Else
+                                        MsgBox("Isi Pembayaran")
+                                    End If
+                                Else
+                                    MsgBox("Isi Sales")
+                                End If
                             Else
-                                MsgBox("Isi Pembayaran")
+                                MsgBox("Isi Gudang")
                             End If
                         Else
-                            MsgBox("Isi Sales")
+                            MsgBox("Isi Customer")
                         End If
                     Else
-                        MsgBox("Isi Gudang")
+                        MsgBox("Keranjang Masih Kosong")
                     End If
-                Else
-                    MsgBox("Isi Customer")
                 End If
             Else
-                MsgBox("Keranjang Masih Kosong")
+                MsgBox("Nota sudah void !")
             End If
+        Else
+            MsgBox("Nota sudah lunas!")
         End If
+
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click

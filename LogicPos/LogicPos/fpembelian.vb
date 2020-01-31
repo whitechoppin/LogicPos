@@ -903,14 +903,17 @@ Public Class fpembelian
 
     End Sub
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-        Call cetak_faktur()
+        If cbvoid.Checked = False Then
+            Call cetak_faktur()
 
-        sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+            sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
 
-        cbprinted.Checked = True
-
+            cbprinted.Checked = True
+        Else
+            MsgBox("Nota sudah void !")
+        End If
     End Sub
     Sub cetak_faktur()
         Dim faktur As String
@@ -1073,37 +1076,47 @@ Public Class fpembelian
         End If
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text = "Edit" Then
-            btnedit.Text = "Update"
-            Call awaledit()
-        Else
-            If btnedit.Text = "Update" Then
-                If GridView1.DataRowCount > 0 Then
-                    If txtsupplier.Text IsNot "" Then
-                        If txtgudang.Text IsNot "" Then
-                            If cmbsales.Text IsNot "" Then
-                                If cmbbayar.Text IsNot "" Then
-                                    btnedit.Text = "Edit"
-                                    'isi disini sub updatenya
-                                    Call perbarui(txtnonota.Text)
+        If cblunas.Checked = False Then
+            If cbvoid.Checked = False Then
+                If btnedit.Text = "Edit" Then
+                    btnedit.Text = "Update"
+                    Call awaledit()
+                Else
+                    If btnedit.Text = "Update" Then
+                        If GridView1.DataRowCount > 0 Then
+                            If txtsupplier.Text IsNot "" Then
+                                If txtgudang.Text IsNot "" Then
+                                    If cmbsales.Text IsNot "" Then
+                                        If cmbbayar.Text IsNot "" Then
+                                            btnedit.Text = "Edit"
+                                            'isi disini sub updatenya
+                                            Call perbarui(txtnonota.Text)
+                                        Else
+                                            MsgBox("Isi Pembayaran")
+                                        End If
+                                    Else
+                                        MsgBox("Isi Sales")
+                                    End If
                                 Else
-                                    MsgBox("Isi Pembayaran")
+                                    MsgBox("Isi Gudang")
                                 End If
                             Else
-                                MsgBox("Isi Sales")
+                                MsgBox("Isi Supllier")
                             End If
                         Else
-                            MsgBox("Isi Gudang")
+                            MsgBox("Keranjang Masih Kosong")
                         End If
-                    Else
-                        MsgBox("Isi Supllier")
-                    End If
-                Else
-                    MsgBox("Keranjang Masih Kosong")
-                End If
 
+                    End If
+                End If
+            Else
+                MsgBox("Nota sudah void !")
             End If
+        Else
+            MsgBox("Nota sudah lunas !")
         End If
+
+
     End Sub
     Sub awaledit()
         'bersihkan dan set default value

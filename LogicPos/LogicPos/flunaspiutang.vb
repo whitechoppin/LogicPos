@@ -564,6 +564,12 @@ Public Class flunaspiutang
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
 
+
+        sql = "UPDATE tb_pelunasan_piutang SET print_lunas = 1 WHERE kode_lunas = '" & txtnonota.Text & "' "
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        cbprinted.Checked = True
     End Sub
 
     Sub prosesperbarui()
