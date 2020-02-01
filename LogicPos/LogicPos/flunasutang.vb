@@ -595,7 +595,7 @@ Public Class flunasutang
             baris("kode_gudang") = GridView1.GetRowCellValue(i, "kode_gudang")
             baris("kode_user") = GridView1.GetRowCellValue(i, "kode_user")
             baris("tgl_pembelian") = GridView1.GetRowCellValue(i, "tgl_pembelian")
-            baris("tgl_jatuhtempo_pembelian") = GridView1.GetRowCellValue(i, "tgl_jatuhtempo_pemnbelian")
+            baris("tgl_jatuhtempo_pembelian") = GridView1.GetRowCellValue(i, "tgl_jatuhtempo_pembelian")
             baris("diskon_pembelian") = GridView1.GetRowCellValue(i, "diskon_pembelian")
             baris("ongkir_pembelian") = GridView1.GetRowCellValue(i, "ongkir_pembelian")
             baris("total_pembelian") = GridView1.GetRowCellValue(i, "total_pembelian")

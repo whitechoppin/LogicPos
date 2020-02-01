@@ -1,4 +1,5 @@
 ﻿Imports System.Data.Odbc
+Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.Utils
 
 Public Class flunaspiutang
@@ -6,6 +7,7 @@ Public Class flunaspiutang
     Dim hitnumber As Integer
     Public kodelunaspiutang As String
     Dim totalbayar As Double
+    Dim rpt_faktur As New ReportDocument
 
     Private Sub flunaspiutang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
@@ -563,7 +565,7 @@ Public Class flunaspiutang
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-
+        Call cetak_faktur()
 
         sql = "UPDATE tb_pelunasan_piutang SET print_lunas = 1 WHERE kode_lunas = '" & txtnonota.Text & "' "
         cmmd = New OdbcCommand(sql, cnn)
@@ -571,7 +573,85 @@ Public Class flunaspiutang
 
         cbprinted.Checked = True
     End Sub
+    Public Sub cetak_faktur()
+        Dim faktur As String
+        Dim tabel_faktur As New DataTable
+        With tabel_faktur
+            .Columns.Add("kode_penjualan")
+            .Columns.Add("kode_customer")
+            .Columns.Add("kode_gudang")
+            .Columns.Add("kode_user")
+            .Columns.Add("tgl_penjualan")
+            .Columns.Add("tgl_jatuhtempo_penjualan")
+            .Columns.Add("diskon_penjualan", GetType(Double))
+            .Columns.Add("pajak_penjualan", GetType(Double))
+            .Columns.Add("ongkir_penjualan", GetType(Double))
+            .Columns.Add("total_penjualan", GetType(Double))
+        End With
 
+        Dim baris As DataRow
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_faktur.NewRow
+            baris("kode_penjualan") = GridView1.GetRowCellValue(i, "kode_penjualan")
+            baris("kode_customer") = GridView1.GetRowCellValue(i, "kode_customer")
+            baris("kode_gudang") = GridView1.GetRowCellValue(i, "kode_gudang")
+            baris("kode_user") = GridView1.GetRowCellValue(i, "kode_user")
+            baris("tgl_penjualan") = GridView1.GetRowCellValue(i, "tgl_penjualan")
+            baris("tgl_jatuhtempo_penjualan") = GridView1.GetRowCellValue(i, "tgl_jatuhtempo_penjualan")
+            baris("diskon_penjualan") = GridView1.GetRowCellValue(i, "diskon_penjualan")
+            baris("ongkir_penjualan") = GridView1.GetRowCellValue(i, "ongkir_penjualan")
+            baris("total_penjualan") = GridView1.GetRowCellValue(i, "total_penjualan")
+            baris("pajak_penjualan") = GridView1.GetRowCellValue(i, "pajak_penjualan")
+            tabel_faktur.Rows.Add(baris)
+        Next
+        rpt_faktur = New fakturlunaspiutang
+        rpt_faktur.SetDataSource(tabel_faktur)
+
+        rpt_faktur.SetParameterValue("nofaktur", txtnolunaspiutang.Text)
+        rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
+
+        rpt_faktur.SetParameterValue("tanggal", dtpelunasan.Text)
+        rpt_faktur.SetParameterValue("totalbayar", totalbayar)
+        rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
+
+        SetReportPageSize("Faktur", 1)
+        rpt_faktur.PrintToPrinter(1, False, 0, 0)
+    End Sub
+    Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
+        Dim faktur As String
+        Call koneksii()
+        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
+
+        Else
+            faktur = ""
+        End If
+
+        Try
+            Dim ObjPrinterSetting As New System.Drawing.Printing.PrinterSettings
+            Dim PkSize As New System.Drawing.Printing.PaperSize
+            ObjPrinterSetting.PrinterName = faktur
+            For i As Integer = 0 To ObjPrinterSetting.PaperSizes.Count - 1
+                If ObjPrinterSetting.PaperSizes.Item(i).PaperName = mPaperSize.Trim Then
+                    PkSize = ObjPrinterSetting.PaperSizes.Item(i)
+                    Exit For
+                End If
+            Next
+
+            If PkSize IsNot Nothing Then
+                Dim myAppPrintOptions As CrystalDecisions.CrystalReports.Engine.PrintOptions = rpt_faktur.PrintOptions
+                myAppPrintOptions.PrinterName = faktur
+                myAppPrintOptions.PaperSize = CType(PkSize.RawKind, CrystalDecisions.Shared.PaperSize)
+                rpt_faktur.PrintOptions.PaperOrientation = IIf(PaperOrientation = 1, CrystalDecisions.Shared.PaperOrientation.Portrait, CrystalDecisions.Shared.PaperOrientation.Landscape)
+            End If
+            PkSize = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     Sub prosesperbarui()
         Dim checkinglunas As Boolean
         Dim nilaihitung As String
