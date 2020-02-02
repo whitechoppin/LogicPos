@@ -230,6 +230,12 @@
     <Compile Include="flogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fpassword.Designer.vb">
+      <DependentUpon>fpassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fpassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fprinter.Designer.vb">
       <DependentUpon>fprinter.vb</DependentUpon>
     </Compile>
@@ -618,6 +624,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="flogin.resx">
       <DependentUpon>flogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fpassword.resx">
+      <DependentUpon>fpassword.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fprinter.resx">
       <DependentUpon>fprinter.vb</DependentUpon>
