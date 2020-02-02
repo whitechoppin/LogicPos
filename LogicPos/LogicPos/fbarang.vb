@@ -133,9 +133,9 @@ Public Class fbarang
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 MsgBox("Kode barang Sudah ada dengan nama " + dr("nama_barang"), MsgBoxStyle.Critical, "Pemberitahuan")
-                txtkode.Clear()
-                txtnama.Clear()
-                cmbsatuan.SelectedIndex = -1
+                'txtkode.Clear()
+                'txtnama.Clear()
+                'cmbsatuan.SelectedIndex = -1
                 txtkode.Focus()
                 cnn.Close()
             Else
@@ -208,6 +208,7 @@ Public Class fbarang
                 kode = dr("kode_barang")
                 foto = dr("gambar_barang")
                 modalbarang = dr("modal_barang")
+                txtgbr.Text = txtnama.Text
                 txtmodal.Text = Format(modalbarang, "##,##0")
                 PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
                 PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
@@ -389,6 +390,14 @@ Public Class fbarang
 
     Private Sub cmbjenis_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbjenis.SelectedIndexChanged
         Call isi_satuan()
+    End Sub
+
+    Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
+        If txthidden.Visible = True Then
+            txthidden.Visible = False
+        ElseIf txthidden.Visible = False Then
+            txthidden.Visible = True
+        End If
     End Sub
 
     Private Sub txtmodal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtmodal.KeyPress

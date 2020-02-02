@@ -8,7 +8,7 @@ Public Class fpenjualan
     Public tabel As DataTable
     Dim hitnumber As Integer
     'variabel dalam penjualan
-    Public jenis, satuan, kodepenjualan, kodetransaksi As String
+    Public jenis, satuan, kodepenjualan, kodetransaksi, kodegudang As String
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
 
     'variabel bantuan view penjualan
@@ -1623,10 +1623,11 @@ Public Class fpenjualan
     End Sub
     Sub simpan()
         kodepenjualan = autonumber()
+        kodegudang = cmbgudang.Text
         Call koneksii()
 
         For i As Integer = 0 To GridView1.RowCount - 1
-            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbgudang.Text & "'"
+            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & kodegudang & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Next
@@ -1637,7 +1638,7 @@ Public Class fpenjualan
             dr = cmmd.ExecuteReader()
         Next
 
-        sql = "INSERT INTO tb_penjualan (kode_penjualan, kode_pelanggan, kode_gudang, kode_user, tgl_penjualan, tgl_jatuhtempo_penjualan, lunas_penjualan, void_penjualan, print_penjualan, posted_penjualan, keterangan_penjualan, diskon_penjualan, pajak_penjualan, ongkir_penjualan, total_penjualan, metode_pembayaran, rekening, bayar_penjualan, sisa_penjualan, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepenjualan & "','" & cmbcustomer.Text & "','" & cmbgudang.Text & "','" & cmbsales.Text & "' , '" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & ongkir & "','" & grandtotal & "','" & cmbpembayaran.Text & "', '" & txtrekening.Text & "','" & bayar & "','" & sisa & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+        sql = "INSERT INTO tb_penjualan (kode_penjualan, kode_pelanggan, kode_gudang, kode_user, tgl_penjualan, tgl_jatuhtempo_penjualan, lunas_penjualan, void_penjualan, print_penjualan, posted_penjualan, keterangan_penjualan, diskon_penjualan, pajak_penjualan, ongkir_penjualan, total_penjualan, metode_pembayaran, rekening, bayar_penjualan, sisa_penjualan, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepenjualan & "','" & cmbcustomer.Text & "','" & kodegudang & "','" & cmbsales.Text & "' , '" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & ongkir & "','" & grandtotal & "','" & cmbpembayaran.Text & "', '" & txtrekening.Text & "','" & bayar & "','" & sisa & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
@@ -1656,6 +1657,7 @@ Public Class fpenjualan
     Sub perbarui(nomornota As String)
         kodepenjualan = nomornota
         kodepembayaran = cmbpembayaran.Text
+        kodegudang = cmbgudang.Text
 
         'periksa di barang di stok dulu
         Dim stok As Integer
@@ -1673,7 +1675,7 @@ Public Class fpenjualan
         kodegudangupdate = dr("kode_gudang")
 
         For i As Integer = 0 To GridView1.RowCount - 1
-            sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbgudang.Text & "' LIMIT 1"
+            sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & kodegudang & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             dr.Read()
@@ -1724,7 +1726,7 @@ Public Class fpenjualan
 
 
             For i As Integer = 0 To GridView1.RowCount - 1
-                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbgudang.Text & "'"
+                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & kodegudang & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             Next
@@ -1736,7 +1738,7 @@ Public Class fpenjualan
             Next
 
             Call koneksii()
-            sql = "UPDATE tb_penjualan SET kode_pelanggan ='" & cmbcustomer.Text & "', kode_gudang ='" & cmbgudang.Text & "', kode_user ='" & cmbsales.Text & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_penjualan ='" & txtketerangan.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_penjualan ='" & kodepenjualan & "'"
+            sql = "UPDATE tb_penjualan SET kode_pelanggan ='" & cmbcustomer.Text & "', kode_gudang ='" & kodegudang & "', kode_user ='" & cmbsales.Text & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_penjualan ='" & txtketerangan.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_penjualan ='" & kodepenjualan & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
 
