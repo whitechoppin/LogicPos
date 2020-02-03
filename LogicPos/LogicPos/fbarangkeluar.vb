@@ -622,7 +622,7 @@ Public Class fbarangkeluar
 
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
         tutupstok = 2
-        kodegudang = cmbgudang.Text
+        kodegudangcari = cmbgudang.Text
         fcaristok.ShowDialog()
     End Sub
 

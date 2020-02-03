@@ -3,7 +3,7 @@
     Public isicari2 As String = ""
     Public tutup As Integer
     Public kodes As String
-    Public kodegudang As String
+    Public kodegudangcari As String
     Public tutupcus As Integer
     Public tutupsup As Integer
     Public tutupstok As Integer
