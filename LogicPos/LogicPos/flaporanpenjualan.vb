@@ -108,14 +108,14 @@ Public Class flaporanpenjualan
         If dr.HasRows Then
             rptrekap = New rptrekappenjualan
 
-            awalPDV.Value = DateTimePicker1.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
+            awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
             awalPFDs = rptrekap.DataDefinition.ParameterFields
             awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
             awalPVs.Clear()
             awalPVs.Add(awalPDV)
             awalPFD.ApplyCurrentValues(awalPVs)
 
-            akhirPDV.Value = DateTimePicker2.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
+            akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
             akhirPFDs = rptrekap.DataDefinition.ParameterFields
             akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
             akhirPVs.Clear()
@@ -186,14 +186,14 @@ Public Class flaporanpenjualan
         If dr.HasRows Then
             rptrekap = New rptperfakturjual
 
-            awalPDV.Value = DateTimePicker1.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
+            awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
             awalPFDs = rptrekap.DataDefinition.ParameterFields
             awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
             awalPVs.Clear()
             awalPVs.Add(awalPDV)
             awalPFD.ApplyCurrentValues(awalPVs)
 
-            akhirPDV.Value = DateTimePicker2.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
+            akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
             akhirPFDs = rptrekap.DataDefinition.ParameterFields
             akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
             akhirPVs.Clear()

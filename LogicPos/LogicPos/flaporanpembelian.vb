@@ -92,21 +92,26 @@ Public Class flaporanpembelian
         Dim akhirPVs As New ParameterValues
         Dim akhirPDV As New ParameterDiscreteValue
 
-        sql = "SELECT * FROM tb_pembelian WHERE tgl_pembelian BETWEEN '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day AND '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
+        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            sql = "SELECT * FROM tb_pembelian WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "SELECT * FROM tb_pembelian WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+        End If
+
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
         If dr.HasRows Then
             rptrekap = New rptrekappembelian
 
-            awalPDV.Value = DateTimePicker1.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
+            awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
             awalPFDs = rptrekap.DataDefinition.ParameterFields
             awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
             awalPVs.Clear()
             awalPVs.Add(awalPDV)
             awalPFD.ApplyCurrentValues(awalPVs)
 
-            akhirPDV.Value = DateTimePicker2.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
+            akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
             akhirPFDs = rptrekap.DataDefinition.ParameterFields
             akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
             akhirPVs.Clear()
@@ -164,23 +169,25 @@ Public Class flaporanpembelian
         Dim akhirPVs As New ParameterValues
         Dim akhirPDV As New ParameterDiscreteValue
 
-        'sql = "SELECT * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day AND '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
-        sql = "SELECT * FROM tb_pembelian WHERE tgl_pembelian BETWEEN '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day AND '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
-
+        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            sql = "SELECT * FROM tb_pembelian WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "SELECT * FROM tb_pembelian WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+        End If
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
         If dr.HasRows Then
             rptrekap = New rptperfakturbeli
 
-            awalPDV.Value = DateTimePicker1.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
+            awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
             awalPFDs = rptrekap.DataDefinition.ParameterFields
             awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
             awalPVs.Clear()
             awalPVs.Add(awalPDV)
             awalPFD.ApplyCurrentValues(awalPVs)
 
-            akhirPDV.Value = DateTimePicker2.Value.ToString("dd/MM/yyyy", DateTimeFormatInfo.InvariantInfo)
+            akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
             akhirPFDs = rptrekap.DataDefinition.ParameterFields
             akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
             akhirPVs.Clear()
