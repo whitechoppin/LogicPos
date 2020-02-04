@@ -69,7 +69,11 @@ Public Class flaporanpenjualan
     Sub tabel()
         Call koneksii()
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE tgl_penjualan BETWEEN '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' - INTERVAL 1 day AND '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
+            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+                sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "Select * FROM tb_penjualan_detail JOIN tb_penjualan On tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            End If
             da = New OdbcDataAdapter(sql, cnn)
             ds = New DataSet
             da.Fill(ds)
@@ -92,12 +96,12 @@ Public Class flaporanpenjualan
         Dim akhirPVs As New ParameterValues
         Dim akhirPDV As New ParameterDiscreteValue
 
-        Dim crParameterFieldDefinitions As ParameterFieldDefinitions
-        Dim crParameterFieldDefinition As ParameterFieldDefinition
-        Dim crParameterValues As ParameterValues
-        Dim crParameterDiscreteValue As ParameterDiscreteValue
+        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            sql = "SELECT * FROM tb_penjualan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "Select * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+        End If
 
-        sql = "SELECT * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day AND '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
@@ -170,7 +174,12 @@ Public Class flaporanpenjualan
         Dim akhirPVs As New ParameterValues
         Dim akhirPDV As New ParameterDiscreteValue
 
-        sql = "SELECT * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'  - INTERVAL 1 day AND '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' + INTERVAL 1 day"
+        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            sql = "SELECT * FROM tb_penjualan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "Select * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+        End If
+
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
