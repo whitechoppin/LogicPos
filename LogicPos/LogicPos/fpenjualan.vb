@@ -1279,7 +1279,7 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
-        Call prevnumber(kodepenjualan)
+        Call prevnumber(txtnonota.Text)
     End Sub
 
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
@@ -1299,7 +1299,7 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-        Call nextnumber(kodepenjualan)
+        Call nextnumber(txtnonota.Text)
     End Sub
 
 
