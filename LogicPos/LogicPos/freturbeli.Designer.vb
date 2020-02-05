@@ -66,7 +66,6 @@ Partial Class freturbeli
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.cbposted = New System.Windows.Forms.CheckBox()
         Me.cbprinted = New System.Windows.Forms.CheckBox()
-        Me.cbvoid = New System.Windows.Forms.CheckBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -538,11 +537,10 @@ Partial Class freturbeli
         '
         Me.GroupBox2.Controls.Add(Me.cbposted)
         Me.GroupBox2.Controls.Add(Me.cbprinted)
-        Me.GroupBox2.Controls.Add(Me.cbvoid)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox2.Location = New System.Drawing.Point(761, 11)
+        Me.GroupBox2.Location = New System.Drawing.Point(878, 11)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(319, 43)
+        Me.GroupBox2.Size = New System.Drawing.Size(202, 43)
         Me.GroupBox2.TabIndex = 59
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Status"
@@ -551,7 +549,7 @@ Partial Class freturbeli
         '
         Me.cbposted.AutoSize = True
         Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(237, 15)
+        Me.cbposted.Location = New System.Drawing.Point(111, 15)
         Me.cbposted.Name = "cbposted"
         Me.cbposted.Size = New System.Drawing.Size(74, 22)
         Me.cbposted.TabIndex = 41
@@ -563,24 +561,12 @@ Partial Class freturbeli
         Me.cbprinted.AutoSize = True
         Me.cbprinted.Enabled = False
         Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(149, 15)
+        Me.cbprinted.Location = New System.Drawing.Point(24, 15)
         Me.cbprinted.Name = "cbprinted"
         Me.cbprinted.Size = New System.Drawing.Size(73, 22)
         Me.cbprinted.TabIndex = 40
         Me.cbprinted.Text = "Printed"
         Me.cbprinted.UseVisualStyleBackColor = True
-        '
-        'cbvoid
-        '
-        Me.cbvoid.AutoSize = True
-        Me.cbvoid.Enabled = False
-        Me.cbvoid.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbvoid.Location = New System.Drawing.Point(78, 15)
-        Me.cbvoid.Name = "cbvoid"
-        Me.cbvoid.Size = New System.Drawing.Size(56, 22)
-        Me.cbvoid.TabIndex = 39
-        Me.cbvoid.Text = "Void"
-        Me.cbvoid.UseVisualStyleBackColor = True
         '
         'txttelp
         '
@@ -838,7 +824,6 @@ Partial Class freturbeli
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents cbposted As CheckBox
     Friend WithEvents cbprinted As CheckBox
-    Friend WithEvents cbvoid As CheckBox
     Friend WithEvents txttelp As TextBox
     Friend WithEvents txtalamat As RichTextBox
     Friend WithEvents Label22 As Label

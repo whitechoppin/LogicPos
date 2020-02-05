@@ -401,6 +401,11 @@ Public Class fpembelian
         btncarigudang.Enabled = True
         txtgudang.Enabled = False
 
+        cblunas.Checked = False
+        cbvoid.Checked = False
+        cbprinted.Checked = False
+        cbposted.Checked = False
+
         dtpembelian.Enabled = True
         dtpembelian.Value = Date.Now
 
@@ -917,7 +922,6 @@ Public Class fpembelian
         End If
     End Sub
     Sub cetak_faktur()
-        Dim faktur As String
         Dim tabel_faktur As New DataTable
         With tabel_faktur
             .Columns.Add("kode_stok")
@@ -944,20 +948,9 @@ Public Class fpembelian
             tabel_faktur.Rows.Add(baris)
         Next
 
-        Call koneksii()
-        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows Then
-            faktur = dr("nama_printer")
-
-        Else
-            faktur = ""
-        End If
-
         rpt_faktur = New fakturpembelian
         rpt_faktur.SetDataSource(tabel_faktur)
-        'rpt.SetParameterValue("total", total2)
+
         rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
         rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
         rpt_faktur.SetParameterValue("diskon", diskonnominal)
@@ -967,17 +960,9 @@ Public Class fpembelian
         rpt_faktur.SetParameterValue("tanggal", dtpembelian.Text)
         rpt_faktur.SetParameterValue("supplier", txtsupplier.Text)
         rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
-        'rpt.SetParameterValue("kasir", fmenu.statususer.Text)
-        'rpt.SetParameterValue("customer", txtcustomer.Text)
 
-        'fakturjual.CrystalReportViewer1.ReportSource = rpt
-        'rpt.PrintOptions.PrinterName = "EPSON TM-U220 Receipt"
-        'rpt_faktur.PrintOptions.PrinterName = "EPSON LX-310 ESC/P (Copy 1)"
-        'rpt.PrintOptions.PrinterName = "58 Printer"
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
-        'fakturjual.ShowDialog()
-        'fakturjual.Dispose()
     End Sub
 
     Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
@@ -988,7 +973,6 @@ Public Class fpembelian
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
             faktur = dr("nama_printer")
-
         Else
             faktur = ""
         End If

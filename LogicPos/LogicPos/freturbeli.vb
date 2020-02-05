@@ -210,7 +210,6 @@ Public Class freturbeli
         btnbaru.Enabled = False
         btnsimpan.Enabled = True
         btnprint.Enabled = False
-        'btnedit.Enabled = False
         btnbatal.Enabled = True
 
         'button navigations
@@ -238,6 +237,9 @@ Public Class freturbeli
         dtreturbeli.Enabled = True
         dtreturbeli.Value = Date.Now
 
+        cbprinted.Checked = False
+        cbposted.Checked = False
+
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = False
 
@@ -262,7 +264,6 @@ Public Class freturbeli
         btnbaru.Enabled = True
         btnsimpan.Enabled = False
         btnprint.Enabled = True
-        'btnedit.Enabled = True
         btnbatal.Enabled = False
 
         'button navigations
@@ -317,7 +318,6 @@ Public Class freturbeli
                     nomornota = dr("kode_pembelian")
                     viewtglretur = dr("tgl_returbeli")
 
-                    statusvoid = dr("void_returbeli")
                     statusprint = dr("print_returbeli")
                     statusposted = dr("posted_returbeli")
 
@@ -328,7 +328,6 @@ Public Class freturbeli
                     txtnonota.Text = nomornota
                     dtreturbeli.Value = viewtglretur
 
-                    cbvoid.Checked = statusvoid
                     cbprinted.Checked = statusprint
                     cbposted.Checked = statusposted
 
@@ -349,7 +348,6 @@ Public Class freturbeli
             dtreturbeli.Value = Date.Now
             cmbsales.Text = ""
 
-            cbvoid.Checked = False
             cbprinted.Checked = False
             cbposted.Checked = False
 
@@ -565,7 +563,7 @@ Public Class freturbeli
         Next
 
         Dim total_retur As Double = GridView2.Columns("subtotal").SummaryItem.SummaryValue
-        sql = "INSERT INTO tb_retur_pembelian (kode_retur, kode_user, kode_pembelian, tgl_returbeli, void_returbeli, print_returbeli, posted_returbeli, keterangan_returbeli, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & koderetur & "','" & cmbsales.Text & "','" & txtnonota.Text & "','" & Format(dtreturbeli.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "', now() , now())"
+        sql = "INSERT INTO tb_retur_pembelian (kode_retur, kode_user, kode_pembelian, tgl_returbeli, print_returbeli, posted_returbeli, keterangan_returbeli, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & koderetur & "','" & cmbsales.Text & "','" & txtnonota.Text & "','" & Format(dtreturbeli.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "', now() , now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
@@ -637,12 +635,11 @@ Public Class freturbeli
     Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
         Dim faktur As String
         Call koneksii()
-        sql = "select * from tb_printer where nomor='2'"
+        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
             faktur = dr("nama_printer")
-
         Else
             faktur = ""
         End If
@@ -670,47 +667,12 @@ Public Class freturbeli
         End Try
     End Sub
 
-    Private Sub btnedit_Click(sender As Object, e As EventArgs)
-        'If btnedit.Text.Equals("Edit") Then
-        '    btnedit.Text = "Update"
-        '    Call awaledit()
-
-        'ElseIf btnedit.Text.Equals("Update") Then
-        '    If GridView1.DataRowCount > 0 Then
-        '        If txtcustomer.Text IsNot "" Then
-        '            If txtgudang.Text IsNot "" Then
-        '                If cmbsales.Text IsNot "" Then
-        '                    If txtrekening.Text IsNot "" Then
-
-        '                        'isi disini sub updatenya
-        '                        Call perbarui(txtnonota.Text)
-        '                        'Call inisialisasi(txtnonota.Text)
-        '                    Else
-        '                        MsgBox("Isi Pembayaran")
-        '                    End If
-        '                Else
-        '                    MsgBox("Isi Sales")
-        '                End If
-        '            Else
-        '                MsgBox("Isi Gudang")
-        '            End If
-        '        Else
-        '            MsgBox("Isi Customer")
-        '        End If
-        '    Else
-        '        MsgBox("Keranjang Masih Kosong")
-        '    End If
-        'End If
-    End Sub
-
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
-
         Call inisialisasi(kodereturbeli)
-
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
-        Call prevnumber(kodereturbeli)
+        Call prevnumber(txtnoretur.Text)
     End Sub
 
     Private Sub btngoretur_Click(sender As Object, e As EventArgs) Handles btngoretur.Click
@@ -730,7 +692,7 @@ Public Class freturbeli
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-        Call nextnumber(kodereturbeli)
+        Call nextnumber(txtnoretur.Text)
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If btnsimpan.Enabled = True Then
@@ -786,18 +748,6 @@ Public Class freturbeli
                     tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("qty"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_beli"), GridView2.GetFocusedRowCellValue("subtotal"))
                     GridView2.DeleteSelectedRows()
                 End If
-
-                'For i As Integer = 0 To GridView1.RowCount - 1
-                '    Dim lokasi1 As Integer
-                '    If GridView1.GetRowCellValue(i, "kode_stok") <> kode_stok2 Then
-                '        lokasi1 = i
-                '        Dim banyak1 As Integer = GridView2.GetFocusedRowCellValue("qty")
-                '        'GridView1.SetRowCellValue(lokasi1, "banyak", Val(banyak) + Val(banyak1))
-                '        tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("qty"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_beli"), GridView2.GetFocusedRowCellValue("subtotal"))
-                '        GridView2.DeleteSelectedRows()
-                '        Exit Sub
-                '    End If
-                'Next
             End If
         End If
     End Sub

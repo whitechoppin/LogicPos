@@ -234,6 +234,11 @@ Public Class fpenjualan
         btncarigudang.Enabled = True
         txtgudang.Enabled = False
 
+        cblunas.Checked = False
+        cbvoid.Checked = False
+        cbprinted.Checked = False
+        cbposted.Checked = False
+
         dtpenjualan.Enabled = True
         dtpenjualan.Value = Date.Now
 
@@ -824,12 +829,10 @@ Public Class fpenjualan
     End Sub
 
     Private Sub cmbpembayaran_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbpembayaran.SelectedIndexChanged
-        'txtbayar.Enabled = True
         Call caripembayaran()
     End Sub
 
     Private Sub cmbpembayaran_TextChanged(sender As Object, e As EventArgs) Handles cmbpembayaran.TextChanged
-        'txtbayar.Enabled = True
         Call caripembayaran()
     End Sub
 
@@ -1129,7 +1132,6 @@ Public Class fpenjualan
     End Sub
 
     Public Sub cetak_faktur()
-        Dim faktur As String
         Dim tabel_faktur As New DataTable
         With tabel_faktur
             .Columns.Add("kode_barang")
@@ -1161,16 +1163,6 @@ Public Class fpenjualan
             baris("diskon_nominal") = GridView1.GetRowCellValue(i, "diskon_nominal")
             tabel_faktur.Rows.Add(baris)
         Next
-        Call koneksii()
-        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows Then
-            faktur = dr("nama_printer")
-
-        Else
-            faktur = ""
-        End If
 
         rpt_faktur = New fakturpenjualan
         rpt_faktur.SetDataSource(tabel_faktur)
