@@ -26,6 +26,7 @@ Partial Class fretjual
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtretur = New System.Windows.Forms.TextBox()
         Me.btnok = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblnamaibarang
@@ -54,7 +55,7 @@ Partial Class fretjual
         Me.txtretur.Location = New System.Drawing.Point(118, 77)
         Me.txtretur.MaxLength = 12
         Me.txtretur.Name = "txtretur"
-        Me.txtretur.Size = New System.Drawing.Size(100, 24)
+        Me.txtretur.Size = New System.Drawing.Size(141, 24)
         Me.txtretur.TabIndex = 1
         '
         'btnok
@@ -62,17 +63,28 @@ Partial Class fretjual
         Me.btnok.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnok.Location = New System.Drawing.Point(118, 107)
         Me.btnok.Name = "btnok"
-        Me.btnok.Size = New System.Drawing.Size(100, 27)
+        Me.btnok.Size = New System.Drawing.Size(141, 27)
         Me.btnok.TabIndex = 2
         Me.btnok.Text = "OK"
         Me.btnok.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(265, 80)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(120, 18)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Pcs / Meter / Cm"
         '
         'fretjual
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(250, 160)
+        Me.ClientSize = New System.Drawing.Size(393, 160)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnok)
         Me.Controls.Add(Me.txtretur)
         Me.Controls.Add(Me.Label1)
@@ -89,4 +101,5 @@ Partial Class fretjual
     Friend WithEvents Label1 As Label
     Friend WithEvents txtretur As TextBox
     Friend WithEvents btnok As Button
+    Friend WithEvents Label2 As Label
 End Class

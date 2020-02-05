@@ -552,7 +552,13 @@ Public Class freturbeli
         Next
 
         Dim total_pembelian As Double = GridView1.Columns("subtotal").SummaryItem.SummaryValue
-        sql = "UPDATE tb_pembelian SET total_pembelian = '" & total_pembelian & "' WHERE kode_pembelian ='" & txtnonota.Text & "'"
+        Dim statusvoid As Integer = 0
+
+        If GridView1.DataRowCount = 0 Then
+            statusvoid = 1
+        End If
+
+        sql = "UPDATE tb_pembelian SET total_pembelian = '" & total_pembelian & "', void_pembelian ='" & statusvoid & "' WHERE kode_pembelian ='" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 

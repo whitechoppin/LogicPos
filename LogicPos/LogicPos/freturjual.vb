@@ -581,7 +581,13 @@ Public Class freturjual
         Next
 
         Dim total_penjualan As Double = GridView1.Columns("subtotal").SummaryItem.SummaryValue
-        sql = "UPDATE tb_penjualan SET total_penjualan = '" & total_penjualan & "', sisa_penjualan = '" & total_penjualan & "'- bayar_penjualan WHERE kode_penjualan ='" & txtnonota.Text & "'"
+        Dim statusvoid As Integer = 0
+
+        If GridView1.DataRowCount = 0 Then
+            statusvoid = 1
+        End If
+
+        sql = "UPDATE tb_penjualan SET total_penjualan = '" & total_penjualan & "', sisa_penjualan = '" & total_penjualan & "'- bayar_penjualan, void_penjualan ='" & statusvoid & "' WHERE kode_penjualan ='" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
