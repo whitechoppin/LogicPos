@@ -598,6 +598,12 @@ Public Class freturbeli
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         Call cetak_faktur()
+
+        sql = "UPDATE tb_retur_pembelian SET print_returbeli = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        cbprinted.Checked = True
     End Sub
     Public Sub cetak_faktur()
         Dim tabel_lama As New DataTable
