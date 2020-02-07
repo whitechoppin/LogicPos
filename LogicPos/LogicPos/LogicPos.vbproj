@@ -185,6 +185,30 @@
     <Compile Include="fjatuhtempopenjualan.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flaporanbarangkeluar.Designer.vb">
+      <DependentUpon>flaporanbarangkeluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanbarangkeluar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporanbarangmasuk.Designer.vb">
+      <DependentUpon>flaporanbarangmasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanbarangmasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporanreturbeli.Designer.vb">
+      <DependentUpon>flaporanreturbeli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanreturbeli.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporanreturjual.Designer.vb">
+      <DependentUpon>flaporanreturjual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanreturjual.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporantransferkas.vb">
       <SubType>Form</SubType>
     </Compile>

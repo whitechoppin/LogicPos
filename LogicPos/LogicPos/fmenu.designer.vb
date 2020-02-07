@@ -63,6 +63,8 @@ Partial Class fmenu
         Me.LaporanTransaksiKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrinterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.JatuhTempoPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.JatuhTempoPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TokoSejatiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -71,8 +73,10 @@ Partial Class fmenu
         Me.statusjam = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.JatuhTempoPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.JatuhTempoPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanReturBeliToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanReturJualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanBarangMasukToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanBarangKeluarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -243,7 +247,7 @@ Partial Class fmenu
         '
         'LaporanMenu
         '
-        Me.LaporanMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LPenjualanToolStripMenuItem, Me.LPembelianToolStripMenuItem, Me.LUtangToolStripMenuItem, Me.LPiutangToolStripMenuItem, Me.LAkunMasukToolStripMenuItem, Me.LAkunKeluarToolStripMenuItem, Me.LTransferKasToolStripMenuItem, Me.LTransferBarangToolStripMenuItem, Me.LStokBarangToolStripMenuItem, Me.LaporanTransaksiKasToolStripMenuItem})
+        Me.LaporanMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LPenjualanToolStripMenuItem, Me.LPembelianToolStripMenuItem, Me.LaporanReturBeliToolStripMenuItem, Me.LaporanReturJualToolStripMenuItem, Me.LaporanBarangMasukToolStripMenuItem, Me.LaporanBarangKeluarToolStripMenuItem, Me.LUtangToolStripMenuItem, Me.LPiutangToolStripMenuItem, Me.LAkunMasukToolStripMenuItem, Me.LAkunKeluarToolStripMenuItem, Me.LTransferKasToolStripMenuItem, Me.LTransferBarangToolStripMenuItem, Me.LStokBarangToolStripMenuItem, Me.LaporanTransaksiKasToolStripMenuItem})
         Me.LaporanMenu.Name = "LaporanMenu"
         Me.LaporanMenu.Size = New System.Drawing.Size(62, 20)
         Me.LaporanMenu.Text = "&Laporan"
@@ -321,6 +325,18 @@ Partial Class fmenu
         Me.PrinterToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.PrinterToolStripMenuItem.Text = "Printer"
         '
+        'JatuhTempoPembelianToolStripMenuItem
+        '
+        Me.JatuhTempoPembelianToolStripMenuItem.Name = "JatuhTempoPembelianToolStripMenuItem"
+        Me.JatuhTempoPembelianToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.JatuhTempoPembelianToolStripMenuItem.Text = "Jatuh Tempo Pembelian"
+        '
+        'JatuhTempoPenjualanToolStripMenuItem
+        '
+        Me.JatuhTempoPenjualanToolStripMenuItem.Name = "JatuhTempoPenjualanToolStripMenuItem"
+        Me.JatuhTempoPenjualanToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.JatuhTempoPenjualanToolStripMenuItem.Text = "Jatuh Tempo Penjualan"
+        '
         'AboutMenu
         '
         Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogicHouseToolStripMenuItem, Me.TokoSejatiToolStripMenuItem})
@@ -377,17 +393,29 @@ Partial Class fmenu
         '
         Me.Timer.Interval = 1000
         '
-        'JatuhTempoPembelianToolStripMenuItem
+        'LaporanReturBeliToolStripMenuItem
         '
-        Me.JatuhTempoPembelianToolStripMenuItem.Name = "JatuhTempoPembelianToolStripMenuItem"
-        Me.JatuhTempoPembelianToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.JatuhTempoPembelianToolStripMenuItem.Text = "Jatuh Tempo Pembelian"
+        Me.LaporanReturBeliToolStripMenuItem.Name = "LaporanReturBeliToolStripMenuItem"
+        Me.LaporanReturBeliToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.LaporanReturBeliToolStripMenuItem.Text = "Laporan Retur Beli"
         '
-        'JatuhTempoPenjualanToolStripMenuItem
+        'LaporanReturJualToolStripMenuItem
         '
-        Me.JatuhTempoPenjualanToolStripMenuItem.Name = "JatuhTempoPenjualanToolStripMenuItem"
-        Me.JatuhTempoPenjualanToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.JatuhTempoPenjualanToolStripMenuItem.Text = "Jatuh Tempo Penjualan"
+        Me.LaporanReturJualToolStripMenuItem.Name = "LaporanReturJualToolStripMenuItem"
+        Me.LaporanReturJualToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.LaporanReturJualToolStripMenuItem.Text = "Laporan Retur Jual"
+        '
+        'LaporanBarangMasukToolStripMenuItem
+        '
+        Me.LaporanBarangMasukToolStripMenuItem.Name = "LaporanBarangMasukToolStripMenuItem"
+        Me.LaporanBarangMasukToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.LaporanBarangMasukToolStripMenuItem.Text = "Laporan Barang Masuk"
+        '
+        'LaporanBarangKeluarToolStripMenuItem
+        '
+        Me.LaporanBarangKeluarToolStripMenuItem.Name = "LaporanBarangKeluarToolStripMenuItem"
+        Me.LaporanBarangKeluarToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.LaporanBarangKeluarToolStripMenuItem.Text = "Laporan Barang Keluar"
         '
         'fmenu
         '
@@ -461,4 +489,8 @@ Partial Class fmenu
     Friend WithEvents LogOutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents JatuhTempoPembelianToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents JatuhTempoPenjualanToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LaporanReturBeliToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LaporanReturJualToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LaporanBarangMasukToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LaporanBarangKeluarToolStripMenuItem As ToolStripMenuItem
 End Class
