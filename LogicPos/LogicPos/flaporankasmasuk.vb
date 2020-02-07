@@ -405,4 +405,50 @@ Public Class flaporankasmasuk
         MsgBox("Export successfull!")
 
     End Sub
+
+    Private Sub btnrekap_Click_1(sender As Object, e As EventArgs) Handles btnrekap.Click
+        Dim rptrekap As ReportDocument
+        Dim awalPFDs As ParameterFieldDefinitions
+        Dim awalPFD As ParameterFieldDefinition
+        Dim awalPVs As New ParameterValues
+        Dim awalPDV As New ParameterDiscreteValue
+
+        Dim akhirPFDs As ParameterFieldDefinitions
+        Dim akhirPFD As ParameterFieldDefinition
+        Dim akhirPVs As New ParameterValues
+        Dim akhirPDV As New ParameterDiscreteValue
+
+        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            sql = "SELECT * FROM tb_kas_masuk WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "SELECT * FROM tb_kas_masuk WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+        End If
+
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+
+        If dr.HasRows Then
+            rptrekap = New rptrekapkaskeluar
+
+            awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
+            awalPFDs = rptrekap.DataDefinition.ParameterFields
+            awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
+            awalPVs.Clear()
+            awalPVs.Add(awalPDV)
+            awalPFD.ApplyCurrentValues(awalPVs)
+
+            akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
+            akhirPFDs = rptrekap.DataDefinition.ParameterFields
+            akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
+            akhirPVs.Clear()
+            akhirPVs.Add(akhirPDV)
+            akhirPFD.ApplyCurrentValues(akhirPVs)
+
+            flappembelian.CrystalReportViewer1.ReportSource = rptrekap
+            flappembelian.ShowDialog()
+            flappembelian.WindowState = FormWindowState.Maximized
+        Else
+            MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
+        End If
+    End Sub
 End Class
