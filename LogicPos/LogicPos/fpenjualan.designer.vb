@@ -123,6 +123,7 @@ Partial Class fpenjualan
         Me.txtrekening = New System.Windows.Forms.TextBox()
         Me.btncarikas = New System.Windows.Forms.Button()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.ritehargasatuan = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,6 +134,7 @@ Partial Class fpenjualan
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
+        CType(Me.ritehargasatuan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label6
@@ -338,7 +340,7 @@ Partial Class fpenjualan
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ritediskonpersen, Me.ritediskonnominal})
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ritediskonpersen, Me.ritediskonnominal, Me.ritehargasatuan})
         Me.GridControl1.Size = New System.Drawing.Size(1188, 232)
         Me.GridControl1.TabIndex = 32
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -428,6 +430,7 @@ Partial Class fpenjualan
         Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn7.AppearanceHeader.Options.UseFont = True
         Me.GridColumn7.Caption = "Harga Satuan"
+        Me.GridColumn7.ColumnEdit = Me.ritehargasatuan
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
@@ -1259,6 +1262,11 @@ Partial Class fpenjualan
         'PrintDocument1
         '
         '
+        'ritehargasatuan
+        '
+        Me.ritehargasatuan.AutoHeight = False
+        Me.ritehargasatuan.Name = "ritehargasatuan"
+        '
         'fpenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1312,6 +1320,7 @@ Partial Class fpenjualan
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
+        CType(Me.ritehargasatuan, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1416,4 +1425,5 @@ Partial Class fpenjualan
     Friend WithEvents txtrekening As TextBox
     Friend WithEvents btncarikas As Button
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents ritehargasatuan As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
 End Class

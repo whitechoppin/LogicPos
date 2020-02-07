@@ -836,6 +836,10 @@ Public Class fpenjualan
         Call caripembayaran()
     End Sub
 
+    Private Sub ritehargasatuan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritehargasatuan.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
     Private Sub ritediskonpersen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonpersen.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
@@ -1452,6 +1456,19 @@ Public Class fpenjualan
             BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
         End If
 
+        If e.Column.FieldName = "harga_satuan" Then
+            Try
+                GridView1.SetRowCellValue(e.RowHandle, "diskon_nominal", GridView1.GetRowCellValue(e.RowHandle, "diskon_persen") / 100 * e.Value)
+                GridView1.SetRowCellValue(e.RowHandle, "harga_diskon", e.Value - GridView1.GetRowCellValue(e.RowHandle, "diskon_persen") / 100 * e.Value)
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * GridView1.GetRowCellValue(e.RowHandle, "harga_diskon"))
+                GridView1.SetRowCellValue(e.RowHandle, "laba", (GridView1.GetRowCellValue(e.RowHandle, "harga_diskon") - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
+            Catch ex As Exception
+                'error jika nulai qty=blank
+                GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+            End Try
+            BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+        End If
+
         If e.Column.FieldName = "diskon_persen" Then
             Try
                 GridView1.SetRowCellValue(e.RowHandle, "diskon_nominal", e.Value / 100 * GridView1.GetRowCellValue(e.RowHandle, "harga_satuan"))
@@ -1486,6 +1503,8 @@ Public Class fpenjualan
     Private Sub GridView1_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles GridView1.RowUpdated
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
+
+
 
     Private Sub txtrekening_TextChanged(sender As Object, e As EventArgs) Handles txtrekening.TextChanged
         If txtrekening.Text.Equals("KREDIT") Then
