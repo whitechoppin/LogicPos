@@ -643,18 +643,6 @@ Public Class freturjual
     Public Sub cetak_faktur()
         Dim tabel_lama As New DataTable
         With tabel_lama
-            .Columns.Add("kode_barang")
-            .Columns.Add("kode_stok")
-            .Columns.Add("nama_barang")
-            .Columns.Add("banyak", GetType(Double))
-            .Columns.Add("satuan")
-            .Columns.Add("jenis")
-            .Columns.Add("harga_satuan", GetType(Double))
-            .Columns.Add("diskon_persen", GetType(Double))
-            .Columns.Add("harga_diskon", GetType(Double))
-            .Columns.Add("subtotal", GetType(Double))
-            .Columns.Add("diskon_nominal", GetType(Double))
-
             .Columns.Add("kode_barang1")
             .Columns.Add("kode_stok1")
             .Columns.Add("nama_barang1")
@@ -669,21 +657,6 @@ Public Class freturjual
         End With
 
         Dim baris As DataRow
-        For i As Integer = 0 To GridView1.RowCount - 1
-            baris = tabel_lama.NewRow
-            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
-            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
-            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
-            baris("banyak") = GridView1.GetRowCellValue(i, "banyak")
-            baris("satuan") = GridView1.GetRowCellValue(i, "satuan_barang")
-            baris("jenis") = GridView1.GetRowCellValue(i, "jenis_barang")
-            baris("harga_satuan") = GridView1.GetRowCellValue(i, "harga_satuan")
-            baris("diskon_persen") = GridView1.GetRowCellValue(i, "diskon_persen")
-            baris("harga_diskon") = GridView1.GetRowCellValue(i, "harga_diskon")
-            baris("subtotal") = GridView1.GetRowCellValue(i, "subtotal")
-            baris("diskon_nominal") = GridView1.GetRowCellValue(i, "diskon_nominal")
-            tabel_lama.Rows.Add(baris)
-        Next
         For a As Integer = 0 To GridView2.RowCount - 1
             baris = tabel_lama.NewRow
             baris("kode_barang1") = GridView2.GetRowCellValue(a, "kode_barang")

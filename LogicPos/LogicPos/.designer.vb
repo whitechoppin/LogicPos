@@ -55,9 +55,9 @@ Partial Class flaporantransferkas
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker2)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 66)
+        Me.GroupBox1.Location = New System.Drawing.Point(480, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(255, 81)
+        Me.GroupBox1.Size = New System.Drawing.Size(526, 51)
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Periode"
@@ -66,7 +66,7 @@ Partial Class flaporantransferkas
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(212, 35)
+        Me.Label1.Location = New System.Drawing.Point(212, 23)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(30, 16)
         Me.Label1.TabIndex = 7
@@ -74,7 +74,7 @@ Partial Class flaporantransferkas
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(6, 47)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(248, 19)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker2.TabIndex = 3
@@ -90,26 +90,26 @@ Partial Class flaporantransferkas
         '
         Me.GroupBox4.Controls.Add(Me.btnexcel)
         Me.GroupBox4.Controls.Add(Me.btntabel)
-        Me.GroupBox4.Location = New System.Drawing.Point(273, 66)
+        Me.GroupBox4.Location = New System.Drawing.Point(12, 69)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(98, 81)
+        Me.GroupBox4.Size = New System.Drawing.Size(994, 78)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(13, 46)
+        Me.btnexcel.Location = New System.Drawing.Point(867, 13)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(75, 27)
+        Me.btnexcel.Size = New System.Drawing.Size(112, 59)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(13, 13)
+        Me.btntabel.Location = New System.Drawing.Point(9, 13)
         Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(75, 27)
+        Me.btntabel.Size = New System.Drawing.Size(104, 59)
         Me.btntabel.TabIndex = 17
         Me.btntabel.Text = "Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
