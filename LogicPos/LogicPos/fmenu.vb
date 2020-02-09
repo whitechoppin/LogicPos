@@ -143,4 +143,8 @@ Public Class fmenu
     Private Sub JatuhTempoPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JatuhTempoPenjualanToolStripMenuItem.Click
         fjatuhtempopenjualan.Show()
     End Sub
+
+    Private Sub DataKategoriBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataKategoriBarangToolStripMenuItem.Click
+
+    End Sub
 End Class

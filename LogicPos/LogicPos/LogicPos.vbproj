@@ -203,6 +203,12 @@
     <Compile Include="flaporanbarangmasuk.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flaporanpricelist.Designer.vb">
+      <DependentUpon>flaporanpricelist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanpricelist.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanreturbeli.Designer.vb">
       <DependentUpon>flaporanreturbeli.vb</DependentUpon>
     </Compile>

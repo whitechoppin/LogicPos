@@ -5,6 +5,12 @@ Public Class fjatuhtempopembelian
         Me.MdiParent = fmenu
         Call koneksii()
         Call tabel_pembelian()
+
+        With GridView1
+            .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
+            'buat sum harga
+            .Columns("total_pembelian").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_pembelian", "{0:n0}")
+        End With
     End Sub
 
     Sub grid_pembelian()

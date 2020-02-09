@@ -5,6 +5,15 @@ Public Class fjatuhtempopenjualan
         Me.MdiParent = fmenu
         Call koneksii()
         Call tabel_penjualan()
+
+        With GridView1
+            .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
+            'buat sum harga
+            .Columns("total_penjualan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_penjualan", "{0:n0}")
+            .Columns("bayar_penjualan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "bayar_penjualan", "{0:n0}")
+            .Columns("sisa_penjualan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "sisa_penjualan", "{0:n0}")
+
+        End With
     End Sub
 
     Sub grid_penjualan()
@@ -34,7 +43,7 @@ Public Class fjatuhtempopenjualan
         GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn6.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn7.Caption = "sisa"
+        GridColumn7.Caption = "Sisa"
         GridColumn7.FieldName = "sisa_penjualan"
         GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn7.DisplayFormat.FormatString = "##,##0"
