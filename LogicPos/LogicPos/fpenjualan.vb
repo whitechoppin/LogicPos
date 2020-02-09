@@ -1504,8 +1504,6 @@ Public Class fpenjualan
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
 
-
-
     Private Sub txtrekening_TextChanged(sender As Object, e As EventArgs) Handles txtrekening.TextChanged
         If txtrekening.Text.Equals("KREDIT") Then
             txtbayar.Text = 0
@@ -1637,6 +1635,31 @@ Public Class fpenjualan
     Private Sub btncarikas_Click(sender As Object, e As EventArgs) Handles btncarikas.Click
         tutupkas = 1
         fcarikas.ShowDialog()
+    End Sub
+
+    Private Sub btnbayarfull_Click(sender As Object, e As EventArgs) Handles btnbayarfull.Click
+        Dim bayarfull, sisafull As Double
+
+        If btnbayarfull.Text.Equals("Bayar") Then
+            bayarfull = sisa
+            sisa = 0
+            bayar = bayarfull
+
+            txtbayar.Text = bayar
+            txtsisa.Text = sisa
+
+            btnbayarfull.Text = "Sisa"
+        ElseIf btnbayarfull.Text.Equals("Sisa") Then
+            sisafull = bayar
+            bayar = 0
+            sisa = sisafull
+
+            txtbayar.Text = bayar
+            txtsisa.Text = sisa
+
+            btnbayarfull.Text = "Bayar"
+        End If
+
     End Sub
 
     Private Sub txtbayar_TextChanged(sender As Object, e As EventArgs) Handles txtbayar.TextChanged

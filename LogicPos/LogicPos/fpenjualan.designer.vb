@@ -49,6 +49,7 @@ Partial Class fpenjualan
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ritehargasatuan = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ritediskonpersen = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -123,10 +124,11 @@ Partial Class fpenjualan
         Me.txtrekening = New System.Windows.Forms.TextBox()
         Me.btncarikas = New System.Windows.Forms.Button()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.ritehargasatuan = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.btnbayarfull = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ritehargasatuan, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritediskonpersen, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritediskonnominal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -134,7 +136,6 @@ Partial Class fpenjualan
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        CType(Me.ritehargasatuan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label6
@@ -434,6 +435,11 @@ Partial Class fpenjualan
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
+        '
+        'ritehargasatuan
+        '
+        Me.ritehargasatuan.AutoHeight = False
+        Me.ritehargasatuan.Name = "ritehargasatuan"
         '
         'GridColumn8
         '
@@ -1262,10 +1268,15 @@ Partial Class fpenjualan
         'PrintDocument1
         '
         '
-        'ritehargasatuan
+        'btnbayarfull
         '
-        Me.ritehargasatuan.AutoHeight = False
-        Me.ritehargasatuan.Name = "ritehargasatuan"
+        Me.btnbayarfull.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnbayarfull.Location = New System.Drawing.Point(703, 683)
+        Me.btnbayarfull.Name = "btnbayarfull"
+        Me.btnbayarfull.Size = New System.Drawing.Size(95, 27)
+        Me.btnbayarfull.TabIndex = 73
+        Me.btnbayarfull.Text = "Bayar"
+        Me.btnbayarfull.UseVisualStyleBackColor = True
         '
         'fpenjualan
         '
@@ -1273,6 +1284,7 @@ Partial Class fpenjualan
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1205, 717)
+        Me.Controls.Add(Me.btnbayarfull)
         Me.Controls.Add(Me.btncarikas)
         Me.Controls.Add(Me.txtrekening)
         Me.Controls.Add(Me.cmbpembayaran)
@@ -1309,6 +1321,7 @@ Partial Class fpenjualan
         Me.GroupBox1.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ritehargasatuan, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ritediskonpersen, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ritediskonnominal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
@@ -1320,7 +1333,6 @@ Partial Class fpenjualan
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
-        CType(Me.ritehargasatuan, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1426,4 +1438,5 @@ Partial Class fpenjualan
     Friend WithEvents btncarikas As Button
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents ritehargasatuan As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents btnbayarfull As Button
 End Class
