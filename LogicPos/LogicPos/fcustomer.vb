@@ -152,7 +152,7 @@ Public Class fcustomer
                 PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
                 'merubah gambar pada ms ke array
                 ms.ToArray()
-                sql = "INSERT INTO tb_pelanggan (kode_pelanggan,nama_pelanggan,alamat_pelanggan,telepon_pelanggan,keterangan_pelanggan,foto_pelanggan,created_by,updated_by,date_created,last_updated) VALUES ( ?,?,?,?,?,?,?,?,?)"
+                sql = "INSERT INTO tb_pelanggan (kode_pelanggan,nama_pelanggan,alamat_pelanggan,telepon_pelanggan,keterangan_pelanggan,foto_pelanggan,created_by,updated_by,date_created,last_updated) VALUES (?,?,?,?,?,?,?,?,?,?)"
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
                 cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
