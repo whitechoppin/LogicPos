@@ -325,7 +325,7 @@ Public Class fkaskeluar
         '    tabel_faktur.Rows.Add(baris)
         'Next
 
-        rpt_faktur = New fakturkasmasuk
+        rpt_faktur = New fakturkaskeluar
         'rpt_faktur.SetDataSource(tabel_faktur)
         'rpt.SetParameterValue("total", total2)
         rpt_faktur.SetParameterValue("nofaktur", txtkodekeluar.Text)
