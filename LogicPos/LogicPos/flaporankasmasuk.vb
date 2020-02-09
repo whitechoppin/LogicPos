@@ -428,7 +428,7 @@ Public Class flaporankasmasuk
         dr = cmmd.ExecuteReader
 
         If dr.HasRows Then
-            rptrekap = New rptrekapkaskeluar
+            rptrekap = New rptrekapkasmasuk
 
             awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
             awalPFDs = rptrekap.DataDefinition.ParameterFields

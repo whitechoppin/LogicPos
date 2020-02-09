@@ -44,6 +44,7 @@ Partial Class flaporantransferkas
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnrekap = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,6 +89,7 @@ Partial Class flaporantransferkas
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.btnrekap)
         Me.GroupBox4.Controls.Add(Me.btnexcel)
         Me.GroupBox4.Controls.Add(Me.btntabel)
         Me.GroupBox4.Location = New System.Drawing.Point(12, 69)
@@ -221,6 +223,15 @@ Partial Class flaporantransferkas
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Transfer Kas"
         '
+        'btnrekap
+        '
+        Me.btnrekap.Location = New System.Drawing.Point(119, 13)
+        Me.btnrekap.Name = "btnrekap"
+        Me.btnrekap.Size = New System.Drawing.Size(180, 59)
+        Me.btnrekap.TabIndex = 20
+        Me.btnrekap.Text = "Rekap"
+        Me.btnrekap.UseVisualStyleBackColor = True
+        '
         'flaporantransferkas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -265,4 +276,5 @@ Partial Class flaporantransferkas
     Friend WithEvents btnexcel As Button
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label2 As Label
+    Friend WithEvents btnrekap As Button
 End Class

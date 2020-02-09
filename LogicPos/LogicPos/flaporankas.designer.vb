@@ -45,6 +45,7 @@ Partial Class flaporankas
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnrekap = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,9 +57,9 @@ Partial Class flaporankas
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker2)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 58)
+        Me.GroupBox1.Location = New System.Drawing.Point(299, 17)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(255, 81)
+        Me.GroupBox1.Size = New System.Drawing.Size(707, 58)
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Periode"
@@ -67,7 +68,7 @@ Partial Class flaporankas
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(212, 35)
+        Me.Label1.Location = New System.Drawing.Point(212, 22)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(30, 16)
         Me.Label1.TabIndex = 7
@@ -75,7 +76,7 @@ Partial Class flaporankas
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(6, 47)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(248, 19)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker2.TabIndex = 3
@@ -89,19 +90,20 @@ Partial Class flaporankas
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.btnrekap)
         Me.GroupBox4.Controls.Add(Me.btnexcel)
         Me.GroupBox4.Controls.Add(Me.btntabel)
-        Me.GroupBox4.Location = New System.Drawing.Point(273, 58)
+        Me.GroupBox4.Location = New System.Drawing.Point(12, 81)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(98, 81)
+        Me.GroupBox4.Size = New System.Drawing.Size(994, 64)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(13, 46)
+        Me.btnexcel.Location = New System.Drawing.Point(888, 13)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(75, 27)
+        Me.btnexcel.Size = New System.Drawing.Size(100, 45)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
@@ -110,7 +112,7 @@ Partial Class flaporankas
         '
         Me.btntabel.Location = New System.Drawing.Point(13, 13)
         Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(75, 27)
+        Me.btntabel.Size = New System.Drawing.Size(107, 45)
         Me.btntabel.TabIndex = 17
         Me.btntabel.Text = "Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
@@ -216,11 +218,20 @@ Partial Class flaporankas
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial Black", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 3)
+        Me.Label2.Location = New System.Drawing.Point(16, 23)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(281, 52)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Kas"
+        '
+        'btnrekap
+        '
+        Me.btnrekap.Location = New System.Drawing.Point(126, 13)
+        Me.btnrekap.Name = "btnrekap"
+        Me.btnrekap.Size = New System.Drawing.Size(180, 46)
+        Me.btnrekap.TabIndex = 21
+        Me.btnrekap.Text = "Rekap"
+        Me.btnrekap.UseVisualStyleBackColor = True
         '
         'flaporankas
         '
@@ -266,4 +277,5 @@ Partial Class flaporankas
     Friend WithEvents btnexcel As Button
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label2 As Label
+    Friend WithEvents btnrekap As Button
 End Class

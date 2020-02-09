@@ -126,7 +126,7 @@ Public Class fmenu
     End Sub
 
     Private Sub LTransferBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferBarangToolStripMenuItem.Click
-        ftransferbarang.Show()
+        flaportransferbarang.Show()
     End Sub
 
     Private Sub LogOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOutToolStripMenuItem.Click
