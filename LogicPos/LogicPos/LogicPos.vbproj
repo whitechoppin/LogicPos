@@ -309,6 +309,12 @@
       <DependentUpon>rptperfakturjual.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptrekapkas.vb">
+      <DependentUpon>rptrekapkas.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="rptrekaptransferkas.vb">
       <DependentUpon>rptrekaptransferkas.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -726,6 +732,10 @@
     <EmbeddedResource Include="rptperfakturjual.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptperfakturjual.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekapkas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekapkas.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekaptransferkas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
