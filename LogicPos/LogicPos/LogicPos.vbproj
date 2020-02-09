@@ -185,6 +185,12 @@
     <Compile Include="fjatuhtempopenjualan.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fkategoribarang.Designer.vb">
+      <DependentUpon>fkategoribarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fkategoribarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanbarangkeluar.Designer.vb">
       <DependentUpon>flaporanbarangkeluar.vb</DependentUpon>
     </Compile>

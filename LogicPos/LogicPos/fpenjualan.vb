@@ -303,6 +303,7 @@ Public Class fpenjualan
         cmbpembayaran.Enabled = True
         btncarikas.Enabled = True
 
+        btnbayarfull.Enabled = True
         txtbayar.Enabled = True
         txtbayar.Clear()
         txtbayar.Text = 0
@@ -420,6 +421,7 @@ Public Class fpenjualan
         btncarikas.Enabled = False
         txtrekening.Clear()
 
+        btnbayarfull.Enabled = False
         txtbayar.Clear()
         txtbayar.Text = 0
         txtbayar.Enabled = False
@@ -626,6 +628,7 @@ Public Class fpenjualan
         txtdiskonpersen.Enabled = False
         txtdiskonnominal.Enabled = False
 
+        btnbayarfull.Enabled = True
         'cmbpembayaran.SelectedIndex = -1
         cmbpembayaran.Enabled = True
         btncarikas.Enabled = True
