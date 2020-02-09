@@ -429,7 +429,7 @@ Partial Class fmenu
         '
         Me.DataKategoriBarangToolStripMenuItem.Name = "DataKategoriBarangToolStripMenuItem"
         Me.DataKategoriBarangToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
-        Me.DataKategoriBarangToolStripMenuItem.Text = "Data Kategori Barang"
+        Me.DataKategoriBarangToolStripMenuItem.Text = "Data &Kategori Barang"
         '
         'fmenu
         '
