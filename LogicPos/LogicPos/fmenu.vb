@@ -145,6 +145,26 @@ Public Class fmenu
     End Sub
 
     Private Sub DataKategoriBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataKategoriBarangToolStripMenuItem.Click
+        fkategoribarang.Show()
+    End Sub
 
+    Private Sub LaporanPricelistBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanPricelistBarangToolStripMenuItem.Click
+        flaporanpricelist.Show()
+    End Sub
+
+    Private Sub LaporanReturBeliToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanReturBeliToolStripMenuItem.Click
+        flaporanreturbeli.Show()
+    End Sub
+
+    Private Sub LaporanReturJualToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanReturJualToolStripMenuItem.Click
+        flaporanreturjual.Show()
+    End Sub
+
+    Private Sub LaporanBarangMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanBarangMasukToolStripMenuItem.Click
+        flaporanbarangmasuk.Show()
+    End Sub
+
+    Private Sub LaporanBarangKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanBarangKeluarToolStripMenuItem.Click
+        flaporanbarangkeluar.Show()
     End Sub
 End Class

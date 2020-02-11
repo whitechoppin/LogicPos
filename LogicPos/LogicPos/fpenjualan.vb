@@ -1644,7 +1644,7 @@ Public Class fpenjualan
         Dim bayarfull, sisafull As Double
 
         If btnbayarfull.Text.Equals("Bayar") Then
-            bayarfull = sisa
+            bayarfull = totalbelanja
             sisa = 0
             bayar = bayarfull
 
@@ -1653,7 +1653,7 @@ Public Class fpenjualan
 
             btnbayarfull.Text = "Sisa"
         ElseIf btnbayarfull.Text.Equals("Sisa") Then
-            sisafull = bayar
+            sisafull = totalbelanja
             bayar = 0
             sisa = sisafull
 

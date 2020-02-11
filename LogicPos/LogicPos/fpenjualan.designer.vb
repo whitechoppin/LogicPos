@@ -531,7 +531,8 @@ Partial Class fpenjualan
         Me.txtinformasi.Name = "txtinformasi"
         Me.txtinformasi.Size = New System.Drawing.Size(584, 113)
         Me.txtinformasi.TabIndex = 33
-        Me.txtinformasi.Text = "Keterangan Tabel Keranjang : "
+        Me.txtinformasi.Text = "Tata Cara Pengisian : " & Global.Microsoft.VisualBasic.ChrW(10) & "1. isi kode customer." & Global.Microsoft.VisualBasic.ChrW(10) & "2. isi kode sales yang bersangkutan." &
+    "" & Global.Microsoft.VisualBasic.ChrW(10) & "3. isi kode gudang (stok tampil sesuai isi kode gudang)"
         '
         'txttotal
         '
