@@ -686,6 +686,9 @@
     <EmbeddedResource Include="fkasmasuk.resx">
       <DependentUpon>fkasmasuk.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fkategoribarang.resx">
+      <DependentUpon>fkategoribarang.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flaporantransferbarang.resx">
       <DependentUpon>flaporantransferbarang.vb</DependentUpon>
     </EmbeddedResource>

@@ -78,7 +78,7 @@ Public Class fkas
         GridColumn4.Width = 300
     End Sub
     Sub isitabel()
-        'Call koneksii()
+        Call koneksii()
         sql = "SELECT * FROM tb_kas"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
