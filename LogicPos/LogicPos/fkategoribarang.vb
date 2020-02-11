@@ -2,6 +2,7 @@
 
 Public Class fkategoribarang
     Dim kodekategoriedit As String
+    Dim selisihharga As Double
     Private Sub fkategoribarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -69,7 +70,7 @@ Public Class fkategoribarang
         txtnama.Enabled = True
         txtselisih.Enabled = True
         txtketerangan.Enabled = True
-        txtnama.Focus()
+        txtkode.Focus()
     End Sub
     Sub simpan()
         Call koneksii()
@@ -91,22 +92,123 @@ Public Class fkategoribarang
     End Sub
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
+        If btntambah.Text = "Tambah" Then
+            btnbatal.Enabled = True
+            btntambah.Text = "Simpan"
+            Call enable_text()
+            Call index()
 
+            GridControl.Enabled = False
+        Else
+            If txtkode.Text.Length = 0 Then
+                MsgBox("kode belum terisi !")
+            Else
+                If txtnama.Text.Length = 0 Then
+                    MsgBox("Nama belum terisi !")
+                Else
+                    If txtselisih.Text.Length = 0 Then
+                        MsgBox("Selisih belum terisi !")
+                    Else
+                        Call simpan()
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    Sub edit()
+        Call koneksii()
+        If txtkode.Text.Equals(kodekategoriedit) Then
+            sql = "UPDATE tb_kategori_barang SET  nama_kategori='" & txtnama.Text & "', selisih_kategori='" & selisihharga & "', keterangan_kategori='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE  kode_kategori='" & kodekategoriedit & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
+            Me.Refresh()
+            Call awal()
+        Else
+            sql = "SELECT * FROM tb_kategori_barang WHERE kode_kategori  = '" + txtkode.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kategori"), MsgBoxStyle.Information, "Pemberitahuan")
+            Else
+                sql = "UPDATE tb_kategori_barang SET kode_kategori='" & txtkode.Text & "', nama_kategori='" & txtnama.Text & "', selisih_kategori='" & selisihharga & "', keterangan_kategori='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE  kode_kategori='" & kodekategoriedit & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+                MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+                btnedit.Text = "Edit"
+                Me.Refresh()
+                Call awal()
+            End If
+        End If
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-
+        If btnedit.Text = "Edit" Then
+            btnedit.Text = "Simpan"
+            btnhapus.Enabled = False
+            Call enable_text()
+            Call index()
+            GridControl.Enabled = False
+        Else
+            If txtkode.Text.Length = 0 Then
+                MsgBox("ID belum terisi !")
+            Else
+                If txtnama.Text.Length = 0 Then
+                    MsgBox("Nama belum terisi !")
+                Else
+                    If txtselisih.Text.Length = 0 Then
+                        MsgBox("Selisih belum terisi !")
+                    Else
+                        Call edit()
+                    End If
+                End If
+            End If
+        End If
     End Sub
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-
+        Call koneksii()
+        If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+            sql = "DELETE FROM tb_kategori_barang WHERE  kode_kategori='" & txtkode.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Me.Refresh()
+            Call awal()
+        End If
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
     End Sub
 
+    Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
+        txtkode.Text = GridView.GetFocusedRowCellValue("kode_kategori")
+        kodekategoriedit = GridView.GetFocusedRowCellValue("kode_kategori")
+        txtnama.Text = GridView.GetFocusedRowCellValue("nama_kategori")
+        txtselisih.Text = GridView.GetFocusedRowCellValue("selisih_kategori")
+        txtketerangan.Text = GridView.GetFocusedRowCellValue("keterangan_kategori")
+
+        btnedit.Enabled = True
+        btnbatal.Enabled = True
+        btnhapus.Enabled = True
+        btntambah.Enabled = False
+        btntambah.Text = "Tambah"
+    End Sub
+
     Private Sub txtselisih_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtselisih.KeyPress
         e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtselisih_TextChanged(sender As Object, e As EventArgs) Handles txtselisih.TextChanged
+        If txtselisih.Text = "" Then
+            txtselisih.Text = 0
+        Else
+            selisihharga = txtselisih.Text
+            txtselisih.Text = Format(selisihharga, "##,##0")
+            txtselisih.SelectionStart = Len(txtselisih.Text)
+        End If
     End Sub
 End Class

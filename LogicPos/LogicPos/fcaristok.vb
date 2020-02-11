@@ -6,6 +6,9 @@ Public Class fcaristok
     Dim kode As String
     Dim modalbarang As Double
 
+    Private Sub fcaristok_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Call tabel()
+    End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"
         GridColumn1.FieldName = "kode_stok"
@@ -83,7 +86,16 @@ Public Class fcaristok
         Call ambil_gbr()
     End Sub
 
-    Private Sub fcaristok_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call tabel()
+    Private Sub GridControl1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles GridControl1.KeyPress
+        If e.KeyChar = Strings.Chr(Keys.Enter) Then
+            If tutupstok = 1 Then
+                fpenjualan.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
+            ElseIf tutupstok = 2 Then
+                fbarangkeluar.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
+            ElseIf tutupstok = 3 Then
+                ftransferbarang.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
+            End If
+            Me.Hide()
+        End If
     End Sub
 End Class

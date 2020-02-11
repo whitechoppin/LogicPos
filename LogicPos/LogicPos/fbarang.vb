@@ -5,9 +5,15 @@ Imports System.IO
 
 Public Class fbarang
     Dim hargabarang, modalbarang As Double
-    Dim kode As String
+    Dim kodebarang, namabarang, satuanbarang, jenisbarang, kategoribarang, keteranganbarang As String
     Dim minstok As Integer
     Private PathFile As String = Nothing
+
+    Private Sub fbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.MdiParent = fmenu
+        Call awal()
+    End Sub
+
     Sub awal()
         btntambah.Text = "Tambah"
         btnedit.Text = "Edit"
@@ -21,8 +27,13 @@ Public Class fbarang
         cmbsatuan.SelectedIndex = -1
         cmbjenis.Enabled = False
         cmbjenis.SelectedIndex = -1
+        cmbkategori.Enabled = False
+        cmbkategori.SelectedIndex = -1
         txtmodal.Text = 0
         txtmodal.Enabled = False
+        txtketerangan.Enabled = False
+        txtketerangan.Clear()
+
 
         btntambah.Enabled = True
         btnedit.Enabled = False
@@ -33,23 +44,38 @@ Public Class fbarang
         txtnama.MaxLength = 20
 
         GridControl.Enabled = True
+        Call comboboxkategori()
+
         Call isitabel()
         txtgbr.Text = ""
         PictureBox1.Image = ImageList1.Images(0)
         btnupload.Enabled = False
         cnn.Close()
     End Sub
-    Private Sub fbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.MdiParent = fmenu
-        Call awal()
+
+    Sub comboboxkategori()
+        Call koneksii()
+        cmbkategori.Items.Clear()
+        cmbkategori.AutoCompleteCustomSource.Clear()
+        cmmd = New OdbcCommand("SELECT * FROM tb_kategori_barang", cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbkategori.AutoCompleteCustomSource.Add(dr("kode_kategori"))
+                cmbkategori.Items.Add(dr("kode_kategori"))
+            End While
+        End If
     End Sub
+
     Sub index()
         txtkode.TabIndex = 1
         txtnama.TabIndex = 2
         cmbjenis.TabIndex = 3
         cmbsatuan.TabIndex = 4
-        txtmodal.TabIndex = 5
-        btnupload.TabIndex = 6
+        cmbkategori.TabIndex = 5
+        txtketerangan.TabIndex = 6
+        txtmodal.TabIndex = 7
+        btnupload.TabIndex = 8
     End Sub
     Sub isitabel()
         'Call koneksii()
@@ -80,6 +106,9 @@ Public Class fbarang
             GridColumn5.Width = "60"
             GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
             GridColumn5.DisplayFormat.FormatString = "Rp ##,#0"
+            GridColumn6.Caption = "Kategori"
+            GridColumn6.FieldName = "kategori_barang"
+            GridColumn6.Width = "40"
 
             GridControl.Visible = True
             cnn.Close()
@@ -91,6 +120,8 @@ Public Class fbarang
         txtnama.Enabled = True
         cmbjenis.Enabled = True
         cmbsatuan.Enabled = True
+        cmbkategori.Enabled = True
+        txtketerangan.Enabled = True
         btnupload.Enabled = True
         txtmodal.Enabled = True
         txtkode.Focus()
@@ -117,7 +148,11 @@ Public Class fbarang
                         If cmbjenis.SelectedIndex = -1 Then
                             MsgBox("Jenis belum dipilih !")
                         Else
-                            Call simpan()
+                            If cmbkategori.SelectedIndex = -1 Then
+                                MsgBox("Kategori belum dipilih !")
+                            Else
+                                Call simpan()
+                            End If
                         End If
                     End If
                 End If
@@ -146,14 +181,16 @@ Public Class fbarang
                 PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
                 'merubah gambar pada ms ke array
                 ms.ToArray()
-                sql = "INSERT INTO tb_barang (kode_barang,nama_barang,satuan_barang,jenis_barang,gambar_barang, modal_barang,created_by,updated_by,date_created,last_updated) VALUES ( ?,?,?,?,?,?,?,?,?,?)"
+                sql = "INSERT INTO tb_barang (kode_barang,nama_barang,jenis_barang,kategori_barang,satuan_barang,keterangan_barang,modal_barang,gambar_barang,created_by,updated_by,date_created,last_updated) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)"
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
                 cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
-                cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
                 cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
-                cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
+                cmmd.Parameters.AddWithValue("@kategori_barang", cmbkategori.Text)
+                cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
+                cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
                 cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
+                cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
                 cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
                 cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
                 cmmd.Parameters.AddWithValue("@date_created", Date.Now)
@@ -202,16 +239,29 @@ Public Class fbarang
             dr = cmmd.ExecuteReader
             dr.Read()
             If dr.HasRows Then
-                txtnama.Text = dr("nama_barang")
-                cmbsatuan.Text = dr("satuan_barang")
-                cmbjenis.Text = dr("jenis_barang")
-                kode = dr("kode_barang")
+
+
+                kodebarang = dr("kode_barang")
+                namabarang = dr("nama_barang")
                 foto = dr("gambar_barang")
                 modalbarang = dr("modal_barang")
-                txtgbr.Text = txtnama.Text
-                txtmodal.Text = Format(modalbarang, "##,##0")
+                satuanbarang = dr("satuan_barang")
+                jenisbarang = dr("jenis_barang")
+                kategoribarang = dr("kategori_barang")
+                keteranganbarang = dr("keterangan_barang")
+
                 PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
                 PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
+
+                txtkode.Text = kodebarang
+                txtnama.Text = namabarang
+                cmbsatuan.Text = satuanbarang
+                cmbjenis.Text = jenisbarang
+                cmbkategori.Text = kategoribarang
+                txtketerangan.Text = keteranganbarang
+                txtgbr.Text = txtnama.Text
+                txtmodal.Text = Format(modalbarang, "##,##0")
+
                 btnedit.Enabled = True
                 btnbatal.Enabled = True
                 btnhapus.Enabled = True
@@ -251,7 +301,11 @@ Public Class fbarang
                         If cmbjenis.SelectedIndex = -1 Then
                             MsgBox("Kategori belum terisi !")
                         Else
-                            Call edit()
+                            If cmbjenis.SelectedIndex = -1 Then
+                                MsgBox("Jenis belum dipilih !")
+                            Else
+                                Call edit()
+                            End If
                         End If
                     End If
                 End If
@@ -266,14 +320,16 @@ Public Class fbarang
         'merubah gambar pada ms ke array
         ms.ToArray()
         Using cnn As New OdbcConnection(strConn)
-            sql = "UPDATE tb_barang SET kode_barang=?, nama_barang=?, satuan_barang=?,  jenis_barang=?, gambar_barang=?, modal_barang=?, updated_by=?, last_updated=? WHERE  kode_barang='" & kode & "'"
+            sql = "UPDATE tb_barang SET kode_barang=?, nama_barang=?, jenis_barang=?, kategori_barang=?, satuan_barang=?, keterangan_barang=?, modal_barang=?, gambar_barang=?, updated_by=?, last_updated=? WHERE  kode_barang='" & kodebarang & "'"
             cmmd = New OdbcCommand(sql, cnn)
             cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
             cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
-            cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
             cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
-            cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
+            cmmd.Parameters.AddWithValue("@kategori_barang", cmbkategori.Text)
+            cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
+            cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
             cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
+            cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
             cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
             cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
             cnn.Open()
@@ -287,7 +343,7 @@ Public Class fbarang
         End Using
     End Sub
     Sub edit()
-        If txtkode.Text = kode Then
+        If txtkode.Text = kodebarang Then
             Call perbaharui()
         Else
             Using cnn As New OdbcConnection(strConn)

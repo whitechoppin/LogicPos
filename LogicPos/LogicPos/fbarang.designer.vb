@@ -28,7 +28,7 @@ Partial Class fbarang
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.btnshow = New System.Windows.Forms.Button()
-        Me.cmbcategori = New System.Windows.Forms.ComboBox()
+        Me.cmbkategori = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btnauto = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -60,6 +60,7 @@ Partial Class fbarang
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,7 +74,7 @@ Partial Class fbarang
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.txtketerangan)
         Me.GroupBox1.Controls.Add(Me.btnshow)
-        Me.GroupBox1.Controls.Add(Me.cmbcategori)
+        Me.GroupBox1.Controls.Add(Me.cmbkategori)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.btnauto)
         Me.GroupBox1.Controls.Add(Me.Label5)
@@ -131,15 +132,15 @@ Partial Class fbarang
         Me.btnshow.TabIndex = 25
         Me.btnshow.UseVisualStyleBackColor = True
         '
-        'cmbcategori
+        'cmbkategori
         '
-        Me.cmbcategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbcategori.FormattingEnabled = True
-        Me.cmbcategori.Items.AddRange(New Object() {"Lembaran", "Rol"})
-        Me.cmbcategori.Location = New System.Drawing.Point(118, 188)
-        Me.cmbcategori.Name = "cmbcategori"
-        Me.cmbcategori.Size = New System.Drawing.Size(213, 26)
-        Me.cmbcategori.TabIndex = 24
+        Me.cmbkategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbkategori.FormattingEnabled = True
+        Me.cmbkategori.Items.AddRange(New Object() {"Lembaran", "Rol"})
+        Me.cmbkategori.Location = New System.Drawing.Point(118, 188)
+        Me.cmbkategori.Name = "cmbkategori"
+        Me.cmbkategori.Size = New System.Drawing.Size(213, 26)
+        Me.cmbkategori.TabIndex = 24
         '
         'Label6
         '
@@ -147,9 +148,9 @@ Partial Class fbarang
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(10, 188)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(64, 18)
+        Me.Label6.Size = New System.Drawing.Size(63, 18)
         Me.Label6.TabIndex = 23
-        Me.Label6.Text = "Categori"
+        Me.Label6.Text = "Kategori"
         '
         'btnauto
         '
@@ -360,7 +361,7 @@ Partial Class fbarang
         '
         'GridView
         '
-        Me.GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
+        Me.GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
         Me.GridView.GridControl = Me.GridControl
         Me.GridView.Name = "GridView"
         Me.GridView.OptionsBehavior.Editable = False
@@ -427,6 +428,16 @@ Partial Class fbarang
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "no-image.jpg")
         '
+        'GridColumn6
+        '
+        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceCell.Options.UseFont = True
+        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn6.Name = "GridColumn6"
+        Me.GridColumn6.Visible = True
+        Me.GridColumn6.VisibleIndex = 5
+        '
         'fbarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -482,10 +493,11 @@ Partial Class fbarang
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents cmbcategori As ComboBox
+    Friend WithEvents cmbkategori As ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents btnshow As Button
     Friend WithEvents Label7 As Label
     Friend WithEvents txtketerangan As RichTextBox
     Friend WithEvents txthidden As TextBox
+    Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -137,10 +137,6 @@ Public Class fkas
         End If
     End Sub
 
-    Private Sub txtsaldo_KeyPress(sender As Object, e As KeyPressEventArgs)
-        e.Handled = ValidAngka(e)
-    End Sub
-
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         txtkode.Text = GridView1.GetFocusedRowCellValue("kode_kas")
         kodekasedit = GridView1.GetFocusedRowCellValue("kode_kas")

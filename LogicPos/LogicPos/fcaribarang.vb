@@ -114,4 +114,19 @@ Public Class fcaribarang
     Private Sub GridControl1_KeyUp(sender As Object, e As KeyEventArgs) Handles GridControl1.KeyUp
         Call ambil_gbr()
     End Sub
+
+    Private Sub GridControl1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles GridControl1.KeyPress
+        If e.KeyChar = Strings.Chr(Keys.Enter) Then
+            If tutup = 1 Then
+                fpricelist.txtkode.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
+                Me.Hide()
+            ElseIf tutup = 2 Then
+                fpembelian.txtkodebarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
+                Me.Hide()
+            ElseIf tutup = 3 Then
+                fbarangmasuk.txtkodebarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
+                Me.Hide()
+            End If
+        End If
+    End Sub
 End Class
