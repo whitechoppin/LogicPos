@@ -207,6 +207,12 @@
     <Compile Include="flaporanbarangmasuk.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flaporanreturbeli.designer.vb">
+      <DependentUpon>flaporanreturbeli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanreturbeli.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanreturjual.designer.vb">
       <DependentUpon>flaporanreturjual.vb</DependentUpon>
     </Compile>
@@ -217,12 +223,6 @@
       <DependentUpon>flaporanpricelist.vb</DependentUpon>
     </Compile>
     <Compile Include="flaporanpricelist.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="flaporanreturbeli.Designer.vb">
-      <DependentUpon>flaporanreturbeli.vb</DependentUpon>
-    </Compile>
-    <Compile Include="flaporanreturbeli.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flaporantransferbarang.vb">
@@ -316,6 +316,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="rptperfakturreturbeli.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptperfakturreturbeli.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptperfakturreturjual.vb">
       <DependentUpon>rptperfakturreturjual.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -330,6 +336,12 @@
     </Compile>
     <Compile Include="rptrekapkas.vb">
       <DependentUpon>rptrekapkas.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="rptrekapreturpembelian.vb">
+      <DependentUpon>rptrekapreturpembelian.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -701,6 +713,9 @@
     <EmbeddedResource Include="fkategoribarang.resx">
       <DependentUpon>fkategoribarang.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flaporanreturbeli.resx">
+      <DependentUpon>flaporanreturbeli.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flaporanreturjual.resx">
       <DependentUpon>flaporanreturjual.vb</DependentUpon>
     </EmbeddedResource>
@@ -763,6 +778,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptperfakturbeli.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="rptperfakturreturbeli.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptperfakturreturbeli.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptperfakturreturjual.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptperfakturreturjual.vb</LastGenOutput>
@@ -774,6 +793,10 @@
     <EmbeddedResource Include="rptrekapkas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapkas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekapreturpembelian.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekapreturpembelian.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekapreturjual.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
