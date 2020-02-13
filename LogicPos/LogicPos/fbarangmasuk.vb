@@ -186,6 +186,9 @@ Public Class fbarangmasuk
         dtbarangmasuk.Enabled = False
         dtbarangmasuk.Value = Date.Now
 
+        cbprinted.Checked = False
+        cbposted.Checked = False
+
         'body
         txtkodebarang.Clear()
         txtkodebarang.Enabled = False
@@ -522,6 +525,11 @@ Public Class fbarangmasuk
             txtgudang.Text = ""
         End If
     End Sub
+
+    Private Sub riteqty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles riteqty.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
     Private Sub btncarisupplier_Click(sender As Object, e As EventArgs) Handles btncarisupplier.Click
         tutupsup = 2
         fcarisupp.ShowDialog()
@@ -836,7 +844,7 @@ Public Class fbarangmasuk
             MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
         Else
             Call koneksii()
-            sql = "SELECT kode_barang_masuk FROM tb_barang_masuk WHERE kode_barang_masuk  = '" + txtgobarangmasuk.Text + "'"
+            sql = "SELECT kode_barang_masuk FROM tb_barang_masuk WHERE kode_barang_masuk  = '" + txtgobarangmasuk.Text + "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then

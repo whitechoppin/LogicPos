@@ -29,7 +29,7 @@ Partial Class ftransferbarang
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
-        Me.txtgobarangkeluar = New System.Windows.Forms.TextBox()
+        Me.txtgotransferbarang = New System.Windows.Forms.TextBox()
         Me.btngo = New System.Windows.Forms.Button()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
@@ -65,6 +65,7 @@ Partial Class ftransferbarang
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ritebanyak = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -85,6 +86,7 @@ Partial Class ftransferbarang
         Me.GroupBox6.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ritebanyak, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -131,7 +133,7 @@ Partial Class ftransferbarang
         '
         Me.GroupBox5.Controls.Add(Me.btnprev)
         Me.GroupBox5.Controls.Add(Me.btnnext)
-        Me.GroupBox5.Controls.Add(Me.txtgobarangkeluar)
+        Me.GroupBox5.Controls.Add(Me.txtgotransferbarang)
         Me.GroupBox5.Controls.Add(Me.btngo)
         Me.GroupBox5.Location = New System.Drawing.Point(459, 10)
         Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4)
@@ -161,13 +163,13 @@ Partial Class ftransferbarang
         Me.btnnext.Text = "Next >>"
         Me.btnnext.UseVisualStyleBackColor = True
         '
-        'txtgobarangkeluar
+        'txtgotransferbarang
         '
-        Me.txtgobarangkeluar.Location = New System.Drawing.Point(131, 18)
-        Me.txtgobarangkeluar.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtgobarangkeluar.Name = "txtgobarangkeluar"
-        Me.txtgobarangkeluar.Size = New System.Drawing.Size(117, 24)
-        Me.txtgobarangkeluar.TabIndex = 7
+        Me.txtgotransferbarang.Location = New System.Drawing.Point(131, 18)
+        Me.txtgotransferbarang.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtgotransferbarang.Name = "txtgotransferbarang"
+        Me.txtgotransferbarang.Size = New System.Drawing.Size(117, 24)
+        Me.txtgotransferbarang.TabIndex = 7
         '
         'btngo
         '
@@ -510,6 +512,7 @@ Partial Class ftransferbarang
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ritebanyak})
         Me.GridControl1.Size = New System.Drawing.Size(1003, 232)
         Me.GridControl1.TabIndex = 63
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -563,10 +566,17 @@ Partial Class ftransferbarang
         Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
         Me.GridColumn4.Caption = "Banyak"
+        Me.GridColumn4.ColumnEdit = Me.ritebanyak
         Me.GridColumn4.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
+        '
+        'ritebanyak
+        '
+        Me.ritebanyak.AutoHeight = False
+        Me.ritebanyak.MaxLength = 12
+        Me.ritebanyak.Name = "ritebanyak"
         '
         'GridColumn5
         '
@@ -754,6 +764,7 @@ Partial Class ftransferbarang
         Me.GroupBox6.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ritebanyak, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
@@ -767,7 +778,7 @@ Partial Class ftransferbarang
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents btnprev As Button
     Friend WithEvents btnnext As Button
-    Friend WithEvents txtgobarangkeluar As TextBox
+    Friend WithEvents txtgotransferbarang As TextBox
     Friend WithEvents btngo As Button
     Friend WithEvents btnbatal As Button
     Friend WithEvents btnedit As Button
@@ -817,4 +828,5 @@ Partial Class ftransferbarang
     Friend WithEvents Label2 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label6 As Label
+    Friend WithEvents ritebanyak As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
 End Class

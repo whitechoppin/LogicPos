@@ -3,6 +3,7 @@ Imports DevExpress.Utils
 
 Public Class ftransferbarang
     Public tabel As DataTable
+    Dim hitnumber As Integer
     'variabel dalam penjualan
     Public jenis, satuan, kodetransferbarang, kodetransaksi As String
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
@@ -91,9 +92,15 @@ Public Class ftransferbarang
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 dr.Read()
-                'Call inisialisasi(dr.Item(0).ToString)
+                Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                'Call inisialisasi(previousnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(previousnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
@@ -110,9 +117,15 @@ Public Class ftransferbarang
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 dr.Read()
-                'Call inisialisasi(dr.Item(0).ToString)
+                Call inisialisasi(dr.Item(0).ToString)
+                hitnumber = 0
             Else
-                'Call inisialisasi(nextingnumber)
+                If hitnumber <= 2 Then
+                    Call inisialisasi(nextingnumber)
+                    hitnumber = hitnumber + 1
+                Else
+                    MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+                End If
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
@@ -251,7 +264,7 @@ Public Class ftransferbarang
         'button navigations
         btnprev.Enabled = False
         btngo.Enabled = False
-        txtgobarangkeluar.Enabled = False
+        txtgotransferbarang.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -321,7 +334,7 @@ Public Class ftransferbarang
         'button navigations
         btnprev.Enabled = False
         btngo.Enabled = False
-        txtgobarangkeluar.Enabled = False
+        txtgotransferbarang.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -400,7 +413,7 @@ Public Class ftransferbarang
         'button navigations
         btnprev.Enabled = True
         btngo.Enabled = True
-        txtgobarangkeluar.Enabled = True
+        txtgotransferbarang.Enabled = True
         btnnext.Enabled = True
 
         'header
@@ -532,6 +545,10 @@ Public Class ftransferbarang
         End If
     End Sub
 
+    Private Sub ritebanyak_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritebanyak.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
     Sub caribarang()
         Call koneksii()
         sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan ='00000000' AND tb_stok.kode_gudang ='" & cmbdarigudang.Text & "'"
@@ -650,7 +667,6 @@ Public Class ftransferbarang
 
         rpt_faktur = New fakturtransferbarang
         rpt_faktur.SetDataSource(tabel_faktur)
-        'rpt.SetParameterValue("total", total2)
         rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
 
@@ -671,7 +687,6 @@ Public Class ftransferbarang
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
             faktur = dr("nama_printer")
-
         Else
             faktur = ""
         End If
@@ -723,18 +738,28 @@ Public Class ftransferbarang
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
-
+        Call prevnumber(txtnonota.Text)
     End Sub
 
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
-
+        If txtgotransferbarang.Text = "" Then
+            MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+        Else
+            Call koneksii()
+            sql = "SELECT kode_transfer_barang FROM tb_transfer_barang WHERE kode_transfer_barang  = '" + txtgotransferbarang.Text + "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                Call inisialisasi(txtgotransferbarang.Text)
+            Else
+                MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+            End If
+        End If
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-
+        Call nextnumber(txtnonota.Text)
     End Sub
-
-
 
     Private Sub btncaridarigudang_Click(sender As Object, e As EventArgs) Handles btncaridarigudang.Click
         tutupgudang = 5

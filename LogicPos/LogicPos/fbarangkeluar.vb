@@ -291,6 +291,8 @@ Public Class fbarangkeluar
         dtbarangkeluar.Enabled = True
         dtbarangkeluar.Value = Date.Now
 
+        cbprinted.Checked = False
+        cbposted.Checked = False
 
         'body
         txtkodestok.Clear()
@@ -594,6 +596,10 @@ Public Class fbarangkeluar
         caripelanggan()
     End Sub
 
+    Private Sub ritebanyak_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritebanyak.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
     Private Sub cmbgudang_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbgudang.SelectedIndexChanged
         carigudang()
     End Sub
@@ -778,7 +784,7 @@ Public Class fbarangkeluar
             MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
         Else
             Call koneksii()
-            sql = "SELECT kode_barang_keluar FROM tb_barang_keluar WHERE kode_barang_keluar  = '" + txtgobarangkeluar.Text + "'"
+            sql = "SELECT kode_barang_keluar FROM tb_barang_keluar WHERE kode_barang_keluar  = '" + txtgobarangkeluar.Text + "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then

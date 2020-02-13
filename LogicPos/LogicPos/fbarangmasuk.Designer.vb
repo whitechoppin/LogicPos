@@ -50,6 +50,7 @@ Partial Class fbarangmasuk
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.riteqty = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -77,6 +78,7 @@ Partial Class fbarangmasuk
         Me.GroupBox3.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.riteqty, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -308,6 +310,7 @@ Partial Class fbarangmasuk
         Me.GridControl1.Location = New System.Drawing.Point(9, 261)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.riteqty})
         Me.GridControl1.Size = New System.Drawing.Size(993, 257)
         Me.GridControl1.TabIndex = 45
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -361,10 +364,17 @@ Partial Class fbarangmasuk
         Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
         Me.GridColumn4.Caption = "Qty"
+        Me.GridColumn4.ColumnEdit = Me.riteqty
         Me.GridColumn4.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
+        '
+        'riteqty
+        '
+        Me.riteqty.AutoHeight = False
+        Me.riteqty.MaxLength = 12
+        Me.riteqty.Name = "riteqty"
         '
         'GridColumn5
         '
@@ -636,6 +646,7 @@ Partial Class fbarangmasuk
         Me.GroupBox3.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.riteqty, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
@@ -695,4 +706,5 @@ Partial Class fbarangmasuk
     Friend WithEvents btnsimpan As Button
     Friend WithEvents btncarisupplier As Button
     Friend WithEvents cmbsupplier As ComboBox
+    Friend WithEvents riteqty As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
 End Class
