@@ -750,7 +750,7 @@ Public Class flunaspiutang
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
-        Call prevnumber(kodelunaspiutang)
+        Call prevnumber(txtgolunas.Text)
     End Sub
 
     Private Sub btngolunas_Click(sender As Object, e As EventArgs) Handles btngolunas.Click
@@ -770,7 +770,7 @@ Public Class flunaspiutang
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-        Call nextnumber(kodelunaspiutang)
+        Call nextnumber(txtgolunas.Text)
     End Sub
 
     Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
