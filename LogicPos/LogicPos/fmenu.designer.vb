@@ -255,7 +255,7 @@ Partial Class fmenu
         '
         'LaporanMenu
         '
-        Me.LaporanMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LaporanPricelistBarangToolStripMenuItem, Me.LPenjualanToolStripMenuItem, Me.LPembelianToolStripMenuItem, Me.LaporanReturBeliToolStripMenuItem, Me.LaporanReturJualToolStripMenuItem, Me.LaporanBarangMasukToolStripMenuItem, Me.LaporanBarangKeluarToolStripMenuItem, Me.LUtangToolStripMenuItem, Me.LPiutangToolStripMenuItem, Me.LAkunMasukToolStripMenuItem, Me.LAkunKeluarToolStripMenuItem, Me.LTransferKasToolStripMenuItem, Me.LTransferBarangToolStripMenuItem, Me.LStokBarangToolStripMenuItem, Me.LaporanTransaksiKasToolStripMenuItem})
+        Me.LaporanMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LaporanPricelistBarangToolStripMenuItem, Me.LPembelianToolStripMenuItem, Me.LPenjualanToolStripMenuItem, Me.LaporanReturBeliToolStripMenuItem, Me.LaporanReturJualToolStripMenuItem, Me.LaporanBarangMasukToolStripMenuItem, Me.LaporanBarangKeluarToolStripMenuItem, Me.LUtangToolStripMenuItem, Me.LPiutangToolStripMenuItem, Me.LAkunMasukToolStripMenuItem, Me.LAkunKeluarToolStripMenuItem, Me.LTransferKasToolStripMenuItem, Me.LTransferBarangToolStripMenuItem, Me.LStokBarangToolStripMenuItem, Me.LaporanTransaksiKasToolStripMenuItem})
         Me.LaporanMenu.Name = "LaporanMenu"
         Me.LaporanMenu.Size = New System.Drawing.Size(62, 20)
         Me.LaporanMenu.Text = "&Laporan"
