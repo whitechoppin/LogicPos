@@ -842,7 +842,6 @@ Public Class fpenjualan
     Private Sub ritehargasatuan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritehargasatuan.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
-
     Private Sub ritediskonpersen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritediskonpersen.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
@@ -1448,6 +1447,10 @@ Public Class fpenjualan
 
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
         If e.Column.FieldName = "banyak" Then
+            If e.Value = "" Or e.Value = "0" Then
+                GridView1.SetRowCellValue(e.RowHandle, "banyak", 1)
+            End If
+
             Try
                 'GridView1.SetRowCellValue(e.RowHandle, "harga_diskon", GridView1.GetRowCellValue(e.RowHandle, "harga_satuan") - e.Value / 100 * GridView1.GetRowCellValue(e.RowHandle, "harga_satuan"))
                 GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga_diskon"))
@@ -1460,6 +1463,9 @@ Public Class fpenjualan
         End If
 
         If e.Column.FieldName = "harga_satuan" Then
+            If e.Value = "" Or e.Value = "0" Then
+                GridView1.SetRowCellValue(e.RowHandle, "harga_satuan", 1)
+            End If
             Try
                 GridView1.SetRowCellValue(e.RowHandle, "diskon_nominal", GridView1.GetRowCellValue(e.RowHandle, "diskon_persen") / 100 * e.Value)
                 GridView1.SetRowCellValue(e.RowHandle, "harga_diskon", e.Value - GridView1.GetRowCellValue(e.RowHandle, "diskon_persen") / 100 * e.Value)
@@ -1511,6 +1517,27 @@ Public Class fpenjualan
         If txtrekening.Text.Equals("KREDIT") Then
             txtbayar.Text = 0
         End If
+    End Sub
+
+    Private Sub GridView1_CellValueChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanged
+
+        If e.Column.FieldName = "harga_satuan" Then
+            If (Val(e.Value) < Val(GridView1.GetRowCellValue(e.RowHandle, "modal_barang"))) Then
+                'GridView1.SetRowCellValue(e.RowHandle, "harga_satuan", GridView1.GetRowCellValue(e.RowHandle, "modal_barang"))
+                MsgBox("Harga Dibawah Modal", MsgBoxStyle.Information, "Peringatan")
+            End If
+            'Try
+            '    GridView1.SetRowCellValue(e.RowHandle, "diskon_nominal", GridView1.GetRowCellValue(e.RowHandle, "diskon_persen") / 100 * e.Value)
+            '    GridView1.SetRowCellValue(e.RowHandle, "harga_diskon", e.Value - GridView1.GetRowCellValue(e.RowHandle, "diskon_persen") / 100 * e.Value)
+            '    GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * GridView1.GetRowCellValue(e.RowHandle, "harga_diskon"))
+            '    GridView1.SetRowCellValue(e.RowHandle, "laba", (GridView1.GetRowCellValue(e.RowHandle, "harga_diskon") - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
+            'Catch ex As Exception
+            '    'error jika nulai qty=blank
+            '    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+            'End Try
+            'BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+        End If
+
     End Sub
 
     Private Sub GridView1_RowDeleted(sender As Object, e As DevExpress.Data.RowDeletedEventArgs) Handles GridView1.RowDeleted
