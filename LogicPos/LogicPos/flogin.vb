@@ -17,8 +17,11 @@ Public Class flogin
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             dr.Read()
-            Dim master_barang, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust As Integer
+
+            Dim master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust As Integer
             master_barang = dr("master_barang")
+            master_kategori = 9
+            master_gudang = dr("master_gudang")
             master_customer = dr("master_customer")
             master_supplier = dr("master_supplier")
             master_user = dr("master_user")
@@ -31,31 +34,38 @@ Public Class flogin
                 fmenu.MasterMenu.DropDownItems.Item(0).Visible = True 'master barang
             End If
 
-            If master_customer > 0 Then
-                fmenu.MasterMenu.DropDownItems.Item(2).Visible = True 'master customer
+            If master_kategori > 0 Then
+                fmenu.MasterMenu.DropDownItems.Item(1).Visible = True 'master kategori barang
             End If
 
-            fmenu.MasterMenu.DropDownItems.Item(1).Visible = True 'master Gudang
+            If master_gudang > 0 Then
+                fmenu.MasterMenu.DropDownItems.Item(2).Visible = True 'master Gudang
+            End If
+
+            If master_customer > 0 Then
+                fmenu.MasterMenu.DropDownItems.Item(3).Visible = True 'master customer
+            End If
 
             If master_supplier > 0 Then
-                fmenu.MasterMenu.DropDownItems.Item(3).Visible = True 'master supp
+                fmenu.MasterMenu.DropDownItems.Item(4).Visible = True 'master supp
             End If
 
             If master_user > 0 Then
-                fmenu.MasterMenu.DropDownItems.Item(4).Visible = True 'master user
+                fmenu.MasterMenu.DropDownItems.Item(5).Visible = True 'master user
             End If
 
             If master_kas > 0 Then
-                fmenu.MasterMenu.DropDownItems.Item(5).Visible = True 'master kas
+                fmenu.MasterMenu.DropDownItems.Item(6).Visible = True 'master kas
             End If
 
             If master_pricelist > 0 Then
-                fmenu.MasterMenu.DropDownItems.Item(6).Visible = True 'master price
+                fmenu.MasterMenu.DropDownItems.Item(7).Visible = True 'master price
             End If
 
             Dim pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang As Integer
             Dim lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar As Integer
             Dim lap_pembelian, lap_penjualan, lap_utang, lap_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas As Integer
+
             pembelian = dr("pembelian")
             penjualan = dr("penjualan")
             retur_beli = dr("retur_beli")
