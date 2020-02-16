@@ -51,6 +51,18 @@ Partial Class fuser
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gbaksesuser = New System.Windows.Forms.GroupBox()
+        Me.clblapbarangkeluar = New System.Windows.Forms.CheckedListBox()
+        Me.cblapbarangkeluar = New System.Windows.Forms.CheckBox()
+        Me.clblapbarangmasuk = New System.Windows.Forms.CheckedListBox()
+        Me.cblapbarangmasuk = New System.Windows.Forms.CheckBox()
+        Me.clblapreturjual = New System.Windows.Forms.CheckedListBox()
+        Me.cblapreturjual = New System.Windows.Forms.CheckBox()
+        Me.clblappricelist = New System.Windows.Forms.CheckedListBox()
+        Me.cblappricelist = New System.Windows.Forms.CheckBox()
+        Me.clblapreturbeli = New System.Windows.Forms.CheckedListBox()
+        Me.cblapreturbeli = New System.Windows.Forms.CheckBox()
+        Me.clbmasterkategori = New System.Windows.Forms.CheckedListBox()
+        Me.cbmasterkategori = New System.Windows.Forms.CheckBox()
         Me.clblaptransaksikas = New System.Windows.Forms.CheckedListBox()
         Me.cblaptransaksikas = New System.Windows.Forms.CheckBox()
         Me.clblaptransferbarang = New System.Windows.Forms.CheckedListBox()
@@ -145,7 +157,7 @@ Partial Class fuser
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1228, 261)
+        Me.GroupBox1.Size = New System.Drawing.Size(1379, 261)
         Me.GroupBox1.TabIndex = 16
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data User"
@@ -161,10 +173,10 @@ Partial Class fuser
         '
         'GridControl
         '
-        Me.GridControl.Location = New System.Drawing.Point(616, 27)
+        Me.GridControl.Location = New System.Drawing.Point(623, 27)
         Me.GridControl.MainView = Me.GridView
         Me.GridControl.Name = "GridControl"
-        Me.GridControl.Size = New System.Drawing.Size(601, 222)
+        Me.GridControl.Size = New System.Drawing.Size(747, 222)
         Me.GridControl.TabIndex = 17
         Me.GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
@@ -400,6 +412,18 @@ Partial Class fuser
         '
         'gbaksesuser
         '
+        Me.gbaksesuser.Controls.Add(Me.clblapbarangkeluar)
+        Me.gbaksesuser.Controls.Add(Me.cblapbarangkeluar)
+        Me.gbaksesuser.Controls.Add(Me.clblapbarangmasuk)
+        Me.gbaksesuser.Controls.Add(Me.cblapbarangmasuk)
+        Me.gbaksesuser.Controls.Add(Me.clblapreturjual)
+        Me.gbaksesuser.Controls.Add(Me.cblapreturjual)
+        Me.gbaksesuser.Controls.Add(Me.clblappricelist)
+        Me.gbaksesuser.Controls.Add(Me.cblappricelist)
+        Me.gbaksesuser.Controls.Add(Me.clblapreturbeli)
+        Me.gbaksesuser.Controls.Add(Me.cblapreturbeli)
+        Me.gbaksesuser.Controls.Add(Me.clbmasterkategori)
+        Me.gbaksesuser.Controls.Add(Me.cbmasterkategori)
         Me.gbaksesuser.Controls.Add(Me.clblaptransaksikas)
         Me.gbaksesuser.Controls.Add(Me.cblaptransaksikas)
         Me.gbaksesuser.Controls.Add(Me.clblaptransferbarang)
@@ -463,12 +487,144 @@ Partial Class fuser
         Me.gbaksesuser.Controls.Add(Me.clbmasterbarang)
         Me.gbaksesuser.Controls.Add(Me.cbmasterbarang)
         Me.gbaksesuser.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.gbaksesuser.Location = New System.Drawing.Point(14, 270)
+        Me.gbaksesuser.Location = New System.Drawing.Point(14, 263)
         Me.gbaksesuser.Name = "gbaksesuser"
-        Me.gbaksesuser.Size = New System.Drawing.Size(1227, 509)
+        Me.gbaksesuser.Size = New System.Drawing.Size(1377, 499)
         Me.gbaksesuser.TabIndex = 17
         Me.gbaksesuser.TabStop = False
         Me.gbaksesuser.Text = "Akses User"
+        '
+        'clblapbarangkeluar
+        '
+        Me.clblapbarangkeluar.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblapbarangkeluar.CheckOnClick = True
+        Me.clblapbarangkeluar.FormattingEnabled = True
+        Me.clblapbarangkeluar.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblapbarangkeluar.Location = New System.Drawing.Point(1065, 127)
+        Me.clblapbarangkeluar.Name = "clblapbarangkeluar"
+        Me.clblapbarangkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblapbarangkeluar.Size = New System.Drawing.Size(91, 42)
+        Me.clblapbarangkeluar.TabIndex = 113
+        '
+        'cblapbarangkeluar
+        '
+        Me.cblapbarangkeluar.AutoSize = True
+        Me.cblapbarangkeluar.Location = New System.Drawing.Point(1047, 99)
+        Me.cblapbarangkeluar.Name = "cblapbarangkeluar"
+        Me.cblapbarangkeluar.Size = New System.Drawing.Size(152, 22)
+        Me.cblapbarangkeluar.TabIndex = 112
+        Me.cblapbarangkeluar.Text = "Lap. Barang Keluar"
+        Me.cblapbarangkeluar.UseVisualStyleBackColor = True
+        '
+        'clblapbarangmasuk
+        '
+        Me.clblapbarangmasuk.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblapbarangmasuk.CheckOnClick = True
+        Me.clblapbarangmasuk.FormattingEnabled = True
+        Me.clblapbarangmasuk.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblapbarangmasuk.Location = New System.Drawing.Point(1065, 51)
+        Me.clblapbarangmasuk.Name = "clblapbarangmasuk"
+        Me.clblapbarangmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblapbarangmasuk.Size = New System.Drawing.Size(91, 42)
+        Me.clblapbarangmasuk.TabIndex = 111
+        '
+        'cblapbarangmasuk
+        '
+        Me.cblapbarangmasuk.AutoSize = True
+        Me.cblapbarangmasuk.Location = New System.Drawing.Point(1047, 23)
+        Me.cblapbarangmasuk.Name = "cblapbarangmasuk"
+        Me.cblapbarangmasuk.Size = New System.Drawing.Size(155, 22)
+        Me.cblapbarangmasuk.TabIndex = 110
+        Me.cblapbarangmasuk.Text = "Lap. Barang Masuk"
+        Me.cblapbarangmasuk.UseVisualStyleBackColor = True
+        '
+        'clblapreturjual
+        '
+        Me.clblapreturjual.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblapreturjual.CheckOnClick = True
+        Me.clblapreturjual.FormattingEnabled = True
+        Me.clblapreturjual.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblapreturjual.Location = New System.Drawing.Point(927, 355)
+        Me.clblapreturjual.Name = "clblapreturjual"
+        Me.clblapreturjual.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblapreturjual.Size = New System.Drawing.Size(91, 42)
+        Me.clblapreturjual.TabIndex = 109
+        '
+        'cblapreturjual
+        '
+        Me.cblapreturjual.AutoSize = True
+        Me.cblapreturjual.Location = New System.Drawing.Point(909, 327)
+        Me.cblapreturjual.Name = "cblapreturjual"
+        Me.cblapreturjual.Size = New System.Drawing.Size(126, 22)
+        Me.cblapreturjual.TabIndex = 108
+        Me.cblapreturjual.Text = "Lap. Retur Jual"
+        Me.cblapreturjual.UseVisualStyleBackColor = True
+        '
+        'clblappricelist
+        '
+        Me.clblappricelist.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblappricelist.CheckOnClick = True
+        Me.clblappricelist.FormattingEnabled = True
+        Me.clblappricelist.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblappricelist.Location = New System.Drawing.Point(927, 51)
+        Me.clblappricelist.Name = "clblappricelist"
+        Me.clblappricelist.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblappricelist.Size = New System.Drawing.Size(91, 42)
+        Me.clblappricelist.TabIndex = 107
+        '
+        'cblappricelist
+        '
+        Me.cblappricelist.AutoSize = True
+        Me.cblappricelist.Location = New System.Drawing.Point(909, 23)
+        Me.cblappricelist.Name = "cblappricelist"
+        Me.cblappricelist.Size = New System.Drawing.Size(111, 22)
+        Me.cblappricelist.TabIndex = 106
+        Me.cblappricelist.Text = "Lap. Pricelist"
+        Me.cblappricelist.UseVisualStyleBackColor = True
+        '
+        'clblapreturbeli
+        '
+        Me.clblapreturbeli.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblapreturbeli.CheckOnClick = True
+        Me.clblapreturbeli.FormattingEnabled = True
+        Me.clblapreturbeli.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblapreturbeli.Location = New System.Drawing.Point(927, 279)
+        Me.clblapreturbeli.Name = "clblapreturbeli"
+        Me.clblapreturbeli.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblapreturbeli.Size = New System.Drawing.Size(91, 42)
+        Me.clblapreturbeli.TabIndex = 105
+        '
+        'cblapreturbeli
+        '
+        Me.cblapreturbeli.AutoSize = True
+        Me.cblapreturbeli.Location = New System.Drawing.Point(909, 251)
+        Me.cblapreturbeli.Name = "cblapreturbeli"
+        Me.cblapreturbeli.Size = New System.Drawing.Size(123, 22)
+        Me.cblapreturbeli.TabIndex = 104
+        Me.cblapreturbeli.Text = "Lap. Retur Beli"
+        Me.cblapreturbeli.UseVisualStyleBackColor = True
+        '
+        'clbmasterkategori
+        '
+        Me.clbmasterkategori.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbmasterkategori.CheckOnClick = True
+        Me.clbmasterkategori.FormattingEnabled = True
+        Me.clbmasterkategori.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
+        Me.clbmasterkategori.Location = New System.Drawing.Point(31, 146)
+        Me.clbmasterkategori.Name = "clbmasterkategori"
+        Me.clbmasterkategori.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbmasterkategori.Size = New System.Drawing.Size(91, 61)
+        Me.clbmasterkategori.TabIndex = 103
+        '
+        'cbmasterkategori
+        '
+        Me.cbmasterkategori.AutoSize = True
+        Me.cbmasterkategori.Location = New System.Drawing.Point(13, 118)
+        Me.cbmasterkategori.Name = "cbmasterkategori"
+        Me.cbmasterkategori.Size = New System.Drawing.Size(132, 22)
+        Me.cbmasterkategori.TabIndex = 102
+        Me.cbmasterkategori.Text = "Master Kategori"
+        Me.cbmasterkategori.UseVisualStyleBackColor = True
         '
         'clblaptransaksikas
         '
@@ -476,7 +632,7 @@ Partial Class fuser
         Me.clblaptransaksikas.CheckOnClick = True
         Me.clblaptransaksikas.FormattingEnabled = True
         Me.clblaptransaksikas.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblaptransaksikas.Location = New System.Drawing.Point(1079, 355)
+        Me.clblaptransaksikas.Location = New System.Drawing.Point(1220, 355)
         Me.clblaptransaksikas.Name = "clblaptransaksikas"
         Me.clblaptransaksikas.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblaptransaksikas.Size = New System.Drawing.Size(91, 42)
@@ -485,7 +641,7 @@ Partial Class fuser
         'cblaptransaksikas
         '
         Me.cblaptransaksikas.AutoSize = True
-        Me.cblaptransaksikas.Location = New System.Drawing.Point(1061, 327)
+        Me.cblaptransaksikas.Location = New System.Drawing.Point(1202, 327)
         Me.cblaptransaksikas.Name = "cblaptransaksikas"
         Me.cblaptransaksikas.Size = New System.Drawing.Size(154, 22)
         Me.cblaptransaksikas.TabIndex = 100
@@ -498,7 +654,7 @@ Partial Class fuser
         Me.clblaptransferbarang.CheckOnClick = True
         Me.clblaptransferbarang.FormattingEnabled = True
         Me.clblaptransferbarang.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblaptransferbarang.Location = New System.Drawing.Point(1079, 279)
+        Me.clblaptransferbarang.Location = New System.Drawing.Point(1220, 279)
         Me.clblaptransferbarang.Name = "clblaptransferbarang"
         Me.clblaptransferbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblaptransferbarang.Size = New System.Drawing.Size(91, 42)
@@ -507,7 +663,7 @@ Partial Class fuser
         'cblaptransferbarang
         '
         Me.cblaptransferbarang.AutoSize = True
-        Me.cblaptransferbarang.Location = New System.Drawing.Point(1061, 251)
+        Me.cblaptransferbarang.Location = New System.Drawing.Point(1202, 251)
         Me.cblaptransferbarang.Name = "cblaptransferbarang"
         Me.cblaptransferbarang.Size = New System.Drawing.Size(165, 22)
         Me.cblaptransferbarang.TabIndex = 98
@@ -520,7 +676,7 @@ Partial Class fuser
         Me.clblaptransferkas.CheckOnClick = True
         Me.clblaptransferkas.FormattingEnabled = True
         Me.clblaptransferkas.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblaptransferkas.Location = New System.Drawing.Point(1079, 203)
+        Me.clblaptransferkas.Location = New System.Drawing.Point(1220, 203)
         Me.clblaptransferkas.Name = "clblaptransferkas"
         Me.clblaptransferkas.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblaptransferkas.Size = New System.Drawing.Size(91, 42)
@@ -529,7 +685,7 @@ Partial Class fuser
         'cblaptransferkas
         '
         Me.cblaptransferkas.AutoSize = True
-        Me.cblaptransferkas.Location = New System.Drawing.Point(1061, 175)
+        Me.cblaptransferkas.Location = New System.Drawing.Point(1202, 175)
         Me.cblaptransferkas.Name = "cblaptransferkas"
         Me.cblaptransferkas.Size = New System.Drawing.Size(144, 22)
         Me.cblaptransferkas.TabIndex = 96
@@ -542,7 +698,7 @@ Partial Class fuser
         Me.clblapakunkeluar.CheckOnClick = True
         Me.clblapakunkeluar.FormattingEnabled = True
         Me.clblapakunkeluar.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblapakunkeluar.Location = New System.Drawing.Point(1079, 127)
+        Me.clblapakunkeluar.Location = New System.Drawing.Point(1220, 127)
         Me.clblapakunkeluar.Name = "clblapakunkeluar"
         Me.clblapakunkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblapakunkeluar.Size = New System.Drawing.Size(91, 42)
@@ -551,7 +707,7 @@ Partial Class fuser
         'cblapakunkeluar
         '
         Me.cblapakunkeluar.AutoSize = True
-        Me.cblapakunkeluar.Location = New System.Drawing.Point(1061, 99)
+        Me.cblapakunkeluar.Location = New System.Drawing.Point(1202, 99)
         Me.cblapakunkeluar.Name = "cblapakunkeluar"
         Me.cblapakunkeluar.Size = New System.Drawing.Size(138, 22)
         Me.cblapakunkeluar.TabIndex = 94
@@ -564,7 +720,7 @@ Partial Class fuser
         Me.clblapakunmasuk.CheckOnClick = True
         Me.clblapakunmasuk.FormattingEnabled = True
         Me.clblapakunmasuk.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblapakunmasuk.Location = New System.Drawing.Point(1079, 51)
+        Me.clblapakunmasuk.Location = New System.Drawing.Point(1220, 51)
         Me.clblapakunmasuk.Name = "clblapakunmasuk"
         Me.clblapakunmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblapakunmasuk.Size = New System.Drawing.Size(91, 42)
@@ -573,7 +729,7 @@ Partial Class fuser
         'cblapakunmasuk
         '
         Me.cblapakunmasuk.AutoSize = True
-        Me.cblapakunmasuk.Location = New System.Drawing.Point(1061, 23)
+        Me.cblapakunmasuk.Location = New System.Drawing.Point(1202, 23)
         Me.cblapakunmasuk.Name = "cblapakunmasuk"
         Me.cblapakunmasuk.Size = New System.Drawing.Size(141, 22)
         Me.cblapakunmasuk.TabIndex = 92
@@ -762,7 +918,7 @@ Partial Class fuser
         Me.clbmasterrekcust.CheckOnClick = True
         Me.clbmasterrekcust.FormattingEnabled = True
         Me.clbmasterrekcust.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.clbmasterrekcust.Location = New System.Drawing.Point(184, 336)
+        Me.clbmasterrekcust.Location = New System.Drawing.Point(184, 431)
         Me.clbmasterrekcust.Name = "clbmasterrekcust"
         Me.clbmasterrekcust.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clbmasterrekcust.Size = New System.Drawing.Size(91, 61)
@@ -771,7 +927,7 @@ Partial Class fuser
         'cbmasterrekcust
         '
         Me.cbmasterrekcust.AutoSize = True
-        Me.cbmasterrekcust.Location = New System.Drawing.Point(166, 308)
+        Me.cbmasterrekcust.Location = New System.Drawing.Point(166, 403)
         Me.cbmasterrekcust.Name = "cbmasterrekcust"
         Me.cbmasterrekcust.Size = New System.Drawing.Size(139, 22)
         Me.cbmasterrekcust.TabIndex = 72
@@ -784,7 +940,7 @@ Partial Class fuser
         Me.clbmasterreksupp.CheckOnClick = True
         Me.clbmasterreksupp.FormattingEnabled = True
         Me.clbmasterreksupp.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.clbmasterreksupp.Location = New System.Drawing.Point(184, 241)
+        Me.clbmasterreksupp.Location = New System.Drawing.Point(184, 336)
         Me.clbmasterreksupp.Name = "clbmasterreksupp"
         Me.clbmasterreksupp.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clbmasterreksupp.Size = New System.Drawing.Size(91, 61)
@@ -793,7 +949,7 @@ Partial Class fuser
         'cbmasterreksupp
         '
         Me.cbmasterreksupp.AutoSize = True
-        Me.cbmasterreksupp.Location = New System.Drawing.Point(166, 213)
+        Me.cbmasterreksupp.Location = New System.Drawing.Point(166, 308)
         Me.cbmasterreksupp.Name = "cbmasterreksupp"
         Me.cbmasterreksupp.Size = New System.Drawing.Size(142, 22)
         Me.cbmasterreksupp.TabIndex = 70
@@ -806,7 +962,7 @@ Partial Class fuser
         Me.clblapstokbarang.CheckOnClick = True
         Me.clblapstokbarang.FormattingEnabled = True
         Me.clblapstokbarang.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblapstokbarang.Location = New System.Drawing.Point(928, 355)
+        Me.clblapstokbarang.Location = New System.Drawing.Point(1065, 355)
         Me.clblapstokbarang.Name = "clblapstokbarang"
         Me.clblapstokbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblapstokbarang.Size = New System.Drawing.Size(91, 42)
@@ -815,7 +971,7 @@ Partial Class fuser
         'cblapstokbarang
         '
         Me.cblapstokbarang.AutoSize = True
-        Me.cblapstokbarang.Location = New System.Drawing.Point(910, 327)
+        Me.cblapstokbarang.Location = New System.Drawing.Point(1047, 327)
         Me.cblapstokbarang.Name = "cblapstokbarang"
         Me.cblapstokbarang.Size = New System.Drawing.Size(141, 22)
         Me.cblapstokbarang.TabIndex = 68
@@ -828,7 +984,7 @@ Partial Class fuser
         Me.clblappiutang.CheckOnClick = True
         Me.clblappiutang.FormattingEnabled = True
         Me.clblappiutang.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblappiutang.Location = New System.Drawing.Point(928, 279)
+        Me.clblappiutang.Location = New System.Drawing.Point(1065, 279)
         Me.clblappiutang.Name = "clblappiutang"
         Me.clblappiutang.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblappiutang.Size = New System.Drawing.Size(91, 42)
@@ -837,7 +993,7 @@ Partial Class fuser
         'cblappiutang
         '
         Me.cblappiutang.AutoSize = True
-        Me.cblappiutang.Location = New System.Drawing.Point(910, 251)
+        Me.cblappiutang.Location = New System.Drawing.Point(1047, 251)
         Me.cblappiutang.Name = "cblappiutang"
         Me.cblappiutang.Size = New System.Drawing.Size(152, 22)
         Me.cblappiutang.TabIndex = 58
@@ -850,7 +1006,7 @@ Partial Class fuser
         Me.clblaputang.CheckOnClick = True
         Me.clblaputang.FormattingEnabled = True
         Me.clblaputang.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblaputang.Location = New System.Drawing.Point(928, 203)
+        Me.clblaputang.Location = New System.Drawing.Point(1065, 203)
         Me.clblaputang.Name = "clblaputang"
         Me.clblaputang.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblaputang.Size = New System.Drawing.Size(91, 42)
@@ -859,7 +1015,7 @@ Partial Class fuser
         'cblaputang
         '
         Me.cblaputang.AutoSize = True
-        Me.cblaputang.Location = New System.Drawing.Point(910, 175)
+        Me.cblaputang.Location = New System.Drawing.Point(1047, 175)
         Me.cblaputang.Name = "cblaputang"
         Me.cblaputang.Size = New System.Drawing.Size(142, 22)
         Me.cblaputang.TabIndex = 56
@@ -872,7 +1028,7 @@ Partial Class fuser
         Me.clblappembelian.CheckOnClick = True
         Me.clblappembelian.FormattingEnabled = True
         Me.clblappembelian.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblappembelian.Location = New System.Drawing.Point(928, 51)
+        Me.clblappembelian.Location = New System.Drawing.Point(927, 127)
         Me.clblappembelian.Name = "clblappembelian"
         Me.clblappembelian.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblappembelian.Size = New System.Drawing.Size(91, 42)
@@ -881,7 +1037,7 @@ Partial Class fuser
         'cblappembelian
         '
         Me.cblappembelian.AutoSize = True
-        Me.cblappembelian.Location = New System.Drawing.Point(910, 23)
+        Me.cblappembelian.Location = New System.Drawing.Point(909, 99)
         Me.cblappembelian.Name = "cblappembelian"
         Me.cblappembelian.Size = New System.Drawing.Size(128, 22)
         Me.cblappembelian.TabIndex = 54
@@ -894,7 +1050,7 @@ Partial Class fuser
         Me.clblappenjualan.CheckOnClick = True
         Me.clblappenjualan.FormattingEnabled = True
         Me.clblappenjualan.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblappenjualan.Location = New System.Drawing.Point(928, 127)
+        Me.clblappenjualan.Location = New System.Drawing.Point(927, 203)
         Me.clblappenjualan.Name = "clblappenjualan"
         Me.clblappenjualan.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clblappenjualan.Size = New System.Drawing.Size(91, 42)
@@ -903,7 +1059,7 @@ Partial Class fuser
         'cblappenjualan
         '
         Me.cblappenjualan.AutoSize = True
-        Me.cblappenjualan.Location = New System.Drawing.Point(910, 99)
+        Me.cblappenjualan.Location = New System.Drawing.Point(909, 175)
         Me.cblappenjualan.Name = "cblappenjualan"
         Me.cblappenjualan.Size = New System.Drawing.Size(123, 22)
         Me.cblappenjualan.TabIndex = 52
@@ -1004,7 +1160,7 @@ Partial Class fuser
         Me.clbmasteruser.CheckOnClick = True
         Me.clbmasteruser.FormattingEnabled = True
         Me.clbmasteruser.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.clbmasteruser.Location = New System.Drawing.Point(37, 431)
+        Me.clbmasteruser.Location = New System.Drawing.Point(184, 51)
         Me.clbmasteruser.Name = "clbmasteruser"
         Me.clbmasteruser.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clbmasteruser.Size = New System.Drawing.Size(91, 61)
@@ -1013,7 +1169,7 @@ Partial Class fuser
         'cbmasteruser
         '
         Me.cbmasteruser.AutoSize = True
-        Me.cbmasteruser.Location = New System.Drawing.Point(19, 403)
+        Me.cbmasteruser.Location = New System.Drawing.Point(166, 23)
         Me.cbmasteruser.Name = "cbmasteruser"
         Me.cbmasteruser.Size = New System.Drawing.Size(109, 22)
         Me.cbmasteruser.TabIndex = 20
@@ -1026,7 +1182,7 @@ Partial Class fuser
         Me.clbmasterpricelist.CheckOnClick = True
         Me.clbmasterpricelist.FormattingEnabled = True
         Me.clbmasterpricelist.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.clbmasterpricelist.Location = New System.Drawing.Point(184, 146)
+        Me.clbmasterpricelist.Location = New System.Drawing.Point(184, 241)
         Me.clbmasterpricelist.Name = "clbmasterpricelist"
         Me.clbmasterpricelist.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clbmasterpricelist.Size = New System.Drawing.Size(91, 61)
@@ -1035,7 +1191,7 @@ Partial Class fuser
         'cbmasterpricelist
         '
         Me.cbmasterpricelist.AutoSize = True
-        Me.cbmasterpricelist.Location = New System.Drawing.Point(166, 118)
+        Me.cbmasterpricelist.Location = New System.Drawing.Point(166, 213)
         Me.cbmasterpricelist.Name = "cbmasterpricelist"
         Me.cbmasterpricelist.Size = New System.Drawing.Size(129, 22)
         Me.cbmasterpricelist.TabIndex = 18
@@ -1048,7 +1204,7 @@ Partial Class fuser
         Me.clbmasterkas.CheckOnClick = True
         Me.clbmasterkas.FormattingEnabled = True
         Me.clbmasterkas.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.clbmasterkas.Location = New System.Drawing.Point(184, 51)
+        Me.clbmasterkas.Location = New System.Drawing.Point(184, 146)
         Me.clbmasterkas.Name = "clbmasterkas"
         Me.clbmasterkas.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clbmasterkas.Size = New System.Drawing.Size(91, 61)
@@ -1057,7 +1213,7 @@ Partial Class fuser
         'cbmasterkas
         '
         Me.cbmasterkas.AutoSize = True
-        Me.cbmasterkas.Location = New System.Drawing.Point(166, 23)
+        Me.cbmasterkas.Location = New System.Drawing.Point(166, 118)
         Me.cbmasterkas.Name = "cbmasterkas"
         Me.cbmasterkas.Size = New System.Drawing.Size(103, 22)
         Me.cbmasterkas.TabIndex = 16
@@ -1070,7 +1226,7 @@ Partial Class fuser
         Me.clbmastersupplier.CheckOnClick = True
         Me.clbmastersupplier.FormattingEnabled = True
         Me.clbmastersupplier.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.clbmastersupplier.Location = New System.Drawing.Point(37, 336)
+        Me.clbmastersupplier.Location = New System.Drawing.Point(31, 431)
         Me.clbmastersupplier.Name = "clbmastersupplier"
         Me.clbmastersupplier.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clbmastersupplier.Size = New System.Drawing.Size(91, 61)
@@ -1079,7 +1235,7 @@ Partial Class fuser
         'cbmastersupplier
         '
         Me.cbmastersupplier.AutoSize = True
-        Me.cbmastersupplier.Location = New System.Drawing.Point(22, 308)
+        Me.cbmastersupplier.Location = New System.Drawing.Point(16, 403)
         Me.cbmastersupplier.Name = "cbmastersupplier"
         Me.cbmastersupplier.Size = New System.Drawing.Size(130, 22)
         Me.cbmastersupplier.TabIndex = 14
@@ -1092,7 +1248,7 @@ Partial Class fuser
         Me.clbmastercustomer.CheckOnClick = True
         Me.clbmastercustomer.FormattingEnabled = True
         Me.clbmastercustomer.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.clbmastercustomer.Location = New System.Drawing.Point(37, 241)
+        Me.clbmastercustomer.Location = New System.Drawing.Point(31, 336)
         Me.clbmastercustomer.Name = "clbmastercustomer"
         Me.clbmastercustomer.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clbmastercustomer.Size = New System.Drawing.Size(91, 61)
@@ -1101,7 +1257,7 @@ Partial Class fuser
         'cbmastercustomer
         '
         Me.cbmastercustomer.AutoSize = True
-        Me.cbmastercustomer.Location = New System.Drawing.Point(19, 213)
+        Me.cbmastercustomer.Location = New System.Drawing.Point(13, 308)
         Me.cbmastercustomer.Name = "cbmastercustomer"
         Me.cbmastercustomer.Size = New System.Drawing.Size(143, 22)
         Me.cbmastercustomer.TabIndex = 12
@@ -1114,7 +1270,7 @@ Partial Class fuser
         Me.clbmastergudang.CheckOnClick = True
         Me.clbmastergudang.FormattingEnabled = True
         Me.clbmastergudang.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.clbmastergudang.Location = New System.Drawing.Point(37, 146)
+        Me.clbmastergudang.Location = New System.Drawing.Point(31, 241)
         Me.clbmastergudang.Name = "clbmastergudang"
         Me.clbmastergudang.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.clbmastergudang.Size = New System.Drawing.Size(91, 61)
@@ -1123,7 +1279,7 @@ Partial Class fuser
         'cbmastergudang
         '
         Me.cbmastergudang.AutoSize = True
-        Me.cbmastergudang.Location = New System.Drawing.Point(19, 118)
+        Me.cbmastergudang.Location = New System.Drawing.Point(13, 213)
         Me.cbmastergudang.Name = "cbmastergudang"
         Me.cbmastergudang.Size = New System.Drawing.Size(129, 22)
         Me.cbmastergudang.TabIndex = 10
@@ -1157,7 +1313,7 @@ Partial Class fuser
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1250, 790)
+        Me.ClientSize = New System.Drawing.Size(1396, 765)
         Me.Controls.Add(Me.gbaksesuser)
         Me.Controls.Add(Me.GroupBox1)
         Me.MaximizeBox = False
@@ -1265,4 +1421,16 @@ Partial Class fuser
     Friend WithEvents cblapakunmasuk As CheckBox
     Friend WithEvents clblaptransaksikas As CheckedListBox
     Friend WithEvents cblaptransaksikas As CheckBox
+    Friend WithEvents clbmasterkategori As CheckedListBox
+    Friend WithEvents cbmasterkategori As CheckBox
+    Friend WithEvents clblapbarangkeluar As CheckedListBox
+    Friend WithEvents cblapbarangkeluar As CheckBox
+    Friend WithEvents clblapbarangmasuk As CheckedListBox
+    Friend WithEvents cblapbarangmasuk As CheckBox
+    Friend WithEvents clblapreturjual As CheckedListBox
+    Friend WithEvents cblapreturjual As CheckBox
+    Friend WithEvents clblappricelist As CheckedListBox
+    Friend WithEvents cblappricelist As CheckBox
+    Friend WithEvents clblapreturbeli As CheckedListBox
+    Friend WithEvents cblapreturbeli As CheckBox
 End Class
