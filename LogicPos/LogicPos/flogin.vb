@@ -1,5 +1,6 @@
 ﻿Imports System.Data.Odbc
 Public Class flogin
+    Public rekeningsupplier, rekeningcustomer As Integer
     Sub login()
         Call koneksii()
         sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtusername.Text + "' AND password_user= '" + txtpassword.Text + "'"
@@ -20,7 +21,7 @@ Public Class flogin
 
             Dim master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust As Integer
             master_barang = dr("master_barang")
-            master_kategori = 9
+            master_kategori = dr("master_kategori")
             master_gudang = dr("master_gudang")
             master_customer = dr("master_customer")
             master_supplier = dr("master_supplier")
@@ -61,6 +62,9 @@ Public Class flogin
             If master_pricelist > 0 Then
                 fmenu.MasterMenu.DropDownItems.Item(7).Visible = True 'master price
             End If
+
+            rekeningcustomer = master_rek_cust
+            rekeningsupplier = master_rek_supplier
 
             Dim pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang As Integer
             Dim lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar As Integer
@@ -128,13 +132,13 @@ Public Class flogin
                 fmenu.AdministrasiMenu.DropDownItems.Item(3).Visible = True 'kas keluar
             End If
 
-            lap_pricelist = 9
+            lap_pricelist = dr("lap_pricelist")
             lap_pembelian = dr("lap_pembelian")
             lap_penjualan = dr("lap_penjualan")
-            lap_returbeli = 9
-            lap_returjual = 9
-            lap_barangmasuk = 9
-            lap_barangkeluar = 9
+            lap_returbeli = dr("lap_returbeli")
+            lap_returjual = dr("lap_returjual")
+            lap_barangmasuk = dr("lap_barang_masuk")
+            lap_barangkeluar = dr("lap_barang_keluar")
             lap_utang = dr("lap_utang")
             lap_piutang = dr("lap_piutang")
             lap_akun_masuk = dr("lap_akun_masuk")
@@ -207,9 +211,9 @@ Public Class flogin
             fmenu.SettingMenu.DropDownItems.Item(0).Visible = True 'set printer
 
             Me.Hide()
-                fmenu.statususer.Text = txtusername.Text.ToUpper
-                fmenu.Show()
-            End If
+            fmenu.statususer.Text = txtusername.Text.ToUpper
+            fmenu.Show()
+        End If
     End Sub
 
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click

@@ -206,8 +206,14 @@ Public Class fsupplier
     End Sub
 
     Private Sub btnrekening_Click(sender As Object, e As EventArgs) Handles btnrekening.Click
-        frekeningsupplier.kode_supplier = Me.txtkode.Text
-        frekeningsupplier.ShowDialog()
+        Dim rekening As Integer
+        rekening = flogin.rekeningsupplier
+        If rekening > 0 Then
+            frekeningsupplier.kode_supplier = Me.txtkode.Text
+            frekeningsupplier.ShowDialog()
+        Else
+            MsgBox("Anda tidak memiliki akses", MsgBoxStyle.Information, "Gagal")
+        End If
     End Sub
 
 End Class

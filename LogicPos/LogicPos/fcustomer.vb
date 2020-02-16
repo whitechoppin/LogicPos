@@ -319,7 +319,13 @@ Public Class fcustomer
     End Sub
 
     Private Sub btnrekening_Click(sender As Object, e As EventArgs) Handles btnrekening.Click
-        frekeningcustomer.kode_customer = Me.txtkode.Text
-        frekeningcustomer.ShowDialog()
+        Dim rekening As Integer
+        rekening = flogin.rekeningcustomer
+        If rekening > 0 Then
+            frekeningcustomer.kode_customer = Me.txtkode.Text
+            frekeningcustomer.ShowDialog()
+        Else
+            MsgBox("Anda tidak memiliki akses", MsgBoxStyle.Information, "Gagal")
+        End If
     End Sub
 End Class
