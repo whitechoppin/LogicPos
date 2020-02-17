@@ -479,15 +479,15 @@ Public Class flunaspiutang
     End Sub
     Sub prosessimpan()
         Dim checkinglunas As Boolean
-        Dim sisajual, bayarjual As Double
+        Dim totaljual, bayarjual As Double
 
         'cek ke penjualan
         Call koneksii()
-        sql = "SELECT sisa_penjualan FROM tb_penjualan WHERE kode_penjualan = '" & txtnonota.Text & "'"
+        sql = "SELECT total_penjualan FROM tb_penjualan WHERE kode_penjualan = '" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            sisajual = dr("sisa_penjualan")
+            totaljual = dr("total_penjualan")
         Else
             MsgBox("Penjualan tidak ditemukan !")
         End If
@@ -506,7 +506,7 @@ Public Class flunaspiutang
         End If
 
         'hitung pembayaran
-        If (sisajual - bayarjual) < totalbayar Then
+        If (totaljual - bayarjual) < totalbayar Then
             checkinglunas = False
         Else
             checkinglunas = True
