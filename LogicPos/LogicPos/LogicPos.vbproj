@@ -195,16 +195,16 @@
     <Compile Include="fkategoribarang.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="flaporanbarangkeluar.Designer.vb">
-      <DependentUpon>flaporanbarangkeluar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="flaporanbarangkeluar.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="flaporanbarangmasuk.designer.vb">
       <DependentUpon>flaporanbarangmasuk.vb</DependentUpon>
     </Compile>
     <Compile Include="flaporanbarangmasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporanbarangkeluar.designer.vb">
+      <DependentUpon>flaporanbarangkeluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanbarangkeluar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flaporanreturbeli.designer.vb">
@@ -318,6 +318,12 @@
     </Compile>
     <Compile Include="rptperfakturbeli.vb">
       <DependentUpon>rptperfakturbeli.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="rptperfakturbarangkeluar.vb">
+      <DependentUpon>rptperfakturbarangkeluar.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -728,6 +734,9 @@
     <EmbeddedResource Include="flaporanbarangmasuk.resx">
       <DependentUpon>flaporanbarangmasuk.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flaporanbarangkeluar.resx">
+      <DependentUpon>flaporanbarangkeluar.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flaporanreturbeli.resx">
       <DependentUpon>flaporanreturbeli.vb</DependentUpon>
     </EmbeddedResource>
@@ -796,6 +805,10 @@
     <EmbeddedResource Include="rptperfakturbeli.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptperfakturbeli.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptperfakturbarangkeluar.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptperfakturbarangkeluar.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptperfakturreturbeli.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

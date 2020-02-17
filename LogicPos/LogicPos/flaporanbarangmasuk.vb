@@ -82,7 +82,7 @@ Public Class flaporanbarangmasuk
         End Using
     End Sub
 
-    Private Sub btnrekap_Click(sender As Object, e As EventArgs) 
+    Private Sub btnrekap_Click(sender As Object, e As EventArgs)
         Dim rptrekap As ReportDocument
         Dim awalPFDs As ParameterFieldDefinitions
         Dim awalPFD As ParameterFieldDefinition
