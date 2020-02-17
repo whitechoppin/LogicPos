@@ -201,7 +201,7 @@
     <Compile Include="flaporanbarangkeluar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="flaporanbarangmasuk.Designer.vb">
+    <Compile Include="flaporanbarangmasuk.designer.vb">
       <DependentUpon>flaporanbarangmasuk.vb</DependentUpon>
     </Compile>
     <Compile Include="flaporanbarangmasuk.vb">
@@ -310,6 +310,12 @@
       <DependentUpon>rptlaporstok.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptperfakturbarangmasuk.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptperfakturbarangmasuk.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptperfakturbeli.vb">
       <DependentUpon>rptperfakturbeli.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -336,6 +342,12 @@
     </Compile>
     <Compile Include="rptrekapkas.vb">
       <DependentUpon>rptrekapkas.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="rptrekapbarangmasuk.vb">
+      <DependentUpon>rptrekapbarangmasuk.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -713,6 +725,9 @@
     <EmbeddedResource Include="fkategoribarang.resx">
       <DependentUpon>fkategoribarang.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flaporanbarangmasuk.resx">
+      <DependentUpon>flaporanbarangmasuk.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flaporanreturbeli.resx">
       <DependentUpon>flaporanreturbeli.vb</DependentUpon>
     </EmbeddedResource>
@@ -774,6 +789,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptlaporstok.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="rptperfakturbarangmasuk.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptperfakturbarangmasuk.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptperfakturbeli.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptperfakturbeli.vb</LastGenOutput>
@@ -793,6 +812,10 @@
     <EmbeddedResource Include="rptrekapkas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapkas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekapbarangmasuk.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekapbarangmasuk.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekapreturpembelian.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
