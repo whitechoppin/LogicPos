@@ -4,6 +4,7 @@ Imports DevExpress.Utils
 
 Public Class flunaspiutang
     Public tabel1, tabel2 As DataTable
+    Dim lunasstatus As Integer = 0
     Dim hitnumber As Integer
     Public kodelunaspiutang As String
     Dim totalbayar As Double
@@ -514,6 +515,11 @@ Public Class flunaspiutang
 
 
         If checkinglunas = True Then
+            If (totalbayar + bayarjual) = totaljual Then
+                lunasstatus = 1
+            Else
+                lunasstatus = 0
+            End If
             Call simpan()
         Else
             MsgBox("Total lebih Bayar")
@@ -530,6 +536,10 @@ Public Class flunaspiutang
 
 
         sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, kode_piutang, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & cmbbayar.Text & "','" & txtnonota.Text & "','" & txtnolunaspiutang.Text & "', 'BAYAR', now(), 'Transaksi Nota Nomor " & txtnonota.Text & "','" & 0 & "', '" & totalbayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        sql = "UPDATE tb_penjualan SET lunas_penjualan = '" & lunasstatus & "' WHERE kode_penjualan = '" & txtnonota.Text & "' "
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 

@@ -4,6 +4,7 @@ Imports DevExpress.Utils
 
 Public Class flunasutang
     Public tabel1, tabel2 As DataTable
+    Dim lunasstatus As Integer = 0
     Dim hitnumber As Integer
     Public kodelunasutang As String
     Dim totalbayar As Double
@@ -515,6 +516,12 @@ Public Class flunasutang
 
 
         If checkinglunas = True Then
+            If (totalbayar + bayarbeli) = totalbeli Then
+                lunasstatus = 1
+            Else
+                lunasstatus = 0
+            End If
+            Call simpan()
             Call simpan()
         Else
             MsgBox("Total lebih Bayar")
