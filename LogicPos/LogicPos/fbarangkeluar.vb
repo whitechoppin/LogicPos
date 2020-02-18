@@ -916,7 +916,7 @@ Public Class fbarangkeluar
                 stok = GridView1.GetRowCellValue(i, "banyak")
                 stokdatabase = dr("jumlah_stok")
                 If stokdatabase < stok Then
-                    MsgBox("Stok dengan kode stok " + dr("kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                    MsgBox("Stok dengan nama stok " + dr("nama_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
                     statusavailable = False
                     'Exit Sub
                 End If
@@ -982,7 +982,7 @@ Public Class fbarangkeluar
                 stok = GridView1.GetRowCellValue(i, "banyak")
                 stokdatabase = dr("jumlah_stok")
                 If stokdatabase < stok Then
-                    MsgBox("Stok dengan kode stok " + dr("kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                    MsgBox("Stok dengan nama stok " + dr("nama_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
                     statusavailable = False
                 End If
             Else
