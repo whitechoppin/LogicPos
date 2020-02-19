@@ -579,38 +579,38 @@ Public Class flunasutang
         cbprinted.Checked = True
     End Sub
     Public Sub cetak_faktur()
-        Dim faktur As String
-        Dim tabel_faktur As New DataTable
-        With tabel_faktur
-            .Columns.Add("kode_pembelian")
-            .Columns.Add("kode_supplier")
-            .Columns.Add("kode_gudang")
-            .Columns.Add("kode_user")
-            .Columns.Add("tgl_pembelian")
-            .Columns.Add("tgl_jatuhtempo_pembelian")
-            .Columns.Add("diskon_pembelian", GetType(Double))
-            .Columns.Add("pajak_pembelian", GetType(Double))
-            .Columns.Add("ongkir_pembelian", GetType(Double))
-            .Columns.Add("total_pembelian", GetType(Double))
-        End With
+        'Dim faktur As String
+        'Dim tabel_faktur As New DataTable
+        'With tabel_faktur
+        '    .Columns.Add("kode_pembelian")
+        '    .Columns.Add("kode_supplier")
+        '    .Columns.Add("kode_gudang")
+        '    .Columns.Add("kode_user")
+        '    .Columns.Add("tgl_pembelian")
+        '    .Columns.Add("tgl_jatuhtempo_pembelian")
+        '    .Columns.Add("diskon_pembelian", GetType(Double))
+        '    .Columns.Add("pajak_pembelian", GetType(Double))
+        '    .Columns.Add("ongkir_pembelian", GetType(Double))
+        '    .Columns.Add("total_pembelian", GetType(Double))
+        'End With
 
-        Dim baris As DataRow
-        For i As Integer = 0 To GridView1.RowCount - 1
-            baris = tabel_faktur.NewRow
-            baris("kode_pembelian") = GridView1.GetRowCellValue(i, "kode_pembelian")
-            baris("kode_supplier") = GridView1.GetRowCellValue(i, "kode_supplier")
-            baris("kode_gudang") = GridView1.GetRowCellValue(i, "kode_gudang")
-            baris("kode_user") = GridView1.GetRowCellValue(i, "kode_user")
-            baris("tgl_pembelian") = GridView1.GetRowCellValue(i, "tgl_pembelian")
-            baris("tgl_jatuhtempo_pembelian") = GridView1.GetRowCellValue(i, "tgl_jatuhtempo_pembelian")
-            baris("diskon_pembelian") = GridView1.GetRowCellValue(i, "diskon_pembelian")
-            baris("ongkir_pembelian") = GridView1.GetRowCellValue(i, "ongkir_pembelian")
-            baris("total_pembelian") = GridView1.GetRowCellValue(i, "total_pembelian")
-            baris("pajak_pembelian") = GridView1.GetRowCellValue(i, "pajak_pembelian")
-            tabel_faktur.Rows.Add(baris)
-        Next
+        'Dim baris As DataRow
+        'For i As Integer = 0 To GridView1.RowCount - 1
+        '    baris = tabel_faktur.NewRow
+        '    baris("kode_pembelian") = GridView1.GetRowCellValue(i, "kode_pembelian")
+        '    baris("kode_supplier") = GridView1.GetRowCellValue(i, "kode_supplier")
+        '    baris("kode_gudang") = GridView1.GetRowCellValue(i, "kode_gudang")
+        '    baris("kode_user") = GridView1.GetRowCellValue(i, "kode_user")
+        '    baris("tgl_pembelian") = GridView1.GetRowCellValue(i, "tgl_pembelian")
+        '    baris("tgl_jatuhtempo_pembelian") = GridView1.GetRowCellValue(i, "tgl_jatuhtempo_pembelian")
+        '    baris("diskon_pembelian") = GridView1.GetRowCellValue(i, "diskon_pembelian")
+        '    baris("ongkir_pembelian") = GridView1.GetRowCellValue(i, "ongkir_pembelian")
+        '    baris("total_pembelian") = GridView1.GetRowCellValue(i, "total_pembelian")
+        '    baris("pajak_pembelian") = GridView1.GetRowCellValue(i, "pajak_pembelian")
+        '    tabel_faktur.Rows.Add(baris)
+        'Next
         rpt_faktur = New fakturlunasutang
-        rpt_faktur.SetDataSource(tabel_faktur)
+        'rpt_faktur.SetDataSource(tabel_faktur)
 
         rpt_faktur.SetParameterValue("nofaktur", txtnolunasutang.Text)
         rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
@@ -618,6 +618,7 @@ Public Class flunasutang
         rpt_faktur.SetParameterValue("tanggal", dtpelunasan.Text)
         rpt_faktur.SetParameterValue("totalbayar", totalbayar)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
+        rpt_faktur.SetParameterValue("nobayar", txtnonota.Text)
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)

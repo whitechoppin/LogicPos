@@ -150,7 +150,7 @@ Public Class fakturlunaspiutang
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_supplier() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_nobayar() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(7)
         End Get
