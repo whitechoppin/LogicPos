@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 Public Class flogin
     Public rekeningsupplier, rekeningcustomer As Integer
+    Public master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust As Integer
+
     Sub login()
         Call koneksii()
         sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtusername.Text + "' AND password_user= '" + txtpassword.Text + "'"
@@ -19,7 +21,6 @@ Public Class flogin
             dr = cmmd.ExecuteReader()
             dr.Read()
 
-            Dim master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust As Integer
             master_barang = dr("master_barang")
             master_kategori = dr("master_kategori")
             master_gudang = dr("master_gudang")

@@ -323,6 +323,7 @@ Public Class fcustomer
         rekening = flogin.rekeningcustomer
         If rekening > 0 Then
             frekeningcustomer.kode_customer = Me.txtkode.Text
+            frekeningcustomer.kodeakses = rekening
             frekeningcustomer.ShowDialog()
         Else
             MsgBox("Anda tidak memiliki akses", MsgBoxStyle.Information, "Gagal")

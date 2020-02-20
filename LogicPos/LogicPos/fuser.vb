@@ -1263,7 +1263,7 @@ Public Class fuser
                 cmmd.Parameters.AddWithValue("@master_kas", cekmasterkas)
                 cmmd.Parameters.AddWithValue("@master_pricelist", cekmasterpricelist)
                 cmmd.Parameters.AddWithValue("@master_rek_supp", cekmasterreksupp)
-                cmmd.Parameters.AddWithValue("@master_rek_cust", cekmastercustomer)
+                cmmd.Parameters.AddWithValue("@master_rek_cust", cekmasterrekcust)
                 'transaksi
                 cmmd.Parameters.AddWithValue("@pembelian", cekpembelian)
                 cmmd.Parameters.AddWithValue("@penjualan", cekpenjualan)

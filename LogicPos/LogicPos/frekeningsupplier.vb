@@ -2,9 +2,41 @@
 
 Public Class frekeningsupplier
     Public kode_supplier As String
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, hapusstatus As Boolean
     Private Sub frekening_supplier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Me.MdiParent = fmenu
         Call awal()
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                hapusstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = True
+        End Select
     End Sub
     Sub awal()
         txtkoderekening.Enabled = False
@@ -43,28 +75,32 @@ Public Class frekeningsupplier
         txtketeranganrekening.TabIndex = 3
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
-        If btntambah.Text = "Tambah" Then
-            btnbatal.Enabled = True
-            btntambah.Text = "Simpan"
-            Call enable_text()
-            Call index()
-            txtkoderekening.Text = autonumber()
-            GridControl1.Enabled = False
-        Else
-            If txtnamabank.Text.Trim.Length = 0 Then
-                MsgBox("Nama Bank belum terisi!!!")
+        If tambahstatus.Equals(True) Then
+            If btntambah.Text = "Tambah" Then
+                btnbatal.Enabled = True
+                btntambah.Text = "Simpan"
+                Call enable_text()
+                Call index()
+                txtkoderekening.Text = autonumber()
+                GridControl1.Enabled = False
             Else
-                If txtnamarekening.Text.Trim.Length = 0 Then
-                    MsgBox("Nama Rekening belum terisi!!!")
+                If txtnamabank.Text.Trim.Length = 0 Then
+                    MsgBox("Nama Bank belum terisi!!!")
                 Else
-                    If txtnorekening.Text.Trim.Length = 0 Then
-                        MsgBox("Nomor Rekening belum terisi!!!")
+                    If txtnamarekening.Text.Trim.Length = 0 Then
+                        MsgBox("Nama Rekening belum terisi!!!")
                     Else
-                        Call simpan()
-                    End If
+                        If txtnorekening.Text.Trim.Length = 0 Then
+                            MsgBox("Nomor Rekening belum terisi!!!")
+                        Else
+                            Call simpan()
+                        End If
 
+                    End If
                 End If
             End If
+        Else
+            MsgBox("Tidak Ada Akses")
         End If
     End Sub
     Sub simpan()
@@ -118,37 +154,45 @@ Public Class frekeningsupplier
         e.Handled = ValidAngka(e)
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-        Call koneksii()
-        If MessageBox.Show("Hapus " & Me.txtnorekening.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            sql = "DELETE FROM tb_rekening_supplier WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & txtkoderekening.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            MessageBox.Show("Rekening " + txtnorekening.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Refresh()
-            Call awal()
+        If hapusstatus.Equals(True) Then
+            Call koneksii()
+            If MessageBox.Show("Hapus " & Me.txtnorekening.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+                sql = "DELETE FROM tb_rekening_supplier WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & txtkoderekening.Text & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
+                MessageBox.Show("Rekening " + txtnorekening.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.Refresh()
+                Call awal()
+            End If
+        Else
+            MsgBox("Tidak Ada Akses")
         End If
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text = "Edit" Then
-            btnedit.Text = "Simpan"
-            btnhapus.Enabled = False
-            Call enable_text()
-            Call index()
-            GridControl1.Enabled = False
-        Else
-            If txtnamabank.Text.Trim.Length = 0 Then
-                MsgBox("Nama Bank belum terisi!!!")
+        If editstatus.Equals(True) Then
+            If btnedit.Text = "Edit" Then
+                btnedit.Text = "Simpan"
+                btnhapus.Enabled = False
+                Call enable_text()
+                Call index()
+                GridControl1.Enabled = False
             Else
-                If txtnamarekening.Text.Trim.Length = 0 Then
-                    MsgBox("Nama Rekening belum terisi!!!")
+                If txtnamabank.Text.Trim.Length = 0 Then
+                    MsgBox("Nama Bank belum terisi!!!")
                 Else
-                    If txtnorekening.Text.Trim.Length = 0 Then
-                        MsgBox("Nomor Rekening belum terisi!!!")
+                    If txtnamarekening.Text.Trim.Length = 0 Then
+                        MsgBox("Nama Rekening belum terisi!!!")
                     Else
-                        Call edit()
+                        If txtnorekening.Text.Trim.Length = 0 Then
+                            MsgBox("Nomor Rekening belum terisi!!!")
+                        Else
+                            Call edit()
+                        End If
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak Ada Akses")
         End If
     End Sub
     Sub edit()
