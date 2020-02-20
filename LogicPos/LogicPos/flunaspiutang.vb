@@ -463,9 +463,9 @@ Public Class flunaspiutang
         End While
     End Sub
 
-    Sub carijual()
+    Sub carijual(cari As String)
         Dim kodepenjualanfokus As String
-        kodepenjualanfokus = GridView1.GetFocusedRowCellValue("kode_penjualan")
+        kodepenjualanfokus = cari
         txtnonota.Text = kodepenjualanfokus
         Call loadinglunas(kodepenjualanfokus)
     End Sub
@@ -515,7 +515,7 @@ Public Class flunaspiutang
 
 
         If checkinglunas = True Then
-            If (totalbayar + bayarjual) = totaljual Then
+            If (totalbayar + bayarjual).Equals(totaljual) Then
                 lunasstatus = 1
             Else
                 lunasstatus = 0
@@ -551,6 +551,7 @@ Public Class flunaspiutang
 
         kodelunaspiutang = txtnolunaspiutang.Text
         Call inisialisasi(kodelunaspiutang)
+        Call carijual(txtnonota.Text)
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
@@ -666,16 +667,15 @@ Public Class flunaspiutang
     Sub prosesperbarui()
         Dim checkinglunas As Boolean
         Dim nilaihitung As String
-        Dim sisajual, bayarjual As Double
+        Dim totaljual, bayarjual As Double
 
         'cek ke penjualan
         Call koneksii()
-        sql = "SELECT sisa_penjualan FROM tb_penjualan WHERE kode_penjualan = '" & txtnonota.Text & "'"
+        sql = "SELECT total_penjualan FROM tb_penjualan WHERE kode_penjualan = '" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
-
         If dr.HasRows Then
-            sisajual = dr("sisa_penjualan")
+            totaljual = dr("total_penjualan")
         Else
             MsgBox("Penjualan tidak ditemukan !")
         End If
@@ -694,7 +694,7 @@ Public Class flunaspiutang
         End If
 
         'hitung pembayaran
-        If (sisajual - bayarjual) < totalbayar Then
+        If (totaljual - bayarjual) < totalbayar Then
             checkinglunas = False
         Else
             checkinglunas = True
@@ -702,6 +702,11 @@ Public Class flunaspiutang
 
 
         If checkinglunas = True Then
+            If (totalbayar + bayarjual).Equals(totaljual) Then
+                lunasstatus = 1
+            Else
+                lunasstatus = 0
+            End If
             Call perbarui()
         Else
             MsgBox("Total lebih Bayar")
@@ -719,10 +724,17 @@ Public Class flunaspiutang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
+        sql = "UPDATE tb_penjualan SET lunas_penjualan = '" & lunasstatus & "' WHERE kode_penjualan = '" & txtnonota.Text & "' "
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        'proses centang lunas penjualan
+
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
         btnedit.Text = "Edit"
 
         Call inisialisasi(kodelunaspiutang)
+        Call carijual(txtnonota.Text)
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
@@ -789,7 +801,7 @@ Public Class flunaspiutang
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        Call carijual()
+        Call carijual(GridView1.GetFocusedRowCellValue("kode_penjualan"))
     End Sub
 
     Sub caripiutang(nopiutang As String)

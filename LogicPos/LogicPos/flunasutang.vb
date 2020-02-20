@@ -464,9 +464,9 @@ Public Class flunasutang
         End While
     End Sub
 
-    Sub caribeli()
+    Sub caribeli(cari As String)
         Dim kodepembelianfokus As String
-        kodepembelianfokus = GridView1.GetFocusedRowCellValue("kode_pembelian")
+        kodepembelianfokus = cari
         txtnonota.Text = kodepembelianfokus
         Call loadinglunas(kodepembelianfokus)
     End Sub
@@ -516,12 +516,11 @@ Public Class flunasutang
 
 
         If checkinglunas = True Then
-            If (totalbayar + bayarbeli) = totalbeli Then
+            If (totalbayar + bayarbeli).Equals(totalbeli) Then
                 lunasstatus = 1
             Else
                 lunasstatus = 0
             End If
-            Call simpan()
             Call simpan()
         Else
             MsgBox("Total lebih Bayar")
@@ -541,11 +540,18 @@ Public Class flunasutang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
+        sql = "UPDATE tb_pembelian SET lunas_pembelian = '" & lunasstatus & "' WHERE kode_pembelian = '" & txtnonota.Text & "' "
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        'proses centang lunas pembelian
+
         MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
         Me.Refresh()
 
         kodelunasutang = txtnolunasutang.Text
         Call inisialisasi(kodelunasutang)
+        Call caribeli(txtnonota.Text)
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
@@ -695,6 +701,11 @@ Public Class flunasutang
 
 
         If checkinglunas = True Then
+            If (totalbayar + bayarbeli).Equals(totalbeli) Then
+                lunasstatus = 1
+            Else
+                lunasstatus = 0
+            End If
             Call perbarui()
         Else
             MsgBox("Total lebih Bayar")
@@ -712,10 +723,17 @@ Public Class flunasutang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
+        sql = "UPDATE tb_pembelian SET lunas_pembelian = '" & lunasstatus & "' WHERE kode_pembelian = '" & txtnonota.Text & "' "
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        'proses centang lunas pembelian
+
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
         btnedit.Text = "Edit"
 
         Call inisialisasi(kodelunasutang)
+        Call caribeli(txtnonota.Text)
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
@@ -782,7 +800,7 @@ Public Class flunasutang
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        Call caribeli()
+        Call caribeli(GridView1.GetFocusedRowCellValue("kode_pembelian"))
     End Sub
 
     Sub cariutang(noutang As String)
