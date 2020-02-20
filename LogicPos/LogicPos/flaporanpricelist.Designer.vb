@@ -32,9 +32,6 @@ Partial Class flaporanpricelist
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.LabelHarga = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
@@ -145,45 +142,12 @@ Partial Class flaporanpricelist
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.LabelHarga)
-        Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.PictureBox1)
         Me.GroupBox1.Location = New System.Drawing.Point(988, 261)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(282, 322)
+        Me.GroupBox1.Size = New System.Drawing.Size(282, 247)
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(61, 276)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(33, 17)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Rp."
-        '
-        'LabelHarga
-        '
-        Me.LabelHarga.AutoSize = True
-        Me.LabelHarga.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelHarga.Location = New System.Drawing.Point(100, 276)
-        Me.LabelHarga.Name = "LabelHarga"
-        Me.LabelHarga.Size = New System.Drawing.Size(17, 17)
-        Me.LabelHarga.TabIndex = 2
-        Me.LabelHarga.Text = "0"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 241)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(93, 16)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Modal Barang"
         '
         'PictureBox1
         '
@@ -277,7 +241,6 @@ Partial Class flaporanpricelist
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -294,9 +257,6 @@ Partial Class flaporanpricelist
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents LabelHarga As Label
-    Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents btnexcel As Button

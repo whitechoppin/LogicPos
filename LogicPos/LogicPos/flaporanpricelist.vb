@@ -8,28 +8,26 @@ Public Class flaporanpricelist
     Private Sub flaporbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call tabel()
-        With GridView1
-            'agar muncul footer untuk sum/avg/count
-            .OptionsView.ShowFooter = True
-            'buat sum harga
-            .Columns("jumlah_stok").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "jumlah_stok", "{0:n0}")
-        End With
+
     End Sub
     Sub grid()
-        GridColumn1.Caption = "Kode"
-        GridColumn1.FieldName = "kode_stok"
+        GridColumn1.Caption = "Kode Customer"
+        GridColumn1.FieldName = "kode_pelanggan"
         GridColumn2.Caption = "Kode Barang"
         GridColumn2.FieldName = "kode_barang"
         GridColumn3.Caption = "Nama Barang"
         GridColumn3.FieldName = "nama_barang"
         GridColumn4.Caption = "Jenis"
         GridColumn4.FieldName = "jenis_barang"
-        GridColumn5.Caption = "Satuan"
-        GridColumn5.FieldName = "satuan_barang"
-        GridColumn6.Caption = "Jumlah Stok"
-        GridColumn6.FieldName = "jumlah_stok"
+        GridColumn5.Caption = "Kategori"
+        GridColumn5.FieldName = "kategori_barang"
+        GridColumn6.Caption = "Harga Jual"
+        GridColumn6.FieldName = "harga_jual"
+        GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn6.DisplayFormat.FormatString = "Rp ##,##0"
         GridColumn7.Caption = "Kode Gudang"
         GridColumn7.FieldName = "kode_gudang"
+        GridColumn7.Visible = False
 
         GridControl1.Visible = True
     End Sub
@@ -37,7 +35,7 @@ Public Class flaporanpricelist
         Call koneksii()
         Using cnn As New OdbcConnection(strConn)
             'sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang "
-            sql = "SELECT tb_barang.kode_barang, nama_barang, tb_price_group.harga_jual, tb_price_group.kode_pelanggan FROM tb_barang JOIN tb_price_group ON tb_price_group.kode_barang=tb_barang.kode_barang WHERE tb_price_group.kode_pelanggan = '" & txtkodecust.Text & "' "
+            sql = "SELECT tb_barang.kode_barang, nama_barang, tb_price_group.harga_jual, tb_price_group.kode_pelanggan, tb_barang.jenis_barang, tb_barang.kategori_barang FROM tb_barang JOIN tb_price_group ON tb_price_group.kode_barang=tb_barang.kode_barang WHERE tb_price_group.kode_pelanggan = '" & txtkodecust.Text & "' "
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet
@@ -61,7 +59,7 @@ Public Class flaporanpricelist
             dr.Read()
             If dr.HasRows Then
                 modalbarang = dr("modal_barang")
-                LabelHarga.Text = Format(modalbarang, "##,##0")
+
                 foto = dr("gambar_barang")
                 PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
                 PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
