@@ -107,8 +107,8 @@ Public Class flaporanpricelist
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
         Dim rptstok As ReportDocument
-        rptstok = New rptlaporstok
-
+        rptstok = New rptlaporprice
+        rptstok.SetParameterValue("kode", txtkodecust.Text)
         flappembelian.CrystalReportViewer1.ReportSource = rptstok
         flappembelian.Text = "Laporan Stok Barang"
         flappembelian.ShowDialog()
