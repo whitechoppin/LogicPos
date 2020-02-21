@@ -12,4 +12,5 @@
     Public tutupjual As Integer
     Public tutupkas As Integer
     Public msgbox1 As Integer
+    Public passwordid As Integer
 End Module

@@ -5,6 +5,7 @@ Imports System.IO
 
 Public Class fbarang
     Dim hargabarang, modalbarang As Double
+    Public passwrodstatus As Boolean = False
     Dim kodebarang, namabarang, satuanbarang, jenisbarang, kategoribarang, keteranganbarang As String
     Dim minstok As Integer
     Private PathFile As String = Nothing
@@ -31,6 +32,7 @@ Public Class fbarang
         cmbkategori.SelectedIndex = -1
         txtmodal.Text = 0
         txtmodal.Enabled = False
+        btnshow.Enabled = False
         txtketerangan.Enabled = False
         txtketerangan.Clear()
 
@@ -124,6 +126,7 @@ Public Class fbarang
         txtketerangan.Enabled = True
         btnupload.Enabled = True
         txtmodal.Enabled = True
+        btnshow.Enabled = True
         txtkode.Focus()
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
@@ -261,6 +264,7 @@ Public Class fbarang
                 txtketerangan.Text = keteranganbarang
                 txtgbr.Text = txtnama.Text
                 txtmodal.Text = Format(modalbarang, "##,##0")
+                btnshow.Enabled = True
 
                 btnedit.Enabled = True
                 btnbatal.Enabled = True
@@ -450,7 +454,9 @@ Public Class fbarang
 
     Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
         If txthidden.Visible = True Then
-            txthidden.Visible = False
+            passwordid = 1
+            fpassword.Show()
+            'txthidden.Visible = False
         ElseIf txthidden.Visible = False Then
             txthidden.Visible = True
         End If
