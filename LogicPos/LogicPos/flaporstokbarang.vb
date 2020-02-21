@@ -8,6 +8,7 @@ Public Class flaporstokbarang
     Private Sub flaporbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call tabel()
+        LabelHarga.Visible = False
         With GridView1
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
@@ -118,5 +119,15 @@ Public Class flaporstokbarang
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel()
+    End Sub
+
+    Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
+        If LabelHarga.Visible = False Then
+            passwordid = 2
+            fpassword.Show()
+            'LabelHarga.Visible = False
+        ElseIf LabelHarga.Visible = True Then
+            LabelHarga.Visible = False
+        End If
     End Sub
 End Class

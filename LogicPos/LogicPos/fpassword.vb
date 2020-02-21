@@ -5,7 +5,8 @@ Public Class fpassword
         txtpassword.UseSystemPasswordChar = False
         txtpassword.PasswordChar = "•"
     End Sub
-    Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
+
+    Sub proceed()
         Call koneksii()
         sql = "SELECT * FROM tb_user WHERE password_user= '" + txtpassword.Text + "' AND jabatan_user ='Owner' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
@@ -17,9 +18,20 @@ Public Class fpassword
         Else
             If passwordid = 1 Then
                 fbarang.txthidden.Visible = False
+            ElseIf passwordid = 2 Then
+                flaporstokbarang.LabelHarga.Visible = True
             End If
             Me.Close()
         End If
+    End Sub
 
+    Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
+        Call proceed()
+    End Sub
+
+    Private Sub txtpassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtpassword.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Call proceed()
+        End If
     End Sub
 End Class
