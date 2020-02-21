@@ -20,6 +20,8 @@ Public Class fpassword
                 fbarang.txthidden.Visible = False
             ElseIf passwordid = 2 Then
                 flaporstokbarang.LabelHarga.Visible = True
+            ElseIf passwordid = 3 Then
+                fcaristok.LabelHarga.Visible = True
             End If
             Me.Close()
         End If
