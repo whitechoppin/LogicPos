@@ -101,6 +101,8 @@ Partial Class fpembelian
         Me.txtdiskonnominal = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtppnnominal = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.txtnosupplier = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -706,16 +708,16 @@ Partial Class fpembelian
         Me.cmbbayar.BackColor = System.Drawing.SystemColors.Window
         Me.cmbbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cmbbayar.FormattingEnabled = True
-        Me.cmbbayar.Location = New System.Drawing.Point(753, 640)
+        Me.cmbbayar.Location = New System.Drawing.Point(617, 599)
         Me.cmbbayar.Name = "cmbbayar"
-        Me.cmbbayar.Size = New System.Drawing.Size(379, 26)
+        Me.cmbbayar.Size = New System.Drawing.Size(198, 26)
         Me.cmbbayar.TabIndex = 35
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label11.Location = New System.Drawing.Point(627, 644)
+        Me.Label11.Location = New System.Drawing.Point(616, 578)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(113, 18)
         Me.Label11.TabIndex = 26
@@ -918,12 +920,33 @@ Partial Class fpembelian
         Me.txtppnnominal.Size = New System.Drawing.Size(148, 24)
         Me.txtppnnominal.TabIndex = 31
         '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label20.Location = New System.Drawing.Point(616, 531)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(121, 18)
+        Me.Label20.TabIndex = 44
+        Me.Label20.Text = "No Nota Supplier"
+        '
+        'txtnosupplier
+        '
+        Me.txtnosupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.txtnosupplier.Location = New System.Drawing.Point(617, 552)
+        Me.txtnosupplier.MaxLength = 12
+        Me.txtnosupplier.Name = "txtnosupplier"
+        Me.txtnosupplier.Size = New System.Drawing.Size(198, 24)
+        Me.txtnosupplier.TabIndex = 45
+        '
         'fpembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1143, 722)
+        Me.Controls.Add(Me.txtnosupplier)
+        Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.txtppnnominal)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.txtdiskonnominal)
@@ -1045,4 +1068,6 @@ Partial Class fpembelian
     Friend WithEvents txtppnnominal As TextBox
     Friend WithEvents btnedit As Button
     Friend WithEvents ritenumber As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents Label20 As Label
+    Friend WithEvents txtnosupplier As TextBox
 End Class

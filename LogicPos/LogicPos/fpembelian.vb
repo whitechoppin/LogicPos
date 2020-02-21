@@ -10,7 +10,7 @@ Public Class fpembelian
     Dim satuan, jenis, supplier, kodepembelian, kodegudang As String
     Public isi As String
     'variabel bantuan view pembelian
-    Dim nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan, viewbayar, kodepembayaran As String
+    Dim nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan, viewnomorsupplier, viewbayar, kodepembayaran As String
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
     Dim viewtglpembelian, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir As Double
@@ -221,6 +221,9 @@ Public Class fpembelian
         txtketerangan.Enabled = False
         txtketerangan.Clear()
 
+        txtnosupplier.Enabled = False
+        txtnosupplier.Clear()
+
         cbongkir.Enabled = False
         cbppn.Enabled = False
         cbdiskon.Enabled = False
@@ -276,6 +279,7 @@ Public Class fpembelian
                     viewtglpembelian = dr("tgl_pembelian")
                     viewtgljatuhtempo = dr("tgl_jatuhtempo_pembelian")
                     viewketerangan = dr("keterangan_pembelian")
+                    viewnomorsupplier = dr("no_nota_pembelian")
                     nilaidiskon = dr("diskon_pembelian")
                     nilaippn = dr("pajak_pembelian")
                     nilaiongkir = dr("ongkir_pembelian")
@@ -300,6 +304,7 @@ Public Class fpembelian
                     'total tabel pembelian
 
                     txtketerangan.Text = viewketerangan
+                    txtnosupplier.Text = viewnomorsupplier
 
                     If nilaidiskon <> 0 Then
                         cbdiskon.Checked = True
@@ -348,6 +353,7 @@ Public Class fpembelian
             dtjatuhtempo.Value = Date.Now
 
             txtketerangan.Text = ""
+            txtnosupplier.Text = ""
 
 
             cbdiskon.Checked = False
@@ -440,6 +446,9 @@ Public Class fpembelian
         'total tabel pembelian
         txtketerangan.Enabled = True
         txtketerangan.Clear()
+
+        txtnosupplier.Enabled = True
+        txtnosupplier.Clear()
 
         cbongkir.Enabled = True
         cbppn.Enabled = True
@@ -815,7 +824,7 @@ Public Class fpembelian
                     'cnn.Open()
                     dr = cmmd.ExecuteReader()
                 Next
-                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,kode_gudang,kode_user,tgl_pembelian,tgl_jatuhtempo_pembelian,lunas_pembelian,void_pembelian,print_pembelian,posted_pembelian,keterangan_pembelian,diskon_pembelian,pajak_pembelian,ongkir_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & kodepembelian & "','" & cmbsupplier.Text & "','" & kodegudang & "','" & cmbsales.Text & "','" & Format(dtpembelian.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & txtongkir.Text & "','" & grandtotal & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,kode_gudang,kode_user,tgl_pembelian,tgl_jatuhtempo_pembelian,lunas_pembelian,void_pembelian,print_pembelian,posted_pembelian,keterangan_pembelian, no_nota_pembelian,diskon_pembelian,pajak_pembelian,ongkir_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & kodepembelian & "','" & cmbsupplier.Text & "','" & kodegudang & "','" & cmbsales.Text & "','" & Format(dtpembelian.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & txtnosupplier.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & txtongkir.Text & "','" & grandtotal & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
@@ -1168,6 +1177,8 @@ Public Class fpembelian
         txtketerangan.Enabled = True
         'txtketerangan.Clear()
 
+        txtnosupplier.Enabled = True
+
         cbongkir.Enabled = True
         cbppn.Enabled = True
         cbdiskon.Enabled = True
@@ -1242,7 +1253,7 @@ Public Class fpembelian
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             Next
-            sql = "UPDATE tb_pembelian SET kode_supplier = '" & cmbsupplier.Text & "', kode_gudang = '" & kodegudang & "', kode_user = '" & cmbsales.Text & "', tgl_pembelian = '" & Format(dtpembelian.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_pembelian = '" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', lunas_pembelian = 0 ,void_pembelian = 0, print_pembelian = 0, posted_pembelian = 1, keterangan_pembelian = '" & txtketerangan.Text & "', diskon_pembelian = '" & txtdiskonpersen.Text & "', pajak_pembelian = '" & txtppnpersen.Text & "', ongkir_pembelian = '" & ongkir & "', total_pembelian = '" & grandtotal & "', pembayaran_pembelian = '" & cmbbayar.Text & "', updated_by = '" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_pembelian = '" & nomornota & "' "
+            sql = "UPDATE tb_pembelian SET kode_supplier = '" & cmbsupplier.Text & "', kode_gudang = '" & kodegudang & "', kode_user = '" & cmbsales.Text & "', tgl_pembelian = '" & Format(dtpembelian.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_pembelian = '" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', lunas_pembelian = 0 ,void_pembelian = 0, print_pembelian = 0, posted_pembelian = 1, keterangan_pembelian = '" & txtketerangan.Text & "', no_nota_pembelian = '" & txtnosupplier.Text & "', diskon_pembelian = '" & txtdiskonpersen.Text & "', pajak_pembelian = '" & txtppnpersen.Text & "', ongkir_pembelian = '" & ongkir & "', total_pembelian = '" & grandtotal & "', pembayaran_pembelian = '" & cmbbayar.Text & "', updated_by = '" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_pembelian = '" & nomornota & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
 
