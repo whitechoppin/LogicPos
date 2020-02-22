@@ -746,14 +746,14 @@ Public Class fpenjualan
         GridColumn12.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn12.DisplayFormat.FormatString = "{0:n0}"
         GridColumn12.Width = 20
-        GridColumn12.Visible = False
+        'GridColumn12.Visible = False
 
         GridColumn13.FieldName = "modal_barang"
         GridColumn13.Caption = "Modal Barang"
         GridColumn13.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn13.DisplayFormat.FormatString = "{0:n0}"
         GridColumn13.Width = 20
-        GridColumn13.Visible = False
+        'GridColumn13.Visible = False
 
     End Sub
 
@@ -862,7 +862,7 @@ Public Class fpenjualan
             jenis = dr("jenis_barang")
             txtharga.Text = Format(dr("harga_jual"), "##,##0")
             txtharga.SelectionStart = Len(txtharga.Text)
-            modalpenjualan = dr("modal_barang")
+            modalpenjualan = Val(dr("modal_barang"))
         Else
             sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok= '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan = '00000000' AND tb_stok.kode_gudang ='" & cmbgudang.Text & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
@@ -876,15 +876,31 @@ Public Class fpenjualan
                 jenis = dr("jenis_barang")
                 txtharga.Text = Format(dr("harga_jual"), "##,##0")
                 txtharga.SelectionStart = Len(txtharga.Text)
-                modalpenjualan = dr("modal_barang")
+                modalpenjualan = Val(dr("modal_barang"))
             Else
-                txtnamabarang.Text = ""
-                txtkodebarang.Text = ""
-                satuan = "satuan"
-                lblsatuan.Text = satuan
-                lblsatuanjual.Text = satuan
-                jenis = ""
-                txtharga.Text = ""
+                sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_kategori_barang ON tb_barang.kategori_barang = tb_kategori_barang.kode_kategori WHERE kode_stok= '" & txtkodestok.Text & "' AND tb_stok.kode_gudang ='" & cmbgudang.Text & "' LIMIT 1"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
+                If dr.HasRows Then
+                    txtnamabarang.Text = dr("nama_barang")
+                    txtkodebarang.Text = dr("kode_barang")
+                    satuan = dr("satuan_barang")
+                    lblsatuan.Text = satuan
+                    lblsatuanjual.Text = satuan
+                    jenis = dr("jenis_barang")
+                    txtharga.Text = Format(Val(dr("modal_barang")) + Val(dr("selisih_kategori")), "##,##0")
+                    txtharga.SelectionStart = Len(txtharga.Text)
+                    modalpenjualan = Val(dr("modal_barang"))
+                Else
+
+                    txtnamabarang.Text = ""
+                    txtkodebarang.Text = ""
+                    satuan = "satuan"
+                    lblsatuan.Text = satuan
+                    lblsatuanjual.Text = satuan
+                    jenis = ""
+                    txtharga.Text = ""
+                End If
             End If
         End If
     End Sub
@@ -1319,6 +1335,7 @@ Public Class fpenjualan
         Call caribarang()
     End Sub
     Sub tambah()
+        Dim hargajuallangsung As Double
         'Columns.Add("kode_barang")
         'Columns.Add("kode_stok")
         'Columns.Add("nama_barang")
@@ -1364,7 +1381,22 @@ Public Class fpenjualan
                             Call reload_tabel()
                         End If
                     Else
-                        MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                        sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_kategori_barang ON tb_barang.kategori_barang = tb_kategori_barang.kode_kategori WHERE kode_stok= '" & txtkodestok.Text & "' AND tb_stok.kode_gudang ='" & cmbgudang.Text & "' LIMIT 1"
+                        cmmd = New OdbcCommand(sql, cnn)
+                        dr = cmmd.ExecuteReader
+                        If dr.HasRows Then
+
+                            If dr("jumlah_stok") < banyak Then
+                                MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                                'Exit Sub
+                            Else
+                                hargajuallangsung = Val(dr("modal_barang")) + Val(dr("selisih_kategori"))
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak, satuan, jenis, Val(dr("modal_barang")) + Val(dr("selisih_kategori")), "0", "0", hargajuallangsung, hargajuallangsung * banyak, (hargajuallangsung * banyak - Val(modalpenjualan) * banyak), modalpenjualan)
+                                Call reload_tabel()
+                            End If
+                        Else
+                            MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                        End If
                     End If
                 End If
 
@@ -1390,6 +1422,9 @@ Public Class fpenjualan
                     tbnilainominal = GridView1.GetRowCellValue(lokasi, "diskon_nominal")
 
                     If lokasi = -1 Then
+                        'cek 1
+                        'MsgBox("cek 1")
+
                         If dr("jumlah_stok") < (banyak + tbbanyak) Then
                             MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                         Else
@@ -1397,6 +1432,9 @@ Public Class fpenjualan
                             Call reload_tabel()
                         End If
                     Else
+                        'cek 2
+                        'MsgBox("cek 2")
+
                         If dr("jumlah_stok") < (banyak + tbbanyak) Then
                             MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                         Else
@@ -1422,23 +1460,69 @@ Public Class fpenjualan
                         tbnilainominal = GridView1.GetRowCellValue(lokasi, "diskon_nominal")
 
                         If lokasi = -1 Then
+                            'cek 3
+                            'MsgBox("cek 3")
+
                             If dr("jumlah_stok") < (banyak + tbbanyak) Then
                                 MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                             Else
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, Val(txtbanyak.Text) + tbbanyak, satuan, jenis, Val(dr("harga_jual")), tbnilaipersen, tbnilainominal, Val(dr("harga_jual")) - tbnilainominal, (Val(dr("harga_jual")) - tbnilainominal) * (Val(txtbanyak.Text) + tbbanyak), (Val(dr("harga_jual") - tbnilainominal) * (Val(txtbanyak.Text) + tbbanyak) - (Val(modalpenjualan) * Val(txtbanyak.Text) + tbbanyak)), modalpenjualan)
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, Val(dr("harga_jual")), tbnilaipersen, tbnilainominal, Val(dr("harga_jual")) - tbnilainominal, (Val(dr("harga_jual")) - tbnilainominal) * (banyak + tbbanyak), (Val(dr("harga_jual") - tbnilainominal) * (banyak + tbbanyak) - (Val(modalpenjualan) * (banyak + tbbanyak))), modalpenjualan)
                                 Call reload_tabel()
                             End If
                         Else
+                            'cek 4
+                            'MsgBox("cek 4")
+
                             If dr("jumlah_stok") < (banyak + tbbanyak) Then
                                 MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                             Else
                                 GridView1.DeleteRow(GridView1.GetRowHandle(lokasi))
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, Val(txtbanyak.Text) + tbbanyak, satuan, jenis, Val(dr("harga_jual")), tbnilaipersen, tbnilainominal, Val(dr("harga_jual")) - tbnilainominal, (Val(dr("harga_jual")) - tbnilainominal) * (Val(txtbanyak.Text) + tbbanyak), (Val(dr("harga_jual") - tbnilainominal) * (Val(txtbanyak.Text) + tbbanyak) - (Val(modalpenjualan) * Val(txtbanyak.Text) + tbbanyak)), modalpenjualan)
+                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, Val(dr("harga_jual")), tbnilaipersen, tbnilainominal, Val(dr("harga_jual")) - tbnilainominal, (Val(dr("harga_jual")) - tbnilainominal) * (banyak + tbbanyak), (Val(dr("harga_jual") - tbnilainominal) * (banyak + tbbanyak) - (Val(modalpenjualan) * (banyak + tbbanyak))), modalpenjualan)
                                 Call reload_tabel()
                             End If
                         End If
                     Else
-                        MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                        sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_kategori_barang ON tb_barang.kategori_barang = tb_kategori_barang.kode_kategori WHERE kode_stok= '" & txtkodestok.Text & "' AND tb_stok.kode_gudang ='" & cmbgudang.Text & "' LIMIT 1"
+                        cmmd = New OdbcCommand(sql, cnn)
+                        dr = cmmd.ExecuteReader
+                        If dr.HasRows Then
+
+                            For i As Integer = 0 To GridView1.RowCount - 1
+                                If GridView1.GetRowCellValue(i, "kode_stok").Equals(txtkodestok.Text) Then
+                                    lokasi = i
+                                End If
+                            Next
+
+                            tbbanyak = GridView1.GetRowCellValue(lokasi, "banyak")
+                            tbnilaipersen = GridView1.GetRowCellValue(lokasi, "diskon_persen")
+                            tbnilainominal = GridView1.GetRowCellValue(lokasi, "diskon_nominal")
+                            hargajuallangsung = Val(dr("modal_barang")) + Val(dr("selisih_kategori"))
+
+                            If lokasi = -1 Then
+                                'cek 5
+                                'MsgBox("cek 5")
+
+                                If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                    MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                                Else
+                                    tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, hargajuallangsung, tbnilaipersen, tbnilainominal, hargajuallangsung - tbnilainominal, (hargajuallangsung - tbnilainominal) * (banyak + tbbanyak), (Val(hargajuallangsung - tbnilainominal) * (banyak + tbbanyak) - (Val(modalpenjualan) * (banyak + tbbanyak))), modalpenjualan)
+                                    Call reload_tabel()
+                                End If
+                            Else
+                                'cek 6
+                                'MsgBox("cek 6")
+
+                                If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                    MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                                Else
+                                    GridView1.DeleteRow(GridView1.GetRowHandle(lokasi))
+                                    tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, hargajuallangsung, tbnilaipersen, tbnilainominal, hargajuallangsung - tbnilainominal, (hargajuallangsung - tbnilainominal) * (banyak + tbbanyak), (Val(hargajuallangsung - tbnilainominal) * (banyak + tbbanyak) - (Val(modalpenjualan) * (banyak + tbbanyak))), modalpenjualan)
+                                    Call reload_tabel()
+                                End If
+                            End If
+                        Else
+                            MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                        End If
                     End If
                 End If
             End If
