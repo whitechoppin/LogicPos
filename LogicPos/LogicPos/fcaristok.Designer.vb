@@ -32,12 +32,13 @@ Partial Class fcaristok
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnshow = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LabelHarga = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnshow = New System.Windows.Forms.Button()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -139,6 +140,17 @@ Partial Class fcaristok
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         '
+        'btnshow
+        '
+        Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
+        Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnshow.ImageIndex = 0
+        Me.btnshow.Location = New System.Drawing.Point(114, 238)
+        Me.btnshow.Name = "btnshow"
+        Me.btnshow.Size = New System.Drawing.Size(29, 22)
+        Me.btnshow.TabIndex = 27
+        Me.btnshow.UseVisualStyleBackColor = True
+        '
         'Label3
         '
         Me.Label3.AutoSize = True
@@ -187,16 +199,16 @@ Partial Class fcaristok
         Me.Label1.TabIndex = 13
         Me.Label1.Text = "Pencarian Data Stok"
         '
-        'btnshow
+        'btnrefresh
         '
-        Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
-        Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnshow.ImageIndex = 0
-        Me.btnshow.Location = New System.Drawing.Point(114, 238)
-        Me.btnshow.Name = "btnshow"
-        Me.btnshow.Size = New System.Drawing.Size(29, 22)
-        Me.btnshow.TabIndex = 27
-        Me.btnshow.UseVisualStyleBackColor = True
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(215, 7)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
+        Me.btnrefresh.TabIndex = 28
+        Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'fcaristok
         '
@@ -204,6 +216,7 @@ Partial Class fcaristok
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(996, 364)
+        Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
@@ -235,4 +248,5 @@ Partial Class fcaristok
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnshow As Button
+    Friend WithEvents btnrefresh As Button
 End Class

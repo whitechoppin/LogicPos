@@ -109,4 +109,8 @@ Public Class fcaristok
             LabelHarga.Visible = False
         End If
     End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call tabel()
+    End Sub
 End Class

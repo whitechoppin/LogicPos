@@ -39,6 +39,7 @@ Partial Class fcaribarang
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btnshow = New System.Windows.Forms.Button()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -210,12 +211,24 @@ Partial Class fcaribarang
         Me.btnshow.TabIndex = 28
         Me.btnshow.UseVisualStyleBackColor = True
         '
+        'btnrefresh
+        '
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(241, 8)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
+        Me.btnrefresh.TabIndex = 28
+        Me.btnrefresh.UseVisualStyleBackColor = True
+        '
         'fcaribarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(804, 364)
+        Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.btnmasuk)
         Me.Controls.Add(Me.txtcari)
@@ -250,4 +263,5 @@ Partial Class fcaribarang
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents btnshow As Button
+    Friend WithEvents btnrefresh As Button
 End Class
