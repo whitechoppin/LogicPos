@@ -9,6 +9,7 @@ Public Class fcaribarang
 
     Private Sub fcaribarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call tabel()
+        LabelHarga.Visible = False
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"
@@ -127,6 +128,16 @@ Public Class fcaribarang
                 fbarangmasuk.txtkodebarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
                 Me.Hide()
             End If
+        End If
+    End Sub
+
+    Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
+        If LabelHarga.Visible = False Then
+            passwordid = 4
+            fpassword.Show()
+            'LabelHarga.Visible = False
+        ElseIf LabelHarga.Visible = True Then
+            LabelHarga.Visible = False
         End If
     End Sub
 End Class

@@ -38,6 +38,7 @@ Partial Class fcaribarang
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btnshow = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,6 +66,7 @@ Partial Class fcaribarang
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btnshow)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.LabelHarga)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -101,9 +103,9 @@ Partial Class fcaribarang
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(6, 241)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(93, 16)
+        Me.Label2.Size = New System.Drawing.Size(99, 16)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Modal Barang"
+        Me.Label2.Text = "Modal Barang :"
         '
         'PictureBox1
         '
@@ -197,6 +199,17 @@ Partial Class fcaribarang
         Me.GridColumn4.VisibleIndex = 3
         Me.GridColumn4.Width = 123
         '
+        'btnshow
+        '
+        Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
+        Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnshow.ImageIndex = 0
+        Me.btnshow.Location = New System.Drawing.Point(105, 238)
+        Me.btnshow.Name = "btnshow"
+        Me.btnshow.Size = New System.Drawing.Size(29, 22)
+        Me.btnshow.TabIndex = 28
+        Me.btnshow.UseVisualStyleBackColor = True
+        '
         'fcaribarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -236,4 +249,5 @@ Partial Class fcaribarang
     Friend WithEvents LabelHarga As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents btnshow As Button
 End Class
