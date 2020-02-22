@@ -323,28 +323,73 @@ Public Class fbarang
         PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
         'merubah gambar pada ms ke array
         ms.ToArray()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "UPDATE tb_barang SET kode_barang=?, nama_barang=?, jenis_barang=?, kategori_barang=?, satuan_barang=?, keterangan_barang=?, modal_barang=?, gambar_barang=?, updated_by=?, last_updated=? WHERE  kode_barang='" & kodebarang & "'"
+
+        If txtkode.Text.Equals(kodebarang) Then
+            Using cnn As New OdbcConnection(strConn)
+                sql = "UPDATE tb_barang SET nama_barang=?, jenis_barang=?, kategori_barang=?, satuan_barang=?, keterangan_barang=?, modal_barang=?, gambar_barang=?, updated_by=?, last_updated=? WHERE  kode_barang='" & kodebarang & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
+                cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
+                cmmd.Parameters.AddWithValue("@kategori_barang", cmbkategori.Text)
+                cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
+                cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
+                cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
+                cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
+                cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+
+                cnn.Open()
+                cmmd.ExecuteNonQuery()
+                cnn.Close()
+
+            End Using
+        Else
+            Using cnn As New OdbcConnection(strConn)
+                sql = "UPDATE tb_barang SET kode_barang=?, nama_barang=?, jenis_barang=?, kategori_barang=?, satuan_barang=?, keterangan_barang=?, modal_barang=?, gambar_barang=?, updated_by=?, last_updated=? WHERE  kode_barang='" & kodebarang & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
+                cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
+                cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
+                cmmd.Parameters.AddWithValue("@kategori_barang", cmbkategori.Text)
+                cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
+                cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
+                cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
+                cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
+                cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+
+                cnn.Open()
+                cmmd.ExecuteNonQuery()
+                cnn.Close()
+
+            End Using
+            Call koneksii()
+
+            sql = "SELECT * FROM tb_stok WHERE kode_barang = '" & kodebarang & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
-            cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
-            cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
-            cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
-            cmmd.Parameters.AddWithValue("@kategori_barang", cmbkategori.Text)
-            cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
-            cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
-            cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
-            cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
-            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
-            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
-            cnn.Open()
-            cmmd.ExecuteNonQuery()
-            cnn.Close()
-            MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
-            btnedit.Text = "&Edit"
-            cnn.Close()
-            Me.Refresh()
-            Call awal()
-        End Using
+            dr = cmmd.ExecuteReader()
+            If dr.HasRows Then
+                sql = "UPDATE tb_stok SET kode_barang = '" & txtkode.Text & "' WHERE kode_barang = '" & kodebarang & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            End If
+
+            Call koneksii()
+            sql = "SELECT * FROM tb_price_group WHERE kode_barang='" & kodebarang & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.Read Then
+                sql = "UPDATE tb_price_group SET kode_barang='" & txtkode.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_barang='" & kodebarang & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
+            End If
+        End If
+        MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
+        btnedit.Text = "&Edit"
+        cnn.Close()
+        Me.Refresh()
+        Call awal()
+
     End Sub
     Sub edit()
         If txtkode.Text = kodebarang Then
