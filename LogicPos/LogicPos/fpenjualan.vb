@@ -746,14 +746,14 @@ Public Class fpenjualan
         GridColumn12.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn12.DisplayFormat.FormatString = "{0:n0}"
         GridColumn12.Width = 20
-        'GridColumn12.Visible = False
+        GridColumn12.Visible = False
 
         GridColumn13.FieldName = "modal_barang"
         GridColumn13.Caption = "Modal Barang"
         GridColumn13.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn13.DisplayFormat.FormatString = "{0:n0}"
         GridColumn13.Width = 20
-        'GridColumn13.Visible = False
+        GridColumn13.Visible = False
 
     End Sub
 
