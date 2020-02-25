@@ -2,7 +2,53 @@
 Public Class flogin
     Public rekeningsupplier, rekeningcustomer As Integer
     Public master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust As Integer
+    Public pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang As Integer
+    Public lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar As Integer
+    Public lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barangmasuk, lap_barangkeluar, lap_utang, lap_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas As Integer
 
+
+    Sub reset()
+        master_barang = 0
+        master_kategori = 0
+        master_gudang = 0
+        master_customer = 0
+        master_supplier = 0
+        master_user = 0
+        master_kas = 0
+        master_pricelist = 0
+        master_rek_supplier = 0
+        master_rek_cust = 0
+
+        pembelian = 0
+        penjualan = 0
+        retur_beli = 0
+        retur_jual = 0
+        barang_keluar = 0
+        barang_masuk = 0
+        transfer_barang = 0
+
+        lunas_utang = 0
+        lunas_piutang = 0
+        transfer_kas = 0
+        akun_masuk = 0
+        akun_keluar = 0
+
+        lap_pricelist = 0
+        lap_pembelian = 0
+        lap_penjualan = 0
+        lap_returbeli = 0
+        lap_returjual = 0
+        lap_barangmasuk = 0
+        lap_barangkeluar = 0
+        lap_utang = 0
+        lap_piutang = 0
+        lap_akun_masuk = 0
+        lap_akun_keluar = 0
+        lap_transfer_kas = 0
+        lap_transfer_barang = 0
+        lap_stok_barang = 0
+        lap_transaksi_kas = 0
+    End Sub
     Sub login()
         Call koneksii()
         sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtusername.Text + "' AND password_user= '" + txtpassword.Text + "'"
@@ -66,10 +112,6 @@ Public Class flogin
 
             rekeningcustomer = master_rek_cust
             rekeningsupplier = master_rek_supplier
-
-            Dim pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang As Integer
-            Dim lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar As Integer
-            Dim lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barangmasuk, lap_barangkeluar, lap_utang, lap_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas As Integer
 
             pembelian = dr("pembelian")
             penjualan = dr("penjualan")
@@ -228,6 +270,8 @@ Public Class flogin
             txtpassword.Focus()
             Exit Sub
         End If
+
+        Call reset()
         Call login()
     End Sub
 
@@ -239,6 +283,19 @@ Public Class flogin
 
     Private Sub txtpassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtpassword.KeyDown
         If e.KeyCode = Keys.Enter Then
+            If txtusername.Text = "" Then
+                MessageBox.Show("User masih kosong", "username", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                txtusername.Focus()
+                Exit Sub
+            End If
+
+            If txtpassword.Text = "" Then
+                MessageBox.Show("Password masih kosong", "password", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                txtpassword.Focus()
+                Exit Sub
+            End If
+
+            Call reset()
             Call login()
         End If
     End Sub
