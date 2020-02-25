@@ -1,11 +1,43 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fkategoribarang
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, hapusstatus As Boolean
     Dim kodekategoriedit As String
     Dim selisihharga As Double
     Private Sub fkategoribarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                hapusstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = True
+        End Select
     End Sub
 
     Sub awal()
@@ -92,27 +124,31 @@ Public Class fkategoribarang
     End Sub
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
-        If btntambah.Text = "Tambah" Then
-            btnbatal.Enabled = True
-            btntambah.Text = "Simpan"
-            Call enable_text()
-            Call index()
+        If tambahstatus.Equals(True) Then
+            If btntambah.Text = "Tambah" Then
+                btnbatal.Enabled = True
+                btntambah.Text = "Simpan"
+                Call enable_text()
+                Call index()
 
-            GridControl.Enabled = False
-        Else
-            If txtkode.Text.Length = 0 Then
-                MsgBox("kode belum terisi !")
+                GridControl.Enabled = False
             Else
-                If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama belum terisi !")
+                If txtkode.Text.Length = 0 Then
+                    MsgBox("kode belum terisi !")
                 Else
-                    If txtselisih.Text.Length = 0 Then
-                        MsgBox("Selisih belum terisi !")
+                    If txtnama.Text.Length = 0 Then
+                        MsgBox("Nama belum terisi !")
                     Else
-                        Call simpan()
+                        If txtselisih.Text.Length = 0 Then
+                            MsgBox("Selisih belum terisi !")
+                        Else
+                            Call simpan()
+                        End If
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 
@@ -145,38 +181,46 @@ Public Class fkategoribarang
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text = "Edit" Then
-            btnedit.Text = "Simpan"
-            btnhapus.Enabled = False
-            Call enable_text()
-            Call index()
-            GridControl.Enabled = False
-        Else
-            If txtkode.Text.Length = 0 Then
-                MsgBox("ID belum terisi !")
+        If editstatus.Equals(True) Then
+            If btnedit.Text = "Edit" Then
+                btnedit.Text = "Simpan"
+                btnhapus.Enabled = False
+                Call enable_text()
+                Call index()
+                GridControl.Enabled = False
             Else
-                If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama belum terisi !")
+                If txtkode.Text.Length = 0 Then
+                    MsgBox("ID belum terisi !")
                 Else
-                    If txtselisih.Text.Length = 0 Then
-                        MsgBox("Selisih belum terisi !")
+                    If txtnama.Text.Length = 0 Then
+                        MsgBox("Nama belum terisi !")
                     Else
-                        Call edit()
+                        If txtselisih.Text.Length = 0 Then
+                            MsgBox("Selisih belum terisi !")
+                        Else
+                            Call edit()
+                        End If
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-        Call koneksii()
-        If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            sql = "DELETE FROM tb_kategori_barang WHERE  kode_kategori='" & txtkode.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Refresh()
-            Call awal()
+        If hapusstatus.Equals(True) Then
+            Call koneksii()
+            If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+                sql = "DELETE FROM tb_kategori_barang WHERE  kode_kategori='" & txtkode.Text & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
+                MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.Refresh()
+                Call awal()
+            End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 

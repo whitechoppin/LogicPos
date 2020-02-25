@@ -15,13 +15,29 @@ Public Class fmenu
         statusjam.Text = TimeOfDay
     End Sub
     Private Sub DataBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataBarangToolStripMenuItem.Click
-        fbarang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.master_barang
+        If masterstatus > 0 Then
+            fbarang.kodeakses = masterstatus
+            fbarang.Show()
+        End If
     End Sub
     Private Sub DataCustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataCustomerToolStripMenuItem.Click
-        fcustomer.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.master_customer
+        If masterstatus > 0 Then
+            fcustomer.kodeakses = masterstatus
+            fcustomer.Show()
+        End If
     End Sub
     Private Sub DataSupplierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataSupplierToolStripMenuItem.Click
-        fsupplier.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.master_supplier
+        If masterstatus > 0 Then
+            fsupplier.kodeakses = masterstatus
+            fsupplier.Show()
+        End If
+
     End Sub
     Private Sub PembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PembelianToolStripMenuItem.Click
         fpembelian.Show()
@@ -54,7 +70,13 @@ Public Class fmenu
 
     End Sub
     Private Sub DataGudangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataGudangToolStripMenuItem.Click
-        fgudang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.master_gudang
+        If masterstatus > 0 Then
+            fgudang.kodeakses = masterstatus
+            fgudang.Show()
+        End If
+
     End Sub
 
     Private Sub DataKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataKasToolStripMenuItem.Click
@@ -145,7 +167,13 @@ Public Class fmenu
     End Sub
 
     Private Sub DataKategoriBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataKategoriBarangToolStripMenuItem.Click
-        fkategoribarang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.master_kategori
+        If masterstatus > 0 Then
+            fkategoribarang.kodeakses = masterstatus
+            fkategoribarang.Show()
+        End If
+
     End Sub
 
     Private Sub LaporanPricelistBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanPricelistBarangToolStripMenuItem.Click

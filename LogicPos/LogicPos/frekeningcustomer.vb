@@ -181,7 +181,7 @@ Public Class frekeningcustomer
                 End If
             End If
         Else
-            MsgBox("Tidak Ada Akses")
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 
@@ -219,7 +219,7 @@ Public Class frekeningcustomer
                 Call awal()
             End If
         Else
-            MsgBox("Tidak Ada Akses")
+            MsgBox("Tidak ada akses")
         End If
 
     End Sub
@@ -248,10 +248,8 @@ Public Class frekeningcustomer
                 End If
             End If
         Else
-            MsgBox("Tidak Ada Akses")
+            MsgBox("Tidak ada akses")
         End If
-
-
     End Sub
 
     Sub edit()

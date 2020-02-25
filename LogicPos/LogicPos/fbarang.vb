@@ -4,6 +4,8 @@ Imports System.Drawing.Drawing2D
 Imports System.IO
 
 Public Class fbarang
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, hapusstatus As Boolean
     Dim hargabarang, modalbarang As Double
     Public passwrodstatus As Boolean = False
     Dim kodebarang, namabarang, satuanbarang, jenisbarang, kategoribarang, keteranganbarang As String
@@ -13,6 +15,36 @@ Public Class fbarang
     Private Sub fbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                hapusstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = True
+        End Select
     End Sub
 
     Sub awal()
@@ -130,36 +162,40 @@ Public Class fbarang
         txtkode.Focus()
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
-        If btntambah.Text = "Tambah" Then
-            btnbatal.Enabled = True
-            btntambah.Text = "Simpan"
-            btnupload.Enabled = True
-            Call enable_text()
-            Call index()
+        If tambahstatus.Equals(True) Then
+            If btntambah.Text = "Tambah" Then
+                btnbatal.Enabled = True
+                btntambah.Text = "Simpan"
+                btnupload.Enabled = True
+                Call enable_text()
+                Call index()
 
-            GridControl.Enabled = False
-        Else
-            If txtkode.Text.Length = 0 Then
-                MsgBox("Kode barang belum terisi !")
+                GridControl.Enabled = False
             Else
-                If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama barang belum terisi !")
+                If txtkode.Text.Length = 0 Then
+                    MsgBox("Kode barang belum terisi !")
                 Else
-                    If cmbsatuan.SelectedIndex = -1 Then
-                        MsgBox("Satuan belum terpilih !")
+                    If txtnama.Text.Length = 0 Then
+                        MsgBox("Nama barang belum terisi !")
                     Else
-                        If cmbjenis.SelectedIndex = -1 Then
-                            MsgBox("Jenis belum dipilih !")
+                        If cmbsatuan.SelectedIndex = -1 Then
+                            MsgBox("Satuan belum terpilih !")
                         Else
-                            If cmbkategori.SelectedIndex = -1 Then
-                                MsgBox("Kategori belum dipilih !")
+                            If cmbjenis.SelectedIndex = -1 Then
+                                MsgBox("Jenis belum dipilih !")
                             Else
-                                Call simpan()
+                                If cmbkategori.SelectedIndex = -1 Then
+                                    MsgBox("Kategori belum dipilih !")
+                                Else
+                                    Call simpan()
+                                End If
                             End If
                         End If
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak Ada Akses")
         End If
     End Sub
     Sub simpan()
@@ -286,34 +322,38 @@ Public Class fbarang
         Call awal()
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text = "Edit" Then
-            btnedit.Text = "Simpan"
-            btnhapus.Enabled = False
-            Call enable_text()
-            Call index()
-            GridControl.Enabled = False
-        Else
-            If txtkode.Text.Length = 0 Then
-                MsgBox("Kode barang belum terisi !")
+        If editstatus.Equals(True) Then
+            If btnedit.Text = "Edit" Then
+                btnedit.Text = "Simpan"
+                btnhapus.Enabled = False
+                Call enable_text()
+                Call index()
+                GridControl.Enabled = False
             Else
-                If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama barang belum terisi !")
+                If txtkode.Text.Length = 0 Then
+                    MsgBox("Kode barang belum terisi !")
                 Else
-                    If cmbsatuan.SelectedIndex = -1 Then
-                        MsgBox("Satuan belum terpilih !")
+                    If txtnama.Text.Length = 0 Then
+                        MsgBox("Nama barang belum terisi !")
                     Else
-                        If cmbjenis.SelectedIndex = -1 Then
-                            MsgBox("Kategori belum terisi !")
+                        If cmbsatuan.SelectedIndex = -1 Then
+                            MsgBox("Satuan belum terpilih !")
                         Else
                             If cmbjenis.SelectedIndex = -1 Then
-                                MsgBox("Jenis belum dipilih !")
+                                MsgBox("Kategori belum terisi !")
                             Else
-                                Call edit()
+                                If cmbjenis.SelectedIndex = -1 Then
+                                    MsgBox("Jenis belum dipilih !")
+                                Else
+                                    Call edit()
+                                End If
                             End If
                         End If
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub perbaharui()
@@ -389,7 +429,6 @@ Public Class fbarang
         cnn.Close()
         Me.Refresh()
         Call awal()
-
     End Sub
     Sub edit()
         If txtkode.Text = kodebarang Then
@@ -412,23 +451,27 @@ Public Class fbarang
 
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-        'Call koneksii()
-        If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            Using cnn As New OdbcConnection(strConn)
-                sql = "DELETE FROM tb_barang WHERE  `kode_barang`='" & txtkode.Text & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                cnn.Open()
-                dr = cmmd.ExecuteReader
-                cnn.Close()
-                'sql = "DELETE FROM tb_stok WHERE  `kode`='" & txtkode.Text & "'"
-                'cmmd = New OdbcCommand(sql, cnn)
-                'cnn.Open()
-                'dr = cmmd.ExecuteReader
-                'cnn.Close()
-                MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Me.Refresh()
-                Call awal()
-            End Using
+        If hapusstatus.Equals(True) Then
+            'Call koneksii()
+            If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+                Using cnn As New OdbcConnection(strConn)
+                    sql = "DELETE FROM tb_barang WHERE  `kode_barang`='" & txtkode.Text & "'"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    cnn.Open()
+                    dr = cmmd.ExecuteReader
+                    cnn.Close()
+                    'sql = "DELETE FROM tb_stok WHERE  `kode`='" & txtkode.Text & "'"
+                    'cmmd = New OdbcCommand(sql, cnn)
+                    'cnn.Open()
+                    'dr = cmmd.ExecuteReader
+                    'cnn.Close()
+                    MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Me.Refresh()
+                    Call awal()
+                End Using
+            End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 

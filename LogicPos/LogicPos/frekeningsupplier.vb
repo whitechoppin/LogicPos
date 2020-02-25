@@ -100,7 +100,7 @@ Public Class frekeningsupplier
                 End If
             End If
         Else
-            MsgBox("Tidak Ada Akses")
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub simpan()
@@ -165,7 +165,7 @@ Public Class frekeningsupplier
                 Call awal()
             End If
         Else
-            MsgBox("Tidak Ada Akses")
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
@@ -192,7 +192,7 @@ Public Class frekeningsupplier
                 End If
             End If
         Else
-            MsgBox("Tidak Ada Akses")
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub edit()

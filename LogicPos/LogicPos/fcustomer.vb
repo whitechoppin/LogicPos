@@ -2,9 +2,41 @@
 Imports System.Drawing.Drawing2D
 Imports System.IO
 Public Class fcustomer
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, hapusstatus As Boolean
     Private Sub fcustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                hapusstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = True
+        End Select
     End Sub
     Sub awal()
         txtkode.Clear()
@@ -112,24 +144,28 @@ Public Class fcustomer
         txtnama.Focus()
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
-        If btntambah.Text = "Tambah" Then
-            btnbatal.Enabled = True
-            btntambah.Text = "Simpan"
-            btnupload.Enabled = True
-            Call enable_text()
-            Call index()
-            txtkode.Text = autonumber()
-            GridControl.Enabled = False
-        Else
-            If txtkode.Text.Length = 0 Then
-                MsgBox("ID belum terisi!!!")
+        If tambahstatus.Equals(True) Then
+            If btntambah.Text = "Tambah" Then
+                btnbatal.Enabled = True
+                btntambah.Text = "Simpan"
+                btnupload.Enabled = True
+                Call enable_text()
+                Call index()
+                txtkode.Text = autonumber()
+                GridControl.Enabled = False
             Else
-                If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama belum terisi!!!")
+                If txtkode.Text.Length = 0 Then
+                    MsgBox("ID belum terisi!!!")
                 Else
-                    Call simpan()
+                    If txtnama.Text.Length = 0 Then
+                        MsgBox("Nama belum terisi!!!")
+                    Else
+                        Call simpan()
+                    End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub simpan()
@@ -198,24 +234,28 @@ Public Class fcustomer
         Return newImage
     End Function
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text = "Edit" Then
-            btnedit.Text = "Simpan"
-            btnhapus.Enabled = False
-            btnupload.Enabled = True
-            btnrekening.Enabled = False
-            Call enable_text()
-            Call index()
-            GridControl.Enabled = False
-        Else
-            If txtkode.Text.Length = 0 Then
-                MsgBox("ID belum terisi!!!")
+        If editstatus.Equals(True) Then
+            If btnedit.Text = "Edit" Then
+                btnedit.Text = "Simpan"
+                btnhapus.Enabled = False
+                btnupload.Enabled = True
+                btnrekening.Enabled = False
+                Call enable_text()
+                Call index()
+                GridControl.Enabled = False
             Else
-                If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama belum terisi!!!")
+                If txtkode.Text.Length = 0 Then
+                    MsgBox("ID belum terisi!!!")
                 Else
-                    Call edit()
+                    If txtnama.Text.Length = 0 Then
+                        MsgBox("Nama belum terisi!!!")
+                    Else
+                        Call edit()
+                    End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub edit()
@@ -249,14 +289,18 @@ Public Class fcustomer
         Call awal()
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-        Call koneksii()
-        If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            sql = "DELETE FROM tb_pelanggan WHERE  kode_pelanggan='" & txtkode.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Refresh()
-            Call awal()
+        If hapusstatus.Equals(True) Then
+            Call koneksii()
+            If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+                sql = "DELETE FROM tb_pelanggan WHERE  kode_pelanggan='" & txtkode.Text & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
+                MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.Refresh()
+                Call awal()
+            End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
