@@ -2,6 +2,9 @@
 
 Public Class fuser
     Dim kode As String
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, hapusstatus As Boolean
+
     'master
     Dim cekmasterbarang, cekmasterkategori, cekmastergudang, cekmastercustomer, cekmastersupplier, cekmasteruser, cekmasterkas, cekmasterpricelist, cekmasterreksupp, cekmasterrekcust As Integer
     Dim aksesbarang, akseskategori, aksesgudang, aksescustomer, aksessupplier, aksesuser, akseskas, aksespricelist, aksesreksupp, aksesrekcust As Integer
@@ -239,6 +242,37 @@ Public Class fuser
 
         GridControl.Enabled = True
         Call isitabel()
+
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                hapusstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = True
+        End Select
     End Sub
     Sub kolom()
         GridColumn1.Caption = "Kode User"
@@ -626,35 +660,37 @@ Public Class fuser
         txtkode.Focus()
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
-        If btntambah.Text = "Tambah" Then
-            btnbatal.Enabled = True
-            btntambah.Text = "Simpan"
-            Call enable_text()
-            Call index()
-            GridControl.Enabled = False
-        Else
-            If txtkode.Text.Length = 0 Then
-                MsgBox("Kode belum terisi !")
+        If tambahstatus.Equals(True) Then
+            If btntambah.Text = "Tambah" Then
+                btnbatal.Enabled = True
+                btntambah.Text = "Simpan"
+                Call enable_text()
+                Call index()
+                GridControl.Enabled = False
             Else
-                If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama belum terisi !")
+                If txtkode.Text.Length = 0 Then
+                    MsgBox("Kode belum terisi !")
                 Else
-                    If txtpassword.Text.Length = 0 Then
-                        MsgBox("Password belum terisi !")
+                    If txtnama.Text.Length = 0 Then
+                        MsgBox("Nama belum terisi !")
                     Else
-                        If cmbjabatan.Text.Length = 0 Then
-                            MsgBox("Jabatan belum terisi !")
+                        If txtpassword.Text.Length = 0 Then
+                            MsgBox("Password belum terisi !")
                         Else
-                            If txtemail.Text.Length = 0 Then
-                                MsgBox("Email belum terisi !")
+                            If cmbjabatan.Text.Length = 0 Then
+                                MsgBox("Jabatan belum terisi !")
                             Else
-                                If txttelp.Text.Length = 0 Then
-                                    MsgBox("Telepon belum terisi !")
+                                If txtemail.Text.Length = 0 Then
+                                    MsgBox("Email belum terisi !")
                                 Else
-                                    If txtalamat.Text.Length = 0 Then
-                                        MsgBox("Alamat belum terisi !")
+                                    If txttelp.Text.Length = 0 Then
+                                        MsgBox("Telepon belum terisi !")
                                     Else
-                                        Call simpan()
+                                        If txtalamat.Text.Length = 0 Then
+                                            MsgBox("Alamat belum terisi !")
+                                        Else
+                                            Call simpan()
+                                        End If
                                     End If
                                 End If
                             End If
@@ -662,6 +698,8 @@ Public Class fuser
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub aksesadmin()
@@ -1196,35 +1234,37 @@ Public Class fuser
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text = "Edit" Then
-            btnedit.Text = "Simpan"
-            btnhapus.Enabled = False
-            Call enable_text_edit()
-            Call index()
-            GridControl.Enabled = False
-        Else
-            If txtkode.Text.Length = 0 Then
-                MsgBox("Kode belum terisi !")
+        If editstatus.Equals(True) Then
+            If btnedit.Text = "Edit" Then
+                btnedit.Text = "Simpan"
+                btnhapus.Enabled = False
+                Call enable_text_edit()
+                Call index()
+                GridControl.Enabled = False
             Else
-                If txtnama.Text.Length = 0 Then
-                    MsgBox("Nama belum terisi !")
+                If txtkode.Text.Length = 0 Then
+                    MsgBox("Kode belum terisi !")
                 Else
-                    If txtpassword.Text.Length = 0 Then
-                        MsgBox("Password belum terisi !")
+                    If txtnama.Text.Length = 0 Then
+                        MsgBox("Nama belum terisi !")
                     Else
-                        If cmbjabatan.Text.Length = 0 Then
-                            MsgBox("Jabatan belum terisi !")
+                        If txtpassword.Text.Length = 0 Then
+                            MsgBox("Password belum terisi !")
                         Else
-                            If txtemail.Text.Length = 0 Then
-                                MsgBox("Email belum terisi !")
+                            If cmbjabatan.Text.Length = 0 Then
+                                MsgBox("Jabatan belum terisi !")
                             Else
-                                If txttelp.Text.Length = 0 Then
-                                    MsgBox("Telepon belum terisi !")
+                                If txtemail.Text.Length = 0 Then
+                                    MsgBox("Email belum terisi !")
                                 Else
-                                    If txtalamat.Text.Length = 0 Then
-                                        MsgBox("Alamat belum terisi !")
+                                    If txttelp.Text.Length = 0 Then
+                                        MsgBox("Telepon belum terisi !")
                                     Else
-                                        Call edit()
+                                        If txtalamat.Text.Length = 0 Then
+                                            MsgBox("Alamat belum terisi !")
+                                        Else
+                                            Call edit()
+                                        End If
                                     End If
                                 End If
                             End If
@@ -1232,6 +1272,8 @@ Public Class fuser
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 
@@ -1390,14 +1432,18 @@ Public Class fuser
     End Sub
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-        Call koneksii()
-        If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            sql = "DELETE FROM tb_user WHERE  kode_user='" & txtkode.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Refresh()
-            Call awal()
+        If hapusstatus.Equals(True) Then
+            Call koneksii()
+            If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+                sql = "DELETE FROM tb_user WHERE  kode_user='" & txtkode.Text & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
+                MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.Refresh()
+                Call awal()
+            End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 

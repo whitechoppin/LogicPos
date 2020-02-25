@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fpricelist
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, hapusstatus As Boolean
     Public isi As String
     Public isi2 As String
     Dim harga As Double = 0
@@ -11,6 +13,36 @@ Public Class fpricelist
         Me.MdiParent = fmenu
         Call awal()
         fcaribarang.Visible = False
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                hapusstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = True
+        End Select
     End Sub
     Sub awal()
         txtkodecus.Clear()
@@ -180,22 +212,26 @@ Public Class fpricelist
         txtkode.Clear()
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
-        If txtkodecus.Text.Length = 0 Then
-            MsgBox("Customer Belum Di pilih")
-        Else
-            If txtkode.Text.Length = 0 Then
-                MsgBox("Item Belum Di isi")
+        If tambahstatus.Equals(True) Then
+            If txtkodecus.Text.Length = 0 Then
+                MsgBox("Customer Belum Di pilih")
             Else
-                If txtharga.Text.Length = 0 Then
-                    MsgBox("Harga jual Belum Di isi")
+                If txtkode.Text.Length = 0 Then
+                    MsgBox("Item Belum Di isi")
                 Else
-                    If modalbarang >= harga Then
-                        MsgBox("Harga jual dibawah modal")
+                    If txtharga.Text.Length = 0 Then
+                        MsgBox("Harga jual Belum Di isi")
                     Else
-                        Call save_new_item()
+                        If modalbarang >= harga Then
+                            MsgBox("Harga jual dibawah modal")
+                        Else
+                            Call save_new_item()
+                        End If
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Private Sub txtharga_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtharga.KeyPress
@@ -246,14 +282,18 @@ Public Class fpricelist
         Call cari()
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-        Call koneksii()
-        sql = "Select * FROM tb_price_group WHERE  kode_barang='" & txtkode.Text & "' and kode_barang='" & txtkodecus.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-        If dr.HasRows Then
-            Exit Sub
+        If hapusstatus.Equals(True) Then
+            Call koneksii()
+            sql = "Select * FROM tb_price_group WHERE  kode_barang='" & txtkode.Text & "' and kode_barang='" & txtkodecus.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                Exit Sub
+            Else
+                Call hapus()
+            End If
         Else
-            Call hapus()
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub edit()
@@ -263,25 +303,28 @@ Public Class fpricelist
         dr = cmmd.ExecuteReader
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-
-        If txtkodecus.Text.Length = 0 Then
-            MsgBox("Customer Belum Di pilih")
-        Else
-            If txtkode.Text.Length = 0 Then
-                MsgBox("Item Belum Di isi")
+        If editstatus.Equals(True) Then
+            If txtkodecus.Text.Length = 0 Then
+                MsgBox("Customer Belum Di pilih")
             Else
-                If txtharga.Text.Length = 0 Then
-                    MsgBox("Harga jual Belum Di isi")
+                If txtkode.Text.Length = 0 Then
+                    MsgBox("Item Belum Di isi")
                 Else
-                    If modalbarang >= harga Then
-                        MsgBox("Harga jual dibawah modal")
+                    If txtharga.Text.Length = 0 Then
+                        MsgBox("Harga jual Belum Di isi")
                     Else
-                        Call save_exist_item()
-                        Call awaledit()
-                        Call caricust()
+                        If modalbarang >= harga Then
+                            MsgBox("Harga jual dibawah modal")
+                        Else
+                            Call save_exist_item()
+                            Call awaledit()
+                            Call caricust()
+                        End If
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 

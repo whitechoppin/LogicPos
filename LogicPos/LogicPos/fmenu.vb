@@ -37,7 +37,6 @@ Public Class fmenu
             fsupplier.kodeakses = masterstatus
             fsupplier.Show()
         End If
-
     End Sub
     Private Sub PembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PembelianToolStripMenuItem.Click
         fpembelian.Show()
@@ -55,6 +54,12 @@ Public Class fmenu
         flaporstokbarang.Show()
     End Sub
     Private Sub ManageUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataUserToolStripMenuItem.Click
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.master_user
+        If masterstatus > 0 Then
+            fuser.kodeakses = masterstatus
+            fuser.Show()
+        End If
         fuser.Show()
     End Sub
     Private Sub fmenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -64,7 +69,12 @@ Public Class fmenu
         fprinter.Show()
     End Sub
     Private Sub PricelistGroupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PricelistGroupToolStripMenuItem.Click
-        fpricelist.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.master_pricelist
+        If masterstatus > 0 Then
+            fpricelist.kodeakses = masterstatus
+            fpricelist.Show()
+        End If
     End Sub
     Private Sub MenuStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuUtama.ItemClicked
 
@@ -80,7 +90,12 @@ Public Class fmenu
     End Sub
 
     Private Sub DataKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataKasToolStripMenuItem.Click
-        fkas.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.master_kas
+        If masterstatus > 0 Then
+            fkas.kodeakses = masterstatus
+            fkas.Show()
+        End If
     End Sub
 
     Private Sub BarangKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangKeluarToolStripMenuItem.Click
