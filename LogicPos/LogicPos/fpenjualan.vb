@@ -4,6 +4,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports System.Data
 Imports CrystalDecisions.Shared
 Public Class fpenjualan
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, printstatus As Boolean
     Public tinggi As Integer
     Public tabel As DataTable
     Dim hitnumber As Integer
@@ -35,6 +37,37 @@ Public Class fpenjualan
             .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
+
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                printstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                printstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                printstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                printstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                printstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                printstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                printstatus = True
+        End Select
     End Sub
 
     Function autonumber()
@@ -906,7 +939,11 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
-        Call awalbaru()
+        If tambahstatus.Equals(True) Then
+            Call awalbaru()
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
@@ -934,32 +971,34 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-        If cbvoid.Checked = False Then
-            If rbstruk.Checked Then
-                'Call cetak_struk()
-                Call PrintTransaksi()
-
-                sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-
-                cbprinted.Checked = True
-            Else
-                If rbfaktur.Checked Then
-                    Call cetak_faktur()
+        If printstatus.Equals(True) Then
+            If cbvoid.Checked = False Then
+                If rbstruk.Checked Then
+                    'Call cetak_struk()
+                    Call PrintTransaksi()
 
                     sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
 
                     cbprinted.Checked = True
+                Else
+                    If rbfaktur.Checked Then
+                        Call cetak_faktur()
+
+                        sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
+                        cmmd = New OdbcCommand(sql, cnn)
+                        dr = cmmd.ExecuteReader()
+
+                        cbprinted.Checked = True
+                    End If
                 End If
+            Else
+                MsgBox("Nota sudah void !")
             End If
         Else
-            MsgBox("Nota sudah void !")
+            MsgBox("Tidak ada akses")
         End If
-
-
     End Sub
     Sub cetak_struk()
         Dim struk As String
@@ -1242,7 +1281,22 @@ Public Class fpenjualan
         End Try
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If cblunas.Checked = False Then
+        'cek ke piutang
+        Dim statuspiutang As Boolean
+
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelunasan_piutang WHERE kode_penjualan = '" & txtnonota.Text & "' LIMIT 1"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        dr.Read()
+
+        If dr.HasRows Then
+            statuspiutang = True
+        Else
+            statuspiutang = False
+        End If
+
+        If statuspiutang = False Then
             If cbvoid.Checked = False Then
                 If btnedit.Text.Equals("Edit") Then
                     btnedit.Text = "Update"

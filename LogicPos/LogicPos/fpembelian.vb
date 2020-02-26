@@ -3,6 +3,8 @@ Imports DevExpress.Utils
 Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class fpembelian
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, printstatus As Boolean
     Dim tabel As DataTable
     Dim hargamodalbarang As Double
     Dim hitnumber As Integer
@@ -33,6 +35,37 @@ Public Class fpembelian
             '.OptionsView.EnableAppearanceOddRow = True 'aktifkan style
             '.OptionsPrint.EnableAppearanceOddRow = True 'aktifkan style saat print
         End With
+
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                printstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                printstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                printstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                printstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                printstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                printstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                printstatus = True
+        End Select
     End Sub
     Function autonumber()
         Call koneksii()
@@ -906,7 +939,11 @@ Public Class fpembelian
 
     End Sub
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
-        Call awalbaru()
+        If tambahstatus.Equals(True) Then
+            Call awalbaru()
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         If btnedit.Text.Equals("Edit") Then
@@ -918,16 +955,20 @@ Public Class fpembelian
 
     End Sub
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-        If cbvoid.Checked = False Then
-            Call cetak_faktur()
+        If printstatus.Equals(True) Then
+            If cbvoid.Checked = False Then
+                Call cetak_faktur()
 
-            sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
+                sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
 
-            cbprinted.Checked = True
+                cbprinted.Checked = True
+            Else
+                MsgBox("Nota sudah void !")
+            End If
         Else
-            MsgBox("Nota sudah void !")
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub cetak_faktur()
@@ -1070,7 +1111,21 @@ Public Class fpembelian
         End If
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If cblunas.Checked = False Then
+        Dim statusutang As Boolean
+
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelunasan_utang WHERE kode_pembelian = '" & txtnonota.Text & "' LIMIT 1"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        dr.Read()
+
+        If dr.HasRows Then
+            statusutang = True
+        Else
+            statusutang = False
+        End If
+
+        If statusutang = False Then
             If cbvoid.Checked = False Then
                 If btnedit.Text = "Edit" Then
                     btnedit.Text = "Update"

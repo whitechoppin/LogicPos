@@ -39,10 +39,21 @@ Public Class fmenu
         End If
     End Sub
     Private Sub PembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PembelianToolStripMenuItem.Click
-        fpembelian.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.pembelian
+        If masterstatus > 0 Then
+            fpembelian.kodeakses = masterstatus
+            fpembelian.Show()
+        End If
+
     End Sub
     Private Sub PenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PenjualanToolStripMenuItem.Click
-        fpenjualan.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.penjualan
+        If masterstatus > 0 Then
+            fpenjualan.kodeakses = masterstatus
+            fpenjualan.Show()
+        End If
     End Sub
     Private Sub PembelianToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPembelianToolStripMenuItem.Click
         flaporanpembelian.Show()
