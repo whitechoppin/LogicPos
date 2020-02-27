@@ -991,6 +991,16 @@ Public Class fpenjualan
                         dr = cmmd.ExecuteReader()
 
                         cbprinted.Checked = True
+                    Else
+                        If rbsurat.Checked Then
+                            Call cetak_surat()
+
+                            sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
+                            cmmd = New OdbcCommand(sql, cnn)
+                            dr = cmmd.ExecuteReader()
+
+                            cbprinted.Checked = True
+                        End If
                     End If
                 End If
             Else
@@ -1226,6 +1236,60 @@ Public Class fpenjualan
         Next
 
         rpt_faktur = New fakturpenjualan
+        rpt_faktur.SetDataSource(tabel_faktur)
+
+        rpt_faktur.SetParameterValue("nofaktur", kodepenjualan)
+        rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
+        rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
+        rpt_faktur.SetParameterValue("bayar", bayar)
+        rpt_faktur.SetParameterValue("sisa", sisa)
+        rpt_faktur.SetParameterValue("alamat", txtalamat.Text)
+        rpt_faktur.SetParameterValue("diskon", diskonnominal)
+        rpt_faktur.SetParameterValue("grandtotal", grandtotal)
+        rpt_faktur.SetParameterValue("ppn", ppnnominal)
+        rpt_faktur.SetParameterValue("ongkir", ongkir)
+        rpt_faktur.SetParameterValue("tanggal", dtpenjualan.Text)
+        rpt_faktur.SetParameterValue("subtotal", totalbelanja)
+
+        SetReportPageSize("Faktur", 1)
+        rpt_faktur.PrintToPrinter(1, False, 0, 0)
+    End Sub
+
+    Public Sub cetak_surat()
+        Dim tabel_faktur As New DataTable
+        With tabel_faktur
+            .Columns.Add("kode_barang")
+            .Columns.Add("kode_stok")
+            .Columns.Add("nama_barang")
+            .Columns.Add("banyak", GetType(Double))
+            .Columns.Add("satuan")
+            .Columns.Add("jenis")
+            .Columns.Add("harga_satuan", GetType(Double))
+            .Columns.Add("diskon_persen", GetType(Double))
+            .Columns.Add("harga_diskon", GetType(Double))
+            .Columns.Add("subtotal", GetType(Double))
+            .Columns.Add("diskon_nominal", GetType(Double))
+        End With
+
+        Dim baris As DataRow
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_faktur.NewRow
+            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+            baris("banyak") = GridView1.GetRowCellValue(i, "banyak")
+            baris("satuan") = GridView1.GetRowCellValue(i, "satuan_barang")
+            baris("jenis") = GridView1.GetRowCellValue(i, "jenis_barang")
+            baris("harga_satuan") = GridView1.GetRowCellValue(i, "harga_satuan")
+            baris("diskon_persen") = GridView1.GetRowCellValue(i, "diskon_persen")
+            baris("harga_diskon") = GridView1.GetRowCellValue(i, "harga_diskon")
+            baris("subtotal") = GridView1.GetRowCellValue(i, "subtotal")
+            baris("diskon_nominal") = GridView1.GetRowCellValue(i, "diskon_nominal")
+            tabel_faktur.Rows.Add(baris)
+        Next
+
+        rpt_faktur = New fakturpenjualansurat
         rpt_faktur.SetDataSource(tabel_faktur)
 
         rpt_faktur.SetParameterValue("nofaktur", kodepenjualan)
@@ -1649,6 +1713,10 @@ Public Class fpenjualan
     End Sub
     Private Sub GridView1_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles GridView1.RowUpdated
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+    End Sub
+
+    Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter
+
     End Sub
 
     Private Sub txtrekening_TextChanged(sender As Object, e As EventArgs) Handles txtrekening.TextChanged
