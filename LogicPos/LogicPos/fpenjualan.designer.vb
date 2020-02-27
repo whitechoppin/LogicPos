@@ -64,6 +64,7 @@ Partial Class fpenjualan
         Me.rbfaktur = New System.Windows.Forms.RadioButton()
         Me.rbstruk = New System.Windows.Forms.RadioButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.rbsurat = New System.Windows.Forms.RadioButton()
         Me.txtcustomer = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btncaricustomer = New System.Windows.Forms.Button()
@@ -125,7 +126,6 @@ Partial Class fpenjualan
         Me.btncarikas = New System.Windows.Forms.Button()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.btnbayarfull = New System.Windows.Forms.Button()
-        Me.rbsurat = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -559,7 +559,7 @@ Partial Class fpenjualan
         'rbfaktur
         '
         Me.rbfaktur.AutoSize = True
-        Me.rbfaktur.Location = New System.Drawing.Point(66, 21)
+        Me.rbfaktur.Location = New System.Drawing.Point(77, 21)
         Me.rbfaktur.Margin = New System.Windows.Forms.Padding(4)
         Me.rbfaktur.Name = "rbfaktur"
         Me.rbfaktur.Size = New System.Drawing.Size(68, 22)
@@ -571,7 +571,7 @@ Partial Class fpenjualan
         'rbstruk
         '
         Me.rbstruk.AutoSize = True
-        Me.rbstruk.Location = New System.Drawing.Point(5, 20)
+        Me.rbstruk.Location = New System.Drawing.Point(11, 20)
         Me.rbstruk.Margin = New System.Windows.Forms.Padding(4)
         Me.rbstruk.Name = "rbstruk"
         Me.rbstruk.Size = New System.Drawing.Size(61, 22)
@@ -585,14 +585,26 @@ Partial Class fpenjualan
         Me.GroupBox2.Controls.Add(Me.rbsurat)
         Me.GroupBox2.Controls.Add(Me.rbstruk)
         Me.GroupBox2.Controls.Add(Me.rbfaktur)
-        Me.GroupBox2.Location = New System.Drawing.Point(391, 10)
+        Me.GroupBox2.Location = New System.Drawing.Point(378, 10)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(208, 52)
+        Me.GroupBox2.Size = New System.Drawing.Size(221, 52)
         Me.GroupBox2.TabIndex = 45
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Tipe Cetak"
+        '
+        'rbsurat
+        '
+        Me.rbsurat.AutoSize = True
+        Me.rbsurat.Location = New System.Drawing.Point(153, 21)
+        Me.rbsurat.Margin = New System.Windows.Forms.Padding(4)
+        Me.rbsurat.Name = "rbsurat"
+        Me.rbsurat.Size = New System.Drawing.Size(61, 22)
+        Me.rbsurat.TabIndex = 45
+        Me.rbsurat.TabStop = True
+        Me.rbsurat.Text = "Surat"
+        Me.rbsurat.UseVisualStyleBackColor = True
         '
         'txtcustomer
         '
@@ -1002,37 +1014,37 @@ Partial Class fpenjualan
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(323, 25)
+        Me.btnbatal.Location = New System.Drawing.Point(300, 23)
         Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(60, 35)
+        Me.btnbatal.Size = New System.Drawing.Size(70, 35)
         Me.btnbatal.TabIndex = 4
         Me.btnbatal.Text = "Batal"
         Me.btnbatal.UseVisualStyleBackColor = True
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(245, 24)
+        Me.btnedit.Location = New System.Drawing.Point(226, 23)
         Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(72, 35)
+        Me.btnedit.Size = New System.Drawing.Size(70, 35)
         Me.btnedit.TabIndex = 1
         Me.btnedit.Text = "Edit"
         Me.btnedit.UseVisualStyleBackColor = True
         '
         'btnbaru
         '
-        Me.btnbaru.Location = New System.Drawing.Point(14, 23)
+        Me.btnbaru.Location = New System.Drawing.Point(7, 23)
         Me.btnbaru.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbaru.Name = "btnbaru"
-        Me.btnbaru.Size = New System.Drawing.Size(71, 35)
+        Me.btnbaru.Size = New System.Drawing.Size(70, 35)
         Me.btnbaru.TabIndex = 1
         Me.btnbaru.Text = "Baru"
         Me.btnbaru.UseVisualStyleBackColor = True
         '
         'btnprint
         '
-        Me.btnprint.Location = New System.Drawing.Point(171, 24)
+        Me.btnprint.Location = New System.Drawing.Point(153, 23)
         Me.btnprint.Margin = New System.Windows.Forms.Padding(4)
         Me.btnprint.Name = "btnprint"
         Me.btnprint.Size = New System.Drawing.Size(70, 35)
@@ -1043,10 +1055,10 @@ Partial Class fpenjualan
         'btnsimpan
         '
         Me.btnsimpan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnsimpan.Location = New System.Drawing.Point(88, 23)
+        Me.btnsimpan.Location = New System.Drawing.Point(80, 23)
         Me.btnsimpan.Margin = New System.Windows.Forms.Padding(4)
         Me.btnsimpan.Name = "btnsimpan"
-        Me.btnsimpan.Size = New System.Drawing.Size(79, 35)
+        Me.btnsimpan.Size = New System.Drawing.Size(70, 35)
         Me.btnsimpan.TabIndex = 2
         Me.btnsimpan.Text = "Simpan"
         Me.btnsimpan.UseVisualStyleBackColor = True
@@ -1279,18 +1291,6 @@ Partial Class fpenjualan
         Me.btnbayarfull.TabIndex = 73
         Me.btnbayarfull.Text = "Bayar"
         Me.btnbayarfull.UseVisualStyleBackColor = True
-        '
-        'rbsurat
-        '
-        Me.rbsurat.AutoSize = True
-        Me.rbsurat.Location = New System.Drawing.Point(132, 21)
-        Me.rbsurat.Margin = New System.Windows.Forms.Padding(4)
-        Me.rbsurat.Name = "rbsurat"
-        Me.rbsurat.Size = New System.Drawing.Size(61, 22)
-        Me.rbsurat.TabIndex = 45
-        Me.rbsurat.TabStop = True
-        Me.rbsurat.Text = "Surat"
-        Me.rbsurat.UseVisualStyleBackColor = True
         '
         'fpenjualan
         '
