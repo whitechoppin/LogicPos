@@ -107,6 +107,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="fakturpenjualansurat.vb">
+      <DependentUpon>fakturpenjualansurat.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="fakturtransferkas.vb">
       <DependentUpon>fakturtransferkas.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -677,6 +683,10 @@
     <EmbeddedResource Include="fakturkaskeluar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturkaskeluar.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fakturpenjualansurat.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>fakturpenjualansurat.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="fakturtransferkas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

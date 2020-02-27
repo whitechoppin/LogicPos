@@ -1272,6 +1272,7 @@ Public Class fpenjualan
             .Columns.Add("diskon_nominal", GetType(Double))
         End With
 
+
         Dim baris As DataRow
         For i As Integer = 0 To GridView1.RowCount - 1
             baris = tabel_faktur.NewRow
