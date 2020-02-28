@@ -1349,20 +1349,21 @@ Public Class fpenjualan
         'cek ke piutang
         Dim statuspiutang As Boolean
 
-        Call koneksii()
-        sql = "SELECT * FROM tb_pelunasan_piutang WHERE kode_penjualan = '" & txtnonota.Text & "' LIMIT 1"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-        dr.Read()
+        If cbvoid.Checked = False Then
+            Call koneksii()
+            sql = "SELECT * FROM tb_pelunasan_piutang WHERE kode_penjualan = '" & txtnonota.Text & "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            dr.Read()
 
-        If dr.HasRows Then
-            statuspiutang = True
-        Else
-            statuspiutang = False
-        End If
+            If dr.HasRows Then
+                statuspiutang = True
+            Else
+                statuspiutang = False
+            End If
 
-        If statuspiutang = False Then
-            If cbvoid.Checked = False Then
+            If statuspiutang = False Then
+
                 If btnedit.Text.Equals("Edit") Then
                     btnedit.Text = "Update"
                     Call awaledit()
@@ -1394,11 +1395,12 @@ Public Class fpenjualan
                     End If
                 End If
             Else
-                MsgBox("Nota sudah void !")
+                MsgBox("Nota sudah lunas!")
             End If
         Else
-            MsgBox("Nota sudah lunas!")
+            MsgBox("Nota sudah void !")
         End If
+
 
     End Sub
 

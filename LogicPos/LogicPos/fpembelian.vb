@@ -1113,20 +1113,24 @@ Public Class fpembelian
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         Dim statusutang As Boolean
 
-        Call koneksii()
-        sql = "SELECT * FROM tb_pelunasan_utang WHERE kode_pembelian = '" & txtnonota.Text & "' LIMIT 1"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-        dr.Read()
 
-        If dr.HasRows Then
-            statusutang = True
-        Else
-            statusutang = False
-        End If
 
-        If statusutang = False Then
-            If cbvoid.Checked = False Then
+
+
+        If cbvoid.Checked = False Then
+            Call koneksii()
+            sql = "SELECT * FROM tb_pelunasan_utang WHERE kode_pembelian = '" & txtnonota.Text & "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            dr.Read()
+
+            If dr.HasRows Then
+                statusutang = True
+            Else
+                statusutang = False
+            End If
+
+            If statusutang = False Then
                 If btnedit.Text = "Edit" Then
                     btnedit.Text = "Update"
                     Call awaledit()
@@ -1159,10 +1163,10 @@ Public Class fpembelian
                     End If
                 End If
             Else
-                MsgBox("Nota sudah void !")
+                MsgBox("Nota sudah lunas !")
             End If
         Else
-            MsgBox("Nota sudah lunas !")
+            MsgBox("Nota sudah void !")
         End If
 
 
