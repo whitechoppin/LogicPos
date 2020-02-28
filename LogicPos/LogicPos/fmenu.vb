@@ -155,19 +155,39 @@ Public Class fmenu
     End Sub
 
     Private Sub PelunasanPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PelunasanPiutangToolStripMenuItem.Click
-        flunaspiutang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lunas_piutang
+        If masterstatus > 0 Then
+            flunaspiutang.kodeakses = masterstatus
+            flunaspiutang.Show()
+        End If
     End Sub
 
     Private Sub PelunasanUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PelunasanUtangToolStripMenuItem.Click
-        flunasutang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lunas_utang
+        If masterstatus > 0 Then
+            flunasutang.kodeakses = masterstatus
+            flunasutang.Show()
+        End If
     End Sub
 
     Private Sub KasMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KasMasukToolStripMenuItem.Click
-        fkasmasuk.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.akun_masuk
+        If masterstatus > 0 Then
+            fkasmasuk.kodeakses = masterstatus
+            fkasmasuk.Show()
+        End If
     End Sub
 
     Private Sub KasKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KasKeluarToolStripMenuItem.Click
-        fkaskeluar.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.akun_keluar
+        If masterstatus > 0 Then
+            fkaskeluar.kodeakses = masterstatus
+            fkaskeluar.Show()
+        End If
     End Sub
 
     Private Sub TransferKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransferKasToolStripMenuItem.Click

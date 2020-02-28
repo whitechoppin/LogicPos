@@ -3,6 +3,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.Utils
 
 Public Class flunasutang
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, printstatus As Boolean
     Public tabel1, tabel2 As DataTable
     Dim lunasstatus As Integer = 0
     Dim hitnumber As Integer
@@ -25,6 +27,37 @@ Public Class flunasutang
             'buat sum harga
             .Columns("bayar_kas").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "bayar_kas", "{0:n0}")
         End With
+
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                printstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                printstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                printstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                printstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                printstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                printstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                printstatus = True
+        End Select
     End Sub
 
     Sub comboboxuser()
@@ -477,7 +510,11 @@ Public Class flunasutang
     End Sub
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
-        Call awalbaru()
+        If tambahstatus.Equals(True) Then
+            Call awalbaru()
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
     Sub prosessimpan()
         Dim checkinglunas As Boolean
@@ -576,13 +613,17 @@ Public Class flunasutang
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-        Call cetak_faktur()
+        If printstatus.Equals(True) Then
+            Call cetak_faktur()
 
-        sql = "UPDATE tb_pelunasan_utang SET print_lunas = 1 WHERE kode_lunas = '" & txtnonota.Text & "' "
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+            sql = "UPDATE tb_pelunasan_utang SET print_lunas = 1 WHERE kode_lunas = '" & txtnonota.Text & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
 
-        cbprinted.Checked = True
+            cbprinted.Checked = True
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
     Public Sub cetak_faktur()
         'Dim faktur As String
@@ -737,28 +778,31 @@ Public Class flunasutang
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text.Equals("Edit") Then
-            btnedit.Text = "Update"
-            Call awaledit()
-
-        ElseIf btnedit.Text.Equals("Update") Then
-            If txtnonota.Text IsNot "" Then
-                If cmbsales.Text IsNot "" Then
-                    If cmbbayar.Text IsNot "" Then
-                        If txttotalbayar.Text > 0 Then
-                            Call prosesperbarui()
+        If editstatus.Equals(True) Then
+            If btnedit.Text.Equals("Edit") Then
+                btnedit.Text = "Update"
+                Call awaledit()
+            ElseIf btnedit.Text.Equals("Update") Then
+                If txtnonota.Text IsNot "" Then
+                    If cmbsales.Text IsNot "" Then
+                        If cmbbayar.Text IsNot "" Then
+                            If txttotalbayar.Text > 0 Then
+                                Call prosesperbarui()
+                            Else
+                                MsgBox("Isi Nominal Pembayaran")
+                            End If
                         Else
-                            MsgBox("Isi Nominal Pembayaran")
+                            MsgBox("Isi Pembayaran")
                         End If
                     Else
-                        MsgBox("Isi Pembayaran")
+                        MsgBox("Isi User")
                     End If
                 Else
-                    MsgBox("Isi User")
+                    MsgBox("Isi Nota Pembelian")
                 End If
-            Else
-                MsgBox("Isi Nota Pembelian")
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 

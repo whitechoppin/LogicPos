@@ -1,7 +1,8 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fkasmasuk
-
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, printstatus As Boolean
     Dim kodemasuk, kodekas, viewketerangan, viewkodekas, viewkodesales As String
     Dim saldomasuk As Double
     Dim viewtglkas As DateTime
@@ -18,6 +19,37 @@ Public Class fkasmasuk
             'buat sum harga
             .Columns("saldo_kas").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "saldo_kas", "{0:n0}")
         End With
+
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                printstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                printstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                printstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                printstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                printstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                printstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                printstatus = True
+        End Select
     End Sub
 
     Sub comboboxuser()
@@ -257,30 +289,34 @@ Public Class fkasmasuk
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text = "Edit" Then
-            btnedit.Text = "Simpan"
-            btnhapus.Enabled = False
-            Call enable_text()
-            Call index()
-            GridControl1.Enabled = False
-        Else
-            If txtkodemasuk.Text.Length = 0 Then
-                MsgBox("Kode belum terisi !")
+        If editstatus.Equals(True) Then
+            If btnedit.Text = "Edit" Then
+                btnedit.Text = "Simpan"
+                btnhapus.Enabled = False
+                Call enable_text()
+                Call index()
+                GridControl1.Enabled = False
             Else
-                If cmbsales.SelectedIndex = -1 Then
-                    MsgBox("Sales belum terisi !")
+                If txtkodemasuk.Text.Length = 0 Then
+                    MsgBox("Kode belum terisi !")
                 Else
-                    If cmbkas.SelectedIndex = -1 Then
-                        MsgBox("Kas belum terisi !")
+                    If cmbsales.SelectedIndex = -1 Then
+                        MsgBox("Sales belum terisi !")
                     Else
-                        If txtsaldomasuk.Text.Length = 0 Then
-                            MsgBox("Saldo belum terisi !")
+                        If cmbkas.SelectedIndex = -1 Then
+                            MsgBox("Kas belum terisi !")
                         Else
-                            Call edit()
+                            If txtsaldomasuk.Text.Length = 0 Then
+                                MsgBox("Saldo belum terisi !")
+                            Else
+                                Call edit()
+                            End If
                         End If
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 
@@ -307,13 +343,17 @@ Public Class fkasmasuk
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-        Call cetak_faktur()
+        If printstatus.Equals(True) Then
+            Call cetak_faktur()
 
-        sql = "UPDATE tb_kas_masuk SET print_kas = 1 WHERE kode_kas_masuk = '" & txtkodemasuk.Text & "' "
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+            sql = "UPDATE tb_kas_masuk SET print_kas = 1 WHERE kode_kas_masuk = '" & txtkodemasuk.Text & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
 
-        cbprinted.Checked = True
+            cbprinted.Checked = True
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
     Sub cetak_faktur()
         rpt_faktur = New fakturkasmasuk
