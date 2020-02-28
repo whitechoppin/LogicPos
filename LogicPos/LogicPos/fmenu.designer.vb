@@ -53,8 +53,8 @@ Partial Class fmenu
         Me.TransferKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanPricelistBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanReturBeliToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanReturJualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanBarangMasukToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -79,6 +79,7 @@ Partial Class fmenu
         Me.statusjam = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.HistoryUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -233,7 +234,7 @@ Partial Class fmenu
         '
         Me.PelunasanPiutangToolStripMenuItem.Name = "PelunasanPiutangToolStripMenuItem"
         Me.PelunasanPiutangToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
-        Me.PelunasanPiutangToolStripMenuItem.Text = "Pelunasan Piutang"
+        Me.PelunasanPiutangToolStripMenuItem.Text = "Pelunasan &Piutang"
         '
         'KasMasukToolStripMenuItem
         '
@@ -266,17 +267,17 @@ Partial Class fmenu
         Me.LaporanPricelistBarangToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.LaporanPricelistBarangToolStripMenuItem.Text = "Laporan Pricelist Barang"
         '
-        'LPenjualanToolStripMenuItem
-        '
-        Me.LPenjualanToolStripMenuItem.Name = "LPenjualanToolStripMenuItem"
-        Me.LPenjualanToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.LPenjualanToolStripMenuItem.Text = "Laporan Penjualan"
-        '
         'LPembelianToolStripMenuItem
         '
         Me.LPembelianToolStripMenuItem.Name = "LPembelianToolStripMenuItem"
         Me.LPembelianToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.LPembelianToolStripMenuItem.Text = "Laporan Pembelian"
+        '
+        'LPenjualanToolStripMenuItem
+        '
+        Me.LPenjualanToolStripMenuItem.Name = "LPenjualanToolStripMenuItem"
+        Me.LPenjualanToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.LPenjualanToolStripMenuItem.Text = "Laporan Penjualan"
         '
         'LaporanReturBeliToolStripMenuItem
         '
@@ -352,7 +353,7 @@ Partial Class fmenu
         '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
@@ -385,13 +386,13 @@ Partial Class fmenu
         'LogicHouseToolStripMenuItem
         '
         Me.LogicHouseToolStripMenuItem.Name = "LogicHouseToolStripMenuItem"
-        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.LogicHouseToolStripMenuItem.Text = "Logic House"
         '
         'TokoSejatiToolStripMenuItem
         '
         Me.TokoSejatiToolStripMenuItem.Name = "TokoSejatiToolStripMenuItem"
-        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.TokoSejatiToolStripMenuItem.Text = "Toko Sejati"
         '
         'StatusStrip
@@ -430,6 +431,12 @@ Partial Class fmenu
         'Timer
         '
         Me.Timer.Interval = 1000
+        '
+        'HistoryUserToolStripMenuItem
+        '
+        Me.HistoryUserToolStripMenuItem.Name = "HistoryUserToolStripMenuItem"
+        Me.HistoryUserToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.HistoryUserToolStripMenuItem.Text = "History User"
         '
         'fmenu
         '
@@ -509,4 +516,5 @@ Partial Class fmenu
     Friend WithEvents LaporanBarangKeluarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanPricelistBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DataKategoriBarangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents HistoryUserToolStripMenuItem As ToolStripMenuItem
 End Class

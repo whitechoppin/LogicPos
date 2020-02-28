@@ -246,4 +246,8 @@ Public Class fmenu
     Private Sub LaporanBarangKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanBarangKeluarToolStripMenuItem.Click
         flaporanbarangkeluar.Show()
     End Sub
+
+    Private Sub HistoryUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistoryUserToolStripMenuItem.Click
+
+    End Sub
 End Class
