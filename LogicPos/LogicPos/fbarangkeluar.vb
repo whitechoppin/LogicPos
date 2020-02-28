@@ -2,6 +2,8 @@
 Imports DevExpress.Utils
 
 Public Class fbarangkeluar
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, printstatus As Boolean
     Public tabel As DataTable
     Dim hitnumber As Integer
     'variabel dalam penjualan
@@ -29,6 +31,37 @@ Public Class fbarangkeluar
             'buat sum harga
             .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
         End With
+
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                printstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                printstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                printstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                printstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                printstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                printstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                printstatus = True
+        End Select
     End Sub
 
     Function autonumber()
@@ -634,7 +667,11 @@ Public Class fbarangkeluar
 
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
-        Call awalbaru()
+        If tambahstatus.Equals(True) Then
+            Call awalbaru()
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
@@ -658,13 +695,17 @@ Public Class fbarangkeluar
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-        Call cetak_faktur()
+        If printstatus.Equals(True) Then
+            Call cetak_faktur()
 
-        sql = "UPDATE tb_barang_keluar SET print_barang_keluar = 1 WHERE kode_barang_keluar = '" & txtnonota.Text & "' "
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+            sql = "UPDATE tb_barang_keluar SET print_barang_keluar = 1 WHERE kode_barang_keluar = '" & txtnonota.Text & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
 
-        cbprinted.Checked = True
+            cbprinted.Checked = True
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
     Sub cetak_faktur()
         Dim faktur As String
@@ -740,29 +781,33 @@ Public Class fbarangkeluar
         End Try
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text.Equals("Edit") Then
-            btnedit.Text = "Update"
-            Call awaledit()
-        ElseIf btnedit.Text.Equals("Update") Then
-            If GridView1.DataRowCount > 0 Then
-                If cmbcustomer.Text IsNot "" Then
-                    If txtgudang.Text IsNot "" Then
-                        If cmbsales.Text IsNot "" Then
-                            'isi disini sub updatenya
-                            Call perbarui(txtnonota.Text)
+        If editstatus.Equals(True) Then
+            If btnedit.Text.Equals("Edit") Then
+                btnedit.Text = "Update"
+                Call awaledit()
+            ElseIf btnedit.Text.Equals("Update") Then
+                If GridView1.DataRowCount > 0 Then
+                    If cmbcustomer.Text IsNot "" Then
+                        If txtgudang.Text IsNot "" Then
+                            If cmbsales.Text IsNot "" Then
+                                'isi disini sub updatenya
+                                Call perbarui(txtnonota.Text)
 
+                            Else
+                                MsgBox("Isi Sales")
+                            End If
                         Else
-                            MsgBox("Isi Sales")
+                            MsgBox("Isi Gudang")
                         End If
                     Else
-                        MsgBox("Isi Gudang")
+                        MsgBox("Isi Customer")
                     End If
                 Else
-                    MsgBox("Isi Customer")
+                    MsgBox("Keranjang Masih Kosong")
                 End If
-            Else
-                MsgBox("Keranjang Masih Kosong")
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 

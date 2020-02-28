@@ -4,6 +4,8 @@ Imports DevExpress.XtraGrid.Views.Grid
 Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class freturjual
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, printstatus As Boolean
     Public tabel1, tabel2 As DataTable
     Dim hitnumber As Integer
     'variabel dalam penjualan
@@ -39,6 +41,37 @@ Public Class freturjual
             .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
+
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                printstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                printstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                printstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                printstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                printstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                printstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                printstatus = True
+        End Select
     End Sub
 
     Function autonumber()
@@ -628,17 +661,25 @@ Public Class freturjual
     End Sub
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
-        Call awalbaru()
+        If tambahstatus.Equals(True) Then
+            Call awalbaru()
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-        Call cetak_faktur()
+        If printstatus.Equals(True) Then
+            Call cetak_faktur()
 
-        sql = "UPDATE tb_retur_penjualan SET print_returjual = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+            sql = "UPDATE tb_retur_penjualan SET print_returjual = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
 
-        cbprinted.Checked = True
+            cbprinted.Checked = True
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
     Public Sub cetak_faktur()
         Dim tabel_lama As New DataTable

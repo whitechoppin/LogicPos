@@ -110,23 +110,48 @@ Public Class fmenu
     End Sub
 
     Private Sub BarangKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangKeluarToolStripMenuItem.Click
-        fbarangkeluar.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.barang_keluar
+        If masterstatus > 0 Then
+            fbarangkeluar.kodeakses = masterstatus
+            fbarangkeluar.Show()
+        End If
     End Sub
 
     Private Sub BarangMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangMasukToolStripMenuItem.Click
-        fbarangmasuk.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.barang_masuk
+        If masterstatus > 0 Then
+            fbarangmasuk.kodeakses = masterstatus
+            fbarangmasuk.Show()
+        End If
     End Sub
 
     Private Sub ReturPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturPenjualanToolStripMenuItem.Click
-        freturjual.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.retur_jual
+        If masterstatus > 0 Then
+            freturjual.kodeakses = masterstatus
+            freturjual.Show()
+        End If
     End Sub
 
     Private Sub ReturPembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturPembelianToolStripMenuItem.Click
-        freturbeli.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.retur_beli
+        If masterstatus > 0 Then
+            freturbeli.kodeakses = masterstatus
+            freturbeli.Show()
+        End If
     End Sub
 
     Private Sub TransferBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransferBarangToolStripMenuItem.Click
-        ftransferbarang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.transfer_barang
+        If masterstatus > 0 Then
+            ftransferbarang.kodeakses = masterstatus
+            ftransferbarang.Show()
+        End If
     End Sub
 
     Private Sub PelunasanPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PelunasanPiutangToolStripMenuItem.Click
