@@ -71,6 +71,7 @@ Partial Class fmenu
         Me.PrinterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JatuhTempoPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JatuhTempoPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HistoryUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TokoSejatiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -79,7 +80,6 @@ Partial Class fmenu
         Me.statusjam = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.HistoryUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -376,6 +376,12 @@ Partial Class fmenu
         Me.JatuhTempoPenjualanToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.JatuhTempoPenjualanToolStripMenuItem.Text = "Jatuh Tempo Penjualan"
         '
+        'HistoryUserToolStripMenuItem
+        '
+        Me.HistoryUserToolStripMenuItem.Name = "HistoryUserToolStripMenuItem"
+        Me.HistoryUserToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.HistoryUserToolStripMenuItem.Text = "History User"
+        '
         'AboutMenu
         '
         Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogicHouseToolStripMenuItem, Me.TokoSejatiToolStripMenuItem})
@@ -386,13 +392,13 @@ Partial Class fmenu
         'LogicHouseToolStripMenuItem
         '
         Me.LogicHouseToolStripMenuItem.Name = "LogicHouseToolStripMenuItem"
-        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.LogicHouseToolStripMenuItem.Text = "Logic House"
         '
         'TokoSejatiToolStripMenuItem
         '
         Me.TokoSejatiToolStripMenuItem.Name = "TokoSejatiToolStripMenuItem"
-        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.TokoSejatiToolStripMenuItem.Text = "Toko Sejati"
         '
         'StatusStrip
@@ -431,12 +437,6 @@ Partial Class fmenu
         'Timer
         '
         Me.Timer.Interval = 1000
-        '
-        'HistoryUserToolStripMenuItem
-        '
-        Me.HistoryUserToolStripMenuItem.Name = "HistoryUserToolStripMenuItem"
-        Me.HistoryUserToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.HistoryUserToolStripMenuItem.Text = "History User"
         '
         'fmenu
         '
