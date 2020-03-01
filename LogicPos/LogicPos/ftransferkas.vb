@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 
 Public Class ftransferkas
+    Public kodeakses As Integer
+    Dim tambahstatus, editstatus, printstatus As Boolean
     Dim kodetransfer, kodedarikas, kodekekas, viewketerangan, viewkodekekas, viewkodedarikas, viewkodesales As String
     Dim saldotransfer As Double
     Dim viewtglkas As DateTime
@@ -10,6 +12,37 @@ Public Class ftransferkas
     Private Sub ftransferkas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
+
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                printstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                printstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                printstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                printstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                printstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                printstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                printstatus = True
+        End Select
     End Sub
 
     Sub comboboxuser()

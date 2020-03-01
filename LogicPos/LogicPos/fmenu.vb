@@ -191,7 +191,12 @@ Public Class fmenu
     End Sub
 
     Private Sub TransferKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransferKasToolStripMenuItem.Click
-        ftransferkas.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.transfer_kas
+        If masterstatus > 0 Then
+            ftransferkas.kodeakses = masterstatus
+            ftransferkas.Show()
+        End If
     End Sub
 
     Private Sub LUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LUtangToolStripMenuItem.Click

@@ -183,6 +183,12 @@
       <DependentUpon>flaporantransferkas.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fhistoryuser.Designer.vb">
+      <DependentUpon>fhistoryuser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fhistoryuser.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fjatuhtempopembelian.Designer.vb">
       <DependentUpon>fjatuhtempopembelian.vb</DependentUpon>
     </Compile>
@@ -731,6 +737,9 @@
     <EmbeddedResource Include="fakturpenjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpenjualan.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fhistoryuser.resx">
+      <DependentUpon>fhistoryuser.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fjatuhtempopembelian.resx">
       <DependentUpon>fjatuhtempopembelian.vb</DependentUpon>
