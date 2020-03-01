@@ -7,7 +7,7 @@ Public Class flaporanbarangkeluar
     Public isi As String
     Public isi2 As String
     Private Sub flaporanpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Me.MdiParent = fmenu
+        Me.MdiParent = fmenu
         Call koneksii()
 
         DateTimePicker1.MaxDate = Now

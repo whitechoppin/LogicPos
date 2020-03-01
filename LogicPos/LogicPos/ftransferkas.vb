@@ -249,31 +249,35 @@ Public Class ftransferkas
     End Sub
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
-        If btntambah.Text = "Tambah" Then
-            btnbatal.Enabled = True
-            btntambah.Text = "Simpan"
-            Call enable_text()
-            Call index()
-            txtkodetransfer.Text = autonumber()
-            GridControl1.Enabled = False
-        Else
-            If txtkodetransfer.Text.Length = 0 Then
-                MsgBox("Kode belum terisi !")
+        If tambahstatus.Equals(True) Then
+            If btntambah.Text = "Tambah" Then
+                btnbatal.Enabled = True
+                btntambah.Text = "Simpan"
+                Call enable_text()
+                Call index()
+                txtkodetransfer.Text = autonumber()
+                GridControl1.Enabled = False
             Else
-                If cmbsales.SelectedIndex = -1 Then
-                    MsgBox("Sales belum terisi !")
+                If txtkodetransfer.Text.Length = 0 Then
+                    MsgBox("Kode belum terisi !")
                 Else
-                    If cmbdarikas.SelectedIndex = -1 And cmbkekas.SelectedIndex = -1 Then
-                        MsgBox("Salah Satu Kas belum terisi !")
+                    If cmbsales.SelectedIndex = -1 Then
+                        MsgBox("Sales belum terisi !")
                     Else
-                        If txtsaldotransfer.Text.Length = 0 Then
-                            MsgBox("Saldo belum terisi !")
+                        If cmbdarikas.SelectedIndex = -1 And cmbkekas.SelectedIndex = -1 Then
+                            MsgBox("Salah Satu Kas belum terisi !")
                         Else
-                            Call simpan()
+                            If txtsaldotransfer.Text.Length = 0 Then
+                                MsgBox("Saldo belum terisi !")
+                            Else
+                                Call simpan()
+                            End If
                         End If
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 
@@ -341,47 +345,55 @@ Public Class ftransferkas
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
-        If btnedit.Text = "Edit" Then
-            btnedit.Text = "Simpan"
-            btnhapus.Enabled = False
-            Call enable_text()
-            Call index()
-            GridControl1.Enabled = False
-        Else
-            If txtkodetransfer.Text.Length = 0 Then
-                MsgBox("Kode belum terisi !")
+        If editstatus.Equals(True) Then
+            If btnedit.Text = "Edit" Then
+                btnedit.Text = "Simpan"
+                btnhapus.Enabled = False
+                Call enable_text()
+                Call index()
+                GridControl1.Enabled = False
             Else
-                If cmbsales.SelectedIndex = -1 Then
-                    MsgBox("Sales belum terisi !")
+                If txtkodetransfer.Text.Length = 0 Then
+                    MsgBox("Kode belum terisi !")
                 Else
-                    If cmbdarikas.SelectedIndex = -1 And cmbkekas.SelectedIndex = -1 Then
-                        MsgBox("Salah Satu Kas belum terisi !")
+                    If cmbsales.SelectedIndex = -1 Then
+                        MsgBox("Sales belum terisi !")
                     Else
-                        If txtsaldotransfer.Text.Length = 0 Then
-                            MsgBox("Saldo belum terisi !")
+                        If cmbdarikas.SelectedIndex = -1 And cmbkekas.SelectedIndex = -1 Then
+                            MsgBox("Salah Satu Kas belum terisi !")
                         Else
-                            Call edit()
+                            If txtsaldotransfer.Text.Length = 0 Then
+                                MsgBox("Saldo belum terisi !")
+                            Else
+                                Call edit()
+                            End If
                         End If
                     End If
                 End If
             End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-        Call koneksii()
-        If MessageBox.Show("Hapus Data Kas Masuk " & Me.txtkodetransfer.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            sql = "DELETE FROM tb_transfer_kas WHERE  kode_transfer_kas='" & txtkodetransfer.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
+        If editstatus.Equals(True) Then
+            Call koneksii()
+            If MessageBox.Show("Hapus Data Kas Masuk " & Me.txtkodetransfer.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+                sql = "DELETE FROM tb_transfer_kas WHERE  kode_transfer_kas='" & txtkodetransfer.Text & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
 
-            sql = "DELETE FROM tb_transaksi_kas WHERE  kode_transfer_kas='" & txtkodetransfer.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
+                sql = "DELETE FROM tb_transaksi_kas WHERE  kode_transfer_kas='" & txtkodetransfer.Text & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
 
-            MessageBox.Show(txtkodetransfer.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Refresh()
-            Call awal()
+                MessageBox.Show(txtkodetransfer.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.Refresh()
+                Call awal()
+            End If
+        Else
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 
@@ -391,7 +403,11 @@ Public Class ftransferkas
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-        Call cetak_faktur()
+        If printstatus.Equals(True) Then
+            Call cetak_faktur()
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
     Sub cetak_faktur()
         Dim faktur As String
