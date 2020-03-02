@@ -19,11 +19,10 @@ Public Class flaporanpembelian
             'buat sum harga
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
             ' .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
-
         End With
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No.Nota"
+        GridColumn1.Caption = "No Nota"
         GridColumn1.FieldName = "kode_pembelian"
 
         GridColumn2.Caption = "Supplier"
@@ -53,13 +52,11 @@ Public Class flaporanpembelian
         GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn8.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn9.Caption = "Kasir Penerima"
+        GridColumn9.Caption = "Admin"
         GridColumn9.FieldName = "kode_user"
 
-        GridColumn10.Visible = False
-        GridColumn11.Visible = False
-        GridColumn12.Caption = "Metode Bayar"
-        GridColumn12.FieldName = "pembayaran_pembelian"
+        GridColumn10.Caption = "Metode Bayar"
+        GridColumn10.FieldName = "pembayaran_pembelian"
 
         GridControl1.Visible = True
     End Sub

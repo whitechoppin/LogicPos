@@ -19,16 +19,14 @@ Public Class flaporanreturjual
             'buat sum harga
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
             .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
-
         End With
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No.Nota"
-        GridColumn1.FieldName = "kode_penjualan"
+        GridColumn1.Caption = "No Retur"
+        GridColumn1.FieldName = "kode_retur"
 
-        GridColumn2.Caption = "Pelangan"
-        GridColumn2.FieldName = "nama_pelanggan"
-        GridColumn2.Visible = False
+        GridColumn2.Caption = "User"
+        GridColumn2.FieldName = "kode_user"
 
         GridColumn3.Caption = "Tanggal Retur Penjualan"
         GridColumn3.FieldName = "tgl_returjual"
@@ -58,14 +56,7 @@ Public Class flaporanreturjual
         GridColumn9.FieldName = "keuntungan"
         GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn9.DisplayFormat.FormatString = "##,##0"
-        GridColumn9.Visible = False
 
-        GridColumn10.Visible = False
-        GridColumn11.Caption = "Kasir"
-        GridColumn11.FieldName = "kode_user"
-        GridColumn12.Caption = "Metode Bayar"
-        GridColumn12.FieldName = "metode_pembayaran"
-        GridColumn12.Visible = False
         GridControl1.Visible = True
     End Sub
     Sub tabel()
@@ -74,7 +65,7 @@ Public Class flaporanreturjual
             If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
                 sql = "SELECT * FROM tb_retur_penjualan_detail JOIN tb_retur_penjualan ON tb_retur_penjualan.kode_retur=tb_retur_penjualan_detail.kode_retur WHERE DATE(tgl_returjual) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "Select * FROM tb_retur_penjualan_detail JOIN tb_retur_penjualan On tb_retur_penjualan.kode_retur=tb_retur_penjualan_detail.kode_retur  WHERE tgl_returjual BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_retur_penjualan_detail JOIN tb_retur_penjualan On tb_retur_penjualan.kode_retur=tb_retur_penjualan_detail.kode_retur  WHERE tgl_returjual BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
             End If
             da = New OdbcDataAdapter(sql, cnn)
             ds = New DataSet
@@ -101,7 +92,7 @@ Public Class flaporanreturjual
         If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
             sql = "SELECT * FROM tb_retur_penjualan WHERE DATE(tgl_returjual) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "Select * FROM tb_retur_penjualan WHERE tgl_returjual BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_retur_penjualan WHERE tgl_returjual BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         cmmd = New OdbcCommand(sql, cnn)
@@ -124,9 +115,9 @@ Public Class flaporanreturjual
             akhirPVs.Add(akhirPDV)
             akhirPFD.ApplyCurrentValues(akhirPVs)
 
-            flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
-            flappenjualan.ShowDialog()
-            flappenjualan.WindowState = FormWindowState.Maximized
+            flapreturpenjualan.CrystalReportViewer1.ReportSource = rptrekap
+            flapreturpenjualan.ShowDialog()
+            flapreturpenjualan.WindowState = FormWindowState.Maximized
         Else
             MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
         End If
@@ -179,7 +170,7 @@ Public Class flaporanreturjual
         If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
             sql = "SELECT * FROM tb_retur_penjualan WHERE DATE(tgl_returjual) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "Select * FROM tb_retur_penjualan WHERE tgl_returjual BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_retur_penjualan WHERE tgl_returjual BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         cmmd = New OdbcCommand(sql, cnn)

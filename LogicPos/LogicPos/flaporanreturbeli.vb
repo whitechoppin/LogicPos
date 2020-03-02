@@ -18,17 +18,15 @@ Public Class flaporanreturbeli
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
-            ' .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
-
+            '.Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
         End With
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No.Retur"
+        GridColumn1.Caption = "No Retur"
         GridColumn1.FieldName = "kode_retur"
 
-        GridColumn2.Caption = "Supplier"
-        GridColumn2.FieldName = "nama_supplier"
-        GridColumn2.Visible = False
+        GridColumn2.Caption = "User"
+        GridColumn2.FieldName = "kode_user"
 
         GridColumn3.Caption = "Tanggal Retur Pembelian"
         GridColumn3.FieldName = "tgl_returbeli"
@@ -53,15 +51,6 @@ Public Class flaporanreturbeli
         GridColumn8.FieldName = "subtotal"
         GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn8.DisplayFormat.FormatString = "##,##0"
-
-        GridColumn9.Caption = "Kasir Penerima"
-        GridColumn9.FieldName = "kode_user"
-
-        GridColumn10.Visible = False
-        GridColumn11.Visible = False
-        GridColumn12.Caption = "Metode Bayar"
-        GridColumn12.FieldName = "pembayaran_pembelian"
-        GridColumn12.Visible = False
 
         GridControl1.Visible = True
     End Sub
@@ -120,9 +109,9 @@ Public Class flaporanreturbeli
             akhirPVs.Add(akhirPDV)
             akhirPFD.ApplyCurrentValues(akhirPVs)
 
-            flappembelian.CrystalReportViewer1.ReportSource = rptrekap
-            flappembelian.ShowDialog()
-            flappembelian.WindowState = FormWindowState.Maximized
+            flapreturpembelian.CrystalReportViewer1.ReportSource = rptrekap
+            flapreturpembelian.ShowDialog()
+            flapreturpembelian.WindowState = FormWindowState.Maximized
         Else
             MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
         End If
@@ -196,9 +185,9 @@ Public Class flaporanreturbeli
             akhirPVs.Add(akhirPDV)
             akhirPFD.ApplyCurrentValues(akhirPVs)
 
-            flappembelian.CrystalReportViewer1.ReportSource = rptrekap
-            flappembelian.ShowDialog()
-            flappembelian.WindowState = FormWindowState.Maximized
+            flapreturpembelian.CrystalReportViewer1.ReportSource = rptrekap
+            flapreturpembelian.ShowDialog()
+            flapreturpembelian.WindowState = FormWindowState.Maximized
         Else
             MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
         End If
