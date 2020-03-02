@@ -346,6 +346,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="rptperfakturjualpajak.vb">
+      <DependentUpon>rptperfakturjualpajak.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="rptperfakturreturbeli.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -841,6 +847,10 @@
     <EmbeddedResource Include="rptperfakturbarangkeluar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptperfakturbarangkeluar.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptperfakturjualpajak.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptperfakturjualpajak.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptperfakturreturbeli.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
