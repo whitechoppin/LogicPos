@@ -239,7 +239,7 @@ Partial Class flaporanreturjual
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(8, 25)
+        Me.Label2.Location = New System.Drawing.Point(15, 31)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(250, 25)
         Me.Label2.TabIndex = 17

@@ -77,6 +77,8 @@ Public Class fcaricust
             fpenjualan.cmbcustomer.Text = Me.GridView1.GetFocusedRowCellValue("kode_pelanggan")
         ElseIf tutupcus = 3 Then
             fbarangkeluar.cmbcustomer.Text = Me.GridView1.GetFocusedRowCellValue("kode_pelanggan")
+        ElseIf tutupcus = 4 Then
+            flaporanpricelist.cmbcustomer.Text = Me.GridView1.GetFocusedRowCellValue("kode_pelanggan")
         End If
         Me.Close()
     End Sub

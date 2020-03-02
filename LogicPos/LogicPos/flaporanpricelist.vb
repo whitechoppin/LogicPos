@@ -8,7 +8,21 @@ Public Class flaporanpricelist
     Private Sub flaporbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call tabel()
+        Call comboboxcustomer()
+    End Sub
 
+    Sub comboboxcustomer()
+        Call koneksii()
+        cmbcustomer.Items.Clear()
+        cmbcustomer.AutoCompleteCustomSource.Clear()
+        cmmd = New OdbcCommand("SELECT * FROM tb_pelanggan", cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows = True Then
+            While dr.Read()
+                cmbcustomer.AutoCompleteCustomSource.Add(dr("kode_pelanggan"))
+                cmbcustomer.Items.Add(dr("kode_pelanggan"))
+            End While
+        End If
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode Customer"
@@ -35,7 +49,7 @@ Public Class flaporanpricelist
         Call koneksii()
         Using cnn As New OdbcConnection(strConn)
             'sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang "
-            sql = "SELECT tb_barang.kode_barang, nama_barang, tb_price_group.harga_jual, tb_price_group.kode_pelanggan, tb_barang.jenis_barang, tb_barang.kategori_barang FROM tb_barang JOIN tb_price_group ON tb_price_group.kode_barang=tb_barang.kode_barang WHERE tb_price_group.kode_pelanggan = '" & txtkodecust.Text & "' "
+            sql = "SELECT tb_barang.kode_barang, nama_barang, tb_price_group.harga_jual, tb_price_group.kode_pelanggan, tb_barang.jenis_barang, tb_barang.kategori_barang FROM tb_barang JOIN tb_price_group ON tb_price_group.kode_barang=tb_barang.kode_barang WHERE tb_price_group.kode_pelanggan = '" & cmbcustomer.Text & "' "
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet
@@ -66,6 +80,20 @@ Public Class flaporanpricelist
                 cnn.Close()
             End If
         End Using
+    End Sub
+
+    Sub caripelanggan()
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & cmbcustomer.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            txtcustomer.Text = dr("nama_pelanggan")
+            txttelp.Text = dr("telepon_pelanggan")
+        Else
+            txtcustomer.Text = ""
+            txttelp.Text = ""
+        End If
     End Sub
     Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click
         Call ambil_gbr()
@@ -108,7 +136,7 @@ Public Class flaporanpricelist
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
         Dim rptstok As ReportDocument
         rptstok = New rptlaporprice
-        rptstok.SetParameterValue("kode", txtkodecust.Text)
+        rptstok.SetParameterValue("kode", cmbcustomer.Text)
         flappembelian.CrystalReportViewer1.ReportSource = rptstok
         flappembelian.Text = "Laporan Stok Barang"
         flappembelian.ShowDialog()
@@ -117,5 +145,18 @@ Public Class flaporanpricelist
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel()
+    End Sub
+
+    Private Sub cmbcustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbcustomer.SelectedIndexChanged
+        Call caripelanggan()
+    End Sub
+
+    Private Sub cmbcustomer_TextChanged(sender As Object, e As EventArgs) Handles cmbcustomer.TextChanged
+        Call caripelanggan()
+    End Sub
+
+    Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
+        tutupcus = 4
+        fcaricust.ShowDialog()
     End Sub
 End Class
