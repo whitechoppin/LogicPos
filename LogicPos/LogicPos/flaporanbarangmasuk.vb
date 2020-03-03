@@ -23,7 +23,7 @@ Public Class flaporanbarangmasuk
         End With
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No.Nota"
+        GridColumn1.Caption = "No Nota"
         GridColumn1.FieldName = "kode_barang_masuk"
 
         GridColumn2.Caption = "Supplier"
@@ -58,10 +58,8 @@ Public Class flaporanbarangmasuk
         GridColumn9.Caption = "Kasir Penerima"
         GridColumn9.FieldName = "kode_user"
 
-        GridColumn10.Visible = False
-        GridColumn11.Visible = False
-        GridColumn12.Caption = "Keterangan"
-        GridColumn12.FieldName = "Keterangan_barang_masuk"
+        GridColumn10.Caption = "Keterangan"
+        GridColumn10.FieldName = "Keterangan_barang_masuk"
 
         GridControl1.Visible = True
     End Sub
