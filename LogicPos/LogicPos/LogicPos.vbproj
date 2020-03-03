@@ -219,6 +219,12 @@
     <Compile Include="flaporanbarangkeluar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flaporanpenjualanpajak.designer.vb">
+      <DependentUpon>flaporanpenjualanpajak.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanpenjualanpajak.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanreturbeli.designer.vb">
       <DependentUpon>flaporanreturbeli.vb</DependentUpon>
     </Compile>
@@ -390,6 +396,12 @@
     </Compile>
     <Compile Include="rptrekapbarangmasuk.vb">
       <DependentUpon>rptrekapbarangmasuk.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="rptrekappenjualanpajak.vb">
+      <DependentUpon>rptrekappenjualanpajak.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -780,6 +792,9 @@
     <EmbeddedResource Include="flaporanbarangkeluar.resx">
       <DependentUpon>flaporanbarangkeluar.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flaporanpenjualanpajak.resx">
+      <DependentUpon>flaporanpenjualanpajak.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flaporanreturbeli.resx">
       <DependentUpon>flaporanreturbeli.vb</DependentUpon>
     </EmbeddedResource>
@@ -889,6 +904,10 @@
     <EmbeddedResource Include="rptrekapbarangmasuk.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapbarangmasuk.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekappenjualanpajak.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekappenjualanpajak.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekapreturpembelian.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
