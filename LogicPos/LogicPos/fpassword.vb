@@ -24,6 +24,8 @@ Public Class fpassword
                 fcaristok.LabelHarga.Visible = True
             ElseIf passwordid = 4 Then
                 fcaribarang.LabelHarga.Visible = True
+            ElseIf passwordid = 5 Then
+                fpricelist.txthidden.Visible = False
             End If
             Me.Close()
         End If

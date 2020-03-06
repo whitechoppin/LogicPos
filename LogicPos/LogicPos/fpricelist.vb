@@ -302,6 +302,17 @@ Public Class fpricelist
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
     End Sub
+
+    Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
+        If txthidden.Visible = True Then
+            passwordid = 5
+            fpassword.Show()
+            'txthidden.Visible = False
+        ElseIf txthidden.Visible = False Then
+            txthidden.Visible = True
+        End If
+    End Sub
+
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If editstatus.Equals(True) Then
             If txtkodecus.Text.Length = 0 Then
