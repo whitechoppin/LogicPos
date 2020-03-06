@@ -303,6 +303,12 @@
     <Compile Include="flappenjualan.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flappricelist.Designer.vb">
+      <DependentUpon>flappricelist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flappricelist.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flapreturpembelian.Designer.vb">
       <DependentUpon>flapreturpembelian.vb</DependentUpon>
     </Compile>
@@ -313,6 +319,12 @@
       <DependentUpon>flapreturpenjualan.vb</DependentUpon>
     </Compile>
     <Compile Include="flapreturpenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flapstokbarang.Designer.vb">
+      <DependentUpon>flapstokbarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flapstokbarang.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flogin.designer.vb">
@@ -840,11 +852,17 @@
     <EmbeddedResource Include="flappenjualan.resx">
       <DependentUpon>flappenjualan.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flappricelist.resx">
+      <DependentUpon>flappricelist.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flapreturpembelian.resx">
       <DependentUpon>flapreturpembelian.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flapreturpenjualan.resx">
       <DependentUpon>flapreturpenjualan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flapstokbarang.resx">
+      <DependentUpon>flapstokbarang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flogin.resx">
       <DependentUpon>flogin.vb</DependentUpon>

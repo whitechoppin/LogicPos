@@ -2,6 +2,8 @@
 Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class flaporanpricelist
+    Public kodeakses As Integer
+    Dim exportstatus, printstatus As Boolean
     Dim pilih As String
     Dim kode As String
     Dim modalbarang As Double
@@ -9,6 +11,18 @@ Public Class flaporanpricelist
         Me.MdiParent = fmenu
         Call tabel()
         Call comboboxcustomer()
+
+        Select Case kodeakses
+            Case 1
+                printstatus = True
+                exportstatus = False
+            Case 3
+                printstatus = False
+                exportstatus = True
+            Case 4
+                printstatus = True
+                exportstatus = True
+        End Select
     End Sub
 
     Sub comboboxcustomer()
@@ -108,10 +122,14 @@ Public Class flaporanpricelist
     End Sub
 
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
-        If GridView1.DataRowCount > 0 Then
-            ExportToExcel()
+        If exportstatus.Equals(True) Then
+            If GridView1.DataRowCount > 0 Then
+                ExportToExcel()
+            Else
+                MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
+            End If
         Else
-            MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub ExportToExcel()
@@ -134,13 +152,21 @@ Public Class flaporanpricelist
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
-        Dim rptstok As ReportDocument
-        rptstok = New rptlaporprice
-        rptstok.SetParameterValue("kode", cmbcustomer.Text)
-        flappembelian.CrystalReportViewer1.ReportSource = rptstok
-        flappembelian.Text = "Laporan Stok Barang"
-        flappembelian.ShowDialog()
-        flappembelian.WindowState = FormWindowState.Maximized
+        If printstatus.Equals(True) Then
+            If cmbcustomer.Text = "" Then
+                MsgBox("Kode Customer kosong !")
+            Else
+                Dim rptstok As ReportDocument
+                rptstok = New rptlaporprice
+                rptstok.SetParameterValue("kode", cmbcustomer.Text)
+                flappricelist.CrystalReportViewer1.ReportSource = rptstok
+                flappricelist.ShowDialog()
+                flappricelist.WindowState = FormWindowState.Maximized
+            End If
+        Else
+            MsgBox("Tidak ada akses")
+        End If
+
     End Sub
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click

@@ -249,11 +249,15 @@ Public Class fmenu
             fkategoribarang.kodeakses = masterstatus
             fkategoribarang.Show()
         End If
-
     End Sub
 
     Private Sub LaporanPricelistBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanPricelistBarangToolStripMenuItem.Click
-        flaporanpricelist.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_pricelist
+        If masterstatus > 0 Then
+            flaporanpricelist.kodeakses = masterstatus
+            flaporanpricelist.Show()
+        End If
     End Sub
 
     Private Sub LaporanReturBeliToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanReturBeliToolStripMenuItem.Click
@@ -273,6 +277,6 @@ Public Class fmenu
     End Sub
 
     Private Sub HistoryUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistoryUserToolStripMenuItem.Click
-
+        fhistoryuser.Show()
     End Sub
 End Class

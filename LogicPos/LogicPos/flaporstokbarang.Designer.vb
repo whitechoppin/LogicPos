@@ -33,6 +33,7 @@ Partial Class flaporstokbarang
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnshow = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LabelHarga = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -42,7 +43,6 @@ Partial Class flaporstokbarang
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btnrekap = New System.Windows.Forms.Button()
-        Me.btnshow = New System.Windows.Forms.Button()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -156,6 +156,17 @@ Partial Class flaporstokbarang
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
         '
+        'btnshow
+        '
+        Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
+        Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnshow.ImageIndex = 0
+        Me.btnshow.Location = New System.Drawing.Point(111, 239)
+        Me.btnshow.Name = "btnshow"
+        Me.btnshow.Size = New System.Drawing.Size(29, 22)
+        Me.btnshow.TabIndex = 26
+        Me.btnshow.UseVisualStyleBackColor = True
+        '
         'Label3
         '
         Me.Label3.AutoSize = True
@@ -218,7 +229,7 @@ Partial Class flaporstokbarang
         '
         'btnrefresh
         '
-        Me.btnrefresh.Location = New System.Drawing.Point(9, 135)
+        Me.btnrefresh.Location = New System.Drawing.Point(9, 23)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(267, 50)
         Me.btnrefresh.TabIndex = 18
@@ -236,23 +247,12 @@ Partial Class flaporstokbarang
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(9, 23)
+        Me.btnrekap.Location = New System.Drawing.Point(9, 135)
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(267, 50)
         Me.btnrekap.TabIndex = 10
         Me.btnrekap.Text = "Report"
         Me.btnrekap.UseVisualStyleBackColor = True
-        '
-        'btnshow
-        '
-        Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
-        Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnshow.ImageIndex = 0
-        Me.btnshow.Location = New System.Drawing.Point(111, 239)
-        Me.btnshow.Name = "btnshow"
-        Me.btnshow.Size = New System.Drawing.Size(29, 22)
-        Me.btnshow.TabIndex = 26
-        Me.btnshow.UseVisualStyleBackColor = True
         '
         'flaporstokbarang
         '

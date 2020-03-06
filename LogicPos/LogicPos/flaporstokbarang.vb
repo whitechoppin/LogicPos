@@ -2,6 +2,8 @@
 Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class flaporstokbarang
+    Public kodeakses As Integer
+    Dim exportstatus, printstatus As Boolean
     Dim pilih As String
     Dim kode As String
     Dim modalbarang As Double
@@ -15,6 +17,18 @@ Public Class flaporstokbarang
             'buat sum harga
             .Columns("jumlah_stok").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "jumlah_stok", "{0:n0}")
         End With
+
+        Select Case kodeakses
+            Case 1
+                printstatus = True
+                exportstatus = False
+            Case 3
+                printstatus = False
+                exportstatus = True
+            Case 4
+                printstatus = True
+                exportstatus = True
+        End Select
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"
@@ -82,10 +96,14 @@ Public Class flaporstokbarang
     End Sub
 
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
-        If GridView1.DataRowCount > 0 Then
-            ExportToExcel()
+        If exportstatus.Equals(True) Then
+            If GridView1.DataRowCount > 0 Then
+                ExportToExcel()
+            Else
+                MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
+            End If
         Else
-            MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub ExportToExcel()
@@ -108,13 +126,16 @@ Public Class flaporstokbarang
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
-        Dim rptstok As ReportDocument
-        rptstok = New rptlaporstok
+        If printstatus.Equals(True) Then
+            Dim rptstok As ReportDocument
+            rptstok = New rptlaporstok
 
-        flappembelian.CrystalReportViewer1.ReportSource = rptstok
-        flappembelian.Text = "Laporan Stok Barang"
-        flappembelian.ShowDialog()
-        flappembelian.WindowState = FormWindowState.Maximized
+            flapstokbarang.CrystalReportViewer1.ReportSource = rptstok
+            flapstokbarang.ShowDialog()
+            flapstokbarang.WindowState = FormWindowState.Maximized
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
