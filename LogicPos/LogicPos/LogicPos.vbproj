@@ -207,6 +207,18 @@
     <Compile Include="fkategoribarang.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flapbarangkeluar.Designer.vb">
+      <DependentUpon>flapbarangkeluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flapbarangkeluar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flapbarangmasuk.Designer.vb">
+      <DependentUpon>flapbarangmasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flapbarangmasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanbarangmasuk.designer.vb">
       <DependentUpon>flaporanbarangmasuk.vb</DependentUpon>
     </Compile>
@@ -797,6 +809,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fkategoribarang.resx">
       <DependentUpon>fkategoribarang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flapbarangkeluar.resx">
+      <DependentUpon>flapbarangkeluar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flapbarangmasuk.resx">
+      <DependentUpon>flapbarangmasuk.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanbarangmasuk.resx">
       <DependentUpon>flaporanbarangmasuk.vb</DependentUpon>
