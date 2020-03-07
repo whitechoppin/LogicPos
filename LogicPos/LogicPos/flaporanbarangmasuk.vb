@@ -125,6 +125,10 @@ Public Class flaporanbarangmasuk
         End If
     End Sub
 
+    Private Sub flaporanbarangmasuk_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub btnperfaktur_Click(sender As Object, e As EventArgs) Handles btnperfaktur.Click
         If printstatus.Equals(True) Then
             Dim rptrekap As ReportDocument

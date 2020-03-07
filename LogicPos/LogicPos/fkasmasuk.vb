@@ -376,6 +376,10 @@ Public Class fkasmasuk
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
     End Sub
 
+    Private Sub fkasmasuk_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
         Dim faktur As String
         Call koneksii()

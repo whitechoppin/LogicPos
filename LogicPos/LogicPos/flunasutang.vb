@@ -872,6 +872,10 @@ Public Class flunasutang
 
     End Sub
 
+    Private Sub flunasutang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub GridView2_DoubleClick(sender As Object, e As EventArgs) Handles GridView2.DoubleClick
         If btnsimpan.Enabled = False Then
             Call cariutang(GridView2.GetFocusedRowCellValue("kode_lunas"))

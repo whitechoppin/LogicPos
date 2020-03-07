@@ -1722,6 +1722,10 @@ Public Class fpenjualan
 
     End Sub
 
+    Private Sub fpenjualan_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub txtrekening_TextChanged(sender As Object, e As EventArgs) Handles txtrekening.TextChanged
         If txtrekening.Text.Equals("KREDIT") Then
             txtbayar.Text = 0

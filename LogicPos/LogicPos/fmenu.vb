@@ -208,7 +208,7 @@ Public Class fmenu
     End Sub
 
     Private Sub LaporanTransaksiKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanTransaksiKasToolStripMenuItem.Click
-        flaporankas.Show()
+        flaporantransaksikas.Show()
     End Sub
 
     Private Sub LAkunMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LAkunMasukToolStripMenuItem.Click
@@ -304,8 +304,12 @@ Public Class fmenu
     End Sub
 
     Private Sub tabform_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tabform.SelectedIndexChanged
-        If (tabform.SelectedTab IsNot Nothing) And (tabform.SelectedTab.Tag IsNot Nothing) Then
-            TryCast(tabform.SelectedTab.Tag, Form).Select()
+        If tabform.TabCount.Equals(0) Then
+        Else
+            If (tabform.SelectedTab.Equals(Nothing)) Or (tabform.SelectedTab.Tag.Equals(Nothing)) Then
+            Else
+                TryCast(tabform.SelectedTab.Tag, Form).Select()
+            End If
         End If
     End Sub
 

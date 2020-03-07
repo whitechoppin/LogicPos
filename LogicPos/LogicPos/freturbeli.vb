@@ -398,6 +398,10 @@ Public Class freturbeli
 
     End Sub
 
+    Private Sub freturbeli_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Sub tabel_utama()
         tabel1 = New DataTable
         With tabel1

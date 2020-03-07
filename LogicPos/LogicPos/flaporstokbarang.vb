@@ -142,6 +142,10 @@ Public Class flaporstokbarang
         Call tabel()
     End Sub
 
+    Private Sub flaporstokbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
         If LabelHarga.Visible = False Then
             passwordid = 2

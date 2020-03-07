@@ -18,6 +18,10 @@ Public Class freturjual
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
     Dim rpt_faktur As New ReportDocument
 
+    Private Sub freturjual_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub freturjual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()

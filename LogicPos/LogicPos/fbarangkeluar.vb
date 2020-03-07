@@ -625,6 +625,10 @@ Public Class fbarangkeluar
         End If
     End Sub
 
+    Private Sub fbarangkeluar_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub cmbcustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbcustomer.SelectedIndexChanged
         caripelanggan()
     End Sub

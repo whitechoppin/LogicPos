@@ -547,6 +547,11 @@ Public Class fbarangmasuk
             lblsatuan.Text = "satuan"
         End If
     End Sub
+
+    Private Sub fbarangmasuk_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Sub carigudang()
         Call koneksii()
         sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbgudang.Text & "'"

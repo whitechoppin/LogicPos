@@ -255,10 +255,10 @@
     <Compile Include="flaporantransferkas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="flaporankas.designer.vb">
-      <DependentUpon>flaporankas.vb</DependentUpon>
+    <Compile Include="flaporantransaksikas.designer.vb">
+      <DependentUpon>flaporantransaksikas.vb</DependentUpon>
     </Compile>
-    <Compile Include="flaporankas.vb">
+    <Compile Include="flaporantransaksikas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flaporankaskeluar.designer.vb">
@@ -837,8 +837,8 @@
     <EmbeddedResource Include="flaporantransferkas.resx">
       <DependentUpon>flaporantransferkas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="flaporankas.resx">
-      <DependentUpon>flaporankas.vb</DependentUpon>
+    <EmbeddedResource Include="flaporantransaksikas.resx">
+      <DependentUpon>flaporantransaksikas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporankaskeluar.resx">
       <DependentUpon>flaporankaskeluar.vb</DependentUpon>

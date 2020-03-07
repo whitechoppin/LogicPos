@@ -238,7 +238,7 @@ Partial Class flaporanpenjualanpajak
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Penjualan"
         '
-        'flaporanpenjualan
+        'flaporanpenjualanpajak
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -248,7 +248,7 @@ Partial Class flaporanpenjualanpajak
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Name = "flaporanpenjualan"
+        Me.Name = "flaporanpenjualanpajak"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Laporan Penjualan"
         Me.GroupBox1.ResumeLayout(False)

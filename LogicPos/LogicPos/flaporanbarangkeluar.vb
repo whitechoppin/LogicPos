@@ -133,6 +133,10 @@ Public Class flaporanbarangkeluar
         End If
     End Sub
 
+    Private Sub flaporanbarangkeluar_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub btnfaktur_Click(sender As Object, e As EventArgs) Handles btnfaktur.Click
         If printstatus.Equals(True) Then
             Dim rptrekap As ReportDocument

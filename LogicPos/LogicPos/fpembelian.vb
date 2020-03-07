@@ -1099,6 +1099,11 @@ Public Class fpembelian
             Call tambah()
         End If
     End Sub
+
+    Private Sub fpembelian_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
         Dim hapuskode As String
         If e.KeyCode = Keys.Delete And btnbatal.Enabled = True Then

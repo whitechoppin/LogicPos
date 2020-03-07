@@ -3,7 +3,7 @@ Imports System.Globalization
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
-Public Class flaporankas
+Public Class flaporantransaksikas
     Dim tabel1 As DataTable
     Public isi As String
     Public isi2 As String
@@ -210,5 +210,9 @@ Public Class flaporankas
         Else
             MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
         End If
+    End Sub
+
+    Private Sub flaporankas_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 End Class

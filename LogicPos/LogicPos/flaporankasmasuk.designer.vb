@@ -28,6 +28,7 @@ Partial Class flaporankasmasuk
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.btnrekap = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btntabel = New System.Windows.Forms.Button()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
@@ -45,7 +46,6 @@ Partial Class flaporankasmasuk
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnrekap = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,6 +98,15 @@ Partial Class flaporankasmasuk
         Me.GroupBox4.Size = New System.Drawing.Size(994, 64)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
+        '
+        'btnrekap
+        '
+        Me.btnrekap.Location = New System.Drawing.Point(117, 13)
+        Me.btnrekap.Name = "btnrekap"
+        Me.btnrekap.Size = New System.Drawing.Size(180, 47)
+        Me.btnrekap.TabIndex = 19
+        Me.btnrekap.Text = "Rekap"
+        Me.btnrekap.UseVisualStyleBackColor = True
         '
         'btnexcel
         '
@@ -223,15 +232,6 @@ Partial Class flaporankasmasuk
         Me.Label2.Size = New System.Drawing.Size(426, 52)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Kas Masuk"
-        '
-        'btnrekap
-        '
-        Me.btnrekap.Location = New System.Drawing.Point(117, 13)
-        Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(180, 47)
-        Me.btnrekap.TabIndex = 19
-        Me.btnrekap.Text = "Rekap"
-        Me.btnrekap.UseVisualStyleBackColor = True
         '
         'flaporankasmasuk
         '

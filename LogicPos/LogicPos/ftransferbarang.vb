@@ -566,6 +566,10 @@ Public Class ftransferbarang
         End If
     End Sub
 
+    Private Sub ftransferbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Sub carikegudang()
         Call koneksii()
         sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbkegudang.Text & "'"

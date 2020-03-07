@@ -181,6 +181,10 @@ Public Class flaporanpricelist
         Call caripelanggan()
     End Sub
 
+    Private Sub flaporanpricelist_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
         tutupcus = 4
         fcaricust.ShowDialog()

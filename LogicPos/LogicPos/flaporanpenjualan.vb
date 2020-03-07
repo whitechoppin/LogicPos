@@ -207,4 +207,8 @@ Public Class flaporanpenjualan
             MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
         End If
     End Sub
+
+    Private Sub flaporanpenjualan_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
 End Class
