@@ -80,6 +80,7 @@ Partial Class fmenu
         Me.statusjam = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.tabform = New System.Windows.Forms.TabControl()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -438,12 +439,23 @@ Partial Class fmenu
         '
         Me.Timer.Interval = 1000
         '
+        'tabform
+        '
+        Me.tabform.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.tabform.Location = New System.Drawing.Point(0, 558)
+        Me.tabform.Name = "tabform"
+        Me.tabform.SelectedIndex = 0
+        Me.tabform.Size = New System.Drawing.Size(1050, 23)
+        Me.tabform.TabIndex = 3
+        Me.tabform.Visible = False
+        '
         'fmenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(1050, 603)
+        Me.Controls.Add(Me.tabform)
         Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.MenuUtama)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -517,4 +529,5 @@ Partial Class fmenu
     Friend WithEvents LaporanPricelistBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DataKategoriBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HistoryUserToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tabform As TabControl
 End Class

@@ -450,6 +450,11 @@ Public Class fbarang
         End If
 
     End Sub
+
+    Private Sub fbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If hapusstatus.Equals(True) Then
             'Call koneksii()

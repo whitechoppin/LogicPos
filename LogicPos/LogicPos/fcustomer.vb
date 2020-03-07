@@ -343,6 +343,11 @@ Public Class fcustomer
             End If
         End Using
     End Sub
+
+    Private Sub fcustomer_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub btnupload_Click(sender As Object, e As EventArgs) Handles btnupload.Click
         Dim oD As New OpenFileDialog
         oD.Multiselect = False

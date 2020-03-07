@@ -242,6 +242,10 @@ Public Class fkategoribarang
         btntambah.Text = "Tambah"
     End Sub
 
+    Private Sub fkategoribarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub txtselisih_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtselisih.KeyPress
         e.Handled = ValidAngka(e)
     End Sub

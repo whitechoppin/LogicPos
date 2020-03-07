@@ -313,6 +313,10 @@ Public Class fpricelist
         End If
     End Sub
 
+    Private Sub fpricelist_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If editstatus.Equals(True) Then
             If txtkodecus.Text.Length = 0 Then

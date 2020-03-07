@@ -2904,6 +2904,10 @@ Public Class fuser
         End If
     End Sub
 
+    Private Sub fuser_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub cbmasterkas_CheckedChanged(sender As Object, e As EventArgs) Handles cbmasterkas.CheckedChanged
         If cbmasterkas.Checked = True Then
             clbmasterkas.Enabled = True

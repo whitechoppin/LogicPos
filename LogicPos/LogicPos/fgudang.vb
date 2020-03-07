@@ -280,6 +280,10 @@ Public Class fgudang
         e.Handled = ValidAngka(e)
     End Sub
 
+    Private Sub fgudang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Private Sub btnauto_Click(sender As Object, e As EventArgs) Handles btnauto.Click
         txtkode.Text = autonumber()
     End Sub

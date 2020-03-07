@@ -23,6 +23,7 @@ Partial Class fkas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbjeniskas = New System.Windows.Forms.ComboBox()
         Me.btngenerate = New System.Windows.Forms.Button()
         Me.txtrekening = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -44,7 +45,6 @@ Partial Class fkas
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.cbjeniskas = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,6 +75,15 @@ Partial Class fkas
         Me.GroupBox1.TabIndex = 11
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data Kas"
+        '
+        'cbjeniskas
+        '
+        Me.cbjeniskas.FormattingEnabled = True
+        Me.cbjeniskas.Items.AddRange(New Object() {"Fisik", "Non Fisik"})
+        Me.cbjeniskas.Location = New System.Drawing.Point(107, 195)
+        Me.cbjeniskas.Name = "cbjeniskas"
+        Me.cbjeniskas.Size = New System.Drawing.Size(242, 26)
+        Me.cbjeniskas.TabIndex = 27
         '
         'btngenerate
         '
@@ -271,15 +280,6 @@ Partial Class fkas
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
-        '
-        'cbjeniskas
-        '
-        Me.cbjeniskas.FormattingEnabled = True
-        Me.cbjeniskas.Items.AddRange(New Object() {"Fisik", "Non Fisik"})
-        Me.cbjeniskas.Location = New System.Drawing.Point(107, 195)
-        Me.cbjeniskas.Name = "cbjeniskas"
-        Me.cbjeniskas.Size = New System.Drawing.Size(242, 26)
-        Me.cbjeniskas.TabIndex = 27
         '
         'fkas
         '

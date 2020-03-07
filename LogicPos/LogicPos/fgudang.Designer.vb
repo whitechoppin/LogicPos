@@ -25,6 +25,8 @@ Partial Class fgudang
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btngenerate = New System.Windows.Forms.Button()
+        Me.btnauto = New System.Windows.Forms.Button()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnhapus = New System.Windows.Forms.Button()
         Me.btnedit = New System.Windows.Forms.Button()
@@ -44,8 +46,6 @@ Partial Class fgudang
         Me.GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.btngenerate = New System.Windows.Forms.Button()
-        Me.btnauto = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,6 +94,26 @@ Partial Class fgudang
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data Gudang"
+        '
+        'btngenerate
+        '
+        Me.btngenerate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btngenerate.Location = New System.Drawing.Point(218, 131)
+        Me.btngenerate.Name = "btngenerate"
+        Me.btngenerate.Size = New System.Drawing.Size(91, 27)
+        Me.btngenerate.TabIndex = 28
+        Me.btngenerate.Text = "Generate"
+        Me.btngenerate.UseVisualStyleBackColor = True
+        '
+        'btnauto
+        '
+        Me.btnauto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnauto.Location = New System.Drawing.Point(123, 131)
+        Me.btnauto.Name = "btnauto"
+        Me.btnauto.Size = New System.Drawing.Size(91, 27)
+        Me.btnauto.TabIndex = 27
+        Me.btnauto.Text = "Auto"
+        Me.btnauto.UseVisualStyleBackColor = True
         '
         'btnbatal
         '
@@ -270,26 +290,6 @@ Partial Class fgudang
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
-        '
-        'btngenerate
-        '
-        Me.btngenerate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btngenerate.Location = New System.Drawing.Point(218, 131)
-        Me.btngenerate.Name = "btngenerate"
-        Me.btngenerate.Size = New System.Drawing.Size(91, 27)
-        Me.btngenerate.TabIndex = 28
-        Me.btngenerate.Text = "Generate"
-        Me.btngenerate.UseVisualStyleBackColor = True
-        '
-        'btnauto
-        '
-        Me.btnauto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnauto.Location = New System.Drawing.Point(123, 131)
-        Me.btnauto.Name = "btnauto"
-        Me.btnauto.Size = New System.Drawing.Size(91, 27)
-        Me.btnauto.TabIndex = 27
-        Me.btnauto.Text = "Auto"
-        Me.btnauto.UseVisualStyleBackColor = True
         '
         'fgudang
         '

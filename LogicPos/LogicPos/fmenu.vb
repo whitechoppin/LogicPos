@@ -279,4 +279,37 @@ Public Class fmenu
     Private Sub HistoryUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistoryUserToolStripMenuItem.Click
         fhistoryuser.Show()
     End Sub
+
+    Private Sub fmenu_MdiChildActivate(sender As Object, e As EventArgs) Handles MyBase.MdiChildActivate
+
+        If Me.ActiveMdiChild Is Nothing Then
+            tabform.Visible = False
+        Else
+
+            If Me.ActiveMdiChild.Tag Is Nothing Then
+
+                Dim tp As New TabPage(Me.ActiveMdiChild.Text)
+                tp.Tag = Me.ActiveMdiChild
+                tp.Parent = tabform
+                tabform.SelectedTab = tp
+
+                Me.ActiveMdiChild.Tag = tp
+                'Me.ActiveMdiChild.FormClosed += New FormClosedEventHandler(ActiveMdiChild_FormClosed)
+            End If
+
+            If Not tabform.Visible Then
+                tabform.Visible = True
+            End If
+        End If
+    End Sub
+
+    Private Sub tabform_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tabform.SelectedIndexChanged
+        If (tabform.SelectedTab IsNot Nothing) And (tabform.SelectedTab.Tag IsNot Nothing) Then
+            TryCast(tabform.SelectedTab.Tag, Form).Select()
+        End If
+    End Sub
+
+    Public Sub ActiveMdiChild_FormClosed(sender As Object)
+        TryCast(TryCast(sender, Form).Tag, TabPage).Dispose()
+    End Sub
 End Class
