@@ -54,4 +54,8 @@ Public Class fjatuhtempopembelian
             cnn.Close()
         End Using
     End Sub
+
+    Private Sub fjatuhtempopembelian_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
 End Class

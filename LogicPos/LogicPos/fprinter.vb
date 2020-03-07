@@ -41,6 +41,10 @@ Public Class fprinter
         Call simpan()
     End Sub
 
+    Private Sub fprinter_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Sub simpan()
         Call koneksii()
 

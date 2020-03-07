@@ -882,6 +882,9 @@
     <EmbeddedResource Include="flapstokbarang.resx">
       <DependentUpon>flapstokbarang.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flogichouse.resx">
+      <DependentUpon>flogichouse.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flogin.resx">
       <DependentUpon>flogin.vb</DependentUpon>
     </EmbeddedResource>
