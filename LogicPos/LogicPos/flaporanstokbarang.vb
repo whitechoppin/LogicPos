@@ -1,13 +1,13 @@
 ﻿Imports System.Data.Odbc
 Imports CrystalDecisions.CrystalReports.Engine
 
-Public Class flaporstokbarang
+Public Class flaporanstokbarang
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
     Dim pilih As String
     Dim kode As String
     Dim modalbarang As Double
-    Private Sub flaporbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub flaporanstokbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call tabel()
         LabelHarga.Visible = False
@@ -142,7 +142,7 @@ Public Class flaporstokbarang
         Call tabel()
     End Sub
 
-    Private Sub flaporstokbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+    Private Sub flaporanstokbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 

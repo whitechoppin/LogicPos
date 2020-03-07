@@ -7,7 +7,7 @@ Public Class flaporantransaksikas
     Dim tabel1 As DataTable
     Public isi As String
     Public isi2 As String
-    Private Sub flaporankaskeluar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub flaporantransaksi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
         Me.WindowState = WindowState.Maximized
@@ -212,7 +212,7 @@ Public Class flaporantransaksikas
         End If
     End Sub
 
-    Private Sub flaporankas_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+    Private Sub flaporantransaksikas_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 End Class

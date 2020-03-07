@@ -598,10 +598,10 @@
     <Compile Include="fkasmasuk.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="flaporstokbarang.Designer.vb">
-      <DependentUpon>flaporstokbarang.vb</DependentUpon>
+    <Compile Include="flaporanstokbarang.Designer.vb">
+      <DependentUpon>flaporanstokbarang.vb</DependentUpon>
     </Compile>
-    <Compile Include="flaporstokbarang.vb">
+    <Compile Include="flaporanstokbarang.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flogichouse.Designer.vb">
@@ -861,8 +861,8 @@
     <EmbeddedResource Include="flaporanpricelist.resx">
       <DependentUpon>flaporanpricelist.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="flaporstokbarang.resx">
-      <DependentUpon>flaporstokbarang.vb</DependentUpon>
+    <EmbeddedResource Include="flaporanstokbarang.resx">
+      <DependentUpon>flaporanstokbarang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flappembelian.resx">
       <DependentUpon>flappembelian.vb</DependentUpon>

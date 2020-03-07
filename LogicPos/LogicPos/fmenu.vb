@@ -62,7 +62,7 @@ Public Class fmenu
         flaporanpenjualan.Show()
     End Sub
     Private Sub InfoStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LStokBarangToolStripMenuItem.Click
-        flaporstokbarang.Show()
+        flaporanstokbarang.Show()
     End Sub
     Private Sub ManageUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataUserToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
