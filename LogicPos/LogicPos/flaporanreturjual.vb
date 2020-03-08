@@ -193,9 +193,9 @@ Public Class flaporanreturjual
             akhirPVs.Add(akhirPDV)
             akhirPFD.ApplyCurrentValues(akhirPVs)
 
-            flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
-            flappenjualan.ShowDialog()
-            flappenjualan.WindowState = FormWindowState.Maximized
+            flapreturpenjualan.CrystalReportViewer1.ReportSource = rptrekap
+            flapreturpenjualan.ShowDialog()
+            flapreturpenjualan.WindowState = FormWindowState.Maximized
         Else
             MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
         End If

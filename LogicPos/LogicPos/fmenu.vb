@@ -57,10 +57,20 @@ Public Class fmenu
         End If
     End Sub
     Private Sub PembelianToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPembelianToolStripMenuItem.Click
-        flaporanpembelian.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_pembelian
+        If masterstatus > 0 Then
+            flaporanpembelian.kodeakses = masterstatus
+            flaporanpembelian.Show()
+        End If
     End Sub
     Private Sub PenjualanToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LPenjualanToolStripMenuItem.Click
-        flaporanpenjualan.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_penjualan
+        If masterstatus > 0 Then
+            flaporanpenjualan.kodeakses = masterstatus
+            flaporanpenjualan.Show()
+        End If
     End Sub
     Private Sub InfoStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LStokBarangToolStripMenuItem.Click
         flaporanstokbarang.Show()
