@@ -81,6 +81,7 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
+        Me.AlamatToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -354,7 +355,7 @@ Partial Class fmenu
         '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AlamatToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
@@ -393,13 +394,13 @@ Partial Class fmenu
         'LogicHouseToolStripMenuItem
         '
         Me.LogicHouseToolStripMenuItem.Name = "LogicHouseToolStripMenuItem"
-        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.LogicHouseToolStripMenuItem.Text = "Logic House"
         '
         'TokoSejatiToolStripMenuItem
         '
         Me.TokoSejatiToolStripMenuItem.Name = "TokoSejatiToolStripMenuItem"
-        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.TokoSejatiToolStripMenuItem.Text = "Toko Sejati"
         '
         'StatusStrip
@@ -448,6 +449,12 @@ Partial Class fmenu
         Me.tabform.Size = New System.Drawing.Size(1050, 23)
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
+        '
+        'AlamatToolStripMenuItem
+        '
+        Me.AlamatToolStripMenuItem.Name = "AlamatToolStripMenuItem"
+        Me.AlamatToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.AlamatToolStripMenuItem.Text = "Alamat"
         '
         'fmenu
         '
@@ -530,4 +537,5 @@ Partial Class fmenu
     Friend WithEvents DataKategoriBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HistoryUserToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents tabform As TabControl
+    Friend WithEvents AlamatToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -281,6 +281,10 @@ Public Class fmenu
         fhistoryuser.Show()
     End Sub
 
+    Private Sub AlamatToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AlamatToolStripMenuItem.Click
+        falamat.Show()
+    End Sub
+
     Private Sub fmenu_MdiChildActivate(sender As Object, e As EventArgs) Handles MyBase.MdiChildActivate
 
         If Me.ActiveMdiChild Is Nothing Then

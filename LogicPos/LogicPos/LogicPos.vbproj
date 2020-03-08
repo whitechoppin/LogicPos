@@ -183,6 +183,12 @@
       <DependentUpon>flaporantransferkas.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="falamat.Designer.vb">
+      <DependentUpon>falamat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="falamat.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fhistoryuser.Designer.vb">
       <DependentUpon>fhistoryuser.vb</DependentUpon>
     </Compile>
