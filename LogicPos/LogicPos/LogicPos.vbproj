@@ -273,10 +273,10 @@
     <Compile Include="flaporanpembelian.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="flaporanpiutang.designer.vb">
-      <DependentUpon>flaporanpiutang.vb</DependentUpon>
+    <Compile Include="flaporanlunaspiutang.designer.vb">
+      <DependentUpon>flaporanlunaspiutang.vb</DependentUpon>
     </Compile>
-    <Compile Include="flaporanpiutang.vb">
+    <Compile Include="flaporanlunaspiutang.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flaporankasmasuk.designer.vb">
@@ -285,10 +285,10 @@
     <Compile Include="flaporankasmasuk.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="flaporanutang.designer.vb">
-      <DependentUpon>flaporanutang.vb</DependentUpon>
+    <Compile Include="flaporanlunasutang.designer.vb">
+      <DependentUpon>flaporanlunasutang.vb</DependentUpon>
     </Compile>
-    <Compile Include="flaporanutang.vb">
+    <Compile Include="flaporanlunasutang.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flaporanpenjualan.designer.vb">
@@ -846,14 +846,14 @@
     <EmbeddedResource Include="flaporanpembelian.resx">
       <DependentUpon>flaporanpembelian.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="flaporanpiutang.resx">
-      <DependentUpon>flaporanpiutang.vb</DependentUpon>
+    <EmbeddedResource Include="flaporanlunaspiutang.resx">
+      <DependentUpon>flaporanlunaspiutang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporankasmasuk.resx">
       <DependentUpon>flaporankasmasuk.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="flaporanutang.resx">
-      <DependentUpon>flaporanutang.vb</DependentUpon>
+    <EmbeddedResource Include="flaporanlunasutang.resx">
+      <DependentUpon>flaporanlunasutang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanpenjualan.resx">
       <DependentUpon>flaporanpenjualan.vb</DependentUpon>

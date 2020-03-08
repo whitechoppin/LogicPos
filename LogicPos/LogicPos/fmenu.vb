@@ -8,7 +8,8 @@ Public Class fmenu
     Private Sub main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         statustgl.Text = Now.ToLongDateString
         Timer.Start()
-
+        fjatuhtempopembelian.Show()
+        fjatuhtempopenjualan.Show()
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
@@ -200,11 +201,11 @@ Public Class fmenu
     End Sub
 
     Private Sub LUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LUtangToolStripMenuItem.Click
-        flaporanutang.Show()
+        flaporanlunasutang.Show()
     End Sub
 
     Private Sub LPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LPiutangToolStripMenuItem.Click
-        flaporanpiutang.Show()
+        flaporanlunaspiutang.Show()
     End Sub
 
     Private Sub LaporanTransaksiKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanTransaksiKasToolStripMenuItem.Click

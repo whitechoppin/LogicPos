@@ -3,10 +3,10 @@ Imports System.Globalization
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
-Public Class flaporanutang
+Public Class flaporanlunaspiutang
     Public isi As String
     Public isi2 As String
-    Private Sub flaporanutang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub flaporanpiutang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
 
@@ -17,40 +17,39 @@ Public Class flaporanutang
         DateTimePicker2.MaxDate = Now
         Call grid()
 
-        With GridView1
-            .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
-            'buat sum harga
-            .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
-            .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
+        'With GridView1
+        '    .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
+        '    'buat sum harga
+        '    .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
+        '    .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
 
-        End With
+        'End With
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Nota"
-        GridColumn1.FieldName = "kode_pembelian"
+        GridColumn1.FieldName = "kode_penjualan"
 
-        GridColumn2.Caption = "Supplier"
-        GridColumn2.FieldName = "nama_supplier"
+        GridColumn2.Caption = "Pelangan"
+        GridColumn2.FieldName = "nama_pelanggan"
 
-        GridColumn3.Caption = "Tanggal Pembelian"
-        GridColumn3.FieldName = "tgl_pembelian"
+        GridColumn3.Caption = "Tanggal Penjualan"
+        GridColumn3.FieldName = "tgl_penjualan"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn4.Caption = "Tanggal Jatuh Tempo"
-        GridColumn4.FieldName = "tgl_jatuhtempo_pembelian"
+        GridColumn4.Caption = "Taggal Jatuh Tempo Penjualan"
+        GridColumn4.FieldName = "tgl_jatuhtempo_penjualan"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn4.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn5.Caption = "Total Pembelian"
-        GridColumn5.FieldName = "total_pembelian"
+        GridColumn5.Caption = "Total Penjualan"
+        GridColumn5.FieldName = "total_penjualan"
         GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn5.DisplayFormat.FormatString = "##,##0"
 
         GridColumn6.Caption = "Satuan"
         GridColumn6.FieldName = "satuan_barang"
         GridColumn6.Visible = False
-
         'GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         'GridColumn6.DisplayFormat.FormatString = "##,##0"
 
@@ -71,34 +70,23 @@ Public Class flaporanutang
         GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn9.DisplayFormat.FormatString = "##,##0"
         GridColumn9.Visible = False
-
         'GridColumn10.Caption = "Idbrg"
         'GridColumn10.FieldName = "idbarang"
         GridColumn10.Visible = False
         GridColumn11.Caption = "Kasir"
         GridColumn11.FieldName = "kode_user"
         GridColumn11.Visible = False
-
         GridColumn12.Caption = "Metode Bayar"
         GridColumn12.FieldName = "metode_pembayaran"
         GridColumn12.Visible = False
-
-        '        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        '       GridColumn7.DisplayFormat.FormatString = "##,##0"
-
         GridControl1.Visible = True
     End Sub
     Sub tabel()
 
         Using cnn As New OdbcConnection(strConn)
-            'sql = "SELECT tb_barang.kode, tb_barang.nama, tb_barang.satuan, tb_barang.kategori, tb_barang.stok, tb_price.harga as harga from tb_barang join tb_price on tb_barang.kode = tb_price.idbrg where tb_price.idcustomer='" & Strings.Right(fpenjualan.cmbcustomer.Text, 8) & "'"
-            'If listkasir.Items.Count = 0 Then
-            '    sql = "select * from tb_penjualan_detail join tb_penjualan on tb_penjualan.idjual=tb_penjualan_detail.idjual join tb_barang on tb_barang.kode=tb_penjualan_detail.idbarang where  tgljual between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' "
-            'Else
-            'sql = "select * from tb_penjualan_detail join tb_penjualan on tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan where  tgl_penjualan between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
-            '            End If
+            sql = "SELECT * FROM tb_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan = tb_penjualan.kode_pelanggan where lunas_penjualan = 0 and  tgl_penjualan between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
+            'End If
             'MsgBox(sql)
-            sql = "SELECT * FROM tb_pembelian JOIN tb_supplier ON tb_supplier.kode_supplier = tb_pembelian.kode_supplier WHERE tb_pembelian.lunas_pembelian = 0 AND tb_pembelian.tgl_pembelian between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet
@@ -109,6 +97,7 @@ Public Class flaporanutang
             cnn.Close()
         End Using
     End Sub
+
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
     End Sub
@@ -149,16 +138,16 @@ Public Class flaporanutang
         Dim akhirPDV As New ParameterDiscreteValue
 
         If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
-            sql = "SELECT * FROM tb_pembelian WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_penjualan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_pembelian WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "Select * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
         If dr.HasRows Then
-            rptrekap = New rptrekaputang
+            rptrekap = New rptrekappiutang
 
             awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
             awalPFDs = rptrekap.DataDefinition.ParameterFields
@@ -174,15 +163,15 @@ Public Class flaporanutang
             akhirPVs.Add(akhirPDV)
             akhirPFD.ApplyCurrentValues(akhirPVs)
 
-            flappembelian.CrystalReportViewer1.ReportSource = rptrekap
-            flappembelian.ShowDialog()
-            flappembelian.WindowState = FormWindowState.Maximized
+            flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
+            flappenjualan.ShowDialog()
+            flappenjualan.WindowState = FormWindowState.Maximized
         Else
             MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
         End If
     End Sub
 
-    Private Sub flaporanutang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+    Private Sub flaporanpiutang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 End Class

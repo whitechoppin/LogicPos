@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class flaporanutang
+Partial Class flaporanlunaspiutang
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -56,10 +56,9 @@ Partial Class flaporanutang
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker2)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(363, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(395, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(643, 63)
+        Me.GroupBox1.Size = New System.Drawing.Size(611, 52)
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Periode"
@@ -68,7 +67,7 @@ Partial Class flaporanutang
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(338, 27)
+        Me.Label1.Location = New System.Drawing.Point(212, 19)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(30, 16)
         Me.Label1.TabIndex = 7
@@ -76,16 +75,16 @@ Partial Class flaporanutang
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(374, 23)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(248, 19)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(200, 24)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker2.TabIndex = 3
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(132, 23)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(6, 19)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 24)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker1.TabIndex = 2
         '
         'GroupBox4
@@ -93,46 +92,45 @@ Partial Class flaporanutang
         Me.GroupBox4.Controls.Add(Me.btnrekap)
         Me.GroupBox4.Controls.Add(Me.btnexcel)
         Me.GroupBox4.Controls.Add(Me.btntabel)
-        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(12, 76)
+        Me.GroupBox4.Location = New System.Drawing.Point(12, 70)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(994, 67)
+        Me.GroupBox4.Size = New System.Drawing.Size(994, 68)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(123, 13)
+        Me.btnrekap.Location = New System.Drawing.Point(87, 12)
         Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(137, 48)
+        Me.btnrekap.Size = New System.Drawing.Size(180, 50)
         Me.btnrekap.TabIndex = 18
-        Me.btnrekap.Text = "Rekap "
+        Me.btnrekap.Text = "Rekap"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(867, 13)
+        Me.btnexcel.Location = New System.Drawing.Point(913, 12)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(121, 48)
+        Me.btnexcel.Size = New System.Drawing.Size(75, 50)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(6, 13)
+        Me.btntabel.Location = New System.Drawing.Point(6, 12)
         Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(111, 48)
+        Me.btntabel.Size = New System.Drawing.Size(75, 50)
         Me.btntabel.TabIndex = 17
         Me.btntabel.Text = "Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 149)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 144)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(994, 282)
+        Me.GridControl1.Size = New System.Drawing.Size(994, 287)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -228,24 +226,24 @@ Partial Class flaporanutang
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 26)
+        Me.Label2.Location = New System.Drawing.Point(12, 9)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(351, 31)
+        Me.Label2.Size = New System.Drawing.Size(372, 31)
         Me.Label2.TabIndex = 17
-        Me.Label2.Text = "Laporan Pelunasan Utang"
+        Me.Label2.Text = "Laporan Pelunasan Piutang"
         '
-        'flaporanutang
+        'flaporanpiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1018, 649)
+        Me.ClientSize = New System.Drawing.Size(1018, 661)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Name = "flaporanutang"
-        Me.Text = "Laporan Utang"
+        Me.Name = "flaporanpiutang"
+        Me.Text = "Laporan Piutang"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
