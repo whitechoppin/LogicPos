@@ -219,6 +219,30 @@
     <Compile Include="flapbarangmasuk.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flapkaskeluar.Designer.vb">
+      <DependentUpon>flapkaskeluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flapkaskeluar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flapkasmasuk.Designer.vb">
+      <DependentUpon>flapkasmasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flapkasmasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaplunaspiutang.Designer.vb">
+      <DependentUpon>flaplunaspiutang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaplunaspiutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaplunasutang.Designer.vb">
+      <DependentUpon>flaplunasutang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaplunasutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanbarangmasuk.designer.vb">
       <DependentUpon>flaporanbarangmasuk.vb</DependentUpon>
     </Compile>
@@ -337,6 +361,24 @@
       <DependentUpon>flapstokbarang.vb</DependentUpon>
     </Compile>
     <Compile Include="flapstokbarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaptransaksikas.Designer.vb">
+      <DependentUpon>flaptransaksikas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaptransaksikas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaptransferbarang.Designer.vb">
+      <DependentUpon>flaptransferbarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaptransferbarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaptransferkas.Designer.vb">
+      <DependentUpon>flaptransferkas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaptransferkas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flogin.designer.vb">
