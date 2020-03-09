@@ -26,24 +26,24 @@ Public Class flaporanlunasutang
         End With
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No.Nota"
-        GridColumn1.FieldName = "kode_pembelian"
+        GridColumn1.Caption = "No. Pelunasan"
+        GridColumn1.FieldName = "kode_lunas"
 
-        GridColumn2.Caption = "Supplier"
-        GridColumn2.FieldName = "nama_supplier"
+        GridColumn2.Caption = "No. Nota"
+        GridColumn2.FieldName = "kode_pembelian"
 
-        GridColumn3.Caption = "Tanggal Pembelian"
-        GridColumn3.FieldName = "tgl_pembelian"
+        GridColumn3.Caption = "Tanggal Transaksi"
+        GridColumn3.FieldName = "tanggal_transaksi"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn4.Caption = "Tanggal Jatuh Tempo"
-        GridColumn4.FieldName = "tgl_jatuhtempo_pembelian"
-        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn4.Caption = "User"
+        GridColumn4.FieldName = "kode_user"
+        'GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        'GridColumn4.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn5.Caption = "Total Pembelian"
-        GridColumn5.FieldName = "total_pembelian"
+        GridColumn5.Caption = "Pembayaran"
+        GridColumn5.FieldName = "bayar_lunas"
         GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn5.DisplayFormat.FormatString = "##,##0"
 
@@ -98,7 +98,13 @@ Public Class flaporanlunasutang
             'sql = "select * from tb_penjualan_detail join tb_penjualan on tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan where  tgl_penjualan between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
             '            End If
             'MsgBox(sql)
-            sql = "SELECT * FROM tb_pembelian JOIN tb_supplier ON tb_supplier.kode_supplier = tb_pembelian.kode_supplier WHERE tb_pembelian.lunas_pembelian = 0 AND tb_pembelian.tgl_pembelian between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
+            'sql = "SELECT * from tb_pelunasan_utang WHERE tb_pelunasan_utang.tanggal_transaksi '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
+            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+                sql = "SELECT * FROM tb_pelunasan_utang  WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "SELECT * FROM tb_pelunasan_utang WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            End If
+
             da = New OdbcDataAdapter(sql, cnn)
             cnn.Open()
             ds = New DataSet
@@ -149,9 +155,9 @@ Public Class flaporanlunasutang
         Dim akhirPDV As New ParameterDiscreteValue
 
         If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
-            sql = "SELECT * FROM tb_pembelian WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * from tb_pelunasan_utang  WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_pembelian WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_pelunasan_utang WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         cmmd = New OdbcCommand(sql, cnn)
