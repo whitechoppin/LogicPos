@@ -864,6 +864,18 @@
     <EmbeddedResource Include="flapbarangmasuk.resx">
       <DependentUpon>flapbarangmasuk.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flapkaskeluar.resx">
+      <DependentUpon>flapkaskeluar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flapkasmasuk.resx">
+      <DependentUpon>flapkasmasuk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaplunaspiutang.resx">
+      <DependentUpon>flaplunaspiutang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaplunasutang.resx">
+      <DependentUpon>flaplunasutang.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flaporanbarangmasuk.resx">
       <DependentUpon>flaporanbarangmasuk.vb</DependentUpon>
     </EmbeddedResource>
