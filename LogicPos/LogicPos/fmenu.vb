@@ -73,7 +73,13 @@ Public Class fmenu
         End If
     End Sub
     Private Sub InfoStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LStokBarangToolStripMenuItem.Click
-        flaporanstokbarang.Show()
+
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_stok_barang
+        If masterstatus > 0 Then
+            flaporanstokbarang.kodeakses = masterstatus
+            flaporanstokbarang.Show()
+        End If
     End Sub
     Private Sub ManageUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataUserToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
