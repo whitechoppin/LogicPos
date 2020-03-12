@@ -4,7 +4,7 @@ Public Class flogin
     Public master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust As Integer
     Public pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang As Integer
     Public lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar As Integer
-    Public lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barangmasuk, lap_barangkeluar, lap_utang, lap_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas As Integer
+    Public lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barangmasuk, lap_barangkeluar, lap_lunas_utang, lap_lunas_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas As Integer
 
 
     Sub reset()
@@ -40,8 +40,8 @@ Public Class flogin
         lap_returjual = 0
         lap_barangmasuk = 0
         lap_barangkeluar = 0
-        lap_utang = 0
-        lap_piutang = 0
+        lap_lunas_utang = 0
+        lap_lunas_piutang = 0
         lap_akun_masuk = 0
         lap_akun_keluar = 0
         lap_transfer_kas = 0
@@ -182,8 +182,8 @@ Public Class flogin
             lap_returjual = dr("lap_returjual")
             lap_barangmasuk = dr("lap_barang_masuk")
             lap_barangkeluar = dr("lap_barang_keluar")
-            lap_utang = dr("lap_utang")
-            lap_piutang = dr("lap_piutang")
+            lap_lunas_utang = dr("lap_utang")
+            lap_lunas_piutang = dr("lap_piutang")
             lap_akun_masuk = dr("lap_akun_masuk")
             lap_akun_keluar = dr("lap_akun_keluar")
             lap_transfer_kas = dr("lap_transfer_kas")
@@ -219,11 +219,11 @@ Public Class flogin
                 fmenu.LaporanMenu.DropDownItems.Item(6).Visible = True 'lap brg keluar
             End If
 
-            If lap_utang > 0 Then
+            If lap_lunas_utang > 0 Then
                 fmenu.LaporanMenu.DropDownItems.Item(7).Visible = True 'lap lunas utang
             End If
 
-            If lap_piutang > 0 Then
+            If lap_lunas_piutang > 0 Then
                 fmenu.LaporanMenu.DropDownItems.Item(8).Visible = True 'lap lunas piutang
             End If
 

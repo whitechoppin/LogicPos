@@ -40,10 +40,6 @@ Partial Class flaporanlunasutang
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -59,7 +55,7 @@ Partial Class flaporanlunasutang
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(363, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(643, 63)
+        Me.GroupBox1.Size = New System.Drawing.Size(560, 63)
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Periode"
@@ -67,23 +63,23 @@ Partial Class flaporanlunasutang
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(338, 27)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(307, 26)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(30, 16)
+        Me.Label1.Size = New System.Drawing.Size(31, 18)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "s/d"
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(374, 23)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(344, 23)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(200, 24)
         Me.DateTimePicker2.TabIndex = 3
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(132, 23)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(101, 23)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(200, 24)
         Me.DateTimePicker1.TabIndex = 2
@@ -96,49 +92,49 @@ Partial Class flaporanlunasutang
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.Location = New System.Drawing.Point(12, 76)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(994, 67)
+        Me.GroupBox4.Size = New System.Drawing.Size(911, 76)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(123, 13)
+        Me.btnrekap.Location = New System.Drawing.Point(194, 17)
         Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(137, 48)
+        Me.btnrekap.Size = New System.Drawing.Size(180, 50)
         Me.btnrekap.TabIndex = 18
-        Me.btnrekap.Text = "Rekap "
+        Me.btnrekap.Text = "Rekap Laporan"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(867, 13)
+        Me.btnexcel.Location = New System.Drawing.Point(715, 17)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(121, 48)
+        Me.btnexcel.Size = New System.Drawing.Size(180, 50)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(6, 13)
+        Me.btntabel.Location = New System.Drawing.Point(9, 17)
         Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(111, 48)
+        Me.btntabel.Size = New System.Drawing.Size(180, 50)
         Me.btntabel.TabIndex = 17
-        Me.btntabel.Text = "Tabel"
+        Me.btntabel.Text = "Rekap Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 149)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 158)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(994, 282)
+        Me.GridControl1.Size = New System.Drawing.Size(911, 315)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -189,40 +185,14 @@ Partial Class flaporanlunasutang
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.OptionsColumn.AllowEdit = False
         Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 7
+        Me.GridColumn7.VisibleIndex = 6
         '
         'GridColumn8
         '
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.OptionsColumn.AllowEdit = False
         Me.GridColumn8.Visible = True
-        Me.GridColumn8.VisibleIndex = 8
-        '
-        'GridColumn9
-        '
-        Me.GridColumn9.Name = "GridColumn9"
-        Me.GridColumn9.OptionsColumn.AllowEdit = False
-        Me.GridColumn9.Visible = True
-        Me.GridColumn9.VisibleIndex = 9
-        '
-        'GridColumn10
-        '
-        Me.GridColumn10.Name = "GridColumn10"
-        Me.GridColumn10.OptionsColumn.AllowEdit = False
-        Me.GridColumn10.Visible = True
-        Me.GridColumn10.VisibleIndex = 10
-        '
-        'GridColumn11
-        '
-        Me.GridColumn11.Name = "GridColumn11"
-        Me.GridColumn11.Visible = True
-        Me.GridColumn11.VisibleIndex = 6
-        '
-        'GridColumn12
-        '
-        Me.GridColumn12.Name = "GridColumn12"
-        Me.GridColumn12.Visible = True
-        Me.GridColumn12.VisibleIndex = 11
+        Me.GridColumn8.VisibleIndex = 7
         '
         'Label2
         '
@@ -234,17 +204,17 @@ Partial Class flaporanlunasutang
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Pelunasan Utang"
         '
-        'flaporanutang
+        'flaporanlunasutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1018, 649)
+        Me.ClientSize = New System.Drawing.Size(935, 485)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Name = "flaporanutang"
+        Me.Name = "flaporanlunasutang"
         Me.Text = "Laporan Utang"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -271,12 +241,8 @@ Partial Class flaporanlunasutang
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btntabel As Button
-    Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnexcel As Button
-    Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label2 As Label
     Friend WithEvents btnrekap As Button
 End Class

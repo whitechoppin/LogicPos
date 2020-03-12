@@ -22,7 +22,7 @@ Public Class flaporanreturbeli
         End With
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No Retur"
+        GridColumn1.Caption = "No.Retur"
         GridColumn1.FieldName = "kode_retur"
 
         GridColumn2.Caption = "User"

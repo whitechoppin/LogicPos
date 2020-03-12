@@ -114,7 +114,6 @@ Public Class fmenu
             fgudang.kodeakses = masterstatus
             fgudang.Show()
         End If
-
     End Sub
 
     Private Sub DataKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataKasToolStripMenuItem.Click
@@ -217,11 +216,21 @@ Public Class fmenu
     End Sub
 
     Private Sub LUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LUtangToolStripMenuItem.Click
-        flaporanlunasutang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_lunas_utang
+        If masterstatus > 0 Then
+            flaporanlunasutang.kodeakses = masterstatus
+            flaporanlunasutang.Show()
+        End If
     End Sub
 
     Private Sub LPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LPiutangToolStripMenuItem.Click
-        flaporanlunaspiutang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_lunas_piutang
+        If masterstatus > 0 Then
+            flaporanlunaspiutang.kodeakses = masterstatus
+            flaporanlunaspiutang.Show()
+        End If
     End Sub
 
     Private Sub LaporanTransaksiKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanTransaksiKasToolStripMenuItem.Click

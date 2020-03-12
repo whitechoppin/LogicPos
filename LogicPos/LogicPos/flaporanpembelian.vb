@@ -36,7 +36,7 @@ Public Class flaporanpembelian
         End Select
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No Nota"
+        GridColumn1.Caption = "No.Nota"
         GridColumn1.FieldName = "kode_pembelian"
 
         GridColumn2.Caption = "Supplier"
