@@ -973,7 +973,7 @@ Partial Class fpembelian
         Me.MaximizeBox = False
         Me.Name = "fpembelian"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Transaksi Pembelian Barang"
+        Me.Text = "Pembelian"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()

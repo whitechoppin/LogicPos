@@ -4,13 +4,14 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
 Public Class flaporantransferbarang
+    Public kodeakses As Integer
+    Dim exportstatus, printstatus As Boolean
     Dim tabel1 As DataTable
     Public isi As String
     Public isi2 As String
     Private Sub flaporankaskeluar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
-        Me.WindowState = WindowState.Maximized
 
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
@@ -122,36 +123,41 @@ Public Class flaporantransferbarang
 
     End Sub
     Sub tabel()
+        Call koneksii()
+
         Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_transfer_barang where tanggal_transfer_barang between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
+            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+                sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tanggal_transfer_barang) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "SELECT * FROM tb_transfer_barang WHERE tanggal_transfer_barang BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            End If
             da = New OdbcDataAdapter(sql, cnn)
-            cnn.Open()
             ds = New DataSet
             da.Fill(ds)
             GridControl1.DataSource = Nothing
             GridControl1.DataSource = ds.Tables(0)
             Call grid()
-            cnn.Close()
         End Using
     End Sub
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
     End Sub
     Sub ExportToExcel()
-        'https://www.devexpress.com/Support/Center/Question/Details/Q430217
-        'https://documentation.devexpress.com/#WindowsForms/CustomDocument1874
-        'storing current layout
-        'GridView1.SaveLayoutToXml("C:\data\tempLayout.xml")
-        'For Each column As GridColumn In GridView1.Columns
-        'make all export columns visible
-        'column.Visible = True
-        'Next
-        Dim a As String = InputBox("Nama File", "Input Nama file ")
-        Dim b As String = "C:\data\" + a + ".xls"
-        GridView1.ExportToXls(b)
-        MsgBox("Data tersimpan di " + b, MsgBoxStyle.Information, "Success")
-        'restoring the layout, the layout file needs to be deleted manually
-        'GridView1.RestoreLayoutFromXml("C:\data\tempLayout.xml")
+        Dim filename As String = InputBox("Nama File", "Input Nama file ")
+        Dim pathdata As String = "C:\ExportLogicPos"
+        Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"
+
+        If filename <> "" Then
+            If (Not System.IO.Directory.Exists(pathdata)) Then
+                System.IO.Directory.CreateDirectory(pathdata)
+            End If
+
+            GridView1.ExportToXls(yourpath)
+            MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
+            ' Do something
+        ElseIf DialogResult.Cancel Then
+            MsgBox("You've canceled")
+        End If
     End Sub
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
         ExportToExcel()
