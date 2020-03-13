@@ -234,7 +234,13 @@ Public Class fmenu
     End Sub
 
     Private Sub LaporanTransaksiKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanTransaksiKasToolStripMenuItem.Click
-        flaporantransaksikas.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_transaksi_kas
+        If masterstatus > 0 Then
+            flaporantransaksikas.kodeakses = masterstatus
+            flaporantransaksikas.Show()
+        End If
+
     End Sub
 
     Private Sub LAkunMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LAkunMasukToolStripMenuItem.Click
@@ -246,11 +252,22 @@ Public Class fmenu
     End Sub
 
     Private Sub LTransferKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferKasToolStripMenuItem.Click
-        flaporantransferkas.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_transfer_kas
+        If masterstatus > 0 Then
+            flaporantransferkas.kodeakses = masterstatus
+            flaporantransferkas.Show()
+        End If
     End Sub
 
     Private Sub LTransferBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferBarangToolStripMenuItem.Click
-        flaporantransferbarang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_transfer_barang
+        If masterstatus > 0 Then
+            flaporantransferbarang.kodeakses = masterstatus
+            flaporantransferbarang.Show()
+        End If
+
     End Sub
 
     Private Sub LogOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOutToolStripMenuItem.Click
@@ -287,19 +304,40 @@ Public Class fmenu
     End Sub
 
     Private Sub LaporanReturBeliToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanReturBeliToolStripMenuItem.Click
-        flaporanreturbeli.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_returbeli
+        If masterstatus > 0 Then
+            flaporanreturbeli.kodeakses = masterstatus
+            flaporanreturbeli.Show()
+        End If
+
     End Sub
 
     Private Sub LaporanReturJualToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanReturJualToolStripMenuItem.Click
-        flaporanreturjual.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_returjual
+        If masterstatus > 0 Then
+            flaporanreturjual.kodeakses = masterstatus
+            flaporanreturjual.Show()
+        End If
     End Sub
 
     Private Sub LaporanBarangMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanBarangMasukToolStripMenuItem.Click
-        flaporanbarangmasuk.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_barangmasuk
+        If masterstatus > 0 Then
+            flaporanbarangmasuk.kodeakses = masterstatus
+            flaporanbarangmasuk.Show()
+        End If
     End Sub
 
     Private Sub LaporanBarangKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanBarangKeluarToolStripMenuItem.Click
-        flaporanbarangkeluar.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_barangkeluar
+        If masterstatus > 0 Then
+            flaporanbarangkeluar.kodeakses = masterstatus
+            flaporanbarangkeluar.Show()
+        End If
     End Sub
 
     Private Sub HistoryUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistoryUserToolStripMenuItem.Click

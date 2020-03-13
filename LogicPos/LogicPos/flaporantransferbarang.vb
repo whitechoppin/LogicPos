@@ -21,6 +21,18 @@ Public Class flaporantransferbarang
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
         End With
+
+        Select Case kodeakses
+            Case 1
+                printstatus = True
+                exportstatus = False
+            Case 3
+                printstatus = False
+                exportstatus = True
+            Case 4
+                printstatus = True
+                exportstatus = True
+        End Select
     End Sub
     Sub new_tabel()
         tabel1 = New DataTable
@@ -91,37 +103,6 @@ Public Class flaporantransferbarang
 
         GridControl1.Visible = True
     End Sub
-    Sub tabel_bantu()
-        Call new_tabel()
-        GridControl1.DataSource = Nothing
-        GridControl1.DataSource = tabel1
-
-        Call koneksii()
-        'sql = "select tb_item.nama_brg, tb_histori.orderid, tb_histori.tanggal,tb_histori.waktu, tb_histori.qtymasuk, tb_histori.qtykeluar,tb_histori.qty, tb_histori.hrgmasuk,tb_histori.hrgkeluar from tb_histori join tb_item on tb_histori.idbrg = tb_item.id_barang where tb_histori.idbrg= '" & txtid.Text & "'  and tb_histori.tanggal < '" & tgl1 & "' order by tb_histori.tanggal desc, tb_histori.waktu desc limit 1"
-        'sql = "SELECT  tb_kas_masuk.kode_kas, tb_kas_masuk.jenis_kas, tb_kas_masuk.tanggal_transaksi AS tanggal, tb_kas_masuk.saldo_kas AS debet FROM tb_kas_masuk WHERE  tb_kas_masuk.tanggal_transaksi between '" & DateTimePicker1.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "' and '" & DateTimePicker2.Value.ToString("yyyy-MM-dd", DateTimeFormatInfo.InvariantInfo) & "'"
-        sql = "SELECT  tb_kas_masuk.kode_kas, tb_kas_masuk.jenis_kas, tb_kas_masuk.tanggal_transaksi AS tanggal, tb_kas_masuk.saldo_kas AS debet FROM tb_kas_masuk WHERE  (tb_kas_masuk.tanggal_transaksi >= '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "') AND (tb_kas_masuk.tanggal_transaksi <='" & Format(DateAdd(DateInterval.Day, 1, DateTimePicker2.Value), "yyyy-MM-dd") & "') "
-
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-        While dr.Read
-            tabel1.Rows.Add(dr("kode_kas"), dr("jenis_kas"), Format(dr("tanggal"), "dd/MM/yyyy"), dr("debet"), 0)
-        End While
-        'tabel1.Rows.Add("*INITIAL*", Format(dr("tanggal"), "dd/MM/yyyy"), dr("waktu"), "0", dr("qty"), " ", dr("qty"), " ", " ")
-        ' End If
-
-
-        sql = "SELECT  tb_kas_keluar.kode_kas, tb_kas_keluar.jenis_kas, tb_kas_keluar.tanggal_transaksi AS tanggal, tb_kas_keluar.saldo_kas AS kredit FROM tb_kas_keluar WHERE  (tb_kas_keluar.tanggal_transaksi >= '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "') AND (tb_kas_keluar.tanggal_transaksi <='" & Format(DateAdd(DateInterval.Day, 1, DateTimePicker2.Value), "yyyy-MM-dd") & "'+ INTERVAL 1 day) "
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-        While dr.Read
-            'tabel1.Rows.Add("*INITIAL*", Format(dr("tanggal"), "dd/MM/yyyy"), dr("waktu"), "0", dr("qty"), " ", dr("qty"), " ", " ")
-            tabel1.Rows.Add(dr("kode_kas"), dr("jenis_kas"), Format(dr("tanggal"), "dd/MM/yyyy"), 0, dr("kredit"))
-
-        End While
-        GridControl1.RefreshDataSource()
-        GridColumn5.SortOrder = DevExpress.Data.ColumnSortOrder.Descending
-
-    End Sub
     Sub tabel()
         Call koneksii()
 
@@ -160,53 +141,64 @@ Public Class flaporantransferbarang
         End If
     End Sub
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
-        ExportToExcel()
-        MsgBox("Export successfull!")
+        If exportstatus.Equals(True) Then
+            If GridView1.DataRowCount > 0 Then
+                ExportToExcel()
+            Else
+                MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
+            End If
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
-        Dim rptrekap As ReportDocument
-        Dim awalPFDs As ParameterFieldDefinitions
-        Dim awalPFD As ParameterFieldDefinition
-        Dim awalPVs As New ParameterValues
-        Dim awalPDV As New ParameterDiscreteValue
+        If printstatus.Equals(True) Then
+            Dim rptrekap As ReportDocument
+            Dim awalPFDs As ParameterFieldDefinitions
+            Dim awalPFD As ParameterFieldDefinition
+            Dim awalPVs As New ParameterValues
+            Dim awalPDV As New ParameterDiscreteValue
 
-        Dim akhirPFDs As ParameterFieldDefinitions
-        Dim akhirPFD As ParameterFieldDefinition
-        Dim akhirPVs As New ParameterValues
-        Dim akhirPDV As New ParameterDiscreteValue
+            Dim akhirPFDs As ParameterFieldDefinitions
+            Dim akhirPFD As ParameterFieldDefinition
+            Dim akhirPVs As New ParameterValues
+            Dim akhirPDV As New ParameterDiscreteValue
 
-        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
-            sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tanggal_transfer_barang) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+                sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tanggal_transfer_barang) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "SELECT * FROM tb_transfer_barang WHERE tanggal_transfer_barang BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            End If
+
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+
+            If dr.HasRows Then
+                rptrekap = New rptrekaptransferbarang
+
+                awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
+                awalPFDs = rptrekap.DataDefinition.ParameterFields
+                awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
+                awalPVs.Clear()
+                awalPVs.Add(awalPDV)
+                awalPFD.ApplyCurrentValues(awalPVs)
+
+                akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
+                akhirPFDs = rptrekap.DataDefinition.ParameterFields
+                akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
+                akhirPVs.Clear()
+                akhirPVs.Add(akhirPDV)
+                akhirPFD.ApplyCurrentValues(akhirPVs)
+
+                flappembelian.CrystalReportViewer1.ReportSource = rptrekap
+                flappembelian.ShowDialog()
+                flappembelian.WindowState = FormWindowState.Maximized
+            Else
+                MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
+            End If
         Else
-            sql = "SELECT * FROM tb_transfer_barang WHERE tanggal_transfer_barang BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
-        End If
-
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-
-        If dr.HasRows Then
-            rptrekap = New rptrekaptransferbarang
-
-            awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
-            awalPFDs = rptrekap.DataDefinition.ParameterFields
-            awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
-            awalPVs.Clear()
-            awalPVs.Add(awalPDV)
-            awalPFD.ApplyCurrentValues(awalPVs)
-
-            akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
-            akhirPFDs = rptrekap.DataDefinition.ParameterFields
-            akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
-            akhirPVs.Clear()
-            akhirPVs.Add(akhirPDV)
-            akhirPFD.ApplyCurrentValues(akhirPVs)
-
-            flappembelian.CrystalReportViewer1.ReportSource = rptrekap
-            flappembelian.ShowDialog()
-            flappembelian.WindowState = FormWindowState.Maximized
-        Else
-            MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 

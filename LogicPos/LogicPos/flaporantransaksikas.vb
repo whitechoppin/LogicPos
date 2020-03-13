@@ -4,6 +4,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
 Public Class flaporantransaksikas
+    Public kodeakses As Integer
+    Dim exportstatus, printstatus As Boolean
     Dim tabel1 As DataTable
     Public isi As String
     Public isi2 As String
@@ -21,6 +23,18 @@ Public Class flaporantransaksikas
             .Columns("debet_kas").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "debet_kas", "{0:n0}")
             .Columns("kredit_kas").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "kredit_kas", "{0:n0}")
         End With
+
+        Select Case kodeakses
+            Case 1
+                printstatus = True
+                exportstatus = False
+            Case 3
+                printstatus = False
+                exportstatus = True
+            Case 4
+                printstatus = True
+                exportstatus = True
+        End Select
     End Sub
 
     Sub grid()
@@ -112,54 +126,65 @@ Public Class flaporantransaksikas
     End Sub
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
 
-        ExportToExcel()
-        MsgBox("Export successfull!")
+        If exportstatus.Equals(True) Then
+            If GridView1.DataRowCount > 0 Then
+                ExportToExcel()
+            Else
+                MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
+            End If
+        Else
+            MsgBox("Tidak ada akses")
+        End If
 
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
-        Dim rptrekap As ReportDocument
-        Dim awalPFDs As ParameterFieldDefinitions
-        Dim awalPFD As ParameterFieldDefinition
-        Dim awalPVs As New ParameterValues
-        Dim awalPDV As New ParameterDiscreteValue
+        If printstatus.Equals(True) Then
+            Dim rptrekap As ReportDocument
+            Dim awalPFDs As ParameterFieldDefinitions
+            Dim awalPFD As ParameterFieldDefinition
+            Dim awalPVs As New ParameterValues
+            Dim awalPDV As New ParameterDiscreteValue
 
-        Dim akhirPFDs As ParameterFieldDefinitions
-        Dim akhirPFD As ParameterFieldDefinition
-        Dim akhirPVs As New ParameterValues
-        Dim akhirPDV As New ParameterDiscreteValue
+            Dim akhirPFDs As ParameterFieldDefinitions
+            Dim akhirPFD As ParameterFieldDefinition
+            Dim akhirPVs As New ParameterValues
+            Dim akhirPDV As New ParameterDiscreteValue
 
-        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
-            sql = "SELECT * FROM tb_transaksi_kas WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+                sql = "SELECT * FROM tb_transaksi_kas WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "SELECT * FROM tb_transaksi_kas WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            End If
+
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+
+            If dr.HasRows Then
+                rptrekap = New rptrekapkas
+
+                awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
+                awalPFDs = rptrekap.DataDefinition.ParameterFields
+                awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
+                awalPVs.Clear()
+                awalPVs.Add(awalPDV)
+                awalPFD.ApplyCurrentValues(awalPVs)
+
+                akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
+                akhirPFDs = rptrekap.DataDefinition.ParameterFields
+                akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
+                akhirPVs.Clear()
+                akhirPVs.Add(akhirPDV)
+                akhirPFD.ApplyCurrentValues(akhirPVs)
+
+                flappembelian.CrystalReportViewer1.ReportSource = rptrekap
+                flappembelian.ShowDialog()
+                flappembelian.WindowState = FormWindowState.Maximized
+            Else
+                MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
+            End If
         Else
-            sql = "SELECT * FROM tb_transaksi_kas WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
-        End If
-
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
-
-        If dr.HasRows Then
-            rptrekap = New rptrekapkas
-
-            awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
-            awalPFDs = rptrekap.DataDefinition.ParameterFields
-            awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
-            awalPVs.Clear()
-            awalPVs.Add(awalPDV)
-            awalPFD.ApplyCurrentValues(awalPVs)
-
-            akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
-            akhirPFDs = rptrekap.DataDefinition.ParameterFields
-            akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
-            akhirPVs.Clear()
-            akhirPVs.Add(akhirPDV)
-            akhirPFD.ApplyCurrentValues(akhirPVs)
-
-            flappembelian.CrystalReportViewer1.ReportSource = rptrekap
-            flappembelian.ShowDialog()
-            flappembelian.WindowState = FormWindowState.Maximized
-        Else
-            MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
+            MsgBox("Tidak ada akses")
         End If
     End Sub
 
