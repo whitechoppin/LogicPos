@@ -399,6 +399,12 @@
     <Compile Include="fpassword.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fpersentasepajak.Designer.vb">
+      <DependentUpon>fpersentasepajak.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fpersentasepajak.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fprinter.Designer.vb">
       <DependentUpon>fprinter.vb</DependentUpon>
     </Compile>
@@ -840,6 +846,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpenjualan.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="falamat.resx">
+      <DependentUpon>falamat.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fhistoryuser.resx">
       <DependentUpon>fhistoryuser.vb</DependentUpon>
     </EmbeddedResource>
@@ -959,6 +968,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fpassword.resx">
       <DependentUpon>fpassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fpersentasepajak.resx">
+      <DependentUpon>fpersentasepajak.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fprinter.resx">
       <DependentUpon>fprinter.vb</DependentUpon>
