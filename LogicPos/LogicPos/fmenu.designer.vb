@@ -68,6 +68,7 @@ Partial Class fmenu
         Me.LStokBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanTransaksiKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AlamatToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrinterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JatuhTempoPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JatuhTempoPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -81,7 +82,6 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
-        Me.AlamatToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -360,6 +360,12 @@ Partial Class fmenu
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
         '
+        'AlamatToolStripMenuItem
+        '
+        Me.AlamatToolStripMenuItem.Name = "AlamatToolStripMenuItem"
+        Me.AlamatToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.AlamatToolStripMenuItem.Text = "Alamat"
+        '
         'PrinterToolStripMenuItem
         '
         Me.PrinterToolStripMenuItem.Name = "PrinterToolStripMenuItem"
@@ -449,12 +455,6 @@ Partial Class fmenu
         Me.tabform.Size = New System.Drawing.Size(1050, 23)
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
-        '
-        'AlamatToolStripMenuItem
-        '
-        Me.AlamatToolStripMenuItem.Name = "AlamatToolStripMenuItem"
-        Me.AlamatToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.AlamatToolStripMenuItem.Text = "Alamat"
         '
         'fmenu
         '

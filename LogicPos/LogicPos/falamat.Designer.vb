@@ -24,7 +24,6 @@ Partial Class falamat
     Private Sub InitializeComponent()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
-        Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnsimpan = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -47,20 +46,12 @@ Partial Class falamat
         Me.txtketerangan.TabIndex = 40
         Me.txtketerangan.Text = ""
         '
-        'btnbatal
-        '
-        Me.btnbatal.Location = New System.Drawing.Point(616, 50)
-        Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(115, 28)
-        Me.btnbatal.TabIndex = 41
-        Me.btnbatal.Text = "Batal"
-        Me.btnbatal.UseVisualStyleBackColor = True
-        '
         'btnsimpan
         '
+        Me.btnsimpan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsimpan.Location = New System.Drawing.Point(616, 21)
         Me.btnsimpan.Name = "btnsimpan"
-        Me.btnsimpan.Size = New System.Drawing.Size(115, 28)
+        Me.btnsimpan.Size = New System.Drawing.Size(115, 57)
         Me.btnsimpan.TabIndex = 42
         Me.btnsimpan.Text = "Simpan"
         Me.btnsimpan.UseVisualStyleBackColor = True
@@ -70,8 +61,7 @@ Partial Class falamat
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(743, 110)
-        Me.Controls.Add(Me.btnbatal)
+        Me.ClientSize = New System.Drawing.Size(743, 99)
         Me.Controls.Add(Me.btnsimpan)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtketerangan)
@@ -84,6 +74,5 @@ Partial Class falamat
 
     Friend WithEvents Label7 As Label
     Friend WithEvents txtketerangan As RichTextBox
-    Friend WithEvents btnbatal As Button
     Friend WithEvents btnsimpan As Button
 End Class

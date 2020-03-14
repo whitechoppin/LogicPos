@@ -22,27 +22,17 @@ Partial Class fpersentasepajak
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnbatal = New System.Windows.Forms.Button()
         Me.txtpersen = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnsimpan = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'btnbatal
-        '
-        Me.btnbatal.Location = New System.Drawing.Point(425, 14)
-        Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(77, 22)
-        Me.btnbatal.TabIndex = 19
-        Me.btnbatal.Text = "Batal"
-        Me.btnbatal.UseVisualStyleBackColor = True
-        '
         'txtpersen
         '
-        Me.txtpersen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpersen.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpersen.Location = New System.Drawing.Point(122, 14)
         Me.txtpersen.Name = "txtpersen"
-        Me.txtpersen.Size = New System.Drawing.Size(217, 22)
+        Me.txtpersen.Size = New System.Drawing.Size(217, 24)
         Me.txtpersen.TabIndex = 17
         '
         'Label1
@@ -57,9 +47,10 @@ Partial Class fpersentasepajak
         '
         'btnsimpan
         '
-        Me.btnsimpan.Location = New System.Drawing.Point(345, 14)
+        Me.btnsimpan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsimpan.Location = New System.Drawing.Point(345, 12)
         Me.btnsimpan.Name = "btnsimpan"
-        Me.btnsimpan.Size = New System.Drawing.Size(74, 22)
+        Me.btnsimpan.Size = New System.Drawing.Size(74, 28)
         Me.btnsimpan.TabIndex = 20
         Me.btnsimpan.Text = "Simpan"
         Me.btnsimpan.UseVisualStyleBackColor = True
@@ -69,8 +60,7 @@ Partial Class fpersentasepajak
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(520, 54)
-        Me.Controls.Add(Me.btnbatal)
+        Me.ClientSize = New System.Drawing.Size(435, 54)
         Me.Controls.Add(Me.txtpersen)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnsimpan)
@@ -80,8 +70,6 @@ Partial Class fpersentasepajak
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnbatal As Button
     Friend WithEvents txtpersen As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents btnsimpan As Button

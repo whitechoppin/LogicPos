@@ -69,9 +69,9 @@ Partial Class fprinter
         '
         'btnsimpan
         '
-        Me.btnsimpan.Location = New System.Drawing.Point(344, 44)
+        Me.btnsimpan.Location = New System.Drawing.Point(344, 19)
         Me.btnsimpan.Name = "btnsimpan"
-        Me.btnsimpan.Size = New System.Drawing.Size(75, 23)
+        Me.btnsimpan.Size = New System.Drawing.Size(99, 48)
         Me.btnsimpan.TabIndex = 3
         Me.btnsimpan.Text = "Simpan"
         Me.btnsimpan.UseVisualStyleBackColor = True

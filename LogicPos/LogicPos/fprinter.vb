@@ -15,7 +15,7 @@ Public Class fprinter
         Next
 
         Call koneksii()
-        sql = "select * from tb_printer where nomor='1'"
+        sql = "SELECT * FROM tb_printer WHERE nomor='1' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
@@ -25,7 +25,7 @@ Public Class fprinter
             cmbstruk.SelectedIndex = -1
         End If
 
-        sql = "select * from tb_printer where nomor='2'"
+        sql = "SELECT * FROM tb_printer WHERE nomor='2' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
@@ -34,7 +34,6 @@ Public Class fprinter
         Else
             cmbfaktur.SelectedIndex = -1
         End If
-
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
@@ -48,28 +47,28 @@ Public Class fprinter
     Sub simpan()
         Call koneksii()
 
-        sql = "select * from tb_printer where nomor=1"
+        sql = "SELECT * FROM tb_printer WHERE nomor=1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
-            sql = "update tb_printer set nama_printer='" & cmbstruk.Text & "' where nomor=1"
+            sql = "UPDATE tb_printer SET nama_printer='" & cmbstruk.Text & "' WHERE nomor=1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Else
-            sql = "insert into tb_printer (nomor, nama_printer) values ('1','" & cmbstruk.Text & "')"
+            sql = "INSERT INTO tb_printer (nomor, nama_printer) VALUES ('1','" & cmbstruk.Text & "')"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         End If
 
-        sql = "select * from tb_printer where nomor=2"
+        sql = "SELECT * FROM tb_printer WHERE nomor=2"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
-            sql = "update tb_printer set nama_printer='" & cmbfaktur.Text & "' where nomor=2"
+            sql = "UPDATE tb_printer SET nama_printer='" & cmbfaktur.Text & "' WHERE nomor=2"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Else
-            sql = "insert into tb_printer (nomor, nama_printer) values ('2','" & cmbfaktur.Text & "')"
+            sql = "INSERT INTO tb_printer (nomor, nama_printer) VALUES ('2','" & cmbfaktur.Text & "')"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         End If
