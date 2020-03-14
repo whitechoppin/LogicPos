@@ -942,6 +942,15 @@
     <EmbeddedResource Include="flapstokbarang.resx">
       <DependentUpon>flapstokbarang.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flaptransaksikas.resx">
+      <DependentUpon>flaptransaksikas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaptransferbarang.resx">
+      <DependentUpon>flaptransferbarang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaptransferkas.resx">
+      <DependentUpon>flaptransferkas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flogichouse.resx">
       <DependentUpon>flogichouse.vb</DependentUpon>
     </EmbeddedResource>

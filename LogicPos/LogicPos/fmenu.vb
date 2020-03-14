@@ -244,11 +244,21 @@ Public Class fmenu
     End Sub
 
     Private Sub LAkunMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LAkunMasukToolStripMenuItem.Click
-        flaporankasmasuk.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_akun_masuk
+        If masterstatus > 0 Then
+            flaporankasmasuk.kodeakses = masterstatus
+            flaporankasmasuk.Show()
+        End If
     End Sub
 
     Private Sub LAkunKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LAkunKeluarToolStripMenuItem.Click
-        flaporankaskeluar.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_akun_keluar
+        If masterstatus > 0 Then
+            flaporankaskeluar.kodeakses = masterstatus
+            flaporankaskeluar.Show()
+        End If
     End Sub
 
     Private Sub LTransferKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferKasToolStripMenuItem.Click
