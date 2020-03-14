@@ -107,7 +107,7 @@ Partial Class flaporankasmasuk
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(180, 47)
         Me.btnrekap.TabIndex = 19
-        Me.btnrekap.Text = "Rekap"
+        Me.btnrekap.Text = "Rekap Laporan"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
         'btnexcel
@@ -125,7 +125,7 @@ Partial Class flaporankasmasuk
         Me.btntabel.Name = "btntabel"
         Me.btntabel.Size = New System.Drawing.Size(98, 47)
         Me.btntabel.TabIndex = 17
-        Me.btntabel.Text = "Tabel"
+        Me.btntabel.Text = "Rekap Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
         '
         'GridControl1
