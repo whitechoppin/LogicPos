@@ -1038,7 +1038,7 @@ Public Class ftransferbarang
                 namastokdatabase = dr("nama_stok")
 
                 'mengambil selisih qty dari penjualan detail
-                sql = "SELECT * FROM tb_transfer_barang_detail WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_barang_keluar ='" & kodebarangkeluar & "' LIMIT 1"
+                sql = "SELECT * FROM tb_transfer_barang_detail WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_transfer_barang ='" & kodetransferbarang & "' LIMIT 1"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 dr.Read()
