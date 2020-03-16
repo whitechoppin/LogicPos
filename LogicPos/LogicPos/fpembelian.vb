@@ -1118,10 +1118,6 @@ Public Class fpembelian
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         Dim statusutang As Boolean
 
-
-
-
-
         If cbvoid.Checked = False Then
             Call koneksii()
             sql = "SELECT * FROM tb_pelunasan_utang WHERE kode_pembelian = '" & txtnonota.Text & "' LIMIT 1"

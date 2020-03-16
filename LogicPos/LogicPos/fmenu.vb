@@ -372,7 +372,6 @@ Public Class fmenu
                 tabform.SelectedTab = tp
 
                 Me.ActiveMdiChild.Tag = tp
-                'Me.ActiveMdiChild.FormClosed += New FormClosedEventHandler(ActiveMdiChild_FormClosed)
             End If
 
             If Not tabform.Visible Then

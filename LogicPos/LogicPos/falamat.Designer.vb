@@ -23,7 +23,7 @@ Partial Class falamat
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtketerangan = New System.Windows.Forms.RichTextBox()
+        Me.txtalamat = New System.Windows.Forms.RichTextBox()
         Me.btnsimpan = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -37,14 +37,14 @@ Partial Class falamat
         Me.Label7.TabIndex = 39
         Me.Label7.Text = "Alamat :"
         '
-        'txtketerangan
+        'txtalamat
         '
-        Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtketerangan.Location = New System.Drawing.Point(78, 21)
-        Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(529, 57)
-        Me.txtketerangan.TabIndex = 40
-        Me.txtketerangan.Text = ""
+        Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.txtalamat.Location = New System.Drawing.Point(78, 21)
+        Me.txtalamat.Name = "txtalamat"
+        Me.txtalamat.Size = New System.Drawing.Size(529, 57)
+        Me.txtalamat.TabIndex = 40
+        Me.txtalamat.Text = ""
         '
         'btnsimpan
         '
@@ -64,7 +64,7 @@ Partial Class falamat
         Me.ClientSize = New System.Drawing.Size(743, 99)
         Me.Controls.Add(Me.btnsimpan)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.txtketerangan)
+        Me.Controls.Add(Me.txtalamat)
         Me.Name = "falamat"
         Me.Text = "Alamat Perusahaan"
         Me.ResumeLayout(False)
@@ -73,6 +73,6 @@ Partial Class falamat
     End Sub
 
     Friend WithEvents Label7 As Label
-    Friend WithEvents txtketerangan As RichTextBox
+    Friend WithEvents txtalamat As RichTextBox
     Friend WithEvents btnsimpan As Button
 End Class
