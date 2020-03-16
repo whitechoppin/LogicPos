@@ -1012,6 +1012,8 @@ Public Class ftransferbarang
         'periksa di barang di stok dulu
         Dim stok As Integer
         Dim stokdatabase As Integer
+        Dim stokdatabasesementara As Integer
+        Dim namastokdatabase As String
         Dim statusavailable As Boolean = True
         Dim kodedarigudangupdate, kodekegudangupdate As String
 
@@ -1033,8 +1035,22 @@ Public Class ftransferbarang
             If dr.HasRows Then
                 stok = GridView1.GetRowCellValue(i, "banyak")
                 stokdatabase = dr("jumlah_stok")
-                If stokdatabase < stok Then
-                    MsgBox("Stok dengan kode stok " + dr("kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                namastokdatabase = dr("nama_stok")
+
+                'mengambil selisih qty dari penjualan detail
+                sql = "SELECT * FROM tb_transfer_barang_detail WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_barang_keluar ='" & kodebarangkeluar & "' LIMIT 1"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+                dr.Read()
+                If dr.HasRows Then
+                    stokdatabasesementara = dr("qty")
+                Else
+                    stokdatabasesementara = 0
+                End If
+                '=============================================
+
+                If (stokdatabase + stokdatabasesementara) < stok Then
+                    MsgBox("Stok dengan kode stok " + namastokdatabase + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
                     statusavailable = False
                 End If
             Else
