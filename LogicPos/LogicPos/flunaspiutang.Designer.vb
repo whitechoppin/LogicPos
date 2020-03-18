@@ -51,9 +51,7 @@ Partial Class flunaspiutang
         Me.cbvoid = New System.Windows.Forms.CheckBox()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtcustomer = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txttelp = New System.Windows.Forms.TextBox()
@@ -71,19 +69,24 @@ Partial Class flunaspiutang
         Me.btnbaru = New System.Windows.Forms.Button()
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnsimpan = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.cmbcustomer = New System.Windows.Forms.ComboBox()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn13 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn14 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn15 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn16 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn17 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn18 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn19 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn20 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,16 +95,16 @@ Partial Class flunaspiutang
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(14, 12)
+        Me.GridControl1.Location = New System.Drawing.Point(23, 253)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1381, 311)
+        Me.GridControl1.Size = New System.Drawing.Size(1142, 232)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -217,12 +220,17 @@ Partial Class flunaspiutang
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.Label6)
+        Me.GroupBox3.Controls.Add(Me.cmbcustomer)
+        Me.GroupBox3.Controls.Add(Me.txtalamat)
+        Me.GroupBox3.Controls.Add(Me.txtcustomer)
+        Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(Me.cmbbayar)
-        Me.GroupBox3.Controls.Add(Me.txtketerangan)
+        Me.GroupBox3.Controls.Add(Me.txttelp)
         Me.GroupBox3.Controls.Add(Me.Label5)
+        Me.GroupBox3.Controls.Add(Me.Label20)
         Me.GroupBox3.Controls.Add(Me.Label1)
         Me.GroupBox3.Controls.Add(Me.txttotalbayar)
+        Me.GroupBox3.Controls.Add(Me.Label22)
         Me.GroupBox3.Controls.Add(Me.dtpelunasan)
         Me.GroupBox3.Controls.Add(Me.Label3)
         Me.GroupBox3.Controls.Add(Me.txtnolunaspiutang)
@@ -230,14 +238,13 @@ Partial Class flunaspiutang
         Me.GroupBox3.Controls.Add(Me.GroupBox1)
         Me.GroupBox3.Controls.Add(Me.cmbsales)
         Me.GroupBox3.Controls.Add(Me.Label16)
-        Me.GroupBox3.Controls.Add(Me.txtnonota)
         Me.GroupBox3.Controls.Add(Me.Label19)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(600, 491)
+        Me.GroupBox3.Location = New System.Drawing.Point(23, 83)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(795, 177)
+        Me.GroupBox3.Size = New System.Drawing.Size(1142, 163)
         Me.GroupBox3.TabIndex = 60
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Detail Pelunasan Piutang"
@@ -246,7 +253,7 @@ Partial Class flunaspiutang
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label6.Location = New System.Drawing.Point(412, 103)
+        Me.Label6.Location = New System.Drawing.Point(22, 754)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(83, 18)
@@ -256,21 +263,21 @@ Partial Class flunaspiutang
         'cmbbayar
         '
         Me.cmbbayar.FormattingEnabled = True
-        Me.cmbbayar.Location = New System.Drawing.Point(148, 135)
+        Me.cmbbayar.Location = New System.Drawing.Point(875, 78)
         Me.cmbbayar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbbayar.MaxLength = 99
         Me.cmbbayar.Name = "cmbbayar"
-        Me.cmbbayar.Size = New System.Drawing.Size(241, 26)
+        Me.cmbbayar.Size = New System.Drawing.Size(243, 26)
         Me.cmbbayar.TabIndex = 79
         '
         'txtketerangan
         '
         Me.txtketerangan.Enabled = False
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtketerangan.Location = New System.Drawing.Point(507, 99)
+        Me.txtketerangan.Location = New System.Drawing.Point(113, 754)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(268, 62)
+        Me.txtketerangan.Size = New System.Drawing.Size(598, 118)
         Me.txtketerangan.TabIndex = 73
         Me.txtketerangan.Text = ""
         '
@@ -278,7 +285,7 @@ Partial Class flunaspiutang
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label5.Location = New System.Drawing.Point(15, 138)
+        Me.Label5.Location = New System.Drawing.Point(767, 81)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(100, 18)
@@ -289,7 +296,7 @@ Partial Class flunaspiutang
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label1.Location = New System.Drawing.Point(408, 70)
+        Me.Label1.Location = New System.Drawing.Point(784, 116)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(83, 18)
@@ -299,17 +306,17 @@ Partial Class flunaspiutang
         'txttotalbayar
         '
         Me.txttotalbayar.Enabled = False
-        Me.txttotalbayar.Location = New System.Drawing.Point(508, 67)
+        Me.txttotalbayar.Location = New System.Drawing.Point(875, 113)
         Me.txttotalbayar.Margin = New System.Windows.Forms.Padding(4)
         Me.txttotalbayar.MaxLength = 12
         Me.txttotalbayar.Name = "txttotalbayar"
-        Me.txttotalbayar.Size = New System.Drawing.Size(267, 24)
+        Me.txttotalbayar.Size = New System.Drawing.Size(243, 24)
         Me.txttotalbayar.TabIndex = 77
         '
         'dtpelunasan
         '
         Me.dtpelunasan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtpelunasan.Location = New System.Drawing.Point(147, 79)
+        Me.dtpelunasan.Location = New System.Drawing.Point(147, 94)
         Me.dtpelunasan.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpelunasan.Name = "dtpelunasan"
         Me.dtpelunasan.Size = New System.Drawing.Size(242, 23)
@@ -319,7 +326,7 @@ Partial Class flunaspiutang
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label3.Location = New System.Drawing.Point(14, 82)
+        Me.Label3.Location = New System.Drawing.Point(12, 96)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(125, 18)
@@ -353,7 +360,7 @@ Partial Class flunaspiutang
         Me.GroupBox1.Controls.Add(Me.cbprinted)
         Me.GroupBox1.Controls.Add(Me.cbvoid)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox1.Location = New System.Drawing.Point(408, 17)
+        Me.GroupBox1.Location = New System.Drawing.Point(765, 17)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(367, 43)
         Me.GroupBox1.TabIndex = 59
@@ -398,7 +405,7 @@ Partial Class flunaspiutang
         'cmbsales
         '
         Me.cmbsales.FormattingEnabled = True
-        Me.cmbsales.Location = New System.Drawing.Point(147, 105)
+        Me.cmbsales.Location = New System.Drawing.Point(147, 60)
         Me.cmbsales.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbsales.MaxLength = 99
         Me.cmbsales.Name = "cmbsales"
@@ -409,64 +416,38 @@ Partial Class flunaspiutang
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label16.Location = New System.Drawing.Point(15, 109)
+        Me.Label16.Location = New System.Drawing.Point(13, 63)
         Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(84, 18)
         Me.Label16.TabIndex = 66
         Me.Label16.Text = "Kode Sales"
         '
-        'txtnonota
-        '
-        Me.txtnonota.Enabled = False
-        Me.txtnonota.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnonota.Location = New System.Drawing.Point(147, 52)
-        Me.txtnonota.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtnonota.Name = "txtnonota"
-        Me.txtnonota.Size = New System.Drawing.Size(242, 24)
-        Me.txtnonota.TabIndex = 9
-        '
         'Label19
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label19.Location = New System.Drawing.Point(13, 55)
+        Me.Label19.Location = New System.Drawing.Point(14, 128)
         Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(109, 18)
+        Me.Label19.Size = New System.Drawing.Size(78, 18)
         Me.Label19.TabIndex = 7
-        Me.Label19.Text = "No. Faktur Jual"
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.txtcustomer)
-        Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Controls.Add(Me.txttelp)
-        Me.GroupBox2.Controls.Add(Me.Label20)
-        Me.GroupBox2.Controls.Add(Me.txtalamat)
-        Me.GroupBox2.Controls.Add(Me.Label22)
-        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(600, 330)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(795, 90)
-        Me.GroupBox2.TabIndex = 76
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Detail Nota Penjualan"
+        Me.Label19.Text = "Kode Cust"
         '
         'txtcustomer
         '
         Me.txtcustomer.Enabled = False
-        Me.txtcustomer.Location = New System.Drawing.Point(100, 24)
+        Me.txtcustomer.Location = New System.Drawing.Point(491, 25)
         Me.txtcustomer.Margin = New System.Windows.Forms.Padding(4)
         Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(248, 24)
+        Me.txtcustomer.Size = New System.Drawing.Size(259, 24)
         Me.txtcustomer.TabIndex = 46
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label4.Location = New System.Drawing.Point(12, 27)
+        Me.Label4.Location = New System.Drawing.Point(403, 28)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(83, 18)
@@ -476,17 +457,17 @@ Partial Class flunaspiutang
         'txttelp
         '
         Me.txttelp.Enabled = False
-        Me.txttelp.Location = New System.Drawing.Point(100, 51)
+        Me.txttelp.Location = New System.Drawing.Point(491, 57)
         Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(248, 24)
+        Me.txttelp.Size = New System.Drawing.Size(259, 24)
         Me.txttelp.TabIndex = 71
         '
         'Label20
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label20.Location = New System.Drawing.Point(360, 28)
+        Me.Label20.Location = New System.Drawing.Point(398, 92)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(88, 18)
@@ -496,11 +477,11 @@ Partial Class flunaspiutang
         'txtalamat
         '
         Me.txtalamat.Enabled = False
-        Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtalamat.Location = New System.Drawing.Point(455, 24)
+        Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtalamat.Location = New System.Drawing.Point(491, 89)
         Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
         Me.txtalamat.Name = "txtalamat"
-        Me.txtalamat.Size = New System.Drawing.Size(302, 51)
+        Me.txtalamat.Size = New System.Drawing.Size(259, 57)
         Me.txtalamat.TabIndex = 70
         Me.txtalamat.Text = ""
         '
@@ -508,7 +489,7 @@ Partial Class flunaspiutang
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label22.Location = New System.Drawing.Point(15, 54)
+        Me.Label22.Location = New System.Drawing.Point(406, 60)
         Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(63, 18)
@@ -524,9 +505,9 @@ Partial Class flunaspiutang
         Me.GroupBox4.Controls.Add(Me.btnprint)
         Me.GroupBox4.Controls.Add(Me.btnsimpan)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox4.Location = New System.Drawing.Point(600, 419)
+        Me.GroupBox4.Location = New System.Drawing.Point(282, 12)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(795, 72)
+        Me.GroupBox4.Size = New System.Drawing.Size(883, 72)
         Me.GroupBox4.TabIndex = 76
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Tools"
@@ -539,7 +520,7 @@ Partial Class flunaspiutang
         Me.GroupBox5.Controls.Add(Me.btngolunas)
         Me.GroupBox5.Location = New System.Drawing.Point(507, 9)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(280, 52)
+        Me.GroupBox5.Size = New System.Drawing.Size(366, 52)
         Me.GroupBox5.TabIndex = 37
         Me.GroupBox5.TabStop = False
         '
@@ -547,30 +528,30 @@ Partial Class flunaspiutang
         '
         Me.btnprev.Location = New System.Drawing.Point(7, 17)
         Me.btnprev.Name = "btnprev"
-        Me.btnprev.Size = New System.Drawing.Size(44, 26)
+        Me.btnprev.Size = New System.Drawing.Size(83, 26)
         Me.btnprev.TabIndex = 5
-        Me.btnprev.Text = "<<"
+        Me.btnprev.Text = "<< Prev"
         Me.btnprev.UseVisualStyleBackColor = True
         '
         'btnnext
         '
-        Me.btnnext.Location = New System.Drawing.Point(229, 17)
+        Me.btnnext.Location = New System.Drawing.Point(269, 17)
         Me.btnnext.Name = "btnnext"
-        Me.btnnext.Size = New System.Drawing.Size(43, 26)
+        Me.btnnext.Size = New System.Drawing.Size(83, 26)
         Me.btnnext.TabIndex = 8
-        Me.btnnext.Text = ">>"
+        Me.btnnext.Text = "Next >>"
         Me.btnnext.UseVisualStyleBackColor = True
         '
         'txtgolunas
         '
-        Me.txtgolunas.Location = New System.Drawing.Point(108, 18)
+        Me.txtgolunas.Location = New System.Drawing.Point(148, 18)
         Me.txtgolunas.Name = "txtgolunas"
         Me.txtgolunas.Size = New System.Drawing.Size(117, 24)
         Me.txtgolunas.TabIndex = 7
         '
         'btngolunas
         '
-        Me.btngolunas.Location = New System.Drawing.Point(53, 17)
+        Me.btngolunas.Location = New System.Drawing.Point(93, 17)
         Me.btngolunas.Name = "btngolunas"
         Me.btngolunas.Size = New System.Drawing.Size(52, 26)
         Me.btngolunas.TabIndex = 6
@@ -623,20 +604,41 @@ Partial Class flunaspiutang
         Me.btnsimpan.Text = "Simpan"
         Me.btnsimpan.UseVisualStyleBackColor = True
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(17, 33)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(258, 31)
+        Me.Label7.TabIndex = 77
+        Me.Label7.Text = "Pelunasan Piutang"
+        '
         'GridControl2
         '
-        Me.GridControl2.Location = New System.Drawing.Point(12, 336)
+        Me.GridControl2.Location = New System.Drawing.Point(23, 500)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(579, 332)
-        Me.GridControl2.TabIndex = 77
+        Me.GridControl2.Size = New System.Drawing.Size(1142, 230)
+        Me.GridControl2.TabIndex = 78
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
         'GridView2
         '
-        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn11, Me.GridColumn12, Me.GridColumn13, Me.GridColumn14, Me.GridColumn15, Me.GridColumn16})
+        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn12, Me.GridColumn13, Me.GridColumn14, Me.GridColumn15, Me.GridColumn16, Me.GridColumn17, Me.GridColumn18, Me.GridColumn19, Me.GridColumn20})
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
+        '
+        'cmbcustomer
+        '
+        Me.cmbcustomer.FormattingEnabled = True
+        Me.cmbcustomer.Location = New System.Drawing.Point(147, 125)
+        Me.cmbcustomer.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbcustomer.MaxLength = 99
+        Me.cmbcustomer.Name = "cmbcustomer"
+        Me.cmbcustomer.Size = New System.Drawing.Size(242, 26)
+        Me.cmbcustomer.TabIndex = 81
         '
         'GridColumn11
         '
@@ -644,78 +646,87 @@ Partial Class flunaspiutang
         Me.GridColumn11.AppearanceCell.Options.UseFont = True
         Me.GridColumn11.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn11.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn11.Caption = "Kode Lunas"
+        Me.GridColumn11.Caption = "Bayar"
         Me.GridColumn11.Name = "GridColumn11"
         Me.GridColumn11.Visible = True
-        Me.GridColumn11.VisibleIndex = 0
+        Me.GridColumn11.VisibleIndex = 10
         '
         'GridColumn12
         '
-        Me.GridColumn12.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn12.AppearanceCell.Options.UseFont = True
-        Me.GridColumn12.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn12.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn12.Caption = "Kode Penjualan"
+        Me.GridColumn12.Caption = "GridColumn12"
         Me.GridColumn12.Name = "GridColumn12"
         Me.GridColumn12.Visible = True
-        Me.GridColumn12.VisibleIndex = 1
+        Me.GridColumn12.VisibleIndex = 0
         '
         'GridColumn13
         '
-        Me.GridColumn13.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn13.AppearanceCell.Options.UseFont = True
-        Me.GridColumn13.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn13.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn13.Caption = "Tanggal Transaksi"
+        Me.GridColumn13.Caption = "GridColumn13"
         Me.GridColumn13.Name = "GridColumn13"
         Me.GridColumn13.Visible = True
-        Me.GridColumn13.VisibleIndex = 2
+        Me.GridColumn13.VisibleIndex = 1
         '
         'GridColumn14
         '
-        Me.GridColumn14.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn14.AppearanceCell.Options.UseFont = True
-        Me.GridColumn14.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn14.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn14.Caption = "Kode User"
+        Me.GridColumn14.Caption = "GridColumn14"
         Me.GridColumn14.Name = "GridColumn14"
         Me.GridColumn14.Visible = True
-        Me.GridColumn14.VisibleIndex = 3
+        Me.GridColumn14.VisibleIndex = 2
         '
         'GridColumn15
         '
-        Me.GridColumn15.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn15.AppearanceCell.Options.UseFont = True
-        Me.GridColumn15.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn15.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn15.Caption = "Kode Kas"
+        Me.GridColumn15.Caption = "GridColumn15"
         Me.GridColumn15.Name = "GridColumn15"
         Me.GridColumn15.Visible = True
-        Me.GridColumn15.VisibleIndex = 4
+        Me.GridColumn15.VisibleIndex = 3
         '
         'GridColumn16
         '
-        Me.GridColumn16.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn16.AppearanceCell.Options.UseFont = True
-        Me.GridColumn16.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn16.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn16.Caption = "Bayar Kas"
-        Me.GridColumn16.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn16.Caption = "GridColumn16"
         Me.GridColumn16.Name = "GridColumn16"
         Me.GridColumn16.Visible = True
-        Me.GridColumn16.VisibleIndex = 5
+        Me.GridColumn16.VisibleIndex = 4
+        '
+        'GridColumn17
+        '
+        Me.GridColumn17.Caption = "GridColumn17"
+        Me.GridColumn17.Name = "GridColumn17"
+        Me.GridColumn17.Visible = True
+        Me.GridColumn17.VisibleIndex = 5
+        '
+        'GridColumn18
+        '
+        Me.GridColumn18.Caption = "GridColumn18"
+        Me.GridColumn18.Name = "GridColumn18"
+        Me.GridColumn18.Visible = True
+        Me.GridColumn18.VisibleIndex = 6
+        '
+        'GridColumn19
+        '
+        Me.GridColumn19.Caption = "GridColumn19"
+        Me.GridColumn19.Name = "GridColumn19"
+        Me.GridColumn19.Visible = True
+        Me.GridColumn19.VisibleIndex = 7
+        '
+        'GridColumn20
+        '
+        Me.GridColumn20.Caption = "GridColumn20"
+        Me.GridColumn20.Name = "GridColumn20"
+        Me.GridColumn20.Visible = True
+        Me.GridColumn20.VisibleIndex = 8
         '
         'flunaspiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1404, 679)
+        Me.ClientSize = New System.Drawing.Size(1179, 881)
         Me.Controls.Add(Me.GridControl2)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.GroupBox4)
+        Me.Controls.Add(Me.txtketerangan)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.GroupBox2)
         Me.Name = "flunaspiutang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " Pelunasan Piutang"
@@ -725,14 +736,13 @@ Partial Class flunaspiutang
         Me.GroupBox3.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -756,7 +766,6 @@ Partial Class flunaspiutang
     Friend WithEvents cmbsales As ComboBox
     Friend WithEvents Label16 As Label
     Friend WithEvents txtcustomer As TextBox
-    Friend WithEvents txtnonota As TextBox
     Friend WithEvents Label19 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents GroupBox4 As GroupBox
@@ -770,7 +779,6 @@ Partial Class flunaspiutang
     Friend WithEvents btnbaru As Button
     Friend WithEvents btnprint As Button
     Friend WithEvents btnsimpan As Button
-    Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents cmbbayar As ComboBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Label1 As Label
@@ -783,14 +791,20 @@ Partial Class flunaspiutang
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Label6 As Label
+    Friend WithEvents txtketerangan As RichTextBox
+    Friend WithEvents Label7 As Label
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents cmbcustomer As ComboBox
     Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn13 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn14 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents Label6 As Label
-    Friend WithEvents txtketerangan As RichTextBox
     Friend WithEvents GridColumn15 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn16 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn17 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn18 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn19 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn20 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

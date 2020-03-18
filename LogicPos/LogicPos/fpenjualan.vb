@@ -1351,7 +1351,7 @@ Public Class fpenjualan
 
         If cbvoid.Checked = False Then
             Call koneksii()
-            sql = "SELECT * FROM tb_pelunasan_piutang WHERE kode_penjualan = '" & txtnonota.Text & "' LIMIT 1"
+            sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE kode_penjualan = '" & txtnonota.Text & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             dr.Read()

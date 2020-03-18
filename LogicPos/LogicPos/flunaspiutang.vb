@@ -877,7 +877,7 @@ Public Class flunaspiutang
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
-    Private Sub GridView2_DoubleClick(sender As Object, e As EventArgs) Handles GridView2.DoubleClick
+    Private Sub GridView2_DoubleClick(sender As Object, e As EventArgs)
         If btnsimpan.Enabled = False Then
             Call caripiutang(GridView2.GetFocusedRowCellValue("kode_lunas"))
         End If
