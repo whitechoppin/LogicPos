@@ -98,7 +98,7 @@ Partial Class flaporankasmasuk
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(110, 23)
+        Me.btnrekap.Location = New System.Drawing.Point(134, 23)
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(180, 47)
         Me.btnrekap.TabIndex = 19
@@ -118,7 +118,7 @@ Partial Class flaporankasmasuk
         '
         Me.btntabel.Location = New System.Drawing.Point(6, 23)
         Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(98, 47)
+        Me.btntabel.Size = New System.Drawing.Size(122, 47)
         Me.btntabel.TabIndex = 17
         Me.btntabel.Text = "Rekap Tabel"
         Me.btntabel.UseVisualStyleBackColor = True

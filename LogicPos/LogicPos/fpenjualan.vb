@@ -173,6 +173,7 @@ Public Class fpenjualan
         End Try
     End Sub
     Sub previewpenjualan(lihat As String)
+        Call koneksii()
         sql = "SELECT * FROM tb_penjualan_detail WHERE kode_penjualan ='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()

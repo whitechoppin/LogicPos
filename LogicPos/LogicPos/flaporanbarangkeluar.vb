@@ -88,7 +88,7 @@ Public Class flaporanbarangkeluar
             If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
                 sql = "SELECT * FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar.kode_barang_keluar=tb_barang_keluar_detail.kode_barang_keluar JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_barang_keluar.kode_pelanggan WHERE DATE(tgl_barang_keluar) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "Select * FROM tb_barang_keluar_detail JOIN tb_barang_keluar On tb_barang_keluar.kode_barang_keluar=tb_barang_keluar_detail.kode_barang_keluar JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_barang_keluar.kode_pelanggan WHERE tgl_barang_keluar BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "Select * FROM tb_barang_keluar_detail JOIN tb_barang_keluar On tb_barang_keluar.kode_barang_keluar=tb_barang_keluar_detail.kode_barang_keluar JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_barang_keluar.kode_pelanggan WHERE tgl_barang_keluar BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
             End If
             da = New OdbcDataAdapter(sql, cnn)
             ds = New DataSet

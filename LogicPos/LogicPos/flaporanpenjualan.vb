@@ -19,6 +19,7 @@ Public Class flaporanpenjualan
         With GridView1
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
+            .Columns("harga_diskon").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "harga_diskon", "{0:n0}")
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
             .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
         End With
@@ -61,21 +62,26 @@ Public Class flaporanpenjualan
         GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn7.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn8.Caption = "Subtotal"
-        GridColumn8.FieldName = "subtotal"
+        GridColumn8.Caption = "Harga Diskon"
+        GridColumn8.FieldName = "harga_diskon"
         GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn8.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn9.Caption = "Laba"
-        GridColumn9.FieldName = "keuntungan"
+        GridColumn9.Caption = "Subtotal"
+        GridColumn9.FieldName = "subtotal"
         GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn9.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn10.Caption = "Kasir"
-        GridColumn10.FieldName = "kode_user"
+        GridColumn10.Caption = "Laba"
+        GridColumn10.FieldName = "keuntungan"
+        GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn10.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn11.Caption = "Metode Bayar"
-        GridColumn11.FieldName = "metode_pembayaran"
+        GridColumn11.Caption = "Kasir"
+        GridColumn11.FieldName = "kode_user"
+
+        GridColumn12.Caption = "Metode Bayar"
+        GridColumn12.FieldName = "metode_pembayaran"
 
         GridControl1.Visible = True
     End Sub
@@ -85,7 +91,7 @@ Public Class flaporanpenjualan
             If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
                 sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan On tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan On tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
             End If
             da = New OdbcDataAdapter(sql, cnn)
             ds = New DataSet
