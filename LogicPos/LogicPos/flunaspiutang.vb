@@ -29,6 +29,7 @@ Public Class flunaspiutang
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
             'buat sum harga
+            .Columns("total_penjualan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_penjualan", "{0:n0}")
             .Columns("bayar_penjualan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "bayar_penjualan", "{0:n0}")
             .Columns("terima_penjualan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "terima_penjualan", "{0:n0}")
         End With
@@ -270,7 +271,7 @@ Public Class flunaspiutang
 
         'bersihkan dan set default value
         GridControl1.Enabled = True
-        GridView1.OptionsBehavior.Editable = False
+        GridView1.OptionsBehavior.Editable = True
 
         'total tabel pembelian
         txtketerangan.Enabled = True
@@ -931,7 +932,8 @@ Public Class flunaspiutang
             bayarjualtbh = Val(dr("bayar_penjualan"))
             sisajualtbh = 0
 
-            sql = "SELECT SUM(terima_piutang) AS terima_piutang FROM tb_pelunasan_piutang_detail WHERE kode_penjualan = '" & txtkodepenjualan.Text & "' AND kode_pelanggan ='" & cmbcustomer.Text & "' LIMIT 1"
+            'IFNULL(SUM(kredit_kas), 0)
+            sql = "SELECT IFNULL(SUM(terima_piutang), 0) AS terima_piutang FROM tb_pelunasan_piutang_detail WHERE kode_penjualan = '" & txtkodepenjualan.Text & "' AND kode_pelanggan ='" & cmbcustomer.Text & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
@@ -939,9 +941,9 @@ Public Class flunaspiutang
                 sisajualtbh = totaljualtbh - bayarjualtbh
             End If
 
-            txttotaljual.Text = totaljualtbh
-            txtbayarjual.Text = bayarjualtbh
-            txtsisajual.Text = sisajualtbh
+            txttotaljual.Text = Format(totaljualtbh, "##,##0")
+            txtbayarjual.Text = Format(bayarjualtbh, "##,##0")
+            txtsisajual.Text = Format(sisajualtbh, "##,##0")
 
         Else
             txttotaljual.Text = 0
@@ -978,7 +980,9 @@ Public Class flunaspiutang
     End Sub
 
     Private Sub btncarijual_Click(sender As Object, e As EventArgs) Handles btncarijual.Click
-
+        tutuplunasjual = 1
+        kodelunascustomer = cmbcustomer.Text
+        fcarilunasjual.ShowDialog()
     End Sub
 
     Sub reload_tabel()
@@ -1038,60 +1042,21 @@ Public Class flunaspiutang
         Call tambah()
     End Sub
 
-    'Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
-    '    Call caripelanggan()
-    'End Sub
-
-    'Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-    '    Call carijual(GridView1.GetFocusedRowCellValue("kode_penjualan"))
-    'End Sub
-
-    'Sub caripiutang(nopiutang As String)
-    '    sql = "SELECT * FROM tb_pelunasan_piutang WHERE kode_lunas  = '" + nopiutang + "'"
-    '    cmmd = New OdbcCommand(sql, cnn)
-    '    dr = cmmd.ExecuteReader
-    '    dr.Read()
-
-    '    If dr.HasRows Then
-    '        txtnolunaspiutang.Text = dr("kode_lunas")
-    '        txtnonota.Text = dr("kode_penjualan")
-    '        dtpelunasan.Value = dr("tanggal_transaksi")
-    '        cmbsales.Text = dr("kode_user")
-    '        cmbbayar.Text = dr("kode_kas")
-    '        txttotalbayar.Text = dr("bayar_lunas")
-    '        txtketerangan.Text = dr("keterangan_lunas")
-    '        cbvoid.Checked = dr("void_lunas")
-    '        cbprinted.Checked = dr("print_lunas")
-    '        cbposted.Checked = dr("posted_lunas")
-    '        'cmbjenis.Text = dr("jenis_barang")
-    '        'kode = dr("kode_barang")
-    '        'modalbarang = dr("modal_barang")
-    '        'txtmodal.Text = Format(modalbarang, "##,##0")
-    '    End If
-
-    'End Sub
-
     Private Sub flunaspiutang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
-    'Private Sub GridView2_DoubleClick(sender As Object, e As EventArgs)
-    '    If btnsimpan.Enabled = False Then
-    '        Call caripiutang(GridView2.GetFocusedRowCellValue("kode_lunas"))
-    '    End If
-    'End Sub
+    Private Sub txttotalbayar_TextChanged(sender As Object, e As EventArgs) Handles txttotalbayar.TextChanged
+        If txttotalbayar.Text = "" Then
+            txttotalbayar.Text = 0
+        Else
+            totalbayar = txttotalbayar.Text
+            txttotalbayar.Text = Format(totalbayar, "##,##0")
+            txttotalbayar.SelectionStart = Len(txttotalbayar.Text)
+        End If
+    End Sub
 
-    'Private Sub txttotalbayar_TextChanged(sender As Object, e As EventArgs) Handles txttotalbayar.TextChanged
-    '    If txttotalbayar.Text = "" Then
-    '        txttotalbayar.Text = 0
-    '    Else
-    '        totalbayar = txttotalbayar.Text
-    '        txttotalbayar.Text = Format(totalbayar, "##,##0")
-    '        txttotalbayar.SelectionStart = Len(txttotalbayar.Text)
-    '    End If
-    'End Sub
-
-    'Private Sub txttotalbayar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttotalbayar.KeyPress
-    '    e.Handled = ValidAngka(e)
-    'End Sub
+    Private Sub txttotalbayar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttotalbayar.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
 End Class

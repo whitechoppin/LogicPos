@@ -521,6 +521,7 @@ Partial Class fpenjualan
         Me.GridColumn13.AppearanceHeader.Options.UseFont = True
         Me.GridColumn13.Caption = "Modal Barang"
         Me.GridColumn13.Name = "GridColumn13"
+        Me.GridColumn13.OptionsColumn.AllowEdit = False
         Me.GridColumn13.Visible = True
         Me.GridColumn13.VisibleIndex = 12
         '

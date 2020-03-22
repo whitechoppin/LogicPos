@@ -861,6 +861,12 @@
     <EmbeddedResource Include="falamat.resx">
       <DependentUpon>falamat.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fcarilunasbeli.resx">
+      <DependentUpon>fcarilunasbeli.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcarilunasjual.resx">
+      <DependentUpon>fcarilunasjual.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fhistoryuser.resx">
       <DependentUpon>fhistoryuser.vb</DependentUpon>
     </EmbeddedResource>

@@ -11,6 +11,12 @@
     Public tutupbeli As Integer
     Public tutupjual As Integer
     Public tutupkas As Integer
+    'pelunasan jual dan beli
+    Public tutuplunasbeli As Integer
+    Public kodelunassupplier As String
+    Public tutuplunasjual As Integer
+    Public kodelunascustomer As String
+    '======================
     Public msgbox1 As Integer
     Public passwordid As Integer
 End Module
