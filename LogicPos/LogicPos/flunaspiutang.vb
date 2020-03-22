@@ -985,6 +985,10 @@ Public Class flunaspiutang
         fcarilunasjual.ShowDialog()
     End Sub
 
+    Private Sub riteterimapelunasan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles riteterimapelunasan.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
 

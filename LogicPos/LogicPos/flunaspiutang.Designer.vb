@@ -82,6 +82,7 @@ Partial Class flunaspiutang
         Me.btntambah = New System.Windows.Forms.Button()
         Me.txtkodepenjualan = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.riteterimapelunasan = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
@@ -89,6 +90,7 @@ Partial Class flunaspiutang
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridControl1
@@ -96,6 +98,7 @@ Partial Class flunaspiutang
         Me.GridControl1.Location = New System.Drawing.Point(23, 301)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.riteterimapelunasan})
         Me.GridControl1.Size = New System.Drawing.Size(1142, 323)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -185,6 +188,7 @@ Partial Class flunaspiutang
         Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn7.AppearanceHeader.Options.UseFont = True
         Me.GridColumn7.Caption = "Terima"
+        Me.GridColumn7.ColumnEdit = Me.riteterimapelunasan
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
@@ -746,6 +750,11 @@ Partial Class flunaspiutang
         Me.Label12.TabIndex = 7
         Me.Label12.Text = "Kode Penjualan"
         '
+        'riteterimapelunasan
+        '
+        Me.riteterimapelunasan.AutoHeight = False
+        Me.riteterimapelunasan.Name = "riteterimapelunasan"
+        '
         'flunaspiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -773,6 +782,7 @@ Partial Class flunaspiutang
         Me.GroupBox5.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -837,4 +847,5 @@ Partial Class flunaspiutang
     Friend WithEvents txttotaljual As TextBox
     Friend WithEvents Label11 As Label
     Friend WithEvents txtsisajual As TextBox
+    Friend WithEvents riteterimapelunasan As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
 End Class
