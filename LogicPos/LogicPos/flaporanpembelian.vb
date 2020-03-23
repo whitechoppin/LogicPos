@@ -45,7 +45,7 @@ Public Class flaporanpembelian
         GridColumn3.Caption = "Tanggal Pembelian"
         GridColumn3.FieldName = "tgl_pembelian"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy"
 
         GridColumn4.Caption = "Item"
         GridColumn4.FieldName = "nama_barang"

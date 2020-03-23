@@ -32,6 +32,7 @@ Partial Class flunaspiutang
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.riteterimapelunasan = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtbukti = New System.Windows.Forms.TextBox()
@@ -82,15 +83,14 @@ Partial Class flunaspiutang
         Me.btntambah = New System.Windows.Forms.Button()
         Me.txtkodepenjualan = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.riteterimapelunasan = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridControl1
@@ -192,6 +192,11 @@ Partial Class flunaspiutang
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
+        '
+        'riteterimapelunasan
+        '
+        Me.riteterimapelunasan.AutoHeight = False
+        Me.riteterimapelunasan.Name = "riteterimapelunasan"
         '
         'GroupBox3
         '
@@ -750,11 +755,6 @@ Partial Class flunaspiutang
         Me.Label12.TabIndex = 7
         Me.Label12.Text = "Kode Penjualan"
         '
-        'riteterimapelunasan
-        '
-        Me.riteterimapelunasan.AutoHeight = False
-        Me.riteterimapelunasan.Name = "riteterimapelunasan"
-        '
         'flunaspiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -773,6 +773,7 @@ Partial Class flunaspiutang
         Me.Text = " Pelunasan Piutang"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -782,7 +783,6 @@ Partial Class flunaspiutang
         Me.GroupBox5.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
