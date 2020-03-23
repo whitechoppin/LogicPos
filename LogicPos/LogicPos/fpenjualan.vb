@@ -1722,10 +1722,6 @@ Public Class fpenjualan
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
 
-    Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter
-
-    End Sub
-
     Private Sub fpenjualan_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub

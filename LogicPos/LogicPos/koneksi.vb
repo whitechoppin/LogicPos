@@ -6,6 +6,8 @@ Module koneksi
     Public dr As OdbcDataReader
     Public drpenjualan As OdbcDataReader
     Public drpembelian As OdbcDataReader
+    Public drlunaspenjualan As OdbcDataReader
+    Public drlunaspembelian As OdbcDataReader
 
     Public sql As String
     Public da As OdbcDataAdapter
