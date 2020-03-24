@@ -279,7 +279,6 @@ Public Class flunaspiutang
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = True
 
-        'total tabel pembelian
         txtketerangan.Enabled = True
         txtketerangan.Clear()
 
@@ -290,7 +289,6 @@ Public Class flunaspiutang
 
         'buat tabel
         Call tabel_utama()
-
     End Sub
 
     Sub inisialisasi(nomorkode As String)
@@ -489,8 +487,6 @@ Public Class flunaspiutang
         'simpan di tabel sementara
         Call koneksii()
 
-        'hapus di tabel jual sementara
-        Call koneksii()
         sql = "DELETE FROM tb_pelunasan_piutang_detail_sementara"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -553,18 +549,17 @@ Public Class flunaspiutang
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
         GridColumn7.Width = 30
-
     End Sub
 
     Sub previewpelunasan(lihat As String)
-        'With tabel1
+        'With tabel
         '    .Columns.Add("kode_penjualan")
         '    .Columns.Add("kode_customer")
         '    .Columns.Add("tanggal_penjualan")
         '    .Columns.Add("tanggal_jatuhtempo")
         '    .Columns.Add("total_penjualan", GetType(Double))
-        '    .Columns.Add("bayar_penjualan", GetType(Double))
-        '    .Columns.Add("terima_penjualan", GetType(Double))
+        '    .Columns.Add("bayar_piutang", GetType(Double))
+        '    .Columns.Add("terima_piutang", GetType(Double))
         'End With
 
         Call koneksii()
@@ -1040,14 +1035,14 @@ Public Class flunaspiutang
     End Sub
 
     Sub tambah()
-        'With tabel1
+        'With tabel
         '    .Columns.Add("kode_penjualan")
         '    .Columns.Add("kode_customer")
         '    .Columns.Add("tanggal_penjualan")
         '    .Columns.Add("tanggal_jatuhtempo")
         '    .Columns.Add("total_penjualan", GetType(Double))
-        '    .Columns.Add("bayar_penjualan", GetType(Double))
-        '    .Columns.Add("terima_penjualan", GetType(Double))
+        '    .Columns.Add("bayar_piutang", GetType(Double))
+        '    .Columns.Add("terima_piutang", GetType(Double))
         'End With
 
         If txtkodepenjualan.Text = "" Or txttotaljual.Text = "" Or txtbayarjual.Text = "" Or txtsisajual.Text = "" Then
@@ -1071,7 +1066,6 @@ Public Class flunaspiutang
                     Call reload_tabel()
                 Else
                     MsgBox("Nota sudah di tabel pelunasan !")
-
                 End If
             End If
         End If

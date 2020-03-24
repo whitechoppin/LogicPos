@@ -25,14 +25,14 @@ Partial Class flunasutang
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(flunasutang))
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.txtsisajual = New System.Windows.Forms.TextBox()
+        Me.txtsisabeli = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.txtbayarjual = New System.Windows.Forms.TextBox()
+        Me.txtbayarbeli = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.txttotaljual = New System.Windows.Forms.TextBox()
-        Me.btncarijual = New System.Windows.Forms.Button()
+        Me.txttotalbeli = New System.Windows.Forms.TextBox()
+        Me.btncaribeli = New System.Windows.Forms.Button()
         Me.btntambah = New System.Windows.Forms.Button()
-        Me.txtkodepenjualan = New System.Windows.Forms.TextBox()
+        Me.txtkodepembelian = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -51,9 +51,9 @@ Partial Class flunasutang
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtbukti = New System.Windows.Forms.TextBox()
-        Me.cmbcustomer = New System.Windows.Forms.ComboBox()
+        Me.cmbsupplier = New System.Windows.Forms.ComboBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
-        Me.txtcustomer = New System.Windows.Forms.TextBox()
+        Me.txtsupplier = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cmbbayar = New System.Windows.Forms.ComboBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
@@ -64,7 +64,7 @@ Partial Class flunasutang
         Me.Label22 = New System.Windows.Forms.Label()
         Me.dtpelunasan = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtnolunaspiutang = New System.Windows.Forms.TextBox()
+        Me.txtnolunasutang = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cbposted = New System.Windows.Forms.CheckBox()
@@ -96,14 +96,14 @@ Partial Class flunasutang
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label11)
-        Me.GroupBox2.Controls.Add(Me.txtsisajual)
+        Me.GroupBox2.Controls.Add(Me.txtsisabeli)
         Me.GroupBox2.Controls.Add(Me.Label10)
-        Me.GroupBox2.Controls.Add(Me.txtbayarjual)
+        Me.GroupBox2.Controls.Add(Me.txtbayarbeli)
         Me.GroupBox2.Controls.Add(Me.Label8)
-        Me.GroupBox2.Controls.Add(Me.txttotaljual)
-        Me.GroupBox2.Controls.Add(Me.btncarijual)
+        Me.GroupBox2.Controls.Add(Me.txttotalbeli)
+        Me.GroupBox2.Controls.Add(Me.btncaribeli)
         Me.GroupBox2.Controls.Add(Me.btntambah)
-        Me.GroupBox2.Controls.Add(Me.txtkodepenjualan)
+        Me.GroupBox2.Controls.Add(Me.txtkodepembelian)
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Location = New System.Drawing.Point(14, 247)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
@@ -124,15 +124,15 @@ Partial Class flunasutang
         Me.Label11.TabIndex = 18
         Me.Label11.Text = "Sisa"
         '
-        'txtsisajual
+        'txtsisabeli
         '
-        Me.txtsisajual.Enabled = False
-        Me.txtsisajual.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsisajual.Location = New System.Drawing.Point(900, 15)
-        Me.txtsisajual.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtsisajual.Name = "txtsisajual"
-        Me.txtsisajual.Size = New System.Drawing.Size(204, 24)
-        Me.txtsisajual.TabIndex = 17
+        Me.txtsisabeli.Enabled = False
+        Me.txtsisabeli.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtsisabeli.Location = New System.Drawing.Point(900, 15)
+        Me.txtsisabeli.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtsisabeli.Name = "txtsisabeli"
+        Me.txtsisabeli.Size = New System.Drawing.Size(204, 24)
+        Me.txtsisabeli.TabIndex = 17
         '
         'Label10
         '
@@ -145,15 +145,15 @@ Partial Class flunasutang
         Me.Label10.TabIndex = 16
         Me.Label10.Text = "Bayar"
         '
-        'txtbayarjual
+        'txtbayarbeli
         '
-        Me.txtbayarjual.Enabled = False
-        Me.txtbayarjual.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbayarjual.Location = New System.Drawing.Point(640, 15)
-        Me.txtbayarjual.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtbayarjual.Name = "txtbayarjual"
-        Me.txtbayarjual.Size = New System.Drawing.Size(204, 24)
-        Me.txtbayarjual.TabIndex = 15
+        Me.txtbayarbeli.Enabled = False
+        Me.txtbayarbeli.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtbayarbeli.Location = New System.Drawing.Point(640, 15)
+        Me.txtbayarbeli.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtbayarbeli.Name = "txtbayarbeli"
+        Me.txtbayarbeli.Size = New System.Drawing.Size(204, 24)
+        Me.txtbayarbeli.TabIndex = 15
         '
         'Label8
         '
@@ -166,27 +166,27 @@ Partial Class flunasutang
         Me.Label8.TabIndex = 14
         Me.Label8.Text = "Total"
         '
-        'txttotaljual
+        'txttotalbeli
         '
-        Me.txttotaljual.Enabled = False
-        Me.txttotaljual.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttotaljual.Location = New System.Drawing.Point(379, 15)
-        Me.txttotaljual.Margin = New System.Windows.Forms.Padding(4)
-        Me.txttotaljual.Name = "txttotaljual"
-        Me.txttotaljual.Size = New System.Drawing.Size(204, 24)
-        Me.txttotaljual.TabIndex = 13
+        Me.txttotalbeli.Enabled = False
+        Me.txttotalbeli.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttotalbeli.Location = New System.Drawing.Point(379, 15)
+        Me.txttotalbeli.Margin = New System.Windows.Forms.Padding(4)
+        Me.txttotalbeli.Name = "txttotalbeli"
+        Me.txttotalbeli.Size = New System.Drawing.Size(204, 24)
+        Me.txttotalbeli.TabIndex = 13
         '
-        'btncarijual
+        'btncaribeli
         '
-        Me.btncarijual.BackgroundImage = CType(resources.GetObject("btncarijual.BackgroundImage"), System.Drawing.Image)
-        Me.btncarijual.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btncarijual.ImageIndex = 0
-        Me.btncarijual.Location = New System.Drawing.Point(292, 14)
-        Me.btncarijual.Margin = New System.Windows.Forms.Padding(4)
-        Me.btncarijual.Name = "btncarijual"
-        Me.btncarijual.Size = New System.Drawing.Size(32, 27)
-        Me.btncarijual.TabIndex = 5
-        Me.btncarijual.UseVisualStyleBackColor = True
+        Me.btncaribeli.BackgroundImage = CType(resources.GetObject("btncaribeli.BackgroundImage"), System.Drawing.Image)
+        Me.btncaribeli.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncaribeli.ImageIndex = 0
+        Me.btncaribeli.Location = New System.Drawing.Point(292, 14)
+        Me.btncaribeli.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncaribeli.Name = "btncaribeli"
+        Me.btncaribeli.Size = New System.Drawing.Size(32, 27)
+        Me.btncaribeli.TabIndex = 5
+        Me.btncaribeli.UseVisualStyleBackColor = True
         '
         'btntambah
         '
@@ -200,14 +200,14 @@ Partial Class flunasutang
         Me.btntambah.TabIndex = 5
         Me.btntambah.UseVisualStyleBackColor = True
         '
-        'txtkodepenjualan
+        'txtkodepembelian
         '
-        Me.txtkodepenjualan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkodepenjualan.Location = New System.Drawing.Point(123, 15)
-        Me.txtkodepenjualan.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtkodepenjualan.Name = "txtkodepenjualan"
-        Me.txtkodepenjualan.Size = New System.Drawing.Size(170, 24)
-        Me.txtkodepenjualan.TabIndex = 11
+        Me.txtkodepembelian.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtkodepembelian.Location = New System.Drawing.Point(123, 15)
+        Me.txtkodepembelian.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtkodepembelian.Name = "txtkodepembelian"
+        Me.txtkodepembelian.Size = New System.Drawing.Size(170, 24)
+        Me.txtkodepembelian.TabIndex = 11
         '
         'Label12
         '
@@ -216,9 +216,9 @@ Partial Class flunasutang
         Me.Label12.Location = New System.Drawing.Point(8, 18)
         Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(111, 18)
+        Me.Label12.Size = New System.Drawing.Size(116, 18)
         Me.Label12.TabIndex = 7
-        Me.Label12.Text = "Kode Penjualan"
+        Me.Label12.Text = "Kode Pembelian"
         '
         'Label6
         '
@@ -238,9 +238,9 @@ Partial Class flunasutang
         Me.Label7.Location = New System.Drawing.Point(8, 35)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(258, 31)
+        Me.Label7.Size = New System.Drawing.Size(237, 31)
         Me.Label7.TabIndex = 84
-        Me.Label7.Text = "Pelunasan Piutang"
+        Me.Label7.Text = "Pelunasan Utang"
         '
         'GroupBox4
         '
@@ -365,9 +365,9 @@ Partial Class flunasutang
         '
         Me.GroupBox3.Controls.Add(Me.Label9)
         Me.GroupBox3.Controls.Add(Me.txtbukti)
-        Me.GroupBox3.Controls.Add(Me.cmbcustomer)
+        Me.GroupBox3.Controls.Add(Me.cmbsupplier)
         Me.GroupBox3.Controls.Add(Me.txtalamat)
-        Me.GroupBox3.Controls.Add(Me.txtcustomer)
+        Me.GroupBox3.Controls.Add(Me.txtsupplier)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(Me.cmbbayar)
         Me.GroupBox3.Controls.Add(Me.txttelp)
@@ -378,7 +378,7 @@ Partial Class flunasutang
         Me.GroupBox3.Controls.Add(Me.Label22)
         Me.GroupBox3.Controls.Add(Me.dtpelunasan)
         Me.GroupBox3.Controls.Add(Me.Label3)
-        Me.GroupBox3.Controls.Add(Me.txtnolunaspiutang)
+        Me.GroupBox3.Controls.Add(Me.txtnolunasutang)
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.GroupBox1)
         Me.GroupBox3.Controls.Add(Me.cmbsales)
@@ -392,13 +392,13 @@ Partial Class flunasutang
         Me.GroupBox3.Size = New System.Drawing.Size(1142, 163)
         Me.GroupBox3.TabIndex = 80
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Detail Pelunasan Piutang"
+        Me.GroupBox3.Text = "Detail Pelunasan Utang"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label9.Location = New System.Drawing.Point(806, 131)
+        Me.Label9.Location = New System.Drawing.Point(818, 131)
         Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(65, 18)
@@ -415,15 +415,15 @@ Partial Class flunasutang
         Me.txtbukti.Size = New System.Drawing.Size(243, 24)
         Me.txtbukti.TabIndex = 82
         '
-        'cmbcustomer
+        'cmbsupplier
         '
-        Me.cmbcustomer.FormattingEnabled = True
-        Me.cmbcustomer.Location = New System.Drawing.Point(147, 125)
-        Me.cmbcustomer.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbcustomer.MaxLength = 99
-        Me.cmbcustomer.Name = "cmbcustomer"
-        Me.cmbcustomer.Size = New System.Drawing.Size(242, 26)
-        Me.cmbcustomer.TabIndex = 81
+        Me.cmbsupplier.FormattingEnabled = True
+        Me.cmbsupplier.Location = New System.Drawing.Point(147, 125)
+        Me.cmbsupplier.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbsupplier.MaxLength = 99
+        Me.cmbsupplier.Name = "cmbsupplier"
+        Me.cmbsupplier.Size = New System.Drawing.Size(242, 26)
+        Me.cmbsupplier.TabIndex = 81
         '
         'txtalamat
         '
@@ -436,25 +436,25 @@ Partial Class flunasutang
         Me.txtalamat.TabIndex = 70
         Me.txtalamat.Text = ""
         '
-        'txtcustomer
+        'txtsupplier
         '
-        Me.txtcustomer.Enabled = False
-        Me.txtcustomer.Location = New System.Drawing.Point(491, 25)
-        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(259, 24)
-        Me.txtcustomer.TabIndex = 46
+        Me.txtsupplier.Enabled = False
+        Me.txtsupplier.Location = New System.Drawing.Point(491, 25)
+        Me.txtsupplier.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtsupplier.Name = "txtsupplier"
+        Me.txtsupplier.Size = New System.Drawing.Size(259, 24)
+        Me.txtsupplier.TabIndex = 46
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label4.Location = New System.Drawing.Point(403, 28)
+        Me.Label4.Location = New System.Drawing.Point(401, 28)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(83, 18)
+        Me.Label4.Size = New System.Drawing.Size(86, 18)
         Me.Label4.TabIndex = 19
-        Me.Label4.Text = "Nama Cust"
+        Me.Label4.Text = "Nama Supp"
         '
         'cmbbayar
         '
@@ -479,7 +479,7 @@ Partial Class flunasutang
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label5.Location = New System.Drawing.Point(779, 63)
+        Me.Label5.Location = New System.Drawing.Point(783, 64)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(100, 18)
@@ -490,18 +490,18 @@ Partial Class flunasutang
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label20.Location = New System.Drawing.Point(398, 92)
+        Me.Label20.Location = New System.Drawing.Point(397, 93)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(88, 18)
+        Me.Label20.Size = New System.Drawing.Size(91, 18)
         Me.Label20.TabIndex = 68
-        Me.Label20.Text = "Alamat Cust"
+        Me.Label20.Text = "Alamat Supp"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label1.Location = New System.Drawing.Point(796, 98)
+        Me.Label1.Location = New System.Drawing.Point(800, 98)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(83, 18)
@@ -522,12 +522,12 @@ Partial Class flunasutang
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label22.Location = New System.Drawing.Point(406, 60)
+        Me.Label22.Location = New System.Drawing.Point(421, 60)
         Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(63, 18)
+        Me.Label22.Size = New System.Drawing.Size(66, 18)
         Me.Label22.TabIndex = 69
-        Me.Label22.Text = "Tlp Cust"
+        Me.Label22.Text = "Tlp Supp"
         '
         'dtpelunasan
         '
@@ -542,33 +542,33 @@ Partial Class flunasutang
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label3.Location = New System.Drawing.Point(12, 96)
+        Me.Label3.Location = New System.Drawing.Point(27, 97)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(125, 18)
+        Me.Label3.Size = New System.Drawing.Size(115, 18)
         Me.Label3.TabIndex = 74
-        Me.Label3.Text = "Tgl Lunas Piutang"
+        Me.Label3.Text = "Tgl Lunas Utang"
         '
-        'txtnolunaspiutang
+        'txtnolunasutang
         '
-        Me.txtnolunaspiutang.Enabled = False
-        Me.txtnolunaspiutang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnolunaspiutang.Location = New System.Drawing.Point(147, 25)
-        Me.txtnolunaspiutang.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtnolunaspiutang.Name = "txtnolunaspiutang"
-        Me.txtnolunaspiutang.Size = New System.Drawing.Size(242, 24)
-        Me.txtnolunaspiutang.TabIndex = 73
+        Me.txtnolunasutang.Enabled = False
+        Me.txtnolunasutang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnolunasutang.Location = New System.Drawing.Point(147, 25)
+        Me.txtnolunasutang.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnolunasutang.Name = "txtnolunasutang"
+        Me.txtnolunasutang.Size = New System.Drawing.Size(242, 24)
+        Me.txtnolunasutang.TabIndex = 73
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label2.Location = New System.Drawing.Point(13, 28)
+        Me.Label2.Location = New System.Drawing.Point(23, 28)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(129, 18)
+        Me.Label2.Size = New System.Drawing.Size(119, 18)
         Me.Label2.TabIndex = 72
-        Me.Label2.Text = "No. Lunas Piutang"
+        Me.Label2.Text = "No. Lunas Utang"
         '
         'GroupBox1
         '
@@ -632,7 +632,7 @@ Partial Class flunasutang
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label16.Location = New System.Drawing.Point(13, 63)
+        Me.Label16.Location = New System.Drawing.Point(58, 63)
         Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(84, 18)
@@ -643,12 +643,12 @@ Partial Class flunasutang
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label19.Location = New System.Drawing.Point(14, 128)
+        Me.Label19.Location = New System.Drawing.Point(61, 128)
         Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(78, 18)
+        Me.Label19.Size = New System.Drawing.Size(81, 18)
         Me.Label19.TabIndex = 7
-        Me.Label19.Text = "Kode Cust"
+        Me.Label19.Text = "Kode Supp"
         '
         'GridControl1
         '
@@ -672,7 +672,7 @@ Partial Class flunasutang
         Me.GridColumn1.AppearanceCell.Options.UseFont = True
         Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn1.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn1.Caption = "Kode Penjualan"
+        Me.GridColumn1.Caption = "Kode Pembelian"
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.OptionsColumn.AllowEdit = False
         Me.GridColumn1.Visible = True
@@ -684,7 +684,7 @@ Partial Class flunasutang
         Me.GridColumn2.AppearanceCell.Options.UseFont = True
         Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn2.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn2.Caption = "Kode Customer"
+        Me.GridColumn2.Caption = "Kode Supplier"
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.OptionsColumn.AllowEdit = False
         Me.GridColumn2.Visible = True
@@ -696,7 +696,7 @@ Partial Class flunasutang
         Me.GridColumn3.AppearanceCell.Options.UseFont = True
         Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn3.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn3.Caption = "Tanggal Penjualan"
+        Me.GridColumn3.Caption = "Tanggal Pembelian"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.OptionsColumn.AllowEdit = False
         Me.GridColumn3.Visible = True
@@ -790,14 +790,14 @@ Partial Class flunasutang
 
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents txtsisajual As TextBox
+    Friend WithEvents txtsisabeli As TextBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents txtbayarjual As TextBox
+    Friend WithEvents txtbayarbeli As TextBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents txttotaljual As TextBox
-    Friend WithEvents btncarijual As Button
+    Friend WithEvents txttotalbeli As TextBox
+    Friend WithEvents btncaribeli As Button
     Friend WithEvents btntambah As Button
-    Friend WithEvents txtkodepenjualan As TextBox
+    Friend WithEvents txtkodepembelian As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
@@ -816,9 +816,9 @@ Partial Class flunasutang
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents Label9 As Label
     Friend WithEvents txtbukti As TextBox
-    Friend WithEvents cmbcustomer As ComboBox
+    Friend WithEvents cmbsupplier As ComboBox
     Friend WithEvents txtalamat As RichTextBox
-    Friend WithEvents txtcustomer As TextBox
+    Friend WithEvents txtsupplier As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents cmbbayar As ComboBox
     Friend WithEvents txttelp As TextBox
@@ -829,7 +829,7 @@ Partial Class flunasutang
     Friend WithEvents Label22 As Label
     Friend WithEvents dtpelunasan As DateTimePicker
     Friend WithEvents Label3 As Label
-    Friend WithEvents txtnolunaspiutang As TextBox
+    Friend WithEvents txtnolunasutang As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents cbposted As CheckBox

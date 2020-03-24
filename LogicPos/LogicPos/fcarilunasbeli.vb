@@ -37,7 +37,7 @@ Public Class fcarilunasbeli
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutuplunasbeli = 1 Then
-            'freturjual.txtnonota.Text = Me.GridView1.GetFocusedRowCellValue("kode_pembelian")
+            flunasutang.txtkodepembelian.Text = Me.GridView1.GetFocusedRowCellValue("kode_pembelian")
         End If
         Me.Hide()
     End Sub
