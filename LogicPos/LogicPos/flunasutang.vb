@@ -509,7 +509,7 @@ Public Class flunasutang
         kodelunasfokus = GridView1.GetFocusedRowCellValue("kode_lunas")
     End Sub
 
-    Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
+    Private Sub btnbaru_Click(sender As Object, e As EventArgs)
         If tambahstatus.Equals(True) Then
             Call awalbaru()
         Else
@@ -591,7 +591,7 @@ Public Class flunasutang
         Call caribeli(txtnonota.Text)
     End Sub
 
-    Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
+    Private Sub btnsimpan_Click(sender As Object, e As EventArgs)
         If txtnonota.Text IsNot "" Then
             If cmbsales.Text IsNot "" Then
                 If cmbbayar.Text IsNot "" Then
@@ -612,7 +612,7 @@ Public Class flunasutang
 
     End Sub
 
-    Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+    Private Sub btnprint_Click(sender As Object, e As EventArgs)
         If printstatus.Equals(True) Then
             Call cetak_faktur()
 
@@ -777,7 +777,7 @@ Public Class flunasutang
         Call caribeli(txtnonota.Text)
     End Sub
 
-    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+    Private Sub btnedit_Click(sender As Object, e As EventArgs)
         If editstatus.Equals(True) Then
             If btnedit.Text.Equals("Edit") Then
                 btnedit.Text = "Update"
@@ -806,7 +806,7 @@ Public Class flunasutang
         End If
     End Sub
 
-    Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
+    Private Sub btnbatal_Click(sender As Object, e As EventArgs)
         If btnedit.Text.Equals("Edit") Then
             Call inisialisasi(kodelunasutang)
         ElseIf btnedit.Text.Equals("Update") Then
@@ -815,11 +815,11 @@ Public Class flunasutang
         End If
     End Sub
 
-    Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
+    Private Sub btnprev_Click(sender As Object, e As EventArgs)
         Call prevnumber(txtgolunas.Text)
     End Sub
 
-    Private Sub btngolunas_Click(sender As Object, e As EventArgs) Handles btngolunas.Click
+    Private Sub btngolunas_Click(sender As Object, e As EventArgs)
         If txtgolunas.Text = "" Then
             MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
         Else
@@ -835,15 +835,15 @@ Public Class flunasutang
         End If
     End Sub
 
-    Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
+    Private Sub btnnext_Click(sender As Object, e As EventArgs)
         Call nextnumber(txtgolunas.Text)
     End Sub
 
-    Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
+    Private Sub GridView1_Click(sender As Object, e As EventArgs)
         Call carisupplier()
     End Sub
 
-    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs)
         Call caribeli(GridView1.GetFocusedRowCellValue("kode_pembelian"))
     End Sub
 
@@ -876,13 +876,13 @@ Public Class flunasutang
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
-    Private Sub GridView2_DoubleClick(sender As Object, e As EventArgs) Handles GridView2.DoubleClick
+    Private Sub GridView2_DoubleClick(sender As Object, e As EventArgs)
         If btnsimpan.Enabled = False Then
             Call cariutang(GridView2.GetFocusedRowCellValue("kode_lunas"))
         End If
     End Sub
 
-    Private Sub txttotalbayar_TextChanged(sender As Object, e As EventArgs) Handles txttotalbayar.TextChanged
+    Private Sub txttotalbayar_TextChanged(sender As Object, e As EventArgs)
         If txttotalbayar.Text = "" Then
             txttotalbayar.Text = 0
         Else
@@ -892,7 +892,7 @@ Public Class flunasutang
         End If
     End Sub
 
-    Private Sub txttotalbayar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttotalbayar.KeyPress
+    Private Sub txttotalbayar_KeyPress(sender As Object, e As KeyPressEventArgs)
         e.Handled = ValidAngka(e)
     End Sub
 End Class

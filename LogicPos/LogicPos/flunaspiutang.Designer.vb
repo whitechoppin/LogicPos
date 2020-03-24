@@ -95,7 +95,7 @@ Partial Class flunaspiutang
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(23, 301)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 301)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.riteterimapelunasan})
@@ -222,7 +222,7 @@ Partial Class flunaspiutang
         Me.GroupBox3.Controls.Add(Me.Label16)
         Me.GroupBox3.Controls.Add(Me.Label19)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(23, 83)
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 83)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
@@ -491,7 +491,7 @@ Partial Class flunaspiutang
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label6.Location = New System.Drawing.Point(26, 632)
+        Me.Label6.Location = New System.Drawing.Point(15, 632)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(83, 18)
@@ -502,7 +502,7 @@ Partial Class flunaspiutang
         '
         Me.txtketerangan.Enabled = False
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtketerangan.Location = New System.Drawing.Point(117, 632)
+        Me.txtketerangan.Location = New System.Drawing.Point(106, 632)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
         Me.txtketerangan.Size = New System.Drawing.Size(598, 118)
@@ -518,7 +518,7 @@ Partial Class flunaspiutang
         Me.GroupBox4.Controls.Add(Me.btnprint)
         Me.GroupBox4.Controls.Add(Me.btnsimpan)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox4.Location = New System.Drawing.Point(282, 12)
+        Me.GroupBox4.Location = New System.Drawing.Point(271, 12)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(883, 72)
         Me.GroupBox4.TabIndex = 76
@@ -621,7 +621,7 @@ Partial Class flunaspiutang
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(17, 33)
+        Me.Label7.Location = New System.Drawing.Point(6, 33)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(258, 31)
@@ -640,7 +640,7 @@ Partial Class flunaspiutang
         Me.GroupBox2.Controls.Add(Me.btntambah)
         Me.GroupBox2.Controls.Add(Me.txtkodepenjualan)
         Me.GroupBox2.Controls.Add(Me.Label12)
-        Me.GroupBox2.Location = New System.Drawing.Point(23, 245)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 245)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
@@ -760,7 +760,7 @@ Partial Class flunaspiutang
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1179, 766)
+        Me.ClientSize = New System.Drawing.Size(1165, 766)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label7)

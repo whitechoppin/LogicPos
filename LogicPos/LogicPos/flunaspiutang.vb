@@ -956,7 +956,7 @@ Public Class flunaspiutang
 
     Sub caripenjualan()
         Call koneksii()
-        sql = "SELECT * FROM tb_penjualan WHERE kode_penjualan = '" & txtkodepenjualan.Text & "' AND kode_pelanggan ='" & cmbcustomer.Text & "' AND lunas_penjualan = 0 LIMIT 1"
+        sql = "SELECT * FROM tb_penjualan WHERE kode_penjualan = '" & txtkodepenjualan.Text & "' AND kode_pelanggan ='" & cmbcustomer.Text & "' AND total_penjualan <> bayar_penjualan AND lunas_penjualan = 0 LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
