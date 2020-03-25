@@ -217,25 +217,6 @@ Public Class flunasutang
         End Try
     End Sub
 
-    'Sub carisupplier()
-    '    Dim kodesupplierfokus As String
-    '    kodesupplierfokus = cmbsupplier.Text
-
-    '    Call koneksii()
-    '    sql = "SELECT * FROM tb_supplier WHERE kode_supplier = '" & kodesupplierfokus & "'"
-    '    cmmd = New OdbcCommand(sql, cnn)
-    '    dr = cmmd.ExecuteReader
-    '    If dr.HasRows Then
-    '        txtsupplier.Text = dr("nama_supplier")
-    '        txtalamat.Text = dr("alamat_supplier")
-    '        txttelp.Text = dr("telepon_supplier")
-    '    Else
-    '        txtsupplier.Text = ""
-    '        txtalamat.Text = ""
-    '        txttelp.Text = ""
-    '    End If
-    'End Sub
-
     Sub awalbaru()
         'bersihkan dan set default value
         'button tools
@@ -595,78 +576,85 @@ Public Class flunasutang
         End If
     End Sub
     Sub prosessimpan()
-        'Dim checkinglunas As Boolean
-        'Dim totalbeli, bayarbeli As Double
-
-        ''cek ke pembelian
-        'Call koneksii()
-        'sql = "SELECT total_pembelian FROM tb_pembelian WHERE kode_pembelian = '" & txtnonota.Text & "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader
-        'If dr.HasRows Then
-        '    totalbeli = dr("total_pembelian")
-        'Else
-        '    MsgBox("Pembelian tidak ditemukan !")
-        'End If
-
-        ''cek ke transaksi kas
-        'Call koneksii()
-        'sql = "SELECT IFNULL(SUM(debet_kas), 0) As total_kas FROM tb_transaksi_kas WHERE kode_pembelian = '" & txtnonota.Text & "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader
-        'dr.Read()
-
-        'If dr.HasRows Then
-        '    bayarbeli = Val(dr("total_kas"))
-        'Else
-        '    bayarbeli = 0
-        'End If
-
-        ''hitung pembayaran
-        'If (totalbeli - bayarbeli) < totalbayar Then
-        '    checkinglunas = False
-        'Else
-        '    checkinglunas = True
-        'End If
+        Dim totalbeli(GridView1.RowCount - 1), bayarbeli(GridView1.RowCount - 1), sisabeli(GridView1.RowCount - 1) As Double
 
 
-        'If checkinglunas = True Then
-        '    If (totalbayar + bayarbeli).Equals(totalbeli) Then
-        '        lunasstatus = 1
-        '    Else
-        '        lunasstatus = 0
-        '    End If
-        '    Call simpan()
-        'Else
-        '    MsgBox("Total lebih Bayar")
-        'End If
+        For i As Integer = 0 To GridView1.RowCount - 1
+            'cek ke penjualan
+            Call koneksii()
+            sql = "SELECT * FROM tb_pembelian WHERE kode_pembelian = '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
 
+            If dr.HasRows Then
+                totalbeli(i) = Val(dr("total_pembelian"))
+                bayarbeli(i) = 0
+            Else
+                MsgBox("Kode pembelian : " + GridView1.GetRowCellValue(i, "kode_pembelian") + " tidak ditemukan !")
+                Exit Sub
+            End If
+
+            'IFNULL(SUM(kredit_kas), 0)
+            Call koneksii()
+            sql = "SELECT IFNULL(SUM(terima_utang), 0) AS terima_utang FROM tb_pelunasan_utang_detail WHERE kode_pembelian = '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "' AND kode_supplier ='" & cmbsupplier.Text & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                bayarbeli(i) = bayarbeli(i) + Val(dr("terima_utang"))
+                sisabeli(i) = totalbeli(i) - bayarbeli(i)
+            End If
+
+            'hitung pembayaran
+            If sisabeli(i) < Val(GridView1.GetRowCellValue(i, "terima_utang")) Then
+                MsgBox("Kelebihan Bayar pada nota " + GridView1.GetRowCellValue(i, "kode_pembelian"))
+                Exit Sub
+            End If
+        Next
+
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            If (bayarbeli(i) + Val(GridView1.GetRowCellValue(i, "terima_utang"))).Equals(totalbeli(i)) Then
+                lunasstatus = 1
+
+                sql = "UPDATE tb_pembelian SET lunas_pembelian = '" & lunasstatus & "' WHERE kode_pembelian = '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            Else
+                lunasstatus = 0
+            End If
+        Next
+
+        Call simpan()
     End Sub
     Sub simpan()
-        'kodelunasutang = autonumber()
-        'Call koneksii()
+        kodelunasutang = autonumber()
+        Dim tglpembeliansimpan, tgljatuhtemposimpan As Date
 
-        'sql = "INSERT INTO tb_pelunasan_utang (kode_lunas, kode_pembelian, tanggal_transaksi, kode_user, kode_kas, jenis_kas, bayar_lunas, keterangan_lunas, void_lunas, print_lunas, posted_lunas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & txtnonota.Text & "', '" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', '" & cmbsales.Text & "', '" & cmbbayar.Text & "', '" & cmbbayar.Text & "', '" & totalbayar & "','" & txtketerangan.Text & "','" & 0 & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader()
+        Call koneksii()
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            tglpembeliansimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_pembelian"))
+            tgljatuhtemposimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_jatuhtempo"))
+
+            sql = "INSERT INTO tb_pelunasan_utang_detail (kode_lunas, kode_pembelian, kode_supplier, tanggal_pembelian, tanggal_jatuhtempo, total_pembelian, bayar_utang, terima_utang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "', '" & GridView1.GetRowCellValue(i, "kode_supplier") & "', '" & Format(tglpembeliansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_pembelian") & "','" & GridView1.GetRowCellValue(i, "bayar_utang") & "','" & GridView1.GetRowCellValue(i, "terima_utang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+        Next
+
+        sql = "INSERT INTO tb_pelunasan_utang (kode_lunas, kode_user, tanggal_transaksi, kode_supplier, kode_kas, jenis_kas, bayar_lunas, no_bukti, keterangan_lunas, void_lunas, print_lunas, posted_lunas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & cmbsales.Text & "', '" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', '" & cmbsupplier.Text & "', '" & cmbbayar.Text & "', '" & cmbbayar.Text & "', '" & totalbayar & "','" & txtbukti.Text & "','" & txtketerangan.Text & "','" & 0 & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
 
 
-        'sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_pembelian, kode_utang, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & cmbbayar.Text & "','" & txtnonota.Text & "','" & txtnolunasutang.Text & "', 'BAYAR', now(), 'Transaksi Nota Nomor " & txtnonota.Text & "','" & totalbayar & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader()
+        sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_utang, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & cmbbayar.Text & "','" & kodelunasutang & "', 'BAYAR', now(), 'Transaksi Pelunasan Nomor " & kodelunasutang & "','" & totalbayar & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
 
-        'sql = "UPDATE tb_pembelian SET lunas_pembelian = '" & lunasstatus & "' WHERE kode_pembelian = '" & txtnonota.Text & "' "
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader()
+        MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+        Me.Refresh()
 
-        ''proses centang lunas pembelian
-
-        'MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-        'Me.Refresh()
-
-        'kodelunasutang = txtnolunasutang.Text
-        'Call inisialisasi(kodelunasutang)
-        'Call caribeli(txtnonota.Text)
+        kodelunasutang = txtnolunasutang.Text
+        Call inisialisasi(kodelunasutang)
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
@@ -792,75 +780,102 @@ Public Class flunasutang
     End Sub
 
     Sub prosesperbarui(nomornota As String)
-        'Dim checkinglunas As Boolean
-        'Dim totalbeli, bayarbeli As Double
+        Dim totalbeli(GridView1.RowCount - 1), bayarbeli(GridView1.RowCount - 1), sisabeli(GridView1.RowCount - 1) As Double
 
-        ''cek ke penjualan
-        'Call koneksii()
-        'sql = "SELECT total_pembelian FROM tb_pembelian WHERE kode_pembelian = '" & txtnonota.Text & "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader
-        'If dr.HasRows Then
-        '    totalbeli = dr("total_pembelian")
-        'Else
-        '    MsgBox("Pembelian tidak ditemukan !")
-        'End If
+        For i As Integer = 0 To GridView1.RowCount - 1
+            'cek ke penjualan
+            Call koneksii()
+            sql = "SELECT * FROM tb_pembelian WHERE kode_pembelian = '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
 
-        ''cek ke transaksi kas
-        'Call koneksii()
-        'sql = "SELECT IFNULL(SUM(debet_kas), 0) As total_kas FROM tb_transaksi_kas WHERE kode_pembelian = '" & txtnonota.Text & "' AND NOT kode_utang ='" & txtnolunasutang.Text & "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader
-        'dr.Read()
+            If dr.HasRows Then
+                totalbeli(i) = Val(dr("total_pembelian"))
+                bayarbeli(i) = 0
+            Else
+                MsgBox("Kode pembelian : " + GridView1.GetRowCellValue(i, "kode_pembelian") + " tidak ditemukan !")
+                Exit Sub
+            End If
 
-        'If dr.HasRows Then
-        '    bayarbeli = Val(dr("total_kas"))
-        'Else
-        '    bayarbeli = 0
-        'End If
+            'IFNULL(SUM(kredit_kas), 0)
+            Call koneksii()
+            sql = "SELECT IFNULL(SUM(terima_utang), 0) AS terima_utang FROM tb_pelunasan_utang_detail WHERE kode_pembelian = '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "' AND kode_supplier ='" & cmbsupplier.Text & "' AND NOT kode_lunas ='" & nomornota & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                bayarbeli(i) = bayarbeli(i) + Val(dr("terima_utang"))
+                sisabeli(i) = totalbeli(i) - bayarbeli(i)
+            End If
 
-        ''hitung pembayaran
-        'If (totalbeli - bayarbeli) < totalbayar Then
-        '    checkinglunas = False
-        'Else
-        '    checkinglunas = True
-        'End If
+            'hitung pembayaran
+            If sisabeli(i) < Val(GridView1.GetRowCellValue(i, "terima_utang")) Then
+                MsgBox("Kelebihan Bayar pada nota " + GridView1.GetRowCellValue(i, "kode_pembelian"))
+                Exit Sub
+            End If
+        Next
 
 
-        'If checkinglunas = True Then
-        '    If (totalbayar + bayarbeli).Equals(totalbeli) Then
-        '        lunasstatus = 1
-        '    Else
-        '        lunasstatus = 0
-        '    End If
-        '    Call perbarui()
-        'Else
-        '    MsgBox("Total lebih Bayar")
-        'End If
+        'kembalikan status
+
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelunasan_utang_detail_sementara where kode_lunas = '" & nomornota & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        While dr.Read
+            sql = "UPDATE tb_pembelian SET lunas_pembelian = '" & 0 & "' WHERE kode_pembelian = '" & dr("kode_pembelian") & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            drlunaspembelian = cmmd.ExecuteReader()
+        End While
+
+        '====
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            If (bayarbeli(i) + Val(GridView1.GetRowCellValue(i, "terima_utang"))).Equals(totalbeli(i)) Then
+                lunasstatus = 1
+
+                sql = "UPDATE tb_pembelian SET lunas_pembelian = '" & lunasstatus & "' WHERE kode_pembelian = '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            Else
+                lunasstatus = 0
+            End If
+        Next
+
+        Call perbarui(nomornota)
     End Sub
 
-    Sub perbarui()
-        'Call koneksii()
+    Sub perbarui(nomornota As String)
+        Dim tglpembeliansimpan, tgljatuhtemposimpan As Date
 
-        'sql = "UPDATE tb_pelunasan_utang SET  kode_pembelian='" & txtnonota.Text & "', kode_user='" & cmbsales.Text & "', kode_kas='" & cmbbayar.Text & "', bayar_lunas='" & totalbayar & "', keterangan_lunas='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now()  WHERE  kode_lunas='" & txtnolunasutang.Text & "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader()
+        Call koneksii()
+        sql = "DELETE FROM tb_pelunasan_utang_detail WHERE kode_lunas = '" & nomornota & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
 
-        'sql = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbbayar.Text & "', kode_pembelian='" & txtnonota.Text & "', kode_utang='" & txtnolunasutang.Text & "', tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & totalbayar & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_utang='" & txtnolunasutang.Text & "'"
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader()
+        For i As Integer = 0 To GridView1.RowCount - 1
+            tglpembeliansimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_pembelian"))
+            tgljatuhtemposimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_jatuhtempo"))
 
-        'sql = "UPDATE tb_pembelian SET lunas_pembelian = '" & lunasstatus & "' WHERE kode_pembelian = '" & txtnonota.Text & "' "
-        'cmmd = New OdbcCommand(sql, cnn)
-        'dr = cmmd.ExecuteReader()
+            sql = "INSERT INTO tb_pelunasan_utang_detail (kode_lunas, kode_pembelian, kode_supplier, tanggal_pembelian, tanggal_jatuhtempo, total_pembelian, bayar_utang, terima_utang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "', '" & GridView1.GetRowCellValue(i, "kode_supplier") & "', '" & Format(tglpembeliansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_pembelian") & "','" & GridView1.GetRowCellValue(i, "bayar_utang") & "','" & GridView1.GetRowCellValue(i, "terima_utang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+        Next
 
-        ''proses centang lunas pembelian
+        sql = "UPDATE tb_pelunasan_utang SET  kode_user='" & cmbsales.Text & "',tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', kode_supplier='" & cmbsupplier.Text & "',kode_kas='" & cmbbayar.Text & "', bayar_lunas='" & totalbayar & "', no_bukti='" & txtbukti.Text & "' ,keterangan_lunas='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now()  WHERE  kode_lunas='" & txtnolunasutang.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
 
-        'MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-        'btnedit.Text = "Edit"
+        sql = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbbayar.Text & "', kode_utang='" & nomornota & "', tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & totalbayar & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_utang='" & nomornota & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
 
-        'Call inisialisasi(kodelunasutang)
-        'Call caribeli(txtnonota.Text)
+        'proses centang lunas penjualan
+
+        MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+        btnedit.Text = "Edit"
+
+        Call inisialisasi(txtnolunasutang.Text)
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
@@ -873,7 +888,7 @@ Public Class flunasutang
                     If cmbsales.Text IsNot "" Then
                         If cmbbayar.Text IsNot "" Then
                             If txttotalbayar.Text > 0 Then
-                                If totalbayar.Equals(Val(GridView1.Columns("terima_piutang").SummaryItem.SummaryValue)) Then
+                                If totalbayar.Equals(Val(GridView1.Columns("terima_utang").SummaryItem.SummaryValue)) Then
                                     Call prosesperbarui(txtnolunasutang.Text)
                                 Else
                                     MsgBox("Total Tidak Sama Pembayaran")
@@ -906,7 +921,7 @@ Public Class flunasutang
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
-        Call prevnumber(txtgolunas.Text)
+        Call prevnumber(txtnolunasutang.Text)
     End Sub
 
     Private Sub btngolunas_Click(sender As Object, e As EventArgs) Handles btngolunas.Click
@@ -926,7 +941,7 @@ Public Class flunasutang
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-        Call nextnumber(txtgolunas.Text)
+        Call nextnumber(txtnolunasutang.Text)
     End Sub
 
     Sub caripembelian()
@@ -941,7 +956,7 @@ Public Class flunasutang
             tglbelitbh = dr("tgl_pembelian")
             tgljatuhtempotbh = dr("tgl_jatuhtempo_pembelian")
 
-            totalbelitbh = Val(dr("total_penjualan"))
+            totalbelitbh = Val(dr("total_pembelian"))
             bayarutangtbh = 0
             sisautangtbh = 0
 
@@ -950,7 +965,7 @@ Public Class flunasutang
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
-                bayarutangtbh = bayarutangtbh + Val(dr("terima_piutang"))
+                bayarutangtbh = bayarutangtbh + Val(dr("terima_utang"))
                 sisautangtbh = totalbelitbh - bayarutangtbh
             End If
 
