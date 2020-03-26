@@ -33,9 +33,9 @@ Partial Public Class POS
     
     Private tabletabelbarangmasuk As tabelbarangmasukDataTable
     
-    Private tabletabelutang As tabelutangDataTable
-    
     Private tabletabelpiutang As tabelpiutangDataTable
+    
+    Private tabletabelutang As tabelutangDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -78,11 +78,11 @@ Partial Public Class POS
             If (Not (ds.Tables("tabelbarangmasuk")) Is Nothing) Then
                 MyBase.Tables.Add(New tabelbarangmasukDataTable(ds.Tables("tabelbarangmasuk")))
             End If
-            If (Not (ds.Tables("tabelutang")) Is Nothing) Then
-                MyBase.Tables.Add(New tabelutangDataTable(ds.Tables("tabelutang")))
-            End If
             If (Not (ds.Tables("tabelpiutang")) Is Nothing) Then
                 MyBase.Tables.Add(New tabelpiutangDataTable(ds.Tables("tabelpiutang")))
+            End If
+            If (Not (ds.Tables("tabelutang")) Is Nothing) Then
+                MyBase.Tables.Add(New tabelutangDataTable(ds.Tables("tabelutang")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -145,9 +145,9 @@ Partial Public Class POS
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property tabelutang() As tabelutangDataTable
+    Public ReadOnly Property tabelpiutang() As tabelpiutangDataTable
         Get
-            Return Me.tabletabelutang
+            Return Me.tabletabelpiutang
         End Get
     End Property
     
@@ -155,9 +155,9 @@ Partial Public Class POS
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property tabelpiutang() As tabelpiutangDataTable
+    Public ReadOnly Property tabelutang() As tabelutangDataTable
         Get
-            Return Me.tabletabelpiutang
+            Return Me.tabletabelutang
         End Get
     End Property
     
@@ -240,11 +240,11 @@ Partial Public Class POS
             If (Not (ds.Tables("tabelbarangmasuk")) Is Nothing) Then
                 MyBase.Tables.Add(New tabelbarangmasukDataTable(ds.Tables("tabelbarangmasuk")))
             End If
-            If (Not (ds.Tables("tabelutang")) Is Nothing) Then
-                MyBase.Tables.Add(New tabelutangDataTable(ds.Tables("tabelutang")))
-            End If
             If (Not (ds.Tables("tabelpiutang")) Is Nothing) Then
                 MyBase.Tables.Add(New tabelpiutangDataTable(ds.Tables("tabelpiutang")))
+            End If
+            If (Not (ds.Tables("tabelutang")) Is Nothing) Then
+                MyBase.Tables.Add(New tabelutangDataTable(ds.Tables("tabelutang")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -302,16 +302,16 @@ Partial Public Class POS
                 Me.tabletabelbarangmasuk.InitVars
             End If
         End If
-        Me.tabletabelutang = CType(MyBase.Tables("tabelutang"),tabelutangDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tabletabelutang) Is Nothing) Then
-                Me.tabletabelutang.InitVars
-            End If
-        End If
         Me.tabletabelpiutang = CType(MyBase.Tables("tabelpiutang"),tabelpiutangDataTable)
         If (initTable = true) Then
             If (Not (Me.tabletabelpiutang) Is Nothing) Then
                 Me.tabletabelpiutang.InitVars
+            End If
+        End If
+        Me.tabletabelutang = CType(MyBase.Tables("tabelutang"),tabelutangDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tabletabelutang) Is Nothing) Then
+                Me.tabletabelutang.InitVars
             End If
         End If
     End Sub
@@ -332,10 +332,10 @@ Partial Public Class POS
         MyBase.Tables.Add(Me.tabletabeljual1)
         Me.tabletabelbarangmasuk = New tabelbarangmasukDataTable()
         MyBase.Tables.Add(Me.tabletabelbarangmasuk)
-        Me.tabletabelutang = New tabelutangDataTable()
-        MyBase.Tables.Add(Me.tabletabelutang)
         Me.tabletabelpiutang = New tabelpiutangDataTable()
         MyBase.Tables.Add(Me.tabletabelpiutang)
+        Me.tabletabelutang = New tabelutangDataTable()
+        MyBase.Tables.Add(Me.tabletabelutang)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -364,13 +364,13 @@ Partial Public Class POS
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializetabelutang() As Boolean
+    Private Function ShouldSerializetabelpiutang() As Boolean
         Return false
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializetabelpiutang() As Boolean
+    Private Function ShouldSerializetabelutang() As Boolean
         Return false
     End Function
     
@@ -445,10 +445,10 @@ Partial Public Class POS
     Public Delegate Sub tabelbarangmasukRowChangeEventHandler(ByVal sender As Object, ByVal e As tabelbarangmasukRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub tabelutangRowChangeEventHandler(ByVal sender As Object, ByVal e As tabelutangRowChangeEvent)
+    Public Delegate Sub tabelpiutangRowChangeEventHandler(ByVal sender As Object, ByVal e As tabelpiutangRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub tabelpiutangRowChangeEventHandler(ByVal sender As Object, ByVal e As tabelpiutangRowChangeEvent)
+    Public Delegate Sub tabelutangRowChangeEventHandler(ByVal sender As Object, ByVal e As tabelutangRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -1889,8 +1889,8 @@ Partial Public Class POS
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class tabelutangDataTable
-        Inherits Global.System.Data.TypedTableBase(Of tabelutangRow)
+    Partial Public Class tabelpiutangDataTable
+        Inherits Global.System.Data.TypedTableBase(Of tabelpiutangRow)
         
         Private columnkode_penjualan As Global.System.Data.DataColumn
         
@@ -1910,7 +1910,7 @@ Partial Public Class POS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "tabelutang"
+            Me.TableName = "tabelpiutang"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -2008,44 +2008,44 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As tabelutangRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As tabelpiutangRow
             Get
-                Return CType(Me.Rows(index),tabelutangRow)
+                Return CType(Me.Rows(index),tabelpiutangRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelutangRowChanging As tabelutangRowChangeEventHandler
+        Public Event tabelpiutangRowChanging As tabelpiutangRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelutangRowChanged As tabelutangRowChangeEventHandler
+        Public Event tabelpiutangRowChanged As tabelpiutangRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelutangRowDeleting As tabelutangRowChangeEventHandler
+        Public Event tabelpiutangRowDeleting As tabelpiutangRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelutangRowDeleted As tabelutangRowChangeEventHandler
+        Public Event tabelpiutangRowDeleted As tabelpiutangRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddtabelutangRow(ByVal row As tabelutangRow)
+        Public Overloads Sub AddtabelpiutangRow(ByVal row As tabelpiutangRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtabelutangRow(ByVal kode_penjualan As String, ByVal kode_customer As String, ByVal tanggal_penjualan As Date, ByVal tanggal_jatuhtempo As Date, ByVal total_penjualan As Double, ByVal bayar_piutang As Double, ByVal terima_piutang As Double) As tabelutangRow
-            Dim rowtabelutangRow As tabelutangRow = CType(Me.NewRow,tabelutangRow)
+        Public Overloads Function AddtabelpiutangRow(ByVal kode_penjualan As String, ByVal kode_customer As String, ByVal tanggal_penjualan As Date, ByVal tanggal_jatuhtempo As Date, ByVal total_penjualan As Double, ByVal bayar_piutang As Double, ByVal terima_piutang As Double) As tabelpiutangRow
+            Dim rowtabelpiutangRow As tabelpiutangRow = CType(Me.NewRow,tabelpiutangRow)
             Dim columnValuesArray() As Object = New Object() {kode_penjualan, kode_customer, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, bayar_piutang, terima_piutang}
-            rowtabelutangRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowtabelutangRow)
-            Return rowtabelutangRow
+            rowtabelpiutangRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowtabelpiutangRow)
+            Return rowtabelpiutangRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As tabelutangDataTable = CType(MyBase.Clone,tabelutangDataTable)
+            Dim cln As tabelpiutangDataTable = CType(MyBase.Clone,tabelpiutangDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -2053,7 +2053,7 @@ Partial Public Class POS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New tabelutangDataTable()
+            Return New tabelpiutangDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2085,383 +2085,6 @@ Partial Public Class POS
             MyBase.Columns.Add(Me.columnbayar_piutang)
             Me.columnterima_piutang = New Global.System.Data.DataColumn("terima_piutang", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnterima_piutang)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewtabelutangRow() As tabelutangRow
-            Return CType(Me.NewRow,tabelutangRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New tabelutangRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(tabelutangRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.tabelutangRowChangedEvent) Is Nothing) Then
-                RaiseEvent tabelutangRowChanged(Me, New tabelutangRowChangeEvent(CType(e.Row,tabelutangRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.tabelutangRowChangingEvent) Is Nothing) Then
-                RaiseEvent tabelutangRowChanging(Me, New tabelutangRowChangeEvent(CType(e.Row,tabelutangRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.tabelutangRowDeletedEvent) Is Nothing) Then
-                RaiseEvent tabelutangRowDeleted(Me, New tabelutangRowChangeEvent(CType(e.Row,tabelutangRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.tabelutangRowDeletingEvent) Is Nothing) Then
-                RaiseEvent tabelutangRowDeleting(Me, New tabelutangRowChangeEvent(CType(e.Row,tabelutangRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemovetabelutangRow(ByVal row As tabelutangRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As POS = New POS()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "tabelutangDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class tabelpiutangDataTable
-        Inherits Global.System.Data.TypedTableBase(Of tabelpiutangRow)
-        
-        Private columnkode_penjualan As Global.System.Data.DataColumn
-        
-        Private columnkode_customer As Global.System.Data.DataColumn
-        
-        Private columnkode_gudang As Global.System.Data.DataColumn
-        
-        Private columnkode_user As Global.System.Data.DataColumn
-        
-        Private columntgl_penjualan As Global.System.Data.DataColumn
-        
-        Private columntg_jatuhtempo_penjualan As Global.System.Data.DataColumn
-        
-        Private columndiskon_penjualan As Global.System.Data.DataColumn
-        
-        Private columnongkir_penjualan As Global.System.Data.DataColumn
-        
-        Private columntotal_penjualan As Global.System.Data.DataColumn
-        
-        Private columnpajak_penjualan As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "tabelpiutang"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property kode_penjualanColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnkode_penjualan
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property kode_customerColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnkode_customer
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property kode_gudangColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnkode_gudang
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property kode_userColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnkode_user
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property tgl_penjualanColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columntgl_penjualan
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property tg_jatuhtempo_penjualanColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columntg_jatuhtempo_penjualan
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property diskon_penjualanColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columndiskon_penjualan
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ongkir_penjualanColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnongkir_penjualan
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property total_penjualanColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columntotal_penjualan
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property pajak_penjualanColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnpajak_penjualan
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As tabelpiutangRow
-            Get
-                Return CType(Me.Rows(index),tabelpiutangRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelpiutangRowChanging As tabelpiutangRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelpiutangRowChanged As tabelpiutangRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelpiutangRowDeleting As tabelpiutangRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelpiutangRowDeleted As tabelpiutangRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddtabelpiutangRow(ByVal row As tabelpiutangRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtabelpiutangRow(ByVal kode_penjualan As String, ByVal kode_customer As String, ByVal kode_gudang As String, ByVal kode_user As String, ByVal tgl_penjualan As String, ByVal tg_jatuhtempo_penjualan As String, ByVal diskon_penjualan As Double, ByVal ongkir_penjualan As Double, ByVal total_penjualan As Double, ByVal pajak_penjualan As Double) As tabelpiutangRow
-            Dim rowtabelpiutangRow As tabelpiutangRow = CType(Me.NewRow,tabelpiutangRow)
-            Dim columnValuesArray() As Object = New Object() {kode_penjualan, kode_customer, kode_gudang, kode_user, tgl_penjualan, tg_jatuhtempo_penjualan, diskon_penjualan, ongkir_penjualan, total_penjualan, pajak_penjualan}
-            rowtabelpiutangRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowtabelpiutangRow)
-            Return rowtabelpiutangRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As tabelpiutangDataTable = CType(MyBase.Clone,tabelpiutangDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New tabelpiutangDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnkode_penjualan = MyBase.Columns("kode_penjualan")
-            Me.columnkode_customer = MyBase.Columns("kode_customer")
-            Me.columnkode_gudang = MyBase.Columns("kode_gudang")
-            Me.columnkode_user = MyBase.Columns("kode_user")
-            Me.columntgl_penjualan = MyBase.Columns("tgl_penjualan")
-            Me.columntg_jatuhtempo_penjualan = MyBase.Columns("tg_jatuhtempo_penjualan")
-            Me.columndiskon_penjualan = MyBase.Columns("diskon_penjualan")
-            Me.columnongkir_penjualan = MyBase.Columns("ongkir_penjualan")
-            Me.columntotal_penjualan = MyBase.Columns("total_penjualan")
-            Me.columnpajak_penjualan = MyBase.Columns("pajak_penjualan")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnkode_penjualan = New Global.System.Data.DataColumn("kode_penjualan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnkode_penjualan)
-            Me.columnkode_customer = New Global.System.Data.DataColumn("kode_customer", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnkode_customer)
-            Me.columnkode_gudang = New Global.System.Data.DataColumn("kode_gudang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnkode_gudang)
-            Me.columnkode_user = New Global.System.Data.DataColumn("kode_user", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnkode_user)
-            Me.columntgl_penjualan = New Global.System.Data.DataColumn("tgl_penjualan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntgl_penjualan)
-            Me.columntg_jatuhtempo_penjualan = New Global.System.Data.DataColumn("tg_jatuhtempo_penjualan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntg_jatuhtempo_penjualan)
-            Me.columndiskon_penjualan = New Global.System.Data.DataColumn("diskon_penjualan", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columndiskon_penjualan)
-            Me.columnongkir_penjualan = New Global.System.Data.DataColumn("ongkir_penjualan", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnongkir_penjualan)
-            Me.columntotal_penjualan = New Global.System.Data.DataColumn("total_penjualan", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntotal_penjualan)
-            Me.columnpajak_penjualan = New Global.System.Data.DataColumn("pajak_penjualan", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnpajak_penjualan)
-            Me.columnkode_penjualan.Caption = "kode_pembelian"
-            Me.columnkode_customer.Caption = "kode_supplier"
-            Me.columntgl_penjualan.Caption = "tgl_pembelian"
-            Me.columntg_jatuhtempo_penjualan.Caption = "tg_jatuhtempo_pembelian"
-            Me.columndiskon_penjualan.Caption = "diskon_pembelian"
-            Me.columnongkir_penjualan.Caption = "ongkir_pembelian"
-            Me.columntotal_penjualan.Caption = "total_pembelian"
-            Me.columnpajak_penjualan.Caption = "pajak_pembelian"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2548,6 +2171,339 @@ Partial Public Class POS
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "tabelpiutangDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class tabelutangDataTable
+        Inherits Global.System.Data.TypedTableBase(Of tabelutangRow)
+        
+        Private columnkode_pembelian As Global.System.Data.DataColumn
+        
+        Private columnkode_supplier As Global.System.Data.DataColumn
+        
+        Private columntanggal_pembelian As Global.System.Data.DataColumn
+        
+        Private columntanggal_jatuhtempo As Global.System.Data.DataColumn
+        
+        Private columntotal_pembelian As Global.System.Data.DataColumn
+        
+        Private columnbayar_utang As Global.System.Data.DataColumn
+        
+        Private columnterima_utang As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "tabelutang"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property kode_pembelianColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnkode_pembelian
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property kode_supplierColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnkode_supplier
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property tanggal_pembelianColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntanggal_pembelian
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property tanggal_jatuhtempoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntanggal_jatuhtempo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property total_pembelianColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntotal_pembelian
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property bayar_utangColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnbayar_utang
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property terima_utangColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnterima_utang
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As tabelutangRow
+            Get
+                Return CType(Me.Rows(index),tabelutangRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event tabelutangRowChanging As tabelutangRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event tabelutangRowChanged As tabelutangRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event tabelutangRowDeleting As tabelutangRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event tabelutangRowDeleted As tabelutangRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddtabelutangRow(ByVal row As tabelutangRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddtabelutangRow(ByVal kode_pembelian As String, ByVal kode_supplier As String, ByVal tanggal_pembelian As Date, ByVal tanggal_jatuhtempo As Date, ByVal total_pembelian As Double, ByVal bayar_utang As Double, ByVal terima_utang As Double) As tabelutangRow
+            Dim rowtabelutangRow As tabelutangRow = CType(Me.NewRow,tabelutangRow)
+            Dim columnValuesArray() As Object = New Object() {kode_pembelian, kode_supplier, tanggal_pembelian, tanggal_jatuhtempo, total_pembelian, bayar_utang, terima_utang}
+            rowtabelutangRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowtabelutangRow)
+            Return rowtabelutangRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As tabelutangDataTable = CType(MyBase.Clone,tabelutangDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New tabelutangDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnkode_pembelian = MyBase.Columns("kode_pembelian")
+            Me.columnkode_supplier = MyBase.Columns("kode_supplier")
+            Me.columntanggal_pembelian = MyBase.Columns("tanggal_pembelian")
+            Me.columntanggal_jatuhtempo = MyBase.Columns("tanggal_jatuhtempo")
+            Me.columntotal_pembelian = MyBase.Columns("total_pembelian")
+            Me.columnbayar_utang = MyBase.Columns("bayar_utang")
+            Me.columnterima_utang = MyBase.Columns("terima_utang")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnkode_pembelian = New Global.System.Data.DataColumn("kode_pembelian", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkode_pembelian)
+            Me.columnkode_supplier = New Global.System.Data.DataColumn("kode_supplier", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkode_supplier)
+            Me.columntanggal_pembelian = New Global.System.Data.DataColumn("tanggal_pembelian", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntanggal_pembelian)
+            Me.columntanggal_jatuhtempo = New Global.System.Data.DataColumn("tanggal_jatuhtempo", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntanggal_jatuhtempo)
+            Me.columntotal_pembelian = New Global.System.Data.DataColumn("total_pembelian", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntotal_pembelian)
+            Me.columnbayar_utang = New Global.System.Data.DataColumn("bayar_utang", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnbayar_utang)
+            Me.columnterima_utang = New Global.System.Data.DataColumn("terima_utang", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnterima_utang)
+            Me.columntotal_pembelian.Caption = "tgl_pembelian"
+            Me.columnbayar_utang.Caption = "tg_jatuhtempo_pembelian"
+            Me.columnterima_utang.Caption = "diskon_pembelian"
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewtabelutangRow() As tabelutangRow
+            Return CType(Me.NewRow,tabelutangRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New tabelutangRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(tabelutangRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.tabelutangRowChangedEvent) Is Nothing) Then
+                RaiseEvent tabelutangRowChanged(Me, New tabelutangRowChangeEvent(CType(e.Row,tabelutangRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.tabelutangRowChangingEvent) Is Nothing) Then
+                RaiseEvent tabelutangRowChanging(Me, New tabelutangRowChangeEvent(CType(e.Row,tabelutangRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.tabelutangRowDeletedEvent) Is Nothing) Then
+                RaiseEvent tabelutangRowDeleted(Me, New tabelutangRowChangeEvent(CType(e.Row,tabelutangRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.tabelutangRowDeletingEvent) Is Nothing) Then
+                RaiseEvent tabelutangRowDeleting(Me, New tabelutangRowChangeEvent(CType(e.Row,tabelutangRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemovetabelutangRow(ByVal row As tabelutangRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As POS = New POS()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "tabelutangDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -3630,211 +3586,6 @@ Partial Public Class POS
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class tabelutangRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tabletabelutang As tabelutangDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tabletabelutang = CType(Me.Table,tabelutangDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property kode_penjualan() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelutang.kode_penjualanColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_penjualan' in table 'tabelutang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelutang.kode_penjualanColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property kode_customer() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelutang.kode_customerColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_customer' in table 'tabelutang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelutang.kode_customerColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property tanggal_penjualan() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelutang.tanggal_penjualanColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'tanggal_penjualan' in table 'tabelutang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelutang.tanggal_penjualanColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property tanggal_jatuhtempo() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelutang.tanggal_jatuhtempoColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'tanggal_jatuhtempo' in table 'tabelutang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelutang.tanggal_jatuhtempoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property total_penjualan() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelutang.total_penjualanColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'total_penjualan' in table 'tabelutang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelutang.total_penjualanColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property bayar_piutang() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelutang.bayar_piutangColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'bayar_piutang' in table 'tabelutang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelutang.bayar_piutangColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property terima_piutang() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelutang.terima_piutangColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'terima_piutang' in table 'tabelutang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelutang.terima_piutangColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iskode_penjualanNull() As Boolean
-            Return Me.IsNull(Me.tabletabelutang.kode_penjualanColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setkode_penjualanNull()
-            Me(Me.tabletabelutang.kode_penjualanColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iskode_customerNull() As Boolean
-            Return Me.IsNull(Me.tabletabelutang.kode_customerColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setkode_customerNull()
-            Me(Me.tabletabelutang.kode_customerColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Istanggal_penjualanNull() As Boolean
-            Return Me.IsNull(Me.tabletabelutang.tanggal_penjualanColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Settanggal_penjualanNull()
-            Me(Me.tabletabelutang.tanggal_penjualanColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Istanggal_jatuhtempoNull() As Boolean
-            Return Me.IsNull(Me.tabletabelutang.tanggal_jatuhtempoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Settanggal_jatuhtempoNull()
-            Me(Me.tabletabelutang.tanggal_jatuhtempoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Istotal_penjualanNull() As Boolean
-            Return Me.IsNull(Me.tabletabelutang.total_penjualanColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Settotal_penjualanNull()
-            Me(Me.tabletabelutang.total_penjualanColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isbayar_piutangNull() As Boolean
-            Return Me.IsNull(Me.tabletabelutang.bayar_piutangColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setbayar_piutangNull()
-            Me(Me.tabletabelutang.bayar_piutangColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isterima_piutangNull() As Boolean
-            Return Me.IsNull(Me.tabletabelutang.terima_piutangColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setterima_piutangNull()
-            Me(Me.tabletabelutang.terima_piutangColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
     Partial Public Class tabelpiutangRow
         Inherits Global.System.Data.DataRow
         
@@ -3879,92 +3630,31 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property kode_gudang() As String
+        Public Property tanggal_penjualan() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelpiutang.kode_gudangColumn),String)
+                    Return CType(Me(Me.tabletabelpiutang.tanggal_penjualanColumn),Date)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_gudang' in table 'tabelpiutang' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'tanggal_penjualan' in table 'tabelpiutang' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabelpiutang.kode_gudangColumn) = value
+                Me(Me.tabletabelpiutang.tanggal_penjualanColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property kode_user() As String
+        Public Property tanggal_jatuhtempo() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelpiutang.kode_userColumn),String)
+                    Return CType(Me(Me.tabletabelpiutang.tanggal_jatuhtempoColumn),Date)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_user' in table 'tabelpiutang' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'tanggal_jatuhtempo' in table 'tabelpiutang' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabelpiutang.kode_userColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property tgl_penjualan() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelpiutang.tgl_penjualanColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'tgl_penjualan' in table 'tabelpiutang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelpiutang.tgl_penjualanColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property tg_jatuhtempo_penjualan() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelpiutang.tg_jatuhtempo_penjualanColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'tg_jatuhtempo_penjualan' in table 'tabelpiutang' is DBNull."& _ 
-                            "", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelpiutang.tg_jatuhtempo_penjualanColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property diskon_penjualan() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelpiutang.diskon_penjualanColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'diskon_penjualan' in table 'tabelpiutang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelpiutang.diskon_penjualanColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ongkir_penjualan() As Double
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelpiutang.ongkir_penjualanColumn),Double)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ongkir_penjualan' in table 'tabelpiutang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelpiutang.ongkir_penjualanColumn) = value
+                Me(Me.tabletabelpiutang.tanggal_jatuhtempoColumn) = value
             End Set
         End Property
         
@@ -3985,16 +3675,31 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property pajak_penjualan() As Double
+        Public Property bayar_piutang() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelpiutang.pajak_penjualanColumn),Double)
+                    Return CType(Me(Me.tabletabelpiutang.bayar_piutangColumn),Double)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'pajak_penjualan' in table 'tabelpiutang' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'bayar_piutang' in table 'tabelpiutang' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabelpiutang.pajak_penjualanColumn) = value
+                Me(Me.tabletabelpiutang.bayar_piutangColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property terima_piutang() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelpiutang.terima_piutangColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'terima_piutang' in table 'tabelpiutang' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelpiutang.terima_piutangColumn) = value
             End Set
         End Property
         
@@ -4024,74 +3729,26 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iskode_gudangNull() As Boolean
-            Return Me.IsNull(Me.tabletabelpiutang.kode_gudangColumn)
+        Public Function Istanggal_penjualanNull() As Boolean
+            Return Me.IsNull(Me.tabletabelpiutang.tanggal_penjualanColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setkode_gudangNull()
-            Me(Me.tabletabelpiutang.kode_gudangColumn) = Global.System.Convert.DBNull
+        Public Sub Settanggal_penjualanNull()
+            Me(Me.tabletabelpiutang.tanggal_penjualanColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iskode_userNull() As Boolean
-            Return Me.IsNull(Me.tabletabelpiutang.kode_userColumn)
+        Public Function Istanggal_jatuhtempoNull() As Boolean
+            Return Me.IsNull(Me.tabletabelpiutang.tanggal_jatuhtempoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setkode_userNull()
-            Me(Me.tabletabelpiutang.kode_userColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Istgl_penjualanNull() As Boolean
-            Return Me.IsNull(Me.tabletabelpiutang.tgl_penjualanColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Settgl_penjualanNull()
-            Me(Me.tabletabelpiutang.tgl_penjualanColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Istg_jatuhtempo_penjualanNull() As Boolean
-            Return Me.IsNull(Me.tabletabelpiutang.tg_jatuhtempo_penjualanColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Settg_jatuhtempo_penjualanNull()
-            Me(Me.tabletabelpiutang.tg_jatuhtempo_penjualanColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isdiskon_penjualanNull() As Boolean
-            Return Me.IsNull(Me.tabletabelpiutang.diskon_penjualanColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setdiskon_penjualanNull()
-            Me(Me.tabletabelpiutang.diskon_penjualanColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isongkir_penjualanNull() As Boolean
-            Return Me.IsNull(Me.tabletabelpiutang.ongkir_penjualanColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setongkir_penjualanNull()
-            Me(Me.tabletabelpiutang.ongkir_penjualanColumn) = Global.System.Convert.DBNull
+        Public Sub Settanggal_jatuhtempoNull()
+            Me(Me.tabletabelpiutang.tanggal_jatuhtempoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4108,14 +3765,231 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Ispajak_penjualanNull() As Boolean
-            Return Me.IsNull(Me.tabletabelpiutang.pajak_penjualanColumn)
+        Public Function Isbayar_piutangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelpiutang.bayar_piutangColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setpajak_penjualanNull()
-            Me(Me.tabletabelpiutang.pajak_penjualanColumn) = Global.System.Convert.DBNull
+        Public Sub Setbayar_piutangNull()
+            Me(Me.tabletabelpiutang.bayar_piutangColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isterima_piutangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelpiutang.terima_piutangColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setterima_piutangNull()
+            Me(Me.tabletabelpiutang.terima_piutangColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class tabelutangRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tabletabelutang As tabelutangDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tabletabelutang = CType(Me.Table,tabelutangDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property kode_pembelian() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelutang.kode_pembelianColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_pembelian' in table 'tabelutang' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelutang.kode_pembelianColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property kode_supplier() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelutang.kode_supplierColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_supplier' in table 'tabelutang' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelutang.kode_supplierColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property tanggal_pembelian() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelutang.tanggal_pembelianColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'tanggal_pembelian' in table 'tabelutang' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelutang.tanggal_pembelianColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property tanggal_jatuhtempo() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelutang.tanggal_jatuhtempoColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'tanggal_jatuhtempo' in table 'tabelutang' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelutang.tanggal_jatuhtempoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property total_pembelian() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelutang.total_pembelianColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'total_pembelian' in table 'tabelutang' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelutang.total_pembelianColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property bayar_utang() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelutang.bayar_utangColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'bayar_utang' in table 'tabelutang' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelutang.bayar_utangColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property terima_utang() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelutang.terima_utangColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'terima_utang' in table 'tabelutang' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelutang.terima_utangColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Iskode_pembelianNull() As Boolean
+            Return Me.IsNull(Me.tabletabelutang.kode_pembelianColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setkode_pembelianNull()
+            Me(Me.tabletabelutang.kode_pembelianColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Iskode_supplierNull() As Boolean
+            Return Me.IsNull(Me.tabletabelutang.kode_supplierColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setkode_supplierNull()
+            Me(Me.tabletabelutang.kode_supplierColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Istanggal_pembelianNull() As Boolean
+            Return Me.IsNull(Me.tabletabelutang.tanggal_pembelianColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Settanggal_pembelianNull()
+            Me(Me.tabletabelutang.tanggal_pembelianColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Istanggal_jatuhtempoNull() As Boolean
+            Return Me.IsNull(Me.tabletabelutang.tanggal_jatuhtempoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Settanggal_jatuhtempoNull()
+            Me(Me.tabletabelutang.tanggal_jatuhtempoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Istotal_pembelianNull() As Boolean
+            Return Me.IsNull(Me.tabletabelutang.total_pembelianColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Settotal_pembelianNull()
+            Me(Me.tabletabelutang.total_pembelianColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isbayar_utangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelutang.bayar_utangColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setbayar_utangNull()
+            Me(Me.tabletabelutang.bayar_utangColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isterima_utangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelutang.terima_utangColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setterima_utangNull()
+            Me(Me.tabletabelutang.terima_utangColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -4267,42 +4141,6 @@ Partial Public Class POS
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class tabelutangRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As tabelutangRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As tabelutangRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As tabelutangRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Class tabelpiutangRowChangeEvent
         Inherits Global.System.EventArgs
         
@@ -4321,6 +4159,42 @@ Partial Public Class POS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As tabelpiutangRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class tabelutangRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As tabelutangRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As tabelutangRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As tabelutangRow
             Get
                 Return Me.eventRow
             End Get
