@@ -34,6 +34,11 @@ Public Class flaporanpembelian
                 printstatus = True
                 exportstatus = True
         End Select
+
+        Call koneksii()
+        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Membuka Laporan Pembelian', 'N/A','" & fmenu.statususer.Text & "',now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Nota"
@@ -136,6 +141,11 @@ Public Class flaporanpembelian
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
+
+            Call koneksii()
+            sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Faktur Laporan Pembelian', 'N/A','" & fmenu.statususer.Text & "',now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
         Else
             MsgBox("Tidak ada akses")
         End If
@@ -143,6 +153,11 @@ Public Class flaporanpembelian
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
+
+        Call koneksii()
+        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Faktur Laporan Pembelian', 'N/A','" & fmenu.statususer.Text & "',now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
     End Sub
     Sub ExportToExcel()
 
@@ -166,6 +181,11 @@ Public Class flaporanpembelian
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
+
+                Call koneksii()
+                sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Excel Laporan Pembelian', 'N/A','" & fmenu.statususer.Text & "',now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -218,6 +238,11 @@ Public Class flaporanpembelian
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
+
+            Call koneksii()
+            sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Faktur Laporan Pembelian', 'N/A','" & fmenu.statususer.Text & "',now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
         Else
             MsgBox("Tidak ada akses")
         End If

@@ -33,4 +33,11 @@ Module koneksi
         End Try
     End Sub
 
+    Public Sub historysave(keterangan As String, kode As String)
+        Call koneksii()
+        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('" & keterangan & "','" & kode & "','" & fmenu.statususer.Text & "',now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+    End Sub
+
 End Module

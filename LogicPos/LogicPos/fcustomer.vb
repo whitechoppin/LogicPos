@@ -37,6 +37,13 @@ Public Class fcustomer
                 editstatus = True
                 hapusstatus = True
         End Select
+
+        'history user =====
+        Call koneksii()
+        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Membuka Master Customer', 'N/A','" & fmenu.statususer.Text & "',now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        '==================
     End Sub
     Sub awal()
         txtkode.Clear()
@@ -204,6 +211,15 @@ Public Class fcustomer
                 cmmd.ExecuteNonQuery()
                 cnn.Close()
                 MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+
+                'history user ==========
+                cnn.Open()
+                sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Menyimpan Customer kode " & txtkode.Text & "', '" & txtkode.Text & "','" & fmenu.statususer.Text & "',now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+                cnn.Close()
+                '========================
+
                 btntambah.Text = "Tambah"
                 Me.Refresh()
                 Call awal()
@@ -281,6 +297,15 @@ Public Class fcustomer
             MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "&Edit"
             cnn.Close()
+
+            'history user ==========
+            cnn.Open()
+            sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Mengedit Customer kode " & txtkode.Text & "', '" & txtkode.Text & "','" & fmenu.statususer.Text & "',now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            cnn.Close()
+            '========================
+
             Me.Refresh()
             Call awal()
         End Using
@@ -296,6 +321,15 @@ Public Class fcustomer
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                'history user ==========
+                Call koneksii()
+                sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Menghapus Customer kode " & txtkode.Text & "', '" & txtkode.Text & "','" & fmenu.statususer.Text & "',now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
+                '========================
+
                 Me.Refresh()
                 Call awal()
             End If

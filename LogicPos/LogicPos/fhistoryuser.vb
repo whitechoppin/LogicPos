@@ -4,11 +4,15 @@ Public Class fhistoryuser
     Private Sub fhistoryuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
 
-        DateTimePicker1.MaxDate = Now
-        DateTimePicker2.MaxDate = Now
+        dtawal.MaxDate = Now
+        dtakhir.MaxDate = Now
 
         Call koneksii()
         'Call tabel_history()
+
+        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Membuka Form History', 'N/A','" & fmenu.statususer.Text & "',now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
     End Sub
 
     Private Sub fhistoryuser_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -16,19 +20,27 @@ Public Class fhistoryuser
     End Sub
 
     Sub grid_history()
-        GridColumn1.Caption = "No"
+        GridColumn1.Caption = "Kode History"
         GridColumn1.FieldName = "kode_history"
+        GridColumn1.Width = 10
 
         GridColumn2.Caption = "Keterangan"
         GridColumn2.FieldName = "keterangan_history"
+        GridColumn2.Width = 50
 
-        GridColumn3.Caption = "Created By"
-        GridColumn3.FieldName = "created_by"
+        GridColumn3.Caption = "Kode Tabel"
+        GridColumn3.FieldName = "kode_tabel"
+        GridColumn3.Width = 10
 
-        GridColumn4.Caption = "Date Created"
-        GridColumn4.FieldName = "date_created"
-        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn4.Caption = "Created By"
+        GridColumn4.FieldName = "created_by"
+        GridColumn4.Width = 10
+
+        GridColumn5.Caption = "Date Created"
+        GridColumn5.FieldName = "date_created"
+        GridColumn5.Width = 10
+        GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn5.DisplayFormat.FormatString = "dd/MM/yyy HH:mm:ss"
 
     End Sub
 
@@ -36,10 +48,10 @@ Public Class fhistoryuser
         Call koneksii()
 
         Using cnn As New OdbcConnection(strConn)
-            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
-                sql = "SELECT * FROM tb_history_user WHERE DATE(date_created) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            If dtawal.Value.Equals(dtakhir.Value) Then
+                sql = "SELECT * FROM tb_history_user WHERE DATE(date_created) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_history_user WHERE date_created BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_history_user WHERE date_created BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
             End If
             da = New OdbcDataAdapter(sql, cnn)
             ds = New DataSet

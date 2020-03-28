@@ -38,6 +38,13 @@ Public Class fkategoribarang
                 editstatus = True
                 hapusstatus = True
         End Select
+
+        'history user =====
+        Call koneksii()
+        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Membuka Master Kategory Barang', 'N/A','" & fmenu.statususer.Text & "',now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        '==================
     End Sub
 
     Sub awal()
@@ -118,6 +125,14 @@ Public Class fkategoribarang
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
             btntambah.Text = "Tambah"
             Me.Refresh()
+
+            'history user =====
+            Call koneksii()
+            sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Menyimpan Kategory Barang kode " & txtkode.Text & "', '" & txtkode.Text & "','" & fmenu.statususer.Text & "',now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            '================== 
+
             Call awal()
         End If
 
@@ -161,7 +176,7 @@ Public Class fkategoribarang
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "Edit"
             Me.Refresh()
-            Call awal()
+            'Call awal()
         Else
             sql = "SELECT * FROM tb_kategori_barang WHERE kode_kategori  = '" + txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
@@ -175,9 +190,18 @@ Public Class fkategoribarang
                 MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
                 btnedit.Text = "Edit"
                 Me.Refresh()
-                Call awal()
+                'Call awal()
             End If
         End If
+
+        'history user =====
+        Call koneksii()
+        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Mengedit Kategory Barang kode " & txtkode.Text & "', '" & txtkode.Text & "','" & fmenu.statususer.Text & "',now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        '==================
+
+        Call awal()
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
@@ -217,6 +241,14 @@ Public Class fkategoribarang
                 dr = cmmd.ExecuteReader
                 MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Refresh()
+
+                'history user =====
+                Call koneksii()
+                sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Menghapus Kategory Barang kode " & txtkode.Text & "', '" & txtkode.Text & "','" & fmenu.statususer.Text & "',now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+                '==================
+
                 Call awal()
             End If
         Else
