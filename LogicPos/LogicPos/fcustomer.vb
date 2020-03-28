@@ -38,12 +38,7 @@ Public Class fcustomer
                 hapusstatus = True
         End Select
 
-        'history user =====
-        Call koneksii()
-        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Membuka Master Customer', 'N/A','" & fmenu.statususer.Text & "',now())"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        '==================
+        Call historysave("Membuka Master Customer", "N/A")
     End Sub
     Sub awal()
         txtkode.Clear()
@@ -176,55 +171,44 @@ Public Class fcustomer
         End If
     End Sub
     Sub simpan()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" + txtkode.Text + "'"
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" + txtkode.Text + "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            MsgBox("Kode Customer Sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
+            'txtkode.Clear()
+            'txtnama.Clear()
+            txtkode.Focus()
+        Else
+            Dim ms As MemoryStream = New MemoryStream
+            'menyimpan gambar ke dalam ms dengan format jpeg
+            PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
+            ms.ToArray()
+
+            sql = "INSERT INTO tb_pelanggan (kode_pelanggan,nama_pelanggan,alamat_pelanggan,telepon_pelanggan,keterangan_pelanggan,foto_pelanggan,created_by,updated_by,date_created,last_updated) VALUES (?,?,?,?,?,?,?,?,?,?)"
             cmmd = New OdbcCommand(sql, cnn)
-            cnn.Open()
-            dr = cmmd.ExecuteReader
-            If dr.HasRows Then
-                MsgBox("Kode Customer Sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
-                txtkode.Clear()
-                txtnama.Clear()
-                txtkode.Focus()
-                cnn.Close()
-            Else
-                cnn.Close()
-                'menyiapkan MemoryStream
-                Dim ms As MemoryStream = New MemoryStream
-                'menyimpan gambar ke dalam ms dengan format jpeg
-                PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
-                'merubah gambar pada ms ke array
-                ms.ToArray()
-                sql = "INSERT INTO tb_pelanggan (kode_pelanggan,nama_pelanggan,alamat_pelanggan,telepon_pelanggan,keterangan_pelanggan,foto_pelanggan,created_by,updated_by,date_created,last_updated) VALUES (?,?,?,?,?,?,?,?,?,?)"
-                cmmd = New OdbcCommand(sql, cnn)
-                cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
-                cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
-                cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
-                cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
-                cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
-                cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
-                cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
-                cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
-                cmmd.Parameters.AddWithValue("@date_created", Date.Now)
-                cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
-                cnn.Open()
-                cmmd.ExecuteNonQuery()
-                cnn.Close()
-                MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+            cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
+            cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
+            cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
+            cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
+            cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
+            cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
+            cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+            cmmd.Parameters.AddWithValue("@date_created", Date.Now)
+            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+            cmmd.ExecuteNonQuery()
+            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
 
-                'history user ==========
-                cnn.Open()
-                sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Menyimpan Customer kode " & txtkode.Text & "', '" & txtkode.Text & "','" & fmenu.statususer.Text & "',now())"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-                cnn.Close()
-                '========================
+            'history user ==========
+            Call historysave("Menyimpan Customer Kode " + txtkode.Text, txtkode.Text)
+            '========================
 
-                btntambah.Text = "Tambah"
-                Me.Refresh()
-                Call awal()
-            End If
-        End Using
+            btntambah.Text = "Tambah"
+            Me.Refresh()
+            Call awal()
+        End If
     End Sub
     Private Function ResizeGambar(ByVal gmb As Image,
     ByVal size As Size, Optional ByVal preserveAspectRatio As Boolean = True) As Image
@@ -278,37 +262,30 @@ Public Class fcustomer
         Dim ms As MemoryStream = New MemoryStream
         'menyimpan gambar ke dalam ms dengan format jpeg
         PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
-        'merubah gambar pada ms ke array
         ms.ToArray()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & txtkode.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
-            cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
-            cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
-            cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
-            cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
-            cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
-            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
-            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
-            cnn.Open()
-            cmmd.ExecuteNonQuery()
-            cnn.Close()
-            MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
-            btnedit.Text = "&Edit"
-            cnn.Close()
 
-            'history user ==========
-            cnn.Open()
-            sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Mengedit Customer kode " & txtkode.Text & "', '" & txtkode.Text & "','" & fmenu.statususer.Text & "',now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-            cnn.Close()
-            '========================
+        Call koneksii()
 
-            Me.Refresh()
-            Call awal()
-        End Using
+        sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & txtkode.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
+        cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
+        cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
+        cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
+        cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
+        cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
+        cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+        cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
+        btnedit.Text = "Edit"
+
+        'history user ==========
+        Call historysave("Mengedit Customer Kode " + txtkode.Text, txtkode.Text)
+        '========================
+
+        Me.Refresh()
+        Call awal()
     End Sub
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
@@ -323,11 +300,7 @@ Public Class fcustomer
                 MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 'history user ==========
-                Call koneksii()
-                sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Menghapus Customer kode " & txtkode.Text & "', '" & txtkode.Text & "','" & fmenu.statususer.Text & "',now())"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-
+                Call historysave("Menghapus Customer Kode" + txtkode.Text, txtkode.Text)
                 '========================
 
                 Me.Refresh()
@@ -354,28 +327,28 @@ Public Class fcustomer
 
         'menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
         Dim foto As Byte()
-        'menyiapkan koneksi database
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" + txtkode.Text + "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            cnn.Open()
-            dr = cmmd.ExecuteReader
-            dr.Read()
-            If dr.HasRows Then
-                txtnama.Text = dr("nama_pelanggan")
-                txtalamat.Text = dr("alamat_pelanggan")
-                txttelp.Text = dr("telepon_pelanggan")
-                txtketerangan.Text = dr("keterangan_pelanggan")
-                foto = dr("foto_pelanggan")
-                PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-                PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
-                btnedit.Enabled = True
-                btnbatal.Enabled = True
-                btnhapus.Enabled = True
-                btntambah.Enabled = False
-                cnn.Close()
-            End If
-        End Using
+
+        Call koneksii()
+
+        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" + txtkode.Text + "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        dr.Read()
+
+        If dr.HasRows Then
+            txtnama.Text = dr("nama_pelanggan")
+            txtalamat.Text = dr("alamat_pelanggan")
+            txttelp.Text = dr("telepon_pelanggan")
+            txtketerangan.Text = dr("keterangan_pelanggan")
+            foto = dr("foto_pelanggan")
+            PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+            PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
+
+            btnedit.Enabled = True
+            btnbatal.Enabled = True
+            btnhapus.Enabled = True
+            btntambah.Enabled = False
+        End If
     End Sub
 
     Private Sub fcustomer_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

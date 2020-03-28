@@ -7,12 +7,7 @@ Public Class fhistoryuser
         dtawal.MaxDate = Now
         dtakhir.MaxDate = Now
 
-        Call koneksii()
-        'Call tabel_history()
-
-        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Membuka Form History', 'N/A','" & fmenu.statususer.Text & "',now())"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        Call historysave("Membuka Form History", "N/A")
     End Sub
 
     Private Sub fhistoryuser_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -64,5 +59,6 @@ Public Class fhistoryuser
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel_history()
+
     End Sub
 End Class

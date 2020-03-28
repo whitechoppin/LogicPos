@@ -38,6 +38,8 @@ Public Class fgudang
                 editstatus = True
                 hapusstatus = True
         End Select
+
+        Call historysave("Membuka Master Gudang", "N/A")
     End Sub
     Sub awal()
         txtkode.Clear()
@@ -186,6 +188,11 @@ Public Class fgudang
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
             btntambah.Text = "Tambah"
+
+            'history user ==========
+            Call historysave("Menyimpan Gudang Kode " + txtkode.Text, txtkode.Text)
+            '========================
+
             Me.Refresh()
             Call awal()
         End If
@@ -226,8 +233,6 @@ Public Class fgudang
             dr = cmmd.ExecuteReader()
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "Edit"
-            Me.Refresh()
-            Call awal()
         Else
             sql = "SELECT * FROM tb_gudang WHERE kode_gudang  = '" + txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
@@ -240,10 +245,14 @@ Public Class fgudang
                 dr = cmmd.ExecuteReader()
                 MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
                 btnedit.Text = "Edit"
-                Me.Refresh()
-                Call awal()
             End If
         End If
+
+        'history user ==========
+        Call historysave("Mengedit Gudang Kode " + txtkode.Text, txtkode.Text)
+        '=======================
+        Me.Refresh()
+        Call awal()
     End Sub
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
@@ -269,6 +278,11 @@ Public Class fgudang
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                'history user ==========
+                Call historysave("Menghapus Gudang Kode" + txtkode.Text, txtkode.Text)
+                '========================
+
                 Me.Refresh()
                 Call awal()
             End If

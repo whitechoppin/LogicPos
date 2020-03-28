@@ -236,9 +236,7 @@ Public Class fbarang
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
 
             'history user ==========
-
             Call historysave("Menyimpan Barang Kode " + txtkode.Text, txtkode.Text)
-
             '========================
 
             btntambah.Text = "Tambah"
