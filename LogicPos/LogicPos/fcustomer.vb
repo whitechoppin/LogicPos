@@ -202,7 +202,7 @@ Public Class fcustomer
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
 
             'history user ==========
-            Call historysave("Menyimpan Customer Kode " + txtkode.Text, txtkode.Text)
+            Call historysave("Menyimpan Data Customer Kode " + txtkode.Text, txtkode.Text)
             '========================
 
             btntambah.Text = "Tambah"
@@ -281,7 +281,7 @@ Public Class fcustomer
         btnedit.Text = "Edit"
 
         'history user ==========
-        Call historysave("Mengedit Customer Kode " + txtkode.Text, txtkode.Text)
+        Call historysave("Mengedit Data Customer Kode " + txtkode.Text, txtkode.Text)
         '========================
 
         Me.Refresh()
@@ -300,7 +300,7 @@ Public Class fcustomer
                 MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 'history user ==========
-                Call historysave("Menghapus Customer Kode" + txtkode.Text, txtkode.Text)
+                Call historysave("Menghapus Data Customer Kode" + txtkode.Text, txtkode.Text)
                 '========================
 
                 Me.Refresh()

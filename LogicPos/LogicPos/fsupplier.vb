@@ -37,6 +37,8 @@ Public Class fsupplier
                 editstatus = True
                 hapusstatus = True
         End Select
+
+        Call historysave("Membuka Master Supplier", "N/A")
     End Sub
     Sub awal()
         txtkode.Clear()
@@ -174,6 +176,10 @@ Public Class fsupplier
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
             btntambah.Text = "Tambah"
+
+            'history user ==========
+            Call historysave("Menyimpan Data Supplier Kode " + txtkode.Text, txtkode.Text)
+            '========================
             Me.Refresh()
             Call awal()
         End If
@@ -211,6 +217,10 @@ Public Class fsupplier
         dr = cmmd.ExecuteReader()
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
         btnedit.Text = "Edit"
+
+        'history user ==========
+        Call historysave("Mengedit Data Supplier Kode " + txtkode.Text, txtkode.Text)
+        '=======================
         Me.Refresh()
         Call awal()
     End Sub
@@ -238,6 +248,11 @@ Public Class fsupplier
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                'history user ==========
+                Call historysave("Menghapus Data Supplier Kode" + txtkode.Text, txtkode.Text)
+                '========================
+
                 Me.Refresh()
                 Call awal()
             End If

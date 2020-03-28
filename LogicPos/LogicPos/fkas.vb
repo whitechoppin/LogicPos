@@ -37,6 +37,8 @@ Public Class fkas
                 editstatus = True
                 hapusstatus = True
         End Select
+
+        Call historysave("Membuka Master Kas", "N/A")
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If tambahstatus.Equals(True) Then
@@ -154,6 +156,11 @@ Public Class fkas
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
             btntambah.Text = "Tambah"
+
+            'history user ==========
+            Call historysave("Menyimpan Data Kas Kode " + txtkode.Text, txtkode.Text)
+            '========================
+
             Me.Refresh()
             Call awal()
         End If
@@ -168,6 +175,11 @@ Public Class fkas
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                'history user ==========
+                Call historysave("Menghapus Data Kas Kode" + txtkode.Text, txtkode.Text)
+                '========================
+
                 Me.Refresh()
                 Call awal()
             End If
@@ -196,29 +208,36 @@ Public Class fkas
     Sub edit()
         Call koneksii()
         If txtkode.Text.Equals(kodekasedit) Then
+            Call koneksii()
             sql = "UPDATE tb_kas SET  nama_kas='" & txtnama.Text & "', jenis_kas='" & cbjeniskas.Text & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & kodekasedit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "Edit"
-            Me.Refresh()
-            Call awal()
         Else
+            Call koneksii()
             sql = "SELECT * FROM tb_kas WHERE kode_kas  = '" + txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
             Else
+                Call koneksii()
                 sql = "UPDATE tb_kas SET  kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', jenis_kas='" & cbjeniskas.Text & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_kas='" & kodekasedit & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
                 btnedit.Text = "Edit"
-                Me.Refresh()
-                Call awal()
+
             End If
         End If
+
+        'history user ==========
+        Call historysave("Mengedit Data Kas Kode " + txtkode.Text, txtkode.Text)
+        '========================
+
+        Me.Refresh()
+        Call awal()
     End Sub
 
     Function autonumber()

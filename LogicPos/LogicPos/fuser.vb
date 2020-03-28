@@ -20,7 +20,40 @@ Public Class fuser
 
     Private Sub fuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
+
         Call awal()
+
+        Select Case kodeakses
+            Case 1
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = False
+            Case 3
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = False
+            Case 5
+                tambahstatus = False
+                editstatus = False
+                hapusstatus = True
+            Case 4
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = False
+            Case 6
+                tambahstatus = True
+                editstatus = False
+                hapusstatus = True
+            Case 8
+                tambahstatus = False
+                editstatus = True
+                hapusstatus = True
+            Case 9
+                tambahstatus = True
+                editstatus = True
+                hapusstatus = True
+        End Select
+        Call historysave("Membuka Master Kategori Barang", "N/A")
     End Sub
 
     Sub awal()
@@ -1227,6 +1260,9 @@ Public Class fuser
             dr = cmmd.ExecuteReader()
             MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Berhasil")
             btntambah.Text = "Tambah"
+
+            Call historysave("Menyimpan Data User kode " + txtkode.Text, txtkode.Text)
+
             Me.Refresh()
             Call awal()
         End If
@@ -1280,13 +1316,91 @@ Public Class fuser
     Sub edit()
         If txtkode.Text.Equals(kode) Then
             Call aksesadmin()
-            Using cnn As New OdbcConnection(strConn)
-                sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_kategori=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?,
-                        pembelian=? ,penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?,
-                        lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?, 
+
+            Call koneksii()
+
+            sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_kategori=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?,
+                    pembelian=? ,penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?,
+                    lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?, 
+                    lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?,
+                    updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
+            cmmd.Parameters.AddWithValue("@password_user", txtpassword.Text)
+            cmmd.Parameters.AddWithValue("@jabatan_user", cmbjabatan.Text)
+            cmmd.Parameters.AddWithValue("@email_user", txtemail.Text)
+            cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
+            cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
+            cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
+            'akses 
+            'master
+            cmmd.Parameters.AddWithValue("@master_barang", cekmasterbarang)
+            cmmd.Parameters.AddWithValue("@master_kategori", cekmasterkategori)
+            cmmd.Parameters.AddWithValue("@master_gudang", cekmastergudang)
+            cmmd.Parameters.AddWithValue("@master_customer", cekmastercustomer)
+            cmmd.Parameters.AddWithValue("@master_supplier", cekmastersupplier)
+            cmmd.Parameters.AddWithValue("@master_user", cekmasteruser)
+            cmmd.Parameters.AddWithValue("@master_kas", cekmasterkas)
+            cmmd.Parameters.AddWithValue("@master_pricelist", cekmasterpricelist)
+            cmmd.Parameters.AddWithValue("@master_rek_supp", cekmasterreksupp)
+            cmmd.Parameters.AddWithValue("@master_rek_cust", cekmasterrekcust)
+            'transaksi
+            cmmd.Parameters.AddWithValue("@pembelian", cekpembelian)
+            cmmd.Parameters.AddWithValue("@penjualan", cekpenjualan)
+            cmmd.Parameters.AddWithValue("@retur_beli", cekreturbeli)
+            cmmd.Parameters.AddWithValue("@retur_jual", cekreturjual)
+            cmmd.Parameters.AddWithValue("@barang_masuk", cekbarangmasuk)
+            cmmd.Parameters.AddWithValue("@barang_keluar", cekbarangkeluar)
+            cmmd.Parameters.AddWithValue("@transfer_barang", cektransferbarang)
+            'administrasi
+            cmmd.Parameters.AddWithValue("@lunas_utang", ceklunasutang)
+            cmmd.Parameters.AddWithValue("@lunas_piutang", ceklunaspiutang)
+            cmmd.Parameters.AddWithValue("@transfer_kas", cektransferkas)
+            cmmd.Parameters.AddWithValue("@akun_masuk", cekakunmasuk)
+            cmmd.Parameters.AddWithValue("@akun_keluar", cekakunkeluar)
+            'laporan
+            cmmd.Parameters.AddWithValue("@lap_pricelist", ceklappricelist)
+            cmmd.Parameters.AddWithValue("@lap_pembelian", ceklappembelian)
+            cmmd.Parameters.AddWithValue("@lap_penjualan", ceklappenjualan)
+            cmmd.Parameters.AddWithValue("@lap_returbeli", ceklapreturbeli)
+            cmmd.Parameters.AddWithValue("@lap_returjual", ceklapreturjual)
+            cmmd.Parameters.AddWithValue("@lap_barang_masuk", ceklapbarangmasuk)
+            cmmd.Parameters.AddWithValue("@lap_barang_keluar", ceklapbarangkeluar)
+            cmmd.Parameters.AddWithValue("@lap_utang", ceklaputang)
+            cmmd.Parameters.AddWithValue("@lap_piutang", ceklappiutang)
+            cmmd.Parameters.AddWithValue("@lap_stok_barang", ceklapstokbarang)
+            cmmd.Parameters.AddWithValue("@lap_akun_masuk", ceklapakunmasuk)
+            cmmd.Parameters.AddWithValue("@lap_akun_keluar", ceklapakunkeluar)
+            cmmd.Parameters.AddWithValue("@lap_transfer_kas", ceklaptransferkas)
+            cmmd.Parameters.AddWithValue("@lap_transfer_barang", ceklaptransferbarang)
+            cmmd.Parameters.AddWithValue("@lap_transaksi_kas", ceklaptransaksikas)
+            ' end akses
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+            cmmd.ExecuteNonQuery()
+
+            MsgBox("Data Terupdate", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
+
+        Else
+            Call koneksii()
+            sql = "SELECT * FROM tb_user WHERE kode_user  = '" + txtkode.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                MsgBox("Kode User Sudah ada dengan nama " + dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
+            Else
+                Call aksesadmin()
+
+                Call koneksii()
+
+                sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_kategori=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?, 
+                        pembelian=?, penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?,
+                        lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?,
                         lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?,
                         updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
                 cmmd = New OdbcCommand(sql, cnn)
+                cmmd.Parameters.AddWithValue("@kode_user", txtkode.Text)
                 cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
                 cmmd.Parameters.AddWithValue("@password_user", txtpassword.Text)
                 cmmd.Parameters.AddWithValue("@jabatan_user", cmbjabatan.Text)
@@ -1305,7 +1419,7 @@ Public Class fuser
                 cmmd.Parameters.AddWithValue("@master_kas", cekmasterkas)
                 cmmd.Parameters.AddWithValue("@master_pricelist", cekmasterpricelist)
                 cmmd.Parameters.AddWithValue("@master_rek_supp", cekmasterreksupp)
-                cmmd.Parameters.AddWithValue("@master_rek_cust", cekmasterrekcust)
+                cmmd.Parameters.AddWithValue("@master_rek_cust", cekmastercustomer)
                 'transaksi
                 cmmd.Parameters.AddWithValue("@pembelian", cekpembelian)
                 cmmd.Parameters.AddWithValue("@penjualan", cekpenjualan)
@@ -1339,96 +1453,19 @@ Public Class fuser
                 ' end akses
                 cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
                 cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
-                cnn.Open()
                 cmmd.ExecuteNonQuery()
-                cnn.Close()
-                MsgBox("Data Terupdate", MsgBoxStyle.Information, "Berhasil")
+
+                MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
                 btnedit.Text = "Edit"
-                cnn.Close()
-                Me.Refresh()
-                Call awal()
-            End Using
-        Else
 
-            sql = "SELECT * FROM tb_user WHERE kode_user  = '" + txtkode.Text + "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            If dr.HasRows Then
-                MsgBox("Kode User Sudah ada dengan nama " + dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
-            Else
-                Call aksesadmin()
-                Using cnn As New OdbcConnection(strConn)
-                    sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_kategori=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?, 
-                            pembelian=?, penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?,
-                            lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?,
-                            lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?,
-                            updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
-                    cmmd = New OdbcCommand(sql, cnn)
-                    cmmd.Parameters.AddWithValue("@kode_user", txtkode.Text)
-                    cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
-                    cmmd.Parameters.AddWithValue("@password_user", txtpassword.Text)
-                    cmmd.Parameters.AddWithValue("@jabatan_user", cmbjabatan.Text)
-                    cmmd.Parameters.AddWithValue("@email_user", txtemail.Text)
-                    cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
-                    cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
-                    cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
-                    'akses 
-                    'master
-                    cmmd.Parameters.AddWithValue("@master_barang", cekmasterbarang)
-                    cmmd.Parameters.AddWithValue("@master_kategori", cekmasterkategori)
-                    cmmd.Parameters.AddWithValue("@master_gudang", cekmastergudang)
-                    cmmd.Parameters.AddWithValue("@master_customer", cekmastercustomer)
-                    cmmd.Parameters.AddWithValue("@master_supplier", cekmastersupplier)
-                    cmmd.Parameters.AddWithValue("@master_user", cekmasteruser)
-                    cmmd.Parameters.AddWithValue("@master_kas", cekmasterkas)
-                    cmmd.Parameters.AddWithValue("@master_pricelist", cekmasterpricelist)
-                    cmmd.Parameters.AddWithValue("@master_rek_supp", cekmasterreksupp)
-                    cmmd.Parameters.AddWithValue("@master_rek_cust", cekmastercustomer)
-                    'transaksi
-                    cmmd.Parameters.AddWithValue("@pembelian", cekpembelian)
-                    cmmd.Parameters.AddWithValue("@penjualan", cekpenjualan)
-                    cmmd.Parameters.AddWithValue("@retur_beli", cekreturbeli)
-                    cmmd.Parameters.AddWithValue("@retur_jual", cekreturjual)
-                    cmmd.Parameters.AddWithValue("@barang_masuk", cekbarangmasuk)
-                    cmmd.Parameters.AddWithValue("@barang_keluar", cekbarangkeluar)
-                    cmmd.Parameters.AddWithValue("@transfer_barang", cektransferbarang)
-                    'administrasi
-                    cmmd.Parameters.AddWithValue("@lunas_utang", ceklunasutang)
-                    cmmd.Parameters.AddWithValue("@lunas_piutang", ceklunaspiutang)
-                    cmmd.Parameters.AddWithValue("@transfer_kas", cektransferkas)
-                    cmmd.Parameters.AddWithValue("@akun_masuk", cekakunmasuk)
-                    cmmd.Parameters.AddWithValue("@akun_keluar", cekakunkeluar)
-                    'laporan
-                    cmmd.Parameters.AddWithValue("@lap_pricelist", ceklappricelist)
-                    cmmd.Parameters.AddWithValue("@lap_pembelian", ceklappembelian)
-                    cmmd.Parameters.AddWithValue("@lap_penjualan", ceklappenjualan)
-                    cmmd.Parameters.AddWithValue("@lap_returbeli", ceklapreturbeli)
-                    cmmd.Parameters.AddWithValue("@lap_returjual", ceklapreturjual)
-                    cmmd.Parameters.AddWithValue("@lap_barang_masuk", ceklapbarangmasuk)
-                    cmmd.Parameters.AddWithValue("@lap_barang_keluar", ceklapbarangkeluar)
-                    cmmd.Parameters.AddWithValue("@lap_utang", ceklaputang)
-                    cmmd.Parameters.AddWithValue("@lap_piutang", ceklappiutang)
-                    cmmd.Parameters.AddWithValue("@lap_stok_barang", ceklapstokbarang)
-                    cmmd.Parameters.AddWithValue("@lap_akun_masuk", ceklapakunmasuk)
-                    cmmd.Parameters.AddWithValue("@lap_akun_keluar", ceklapakunkeluar)
-                    cmmd.Parameters.AddWithValue("@lap_transfer_kas", ceklaptransferkas)
-                    cmmd.Parameters.AddWithValue("@lap_transfer_barang", ceklaptransferbarang)
-                    cmmd.Parameters.AddWithValue("@lap_transaksi_kas", ceklaptransaksikas)
-                    ' end akses
-                    cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
-                    cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
 
-                    cnn.Open()
-                    cmmd.ExecuteNonQuery()
-                    cnn.Close()
-                    MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
-                    btnedit.Text = "Edit"
-                    cnn.Close()
-                    Me.Refresh()
-                    Call awal()
-                End Using
             End If
         End If
+
+        Call historysave("Mengedit Data User kode " + txtkode.Text, txtkode.Text)
+
+        Me.Refresh()
+        Call awal()
     End Sub
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
@@ -1439,6 +1476,9 @@ Public Class fuser
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                Call historysave("Menghapus Data User kode " + txtkode.Text, txtkode.Text)
+
                 Me.Refresh()
                 Call awal()
             End If

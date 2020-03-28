@@ -190,7 +190,7 @@ Public Class fgudang
             btntambah.Text = "Tambah"
 
             'history user ==========
-            Call historysave("Menyimpan Gudang Kode " + txtkode.Text, txtkode.Text)
+            Call historysave("Menyimpan Data Gudang Kode " + txtkode.Text, txtkode.Text)
             '========================
 
             Me.Refresh()
@@ -249,7 +249,7 @@ Public Class fgudang
         End If
 
         'history user ==========
-        Call historysave("Mengedit Gudang Kode " + txtkode.Text, txtkode.Text)
+        Call historysave("Mengedit Data Gudang Kode " + txtkode.Text, txtkode.Text)
         '=======================
         Me.Refresh()
         Call awal()
@@ -280,7 +280,7 @@ Public Class fgudang
                 MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 'history user ==========
-                Call historysave("Menghapus Gudang Kode" + txtkode.Text, txtkode.Text)
+                Call historysave("Menghapus Data Gudang Kode" + txtkode.Text, txtkode.Text)
                 '========================
 
                 Me.Refresh()

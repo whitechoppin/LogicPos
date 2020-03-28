@@ -121,7 +121,7 @@ Public Class fkategoribarang
             btntambah.Text = "Tambah"
             Me.Refresh()
 
-            Call historysave("Menyimpan Kategory Barang kode " + txtkode.Text, txtkode.Text)
+            Call historysave("Menyimpan Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
             Call awal()
         End If
 
@@ -181,7 +181,7 @@ Public Class fkategoribarang
             End If
         End If
 
-        Call historysave("Mengedit Kategory Barang kode " + txtkode.Text, txtkode.Text)
+        Call historysave("Mengedit Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
         Call awal()
     End Sub
 
@@ -223,7 +223,7 @@ Public Class fkategoribarang
                 MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Refresh()
 
-                Call historysave("Menghapus Kategory Barang kode " + txtkode.Text, txtkode.Text)
+                Call historysave("Menghapus Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
 
                 Call awal()
             End If

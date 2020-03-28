@@ -261,6 +261,12 @@
     <Compile Include="flaplunasutang.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flapmodalbarang.Designer.vb">
+      <DependentUpon>flapmodalbarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flapmodalbarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanbarangmasuk.designer.vb">
       <DependentUpon>flaporanbarangmasuk.vb</DependentUpon>
     </Compile>
@@ -271,6 +277,12 @@
       <DependentUpon>flaporanbarangkeluar.vb</DependentUpon>
     </Compile>
     <Compile Include="flaporanbarangkeluar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporanmodalbarang.Designer.vb">
+      <DependentUpon>flaporanmodalbarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanmodalbarang.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flaporanpenjualanpajak.designer.vb">
@@ -908,6 +920,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanbarangkeluar.resx">
       <DependentUpon>flaporanbarangkeluar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporanmodalbarang.resx">
+      <DependentUpon>flaporanmodalbarang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanpenjualanpajak.resx">
       <DependentUpon>flaporanpenjualanpajak.vb</DependentUpon>

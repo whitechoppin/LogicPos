@@ -43,6 +43,8 @@ Public Class fpricelist
                 editstatus = True
                 hapusstatus = True
         End Select
+
+        Call historysave("Membuka Master Pricelist", "N/A")
     End Sub
     Sub awal()
         txtkodecus.Clear()
@@ -190,12 +192,19 @@ Public Class fpricelist
             MsgBox("Harga Sudah ada")
             Exit Sub
         Else
+            Call koneksii()
             sql = "INSERT INTO tb_price_group (kode_barang, kode_pelanggan, harga_jual) VALUES ('" & txtkode.Text & "', '" & txtkodecus.Text & "', '" & harga & "')"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             MsgBox("Data Tersimpan")
+
+            'history user ==========
+            Call historysave("Menyimpan Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
+            '========================
+
             Call clearbrg()
         End If
+
         Call caricust()
     End Sub
 
@@ -204,6 +213,11 @@ Public Class fpricelist
         sql = "UPDATE tb_price_group SET harga_jual='" & harga & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_barang='" & txtkode.Text & "' AND kode_pelanggan='" & txtkodecus.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
+
+        'history user ==========
+        Call historysave("Mengedit Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
+        '========================
+
         MsgBox("Data Terupdate", MsgBoxStyle.Information, "Success")
     End Sub
     Sub clearbrg()
@@ -247,7 +261,7 @@ Public Class fpricelist
     End Sub
     Sub cek_item()
         Call koneksii()
-        sql = "select * from tb_price_group where kode_barang='" & txtkode.Text & "' and kode_pelanggan='" & txtkodecus.Text & "'"
+        sql = "SELECT * FROM tb_price_group WHERE kode_barang='" & txtkode.Text & "' AND kode_pelanggan='" & txtkodecus.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
@@ -265,12 +279,16 @@ Public Class fpricelist
     Sub hapus()
         If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             Using cnn As New OdbcConnection(strConn)
-                sql = "DELETE FROM tb_price_group WHERE kode_barang='" & txtkode.Text & "' and kode_pelanggan='" & txtkodecus.Text & "'"
+                sql = "DELETE FROM tb_price_group WHERE kode_barang='" & txtkode.Text & "' AND kode_pelanggan='" & txtkodecus.Text & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 cnn.Open()
                 dr = cmmd.ExecuteReader
                 cnn.Close()
                 MessageBox.Show(txtnama.Text + " Berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                'history user ==========
+                Call historysave("Menghapus Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
+                '========================
                 Me.Refresh()
                 Call awal()
             End Using
@@ -284,13 +302,13 @@ Public Class fpricelist
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If hapusstatus.Equals(True) Then
             Call koneksii()
-            sql = "Select * FROM tb_price_group WHERE  kode_barang='" & txtkode.Text & "' and kode_barang='" & txtkodecus.Text & "'"
+            sql = "SELECT * FROM tb_price_group WHERE kode_barang='" & txtkode.Text & "'AND kode_pelanggan='" & txtkodecus.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
-                Exit Sub
-            Else
                 Call hapus()
+            Else
+                Exit Sub
             End If
         Else
             MsgBox("Tidak ada akses")
@@ -298,7 +316,7 @@ Public Class fpricelist
     End Sub
     Sub edit()
         Call koneksii()
-        sql = "select * from tb_price_group where kode_barang='" & txtkode.Text & "' and kode_pelanggan='" & txtkodecus.Text & "'"
+        sql = "SELECT * FROM tb_price_group WHERE kode_barang='" & txtkode.Text & "' AND kode_pelanggan='" & txtkodecus.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
     End Sub

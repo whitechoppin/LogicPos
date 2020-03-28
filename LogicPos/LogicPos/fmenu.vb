@@ -10,6 +10,8 @@ Public Class fmenu
         Timer.Start()
         fjatuhtempopembelian.Show()
         fjatuhtempopenjualan.Show()
+
+        Call historysave("User Login Program", "N/A")
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
@@ -281,7 +283,10 @@ Public Class fmenu
     End Sub
 
     Private Sub LogOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOutToolStripMenuItem.Click
+        Call historysave("User Log Out Program", "N/A")
+
         Me.Hide()
+
         flogin.Show()
         flogin.txtusername.Text = ""
         flogin.txtpassword.Text = ""
