@@ -45,6 +45,7 @@
         fmenu.LaporanMenu.DropDownItems.Item(12).Visible = False
         fmenu.LaporanMenu.DropDownItems.Item(13).Visible = False
         fmenu.LaporanMenu.DropDownItems.Item(14).Visible = False
+        fmenu.LaporanMenu.DropDownItems.Item(15).Visible = False
 
         fmenu.SettingMenu.DropDownItems.Item(0).Visible = False
     End Sub

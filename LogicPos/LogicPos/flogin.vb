@@ -4,7 +4,7 @@ Public Class flogin
     Public master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust As Integer
     Public pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang As Integer
     Public lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar As Integer
-    Public lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barangmasuk, lap_barangkeluar, lap_lunas_utang, lap_lunas_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas As Integer
+    Public lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barangmasuk, lap_barangkeluar, lap_lunas_utang, lap_lunas_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas, lap_modal_barang As Integer
 
 
     Sub reset()
@@ -48,6 +48,7 @@ Public Class flogin
         lap_transfer_barang = 0
         lap_stok_barang = 0
         lap_transaksi_kas = 0
+        lap_modal_barang = 0
     End Sub
     Sub login()
         Call koneksii()
@@ -190,6 +191,7 @@ Public Class flogin
             lap_transfer_barang = dr("lap_transfer_barang")
             lap_stok_barang = dr("lap_stok_barang")
             lap_transaksi_kas = dr("lap_transaksi_kas")
+            lap_modal_barang = dr("lap_modal_barang")
 
             If lap_pricelist > 0 Then
                 fmenu.LaporanMenu.DropDownItems.Item(0).Visible = True 'lap pembelian
@@ -249,6 +251,10 @@ Public Class flogin
 
             If lap_transaksi_kas > 0 Then
                 fmenu.LaporanMenu.DropDownItems.Item(14).Visible = True 'lap transaksi kas 
+            End If
+
+            If lap_modal_barang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(15).Visible = True 'lap modal barang
             End If
 
             fmenu.SettingMenu.DropDownItems.Item(0).Visible = True 'set printer

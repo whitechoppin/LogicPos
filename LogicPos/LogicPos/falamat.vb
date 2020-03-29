@@ -36,12 +36,14 @@ Public Class falamat
     Sub simpan()
         Call koneksii()
         alamatakhir = txtalamat.Text
+        telpakhir = txttelepon.Text
+        rekakhir = txtrekening.Text
 
         sql = "SELECT * FROM tb_info_perusahaan WHERE alamat='" & alamatawal & "' AND telepon='" & telpawal & "' AND rekening ='" & rekawal & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
-            sql = "UPDATE tb_info_perusahaan SET alamat='" & alamatakhir & "', telepon='" & telpakhir & "', rekening='" & rekakhir & "', WHERE alamat='" & alamatawal & "' AND telepon='" & telpawal & "' AND rekening='" & rekawal & "'"
+            sql = "UPDATE tb_info_perusahaan SET alamat='" & alamatakhir & "', telepon='" & telpakhir & "', rekening='" & rekakhir & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Else

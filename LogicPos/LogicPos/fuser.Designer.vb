@@ -51,6 +51,8 @@ Partial Class fuser
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gbaksesuser = New System.Windows.Forms.GroupBox()
+        Me.clblapmodalbarang = New System.Windows.Forms.CheckedListBox()
+        Me.cblapmodalbarang = New System.Windows.Forms.CheckBox()
         Me.clblapbarangkeluar = New System.Windows.Forms.CheckedListBox()
         Me.cblapbarangkeluar = New System.Windows.Forms.CheckBox()
         Me.clblapbarangmasuk = New System.Windows.Forms.CheckedListBox()
@@ -125,8 +127,6 @@ Partial Class fuser
         Me.cbmastergudang = New System.Windows.Forms.CheckBox()
         Me.clbmasterbarang = New System.Windows.Forms.CheckedListBox()
         Me.cbmasterbarang = New System.Windows.Forms.CheckBox()
-        Me.clblapmodalbarang = New System.Windows.Forms.CheckedListBox()
-        Me.cblapmodalbarang = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -497,6 +497,28 @@ Partial Class fuser
         Me.gbaksesuser.TabIndex = 17
         Me.gbaksesuser.TabStop = False
         Me.gbaksesuser.Text = "Akses User"
+        '
+        'clblapmodalbarang
+        '
+        Me.clblapmodalbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblapmodalbarang.CheckOnClick = True
+        Me.clblapmodalbarang.FormattingEnabled = True
+        Me.clblapmodalbarang.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblapmodalbarang.Location = New System.Drawing.Point(1220, 279)
+        Me.clblapmodalbarang.Name = "clblapmodalbarang"
+        Me.clblapmodalbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblapmodalbarang.Size = New System.Drawing.Size(91, 42)
+        Me.clblapmodalbarang.TabIndex = 115
+        '
+        'cblapmodalbarang
+        '
+        Me.cblapmodalbarang.AutoSize = True
+        Me.cblapmodalbarang.Location = New System.Drawing.Point(1202, 251)
+        Me.cblapmodalbarang.Name = "cblapmodalbarang"
+        Me.cblapmodalbarang.Size = New System.Drawing.Size(151, 22)
+        Me.cblapmodalbarang.TabIndex = 114
+        Me.cblapmodalbarang.Text = "Lap. Modal Barang"
+        Me.cblapmodalbarang.UseVisualStyleBackColor = True
         '
         'clblapbarangkeluar
         '
@@ -1311,28 +1333,6 @@ Partial Class fuser
         Me.cbmasterbarang.TabIndex = 8
         Me.cbmasterbarang.Text = "Master Barang"
         Me.cbmasterbarang.UseVisualStyleBackColor = True
-        '
-        'clblapmodalbarang
-        '
-        Me.clblapmodalbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.clblapmodalbarang.CheckOnClick = True
-        Me.clblapmodalbarang.FormattingEnabled = True
-        Me.clblapmodalbarang.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblapmodalbarang.Location = New System.Drawing.Point(1220, 279)
-        Me.clblapmodalbarang.Name = "clblapmodalbarang"
-        Me.clblapmodalbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblapmodalbarang.Size = New System.Drawing.Size(91, 42)
-        Me.clblapmodalbarang.TabIndex = 115
-        '
-        'cblapmodalbarang
-        '
-        Me.cblapmodalbarang.AutoSize = True
-        Me.cblapmodalbarang.Location = New System.Drawing.Point(1202, 251)
-        Me.cblapmodalbarang.Name = "cblapmodalbarang"
-        Me.cblapmodalbarang.Size = New System.Drawing.Size(151, 22)
-        Me.cblapmodalbarang.TabIndex = 114
-        Me.cblapmodalbarang.Text = "Lap. Modal Barang"
-        Me.cblapmodalbarang.UseVisualStyleBackColor = True
         '
         'fuser
         '

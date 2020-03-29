@@ -15,44 +15,44 @@ Public Class fuser
     Dim ceklunasutang, ceklunaspiutang, cektransferkas, cekakunmasuk, cekakunkeluar As Integer
     Dim akseslunasutang, akseslunaspiutang, aksestransferkas, aksesakunmasuk, aksesakunkeluar As Integer
     'laporan
-    Dim ceklappricelist, ceklappembelian, ceklappenjualan, ceklapreturbeli, ceklapreturjual, ceklapbarangmasuk, ceklapbarangkeluar, ceklaputang, ceklappiutang, ceklapstokbarang, ceklapakunmasuk, ceklapakunkeluar, ceklaptransferkas, ceklaptransferbarang, ceklaptransaksikas As Integer
-    Dim akseslappricelist, akseslappembelian, akseslappenjualan, akseslapreturbeli, akseslapreturjual, akseslapbarangmasuk, akseslapbarangkeluar, akseslaputang, akseslappiutang, akseslapstokbarang, akseslapakunmasuk, akseslapakunkeluar, akseslaptransferkas, akseslaptransferbarang, akseslaptransaksikas As Integer
+    Dim ceklappricelist, ceklappembelian, ceklappenjualan, ceklapreturbeli, ceklapreturjual, ceklapbarangmasuk, ceklapbarangkeluar, ceklaputang, ceklappiutang, ceklapstokbarang, ceklapakunmasuk, ceklapakunkeluar, ceklaptransferkas, ceklaptransferbarang, ceklaptransaksikas, ceklapmodalbarang As Integer
+    Dim akseslappricelist, akseslappembelian, akseslappenjualan, akseslapreturbeli, akseslapreturjual, akseslapbarangmasuk, akseslapbarangkeluar, akseslaputang, akseslappiutang, akseslapstokbarang, akseslapakunmasuk, akseslapakunkeluar, akseslaptransferkas, akseslaptransferbarang, akseslaptransaksikas, akseslapmodalbarang As Integer
 
     Private Sub fuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
 
         Call awal()
 
-        Select Case kodeakses
-            Case 1
-                tambahstatus = True
-                editstatus = False
-                hapusstatus = False
-            Case 3
-                tambahstatus = False
-                editstatus = True
-                hapusstatus = False
-            Case 5
-                tambahstatus = False
-                editstatus = False
-                hapusstatus = True
-            Case 4
-                tambahstatus = True
-                editstatus = True
-                hapusstatus = False
-            Case 6
-                tambahstatus = True
-                editstatus = False
-                hapusstatus = True
-            Case 8
-                tambahstatus = False
-                editstatus = True
-                hapusstatus = True
-            Case 9
-                tambahstatus = True
-                editstatus = True
-                hapusstatus = True
-        End Select
+        'Select Case kodeakses
+        '    Case 1
+        '        tambahstatus = True
+        '        editstatus = False
+        '        hapusstatus = False
+        '    Case 3
+        '        tambahstatus = False
+        '        editstatus = True
+        '        hapusstatus = False
+        '    Case 5
+        '        tambahstatus = False
+        '        editstatus = False
+        '        hapusstatus = True
+        '    Case 4
+        '        tambahstatus = True
+        '        editstatus = True
+        '        hapusstatus = False
+        '    Case 6
+        '        tambahstatus = True
+        '        editstatus = False
+        '        hapusstatus = True
+        '    Case 8
+        '        tambahstatus = False
+        '        editstatus = True
+        '        hapusstatus = True
+        '    Case 9
+        '        tambahstatus = True
+        '        editstatus = True
+        '        hapusstatus = True
+        'End Select
         Call historysave("Membuka Master Kategori Barang", "N/A")
     End Sub
 
@@ -112,6 +112,7 @@ Public Class fuser
         cblaptransferkas.Checked = False
         cblaptransferbarang.Checked = False
         cblaptransaksikas.Checked = False
+        cblapmodalbarang.Checked = False
 
         For id As Integer = 0 To 2
             'master
@@ -159,6 +160,7 @@ Public Class fuser
                 clblaptransferkas.SetItemChecked(id, False)
                 clblaptransferbarang.SetItemChecked(id, False)
                 clblaptransaksikas.SetItemChecked(id, False)
+                clblapmodalbarang.SetItemChecked(id, False)
             End If
         Next
 
@@ -207,6 +209,7 @@ Public Class fuser
         cblaptransferkas.Enabled = False
         cblaptransferbarang.Enabled = False
         cblaptransaksikas.Enabled = False
+        cblapmodalbarang.Enabled = False
 
         'combo box list
         clbmasterbarang.Enabled = False
@@ -252,6 +255,7 @@ Public Class fuser
         clblaptransferkas.Enabled = False
         clblaptransferbarang.Enabled = False
         clblaptransaksikas.Enabled = False
+        clblapmodalbarang.Enabled = False
 
 
         Call koneksii()
@@ -400,6 +404,7 @@ Public Class fuser
         cblaptransferkas.Enabled = True
         cblaptransferbarang.Enabled = True
         cblaptransaksikas.Enabled = True
+        cblapmodalbarang.Enabled = True
         'batas akses user
 
         txtkode.Focus()
@@ -460,6 +465,7 @@ Public Class fuser
         cblaptransferkas.Enabled = True
         cblaptransferbarang.Enabled = True
         cblaptransaksikas.Enabled = True
+        cblapmodalbarang.Enabled = True
 
         'combo box list
         'master barang 
@@ -688,6 +694,12 @@ Public Class fuser
             clblaptransaksikas.Enabled = False
         End If
 
+        If akseslapmodalbarang > 0 Then
+            clblapmodalbarang.Enabled = True
+        Else
+            clblapmodalbarang.Enabled = False
+        End If
+
         'batas akses user
 
         txtkode.Focus()
@@ -780,6 +792,7 @@ Public Class fuser
         ceklaptransferkas = 0
         ceklaptransferbarang = 0
         ceklaptransaksikas = 0
+        ceklapmodalbarang = 0
 
         'We will run through each indice
 
@@ -1228,6 +1241,17 @@ Public Class fuser
                 Else
                     ceklaptransaksikas = ceklaptransaksikas + 0
                 End If
+
+                'lapmodalbarang
+                If clblapmodalbarang.GetItemChecked(i) Then
+                    If clblapmodalbarang.Items(i).Equals("Print") Then
+                        ceklapmodalbarang = ceklapmodalbarang + 1
+                    ElseIf clblapmodalbarang.Items(i).Equals("Export") Then
+                        ceklapmodalbarang = ceklapmodalbarang + 3
+                    End If
+                Else
+                    ceklapmodalbarang = ceklapmodalbarang + 0
+                End If
             End If
 
         Next
@@ -1248,13 +1272,13 @@ Public Class fuser
                     master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supp, master_rek_cust, 
                     pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang,
                     lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar, 
-                    lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barang_masuk, lap_barang_keluar, lap_utang, lap_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas,
+                    lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barang_masuk, lap_barang_keluar, lap_utang, lap_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas, lap_modal_barang,
                     created_by, updated_by,date_created, last_updated) 
                     VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtpassword.Text & "', '" & cmbjabatan.Text & "', '" & txtemail.Text & "', '" & txttelp.Text & "','" & txtalamat.Text & "','" & txtketerangan.Text & "',
                     '" & cekmasterbarang & "','" & cekmasterkategori & "','" & cekmastergudang & "','" & cekmastercustomer & "','" & cekmastersupplier & "','" & cekmasteruser & "','" & cekmasterkas & "','" & cekmasterpricelist & "','" & cekmasterreksupp & "','" & cekmasterrekcust & "',
                     '" & cekpembelian & "','" & cekpenjualan & "','" & cekreturbeli & "','" & cekreturjual & "','" & cekbarangmasuk & "','" & cekbarangkeluar & "','" & cektransferbarang & "',
                     '" & ceklunasutang & "','" & ceklunaspiutang & "','" & cektransferkas & "','" & cekakunmasuk & "','" & cekakunkeluar & "',
-                    '" & ceklappricelist & "','" & ceklappembelian & "','" & ceklappenjualan & "','" & ceklapreturbeli & "','" & ceklapreturjual & "','" & ceklapbarangmasuk & "','" & ceklapbarangkeluar & "','" & ceklaputang & "','" & ceklappiutang & "','" & ceklapstokbarang & "','" & ceklapakunmasuk & "','" & ceklapakunkeluar & "','" & ceklaptransferkas & "','" & ceklaptransferbarang & "','" & ceklaptransaksikas & "',
+                    '" & ceklappricelist & "','" & ceklappembelian & "','" & ceklappenjualan & "','" & ceklapreturbeli & "','" & ceklapreturjual & "','" & ceklapbarangmasuk & "','" & ceklapbarangkeluar & "','" & ceklaputang & "','" & ceklappiutang & "','" & ceklapstokbarang & "','" & ceklapakunmasuk & "','" & ceklapakunkeluar & "','" & ceklaptransferkas & "','" & ceklaptransferbarang & "','" & ceklaptransaksikas & "','" & ceklapmodalbarang & "',
                     '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
@@ -1322,7 +1346,7 @@ Public Class fuser
             sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_kategori=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?,
                     pembelian=? ,penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?,
                     lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?, 
-                    lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?,
+                    lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?, lap_modal_barang=?,
                     updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
             cmmd = New OdbcCommand(sql, cnn)
             cmmd.Parameters.AddWithValue("@nama_user", txtnama.Text)
@@ -1374,6 +1398,7 @@ Public Class fuser
             cmmd.Parameters.AddWithValue("@lap_transfer_kas", ceklaptransferkas)
             cmmd.Parameters.AddWithValue("@lap_transfer_barang", ceklaptransferbarang)
             cmmd.Parameters.AddWithValue("@lap_transaksi_kas", ceklaptransaksikas)
+            cmmd.Parameters.AddWithValue("@lap_modal_barang", ceklapmodalbarang)
             ' end akses
             cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
             cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
@@ -1397,7 +1422,7 @@ Public Class fuser
                 sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_kategori=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?, 
                         pembelian=?, penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?,
                         lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?,
-                        lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?,
+                        lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?, lap_modal_barang=?,
                         updated_by=?, last_updated=? WHERE  kode_user='" & kode & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@kode_user", txtkode.Text)
@@ -1450,6 +1475,7 @@ Public Class fuser
                 cmmd.Parameters.AddWithValue("@lap_transfer_kas", ceklaptransferkas)
                 cmmd.Parameters.AddWithValue("@lap_transfer_barang", ceklaptransferbarang)
                 cmmd.Parameters.AddWithValue("@lap_transaksi_kas", ceklaptransaksikas)
+                cmmd.Parameters.AddWithValue("@lap_modal_barang", ceklapmodalbarang)
                 ' end akses
                 cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
                 cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
@@ -1555,6 +1581,7 @@ Public Class fuser
                 akseslaptransferkas = Val(dr("lap_transfer_kas"))
                 akseslaptransferbarang = Val(dr("lap_transfer_barang"))
                 akseslaptransaksikas = Val(dr("lap_transaksi_kas"))
+                akseslapmodalbarang = Val(dr("lap_modal_barang"))
 
                 '== mulai case ==
                 'master
@@ -2792,6 +2819,25 @@ Public Class fuser
                         clblaptransaksikas.SetItemChecked(1, True)
                 End Select
 
+                Select Case akseslapmodalbarang
+                    Case 0
+                        cblapmodalbarang.Checked = False
+                        clblapmodalbarang.SetItemChecked(0, False)
+                        clblapmodalbarang.SetItemChecked(1, False)
+                    Case 1
+                        cblapmodalbarang.Checked = True
+                        clblapmodalbarang.SetItemChecked(0, True)
+                        clblapmodalbarang.SetItemChecked(1, False)
+                    Case 3
+                        cblapmodalbarang.Checked = True
+                        clblapmodalbarang.SetItemChecked(0, False)
+                        clblapmodalbarang.SetItemChecked(1, True)
+                    Case 4
+                        cblapmodalbarang.Checked = True
+                        clblapmodalbarang.SetItemChecked(0, True)
+                        clblapmodalbarang.SetItemChecked(1, True)
+                End Select
+
                 '==batas case==
 
                 'master
@@ -2838,7 +2884,7 @@ Public Class fuser
                 clblaptransferkas.Enabled = False
                 clblaptransferbarang.Enabled = False
                 clblaptransaksikas.Enabled = False
-
+                clblapmodalbarang.Enabled = False
                 'end
 
                 btnedit.Enabled = True
@@ -3370,6 +3416,20 @@ Public Class fuser
             clblaptransaksikas.Enabled = False
             For id As Integer = 0 To clblaptransaksikas.Items.Count - 1
                 Me.clblaptransaksikas.SetItemChecked(id, False)
+            Next
+        End If
+    End Sub
+
+    Private Sub cblapmodalbarang_CheckedChanged(sender As Object, e As EventArgs) Handles cblapmodalbarang.CheckedChanged
+        If cblapmodalbarang.Checked = True Then
+            clblapmodalbarang.Enabled = True
+            For id As Integer = 0 To clblapmodalbarang.Items.Count - 1
+                Me.clblapmodalbarang.SetItemChecked(id, True)
+            Next
+        ElseIf cblapmodalbarang.Checked = False Then
+            clblapmodalbarang.Enabled = False
+            For id As Integer = 0 To clblapmodalbarang.Items.Count - 1
+                Me.clblapmodalbarang.SetItemChecked(id, False)
             Next
         End If
     End Sub
@@ -4042,6 +4102,24 @@ Public Class fuser
         If Counter.Equals(0) Then
             clblaptransaksikas.Enabled = False
             cblaptransaksikas.Checked = False
+        End If
+    End Sub
+
+    Private Sub clblapmodalbarang_MouseDown(sender As Object, e As MouseEventArgs) Handles clblapmodalbarang.MouseDown
+        Dim Index As Integer = clblapmodalbarang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clblapmodalbarang.SetItemChecked(Index, Not clblapmodalbarang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clblapmodalbarang.Items.Count - 1
+            If clblapmodalbarang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clblapmodalbarang.Enabled = False
+            cblapmodalbarang.Checked = False
         End If
     End Sub
 End Class

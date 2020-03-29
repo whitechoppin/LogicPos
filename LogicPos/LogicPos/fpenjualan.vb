@@ -1087,15 +1087,43 @@ Public Class fpenjualan
         'MsgBox("Transaksi Tersimpan!", MsgBoxStyle.Exclamation, "Berhasil")
     End Sub
     Private Sub PrintDocument1_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        'Dim sumObject As Object
-        'sumObject = Tabel1.Compute("Sum(total)", String.Empty)
-        'Label8.Text = sumObject
+        'ambil data alamat
+        Dim alamat, telp, rekening As String
+        Dim countalamat, counttelp, countrekening, center As Integer
+
+        Call koneksii()
+        sql = "SELECT * FROM tb_info_perusahaan LIMIT 1"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            alamat = dr("alamat")
+            telp = dr("telepon")
+            rekening = dr("rekening")
+        Else
+            alamat = ""
+            telp = ""
+            rekening = ""
+        End If
+        '==================
+
+        countalamat = alamat.Length
+        counttelp = telp.Length
+        countrekening = rekening.Length
+
+        'Dim ps As New Printing.PaperSize("paper", 100, 100)
+
+        'e.PageSettings.PaperSize = ps
+        'e.PageSettings.PaperSize.Height = 100
+        'e.PageSettings.PaperSize.Width = 100
+        'e.PageSettings.Landscape = False
 
         tinggi += 0
         e.Graphics.DrawString("SJT", New System.Drawing.Font("Arial", 16), Brushes.Black, 108, tinggi)
 
+        center = Convert.ToSingle((e.PageBounds.Width / 3.5 - e.Graphics.MeasureString(alamat, New System.Drawing.Font("verdana", 6)).Width) / 2)
+
         tinggi += 25
-        e.Graphics.DrawString("Jl. Tentara Pelajar No.2B", New System.Drawing.Font("verdana", 6), Brushes.Black, 75, tinggi)
+        e.Graphics.DrawString(alamat, New System.Drawing.Font("verdana", 6), Brushes.Black, center + 4, tinggi)
         tinggi += 15
         e.Graphics.DrawString("Makassar", New System.Drawing.Font("verdana", 6), Brushes.Black, 108, tinggi)
         tinggi += 15
@@ -1322,7 +1350,6 @@ Public Class fpenjualan
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
             faktur = dr("nama_printer")
-
         Else
             faktur = ""
         End If

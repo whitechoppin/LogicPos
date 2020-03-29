@@ -398,4 +398,13 @@ Public Class fmenu
     Public Sub ActiveMdiChild_FormClosed(sender As Object)
         TryCast(TryCast(sender, Form).Tag, TabPage).Dispose()
     End Sub
+
+    Private Sub LaporanModalBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanModalBarangToolStripMenuItem.Click
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_modal_barang
+        If masterstatus > 0 Then
+            flaporanmodalbarang.kodeakses = masterstatus
+            flaporanmodalbarang.Show()
+        End If
+    End Sub
 End Class
