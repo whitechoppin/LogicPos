@@ -973,6 +973,24 @@ Public Class fpembelian
     End Sub
     Sub cetak_faktur()
         Dim tabel_faktur As New DataTable
+        'ambil data alamat
+        Dim alamat, telp, rekening As String
+
+        Call koneksii()
+        sql = "SELECT * FROM tb_info_perusahaan LIMIT 1"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            alamat = dr("alamat")
+            telp = dr("telepon")
+            rekening = dr("rekening")
+        Else
+            alamat = ""
+            telp = ""
+            rekening = ""
+        End If
+        '==================
+
         With tabel_faktur
             .Columns.Add("kode_stok")
             .Columns.Add("kode_barang")
@@ -1002,6 +1020,8 @@ Public Class fpembelian
         rpt_faktur.SetDataSource(tabel_faktur)
 
         rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
+        rpt_faktur.SetParameterValue("alamatperusahaan", alamat)
+        rpt_faktur.SetParameterValue("teleponperusahaan", telp)
         rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
         rpt_faktur.SetParameterValue("diskon", diskonnominal)
         rpt_faktur.SetParameterValue("grandtotal", grandtotal)
