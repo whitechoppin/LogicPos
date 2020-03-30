@@ -15,7 +15,7 @@ Public Class falamat
 
     Sub awal()
         Call koneksii()
-        sql = "SELECT * FROM tb_info_perusahaan LIMIT 1"
+        sql = "SELECT * FROM tb_info_perusahaan WHERE nomor =1 LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
@@ -39,11 +39,11 @@ Public Class falamat
         telpakhir = txttelepon.Text
         rekakhir = txtrekening.Text
 
-        sql = "SELECT * FROM tb_info_perusahaan WHERE alamat='" & alamatawal & "' AND telepon='" & telpawal & "' AND rekening ='" & rekawal & "'"
+        sql = "SELECT * FROM tb_info_perusahaan WHERE nomor=1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
-            sql = "UPDATE tb_info_perusahaan SET alamat='" & alamatakhir & "', telepon='" & telpakhir & "', rekening='" & rekakhir & "'"
+            sql = "UPDATE tb_info_perusahaan SET alamat='" & alamatakhir & "', telepon='" & telpakhir & "', rekening='" & rekakhir & "' WHERE nomor=1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Else
