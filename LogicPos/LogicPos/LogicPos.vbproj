@@ -442,6 +442,12 @@
       <DependentUpon>rptlaporprice.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptlapormodal.vb">
+      <DependentUpon>rptlapormodal.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="rptlaporstok.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1017,6 +1023,10 @@
     <EmbeddedResource Include="rptlaporprice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptlaporprice.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptlapormodal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptlapormodal.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptlaporstok.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

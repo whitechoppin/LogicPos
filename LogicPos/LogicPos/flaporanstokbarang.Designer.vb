@@ -254,7 +254,7 @@ Partial Class flaporanstokbarang
         Me.btnrekap.Text = "Report"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
-        'flaporstokbarang
+        'flaporanstokbarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -264,7 +264,7 @@ Partial Class flaporanstokbarang
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
-        Me.Name = "flaporstokbarang"
+        Me.Name = "flaporanstokbarang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Laporan Stok Barang"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
