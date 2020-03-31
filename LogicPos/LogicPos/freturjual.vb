@@ -76,6 +76,8 @@ Public Class freturjual
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Transaksi Retur Penjualan", "N/A")
     End Sub
 
     Function autonumber()
@@ -624,6 +626,7 @@ Public Class freturjual
             statusvoid = 1
         End If
 
+        Call koneksii()
         sql = "UPDATE tb_penjualan SET total_penjualan = '" & total_penjualan & "', sisa_penjualan = '" & total_penjualan & "'- bayar_penjualan, void_penjualan ='" & statusvoid & "' WHERE kode_penjualan ='" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -638,6 +641,10 @@ Public Class freturjual
         sql = "INSERT INTO tb_retur_penjualan (kode_retur, kode_user, kode_penjualan, tgl_returjual, print_returjual, posted_returjual, keterangan_returjual, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturjual & "','" & cmbsales.Text & "','" & txtnonota.Text & "','" & Format(dtreturjual.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
+
+        'history user ==========
+        Call historysave("Menyimpan Data Retur Jual Kode " + kodereturjual, kodereturjual)
+        '========================
 
         MsgBox("Retur Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
         Call inisialisasi(kodereturjual)
@@ -675,10 +682,14 @@ Public Class freturjual
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             Call cetak_faktur()
-
+            Call koneksii()
             sql = "UPDATE tb_retur_penjualan SET print_returjual = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
+            'history user ==========
+            Call historysave("Mencetak Data Retur Jual Kode " + txtnonota.Text, txtnonota.Text)
+            '========================
 
             cbprinted.Checked = True
         Else

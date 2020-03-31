@@ -73,6 +73,8 @@ Public Class freturbeli
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Transaksi Retur Pembelian", "N/A")
     End Sub
 
     Function autonumber()
@@ -599,6 +601,7 @@ Public Class freturbeli
             statusvoid = 1
         End If
 
+        Call koneksii()
         sql = "UPDATE tb_pembelian SET total_pembelian = '" & total_pembelian & "', void_pembelian ='" & statusvoid & "' WHERE kode_pembelian ='" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -613,6 +616,10 @@ Public Class freturbeli
         sql = "INSERT INTO tb_retur_pembelian (kode_retur, kode_user, kode_pembelian, tgl_returbeli, print_returbeli, posted_returbeli, keterangan_returbeli, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturbeli & "','" & cmbsales.Text & "','" & txtnonota.Text & "','" & Format(dtreturbeli.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "', now() , now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
+
+        'history user ==========
+        Call historysave("Menyimpan Data Retur Beli Kode " + kodereturbeli, kodereturbeli)
+        '========================
 
         MsgBox("Retur Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
         Call inisialisasi(kodereturbeli)
@@ -640,10 +647,14 @@ Public Class freturbeli
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             Call cetak_faktur()
-
+            Call koneksii()
             sql = "UPDATE tb_retur_pembelian SET print_returbeli = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
+            'history user ==========
+            Call historysave("Mencetak Data Retur Beli Kode " + txtnonota.Text, txtnonota.Text)
+            '========================
 
             cbprinted.Checked = True
         Else

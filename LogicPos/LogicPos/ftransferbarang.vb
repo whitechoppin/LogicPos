@@ -60,6 +60,8 @@ Public Class ftransferbarang
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Transaksi Transfer Barang", "N/A")
     End Sub
 
     Function autonumber()
@@ -676,10 +678,14 @@ Public Class ftransferbarang
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             Call cetak_faktur()
-
+            Call koneksii()
             sql = "UPDATE tb_transfer_barang SET print_transfer_barang = 1 WHERE kode_transfer_barang = '" & txtnonota.Text & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
+            'history user ==========
+            Call historysave("Mencetak Data Transfer Barang Kode " + txtnonota.Text, txtnonota.Text)
+            '========================
 
             cbprinted.Checked = True
         Else
@@ -1002,6 +1008,9 @@ Public Class ftransferbarang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
+        'history user ==========
+        Call historysave("Menyimpan Data Transfer Barang Kode " + kodetransferbarang, kodetransferbarang)
+        '========================
         MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
         Call inisialisasi(kodetransferbarang)
     End Sub
@@ -1121,6 +1130,11 @@ Public Class ftransferbarang
             sql = "UPDATE tb_transfer_barang SET kode_dari_gudang ='" & cmbdarigudang.Text & "', kode_ke_gudang ='" & cmbkegudang.Text & "', kode_user ='" & cmbsales.Text & "' , tanggal_transfer_barang ='" & Format(dttransferbarang.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_transfer_barang ='" & txtketerangan.Text & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_transfer_barang ='" & kodetransferbarang & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
+
+            'history user ==========
+            Call historysave("Mengedit Data Transfer Barang Kode " + txtnonota.Text, txtnonota.Text)
+            '========================
 
             MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
             'Call inisialisasi(nomornota)

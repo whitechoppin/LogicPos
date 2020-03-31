@@ -69,6 +69,8 @@ Public Class fpenjualan
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Transaksi Penjualan", "N/A")
     End Sub
 
     Function autonumber()
@@ -975,6 +977,7 @@ Public Class fpenjualan
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             If cbvoid.Checked = False Then
+                Call koneksii()
                 If rbstruk.Checked Then
                     'Call cetak_struk()
                     Call PrintTransaksi()
@@ -1005,6 +1008,10 @@ Public Class fpenjualan
                         End If
                     End If
                 End If
+
+                'history user ==========
+                Call historysave("Mencetak Data Penjualan Kode " + txtnonota.Text, txtnonota.Text)
+                '========================
             Else
                 MsgBox("Nota sudah void !")
             End If
@@ -2032,6 +2039,11 @@ Public Class fpenjualan
         End If
 
         MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
+
+        'history user ==========
+        Call historysave("Menyimpan Data Penjualan Kode " + kodepenjualan, kodepenjualan)
+        '========================
+
         Call inisialisasi(kodepenjualan)
     End Sub
 
@@ -2152,6 +2164,10 @@ Public Class fpenjualan
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             End If
+
+            'history user ==========
+            Call historysave("Mengedit Data Penjualan Kode " + txtnonota.Text, txtnonota.Text)
+            '========================
 
             MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(txtnonota.Text)

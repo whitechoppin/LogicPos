@@ -63,6 +63,8 @@ Public Class fbarangmasuk
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Transaksi Barang Masuk", "N/A")
     End Sub
 
     Function autonumber()
@@ -619,6 +621,7 @@ Public Class fbarangmasuk
                 MsgBox("Data masih kosong")
                 Exit Sub
             Else
+                Call koneksii()
                 For i As Integer = 0 To GridView1.RowCount - 1
                     sql = "INSERT INTO tb_barang_masuk_detail (kode_barang_masuk, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty,created_by, updated_by,date_created, last_updated) VALUES ('" & kodebarangmasuk & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
                     cmmd = New OdbcCommand(sql, cnn)
@@ -647,12 +650,14 @@ Public Class fbarangmasuk
                         sql = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','1', '" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & cmbgudang.Text & "', '" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "', now(), now() )"
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
-
-
                     End If
                 Next
-                MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
 
+                'history user ==========
+                Call historysave("Menyimpan Data Barang Masuk Kode " + kodebarangmasuk, kodebarangmasuk)
+                '========================
+
+                MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
                 Call inisialisasi(kodebarangmasuk)
             End If
         End If
@@ -680,10 +685,14 @@ Public Class fbarangmasuk
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             Call cetak_faktur()
-
+            Call koneksii()
             sql = "UPDATE tb_barang_masuk SET print_barang_masuk = 1 WHERE kode_barang_masuk = '" & txtnonota.Text & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
+            'history user ==========
+            Call historysave("Mencetak Data Barang Masuk Kode " + txtnonota.Text, txtnonota.Text)
+            '========================
 
             cbprinted.Checked = True
         Else
@@ -841,6 +850,11 @@ Public Class fbarangmasuk
             Next
 
         End If
+
+        'history user ==========
+        Call historysave("Mengedit Data Barang Masuk Kode " + nomornota, nomornota)
+        '========================
+
         MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
         Call inisialisasi(nomornota)
     End Sub

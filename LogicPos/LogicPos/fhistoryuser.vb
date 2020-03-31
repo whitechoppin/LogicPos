@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fhistoryuser
+    Dim oleh, kode As String
+
     Private Sub fhistoryuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
 
@@ -41,12 +43,14 @@ Public Class fhistoryuser
 
     Sub tabel_history()
         Call koneksii()
+        kode = txtkodetabel.Text
+        oleh = txtoleh.Text
 
         Using cnn As New OdbcConnection(strConn)
             If dtawal.Value.Equals(dtakhir.Value) Then
-                sql = "SELECT * FROM tb_history_user WHERE DATE(date_created) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_history_user WHERE DATE(date_created) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_tabel LIKE '%" + kode + "%' AND created_by LIKE '%" + oleh + "%'"
             Else
-                sql = "SELECT * FROM tb_history_user WHERE date_created BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                sql = "SELECT * FROM tb_history_user WHERE kode_tabel LIKE '%" + kode + "%' AND created_by LIKE '%" + oleh + "%' AND date_created BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
             End If
             da = New OdbcDataAdapter(sql, cnn)
             ds = New DataSet
@@ -55,6 +59,29 @@ Public Class fhistoryuser
             GridControl1.DataSource = ds.Tables(0)
             Call grid_history()
         End Using
+    End Sub
+
+    Sub ExportToExcel()
+
+        Dim filename As String = InputBox("Nama File", "Input Nama file ")
+        Dim pathdata As String = "C:\ExportLogicPos"
+        Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"
+
+        If filename <> "" Then
+            If (Not System.IO.Directory.Exists(pathdata)) Then
+                System.IO.Directory.CreateDirectory(pathdata)
+            End If
+
+            GridView1.ExportToXls(yourpath)
+            MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
+            ' Do something
+        ElseIf DialogResult.Cancel Then
+            MsgBox("You've canceled")
+        End If
+    End Sub
+
+    Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
+        Call ExportToExcel()
     End Sub
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click

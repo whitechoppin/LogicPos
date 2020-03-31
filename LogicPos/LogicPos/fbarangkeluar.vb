@@ -62,6 +62,8 @@ Public Class fbarangkeluar
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Transaksi Barang Keluar", "N/A")
     End Sub
 
     Function autonumber()
@@ -701,10 +703,14 @@ Public Class fbarangkeluar
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             Call cetak_faktur()
-
+            Call koneksii()
             sql = "UPDATE tb_barang_keluar SET print_barang_keluar = 1 WHERE kode_barang_keluar = '" & txtnonota.Text & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
+            'history user ==========
+            Call historysave("Mencetak Data Barang Keluar Kode " + txtnonota.Text, txtnonota.Text)
+            '========================
 
             cbprinted.Checked = True
         Else
@@ -1001,6 +1007,10 @@ Public Class fbarangkeluar
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
+        'history user ==========
+        Call historysave("Menyimpan Data Barang Keluar Kode " + kodebarangkeluar, kodebarangkeluar)
+        '========================
+
         MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
         Call inisialisasi(kodebarangkeluar)
     End Sub
@@ -1097,6 +1107,10 @@ Public Class fbarangkeluar
             sql = "UPDATE tb_barang_keluar SET kode_pelanggan ='" & cmbcustomer.Text & "', kode_gudang ='" & cmbgudang.Text & "', kode_user ='" & cmbsales.Text & "' , tgl_barang_keluar ='" & Format(dtbarangkeluar.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_barang_keluar ='" & txtketerangan.Text & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_barang_keluar ='" & kodebarangkeluar & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
+            'history user ==========
+            Call historysave("Mengedit Data Barang Keluar Kode " + kodebarangkeluar, kodebarangkeluar)
+            '========================
 
             MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
             'Call inisialisasi(nomornota)

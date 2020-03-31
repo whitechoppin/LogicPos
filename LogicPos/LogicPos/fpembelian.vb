@@ -66,6 +66,8 @@ Public Class fpembelian
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Transaksi Pembelian", "N/A")
     End Sub
     Function autonumber()
         Call koneksii()
@@ -910,6 +912,10 @@ Public Class fpembelian
 
                 MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
 
+                'history user ==========
+                Call historysave("Menyimpan Data Pembelian Kode " + kodepembelian, kodepembelian)
+                '========================
+
                 Call inisialisasi(kodepembelian)
             End If
         End If
@@ -959,11 +965,16 @@ Public Class fpembelian
             If cbvoid.Checked = False Then
                 Call cetak_faktur()
 
+                Call koneksii()
                 sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
                 cbprinted.Checked = True
+
+                'history user ==========
+                Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
+                '========================
             Else
                 MsgBox("Nota sudah void !")
             End If
@@ -1295,11 +1306,13 @@ Public Class fpembelian
         dtjatuhtempo.MinDate = dtpembelian.Value
     End Sub
     Sub perbarui(nomornota As String)
-        Call koneksii()
+
+
         Dim kodegudangupdate As String
         kodegudang = cmbgudang.Text
 
         'cari nota  yang sebelumnya (kembalikan stok dulu)
+        Call koneksii()
         sql = "SELECT kode_gudang FROM tb_pembelian WHERE kode_pembelian = '" & nomornota & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -1308,10 +1321,12 @@ Public Class fpembelian
         kodegudangupdate = dr("kode_gudang")
 
         'update data yang sebelumnya (kembalikan stok dulu)
+        Call koneksii()
         sql = "SELECT * FROM tb_pembelian_detail_sementara WHERE kode_pembelian = '" & nomornota & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
+        Call koneksii()
         While dr.Read
             sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang='" & kodegudangupdate & "'"
             cmmd = New OdbcCommand(sql, cnn)
@@ -1319,6 +1334,7 @@ Public Class fpembelian
         End While
 
         'hapus tb_pembelian_detail
+        Call koneksii()
         sql = "DELETE FROM tb_pembelian_detail WHERE kode_pembelian = '" & nomornota & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -1334,6 +1350,8 @@ Public Class fpembelian
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             Next
+
+            Call koneksii()
             sql = "UPDATE tb_pembelian SET kode_supplier = '" & cmbsupplier.Text & "', kode_gudang = '" & kodegudang & "', kode_user = '" & cmbsales.Text & "', tgl_pembelian = '" & Format(dtpembelian.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_pembelian = '" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', lunas_pembelian = 0 ,void_pembelian = 0, print_pembelian = 0, posted_pembelian = 1, keterangan_pembelian = '" & txtketerangan.Text & "', no_nota_pembelian = '" & txtnosupplier.Text & "', diskon_pembelian = '" & txtdiskonpersen.Text & "', pajak_pembelian = '" & txtppnpersen.Text & "', ongkir_pembelian = '" & ongkir & "', total_pembelian = '" & grandtotal & "', pembayaran_pembelian = '" & cmbbayar.Text & "', updated_by = '" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_pembelian = '" & nomornota & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
@@ -1376,6 +1394,10 @@ Public Class fpembelian
                     dr = cmmd.ExecuteReader()
                 End If
             Next
+
+            'history user ==========
+            Call historysave("Mengedit Data Pembelian Kode " + nomornota, nomornota)
+            '========================
 
             MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(nomornota)

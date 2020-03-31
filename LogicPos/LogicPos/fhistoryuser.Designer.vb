@@ -29,17 +29,18 @@ Partial Class fhistoryuser
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dtakhir = New System.Windows.Forms.DateTimePicker()
         Me.dtawal = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
-        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.txtkodetabel = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtoleh = New System.Windows.Forms.TextBox()
+        Me.btnexcel = New System.Windows.Forms.Button()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -107,6 +108,17 @@ Partial Class fhistoryuser
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
+        'GridColumn5
+        '
+        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceCell.Options.UseFont = True
+        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn5.Caption = "Waktu"
+        Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.Visible = True
+        Me.GridColumn5.VisibleIndex = 4
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -155,23 +167,12 @@ Partial Class fhistoryuser
         Me.btnrefresh.TabIndex = 29
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
-        'GridColumn5
-        '
-        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn5.AppearanceCell.Options.UseFont = True
-        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn5.Caption = "Waktu"
-        Me.GridColumn5.Name = "GridColumn5"
-        Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 4
-        '
         'txtkodetabel
         '
         Me.txtkodetabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkodetabel.Location = New System.Drawing.Point(13, 79)
         Me.txtkodetabel.Name = "txtkodetabel"
-        Me.txtkodetabel.Size = New System.Drawing.Size(172, 24)
+        Me.txtkodetabel.Size = New System.Drawing.Size(160, 24)
         Me.txtkodetabel.TabIndex = 30
         '
         'Label3
@@ -198,7 +199,7 @@ Partial Class fhistoryuser
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(200, 56)
+        Me.Label5.Location = New System.Drawing.Point(177, 56)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(40, 16)
         Me.Label5.TabIndex = 34
@@ -207,10 +208,19 @@ Partial Class fhistoryuser
         'txtoleh
         '
         Me.txtoleh.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtoleh.Location = New System.Drawing.Point(200, 79)
+        Me.txtoleh.Location = New System.Drawing.Point(177, 79)
         Me.txtoleh.Name = "txtoleh"
-        Me.txtoleh.Size = New System.Drawing.Size(172, 24)
+        Me.txtoleh.Size = New System.Drawing.Size(167, 24)
         Me.txtoleh.TabIndex = 33
+        '
+        'btnexcel
+        '
+        Me.btnexcel.Location = New System.Drawing.Point(901, 12)
+        Me.btnexcel.Name = "btnexcel"
+        Me.btnexcel.Size = New System.Drawing.Size(91, 50)
+        Me.btnexcel.TabIndex = 35
+        Me.btnexcel.Text = "Convert Excel"
+        Me.btnexcel.UseVisualStyleBackColor = True
         '
         'fhistoryuser
         '
@@ -218,6 +228,7 @@ Partial Class fhistoryuser
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1005, 531)
+        Me.Controls.Add(Me.btnexcel)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtoleh)
         Me.Controls.Add(Me.Label4)
@@ -255,4 +266,5 @@ Partial Class fhistoryuser
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents txtoleh As TextBox
+    Friend WithEvents btnexcel As Button
 End Class
