@@ -50,6 +50,8 @@ Public Class fkaskeluar
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Administrasi Kas Keluar", "N/A")
     End Sub
 
     Sub comboboxuser()
@@ -264,6 +266,10 @@ Public Class fkaskeluar
             dr = cmmd.ExecuteReader()
         End If
 
+        'history user ==========
+        Call historysave("Menyimpan Data Kas Keluar Kode " + kodekeluar, kodekeluar)
+        '========================
+
         MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
         btntambah.Text = "Tambah"
         Me.Refresh()
@@ -285,6 +291,10 @@ Public Class fkaskeluar
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         End If
+
+        'history user ==========
+        Call historysave("Mengedit Data Kas Keluar Kode " + txtkodekeluar.Text, txtkodekeluar.Text)
+        '========================
 
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
         btnedit.Text = "Edit"
@@ -335,6 +345,10 @@ Public Class fkaskeluar
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
 
+                'history user ==========
+                Call historysave("Menghapus Data Kas Keluar Kode " + txtkodekeluar.Text, txtkodekeluar.Text)
+                '========================
+
                 MessageBox.Show(txtkodekeluar.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Refresh()
                 Call awal()
@@ -356,6 +370,10 @@ Public Class fkaskeluar
             sql = "UPDATE tb_kas_keluar SET print_kas = 1 WHERE kode_kas_keluar = '" & txtkodekeluar.Text & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
+            'history user ==========
+            Call historysave("Mencetak Data Kas Keluar Kode " + txtkodekeluar.Text, txtkodekeluar.Text)
+            '========================
 
             cbprinted.Checked = True
         Else

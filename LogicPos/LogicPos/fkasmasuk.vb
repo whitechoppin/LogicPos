@@ -50,6 +50,8 @@ Public Class fkasmasuk
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Administrasi Kas Masuk", "N/A")
     End Sub
 
     Sub comboboxuser()
@@ -264,6 +266,10 @@ Public Class fkasmasuk
             dr = cmmd.ExecuteReader()
         End If
 
+        'history user ==========
+        Call historysave("Menyimpan Data Kas Masuk Kode " + kodemasuk, kodemasuk)
+        '========================
+
         MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
         btntambah.Text = "Tambah"
         Me.Refresh()
@@ -285,6 +291,10 @@ Public Class fkasmasuk
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         End If
+
+        'history user ==========
+        Call historysave("Mengedit Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
+        '========================
 
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
         btnedit.Text = "Edit"
@@ -336,6 +346,10 @@ Public Class fkasmasuk
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
 
+                'history user ==========
+                Call historysave("Menghapus Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
+                '========================
+
                 MessageBox.Show(txtkodemasuk.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Refresh()
                 Call awal()
@@ -357,6 +371,10 @@ Public Class fkasmasuk
             sql = "UPDATE tb_kas_masuk SET print_kas = 1 WHERE kode_kas_masuk = '" & txtkodemasuk.Text & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
+            'history user ==========
+            Call historysave("Mencetak Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
+            '========================
 
             cbprinted.Checked = True
         Else

@@ -71,6 +71,8 @@ Public Class flunasutang
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Administrasi Lunas Utang", "N/A")
     End Sub
 
     Sub comboboxuser()
@@ -653,7 +655,11 @@ Public Class flunasutang
         MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
         Me.Refresh()
 
-        kodelunasutang = txtnolunasutang.Text
+        'history user ==========
+        Call historysave("Menyimpan Data Lunas Utang Kode " + kodelunasutang, kodelunasutang)
+        '========================
+
+        'kodelunasutang = txtnolunasutang.Text
         Call inisialisasi(kodelunasutang)
     End Sub
 
@@ -685,10 +691,14 @@ Public Class flunasutang
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             Call cetak_faktur()
-
+            Call koneksii()
             sql = "UPDATE tb_pelunasan_utang SET print_lunas = 1 WHERE kode_lunas = '" & txtnolunasutang.Text & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
+            'history user ==========
+            Call historysave("Mencetak Data Lunas Utang Kode " + txtnolunasutang.Text, txtnolunasutang.Text)
+            '========================
 
             cbprinted.Checked = True
         Else
@@ -867,6 +877,9 @@ Public Class flunasutang
         dr = cmmd.ExecuteReader()
 
         'proses centang lunas penjualan
+        'history user ==========
+        Call historysave("Mengedit Data Lunas Utang Kode " + txtnolunasutang.Text, txtnolunasutang.Text)
+        '========================
 
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
         btnedit.Text = "Edit"
