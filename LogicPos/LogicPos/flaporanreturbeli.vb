@@ -34,6 +34,8 @@ Public Class flaporanreturbeli
                 printstatus = True
                 exportstatus = True
         End Select
+
+        Call historysave("Membuka Laporan Retur Pembelian", "N/A")
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Retur"
@@ -70,19 +72,17 @@ Public Class flaporanreturbeli
     End Sub
     Sub tabel()
         Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
-                sql = "SELECT * FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.kode_retur=tb_retur_pembelian_detail.kode_retur  WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
-            Else
-                sql = "SELECT * FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.kode_retur=tb_retur_pembelian_detail.kode_retur  WHERE tgl_returbeli BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
-            End If
-            da = New OdbcDataAdapter(sql, cnn)
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-        End Using
+        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            sql = "SELECT * FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.kode_retur=tb_retur_pembelian_detail.kode_retur  WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "SELECT * FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.kode_retur=tb_retur_pembelian_detail.kode_retur  WHERE tgl_returbeli BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+        End If
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
@@ -97,6 +97,8 @@ Public Class flaporanreturbeli
             Dim akhirPFD As ParameterFieldDefinition
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
+
+            Call koneksii()
 
             If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
                 sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
@@ -127,6 +129,8 @@ Public Class flaporanreturbeli
                 flapreturpembelian.CrystalReportViewer1.ReportSource = rptrekap
                 flapreturpembelian.ShowDialog()
                 flapreturpembelian.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Faktur Laporan Retur Pembelian", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
@@ -137,6 +141,7 @@ Public Class flaporanreturbeli
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
+        Call historysave("Merefresh Laporan Retur Pembelian", "N/A")
     End Sub
     Sub ExportToExcel()
 
@@ -160,6 +165,7 @@ Public Class flaporanreturbeli
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
+                Call historysave("Mengexport Laporan Retur Pembelian", "N/A")
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -180,6 +186,8 @@ Public Class flaporanreturbeli
             Dim akhirPFD As ParameterFieldDefinition
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
+
+            Call koneksii()
 
             If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
                 sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
@@ -209,6 +217,8 @@ Public Class flaporanreturbeli
                 flapreturpembelian.CrystalReportViewer1.ReportSource = rptrekap
                 flapreturpembelian.ShowDialog()
                 flapreturpembelian.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Faktur Detail Laporan Retur Pembelian", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If

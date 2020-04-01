@@ -50,38 +50,32 @@ Public Class flaporanstokbarang
     End Sub
     Sub tabel()
         Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang "
-            da = New OdbcDataAdapter(sql, cnn)
-            cnn.Open()
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-            cnn.Close()
-        End Using
+        sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang "
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
     End Sub
 
     Sub ambil_gbr()
         kode = Me.GridView1.GetFocusedRowCellValue("kode_barang")
         Dim foto As Byte()
         'menyiapkan koneksi database
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            cnn.Open()
-            dr = cmmd.ExecuteReader
-            dr.Read()
-            If dr.HasRows Then
-                modalbarang = dr("modal_barang")
-                LabelHarga.Text = Format(modalbarang, "##,##0")
-                foto = dr("gambar_barang")
-                PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-                PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
-                cnn.Close()
-            End If
-        End Using
+        Call koneksii()
+        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        dr.Read()
+
+        If dr.HasRows Then
+            modalbarang = dr("modal_barang")
+            LabelHarga.Text = Format(modalbarang, "##,##0")
+            foto = dr("gambar_barang")
+            PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+            PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
+        End If
     End Sub
     Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click
         Call ambil_gbr()

@@ -34,6 +34,8 @@ Public Class flaporanbarangkeluar
                 printstatus = True
                 exportstatus = True
         End Select
+
+        Call historysave("Membuka Laporan Barang Keluar", "N/A")
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Nota"
@@ -84,23 +86,23 @@ Public Class flaporanbarangkeluar
     End Sub
     Sub tabel()
         Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
-                sql = "SELECT * FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar.kode_barang_keluar=tb_barang_keluar_detail.kode_barang_keluar JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_barang_keluar.kode_pelanggan WHERE DATE(tgl_barang_keluar) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
-            Else
-                sql = "Select * FROM tb_barang_keluar_detail JOIN tb_barang_keluar On tb_barang_keluar.kode_barang_keluar=tb_barang_keluar_detail.kode_barang_keluar JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_barang_keluar.kode_pelanggan WHERE tgl_barang_keluar BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
-            End If
-            da = New OdbcDataAdapter(sql, cnn)
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-        End Using
+
+        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            sql = "SELECT * FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar.kode_barang_keluar=tb_barang_keluar_detail.kode_barang_keluar JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_barang_keluar.kode_pelanggan WHERE DATE(tgl_barang_keluar) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "Select * FROM tb_barang_keluar_detail JOIN tb_barang_keluar On tb_barang_keluar.kode_barang_keluar=tb_barang_keluar_detail.kode_barang_keluar JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_barang_keluar.kode_pelanggan WHERE tgl_barang_keluar BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+        End If
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
     End Sub
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
+        Call historysave("Merefresh Laporan Barang Keluar", "N/A")
     End Sub
     Sub ExportToExcel()
 
@@ -125,6 +127,7 @@ Public Class flaporanbarangkeluar
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
+                Call historysave("Mengexport Laporan Barang Keluar", "N/A")
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -149,6 +152,8 @@ Public Class flaporanbarangkeluar
             Dim akhirPFD As ParameterFieldDefinition
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
+
+            Call koneksii()
 
             If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
                 sql = "SELECT * FROM tb_barang_keluar WHERE DATE(tgl_barang_keluar) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
@@ -179,6 +184,8 @@ Public Class flaporanbarangkeluar
                 flapbarangkeluar.CrystalReportViewer1.ReportSource = rptrekap
                 flapbarangkeluar.ShowDialog()
                 flapbarangkeluar.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Laporan Barang Keluar", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If

@@ -44,8 +44,8 @@ Partial Class flaporanpenjualan
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -126,7 +126,7 @@ Partial Class flaporanpenjualan
         Me.btntabel.Name = "btntabel"
         Me.btntabel.Size = New System.Drawing.Size(180, 50)
         Me.btntabel.TabIndex = 17
-        Me.btntabel.Text = "Rekap Tabel"
+        Me.btntabel.Text = "Refresh Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
         '
         'btnfaktur
@@ -229,6 +229,12 @@ Partial Class flaporanpenjualan
         Me.GridColumn11.Visible = True
         Me.GridColumn11.VisibleIndex = 6
         '
+        'GridColumn12
+        '
+        Me.GridColumn12.Name = "GridColumn12"
+        Me.GridColumn12.Visible = True
+        Me.GridColumn12.VisibleIndex = 11
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -238,12 +244,6 @@ Partial Class flaporanpenjualan
         Me.Label2.Size = New System.Drawing.Size(257, 31)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Penjualan"
-        '
-        'GridColumn12
-        '
-        Me.GridColumn12.Name = "GridColumn12"
-        Me.GridColumn12.Visible = True
-        Me.GridColumn12.VisibleIndex = 11
         '
         'flaporanpenjualan
         '

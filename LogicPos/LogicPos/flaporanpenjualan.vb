@@ -36,10 +36,7 @@ Public Class flaporanpenjualan
                 exportstatus = True
         End Select
 
-        Call koneksii()
-        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Membuka Laporan Penjualan', 'N/A','" & fmenu.statususer.Text & "',now())"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        Call historysave("Membuka Laporan Penjualan", "N/A")
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Nota"
@@ -92,19 +89,18 @@ Public Class flaporanpenjualan
     End Sub
     Sub tabel()
         Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
-                sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
-            Else
-                sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan On tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
-            End If
-            da = New OdbcDataAdapter(sql, cnn)
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-        End Using
+
+        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan On tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+        End If
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
     End Sub
 
 
@@ -150,14 +146,11 @@ Public Class flaporanpenjualan
                 flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
                 flappenjualan.ShowDialog()
                 flappenjualan.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Faktur Laporan Penjualan", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
-
-            Call koneksii()
-            sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Faktur Laporan Penjualan', 'N/A','" & fmenu.statususer.Text & "',now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
         Else
             MsgBox("Tidak ada akses")
         End If
@@ -166,10 +159,7 @@ Public Class flaporanpenjualan
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
 
-        Call koneksii()
-        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Faktur Laporan Penjualan', 'N/A','" & fmenu.statususer.Text & "',now())"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        Call historysave("Merefresh Laporan Penjualan", "N/A")
     End Sub
     Sub ExportToExcel()
 
@@ -195,10 +185,7 @@ Public Class flaporanpenjualan
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
 
-                Call koneksii()
-                sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Excel Laporan Penjualan', 'N/A','" & fmenu.statususer.Text & "',now())"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
+                Call historysave("Mengexport Laporan Penjualan", "N/A")
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -249,14 +236,11 @@ Public Class flaporanpenjualan
                 flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
                 flappenjualan.ShowDialog()
                 flappenjualan.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Faktur Detail Laporan Penjualan", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
-
-            Call koneksii()
-            sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Faktur Laporan Penjualan', 'N/A','" & fmenu.statususer.Text & "',now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
         Else
             MsgBox("Tidak ada akses")
         End If

@@ -35,10 +35,7 @@ Public Class flaporanpembelian
                 exportstatus = True
         End Select
 
-        Call koneksii()
-        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Membuka Laporan Pembelian', 'N/A','" & fmenu.statususer.Text & "',now())"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        Call historysave("Membuka Laporan Pembelian", "N/A")
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Nota"
@@ -81,19 +78,17 @@ Public Class flaporanpembelian
     End Sub
     Sub tabel()
         Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
-                sql = "SELECT * FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.kode_pembelian=tb_pembelian_detail.kode_pembelian JOIN tb_supplier ON tb_supplier.kode_supplier = tb_pembelian.kode_supplier WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
-            Else
-                sql = "SELECT * FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.kode_pembelian=tb_pembelian_detail.kode_pembelian JOIN tb_supplier ON tb_supplier.kode_supplier = tb_pembelian.kode_supplier WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
-            End If
-            da = New OdbcDataAdapter(sql, cnn)
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-        End Using
+        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            sql = "SELECT * FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.kode_pembelian=tb_pembelian_detail.kode_pembelian JOIN tb_supplier ON tb_supplier.kode_supplier = tb_pembelian.kode_supplier WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "SELECT * FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.kode_pembelian=tb_pembelian_detail.kode_pembelian JOIN tb_supplier ON tb_supplier.kode_supplier = tb_pembelian.kode_supplier WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+        End If
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
@@ -138,14 +133,13 @@ Public Class flaporanpembelian
                 flappembelian.CrystalReportViewer1.ReportSource = rptrekap
                 flappembelian.ShowDialog()
                 flappembelian.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Faktur Laporan Pembelian", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
 
-            Call koneksii()
-            sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Faktur Laporan Pembelian', 'N/A','" & fmenu.statususer.Text & "',now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
+
         Else
             MsgBox("Tidak ada akses")
         End If
@@ -154,10 +148,7 @@ Public Class flaporanpembelian
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
 
-        Call koneksii()
-        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Faktur Laporan Pembelian', 'N/A','" & fmenu.statususer.Text & "',now())"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        Call historysave("Merefresh Laporan Pembelian", "N/A")
     End Sub
     Sub ExportToExcel()
 
@@ -182,10 +173,7 @@ Public Class flaporanpembelian
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
 
-                Call koneksii()
-                sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Excel Laporan Pembelian', 'N/A','" & fmenu.statususer.Text & "',now())"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
+                Call historysave("Mengexport Laporan Pembelian", "N/A")
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -235,14 +223,11 @@ Public Class flaporanpembelian
                 flappembelian.CrystalReportViewer1.ReportSource = rptrekap
                 flappembelian.ShowDialog()
                 flappembelian.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Faktur Detail Laporan Pembelian", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
-
-            Call koneksii()
-            sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('Merekap Faktur Laporan Pembelian', 'N/A','" & fmenu.statususer.Text & "',now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
         Else
             MsgBox("Tidak ada akses")
         End If

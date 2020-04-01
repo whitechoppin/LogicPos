@@ -122,7 +122,7 @@ Partial Class flaporanreturbeli
         Me.btntabel.Name = "btntabel"
         Me.btntabel.Size = New System.Drawing.Size(180, 50)
         Me.btntabel.TabIndex = 17
-        Me.btntabel.Text = "Rekap Tabel"
+        Me.btntabel.Text = "Refresh Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
         '
         'btnperfaktur

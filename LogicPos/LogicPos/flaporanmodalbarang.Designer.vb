@@ -22,7 +22,6 @@ Partial Class flaporanmodalbarang
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(flaporanmodalbarang))
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
@@ -37,10 +36,6 @@ Partial Class flaporanmodalbarang
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnshow = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.LabelHarga = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox4.SuspendLayout()
@@ -184,57 +179,12 @@ Partial Class flaporanmodalbarang
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.btnshow)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.LabelHarga)
-        Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.PictureBox1)
         Me.GroupBox1.Location = New System.Drawing.Point(992, 245)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(282, 322)
+        Me.GroupBox1.Size = New System.Drawing.Size(282, 240)
         Me.GroupBox1.TabIndex = 21
         Me.GroupBox1.TabStop = False
-        '
-        'btnshow
-        '
-        Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
-        Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnshow.ImageIndex = 0
-        Me.btnshow.Location = New System.Drawing.Point(111, 239)
-        Me.btnshow.Name = "btnshow"
-        Me.btnshow.Size = New System.Drawing.Size(29, 22)
-        Me.btnshow.TabIndex = 26
-        Me.btnshow.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(61, 276)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(33, 17)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Rp."
-        '
-        'LabelHarga
-        '
-        Me.LabelHarga.AutoSize = True
-        Me.LabelHarga.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelHarga.Location = New System.Drawing.Point(100, 276)
-        Me.LabelHarga.Name = "LabelHarga"
-        Me.LabelHarga.Size = New System.Drawing.Size(17, 17)
-        Me.LabelHarga.TabIndex = 2
-        Me.LabelHarga.Text = "0"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 241)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(99, 16)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Modal Barang :"
         '
         'PictureBox1
         '
@@ -270,7 +220,6 @@ Partial Class flaporanmodalbarang
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -291,10 +240,6 @@ Partial Class flaporanmodalbarang
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents btnshow As Button
-    Friend WithEvents Label3 As Label
-    Friend WithEvents LabelHarga As Label
-    Friend WithEvents Label2 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
 End Class

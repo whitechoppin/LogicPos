@@ -14,7 +14,6 @@ Public Class flaporanmodalbarang
     Private Sub flaporanmodalbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call tabel()
-        LabelHarga.Visible = False
         With GridView1
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
@@ -60,37 +59,30 @@ Public Class flaporanmodalbarang
     End Sub
     Sub tabel()
         Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_barang"
-            da = New OdbcDataAdapter(sql, cnn)
-            cnn.Open()
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-            cnn.Close()
-        End Using
+        sql = "SELECT * FROM tb_barang"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
     End Sub
     Sub ambil_gbr()
         kode = Me.GridView1.GetFocusedRowCellValue("kode_barang")
         Dim foto As Byte()
         'menyiapkan koneksi database
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            cnn.Open()
-            dr = cmmd.ExecuteReader
-            dr.Read()
-            If dr.HasRows Then
-                modalbarang = dr("modal_barang")
-                LabelHarga.Text = Format(modalbarang, "##,##0")
-                foto = dr("gambar_barang")
-                PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-                PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
-                cnn.Close()
-            End If
-        End Using
+        Call koneksii()
+        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        dr.Read()
+
+        If dr.HasRows Then
+            modalbarang = dr("modal_barang")
+            foto = dr("gambar_barang")
+            PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+            PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
+        End If
     End Sub
     Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click
         Call ambil_gbr()
@@ -147,14 +139,5 @@ Public Class flaporanmodalbarang
     End Sub
     Private Sub flaporanmodalbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
-    End Sub
-    Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
-        If LabelHarga.Visible = False Then
-            passwordid = 2
-            fpassword.Show()
-            'LabelHarga.Visible = False
-        ElseIf LabelHarga.Visible = True Then
-            LabelHarga.Visible = False
-        End If
     End Sub
 End Class
