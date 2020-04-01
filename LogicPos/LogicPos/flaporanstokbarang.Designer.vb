@@ -233,7 +233,7 @@ Partial Class flaporanstokbarang
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(267, 50)
         Me.btnrefresh.TabIndex = 18
-        Me.btnrefresh.Text = "Refresh"
+        Me.btnrefresh.Text = "Refresh Tabel"
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'btnexcel

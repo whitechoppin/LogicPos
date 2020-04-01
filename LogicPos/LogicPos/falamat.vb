@@ -7,6 +7,7 @@ Public Class falamat
     Private Sub falamat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
+        Call historysave("Membuka Setting Alamat", "N/A")
     End Sub
 
     Private Sub falamat_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -61,5 +62,6 @@ Public Class falamat
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         Call simpan()
+        Call historysave("Mengupdate Setting Alamat", "N/A")
     End Sub
 End Class

@@ -35,6 +35,8 @@ Public Class flaporantransaksikas
                 printstatus = True
                 exportstatus = True
         End Select
+
+        Call historysave("Membuka Laporan Transaksi Kas", "N/A")
     End Sub
 
     Sub grid()
@@ -89,22 +91,21 @@ Public Class flaporantransaksikas
     Sub tabel()
         Call koneksii()
 
-        Using cnn As New OdbcConnection(strConn)
-            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
-                sql = "SELECT * FROM tb_transaksi_kas WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
-            Else
-                sql = "SELECT * FROM tb_transaksi_kas WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
-            End If
-            da = New OdbcDataAdapter(sql, cnn)
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-        End Using
+        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            sql = "SELECT * FROM tb_transaksi_kas WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "SELECT * FROM tb_transaksi_kas WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+        End If
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
     End Sub
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
+        Call historysave("Merefresh Laporan Transaksi Kas", "N/A")
     End Sub
     Sub ExportToExcel()
 
@@ -129,6 +130,7 @@ Public Class flaporantransaksikas
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
+                Call historysave("Mengexport Laporan Transaksi Kas", "N/A")
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -150,6 +152,8 @@ Public Class flaporantransaksikas
             Dim akhirPFD As ParameterFieldDefinition
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
+
+            Call koneksii()
 
             If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
                 sql = "SELECT * FROM tb_transaksi_kas WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
@@ -180,6 +184,8 @@ Public Class flaporantransaksikas
                 flaptransaksikas.CrystalReportViewer1.ReportSource = rptrekap
                 flaptransaksikas.ShowDialog()
                 flaptransaksikas.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Laporan Transaksi Kas", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If

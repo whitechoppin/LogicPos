@@ -1,6 +1,7 @@
 ﻿Imports System.Data.Odbc
 Public Class fmenu
     Private Sub exitStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitStripMenuItem.Click
+        Call historysave("User Close Program", "N/A")
         Me.Close()
         Me.Dispose()
         Application.Exit()

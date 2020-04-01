@@ -33,6 +33,8 @@ Public Class flaporanlunaspiutang
                 printstatus = True
                 exportstatus = True
         End Select
+
+        Call historysave("Membuka Laporan Pelunasan Piutang", "N/A")
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Pelunasan"
@@ -72,6 +74,7 @@ Public Class flaporanlunaspiutang
         Else
             sql = "SELECT * FROM tb_pelunasan_piutang WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'  + INTERVAL 1 DAY"
         End If
+
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -82,6 +85,7 @@ Public Class flaporanlunaspiutang
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
+        Call historysave("Merefresh Laporan Pelunasan Piutang", "N/A")
     End Sub
     Sub ExportToExcel()
         Dim filename As String = InputBox("Nama File", "Input Nama file ")
@@ -104,6 +108,8 @@ Public Class flaporanlunaspiutang
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
+
+                Call historysave("Mengexport Laporan Pelunasan Piutang", "N/A")
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -154,6 +160,8 @@ Public Class flaporanlunaspiutang
                 flaplunaspiutang.CrystalReportViewer1.ReportSource = rptrekap
                 flaplunaspiutang.ShowDialog()
                 flaplunaspiutang.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Detail Laporan Pelunasan Piutang", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If

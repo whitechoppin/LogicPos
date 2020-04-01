@@ -29,6 +29,8 @@ Public Class flaporanstokbarang
                 printstatus = True
                 exportstatus = True
         End Select
+
+        Call historysave("Membuka Laporan Stok Barang", "N/A")
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"
@@ -93,6 +95,7 @@ Public Class flaporanstokbarang
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
+                Call historysave("Mengexport Laporan Stok Barang", "N/A")
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -127,6 +130,8 @@ Public Class flaporanstokbarang
             flapstokbarang.CrystalReportViewer1.ReportSource = rptstok
             flapstokbarang.ShowDialog()
             flapstokbarang.WindowState = FormWindowState.Maximized
+
+            Call historysave("Merekap Laporan Stok Barang", "N/A")
         Else
             MsgBox("Tidak ada akses")
         End If
@@ -134,6 +139,7 @@ Public Class flaporanstokbarang
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel()
+        Call historysave("Merefresh Laporan Stok Barang", "N/A")
     End Sub
 
     Private Sub flaporanstokbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

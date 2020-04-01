@@ -120,7 +120,7 @@ Partial Class flaporanlunaspiutang
         Me.btntabel.Name = "btntabel"
         Me.btntabel.Size = New System.Drawing.Size(180, 50)
         Me.btntabel.TabIndex = 17
-        Me.btntabel.Text = "Rekap Tabel"
+        Me.btntabel.Text = "Refresh Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
         '
         'GridControl1
@@ -185,14 +185,14 @@ Partial Class flaporanlunaspiutang
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.OptionsColumn.AllowEdit = False
         Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 7
+        Me.GridColumn7.VisibleIndex = 6
         '
         'GridColumn8
         '
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.OptionsColumn.AllowEdit = False
         Me.GridColumn8.Visible = True
-        Me.GridColumn8.VisibleIndex = 8
+        Me.GridColumn8.VisibleIndex = 7
         '
         'Label2
         '

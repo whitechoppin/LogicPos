@@ -55,7 +55,7 @@ Partial Class flaporankaskeluar
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(305, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(701, 57)
+        Me.GroupBox1.Size = New System.Drawing.Size(566, 57)
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Periode"
@@ -64,7 +64,7 @@ Partial Class flaporankaskeluar
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(408, 23)
+        Me.Label1.Location = New System.Drawing.Point(317, 23)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(30, 16)
         Me.Label1.TabIndex = 7
@@ -72,14 +72,14 @@ Partial Class flaporankaskeluar
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(444, 20)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(353, 20)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(200, 24)
         Me.DateTimePicker2.TabIndex = 3
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(202, 19)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(111, 19)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(200, 24)
         Me.DateTimePicker1.TabIndex = 2
@@ -92,35 +92,35 @@ Partial Class flaporankaskeluar
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.Location = New System.Drawing.Point(12, 70)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(994, 73)
+        Me.GroupBox4.Size = New System.Drawing.Size(859, 78)
         Me.GroupBox4.TabIndex = 15
         Me.GroupBox4.TabStop = False
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(129, 15)
+        Me.btnrekap.Location = New System.Drawing.Point(192, 17)
         Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(180, 52)
+        Me.btnrekap.Size = New System.Drawing.Size(180, 46)
         Me.btnrekap.TabIndex = 18
         Me.btnrekap.Text = "Rekap Laporan"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(871, 13)
+        Me.btnexcel.Location = New System.Drawing.Point(673, 17)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(117, 54)
+        Me.btnexcel.Size = New System.Drawing.Size(180, 46)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(13, 13)
+        Me.btntabel.Location = New System.Drawing.Point(6, 17)
         Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(110, 54)
+        Me.btntabel.Size = New System.Drawing.Size(180, 46)
         Me.btntabel.TabIndex = 17
-        Me.btntabel.Text = "Rekap Tabel"
+        Me.btntabel.Text = "Refresh Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
         '
         'GridControl1
@@ -128,7 +128,7 @@ Partial Class flaporankaskeluar
         Me.GridControl1.Location = New System.Drawing.Point(12, 154)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(994, 332)
+        Me.GridControl1.Size = New System.Drawing.Size(859, 318)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -202,7 +202,7 @@ Partial Class flaporankaskeluar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1018, 636)
+        Me.ClientSize = New System.Drawing.Size(883, 484)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox4)

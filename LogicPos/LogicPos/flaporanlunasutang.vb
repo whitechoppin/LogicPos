@@ -36,6 +36,8 @@ Public Class flaporanlunasutang
                 printstatus = True
                 exportstatus = True
         End Select
+
+        Call historysave("Membuka Laporan Pelunasan Utang", "N/A")
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Pelunasan"
@@ -85,6 +87,7 @@ Public Class flaporanlunasutang
     End Sub
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
+        Call historysave("Merefresh Laporan Pelunasan Utang", "N/A")
     End Sub
     Sub ExportToExcel()
         Dim filename As String = InputBox("Nama File", "Input Nama file ")
@@ -107,6 +110,8 @@ Public Class flaporanlunasutang
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
+
+                Call historysave("Mengexport Laporan Pelunasan Utang", "N/A")
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -157,6 +162,8 @@ Public Class flaporanlunasutang
                 flaplunasutang.CrystalReportViewer1.ReportSource = rptrekap
                 flaplunasutang.ShowDialog()
                 flaplunasutang.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Detail Laporan Pelunasan Utang", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
