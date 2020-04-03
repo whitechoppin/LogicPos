@@ -183,10 +183,10 @@
       <DependentUpon>flaporantransferkas.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="falamat.Designer.vb">
-      <DependentUpon>falamat.vb</DependentUpon>
+    <Compile Include="fperusahaan.Designer.vb">
+      <DependentUpon>fperusahaan.vb</DependentUpon>
     </Compile>
-    <Compile Include="falamat.vb">
+    <Compile Include="fperusahaan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fcarilunasbeli.Designer.vb">
@@ -876,8 +876,8 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpenjualan.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="falamat.resx">
-      <DependentUpon>falamat.vb</DependentUpon>
+    <EmbeddedResource Include="fperusahaan.resx">
+      <DependentUpon>fperusahaan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fcarilunasbeli.resx">
       <DependentUpon>fcarilunasbeli.vb</DependentUpon>

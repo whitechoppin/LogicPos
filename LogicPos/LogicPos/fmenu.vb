@@ -360,8 +360,8 @@ Public Class fmenu
         fhistoryuser.Show()
     End Sub
 
-    Private Sub AlamatToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AlamatToolStripMenuItem.Click
-        falamat.Show()
+    Private Sub InfoPerusahaanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InfoPerusahaanToolStripMenuItem.Click
+        fperusahaan.Show()
     End Sub
 
     Private Sub fmenu_MdiChildActivate(sender As Object, e As EventArgs) Handles MyBase.MdiChildActivate

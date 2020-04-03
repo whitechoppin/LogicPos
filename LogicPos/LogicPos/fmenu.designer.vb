@@ -67,8 +67,9 @@ Partial Class fmenu
         Me.LTransferBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LStokBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanTransaksiKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanModalBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AlamatToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InfoPerusahaanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrinterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JatuhTempoPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JatuhTempoPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -82,7 +83,6 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
-        Me.LaporanModalBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -354,18 +354,24 @@ Partial Class fmenu
         Me.LaporanTransaksiKasToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.LaporanTransaksiKasToolStripMenuItem.Text = "Laporan Transaksi Kas"
         '
+        'LaporanModalBarangToolStripMenuItem
+        '
+        Me.LaporanModalBarangToolStripMenuItem.Name = "LaporanModalBarangToolStripMenuItem"
+        Me.LaporanModalBarangToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.LaporanModalBarangToolStripMenuItem.Text = "Laporan Modal Barang"
+        '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AlamatToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
         '
-        'AlamatToolStripMenuItem
+        'InfoPerusahaanToolStripMenuItem
         '
-        Me.AlamatToolStripMenuItem.Name = "AlamatToolStripMenuItem"
-        Me.AlamatToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.AlamatToolStripMenuItem.Text = "Alamat"
+        Me.InfoPerusahaanToolStripMenuItem.Name = "InfoPerusahaanToolStripMenuItem"
+        Me.InfoPerusahaanToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.InfoPerusahaanToolStripMenuItem.Text = "Info Perusahaan"
         '
         'PrinterToolStripMenuItem
         '
@@ -457,12 +463,6 @@ Partial Class fmenu
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
         '
-        'LaporanModalBarangToolStripMenuItem
-        '
-        Me.LaporanModalBarangToolStripMenuItem.Name = "LaporanModalBarangToolStripMenuItem"
-        Me.LaporanModalBarangToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.LaporanModalBarangToolStripMenuItem.Text = "Laporan Modal Barang"
-        '
         'fmenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -544,6 +544,6 @@ Partial Class fmenu
     Friend WithEvents DataKategoriBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HistoryUserToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents tabform As TabControl
-    Friend WithEvents AlamatToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InfoPerusahaanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanModalBarangToolStripMenuItem As ToolStripMenuItem
 End Class

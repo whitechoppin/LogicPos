@@ -1,6 +1,7 @@
 ﻿Imports System.Data.Odbc
 
-Public Class falamat
+Public Class fperusahaan
+    Dim namaawal, namaakhir As String
     Dim alamatawal, alamatakhir As String
     Dim telpawal, telpakhir As String
     Dim rekawal, rekakhir As String
@@ -36,6 +37,7 @@ Public Class falamat
 
     Sub simpan()
         Call koneksii()
+        namaakhir = txtnama.Text
         alamatakhir = txtalamat.Text
         telpakhir = txttelepon.Text
         rekakhir = txtrekening.Text
