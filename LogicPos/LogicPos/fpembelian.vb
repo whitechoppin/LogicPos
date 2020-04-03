@@ -194,6 +194,7 @@ Public Class fpembelian
         btnprev.Enabled = True
         btngo.Enabled = True
         txtgopembelian.Enabled = True
+        btncaripembelian.Enabled = True
         btnnext.Enabled = True
 
         'buat tabel
@@ -421,6 +422,7 @@ Public Class fpembelian
         btnprev.Enabled = False
         btngo.Enabled = False
         txtgopembelian.Enabled = False
+        btncaripembelian.Enabled = True
         btnnext.Enabled = False
 
         'header
@@ -1099,6 +1101,12 @@ Public Class fpembelian
             End If
         End If
     End Sub
+
+    Private Sub btncaripembelian_Click(sender As Object, e As EventArgs) Handles btncaripembelian.Click
+        tutupbeli = 2
+        fcaripembelian.Show()
+    End Sub
+
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
         Call nextnumber(txtnonota.Text)
     End Sub
@@ -1217,6 +1225,7 @@ Public Class fpembelian
         btnprev.Enabled = False
         btngo.Enabled = False
         txtgopembelian.Enabled = False
+        btncaripembelian.Enabled = False
         btnnext.Enabled = False
 
         'header

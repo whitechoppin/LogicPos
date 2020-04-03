@@ -250,6 +250,7 @@ Public Class fpenjualan
         btnprev.Enabled = False
         btngo.Enabled = False
         txtgopenjualan.Enabled = False
+        btncaripenjualan.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -371,6 +372,7 @@ Public Class fpenjualan
         btnprev.Enabled = True
         btngo.Enabled = True
         txtgopenjualan.Enabled = True
+        btncaripenjualan.Enabled = True
         btnnext.Enabled = True
 
         rbfaktur.Checked = False
@@ -602,6 +604,7 @@ Public Class fpenjualan
         btnprev.Enabled = False
         btngo.Enabled = False
         txtgopenjualan.Enabled = False
+        btncaripenjualan.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -1509,6 +1512,11 @@ Public Class fpenjualan
                 MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
             End If
         End If
+    End Sub
+
+    Private Sub btncaripenjualan_Click(sender As Object, e As EventArgs) Handles btncaripenjualan.Click
+        tutupjual = 2
+        fcaripenjualan.Show()
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click

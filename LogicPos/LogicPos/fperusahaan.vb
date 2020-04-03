@@ -15,6 +15,10 @@ Public Class fperusahaan
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
+    Private Sub btnupload_Click(sender As Object, e As EventArgs) Handles btnupload.Click
+
+    End Sub
+
     Sub awal()
         Call koneksii()
         sql = "SELECT * FROM tb_info_perusahaan WHERE nomor =1 LIMIT 1"

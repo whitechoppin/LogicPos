@@ -181,7 +181,7 @@ Partial Class fperusahaan
         Me.btnupload.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnupload.Location = New System.Drawing.Point(224, 167)
         Me.btnupload.Name = "btnupload"
-        Me.btnupload.Size = New System.Drawing.Size(138, 49)
+        Me.btnupload.Size = New System.Drawing.Size(138, 53)
         Me.btnupload.TabIndex = 51
         Me.btnupload.Text = "Upload Foto"
         Me.btnupload.UseVisualStyleBackColor = True

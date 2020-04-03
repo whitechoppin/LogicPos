@@ -5,6 +5,11 @@ Public Class fcaripembelian
     Dim kode As String
     Private Sub fcaripembelian_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call tabel()
+
+        dtawal.Value = Now
+        dtakhir.Value = Now
+        dtawal.MaxDate = Now
+        dtakhir.MaxDate = Now
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"
@@ -17,27 +22,37 @@ Public Class fcaripembelian
         GridColumn4.FieldName = "total_pembelian"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
+        GridColumn5.Caption = "No Nota Pembelian"
+        GridColumn5.FieldName = "no_nota_pembelian"
+
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        'Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier"
-            da = New OdbcDataAdapter(sql, cnn)
-            cnn.Open()
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-            cnn.Close()
-        End Using
+        Call koneksii()
+
+        If dtawal.Value.Equals(dtakhir.Value) Then
+            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+        Else
+            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+        End If
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupbeli = 1 Then
             freturbeli.txtnonota.Text = Me.GridView1.GetFocusedRowCellValue("kode_pembelian")
+        ElseIf tutupbeli = 2 Then
+            fpembelian.txtgopembelian.Text = Me.GridView1.GetFocusedRowCellValue("kode_pembelian")
         End If
         Me.Hide()
+    End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call tabel()
     End Sub
 End Class

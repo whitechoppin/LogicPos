@@ -6,6 +6,8 @@ Public Class fhistoryuser
     Private Sub fhistoryuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
 
+        dtawal.Value = Now
+        dtakhir.Value = Now
         dtawal.MaxDate = Now
         dtakhir.MaxDate = Now
 
@@ -46,19 +48,17 @@ Public Class fhistoryuser
         kode = txtkodetabel.Text
         oleh = txtoleh.Text
 
-        Using cnn As New OdbcConnection(strConn)
-            If dtawal.Value.Equals(dtakhir.Value) Then
-                sql = "SELECT * FROM tb_history_user WHERE DATE(date_created) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_tabel LIKE '%" + kode + "%' AND created_by LIKE '%" + oleh + "%'"
-            Else
-                sql = "SELECT * FROM tb_history_user WHERE kode_tabel LIKE '%" + kode + "%' AND created_by LIKE '%" + oleh + "%' AND date_created BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
-            End If
-            da = New OdbcDataAdapter(sql, cnn)
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid_history()
-        End Using
+        If dtawal.Value.Equals(dtakhir.Value) Then
+            sql = "SELECT * FROM tb_history_user WHERE DATE(date_created) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_tabel LIKE '%" + kode + "%' AND created_by LIKE '%" + oleh + "%'"
+        Else
+            sql = "SELECT * FROM tb_history_user WHERE kode_tabel LIKE '%" + kode + "%' AND created_by LIKE '%" + oleh + "%' AND date_created BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+        End If
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid_history()
     End Sub
 
     Sub ExportToExcel()
@@ -86,6 +86,5 @@ Public Class fhistoryuser
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel_history()
-
     End Sub
 End Class
