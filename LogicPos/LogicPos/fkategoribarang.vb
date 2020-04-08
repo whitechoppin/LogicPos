@@ -114,7 +114,7 @@ Public Class fkategoribarang
         If dr.HasRows Then
             MsgBox("Kode Kategori Sudah ada dengan nama " + dr("nama_kategori"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_kategori_barang (kode_kategori, nama_kategori, selisih_kategori, keterangan_kategori, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "','" & txtselisih.Text & "', '" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_kategori_barang (kode_kategori, nama_kategori, selisih_kategori, keterangan_kategori, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "','" & selisihharga & "', '" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
