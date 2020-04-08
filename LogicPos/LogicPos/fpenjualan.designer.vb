@@ -95,6 +95,7 @@ Partial Class fpenjualan
         Me.dtjatuhtempo = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.btncaripenjualan = New System.Windows.Forms.Button()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
         Me.txtgopenjualan = New System.Windows.Forms.TextBox()
@@ -126,7 +127,6 @@ Partial Class fpenjualan
         Me.btncarikas = New System.Windows.Forms.Button()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.btnbayarfull = New System.Windows.Forms.Button()
-        Me.btncaripenjualan = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -441,6 +441,8 @@ Partial Class fpenjualan
         'ritehargasatuan
         '
         Me.ritehargasatuan.AutoHeight = False
+        Me.ritehargasatuan.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ritehargasatuan.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ritehargasatuan.Name = "ritehargasatuan"
         '
         'GridColumn8
@@ -458,7 +460,9 @@ Partial Class fpenjualan
         'ritediskonpersen
         '
         Me.ritediskonpersen.AutoHeight = False
-        Me.ritediskonpersen.MaxLength = 2
+        Me.ritediskonpersen.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ritediskonpersen.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ritediskonpersen.MaxLength = 5
         Me.ritediskonpersen.Name = "ritediskonpersen"
         '
         'GridColumn9
@@ -476,6 +480,8 @@ Partial Class fpenjualan
         'ritediskonnominal
         '
         Me.ritediskonnominal.AutoHeight = False
+        Me.ritediskonnominal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ritediskonnominal.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ritediskonnominal.Name = "ritediskonnominal"
         '
         'GridColumn10
@@ -977,6 +983,18 @@ Partial Class fpenjualan
         Me.GroupBox5.TabIndex = 37
         Me.GroupBox5.TabStop = False
         '
+        'btncaripenjualan
+        '
+        Me.btncaripenjualan.BackgroundImage = CType(resources.GetObject("btncaripenjualan.BackgroundImage"), System.Drawing.Image)
+        Me.btncaripenjualan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncaripenjualan.ImageIndex = 0
+        Me.btncaripenjualan.Location = New System.Drawing.Point(257, 17)
+        Me.btncaripenjualan.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncaripenjualan.Name = "btncaripenjualan"
+        Me.btncaripenjualan.Size = New System.Drawing.Size(32, 26)
+        Me.btncaripenjualan.TabIndex = 57
+        Me.btncaripenjualan.UseVisualStyleBackColor = True
+        '
         'btnprev
         '
         Me.btnprev.Location = New System.Drawing.Point(2, 17)
@@ -1294,18 +1312,6 @@ Partial Class fpenjualan
         Me.btnbayarfull.TabIndex = 73
         Me.btnbayarfull.Text = "Bayar"
         Me.btnbayarfull.UseVisualStyleBackColor = True
-        '
-        'btncaripenjualan
-        '
-        Me.btncaripenjualan.BackgroundImage = CType(resources.GetObject("btncaripenjualan.BackgroundImage"), System.Drawing.Image)
-        Me.btncaripenjualan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btncaripenjualan.ImageIndex = 0
-        Me.btncaripenjualan.Location = New System.Drawing.Point(257, 17)
-        Me.btncaripenjualan.Margin = New System.Windows.Forms.Padding(4)
-        Me.btncaripenjualan.Name = "btncaripenjualan"
-        Me.btncaripenjualan.Size = New System.Drawing.Size(32, 26)
-        Me.btncaripenjualan.TabIndex = 57
-        Me.btncaripenjualan.UseVisualStyleBackColor = True
         '
         'fpenjualan
         '

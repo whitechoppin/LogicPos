@@ -92,6 +92,7 @@ Partial Class fpembelian
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.btncaripembelian = New System.Windows.Forms.Button()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
         Me.txtgopembelian = New System.Windows.Forms.TextBox()
@@ -103,7 +104,6 @@ Partial Class fpembelian
         Me.txtppnnominal = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.txtnosupplier = New System.Windows.Forms.TextBox()
-        Me.btncaripembelian = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -357,6 +357,8 @@ Partial Class fpembelian
         'ritenumber
         '
         Me.ritenumber.AutoHeight = False
+        Me.ritenumber.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ritenumber.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ritenumber.Name = "ritenumber"
         '
         'GridColumn5
@@ -840,6 +842,17 @@ Partial Class fpembelian
         Me.GroupBox5.TabIndex = 37
         Me.GroupBox5.TabStop = False
         '
+        'btncaripembelian
+        '
+        Me.btncaripembelian.BackgroundImage = CType(resources.GetObject("btncaripembelian.BackgroundImage"), System.Drawing.Image)
+        Me.btncaripembelian.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncaripembelian.ImageIndex = 0
+        Me.btncaripembelian.Location = New System.Drawing.Point(251, 17)
+        Me.btncaripembelian.Name = "btncaripembelian"
+        Me.btncaripembelian.Size = New System.Drawing.Size(31, 26)
+        Me.btncaripembelian.TabIndex = 41
+        Me.btncaripembelian.UseVisualStyleBackColor = True
+        '
         'btnprev
         '
         Me.btnprev.Location = New System.Drawing.Point(7, 17)
@@ -940,17 +953,6 @@ Partial Class fpembelian
         Me.txtnosupplier.Name = "txtnosupplier"
         Me.txtnosupplier.Size = New System.Drawing.Size(334, 24)
         Me.txtnosupplier.TabIndex = 45
-        '
-        'btncaripembelian
-        '
-        Me.btncaripembelian.BackgroundImage = CType(resources.GetObject("btncaripembelian.BackgroundImage"), System.Drawing.Image)
-        Me.btncaripembelian.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btncaripembelian.ImageIndex = 0
-        Me.btncaripembelian.Location = New System.Drawing.Point(251, 17)
-        Me.btncaripembelian.Name = "btncaripembelian"
-        Me.btncaripembelian.Size = New System.Drawing.Size(31, 26)
-        Me.btncaripembelian.TabIndex = 41
-        Me.btncaripembelian.UseVisualStyleBackColor = True
         '
         'fpembelian
         '
