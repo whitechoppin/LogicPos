@@ -183,6 +183,12 @@
       <DependentUpon>flaporantransferkas.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fkalkulasicontainer.Designer.vb">
+      <DependentUpon>fkalkulasicontainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fkalkulasicontainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fperusahaan.Designer.vb">
       <DependentUpon>fperusahaan.vb</DependentUpon>
     </Compile>
@@ -875,6 +881,9 @@
     <EmbeddedResource Include="fakturpenjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpenjualan.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fkalkulasicontainer.resx">
+      <DependentUpon>fkalkulasicontainer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fperusahaan.resx">
       <DependentUpon>fperusahaan.vb</DependentUpon>

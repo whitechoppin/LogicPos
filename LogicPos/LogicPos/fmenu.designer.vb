@@ -83,6 +83,7 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
+        Me.KalkulasiIsiContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -362,7 +363,7 @@ Partial Class fmenu
         '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KalkulasiIsiContainerToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
@@ -463,6 +464,12 @@ Partial Class fmenu
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
         '
+        'KalkulasiIsiContainerToolStripMenuItem
+        '
+        Me.KalkulasiIsiContainerToolStripMenuItem.Name = "KalkulasiIsiContainerToolStripMenuItem"
+        Me.KalkulasiIsiContainerToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.KalkulasiIsiContainerToolStripMenuItem.Text = "Kalkulasi Isi Container"
+        '
         'fmenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -546,4 +553,5 @@ Partial Class fmenu
     Friend WithEvents tabform As TabControl
     Friend WithEvents InfoPerusahaanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanModalBarangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents KalkulasiIsiContainerToolStripMenuItem As ToolStripMenuItem
 End Class

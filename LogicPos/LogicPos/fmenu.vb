@@ -408,4 +408,8 @@ Public Class fmenu
             flaporanmodalbarang.Show()
         End If
     End Sub
+
+    Private Sub KalkulasiIsiContainerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KalkulasiIsiContainerToolStripMenuItem.Click
+
+    End Sub
 End Class
