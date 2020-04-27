@@ -410,6 +410,6 @@ Public Class fmenu
     End Sub
 
     Private Sub KalkulasiIsiContainerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KalkulasiIsiContainerToolStripMenuItem.Click
-
+        fkalkulasicontainer.Show()
     End Sub
 End Class

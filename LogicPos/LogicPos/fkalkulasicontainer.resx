@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btncaripembelian.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btncaridata.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAAK/INwWK6QAADHJJREFUaEPt
         mHlYlmUWxl/wC1xGUweXTAc33GrSSbTMcjfNjHIhJ7XMS0sbwqRMRBJNWVTEDUVQEBABlU1ZRFFBILaP
@@ -177,7 +177,7 @@
         ZLxR56gI4QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btncarisupplier.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btncariexpedisi.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAAK/INwWK6QAADHJJREFUaEPt
         mHlYlmUWxl/wC1xGUweXTAc33GrSSbTMcjfNjHIhJ7XMS0sbwqRMRBJNWVTEDUVQEBABlU1ZRFFBILaP
@@ -236,7 +236,7 @@
         ZLxR56gI4QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btncari.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btncaribarang.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAAK/INwWK6QAADHJJREFUaEPt
         mHlYlmUWxl/wC1xGUweXTAc33GrSSbTMcjfNjHIhJ7XMS0sbwqRMRBJNWVTEDUVQEBABlU1ZRFFBILaP
