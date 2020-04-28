@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class fkalkulasicontainer
+Partial Class fkalkulasiexpedisi
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class fkalkulasicontainer
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fkalkulasicontainer))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fkalkulasiexpedisi))
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -401,7 +401,7 @@ Partial Class fkalkulasicontainer
         '
         Me.txttotalongkir.Enabled = False
         Me.txttotalongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txttotalongkir.Location = New System.Drawing.Point(863, 87)
+        Me.txttotalongkir.Location = New System.Drawing.Point(884, 77)
         Me.txttotalongkir.MaxLength = 12
         Me.txttotalongkir.Name = "txttotalongkir"
         Me.txttotalongkir.Size = New System.Drawing.Size(252, 24)
@@ -411,7 +411,7 @@ Partial Class fkalkulasicontainer
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label14.Location = New System.Drawing.Point(733, 90)
+        Me.Label14.Location = New System.Drawing.Point(786, 80)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(89, 18)
         Me.Label14.TabIndex = 53
@@ -450,9 +450,9 @@ Partial Class fkalkulasicontainer
         Me.GroupBox3.Controls.Add(Me.cbposted)
         Me.GroupBox3.Controls.Add(Me.cbprinted)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox3.Location = New System.Drawing.Point(722, 9)
+        Me.GroupBox3.Location = New System.Drawing.Point(780, 23)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(393, 45)
+        Me.GroupBox3.Size = New System.Drawing.Size(356, 45)
         Me.GroupBox3.TabIndex = 36
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Status"
@@ -482,9 +482,9 @@ Partial Class fkalkulasicontainer
         '
         'txtnamaexpedisi
         '
-        Me.txtnamaexpedisi.Location = New System.Drawing.Point(482, 64)
+        Me.txtnamaexpedisi.Location = New System.Drawing.Point(511, 64)
         Me.txtnamaexpedisi.Name = "txtnamaexpedisi"
-        Me.txtnamaexpedisi.Size = New System.Drawing.Size(231, 24)
+        Me.txtnamaexpedisi.Size = New System.Drawing.Size(252, 24)
         Me.txtnamaexpedisi.TabIndex = 12
         '
         'btncariexpedisi
@@ -492,7 +492,7 @@ Partial Class fkalkulasicontainer
         Me.btncariexpedisi.BackgroundImage = CType(resources.GetObject("btncariexpedisi.BackgroundImage"), System.Drawing.Image)
         Me.btncariexpedisi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncariexpedisi.ImageIndex = 0
-        Me.btncariexpedisi.Location = New System.Drawing.Point(680, 30)
+        Me.btncariexpedisi.Location = New System.Drawing.Point(731, 30)
         Me.btncariexpedisi.Name = "btncariexpedisi"
         Me.btncariexpedisi.Size = New System.Drawing.Size(32, 27)
         Me.btncariexpedisi.TabIndex = 11
@@ -501,7 +501,7 @@ Partial Class fkalkulasicontainer
         'dtpengiriman
         '
         Me.dtpengiriman.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtpengiriman.Location = New System.Drawing.Point(863, 58)
+        Me.dtpengiriman.Location = New System.Drawing.Point(511, 92)
         Me.dtpengiriman.Name = "dtpengiriman"
         Me.dtpengiriman.Size = New System.Drawing.Size(252, 23)
         Me.dtpengiriman.TabIndex = 17
@@ -510,7 +510,7 @@ Partial Class fkalkulasicontainer
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label12.Location = New System.Drawing.Point(719, 61)
+        Me.Label12.Location = New System.Drawing.Point(370, 97)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(138, 18)
         Me.Label12.TabIndex = 16
@@ -520,10 +520,10 @@ Partial Class fkalkulasicontainer
         '
         Me.cmbkodeexpedisi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbkodeexpedisi.FormattingEnabled = True
-        Me.cmbkodeexpedisi.Location = New System.Drawing.Point(482, 30)
+        Me.cmbkodeexpedisi.Location = New System.Drawing.Point(511, 30)
         Me.cmbkodeexpedisi.MaxLength = 99
         Me.cmbkodeexpedisi.Name = "cmbkodeexpedisi"
-        Me.cmbkodeexpedisi.Size = New System.Drawing.Size(199, 26)
+        Me.cmbkodeexpedisi.Size = New System.Drawing.Size(221, 26)
         Me.cmbkodeexpedisi.TabIndex = 10
         '
         'txtnonota
@@ -592,7 +592,7 @@ Partial Class fkalkulasicontainer
         'txthargabarang
         '
         Me.txthargabarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txthargabarang.Location = New System.Drawing.Point(606, 32)
+        Me.txthargabarang.Location = New System.Drawing.Point(653, 32)
         Me.txthargabarang.MaxLength = 12
         Me.txthargabarang.Name = "txthargabarang"
         Me.txthargabarang.Size = New System.Drawing.Size(168, 24)
@@ -602,7 +602,7 @@ Partial Class fkalkulasicontainer
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(573, 37)
+        Me.Label13.Location = New System.Drawing.Point(620, 37)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(27, 18)
         Me.Label13.TabIndex = 32
@@ -612,7 +612,7 @@ Partial Class fkalkulasicontainer
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(603, 10)
+        Me.Label17.Location = New System.Drawing.Point(650, 10)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(48, 18)
         Me.Label17.TabIndex = 33
@@ -621,7 +621,7 @@ Partial Class fkalkulasicontainer
         'TextBox3
         '
         Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(910, 32)
+        Me.TextBox3.Location = New System.Drawing.Point(957, 32)
         Me.TextBox3.MaxLength = 12
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(59, 24)
@@ -631,7 +631,7 @@ Partial Class fkalkulasicontainer
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(910, 11)
+        Me.Label11.Location = New System.Drawing.Point(957, 11)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(33, 18)
         Me.Label11.TabIndex = 30
@@ -640,7 +640,7 @@ Partial Class fkalkulasicontainer
         'TextBox2
         '
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(845, 32)
+        Me.TextBox2.Location = New System.Drawing.Point(892, 32)
         Me.TextBox2.MaxLength = 12
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(59, 24)
@@ -650,7 +650,7 @@ Partial Class fkalkulasicontainer
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(845, 11)
+        Me.Label9.Location = New System.Drawing.Point(892, 11)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(29, 18)
         Me.Label9.TabIndex = 28
@@ -659,7 +659,7 @@ Partial Class fkalkulasicontainer
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(780, 32)
+        Me.TextBox1.Location = New System.Drawing.Point(827, 32)
         Me.TextBox1.MaxLength = 12
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(59, 24)
@@ -669,7 +669,7 @@ Partial Class fkalkulasicontainer
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(780, 11)
+        Me.Label8.Location = New System.Drawing.Point(827, 11)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(29, 18)
         Me.Label8.TabIndex = 26
@@ -680,7 +680,7 @@ Partial Class fkalkulasicontainer
         Me.btncaribarang.BackgroundImage = CType(resources.GetObject("btncaribarang.BackgroundImage"), System.Drawing.Image)
         Me.btncaribarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncaribarang.ImageIndex = 0
-        Me.btncaribarang.Location = New System.Drawing.Point(175, 32)
+        Me.btncaribarang.Location = New System.Drawing.Point(212, 32)
         Me.btncaribarang.Name = "btncaribarang"
         Me.btncaribarang.Size = New System.Drawing.Size(29, 26)
         Me.btncaribarang.TabIndex = 20
@@ -700,7 +700,7 @@ Partial Class fkalkulasicontainer
         'txtbanyakbarang
         '
         Me.txtbanyakbarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbanyakbarang.Location = New System.Drawing.Point(975, 32)
+        Me.txtbanyakbarang.Location = New System.Drawing.Point(1022, 32)
         Me.txtbanyakbarang.MaxLength = 12
         Me.txtbanyakbarang.Name = "txtbanyakbarang"
         Me.txtbanyakbarang.Size = New System.Drawing.Size(59, 24)
@@ -710,7 +710,7 @@ Partial Class fkalkulasicontainer
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(975, 11)
+        Me.Label3.Location = New System.Drawing.Point(1022, 11)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(31, 18)
         Me.Label3.TabIndex = 5
@@ -719,7 +719,7 @@ Partial Class fkalkulasicontainer
         'txtnamabarang
         '
         Me.txtnamabarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamabarang.Location = New System.Drawing.Point(211, 33)
+        Me.txtnamabarang.Location = New System.Drawing.Point(258, 33)
         Me.txtnamabarang.Name = "txtnamabarang"
         Me.txtnamabarang.Size = New System.Drawing.Size(356, 24)
         Me.txtnamabarang.TabIndex = 21
@@ -728,7 +728,7 @@ Partial Class fkalkulasicontainer
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(208, 12)
+        Me.Label5.Location = New System.Drawing.Point(255, 12)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(99, 18)
         Me.Label5.TabIndex = 6
@@ -737,9 +737,9 @@ Partial Class fkalkulasicontainer
         'txtkodebarang
         '
         Me.txtkodebarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkodebarang.Location = New System.Drawing.Point(17, 33)
+        Me.txtkodebarang.Location = New System.Drawing.Point(18, 33)
         Me.txtkodebarang.Name = "txtkodebarang"
-        Me.txtkodebarang.Size = New System.Drawing.Size(161, 24)
+        Me.txtkodebarang.Size = New System.Drawing.Size(197, 24)
         Me.txtkodebarang.TabIndex = 19
         '
         'Label2
@@ -785,7 +785,7 @@ Partial Class fkalkulasicontainer
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl1)
         Me.Name = "fkalkulasicontainer"
-        Me.Text = "fkalkulasicontainer"
+        Me.Text = "Kalkulasi Expedisi"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)

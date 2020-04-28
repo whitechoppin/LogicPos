@@ -1,12 +1,12 @@
 ﻿Imports System.Data.Odbc
 Imports DevExpress.Utils
 
-Public Class fkalkulasicontainer
+Public Class fkalkulasiexpedisi
     Dim hitnumber As Integer
     Public tabel As DataTable
     'variabel dalam penjualan
     Public kodeexpedisi As String
-    Private Sub fkalkulasicontainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub fkalkulasiexpedisi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
 

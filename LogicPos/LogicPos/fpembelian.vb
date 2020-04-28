@@ -1113,20 +1113,41 @@ Public Class fpembelian
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
 
         If e.Column.FieldName = "qty" Then
-            Try
-                GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga"))
-            Catch ex As Exception
-                'error jika nilai qty=blank
-                GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
-            End Try
-        Else
-            If e.Column.FieldName = "harga" Then
+            If e.Value = "" Or e.Value = "0" Then
+                GridView1.SetRowCellValue(e.RowHandle, "qty", 1)
                 Try
-                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "qty"))
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 1 * GridView1.GetRowCellValue(e.RowHandle, "harga"))
                 Catch ex As Exception
                     'error jika nilai qty=blank
                     GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
                 End Try
+            Else
+                Try
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "harga"))
+                Catch ex As Exception
+                    'error jika nilai qty=blank
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+                End Try
+            End If
+
+        Else
+            If e.Column.FieldName = "harga" Then
+                If e.Value = "" Or e.Value = "0" Then
+                    GridView1.SetRowCellValue(e.RowHandle, "harga", 1)
+                    Try
+                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", 1 * GridView1.GetRowCellValue(e.RowHandle, "qty"))
+                    Catch ex As Exception
+                        'error jika nilai qty=blank
+                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+                    End Try
+                Else
+                    Try
+                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", e.Value * GridView1.GetRowCellValue(e.RowHandle, "qty"))
+                    Catch ex As Exception
+                        'error jika nilai qty=blank
+                        GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+                    End Try
+                End If
             End If
         End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))

@@ -74,6 +74,7 @@ Partial Class fmenu
         Me.JatuhTempoPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JatuhTempoPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HistoryUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.KalkulasiExpedisiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TokoSejatiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -83,7 +84,6 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
-        Me.KalkulasiIsiContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -363,7 +363,7 @@ Partial Class fmenu
         '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KalkulasiIsiContainerToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KalkulasiExpedisiToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
@@ -397,6 +397,12 @@ Partial Class fmenu
         Me.HistoryUserToolStripMenuItem.Name = "HistoryUserToolStripMenuItem"
         Me.HistoryUserToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.HistoryUserToolStripMenuItem.Text = "History User"
+        '
+        'KalkulasiExpedisiToolStripMenuItem
+        '
+        Me.KalkulasiExpedisiToolStripMenuItem.Name = "KalkulasiExpedisiToolStripMenuItem"
+        Me.KalkulasiExpedisiToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.KalkulasiExpedisiToolStripMenuItem.Text = "Kalkulasi Expedisi"
         '
         'AboutMenu
         '
@@ -463,12 +469,6 @@ Partial Class fmenu
         Me.tabform.Size = New System.Drawing.Size(1050, 23)
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
-        '
-        'KalkulasiIsiContainerToolStripMenuItem
-        '
-        Me.KalkulasiIsiContainerToolStripMenuItem.Name = "KalkulasiIsiContainerToolStripMenuItem"
-        Me.KalkulasiIsiContainerToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.KalkulasiIsiContainerToolStripMenuItem.Text = "Kalkulasi Isi Container"
         '
         'fmenu
         '
@@ -553,5 +553,5 @@ Partial Class fmenu
     Friend WithEvents tabform As TabControl
     Friend WithEvents InfoPerusahaanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanModalBarangToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents KalkulasiIsiContainerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents KalkulasiExpedisiToolStripMenuItem As ToolStripMenuItem
 End Class
