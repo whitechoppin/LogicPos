@@ -6,6 +6,11 @@ Public Class fkalkulasiexpedisi
     Public tabel As DataTable
     'variabel dalam penjualan
     Public kodeexpedisi As String
+
+    'variabel bantuan view pengiriman
+    Dim nomorform, nomorexpedisi, nomorsales, viewketerangan As String
+    Dim statusprint, statusposted, statusedit As Boolean
+    Dim viewtglpengiriman As DateTime
     Private Sub fkalkulasiexpedisi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
@@ -17,8 +22,8 @@ Public Class fkalkulasiexpedisi
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
             'buat sum harga
-            .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
-            .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
+            .Columns("total_volume").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_volume", "{0:n0}")
+            .Columns("ongkos_kirim").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "ongkos_kirim", "{0:n0}")
         End With
     End Sub
 
@@ -98,7 +103,7 @@ Public Class fkalkulasiexpedisi
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            'tabel.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - (Val(dr("harga_jual")) * Val(dr("diskon")) / 100), Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
+            tabel.Rows.Add(dr("kode_barang"), dr("nama_barang"), Val(dr("panjang_barang")), Val(dr("lebar_barang")), Val(dr("tinggi_barang")), Val(dr("volume_barang")), Val(dr("qty")), Val(dr("total_volume")), Val(dr("harga_barang")), Val(dr("ongkos_kirim")), Val(dr("total_harga_barang")))
             GridControl1.RefreshDataSource()
         End While
     End Sub
@@ -158,8 +163,21 @@ Public Class fkalkulasiexpedisi
         txtkodebarang.Enabled = True
         btncaribarang.Enabled = True
 
-        txtkodebarang.Clear()
         txtnamabarang.Clear()
+        txtnamabarang.Enabled = True
+
+        txtpanjangbarang.Clear()
+        txtpanjangbarang.Text = 0
+        txtpanjangbarang.Enabled = True
+
+        txtlebarbarang.Clear()
+        txtlebarbarang.Text = 0
+        txtlebarbarang.Enabled = True
+
+        txttinggibarang.Clear()
+        txttinggibarang.Text = 0
+        txttinggibarang.Enabled = True
+
 
         txtbanyakbarang.Clear()
         txtbanyakbarang.Text = 0
@@ -167,6 +185,7 @@ Public Class fkalkulasiexpedisi
 
         txthargabarang.Clear()
         txthargabarang.Text = 0
+        txthargabarang.Enabled = True
 
         btntambahbarang.Enabled = True
 
@@ -214,10 +233,24 @@ Public Class fkalkulasiexpedisi
         'body
         txtkodebarang.Clear()
         txtkodebarang.Enabled = False
+
         btncaribarang.Enabled = False
 
-        txtkodebarang.Clear()
         txtnamabarang.Clear()
+        txtnamabarang.Enabled = False
+
+        txtpanjangbarang.Clear()
+        txtpanjangbarang.Text = 0
+        txtpanjangbarang.Enabled = False
+
+        txtlebarbarang.Clear()
+        txtlebarbarang.Text = 0
+        txtlebarbarang.Enabled = False
+
+        txttinggibarang.Clear()
+        txttinggibarang.Text = 0
+        txttinggibarang.Enabled = False
+
 
         txtbanyakbarang.Clear()
         txtbanyakbarang.Text = 0
@@ -225,6 +258,7 @@ Public Class fkalkulasiexpedisi
 
         txthargabarang.Clear()
         txthargabarang.Text = 0
+        txthargabarang.Enabled = False
 
         btntambahbarang.Enabled = False
 
@@ -249,32 +283,34 @@ Public Class fkalkulasiexpedisi
                 dr.Read()
                 If dr.HasRows Then
                     'header
-                    'nomornota = dr("kode_penjualan")
-                    'nomorcustomer = dr("kode_pelanggan")
-                    'nomorsales = dr("kode_user")
+                    nomorform = dr("kode_form")
+                    nomorexpedisi = dr("kode_expedisi")
+                    nomorsales = dr("kode_user")
 
-                    'statusprint = dr("print_penjualan")
-                    'statusposted = dr("posted_penjualan")
+                    statusprint = dr("print_pengiriman")
+                    statusposted = dr("posted_pengiriman")
 
-                    'viewtglpenjualan = dr("tgl_penjualan")
+                    viewtglpengiriman = dr("tgl_pengiriman")
 
-                    'viewketerangan = dr("keterangan_penjualan")
+                    viewketerangan = dr("keterangan_pengiriman")
 
-                    'txtnonota.Text = nomornota
-                    'cmbcustomer.Text = nomorcustomer
-                    'cmbsales.Text = nomorsales
-                    'cbprinted.Checked = statusprint
-                    'cbposted.Checked = statusposted
+                    'isi data pengiriman
+                    txtnonota.Text = nomorform
+                    cmbkodeexpedisi.Text = nomorexpedisi
+                    cmbsales.Text = nomorsales
 
-                    'dtpenjualan.Value = viewtglpenjualan
+                    cbprinted.Checked = statusprint
+                    cbposted.Checked = statusposted
 
-                    ''isi tabel view pembelian
+                    dtpengiriman.Value = viewtglpengiriman
 
-                    'Call previewexpedisi(nomorkode)
+                    'isi tabel view pengiriman
 
-                    ''total tabel pembelian
+                    Call previewexpedisi(nomorkode)
 
-                    'txtketerangan.Text = viewketerangan
+                    'total tabel pembelian
+
+                    txtketerangan.Text = viewketerangan
 
                     cnn.Close()
                 End If
@@ -283,6 +319,7 @@ Public Class fkalkulasiexpedisi
             txtnonota.Clear()
             cmbkodeexpedisi.Text = ""
             cmbsales.Text = ""
+
             cbprinted.Checked = False
             cbposted.Checked = False
 
@@ -328,10 +365,23 @@ Public Class fkalkulasiexpedisi
         'body
         txtkodebarang.Clear()
         txtkodebarang.Enabled = True
+
         btncaribarang.Enabled = True
 
-        txtkodebarang.Clear()
         txtnamabarang.Clear()
+        txtnamabarang.Enabled = True
+
+        txtpanjangbarang.Clear()
+        txtpanjangbarang.Text = 0
+        txtpanjangbarang.Enabled = True
+
+        txtlebarbarang.Clear()
+        txtlebarbarang.Text = 0
+        txtlebarbarang.Enabled = True
+
+        txttinggibarang.Clear()
+        txttinggibarang.Text = 0
+        txttinggibarang.Enabled = True
 
         txtbanyakbarang.Clear()
         txtbanyakbarang.Text = 0
@@ -339,6 +389,7 @@ Public Class fkalkulasiexpedisi
 
         txthargabarang.Clear()
         txthargabarang.Text = 0
+        txthargabarang.Enabled = True
 
         btntambahbarang.Enabled = True
 
@@ -373,18 +424,16 @@ Public Class fkalkulasiexpedisi
 
         With tabel
             .Columns.Add("kode_barang")
-            .Columns.Add("kode_stok")
             .Columns.Add("nama_barang")
-            .Columns.Add("banyak", GetType(Double))
-            .Columns.Add("satuan_barang")
-            .Columns.Add("jenis_barang")
-            .Columns.Add("harga_satuan", GetType(Double))
-            .Columns.Add("diskon_persen", GetType(Double))
-            .Columns.Add("diskon_nominal", GetType(Double))
-            .Columns.Add("harga_diskon", GetType(Double))
-            .Columns.Add("subtotal", GetType(Double))
-            .Columns.Add("laba", GetType(Double))
-            .Columns.Add("modal_barang", GetType(Double))
+            .Columns.Add("panjang_barang", GetType(Double))
+            .Columns.Add("lebar_barang", GetType(Double))
+            .Columns.Add("tinggi_barang", GetType(Double))
+            .Columns.Add("volume_barang", GetType(Double))
+            .Columns.Add("qty", GetType(Double))
+            .Columns.Add("total_volume", GetType(Double))
+            .Columns.Add("harga_barang", GetType(Double))
+            .Columns.Add("ongkos_kirim", GetType(Double))
+            .Columns.Add("total_harga_barang", GetType(Double))
 
         End With
 
@@ -394,58 +443,63 @@ Public Class fkalkulasiexpedisi
         GridColumn1.Caption = "Kode Barang"
         GridColumn1.Width = 20
 
-        GridColumn2.FieldName = "kode_stok"
-        GridColumn2.Caption = "Kode Stok"
-        GridColumn2.Width = 20
+        GridColumn2.FieldName = "nama_barang"
+        GridColumn2.Caption = "Nama Barang"
+        GridColumn2.Width = 40
 
-        GridColumn3.FieldName = "nama_barang"
-        GridColumn3.Caption = "Nama Barang"
-        GridColumn3.Width = 70
+        GridColumn3.FieldName = "panjang_barang"
+        GridColumn3.Caption = "Panjang Barang"
+        GridColumn3.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn3.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn3.Width = 5
 
-        GridColumn4.FieldName = "banyak"
-        GridColumn4.Caption = "banyak"
+        GridColumn4.FieldName = "lebar_barang"
+        GridColumn4.Caption = "Lebar Barang"
         GridColumn4.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn4.DisplayFormat.FormatString = "{0:n0}"
         GridColumn4.Width = 5
 
-        GridColumn5.FieldName = "satuan_barang"
-        GridColumn5.Caption = "Satuan Barang"
-        GridColumn5.Width = 10
+        GridColumn5.FieldName = "tinggi_barang"
+        GridColumn5.Caption = "Tinggi Barang"
+        GridColumn5.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn5.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn5.Width = 5
 
-        GridColumn6.FieldName = "jenis_barang"
-        GridColumn6.Caption = "Jenis Barang"
-        GridColumn6.Width = 10
+        GridColumn6.FieldName = "volume_barang"
+        GridColumn6.Caption = "Volume Barang"
+        GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn6.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn6.Width = 5
 
-        GridColumn7.FieldName = "harga_satuan"
-        GridColumn7.Caption = "Harga Satuan"
+        GridColumn7.FieldName = "qty"
+        GridColumn7.Caption = "Qty"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn7.Width = 20
+        GridColumn7.Width = 5
 
-        GridColumn8.FieldName = "diskon_persen"
-        GridColumn8.Caption = "Diskon %"
+        GridColumn8.FieldName = "total_volume"
+        GridColumn8.Caption = "Total Volume"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
         GridColumn8.Width = 20
 
-        GridColumn9.FieldName = "diskon_nominal"
-        GridColumn9.Caption = "Diskon Nominal"
+        GridColumn9.FieldName = "harga_barang"
+        GridColumn9.Caption = "Harga Barang"
         GridColumn9.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn9.DisplayFormat.FormatString = "{0:n0}"
         GridColumn9.Width = 30
 
-        GridColumn10.FieldName = "harga_diskon"
-        GridColumn10.Caption = "Harga Diskon"
+        GridColumn10.FieldName = "ongkos_kirim"
+        GridColumn10.Caption = "Ongkos_kirim"
         GridColumn10.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn10.DisplayFormat.FormatString = "{0:n0}"
         GridColumn10.Width = 30
 
-        GridColumn11.FieldName = "subtotal"
-        GridColumn11.Caption = "Subtotal"
+        GridColumn11.FieldName = "total_harga_barang"
+        GridColumn11.Caption = "Total Harga Barang"
         GridColumn11.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn11.DisplayFormat.FormatString = "{0:n0}"
         GridColumn11.Width = 30
-
 
     End Sub
 
@@ -454,6 +508,9 @@ Public Class fkalkulasiexpedisi
 
         txtkodebarang.Clear()
         txtnamabarang.Clear()
+        txtpanjangbarang.Clear()
+        txtlebarbarang.Clear()
+        txttinggibarang.Clear()
         txtbanyakbarang.Clear()
         txthargabarang.Text = 0
         txtkodebarang.Focus()
@@ -470,9 +527,6 @@ Public Class fkalkulasiexpedisi
             txtnamaexpedisi.Text = ""
         End If
     End Sub
-
-
-
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
 

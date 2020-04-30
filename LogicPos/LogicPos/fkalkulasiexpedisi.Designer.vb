@@ -72,11 +72,11 @@ Partial Class fkalkulasiexpedisi
         Me.txthargabarang = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.txttinggibarang = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtlebarbarang = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtpanjangbarang = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.btncaribarang = New System.Windows.Forms.Button()
         Me.btntambahbarang = New System.Windows.Forms.Button()
@@ -174,7 +174,7 @@ Partial Class fkalkulasiexpedisi
         Me.GridColumn6.AppearanceCell.Options.UseFont = True
         Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn6.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn6.Caption = "Volume m3"
+        Me.GridColumn6.Caption = "Volume Barang"
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
@@ -196,7 +196,7 @@ Partial Class fkalkulasiexpedisi
         Me.GridColumn8.AppearanceCell.Options.UseFont = True
         Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn8.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn8.Caption = "Total Volume m3"
+        Me.GridColumn8.Caption = "Total Volume"
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.Visible = True
         Me.GridColumn8.VisibleIndex = 7
@@ -229,7 +229,7 @@ Partial Class fkalkulasiexpedisi
         Me.GridColumn11.AppearanceCell.Options.UseFont = True
         Me.GridColumn11.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn11.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn11.Caption = "Total Modal Barang"
+        Me.GridColumn11.Caption = "Total Harga Barang"
         Me.GridColumn11.Name = "GridColumn11"
         Me.GridColumn11.Visible = True
         Me.GridColumn11.VisibleIndex = 10
@@ -439,7 +439,7 @@ Partial Class fkalkulasiexpedisi
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(371, 67)
+        Me.Label15.Location = New System.Drawing.Point(371, 65)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(107, 18)
         Me.Label15.TabIndex = 30
@@ -482,7 +482,7 @@ Partial Class fkalkulasiexpedisi
         '
         'txtnamaexpedisi
         '
-        Me.txtnamaexpedisi.Location = New System.Drawing.Point(511, 64)
+        Me.txtnamaexpedisi.Location = New System.Drawing.Point(511, 62)
         Me.txtnamaexpedisi.Name = "txtnamaexpedisi"
         Me.txtnamaexpedisi.Size = New System.Drawing.Size(252, 24)
         Me.txtnamaexpedisi.TabIndex = 12
@@ -569,11 +569,11 @@ Partial Class fkalkulasiexpedisi
         Me.GroupBox1.Controls.Add(Me.txthargabarang)
         Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.Label17)
-        Me.GroupBox1.Controls.Add(Me.TextBox3)
+        Me.GroupBox1.Controls.Add(Me.txttinggibarang)
         Me.GroupBox1.Controls.Add(Me.Label11)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
+        Me.GroupBox1.Controls.Add(Me.txtlebarbarang)
         Me.GroupBox1.Controls.Add(Me.Label9)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.txtpanjangbarang)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.btncaribarang)
         Me.GroupBox1.Controls.Add(Me.btntambahbarang)
@@ -618,14 +618,14 @@ Partial Class fkalkulasiexpedisi
         Me.Label17.TabIndex = 33
         Me.Label17.Text = "Harga"
         '
-        'TextBox3
+        'txttinggibarang
         '
-        Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(957, 32)
-        Me.TextBox3.MaxLength = 12
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(59, 24)
-        Me.TextBox3.TabIndex = 31
+        Me.txttinggibarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttinggibarang.Location = New System.Drawing.Point(957, 32)
+        Me.txttinggibarang.MaxLength = 12
+        Me.txttinggibarang.Name = "txttinggibarang"
+        Me.txttinggibarang.Size = New System.Drawing.Size(59, 24)
+        Me.txttinggibarang.TabIndex = 31
         '
         'Label11
         '
@@ -637,14 +637,14 @@ Partial Class fkalkulasiexpedisi
         Me.Label11.TabIndex = 30
         Me.Label11.Text = "Tng"
         '
-        'TextBox2
+        'txtlebarbarang
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(892, 32)
-        Me.TextBox2.MaxLength = 12
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(59, 24)
-        Me.TextBox2.TabIndex = 29
+        Me.txtlebarbarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtlebarbarang.Location = New System.Drawing.Point(892, 32)
+        Me.txtlebarbarang.MaxLength = 12
+        Me.txtlebarbarang.Name = "txtlebarbarang"
+        Me.txtlebarbarang.Size = New System.Drawing.Size(59, 24)
+        Me.txtlebarbarang.TabIndex = 29
         '
         'Label9
         '
@@ -656,14 +656,14 @@ Partial Class fkalkulasiexpedisi
         Me.Label9.TabIndex = 28
         Me.Label9.Text = "Lbr"
         '
-        'TextBox1
+        'txtpanjangbarang
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(827, 32)
-        Me.TextBox1.MaxLength = 12
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(59, 24)
-        Me.TextBox1.TabIndex = 27
+        Me.txtpanjangbarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpanjangbarang.Location = New System.Drawing.Point(827, 32)
+        Me.txtpanjangbarang.MaxLength = 12
+        Me.txtpanjangbarang.Name = "txtpanjangbarang"
+        Me.txtpanjangbarang.Size = New System.Drawing.Size(59, 24)
+        Me.txtpanjangbarang.TabIndex = 27
         '
         'Label8
         '
@@ -771,7 +771,7 @@ Partial Class fkalkulasiexpedisi
         Me.txtketerangan.TabIndex = 56
         Me.txtketerangan.Text = ""
         '
-        'fkalkulasicontainer
+        'fkalkulasiexpedisi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -784,7 +784,7 @@ Partial Class fkalkulasiexpedisi
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl1)
-        Me.Name = "fkalkulasicontainer"
+        Me.Name = "fkalkulasiexpedisi"
         Me.Text = "Kalkulasi Expedisi"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -854,11 +854,11 @@ Partial Class fkalkulasiexpedisi
     Friend WithEvents Label14 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents txtketerangan As RichTextBox
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents txttinggibarang As TextBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtlebarbarang As TextBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtpanjangbarang As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents txthargabarang As TextBox
     Friend WithEvents Label13 As Label
