@@ -49,6 +49,10 @@ Partial Class fkalkulasiexpedisi
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnsimpan = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txttelpexpedisi = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtalamatexpedisi = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.txtsales = New System.Windows.Forms.TextBox()
         Me.txttotalongkir = New System.Windows.Forms.TextBox()
@@ -60,13 +64,10 @@ Partial Class fkalkulasiexpedisi
         Me.cbposted = New System.Windows.Forms.CheckBox()
         Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.txtnamaexpedisi = New System.Windows.Forms.TextBox()
-        Me.btncariexpedisi = New System.Windows.Forms.Button()
         Me.dtpengiriman = New System.Windows.Forms.DateTimePicker()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.cmbkodeexpedisi = New System.Windows.Forms.ComboBox()
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txthargabarang = New System.Windows.Forms.TextBox()
@@ -356,6 +357,10 @@ Partial Class fkalkulasiexpedisi
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label6)
+        Me.GroupBox2.Controls.Add(Me.txttelpexpedisi)
+        Me.GroupBox2.Controls.Add(Me.Label1)
+        Me.GroupBox2.Controls.Add(Me.txtalamatexpedisi)
         Me.GroupBox2.Controls.Add(Me.Label18)
         Me.GroupBox2.Controls.Add(Me.txtsales)
         Me.GroupBox2.Controls.Add(Me.txttotalongkir)
@@ -365,13 +370,10 @@ Partial Class fkalkulasiexpedisi
         Me.GroupBox2.Controls.Add(Me.Label15)
         Me.GroupBox2.Controls.Add(Me.GroupBox3)
         Me.GroupBox2.Controls.Add(Me.txtnamaexpedisi)
-        Me.GroupBox2.Controls.Add(Me.btncariexpedisi)
         Me.GroupBox2.Controls.Add(Me.dtpengiriman)
         Me.GroupBox2.Controls.Add(Me.Label12)
-        Me.GroupBox2.Controls.Add(Me.cmbkodeexpedisi)
         Me.GroupBox2.Controls.Add(Me.txtnonota)
         Me.GroupBox2.Controls.Add(Me.Label10)
-        Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.GroupBox2.Location = New System.Drawing.Point(13, 80)
         Me.GroupBox2.Name = "GroupBox2"
@@ -379,6 +381,40 @@ Partial Class fkalkulasiexpedisi
         Me.GroupBox2.TabIndex = 43
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Detail Expedisi"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(371, 94)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(120, 18)
+        Me.Label6.TabIndex = 61
+        Me.Label6.Text = "Telepon Expedisi"
+        '
+        'txttelpexpedisi
+        '
+        Me.txttelpexpedisi.Location = New System.Drawing.Point(511, 91)
+        Me.txttelpexpedisi.Name = "txttelpexpedisi"
+        Me.txttelpexpedisi.Size = New System.Drawing.Size(252, 24)
+        Me.txttelpexpedisi.TabIndex = 60
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(371, 62)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(112, 18)
+        Me.Label1.TabIndex = 59
+        Me.Label1.Text = "Alamat Expedisi"
+        '
+        'txtalamatexpedisi
+        '
+        Me.txtalamatexpedisi.Location = New System.Drawing.Point(511, 59)
+        Me.txtalamatexpedisi.Name = "txtalamatexpedisi"
+        Me.txtalamatexpedisi.Size = New System.Drawing.Size(252, 24)
+        Me.txtalamatexpedisi.TabIndex = 58
         '
         'Label18
         '
@@ -392,6 +428,7 @@ Partial Class fkalkulasiexpedisi
         '
         'txtsales
         '
+        Me.txtsales.Enabled = False
         Me.txtsales.Location = New System.Drawing.Point(122, 94)
         Me.txtsales.Name = "txtsales"
         Me.txtsales.Size = New System.Drawing.Size(231, 24)
@@ -399,19 +436,18 @@ Partial Class fkalkulasiexpedisi
         '
         'txttotalongkir
         '
-        Me.txttotalongkir.Enabled = False
         Me.txttotalongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txttotalongkir.Location = New System.Drawing.Point(884, 77)
+        Me.txttotalongkir.Location = New System.Drawing.Point(916, 92)
         Me.txttotalongkir.MaxLength = 12
         Me.txttotalongkir.Name = "txttotalongkir"
-        Me.txttotalongkir.Size = New System.Drawing.Size(252, 24)
+        Me.txttotalongkir.Size = New System.Drawing.Size(226, 24)
         Me.txttotalongkir.TabIndex = 55
         '
         'Label14
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label14.Location = New System.Drawing.Point(786, 80)
+        Me.Label14.Location = New System.Drawing.Point(797, 97)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(89, 18)
         Me.Label14.TabIndex = 53
@@ -439,7 +475,7 @@ Partial Class fkalkulasiexpedisi
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(371, 65)
+        Me.Label15.Location = New System.Drawing.Point(371, 32)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(107, 18)
         Me.Label15.TabIndex = 30
@@ -450,9 +486,9 @@ Partial Class fkalkulasiexpedisi
         Me.GroupBox3.Controls.Add(Me.cbposted)
         Me.GroupBox3.Controls.Add(Me.cbprinted)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox3.Location = New System.Drawing.Point(780, 23)
+        Me.GroupBox3.Location = New System.Drawing.Point(910, 13)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(356, 45)
+        Me.GroupBox3.Size = New System.Drawing.Size(232, 45)
         Me.GroupBox3.TabIndex = 36
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Status"
@@ -461,7 +497,7 @@ Partial Class fkalkulasiexpedisi
         '
         Me.cbposted.AutoSize = True
         Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(219, 14)
+        Me.cbposted.Location = New System.Drawing.Point(140, 16)
         Me.cbposted.Name = "cbposted"
         Me.cbposted.Size = New System.Drawing.Size(74, 22)
         Me.cbposted.TabIndex = 41
@@ -473,7 +509,7 @@ Partial Class fkalkulasiexpedisi
         Me.cbprinted.AutoSize = True
         Me.cbprinted.Enabled = False
         Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(123, 14)
+        Me.cbprinted.Location = New System.Drawing.Point(62, 16)
         Me.cbprinted.Name = "cbprinted"
         Me.cbprinted.Size = New System.Drawing.Size(73, 22)
         Me.cbprinted.TabIndex = 40
@@ -482,49 +518,28 @@ Partial Class fkalkulasiexpedisi
         '
         'txtnamaexpedisi
         '
-        Me.txtnamaexpedisi.Location = New System.Drawing.Point(511, 62)
+        Me.txtnamaexpedisi.Location = New System.Drawing.Point(511, 29)
         Me.txtnamaexpedisi.Name = "txtnamaexpedisi"
         Me.txtnamaexpedisi.Size = New System.Drawing.Size(252, 24)
         Me.txtnamaexpedisi.TabIndex = 12
         '
-        'btncariexpedisi
-        '
-        Me.btncariexpedisi.BackgroundImage = CType(resources.GetObject("btncariexpedisi.BackgroundImage"), System.Drawing.Image)
-        Me.btncariexpedisi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btncariexpedisi.ImageIndex = 0
-        Me.btncariexpedisi.Location = New System.Drawing.Point(731, 30)
-        Me.btncariexpedisi.Name = "btncariexpedisi"
-        Me.btncariexpedisi.Size = New System.Drawing.Size(32, 27)
-        Me.btncariexpedisi.TabIndex = 11
-        Me.btncariexpedisi.UseVisualStyleBackColor = True
-        '
         'dtpengiriman
         '
         Me.dtpengiriman.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtpengiriman.Location = New System.Drawing.Point(511, 92)
+        Me.dtpengiriman.Location = New System.Drawing.Point(916, 64)
         Me.dtpengiriman.Name = "dtpengiriman"
-        Me.dtpengiriman.Size = New System.Drawing.Size(252, 23)
+        Me.dtpengiriman.Size = New System.Drawing.Size(226, 23)
         Me.dtpengiriman.TabIndex = 17
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label12.Location = New System.Drawing.Point(370, 97)
+        Me.Label12.Location = New System.Drawing.Point(772, 67)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(138, 18)
         Me.Label12.TabIndex = 16
         Me.Label12.Text = "Tanggal Pengiriman"
-        '
-        'cmbkodeexpedisi
-        '
-        Me.cmbkodeexpedisi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbkodeexpedisi.FormattingEnabled = True
-        Me.cmbkodeexpedisi.Location = New System.Drawing.Point(511, 30)
-        Me.cmbkodeexpedisi.MaxLength = 99
-        Me.cmbkodeexpedisi.Name = "cmbkodeexpedisi"
-        Me.cmbkodeexpedisi.Size = New System.Drawing.Size(221, 26)
-        Me.cmbkodeexpedisi.TabIndex = 10
         '
         'txtnonota
         '
@@ -543,16 +558,6 @@ Partial Class fkalkulasiexpedisi
         Me.Label10.Size = New System.Drawing.Size(68, 18)
         Me.Label10.TabIndex = 7
         Me.Label10.Text = "No. Nota"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(372, 34)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(102, 18)
-        Me.Label6.TabIndex = 3
-        Me.Label6.Text = "Kode Expedisi"
         '
         'Label7
         '
@@ -833,13 +838,10 @@ Partial Class fkalkulasiexpedisi
     Friend WithEvents cbposted As CheckBox
     Friend WithEvents cbprinted As CheckBox
     Friend WithEvents txtnamaexpedisi As TextBox
-    Friend WithEvents btncariexpedisi As Button
     Friend WithEvents dtpengiriman As DateTimePicker
     Friend WithEvents Label12 As Label
-    Friend WithEvents cmbkodeexpedisi As ComboBox
     Friend WithEvents txtnonota As TextBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents btncaribarang As Button
@@ -867,4 +869,8 @@ Partial Class fkalkulasiexpedisi
     Friend WithEvents txtsales As TextBox
     Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Label6 As Label
+    Friend WithEvents txttelpexpedisi As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtalamatexpedisi As TextBox
 End Class

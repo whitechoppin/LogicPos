@@ -6,6 +6,7 @@ Public Class fkalkulasiexpedisi
     Public tabel As DataTable
     'variabel dalam penjualan
     Public kodeexpedisi As String
+    Dim totalongkir, hargabarang, panjangbarang, lebarbarang, tinggibarang, volumebarang, banyakbarang, totalvolumebarang, ongkirbarang, totalhargabarang, grandtotalvolumebarang As Double
 
     'variabel bantuan view pengiriman
     Dim nomorform, nomorexpedisi, nomorsales, viewketerangan As String
@@ -18,6 +19,7 @@ Public Class fkalkulasiexpedisi
         hitnumber = 0
         kodeexpedisi = currentnumber()
         Call inisialisasi(kodeexpedisi)
+
         With GridView1
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
@@ -97,9 +99,9 @@ Public Class fkalkulasiexpedisi
 
     End Sub
 
-    Sub previewexpedisi(lihat As String)
+    Sub previewpengiriman(lihat As String)
         Call koneksii()
-        sql = "SELECT * FROM tb_expedisi_detail WHERE kode_expedisi ='" & lihat & "'"
+        sql = "SELECT * FROM tb_pengiriman_detail WHERE kode_pengiriman ='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
@@ -143,20 +145,27 @@ Public Class fkalkulasiexpedisi
         txtnonota.Text = autonumber()
         txtnonota.Enabled = False
 
-        cmbkodeexpedisi.Enabled = True
-        cmbkodeexpedisi.SelectedIndex = 0
-        cmbkodeexpedisi.Text = ""
-        cmbkodeexpedisi.Focus()
-        btncariexpedisi.Enabled = True
-
         cmbsales.SelectedIndex = 0
         cmbsales.Enabled = True
+
+        txtnamaexpedisi.Clear()
+        txtnamaexpedisi.Enabled = True
+
+        txtalamatexpedisi.Clear()
+        txtalamatexpedisi.Enabled = True
+
+        txttelpexpedisi.Clear()
+        txttelpexpedisi.Enabled = True
 
         cbprinted.Checked = False
         cbposted.Checked = False
 
         dtpengiriman.Enabled = True
         dtpengiriman.Value = Date.Now
+
+        txttotalongkir.Clear()
+        txttotalongkir.Text = 0
+        txttotalongkir.Enabled = True
 
         'body
         txtkodebarang.Clear()
@@ -227,6 +236,12 @@ Public Class fkalkulasiexpedisi
 
         cmbsales.Enabled = False
 
+        txtnamaexpedisi.Enabled = False
+        txtalamatexpedisi.Enabled = False
+        txttelpexpedisi.Enabled = False
+
+        txttotalongkir.Enabled = False
+
         dtpengiriman.Enabled = False
         dtpengiriman.Value = Date.Now
 
@@ -296,7 +311,11 @@ Public Class fkalkulasiexpedisi
 
                     'isi data pengiriman
                     txtnonota.Text = nomorform
-                    cmbkodeexpedisi.Text = nomorexpedisi
+
+                    txtnamaexpedisi.Text = ""
+                    txtalamatexpedisi.Text = ""
+                    txttelpexpedisi.Text = ""
+
                     cmbsales.Text = nomorsales
 
                     cbprinted.Checked = statusprint
@@ -306,7 +325,7 @@ Public Class fkalkulasiexpedisi
 
                     'isi tabel view pengiriman
 
-                    Call previewexpedisi(nomorkode)
+                    Call previewpengiriman(nomorkode)
 
                     'total tabel pembelian
 
@@ -317,8 +336,14 @@ Public Class fkalkulasiexpedisi
             End Using
         Else
             txtnonota.Clear()
-            cmbkodeexpedisi.Text = ""
+
             cmbsales.Text = ""
+
+            txtnamaexpedisi.Text = ""
+            txtalamatexpedisi.Text = ""
+            txttelpexpedisi.Text = ""
+
+            txttotalongkir.Text = 0
 
             cbprinted.Checked = False
             cbposted.Checked = False
@@ -350,17 +375,16 @@ Public Class fkalkulasiexpedisi
         'txtnonota.Clear()
         'txtnonota.Text = autonumber()
         txtnonota.Enabled = False
-
-        cmbkodeexpedisi.Enabled = True
-        'cmbcustomer.SelectedIndex = -1
-        cmbkodeexpedisi.Focus()
-        btncariexpedisi.Enabled = True
-
         'cmbsales.SelectedIndex = -1
         cmbsales.Enabled = True
 
+        txtnamaexpedisi.Enabled = True
+        txtalamatexpedisi.Enabled = True
+        txttelpexpedisi.Enabled = True
 
         dtpengiriman.Enabled = True
+
+        txttotalongkir.Enabled = True
 
         'body
         txtkodebarang.Clear()
@@ -402,20 +426,6 @@ Public Class fkalkulasiexpedisi
 
         'isi combo box
         Call comboboxuser()
-
-        'simpan di tabel sementara
-        Call koneksii()
-
-        'hapus di tabel jual sementara
-        Call koneksii()
-        sql = "DELETE FROM tb_penjualan_detail_sementara"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
-        'isi tabel sementara dengan data tabel detail
-        sql = "INSERT INTO tb_penjualan_detail_sementara SELECT * FROM tb_penjualan_detail WHERE kode_penjualan ='" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
 
     End Sub
 
@@ -516,20 +526,20 @@ Public Class fkalkulasiexpedisi
         txtkodebarang.Focus()
     End Sub
 
-    Sub caripelanggan()
+    Sub cariuser()
         Call koneksii()
-        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & cmbkodeexpedisi.Text & "'"
+        sql = "SELECT * FROM tb_user WHERE kode_user = '" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            txtnamaexpedisi.Text = dr("nama_pelanggan")
+            txtsales.Text = dr("nama_user")
         Else
-            txtnamaexpedisi.Text = ""
+            txtsales.Text = ""
         End If
     End Sub
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
-
+        Call awalbaru()
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
@@ -546,10 +556,96 @@ Public Class fkalkulasiexpedisi
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
 
+        If btnedit.Text.Equals("Edit") Then
+            Call inisialisasi(kodeexpedisi)
+        ElseIf btnedit.Text.Equals("Update") Then
+            btnedit.Text = "Edit"
+            Call inisialisasi(txtnonota.Text)
+        End If
     End Sub
 
-    Private Sub cmbsupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbkodeexpedisi.SelectedIndexChanged
+    Private Sub txttotalongkir_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttotalongkir.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
 
+    Private Sub txthargabarang_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txthargabarang.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtpanjangbarang_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtpanjangbarang.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtlebarbarang_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtlebarbarang.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txttinggibarang_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttinggibarang.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtbanyakbarang_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtbanyakbarang.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txttotalongkir_TextChanged(sender As Object, e As EventArgs) Handles txttotalongkir.TextChanged
+        If txttotalongkir.Text = "" Then
+            txttotalongkir.Text = 0
+        Else
+            totalongkir = txttotalongkir.Text
+            txttotalongkir.Text = Format(totalongkir, "##,##0")
+            txttotalongkir.SelectionStart = Len(txttotalongkir.Text)
+        End If
+    End Sub
+
+    Private Sub txthargabarang_TextChanged(sender As Object, e As EventArgs) Handles txthargabarang.TextChanged
+        If txthargabarang.Text = "" Then
+            txthargabarang.Text = 0
+        Else
+            hargabarang = txthargabarang.Text
+            txthargabarang.Text = Format(hargabarang, "##,##0")
+            txthargabarang.SelectionStart = Len(txthargabarang.Text)
+        End If
+    End Sub
+
+    Private Sub txtpanjangbarang_TextChanged(sender As Object, e As EventArgs) Handles txtpanjangbarang.TextChanged
+        If txtpanjangbarang.Text = "" Then
+            txtpanjangbarang.Text = 0
+        Else
+            panjangbarang = txtpanjangbarang.Text
+            txtpanjangbarang.Text = Format(panjangbarang, "##,##0")
+            txtpanjangbarang.SelectionStart = Len(txtpanjangbarang.Text)
+        End If
+    End Sub
+
+    Private Sub txtlebarbarang_TextChanged(sender As Object, e As EventArgs) Handles txtlebarbarang.TextChanged
+        If txtlebarbarang.Text = "" Then
+            txtlebarbarang.Text = 0
+        Else
+            lebarbarang = txtlebarbarang.Text
+            txtlebarbarang.Text = Format(lebarbarang, "##,##0")
+            txtlebarbarang.SelectionStart = Len(txtlebarbarang.Text)
+        End If
+    End Sub
+
+    Private Sub txttinggibarang_TextChanged(sender As Object, e As EventArgs) Handles txttinggibarang.TextChanged
+        If txttinggibarang.Text = "" Then
+            txttinggibarang.Text = 0
+        Else
+            tinggibarang = txttinggibarang.Text
+            txttinggibarang.Text = Format(tinggibarang, "##,##0")
+            txttinggibarang.SelectionStart = Len(txttinggibarang.Text)
+        End If
+    End Sub
+
+    Private Sub txtbanyakbarang_TextChanged(sender As Object, e As EventArgs) Handles txtbanyakbarang.TextChanged
+        If txtbanyakbarang.Text = "" Then
+            txtbanyakbarang.Text = 0
+        Else
+            banyakbarang = txtbanyakbarang.Text
+            txtbanyakbarang.Text = Format(banyakbarang, "##,##0")
+            txtbanyakbarang.SelectionStart = Len(txtbanyakbarang.Text)
+        End If
     End Sub
 
     Private Sub cmbsales_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsales.SelectedIndexChanged
@@ -564,7 +660,42 @@ Public Class fkalkulasiexpedisi
 
     End Sub
 
-    Private Sub btntambahbarang_Click(sender As Object, e As EventArgs) Handles btntambahbarang.Click
+    Sub tambah()
+        Dim ongkirbarangulang As Double
 
+        If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txthargabarang.Text = "" Or txtpanjangbarang.Text = "" Or txtlebarbarang.Text = "" Or txttinggibarang.Text = "" Or txtbanyakbarang.Text = "" Or banyakbarang <= 0 Then
+            Exit Sub
+        End If
+
+
+
+        'functionnya disini
+        volumebarang = panjangbarang * lebarbarang * tinggibarang
+        totalvolumebarang = volumebarang * banyakbarang
+        If GridView1.RowCount = 0 Then  'data tidak ada
+            grandtotalvolumebarang = 1
+            ongkirbarang = totalongkir * (grandtotalvolumebarang)
+            totalhargabarang = hargabarang + ongkirbarang
+
+        Else 'data ada
+            grandtotalvolumebarang = GridView1.Columns("total_volume").SummaryItem.SummaryValue
+            ongkirbarang = totalongkir * (totalvolumebarang / (grandtotalvolumebarang + totalvolumebarang))
+            totalhargabarang = hargabarang + ongkirbarang
+
+            For i As Integer = 0 To GridView1.RowCount - 1
+                ongkirbarangulang = totalongkir * (GridView1.GetRowCellValue(i, "volume_barang") / (grandtotalvolumebarang + totalvolumebarang))
+                GridView1.SetRowCellValue(i, "ongkos_kirim", ongkirbarangulang)
+            Next
+        End If
+
+
+        tabel.Rows.Add(txtkodebarang.Text, txtnamabarang.Text, Val(panjangbarang), Val(lebarbarang), Val(tinggibarang), Val(volumebarang), Val(banyakbarang), Val(totalvolumebarang), Val(hargabarang), Val(ongkirbarang), Val(totalhargabarang))
+        Call reload_tabel()
+
+
+    End Sub
+
+    Private Sub btntambahbarang_Click(sender As Object, e As EventArgs) Handles btntambahbarang.Click
+        Call tambah()
     End Sub
 End Class
