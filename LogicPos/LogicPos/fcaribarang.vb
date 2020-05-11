@@ -14,21 +14,17 @@ Public Class fcaribarang
     Sub grid()
         GridColumn1.Caption = "Kode"
         GridColumn1.FieldName = "kode_barang"
+        GridColumn1.Width = 15
         GridColumn2.Caption = "Nama Barang"
         GridColumn2.FieldName = "nama_barang"
+        GridColumn2.Width = 40
         GridColumn3.Caption = "Jenis"
         GridColumn3.FieldName = "jenis_barang"
-        'GridColumn4.Width = "60"
+        GridColumn3.Width = 15
         GridColumn4.Caption = "Satuan"
         GridColumn4.FieldName = "satuan_barang"
-        'GridColumn6.Width = "40"
-        'GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        'GridColumn6.DisplayFormat.FormatString = "##,##0"
-        'GridColumn7.Width = "40"
-        'GridColumn7.Caption = "Harga"
-        'GridColumn7.FieldName = "harga"
-        'GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        'GridColumn7.DisplayFormat.FormatString = "##,##0"
+        GridColumn4.Width = 10
+
         GridControl1.Visible = True
     End Sub
     Sub tabel()
@@ -134,7 +130,7 @@ Public Class fcaribarang
     Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
         If LabelHarga.Visible = False Then
             passwordid = 4
-            fpassword.Show()
+            fpassword.ShowDialog()
             'LabelHarga.Visible = False
         ElseIf LabelHarga.Visible = True Then
             LabelHarga.Visible = False

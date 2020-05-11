@@ -29,6 +29,7 @@ Partial Class fcarilunasjual
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -38,16 +39,17 @@ Partial Class fcarilunasjual
         Me.GridControl1.Location = New System.Drawing.Point(12, 40)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(913, 401)
+        Me.GridControl1.Size = New System.Drawing.Size(1118, 401)
         Me.GridControl1.TabIndex = 22
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
+        Me.GridView1.OptionsView.ShowFooter = True
         '
         'GridColumn1
         '
@@ -90,6 +92,7 @@ Partial Class fcarilunasjual
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
         Me.GridColumn4.Caption = "Total"
         Me.GridColumn4.Name = "GridColumn4"
+        Me.GridColumn4.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "total_penjualan", "{0:n0}")})
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
@@ -103,14 +106,28 @@ Partial Class fcarilunasjual
         Me.Label1.TabIndex = 23
         Me.Label1.Text = "Pencarian Data Penjualan"
         '
+        'GridColumn5
+        '
+        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceCell.Options.UseFont = True
+        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn5.Caption = "Keterangan"
+        Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.Visible = True
+        Me.GridColumn5.VisibleIndex = 4
+        '
         'fcarilunasjual
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(937, 454)
+        Me.ClientSize = New System.Drawing.Size(1142, 454)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "fcarilunasjual"
         Me.Text = "fcarilunasjual"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -127,4 +144,5 @@ Partial Class fcarilunasjual
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label1 As Label
+    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

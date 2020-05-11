@@ -282,6 +282,7 @@ Partial Class frekeningsupplier
         Me.ClientSize = New System.Drawing.Size(637, 552)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frekeningsupplier"

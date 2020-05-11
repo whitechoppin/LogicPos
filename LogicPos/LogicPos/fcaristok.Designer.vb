@@ -123,7 +123,7 @@ Partial Class fcaristok
         Me.GridControl1.Location = New System.Drawing.Point(11, 40)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(687, 311)
+        Me.GridControl1.Size = New System.Drawing.Size(834, 311)
         Me.GridControl1.TabIndex = 15
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -134,7 +134,7 @@ Partial Class fcaristok
         Me.GroupBox1.Controls.Add(Me.LabelHarga)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(704, 32)
+        Me.GroupBox1.Location = New System.Drawing.Point(851, 33)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(282, 318)
         Me.GroupBox1.TabIndex = 14
@@ -215,11 +215,14 @@ Partial Class fcaristok
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(996, 364)
+        Me.ClientSize = New System.Drawing.Size(1145, 364)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "fcaristok"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pencarian Stok"

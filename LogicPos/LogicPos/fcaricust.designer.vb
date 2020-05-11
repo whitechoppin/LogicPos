@@ -121,6 +121,9 @@ Partial Class fcaricust
         Me.Controls.Add(Me.cmbcari)
         Me.Controls.Add(Me.btnmasuk)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "fcaricust"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pencarian Customer"

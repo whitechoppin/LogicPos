@@ -26,8 +26,8 @@ Partial Class fcarikas
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -70,6 +70,13 @@ Partial Class fcarikas
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
         '
+        'GridColumn3
+        '
+        Me.GridColumn3.Caption = "GridColumn3"
+        Me.GridColumn3.Name = "GridColumn3"
+        Me.GridColumn3.Visible = True
+        Me.GridColumn3.VisibleIndex = 2
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -80,13 +87,6 @@ Partial Class fcarikas
         Me.Label1.TabIndex = 21
         Me.Label1.Text = "Pencarian Data Kas"
         '
-        'GridColumn3
-        '
-        Me.GridColumn3.Caption = "GridColumn3"
-        Me.GridColumn3.Name = "GridColumn3"
-        Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 2
-        '
         'fcarikas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -95,6 +95,9 @@ Partial Class fcarikas
         Me.ClientSize = New System.Drawing.Size(620, 446)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "fcarikas"
         Me.Text = "Pencarian Kas"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()

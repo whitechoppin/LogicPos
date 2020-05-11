@@ -345,7 +345,7 @@ Public Class fpricelist
     Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
         If txthidden.Visible = True Then
             passwordid = 5
-            fpassword.Show()
+            fpassword.ShowDialog()
             'txthidden.Visible = False
         ElseIf txthidden.Visible = False Then
             txthidden.Visible = True

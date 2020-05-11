@@ -29,13 +29,13 @@ Partial Class fcaripembelian
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dtakhir = New System.Windows.Forms.DateTimePicker()
         Me.dtawal = New System.Windows.Forms.DateTimePicker()
-        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -100,11 +100,22 @@ Partial Class fcaripembelian
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
+        'GridColumn5
+        '
+        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceCell.Options.UseFont = True
+        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn5.Caption = "No Nota Pembelian"
+        Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.Visible = True
+        Me.GridColumn5.VisibleIndex = 4
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(14, 12)
+        Me.Label1.Location = New System.Drawing.Point(12, 14)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(256, 24)
         Me.Label1.TabIndex = 21
@@ -156,17 +167,6 @@ Partial Class fcaripembelian
         Me.dtawal.Name = "dtawal"
         Me.dtawal.Size = New System.Drawing.Size(193, 24)
         Me.dtawal.TabIndex = 32
-        '
-        'GridColumn5
-        '
-        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn5.AppearanceCell.Options.UseFont = True
-        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn5.Caption = "No Nota Pembelian"
-        Me.GridColumn5.Name = "GridColumn5"
-        Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 4
         '
         'fcaripembelian
         '

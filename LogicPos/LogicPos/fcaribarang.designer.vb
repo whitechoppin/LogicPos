@@ -26,6 +26,7 @@ Partial Class fcaribarang
         Me.txtcari = New System.Windows.Forms.TextBox()
         Me.cmbcari = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnshow = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LabelHarga = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -38,7 +39,6 @@ Partial Class fcaribarang
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.btnshow = New System.Windows.Forms.Button()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,11 +72,22 @@ Partial Class fcaribarang
         Me.GroupBox1.Controls.Add(Me.LabelHarga)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(512, 30)
+        Me.GroupBox1.Location = New System.Drawing.Point(736, 31)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(282, 318)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
+        '
+        'btnshow
+        '
+        Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
+        Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnshow.ImageIndex = 0
+        Me.btnshow.Location = New System.Drawing.Point(105, 238)
+        Me.btnshow.Name = "btnshow"
+        Me.btnshow.Size = New System.Drawing.Size(29, 22)
+        Me.btnshow.TabIndex = 28
+        Me.btnshow.UseVisualStyleBackColor = True
         '
         'Label3
         '
@@ -141,7 +152,7 @@ Partial Class fcaribarang
         Me.GridControl1.Location = New System.Drawing.Point(11, 38)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(494, 311)
+        Me.GridControl1.Size = New System.Drawing.Size(719, 311)
         Me.GridControl1.TabIndex = 12
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -200,17 +211,6 @@ Partial Class fcaribarang
         Me.GridColumn4.VisibleIndex = 3
         Me.GridColumn4.Width = 123
         '
-        'btnshow
-        '
-        Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
-        Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnshow.ImageIndex = 0
-        Me.btnshow.Location = New System.Drawing.Point(105, 238)
-        Me.btnshow.Name = "btnshow"
-        Me.btnshow.Size = New System.Drawing.Size(29, 22)
-        Me.btnshow.TabIndex = 28
-        Me.btnshow.UseVisualStyleBackColor = True
-        '
         'btnrefresh
         '
         Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
@@ -227,7 +227,7 @@ Partial Class fcaribarang
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(804, 364)
+        Me.ClientSize = New System.Drawing.Size(1030, 364)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.btnmasuk)
@@ -235,6 +235,9 @@ Partial Class fcaribarang
         Me.Controls.Add(Me.cmbcari)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "fcaribarang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pencarian Barang"

@@ -282,6 +282,7 @@ Partial Class frekeningcustomer
         Me.ClientSize = New System.Drawing.Size(637, 552)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

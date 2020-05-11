@@ -84,10 +84,10 @@ Partial Class fpricelist
         Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
         Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnshow.ImageIndex = 0
-        Me.btnshow.Location = New System.Drawing.Point(982, 153)
+        Me.btnshow.Location = New System.Drawing.Point(988, 154)
         Me.btnshow.Margin = New System.Windows.Forms.Padding(4)
         Me.btnshow.Name = "btnshow"
-        Me.btnshow.Size = New System.Drawing.Size(36, 26)
+        Me.btnshow.Size = New System.Drawing.Size(31, 25)
         Me.btnshow.TabIndex = 13
         Me.btnshow.UseVisualStyleBackColor = True
         '
@@ -97,7 +97,7 @@ Partial Class fpricelist
         Me.txtmodal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtmodal.Location = New System.Drawing.Point(661, 154)
         Me.txtmodal.Name = "txtmodal"
-        Me.txtmodal.Size = New System.Drawing.Size(314, 24)
+        Me.txtmodal.Size = New System.Drawing.Size(328, 24)
         Me.txtmodal.TabIndex = 12
         '
         'Label6
@@ -116,10 +116,10 @@ Partial Class fpricelist
         Me.btncari.BackgroundImage = CType(resources.GetObject("btncari.BackgroundImage"), System.Drawing.Image)
         Me.btncari.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncari.ImageIndex = 0
-        Me.btncari.Location = New System.Drawing.Point(983, 88)
+        Me.btncari.Location = New System.Drawing.Point(988, 90)
         Me.btncari.Margin = New System.Windows.Forms.Padding(4)
         Me.btncari.Name = "btncari"
-        Me.btncari.Size = New System.Drawing.Size(36, 26)
+        Me.btncari.Size = New System.Drawing.Size(31, 25)
         Me.btncari.TabIndex = 10
         Me.btncari.UseVisualStyleBackColor = True
         '
@@ -147,7 +147,7 @@ Partial Class fpricelist
         Me.txtkode.Location = New System.Drawing.Point(661, 90)
         Me.txtkode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkode.Name = "txtkode"
-        Me.txtkode.Size = New System.Drawing.Size(314, 24)
+        Me.txtkode.Size = New System.Drawing.Size(328, 24)
         Me.txtkode.TabIndex = 7
         '
         'Label5
@@ -226,7 +226,7 @@ Partial Class fpricelist
         'GridControl1
         '
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl1.Location = New System.Drawing.Point(18, 218)
+        Me.GridControl1.Location = New System.Drawing.Point(18, 228)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
@@ -243,30 +243,50 @@ Partial Class fpricelist
         '
         'GridColumn1
         '
+        Me.GridColumn1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn1.AppearanceCell.Options.UseFont = True
+        Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn1.AppearanceHeader.Options.UseFont = True
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.Visible = True
         Me.GridColumn1.VisibleIndex = 0
         '
         'GridColumn2
         '
+        Me.GridColumn2.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn2.AppearanceCell.Options.UseFont = True
+        Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn2.AppearanceHeader.Options.UseFont = True
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
         '
         'GridColumn3
         '
+        Me.GridColumn3.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn3.AppearanceCell.Options.UseFont = True
+        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn3.AppearanceHeader.Options.UseFont = True
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
         Me.GridColumn3.VisibleIndex = 2
         '
         'GridColumn4
         '
+        Me.GridColumn4.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn4.AppearanceCell.Options.UseFont = True
+        Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn4.AppearanceHeader.Options.UseFont = True
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
         'GridColumn5
         '
+        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceCell.Options.UseFont = True
+        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
@@ -277,7 +297,7 @@ Partial Class fpricelist
         Me.txtkodecus.Location = New System.Drawing.Point(141, 91)
         Me.txtkodecus.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkodecus.Name = "txtkodecus"
-        Me.txtkodecus.Size = New System.Drawing.Size(367, 24)
+        Me.txtkodecus.Size = New System.Drawing.Size(377, 24)
         Me.txtkodecus.TabIndex = 7
         '
         'txtnamacus
@@ -294,10 +314,10 @@ Partial Class fpricelist
         Me.btncaricus.BackgroundImage = CType(resources.GetObject("btncaricus.BackgroundImage"), System.Drawing.Image)
         Me.btncaricus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncaricus.ImageIndex = 0
-        Me.btncaricus.Location = New System.Drawing.Point(511, 89)
+        Me.btncaricus.Location = New System.Drawing.Point(517, 91)
         Me.btncaricus.Margin = New System.Windows.Forms.Padding(4)
         Me.btncaricus.Name = "btncaricus"
-        Me.btncaricus.Size = New System.Drawing.Size(37, 30)
+        Me.btncaricus.Size = New System.Drawing.Size(31, 24)
         Me.btncaricus.TabIndex = 11
         Me.btncaricus.UseVisualStyleBackColor = True
         '
@@ -308,7 +328,7 @@ Partial Class fpricelist
         Me.txthidden.Location = New System.Drawing.Point(661, 154)
         Me.txthidden.Margin = New System.Windows.Forms.Padding(4)
         Me.txthidden.Name = "txthidden"
-        Me.txthidden.Size = New System.Drawing.Size(314, 24)
+        Me.txthidden.Size = New System.Drawing.Size(328, 24)
         Me.txthidden.TabIndex = 40
         '
         'Label7
@@ -357,7 +377,6 @@ Partial Class fpricelist
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnshow)
         Me.Controls.Add(Me.txtkodecus)
-        Me.Controls.Add(Me.txtmodal)
         Me.Controls.Add(Me.btncaricus)
         Me.Controls.Add(Me.txthidden)
         Me.Controls.Add(Me.btntambah)
@@ -374,6 +393,7 @@ Partial Class fpricelist
         Me.Controls.Add(Me.txtkode)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.txtmodal)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fpricelist"

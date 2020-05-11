@@ -11,18 +11,24 @@ Public Class fcaristok
         LabelHarga.Visible = False
     End Sub
     Sub grid()
-        GridColumn1.Caption = "Kode"
+        GridColumn1.Caption = "Kode Stok"
         GridColumn1.FieldName = "kode_stok"
+        GridColumn1.Width = 30
         GridColumn2.Caption = "Kode Barang"
         GridColumn2.FieldName = "kode_barang"
+        GridColumn2.Width = 30
         GridColumn3.Caption = "Nama Barang"
         GridColumn3.FieldName = "nama_barang"
+        GridColumn3.Width = 50
         GridColumn4.Caption = "Jenis"
         GridColumn4.FieldName = "jenis_barang"
+        GridColumn4.Width = 15
         GridColumn5.Caption = "Satuan"
         GridColumn5.FieldName = "satuan_barang"
+        GridColumn5.Width = 15
         GridColumn6.Caption = "Jumlah Stok"
         GridColumn6.FieldName = "jumlah_stok"
+        GridColumn6.Width = 10
 
         GridControl1.Visible = True
     End Sub
@@ -103,7 +109,7 @@ Public Class fcaristok
     Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
         If LabelHarga.Visible = False Then
             passwordid = 3
-            fpassword.Show()
+            fpassword.ShowDialog()
             'LabelHarga.Visible = False
         ElseIf LabelHarga.Visible = True Then
             LabelHarga.Visible = False
