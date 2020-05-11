@@ -233,7 +233,9 @@ Public Class fsupplier
         txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat_supplier")
         txttelp.Text = GridView1.GetFocusedRowCellValue("telepon_supplier")
         txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_supplier")
+
         btnrekening.Enabled = True
+
         btnedit.Enabled = True
         btnbatal.Enabled = True
         btnhapus.Enabled = True

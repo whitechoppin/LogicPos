@@ -2,8 +2,31 @@
 Imports System.Drawing.Drawing2D
 Imports System.IO
 Public Class fcustomer
+    Dim kodecustomeredit As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
+
+    '==== autosize form ====
+    Dim CuRWidth As Integer = Me.Width
+    Dim CuRHeight As Integer = Me.Height
+
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
+        Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
+
+        For Each ctrl As Control In Controls
+            ctrl.Width += ctrl.Width * RatioWidth
+            ctrl.Left += ctrl.Left * RatioWidth
+            ctrl.Top += ctrl.Top * RatioHeight
+            ctrl.Height += ctrl.Height * RatioHeight
+        Next
+
+        CuRHeight = Me.Height
+        CuRWidth = Me.Width
+    End Sub
+
+    '=======================
+
     Private Sub fcustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -40,6 +63,11 @@ Public Class fcustomer
 
         Call historysave("Membuka Master Customer", "N/A")
     End Sub
+
+    Private Sub fcustomer_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Sub awal()
         txtkode.Clear()
         txtalamat.Clear()
@@ -49,10 +77,12 @@ Public Class fcustomer
 
         Call koneksii()
 
+        txtkode.Enabled = False
+        btnauto.Enabled = False
+        btngenerate.Enabled = False
+        txtnama.Enabled = False
         txtalamat.Enabled = False
         txttelp.Enabled = False
-        txtkode.Enabled = False
-        txtnama.Enabled = False
         txtketerangan.Enabled = False
 
         btntambah.Enabled = True
@@ -100,11 +130,14 @@ Public Class fcustomer
         Call kolom()
     End Sub
     Sub index()
-        txtnama.TabIndex = 1
-        txtalamat.TabIndex = 2
-        txttelp.TabIndex = 3
-        txtketerangan.TabIndex = 4
-        btnupload.TabIndex = 5
+        txtkode.TabIndex = 1
+        btnauto.TabIndex = 2
+        btngenerate.TabIndex = 3
+        txtnama.TabIndex = 4
+        txtalamat.TabIndex = 5
+        txttelp.TabIndex = 6
+        txtketerangan.TabIndex = 7
+        btnupload.TabIndex = 8
     End Sub
     Function autonumber()
         Call koneksii()
@@ -138,7 +171,9 @@ Public Class fcustomer
         Return pesan
     End Function
     Sub enable_text()
-        txtkode.Enabled = False
+        txtkode.Enabled = True
+        btnauto.Enabled = True
+        btngenerate.Enabled = True
         txtnama.Enabled = True
         txttelp.Enabled = True
         txtalamat.Enabled = True
@@ -177,8 +212,6 @@ Public Class fcustomer
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             MsgBox("Kode Customer Sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
-            'txtkode.Clear()
-            'txtnama.Clear()
             txtkode.Focus()
         Else
             Dim ms As MemoryStream = New MemoryStream
@@ -265,20 +298,40 @@ Public Class fcustomer
         ms.ToArray()
 
         Call koneksii()
+        If txtkode.Text.Equals(kodecustomeredit) Then
+            sql = "UPDATE tb_pelanggan SET nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & kodecustomeredit & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
+            cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
+            cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
+            cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
+            cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
+            cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+            cmmd.ExecuteNonQuery()
+            MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
+        Else
+            Try
 
-        sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & txtkode.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
-        cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
-        cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
-        cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
-        cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
-        cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
-        cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
-        cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
-        cmmd.ExecuteNonQuery()
-        MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
-        btnedit.Text = "Edit"
+            Catch ex As Exception
+
+            End Try
+            sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & kodecustomeredit & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
+            cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
+            cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
+            cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
+            cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
+            cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+            cmmd.ExecuteNonQuery()
+            MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
+        End If
 
         'history user ==========
         Call historysave("Mengedit Data Customer Kode " + txtkode.Text, txtkode.Text)
@@ -315,16 +368,7 @@ Public Class fcustomer
     End Sub
     Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
         txtkode.Text = GridView.GetFocusedRowCellValue("kode_pelanggan")
-        'txtnama.Text = GridView1.GetFocusedRowCellValue("nama_pelanggan")
-        'txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat_pelanggan")
-        'txttelp.Text = GridView1.GetFocusedRowCellValue("telepon_pelanggan")
-        btnrekening.Enabled = True
-        btnedit.Enabled = True
-        btnbatal.Enabled = True
-        btnhapus.Enabled = True
-        btntambah.Enabled = False
-        btntambah.Text = "Tambah"
-
+        kodecustomeredit = GridView.GetFocusedRowCellValue("kode_pelanggan")
         'menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
         Dim foto As Byte()
 
@@ -341,18 +385,35 @@ Public Class fcustomer
             txttelp.Text = dr("telepon_pelanggan")
             txtketerangan.Text = dr("keterangan_pelanggan")
             foto = dr("foto_pelanggan")
+
             PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
             PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
+            txtgbr.Text = txtnama.Text
+
+            'tombol
+            btnrekening.Enabled = True
 
             btnedit.Enabled = True
             btnbatal.Enabled = True
             btnhapus.Enabled = True
             btntambah.Enabled = False
+            btntambah.Text = "Tambah"
         End If
     End Sub
 
-    Private Sub fcustomer_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        fmenu.ActiveMdiChild_FormClosed(sender)
+    Private Sub btnauto_Click(sender As Object, e As EventArgs) Handles btnauto.Click
+        txtkode.Text = autonumber()
+    End Sub
+
+    Private Sub btngenerate_Click(sender As Object, e As EventArgs) Handles btngenerate.Click
+        Dim r As New Random
+        Dim s As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        Dim sb As New System.Text.StringBuilder
+        For i As Integer = 1 To 8
+            Dim idx As Integer = r.Next(0, 35)
+            sb.Append(s.Substring(idx, 1))
+        Next
+        txtkode.Text = sb.ToString()
     End Sub
 
     Private Sub btnupload_Click(sender As Object, e As EventArgs) Handles btnupload.Click

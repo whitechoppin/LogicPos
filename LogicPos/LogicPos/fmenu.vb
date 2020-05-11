@@ -412,4 +412,8 @@ Public Class fmenu
     Private Sub KalkulasiExpedisiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KalkulasiExpedisiToolStripMenuItem.Click
         fkalkulasiexpedisi.Show()
     End Sub
+
+    Private Sub TokoSejatiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TokoSejatiToolStripMenuItem.Click
+        ftokosejati.Show()
+    End Sub
 End Class

@@ -6,7 +6,7 @@ Public Class fkalkulasiexpedisi
     Public tabel As DataTable
     'variabel dalam penjualan
     Public kodeexpedisi As String
-    Dim totalongkir, hargabarang, panjangbarang, lebarbarang, tinggibarang, volumebarang, banyakbarang, totalvolumebarang, ongkirbarang, totalhargabarang, grandtotalvolumebarang As Double
+    Dim totalhargaongkir, hargabarang, panjangbarang, lebarbarang, tinggibarang, volumebarang, banyakbarang, totalvolumebarang, ongkirbarang, totalongkirbarang, totalhargabarang, grandtotalbarang, grandtotalvolumebarang As Double
 
     'variabel bantuan view pengiriman
     Dim nomorform, nomorexpedisi, nomorsales, viewketerangan As String
@@ -26,12 +26,15 @@ Public Class fkalkulasiexpedisi
             'buat sum harga
             .Columns("total_volume").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_volume", "{0:n0}")
             .Columns("ongkos_kirim").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "ongkos_kirim", "{0:n0}")
+            .Columns("total_ongkos_kirim").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_ongkos_kirim", "{0:n0}")
+            .Columns("total_harga_barang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_harga_barang", "{0:n0}")
+            .Columns("grand_total_barang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "grand_total_barang", "{0:n0}")
         End With
     End Sub
 
     Function autonumber()
         Call koneksii()
-        sql = "SELECT RIGHT(kode_expedisi,3) FROM tb_expedisi WHERE DATE_FORMAT(MID(`kode_expedisi`, 3 , 6), ' %y ')+ MONTH(MID(`kode_expedisi`,3 , 6)) + DAY(MID(`kode_expedisi`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_expedisi,3) DESC"
+        sql = "SELECT RIGHT(kode_pengiriman,3) FROM tb_pengiriman WHERE DATE_FORMAT(MID(`kode_pengiriman`, 3 , 6), ' %y ')+ MONTH(MID(`kode_pengiriman`,3 , 6)) + DAY(MID(`kode_pengiriman`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pengiriman,3) DESC"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -39,18 +42,18 @@ Public Class fkalkulasiexpedisi
             If dr.HasRows Then
                 dr.Read()
                 If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
-                    Return "EX" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                    Return "KM" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                 Else
                     If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
-                        Return "EX" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                        Return "KM" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                     Else
                         If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
-                            Return "EX" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                            Return "KM" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                         End If
                     End If
                 End If
             Else
-                Return "EX" + Format(Now.Date, "yyMMdd") + "001"
+                Return "KM" + Format(Now.Date, "yyMMdd") + "001"
             End If
 
         Catch ex As Exception
@@ -63,7 +66,7 @@ Public Class fkalkulasiexpedisi
 
     Function currentnumber()
         Call koneksii()
-        sql = "SELECT kode_expedisi FROM tb_expedisi ORDER BY kode_expedisi DESC LIMIT 1;"
+        sql = "SELECT kode_pengiriman FROM tb_pengiriman ORDER BY kode_pengiriman DESC LIMIT 1;"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -105,7 +108,7 @@ Public Class fkalkulasiexpedisi
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel.Rows.Add(dr("kode_barang"), dr("nama_barang"), Val(dr("panjang_barang")), Val(dr("lebar_barang")), Val(dr("tinggi_barang")), Val(dr("volume_barang")), Val(dr("qty")), Val(dr("total_volume")), Val(dr("harga_barang")), Val(dr("ongkos_kirim")), Val(dr("total_harga_barang")))
+            tabel.Rows.Add(dr("kode_barang"), dr("nama_barang"), Val(dr("panjang_barang")), Val(dr("lebar_barang")), Val(dr("tinggi_barang")), Val(dr("volume_barang")), Val(dr("qty")), Val(dr("total_volume")), Val(dr("harga_barang")), Val(dr("ongkos_kirim")), Val(dr("total_ongkos_kirim")), Val(dr("total_harga_barang")), Val(dr("ongkos_kirim")))
             GridControl1.RefreshDataSource()
         End While
     End Sub
@@ -290,50 +293,50 @@ Public Class fkalkulasiexpedisi
         Call comboboxuser()
 
         If nomorkode IsNot "" Then
-            Using cnn As New OdbcConnection(strConn)
-                sql = "SELECT * FROM tb_expedisi WHERE kode_expedisi = '" + nomorkode.ToString + "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                cnn.Open()
-                dr = cmmd.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    'header
-                    nomorform = dr("kode_form")
-                    nomorexpedisi = dr("kode_expedisi")
-                    nomorsales = dr("kode_user")
+            'Using cnn As New OdbcConnection(strConn)
+            '    sql = "SELECT * FROM tb_pengiriman WHERE kode_pengiriman = '" + nomorkode.ToString + "'"
+            '    cmmd = New OdbcCommand(sql, cnn)
+            '    cnn.Open()
+            '    dr = cmmd.ExecuteReader
+            '    dr.Read()
+            '    If dr.HasRows Then
+            '        'header
+            '        nomorform = dr("kode_form")
+            '        nomorexpedisi = dr("kode_ex")
+            '        nomorsales = dr("kode_user")
 
-                    statusprint = dr("print_pengiriman")
-                    statusposted = dr("posted_pengiriman")
+            '        statusprint = dr("print_pengiriman")
+            '        statusposted = dr("posted_pengiriman")
 
-                    viewtglpengiriman = dr("tgl_pengiriman")
+            '        viewtglpengiriman = dr("tgl_pengiriman")
 
-                    viewketerangan = dr("keterangan_pengiriman")
+            '        viewketerangan = dr("keterangan_pengiriman")
 
-                    'isi data pengiriman
-                    txtnonota.Text = nomorform
+            '        'isi data pengiriman
+            '        txtnonota.Text = nomorform
 
-                    txtnamaexpedisi.Text = ""
-                    txtalamatexpedisi.Text = ""
-                    txttelpexpedisi.Text = ""
+            '        txtnamaexpedisi.Text = ""
+            '        txtalamatexpedisi.Text = ""
+            '        txttelpexpedisi.Text = ""
 
-                    cmbsales.Text = nomorsales
+            '        cmbsales.Text = nomorsales
 
-                    cbprinted.Checked = statusprint
-                    cbposted.Checked = statusposted
+            '        cbprinted.Checked = statusprint
+            '        cbposted.Checked = statusposted
 
-                    dtpengiriman.Value = viewtglpengiriman
+            '        dtpengiriman.Value = viewtglpengiriman
 
-                    'isi tabel view pengiriman
+            '        'isi tabel view pengiriman
 
-                    Call previewpengiriman(nomorkode)
+            '        Call previewpengiriman(nomorkode)
 
-                    'total tabel pembelian
+            '        'total tabel pembelian
 
-                    txtketerangan.Text = viewketerangan
+            '        txtketerangan.Text = viewketerangan
 
-                    cnn.Close()
-                End If
-            End Using
+            '        cnn.Close()
+            '    End If
+            'End Using
         Else
             txtnonota.Clear()
 
@@ -443,7 +446,9 @@ Public Class fkalkulasiexpedisi
             .Columns.Add("total_volume", GetType(Double))
             .Columns.Add("harga_barang", GetType(Double))
             .Columns.Add("ongkos_kirim", GetType(Double))
+            .Columns.Add("total_ongkos_kirim", GetType(Double))
             .Columns.Add("total_harga_barang", GetType(Double))
+            .Columns.Add("grand_total_barang", GetType(Double))
 
         End With
 
@@ -505,11 +510,23 @@ Public Class fkalkulasiexpedisi
         GridColumn10.DisplayFormat.FormatString = "{0:n0}"
         GridColumn10.Width = 30
 
-        GridColumn11.FieldName = "total_harga_barang"
-        GridColumn11.Caption = "Total Harga Barang"
+        GridColumn11.FieldName = "total_ongkos_kirim"
+        GridColumn11.Caption = "Total Ongkos Kirim"
         GridColumn11.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn11.DisplayFormat.FormatString = "{0:n0}"
         GridColumn11.Width = 30
+
+        GridColumn12.FieldName = "total_harga_barang"
+        GridColumn12.Caption = "Total Harga Barang"
+        GridColumn12.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn12.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn12.Width = 30
+
+        GridColumn13.FieldName = "grand_total_barang"
+        GridColumn13.Caption = "Grand Total Barang"
+        GridColumn13.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn13.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn13.Width = 30
 
     End Sub
 
@@ -592,8 +609,8 @@ Public Class fkalkulasiexpedisi
         If txttotalongkir.Text = "" Then
             txttotalongkir.Text = 0
         Else
-            totalongkir = txttotalongkir.Text
-            txttotalongkir.Text = Format(totalongkir, "##,##0")
+            totalhargaongkir = txttotalongkir.Text
+            txttotalongkir.Text = Format(totalhargaongkir, "##,##0")
             txttotalongkir.SelectionStart = Len(txttotalongkir.Text)
         End If
     End Sub
@@ -661,41 +678,164 @@ Public Class fkalkulasiexpedisi
     End Sub
 
     Sub tambah()
-        Dim ongkirbarangulang As Double
+        Dim ongkirbarangulang, totalongkirbarangulang As Double
+        Dim hargabarangulang, totalhargabarangulang, grandtotalbarangulang As Double
 
         If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txthargabarang.Text = "" Or txtpanjangbarang.Text = "" Or txtlebarbarang.Text = "" Or txttinggibarang.Text = "" Or txtbanyakbarang.Text = "" Or banyakbarang <= 0 Then
             Exit Sub
         End If
 
-
+        'With tabel
+        '    .Columns.Add("kode_barang")
+        '    .Columns.Add("nama_barang")
+        '    .Columns.Add("panjang_barang", GetType(Double))
+        '    .Columns.Add("lebar_barang", GetType(Double))
+        '    .Columns.Add("tinggi_barang", GetType(Double))
+        '    .Columns.Add("volume_barang", GetType(Double))
+        '    .Columns.Add("qty", GetType(Double))
+        '    .Columns.Add("total_volume", GetType(Double))
+        '    .Columns.Add("harga_barang", GetType(Double))
+        '    .Columns.Add("ongkos_kirim", GetType(Double))
+        '    .Columns.Add("total_ongkos_kirim", GetType(Double))
+        '    .Columns.Add("total_harga_barang", GetType(Double))
+        '    .Columns.Add("grand_total_barang", GetType(Double))
+        'End With
 
         'functionnya disini
+        'barang
         volumebarang = panjangbarang * lebarbarang * tinggibarang
         totalvolumebarang = volumebarang * banyakbarang
         If GridView1.RowCount = 0 Then  'data tidak ada
-            grandtotalvolumebarang = 1
-            ongkirbarang = totalongkir * (grandtotalvolumebarang)
-            totalhargabarang = hargabarang + ongkirbarang
+            'harga
+            grandtotalvolumebarang = volumebarang * banyakbarang
+            ongkirbarang = totalhargaongkir * (volumebarang / grandtotalvolumebarang)
+            'total
+            totalongkirbarang = ongkirbarang * banyakbarang
+            totalhargabarang = hargabarang * banyakbarang
+            grandtotalbarang = totalongkirbarang + totalhargabarang
 
         Else 'data ada
             grandtotalvolumebarang = GridView1.Columns("total_volume").SummaryItem.SummaryValue
-            ongkirbarang = totalongkir * (totalvolumebarang / (grandtotalvolumebarang + totalvolumebarang))
-            totalhargabarang = hargabarang + ongkirbarang
+            ongkirbarang = totalhargaongkir * (volumebarang / (grandtotalvolumebarang + totalvolumebarang))
+            totalongkirbarang = totalhargaongkir * (totalvolumebarang / (grandtotalvolumebarang + totalvolumebarang))
+            totalhargabarang = hargabarang * banyakbarang
+            grandtotalbarang = totalongkirbarang + totalhargabarang
 
+            'kalibrasi tabel
             For i As Integer = 0 To GridView1.RowCount - 1
-                ongkirbarangulang = totalongkir * (GridView1.GetRowCellValue(i, "volume_barang") / (grandtotalvolumebarang + totalvolumebarang))
+                ongkirbarangulang = totalhargaongkir * (GridView1.GetRowCellValue(i, "volume_barang") / (grandtotalvolumebarang + totalvolumebarang))
+                totalongkirbarangulang = ongkirbarangulang * Val(GridView1.GetRowCellValue(i, "qty"))
+                grandtotalbarangulang = GridView1.GetRowCellValue(i, "total_harga_barang") + totalongkirbarangulang
+
                 GridView1.SetRowCellValue(i, "ongkos_kirim", ongkirbarangulang)
+                GridView1.SetRowCellValue(i, "total_ongkos_kirim", totalongkirbarangulang)
+                GridView1.SetRowCellValue(i, "grand_total_barang", grandtotalbarangulang)
+
             Next
         End If
 
-
-        tabel.Rows.Add(txtkodebarang.Text, txtnamabarang.Text, Val(panjangbarang), Val(lebarbarang), Val(tinggibarang), Val(volumebarang), Val(banyakbarang), Val(totalvolumebarang), Val(hargabarang), Val(ongkirbarang), Val(totalhargabarang))
+        tabel.Rows.Add(txtkodebarang.Text, txtnamabarang.Text, Val(panjangbarang), Val(lebarbarang), Val(tinggibarang), Val(volumebarang), Val(banyakbarang), Val(totalvolumebarang), Val(hargabarang), Val(ongkirbarang), Val(totalongkirbarang), Val(totalhargabarang), Val(grandtotalbarang))
         Call reload_tabel()
-
-
     End Sub
 
     Private Sub btntambahbarang_Click(sender As Object, e As EventArgs) Handles btntambahbarang.Click
         Call tambah()
     End Sub
+
+    Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
+        Dim ongkirbarangulang, totalongkirbarangulang As Double
+        Dim hargabarangulang, totalhargabarangulang, grandtotalbarangulang As Double
+
+        If e.Column.FieldName = "qty" Then
+            If e.Value = "" Or e.Value = "0" Then
+                GridView1.SetRowCellValue(e.RowHandle, "qty", 1)
+                Try
+                    'rumus ongkos kirim
+                    GridView1.SetRowCellValue(e.RowHandle, "total_volume", GridView1.GetRowCellValue(e.RowHandle, "volume_barang") * 1)
+
+                    grandtotalvolumebarang = GridView1.Columns("total_volume").SummaryItem.SummaryValue
+
+                    For i As Integer = 0 To GridView1.RowCount - 1
+                        ongkirbarangulang = totalhargaongkir * (GridView1.GetRowCellValue(i, "volume_barang") / (grandtotalvolumebarang))
+                        If e.RowHandle.Equals(i) Then
+                            totalongkirbarangulang = ongkirbarangulang * 1
+                            totalhargabarangulang = Val(GridView1.GetRowCellValue(i, "harga_barang")) * 1
+                        Else
+                            totalongkirbarangulang = ongkirbarangulang * 1
+                            totalhargabarangulang = Val(GridView1.GetRowCellValue(i, "harga_barang")) * 1
+                        End If
+
+                        grandtotalbarangulang = GridView1.GetRowCellValue(i, "total_harga_barang") + totalongkirbarangulang
+
+                        GridView1.SetRowCellValue(i, "ongkos_kirim", ongkirbarangulang)
+                        GridView1.SetRowCellValue(i, "total_ongkos_kirim", totalongkirbarangulang)
+                        GridView1.SetRowCellValue(i, "total_harga_barang", totalhargabarangulang)
+                        GridView1.SetRowCellValue(i, "grand_total_barang", grandtotalbarangulang)
+                    Next
+
+                Catch ex As Exception
+                    'error jika nulai qty=blank
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+                End Try
+            Else
+                Try
+                    GridView1.SetRowCellValue(e.RowHandle, "total_volume", GridView1.GetRowCellValue(e.RowHandle, "volume_barang") * e.Value)
+
+                    grandtotalvolumebarang = GridView1.Columns("total_volume").SummaryItem.SummaryValue
+
+                    For i As Integer = 0 To GridView1.RowCount - 1
+                        ongkirbarangulang = totalhargaongkir * (GridView1.GetRowCellValue(i, "volume_barang") / (grandtotalvolumebarang))
+                        If e.RowHandle.Equals(i) Then
+                            totalongkirbarangulang = ongkirbarangulang * e.Value
+                            totalhargabarangulang = Val(GridView1.GetRowCellValue(i, "harga_barang")) * e.Value
+                        Else
+                            totalongkirbarangulang = ongkirbarangulang * Val(GridView1.GetRowCellValue(i, "qty"))
+                            totalhargabarangulang = Val(GridView1.GetRowCellValue(i, "harga_barang")) * Val(GridView1.GetRowCellValue(i, "qty"))
+                        End If
+
+                        grandtotalbarangulang = GridView1.GetRowCellValue(i, "total_harga_barang") + totalongkirbarangulang
+
+                        GridView1.SetRowCellValue(i, "ongkos_kirim", ongkirbarangulang)
+                        GridView1.SetRowCellValue(i, "total_ongkos_kirim", totalongkirbarangulang)
+                        GridView1.SetRowCellValue(i, "total_harga_barang", totalhargabarangulang)
+                        GridView1.SetRowCellValue(i, "grand_total_barang", grandtotalbarangulang)
+                    Next
+
+                Catch ex As Exception
+                    'error jika nulai qty=blank
+                    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
+                End Try
+            End If
+        End If
+    End Sub
+
+    Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
+        Dim ongkirbarangulang, totalongkirbarangulang As Double
+        Dim hargabarangulang, totalhargabarangulang, grandtotalbarangulang As Double
+
+        If e.KeyCode = Keys.Delete And btnbatal.Enabled = True Then
+            If GridView1.RowCount = 1 Then
+                GridView1.DeleteSelectedRows()
+            Else
+                GridView1.DeleteSelectedRows()
+
+                grandtotalvolumebarang = GridView1.Columns("total_volume").SummaryItem.SummaryValue
+
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    ongkirbarangulang = totalhargaongkir * (GridView1.GetRowCellValue(i, "volume_barang") / (grandtotalvolumebarang))
+                    totalongkirbarangulang = ongkirbarangulang * Val(GridView1.GetRowCellValue(i, "qty"))
+                    grandtotalbarangulang = GridView1.GetRowCellValue(i, "total_harga_barang") + totalongkirbarangulang
+
+                    GridView1.SetRowCellValue(i, "ongkos_kirim", ongkirbarangulang)
+                    GridView1.SetRowCellValue(i, "total_ongkos_kirim", totalongkirbarangulang)
+                    GridView1.SetRowCellValue(i, "grand_total_barang", grandtotalbarangulang)
+                Next
+            End If
+        End If
+    End Sub
+
+    Private Sub ritenumber_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritenumber.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
 End Class

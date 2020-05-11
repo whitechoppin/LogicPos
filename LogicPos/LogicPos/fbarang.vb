@@ -12,6 +12,27 @@ Public Class fbarang
     Dim minstok As Integer
     Private PathFile As String = Nothing
 
+    '==== autosize form ====
+    Dim CuRWidth As Integer = Me.Width
+    Dim CuRHeight As Integer = Me.Height
+
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
+        Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
+
+        For Each ctrl As Control In Controls
+            ctrl.Width += ctrl.Width * RatioWidth
+            ctrl.Left += ctrl.Left * RatioWidth
+            ctrl.Top += ctrl.Top * RatioHeight
+            ctrl.Height += ctrl.Height * RatioHeight
+        Next
+
+        CuRHeight = Me.Height
+        CuRWidth = Me.Width
+    End Sub
+
+    '=======================
+
     Private Sub fbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -105,13 +126,14 @@ Public Class fbarang
 
     Sub index()
         txtkode.TabIndex = 1
-        txtnama.TabIndex = 2
-        cmbjenis.TabIndex = 3
-        cmbsatuan.TabIndex = 4
-        cmbkategori.TabIndex = 5
-        txtketerangan.TabIndex = 6
-        txtmodal.TabIndex = 7
-        btnupload.TabIndex = 8
+        btnauto.TabIndex = 2
+        txtnama.TabIndex = 3
+        cmbjenis.TabIndex = 4
+        cmbsatuan.TabIndex = 5
+        cmbkategori.TabIndex = 6
+        txtketerangan.TabIndex = 7
+        txtmodal.TabIndex = 8
+        btnupload.TabIndex = 9
     End Sub
     Sub isitabel()
         'Call koneksii()
@@ -269,7 +291,9 @@ Public Class fbarang
     Sub cari()
         txtkode.Text = GridView.GetFocusedRowCellValue("kode_barang")
 
+        'menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
         Dim foto As Byte()
+
         Call koneksii()
         sql = "SELECT * FROM tb_barang WHERE kode_barang  = '" + txtkode.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
@@ -297,6 +321,8 @@ Public Class fbarang
             txtketerangan.Text = keteranganbarang
             txtgbr.Text = txtnama.Text
             txtmodal.Text = Format(modalbarang, "##,##0")
+
+            'tombol
             btnshow.Enabled = True
 
             btnedit.Enabled = True
@@ -537,7 +563,7 @@ Public Class fbarang
     Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
         If txthidden.Visible = True Then
             passwordid = 1
-            fpassword.Show()
+            fpassword.ShowDialog()
             'txthidden.Visible = False
         ElseIf txthidden.Visible = False Then
             txthidden.Visible = True

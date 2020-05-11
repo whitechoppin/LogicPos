@@ -5,6 +5,28 @@ Public Class fgudang
     Dim kodegudangedit As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
+
+    '==== autosize form ====
+    Dim CuRWidth As Integer = Me.Width
+    Dim CuRHeight As Integer = Me.Height
+
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
+        Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
+
+        For Each ctrl As Control In Controls
+            ctrl.Width += ctrl.Width * RatioWidth
+            ctrl.Left += ctrl.Left * RatioWidth
+            ctrl.Top += ctrl.Top * RatioHeight
+            ctrl.Height += ctrl.Height * RatioHeight
+        Next
+
+        CuRHeight = Me.Height
+        CuRWidth = Me.Width
+    End Sub
+
+    '=======================
+
     Private Sub fgudang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
@@ -41,6 +63,11 @@ Public Class fgudang
 
         Call historysave("Membuka Master Gudang", "N/A")
     End Sub
+
+    Private Sub fgudang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Sub awal()
         txtkode.Clear()
         txtalamat.Clear()
@@ -97,10 +124,13 @@ Public Class fgudang
         Call kolom()
     End Sub
     Sub index()
-        txtnama.TabIndex = 1
-        txtalamat.TabIndex = 2
-        txttelp.TabIndex = 3
-        txtketerangan.TabIndex = 4
+        txtkode.TabIndex = 0
+        btnauto.TabIndex = 1
+        btngenerate.TabIndex = 2
+        txtnama.TabIndex = 3
+        txtalamat.TabIndex = 4
+        txttelp.TabIndex = 5
+        txtketerangan.TabIndex = 6
     End Sub
     Function autonumber()
         Call koneksii()
@@ -182,17 +212,19 @@ Public Class fgudang
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             MsgBox("Kode Gudang Sudah ada dengan nama " + dr("nama_gudang"), MsgBoxStyle.Information, "Pemberitahuan")
+            txtkode.Focus()
         Else
             sql = "INSERT INTO tb_gudang (kode_gudang, nama_gudang, telepon_gudang, alamat_gudang, keterangan_gudang, created_by, updated_by,date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-            btntambah.Text = "Tambah"
+
 
             'history user ==========
             Call historysave("Menyimpan Data Gudang Kode " + txtkode.Text, txtkode.Text)
             '========================
 
+            btntambah.Text = "Tambah"
             Me.Refresh()
             Call awal()
         End If
@@ -264,6 +296,7 @@ Public Class fgudang
         txtalamat.Text = GridView.GetFocusedRowCellValue("alamat_gudang")
         txttelp.Text = GridView.GetFocusedRowCellValue("telepon_gudang")
         txtketerangan.Text = GridView.GetFocusedRowCellValue("keterangan_gudang")
+
         btnedit.Enabled = True
         btnbatal.Enabled = True
         btnhapus.Enabled = True
@@ -292,10 +325,6 @@ Public Class fgudang
     End Sub
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
         e.Handled = ValidAngka(e)
-    End Sub
-
-    Private Sub fgudang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
     Private Sub btnauto_Click(sender As Object, e As EventArgs) Handles btnauto.Click

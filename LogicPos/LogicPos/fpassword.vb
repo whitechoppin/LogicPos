@@ -27,6 +27,8 @@ Public Class fpassword
             ElseIf passwordid = 5 Then
                 fpricelist.txthidden.Visible = False
             End If
+
+            txtpassword.Text = ""
             Me.Close()
         End If
     End Sub
