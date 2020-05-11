@@ -29,7 +29,6 @@ Partial Class fsupplier
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnrekening = New System.Windows.Forms.Button()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
@@ -45,17 +44,19 @@ Partial Class fsupplier
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 301)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Location = New System.Drawing.Point(18, 318)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(808, 240)
+        Me.GridControl1.Size = New System.Drawing.Size(882, 332)
         Me.GridControl1.TabIndex = 11
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -117,36 +118,12 @@ Partial Class fsupplier
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.btnrekening)
-        Me.GroupBox1.Controls.Add(Me.txtketerangan)
-        Me.GroupBox1.Controls.Add(Me.txtalamat)
-        Me.GroupBox1.Controls.Add(Me.btnbatal)
-        Me.GroupBox1.Controls.Add(Me.btnhapus)
-        Me.GroupBox1.Controls.Add(Me.btnedit)
-        Me.GroupBox1.Controls.Add(Me.btntambah)
-        Me.GroupBox1.Controls.Add(Me.txttelp)
-        Me.GroupBox1.Controls.Add(Me.txtnama)
-        Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.txtkode)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 12)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(807, 283)
-        Me.GroupBox1.TabIndex = 10
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Input Data Supplier"
-        '
         'btnrekening
         '
-        Me.btnrekening.Location = New System.Drawing.Point(609, 28)
+        Me.btnrekening.Location = New System.Drawing.Point(678, 51)
+        Me.btnrekening.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnrekening.Name = "btnrekening"
-        Me.btnrekening.Size = New System.Drawing.Size(185, 49)
+        Me.btnrekening.Size = New System.Drawing.Size(222, 51)
         Me.btnrekening.TabIndex = 18
         Me.btnrekening.Text = "Data Rekening"
         Me.btnrekening.UseVisualStyleBackColor = True
@@ -154,53 +131,59 @@ Partial Class fsupplier
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangan.Location = New System.Drawing.Point(535, 140)
+        Me.txtketerangan.Location = New System.Drawing.Point(536, 151)
+        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(257, 116)
+        Me.txtketerangan.Size = New System.Drawing.Size(364, 151)
         Me.txtketerangan.TabIndex = 17
         Me.txtketerangan.Text = ""
         '
         'txtalamat
         '
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtalamat.Location = New System.Drawing.Point(128, 170)
+        Me.txtalamat.Location = New System.Drawing.Point(138, 184)
+        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtalamat.Name = "txtalamat"
-        Me.txtalamat.Size = New System.Drawing.Size(281, 86)
+        Me.txtalamat.Size = New System.Drawing.Size(299, 118)
         Me.txtalamat.TabIndex = 17
         Me.txtalamat.Text = ""
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(461, 28)
+        Me.btnbatal.Location = New System.Drawing.Point(513, 51)
+        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(142, 49)
+        Me.btnbatal.Size = New System.Drawing.Size(157, 51)
         Me.btnbatal.TabIndex = 13
         Me.btnbatal.Text = "Batal"
         Me.btnbatal.UseVisualStyleBackColor = True
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(312, 28)
+        Me.btnhapus.Location = New System.Drawing.Point(348, 51)
+        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnhapus.Name = "btnhapus"
-        Me.btnhapus.Size = New System.Drawing.Size(142, 49)
+        Me.btnhapus.Size = New System.Drawing.Size(157, 51)
         Me.btnhapus.TabIndex = 14
         Me.btnhapus.Text = "Hapus"
         Me.btnhapus.UseVisualStyleBackColor = True
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(160, 28)
+        Me.btnedit.Location = New System.Drawing.Point(183, 51)
+        Me.btnedit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(142, 49)
+        Me.btnedit.Size = New System.Drawing.Size(157, 51)
         Me.btnedit.TabIndex = 15
         Me.btnedit.Text = "Edit"
         Me.btnedit.UseVisualStyleBackColor = True
         '
         'btntambah
         '
-        Me.btntambah.Location = New System.Drawing.Point(10, 28)
+        Me.btntambah.Location = New System.Drawing.Point(18, 51)
+        Me.btntambah.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(142, 49)
+        Me.btntambah.Size = New System.Drawing.Size(157, 51)
         Me.btntambah.TabIndex = 16
         Me.btntambah.Text = "Tambah"
         Me.btntambah.UseVisualStyleBackColor = True
@@ -208,93 +191,128 @@ Partial Class fsupplier
         'txttelp
         '
         Me.txttelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttelp.Location = New System.Drawing.Point(535, 107)
+        Me.txttelp.Location = New System.Drawing.Point(536, 119)
+        Me.txttelp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(257, 24)
+        Me.txttelp.Size = New System.Drawing.Size(364, 24)
         Me.txttelp.TabIndex = 2
         '
         'txtnama
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(128, 140)
+        Me.txtnama.Location = New System.Drawing.Point(138, 152)
+        Me.txtnama.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(281, 24)
+        Me.txtnama.Size = New System.Drawing.Size(299, 24)
         Me.txtnama.TabIndex = 2
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(426, 140)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(445, 155)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(92, 20)
+        Me.Label5.Size = New System.Drawing.Size(83, 18)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "Keterangan"
         '
         'txtkode
         '
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkode.Location = New System.Drawing.Point(128, 110)
+        Me.txtkode.Location = New System.Drawing.Point(138, 120)
+        Me.txtkode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtkode.Name = "txtkode"
-        Me.txtkode.Size = New System.Drawing.Size(281, 24)
+        Me.txtkode.Size = New System.Drawing.Size(299, 24)
         Me.txtkode.TabIndex = 1
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 166)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(25, 187)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(59, 20)
+        Me.Label4.Size = New System.Drawing.Size(53, 18)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Alamat"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(426, 109)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(445, 123)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(66, 20)
+        Me.Label3.Size = New System.Drawing.Size(61, 18)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Telepon"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 138)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(25, 155)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(113, 20)
+        Me.Label2.Size = New System.Drawing.Size(105, 18)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Nama Supplier"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 110)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(25, 123)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(108, 20)
+        Me.Label1.Size = New System.Drawing.Size(100, 18)
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Kode Supplier"
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(13, 9)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(172, 29)
+        Me.Label6.TabIndex = 40
+        Me.Label6.Text = "Data Supplier"
+        '
         'fsupplier
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(835, 552)
+        Me.ClientSize = New System.Drawing.Size(920, 662)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.txtalamat)
+        Me.Controls.Add(Me.btnrekening)
+        Me.Controls.Add(Me.btnedit)
+        Me.Controls.Add(Me.btntambah)
+        Me.Controls.Add(Me.txtketerangan)
+        Me.Controls.Add(Me.txtnama)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.txtkode)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.btnbatal)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.btnhapus)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.txttelp)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fsupplier"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Supplier"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
@@ -303,7 +321,6 @@ Partial Class fsupplier
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents txtalamat As System.Windows.Forms.RichTextBox
     Friend WithEvents btnbatal As System.Windows.Forms.Button
     Friend WithEvents btnhapus As System.Windows.Forms.Button
@@ -320,4 +337,5 @@ Partial Class fsupplier
     Friend WithEvents txtketerangan As System.Windows.Forms.RichTextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents btnrekening As Button
+    Friend WithEvents Label6 As Label
 End Class
