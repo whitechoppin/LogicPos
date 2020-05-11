@@ -1456,7 +1456,6 @@ Public Class fpenjualan
                             If txtgudang.Text IsNot "" Then
                                 If cmbsales.Text IsNot "" Then
                                     If txtrekening.Text IsNot "" Then
-
                                         'isi disini sub updatenya
                                         Call perbarui(txtnonota.Text)
                                         'Call inisialisasi(txtnonota.Text)
@@ -2222,6 +2221,7 @@ Public Class fpenjualan
 
         Return cpu_ids
     End Function
+
     'Sub printer()
     '    sql = "select * from tb_printer where cpuid='" & CpuId() & "'"
     '    cmmd = New OdbcCommand(sql, cnn)
@@ -2234,6 +2234,7 @@ Public Class fpenjualan
     '        MsgBox("Gagal Mencetak", vbInformation.Information, "Error....")
     '    End If
     'End Sub
+
     Sub proses()
         Dim stok As Integer
         Dim stokdatabase As Integer
@@ -2277,6 +2278,7 @@ Public Class fpenjualan
             txtbanyak.SelectionStart = Len(txtbanyak.Text)
         End If
     End Sub
+
     Private Sub UpdateTotalText()
         totalbelanja = GridView1.Columns("subtotal").SummaryItem.SummaryValue
         grandtotal = totalbelanja

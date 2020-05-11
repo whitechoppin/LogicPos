@@ -28,7 +28,8 @@ Partial Class flogichouse
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ClientSize = New System.Drawing.Size(851, 447)
         Me.Name = "flogichouse"
         Me.Text = "flogichouse"
         Me.ResumeLayout(False)
