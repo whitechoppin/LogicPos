@@ -98,7 +98,7 @@ Partial Class freturbeli
         Me.btncarinota.BackgroundImage = CType(resources.GetObject("btncarinota.BackgroundImage"), System.Drawing.Image)
         Me.btncarinota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarinota.ImageIndex = 0
-        Me.btncarinota.Location = New System.Drawing.Point(309, 55)
+        Me.btncarinota.Location = New System.Drawing.Point(327, 47)
         Me.btncarinota.Margin = New System.Windows.Forms.Padding(4)
         Me.btncarinota.Name = "btncarinota"
         Me.btncarinota.Size = New System.Drawing.Size(25, 26)
@@ -107,7 +107,7 @@ Partial Class freturbeli
         '
         'btngo
         '
-        Me.btngo.Location = New System.Drawing.Point(337, 55)
+        Me.btngo.Location = New System.Drawing.Point(355, 47)
         Me.btngo.Margin = New System.Windows.Forms.Padding(4)
         Me.btngo.Name = "btngo"
         Me.btngo.Size = New System.Drawing.Size(47, 27)
@@ -119,10 +119,10 @@ Partial Class freturbeli
         '
         Me.txtnonota.Enabled = False
         Me.txtnonota.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnonota.Location = New System.Drawing.Point(142, 56)
+        Me.txtnonota.Location = New System.Drawing.Point(143, 48)
         Me.txtnonota.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnonota.Name = "txtnonota"
-        Me.txtnonota.Size = New System.Drawing.Size(168, 24)
+        Me.txtnonota.Size = New System.Drawing.Size(185, 24)
         Me.txtnonota.TabIndex = 9
         '
         'Label7
@@ -140,7 +140,7 @@ Partial Class freturbeli
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(20, 452)
+        Me.Label1.Location = New System.Drawing.Point(20, 434)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(128, 18)
@@ -149,10 +149,10 @@ Partial Class freturbeli
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(19, 227)
+        Me.GridControl1.Location = New System.Drawing.Point(19, 209)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1088, 223)
+        Me.GridControl1.Size = New System.Drawing.Size(1168, 223)
         Me.GridControl1.TabIndex = 59
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -255,10 +255,10 @@ Partial Class freturbeli
         '
         'GridControl2
         '
-        Me.GridControl2.Location = New System.Drawing.Point(19, 472)
+        Me.GridControl2.Location = New System.Drawing.Point(19, 454)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(1090, 221)
+        Me.GridControl2.Size = New System.Drawing.Size(1167, 221)
         Me.GridControl2.TabIndex = 60
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -366,10 +366,11 @@ Partial Class freturbeli
         Me.GroupBox4.Controls.Add(Me.btnbaru)
         Me.GroupBox4.Controls.Add(Me.btnprint)
         Me.GroupBox4.Controls.Add(Me.btnsimpan)
+        Me.GroupBox4.Controls.Add(Me.GroupBox2)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox4.Location = New System.Drawing.Point(255, 4)
+        Me.GroupBox4.Location = New System.Drawing.Point(240, 4)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(854, 72)
+        Me.GroupBox4.Size = New System.Drawing.Size(947, 72)
         Me.GroupBox4.TabIndex = 62
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Tools"
@@ -380,7 +381,7 @@ Partial Class freturbeli
         Me.GroupBox5.Controls.Add(Me.btnnext)
         Me.GroupBox5.Controls.Add(Me.txtgoretur)
         Me.GroupBox5.Controls.Add(Me.btngoretur)
-        Me.GroupBox5.Location = New System.Drawing.Point(507, 10)
+        Me.GroupBox5.Location = New System.Drawing.Point(405, 12)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(339, 52)
         Me.GroupBox5.TabIndex = 37
@@ -422,7 +423,7 @@ Partial Class freturbeli
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(311, 23)
+        Me.btnbatal.Location = New System.Drawing.Point(301, 25)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(93, 35)
         Me.btnbatal.TabIndex = 4
@@ -431,7 +432,7 @@ Partial Class freturbeli
         '
         'btnbaru
         '
-        Me.btnbaru.Location = New System.Drawing.Point(16, 23)
+        Me.btnbaru.Location = New System.Drawing.Point(6, 25)
         Me.btnbaru.Name = "btnbaru"
         Me.btnbaru.Size = New System.Drawing.Size(93, 35)
         Me.btnbaru.TabIndex = 1
@@ -440,7 +441,7 @@ Partial Class freturbeli
         '
         'btnprint
         '
-        Me.btnprint.Location = New System.Drawing.Point(214, 23)
+        Me.btnprint.Location = New System.Drawing.Point(204, 25)
         Me.btnprint.Name = "btnprint"
         Me.btnprint.Size = New System.Drawing.Size(92, 35)
         Me.btnprint.TabIndex = 3
@@ -450,7 +451,7 @@ Partial Class freturbeli
         'btnsimpan
         '
         Me.btnsimpan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnsimpan.Location = New System.Drawing.Point(115, 23)
+        Me.btnsimpan.Location = New System.Drawing.Point(105, 25)
         Me.btnsimpan.Name = "btnsimpan"
         Me.btnsimpan.Size = New System.Drawing.Size(93, 35)
         Me.btnsimpan.TabIndex = 2
@@ -466,7 +467,6 @@ Partial Class freturbeli
         Me.GroupBox1.Controls.Add(Me.txtnonota)
         Me.GroupBox1.Controls.Add(Me.txtnoretur)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.txttelp)
         Me.GroupBox1.Controls.Add(Me.txtalamat)
         Me.GroupBox1.Controls.Add(Me.Label22)
@@ -487,7 +487,7 @@ Partial Class freturbeli
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(1088, 148)
+        Me.GroupBox1.Size = New System.Drawing.Size(1165, 136)
         Me.GroupBox1.TabIndex = 61
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Retur Faktur"
@@ -495,17 +495,17 @@ Partial Class freturbeli
         'dtreturbeli
         '
         Me.dtreturbeli.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtreturbeli.Location = New System.Drawing.Point(142, 84)
+        Me.dtreturbeli.Location = New System.Drawing.Point(143, 76)
         Me.dtreturbeli.Margin = New System.Windows.Forms.Padding(4)
         Me.dtreturbeli.Name = "dtreturbeli"
-        Me.dtreturbeli.Size = New System.Drawing.Size(242, 23)
+        Me.dtreturbeli.Size = New System.Drawing.Size(259, 23)
         Me.dtreturbeli.TabIndex = 75
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label3.Location = New System.Drawing.Point(31, 86)
+        Me.Label3.Location = New System.Drawing.Point(38, 77)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(84, 18)
@@ -516,17 +516,17 @@ Partial Class freturbeli
         '
         Me.txtnoretur.Enabled = False
         Me.txtnoretur.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnoretur.Location = New System.Drawing.Point(142, 29)
+        Me.txtnoretur.Location = New System.Drawing.Point(143, 21)
         Me.txtnoretur.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnoretur.Name = "txtnoretur"
-        Me.txtnoretur.Size = New System.Drawing.Size(242, 24)
+        Me.txtnoretur.Size = New System.Drawing.Size(259, 24)
         Me.txtnoretur.TabIndex = 73
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label2.Location = New System.Drawing.Point(31, 32)
+        Me.Label2.Location = New System.Drawing.Point(38, 23)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(100, 18)
@@ -538,9 +538,9 @@ Partial Class freturbeli
         Me.GroupBox2.Controls.Add(Me.cbposted)
         Me.GroupBox2.Controls.Add(Me.cbprinted)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox2.Location = New System.Drawing.Point(878, 11)
+        Me.GroupBox2.Location = New System.Drawing.Point(754, 12)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(202, 43)
+        Me.GroupBox2.Size = New System.Drawing.Size(184, 52)
         Me.GroupBox2.TabIndex = 59
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Status"
@@ -549,7 +549,7 @@ Partial Class freturbeli
         '
         Me.cbposted.AutoSize = True
         Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(111, 15)
+        Me.cbposted.Location = New System.Drawing.Point(94, 21)
         Me.cbposted.Name = "cbposted"
         Me.cbposted.Size = New System.Drawing.Size(74, 22)
         Me.cbposted.TabIndex = 41
@@ -561,7 +561,7 @@ Partial Class freturbeli
         Me.cbprinted.AutoSize = True
         Me.cbprinted.Enabled = False
         Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(24, 15)
+        Me.cbprinted.Location = New System.Drawing.Point(12, 21)
         Me.cbprinted.Name = "cbprinted"
         Me.cbprinted.Size = New System.Drawing.Size(73, 22)
         Me.cbprinted.TabIndex = 40
@@ -571,20 +571,20 @@ Partial Class freturbeli
         'txttelp
         '
         Me.txttelp.Enabled = False
-        Me.txttelp.Location = New System.Drawing.Point(484, 45)
+        Me.txttelp.Location = New System.Drawing.Point(499, 48)
         Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(248, 24)
+        Me.txttelp.Size = New System.Drawing.Size(277, 24)
         Me.txttelp.TabIndex = 71
         '
         'txtalamat
         '
         Me.txtalamat.Enabled = False
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtalamat.Location = New System.Drawing.Point(484, 72)
+        Me.txtalamat.Location = New System.Drawing.Point(499, 75)
         Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
         Me.txtalamat.Name = "txtalamat"
-        Me.txtalamat.Size = New System.Drawing.Size(248, 70)
+        Me.txtalamat.Size = New System.Drawing.Size(277, 54)
         Me.txtalamat.TabIndex = 70
         Me.txtalamat.Text = ""
         '
@@ -592,7 +592,7 @@ Partial Class freturbeli
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label22.Location = New System.Drawing.Point(399, 48)
+        Me.Label22.Location = New System.Drawing.Point(414, 51)
         Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(66, 18)
@@ -603,7 +603,7 @@ Partial Class freturbeli
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label20.Location = New System.Drawing.Point(396, 76)
+        Me.Label20.Location = New System.Drawing.Point(411, 79)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(91, 18)
@@ -613,18 +613,18 @@ Partial Class freturbeli
         'cmbsales
         '
         Me.cmbsales.FormattingEnabled = True
-        Me.cmbsales.Location = New System.Drawing.Point(142, 111)
+        Me.cmbsales.Location = New System.Drawing.Point(143, 103)
         Me.cmbsales.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbsales.MaxLength = 99
         Me.cmbsales.Name = "cmbsales"
-        Me.cmbsales.Size = New System.Drawing.Size(242, 26)
+        Me.cmbsales.Size = New System.Drawing.Size(259, 26)
         Me.cmbsales.TabIndex = 57
         '
         'Label16
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label16.Location = New System.Drawing.Point(31, 113)
+        Me.Label16.Location = New System.Drawing.Point(38, 104)
         Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(84, 18)
@@ -636,18 +636,18 @@ Partial Class freturbeli
         Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
         Me.cmbgudang.Enabled = False
         Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(885, 114)
+        Me.cmbgudang.Location = New System.Drawing.Point(931, 75)
         Me.cmbgudang.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
-        Me.cmbgudang.Size = New System.Drawing.Size(193, 26)
+        Me.cmbgudang.Size = New System.Drawing.Size(210, 26)
         Me.cmbgudang.TabIndex = 58
         '
         'Label14
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label14.Location = New System.Drawing.Point(763, 117)
+        Me.Label14.Location = New System.Drawing.Point(809, 78)
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(99, 18)
@@ -658,17 +658,17 @@ Partial Class freturbeli
         '
         Me.dtpembelian.Enabled = False
         Me.dtpembelian.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtpembelian.Location = New System.Drawing.Point(885, 59)
+        Me.dtpembelian.Location = New System.Drawing.Point(931, 20)
         Me.dtpembelian.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpembelian.Name = "dtpembelian"
-        Me.dtpembelian.Size = New System.Drawing.Size(193, 23)
+        Me.dtpembelian.Size = New System.Drawing.Size(210, 23)
         Me.dtpembelian.TabIndex = 63
         '
         'Label17
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label17.Location = New System.Drawing.Point(759, 62)
+        Me.Label17.Location = New System.Drawing.Point(805, 23)
         Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(101, 18)
@@ -679,7 +679,7 @@ Partial Class freturbeli
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label21.Location = New System.Drawing.Point(759, 89)
+        Me.Label21.Location = New System.Drawing.Point(805, 50)
         Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(119, 18)
@@ -691,26 +691,26 @@ Partial Class freturbeli
         Me.dtjatuhtempo.CustomFormat = ""
         Me.dtjatuhtempo.Enabled = False
         Me.dtjatuhtempo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtjatuhtempo.Location = New System.Drawing.Point(885, 87)
+        Me.dtjatuhtempo.Location = New System.Drawing.Point(931, 48)
         Me.dtjatuhtempo.Margin = New System.Windows.Forms.Padding(4)
         Me.dtjatuhtempo.Name = "dtjatuhtempo"
-        Me.dtjatuhtempo.Size = New System.Drawing.Size(193, 23)
+        Me.dtjatuhtempo.Size = New System.Drawing.Size(210, 23)
         Me.dtjatuhtempo.TabIndex = 65
         '
         'txtsupplier
         '
         Me.txtsupplier.Enabled = False
-        Me.txtsupplier.Location = New System.Drawing.Point(484, 18)
+        Me.txtsupplier.Location = New System.Drawing.Point(499, 21)
         Me.txtsupplier.Margin = New System.Windows.Forms.Padding(4)
         Me.txtsupplier.Name = "txtsupplier"
-        Me.txtsupplier.Size = New System.Drawing.Size(248, 24)
+        Me.txtsupplier.Size = New System.Drawing.Size(277, 24)
         Me.txtsupplier.TabIndex = 46
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label4.Location = New System.Drawing.Point(31, 59)
+        Me.Label4.Location = New System.Drawing.Point(38, 50)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(78, 18)
@@ -721,7 +721,7 @@ Partial Class freturbeli
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label5.Location = New System.Drawing.Point(396, 21)
+        Me.Label5.Location = New System.Drawing.Point(411, 24)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(86, 18)
@@ -732,7 +732,7 @@ Partial Class freturbeli
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label15.Location = New System.Drawing.Point(19, 693)
+        Me.Label15.Location = New System.Drawing.Point(19, 675)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(83, 18)
@@ -742,10 +742,10 @@ Partial Class freturbeli
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtketerangan.Location = New System.Drawing.Point(20, 712)
+        Me.txtketerangan.Location = New System.Drawing.Point(20, 694)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(1090, 92)
+        Me.txtketerangan.Size = New System.Drawing.Size(1166, 92)
         Me.txtketerangan.TabIndex = 64
         Me.txtketerangan.Text = ""
         '
@@ -754,7 +754,7 @@ Partial Class freturbeli
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1123, 814)
+        Me.ClientSize = New System.Drawing.Size(1199, 795)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.txtketerangan)
         Me.Controls.Add(Me.GroupBox4)

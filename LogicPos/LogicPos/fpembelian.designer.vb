@@ -91,6 +91,9 @@ Partial Class fpembelian
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.rbpo = New System.Windows.Forms.RadioButton()
+        Me.rbfaktur = New System.Windows.Forms.RadioButton()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.btncaripembelian = New System.Windows.Forms.Button()
         Me.btnprev = New System.Windows.Forms.Button()
@@ -104,9 +107,8 @@ Partial Class fpembelian
         Me.txtppnnominal = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.txtnosupplier = New System.Windows.Forms.TextBox()
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.rbpo = New System.Windows.Forms.RadioButton()
-        Me.rbfaktur = New System.Windows.Forms.RadioButton()
+        Me.dtcreated = New System.Windows.Forms.DateTimePicker()
+        Me.Label25 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,12 +116,13 @@ Partial Class fpembelian
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBox1.Controls.Add(Me.lblsatuanbeli)
         Me.GroupBox1.Controls.Add(Me.lblsatuan)
         Me.GroupBox1.Controls.Add(Me.btncari)
@@ -295,6 +298,7 @@ Partial Class fpembelian
         '
         'GridControl1
         '
+        Me.GridControl1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GridControl1.Location = New System.Drawing.Point(12, 259)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
@@ -434,6 +438,7 @@ Partial Class fpembelian
         '
         'Label7
         '
+        Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(12, 22)
@@ -462,6 +467,7 @@ Partial Class fpembelian
         '
         'txtinformasi
         '
+        Me.txtinformasi.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtinformasi.Enabled = False
         Me.txtinformasi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtinformasi.Location = New System.Drawing.Point(11, 637)
@@ -472,6 +478,7 @@ Partial Class fpembelian
         '
         'txtketerangan
         '
+        Me.txtketerangan.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.txtketerangan.Location = New System.Drawing.Point(12, 536)
         Me.txtketerangan.Name = "txtketerangan"
@@ -481,6 +488,7 @@ Partial Class fpembelian
         '
         'Label4
         '
+        Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label4.Location = New System.Drawing.Point(12, 517)
@@ -491,6 +499,7 @@ Partial Class fpembelian
         '
         'txtongkir
         '
+        Me.txtongkir.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtongkir.Location = New System.Drawing.Point(1007, 583)
         Me.txtongkir.MaxLength = 12
@@ -500,6 +509,7 @@ Partial Class fpembelian
         '
         'cbongkir
         '
+        Me.cbongkir.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cbongkir.AutoSize = True
         Me.cbongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cbongkir.Location = New System.Drawing.Point(903, 581)
@@ -511,6 +521,7 @@ Partial Class fpembelian
         '
         'GroupBox2
         '
+        Me.GroupBox2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBox2.Controls.Add(Me.cmbsales)
         Me.GroupBox2.Controls.Add(Me.txtgudang)
         Me.GroupBox2.Controls.Add(Me.Label18)
@@ -712,19 +723,21 @@ Partial Class fpembelian
         '
         'cmbbayar
         '
+        Me.cmbbayar.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cmbbayar.BackColor = System.Drawing.SystemColors.Window
         Me.cmbbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cmbbayar.FormattingEnabled = True
-        Me.cmbbayar.Location = New System.Drawing.Point(699, 674)
+        Me.cmbbayar.Location = New System.Drawing.Point(619, 603)
         Me.cmbbayar.Name = "cmbbayar"
-        Me.cmbbayar.Size = New System.Drawing.Size(198, 26)
+        Me.cmbbayar.Size = New System.Drawing.Size(263, 26)
         Me.cmbbayar.TabIndex = 35
         '
         'Label11
         '
+        Me.Label11.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label11.Location = New System.Drawing.Point(698, 653)
+        Me.Label11.Location = New System.Drawing.Point(618, 582)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(113, 18)
         Me.Label11.TabIndex = 26
@@ -732,6 +745,7 @@ Partial Class fpembelian
         '
         'cbppn
         '
+        Me.cbppn.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cbppn.AutoSize = True
         Me.cbppn.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cbppn.Location = New System.Drawing.Point(903, 554)
@@ -743,6 +757,7 @@ Partial Class fpembelian
         '
         'cbdiskon
         '
+        Me.cbdiskon.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cbdiskon.AutoSize = True
         Me.cbdiskon.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cbdiskon.Location = New System.Drawing.Point(903, 525)
@@ -754,6 +769,7 @@ Partial Class fpembelian
         '
         'txtdiskonpersen
         '
+        Me.txtdiskonpersen.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtdiskonpersen.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtdiskonpersen.Location = New System.Drawing.Point(1007, 525)
         Me.txtdiskonpersen.MaxLength = 2
@@ -763,6 +779,7 @@ Partial Class fpembelian
         '
         'txtppnpersen
         '
+        Me.txtppnpersen.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtppnpersen.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtppnpersen.Location = New System.Drawing.Point(1007, 554)
         Me.txtppnpersen.MaxLength = 2
@@ -772,6 +789,7 @@ Partial Class fpembelian
         '
         'Label14
         '
+        Me.Label14.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label14.Location = New System.Drawing.Point(945, 616)
@@ -782,6 +800,7 @@ Partial Class fpembelian
         '
         'txttotal
         '
+        Me.txttotal.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txttotal.Enabled = False
         Me.txttotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txttotal.Location = New System.Drawing.Point(1007, 613)
@@ -819,6 +838,7 @@ Partial Class fpembelian
         '
         'GroupBox4
         '
+        Me.GroupBox4.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBox4.Controls.Add(Me.GroupBox6)
         Me.GroupBox4.Controls.Add(Me.GroupBox5)
         Me.GroupBox4.Controls.Add(Me.btnbatal)
@@ -833,6 +853,43 @@ Partial Class fpembelian
         Me.GroupBox4.TabIndex = 40
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Tools"
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.rbpo)
+        Me.GroupBox6.Controls.Add(Me.rbfaktur)
+        Me.GroupBox6.Location = New System.Drawing.Point(441, 10)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox6.Size = New System.Drawing.Size(131, 52)
+        Me.GroupBox6.TabIndex = 46
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Tipe Cetak"
+        '
+        'rbpo
+        '
+        Me.rbpo.AutoSize = True
+        Me.rbpo.Location = New System.Drawing.Point(76, 21)
+        Me.rbpo.Margin = New System.Windows.Forms.Padding(4)
+        Me.rbpo.Name = "rbpo"
+        Me.rbpo.Size = New System.Drawing.Size(48, 22)
+        Me.rbpo.TabIndex = 45
+        Me.rbpo.TabStop = True
+        Me.rbpo.Text = "PO"
+        Me.rbpo.UseVisualStyleBackColor = True
+        '
+        'rbfaktur
+        '
+        Me.rbfaktur.AutoSize = True
+        Me.rbfaktur.Location = New System.Drawing.Point(7, 21)
+        Me.rbfaktur.Margin = New System.Windows.Forms.Padding(4)
+        Me.rbfaktur.Name = "rbfaktur"
+        Me.rbfaktur.Size = New System.Drawing.Size(68, 22)
+        Me.rbfaktur.TabIndex = 43
+        Me.rbfaktur.TabStop = True
+        Me.rbfaktur.Text = "Faktur"
+        Me.rbfaktur.UseVisualStyleBackColor = True
         '
         'GroupBox5
         '
@@ -903,6 +960,7 @@ Partial Class fpembelian
         '
         'Label17
         '
+        Me.Label17.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label17.Location = New System.Drawing.Point(1037, 529)
@@ -913,6 +971,7 @@ Partial Class fpembelian
         '
         'txtdiskonnominal
         '
+        Me.txtdiskonnominal.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtdiskonnominal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtdiskonnominal.Location = New System.Drawing.Point(1056, 525)
         Me.txtdiskonnominal.MaxLength = 12
@@ -922,6 +981,7 @@ Partial Class fpembelian
         '
         'Label19
         '
+        Me.Label19.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label19.Location = New System.Drawing.Point(1037, 558)
@@ -932,6 +992,7 @@ Partial Class fpembelian
         '
         'txtppnnominal
         '
+        Me.txtppnnominal.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtppnnominal.Enabled = False
         Me.txtppnnominal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtppnnominal.Location = New System.Drawing.Point(1056, 554)
@@ -942,9 +1003,10 @@ Partial Class fpembelian
         '
         'Label20
         '
+        Me.Label20.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label20.Location = New System.Drawing.Point(902, 653)
+        Me.Label20.Location = New System.Drawing.Point(618, 533)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(121, 18)
         Me.Label20.TabIndex = 44
@@ -952,49 +1014,36 @@ Partial Class fpembelian
         '
         'txtnosupplier
         '
+        Me.txtnosupplier.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtnosupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txtnosupplier.Location = New System.Drawing.Point(903, 674)
+        Me.txtnosupplier.Location = New System.Drawing.Point(619, 554)
         Me.txtnosupplier.MaxLength = 12
         Me.txtnosupplier.Name = "txtnosupplier"
-        Me.txtnosupplier.Size = New System.Drawing.Size(334, 24)
+        Me.txtnosupplier.Size = New System.Drawing.Size(263, 24)
         Me.txtnosupplier.TabIndex = 45
         '
-        'GroupBox6
+        'dtcreated
         '
-        Me.GroupBox6.Controls.Add(Me.rbpo)
-        Me.GroupBox6.Controls.Add(Me.rbfaktur)
-        Me.GroupBox6.Location = New System.Drawing.Point(441, 10)
-        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox6.Size = New System.Drawing.Size(131, 52)
-        Me.GroupBox6.TabIndex = 46
-        Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "Tipe Cetak"
+        Me.dtcreated.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.dtcreated.Enabled = False
+        Me.dtcreated.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.dtcreated.Location = New System.Drawing.Point(730, 690)
+        Me.dtcreated.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtcreated.Name = "dtcreated"
+        Me.dtcreated.Size = New System.Drawing.Size(193, 23)
+        Me.dtcreated.TabIndex = 77
         '
-        'rbpo
+        'Label25
         '
-        Me.rbpo.AutoSize = True
-        Me.rbpo.Location = New System.Drawing.Point(76, 21)
-        Me.rbpo.Margin = New System.Windows.Forms.Padding(4)
-        Me.rbpo.Name = "rbpo"
-        Me.rbpo.Size = New System.Drawing.Size(48, 22)
-        Me.rbpo.TabIndex = 45
-        Me.rbpo.TabStop = True
-        Me.rbpo.Text = "PO"
-        Me.rbpo.UseVisualStyleBackColor = True
-        '
-        'rbfaktur
-        '
-        Me.rbfaktur.AutoSize = True
-        Me.rbfaktur.Location = New System.Drawing.Point(7, 21)
-        Me.rbfaktur.Margin = New System.Windows.Forms.Padding(4)
-        Me.rbfaktur.Name = "rbfaktur"
-        Me.rbfaktur.Size = New System.Drawing.Size(68, 22)
-        Me.rbfaktur.TabIndex = 43
-        Me.rbfaktur.TabStop = True
-        Me.rbfaktur.Text = "Faktur"
-        Me.rbfaktur.UseVisualStyleBackColor = True
+        Me.Label25.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label25.Location = New System.Drawing.Point(621, 692)
+        Me.Label25.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(103, 18)
+        Me.Label25.TabIndex = 76
+        Me.Label25.Text = "Date Created :"
         '
         'fpembelian
         '
@@ -1002,6 +1051,8 @@ Partial Class fpembelian
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1252, 722)
+        Me.Controls.Add(Me.dtcreated)
+        Me.Controls.Add(Me.Label25)
         Me.Controls.Add(Me.txtnosupplier)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.txtppnnominal)
@@ -1027,7 +1078,6 @@ Partial Class fpembelian
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Margin = New System.Windows.Forms.Padding(2)
-        Me.MaximizeBox = False
         Me.Name = "fpembelian"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pembelian"
@@ -1041,10 +1091,10 @@ Partial Class fpembelian
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1133,4 +1183,6 @@ Partial Class fpembelian
     Friend WithEvents GroupBox6 As GroupBox
     Friend WithEvents rbpo As RadioButton
     Friend WithEvents rbfaktur As RadioButton
+    Friend WithEvents dtcreated As DateTimePicker
+    Friend WithEvents Label25 As Label
 End Class

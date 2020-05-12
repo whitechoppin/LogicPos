@@ -48,4 +48,8 @@ Public Class fcarilunasbeli
         End If
         Me.Close()
     End Sub
+
+    Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
+
+    End Sub
 End Class

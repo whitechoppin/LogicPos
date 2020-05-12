@@ -45,4 +45,24 @@ Public Class fcarilunasjual
         End If
         Me.Close()
     End Sub
+
+    Sub ambil_data()
+        kode = Me.GridView1.GetFocusedRowCellValue("kode_penjualan")
+        Dim tabellunas As DataTable
+
+        Call koneksii()
+        'Using cnn As New OdbcConnection(strConn)
+        sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            tabellunas.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"))
+            GridControl1.RefreshDataSource()
+        End While
+        'End Using
+    End Sub
+
+    Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
+
+    End Sub
 End Class

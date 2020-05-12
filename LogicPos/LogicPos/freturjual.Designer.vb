@@ -128,7 +128,6 @@ Partial Class freturjual
         Me.GroupBox3.Controls.Add(Me.Label3)
         Me.GroupBox3.Controls.Add(Me.txtnoretur)
         Me.GroupBox3.Controls.Add(Me.Label2)
-        Me.GroupBox3.Controls.Add(Me.GroupBox1)
         Me.GroupBox3.Controls.Add(Me.txttelp)
         Me.GroupBox3.Controls.Add(Me.txtalamat)
         Me.GroupBox3.Controls.Add(Me.Label22)
@@ -152,7 +151,7 @@ Partial Class freturjual
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(1088, 148)
+        Me.GroupBox3.Size = New System.Drawing.Size(1200, 134)
         Me.GroupBox3.TabIndex = 52
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Retur Faktur"
@@ -160,17 +159,17 @@ Partial Class freturjual
         'dtreturjual
         '
         Me.dtreturjual.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtreturjual.Location = New System.Drawing.Point(142, 84)
+        Me.dtreturjual.Location = New System.Drawing.Point(196, 74)
         Me.dtreturjual.Margin = New System.Windows.Forms.Padding(4)
         Me.dtreturjual.Name = "dtreturjual"
-        Me.dtreturjual.Size = New System.Drawing.Size(242, 23)
+        Me.dtreturjual.Size = New System.Drawing.Size(263, 23)
         Me.dtreturjual.TabIndex = 75
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label3.Location = New System.Drawing.Point(31, 86)
+        Me.Label3.Location = New System.Drawing.Point(88, 76)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(84, 18)
@@ -181,17 +180,17 @@ Partial Class freturjual
         '
         Me.txtnoretur.Enabled = False
         Me.txtnoretur.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnoretur.Location = New System.Drawing.Point(142, 29)
+        Me.txtnoretur.Location = New System.Drawing.Point(196, 19)
         Me.txtnoretur.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnoretur.Name = "txtnoretur"
-        Me.txtnoretur.Size = New System.Drawing.Size(242, 24)
+        Me.txtnoretur.Size = New System.Drawing.Size(263, 24)
         Me.txtnoretur.TabIndex = 73
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label2.Location = New System.Drawing.Point(31, 32)
+        Me.Label2.Location = New System.Drawing.Point(88, 22)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(103, 18)
@@ -203,9 +202,9 @@ Partial Class freturjual
         Me.GroupBox1.Controls.Add(Me.cbposted)
         Me.GroupBox1.Controls.Add(Me.cbprinted)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox1.Location = New System.Drawing.Point(878, 11)
+        Me.GroupBox1.Location = New System.Drawing.Point(754, 10)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(202, 43)
+        Me.GroupBox1.Size = New System.Drawing.Size(202, 52)
         Me.GroupBox1.TabIndex = 59
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Status"
@@ -214,7 +213,7 @@ Partial Class freturjual
         '
         Me.cbposted.AutoSize = True
         Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(111, 15)
+        Me.cbposted.Location = New System.Drawing.Point(111, 21)
         Me.cbposted.Name = "cbposted"
         Me.cbposted.Size = New System.Drawing.Size(74, 22)
         Me.cbposted.TabIndex = 41
@@ -226,7 +225,7 @@ Partial Class freturjual
         Me.cbprinted.AutoSize = True
         Me.cbprinted.Enabled = False
         Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(23, 15)
+        Me.cbprinted.Location = New System.Drawing.Point(23, 21)
         Me.cbprinted.Name = "cbprinted"
         Me.cbprinted.Size = New System.Drawing.Size(73, 22)
         Me.cbprinted.TabIndex = 40
@@ -236,20 +235,20 @@ Partial Class freturjual
         'txttelp
         '
         Me.txttelp.Enabled = False
-        Me.txttelp.Location = New System.Drawing.Point(484, 45)
+        Me.txttelp.Location = New System.Drawing.Point(562, 47)
         Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(248, 24)
+        Me.txttelp.Size = New System.Drawing.Size(265, 24)
         Me.txttelp.TabIndex = 71
         '
         'txtalamat
         '
         Me.txtalamat.Enabled = False
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtalamat.Location = New System.Drawing.Point(484, 72)
+        Me.txtalamat.Location = New System.Drawing.Point(562, 74)
         Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
         Me.txtalamat.Name = "txtalamat"
-        Me.txtalamat.Size = New System.Drawing.Size(248, 70)
+        Me.txtalamat.Size = New System.Drawing.Size(265, 49)
         Me.txtalamat.TabIndex = 70
         Me.txtalamat.Text = ""
         '
@@ -257,7 +256,7 @@ Partial Class freturjual
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label22.Location = New System.Drawing.Point(399, 48)
+        Me.Label22.Location = New System.Drawing.Point(477, 50)
         Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(63, 18)
@@ -268,7 +267,7 @@ Partial Class freturjual
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label20.Location = New System.Drawing.Point(396, 76)
+        Me.Label20.Location = New System.Drawing.Point(474, 78)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(88, 18)
@@ -278,18 +277,18 @@ Partial Class freturjual
         'cmbsales
         '
         Me.cmbsales.FormattingEnabled = True
-        Me.cmbsales.Location = New System.Drawing.Point(142, 111)
+        Me.cmbsales.Location = New System.Drawing.Point(196, 101)
         Me.cmbsales.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbsales.MaxLength = 99
         Me.cmbsales.Name = "cmbsales"
-        Me.cmbsales.Size = New System.Drawing.Size(242, 26)
+        Me.cmbsales.Size = New System.Drawing.Size(263, 26)
         Me.cmbsales.TabIndex = 57
         '
         'Label16
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label16.Location = New System.Drawing.Point(31, 113)
+        Me.Label16.Location = New System.Drawing.Point(88, 104)
         Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(84, 18)
@@ -301,18 +300,18 @@ Partial Class freturjual
         Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
         Me.cmbgudang.Enabled = False
         Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(885, 114)
+        Me.cmbgudang.Location = New System.Drawing.Point(971, 74)
         Me.cmbgudang.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
-        Me.cmbgudang.Size = New System.Drawing.Size(193, 26)
+        Me.cmbgudang.Size = New System.Drawing.Size(214, 26)
         Me.cmbgudang.TabIndex = 58
         '
         'Label14
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label14.Location = New System.Drawing.Point(763, 117)
+        Me.Label14.Location = New System.Drawing.Point(849, 77)
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(99, 18)
@@ -323,17 +322,17 @@ Partial Class freturjual
         '
         Me.dtpenjualan.Enabled = False
         Me.dtpenjualan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtpenjualan.Location = New System.Drawing.Point(885, 59)
+        Me.dtpenjualan.Location = New System.Drawing.Point(971, 19)
         Me.dtpenjualan.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpenjualan.Name = "dtpenjualan"
-        Me.dtpenjualan.Size = New System.Drawing.Size(193, 23)
+        Me.dtpenjualan.Size = New System.Drawing.Size(214, 23)
         Me.dtpenjualan.TabIndex = 63
         '
         'Label17
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label17.Location = New System.Drawing.Point(759, 62)
+        Me.Label17.Location = New System.Drawing.Point(845, 22)
         Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(96, 18)
@@ -344,7 +343,7 @@ Partial Class freturjual
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label21.Location = New System.Drawing.Point(759, 89)
+        Me.Label21.Location = New System.Drawing.Point(845, 49)
         Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(119, 18)
@@ -356,19 +355,19 @@ Partial Class freturjual
         Me.dtjatuhtempo.CustomFormat = ""
         Me.dtjatuhtempo.Enabled = False
         Me.dtjatuhtempo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtjatuhtempo.Location = New System.Drawing.Point(885, 87)
+        Me.dtjatuhtempo.Location = New System.Drawing.Point(971, 47)
         Me.dtjatuhtempo.Margin = New System.Windows.Forms.Padding(4)
         Me.dtjatuhtempo.Name = "dtjatuhtempo"
-        Me.dtjatuhtempo.Size = New System.Drawing.Size(193, 23)
+        Me.dtjatuhtempo.Size = New System.Drawing.Size(214, 23)
         Me.dtjatuhtempo.TabIndex = 65
         '
         'txtcustomer
         '
         Me.txtcustomer.Enabled = False
-        Me.txtcustomer.Location = New System.Drawing.Point(484, 18)
+        Me.txtcustomer.Location = New System.Drawing.Point(562, 20)
         Me.txtcustomer.Margin = New System.Windows.Forms.Padding(4)
         Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(248, 24)
+        Me.txtcustomer.Size = New System.Drawing.Size(265, 24)
         Me.txtcustomer.TabIndex = 46
         '
         'btncarinota
@@ -376,7 +375,7 @@ Partial Class freturjual
         Me.btncarinota.BackgroundImage = CType(resources.GetObject("btncarinota.BackgroundImage"), System.Drawing.Image)
         Me.btncarinota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarinota.ImageIndex = 0
-        Me.btncarinota.Location = New System.Drawing.Point(309, 55)
+        Me.btncarinota.Location = New System.Drawing.Point(384, 45)
         Me.btncarinota.Margin = New System.Windows.Forms.Padding(4)
         Me.btncarinota.Name = "btncarinota"
         Me.btncarinota.Size = New System.Drawing.Size(25, 26)
@@ -385,7 +384,7 @@ Partial Class freturjual
         '
         'btngo
         '
-        Me.btngo.Location = New System.Drawing.Point(337, 55)
+        Me.btngo.Location = New System.Drawing.Point(412, 45)
         Me.btngo.Margin = New System.Windows.Forms.Padding(4)
         Me.btngo.Name = "btngo"
         Me.btngo.Size = New System.Drawing.Size(47, 27)
@@ -397,17 +396,17 @@ Partial Class freturjual
         '
         Me.txtnonota.Enabled = False
         Me.txtnonota.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnonota.Location = New System.Drawing.Point(142, 56)
+        Me.txtnonota.Location = New System.Drawing.Point(196, 46)
         Me.txtnonota.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnonota.Name = "txtnonota"
-        Me.txtnonota.Size = New System.Drawing.Size(168, 24)
+        Me.txtnonota.Size = New System.Drawing.Size(189, 24)
         Me.txtnonota.TabIndex = 9
         '
         'Label19
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label19.Location = New System.Drawing.Point(31, 59)
+        Me.Label19.Location = New System.Drawing.Point(88, 49)
         Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(78, 18)
@@ -418,7 +417,7 @@ Partial Class freturjual
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label4.Location = New System.Drawing.Point(396, 21)
+        Me.Label4.Location = New System.Drawing.Point(474, 23)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(83, 18)
@@ -439,11 +438,11 @@ Partial Class freturjual
         'GridControl1
         '
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl1.Location = New System.Drawing.Point(20, 226)
+        Me.GridControl1.Location = New System.Drawing.Point(19, 207)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1088, 223)
+        Me.GridControl1.Size = New System.Drawing.Size(1202, 223)
         Me.GridControl1.TabIndex = 55
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -612,7 +611,7 @@ Partial Class freturjual
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(20, 452)
+        Me.Label1.Location = New System.Drawing.Point(20, 430)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(128, 18)
@@ -622,12 +621,12 @@ Partial Class freturjual
         'GridControl2
         '
         Me.GridControl2.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl2.Location = New System.Drawing.Point(19, 472)
+        Me.GridControl2.Location = New System.Drawing.Point(19, 450)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1, Me.RepositoryItemTextEdit2})
-        Me.GridControl2.Size = New System.Drawing.Size(1090, 221)
+        Me.GridControl2.Size = New System.Drawing.Size(1202, 221)
         Me.GridControl2.TabIndex = 57
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -809,11 +808,12 @@ Partial Class freturjual
         Me.GroupBox4.Controls.Add(Me.btnbatal)
         Me.GroupBox4.Controls.Add(Me.btnbaru)
         Me.GroupBox4.Controls.Add(Me.btnprint)
+        Me.GroupBox4.Controls.Add(Me.GroupBox1)
         Me.GroupBox4.Controls.Add(Me.btnsimpan)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.GroupBox4.Location = New System.Drawing.Point(255, 4)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(854, 72)
+        Me.GroupBox4.Size = New System.Drawing.Size(966, 72)
         Me.GroupBox4.TabIndex = 58
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Tools"
@@ -824,7 +824,7 @@ Partial Class freturjual
         Me.GroupBox5.Controls.Add(Me.btnnext)
         Me.GroupBox5.Controls.Add(Me.txtgoretur)
         Me.GroupBox5.Controls.Add(Me.btngoretur)
-        Me.GroupBox5.Location = New System.Drawing.Point(507, 10)
+        Me.GroupBox5.Location = New System.Drawing.Point(409, 10)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(339, 52)
         Me.GroupBox5.TabIndex = 37
@@ -905,7 +905,7 @@ Partial Class freturjual
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label15.Location = New System.Drawing.Point(18, 694)
+        Me.Label15.Location = New System.Drawing.Point(18, 672)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(83, 18)
@@ -915,10 +915,10 @@ Partial Class freturjual
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtketerangan.Location = New System.Drawing.Point(19, 713)
+        Me.txtketerangan.Location = New System.Drawing.Point(19, 691)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(1090, 92)
+        Me.txtketerangan.Size = New System.Drawing.Size(1202, 92)
         Me.txtketerangan.TabIndex = 60
         Me.txtketerangan.Text = ""
         '
@@ -927,7 +927,7 @@ Partial Class freturjual
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1123, 814)
+        Me.ClientSize = New System.Drawing.Size(1233, 796)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.txtketerangan)
         Me.Controls.Add(Me.GroupBox4)

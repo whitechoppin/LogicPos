@@ -24,4 +24,8 @@
         CuRHeight = Me.Height
         CuRWidth = Me.Width
     End Sub
+
+    Private Sub ftokosejati_KeyPress(sender As Object, e As KeyPressEventArgs) Handles MyBase.KeyPress
+
+    End Sub
 End Class

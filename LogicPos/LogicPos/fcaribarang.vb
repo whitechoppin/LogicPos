@@ -48,21 +48,23 @@ Public Class fcaribarang
         kode = Me.GridView1.GetFocusedRowCellValue("kode_barang")
         Dim foto As Byte()
         'menyiapkan koneksi database
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            cnn.Open()
-            dr = cmmd.ExecuteReader
-            dr.Read()
-            If dr.HasRows Then
-                modalbarang = dr("modal_barang")
-                LabelHarga.Text = Format(modalbarang, "##,##0")
-                foto = dr("gambar_barang")
-                PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-                PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
-                cnn.Close()
-            End If
-        End Using
+        Call koneksii()
+
+        'Using cnn As New OdbcConnection(strConn)
+        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        'cnn.Open()
+        dr = cmmd.ExecuteReader
+        dr.Read()
+        If dr.HasRows Then
+            modalbarang = dr("modal_barang")
+            LabelHarga.Text = Format(modalbarang, "##,##0")
+            foto = dr("gambar_barang")
+            PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+            PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
+            'cnn.Close()
+        End If
+        'End Using
     End Sub
 
     Private Sub Gridview1_KeyUp(sender As Object, e As KeyEventArgs)
