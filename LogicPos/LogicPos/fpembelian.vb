@@ -14,7 +14,7 @@ Public Class fpembelian
     'variabel bantuan view pembelian
     Dim nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan, viewnomorsupplier, viewbayar, kodepembayaran As String
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
-    Dim viewtglpembelian, viewtgljatuhtempo As DateTime
+    Dim viewtglpembelian, viewtgljatuhtempo, viewtglcreated As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir As Double
     Dim rpt_faktur As New ReportDocument
 
@@ -197,6 +197,9 @@ Public Class fpembelian
         btncaripembelian.Enabled = True
         btnnext.Enabled = True
 
+        rbfaktur.Checked = False
+        rbpo.Checked = True
+
         'buat tabel
         Call tabel_utama()
 
@@ -296,85 +299,89 @@ Public Class fpembelian
         Call comboboxgudang()
 
         If nomorkode IsNot "" Then
-            Using cnn As New OdbcConnection(strConn)
-                sql = "SELECT * FROM tb_pembelian WHERE kode_pembelian = '" + nomorkode.ToString + "'"
+            Call koneksii()
+
+            'Using cnn As New OdbcConnection(strConn)
+            sql = "SELECT * FROM tb_pembelian WHERE kode_pembelian = '" + nomorkode.ToString + "'"
                 cmmd = New OdbcCommand(sql, cnn)
-                cnn.Open()
-                dr = cmmd.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    'header
-                    nomornota = dr("kode_pembelian")
-                    nomorsupplier = dr("kode_supplier")
-                    nomorsales = dr("kode_user")
-                    nomorgudang = dr("kode_gudang")
-                    statuslunas = dr("lunas_pembelian")
-                    statusvoid = dr("void_pembelian")
-                    statusprint = dr("print_pembelian")
-                    statusposted = dr("posted_pembelian")
-                    viewtglpembelian = dr("tgl_pembelian")
-                    viewtgljatuhtempo = dr("tgl_jatuhtempo_pembelian")
-                    viewketerangan = dr("keterangan_pembelian")
-                    viewnomorsupplier = dr("no_nota_pembelian")
-                    nilaidiskon = dr("diskon_pembelian")
-                    nilaippn = dr("pajak_pembelian")
-                    nilaiongkir = dr("ongkir_pembelian")
-                    viewbayar = dr("pembayaran_pembelian")
+            'cnn.Open()
+            dr = cmmd.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                'header
+                nomornota = dr("kode_pembelian")
+                nomorsupplier = dr("kode_supplier")
+                nomorsales = dr("kode_user")
+                nomorgudang = dr("kode_gudang")
+                statuslunas = dr("lunas_pembelian")
+                statusvoid = dr("void_pembelian")
+                statusprint = dr("print_pembelian")
+                statusposted = dr("posted_pembelian")
+                viewtglpembelian = dr("tgl_pembelian")
+                viewtgljatuhtempo = dr("tgl_jatuhtempo_pembelian")
+                viewtglcreated = dr("date_created")
+                viewketerangan = dr("keterangan_pembelian")
+                viewnomorsupplier = dr("no_nota_pembelian")
+                nilaidiskon = dr("diskon_pembelian")
+                nilaippn = dr("pajak_pembelian")
+                nilaiongkir = dr("ongkir_pembelian")
+                viewbayar = dr("pembayaran_pembelian")
 
-                    txtnonota.Text = nomornota
-                    cmbsupplier.Text = nomorsupplier
-                    cmbsales.Text = nomorsales
-                    cmbgudang.Text = nomorgudang
-                    cblunas.Checked = statuslunas
-                    cbvoid.Checked = statusvoid
-                    cbprinted.Checked = statusprint
-                    cbposted.Checked = statusposted
+                txtnonota.Text = nomornota
+                cmbsupplier.Text = nomorsupplier
+                cmbsales.Text = nomorsales
+                cmbgudang.Text = nomorgudang
+                cblunas.Checked = statuslunas
+                cbvoid.Checked = statusvoid
+                cbprinted.Checked = statusprint
+                cbposted.Checked = statusposted
 
-                    dtpembelian.Value = viewtglpembelian
-                    dtjatuhtempo.Value = viewtgljatuhtempo
+                dtpembelian.Value = viewtglpembelian
+                dtjatuhtempo.Value = viewtgljatuhtempo
+                dtcreated.Value = viewtglcreated
 
-                    'isi tabel view pembelian
+                'isi tabel view pembelian
 
-                    Call previewpembelian(nomorkode)
+                Call previewpembelian(nomorkode)
 
-                    'total tabel pembelian
+                'total tabel pembelian
 
-                    txtketerangan.Text = viewketerangan
-                    txtnosupplier.Text = viewnomorsupplier
+                txtketerangan.Text = viewketerangan
+                txtnosupplier.Text = viewnomorsupplier
 
-                    If nilaidiskon <> 0 Then
-                        cbdiskon.Checked = True
-                        txtdiskonpersen.Text = nilaidiskon
-                    Else
-                        cbdiskon.Checked = False
-                        txtdiskonpersen.Text = 0
-                    End If
-
-                    If nilaippn <> 0 Then
-                        cbppn.Checked = True
-                        txtppnpersen.Text = nilaippn
-                    Else
-                        cbppn.Checked = False
-                        txtppnpersen.Text = 0
-                    End If
-
-                    If nilaiongkir <> 0 Then
-                        cbongkir.Checked = True
-                        txtongkir.Text = nilaiongkir
-                    Else
-                        cbongkir.Checked = False
-                        txtongkir.Text = 0
-                    End If
-
-                    txtongkir.Enabled = False
-                    txtppnpersen.Enabled = False
-                    txtdiskonpersen.Enabled = False
-
-                    cmbbayar.Text = viewbayar
-
-                    cnn.Close()
+                If nilaidiskon <> 0 Then
+                    cbdiskon.Checked = True
+                    txtdiskonpersen.Text = nilaidiskon
+                Else
+                    cbdiskon.Checked = False
+                    txtdiskonpersen.Text = 0
                 End If
-            End Using
+
+                If nilaippn <> 0 Then
+                    cbppn.Checked = True
+                    txtppnpersen.Text = nilaippn
+                Else
+                    cbppn.Checked = False
+                    txtppnpersen.Text = 0
+                End If
+
+                If nilaiongkir <> 0 Then
+                    cbongkir.Checked = True
+                    txtongkir.Text = nilaiongkir
+                Else
+                    cbongkir.Checked = False
+                    txtongkir.Text = 0
+                End If
+
+                txtongkir.Enabled = False
+                txtppnpersen.Enabled = False
+                txtdiskonpersen.Enabled = False
+
+                cmbbayar.Text = viewbayar
+
+                'cnn.Close()
+            End If
+            'End Using
         Else
             txtnonota.Clear()
             cmbsupplier.Text = ""
@@ -516,6 +523,8 @@ Public Class fpembelian
 
         cmbbayar.SelectedIndex = -1
         cmbbayar.Enabled = True
+
+        dtcreated.Value = Now
 
         'isi combo box
         Call comboboxsupplier()

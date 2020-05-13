@@ -64,6 +64,9 @@ Partial Class fpersentasepajak
         Me.Controls.Add(Me.txtpersen)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnsimpan)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "fpersentasepajak"
         Me.Text = "Persentase Pajak"
         Me.ResumeLayout(False)

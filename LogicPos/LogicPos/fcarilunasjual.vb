@@ -3,6 +3,9 @@
 Public Class fcarilunasjual
     Dim pilih As String
     Dim kode As String
+
+    Public tabellunas As DataTable
+
     Private Sub fcarilunasjual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call tabel()
         'With GridView1
@@ -26,7 +29,31 @@ Public Class fcarilunasjual
         GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
         GridColumn5.Caption = "Keterangan"
         GridColumn5.FieldName = "keterangan_penjualan"
+
         GridControl1.Visible = True
+    End Sub
+
+    Sub gridlunas()
+        tabellunas = New DataTable
+
+        With tabellunas
+            .Columns.Add("kode_lunas")
+            .Columns.Add("tgl_pelunasan")
+            .Columns.Add("terima_piutang", GetType(Double))
+        End With
+
+        GridControl2.DataSource = tabellunas
+
+        GridColumn6.Caption = "Kode"
+        GridColumn6.FieldName = "kode_lunas"
+        GridColumn7.Caption = "Tanggal"
+        GridColumn7.FieldName = "tgl_pelunasan"
+        GridColumn8.Caption = "Terima"
+        GridColumn8.FieldName = "terima_piutang"
+        GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn8.DisplayFormat.FormatString = "Rp ##,#0"
+
+        GridControl2.Visible = True
     End Sub
     Sub tabel()
         Call koneksii()
@@ -46,23 +73,30 @@ Public Class fcarilunasjual
         Me.Close()
     End Sub
 
-    Sub ambil_data()
+    Sub tabel_lunas()
+        Call gridlunas()
         kode = Me.GridView1.GetFocusedRowCellValue("kode_penjualan")
-        Dim tabellunas As DataTable
 
         Call koneksii()
-        'Using cnn As New OdbcConnection(strConn)
-        sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
+        sql = "SELECT * FROM tb_penjualan WHERE kode_penjualan = '" & kode & "' LIMIT 1"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            tabellunas.Rows.Add("DP : " + dr("kode_penjualan"), dr("last_updated"), dr("bayar_penjualan"))
+        End If
+
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE kode_penjualan ='" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabellunas.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"))
-            GridControl1.RefreshDataSource()
+            tabellunas.Rows.Add(dr("kode_lunas"), dr("last_updated"), dr("terima_piutang"))
         End While
-        'End Using
+
+        GridControl2.RefreshDataSource()
     End Sub
 
-    Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
-
+    Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click
+        Call tabel_lunas()
     End Sub
 End Class
