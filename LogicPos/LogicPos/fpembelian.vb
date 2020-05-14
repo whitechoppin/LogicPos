@@ -974,15 +974,25 @@ Public Class fpembelian
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             If cbvoid.Checked = False Then
-                Call cetak_faktur()
+                If rbfaktur.Checked Then
+                    Call cetak_faktur()
 
-                Call koneksii()
-                sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
+                    Call koneksii()
+                    sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
 
-                cbprinted.Checked = True
+                    cbprinted.Checked = True
+                ElseIf rbpo.Checked Then
+                    Call cetak_po()
 
+                    Call koneksii()
+                    sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
+
+                    cbprinted.Checked = True
+                End If
                 'history user ==========
                 Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
                 '========================
@@ -1039,6 +1049,71 @@ Public Class fpembelian
         Next
 
         rpt_faktur = New fakturpembelian
+        rpt_faktur.SetDataSource(tabel_faktur)
+
+        rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
+        rpt_faktur.SetParameterValue("alamatperusahaan", alamat)
+        rpt_faktur.SetParameterValue("teleponperusahaan", telp)
+        rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
+        rpt_faktur.SetParameterValue("diskon", diskonnominal)
+        rpt_faktur.SetParameterValue("grandtotal", grandtotal)
+        rpt_faktur.SetParameterValue("ppn", ppnnominal)
+        rpt_faktur.SetParameterValue("ongkir", ongkir)
+        rpt_faktur.SetParameterValue("tanggal", dtpembelian.Text)
+        rpt_faktur.SetParameterValue("supplier", txtsupplier.Text)
+        rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
+
+        SetReportPageSize("Faktur", 1)
+        rpt_faktur.PrintToPrinter(1, False, 0, 0)
+    End Sub
+
+    Sub cetak_po()
+        Dim tabel_faktur As New DataTable
+        'ambil data alamat
+        Dim alamat, telp, rekening As String
+
+        Call koneksii()
+        sql = "SELECT * FROM tb_info_perusahaan LIMIT 1"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            alamat = dr("alamat")
+            telp = dr("telepon")
+            rekening = dr("rekening")
+        Else
+            alamat = ""
+            telp = ""
+            rekening = ""
+        End If
+        '==================
+
+        With tabel_faktur
+            .Columns.Add("kode_stok")
+            .Columns.Add("kode_barang")
+            .Columns.Add("nama_barang")
+            .Columns.Add("qty", GetType(Double))
+            .Columns.Add("satuan_barang")
+            .Columns.Add("jenis_barang")
+            .Columns.Add("harga", GetType(Double))
+            .Columns.Add("subtotal", GetType(Double))
+        End With
+
+        Dim baris As DataRow
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_faktur.NewRow
+            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+            baris("qty") = GridView1.GetRowCellValue(i, "qty")
+            baris("satuan_barang") = GridView1.GetRowCellValue(i, "satuan_barang")
+            baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
+            baris("harga") = GridView1.GetRowCellValue(i, "harga")
+            baris("subtotal") = GridView1.GetRowCellValue(i, "subtotal")
+            tabel_faktur.Rows.Add(baris)
+        Next
+
+        rpt_faktur = New fakturpopembelian
         rpt_faktur.SetDataSource(tabel_faktur)
 
         rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
