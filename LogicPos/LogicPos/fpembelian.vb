@@ -568,6 +568,8 @@ Public Class fpembelian
 
         GridColumn4.Caption = "Qty"
         GridColumn4.FieldName = "qty"
+        GridColumn4.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn4.DisplayFormat.FormatString = "{0:n0}"
         GridColumn4.Width = 20
 
         GridColumn5.FieldName = "satuan_barang"

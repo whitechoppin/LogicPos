@@ -313,11 +313,11 @@ Public Class fcustomer
             MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "Edit"
         Else
-            Try
+            'Try
 
-            Catch ex As Exception
+            'Catch ex As Exception
 
-            End Try
+            'End Try
             sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & kodecustomeredit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)

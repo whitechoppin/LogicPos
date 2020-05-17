@@ -97,8 +97,8 @@ Public Class fbarang
         btnhapus.Enabled = False
         btnbatal.Enabled = False
 
-        txtkode.MaxLength = 20
-        txtnama.MaxLength = 20
+        'txtkode.MaxLength = 20
+        'txtnama.MaxLength = 20
 
         GridControl.Enabled = True
         Call comboboxkategori()

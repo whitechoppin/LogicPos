@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class fkalkulasiexpedisi
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class fkalkulasiexpedisi
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fkalkulasiexpedisi))
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
@@ -92,6 +92,8 @@ Partial Class fkalkulasiexpedisi
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
+        Me.btnrefresh = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,11 +106,11 @@ Partial Class fkalkulasiexpedisi
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(10, 272)
+        Me.GridControl1.Location = New System.Drawing.Point(13, 272)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ritenumber})
-        Me.GridControl1.Size = New System.Drawing.Size(1156, 243)
+        Me.GridControl1.Size = New System.Drawing.Size(1271, 243)
         Me.GridControl1.TabIndex = 21
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -291,7 +293,7 @@ Partial Class fkalkulasiexpedisi
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.GroupBox4.Location = New System.Drawing.Point(271, 12)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(895, 72)
+        Me.GroupBox4.Size = New System.Drawing.Size(1013, 72)
         Me.GroupBox4.TabIndex = 44
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Tools"
@@ -422,7 +424,7 @@ Partial Class fkalkulasiexpedisi
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.GroupBox2.Location = New System.Drawing.Point(13, 80)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1153, 126)
+        Me.GroupBox2.Size = New System.Drawing.Size(1271, 126)
         Me.GroupBox2.TabIndex = 43
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Detail Expedisi"
@@ -616,6 +618,8 @@ Partial Class fkalkulasiexpedisi
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.btnrefresh)
         Me.GroupBox1.Controls.Add(Me.txthargabarang)
         Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.Label17)
@@ -635,7 +639,7 @@ Partial Class fkalkulasiexpedisi
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(13, 203)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1153, 63)
+        Me.GroupBox1.Size = New System.Drawing.Size(1271, 63)
         Me.GroupBox1.TabIndex = 41
         Me.GroupBox1.TabStop = False
         '
@@ -741,7 +745,7 @@ Partial Class fkalkulasiexpedisi
         Me.btntambahbarang.BackgroundImage = CType(resources.GetObject("btntambahbarang.BackgroundImage"), System.Drawing.Image)
         Me.btntambahbarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btntambahbarang.ImageIndex = 0
-        Me.btntambahbarang.Location = New System.Drawing.Point(1092, 12)
+        Me.btntambahbarang.Location = New System.Drawing.Point(1087, 12)
         Me.btntambahbarang.Name = "btntambahbarang"
         Me.btntambahbarang.Size = New System.Drawing.Size(55, 46)
         Me.btntambahbarang.TabIndex = 24
@@ -817,16 +821,38 @@ Partial Class fkalkulasiexpedisi
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.txtketerangan.Location = New System.Drawing.Point(10, 541)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(598, 92)
+        Me.txtketerangan.Size = New System.Drawing.Size(913, 99)
         Me.txtketerangan.TabIndex = 56
         Me.txtketerangan.Text = ""
+        '
+        'btnrefresh
+        '
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(1209, 12)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(55, 46)
+        Me.btnrefresh.TabIndex = 35
+        Me.btnrefresh.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.ImageIndex = 0
+        Me.Button1.Location = New System.Drawing.Point(1148, 12)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(55, 46)
+        Me.Button1.TabIndex = 36
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'fkalkulasiexpedisi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1180, 735)
+        Me.ClientSize = New System.Drawing.Size(1296, 652)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtketerangan)
         Me.Controls.Add(Me.GroupBox4)
@@ -922,4 +948,6 @@ Partial Class fkalkulasiexpedisi
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn13 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ritenumber As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents Button1 As Button
+    Friend WithEvents btnrefresh As Button
 End Class
