@@ -8,13 +8,18 @@ Public Class fpembelian
     Dim tabel As DataTable
     Dim hargamodalbarang As Double
     Dim hitnumber As Integer
-    Dim harga, modalpembelian, ongkir, ppn, diskonpersen, diskonnominal, ppnpersen, ppnnominal, subtotalsummary, grandtotal, banyak As Double
+    'variabel dalam pembelian
+    Dim lunasstatus As Integer = 0
+
+    Dim dateterm, datetermnow As Date
+    Dim harga, modalpembelian, ongkir, ppn, diskonpersen, diskonnominal, ppnpersen, ppnnominal, subtotalsummary, grandtotal, banyak, term As Double
     Dim satuan, jenis, supplier, kodepembelian, kodegudang As String
     Public isi As String
     'variabel bantuan view pembelian
     Dim nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan, viewnomorsupplier, viewbayar, kodepembayaran As String
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
-    Dim viewtglpembelian, viewtgljatuhtempo, viewtglcreated As DateTime
+    Dim viewterm As Integer
+    Dim viewtglpembelian, viewtgljatuhtempo, viewtglcreated, viewtglupdated As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir As Double
     Dim rpt_faktur As New ReportDocument
 
@@ -227,6 +232,10 @@ Public Class fpembelian
         dtpembelian.Enabled = False
         dtpembelian.Value = Date.Now
 
+        txtterm.Clear()
+        txtterm.Text = 0
+        txtterm.Enabled = False
+
         dtjatuhtempo.Enabled = False
         dtjatuhtempo.Value = dtpembelian.Value
 
@@ -313,13 +322,19 @@ Public Class fpembelian
                 nomorsupplier = dr("kode_supplier")
                 nomorsales = dr("kode_user")
                 nomorgudang = dr("kode_gudang")
+
                 statuslunas = dr("lunas_pembelian")
                 statusvoid = dr("void_pembelian")
                 statusprint = dr("print_pembelian")
                 statusposted = dr("posted_pembelian")
+
                 viewtglpembelian = dr("tgl_pembelian")
+                viewterm = dr("term_pembelian")
                 viewtgljatuhtempo = dr("tgl_jatuhtempo_pembelian")
+
                 viewtglcreated = dr("date_created")
+                viewtglupdated = dr("last_updated")
+
                 viewketerangan = dr("keterangan_pembelian")
                 viewnomorsupplier = dr("no_nota_pembelian")
                 nilaidiskon = dr("diskon_pembelian")
@@ -337,8 +352,11 @@ Public Class fpembelian
                 cbposted.Checked = statusposted
 
                 dtpembelian.Value = viewtglpembelian
+                txtterm.Text = viewterm
                 dtjatuhtempo.Value = viewtgljatuhtempo
+
                 dtcreated.Value = viewtglcreated
+                dtupdated.Value = viewtglupdated
 
                 'isi tabel view pembelian
 
@@ -459,7 +477,11 @@ Public Class fpembelian
         dtpembelian.Enabled = True
         dtpembelian.Value = Date.Now
 
-        dtjatuhtempo.Enabled = True
+        txtterm.Clear()
+        txtterm.Text = 0
+        txtterm.Enabled = True
+
+        dtjatuhtempo.Enabled = False
         dtjatuhtempo.Value = dtpembelian.Value
 
         'body
@@ -525,6 +547,7 @@ Public Class fpembelian
         cmbbayar.Enabled = True
 
         dtcreated.Value = Now
+        dtupdated.Value = Now
 
         'isi combo box
         Call comboboxsupplier()
@@ -689,6 +712,43 @@ Public Class fpembelian
             txtgudang.Text = ""
         End If
     End Sub
+
+    Private Sub dtpembelian_ValueChanged(sender As Object, e As EventArgs) Handles dtpembelian.ValueChanged
+        dtjatuhtempo.MinDate = dtpembelian.Value
+        'selisih = DateDiff(DateInterval.Day, dtpembelian.Value, dtjatuhtempo.Value)
+        'txtterm.Text = selisih
+        term = txtterm.Text
+        dateterm = dtpembelian.Value
+        datetermnow = dateterm.AddDays(term)
+        dtjatuhtempo.Value = datetermnow
+    End Sub
+
+    Private Sub dtjatuhtempo_ValueChanged(sender As Object, e As EventArgs) Handles dtjatuhtempo.ValueChanged
+        'selisih = DateDiff(DateInterval.Day, dtpembelian.Value, dtjatuhtempo.Value)
+        'txtterm.Text = selisih
+    End Sub
+
+    Private Sub txtterm_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtterm.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtterm_TextChanged(sender As Object, e As EventArgs) Handles txtterm.TextChanged
+        If txtterm.Text = "" Then
+            txtterm.Text = 0
+        Else
+            term = txtterm.Text
+            txtterm.Text = Format(term, "##,##0")
+            txtterm.SelectionStart = Len(txtterm.Text)
+            If term = 0 Then
+                dtjatuhtempo.Value = Date.Now
+            Else
+                dateterm = dtpembelian.Value
+                datetermnow = dateterm.AddDays(term)
+                dtjatuhtempo.Value = datetermnow
+            End If
+        End If
+    End Sub
+
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
 
@@ -872,7 +932,7 @@ Public Class fpembelian
                     'cnn.Open()
                     dr = cmmd.ExecuteReader()
                 Next
-                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,kode_gudang,kode_user,tgl_pembelian,tgl_jatuhtempo_pembelian,lunas_pembelian,void_pembelian,print_pembelian,posted_pembelian,keterangan_pembelian, no_nota_pembelian,diskon_pembelian,pajak_pembelian,ongkir_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & kodepembelian & "','" & cmbsupplier.Text & "','" & kodegudang & "','" & cmbsales.Text & "','" & Format(dtpembelian.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & txtnosupplier.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & txtongkir.Text & "','" & grandtotal & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                sql = "INSERT INTO tb_pembelian (kode_pembelian,kode_supplier,kode_gudang,kode_user,tgl_pembelian,tgl_jatuhtempo_pembelian,term_pembelian,lunas_pembelian,void_pembelian,print_pembelian,posted_pembelian,keterangan_pembelian, no_nota_pembelian,diskon_pembelian,pajak_pembelian,ongkir_pembelian,total_pembelian,pembayaran_pembelian,created_by, updated_by,date_created, last_updated) VALUES ('" & kodepembelian & "','" & cmbsupplier.Text & "','" & kodegudang & "','" & cmbsales.Text & "','" & Format(dtpembelian.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & term & "','" & 0 & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & txtnosupplier.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & txtongkir.Text & "','" & grandtotal & "', '" & cmbbayar.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
@@ -1238,6 +1298,7 @@ Public Class fpembelian
         End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
+
     Private Sub txthargabarang_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txthargabarang.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
@@ -1356,7 +1417,9 @@ Public Class fpembelian
         dtpembelian.Enabled = True
         'dtpenjualan.Value = Date.Now
 
-        dtjatuhtempo.Enabled = True
+        txtterm.Enabled = True
+
+        dtjatuhtempo.Enabled = False
         'dtjatuhtempo.Value = Date.Now
 
         'body
@@ -1414,13 +1477,10 @@ Public Class fpembelian
 
     End Sub
 
-    Private Sub ritenumber_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritenumber.KeyPress
+    Private Sub ritenumber_KeyPress(sender As Object, e As KeyPressEventArgs)
         e.Handled = ValidAngka(e)
     End Sub
 
-    Private Sub dtpembelian_ValueChanged(sender As Object, e As EventArgs) Handles dtpembelian.ValueChanged
-        dtjatuhtempo.MinDate = dtpembelian.Value
-    End Sub
     Sub perbarui(nomornota As String)
 
 
@@ -1468,7 +1528,7 @@ Public Class fpembelian
             Next
 
             Call koneksii()
-            sql = "UPDATE tb_pembelian SET kode_supplier = '" & cmbsupplier.Text & "', kode_gudang = '" & kodegudang & "', kode_user = '" & cmbsales.Text & "', tgl_pembelian = '" & Format(dtpembelian.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_pembelian = '" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', lunas_pembelian = 0 ,void_pembelian = 0, print_pembelian = 0, posted_pembelian = 1, keterangan_pembelian = '" & txtketerangan.Text & "', no_nota_pembelian = '" & txtnosupplier.Text & "', diskon_pembelian = '" & txtdiskonpersen.Text & "', pajak_pembelian = '" & txtppnpersen.Text & "', ongkir_pembelian = '" & ongkir & "', total_pembelian = '" & grandtotal & "', pembayaran_pembelian = '" & cmbbayar.Text & "', updated_by = '" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_pembelian = '" & nomornota & "' "
+            sql = "UPDATE tb_pembelian SET kode_supplier = '" & cmbsupplier.Text & "', kode_gudang = '" & kodegudang & "', kode_user = '" & cmbsales.Text & "', tgl_pembelian = '" & Format(dtpembelian.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_pembelian = '" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', term_pembelian='" & term & "', lunas_pembelian = 0 ,void_pembelian = 0, print_pembelian = 0, posted_pembelian = 1, keterangan_pembelian = '" & txtketerangan.Text & "', no_nota_pembelian = '" & txtnosupplier.Text & "', diskon_pembelian = '" & txtdiskonpersen.Text & "', pajak_pembelian = '" & txtppnpersen.Text & "', ongkir_pembelian = '" & ongkir & "', total_pembelian = '" & grandtotal & "', pembayaran_pembelian = '" & cmbbayar.Text & "', updated_by = '" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_pembelian = '" & nomornota & "' "
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
 

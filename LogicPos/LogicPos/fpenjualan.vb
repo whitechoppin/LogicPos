@@ -11,14 +11,17 @@ Public Class fpenjualan
     Dim hitnumber As Integer
     'variabel dalam penjualan
     Dim lunasstatus As Integer = 0
+
+    Dim dateterm, datetermnow As Date
     Public jenis, satuan, kodepenjualan, kodetransaksi, kodegudang As String
     Dim diskonpersennilai, diskonnominalnilai As Double
-    Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
+    Dim term, banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
 
     'variabel bantuan view penjualan
-    Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan, viewpembayaran, kodepembayaran As String
+    Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan, viewnamaexpedisi, viewalamatexpedisi, viewpembayaran, kodepembayaran As String
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
-    Dim viewtglpenjualan, viewtgljatuhtempo, viewtglcreated As DateTime
+    Dim viewterm As Integer
+    Dim viewtglpenjualan, viewtgljatuhtempo, viewtglcreated, viewtglupdated As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
     Dim rpt_faktur As New ReportDocument
 
@@ -229,7 +232,7 @@ Public Class fpenjualan
         Call koneksii()
         cmbpembayaran.Items.Clear()
         cmbpembayaran.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_kas", cnn)
+        cmmd = New OdbcCommand("SELECT * FROM tb_kas ORDER BY kode_kas DESC", cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows = True Then
             While dr.Read()
@@ -281,7 +284,11 @@ Public Class fpenjualan
         dtpenjualan.Enabled = True
         dtpenjualan.Value = Date.Now
 
-        dtjatuhtempo.Enabled = True
+        txtterm.Clear()
+        txtterm.Text = 0
+        txtterm.Enabled = True
+
+        dtjatuhtempo.Enabled = False
         dtjatuhtempo.Value = dtpenjualan.Value
 
         'body
@@ -310,6 +317,12 @@ Public Class fpenjualan
         'total tabel pembelian
         txtketerangan.Enabled = True
         txtketerangan.Clear()
+
+        txtnamaexpedisi.Enabled = True
+        txtnamaexpedisi.Clear()
+
+        txtalamatexpedisi.Enabled = True
+        txtalamatexpedisi.Clear()
 
         cbongkir.Enabled = True
         cbppn.Enabled = True
@@ -350,6 +363,7 @@ Public Class fpenjualan
         txtsisa.Text = 0
 
         dtcreated.Value = Now
+        dtupdated.Value = Now
 
         'isi combo box
         Call comboboxcustomer()
@@ -398,6 +412,10 @@ Public Class fpenjualan
         dtpenjualan.Enabled = False
         dtpenjualan.Value = Date.Now
 
+        txtterm.Clear()
+        txtterm.Text = 0
+        txtterm.Enabled = False
+
         dtjatuhtempo.Enabled = False
         dtjatuhtempo.Value = dtpenjualan.Value
 
@@ -429,6 +447,12 @@ Public Class fpenjualan
         'total tabel penjualan
         txtketerangan.Enabled = False
         txtketerangan.Clear()
+
+        txtnamaexpedisi.Enabled = False
+        txtnamaexpedisi.Clear()
+
+        txtalamatexpedisi.Enabled = False
+        txtalamatexpedisi.Clear()
 
         cbongkir.Enabled = False
         cbppn.Enabled = False
@@ -498,10 +522,15 @@ Public Class fpenjualan
                 statusposted = dr("posted_penjualan")
 
                 viewtglpenjualan = dr("tgl_penjualan")
+                viewterm = dr("term_penjualan")
                 viewtgljatuhtempo = dr("tgl_jatuhtempo_penjualan")
                 viewtglcreated = dr("date_created")
+                viewtglupdated = dr("last_updated")
 
                 viewketerangan = dr("keterangan_penjualan")
+                viewnamaexpedisi = dr("nama_expedisi")
+                viewalamatexpedisi = dr("alamat_expedisi")
+
                 viewpembayaran = dr("metode_pembayaran")
 
                 nilaidiskon = dr("diskon_penjualan")
@@ -519,8 +548,10 @@ Public Class fpenjualan
                 cbposted.Checked = statusposted
 
                 dtpenjualan.Value = viewtglpenjualan
+                txtterm.Text = viewterm
                 dtjatuhtempo.Value = viewtgljatuhtempo
                 dtcreated.Value = viewtglcreated
+                dtupdated.Value = viewtglupdated
 
                 'isi tabel view pembelian
 
@@ -529,6 +560,8 @@ Public Class fpenjualan
                 'total tabel pembelian
 
                 txtketerangan.Text = viewketerangan
+                txtnamaexpedisi.Text = viewnamaexpedisi
+                txtalamatexpedisi.Text = viewalamatexpedisi
 
                 If nilaidiskon <> 0 Then
                     cbdiskon.Checked = True
@@ -578,7 +611,8 @@ Public Class fpenjualan
             dtjatuhtempo.Value = Date.Now
 
             txtketerangan.Text = ""
-
+            txtnamaexpedisi.Text = ""
+            txtalamatexpedisi.Text = ""
 
             cbdiskon.Checked = False
             txtdiskonpersen.Text = 0
@@ -635,7 +669,9 @@ Public Class fpenjualan
         dtpenjualan.Enabled = True
         'dtpenjualan.Value = Date.Now
 
-        dtjatuhtempo.Enabled = True
+        txtterm.Enabled = True
+
+        dtjatuhtempo.Enabled = False
         'dtjatuhtempo.Value = Date.Now
 
         'body
@@ -664,6 +700,8 @@ Public Class fpenjualan
         'total tabel pembelian
         txtketerangan.Enabled = True
         'txtketerangan.Clear()
+        txtnamaexpedisi.Enabled = True
+        txtalamatexpedisi.Enabled = True
 
         cbongkir.Enabled = True
         cbppn.Enabled = True
@@ -1358,7 +1396,6 @@ Public Class fpenjualan
             .Columns.Add("diskon_nominal", GetType(Double))
         End With
 
-
         Dim baris As DataRow
         For i As Integer = 0 To GridView1.RowCount - 1
             baris = tabel_faktur.NewRow
@@ -1395,6 +1432,8 @@ Public Class fpenjualan
         rpt_faktur.SetParameterValue("tanggal", dtpenjualan.Text)
         rpt_faktur.SetParameterValue("subtotal", totalbelanja)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
+        rpt_faktur.SetParameterValue("namaexpedisi", txtnamaexpedisi.Text)
+        rpt_faktur.SetParameterValue("alamatexpedisi", txtalamatexpedisi.Text)
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
@@ -1544,9 +1583,47 @@ Public Class fpenjualan
         fcarigudang.ShowDialog()
     End Sub
 
+    Private Sub dtpenjualan_ValueChanged(sender As Object, e As EventArgs) Handles dtpenjualan.ValueChanged
+        dtjatuhtempo.MinDate = dtpenjualan.Value
+        'selisih = DateDiff(DateInterval.Day, dtpenjualan.Value, dtjatuhtempo.Value)
+        'txtterm.Text = selisih
+        term = txtterm.Text
+        dateterm = dtpenjualan.Value
+        datetermnow = dateterm.AddDays(term)
+        dtjatuhtempo.Value = datetermnow
+    End Sub
+
+    Private Sub dtjatuhtempo_ValueChanged(sender As Object, e As EventArgs) Handles dtjatuhtempo.ValueChanged
+        'selisih = DateDiff(DateInterval.Day, dtpenjualan.Value, dtjatuhtempo.Value)
+        'txtterm.Text = selisih
+    End Sub
+
+    Private Sub txtterm_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtterm.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtterm_TextChanged(sender As Object, e As EventArgs) Handles txtterm.TextChanged
+        If txtterm.Text = "" Then
+            txtterm.Text = 0
+        Else
+            term = txtterm.Text
+            txtterm.Text = Format(term, "##,##0")
+            txtterm.SelectionStart = Len(txtterm.Text)
+
+            If term = 0 Then
+                dtjatuhtempo.Value = Date.Now
+            Else
+                dateterm = dtpenjualan.Value
+                datetermnow = dateterm.AddDays(term)
+                dtjatuhtempo.Value = datetermnow
+            End If
+        End If
+    End Sub
+
     Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
         Call caribarang()
     End Sub
+
     Sub tambah()
         Dim hargajuallangsung As Double
         'Columns.Add("kode_barang")
@@ -1864,10 +1941,6 @@ Public Class fpenjualan
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub
 
-    Private Sub dtpenjualan_ValueChanged(sender As Object, e As EventArgs) Handles dtpenjualan.ValueChanged
-        dtjatuhtempo.MinDate = dtpenjualan.Value
-    End Sub
-
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         Call tambah()
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
@@ -2060,7 +2133,7 @@ Public Class fpenjualan
             lunasstatus = 0
         End If
 
-        sql = "INSERT INTO tb_penjualan (kode_penjualan, kode_pelanggan, kode_gudang, kode_user, tgl_penjualan, tgl_jatuhtempo_penjualan, lunas_penjualan, void_penjualan, print_penjualan, posted_penjualan, keterangan_penjualan, diskon_penjualan, pajak_penjualan, ongkir_penjualan, total_penjualan, metode_pembayaran, rekening, bayar_penjualan, sisa_penjualan, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepenjualan & "','" & cmbcustomer.Text & "','" & kodegudang & "','" & cmbsales.Text & "' , '" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & lunasstatus & "','" & 0 & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & ongkir & "','" & grandtotal & "','" & cmbpembayaran.Text & "', '" & txtrekening.Text & "','" & bayar & "','" & sisa & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+        sql = "INSERT INTO tb_penjualan (kode_penjualan, kode_pelanggan, kode_gudang, kode_user, tgl_penjualan, tgl_jatuhtempo_penjualan, term_penjualan, lunas_penjualan, void_penjualan, print_penjualan, posted_penjualan, keterangan_penjualan, nama_expedisi, alamat_expedisi, diskon_penjualan, pajak_penjualan, ongkir_penjualan, total_penjualan, metode_pembayaran, rekening, bayar_penjualan, sisa_penjualan, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepenjualan & "','" & cmbcustomer.Text & "','" & kodegudang & "','" & cmbsales.Text & "' , '" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & term & "','" & lunasstatus & "','" & 0 & "','" & 0 & "','" & 1 & "','" & txtketerangan.Text & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & ongkir & "','" & grandtotal & "','" & cmbpembayaran.Text & "', '" & txtrekening.Text & "','" & bayar & "','" & sisa & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
@@ -2189,7 +2262,7 @@ Public Class fpenjualan
             End If
 
             Call koneksii()
-            sql = "UPDATE tb_penjualan SET kode_pelanggan ='" & cmbcustomer.Text & "', kode_gudang ='" & kodegudang & "', kode_user ='" & cmbsales.Text & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', lunas_penjualan = '" & lunasstatus & "',keterangan_penjualan ='" & txtketerangan.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_penjualan ='" & kodepenjualan & "'"
+            sql = "UPDATE tb_penjualan SET kode_pelanggan ='" & cmbcustomer.Text & "', kode_gudang ='" & kodegudang & "', kode_user ='" & cmbsales.Text & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', term_penjualan='" & term & "', lunas_penjualan = '" & lunasstatus & "',keterangan_penjualan ='" & txtketerangan.Text & "',nama_expedisi ='" & txtnamaexpedisi.Text & "',alamat_expedisi ='" & txtalamatexpedisi.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_penjualan ='" & kodepenjualan & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
 

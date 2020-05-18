@@ -23,6 +23,7 @@ Partial Class fpembelian
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fpembelian))
+        Me.ritenumber = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lblsatuanbeli = New System.Windows.Forms.Label()
         Me.lblsatuan = New System.Windows.Forms.Label()
@@ -46,7 +47,6 @@ Partial Class fpembelian
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ritenumber = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -61,7 +61,6 @@ Partial Class fpembelian
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtongkir = New System.Windows.Forms.TextBox()
         Me.cbongkir = New System.Windows.Forms.CheckBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
         Me.txtgudang = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -109,16 +108,34 @@ Partial Class fpembelian
         Me.txtnosupplier = New System.Windows.Forms.TextBox()
         Me.dtcreated = New System.Windows.Forms.DateTimePicker()
         Me.Label25 = New System.Windows.Forms.Label()
+        Me.tcpembelian = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.txtterm = New System.Windows.Forms.TextBox()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.dtupdated = New System.Windows.Forms.DateTimePicker()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label29 = New System.Windows.Forms.Label()
+        CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
+        Me.tcpembelian.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'ritenumber
+        '
+        Me.ritenumber.AutoHeight = False
+        Me.ritenumber.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ritenumber.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ritenumber.Name = "ritenumber"
         '
         'GroupBox1
         '
@@ -135,7 +152,7 @@ Partial Class fpembelian
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.txtkodebarang)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Location = New System.Drawing.Point(11, 193)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 248)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1226, 63)
         Me.GroupBox1.TabIndex = 4
@@ -269,7 +286,7 @@ Partial Class fpembelian
         '
         Me.cmbsupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbsupplier.FormattingEnabled = True
-        Me.cmbsupplier.Location = New System.Drawing.Point(131, 59)
+        Me.cmbsupplier.Location = New System.Drawing.Point(124, 39)
         Me.cmbsupplier.MaxLength = 99
         Me.cmbsupplier.Name = "cmbsupplier"
         Me.cmbsupplier.Size = New System.Drawing.Size(199, 26)
@@ -279,7 +296,7 @@ Partial Class fpembelian
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(21, 63)
+        Me.Label6.Location = New System.Drawing.Point(14, 43)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(100, 18)
         Me.Label6.TabIndex = 3
@@ -297,11 +314,10 @@ Partial Class fpembelian
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 259)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 317)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ritenumber})
-        Me.GridControl1.Size = New System.Drawing.Size(1225, 257)
+        Me.GridControl1.Size = New System.Drawing.Size(1225, 199)
         Me.GridControl1.TabIndex = 25
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -360,13 +376,6 @@ Partial Class fpembelian
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
-        'ritenumber
-        '
-        Me.ritenumber.AutoHeight = False
-        Me.ritenumber.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.ritenumber.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.ritenumber.Name = "ritenumber"
-        '
         'GridColumn5
         '
         Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
@@ -419,7 +428,7 @@ Partial Class fpembelian
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(800, 95)
+        Me.Label1.Location = New System.Drawing.Point(774, 94)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(151, 18)
         Me.Label1.TabIndex = 14
@@ -429,7 +438,7 @@ Partial Class fpembelian
         '
         Me.dtjatuhtempo.CustomFormat = ""
         Me.dtjatuhtempo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtjatuhtempo.Location = New System.Drawing.Point(958, 92)
+        Me.dtjatuhtempo.Location = New System.Drawing.Point(932, 91)
         Me.dtjatuhtempo.Name = "dtjatuhtempo"
         Me.dtjatuhtempo.Size = New System.Drawing.Size(252, 23)
         Me.dtjatuhtempo.TabIndex = 18
@@ -448,7 +457,7 @@ Partial Class fpembelian
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(21, 33)
+        Me.Label10.Location = New System.Drawing.Point(14, 13)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(78, 18)
         Me.Label10.TabIndex = 7
@@ -457,7 +466,7 @@ Partial Class fpembelian
         'txtnonota
         '
         Me.txtnonota.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnonota.Location = New System.Drawing.Point(131, 30)
+        Me.txtnonota.Location = New System.Drawing.Point(124, 10)
         Me.txtnonota.Name = "txtnonota"
         Me.txtnonota.Size = New System.Drawing.Size(231, 24)
         Me.txtnonota.TabIndex = 9
@@ -511,39 +520,10 @@ Partial Class fpembelian
         Me.cbongkir.Text = "Ongkir Rp."
         Me.cbongkir.UseVisualStyleBackColor = True
         '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.cmbsales)
-        Me.GroupBox2.Controls.Add(Me.txtgudang)
-        Me.GroupBox2.Controls.Add(Me.Label18)
-        Me.GroupBox2.Controls.Add(Me.Label16)
-        Me.GroupBox2.Controls.Add(Me.Label15)
-        Me.GroupBox2.Controls.Add(Me.GroupBox3)
-        Me.GroupBox2.Controls.Add(Me.txtsupplier)
-        Me.GroupBox2.Controls.Add(Me.btncarigudang)
-        Me.GroupBox2.Controls.Add(Me.btncarisupplier)
-        Me.GroupBox2.Controls.Add(Me.cmbgudang)
-        Me.GroupBox2.Controls.Add(Me.Label13)
-        Me.GroupBox2.Controls.Add(Me.dtpembelian)
-        Me.GroupBox2.Controls.Add(Me.Label12)
-        Me.GroupBox2.Controls.Add(Me.cmbsupplier)
-        Me.GroupBox2.Controls.Add(Me.txtnonota)
-        Me.GroupBox2.Controls.Add(Me.Label10)
-        Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.dtjatuhtempo)
-        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox2.Location = New System.Drawing.Point(11, 70)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1226, 126)
-        Me.GroupBox2.TabIndex = 24
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Detail Pembelian"
-        '
         'cmbsales
         '
         Me.cmbsales.FormattingEnabled = True
-        Me.cmbsales.Location = New System.Drawing.Point(506, 27)
+        Me.cmbsales.Location = New System.Drawing.Point(488, 13)
         Me.cmbsales.MaxLength = 99
         Me.cmbsales.Name = "cmbsales"
         Me.cmbsales.Size = New System.Drawing.Size(257, 26)
@@ -551,7 +531,7 @@ Partial Class fpembelian
         '
         'txtgudang
         '
-        Me.txtgudang.Location = New System.Drawing.Point(506, 86)
+        Me.txtgudang.Location = New System.Drawing.Point(488, 72)
         Me.txtgudang.Name = "txtgudang"
         Me.txtgudang.Size = New System.Drawing.Size(257, 24)
         Me.txtgudang.TabIndex = 16
@@ -560,7 +540,7 @@ Partial Class fpembelian
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(395, 89)
+        Me.Label18.Location = New System.Drawing.Point(377, 75)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(104, 18)
         Me.Label18.TabIndex = 40
@@ -569,7 +549,7 @@ Partial Class fpembelian
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(395, 30)
+        Me.Label16.Location = New System.Drawing.Point(377, 16)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(84, 18)
         Me.Label16.TabIndex = 37
@@ -579,7 +559,7 @@ Partial Class fpembelian
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(20, 92)
+        Me.Label15.Location = New System.Drawing.Point(13, 72)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(105, 18)
         Me.Label15.TabIndex = 30
@@ -592,7 +572,7 @@ Partial Class fpembelian
         Me.GroupBox3.Controls.Add(Me.cblunas)
         Me.GroupBox3.Controls.Add(Me.cbvoid)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox3.Location = New System.Drawing.Point(803, 11)
+        Me.GroupBox3.Location = New System.Drawing.Point(777, 10)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(406, 45)
         Me.GroupBox3.TabIndex = 36
@@ -648,7 +628,7 @@ Partial Class fpembelian
         '
         'txtsupplier
         '
-        Me.txtsupplier.Location = New System.Drawing.Point(131, 89)
+        Me.txtsupplier.Location = New System.Drawing.Point(124, 69)
         Me.txtsupplier.Name = "txtsupplier"
         Me.txtsupplier.Size = New System.Drawing.Size(231, 24)
         Me.txtsupplier.TabIndex = 12
@@ -658,7 +638,7 @@ Partial Class fpembelian
         Me.btncarigudang.BackgroundImage = CType(resources.GetObject("btncarigudang.BackgroundImage"), System.Drawing.Image)
         Me.btncarigudang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarigudang.ImageIndex = 0
-        Me.btncarigudang.Location = New System.Drawing.Point(733, 56)
+        Me.btncarigudang.Location = New System.Drawing.Point(717, 42)
         Me.btncarigudang.Name = "btncarigudang"
         Me.btncarigudang.Size = New System.Drawing.Size(31, 27)
         Me.btncarigudang.TabIndex = 15
@@ -669,7 +649,7 @@ Partial Class fpembelian
         Me.btncarisupplier.BackgroundImage = CType(resources.GetObject("btncarisupplier.BackgroundImage"), System.Drawing.Image)
         Me.btncarisupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarisupplier.ImageIndex = 0
-        Me.btncarisupplier.Location = New System.Drawing.Point(329, 59)
+        Me.btncarisupplier.Location = New System.Drawing.Point(322, 39)
         Me.btncarisupplier.Name = "btncarisupplier"
         Me.btncarisupplier.Size = New System.Drawing.Size(32, 27)
         Me.btncarisupplier.TabIndex = 11
@@ -679,7 +659,7 @@ Partial Class fpembelian
         '
         Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
         Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(506, 56)
+        Me.cmbgudang.Location = New System.Drawing.Point(488, 42)
         Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
         Me.cmbgudang.Size = New System.Drawing.Size(230, 26)
@@ -688,7 +668,7 @@ Partial Class fpembelian
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(395, 60)
+        Me.Label13.Location = New System.Drawing.Point(377, 46)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(99, 18)
         Me.Label13.TabIndex = 18
@@ -697,16 +677,16 @@ Partial Class fpembelian
         'dtpembelian
         '
         Me.dtpembelian.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtpembelian.Location = New System.Drawing.Point(958, 60)
+        Me.dtpembelian.Location = New System.Drawing.Point(488, 102)
         Me.dtpembelian.Name = "dtpembelian"
-        Me.dtpembelian.Size = New System.Drawing.Size(252, 23)
+        Me.dtpembelian.Size = New System.Drawing.Size(257, 23)
         Me.dtpembelian.TabIndex = 17
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label12.Location = New System.Drawing.Point(800, 65)
+        Me.Label12.Location = New System.Drawing.Point(343, 107)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(133, 18)
         Me.Label12.TabIndex = 16
@@ -717,7 +697,7 @@ Partial Class fpembelian
         Me.cmbbayar.BackColor = System.Drawing.SystemColors.Window
         Me.cmbbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cmbbayar.FormattingEnabled = True
-        Me.cmbbayar.Location = New System.Drawing.Point(619, 603)
+        Me.cmbbayar.Location = New System.Drawing.Point(13, 88)
         Me.cmbbayar.Name = "cmbbayar"
         Me.cmbbayar.Size = New System.Drawing.Size(263, 26)
         Me.cmbbayar.TabIndex = 35
@@ -726,7 +706,7 @@ Partial Class fpembelian
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label11.Location = New System.Drawing.Point(618, 582)
+        Me.Label11.Location = New System.Drawing.Point(12, 67)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(113, 18)
         Me.Label11.TabIndex = 26
@@ -983,7 +963,7 @@ Partial Class fpembelian
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label20.Location = New System.Drawing.Point(618, 533)
+        Me.Label20.Location = New System.Drawing.Point(12, 18)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(121, 18)
         Me.Label20.TabIndex = 44
@@ -992,7 +972,7 @@ Partial Class fpembelian
         'txtnosupplier
         '
         Me.txtnosupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txtnosupplier.Location = New System.Drawing.Point(619, 554)
+        Me.txtnosupplier.Location = New System.Drawing.Point(13, 39)
         Me.txtnosupplier.MaxLength = 12
         Me.txtnosupplier.Name = "txtnosupplier"
         Me.txtnosupplier.Size = New System.Drawing.Size(263, 24)
@@ -1002,7 +982,7 @@ Partial Class fpembelian
         '
         Me.dtcreated.Enabled = False
         Me.dtcreated.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtcreated.Location = New System.Drawing.Point(730, 690)
+        Me.dtcreated.Location = New System.Drawing.Point(126, 18)
         Me.dtcreated.Margin = New System.Windows.Forms.Padding(4)
         Me.dtcreated.Name = "dtcreated"
         Me.dtcreated.Size = New System.Drawing.Size(193, 23)
@@ -1012,12 +992,124 @@ Partial Class fpembelian
         '
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label25.Location = New System.Drawing.Point(621, 692)
+        Me.Label25.Location = New System.Drawing.Point(17, 20)
         Me.Label25.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(103, 18)
         Me.Label25.TabIndex = 76
         Me.Label25.Text = "Date Created :"
+        '
+        'tcpembelian
+        '
+        Me.tcpembelian.Controls.Add(Me.TabPage1)
+        Me.tcpembelian.Controls.Add(Me.TabPage2)
+        Me.tcpembelian.Controls.Add(Me.TabPage3)
+        Me.tcpembelian.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tcpembelian.Location = New System.Drawing.Point(11, 79)
+        Me.tcpembelian.Name = "tcpembelian"
+        Me.tcpembelian.SelectedIndex = 0
+        Me.tcpembelian.Size = New System.Drawing.Size(1225, 167)
+        Me.tcpembelian.TabIndex = 78
+        '
+        'TabPage1
+        '
+        Me.TabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage1.Controls.Add(Me.Label29)
+        Me.TabPage1.Controls.Add(Me.txtterm)
+        Me.TabPage1.Controls.Add(Me.GroupBox3)
+        Me.TabPage1.Controls.Add(Me.cmbsales)
+        Me.TabPage1.Controls.Add(Me.dtpembelian)
+        Me.TabPage1.Controls.Add(Me.txtgudang)
+        Me.TabPage1.Controls.Add(Me.Label12)
+        Me.TabPage1.Controls.Add(Me.Label6)
+        Me.TabPage1.Controls.Add(Me.Label1)
+        Me.TabPage1.Controls.Add(Me.Label18)
+        Me.TabPage1.Controls.Add(Me.dtjatuhtempo)
+        Me.TabPage1.Controls.Add(Me.Label10)
+        Me.TabPage1.Controls.Add(Me.Label16)
+        Me.TabPage1.Controls.Add(Me.txtnonota)
+        Me.TabPage1.Controls.Add(Me.Label15)
+        Me.TabPage1.Controls.Add(Me.cmbsupplier)
+        Me.TabPage1.Controls.Add(Me.Label13)
+        Me.TabPage1.Controls.Add(Me.txtsupplier)
+        Me.TabPage1.Controls.Add(Me.cmbgudang)
+        Me.TabPage1.Controls.Add(Me.btncarigudang)
+        Me.TabPage1.Controls.Add(Me.btncarisupplier)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(1217, 136)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "Detail Pembelian"
+        '
+        'txtterm
+        '
+        Me.txtterm.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.txtterm.Location = New System.Drawing.Point(929, 59)
+        Me.txtterm.MaxLength = 12
+        Me.txtterm.Name = "txtterm"
+        Me.txtterm.Size = New System.Drawing.Size(57, 24)
+        Me.txtterm.TabIndex = 84
+        Me.txtterm.Text = "0"
+        '
+        'TabPage2
+        '
+        Me.TabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage2.Controls.Add(Me.Label11)
+        Me.TabPage2.Controls.Add(Me.cmbbayar)
+        Me.TabPage2.Controls.Add(Me.Label20)
+        Me.TabPage2.Controls.Add(Me.txtnosupplier)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(1217, 136)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Supplier"
+        '
+        'TabPage3
+        '
+        Me.TabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage3.Controls.Add(Me.dtupdated)
+        Me.TabPage3.Controls.Add(Me.Label21)
+        Me.TabPage3.Controls.Add(Me.dtcreated)
+        Me.TabPage3.Controls.Add(Me.Label25)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(1217, 136)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Informasi"
+        '
+        'dtupdated
+        '
+        Me.dtupdated.Enabled = False
+        Me.dtupdated.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.dtupdated.Location = New System.Drawing.Point(126, 49)
+        Me.dtupdated.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtupdated.Name = "dtupdated"
+        Me.dtupdated.Size = New System.Drawing.Size(193, 23)
+        Me.dtupdated.TabIndex = 79
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label21.Location = New System.Drawing.Point(17, 51)
+        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(106, 18)
+        Me.Label21.TabIndex = 78
+        Me.Label21.Text = "Date Updated :"
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label29.Location = New System.Drawing.Point(876, 62)
+        Me.Label29.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(43, 18)
+        Me.Label29.TabIndex = 85
+        Me.Label29.Text = "Term"
         '
         'fpembelian
         '
@@ -1025,10 +1117,7 @@ Partial Class fpembelian
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1252, 722)
-        Me.Controls.Add(Me.dtcreated)
-        Me.Controls.Add(Me.Label25)
-        Me.Controls.Add(Me.txtnosupplier)
-        Me.Controls.Add(Me.Label20)
+        Me.Controls.Add(Me.tcpembelian)
         Me.Controls.Add(Me.txtppnnominal)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.txtdiskonnominal)
@@ -1040,9 +1129,6 @@ Partial Class fpembelian
         Me.Controls.Add(Me.txtdiskonpersen)
         Me.Controls.Add(Me.cbdiskon)
         Me.Controls.Add(Me.cbppn)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.cmbbayar)
-        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.cbongkir)
         Me.Controls.Add(Me.txtongkir)
         Me.Controls.Add(Me.Label4)
@@ -1055,13 +1141,11 @@ Partial Class fpembelian
         Me.Name = "fpembelian"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pembelian"
+        CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
@@ -1069,6 +1153,13 @@ Partial Class fpembelian
         Me.GroupBox6.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
+        Me.tcpembelian.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1108,7 +1199,6 @@ Partial Class fpembelian
     Friend WithEvents txtongkir As TextBox
     Friend WithEvents cbongkir As CheckBox
     Friend WithEvents lblsatuan As Label
-    Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents cmbbayar As ComboBox
     Friend WithEvents Label11 As Label
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
@@ -1150,7 +1240,6 @@ Partial Class fpembelian
     Friend WithEvents Label19 As Label
     Friend WithEvents txtppnnominal As TextBox
     Friend WithEvents btnedit As Button
-    Friend WithEvents ritenumber As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents Label20 As Label
     Friend WithEvents txtnosupplier As TextBox
     Friend WithEvents btncaripembelian As Button
@@ -1159,4 +1248,13 @@ Partial Class fpembelian
     Friend WithEvents rbfaktur As RadioButton
     Friend WithEvents dtcreated As DateTimePicker
     Friend WithEvents Label25 As Label
+    Friend WithEvents tcpembelian As TabControl
+    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents dtupdated As DateTimePicker
+    Friend WithEvents Label21 As Label
+    Friend WithEvents txtterm As TextBox
+    Friend WithEvents ritenumber As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents Label29 As Label
 End Class

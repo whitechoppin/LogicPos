@@ -133,10 +133,13 @@ Partial Class fpenjualan
         Me.txtnamaexpedisi = New System.Windows.Forms.TextBox()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.txtterm = New System.Windows.Forms.TextBox()
-        Me.TCPembelian = New System.Windows.Forms.TabControl()
+        Me.tcpenjualan = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label29 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.dtupdated = New System.Windows.Forms.DateTimePicker()
+        Me.Label26 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -147,7 +150,7 @@ Partial Class fpenjualan
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        Me.TCPembelian.SuspendLayout()
+        Me.tcpenjualan.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
@@ -551,7 +554,7 @@ Partial Class fpenjualan
         Me.txtinformasi.Location = New System.Drawing.Point(9, 701)
         Me.txtinformasi.Margin = New System.Windows.Forms.Padding(4)
         Me.txtinformasi.Name = "txtinformasi"
-        Me.txtinformasi.Size = New System.Drawing.Size(453, 113)
+        Me.txtinformasi.Size = New System.Drawing.Size(583, 113)
         Me.txtinformasi.TabIndex = 33
         Me.txtinformasi.Text = resources.GetString("txtinformasi.Text")
         '
@@ -860,7 +863,7 @@ Partial Class fpenjualan
         Me.dtpenjualan.Location = New System.Drawing.Point(876, 73)
         Me.dtpenjualan.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpenjualan.Name = "dtpenjualan"
-        Me.dtpenjualan.Size = New System.Drawing.Size(199, 23)
+        Me.dtpenjualan.Size = New System.Drawing.Size(263, 23)
         Me.dtpenjualan.TabIndex = 17
         '
         'Label17
@@ -1316,7 +1319,7 @@ Partial Class fpenjualan
         '
         Me.txtalamatexpedisi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtalamatexpedisi.Location = New System.Drawing.Point(18, 89)
-        Me.txtalamatexpedisi.MaxLength = 12
+        Me.txtalamatexpedisi.MaxLength = 256
         Me.txtalamatexpedisi.Name = "txtalamatexpedisi"
         Me.txtalamatexpedisi.Size = New System.Drawing.Size(339, 24)
         Me.txtalamatexpedisi.TabIndex = 79
@@ -1353,27 +1356,29 @@ Partial Class fpenjualan
         'txtterm
         '
         Me.txtterm.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txtterm.Location = New System.Drawing.Point(1081, 72)
-        Me.txtterm.MaxLength = 12
+        Me.txtterm.Location = New System.Drawing.Point(876, 103)
+        Me.txtterm.MaxLength = 3
         Me.txtterm.Name = "txtterm"
         Me.txtterm.Size = New System.Drawing.Size(57, 24)
         Me.txtterm.TabIndex = 83
+        Me.txtterm.Text = "0"
         '
-        'TCPembelian
+        'tcpenjualan
         '
-        Me.TCPembelian.Controls.Add(Me.TabPage1)
-        Me.TCPembelian.Controls.Add(Me.TabPage2)
-        Me.TCPembelian.Controls.Add(Me.TabPage3)
-        Me.TCPembelian.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TCPembelian.Location = New System.Drawing.Point(12, 76)
-        Me.TCPembelian.Name = "TCPembelian"
-        Me.TCPembelian.SelectedIndex = 0
-        Me.TCPembelian.Size = New System.Drawing.Size(1475, 171)
-        Me.TCPembelian.TabIndex = 82
+        Me.tcpenjualan.Controls.Add(Me.TabPage1)
+        Me.tcpenjualan.Controls.Add(Me.TabPage2)
+        Me.tcpenjualan.Controls.Add(Me.TabPage3)
+        Me.tcpenjualan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tcpenjualan.Location = New System.Drawing.Point(12, 76)
+        Me.tcpenjualan.Name = "tcpenjualan"
+        Me.tcpenjualan.SelectedIndex = 0
+        Me.tcpenjualan.Size = New System.Drawing.Size(1475, 171)
+        Me.tcpenjualan.TabIndex = 82
         '
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage1.Controls.Add(Me.Label29)
         Me.TabPage1.Controls.Add(Me.txtterm)
         Me.TabPage1.Controls.Add(Me.cmbcustomer)
         Me.TabPage1.Controls.Add(Me.Label4)
@@ -1405,6 +1410,17 @@ Partial Class fpenjualan
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Detail Penjualan"
         '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label29.Location = New System.Drawing.Point(772, 106)
+        Me.Label29.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(43, 18)
+        Me.Label29.TabIndex = 84
+        Me.Label29.Text = "Term"
+        '
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption
@@ -1422,6 +1438,8 @@ Partial Class fpenjualan
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage3.Controls.Add(Me.dtupdated)
+        Me.TabPage3.Controls.Add(Me.Label26)
         Me.TabPage3.Controls.Add(Me.dtcreated)
         Me.TabPage3.Controls.Add(Me.Label25)
         Me.TabPage3.Location = New System.Drawing.Point(4, 27)
@@ -1430,13 +1448,34 @@ Partial Class fpenjualan
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Informasi"
         '
+        'dtupdated
+        '
+        Me.dtupdated.Enabled = False
+        Me.dtupdated.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.dtupdated.Location = New System.Drawing.Point(121, 44)
+        Me.dtupdated.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtupdated.Name = "dtupdated"
+        Me.dtupdated.Size = New System.Drawing.Size(193, 23)
+        Me.dtupdated.TabIndex = 77
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label26.Location = New System.Drawing.Point(13, 47)
+        Me.Label26.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(106, 18)
+        Me.Label26.TabIndex = 76
+        Me.Label26.Text = "Date Updated :"
+        '
         'fpenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1512, 835)
-        Me.Controls.Add(Me.TCPembelian)
+        Me.Controls.Add(Me.tcpenjualan)
         Me.Controls.Add(Me.btnbayarfull)
         Me.Controls.Add(Me.btncarikas)
         Me.Controls.Add(Me.txtrekening)
@@ -1483,7 +1522,7 @@ Partial Class fpenjualan
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
-        Me.TCPembelian.ResumeLayout(False)
+        Me.tcpenjualan.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
@@ -1604,8 +1643,11 @@ Partial Class fpenjualan
     Friend WithEvents txtnamaexpedisi As TextBox
     Friend WithEvents Label28 As Label
     Friend WithEvents txtterm As TextBox
-    Friend WithEvents TCPembelian As TabControl
+    Friend WithEvents tcpenjualan As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents dtupdated As DateTimePicker
+    Friend WithEvents Label26 As Label
+    Friend WithEvents Label29 As Label
 End Class
