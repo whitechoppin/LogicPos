@@ -11,6 +11,7 @@ Public Class fmenu
         Timer.Start()
         fjatuhtempopembelian.Show()
         fjatuhtempopenjualan.Show()
+        fnotifikasistok.Show()
 
         Call historysave("User Login Program", "N/A")
     End Sub

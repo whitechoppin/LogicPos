@@ -1823,6 +1823,7 @@ Public Class fpenjualan
             GridView1.DeleteSelectedRows()
         End If
     End Sub
+
     Private Sub GridView1_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles GridView1.RowUpdated
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
     End Sub

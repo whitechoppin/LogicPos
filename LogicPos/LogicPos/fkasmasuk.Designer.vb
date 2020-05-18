@@ -51,6 +51,7 @@ Partial Class fkasmasuk
         Me.txtkodemasuk = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -59,7 +60,7 @@ Partial Class fkasmasuk
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 12)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 61)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(748, 200)
@@ -139,7 +140,7 @@ Partial Class fkasmasuk
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 218)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 267)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(748, 230)
         Me.GroupBox1.TabIndex = 15
@@ -365,12 +366,24 @@ Partial Class fkasmasuk
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Kode K.Masuk"
         '
+        'Label7
+        '
+        Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(6, 9)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(356, 31)
+        Me.Label7.TabIndex = 17
+        Me.Label7.Text = "Akun Masuk (Penerimaan)"
+        '
         'fkasmasuk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(772, 461)
+        Me.ClientSize = New System.Drawing.Size(772, 509)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GridControl1)
         Me.MaximizeBox = False
@@ -384,6 +397,7 @@ Partial Class fkasmasuk
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -416,4 +430,5 @@ Partial Class fkasmasuk
     Friend WithEvents cbprinted As CheckBox
     Friend WithEvents Label3 As Label
     Friend WithEvents dttransaksi As DateTimePicker
+    Friend WithEvents Label7 As Label
 End Class

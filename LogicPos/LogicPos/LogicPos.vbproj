@@ -447,6 +447,12 @@
     <Compile Include="fprinter.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fnotifikasistok.Designer.vb">
+      <DependentUpon>fnotifikasistok.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fnotifikasistok.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="mform.vb" />
     <Compile Include="rptlaporprice.vb">
       <AutoGen>True</AutoGen>
@@ -1041,6 +1047,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ftransferkas.resx">
       <DependentUpon>ftransferkas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fnotifikasistok.resx">
+      <DependentUpon>fnotifikasistok.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rptlaporprice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

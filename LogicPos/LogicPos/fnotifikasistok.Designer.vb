@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class fjatuhtempopembelian
+Partial Class fnotifikasistok
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class fjatuhtempopembelian
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fjatuhtempopembelian))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fnotifikasistok))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -45,22 +45,22 @@ Partial Class fjatuhtempopembelian
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 13)
+        Me.Label2.Location = New System.Drawing.Point(12, 18)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(327, 31)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Pembelian Jatuh Tempo"
+        Me.Label2.Size = New System.Drawing.Size(304, 31)
+        Me.Label2.TabIndex = 23
+        Me.Label2.Text = "Notifikasi Stok Barang"
         '
         'GridControl1
         '
         Me.GridControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GridControl1.Location = New System.Drawing.Point(10, 60)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 61)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(762, 389)
-        Me.GridControl1.TabIndex = 1
+        Me.GridControl1.Size = New System.Drawing.Size(810, 376)
+        Me.GridControl1.TabIndex = 22
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
         'GridView1
@@ -141,24 +141,24 @@ Partial Class fjatuhtempopembelian
         Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
-        Me.btnrefresh.Location = New System.Drawing.Point(738, 21)
+        Me.btnrefresh.Location = New System.Drawing.Point(788, 26)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
         Me.btnrefresh.TabIndex = 29
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
-        'fjatuhtempopembelian
+        'fnotifikasistok
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(784, 461)
+        Me.ClientSize = New System.Drawing.Size(834, 449)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
-        Me.Name = "fjatuhtempopembelian"
+        Me.Name = "fnotifikasistok"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Jatuh Tempo Pembelian"
+        Me.Text = "Notifikasi Stok barang"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

@@ -22,6 +22,7 @@ Partial Class fjatuhtempopenjualan
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fjatuhtempopenjualan))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -32,6 +33,7 @@ Partial Class fjatuhtempopenjualan
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -145,12 +147,25 @@ Partial Class fjatuhtempopenjualan
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
         '
+        'btnrefresh
+        '
+        Me.btnrefresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(740, 20)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
+        Me.btnrefresh.TabIndex = 29
+        Me.btnrefresh.UseVisualStyleBackColor = True
+        '
         'fjatuhtempopenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(784, 461)
+        Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
         Me.Name = "fjatuhtempopenjualan"
@@ -173,4 +188,5 @@ Partial Class fjatuhtempopenjualan
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents btnrefresh As Button
 End Class
