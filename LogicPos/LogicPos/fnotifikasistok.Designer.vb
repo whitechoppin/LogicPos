@@ -22,6 +22,7 @@ Partial Class fnotifikasistok
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fnotifikasistok))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
@@ -33,6 +34,7 @@ Partial Class fnotifikasistok
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btnrefresh = New System.Windows.Forms.Button()
+        Me.Timer = New System.Windows.Forms.Timer(Me.components)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -147,6 +149,11 @@ Partial Class fnotifikasistok
         Me.btnrefresh.TabIndex = 29
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
+        'Timer
+        '
+        Me.Timer.Enabled = True
+        Me.Timer.Interval = 30000
+        '
         'fnotifikasistok
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -176,4 +183,5 @@ Partial Class fnotifikasistok
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnrefresh As Button
+    Friend WithEvents Timer As Timer
 End Class

@@ -122,7 +122,6 @@ Partial Class fpembelian
         '
         'GroupBox1
         '
-        Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBox1.Controls.Add(Me.lblsatuanbeli)
         Me.GroupBox1.Controls.Add(Me.lblsatuan)
         Me.GroupBox1.Controls.Add(Me.btncari)
@@ -298,7 +297,6 @@ Partial Class fpembelian
         '
         'GridControl1
         '
-        Me.GridControl1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GridControl1.Location = New System.Drawing.Point(12, 259)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
@@ -438,7 +436,6 @@ Partial Class fpembelian
         '
         'Label7
         '
-        Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(12, 22)
@@ -467,7 +464,6 @@ Partial Class fpembelian
         '
         'txtinformasi
         '
-        Me.txtinformasi.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtinformasi.Enabled = False
         Me.txtinformasi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtinformasi.Location = New System.Drawing.Point(11, 637)
@@ -478,7 +474,6 @@ Partial Class fpembelian
         '
         'txtketerangan
         '
-        Me.txtketerangan.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.txtketerangan.Location = New System.Drawing.Point(12, 536)
         Me.txtketerangan.Name = "txtketerangan"
@@ -488,7 +483,6 @@ Partial Class fpembelian
         '
         'Label4
         '
-        Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label4.Location = New System.Drawing.Point(12, 517)
@@ -499,7 +493,6 @@ Partial Class fpembelian
         '
         'txtongkir
         '
-        Me.txtongkir.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtongkir.Location = New System.Drawing.Point(1007, 583)
         Me.txtongkir.MaxLength = 12
@@ -509,7 +502,6 @@ Partial Class fpembelian
         '
         'cbongkir
         '
-        Me.cbongkir.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cbongkir.AutoSize = True
         Me.cbongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cbongkir.Location = New System.Drawing.Point(903, 581)
@@ -521,7 +513,6 @@ Partial Class fpembelian
         '
         'GroupBox2
         '
-        Me.GroupBox2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBox2.Controls.Add(Me.cmbsales)
         Me.GroupBox2.Controls.Add(Me.txtgudang)
         Me.GroupBox2.Controls.Add(Me.Label18)
@@ -723,7 +714,6 @@ Partial Class fpembelian
         '
         'cmbbayar
         '
-        Me.cmbbayar.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cmbbayar.BackColor = System.Drawing.SystemColors.Window
         Me.cmbbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cmbbayar.FormattingEnabled = True
@@ -734,7 +724,6 @@ Partial Class fpembelian
         '
         'Label11
         '
-        Me.Label11.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label11.Location = New System.Drawing.Point(618, 582)
@@ -745,7 +734,6 @@ Partial Class fpembelian
         '
         'cbppn
         '
-        Me.cbppn.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cbppn.AutoSize = True
         Me.cbppn.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cbppn.Location = New System.Drawing.Point(903, 554)
@@ -757,7 +745,6 @@ Partial Class fpembelian
         '
         'cbdiskon
         '
-        Me.cbdiskon.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cbdiskon.AutoSize = True
         Me.cbdiskon.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.cbdiskon.Location = New System.Drawing.Point(903, 525)
@@ -769,7 +756,6 @@ Partial Class fpembelian
         '
         'txtdiskonpersen
         '
-        Me.txtdiskonpersen.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtdiskonpersen.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtdiskonpersen.Location = New System.Drawing.Point(1007, 525)
         Me.txtdiskonpersen.MaxLength = 2
@@ -779,7 +765,6 @@ Partial Class fpembelian
         '
         'txtppnpersen
         '
-        Me.txtppnpersen.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtppnpersen.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtppnpersen.Location = New System.Drawing.Point(1007, 554)
         Me.txtppnpersen.MaxLength = 2
@@ -789,7 +774,6 @@ Partial Class fpembelian
         '
         'Label14
         '
-        Me.Label14.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label14.Location = New System.Drawing.Point(945, 616)
@@ -800,7 +784,6 @@ Partial Class fpembelian
         '
         'txttotal
         '
-        Me.txttotal.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txttotal.Enabled = False
         Me.txttotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txttotal.Location = New System.Drawing.Point(1007, 613)
@@ -838,7 +821,6 @@ Partial Class fpembelian
         '
         'GroupBox4
         '
-        Me.GroupBox4.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBox4.Controls.Add(Me.GroupBox6)
         Me.GroupBox4.Controls.Add(Me.GroupBox5)
         Me.GroupBox4.Controls.Add(Me.btnbatal)
@@ -960,7 +942,6 @@ Partial Class fpembelian
         '
         'Label17
         '
-        Me.Label17.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label17.Location = New System.Drawing.Point(1037, 529)
@@ -971,7 +952,6 @@ Partial Class fpembelian
         '
         'txtdiskonnominal
         '
-        Me.txtdiskonnominal.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtdiskonnominal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtdiskonnominal.Location = New System.Drawing.Point(1056, 525)
         Me.txtdiskonnominal.MaxLength = 12
@@ -981,7 +961,6 @@ Partial Class fpembelian
         '
         'Label19
         '
-        Me.Label19.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label19.Location = New System.Drawing.Point(1037, 558)
@@ -992,7 +971,6 @@ Partial Class fpembelian
         '
         'txtppnnominal
         '
-        Me.txtppnnominal.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtppnnominal.Enabled = False
         Me.txtppnnominal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtppnnominal.Location = New System.Drawing.Point(1056, 554)
@@ -1003,7 +981,6 @@ Partial Class fpembelian
         '
         'Label20
         '
-        Me.Label20.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label20.Location = New System.Drawing.Point(618, 533)
@@ -1014,7 +991,6 @@ Partial Class fpembelian
         '
         'txtnosupplier
         '
-        Me.txtnosupplier.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtnosupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtnosupplier.Location = New System.Drawing.Point(619, 554)
         Me.txtnosupplier.MaxLength = 12
@@ -1024,7 +1000,6 @@ Partial Class fpembelian
         '
         'dtcreated
         '
-        Me.dtcreated.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.dtcreated.Enabled = False
         Me.dtcreated.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.dtcreated.Location = New System.Drawing.Point(730, 690)
@@ -1035,7 +1010,6 @@ Partial Class fpembelian
         '
         'Label25
         '
-        Me.Label25.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.Label25.Location = New System.Drawing.Point(621, 692)

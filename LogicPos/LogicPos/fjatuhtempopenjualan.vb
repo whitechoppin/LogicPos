@@ -88,4 +88,12 @@ Public Class fjatuhtempopenjualan
     Private Sub fjatuhtempopenjualan_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
+
+    Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
+        Call tabel_penjualan()
+    End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call tabel_penjualan()
+    End Sub
 End Class

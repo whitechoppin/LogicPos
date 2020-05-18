@@ -68,4 +68,9 @@ Public Class fnotifikasistok
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel_stok()
     End Sub
+
+    Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
+        Call tabel_stok()
+
+    End Sub
 End Class
