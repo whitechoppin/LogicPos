@@ -58,6 +58,7 @@ Partial Class fcarilunasbeli
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
+        Me.GridView1.OptionsFind.AlwaysVisible = True
         Me.GridView1.OptionsView.ShowFooter = True
         '
         'GridColumn1
@@ -152,6 +153,7 @@ Partial Class fcarilunasbeli
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
         Me.GridView2.OptionsBehavior.Editable = False
+        Me.GridView2.OptionsFind.AlwaysVisible = True
         Me.GridView2.OptionsView.ShowFooter = True
         '
         'GridColumn7

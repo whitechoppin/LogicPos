@@ -10,6 +10,7 @@ Public Class fcaristok
     Private Sub fcaristok_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call tabel()
         LabelHarga.Visible = False
+
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode Stok"

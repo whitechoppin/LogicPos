@@ -56,6 +56,7 @@ Partial Class flaporanstokbarang
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
+        Me.GridView1.OptionsFind.AlwaysVisible = True
         '
         'GridColumn1
         '

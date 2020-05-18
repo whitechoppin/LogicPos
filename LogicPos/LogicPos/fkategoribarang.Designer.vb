@@ -47,10 +47,10 @@ Partial Class fkategoribarang
         '
         'GridControl
         '
-        Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Location = New System.Drawing.Point(13, 336)
         Me.GridControl.MainView = Me.GridView
-        Me.GridControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Name = "GridControl"
         Me.GridControl.Size = New System.Drawing.Size(577, 432)
         Me.GridControl.TabIndex = 7
@@ -62,6 +62,7 @@ Partial Class fkategoribarang
         Me.GridView.GridControl = Me.GridControl
         Me.GridView.Name = "GridView"
         Me.GridView.OptionsBehavior.Editable = False
+        Me.GridView.OptionsFind.AlwaysVisible = True
         Me.GridView.OptionsView.ShowFooter = True
         '
         'GridColumn1
@@ -119,7 +120,7 @@ Partial Class fkategoribarang
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtketerangan.Location = New System.Drawing.Point(163, 224)
-        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
         Me.txtketerangan.Size = New System.Drawing.Size(427, 94)
         Me.txtketerangan.TabIndex = 38
@@ -140,7 +141,7 @@ Partial Class fkategoribarang
         '
         Me.btnbatal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnbatal.Location = New System.Drawing.Point(453, 42)
-        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(137, 50)
         Me.btnbatal.TabIndex = 13
@@ -151,7 +152,7 @@ Partial Class fkategoribarang
         '
         Me.btnhapus.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnhapus.Location = New System.Drawing.Point(308, 42)
-        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(137, 50)
         Me.btnhapus.TabIndex = 14
@@ -162,7 +163,7 @@ Partial Class fkategoribarang
         '
         Me.btnedit.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnedit.Location = New System.Drawing.Point(163, 42)
-        Me.btnedit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnedit.Name = "btnedit"
         Me.btnedit.Size = New System.Drawing.Size(137, 50)
         Me.btnedit.TabIndex = 15
@@ -173,7 +174,7 @@ Partial Class fkategoribarang
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnama.Location = New System.Drawing.Point(163, 144)
-        Me.txtnama.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtnama.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnama.Name = "txtnama"
         Me.txtnama.Size = New System.Drawing.Size(427, 24)
         Me.txtnama.TabIndex = 2
@@ -182,7 +183,7 @@ Partial Class fkategoribarang
         '
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkode.Location = New System.Drawing.Point(163, 106)
-        Me.txtkode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtkode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkode.Name = "txtkode"
         Me.txtkode.Size = New System.Drawing.Size(427, 24)
         Me.txtkode.TabIndex = 1
@@ -213,7 +214,7 @@ Partial Class fkategoribarang
         '
         Me.btntambah.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btntambah.Location = New System.Drawing.Point(18, 42)
-        Me.btntambah.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btntambah.Margin = New System.Windows.Forms.Padding(4)
         Me.btntambah.Name = "btntambah"
         Me.btntambah.Size = New System.Drawing.Size(137, 50)
         Me.btntambah.TabIndex = 16
@@ -224,7 +225,7 @@ Partial Class fkategoribarang
         '
         Me.txtselisih.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtselisih.Location = New System.Drawing.Point(163, 185)
-        Me.txtselisih.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtselisih.Margin = New System.Windows.Forms.Padding(4)
         Me.txtselisih.Name = "txtselisih"
         Me.txtselisih.Size = New System.Drawing.Size(427, 24)
         Me.txtselisih.TabIndex = 2
@@ -261,7 +262,7 @@ Partial Class fkategoribarang
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtkode)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fkategoribarang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Kategori Barang"

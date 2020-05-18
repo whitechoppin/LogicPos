@@ -54,7 +54,7 @@ Partial Class fgudang
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtketerangan.Location = New System.Drawing.Point(497, 146)
-        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
         Me.txtketerangan.Size = New System.Drawing.Size(277, 192)
         Me.txtketerangan.TabIndex = 17
@@ -64,7 +64,7 @@ Partial Class fgudang
         '
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtalamat.Location = New System.Drawing.Point(122, 222)
-        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
         Me.txtalamat.Name = "txtalamat"
         Me.txtalamat.Size = New System.Drawing.Size(270, 116)
         Me.txtalamat.TabIndex = 17
@@ -74,7 +74,7 @@ Partial Class fgudang
         '
         Me.btngenerate.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btngenerate.Location = New System.Drawing.Point(263, 146)
-        Me.btngenerate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btngenerate.Margin = New System.Windows.Forms.Padding(4)
         Me.btngenerate.Name = "btngenerate"
         Me.btngenerate.Size = New System.Drawing.Size(129, 37)
         Me.btngenerate.TabIndex = 28
@@ -85,7 +85,7 @@ Partial Class fgudang
         '
         Me.btnauto.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnauto.Location = New System.Drawing.Point(122, 146)
-        Me.btnauto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnauto.Margin = New System.Windows.Forms.Padding(4)
         Me.btnauto.Name = "btnauto"
         Me.btnauto.Size = New System.Drawing.Size(129, 37)
         Me.btnauto.TabIndex = 27
@@ -95,7 +95,7 @@ Partial Class fgudang
         'btnbatal
         '
         Me.btnbatal.Location = New System.Drawing.Point(591, 51)
-        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(183, 55)
         Me.btnbatal.TabIndex = 13
@@ -105,7 +105,7 @@ Partial Class fgudang
         'btnhapus
         '
         Me.btnhapus.Location = New System.Drawing.Point(400, 51)
-        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(183, 55)
         Me.btnhapus.TabIndex = 14
@@ -115,7 +115,7 @@ Partial Class fgudang
         'btnedit
         '
         Me.btnedit.Location = New System.Drawing.Point(209, 51)
-        Me.btnedit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnedit.Name = "btnedit"
         Me.btnedit.Size = New System.Drawing.Size(183, 55)
         Me.btnedit.TabIndex = 15
@@ -125,7 +125,7 @@ Partial Class fgudang
         'btntambah
         '
         Me.btntambah.Location = New System.Drawing.Point(18, 51)
-        Me.btntambah.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btntambah.Margin = New System.Windows.Forms.Padding(4)
         Me.btntambah.Name = "btntambah"
         Me.btntambah.Size = New System.Drawing.Size(183, 55)
         Me.btntambah.TabIndex = 16
@@ -136,7 +136,7 @@ Partial Class fgudang
         '
         Me.txttelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txttelp.Location = New System.Drawing.Point(497, 114)
-        Me.txttelp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
         Me.txttelp.Name = "txttelp"
         Me.txttelp.Size = New System.Drawing.Size(277, 24)
         Me.txttelp.TabIndex = 2
@@ -145,7 +145,7 @@ Partial Class fgudang
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnama.Location = New System.Drawing.Point(122, 190)
-        Me.txtnama.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtnama.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnama.Name = "txtnama"
         Me.txtnama.Size = New System.Drawing.Size(270, 24)
         Me.txtnama.TabIndex = 2
@@ -165,7 +165,7 @@ Partial Class fgudang
         '
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkode.Location = New System.Drawing.Point(122, 114)
-        Me.txtkode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtkode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkode.Name = "txtkode"
         Me.txtkode.Size = New System.Drawing.Size(270, 24)
         Me.txtkode.TabIndex = 1
@@ -246,10 +246,10 @@ Partial Class fgudang
         '
         'GridControl
         '
-        Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Location = New System.Drawing.Point(13, 361)
         Me.GridControl.MainView = Me.GridView
-        Me.GridControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Name = "GridControl"
         Me.GridControl.Size = New System.Drawing.Size(761, 374)
         Me.GridControl.TabIndex = 15
@@ -261,6 +261,7 @@ Partial Class fgudang
         Me.GridView.GridControl = Me.GridControl
         Me.GridView.Name = "GridView"
         Me.GridView.OptionsBehavior.Editable = False
+        Me.GridView.OptionsFind.AlwaysVisible = True
         '
         'GridColumn1
         '
@@ -318,7 +319,7 @@ Partial Class fgudang
         Me.Controls.Add(Me.txttelp)
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fgudang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Gudang"

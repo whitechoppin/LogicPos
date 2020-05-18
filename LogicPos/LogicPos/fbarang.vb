@@ -439,7 +439,7 @@ Public Class fbarang
         btnedit.Text = "&Edit"
 
         'history user ==========
-        Call historysave("Mengedit Data Barang Kode" + txtkode.Text, txtkode.Text)
+        Call historysave("Mengedit Data Barang Kode " + txtkode.Text, txtkode.Text)
         '========================
 
         Me.Refresh()

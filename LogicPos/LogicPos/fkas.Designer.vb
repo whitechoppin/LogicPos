@@ -54,7 +54,7 @@ Partial Class fkas
         Me.cbjeniskas.FormattingEnabled = True
         Me.cbjeniskas.Items.AddRange(New Object() {"Fisik", "Non Fisik"})
         Me.cbjeniskas.Location = New System.Drawing.Point(108, 198)
-        Me.cbjeniskas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbjeniskas.Margin = New System.Windows.Forms.Padding(4)
         Me.cbjeniskas.Name = "cbjeniskas"
         Me.cbjeniskas.Size = New System.Drawing.Size(259, 26)
         Me.cbjeniskas.TabIndex = 27
@@ -63,7 +63,7 @@ Partial Class fkas
         '
         Me.btngenerate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btngenerate.Location = New System.Drawing.Point(243, 132)
-        Me.btngenerate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btngenerate.Margin = New System.Windows.Forms.Padding(4)
         Me.btngenerate.Name = "btngenerate"
         Me.btngenerate.Size = New System.Drawing.Size(124, 26)
         Me.btngenerate.TabIndex = 26
@@ -74,7 +74,7 @@ Partial Class fkas
         '
         Me.txtrekening.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtrekening.Location = New System.Drawing.Point(108, 232)
-        Me.txtrekening.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtrekening.Margin = New System.Windows.Forms.Padding(4)
         Me.txtrekening.Name = "txtrekening"
         Me.txtrekening.Size = New System.Drawing.Size(259, 24)
         Me.txtrekening.TabIndex = 24
@@ -94,7 +94,7 @@ Partial Class fkas
         '
         Me.btnauto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnauto.Location = New System.Drawing.Point(108, 132)
-        Me.btnauto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnauto.Margin = New System.Windows.Forms.Padding(4)
         Me.btnauto.Name = "btnauto"
         Me.btnauto.Size = New System.Drawing.Size(134, 26)
         Me.btnauto.TabIndex = 23
@@ -105,7 +105,7 @@ Partial Class fkas
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtketerangan.Location = New System.Drawing.Point(375, 132)
-        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
         Me.txtketerangan.Size = New System.Drawing.Size(350, 124)
         Me.txtketerangan.TabIndex = 17
@@ -114,7 +114,7 @@ Partial Class fkas
         'btnbatal
         '
         Me.btnbatal.Location = New System.Drawing.Point(554, 43)
-        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(171, 48)
         Me.btnbatal.TabIndex = 13
@@ -124,7 +124,7 @@ Partial Class fkas
         'btnhapus
         '
         Me.btnhapus.Location = New System.Drawing.Point(375, 43)
-        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(171, 48)
         Me.btnhapus.TabIndex = 14
@@ -134,7 +134,7 @@ Partial Class fkas
         'btnedit
         '
         Me.btnedit.Location = New System.Drawing.Point(196, 43)
-        Me.btnedit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnedit.Name = "btnedit"
         Me.btnedit.Size = New System.Drawing.Size(171, 48)
         Me.btnedit.TabIndex = 15
@@ -144,7 +144,7 @@ Partial Class fkas
         'btntambah
         '
         Me.btntambah.Location = New System.Drawing.Point(17, 43)
-        Me.btntambah.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btntambah.Margin = New System.Windows.Forms.Padding(4)
         Me.btntambah.Name = "btntambah"
         Me.btntambah.Size = New System.Drawing.Size(171, 48)
         Me.btntambah.TabIndex = 16
@@ -155,7 +155,7 @@ Partial Class fkas
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnama.Location = New System.Drawing.Point(108, 166)
-        Me.txtnama.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtnama.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnama.Name = "txtnama"
         Me.txtnama.Size = New System.Drawing.Size(259, 24)
         Me.txtnama.TabIndex = 2
@@ -164,7 +164,7 @@ Partial Class fkas
         '
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkode.Location = New System.Drawing.Point(108, 100)
-        Me.txtkode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtkode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkode.Name = "txtkode"
         Me.txtkode.Size = New System.Drawing.Size(259, 24)
         Me.txtkode.TabIndex = 1
@@ -215,10 +215,10 @@ Partial Class fkas
         '
         'GridControl
         '
-        Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Location = New System.Drawing.Point(17, 264)
         Me.GridControl.MainView = Me.GridView1
-        Me.GridControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Name = "GridControl"
         Me.GridControl.Size = New System.Drawing.Size(708, 332)
         Me.GridControl.TabIndex = 12
@@ -230,6 +230,7 @@ Partial Class fkas
         Me.GridView1.GridControl = Me.GridControl
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
+        Me.GridView1.OptionsFind.AlwaysVisible = True
         '
         'GridColumn1
         '

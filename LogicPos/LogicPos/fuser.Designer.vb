@@ -189,6 +189,7 @@ Partial Class fuser
         Me.GridView.GridControl = Me.GridControl
         Me.GridView.Name = "GridView"
         Me.GridView.OptionsBehavior.Editable = False
+        Me.GridView.OptionsFind.AlwaysVisible = True
         '
         'GridColumn1
         '

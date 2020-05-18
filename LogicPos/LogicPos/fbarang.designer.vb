@@ -320,6 +320,7 @@ Partial Class fbarang
         Me.GridView.GridControl = Me.GridControl
         Me.GridView.Name = "GridView"
         Me.GridView.OptionsBehavior.Editable = False
+        Me.GridView.OptionsFind.AlwaysVisible = True
         Me.GridView.OptionsView.ShowFooter = True
         '
         'GridColumn1
