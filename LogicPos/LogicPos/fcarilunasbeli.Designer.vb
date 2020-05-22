@@ -22,6 +22,7 @@ Partial Class fcarilunasbeli
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fcarilunasbeli))
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -37,6 +38,11 @@ Partial Class fcarilunasbeli
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnrefresh = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.dtakhir = New System.Windows.Forms.DateTimePicker()
+        Me.dtawal = New System.Windows.Forms.DateTimePicker()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -200,12 +206,64 @@ Partial Class fcarilunasbeli
         Me.Label2.TabIndex = 26
         Me.Label2.Text = "Data Pelunasan"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(215, 42)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(66, 16)
+        Me.Label3.TabIndex = 41
+        Me.Label3.Text = "Tanggal"
+        '
+        'btnrefresh
+        '
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(723, 37)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
+        Me.btnrefresh.TabIndex = 40
+        Me.btnrefresh.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(486, 43)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(34, 16)
+        Me.Label4.TabIndex = 39
+        Me.Label4.Text = "S/D"
+        '
+        'dtakhir
+        '
+        Me.dtakhir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtakhir.Location = New System.Drawing.Point(524, 39)
+        Me.dtakhir.Name = "dtakhir"
+        Me.dtakhir.Size = New System.Drawing.Size(193, 24)
+        Me.dtakhir.TabIndex = 38
+        '
+        'dtawal
+        '
+        Me.dtawal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtawal.Location = New System.Drawing.Point(287, 39)
+        Me.dtawal.Name = "dtawal"
+        Me.dtawal.Size = New System.Drawing.Size(193, 24)
+        Me.dtawal.TabIndex = 37
+        '
         'fcarilunasbeli
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1316, 487)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.btnrefresh)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.dtakhir)
+        Me.Controls.Add(Me.dtawal)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl2)
         Me.Controls.Add(Me.GridControl1)
@@ -239,4 +297,9 @@ Partial Class fcarilunasbeli
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents btnrefresh As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents dtakhir As DateTimePicker
+    Friend WithEvents dtawal As DateTimePicker
 End Class

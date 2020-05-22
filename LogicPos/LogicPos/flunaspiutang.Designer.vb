@@ -491,7 +491,7 @@ Partial Class flunaspiutang
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label6.Location = New System.Drawing.Point(15, 632)
+        Me.Label6.Location = New System.Drawing.Point(14, 631)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(83, 18)
@@ -502,7 +502,7 @@ Partial Class flunaspiutang
         '
         Me.txtketerangan.Enabled = False
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtketerangan.Location = New System.Drawing.Point(106, 632)
+        Me.txtketerangan.Location = New System.Drawing.Point(105, 631)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
         Me.txtketerangan.Size = New System.Drawing.Size(598, 118)
@@ -760,7 +760,7 @@ Partial Class flunaspiutang
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1165, 766)
+        Me.ClientSize = New System.Drawing.Size(1165, 761)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label7)

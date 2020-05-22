@@ -189,6 +189,18 @@
       <DependentUpon>flaporantransferkas.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fcarireturbeli.Designer.vb">
+      <DependentUpon>fcarireturbeli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcarireturbeli.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fcarireturjual.Designer.vb">
+      <DependentUpon>fcarireturjual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcarireturjual.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fkalkulasiexpedisi.Designer.vb">
       <DependentUpon>fkalkulasiexpedisi.vb</DependentUpon>
     </Compile>
@@ -903,6 +915,12 @@
     <EmbeddedResource Include="fakturpenjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpenjualan.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcarireturbeli.resx">
+      <DependentUpon>fcarireturbeli.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcarireturjual.resx">
+      <DependentUpon>fcarireturjual.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fkalkulasiexpedisi.resx">
       <DependentUpon>fkalkulasiexpedisi.vb</DependentUpon>
