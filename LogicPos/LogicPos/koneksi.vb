@@ -40,4 +40,15 @@ Module koneksi
         dr = cmmd.ExecuteReader()
     End Sub
 
+    Public Function cekcetakan(nomor As String) As Boolean
+        Call koneksii()
+        sql = "SELECT * FROM tb_history_user WHERE keterangan_history LIKE '%mencetak%' AND created_by='" & fmenu.statususer.Text & "' AND kode_tabel = '" & nomor & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 End Module

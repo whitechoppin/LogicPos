@@ -15,6 +15,7 @@ Public Class fpassword
 
         If dr.HasRows = 0 Then
             MsgBox("Password salah !", MsgBoxStyle.Exclamation, "Error Login")
+            txtpassword.Text = ""
         Else
             If passwordid = 1 Then
                 fbarang.txthidden.Visible = False
@@ -26,6 +27,10 @@ Public Class fpassword
                 fcaribarang.LabelHarga.Visible = True
             ElseIf passwordid = 5 Then
                 fpricelist.txthidden.Visible = False
+            ElseIf passwordid = 6 Then
+                fpembelian.statusizincetak = True
+            ElseIf passwordid = 7 Then
+                fpenjualan.statusizincetak = True
             End If
 
             txtpassword.Text = ""

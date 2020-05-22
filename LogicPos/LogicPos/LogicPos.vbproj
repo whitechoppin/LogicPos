@@ -195,6 +195,12 @@
     <Compile Include="fkalkulasiexpedisi.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fkalkulasipengiriman.Designer.vb">
+      <DependentUpon>fkalkulasipengiriman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fkalkulasipengiriman.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fperusahaan.Designer.vb">
       <DependentUpon>fperusahaan.vb</DependentUpon>
     </Compile>
@@ -900,6 +906,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fkalkulasiexpedisi.resx">
       <DependentUpon>fkalkulasiexpedisi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fkalkulasipengiriman.resx">
+      <DependentUpon>fkalkulasipengiriman.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fperusahaan.resx">
       <DependentUpon>fperusahaan.vb</DependentUpon>

@@ -5,6 +5,7 @@ Imports System.Data
 Imports CrystalDecisions.Shared
 Public Class fpenjualan
     Public kodeakses As Integer
+    Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
     Public tinggi As Integer
     Public tabel As DataTable
@@ -1025,19 +1026,49 @@ Public Class fpenjualan
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             If cbvoid.Checked = False Then
-                Call koneksii()
-                If rbstruk.Checked Then
-                    'Call cetak_struk()
-                    Call PrintTransaksi()
 
-                    sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
-                    cmmd = New OdbcCommand(sql, cnn)
-                    dr = cmmd.ExecuteReader()
+                If cekcetakan(txtnonota.Text).Equals(True) Then
+                    statusizincetak = False
+                    passwordid = 7
+                    fpassword.ShowDialog()
+                    If statusizincetak.Equals(True) Then
+                        Call koneksii()
+                        If rbstruk.Checked Then
+                            'Call cetak_struk()
+                            Call PrintTransaksi()
 
-                    cbprinted.Checked = True
+                            sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
+                            cmmd = New OdbcCommand(sql, cnn)
+                            dr = cmmd.ExecuteReader()
+
+                            cbprinted.Checked = True
+                        Else
+                            If rbfaktur.Checked Then
+                                Call cetak_faktur()
+
+                                sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
+                                cmmd = New OdbcCommand(sql, cnn)
+                                dr = cmmd.ExecuteReader()
+
+                                cbprinted.Checked = True
+                            Else
+                                If rbsurat.Checked Then
+                                    Call cetak_surat()
+
+                                    sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
+                                    cmmd = New OdbcCommand(sql, cnn)
+                                    dr = cmmd.ExecuteReader()
+
+                                    cbprinted.Checked = True
+                                End If
+                            End If
+                        End If
+                    End If
                 Else
-                    If rbfaktur.Checked Then
-                        Call cetak_faktur()
+                    Call koneksii()
+                    If rbstruk.Checked Then
+                        'Call cetak_struk()
+                        Call PrintTransaksi()
 
                         sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
                         cmmd = New OdbcCommand(sql, cnn)
@@ -1045,17 +1076,31 @@ Public Class fpenjualan
 
                         cbprinted.Checked = True
                     Else
-                        If rbsurat.Checked Then
-                            Call cetak_surat()
+                        If rbfaktur.Checked Then
+                            Call cetak_faktur()
 
                             sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
                             cmmd = New OdbcCommand(sql, cnn)
                             dr = cmmd.ExecuteReader()
 
                             cbprinted.Checked = True
+                        Else
+                            If rbsurat.Checked Then
+                                Call cetak_surat()
+
+                                sql = "UPDATE tb_penjualan SET print_penjualan = 1 WHERE kode_penjualan = '" & txtnonota.Text & "' "
+                                cmmd = New OdbcCommand(sql, cnn)
+                                dr = cmmd.ExecuteReader()
+
+                                cbprinted.Checked = True
+                            End If
                         End If
                     End If
                 End If
+
+
+
+
 
                 'history user ==========
                 Call historysave("Mencetak Data Penjualan Kode " + txtnonota.Text, txtnonota.Text)

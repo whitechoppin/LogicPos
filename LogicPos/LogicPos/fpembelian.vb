@@ -4,6 +4,7 @@ Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class fpembelian
     Public kodeakses As Integer
+    Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
     Dim tabel As DataTable
     Dim hargamodalbarang As Double
@@ -1036,30 +1037,78 @@ Public Class fpembelian
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             If cbvoid.Checked = False Then
-                If rbfaktur.Checked Then
-                    Call cetak_faktur()
 
-                    Call koneksii()
-                    sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
-                    cmmd = New OdbcCommand(sql, cnn)
-                    dr = cmmd.ExecuteReader()
+                If cekcetakan(txtnonota.Text).Equals(True) Then
+                    statusizincetak = False
+                    passwordid = 6
+                    fpassword.ShowDialog()
+                    If statusizincetak.Equals(True) Then
+                        If rbfaktur.Checked Then
+                            Call cetak_faktur()
 
-                    cbprinted.Checked = True
-                ElseIf rbpo.Checked Then
-                    Call cetak_po()
+                            Call koneksii()
+                            sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+                            cmmd = New OdbcCommand(sql, cnn)
+                            dr = cmmd.ExecuteReader()
 
-                    Call koneksii()
-                    sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
-                    cmmd = New OdbcCommand(sql, cnn)
-                    dr = cmmd.ExecuteReader()
+                            cbprinted.Checked = True
+                        ElseIf rbpo.Checked Then
+                            Call cetak_po()
 
-                    cbprinted.Checked = True
+                            Call koneksii()
+                            sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+                            cmmd = New OdbcCommand(sql, cnn)
+                            dr = cmmd.ExecuteReader()
+
+                            cbprinted.Checked = True
+                        End If
+                    End If
+                Else
+                    If rbfaktur.Checked Then
+                        Call cetak_faktur()
+
+                        Call koneksii()
+                        sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+                        cmmd = New OdbcCommand(sql, cnn)
+                        dr = cmmd.ExecuteReader()
+
+                        cbprinted.Checked = True
+                    ElseIf rbpo.Checked Then
+                        Call cetak_po()
+
+                        Call koneksii()
+                        sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+                        cmmd = New OdbcCommand(sql, cnn)
+                        dr = cmmd.ExecuteReader()
+
+                        cbprinted.Checked = True
+                    End If
                 End If
+
+                'If rbfaktur.Checked Then
+                '    Call cetak_faktur()
+
+                '    Call koneksii()
+                '    sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+                '    cmmd = New OdbcCommand(sql, cnn)
+                '    dr = cmmd.ExecuteReader()
+
+                '    cbprinted.Checked = True
+                'ElseIf rbpo.Checked Then
+                '    Call cetak_po()
+
+                '    Call koneksii()
+                '    sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
+                '    cmmd = New OdbcCommand(sql, cnn)
+                '    dr = cmmd.ExecuteReader()
+
+                '    cbprinted.Checked = True
+                'End If
                 'history user ==========
                 Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
                 '========================
             Else
-                MsgBox("Nota sudah void !")
+                    MsgBox("Nota sudah void !")
             End If
         Else
             MsgBox("Tidak ada akses")
