@@ -30,9 +30,6 @@ Partial Class freturjual
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtnoretur = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.cbposted = New System.Windows.Forms.CheckBox()
-        Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -51,6 +48,9 @@ Partial Class freturjual
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbposted = New System.Windows.Forms.CheckBox()
+        Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -97,6 +97,7 @@ Partial Class freturjual
         Me.btnsimpan = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
+        Me.btncariretur = New System.Windows.Forms.Button()
         CType(Me.ritediskonpersen, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritediskonnominal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
@@ -196,41 +197,6 @@ Partial Class freturjual
         Me.Label2.Size = New System.Drawing.Size(103, 18)
         Me.Label2.TabIndex = 72
         Me.Label2.Text = "No. Retur Jual"
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.cbposted)
-        Me.GroupBox1.Controls.Add(Me.cbprinted)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox1.Location = New System.Drawing.Point(754, 10)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(202, 52)
-        Me.GroupBox1.TabIndex = 59
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Status"
-        '
-        'cbposted
-        '
-        Me.cbposted.AutoSize = True
-        Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(111, 21)
-        Me.cbposted.Name = "cbposted"
-        Me.cbposted.Size = New System.Drawing.Size(74, 22)
-        Me.cbposted.TabIndex = 41
-        Me.cbposted.Text = "Posted"
-        Me.cbposted.UseVisualStyleBackColor = True
-        '
-        'cbprinted
-        '
-        Me.cbprinted.AutoSize = True
-        Me.cbprinted.Enabled = False
-        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(23, 21)
-        Me.cbprinted.Name = "cbprinted"
-        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
-        Me.cbprinted.TabIndex = 40
-        Me.cbprinted.Text = "Printed"
-        Me.cbprinted.UseVisualStyleBackColor = True
         '
         'txttelp
         '
@@ -423,6 +389,41 @@ Partial Class freturjual
         Me.Label4.Size = New System.Drawing.Size(83, 18)
         Me.Label4.TabIndex = 19
         Me.Label4.Text = "Nama Cust"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.cbposted)
+        Me.GroupBox1.Controls.Add(Me.cbprinted)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.GroupBox1.Location = New System.Drawing.Point(754, 10)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(202, 52)
+        Me.GroupBox1.TabIndex = 59
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Status"
+        '
+        'cbposted
+        '
+        Me.cbposted.AutoSize = True
+        Me.cbposted.Enabled = False
+        Me.cbposted.Location = New System.Drawing.Point(111, 21)
+        Me.cbposted.Name = "cbposted"
+        Me.cbposted.Size = New System.Drawing.Size(74, 22)
+        Me.cbposted.TabIndex = 41
+        Me.cbposted.Text = "Posted"
+        Me.cbposted.UseVisualStyleBackColor = True
+        '
+        'cbprinted
+        '
+        Me.cbprinted.AutoSize = True
+        Me.cbprinted.Enabled = False
+        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.cbprinted.Location = New System.Drawing.Point(23, 21)
+        Me.cbprinted.Name = "cbprinted"
+        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
+        Me.cbprinted.TabIndex = 40
+        Me.cbprinted.Text = "Printed"
+        Me.cbprinted.UseVisualStyleBackColor = True
         '
         'Label7
         '
@@ -820,6 +821,7 @@ Partial Class freturjual
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.btncariretur)
         Me.GroupBox5.Controls.Add(Me.btnprev)
         Me.GroupBox5.Controls.Add(Me.btnnext)
         Me.GroupBox5.Controls.Add(Me.txtgoretur)
@@ -834,18 +836,18 @@ Partial Class freturjual
         '
         Me.btnprev.Location = New System.Drawing.Point(7, 17)
         Me.btnprev.Name = "btnprev"
-        Me.btnprev.Size = New System.Drawing.Size(75, 26)
+        Me.btnprev.Size = New System.Drawing.Size(44, 26)
         Me.btnprev.TabIndex = 5
-        Me.btnprev.Text = "<< Prev"
+        Me.btnprev.Text = "<<"
         Me.btnprev.UseVisualStyleBackColor = True
         '
         'btnnext
         '
-        Me.btnnext.Location = New System.Drawing.Point(258, 17)
+        Me.btnnext.Location = New System.Drawing.Point(297, 17)
         Me.btnnext.Name = "btnnext"
-        Me.btnnext.Size = New System.Drawing.Size(75, 26)
+        Me.btnnext.Size = New System.Drawing.Size(36, 26)
         Me.btnnext.TabIndex = 8
-        Me.btnnext.Text = "Next >>"
+        Me.btnnext.Text = ">>"
         Me.btnnext.UseVisualStyleBackColor = True
         '
         'txtgoretur
@@ -921,6 +923,18 @@ Partial Class freturjual
         Me.txtketerangan.Size = New System.Drawing.Size(1202, 92)
         Me.txtketerangan.TabIndex = 60
         Me.txtketerangan.Text = ""
+        '
+        'btncariretur
+        '
+        Me.btncariretur.BackgroundImage = CType(resources.GetObject("btncariretur.BackgroundImage"), System.Drawing.Image)
+        Me.btncariretur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncariretur.ImageIndex = 0
+        Me.btncariretur.Location = New System.Drawing.Point(251, 17)
+        Me.btncariretur.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncariretur.Name = "btncariretur"
+        Me.btncariretur.Size = New System.Drawing.Size(30, 27)
+        Me.btncariretur.TabIndex = 77
+        Me.btncariretur.UseVisualStyleBackColor = True
         '
         'freturjual
         '
@@ -1034,4 +1048,5 @@ Partial Class freturjual
     Friend WithEvents Label3 As Label
     Friend WithEvents Label15 As Label
     Friend WithEvents txtketerangan As RichTextBox
+    Friend WithEvents btncariretur As Button
 End Class

@@ -8,8 +8,8 @@ Public Class fcaripembelian
 
         dtawal.Value = Now
         dtakhir.Value = Now
-        dtawal.MaxDate = Now
-        dtakhir.MaxDate = Now
+        'dtawal.MaxDate = Now
+        'dtakhir.MaxDate = Now
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"

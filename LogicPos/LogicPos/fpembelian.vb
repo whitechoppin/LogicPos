@@ -1325,7 +1325,7 @@ Public Class fpembelian
 
     Private Sub btncaripembelian_Click(sender As Object, e As EventArgs) Handles btncaripembelian.Click
         tutupbeli = 2
-        fcaripembelian.Show()
+        fcaripembelian.ShowDialog()
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click

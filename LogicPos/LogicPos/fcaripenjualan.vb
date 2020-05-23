@@ -8,8 +8,8 @@ Public Class fcaripenjualan
 
         dtawal.Value = Now
         dtakhir.Value = Now
-        dtawal.MaxDate = Now
-        dtakhir.MaxDate = Now
+        'dtawal.MaxDate = Now
+        'dtakhir.MaxDate = Now
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"
@@ -22,6 +22,7 @@ Public Class fcaripenjualan
         GridColumn4.FieldName = "total_penjualan"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
+
         GridControl1.Visible = True
     End Sub
     Sub tabel()

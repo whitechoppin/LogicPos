@@ -15,8 +15,8 @@ Public Class fcarilunasbeli
         'End With
         dtawal.Value = Now
         dtakhir.Value = Now
-        dtawal.MaxDate = Now
-        dtakhir.MaxDate = Now
+        'dtawal.MaxDate = Now
+        'dtakhir.MaxDate = Now
     End Sub
 
     Sub grid()

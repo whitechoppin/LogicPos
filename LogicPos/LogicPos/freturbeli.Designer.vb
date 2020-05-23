@@ -50,6 +50,7 @@ Partial Class freturbeli
         Me.GridColumn16 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.btncariretur = New System.Windows.Forms.Button()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
         Me.txtgoretur = New System.Windows.Forms.TextBox()
@@ -58,14 +59,14 @@ Partial Class freturbeli
         Me.btnbaru = New System.Windows.Forms.Button()
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnsimpan = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cbposted = New System.Windows.Forms.CheckBox()
+        Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dtreturbeli = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtnoretur = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.cbposted = New System.Windows.Forms.CheckBox()
-        Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -89,8 +90,8 @@ Partial Class freturbeli
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btncarinota
@@ -377,6 +378,7 @@ Partial Class freturbeli
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.btncariretur)
         Me.GroupBox5.Controls.Add(Me.btnprev)
         Me.GroupBox5.Controls.Add(Me.btnnext)
         Me.GroupBox5.Controls.Add(Me.txtgoretur)
@@ -387,22 +389,34 @@ Partial Class freturbeli
         Me.GroupBox5.TabIndex = 37
         Me.GroupBox5.TabStop = False
         '
+        'btncariretur
+        '
+        Me.btncariretur.BackgroundImage = CType(resources.GetObject("btncariretur.BackgroundImage"), System.Drawing.Image)
+        Me.btncariretur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncariretur.ImageIndex = 0
+        Me.btncariretur.Location = New System.Drawing.Point(251, 17)
+        Me.btncariretur.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncariretur.Name = "btncariretur"
+        Me.btncariretur.Size = New System.Drawing.Size(30, 27)
+        Me.btncariretur.TabIndex = 76
+        Me.btncariretur.UseVisualStyleBackColor = True
+        '
         'btnprev
         '
         Me.btnprev.Location = New System.Drawing.Point(7, 17)
         Me.btnprev.Name = "btnprev"
-        Me.btnprev.Size = New System.Drawing.Size(75, 26)
+        Me.btnprev.Size = New System.Drawing.Size(46, 26)
         Me.btnprev.TabIndex = 5
-        Me.btnprev.Text = "<< Prev"
+        Me.btnprev.Text = "<<"
         Me.btnprev.UseVisualStyleBackColor = True
         '
         'btnnext
         '
-        Me.btnnext.Location = New System.Drawing.Point(258, 17)
+        Me.btnnext.Location = New System.Drawing.Point(287, 17)
         Me.btnnext.Name = "btnnext"
-        Me.btnnext.Size = New System.Drawing.Size(75, 26)
+        Me.btnnext.Size = New System.Drawing.Size(46, 26)
         Me.btnnext.TabIndex = 8
-        Me.btnnext.Text = "Next >>"
+        Me.btnnext.Text = ">>"
         Me.btnnext.UseVisualStyleBackColor = True
         '
         'txtgoretur
@@ -457,6 +471,41 @@ Partial Class freturbeli
         Me.btnsimpan.TabIndex = 2
         Me.btnsimpan.Text = "Simpan"
         Me.btnsimpan.UseVisualStyleBackColor = True
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.cbposted)
+        Me.GroupBox2.Controls.Add(Me.cbprinted)
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.GroupBox2.Location = New System.Drawing.Point(754, 12)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(184, 52)
+        Me.GroupBox2.TabIndex = 59
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Status"
+        '
+        'cbposted
+        '
+        Me.cbposted.AutoSize = True
+        Me.cbposted.Enabled = False
+        Me.cbposted.Location = New System.Drawing.Point(94, 21)
+        Me.cbposted.Name = "cbposted"
+        Me.cbposted.Size = New System.Drawing.Size(74, 22)
+        Me.cbposted.TabIndex = 41
+        Me.cbposted.Text = "Posted"
+        Me.cbposted.UseVisualStyleBackColor = True
+        '
+        'cbprinted
+        '
+        Me.cbprinted.AutoSize = True
+        Me.cbprinted.Enabled = False
+        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.cbprinted.Location = New System.Drawing.Point(12, 21)
+        Me.cbprinted.Name = "cbprinted"
+        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
+        Me.cbprinted.TabIndex = 40
+        Me.cbprinted.Text = "Printed"
+        Me.cbprinted.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -532,41 +581,6 @@ Partial Class freturbeli
         Me.Label2.Size = New System.Drawing.Size(100, 18)
         Me.Label2.TabIndex = 72
         Me.Label2.Text = "No. Retur Beli"
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.cbposted)
-        Me.GroupBox2.Controls.Add(Me.cbprinted)
-        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox2.Location = New System.Drawing.Point(754, 12)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(184, 52)
-        Me.GroupBox2.TabIndex = 59
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Status"
-        '
-        'cbposted
-        '
-        Me.cbposted.AutoSize = True
-        Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(94, 21)
-        Me.cbposted.Name = "cbposted"
-        Me.cbposted.Size = New System.Drawing.Size(74, 22)
-        Me.cbposted.TabIndex = 41
-        Me.cbposted.Text = "Posted"
-        Me.cbposted.UseVisualStyleBackColor = True
-        '
-        'cbprinted
-        '
-        Me.cbprinted.AutoSize = True
-        Me.cbprinted.Enabled = False
-        Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(12, 21)
-        Me.cbprinted.Name = "cbprinted"
-        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
-        Me.cbprinted.TabIndex = 40
-        Me.cbprinted.Text = "Printed"
-        Me.cbprinted.UseVisualStyleBackColor = True
         '
         'txttelp
         '
@@ -773,10 +787,10 @@ Partial Class freturbeli
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -841,4 +855,5 @@ Partial Class freturbeli
     Friend WithEvents Label5 As Label
     Friend WithEvents Label15 As Label
     Friend WithEvents txtketerangan As RichTextBox
+    Friend WithEvents btncariretur As Button
 End Class

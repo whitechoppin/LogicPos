@@ -759,6 +759,11 @@ Public Class freturbeli
         End If
     End Sub
 
+    Private Sub btncariretur_Click(sender As Object, e As EventArgs) Handles btncariretur.Click
+        tutupreturbeli = 1
+        fcarireturbeli.ShowDialog()
+    End Sub
+
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
         Call nextnumber(txtnoretur.Text)
     End Sub

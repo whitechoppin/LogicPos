@@ -801,6 +801,11 @@ Public Class freturjual
         End If
     End Sub
 
+    Private Sub btncariretur_Click(sender As Object, e As EventArgs) Handles btncariretur.Click
+        tutupreturjual = 1
+        fcarireturjual.ShowDialog()
+    End Sub
+
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
         Call nextnumber(txtnoretur.Text)
     End Sub

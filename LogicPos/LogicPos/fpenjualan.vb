@@ -1629,7 +1629,7 @@ Public Class fpenjualan
 
     Private Sub btncaripenjualan_Click(sender As Object, e As EventArgs) Handles btncaripenjualan.Click
         tutupjual = 2
-        fcaripenjualan.Show()
+        fcaripenjualan.ShowDialog()
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
