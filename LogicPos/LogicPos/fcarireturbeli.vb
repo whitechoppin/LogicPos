@@ -51,5 +51,6 @@ Public Class fcarireturbeli
         If tutupreturbeli = 1 Then
             freturbeli.txtgoretur.Text = Me.GridView1.GetFocusedRowCellValue("kode_retur")
         End If
+        Me.Hide()
     End Sub
 End Class

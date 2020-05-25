@@ -18,6 +18,27 @@ Public Class fuser
     Dim ceklappricelist, ceklappembelian, ceklappenjualan, ceklapreturbeli, ceklapreturjual, ceklapbarangmasuk, ceklapbarangkeluar, ceklaputang, ceklappiutang, ceklapstokbarang, ceklapakunmasuk, ceklapakunkeluar, ceklaptransferkas, ceklaptransferbarang, ceklaptransaksikas, ceklapmodalbarang As Integer
     Dim akseslappricelist, akseslappembelian, akseslappenjualan, akseslapreturbeli, akseslapreturjual, akseslapbarangmasuk, akseslapbarangkeluar, akseslaputang, akseslappiutang, akseslapstokbarang, akseslapakunmasuk, akseslapakunkeluar, akseslaptransferkas, akseslaptransferbarang, akseslaptransaksikas, akseslapmodalbarang As Integer
 
+    '==== autosize form ====
+    Dim CuRWidth As Integer = Me.Width
+    Dim CuRHeight As Integer = Me.Height
+
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
+        Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
+
+        For Each ctrl As Control In Controls
+            ctrl.Width += ctrl.Width * RatioWidth
+            ctrl.Left += ctrl.Left * RatioWidth
+            ctrl.Top += ctrl.Top * RatioHeight
+            ctrl.Height += ctrl.Height * RatioHeight
+        Next
+
+        CuRHeight = Me.Height
+        CuRWidth = Me.Width
+    End Sub
+
+    '=======================
+
     Private Sub fuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
 

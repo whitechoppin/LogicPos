@@ -1053,6 +1053,7 @@ Public Class fpenjualan
                 If cekcetakan(txtnonota.Text).Equals(True) Then
                     statusizincetak = False
                     passwordid = 7
+                    fpassword.kodetabel = txtnonota.Text
                     fpassword.ShowDialog()
                     If statusizincetak.Equals(True) Then
                         Call koneksii()

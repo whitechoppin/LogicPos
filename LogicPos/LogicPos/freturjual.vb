@@ -18,6 +18,27 @@ Public Class freturjual
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
     Dim rpt_faktur As New ReportDocument
 
+    '==== autosize form ====
+    Dim CuRWidth As Integer = Me.Width
+    Dim CuRHeight As Integer = Me.Height
+
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
+        Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
+
+        For Each ctrl As Control In Controls
+            ctrl.Width += ctrl.Width * RatioWidth
+            ctrl.Left += ctrl.Left * RatioWidth
+            ctrl.Top += ctrl.Top * RatioHeight
+            ctrl.Height += ctrl.Height * RatioHeight
+        Next
+
+        CuRHeight = Me.Height
+        CuRWidth = Me.Width
+    End Sub
+
+    '=======================
+
     Private Sub freturjual_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
@@ -250,6 +271,7 @@ Public Class freturjual
         btnprev.Enabled = False
         btngoretur.Enabled = False
         txtgoretur.Enabled = False
+        btncariretur.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -303,6 +325,7 @@ Public Class freturjual
         btnprev.Enabled = True
         btngoretur.Enabled = True
         txtgoretur.Enabled = True
+        btncariretur.Enabled = True
         btnnext.Enabled = True
 
         'header

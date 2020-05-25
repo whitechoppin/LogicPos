@@ -1,6 +1,9 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fpassword
+    Dim kodeuser As String
+    Public kodetabel As String
+
     Private Sub fpassword_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtpassword.UseSystemPasswordChar = False
         txtpassword.PasswordChar = "•"
@@ -17,6 +20,7 @@ Public Class fpassword
             MsgBox("Password salah !", MsgBoxStyle.Exclamation, "Error Login")
             txtpassword.Text = ""
         Else
+            kodeuser = dr("kode_user")
             If passwordid = 1 Then
                 fbarang.txthidden.Visible = False
             ElseIf passwordid = 2 Then
@@ -32,6 +36,10 @@ Public Class fpassword
             ElseIf passwordid = 7 Then
                 fpenjualan.statusizincetak = True
             End If
+
+            'history user ==========
+            Call historysave("Otorisasi Passcode Diberikan Oleh " + kodeuser + " Kepada " + fmenu.statususer.Text, kodetabel)
+            '========================
 
             txtpassword.Text = ""
             Me.Close()

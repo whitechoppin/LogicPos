@@ -51,5 +51,6 @@ Public Class fcarireturjual
         If tutupreturjual = 1 Then
             freturjual.txtgoretur.Text = Me.GridView1.GetFocusedRowCellValue("kode_retur")
         End If
+        Me.Hide()
     End Sub
 End Class

@@ -74,6 +74,10 @@ Partial Class fbarangmasuk
         Me.btnbaru = New System.Windows.Forms.Button()
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnsimpan = New System.Windows.Forms.Button()
+        Me.txttelp = New System.Windows.Forms.TextBox()
+        Me.txtalamat = New System.Windows.Forms.RichTextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,6 +90,10 @@ Partial Class fbarangmasuk
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.txttelp)
+        Me.GroupBox2.Controls.Add(Me.txtalamat)
+        Me.GroupBox2.Controls.Add(Me.Label22)
+        Me.GroupBox2.Controls.Add(Me.Label20)
         Me.GroupBox2.Controls.Add(Me.btncarisupplier)
         Me.GroupBox2.Controls.Add(Me.cmbsupplier)
         Me.GroupBox2.Controls.Add(Me.cmbsales)
@@ -107,14 +115,14 @@ Partial Class fbarangmasuk
         Me.GroupBox2.Size = New System.Drawing.Size(994, 126)
         Me.GroupBox2.TabIndex = 44
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Detail Pembelian"
+        Me.GroupBox2.Text = "Detail Barang Masuk"
         '
         'btncarisupplier
         '
         Me.btncarisupplier.BackgroundImage = CType(resources.GetObject("btncarisupplier.BackgroundImage"), System.Drawing.Image)
         Me.btncarisupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarisupplier.ImageIndex = 0
-        Me.btncarisupplier.Location = New System.Drawing.Point(320, 89)
+        Me.btncarisupplier.Location = New System.Drawing.Point(265, 89)
         Me.btncarisupplier.Name = "btncarisupplier"
         Me.btncarisupplier.Size = New System.Drawing.Size(32, 27)
         Me.btncarisupplier.TabIndex = 42
@@ -124,33 +132,33 @@ Partial Class fbarangmasuk
         '
         Me.cmbsupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbsupplier.FormattingEnabled = True
-        Me.cmbsupplier.Location = New System.Drawing.Point(122, 89)
+        Me.cmbsupplier.Location = New System.Drawing.Point(110, 89)
         Me.cmbsupplier.MaxLength = 99
         Me.cmbsupplier.Name = "cmbsupplier"
-        Me.cmbsupplier.Size = New System.Drawing.Size(199, 26)
+        Me.cmbsupplier.Size = New System.Drawing.Size(155, 26)
         Me.cmbsupplier.TabIndex = 41
         '
         'cmbsales
         '
         Me.cmbsales.FormattingEnabled = True
-        Me.cmbsales.Location = New System.Drawing.Point(122, 58)
+        Me.cmbsales.Location = New System.Drawing.Point(110, 58)
         Me.cmbsales.MaxLength = 99
         Me.cmbsales.Name = "cmbsales"
-        Me.cmbsales.Size = New System.Drawing.Size(231, 26)
+        Me.cmbsales.Size = New System.Drawing.Size(187, 26)
         Me.cmbsales.TabIndex = 13
         '
         'txtgudang
         '
-        Me.txtgudang.Location = New System.Drawing.Point(603, 86)
+        Me.txtgudang.Location = New System.Drawing.Point(721, 86)
         Me.txtgudang.Name = "txtgudang"
-        Me.txtgudang.Size = New System.Drawing.Size(220, 24)
+        Me.txtgudang.Size = New System.Drawing.Size(163, 24)
         Me.txtgudang.TabIndex = 16
         '
         'Label18
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(466, 92)
+        Me.Label18.Location = New System.Drawing.Point(616, 86)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(104, 18)
         Me.Label18.TabIndex = 40
@@ -180,9 +188,9 @@ Partial Class fbarangmasuk
         Me.GroupBox3.Controls.Add(Me.cbposted)
         Me.GroupBox3.Controls.Add(Me.cbprinted)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox3.Location = New System.Drawing.Point(862, 17)
+        Me.GroupBox3.Location = New System.Drawing.Point(892, 17)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(121, 98)
+        Me.GroupBox3.Size = New System.Drawing.Size(91, 98)
         Me.GroupBox3.TabIndex = 36
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Status"
@@ -191,7 +199,7 @@ Partial Class fbarangmasuk
         '
         Me.cbposted.AutoSize = True
         Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(29, 54)
+        Me.cbposted.Location = New System.Drawing.Point(10, 54)
         Me.cbposted.Name = "cbposted"
         Me.cbposted.Size = New System.Drawing.Size(74, 22)
         Me.cbposted.TabIndex = 41
@@ -203,7 +211,7 @@ Partial Class fbarangmasuk
         Me.cbprinted.AutoSize = True
         Me.cbprinted.Enabled = False
         Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(30, 24)
+        Me.cbprinted.Location = New System.Drawing.Point(11, 24)
         Me.cbprinted.Name = "cbprinted"
         Me.cbprinted.Size = New System.Drawing.Size(73, 22)
         Me.cbprinted.TabIndex = 40
@@ -215,7 +223,7 @@ Partial Class fbarangmasuk
         Me.btncarigudang.BackgroundImage = CType(resources.GetObject("btncarigudang.BackgroundImage"), System.Drawing.Image)
         Me.btncarigudang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarigudang.ImageIndex = 0
-        Me.btncarigudang.Location = New System.Drawing.Point(792, 55)
+        Me.btncarigudang.Location = New System.Drawing.Point(853, 55)
         Me.btncarigudang.Name = "btncarigudang"
         Me.btncarigudang.Size = New System.Drawing.Size(31, 27)
         Me.btncarigudang.TabIndex = 15
@@ -225,16 +233,16 @@ Partial Class fbarangmasuk
         '
         Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
         Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(603, 56)
+        Me.cmbgudang.Location = New System.Drawing.Point(721, 56)
         Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
-        Me.cmbgudang.Size = New System.Drawing.Size(192, 26)
+        Me.cmbgudang.Size = New System.Drawing.Size(135, 26)
         Me.cmbgudang.TabIndex = 14
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(466, 62)
+        Me.Label13.Location = New System.Drawing.Point(616, 56)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(99, 18)
         Me.Label13.TabIndex = 18
@@ -243,16 +251,16 @@ Partial Class fbarangmasuk
         'dtbarangmasuk
         '
         Me.dtbarangmasuk.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dtbarangmasuk.Location = New System.Drawing.Point(602, 27)
+        Me.dtbarangmasuk.Location = New System.Drawing.Point(720, 27)
         Me.dtbarangmasuk.Name = "dtbarangmasuk"
-        Me.dtbarangmasuk.Size = New System.Drawing.Size(221, 23)
+        Me.dtbarangmasuk.Size = New System.Drawing.Size(164, 23)
         Me.dtbarangmasuk.TabIndex = 17
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label12.Location = New System.Drawing.Point(466, 33)
+        Me.Label12.Location = New System.Drawing.Point(616, 27)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(109, 18)
         Me.Label12.TabIndex = 16
@@ -261,9 +269,9 @@ Partial Class fbarangmasuk
         'txtnonota
         '
         Me.txtnonota.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnonota.Location = New System.Drawing.Point(122, 30)
+        Me.txtnonota.Location = New System.Drawing.Point(110, 30)
         Me.txtnonota.Name = "txtnonota"
-        Me.txtnonota.Size = New System.Drawing.Size(231, 24)
+        Me.txtnonota.Size = New System.Drawing.Size(187, 24)
         Me.txtnonota.TabIndex = 9
         '
         'Label10
@@ -624,6 +632,46 @@ Partial Class fbarangmasuk
         Me.btnsimpan.Text = "Simpan"
         Me.btnsimpan.UseVisualStyleBackColor = True
         '
+        'txttelp
+        '
+        Me.txttelp.Location = New System.Drawing.Point(373, 86)
+        Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
+        Me.txttelp.Name = "txttelp"
+        Me.txttelp.Size = New System.Drawing.Size(222, 24)
+        Me.txttelp.TabIndex = 60
+        '
+        'txtalamat
+        '
+        Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.txtalamat.Location = New System.Drawing.Point(372, 27)
+        Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtalamat.Name = "txtalamat"
+        Me.txtalamat.Size = New System.Drawing.Size(222, 55)
+        Me.txtalamat.TabIndex = 59
+        Me.txtalamat.Text = ""
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label22.Location = New System.Drawing.Point(305, 89)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(61, 18)
+        Me.Label22.TabIndex = 58
+        Me.Label22.Text = "Telepon"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label20.Location = New System.Drawing.Point(305, 27)
+        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(53, 18)
+        Me.Label20.TabIndex = 57
+        Me.Label20.Text = "Alamat"
+        '
         'fbarangmasuk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -639,7 +687,7 @@ Partial Class fbarangmasuk
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "fbarangmasuk"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "fbarangmasuk"
+        Me.Text = "Barang Masuk"
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
@@ -707,4 +755,8 @@ Partial Class fbarangmasuk
     Friend WithEvents btncarisupplier As Button
     Friend WithEvents cmbsupplier As ComboBox
     Friend WithEvents riteqty As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents txttelp As TextBox
+    Friend WithEvents txtalamat As RichTextBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents Label20 As Label
 End Class

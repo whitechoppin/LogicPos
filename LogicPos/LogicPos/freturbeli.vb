@@ -18,6 +18,27 @@ Public Class freturbeli
     Dim viewtglretur, viewtglpembelian, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
 
+    '==== autosize form ====
+    Dim CuRWidth As Integer = Me.Width
+    Dim CuRHeight As Integer = Me.Height
+
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
+        Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
+
+        For Each ctrl As Control In Controls
+            ctrl.Width += ctrl.Width * RatioWidth
+            ctrl.Left += ctrl.Left * RatioWidth
+            ctrl.Top += ctrl.Top * RatioHeight
+            ctrl.Height += ctrl.Height * RatioHeight
+        Next
+
+        CuRHeight = Me.Height
+        CuRWidth = Me.Width
+    End Sub
+
+    '=======================
+
     Private Sub freturbeli_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
@@ -251,6 +272,7 @@ Public Class freturbeli
         btnprev.Enabled = False
         btngoretur.Enabled = False
         txtgoretur.Enabled = False
+        btncariretur.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -305,6 +327,7 @@ Public Class freturbeli
         btnprev.Enabled = True
         btngoretur.Enabled = True
         txtgoretur.Enabled = True
+        btncariretur.Enabled = True
         btnnext.Enabled = True
 
         'header

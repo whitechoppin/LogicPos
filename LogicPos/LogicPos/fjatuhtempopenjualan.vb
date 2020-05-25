@@ -85,31 +85,31 @@ Public Class fjatuhtempopenjualan
 
         GridControl2.DataSource = tabellunas
 
-        GridColumn6.Caption = "Kode"
-        GridColumn6.FieldName = "kode_lunas"
-        GridColumn7.Caption = "Tanggal"
-        GridColumn7.FieldName = "tgl_pelunasan"
-        GridColumn8.Caption = "Terima"
-        GridColumn8.FieldName = "terima_piutang"
-        GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn8.DisplayFormat.FormatString = "Rp ##,#0"
+        GridColumn8.Caption = "Kode"
+        GridColumn8.FieldName = "kode_lunas"
+        GridColumn9.Caption = "Tanggal"
+        GridColumn9.FieldName = "tgl_pelunasan"
+        GridColumn10.Caption = "Terima"
+        GridColumn10.FieldName = "terima_piutang"
+        GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn10.DisplayFormat.FormatString = "##,#0"
 
         GridControl2.Visible = True
     End Sub
     Sub tabel_penjualan()
         Call koneksii()
 
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan = tb_penjualan.kode_pelanggan WHERE tb_penjualan.lunas_penjualan = 0 AND tb_penjualan.tgl_jatuhtempo_penjualan < now() AND tb_penjualan.total_penjualan > tb_penjualan.bayar_penjualan"
-            da = New OdbcDataAdapter(sql, cnn)
-            cnn.Open()
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid_penjualan()
-            cnn.Close()
-        End Using
+        'Using cnn As New OdbcConnection(strConn)
+        sql = "SELECT * FROM tb_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan = tb_penjualan.kode_pelanggan WHERE tb_penjualan.lunas_penjualan = 0 AND tb_penjualan.tgl_jatuhtempo_penjualan < now() AND tb_penjualan.total_penjualan > tb_penjualan.bayar_penjualan"
+        da = New OdbcDataAdapter(sql, cnn)
+        'cnn.Open()
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid_penjualan()
+        'cnn.Close()
+        'End Using
     End Sub
 
     Sub tabel_lunas()
@@ -148,6 +148,6 @@ Public Class fjatuhtempopenjualan
     End Sub
 
     Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
-
+        Call tabel_lunas()
     End Sub
 End Class

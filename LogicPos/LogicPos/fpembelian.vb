@@ -1067,6 +1067,7 @@ Public Class fpembelian
                 If cekcetakan(txtnonota.Text).Equals(True) Then
                     statusizincetak = False
                     passwordid = 6
+                    fpassword.kodetabel = txtnonota.Text
                     fpassword.ShowDialog()
                     If statusizincetak.Equals(True) Then
                         If rbfaktur.Checked Then
