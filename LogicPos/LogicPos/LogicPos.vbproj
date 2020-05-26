@@ -189,6 +189,18 @@
       <DependentUpon>flaporantransferkas.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fcaribarangkeluar.Designer.vb">
+      <DependentUpon>fcaribarangkeluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcaribarangkeluar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fcaribarangmasuk.Designer.vb">
+      <DependentUpon>fcaribarangmasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcaribarangmasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fcarireturbeli.Designer.vb">
       <DependentUpon>fcarireturbeli.vb</DependentUpon>
     </Compile>
@@ -211,6 +223,24 @@
       <DependentUpon>fkalkulasipengiriman.vb</DependentUpon>
     </Compile>
     <Compile Include="fkalkulasipengiriman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporanlabarugi.Designer.vb">
+      <DependentUpon>flaporanlabarugi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanlabarugi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporanmutasibarang.Designer.vb">
+      <DependentUpon>flaporanmutasibarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanmutasibarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporanrekapanakhir.Designer.vb">
+      <DependentUpon>flaporanrekapanakhir.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanrekapanakhir.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fperusahaan.Designer.vb">
@@ -916,6 +946,12 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpenjualan.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="fcaribarangkeluar.resx">
+      <DependentUpon>fcaribarangkeluar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcaribarangmasuk.resx">
+      <DependentUpon>fcaribarangmasuk.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fcarireturbeli.resx">
       <DependentUpon>fcarireturbeli.vb</DependentUpon>
     </EmbeddedResource>
@@ -927,6 +963,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fkalkulasipengiriman.resx">
       <DependentUpon>fkalkulasipengiriman.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporanlabarugi.resx">
+      <DependentUpon>flaporanlabarugi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporanmutasibarang.resx">
+      <DependentUpon>flaporanmutasibarang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporanrekapanakhir.resx">
+      <DependentUpon>flaporanrekapanakhir.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fperusahaan.resx">
       <DependentUpon>fperusahaan.vb</DependentUpon>

@@ -421,4 +421,12 @@ Public Class fmenu
     Private Sub TokoSejatiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TokoSejatiToolStripMenuItem.Click
         ftokosejati.Show()
     End Sub
+
+    Private Sub LaporanRekapanAkhirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanRekapanAkhirToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub LaporanMutasiBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanMutasiBarangToolStripMenuItem.Click
+
+    End Sub
 End Class

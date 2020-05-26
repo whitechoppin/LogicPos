@@ -69,7 +69,7 @@ Partial Class fmenu
         Me.LaporanTransaksiKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanModalBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanLabaRugiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LaporanAkhirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanRekapanAkhirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.InfoPerusahaanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrinterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -88,6 +88,7 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
+        Me.LaporanMutasiBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -264,7 +265,7 @@ Partial Class fmenu
         '
         'LaporanMenu
         '
-        Me.LaporanMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LaporanPricelistBarangToolStripMenuItem, Me.LPembelianToolStripMenuItem, Me.LPenjualanToolStripMenuItem, Me.LaporanReturBeliToolStripMenuItem, Me.LaporanReturJualToolStripMenuItem, Me.LaporanBarangMasukToolStripMenuItem, Me.LaporanBarangKeluarToolStripMenuItem, Me.LUtangToolStripMenuItem, Me.LPiutangToolStripMenuItem, Me.LAkunMasukToolStripMenuItem, Me.LAkunKeluarToolStripMenuItem, Me.LTransferKasToolStripMenuItem, Me.LTransferBarangToolStripMenuItem, Me.LStokBarangToolStripMenuItem, Me.LaporanTransaksiKasToolStripMenuItem, Me.LaporanModalBarangToolStripMenuItem, Me.LaporanLabaRugiToolStripMenuItem, Me.LaporanAkhirToolStripMenuItem})
+        Me.LaporanMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LaporanPricelistBarangToolStripMenuItem, Me.LPembelianToolStripMenuItem, Me.LPenjualanToolStripMenuItem, Me.LaporanReturBeliToolStripMenuItem, Me.LaporanReturJualToolStripMenuItem, Me.LaporanBarangMasukToolStripMenuItem, Me.LaporanBarangKeluarToolStripMenuItem, Me.LUtangToolStripMenuItem, Me.LPiutangToolStripMenuItem, Me.LAkunMasukToolStripMenuItem, Me.LAkunKeluarToolStripMenuItem, Me.LTransferKasToolStripMenuItem, Me.LTransferBarangToolStripMenuItem, Me.LStokBarangToolStripMenuItem, Me.LaporanTransaksiKasToolStripMenuItem, Me.LaporanModalBarangToolStripMenuItem, Me.LaporanMutasiBarangToolStripMenuItem, Me.LaporanLabaRugiToolStripMenuItem, Me.LaporanRekapanAkhirToolStripMenuItem})
         Me.LaporanMenu.Name = "LaporanMenu"
         Me.LaporanMenu.Size = New System.Drawing.Size(62, 20)
         Me.LaporanMenu.Text = "&Laporan"
@@ -371,11 +372,11 @@ Partial Class fmenu
         Me.LaporanLabaRugiToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.LaporanLabaRugiToolStripMenuItem.Text = "Laporan Laba Rugi"
         '
-        'LaporanAkhirToolStripMenuItem
+        'LaporanRekapanAkhirToolStripMenuItem
         '
-        Me.LaporanAkhirToolStripMenuItem.Name = "LaporanAkhirToolStripMenuItem"
-        Me.LaporanAkhirToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.LaporanAkhirToolStripMenuItem.Text = "Laporan Akhir "
+        Me.LaporanRekapanAkhirToolStripMenuItem.Name = "LaporanRekapanAkhirToolStripMenuItem"
+        Me.LaporanRekapanAkhirToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.LaporanRekapanAkhirToolStripMenuItem.Text = "Laporan Rekapan Akhir"
         '
         'SettingMenu
         '
@@ -424,13 +425,13 @@ Partial Class fmenu
         'ContainerToolStripMenuItem
         '
         Me.ContainerToolStripMenuItem.Name = "ContainerToolStripMenuItem"
-        Me.ContainerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ContainerToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.ContainerToolStripMenuItem.Text = "Container"
         '
         'PengirimanToolStripMenuItem
         '
         Me.PengirimanToolStripMenuItem.Name = "PengirimanToolStripMenuItem"
-        Me.PengirimanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PengirimanToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.PengirimanToolStripMenuItem.Text = "Pengiriman"
         '
         'AboutMenu
@@ -498,6 +499,12 @@ Partial Class fmenu
         Me.tabform.Size = New System.Drawing.Size(1050, 23)
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
+        '
+        'LaporanMutasiBarangToolStripMenuItem
+        '
+        Me.LaporanMutasiBarangToolStripMenuItem.Name = "LaporanMutasiBarangToolStripMenuItem"
+        Me.LaporanMutasiBarangToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.LaporanMutasiBarangToolStripMenuItem.Text = "Laporan Mutasi Barang"
         '
         'fmenu
         '
@@ -584,7 +591,8 @@ Partial Class fmenu
     Friend WithEvents LaporanModalBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents KalkulasiExpedisiToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanLabaRugiToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents LaporanAkhirToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LaporanRekapanAkhirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContainerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PengirimanToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LaporanMutasiBarangToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -761,7 +761,7 @@ Partial Class freturjual
         Me.btncariretur.BackgroundImage = CType(resources.GetObject("btncariretur.BackgroundImage"), System.Drawing.Image)
         Me.btncariretur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncariretur.ImageIndex = 0
-        Me.btncariretur.Location = New System.Drawing.Point(1003, 24)
+        Me.btncariretur.Location = New System.Drawing.Point(950, 24)
         Me.btncariretur.Margin = New System.Windows.Forms.Padding(6)
         Me.btncariretur.Name = "btncariretur"
         Me.btncariretur.Size = New System.Drawing.Size(30, 27)
@@ -780,7 +780,7 @@ Partial Class freturjual
         '
         'btnnext
         '
-        Me.btnnext.Location = New System.Drawing.Point(1037, 24)
+        Me.btnnext.Location = New System.Drawing.Point(1036, 24)
         Me.btnnext.Margin = New System.Windows.Forms.Padding(4)
         Me.btnnext.Name = "btnnext"
         Me.btnnext.Size = New System.Drawing.Size(35, 27)
@@ -798,7 +798,7 @@ Partial Class freturjual
         '
         'btngoretur
         '
-        Me.btngoretur.Location = New System.Drawing.Point(950, 24)
+        Me.btngoretur.Location = New System.Drawing.Point(983, 24)
         Me.btngoretur.Margin = New System.Windows.Forms.Padding(4)
         Me.btngoretur.Name = "btngoretur"
         Me.btngoretur.Size = New System.Drawing.Size(50, 27)

@@ -16,6 +16,28 @@ Public Class fbarangmasuk
 
     Dim viewtglbarangmasuk As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir As Double
+
+    '==== autosize form ====
+    Dim CuRWidth As Integer = Me.Width
+    Dim CuRHeight As Integer = Me.Height
+
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
+        Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
+
+        For Each ctrl As Control In Controls
+            ctrl.Width += ctrl.Width * RatioWidth
+            ctrl.Left += ctrl.Left * RatioWidth
+            ctrl.Top += ctrl.Top * RatioHeight
+            ctrl.Height += ctrl.Height * RatioHeight
+        Next
+
+        CuRHeight = Me.Height
+        CuRWidth = Me.Width
+    End Sub
+
+    '=======================
+
     Private Sub fbarangmasuk_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
@@ -554,6 +576,8 @@ Public Class fbarangmasuk
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
+
+
     Sub carigudang()
         Call koneksii()
         sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbgudang.Text & "'"
@@ -921,6 +945,10 @@ Public Class fbarangmasuk
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
         Call nextnumber(txtnonota.Text)
+    End Sub
+
+    Private Sub btncarimasuk_Click(sender As Object, e As EventArgs) Handles btncarimasuk.Click
+
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
