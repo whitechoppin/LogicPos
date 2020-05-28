@@ -17,6 +17,8 @@
     Public tutupjual As Integer
     Public tutupreturbeli As Integer
     Public tutupreturjual As Integer
+    Public tutupbarangmasuk As Integer
+    Public tutupbarangkeluar As Integer
     '======================
     'pelunasan jual dan beli
     Public tutuplunasbeli As Integer

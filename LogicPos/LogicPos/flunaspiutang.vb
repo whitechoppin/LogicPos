@@ -1059,24 +1059,32 @@ Public Class flunaspiutang
             MsgBox("Nota tidak ada !", MsgBoxStyle.Information, "Informasi")
             'Exit Sub
         Else
-            If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
-                tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, sisapiutangtbh)
-                Call reload_tabel()
-            Else
-                Dim lokasi As Integer = -1
-
-                For i As Integer = 0 To GridView1.RowCount - 1
-                    If GridView1.GetRowCellValue(i, "kode_penjualan").Equals(txtkodepenjualan.Text) Then
-                        lokasi = i
-                    End If
-                Next
-
-                If lokasi = -1 Then
+            Call koneksii()
+            sql = "SELECT * FROM tb_penjualan WHERE kode_penjualan = '" & txtkodepenjualan.Text & "' AND kode_pelanggan ='" & cmbcustomer.Text & "' AND total_penjualan <> bayar_penjualan AND lunas_penjualan = 0 LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
                     tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, sisapiutangtbh)
                     Call reload_tabel()
                 Else
-                    MsgBox("Nota sudah di tabel pelunasan !")
+                    Dim lokasi As Integer = -1
+
+                    For i As Integer = 0 To GridView1.RowCount - 1
+                        If GridView1.GetRowCellValue(i, "kode_penjualan").Equals(txtkodepenjualan.Text) Then
+                            lokasi = i
+                        End If
+                    Next
+
+                    If lokasi = -1 Then
+                        tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, sisapiutangtbh)
+                        Call reload_tabel()
+                    Else
+                        MsgBox("Nota sudah di tabel pelunasan !")
+                    End If
                 End If
+            Else
+                MsgBox("Nota tidak terdaftar !")
             End If
         End If
     End Sub

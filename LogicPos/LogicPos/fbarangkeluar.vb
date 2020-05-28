@@ -20,6 +20,28 @@ Public Class fbarangkeluar
     'variabel report
     Dim rpt_faktur As New CrystalDecisions.CrystalReports.Engine.ReportDocument
 
+
+    '==== autosize form ====
+    Dim CuRWidth As Integer = Me.Width
+    Dim CuRHeight As Integer = Me.Height
+
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
+        Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
+
+        For Each ctrl As Control In Controls
+            ctrl.Width += ctrl.Width * RatioWidth
+            ctrl.Left += ctrl.Left * RatioWidth
+            ctrl.Top += ctrl.Top * RatioHeight
+            ctrl.Height += ctrl.Height * RatioHeight
+        Next
+
+        CuRHeight = Me.Height
+        CuRWidth = Me.Width
+    End Sub
+
+    '=======================
+
     Private Sub fbarangkeluar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         hitnumber = 0
@@ -299,6 +321,7 @@ Public Class fbarangkeluar
         btnprev.Enabled = False
         btngo.Enabled = False
         txtgobarangkeluar.Enabled = False
+        btncarikeluar.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -375,6 +398,7 @@ Public Class fbarangkeluar
         btnprev.Enabled = False
         btngo.Enabled = False
         txtgobarangkeluar.Enabled = False
+        btncarikeluar.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -458,6 +482,7 @@ Public Class fbarangkeluar
         btnprev.Enabled = True
         btngo.Enabled = True
         txtgobarangkeluar.Enabled = True
+        btncarikeluar.Enabled = True
         btnnext.Enabled = True
 
         'header
@@ -632,7 +657,7 @@ Public Class fbarangkeluar
     End Sub
 
     Private Sub cmbcustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbcustomer.SelectedIndexChanged
-        caripelanggan()
+        Call caripelanggan()
     End Sub
 
     Private Sub ritebanyak_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritebanyak.KeyPress
@@ -640,15 +665,15 @@ Public Class fbarangkeluar
     End Sub
 
     Private Sub cmbgudang_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbgudang.SelectedIndexChanged
-        carigudang()
+        Call carigudang()
     End Sub
 
     Private Sub cmbcustomer_TextChanged(sender As Object, e As EventArgs) Handles cmbcustomer.TextChanged
-        caripelanggan()
+        Call caripelanggan()
     End Sub
 
     Private Sub cmbgudang_TextChanged(sender As Object, e As EventArgs) Handles cmbgudang.TextChanged
-        carigudang()
+        Call carigudang()
     End Sub
 
     Private Sub txtkodestok_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
@@ -848,6 +873,11 @@ Public Class fbarangkeluar
                 MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
             End If
         End If
+    End Sub
+
+    Private Sub btncarikeluar_Click(sender As Object, e As EventArgs) Handles btncarikeluar.Click
+        tutupbarangkeluar = 1
+        fcaribarangkeluar.ShowDialog()
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click

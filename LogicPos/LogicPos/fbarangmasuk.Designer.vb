@@ -160,7 +160,7 @@ Partial Class fbarangmasuk
         '
         'txtgudang
         '
-        Me.txtgudang.Location = New System.Drawing.Point(791, 81)
+        Me.txtgudang.Location = New System.Drawing.Point(791, 89)
         Me.txtgudang.Margin = New System.Windows.Forms.Padding(4)
         Me.txtgudang.Name = "txtgudang"
         Me.txtgudang.Size = New System.Drawing.Size(226, 24)
@@ -170,7 +170,7 @@ Partial Class fbarangmasuk
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(680, 84)
+        Me.Label18.Location = New System.Drawing.Point(677, 92)
         Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(104, 18)
@@ -191,12 +191,12 @@ Partial Class fbarangmasuk
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(7, 93)
+        Me.Label15.Location = New System.Drawing.Point(27, 93)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(105, 18)
+        Me.Label15.Size = New System.Drawing.Size(61, 18)
         Me.Label15.TabIndex = 30
-        Me.Label15.Text = "Nama Supplier"
+        Me.Label15.Text = "Supplier"
         '
         'cbposted
         '
@@ -228,7 +228,7 @@ Partial Class fbarangmasuk
         Me.btncarigudang.BackgroundImage = CType(resources.GetObject("btncarigudang.BackgroundImage"), System.Drawing.Image)
         Me.btncarigudang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarigudang.ImageIndex = 0
-        Me.btncarigudang.Location = New System.Drawing.Point(983, 46)
+        Me.btncarigudang.Location = New System.Drawing.Point(983, 51)
         Me.btncarigudang.Margin = New System.Windows.Forms.Padding(4)
         Me.btncarigudang.Name = "btncarigudang"
         Me.btncarigudang.Size = New System.Drawing.Size(34, 28)
@@ -239,7 +239,7 @@ Partial Class fbarangmasuk
         '
         Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
         Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(791, 47)
+        Me.cmbgudang.Location = New System.Drawing.Point(791, 52)
         Me.cmbgudang.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
@@ -249,7 +249,7 @@ Partial Class fbarangmasuk
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(682, 51)
+        Me.Label13.Location = New System.Drawing.Point(680, 56)
         Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(99, 18)

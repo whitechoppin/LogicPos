@@ -215,6 +215,7 @@ Public Class fbarangmasuk
         btnprev.Enabled = True
         btngo.Enabled = True
         txtgobarangmasuk.Enabled = True
+        btncarimasuk.Enabled = True
         btnnext.Enabled = True
 
         'buat tabel
@@ -233,6 +234,9 @@ Public Class fbarangmasuk
 
         cmbsupplier.Enabled = False
         btncarisupplier.Enabled = False
+
+        txtalamat.Enabled = False
+        txttelp.Enabled = False
 
         cmbsales.Enabled = False
 
@@ -317,6 +321,10 @@ Public Class fbarangmasuk
         Else
             txtnonota.Clear()
             cmbsupplier.Text = ""
+
+            txtalamat.Clear()
+            txttelp.Clear()
+
             cmbsales.Text = ""
             cmbgudang.Text = ""
             cbprinted.Checked = False
@@ -342,6 +350,7 @@ Public Class fbarangmasuk
         btnprev.Enabled = False
         btngo.Enabled = False
         txtgobarangmasuk.Enabled = False
+        btncarimasuk.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -353,6 +362,9 @@ Public Class fbarangmasuk
         cmbsupplier.SelectedIndex = 0
         cmbsupplier.Focus()
         btncarisupplier.Enabled = True
+
+        txtalamat.Enabled = True
+        txttelp.Enabled = True
 
         cmbsales.SelectedIndex = 0
         cmbsales.Enabled = True
@@ -417,6 +429,7 @@ Public Class fbarangmasuk
         btnprev.Enabled = False
         btngo.Enabled = False
         txtgobarangmasuk.Enabled = False
+        btncarimasuk.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -427,6 +440,9 @@ Public Class fbarangmasuk
         btncarisupplier.Enabled = True
 
         cmbsales.Enabled = True
+
+        txtalamat.Enabled = True
+        txttelp.Enabled = True
 
         cmbgudang.Enabled = True
         btncarigudang.Enabled = True
@@ -590,6 +606,20 @@ Public Class fbarangmasuk
         End If
     End Sub
 
+    Sub carisupplier()
+        Call koneksii()
+        sql = "SELECT * FROM tb_supplier WHERE kode_supplier = '" & cmbsupplier.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            txtalamat.Text = dr("alamat_supplier")
+            txttelp.Text = dr("telepon_supplier")
+        Else
+            txtalamat.Text = ""
+            txttelp.Text = ""
+        End If
+    End Sub
+
     Private Sub riteqty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles riteqty.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
@@ -609,8 +639,12 @@ Public Class fbarangmasuk
         fcaribarang.ShowDialog()
     End Sub
 
-    Private Sub cmbsupplier_TextChanged(sender As Object, e As EventArgs) Handles cmbsupplier.TextChanged
+    Private Sub cmbsupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsupplier.SelectedIndexChanged
+        Call carisupplier()
+    End Sub
 
+    Private Sub cmbsupplier_TextChanged(sender As Object, e As EventArgs) Handles cmbsupplier.TextChanged
+        Call carisupplier()
     End Sub
 
     Private Sub cmbgudang_TextChanged(sender As Object, e As EventArgs) Handles cmbgudang.TextChanged
@@ -948,7 +982,8 @@ Public Class fbarangmasuk
     End Sub
 
     Private Sub btncarimasuk_Click(sender As Object, e As EventArgs) Handles btncarimasuk.Click
-
+        tutupbarangmasuk = 1
+        fcaribarangmasuk.ShowDialog()
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
