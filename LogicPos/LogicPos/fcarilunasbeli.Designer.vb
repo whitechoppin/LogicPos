@@ -272,7 +272,7 @@ Partial Class fcarilunasbeli
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "fcarilunasbeli"
-        Me.Text = "fcarilunasbeli"
+        Me.Text = "Pencarian Lunas Pembelian"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()

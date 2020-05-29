@@ -680,10 +680,10 @@ Partial Class fpenjualan
         'txtgudang
         '
         Me.txtgudang.Enabled = False
-        Me.txtgudang.Location = New System.Drawing.Point(1037, 89)
+        Me.txtgudang.Location = New System.Drawing.Point(1060, 89)
         Me.txtgudang.Margin = New System.Windows.Forms.Padding(6)
         Me.txtgudang.Name = "txtgudang"
-        Me.txtgudang.Size = New System.Drawing.Size(270, 24)
+        Me.txtgudang.Size = New System.Drawing.Size(247, 24)
         Me.txtgudang.TabIndex = 16
         '
         'Label18
@@ -775,11 +775,11 @@ Partial Class fpenjualan
         '
         Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
         Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(1037, 47)
+        Me.cmbgudang.Location = New System.Drawing.Point(1060, 47)
         Me.cmbgudang.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
-        Me.cmbgudang.Size = New System.Drawing.Size(239, 26)
+        Me.cmbgudang.Size = New System.Drawing.Size(216, 26)
         Me.cmbgudang.TabIndex = 14
         '
         'Label14

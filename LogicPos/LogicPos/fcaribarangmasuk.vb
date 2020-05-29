@@ -11,18 +11,16 @@ Public Class fcaribarangmasuk
     End Sub
 
     Sub grid()
-        GridColumn1.Caption = "Kode"
-        GridColumn1.FieldName = "kode_pembelian"
+        GridColumn1.Caption = "Kode Barang Masuk"
+        GridColumn1.FieldName = "kode_barang_masuk"
         GridColumn2.Caption = "Tanggal"
-        GridColumn2.FieldName = "tgl_pembelian"
-        GridColumn3.Caption = "Nama Supplier"
-        GridColumn3.FieldName = "nama_supplier"
-        GridColumn4.Caption = "Total Pembelian"
-        GridColumn4.FieldName = "total_pembelian"
-        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "##,#0"
-        GridColumn5.Caption = "No Nota Pembelian"
-        GridColumn5.FieldName = "no_nota_pembelian"
+        GridColumn2.FieldName = "tgl_barang_masuk"
+        GridColumn3.Caption = "Kode Supplier"
+        GridColumn3.FieldName = "kode_supplier"
+        GridColumn4.Caption = "Tgl Barang Masuk"
+        GridColumn4.FieldName = "tgl_barang_masuk"
+        GridColumn5.Caption = "Keterangan"
+        GridColumn5.FieldName = "keterangan_barang_masuk"
 
         GridControl1.Visible = True
     End Sub
@@ -30,9 +28,9 @@ Public Class fcaribarangmasuk
         Call koneksii()
 
         If dtawal.Value.Equals(dtakhir.Value) Then
-            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_barang_masuk WHERE DATE(tgl_barang_masuk) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT * FROM tb_barang_masuk WHERE tgl_barang_masuk BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
         End If
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -44,7 +42,7 @@ Public Class fcaribarangmasuk
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupbeli = 1 Then
-            freturbeli.txtnonota.Text = Me.GridView1.GetFocusedRowCellValue("kode_pembelian")
+            freturbeli.txtnonota.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang_masuk")
         End If
         Me.Hide()
     End Sub

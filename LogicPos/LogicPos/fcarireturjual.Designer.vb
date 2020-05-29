@@ -34,8 +34,8 @@ Partial Class fcarireturjual
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -148,16 +148,6 @@ Partial Class fcarireturjual
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(306, 24)
-        Me.Label1.TabIndex = 38
-        Me.Label1.Text = "Pencarian Data Retur Penjualan"
-        '
         'GridColumn5
         '
         Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
@@ -168,6 +158,16 @@ Partial Class fcarireturjual
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(306, 24)
+        Me.Label1.TabIndex = 38
+        Me.Label1.Text = "Pencarian Data Retur Penjualan"
         '
         'fcarireturjual
         '
@@ -183,7 +183,7 @@ Partial Class fcarireturjual
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.Label1)
         Me.Name = "fcarireturjual"
-        Me.Text = "fcarireturjual"
+        Me.Text = "Pencarian Retur Penjualan"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

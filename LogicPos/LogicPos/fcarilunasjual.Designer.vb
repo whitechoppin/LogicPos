@@ -260,7 +260,7 @@ Partial Class fcarilunasjual
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "fcarilunasjual"
-        Me.Text = "fcarilunasjual"
+        Me.Text = "Pencarian Lunas Penjualan"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()

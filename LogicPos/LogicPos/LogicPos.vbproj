@@ -213,6 +213,12 @@
     <Compile Include="fcarireturjual.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fcaritransferbarang.Designer.vb">
+      <DependentUpon>fcaritransferbarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcaritransferbarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fkalkulasiexpedisi.Designer.vb">
       <DependentUpon>fkalkulasiexpedisi.vb</DependentUpon>
     </Compile>
@@ -957,6 +963,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fcarireturjual.resx">
       <DependentUpon>fcarireturjual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcaritransferbarang.resx">
+      <DependentUpon>fcaritransferbarang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fkalkulasiexpedisi.resx">
       <DependentUpon>fkalkulasiexpedisi.vb</DependentUpon>
