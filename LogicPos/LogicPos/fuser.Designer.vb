@@ -131,6 +131,9 @@ Partial Class fuser
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.cbauth = New System.Windows.Forms.CheckBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -147,17 +150,17 @@ Partial Class fuser
         Me.cmbjabatan.Location = New System.Drawing.Point(108, 158)
         Me.cmbjabatan.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbjabatan.Name = "cmbjabatan"
-        Me.cmbjabatan.Size = New System.Drawing.Size(272, 26)
+        Me.cmbjabatan.Size = New System.Drawing.Size(168, 26)
         Me.cmbjabatan.TabIndex = 24
         '
         'GridControl
         '
         Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl.Location = New System.Drawing.Point(394, 66)
+        Me.GridControl.Location = New System.Drawing.Point(435, 66)
         Me.GridControl.MainView = Me.GridView
         Me.GridControl.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Name = "GridControl"
-        Me.GridControl.Size = New System.Drawing.Size(629, 309)
+        Me.GridControl.Size = New System.Drawing.Size(588, 309)
         Me.GridControl.TabIndex = 17
         Me.GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
@@ -224,7 +227,7 @@ Partial Class fuser
         Me.txtemail.Location = New System.Drawing.Point(108, 192)
         Me.txtemail.Margin = New System.Windows.Forms.Padding(4)
         Me.txtemail.Name = "txtemail"
-        Me.txtemail.Size = New System.Drawing.Size(272, 24)
+        Me.txtemail.Size = New System.Drawing.Size(308, 24)
         Me.txtemail.TabIndex = 23
         '
         'txtpassword
@@ -233,7 +236,7 @@ Partial Class fuser
         Me.txtpassword.Margin = New System.Windows.Forms.Padding(4)
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.txtpassword.Size = New System.Drawing.Size(272, 24)
+        Me.txtpassword.Size = New System.Drawing.Size(244, 24)
         Me.txtpassword.TabIndex = 21
         '
         'Label8
@@ -275,7 +278,7 @@ Partial Class fuser
         Me.txtketerangan.Location = New System.Drawing.Point(108, 319)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(272, 56)
+        Me.txtketerangan.Size = New System.Drawing.Size(308, 56)
         Me.txtketerangan.TabIndex = 17
         Me.txtketerangan.Text = ""
         '
@@ -285,7 +288,7 @@ Partial Class fuser
         Me.txtalamat.Location = New System.Drawing.Point(108, 255)
         Me.txtalamat.Margin = New System.Windows.Forms.Padding(4)
         Me.txtalamat.Name = "txtalamat"
-        Me.txtalamat.Size = New System.Drawing.Size(272, 56)
+        Me.txtalamat.Size = New System.Drawing.Size(308, 56)
         Me.txtalamat.TabIndex = 17
         Me.txtalamat.Text = ""
         '
@@ -335,7 +338,7 @@ Partial Class fuser
         Me.txttelp.Location = New System.Drawing.Point(108, 224)
         Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(272, 22)
+        Me.txttelp.Size = New System.Drawing.Size(308, 22)
         Me.txttelp.TabIndex = 2
         '
         'txtnama
@@ -344,7 +347,7 @@ Partial Class fuser
         Me.txtnama.Location = New System.Drawing.Point(108, 96)
         Me.txtnama.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(272, 22)
+        Me.txtnama.Size = New System.Drawing.Size(308, 22)
         Me.txtnama.TabIndex = 2
         '
         'Label5
@@ -364,7 +367,7 @@ Partial Class fuser
         Me.txtkode.Location = New System.Drawing.Point(108, 66)
         Me.txtkode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkode.Name = "txtkode"
-        Me.txtkode.Size = New System.Drawing.Size(272, 22)
+        Me.txtkode.Size = New System.Drawing.Size(308, 22)
         Me.txtkode.TabIndex = 1
         '
         'Label4
@@ -1363,7 +1366,7 @@ Partial Class fuser
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage1.Size = New System.Drawing.Size(841, 346)
+        Me.TabPage1.Size = New System.Drawing.Size(1002, 383)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Master"
         '
@@ -1388,7 +1391,7 @@ Partial Class fuser
         Me.TabPage2.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage2.Size = New System.Drawing.Size(841, 346)
+        Me.TabPage2.Size = New System.Drawing.Size(1002, 383)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Transaksi"
         '
@@ -1407,7 +1410,7 @@ Partial Class fuser
         Me.TabPage3.Controls.Add(Me.cblunasutang)
         Me.TabPage3.Location = New System.Drawing.Point(4, 27)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(841, 346)
+        Me.TabPage3.Size = New System.Drawing.Size(1002, 383)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Administrasi"
         '
@@ -1463,12 +1466,45 @@ Partial Class fuser
         Me.Label9.TabIndex = 41
         Me.Label9.Text = "Data User"
         '
+        'cbauth
+        '
+        Me.cbauth.AutoSize = True
+        Me.cbauth.Location = New System.Drawing.Point(363, 128)
+        Me.cbauth.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbauth.Name = "cbauth"
+        Me.cbauth.Size = New System.Drawing.Size(56, 22)
+        Me.cbauth.TabIndex = 104
+        Me.cbauth.Text = "Auth"
+        Me.cbauth.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(365, 158)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(51, 24)
+        Me.TextBox1.TabIndex = 105
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(284, 162)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(74, 20)
+        Me.Label10.TabIndex = 106
+        Me.Label10.Text = "Max Print"
+        '
         'fuser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1039, 824)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.cbauth)
         Me.Controls.Add(Me.txtketerangan)
         Me.Controls.Add(Me.cmbjabatan)
         Me.Controls.Add(Me.txtalamat)
@@ -1622,4 +1658,7 @@ Partial Class fuser
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents TabPage4 As TabPage
     Friend WithEvents Label9 As Label
+    Friend WithEvents cbauth As CheckBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label10 As Label
 End Class

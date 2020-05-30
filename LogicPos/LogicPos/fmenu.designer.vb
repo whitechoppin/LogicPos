@@ -68,6 +68,7 @@ Partial Class fmenu
         Me.LStokBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanTransaksiKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanModalBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanMutasiBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanLabaRugiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanRekapanAkhirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -88,7 +89,8 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
-        Me.LaporanMutasiBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExportDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ImportDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -366,6 +368,12 @@ Partial Class fmenu
         Me.LaporanModalBarangToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.LaporanModalBarangToolStripMenuItem.Text = "Laporan Modal Barang"
         '
+        'LaporanMutasiBarangToolStripMenuItem
+        '
+        Me.LaporanMutasiBarangToolStripMenuItem.Name = "LaporanMutasiBarangToolStripMenuItem"
+        Me.LaporanMutasiBarangToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
+        Me.LaporanMutasiBarangToolStripMenuItem.Text = "Laporan Mutasi Barang"
+        '
         'LaporanLabaRugiToolStripMenuItem
         '
         Me.LaporanLabaRugiToolStripMenuItem.Name = "LaporanLabaRugiToolStripMenuItem"
@@ -380,7 +388,7 @@ Partial Class fmenu
         '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KalkulasiExpedisiToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KalkulasiExpedisiToolStripMenuItem, Me.ExportDatabaseToolStripMenuItem, Me.ImportDatabaseToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
@@ -500,11 +508,17 @@ Partial Class fmenu
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
         '
-        'LaporanMutasiBarangToolStripMenuItem
+        'ExportDatabaseToolStripMenuItem
         '
-        Me.LaporanMutasiBarangToolStripMenuItem.Name = "LaporanMutasiBarangToolStripMenuItem"
-        Me.LaporanMutasiBarangToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.LaporanMutasiBarangToolStripMenuItem.Text = "Laporan Mutasi Barang"
+        Me.ExportDatabaseToolStripMenuItem.Name = "ExportDatabaseToolStripMenuItem"
+        Me.ExportDatabaseToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.ExportDatabaseToolStripMenuItem.Text = "Export Database"
+        '
+        'ImportDatabaseToolStripMenuItem
+        '
+        Me.ImportDatabaseToolStripMenuItem.Name = "ImportDatabaseToolStripMenuItem"
+        Me.ImportDatabaseToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.ImportDatabaseToolStripMenuItem.Text = "Import Database"
         '
         'fmenu
         '
@@ -595,4 +609,6 @@ Partial Class fmenu
     Friend WithEvents ContainerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PengirimanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanMutasiBarangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExportDatabaseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ImportDatabaseToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class flaporanmutasibarang
+Partial Class fcarilunaspiutang
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,14 +24,14 @@ Partial Class flaporanmutasibarang
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
-        'flaporanmutasibarang
+        'fcarilunaspiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(912, 451)
-        Me.Name = "flaporanmutasibarang"
-        Me.Text = "Laporan Mutasi Barang"
+        Me.ClientSize = New System.Drawing.Size(724, 443)
+        Me.Name = "fcarilunaspiutang"
+        Me.Text = "fcarilunaspiutang"
         Me.ResumeLayout(False)
 
     End Sub
