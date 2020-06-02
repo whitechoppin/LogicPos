@@ -21,7 +21,7 @@ Public Class fcaripembelian
         GridColumn4.Caption = "Total Pembelian"
         GridColumn4.FieldName = "total_pembelian"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
+        GridColumn4.DisplayFormat.FormatString = "##,#0"
         GridColumn5.Caption = "No Nota Pembelian"
         GridColumn5.FieldName = "no_nota_pembelian"
 

@@ -44,7 +44,7 @@ Partial Class fcaribarangkeluar
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(382, 14)
+        Me.Label3.Location = New System.Drawing.Point(511, 14)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(66, 16)
         Me.Label3.TabIndex = 43
@@ -55,7 +55,7 @@ Partial Class fcaribarangkeluar
         Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
-        Me.btnrefresh.Location = New System.Drawing.Point(818, 35)
+        Me.btnrefresh.Location = New System.Drawing.Point(947, 35)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
         Me.btnrefresh.TabIndex = 42
@@ -65,7 +65,7 @@ Partial Class fcaribarangkeluar
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(581, 41)
+        Me.Label2.Location = New System.Drawing.Point(710, 41)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(34, 16)
         Me.Label2.TabIndex = 41
@@ -74,7 +74,7 @@ Partial Class fcaribarangkeluar
         'dtakhir
         '
         Me.dtakhir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtakhir.Location = New System.Drawing.Point(619, 37)
+        Me.dtakhir.Location = New System.Drawing.Point(748, 37)
         Me.dtakhir.Name = "dtakhir"
         Me.dtakhir.Size = New System.Drawing.Size(193, 24)
         Me.dtakhir.TabIndex = 40
@@ -82,7 +82,7 @@ Partial Class fcaribarangkeluar
         'dtawal
         '
         Me.dtawal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtawal.Location = New System.Drawing.Point(382, 37)
+        Me.dtawal.Location = New System.Drawing.Point(511, 37)
         Me.dtawal.Name = "dtawal"
         Me.dtawal.Size = New System.Drawing.Size(193, 24)
         Me.dtawal.TabIndex = 39
@@ -92,7 +92,7 @@ Partial Class fcaribarangkeluar
         Me.GridControl1.Location = New System.Drawing.Point(12, 68)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(840, 400)
+        Me.GridControl1.Size = New System.Drawing.Size(970, 401)
         Me.GridControl1.TabIndex = 37
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -174,7 +174,7 @@ Partial Class fcaribarangkeluar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(865, 481)
+        Me.ClientSize = New System.Drawing.Size(994, 481)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.Label2)

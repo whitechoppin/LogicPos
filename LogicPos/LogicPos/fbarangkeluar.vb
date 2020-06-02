@@ -876,7 +876,7 @@ Public Class fbarangkeluar
     End Sub
 
     Private Sub btncarikeluar_Click(sender As Object, e As EventArgs) Handles btncarikeluar.Click
-        tutupbarangkeluar = 1
+        tutupcaribarangkeluar = 1
         fcaribarangkeluar.ShowDialog()
     End Sub
 

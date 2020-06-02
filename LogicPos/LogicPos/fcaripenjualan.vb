@@ -21,7 +21,7 @@ Public Class fcaripenjualan
         GridColumn4.Caption = "Total Penjualan"
         GridColumn4.FieldName = "total_penjualan"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
+        GridColumn4.DisplayFormat.FormatString = "##,#0"
 
         GridControl1.Visible = True
     End Sub

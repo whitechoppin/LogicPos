@@ -982,7 +982,7 @@ Public Class fbarangmasuk
     End Sub
 
     Private Sub btncarimasuk_Click(sender As Object, e As EventArgs) Handles btncarimasuk.Click
-        tutupbarangmasuk = 1
+        tutupcaribarangmasuk = 1
         fcaribarangmasuk.ShowDialog()
     End Sub
 

@@ -41,8 +41,8 @@ Public Class fcaribarangmasuk
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        If tutupbeli = 1 Then
-            freturbeli.txtnonota.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang_masuk")
+        If tutupcaribarangmasuk = 1 Then
+            fbarangmasuk.txtgobarangmasuk.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang_masuk")
         End If
         Me.Hide()
     End Sub

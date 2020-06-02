@@ -252,6 +252,7 @@ Public Class flunasutang
         btnprev.Enabled = False
         btngolunas.Enabled = False
         txtgolunas.Enabled = False
+        btncaripelunasan.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -326,6 +327,7 @@ Public Class flunasutang
         btnprev.Enabled = True
         btngolunas.Enabled = True
         txtgolunas.Enabled = True
+        btncaripelunasan.Enabled = True
         btnnext.Enabled = True
 
 
@@ -460,6 +462,7 @@ Public Class flunasutang
         btnprev.Enabled = False
         btngolunas.Enabled = False
         txtgolunas.Enabled = False
+        btncaripelunasan.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -877,6 +880,7 @@ Public Class flunasutang
 
     Sub perbarui(nomornota As String)
         Dim tglpembeliansimpan, tgljatuhtemposimpan As Date
+        kodelunasutang = nomornota
 
         Call koneksii()
         sql = "DELETE FROM tb_pelunasan_utang_detail WHERE kode_lunas = '" & nomornota & "'"
@@ -892,17 +896,17 @@ Public Class flunasutang
             dr = cmmd.ExecuteReader()
         Next
 
-        sql = "UPDATE tb_pelunasan_utang SET  kode_user='" & cmbsales.Text & "',tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', kode_supplier='" & cmbsupplier.Text & "',kode_kas='" & cmbbayar.Text & "', bayar_lunas='" & totalbayar & "', no_bukti='" & txtbukti.Text & "' ,keterangan_lunas='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now()  WHERE  kode_lunas='" & txtnolunasutang.Text & "'"
+        sql = "UPDATE tb_pelunasan_utang SET  kode_user='" & cmbsales.Text & "',tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', kode_supplier='" & cmbsupplier.Text & "',kode_kas='" & cmbbayar.Text & "', bayar_lunas='" & totalbayar & "', no_bukti='" & txtbukti.Text & "' ,keterangan_lunas='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now()  WHERE  kode_lunas='" & kodelunasutang & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
-        sql = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbbayar.Text & "', kode_utang='" & nomornota & "', tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & totalbayar & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_utang='" & nomornota & "'"
+        sql = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbbayar.Text & "', kode_utang='" & kodelunasutang & "', tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & totalbayar & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_utang='" & kodelunasutang & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
         'proses centang lunas penjualan
         'history user ==========
-        Call historysave("Mengedit Data Lunas Utang Kode " + txtnolunasutang.Text, txtnolunasutang.Text)
+        Call historysave("Mengedit Data Lunas Utang Kode " + kodelunasutang, kodelunasutang)
         '========================
 
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -974,7 +978,8 @@ Public Class flunasutang
     End Sub
 
     Private Sub btncaripelunasan_Click(sender As Object, e As EventArgs) Handles btncaripelunasan.Click
-
+        tutupcaripelunasanutang = 1
+        fcarilunasutang.ShowDialog()
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
