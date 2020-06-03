@@ -140,7 +140,7 @@ Partial Class fcaritransferbarang
         Me.GridColumn3.AppearanceCell.Options.UseFont = True
         Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn3.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn3.Caption = "Nama Supplier"
+        Me.GridColumn3.Caption = "Dari Gudang"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
         Me.GridColumn3.VisibleIndex = 2
@@ -151,7 +151,7 @@ Partial Class fcaritransferbarang
         Me.GridColumn4.AppearanceCell.Options.UseFont = True
         Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn4.Caption = "Total"
+        Me.GridColumn4.Caption = "Ke Gudang"
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
@@ -162,7 +162,7 @@ Partial Class fcaritransferbarang
         Me.GridColumn5.AppearanceCell.Options.UseFont = True
         Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn5.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn5.Caption = "No Nota Pembelian"
+        Me.GridColumn5.Caption = "User"
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
@@ -211,7 +211,7 @@ Partial Class fcaritransferbarang
         Me.GridColumn6.AppearanceCell.Options.UseFont = True
         Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn6.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn6.Caption = "Kode"
+        Me.GridColumn6.Caption = "Kode Stok"
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 0
@@ -222,7 +222,7 @@ Partial Class fcaritransferbarang
         Me.GridColumn7.AppearanceCell.Options.UseFont = True
         Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn7.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn7.Caption = "Tanggal"
+        Me.GridColumn7.Caption = "Kode Barang"
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 1
@@ -233,7 +233,7 @@ Partial Class fcaritransferbarang
         Me.GridColumn8.AppearanceCell.Options.UseFont = True
         Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn8.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn8.Caption = "Terima"
+        Me.GridColumn8.Caption = "Qty"
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.Visible = True
         Me.GridColumn8.VisibleIndex = 2

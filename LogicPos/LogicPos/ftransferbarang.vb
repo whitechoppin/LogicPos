@@ -322,6 +322,7 @@ Public Class ftransferbarang
         btnprev.Enabled = False
         btngo.Enabled = False
         txtgotransferbarang.Enabled = False
+        btncaritransfer.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -392,6 +393,7 @@ Public Class ftransferbarang
         btnprev.Enabled = False
         btngo.Enabled = False
         txtgotransferbarang.Enabled = False
+        btncaritransfer.Enabled = False
         btnnext.Enabled = False
 
         'header
@@ -471,6 +473,7 @@ Public Class ftransferbarang
         btnprev.Enabled = True
         btngo.Enabled = True
         txtgotransferbarang.Enabled = True
+        btncaritransfer.Enabled = True
         btnnext.Enabled = True
 
         'header
@@ -612,7 +615,7 @@ Public Class ftransferbarang
 
     Sub caribarang()
         Call koneksii()
-        sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan ='00000000' AND tb_stok.kode_gudang ='" & cmbdarigudang.Text & "'"
+        sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_stok.kode_gudang ='" & cmbdarigudang.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
@@ -622,22 +625,11 @@ Public Class ftransferbarang
             lblsatuan.Text = satuan
             jenis = dr("jenis_barang")
         Else
-            sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang JOIN tb_price_group ON tb_barang.kode_barang = tb_price_group.kode_barang WHERE kode_stok= '" & txtkodestok.Text & "' AND tb_price_group.kode_pelanggan = '00000000' AND tb_stok.kode_gudang ='" & cmbdarigudang.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            If dr.HasRows Then
-                txtnamabarang.Text = dr("nama_barang")
-                txtkodebarang.Text = dr("kode_barang")
-                satuan = dr("satuan_barang")
-                lblsatuan.Text = satuan
-                jenis = dr("jenis_barang")
-            Else
-                txtnamabarang.Text = ""
-                txtkodebarang.Text = ""
-                satuan = "satuan"
-                lblsatuan.Text = satuan
-                jenis = ""
-            End If
+            txtnamabarang.Text = ""
+            txtkodebarang.Text = ""
+            satuan = "satuan"
+            lblsatuan.Text = satuan
+            jenis = ""
         End If
     End Sub
 
@@ -668,7 +660,13 @@ Public Class ftransferbarang
                         If txtkegudang.Text IsNot "" Then
                             If cmbsales.Text IsNot "" Then
                                 'isi disini sub updatenya
-                                Call perbarui(txtnonota.Text)
+
+                                If txtkegudang.Text.Equals(txtdarigudang.Text) Then
+                                    MsgBox("Gudang Tidak Boleh Sama")
+                                Else
+                                    Call perbarui(txtnonota.Text)
+                                End If
+
                             Else
                                 MsgBox("Isi Sales")
                             End If
@@ -791,7 +789,11 @@ Public Class ftransferbarang
             If txtdarigudang.Text IsNot "" Then
                 If txtkegudang.Text IsNot "" Then
                     If cmbsales.Text IsNot "" Then
-                        Call proses()
+                        If txtkegudang.Text.Equals(txtdarigudang.Text) Then
+                            MsgBox("Gudang Tidak Boleh Sama")
+                        Else
+                            Call proses()
+                        End If
                     Else
                         MsgBox("Isi Sales")
                     End If
@@ -835,7 +837,8 @@ Public Class ftransferbarang
     End Sub
 
     Private Sub btncaritransfer_Click(sender As Object, e As EventArgs) Handles btncaritransfer.Click
-
+        tutupcaritransferbarang = 1
+        fcaritransferbarang.ShowDialog()
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
@@ -874,7 +877,7 @@ Public Class ftransferbarang
         'Columns.Add("satuan_barang")
         'Columns.Add("jenis_barang")
 
-        If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txtbanyak.Text = "" Then
+        If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txtbanyak.Text = "" Or banyak = 0 Then
             MsgBox("Barang Kosong", MsgBoxStyle.Information, "Informasi")
             'Exit Sub
         Else
@@ -1096,7 +1099,7 @@ Public Class ftransferbarang
 
         If statusavailable = True Then
 
-            'hapus di tabel jual detail
+            'hapus di tabel transfer detail
             Call koneksii()
             sql = "DELETE FROM tb_transfer_barang_detail WHERE kode_transfer_barang = '" & nomornota & "'"
             cmmd = New OdbcCommand(sql, cnn)

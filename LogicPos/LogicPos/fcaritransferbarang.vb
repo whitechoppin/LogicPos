@@ -47,12 +47,12 @@ Public Class fcaritransferbarang
 
         GridColumn6.Caption = "Kode Stok"
         GridColumn6.FieldName = "kode_stok"
-        GridColumn6.Caption = "Kode Barang"
-        GridColumn6.FieldName = "kode_barang"
-        GridColumn7.Caption = "Qty"
-        GridColumn7.FieldName = "qty"
-        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn7.DisplayFormat.FormatString = "##,#0"
+        GridColumn7.Caption = "Kode Barang"
+        GridColumn7.FieldName = "kode_barang"
+        GridColumn8.Caption = "Qty"
+        GridColumn8.FieldName = "qty"
+        GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn8.DisplayFormat.FormatString = "##,#0"
 
         GridControl2.Visible = True
     End Sub
@@ -60,9 +60,9 @@ Public Class fcaritransferbarang
         Call koneksii()
 
         If dtawal.Value.Equals(dtakhir.Value) Then
-            sql = "SELECT tb_penjualan.kode_penjualan, tb_penjualan.total_penjualan, tb_penjualan.tgl_penjualan, tb_penjualan.keterangan_penjualan, tb_pelanggan.nama_pelanggan FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & kodelunascustomer & "' AND tb_penjualan.total_penjualan <> tb_penjualan.bayar_penjualan AND tb_penjualan.lunas_penjualan = 0 AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT tb_penjualan.kode_penjualan, tb_penjualan.total_penjualan, tb_penjualan.tgl_penjualan, tb_penjualan.keterangan_penjualan, tb_pelanggan.nama_pelanggan FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & kodelunascustomer & "' AND tb_penjualan.total_penjualan <> tb_penjualan.bayar_penjualan AND tb_penjualan.lunas_penjualan = 0 AND tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT * FROM tb_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -74,8 +74,8 @@ Public Class fcaritransferbarang
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        If tutuplunasjual = 1 Then
-            flunaspiutang.txtkodepenjualan.Text = Me.GridView1.GetFocusedRowCellValue("kode_penjualan")
+        If tutupcaritransferbarang = 1 Then
+            ftransferbarang.txtgotransferbarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_transfer_barang")
         End If
         Me.Close()
     End Sub
@@ -85,11 +85,11 @@ Public Class fcaritransferbarang
         kode = Me.GridView1.GetFocusedRowCellValue("kode_transfer_barang")
 
         Call koneksii()
-        sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE kode_penjualan ='" & kode & "'"
+        sql = "SELECT * FROM tb_transfer_barang_detail WHERE kode_transfer_barang ='" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabelbarang.Rows.Add(dr("kode_lunas"), dr("last_updated"), dr("terima_piutang"))
+            tabelbarang.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("qty"))
         End While
 
         GridControl2.RefreshDataSource()
@@ -100,6 +100,6 @@ Public Class fcaritransferbarang
     End Sub
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
-
+        Call tabel()
     End Sub
 End Class
