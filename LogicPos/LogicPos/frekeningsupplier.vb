@@ -138,8 +138,8 @@ Public Class frekeningsupplier
         GridColumn5.FieldName = "keterangan_rekening"
     End Sub
     Sub isitabel()
-        'Call koneksii()
-        sql = "Select * from tb_rekening_supplier where kode_supplier = '" & kode_supplier & "'"
+        Call koneksii()
+        sql = "SELECT * FROM tb_rekening_supplier WHERE kode_supplier = '" & kode_supplier & "'"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)

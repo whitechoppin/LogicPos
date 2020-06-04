@@ -187,7 +187,7 @@ Public Class fkategoribarang
             btnedit.Text = "Edit"
             Me.Refresh()
         Else
-            sql = "SELECT * FROM tb_kategori_barang WHERE kode_kategori  = '" + txtkode.Text + "'"
+            sql = "SELECT * FROM tb_kategori_barang WHERE kode_kategori  = '" + txtkode.Text + "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then

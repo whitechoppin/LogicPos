@@ -231,6 +231,12 @@
     <Compile Include="fcaritransferbarang.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fgeneratepassword.Designer.vb">
+      <DependentUpon>fgeneratepassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fgeneratepassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fkalkulasiexpedisi.Designer.vb">
       <DependentUpon>fkalkulasiexpedisi.vb</DependentUpon>
     </Compile>
@@ -984,6 +990,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fcaritransferbarang.resx">
       <DependentUpon>fcaritransferbarang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fgeneratepassword.resx">
+      <DependentUpon>fgeneratepassword.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fkalkulasiexpedisi.resx">
       <DependentUpon>fkalkulasiexpedisi.vb</DependentUpon>

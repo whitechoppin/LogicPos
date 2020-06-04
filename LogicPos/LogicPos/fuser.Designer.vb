@@ -134,6 +134,7 @@ Partial Class fuser
         Me.cbauth = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.btnpassword = New System.Windows.Forms.Button()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -294,7 +295,7 @@ Partial Class fuser
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(738, 9)
+        Me.btnbatal.Location = New System.Drawing.Point(717, 9)
         Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(149, 37)
@@ -304,7 +305,7 @@ Partial Class fuser
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(581, 9)
+        Me.btnhapus.Location = New System.Drawing.Point(560, 9)
         Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(149, 37)
@@ -314,7 +315,7 @@ Partial Class fuser
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(424, 9)
+        Me.btnedit.Location = New System.Drawing.Point(403, 9)
         Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnedit.Name = "btnedit"
         Me.btnedit.Size = New System.Drawing.Size(149, 37)
@@ -324,7 +325,7 @@ Partial Class fuser
         '
         'btntambah
         '
-        Me.btntambah.Location = New System.Drawing.Point(267, 9)
+        Me.btntambah.Location = New System.Drawing.Point(246, 9)
         Me.btntambah.Margin = New System.Windows.Forms.Padding(4)
         Me.btntambah.Name = "btntambah"
         Me.btntambah.Size = New System.Drawing.Size(149, 37)
@@ -1496,12 +1497,23 @@ Partial Class fuser
         Me.Label10.TabIndex = 106
         Me.Label10.Text = "Max Print"
         '
+        'btnpassword
+        '
+        Me.btnpassword.Location = New System.Drawing.Point(874, 9)
+        Me.btnpassword.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnpassword.Name = "btnpassword"
+        Me.btnpassword.Size = New System.Drawing.Size(149, 37)
+        Me.btnpassword.TabIndex = 107
+        Me.btnpassword.Text = "Generate Pass"
+        Me.btnpassword.UseVisualStyleBackColor = True
+        '
         'fuser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1039, 824)
+        Me.Controls.Add(Me.btnpassword)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.cbauth)
@@ -1661,4 +1673,5 @@ Partial Class fuser
     Friend WithEvents cbauth As CheckBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label10 As Label
+    Friend WithEvents btnpassword As Button
 End Class

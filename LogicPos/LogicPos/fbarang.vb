@@ -224,7 +224,7 @@ Public Class fbarang
     End Sub
     Sub simpan()
         Call koneksii()
-        sql = "SELECT * FROM tb_barang WHERE kode_barang  = '" + txtkode.Text + "'"
+        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + txtkode.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
@@ -295,7 +295,7 @@ Public Class fbarang
         Dim foto As Byte()
 
         Call koneksii()
-        sql = "SELECT * FROM tb_barang WHERE kode_barang  = '" + txtkode.Text + "'"
+        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + txtkode.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()
@@ -471,7 +471,7 @@ Public Class fbarang
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
 
                 Call koneksii()
-                sql = "DELETE FROM tb_barang WHERE  `kode_barang`='" & txtkode.Text & "'"
+                sql = "DELETE FROM tb_barang WHERE kode_barang ='" & txtkode.Text & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
 

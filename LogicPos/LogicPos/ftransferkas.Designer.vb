@@ -22,10 +22,8 @@ Partial Class ftransferkas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dttransaksi = New System.Windows.Forms.DateTimePicker()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.cbposted = New System.Windows.Forms.CheckBox()
         Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.txtnamakekas = New System.Windows.Forms.TextBox()
@@ -57,51 +55,17 @@ Partial Class ftransferkas
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox6.SuspendLayout()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.dttransaksi)
-        Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Controls.Add(Me.GroupBox6)
-        Me.GroupBox1.Controls.Add(Me.txtnamakekas)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.cmbkekas)
-        Me.GroupBox1.Controls.Add(Me.btnprint)
-        Me.GroupBox1.Controls.Add(Me.txtketerangantransfer)
-        Me.GroupBox1.Controls.Add(Me.Label9)
-        Me.GroupBox1.Controls.Add(Me.txtsaldotransfer)
-        Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.txtnamadarikas)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.cmbdarikas)
-        Me.GroupBox1.Controls.Add(Me.cmbsales)
-        Me.GroupBox1.Controls.Add(Me.btnbatal)
-        Me.GroupBox1.Controls.Add(Me.btnhapus)
-        Me.GroupBox1.Controls.Add(Me.btnedit)
-        Me.GroupBox1.Controls.Add(Me.btntambah)
-        Me.GroupBox1.Controls.Add(Me.txtkodetransfer)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 218)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(925, 285)
-        Me.GroupBox1.TabIndex = 17
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Input Transfer Kas"
-        '
         'dttransaksi
         '
         Me.dttransaksi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dttransaksi.Location = New System.Drawing.Point(11, 195)
-        Me.dttransaksi.Margin = New System.Windows.Forms.Padding(4)
+        Me.dttransaksi.Location = New System.Drawing.Point(588, 410)
+        Me.dttransaksi.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.dttransaksi.Name = "dttransaksi"
         Me.dttransaksi.Size = New System.Drawing.Size(389, 24)
         Me.dttransaksi.TabIndex = 43
@@ -110,32 +74,19 @@ Partial Class ftransferkas
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(12, 170)
+        Me.Label7.Location = New System.Drawing.Point(423, 414)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(138, 20)
         Me.Label7.TabIndex = 42
         Me.Label7.Text = "Tanggal Transaksi"
         '
-        'GroupBox6
-        '
-        Me.GroupBox6.Controls.Add(Me.cbposted)
-        Me.GroupBox6.Controls.Add(Me.cbprinted)
-        Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.GroupBox6.Location = New System.Drawing.Point(725, 24)
-        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox6.Size = New System.Drawing.Size(188, 58)
-        Me.GroupBox6.TabIndex = 37
-        Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "Status"
-        '
         'cbposted
         '
         Me.cbposted.AutoSize = True
         Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(92, 23)
-        Me.cbposted.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbposted.Location = New System.Drawing.Point(673, 376)
+        Me.cbposted.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.cbposted.Name = "cbposted"
         Me.cbposted.Size = New System.Drawing.Size(74, 22)
         Me.cbposted.TabIndex = 41
@@ -147,8 +98,8 @@ Partial Class ftransferkas
         Me.cbprinted.AutoSize = True
         Me.cbprinted.Enabled = False
         Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(11, 23)
-        Me.cbprinted.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbprinted.Location = New System.Drawing.Point(588, 376)
+        Me.cbprinted.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.cbprinted.Name = "cbprinted"
         Me.cbprinted.Size = New System.Drawing.Size(73, 22)
         Me.cbprinted.TabIndex = 40
@@ -159,16 +110,18 @@ Partial Class ftransferkas
         '
         Me.txtnamakekas.Enabled = False
         Me.txtnamakekas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamakekas.Location = New System.Drawing.Point(727, 135)
+        Me.txtnamakekas.Location = New System.Drawing.Point(131, 553)
+        Me.txtnamakekas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtnamakekas.Name = "txtnamakekas"
-        Me.txtnamakekas.Size = New System.Drawing.Size(186, 24)
+        Me.txtnamakekas.Size = New System.Drawing.Size(277, 24)
         Me.txtnamakekas.TabIndex = 34
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(621, 135)
+        Me.Label3.Location = New System.Drawing.Point(14, 555)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(105, 20)
         Me.Label3.TabIndex = 35
@@ -178,7 +131,8 @@ Partial Class ftransferkas
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(621, 104)
+        Me.Label5.Location = New System.Drawing.Point(14, 519)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(100, 20)
         Me.Label5.TabIndex = 33
@@ -187,19 +141,19 @@ Partial Class ftransferkas
         'cmbkekas
         '
         Me.cmbkekas.FormattingEnabled = True
-        Me.cmbkekas.Location = New System.Drawing.Point(727, 102)
-        Me.cmbkekas.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbkekas.Location = New System.Drawing.Point(131, 517)
+        Me.cmbkekas.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.cmbkekas.MaxLength = 99
         Me.cmbkekas.Name = "cmbkekas"
-        Me.cmbkekas.Size = New System.Drawing.Size(186, 26)
+        Me.cmbkekas.Size = New System.Drawing.Size(277, 26)
         Me.cmbkekas.TabIndex = 32
         '
         'btnprint
         '
-        Me.btnprint.Location = New System.Drawing.Point(580, 32)
-        Me.btnprint.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnprint.Location = New System.Drawing.Point(842, 23)
+        Me.btnprint.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.btnprint.Name = "btnprint"
-        Me.btnprint.Size = New System.Drawing.Size(135, 50)
+        Me.btnprint.Size = New System.Drawing.Size(135, 31)
         Me.btnprint.TabIndex = 31
         Me.btnprint.Text = "Print"
         Me.btnprint.UseVisualStyleBackColor = True
@@ -207,9 +161,10 @@ Partial Class ftransferkas
         'txtketerangantransfer
         '
         Me.txtketerangantransfer.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangantransfer.Location = New System.Drawing.Point(424, 193)
+        Me.txtketerangantransfer.Location = New System.Drawing.Point(427, 519)
+        Me.txtketerangantransfer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtketerangantransfer.Name = "txtketerangantransfer"
-        Me.txtketerangantransfer.Size = New System.Drawing.Size(487, 79)
+        Me.txtketerangantransfer.Size = New System.Drawing.Size(550, 58)
         Me.txtketerangantransfer.TabIndex = 29
         Me.txtketerangantransfer.Text = ""
         '
@@ -217,7 +172,8 @@ Partial Class ftransferkas
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(424, 170)
+        Me.Label9.Location = New System.Drawing.Point(423, 486)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(155, 20)
         Me.Label9.TabIndex = 28
@@ -226,16 +182,18 @@ Partial Class ftransferkas
         'txtsaldotransfer
         '
         Me.txtsaldotransfer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsaldotransfer.Location = New System.Drawing.Point(11, 248)
+        Me.txtsaldotransfer.Location = New System.Drawing.Point(588, 448)
+        Me.txtsaldotransfer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtsaldotransfer.Name = "txtsaldotransfer"
-        Me.txtsaldotransfer.Size = New System.Drawing.Size(390, 24)
+        Me.txtsaldotransfer.Size = New System.Drawing.Size(389, 24)
         Me.txtsaldotransfer.TabIndex = 26
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(11, 223)
+        Me.Label8.Location = New System.Drawing.Point(423, 448)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(113, 20)
         Me.Label8.TabIndex = 27
@@ -245,16 +203,18 @@ Partial Class ftransferkas
         '
         Me.txtnamadarikas.Enabled = False
         Me.txtnamadarikas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamadarikas.Location = New System.Drawing.Point(431, 135)
+        Me.txtnamadarikas.Location = New System.Drawing.Point(131, 482)
+        Me.txtnamadarikas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtnamadarikas.Name = "txtnamadarikas"
-        Me.txtnamadarikas.Size = New System.Drawing.Size(186, 24)
+        Me.txtnamadarikas.Size = New System.Drawing.Size(277, 24)
         Me.txtnamadarikas.TabIndex = 22
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(315, 135)
+        Me.Label4.Location = New System.Drawing.Point(14, 484)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(115, 20)
         Me.Label4.TabIndex = 23
@@ -264,7 +224,8 @@ Partial Class ftransferkas
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(315, 104)
+        Me.Label6.Location = New System.Drawing.Point(14, 448)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(110, 20)
         Me.Label6.TabIndex = 21
@@ -273,55 +234,59 @@ Partial Class ftransferkas
         'cmbdarikas
         '
         Me.cmbdarikas.FormattingEnabled = True
-        Me.cmbdarikas.Location = New System.Drawing.Point(431, 102)
-        Me.cmbdarikas.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbdarikas.Location = New System.Drawing.Point(131, 446)
+        Me.cmbdarikas.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.cmbdarikas.MaxLength = 99
         Me.cmbdarikas.Name = "cmbdarikas"
-        Me.cmbdarikas.Size = New System.Drawing.Size(186, 26)
+        Me.cmbdarikas.Size = New System.Drawing.Size(277, 26)
         Me.cmbdarikas.TabIndex = 20
         '
         'cmbsales
         '
         Me.cmbsales.FormattingEnabled = True
-        Me.cmbsales.Location = New System.Drawing.Point(126, 131)
-        Me.cmbsales.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbsales.Location = New System.Drawing.Point(131, 408)
+        Me.cmbsales.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.cmbsales.MaxLength = 99
         Me.cmbsales.Name = "cmbsales"
-        Me.cmbsales.Size = New System.Drawing.Size(186, 26)
+        Me.cmbsales.Size = New System.Drawing.Size(277, 26)
         Me.cmbsales.TabIndex = 19
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(438, 32)
+        Me.btnbatal.Location = New System.Drawing.Point(697, 23)
+        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnbatal.Name = "btnbatal"
-        Me.btnbatal.Size = New System.Drawing.Size(135, 50)
+        Me.btnbatal.Size = New System.Drawing.Size(135, 31)
         Me.btnbatal.TabIndex = 13
         Me.btnbatal.Text = "Batal"
         Me.btnbatal.UseVisualStyleBackColor = True
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(297, 32)
+        Me.btnhapus.Location = New System.Drawing.Point(554, 23)
+        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnhapus.Name = "btnhapus"
-        Me.btnhapus.Size = New System.Drawing.Size(135, 50)
+        Me.btnhapus.Size = New System.Drawing.Size(135, 31)
         Me.btnhapus.TabIndex = 14
         Me.btnhapus.Text = "Hapus"
         Me.btnhapus.UseVisualStyleBackColor = True
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(156, 32)
+        Me.btnedit.Location = New System.Drawing.Point(411, 23)
+        Me.btnedit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnedit.Name = "btnedit"
-        Me.btnedit.Size = New System.Drawing.Size(135, 50)
+        Me.btnedit.Size = New System.Drawing.Size(135, 31)
         Me.btnedit.TabIndex = 15
         Me.btnedit.Text = "Edit"
         Me.btnedit.UseVisualStyleBackColor = True
         '
         'btntambah
         '
-        Me.btntambah.Location = New System.Drawing.Point(15, 32)
+        Me.btntambah.Location = New System.Drawing.Point(268, 23)
+        Me.btntambah.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btntambah.Name = "btntambah"
-        Me.btntambah.Size = New System.Drawing.Size(135, 50)
+        Me.btntambah.Size = New System.Drawing.Size(135, 31)
         Me.btntambah.TabIndex = 16
         Me.btntambah.Text = "Tambah"
         Me.btntambah.UseVisualStyleBackColor = True
@@ -330,16 +295,18 @@ Partial Class ftransferkas
         '
         Me.txtkodetransfer.Enabled = False
         Me.txtkodetransfer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkodetransfer.Location = New System.Drawing.Point(126, 100)
+        Me.txtkodetransfer.Location = New System.Drawing.Point(131, 375)
+        Me.txtkodetransfer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtkodetransfer.Name = "txtkodetransfer"
-        Me.txtkodetransfer.Size = New System.Drawing.Size(186, 24)
+        Me.txtkodetransfer.Size = New System.Drawing.Size(277, 24)
         Me.txtkodetransfer.TabIndex = 1
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 133)
+        Me.Label2.Location = New System.Drawing.Point(14, 410)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(84, 20)
         Me.Label2.TabIndex = 7
@@ -349,7 +316,8 @@ Partial Class ftransferkas
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(10, 102)
+        Me.Label1.Location = New System.Drawing.Point(14, 376)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(109, 20)
         Me.Label1.TabIndex = 8
@@ -357,10 +325,12 @@ Partial Class ftransferkas
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 12)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Location = New System.Drawing.Point(13, 80)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(925, 200)
+        Me.GridControl1.Size = New System.Drawing.Size(964, 277)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -436,29 +406,73 @@ Partial Class ftransferkas
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
         '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(12, 23)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(182, 31)
+        Me.Label10.TabIndex = 65
+        Me.Label10.Text = "Transfer Kas"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(423, 379)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(56, 20)
+        Me.Label11.TabIndex = 66
+        Me.Label11.Text = "Status"
+        '
         'ftransferkas
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(947, 515)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.ClientSize = New System.Drawing.Size(991, 600)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.dttransaksi)
+        Me.Controls.Add(Me.cbposted)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.cbprinted)
+        Me.Controls.Add(Me.txtnamakekas)
         Me.Controls.Add(Me.GridControl1)
-        Me.MaximizeBox = False
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.btntambah)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.btnedit)
+        Me.Controls.Add(Me.cmbkekas)
+        Me.Controls.Add(Me.btnhapus)
+        Me.Controls.Add(Me.txtketerangantransfer)
+        Me.Controls.Add(Me.btnbatal)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.btnprint)
+        Me.Controls.Add(Me.txtsaldotransfer)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.txtnamadarikas)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.txtkodetransfer)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.cmbsales)
+        Me.Controls.Add(Me.cmbdarikas)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "ftransferkas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Transfer Akun Kas"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox6.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents btnprint As Button
     Friend WithEvents txtketerangantransfer As RichTextBox
     Friend WithEvents Label9 As Label
@@ -487,10 +501,11 @@ Partial Class ftransferkas
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents cmbkekas As ComboBox
-    Friend WithEvents GroupBox6 As GroupBox
     Friend WithEvents cbposted As CheckBox
     Friend WithEvents cbprinted As CheckBox
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents dttransaksi As DateTimePicker
     Friend WithEvents Label7 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
 End Class

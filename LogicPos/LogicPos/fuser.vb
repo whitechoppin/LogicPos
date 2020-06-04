@@ -1538,6 +1538,10 @@ Public Class fuser
         Call awal()
     End Sub
 
+    Private Sub btnpassword_Click(sender As Object, e As EventArgs) Handles btnpassword.Click
+        fgeneratepassword.ShowDialog()
+    End Sub
+
     Sub cari()
 
         txtkode.Text = GridView.GetFocusedRowCellValue("kode_user")

@@ -77,8 +77,8 @@ Public Class frekeningcustomer
     End Sub
 
     Sub isitabel()
-        'Call koneksii()
-        sql = "Select * from tb_rekening_customer where kode_customer = '" & kode_customer & "'"
+        Call koneksii()
+        sql = "SELECT * FROM tb_rekening_customer WHERE kode_customer = '" & kode_customer & "'"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
