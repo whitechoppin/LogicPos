@@ -57,7 +57,6 @@ Partial Class fpembelian
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.txtinformasi = New System.Windows.Forms.RichTextBox()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.txtongkir = New System.Windows.Forms.TextBox()
         Me.cbongkir = New System.Windows.Forms.CheckBox()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
@@ -113,15 +112,17 @@ Partial Class fpembelian
         Me.Label29 = New System.Windows.Forms.Label()
         Me.txtterm = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.dtupdated = New System.Windows.Forms.DateTimePicker()
         Me.Label21 = New System.Windows.Forms.Label()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
         CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tcpembelian.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        Me.TabPage4.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -470,35 +471,30 @@ Partial Class fpembelian
         '
         'txtinformasi
         '
+        Me.txtinformasi.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtinformasi.Enabled = False
         Me.txtinformasi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtinformasi.Location = New System.Drawing.Point(16, 691)
+        Me.txtinformasi.Location = New System.Drawing.Point(567, 9)
         Me.txtinformasi.Margin = New System.Windows.Forms.Padding(4)
         Me.txtinformasi.Name = "txtinformasi"
-        Me.txtinformasi.Size = New System.Drawing.Size(549, 97)
+        Me.txtinformasi.Size = New System.Drawing.Size(715, 153)
         Me.txtinformasi.TabIndex = 37
         Me.txtinformasi.Text = "Fungsi Tombol" & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'txtketerangan
         '
+        Me.txtketerangan.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.txtketerangan.Location = New System.Drawing.Point(16, 557)
+        Me.txtketerangan.Location = New System.Drawing.Point(4, 4)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(549, 126)
+        Me.txtketerangan.Size = New System.Drawing.Size(1281, 166)
         Me.txtketerangan.TabIndex = 36
         Me.txtketerangan.Text = ""
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label4.Location = New System.Drawing.Point(19, 536)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(83, 18)
-        Me.Label4.TabIndex = 20
-        Me.Label4.Text = "Keterangan"
         '
         'txtongkir
         '
@@ -988,6 +984,7 @@ Partial Class fpembelian
         Me.tcpembelian.Controls.Add(Me.TabPage1)
         Me.tcpembelian.Controls.Add(Me.TabPage2)
         Me.tcpembelian.Controls.Add(Me.TabPage3)
+        Me.tcpembelian.Controls.Add(Me.TabPage4)
         Me.tcpembelian.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tcpembelian.Location = New System.Drawing.Point(17, 66)
         Me.tcpembelian.Margin = New System.Windows.Forms.Padding(4)
@@ -1126,19 +1123,20 @@ Partial Class fpembelian
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Supplier"
         '
-        'TabPage3
+        'TabPage4
         '
-        Me.TabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage3.Controls.Add(Me.dtupdated)
-        Me.TabPage3.Controls.Add(Me.Label21)
-        Me.TabPage3.Controls.Add(Me.dtcreated)
-        Me.TabPage3.Controls.Add(Me.Label25)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 27)
-        Me.TabPage3.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(1289, 174)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Informasi"
+        Me.TabPage4.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage4.Controls.Add(Me.dtupdated)
+        Me.TabPage4.Controls.Add(Me.txtinformasi)
+        Me.TabPage4.Controls.Add(Me.Label21)
+        Me.TabPage4.Controls.Add(Me.dtcreated)
+        Me.TabPage4.Controls.Add(Me.Label25)
+        Me.TabPage4.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage4.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabPage4.Name = "TabPage4"
+        Me.TabPage4.Size = New System.Drawing.Size(1289, 174)
+        Me.TabPage4.TabIndex = 2
+        Me.TabPage4.Text = "Informasi"
         '
         'dtupdated
         '
@@ -1161,16 +1159,24 @@ Partial Class fpembelian
         Me.Label21.TabIndex = 78
         Me.Label21.Text = "Date Updated :"
         '
+        'TabPage3
+        '
+        Me.TabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage3.Controls.Add(Me.txtketerangan)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(1289, 174)
+        Me.TabPage3.TabIndex = 3
+        Me.TabPage3.Text = "Keterangan"
+        '
         'fpembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1328, 805)
+        Me.ClientSize = New System.Drawing.Size(1328, 683)
         Me.Controls.Add(Me.txtppnnominal)
-        Me.Controls.Add(Me.txtinformasi)
         Me.Controls.Add(Me.Label19)
-        Me.Controls.Add(Me.txtketerangan)
         Me.Controls.Add(Me.txttotal)
         Me.Controls.Add(Me.txtdiskonnominal)
         Me.Controls.Add(Me.Label9)
@@ -1179,7 +1185,6 @@ Partial Class fpembelian
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.cbongkir)
-        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.cbppn)
         Me.Controls.Add(Me.btncaripembelian)
         Me.Controls.Add(Me.cbdiskon)
@@ -1222,8 +1227,9 @@ Partial Class fpembelian
         Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        Me.TabPage4.ResumeLayout(False)
+        Me.TabPage4.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1258,7 +1264,6 @@ Partial Class fpembelian
     Friend WithEvents txtinformasi As RichTextBox
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents txtketerangan As RichTextBox
-    Friend WithEvents Label4 As Label
     Friend WithEvents txtongkir As TextBox
     Friend WithEvents cbongkir As CheckBox
     Friend WithEvents lblsatuan As Label
@@ -1310,7 +1315,7 @@ Partial Class fpembelian
     Friend WithEvents tcpembelian As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents TabPage4 As TabPage
     Friend WithEvents dtupdated As DateTimePicker
     Friend WithEvents Label21 As Label
     Friend WithEvents txtterm As TextBox
@@ -1321,4 +1326,5 @@ Partial Class fpembelian
     Friend WithEvents Label22 As Label
     Friend WithEvents Label23 As Label
     Friend WithEvents Label24 As Label
+    Friend WithEvents TabPage3 As TabPage
 End Class

@@ -1480,7 +1480,7 @@ Partial Class fuser
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(365, 158)
+        Me.TextBox1.Location = New System.Drawing.Point(365, 159)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(51, 24)
@@ -1490,7 +1490,7 @@ Partial Class fuser
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(284, 162)
+        Me.Label10.Location = New System.Drawing.Point(284, 161)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(74, 20)
