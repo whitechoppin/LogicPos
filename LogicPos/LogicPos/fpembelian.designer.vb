@@ -112,18 +112,18 @@ Partial Class fpembelian
         Me.Label29 = New System.Windows.Forms.Label()
         Me.txtterm = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.dtupdated = New System.Windows.Forms.DateTimePicker()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
         CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tcpembelian.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
-        Me.TabPage4.SuspendLayout()
         Me.TabPage3.SuspendLayout()
+        Me.TabPage4.SuspendLayout()
         Me.SuspendLayout()
         '
         'ritenumber
@@ -481,7 +481,7 @@ Partial Class fpembelian
         Me.txtinformasi.Name = "txtinformasi"
         Me.txtinformasi.Size = New System.Drawing.Size(715, 153)
         Me.txtinformasi.TabIndex = 37
-        Me.txtinformasi.Text = "Fungsi Tombol" & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.txtinformasi.Text = resources.GetString("txtinformasi.Text")
         '
         'txtketerangan
         '
@@ -700,7 +700,7 @@ Partial Class fpembelian
         Me.cmbbayar.Location = New System.Drawing.Point(20, 122)
         Me.cmbbayar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbbayar.Name = "cmbbayar"
-        Me.cmbbayar.Size = New System.Drawing.Size(392, 26)
+        Me.cmbbayar.Size = New System.Drawing.Size(343, 26)
         Me.cmbbayar.TabIndex = 35
         '
         'Label11
@@ -955,7 +955,7 @@ Partial Class fpembelian
         Me.txtnosupplier.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnosupplier.MaxLength = 12
         Me.txtnosupplier.Name = "txtnosupplier"
-        Me.txtnosupplier.Size = New System.Drawing.Size(392, 24)
+        Me.txtnosupplier.Size = New System.Drawing.Size(343, 24)
         Me.txtnosupplier.TabIndex = 45
         '
         'dtcreated
@@ -1123,6 +1123,16 @@ Partial Class fpembelian
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Supplier"
         '
+        'TabPage3
+        '
+        Me.TabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage3.Controls.Add(Me.txtketerangan)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(1289, 174)
+        Me.TabPage3.TabIndex = 3
+        Me.TabPage3.Text = "Keterangan"
+        '
         'TabPage4
         '
         Me.TabPage4.BackColor = System.Drawing.SystemColors.ActiveCaption
@@ -1159,22 +1169,12 @@ Partial Class fpembelian
         Me.Label21.TabIndex = 78
         Me.Label21.Text = "Date Updated :"
         '
-        'TabPage3
-        '
-        Me.TabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage3.Controls.Add(Me.txtketerangan)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 27)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(1289, 174)
-        Me.TabPage3.TabIndex = 3
-        Me.TabPage3.Text = "Keterangan"
-        '
         'fpembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1328, 683)
+        Me.ClientSize = New System.Drawing.Size(1324, 681)
         Me.Controls.Add(Me.txtppnnominal)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.txttotal)
@@ -1227,9 +1227,9 @@ Partial Class fpembelian
         Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
-        Me.TabPage3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

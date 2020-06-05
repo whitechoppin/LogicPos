@@ -237,6 +237,18 @@
         EARBEARBEARBEARBEARBEATB8c+IEf8DL7H+6PusK8AAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="txtinformasi.Text" xml:space="preserve">
+    <value>Tata Cara Pengisian : 
+1. isi kode supplier.
+2. isi kode sales yang bersangkutan.
+3. isi kode gudang (stok tampil sesuai isi kode gudang)
+4. isi kode barang atau cari kode barang melalu tombol cari.
+5. isi Qty barang lalu OK
+6. jika ingin mengubah data tabel, langsung klik dalam kolom yang di tuju (Harga Satuan, Qty)
+    atau klu ingin menghapus pilih baris data lalu tekan tombol delete.
+7. jangan lupa pembayaran rekening supplier dan Save
+</value>
+  </data>
   <data name="btncarigudang.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAAK/INwWK6QAADHJJREFUaEPt
