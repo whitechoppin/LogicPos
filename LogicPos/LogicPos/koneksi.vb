@@ -1,6 +1,7 @@
 ﻿Imports System.Data.Odbc
 
 Module koneksi
+    'koneksi
     Public cnn As New OdbcConnection
     Public cmmd As OdbcCommand
     Public dr As OdbcDataReader
@@ -13,6 +14,13 @@ Module koneksi
     Public da As OdbcDataAdapter
     Public ds As DataSet
     Public strConn As String = "DSN=dsn_logicpos"
+    '=========================
+
+    'counter printing
+
+    Dim counter As Integer
+
+    '=========================
 
     Public Sub koneksii()
         Dim keluar As MsgBoxResult
@@ -42,11 +50,17 @@ Module koneksi
 
     Public Function cekcetakan(nomor As String) As Boolean
         Call koneksii()
-        sql = "SELECT * FROM tb_history_user WHERE keterangan_history LIKE '%mencetak%' AND created_by='" & fmenu.statususer.Text & "' AND kode_tabel = '" & nomor & "'"
+        sql = "SELECT IFNULL(COUNT(*), 0) AS penghitung FROM tb_history_user WHERE keterangan_history LIKE '%mencetak%' AND created_by='" & fmenu.statususer.Text & "' AND kode_tabel = '" & nomor & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            Return True
+            counter = dr("penghitung")
+
+            If counter <= flogin.maxprinting Then
+                Return False
+            Else
+                Return True
+            End If
         Else
             Return False
         End If

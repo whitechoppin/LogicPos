@@ -1,13 +1,15 @@
 ﻿Imports System.Data.Odbc
 Public Class flogin
-    Public rekeningsupplier, rekeningcustomer As Integer
-    Public master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust As Integer
+    Public rekeningsupplier, rekeningcustomer, maxprinting As Integer
+    Public master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust, master_max_print As Integer
     Public pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang As Integer
     Public lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar As Integer
     Public lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barangmasuk, lap_barangkeluar, lap_lunas_utang, lap_lunas_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas, lap_modal_barang As Integer
 
 
     Sub reset()
+        master_max_print = 0
+
         master_barang = 0
         master_kategori = 0
         master_gudang = 0
@@ -67,7 +69,7 @@ Public Class flogin
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             dr.Read()
-
+            master_max_print = dr("max_print")
             master_barang = dr("master_barang")
             master_kategori = dr("master_kategori")
             master_gudang = dr("master_gudang")
@@ -113,6 +115,7 @@ Public Class flogin
 
             rekeningcustomer = master_rek_cust
             rekeningsupplier = master_rek_supplier
+            maxprinting = master_max_print
 
             pembelian = dr("pembelian")
             penjualan = dr("penjualan")
