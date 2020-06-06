@@ -89,8 +89,7 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
-        Me.ExportDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ImportDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.KonfigurasiDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -388,7 +387,7 @@ Partial Class fmenu
         '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KalkulasiExpedisiToolStripMenuItem, Me.ExportDatabaseToolStripMenuItem, Me.ImportDatabaseToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KalkulasiExpedisiToolStripMenuItem, Me.KonfigurasiDatabaseToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
@@ -508,17 +507,11 @@ Partial Class fmenu
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
         '
-        'ExportDatabaseToolStripMenuItem
+        'KonfigurasiDatabaseToolStripMenuItem
         '
-        Me.ExportDatabaseToolStripMenuItem.Name = "ExportDatabaseToolStripMenuItem"
-        Me.ExportDatabaseToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.ExportDatabaseToolStripMenuItem.Text = "Export Database"
-        '
-        'ImportDatabaseToolStripMenuItem
-        '
-        Me.ImportDatabaseToolStripMenuItem.Name = "ImportDatabaseToolStripMenuItem"
-        Me.ImportDatabaseToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.ImportDatabaseToolStripMenuItem.Text = "Import Database"
+        Me.KonfigurasiDatabaseToolStripMenuItem.Name = "KonfigurasiDatabaseToolStripMenuItem"
+        Me.KonfigurasiDatabaseToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.KonfigurasiDatabaseToolStripMenuItem.Text = "Konfigurasi Database"
         '
         'fmenu
         '
@@ -609,6 +602,5 @@ Partial Class fmenu
     Friend WithEvents ContainerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PengirimanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanMutasiBarangToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ExportDatabaseToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ImportDatabaseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents KonfigurasiDatabaseToolStripMenuItem As ToolStripMenuItem
 End Class

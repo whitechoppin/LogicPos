@@ -87,6 +87,8 @@ Public Class fuser
         txttelp.Clear()
         txtalamat.Clear()
         txtketerangan.Clear()
+        txtmaxprint.Clear()
+        cbauth.Checked = False
 
         'akses user
         'master
@@ -289,6 +291,8 @@ Public Class fuser
         txtalamat.Enabled = False
         txttelp.Enabled = False
         txtketerangan.Enabled = False
+        txtmaxprint.Enabled = False
+        cbauth.Enabled = False
 
         btntambah.Enabled = True
         btnbatal.Enabled = False
@@ -364,11 +368,13 @@ Public Class fuser
         txtkode.TabIndex = 1
         txtnama.TabIndex = 2
         txtpassword.TabIndex = 3
-        cmbjabatan.TabIndex = 4
-        txtemail.TabIndex = 5
-        txttelp.TabIndex = 6
-        txtalamat.TabIndex = 7
-        txtketerangan.TabIndex = 8
+        cbauth.TabIndex = 4
+        cmbjabatan.TabIndex = 5
+        txtmaxprint.TabIndex = 6
+        txtemail.TabIndex = 7
+        txttelp.TabIndex = 8
+        txtalamat.TabIndex = 9
+        txtketerangan.TabIndex = 10
     End Sub
     Sub enable_text()
         txtkode.Enabled = True
@@ -379,6 +385,8 @@ Public Class fuser
         txtalamat.Enabled = True
         txttelp.Enabled = True
         txtketerangan.Enabled = True
+        cbauth.Enabled = True
+        txtmaxprint.Enabled = True
 
         'akses user
         'master
@@ -440,6 +448,8 @@ Public Class fuser
         txtalamat.Enabled = True
         txttelp.Enabled = True
         txtketerangan.Enabled = True
+        cbauth.Enabled = True
+        txtmaxprint.Enabled = True
 
         'akses user
         'master

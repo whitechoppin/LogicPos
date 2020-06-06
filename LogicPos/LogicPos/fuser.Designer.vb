@@ -132,7 +132,7 @@ Partial Class fuser
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cbauth = New System.Windows.Forms.CheckBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtmaxprint = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.btnpassword = New System.Windows.Forms.Button()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1478,13 +1478,13 @@ Partial Class fuser
         Me.cbauth.Text = "Auth"
         Me.cbauth.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtmaxprint
         '
-        Me.TextBox1.Location = New System.Drawing.Point(365, 159)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(51, 24)
-        Me.TextBox1.TabIndex = 105
+        Me.txtmaxprint.Location = New System.Drawing.Point(365, 159)
+        Me.txtmaxprint.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtmaxprint.Name = "txtmaxprint"
+        Me.txtmaxprint.Size = New System.Drawing.Size(51, 24)
+        Me.txtmaxprint.TabIndex = 105
         '
         'Label10
         '
@@ -1515,7 +1515,7 @@ Partial Class fuser
         Me.ClientSize = New System.Drawing.Size(1039, 824)
         Me.Controls.Add(Me.btnpassword)
         Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtmaxprint)
         Me.Controls.Add(Me.cbauth)
         Me.Controls.Add(Me.txtketerangan)
         Me.Controls.Add(Me.cmbjabatan)
@@ -1671,7 +1671,7 @@ Partial Class fuser
     Friend WithEvents TabPage4 As TabPage
     Friend WithEvents Label9 As Label
     Friend WithEvents cbauth As CheckBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtmaxprint As TextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents btnpassword As Button
 End Class

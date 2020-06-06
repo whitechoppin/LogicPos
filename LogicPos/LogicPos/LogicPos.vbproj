@@ -249,6 +249,12 @@
     <Compile Include="fkalkulasipengiriman.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fkonfigurasidatabase.Designer.vb">
+      <DependentUpon>fkonfigurasidatabase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fkonfigurasidatabase.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanlabarugi.Designer.vb">
       <DependentUpon>flaporanlabarugi.vb</DependentUpon>
     </Compile>
@@ -999,6 +1005,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fkalkulasipengiriman.resx">
       <DependentUpon>fkalkulasipengiriman.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fkonfigurasidatabase.resx">
+      <DependentUpon>fkonfigurasidatabase.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanlabarugi.resx">
       <DependentUpon>flaporanlabarugi.vb</DependentUpon>

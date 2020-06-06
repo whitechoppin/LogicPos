@@ -429,4 +429,8 @@ Public Class fmenu
     Private Sub LaporanMutasiBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanMutasiBarangToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub KonfigurasiDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KonfigurasiDatabaseToolStripMenuItem.Click
+
+    End Sub
 End Class
