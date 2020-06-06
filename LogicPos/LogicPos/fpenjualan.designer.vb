@@ -980,7 +980,7 @@ Partial Class fpenjualan
         Me.txtketerangan.Location = New System.Drawing.Point(6, 6)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(6)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(1302, 155)
+        Me.txtketerangan.Size = New System.Drawing.Size(1278, 155)
         Me.txtketerangan.TabIndex = 54
         Me.txtketerangan.Text = ""
         '

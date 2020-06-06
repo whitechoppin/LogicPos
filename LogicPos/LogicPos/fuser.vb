@@ -5,6 +5,11 @@ Public Class fuser
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
 
+    Dim cekauthuser As Integer
+    Dim aksesauthuser As Integer
+
+    Dim maxprint As Integer
+
     'master
     Dim cekmasterbarang, cekmasterkategori, cekmastergudang, cekmastercustomer, cekmastersupplier, cekmasteruser, cekmasterkas, cekmasterpricelist, cekmasterreksupp, cekmasterrekcust As Integer
     Dim aksesbarang, akseskategori, aksesgudang, aksescustomer, aksessupplier, aksesuser, akseskas, aksespricelist, aksesreksupp, aksesrekcust As Integer
@@ -77,18 +82,23 @@ Public Class fuser
         Call historysave("Membuka Master Kategori Barang", "N/A")
     End Sub
 
+    Private Sub fuser_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
     Sub awal()
         txtkode.Clear()
         txtnama.Clear()
         txtpassword.Clear()
-        txtalamat.Clear()
+        cbauth.Checked = False
+
         cmbjabatan.SelectedIndex = -1
+        txtmaxprint.Clear()
+
         txtemail.Clear()
         txttelp.Clear()
         txtalamat.Clear()
         txtketerangan.Clear()
-        txtmaxprint.Clear()
-        cbauth.Checked = False
 
         'akses user
         'master
@@ -286,13 +296,17 @@ Public Class fuser
         txtkode.Enabled = False
         txtnama.Enabled = False
         txtpassword.Enabled = False
+        cbauth.Enabled = False
+
         cmbjabatan.Enabled = False
+        txtmaxprint.Enabled = False
+
         txtemail.Enabled = False
         txtalamat.Enabled = False
         txttelp.Enabled = False
         txtketerangan.Enabled = False
-        txtmaxprint.Enabled = False
-        cbauth.Enabled = False
+
+
 
         btntambah.Enabled = True
         btnbatal.Enabled = False
@@ -380,13 +394,15 @@ Public Class fuser
         txtkode.Enabled = True
         txtnama.Enabled = True
         txtpassword.Enabled = True
+        cbauth.Enabled = True
+
         cmbjabatan.Enabled = True
+        txtmaxprint.Enabled = True
+
         txtemail.Enabled = True
         txtalamat.Enabled = True
         txttelp.Enabled = True
         txtketerangan.Enabled = True
-        cbauth.Enabled = True
-        txtmaxprint.Enabled = True
 
         'akses user
         'master
@@ -443,13 +459,15 @@ Public Class fuser
         txtkode.Enabled = True
         txtnama.Enabled = True
         txtpassword.Enabled = True
+        cbauth.Enabled = True
+
         cmbjabatan.Enabled = True
+        txtmaxprint.Enabled = True
+
         txtemail.Enabled = True
         txtalamat.Enabled = True
         txttelp.Enabled = True
         txtketerangan.Enabled = True
-        cbauth.Enabled = True
-        txtmaxprint.Enabled = True
 
         'akses user
         'master
@@ -735,6 +753,21 @@ Public Class fuser
 
         txtkode.Focus()
     End Sub
+
+    Private Sub txtmaxprint_TextChanged(sender As Object, e As EventArgs) Handles txtmaxprint.TextChanged
+        If txtmaxprint.Text = "" Or txtmaxprint.Text = "0" Then
+            txtmaxprint.Text = 1
+        Else
+            maxprint = txtmaxprint.Text
+            txtmaxprint.Text = Format(maxprint, "##,##0")
+            txtmaxprint.SelectionStart = Len(txtmaxprint.Text)
+        End If
+    End Sub
+
+    Private Sub txtmaxprint_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtmaxprint.KeyPress
+        e.Handled = ValidAngka(e)
+    End Sub
+
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If tambahstatus.Equals(True) Then
             If btntambah.Text = "Tambah" Then
@@ -779,6 +812,7 @@ Public Class fuser
         End If
     End Sub
     Sub aksesadmin()
+        cekauthuser = 0
         'master
         cekmasterbarang = 0
         cekmasterkategori = 0
@@ -826,6 +860,12 @@ Public Class fuser
         ceklapmodalbarang = 0
 
         'We will run through each indice
+
+        If cbauth.Checked = True Then
+            cekauthuser = 1
+        Else
+            cekauthuser = 0
+        End If
 
         For i = 0 To 2
             'master ===
@@ -1299,13 +1339,13 @@ Public Class fuser
             MsgBox("Kode User Sudah ada dengan nama " + dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
             Call aksesadmin()
-            sql = "INSERT INTO tb_user (kode_user, nama_user, password_user, jabatan_user, email_user, telepon_user, alamat_user, keterangan_user, 
+            sql = "INSERT INTO tb_user (kode_user, nama_user, password_user, jabatan_user, email_user, telepon_user, alamat_user, keterangan_user, auth_user, max_print,
                     master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supp, master_rek_cust, 
                     pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang,
                     lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar, 
                     lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barang_masuk, lap_barang_keluar, lap_utang, lap_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas, lap_modal_barang,
                     created_by, updated_by,date_created, last_updated) 
-                    VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtpassword.Text & "', '" & cmbjabatan.Text & "', '" & txtemail.Text & "', '" & txttelp.Text & "','" & txtalamat.Text & "','" & txtketerangan.Text & "',
+                    VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtpassword.Text & "', '" & cmbjabatan.Text & "', '" & txtemail.Text & "', '" & txttelp.Text & "','" & txtalamat.Text & "','" & txtketerangan.Text & "','" & cekauthuser & "','" & maxprint & "',
                     '" & cekmasterbarang & "','" & cekmasterkategori & "','" & cekmastergudang & "','" & cekmastercustomer & "','" & cekmastersupplier & "','" & cekmasteruser & "','" & cekmasterkas & "','" & cekmasterpricelist & "','" & cekmasterreksupp & "','" & cekmasterrekcust & "',
                     '" & cekpembelian & "','" & cekpenjualan & "','" & cekreturbeli & "','" & cekreturjual & "','" & cekbarangmasuk & "','" & cekbarangkeluar & "','" & cektransferbarang & "',
                     '" & ceklunasutang & "','" & ceklunaspiutang & "','" & cektransferkas & "','" & cekakunmasuk & "','" & cekakunkeluar & "',
@@ -1374,7 +1414,7 @@ Public Class fuser
 
             Call koneksii()
 
-            sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_kategori=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?,
+            sql = "UPDATE tb_user SET nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, auth_user=?, max_print=?, master_barang=?, master_kategori=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?,
                     pembelian=? ,penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?,
                     lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?, 
                     lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?, lap_modal_barang=?,
@@ -1387,6 +1427,8 @@ Public Class fuser
             cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
             cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
             cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
+            cmmd.Parameters.AddWithValue("@auth_user", cekauthuser)
+            cmmd.Parameters.AddWithValue("@max_print", maxprint)
             'akses 
             'master
             cmmd.Parameters.AddWithValue("@master_barang", cekmasterbarang)
@@ -1450,7 +1492,7 @@ Public Class fuser
 
                 Call koneksii()
 
-                sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, master_barang=?, master_kategori=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?, 
+                sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, auth_user=?, max_print=?, master_barang=?, master_kategori=?, master_gudang=?, master_customer=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_cust=?, 
                         pembelian=?, penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?,
                         lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?,
                         lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_utang=?, lap_piutang=?, lap_stok_barang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transfer_barang=?, lap_transaksi_kas=?, lap_modal_barang=?,
@@ -1464,6 +1506,8 @@ Public Class fuser
                 cmmd.Parameters.AddWithValue("@telepon_user", txttelp.Text)
                 cmmd.Parameters.AddWithValue("@alamat_user", txtalamat.Text)
                 cmmd.Parameters.AddWithValue("@keterangan_user", txtketerangan.Text)
+                cmmd.Parameters.AddWithValue("@auth_user", cekauthuser)
+                cmmd.Parameters.AddWithValue("@max_print", maxprint)
                 'akses 
                 'master
                 cmmd.Parameters.AddWithValue("@master_barang", cekmasterbarang)
@@ -1564,12 +1608,18 @@ Public Class fuser
             If dr.HasRows Then
                 kode = dr("kode_user")
                 txtnama.Text = dr("nama_user")
+
                 txtpassword.Text = dr("password_user")
+                aksesauthuser = dr("auth_user")
+
                 cmbjabatan.Text = dr("jabatan_user")
+                txtmaxprint.Text = dr("max_print")
+
                 txtemail.Text = dr("email_user")
                 txttelp.Text = dr("telepon_user")
                 txtalamat.Text = dr("alamat_user")
                 txtketerangan.Text = dr("keterangan_user")
+
 
                 'akses user
                 'master
@@ -1617,6 +1667,13 @@ Public Class fuser
                 akseslaptransferbarang = Val(dr("lap_transfer_barang"))
                 akseslaptransaksikas = Val(dr("lap_transaksi_kas"))
                 akseslapmodalbarang = Val(dr("lap_modal_barang"))
+
+                Select Case aksesauthuser
+                    Case 0
+                        cbauth.Checked = False
+                    Case 1
+                        cbauth.Checked = True
+                End Select
 
                 '== mulai case ==
                 'master
@@ -3023,10 +3080,6 @@ Public Class fuser
                 Me.clbmasteruser.SetItemChecked(id, False)
             Next
         End If
-    End Sub
-
-    Private Sub fuser_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
     Private Sub cbmasterkas_CheckedChanged(sender As Object, e As EventArgs) Handles cbmasterkas.CheckedChanged

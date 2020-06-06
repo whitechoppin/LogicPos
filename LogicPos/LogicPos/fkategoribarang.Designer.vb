@@ -52,7 +52,7 @@ Partial Class fkategoribarang
         Me.GridControl.MainView = Me.GridView
         Me.GridControl.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Name = "GridControl"
-        Me.GridControl.Size = New System.Drawing.Size(577, 432)
+        Me.GridControl.Size = New System.Drawing.Size(577, 363)
         Me.GridControl.TabIndex = 7
         Me.GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
@@ -246,7 +246,7 @@ Partial Class fkategoribarang
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(607, 776)
+        Me.ClientSize = New System.Drawing.Size(607, 707)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtketerangan)

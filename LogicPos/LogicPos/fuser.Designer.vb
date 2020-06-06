@@ -1333,11 +1333,11 @@ Partial Class fuser
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage4)
-        Me.TabControl1.Location = New System.Drawing.Point(13, 395)
+        Me.TabControl1.Location = New System.Drawing.Point(13, 387)
         Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1010, 414)
+        Me.TabControl1.Size = New System.Drawing.Size(1010, 375)
         Me.TabControl1.TabIndex = 18
         '
         'TabPage1
@@ -1367,7 +1367,7 @@ Partial Class fuser
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage1.Size = New System.Drawing.Size(1002, 383)
+        Me.TabPage1.Size = New System.Drawing.Size(1002, 344)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Master"
         '
@@ -1392,7 +1392,7 @@ Partial Class fuser
         Me.TabPage2.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage2.Size = New System.Drawing.Size(1002, 383)
+        Me.TabPage2.Size = New System.Drawing.Size(1002, 344)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Transaksi"
         '
@@ -1411,7 +1411,7 @@ Partial Class fuser
         Me.TabPage3.Controls.Add(Me.cblunasutang)
         Me.TabPage3.Location = New System.Drawing.Point(4, 27)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(1002, 383)
+        Me.TabPage3.Size = New System.Drawing.Size(1002, 344)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Administrasi"
         '
@@ -1452,7 +1452,7 @@ Partial Class fuser
         Me.TabPage4.Controls.Add(Me.clblappiutang)
         Me.TabPage4.Location = New System.Drawing.Point(4, 27)
         Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(1002, 383)
+        Me.TabPage4.Size = New System.Drawing.Size(1002, 344)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Laporan"
         '
@@ -1482,9 +1482,11 @@ Partial Class fuser
         '
         Me.txtmaxprint.Location = New System.Drawing.Point(365, 159)
         Me.txtmaxprint.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtmaxprint.MaxLength = 3
         Me.txtmaxprint.Name = "txtmaxprint"
         Me.txtmaxprint.Size = New System.Drawing.Size(51, 24)
         Me.txtmaxprint.TabIndex = 105
+        Me.txtmaxprint.Text = "1"
         '
         'Label10
         '
@@ -1512,7 +1514,7 @@ Partial Class fuser
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1039, 824)
+        Me.ClientSize = New System.Drawing.Size(1039, 775)
         Me.Controls.Add(Me.btnpassword)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.txtmaxprint)

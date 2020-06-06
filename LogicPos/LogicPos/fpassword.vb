@@ -2,7 +2,9 @@
 
 Public Class fpassword
     Dim kodeuser As String
-    Public kodetabel, kodemode As String
+    Public kodetabel, kodemode, kodejabatan As String
+    Dim authuser As String
+    Dim statuscode As Boolean = False
 
     Private Sub fpassword_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtpassword.UseSystemPasswordChar = False
@@ -11,7 +13,7 @@ Public Class fpassword
 
     Sub proceed()
         Call koneksii()
-        sql = "SELECT * FROM tb_user WHERE password_user= '" + txtpassword.Text + "' AND jabatan_user ='Owner' LIMIT 1"
+        sql = "SELECT * FROM tb_user WHERE password_user= '" + txtpassword.Text + "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         dr.Read()
@@ -28,9 +30,76 @@ Public Class fpassword
             '===================================
 
             If dr.HasRows = 0 Then
-                MsgBox("Password salah !", MsgBoxStyle.Exclamation, "Error Login")
+                MsgBox("Kode salah !", MsgBoxStyle.Exclamation, "Error Login")
                 txtpassword.Text = ""
             Else
+                If passwordid = 1 Then
+                    'modal barang
+                    'fbarang.txthidden.Visible = False
+
+                    MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                    txtpassword.Text = ""
+                    statuscode = False
+                ElseIf passwordid = 2 Then
+                    'modal barang
+                    'flaporanstokbarang.LabelHarga.Visible = True
+
+                    MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                    txtpassword.Text = ""
+                    statuscode = False
+                ElseIf passwordid = 3 Then
+                    'modal barang
+                    'fcaristok.LabelHarga.Visible = True
+
+                    MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                    txtpassword.Text = ""
+                    statuscode = False
+                ElseIf passwordid = 4 Then
+                    'modal barang
+                    'fcaribarang.LabelHarga.Visible = True
+
+                    MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                    txtpassword.Text = ""
+                    statuscode = False
+                ElseIf passwordid = 5 Then
+                    'modal barang
+                    'fpricelist.txthidden.Visible = False
+
+                    MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                    txtpassword.Text = ""
+                    statuscode = False
+                ElseIf passwordid = 6 Then
+                    'cetakan
+                    fpembelian.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 7 Then
+                    'cetakan
+                    fpenjualan.statusizincetak = True
+                    statuscode = True
+                End If
+
+                If statuscode = True Then
+                    Call koneksii()
+                    sql = "UPDATE tb_password SET status = 1, kode_user='" & fmenu.statususer.Text & "' WHERE  kode_password='" & txtpassword.Text & "'"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
+
+                    'history user ==========
+                    Call historysave("Otorisasi Passcode Diberikan dengan kode " + txtpassword.Text + " Kepada " + fmenu.statususer.Text, kodetabel)
+                    '========================
+
+                    txtpassword.Text = ""
+                End If
+
+                Me.Close()
+            End If
+
+        Else
+            kodeuser = dr("kode_user")
+            kodejabatan = dr("jabatan_user")
+            authuser = dr("auth_user")
+
+            If kodejabatan.Equals("Owner") Then
                 If passwordid = 1 Then
                     'modal barang
                     fbarang.txthidden.Visible = False
@@ -54,50 +123,73 @@ Public Class fpassword
                     fpenjualan.statusizincetak = True
                 End If
 
-                Call koneksii()
-                sql = "UPDATE tb_password SET status = 1, kode_user='" & fmenu.statususer.Text & "' WHERE  kode_password='" & txtpassword.Text & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-
                 'history user ==========
-                Call historysave("Otorisasi Passcode Diberikan dengan kode " + txtpassword.Text + " Kepada " + fmenu.statususer.Text, kodetabel)
+                Call historysave("Otorisasi Passcode Diberikan Oleh " + kodeuser + " Kepada " + fmenu.statususer.Text, kodetabel)
                 '========================
 
                 txtpassword.Text = ""
                 Me.Close()
+            Else
+                If authuser = 1 Then
+                    If passwordid = 1 Then
+                        'modal barang
+                        'fbarang.txthidden.Visible = False
+
+                        MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                        txtpassword.Text = ""
+                        statuscode = False
+                    ElseIf passwordid = 2 Then
+                        'modal barang
+                        'flaporanstokbarang.LabelHarga.Visible = True
+
+                        MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                        txtpassword.Text = ""
+                        statuscode = False
+                    ElseIf passwordid = 3 Then
+                        'modal barang
+                        'fcaristok.LabelHarga.Visible = True
+
+                        MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                        txtpassword.Text = ""
+                        statuscode = False
+                    ElseIf passwordid = 4 Then
+                        'modal barang
+                        'fcaribarang.LabelHarga.Visible = True
+
+                        MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                        txtpassword.Text = ""
+                        statuscode = False
+                    ElseIf passwordid = 5 Then
+                        'modal barang
+                        'fpricelist.txthidden.Visible = False
+
+                        MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                        txtpassword.Text = ""
+                        statuscode = False
+                    ElseIf passwordid = 6 Then
+                        'cetakan
+                        fpembelian.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 7 Then
+                        'cetakan
+                        fpenjualan.statusizincetak = True
+                        statuscode = True
+                    End If
+
+                    If statuscode = True Then
+                        'history user ==========
+                        Call historysave("Otorisasi Passcode Diberikan Oleh " + kodeuser + " Kepada " + fmenu.statususer.Text, kodetabel)
+                        '========================
+
+                        txtpassword.Text = ""
+                    End If
+
+                    Me.Close()
+                Else
+                    MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
+                    txtpassword.Text = ""
+                End If
             End If
-
-        Else
-            kodeuser = dr("kode_user")
-            If passwordid = 1 Then
-                'modal barang
-                fbarang.txthidden.Visible = False
-            ElseIf passwordid = 2 Then
-                'modal barang
-                flaporanstokbarang.LabelHarga.Visible = True
-            ElseIf passwordid = 3 Then
-                'modal barang
-                fcaristok.LabelHarga.Visible = True
-            ElseIf passwordid = 4 Then
-                'modal barang
-                fcaribarang.LabelHarga.Visible = True
-            ElseIf passwordid = 5 Then
-                'modal barang
-                fpricelist.txthidden.Visible = False
-            ElseIf passwordid = 6 Then
-                'cetakan
-                fpembelian.statusizincetak = True
-            ElseIf passwordid = 7 Then
-                'cetakan
-                fpenjualan.statusizincetak = True
-            End If
-
-            'history user ==========
-            Call historysave("Otorisasi Passcode Diberikan Oleh " + kodeuser + " Kepada " + fmenu.statususer.Text, kodetabel)
-            '========================
-
-            txtpassword.Text = ""
-            Me.Close()
         End If
     End Sub
 
