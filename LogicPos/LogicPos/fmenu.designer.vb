@@ -47,7 +47,11 @@ Partial Class fmenu
         Me.TransferBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdministrasiMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.PelunasanUtangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PreviewUtangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PelunasanUtangToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PelunasanPiutangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PreviewPiutangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PelunasanPiutangToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.KasMasukToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KasKeluarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransferKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -80,6 +84,7 @@ Partial Class fmenu
         Me.KalkulasiExpedisiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PengirimanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.KonfigurasiDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TokoSejatiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -89,7 +94,6 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
-        Me.KonfigurasiDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -236,15 +240,41 @@ Partial Class fmenu
         '
         'PelunasanUtangToolStripMenuItem
         '
+        Me.PelunasanUtangToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PreviewUtangToolStripMenuItem, Me.PelunasanUtangToolStripMenuItem1})
         Me.PelunasanUtangToolStripMenuItem.Name = "PelunasanUtangToolStripMenuItem"
         Me.PelunasanUtangToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.PelunasanUtangToolStripMenuItem.Text = "Pelunasan &Utang"
         '
+        'PreviewUtangToolStripMenuItem
+        '
+        Me.PreviewUtangToolStripMenuItem.Name = "PreviewUtangToolStripMenuItem"
+        Me.PreviewUtangToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.PreviewUtangToolStripMenuItem.Text = "Preview Utang"
+        '
+        'PelunasanUtangToolStripMenuItem1
+        '
+        Me.PelunasanUtangToolStripMenuItem1.Name = "PelunasanUtangToolStripMenuItem1"
+        Me.PelunasanUtangToolStripMenuItem1.Size = New System.Drawing.Size(163, 22)
+        Me.PelunasanUtangToolStripMenuItem1.Text = "Pelunasan Utang"
+        '
         'PelunasanPiutangToolStripMenuItem
         '
+        Me.PelunasanPiutangToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PreviewPiutangToolStripMenuItem, Me.PelunasanPiutangToolStripMenuItem1})
         Me.PelunasanPiutangToolStripMenuItem.Name = "PelunasanPiutangToolStripMenuItem"
         Me.PelunasanPiutangToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.PelunasanPiutangToolStripMenuItem.Text = "Pelunasan &Piutang"
+        '
+        'PreviewPiutangToolStripMenuItem
+        '
+        Me.PreviewPiutangToolStripMenuItem.Name = "PreviewPiutangToolStripMenuItem"
+        Me.PreviewPiutangToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.PreviewPiutangToolStripMenuItem.Text = "Preview Piutang"
+        '
+        'PelunasanPiutangToolStripMenuItem1
+        '
+        Me.PelunasanPiutangToolStripMenuItem1.Name = "PelunasanPiutangToolStripMenuItem1"
+        Me.PelunasanPiutangToolStripMenuItem1.Size = New System.Drawing.Size(172, 22)
+        Me.PelunasanPiutangToolStripMenuItem1.Text = "Pelunasan Piutang"
         '
         'KasMasukToolStripMenuItem
         '
@@ -441,6 +471,12 @@ Partial Class fmenu
         Me.PengirimanToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.PengirimanToolStripMenuItem.Text = "Pengiriman"
         '
+        'KonfigurasiDatabaseToolStripMenuItem
+        '
+        Me.KonfigurasiDatabaseToolStripMenuItem.Name = "KonfigurasiDatabaseToolStripMenuItem"
+        Me.KonfigurasiDatabaseToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.KonfigurasiDatabaseToolStripMenuItem.Text = "Konfigurasi Database"
+        '
         'AboutMenu
         '
         Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogicHouseToolStripMenuItem, Me.TokoSejatiToolStripMenuItem})
@@ -506,12 +542,6 @@ Partial Class fmenu
         Me.tabform.Size = New System.Drawing.Size(1050, 23)
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
-        '
-        'KonfigurasiDatabaseToolStripMenuItem
-        '
-        Me.KonfigurasiDatabaseToolStripMenuItem.Name = "KonfigurasiDatabaseToolStripMenuItem"
-        Me.KonfigurasiDatabaseToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.KonfigurasiDatabaseToolStripMenuItem.Text = "Konfigurasi Database"
         '
         'fmenu
         '
@@ -603,4 +633,8 @@ Partial Class fmenu
     Friend WithEvents PengirimanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanMutasiBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents KonfigurasiDatabaseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PreviewUtangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PelunasanUtangToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents PreviewPiutangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PelunasanPiutangToolStripMenuItem1 As ToolStripMenuItem
 End Class

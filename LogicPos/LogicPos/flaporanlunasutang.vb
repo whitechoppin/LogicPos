@@ -43,8 +43,8 @@ Public Class flaporanlunasutang
         GridColumn1.Caption = "No.Pelunasan"
         GridColumn1.FieldName = "kode_lunas"
 
-        GridColumn2.Caption = "No.Nota"
-        GridColumn2.FieldName = "kode_pembelian"
+        GridColumn2.Caption = "Supplier"
+        GridColumn2.FieldName = "kode_supplier"
 
         GridColumn3.Caption = "Tanggal Transaksi"
         GridColumn3.FieldName = "tanggal_transaksi"

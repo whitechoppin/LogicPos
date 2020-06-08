@@ -519,6 +519,18 @@
     <Compile Include="fpersentasepajak.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fpreviewutang.Designer.vb">
+      <DependentUpon>fpreviewutang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fpreviewutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fpreviewpiutang.Designer.vb">
+      <DependentUpon>fpreviewpiutang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fpreviewpiutang.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fprinter.Designer.vb">
       <DependentUpon>fprinter.vb</DependentUpon>
     </Compile>
@@ -1155,6 +1167,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fpersentasepajak.resx">
       <DependentUpon>fpersentasepajak.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fpreviewutang.resx">
+      <DependentUpon>fpreviewutang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fpreviewpiutang.resx">
+      <DependentUpon>fpreviewpiutang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fprinter.resx">
       <DependentUpon>fprinter.vb</DependentUpon>

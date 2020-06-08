@@ -174,6 +174,14 @@ Public Class fmenu
         End If
     End Sub
 
+    Private Sub PreviewPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PreviewPiutangToolStripMenuItem.Click
+        fpreviewpiutang.Show()
+    End Sub
+
+    Private Sub PreviewUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PreviewUtangToolStripMenuItem.Click
+        fpreviewutang.Show()
+    End Sub
+
     Private Sub PelunasanPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PelunasanPiutangToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
         masterstatus = flogin.lunas_piutang
@@ -183,7 +191,25 @@ Public Class fmenu
         End If
     End Sub
 
+    Private Sub PelunasanPiutangToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PelunasanPiutangToolStripMenuItem1.Click
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lunas_piutang
+        If masterstatus > 0 Then
+            flunaspiutang.kodeakses = masterstatus
+            flunaspiutang.Show()
+        End If
+    End Sub
+
     Private Sub PelunasanUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PelunasanUtangToolStripMenuItem.Click
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lunas_utang
+        If masterstatus > 0 Then
+            flunasutang.kodeakses = masterstatus
+            flunasutang.Show()
+        End If
+    End Sub
+
+    Private Sub PelunasanUtangToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PelunasanUtangToolStripMenuItem1.Click
         Dim masterstatus As Integer = 0
         masterstatus = flogin.lunas_utang
         If masterstatus > 0 Then
@@ -433,4 +459,6 @@ Public Class fmenu
     Private Sub KonfigurasiDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KonfigurasiDatabaseToolStripMenuItem.Click
 
     End Sub
+
+
 End Class

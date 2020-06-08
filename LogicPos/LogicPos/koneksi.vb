@@ -56,7 +56,7 @@ Module koneksi
         If dr.HasRows Then
             counter = dr("penghitung")
 
-            If counter <= flogin.maxprinting Then
+            If counter < flogin.maxprinting Then
                 Return False
             Else
                 Return True
