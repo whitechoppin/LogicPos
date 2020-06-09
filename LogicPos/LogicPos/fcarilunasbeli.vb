@@ -74,6 +74,9 @@ Public Class fcarilunasbeli
         da.Fill(ds)
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
+
+        GridControl2.DataSource = Nothing
+        GridControl2.RefreshDataSource()
         Call grid()
     End Sub
 

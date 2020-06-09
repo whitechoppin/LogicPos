@@ -30,6 +30,8 @@ Partial Class fpreviewpiutang
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtakhir = New System.Windows.Forms.DateTimePicker()
         Me.dtawal = New System.Windows.Forms.DateTimePicker()
@@ -42,9 +44,9 @@ Partial Class fpreviewpiutang
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,7 +64,7 @@ Partial Class fpreviewpiutang
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsFind.AlwaysVisible = True
@@ -122,6 +124,28 @@ Partial Class fpreviewpiutang
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
         '
+        'GridColumn6
+        '
+        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceCell.Options.UseFont = True
+        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn6.Name = "GridColumn6"
+        Me.GridColumn6.OptionsColumn.AllowEdit = False
+        Me.GridColumn6.Visible = True
+        Me.GridColumn6.VisibleIndex = 5
+        '
+        'GridColumn7
+        '
+        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceCell.Options.UseFont = True
+        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.OptionsColumn.AllowEdit = False
+        Me.GridColumn7.Visible = True
+        Me.GridColumn7.VisibleIndex = 6
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -159,7 +183,7 @@ Partial Class fpreviewpiutang
         'cmbstatus
         '
         Me.cmbstatus.FormattingEnabled = True
-        Me.cmbstatus.Items.AddRange(New Object() {"All", "Lunas", "Belum Lunas"})
+        Me.cmbstatus.Items.AddRange(New Object() {"Lunas", "Belum Lunas"})
         Me.cmbstatus.Location = New System.Drawing.Point(292, 86)
         Me.cmbstatus.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbstatus.MaxLength = 99
@@ -224,40 +248,18 @@ Partial Class fpreviewpiutang
         Me.GridControl2.Location = New System.Drawing.Point(721, 135)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(539, 389)
+        Me.GridControl2.Size = New System.Drawing.Size(539, 388)
         Me.GridControl2.TabIndex = 55
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
         'GridView2
         '
-        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn6, Me.GridColumn7, Me.GridColumn8})
+        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn8, Me.GridColumn9, Me.GridColumn10})
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
         Me.GridView2.OptionsBehavior.Editable = False
         Me.GridView2.OptionsFind.AlwaysVisible = True
         Me.GridView2.OptionsView.ShowFooter = True
-        '
-        'GridColumn6
-        '
-        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn6.AppearanceCell.Options.UseFont = True
-        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn6.Caption = "Kode"
-        Me.GridColumn6.Name = "GridColumn6"
-        Me.GridColumn6.Visible = True
-        Me.GridColumn6.VisibleIndex = 0
-        '
-        'GridColumn7
-        '
-        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn7.AppearanceCell.Options.UseFont = True
-        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn7.Caption = "Tanggal"
-        Me.GridColumn7.Name = "GridColumn7"
-        Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 1
         '
         'GridColumn8
         '
@@ -265,11 +267,33 @@ Partial Class fpreviewpiutang
         Me.GridColumn8.AppearanceCell.Options.UseFont = True
         Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn8.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn8.Caption = "Terima"
+        Me.GridColumn8.Caption = "Kode"
         Me.GridColumn8.Name = "GridColumn8"
-        Me.GridColumn8.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "terima_piutang", "{0:n0}")})
         Me.GridColumn8.Visible = True
-        Me.GridColumn8.VisibleIndex = 2
+        Me.GridColumn8.VisibleIndex = 0
+        '
+        'GridColumn9
+        '
+        Me.GridColumn9.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceCell.Options.UseFont = True
+        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn9.Caption = "Tanggal"
+        Me.GridColumn9.Name = "GridColumn9"
+        Me.GridColumn9.Visible = True
+        Me.GridColumn9.VisibleIndex = 1
+        '
+        'GridColumn10
+        '
+        Me.GridColumn10.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn10.AppearanceCell.Options.UseFont = True
+        Me.GridColumn10.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn10.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn10.Caption = "Terima"
+        Me.GridColumn10.Name = "GridColumn10"
+        Me.GridColumn10.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "terima_piutang", "{0:n0}")})
+        Me.GridColumn10.Visible = True
+        Me.GridColumn10.VisibleIndex = 2
         '
         'fpreviewpiutang
         '
@@ -320,7 +344,9 @@ Partial Class fpreviewpiutang
     Friend WithEvents Label4 As Label
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

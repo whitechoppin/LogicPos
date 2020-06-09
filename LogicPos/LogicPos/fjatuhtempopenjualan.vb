@@ -98,18 +98,14 @@ Public Class fjatuhtempopenjualan
     End Sub
     Sub tabel_penjualan()
         Call koneksii()
-
-        'Using cnn As New OdbcConnection(strConn)
+        
         sql = "SELECT * FROM tb_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan = tb_penjualan.kode_pelanggan WHERE tb_penjualan.lunas_penjualan = 0 AND tb_penjualan.tgl_jatuhtempo_penjualan < now() AND tb_penjualan.total_penjualan > tb_penjualan.bayar_penjualan"
         da = New OdbcDataAdapter(sql, cnn)
-        'cnn.Open()
         ds = New DataSet
         da.Fill(ds)
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
         Call grid_penjualan()
-        'cnn.Close()
-        'End Using
     End Sub
 
     Sub tabel_lunas()

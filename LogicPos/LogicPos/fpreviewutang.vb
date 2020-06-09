@@ -2,20 +2,22 @@
 
 Public Class fpreviewutang
     Dim kode As String
+    Dim status As Integer
     Public tabellunas As DataTable
 
     Private Sub fpreviewutang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
+        Call comboboxsupplier()
         Call tabel_pembelian()
 
         With GridView1
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
             .Columns("total_pembelian").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_pembelian", "{0:n0}")
+            .Columns("bayar_pembelian").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "bayar_pembelian", "{0:n0}")
+            .Columns("sisa_pembelian").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "sisa_pembelian", "{0:n0}")
         End With
-
-        Call comboboxsupplier()
     End Sub
 
     Sub comboboxsupplier()
@@ -54,6 +56,16 @@ Public Class fpreviewutang
         GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn5.DisplayFormat.FormatString = "##,##0"
 
+        GridColumn6.Caption = "Bayar"
+        GridColumn6.FieldName = "bayar_pembelian"
+        GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn6.DisplayFormat.FormatString = "##,##0"
+
+        GridColumn7.Caption = "Sisa"
+        GridColumn7.FieldName = "sisa_pembelian"
+        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn7.DisplayFormat.FormatString = "##,##0"
+
     End Sub
 
     Sub gridlunas()
@@ -67,14 +79,14 @@ Public Class fpreviewutang
 
         GridControl2.DataSource = tabellunas
 
-        GridColumn6.Caption = "Kode"
-        GridColumn6.FieldName = "kode_lunas"
-        GridColumn6.Caption = "Tanggal"
-        GridColumn6.FieldName = "tgl_pelunasan"
-        GridColumn7.Caption = "Terima"
-        GridColumn7.FieldName = "terima_utang"
-        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn7.DisplayFormat.FormatString = "##,#0"
+        GridColumn8.Caption = "Kode"
+        GridColumn8.FieldName = "kode_lunas"
+        GridColumn9.Caption = "Tanggal"
+        GridColumn9.FieldName = "tgl_pelunasan"
+        GridColumn10.Caption = "Terima"
+        GridColumn10.FieldName = "terima_utang"
+        GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn10.DisplayFormat.FormatString = "##,#0"
 
         GridControl2.Visible = True
     End Sub
@@ -82,9 +94,55 @@ Public Class fpreviewutang
         Call koneksii()
 
         If dtawal.Value.Equals(dtakhir.Value) Then
-            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_pembelian.keterangan_pembelian, tb_pembelian.no_nota_pembelian, tb_supplier.nama_supplier FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.kode_supplier='" & cmbsupplier.Text & "' AND tb_pembelian.lunas_pembelian =0 AND DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            If cmbsupplier.Text.Length > 0 And cmbstatus.Text.Length = 0 Then
+                sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
+                        FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.kode_supplier='" & cmbsupplier.Text & "' AND DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            ElseIf cmbsupplier.Text.Length = 0 And cmbstatus.Text.Length > 0 Then
+                If cmbstatus.Text.Equals("Lunas") Then
+                    status = 1
+                Else
+                    status = 0
+                End If
+                sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
+                        FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.lunas_pembelian =" & status & " AND DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            ElseIf cmbsupplier.Text.Length > 0 And cmbstatus.Text.Length > 0 Then
+                If cmbstatus.Text.Equals("Lunas") Then
+                    status = 1
+                Else
+                    status = 0
+                End If
+                sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
+                        FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.kode_supplier='" & cmbsupplier.Text & "' AND tb_pembelian.lunas_pembelian =" & status & " AND DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            ElseIf cmbsupplier.Text.Length = 0 And cmbstatus.Text.Length = 0 Then
+                sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
+                        FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            End If
         Else
-            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_pembelian.keterangan_pembelian, tb_pembelian.no_nota_pembelian, tb_supplier.nama_supplier FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.kode_supplier='" & cmbsupplier.Text & "' AND tb_pembelian.lunas_pembelian =0 AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+
+            If cmbsupplier.Text.Length > 0 And cmbstatus.Text.Length = 0 Then
+                sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
+                        FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.kode_supplier='" & cmbsupplier.Text & "' AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            ElseIf cmbsupplier.Text.Length = 0 And cmbstatus.Text.Length > 0 Then
+                If cmbstatus.Text.Equals("Lunas") Then
+                    status = 1
+                Else
+                    status = 0
+                End If
+                sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
+                        FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.lunas_pembelian =" & status & " AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            ElseIf cmbsupplier.Text.Length > 0 And cmbstatus.Text.Length > 0 Then
+                If cmbstatus.Text.Equals("Lunas") Then
+                    status = 1
+                Else
+                    status = 0
+                End If
+                sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
+                        FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.kode_supplier='" & cmbsupplier.Text & "' AND tb_pembelian.lunas_pembelian =" & status & " AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            ElseIf cmbsupplier.Text.Length = 0 And cmbstatus.Text.Length = 0 Then
+                sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
+                        FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            End If
+
         End If
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -92,6 +150,9 @@ Public Class fpreviewutang
 
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
+
+        GridControl2.DataSource = Nothing
+        GridControl2.RefreshDataSource()
 
         Call grid_pembelian()
     End Sub
