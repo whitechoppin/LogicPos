@@ -11,7 +11,7 @@ Public Class flunaspiutang
     Dim tgljualtbh, tgljatuhtempotbh As Date
     Dim totaljualtbh, bayarpiutangtbh, sisapiutangtbh As Double
     '====
-    'variabel bantuan view penjualan
+    'variabel bantuan view piutang
     Dim viewkodelunas, viewkodecustomer, viewkodesales, viewkodebayar, viewketerangan, viewnobukti As String
     Dim viewtotallunas As Double
     Dim statusvoid, statusprint, statusposted, statusedit As Boolean
@@ -20,7 +20,7 @@ Public Class flunaspiutang
     Dim lunasstatus As Integer = 0
     Dim hitnumber As Integer
     Public kodelunaspiutang As String
-    Dim totalbayar As Double
+    Dim totalbayar, totalterima, totalselisih As Double
     Dim rpt_faktur As New ReportDocument
 
     '==== autosize form ====
@@ -317,6 +317,9 @@ Public Class flunaspiutang
 
         'buat tabel
         Call tabel_utama()
+
+        txtselisih.Clear()
+        txtselisih.Text = 0
     End Sub
 
     Sub inisialisasi(nomorkode As String)
@@ -383,6 +386,9 @@ Public Class flunaspiutang
         'total tabel penjualan
         txtketerangan.Enabled = False
         txtketerangan.Clear()
+
+        txtselisih.Clear()
+        txtselisih.Text = 0
 
         'isi combo box
         Call comboboxuser()
@@ -544,41 +550,41 @@ Public Class flunaspiutang
 
         GridColumn1.FieldName = "kode_penjualan"
         GridColumn1.Caption = "Kode Penjualan"
-        GridColumn1.Width = 20
+        GridColumn1.Width = 15
 
         GridColumn2.FieldName = "kode_customer"
         GridColumn2.Caption = "Kode Customer"
-        GridColumn2.Width = 20
+        GridColumn2.Width = 15
 
         GridColumn3.FieldName = "tanggal_penjualan"
         GridColumn3.Caption = "Tgl Penjualan"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy hh:mm:ss"
-        GridColumn3.Width = 30
+        GridColumn3.Width = 20
 
         GridColumn4.FieldName = "tanggal_jatuhtempo"
         GridColumn4.Caption = "Tgl Jatuh Tempo"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn4.DisplayFormat.FormatString = "dd/MM/yyyy hh:mm:ss"
-        GridColumn4.Width = 30
+        GridColumn4.Width = 20
 
         GridColumn5.FieldName = "total_penjualan"
-        GridColumn5.Caption = "Total"
+        GridColumn5.Caption = "Total Nota"
         GridColumn5.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn5.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn5.Width = 15
+        GridColumn5.Width = 40
 
         GridColumn6.FieldName = "bayar_piutang"
         GridColumn6.Caption = "Bayar"
         GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn6.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn6.Width = 30
+        GridColumn6.Width = 40
 
         GridColumn7.FieldName = "terima_piutang"
         GridColumn7.Caption = "Terima"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn7.Width = 30
+        GridColumn7.Width = 40
     End Sub
 
     Sub previewpelunasan(lihat As String)
@@ -1062,6 +1068,18 @@ Public Class flunaspiutang
         fcarilunasjual.ShowDialog()
     End Sub
 
+    Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
+        BeginInvoke(New MethodInvoker(AddressOf UpdateSelisihText))
+    End Sub
+
+    Private Sub GridView1_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles GridView1.RowUpdated
+        BeginInvoke(New MethodInvoker(AddressOf UpdateSelisihText))
+    End Sub
+
+    Private Sub GridView1_RowDeleted(sender As Object, e As DevExpress.Data.RowDeletedEventArgs) Handles GridView1.RowDeleted
+        BeginInvoke(New MethodInvoker(AddressOf UpdateSelisihText))
+    End Sub
+
     Private Sub riteterimapelunasan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles riteterimapelunasan.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
@@ -1117,6 +1135,7 @@ Public Class flunaspiutang
                         MsgBox("Nota sudah di tabel pelunasan !")
                     End If
                 End If
+                BeginInvoke(New MethodInvoker(AddressOf UpdateSelisihText))
             Else
                 MsgBox("Nota tidak terdaftar !")
             End If
@@ -1145,9 +1164,26 @@ Public Class flunaspiutang
             txttotalbayar.Text = Format(totalbayar, "##,##0")
             txttotalbayar.SelectionStart = Len(txttotalbayar.Text)
         End If
+        BeginInvoke(New MethodInvoker(AddressOf UpdateSelisihText))
     End Sub
 
     Private Sub txttotalbayar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttotalbayar.KeyPress
         e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub txtselisih_TextChanged(sender As Object, e As EventArgs) Handles txtselisih.TextChanged
+        If txtselisih.Text = "" Then
+            txtselisih.Text = 0
+        Else
+            totalselisih = txtselisih.Text
+            txtselisih.Text = Format(totalselisih, "##,##0")
+            txtselisih.SelectionStart = Len(txtselisih.Text)
+        End If
+    End Sub
+
+    Private Sub UpdateSelisihText()
+        totalterima = GridView1.Columns("terima_piutang").SummaryItem.SummaryValue
+        totalselisih = totalbayar - totalterima
+        txtselisih.Text = totalselisih
     End Sub
 End Class

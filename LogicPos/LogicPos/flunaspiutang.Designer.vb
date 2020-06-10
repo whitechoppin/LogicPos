@@ -82,6 +82,8 @@ Partial Class flunaspiutang
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.txtselisih = New System.Windows.Forms.TextBox()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,7 +100,7 @@ Partial Class flunaspiutang
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.riteterimapelunasan})
-        Me.GridControl1.Size = New System.Drawing.Size(1189, 393)
+        Me.GridControl1.Size = New System.Drawing.Size(1189, 347)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -573,63 +575,63 @@ Partial Class flunaspiutang
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label11.Location = New System.Drawing.Point(774, 264)
+        Me.Label11.Location = New System.Drawing.Point(942, 264)
         Me.Label11.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(37, 18)
+        Me.Label11.Size = New System.Drawing.Size(73, 18)
         Me.Label11.TabIndex = 18
-        Me.Label11.Text = "Sisa"
+        Me.Label11.Text = "Sisa Nota"
         '
         'txtsisajual
         '
         Me.txtsisajual.Enabled = False
         Me.txtsisajual.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsisajual.Location = New System.Drawing.Point(771, 287)
+        Me.txtsisajual.Location = New System.Drawing.Point(939, 287)
         Me.txtsisajual.Margin = New System.Windows.Forms.Padding(6)
         Me.txtsisajual.Name = "txtsisajual"
-        Me.txtsisajual.Size = New System.Drawing.Size(235, 24)
+        Me.txtsisajual.Size = New System.Drawing.Size(210, 24)
         Me.txtsisajual.TabIndex = 17
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label10.Location = New System.Drawing.Point(524, 264)
+        Me.Label10.Location = New System.Drawing.Point(725, 264)
         Me.Label10.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(66, 18)
+        Me.Label10.Size = New System.Drawing.Size(98, 18)
         Me.Label10.TabIndex = 16
-        Me.Label10.Text = "Terbayar"
+        Me.Label10.Text = "Telah Dibayar"
         '
         'txtbayarjual
         '
         Me.txtbayarjual.Enabled = False
         Me.txtbayarjual.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbayarjual.Location = New System.Drawing.Point(524, 287)
+        Me.txtbayarjual.Location = New System.Drawing.Point(725, 287)
         Me.txtbayarjual.Margin = New System.Windows.Forms.Padding(6)
         Me.txtbayarjual.Name = "txtbayarjual"
-        Me.txtbayarjual.Size = New System.Drawing.Size(235, 24)
+        Me.txtbayarjual.Size = New System.Drawing.Size(210, 24)
         Me.txtbayarjual.TabIndex = 15
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label8.Location = New System.Drawing.Point(278, 264)
+        Me.Label8.Location = New System.Drawing.Point(512, 264)
         Me.Label8.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(41, 18)
+        Me.Label8.Size = New System.Drawing.Size(77, 18)
         Me.Label8.TabIndex = 14
-        Me.Label8.Text = "Total"
+        Me.Label8.Text = "Total Nota"
         '
         'txttotaljual
         '
         Me.txttotaljual.Enabled = False
         Me.txttotaljual.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttotaljual.Location = New System.Drawing.Point(277, 287)
+        Me.txttotaljual.Location = New System.Drawing.Point(511, 287)
         Me.txttotaljual.Margin = New System.Windows.Forms.Padding(6)
         Me.txttotaljual.Name = "txttotaljual"
-        Me.txttotaljual.Size = New System.Drawing.Size(235, 24)
+        Me.txttotaljual.Size = New System.Drawing.Size(210, 24)
         Me.txttotaljual.TabIndex = 13
         '
         'btncarijual
@@ -742,12 +744,35 @@ Partial Class flunaspiutang
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Keterangan"
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label13.Location = New System.Drawing.Point(941, 684)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(51, 18)
+        Me.Label13.TabIndex = 90
+        Me.Label13.Text = "Selisih"
+        '
+        'txtselisih
+        '
+        Me.txtselisih.Enabled = False
+        Me.txtselisih.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtselisih.Location = New System.Drawing.Point(995, 681)
+        Me.txtselisih.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtselisih.Name = "txtselisih"
+        Me.txtselisih.Size = New System.Drawing.Size(210, 24)
+        Me.txtselisih.TabIndex = 89
+        '
         'flunaspiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1223, 727)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.txtselisih)
         Me.Controls.Add(Me.btntambah)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.TabControl1)
@@ -847,4 +872,6 @@ Partial Class flunaspiutang
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents Label6 As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents txtselisih As TextBox
 End Class

@@ -23,16 +23,32 @@ Public Class fcarilunasjual
     Sub grid()
         GridColumn1.Caption = "Kode"
         GridColumn1.FieldName = "kode_penjualan"
+
         GridColumn2.Caption = "Tanggal"
         GridColumn2.FieldName = "tgl_penjualan"
+        GridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn2.DisplayFormat.FormatString = "dd/MM/yyy"
+
         GridColumn3.Caption = "Nama Pelanggan"
         GridColumn3.FieldName = "nama_pelanggan"
+
         GridColumn4.Caption = "Total Penjualan"
         GridColumn4.FieldName = "total_penjualan"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
+        GridColumn4.DisplayFormat.FormatString = "##,#0"
+
         GridColumn5.Caption = "Keterangan"
         GridColumn5.FieldName = "keterangan_penjualan"
+
+        GridColumn6.Caption = "Bayar"
+        GridColumn6.FieldName = "bayar_penjualan"
+        GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn6.DisplayFormat.FormatString = "##,##0"
+
+        GridColumn7.Caption = "Sisa"
+        GridColumn7.FieldName = "sisa_penjualan"
+        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn7.DisplayFormat.FormatString = "##,##0"
 
         GridControl1.Visible = True
     End Sub
@@ -48,14 +64,14 @@ Public Class fcarilunasjual
 
         GridControl2.DataSource = tabellunas
 
-        GridColumn6.Caption = "Kode"
-        GridColumn6.FieldName = "kode_lunas"
-        GridColumn7.Caption = "Tanggal"
-        GridColumn7.FieldName = "tgl_pelunasan"
-        GridColumn8.Caption = "Terima"
-        GridColumn8.FieldName = "terima_piutang"
-        GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn8.DisplayFormat.FormatString = "Rp ##,#0"
+        GridColumn8.Caption = "Kode"
+        GridColumn8.FieldName = "kode_lunas"
+        GridColumn9.Caption = "Tanggal"
+        GridColumn9.FieldName = "tgl_pelunasan"
+        GridColumn10.Caption = "Terima"
+        GridColumn10.FieldName = "terima_piutang"
+        GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn10.DisplayFormat.FormatString = "Rp ##,#0"
 
         GridControl2.Visible = True
     End Sub
@@ -63,9 +79,11 @@ Public Class fcarilunasjual
         Call koneksii()
 
         If dtawal.Value.Equals(dtakhir.Value) Then
-            sql = "SELECT tb_penjualan.kode_penjualan, tb_penjualan.total_penjualan, tb_penjualan.tgl_penjualan, tb_penjualan.keterangan_penjualan, tb_pelanggan.nama_pelanggan FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & kodelunascustomer & "' AND tb_penjualan.total_penjualan <> tb_penjualan.bayar_penjualan AND tb_penjualan.lunas_penjualan = 0 AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
+                FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & kodelunascustomer & "' AND tb_penjualan.total_penjualan <> tb_penjualan.bayar_penjualan AND tb_penjualan.lunas_penjualan = 0 AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT tb_penjualan.kode_penjualan, tb_penjualan.total_penjualan, tb_penjualan.tgl_penjualan, tb_penjualan.keterangan_penjualan, tb_pelanggan.nama_pelanggan FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & kodelunascustomer & "' AND tb_penjualan.total_penjualan <> tb_penjualan.bayar_penjualan AND tb_penjualan.lunas_penjualan = 0 AND tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
+                FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & kodelunascustomer & "' AND tb_penjualan.total_penjualan <> tb_penjualan.bayar_penjualan AND tb_penjualan.lunas_penjualan = 0 AND tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
