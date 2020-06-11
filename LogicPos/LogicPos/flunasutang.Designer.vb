@@ -84,6 +84,7 @@ Partial Class flunasutang
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txtselisih = New System.Windows.Forms.TextBox()
+        Me.btnsesuaikan = New System.Windows.Forms.Button()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -526,6 +527,7 @@ Partial Class flunasutang
         Me.cbvoid.TabIndex = 39
         Me.cbvoid.Text = "Void"
         Me.cbvoid.UseVisualStyleBackColor = True
+        Me.cbvoid.Visible = False
         '
         'cmbsales
         '
@@ -631,7 +633,7 @@ Partial Class flunasutang
         Me.GridColumn5.AppearanceCell.Options.UseFont = True
         Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn5.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn5.Caption = "Total"
+        Me.GridColumn5.Caption = "Total Nota"
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.OptionsColumn.AllowEdit = False
         Me.GridColumn5.Visible = True
@@ -643,7 +645,7 @@ Partial Class flunasutang
         Me.GridColumn6.AppearanceCell.Options.UseFont = True
         Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn6.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn6.Caption = "Terbayar"
+        Me.GridColumn6.Caption = "Telah Dibayar"
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.OptionsColumn.AllowEdit = False
         Me.GridColumn6.Visible = True
@@ -748,7 +750,7 @@ Partial Class flunasutang
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label13.Location = New System.Drawing.Point(942, 681)
+        Me.Label13.Location = New System.Drawing.Point(885, 681)
         Me.Label13.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(51, 18)
@@ -759,11 +761,21 @@ Partial Class flunasutang
         '
         Me.txtselisih.Enabled = False
         Me.txtselisih.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtselisih.Location = New System.Drawing.Point(996, 678)
+        Me.txtselisih.Location = New System.Drawing.Point(939, 678)
         Me.txtselisih.Margin = New System.Windows.Forms.Padding(6)
         Me.txtselisih.Name = "txtselisih"
         Me.txtselisih.Size = New System.Drawing.Size(210, 24)
         Me.txtselisih.TabIndex = 91
+        '
+        'btnsesuaikan
+        '
+        Me.btnsesuaikan.Location = New System.Drawing.Point(1156, 677)
+        Me.btnsesuaikan.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnsesuaikan.Name = "btnsesuaikan"
+        Me.btnsesuaikan.Size = New System.Drawing.Size(50, 27)
+        Me.btnsesuaikan.TabIndex = 93
+        Me.btnsesuaikan.Text = "-/+"
+        Me.btnsesuaikan.UseVisualStyleBackColor = True
         '
         'flunasutang
         '
@@ -771,6 +783,7 @@ Partial Class flunasutang
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1223, 727)
+        Me.Controls.Add(Me.btnsesuaikan)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.txtselisih)
         Me.Controls.Add(Me.btntambah)
@@ -873,4 +886,5 @@ Partial Class flunasutang
     Friend WithEvents Label6 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents txtselisih As TextBox
+    Friend WithEvents btnsesuaikan As Button
 End Class

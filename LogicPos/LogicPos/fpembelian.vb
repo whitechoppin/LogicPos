@@ -1199,7 +1199,7 @@ Public Class fpembelian
         rpt_faktur.SetParameterValue("ongkir", ongkir)
         rpt_faktur.SetParameterValue("tanggal", dtpembelian.Text)
         rpt_faktur.SetParameterValue("supplier", txtsupplier.Text)
-        rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("user", fmenu.statususer.Text)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
 
         SetReportPageSize("Faktur", 1)
@@ -1264,7 +1264,7 @@ Public Class fpembelian
         rpt_faktur.SetParameterValue("ongkir", ongkir)
         rpt_faktur.SetParameterValue("tanggal", dtpembelian.Text)
         rpt_faktur.SetParameterValue("supplier", txtsupplier.Text)
-        rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("user", fmenu.statususer.Text)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
 
         SetReportPageSize("Faktur", 1)

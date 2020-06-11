@@ -158,7 +158,7 @@ Public Class fakturpembelian
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_penerima() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_user() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(8)
         End Get

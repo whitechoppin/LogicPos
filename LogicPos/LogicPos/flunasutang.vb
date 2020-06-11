@@ -570,7 +570,7 @@ Public Class flunasutang
         GridColumn5.Width = 40
 
         GridColumn6.FieldName = "bayar_utang"
-        GridColumn6.Caption = "Bayar"
+        GridColumn6.Caption = "Telah Dibayar"
         GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn6.DisplayFormat.FormatString = "{0:n0}"
         GridColumn6.Width = 40
@@ -697,28 +697,35 @@ Public Class flunasutang
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
-        If txtnolunasutang.Text IsNot "" Then
-            If cmbsales.Text IsNot "" Then
-                If cmbbayar.Text IsNot "" Then
-                    If txttotalbayar.Text > 0 Then
-                        If totalbayar.Equals(Val(GridView1.Columns("terima_utang").SummaryItem.SummaryValue)) Then
-                            Call prosessimpan()
+        If GridView1.DataRowCount > 0 Then
+            If txtnolunasutang.Text IsNot "" Then
+                If cmbsales.Text IsNot "" Then
+                    If cmbbayar.Text IsNot "" Then
+                        If txttotalbayar.Text > 0 Then
+                            If totalbayar.Equals(Val(GridView1.Columns("terima_utang").SummaryItem.SummaryValue)) Then
+                                Call prosessimpan()
+                            Else
+                                If totalselisih > 0 Then
+                                    MsgBox("Pembayaran Lebih " + Format(totalselisih, "##,##0").ToString)
+                                ElseIf totalselisih < 0 Then
+                                    MsgBox("Pembayaran Kurang " + Format(totalselisih, "##,##0").ToString)
+                                End If
+                            End If
                         Else
-                            MsgBox("Total Tidak Sama Pembayaran")
+                            MsgBox("Isi Nominal Pembayaran")
                         End If
                     Else
-                        MsgBox("Isi Nominal Pembayaran")
+                        MsgBox("Isi Pembayaran")
                     End If
                 Else
-                    MsgBox("Isi Pembayaran")
+                    MsgBox("Isi User")
                 End If
             Else
-                MsgBox("Isi User")
+                MsgBox("Isi No Nota Pelunasan")
             End If
         Else
-            MsgBox("Isi Nota Pembelian")
+            MsgBox("Isi Tabel Pelunasan")
         End If
-
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
@@ -934,7 +941,11 @@ Public Class flunasutang
                                 If totalbayar.Equals(Val(GridView1.Columns("terima_utang").SummaryItem.SummaryValue)) Then
                                     Call prosesperbarui(txtnolunasutang.Text)
                                 Else
-                                    MsgBox("Total Tidak Sama Pembayaran")
+                                    If totalselisih > 0 Then
+                                        MsgBox("Pembayaran Lebih " + Format(totalselisih, "##,##0").ToString)
+                                    ElseIf totalselisih < 0 Then
+                                        MsgBox("Pembayaran Kurang " + Format(totalselisih, "##,##0").ToString)
+                                    End If
                                 End If
                             Else
                                 MsgBox("Isi Nominal Pembayaran")
@@ -1178,5 +1189,9 @@ Public Class flunasutang
         totalterima = GridView1.Columns("terima_utang").SummaryItem.SummaryValue
         totalselisih = totalbayar - totalterima
         txtselisih.Text = totalselisih
+    End Sub
+
+    Private Sub btnsesuaikan_Click(sender As Object, e As EventArgs) Handles btnsesuaikan.Click
+
     End Sub
 End Class

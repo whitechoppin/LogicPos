@@ -575,7 +575,7 @@ Public Class flunaspiutang
         GridColumn5.Width = 40
 
         GridColumn6.FieldName = "bayar_piutang"
-        GridColumn6.Caption = "Bayar"
+        GridColumn6.Caption = "Telah Dibayar"
         GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn6.DisplayFormat.FormatString = "{0:n0}"
         GridColumn6.Width = 40
@@ -704,28 +704,35 @@ Public Class flunaspiutang
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
-        If txtnolunaspiutang.Text IsNot "" Then
-            If cmbsales.Text IsNot "" Then
-                If cmbbayar.Text IsNot "" Then
-                    If txttotalbayar.Text > 0 Then
-                        If totalbayar.Equals(Val(GridView1.Columns("terima_piutang").SummaryItem.SummaryValue)) Then
-                            Call prosessimpan()
+        If GridView1.DataRowCount > 0 Then
+            If txtnolunaspiutang.Text IsNot "" Then
+                If cmbsales.Text IsNot "" Then
+                    If cmbbayar.Text IsNot "" Then
+                        If txttotalbayar.Text > 0 Then
+                            If totalbayar.Equals(Val(GridView1.Columns("terima_piutang").SummaryItem.SummaryValue)) Then
+                                Call prosessimpan()
+                            Else
+                                If totalselisih > 0 Then
+                                    MsgBox("Pembayaran Lebih " + Format(totalselisih, "##,##0").ToString)
+                                ElseIf totalselisih < 0 Then
+                                    MsgBox("Pembayaran Kurang " + Format(totalselisih, "##,##0").ToString)
+                                End If
+                            End If
                         Else
-                            MsgBox("Total Tidak Sama Pembayaran")
+                            MsgBox("Isi Nominal Pembayaran")
                         End If
                     Else
-                        MsgBox("Isi Nominal Pembayaran")
+                        MsgBox("Isi Pembayaran")
                     End If
                 Else
-                    MsgBox("Isi Pembayaran")
+                    MsgBox("Isi User")
                 End If
             Else
-                MsgBox("Isi User")
+                MsgBox("Isi No Nota Pelunasan")
             End If
         Else
-            MsgBox("Isi Nota Penjualan")
+            MsgBox("Isi Tabel Pelunasan")
         End If
-
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
@@ -941,7 +948,11 @@ Public Class flunaspiutang
                                 If totalbayar.Equals(Val(GridView1.Columns("terima_piutang").SummaryItem.SummaryValue)) Then
                                     Call prosesperbarui(txtnolunaspiutang.Text)
                                 Else
-                                    MsgBox("Total Tidak Sama Pembayaran")
+                                    If totalselisih > 0 Then
+                                        MsgBox("Pembayaran Lebih " + Format(totalselisih, "##,##0").ToString)
+                                    ElseIf totalselisih < 0 Then
+                                        MsgBox("Pembayaran Kurang " + Format(totalselisih, "##,##0").ToString)
+                                    End If
                                 End If
                             Else
                                 MsgBox("Isi Nominal Pembayaran")
@@ -1185,5 +1196,13 @@ Public Class flunaspiutang
         totalterima = GridView1.Columns("terima_piutang").SummaryItem.SummaryValue
         totalselisih = totalbayar - totalterima
         txtselisih.Text = totalselisih
+    End Sub
+
+    Private Sub btnsesuaikan_Click(sender As Object, e As EventArgs) Handles btnsesuaikan.Click
+        If totalselisih > 0 Then
+            MsgBox("Tambahkan Pembayaran Nota  " + Format(totalselisih, "##,##0").ToString)
+        ElseIf totalselisih < 0 Then
+            MsgBox("Kurangi Pembayaran Nota  " + Format(totalselisih, "##,##0").ToString)
+        End If
     End Sub
 End Class
