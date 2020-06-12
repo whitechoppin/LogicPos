@@ -1192,6 +1192,53 @@ Public Class flunasutang
     End Sub
 
     Private Sub btnsesuaikan_Click(sender As Object, e As EventArgs) Handles btnsesuaikan.Click
+        Dim lokasi As Integer = -1
+        If totalbayar > 0 Then
+            If totalselisih > 0 Then
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    If Val(GridView1.GetRowCellValue(i, "terima_utang")).Equals(Val(GridView1.GetRowCellValue(i, "total_pembelian")) - Val(GridView1.GetRowCellValue(i, "bayar_utang"))) Then
+                        lokasi = -1
+                    Else
+                        lokasi = i
+                        Exit For
+                    End If
+                Next
 
+                If lokasi > -1 And totalselisih > 0 Then
+                    GridView1.SetRowCellValue(lokasi, "terima_utang", Val(GridView1.GetRowCellValue(lokasi, "total_pembelian")) - Val(GridView1.GetRowCellValue(lokasi, "bayar_utang")))
+
+                ElseIf lokasi = -1 And totalselisih > 0 Then
+                    MsgBox("Tambahkan Pembayaran Nota, Uang Lebih " + Format(totalselisih, "##,##0").ToString)
+                End If
+            ElseIf totalselisih < 0 Then
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    If Val(GridView1.GetRowCellValue(i, "terima_utang")).Equals(Val(GridView1.GetRowCellValue(i, "total_pembelian")) - Val(GridView1.GetRowCellValue(i, "bayar_utang"))) Then
+                        lokasi = i
+                    Else
+                        lokasi = -1
+                    End If
+                Next
+
+                If lokasi > -1 And totalselisih < 0 Then
+                    If (totalselisih * -1) < Val(GridView1.GetRowCellValue(lokasi, "total_pembelian")) - Val(GridView1.GetRowCellValue(lokasi, "bayar_utang")) Then
+                        GridView1.SetRowCellValue(lokasi, "terima_utang", Val(GridView1.GetRowCellValue(lokasi, "total_pembelian")) + totalselisih)
+                    Else
+                        GridView1.SetRowCellValue(lokasi, "terima_utang", 0)
+                    End If
+
+                ElseIf lokasi = -1 And totalselisih < 0 Then
+                    MsgBox("Kurangi Pembayaran Nota, Uang Kurang " + Format(totalselisih, "##,##0").ToString)
+                    'End If
+                ElseIf totalselisih = 0 Then
+                    MsgBox("Pembayaran Tepat ")
+                End If
+            End If
+
+            GridView1.RefreshData()
+            BeginInvoke(New MethodInvoker(AddressOf UpdateSelisihText))
+
+        Else
+            MsgBox("Isi Total Pembayaran ")
+        End If
     End Sub
 End Class

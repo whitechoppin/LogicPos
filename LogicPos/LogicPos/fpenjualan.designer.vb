@@ -423,6 +423,7 @@ Partial Class fpenjualan
         '
         'ritehargasatuan
         '
+        Me.ritehargasatuan.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
         Me.ritehargasatuan.AutoHeight = False
         Me.ritehargasatuan.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ritehargasatuan.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -442,9 +443,11 @@ Partial Class fpenjualan
         '
         'ritediskonpersen
         '
+        Me.ritediskonpersen.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
         Me.ritediskonpersen.AutoHeight = False
         Me.ritediskonpersen.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ritediskonpersen.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ritediskonpersen.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.ritediskonpersen.MaxLength = 5
         Me.ritediskonpersen.Name = "ritediskonpersen"
         '
@@ -462,6 +465,7 @@ Partial Class fpenjualan
         '
         'ritediskonnominal
         '
+        Me.ritediskonnominal.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
         Me.ritediskonnominal.AutoHeight = False
         Me.ritediskonnominal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ritediskonnominal.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric

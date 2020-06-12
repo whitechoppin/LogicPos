@@ -1122,10 +1122,6 @@ Public Class fpenjualan
                     End If
                 End If
 
-
-
-
-
                 'history user ==========
                 Call historysave("Mencetak Data Penjualan Kode " + txtnonota.Text, txtnonota.Text)
                 '========================
