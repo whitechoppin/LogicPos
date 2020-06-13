@@ -299,6 +299,8 @@ Public Class flunasutang
         txtsisabeli.Text = 0
 
         btntambah.Enabled = True
+        btnsesuaikan.Enabled = True
+
         'bersihkan dan set default value
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = True
@@ -374,6 +376,7 @@ Public Class flunasutang
         txtsisabeli.Text = 0
 
         btntambah.Enabled = False
+        btnsesuaikan.Enabled = False
 
         'bersihkan dan set default value
         GridControl1.Enabled = True
@@ -502,6 +505,7 @@ Public Class flunasutang
         txtsisabeli.Text = 0
 
         btntambah.Enabled = True
+        btnsesuaikan.Enabled = True
 
         'bersihkan dan set default value
         GridControl1.Enabled = True
