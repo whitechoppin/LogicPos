@@ -453,7 +453,7 @@ Public Class fmenu
     End Sub
 
     Private Sub LaporanMutasiBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanMutasiBarangToolStripMenuItem.Click
-
+        flaporanmutasibarang.Show()
     End Sub
 
     Private Sub KonfigurasiDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KonfigurasiDatabaseToolStripMenuItem.Click
