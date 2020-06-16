@@ -28,7 +28,7 @@ Public Class fcaribarang
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        If tutup > 0 Then
+        If tutupcaribarang > 0 Then
             Using cnn As New OdbcConnection(strConn)
                 sql = "SELECT tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.satuan_barang, tb_barang.jenis_barang from tb_barang "
                 da = New OdbcDataAdapter(sql, cnn)
@@ -90,14 +90,17 @@ Public Class fcaribarang
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        If tutup = 1 Then
+        If tutupcaribarang = 1 Then
             fpricelist.txtkode.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
             Me.Hide()
-        ElseIf tutup = 2 Then
+        ElseIf tutupcaribarang = 2 Then
             fpembelian.txtkodebarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
             Me.Hide()
-        ElseIf tutup = 3 Then
+        ElseIf tutupcaribarang = 3 Then
             fbarangmasuk.txtkodebarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
+            Me.Hide()
+        ElseIf tutupcaribarang = 4 Then
+            flaporanmutasibarang.cmbbarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
             Me.Hide()
         End If
     End Sub
@@ -116,14 +119,17 @@ Public Class fcaribarang
 
     Private Sub GridControl1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles GridControl1.KeyPress
         If e.KeyChar = Strings.Chr(Keys.Enter) Then
-            If tutup = 1 Then
+            If tutupcaribarang = 1 Then
                 fpricelist.txtkode.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
                 Me.Hide()
-            ElseIf tutup = 2 Then
+            ElseIf tutupcaribarang = 2 Then
                 fpembelian.txtkodebarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
                 Me.Hide()
-            ElseIf tutup = 3 Then
+            ElseIf tutupcaribarang = 3 Then
                 fbarangmasuk.txtkodebarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
+                Me.Hide()
+            ElseIf tutupcaribarang = 4 Then
+                flaporanmutasibarang.cmbbarang.Text = Me.GridView1.GetFocusedRowCellValue("kode_barang")
                 Me.Hide()
             End If
         End If

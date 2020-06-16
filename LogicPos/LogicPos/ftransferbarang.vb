@@ -856,7 +856,7 @@ Public Class ftransferbarang
     End Sub
 
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
-        tutupstok = 3
+        tutupcaristok = 3
         kodegudangcari = cmbdarigudang.Text
         fcaristok.ShowDialog()
     End Sub

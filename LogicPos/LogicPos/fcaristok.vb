@@ -43,19 +43,22 @@ Public Class fcaristok
     End Sub
     Sub tabel()
         'Call koneksii()
-        If tutupstok > 0 Then
+        If tutupcaristok > 0 Then
             Call koneksii()
-            'Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.kode_gudang ='" & kodegudangcari & "' AND tb_stok.jumlah_stok > 0"
+            If kodegudangcari.Length > 0 Then
+                sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.kode_gudang ='" & kodegudangcari & "' AND tb_stok.jumlah_stok > 0"
+
+            Else
+                sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.jumlah_stok > 0"
+
+            End If
+
             da = New OdbcDataAdapter(sql, cnn)
-            'cnn.Open()
             ds = New DataSet
             da.Fill(ds)
             GridControl1.DataSource = Nothing
             GridControl1.DataSource = ds.Tables(0)
             Call grid()
-            'cnn.Close()
-            'End Using
         End If
 
     End Sub
@@ -83,12 +86,14 @@ Public Class fcaristok
         'End Using
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        If tutupstok = 1 Then
+        If tutupcaristok = 1 Then
             fpenjualan.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
-        ElseIf tutupstok = 2 Then
+        ElseIf tutupcaristok = 2 Then
             fbarangkeluar.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
-        ElseIf tutupstok = 3 Then
+        ElseIf tutupcaristok = 3 Then
             ftransferbarang.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
+        ElseIf tutupcaristok = 4 Then
+            flaporanmutasibarang.cmbstok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
         End If
         Me.Hide()
     End Sub
@@ -107,12 +112,14 @@ Public Class fcaristok
 
     Private Sub GridControl1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles GridControl1.KeyPress
         If e.KeyChar = Strings.Chr(Keys.Enter) Then
-            If tutupstok = 1 Then
+            If tutupcaristok = 1 Then
                 fpenjualan.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
-            ElseIf tutupstok = 2 Then
+            ElseIf tutupcaristok = 2 Then
                 fbarangkeluar.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
-            ElseIf tutupstok = 3 Then
+            ElseIf tutupcaristok = 3 Then
                 ftransferbarang.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
+            ElseIf tutupcaristok = 4 Then
+                flaporanmutasibarang.cmbstok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
             End If
             Me.Hide()
         End If

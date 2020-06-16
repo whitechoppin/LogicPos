@@ -143,7 +143,7 @@ Public Class fpricelist
         Call caricust()
     End Sub
     Sub search()
-        tutup = 1
+        tutupcaribarang = 1
         Dim panjang As Integer = txtkode.Text.Length
         fcaribarang.Show()
         fcaribarang.txtcari.Focus()
@@ -273,7 +273,7 @@ Public Class fpricelist
         e.Handled = ValidAngka(e)
     End Sub
     Private Sub btncari_Click(sender As Object, e As EventArgs) Handles btncari.Click
-        tutup = 1
+        tutupcaribarang = 1
         fcaribarang.ShowDialog()
     End Sub
     Private Sub btncaricus_Click(sender As Object, e As EventArgs) Handles btncaricus.Click

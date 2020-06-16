@@ -30,7 +30,7 @@ Public Class fcarisupp
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupsup = 1 Then
             fpembelian.cmbsupplier.Text = Me.GridView1.GetFocusedRowCellValue("kode_supplier")
-        ElseIf tutup = 2 Then
+        ElseIf tutupsup = 2 Then
             fbarangmasuk.cmbsupplier.Text = Me.GridView1.GetFocusedRowCellValue("kode_supplier")
         End If
         Me.Close()

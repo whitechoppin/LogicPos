@@ -328,15 +328,19 @@ Public Class flaporanmutasibarang
     End Sub
 
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
-
+        tutupcaribarang = 4
+        fcaribarang.ShowDialog()
     End Sub
 
     Private Sub btncaristok_Click(sender As Object, e As EventArgs) Handles btncaristok.Click
-
+        tutupcaristok = 4
+        kodegudangcari = cmbgudang.Text
+        fcaristok.ShowDialog()
     End Sub
 
     Private Sub btncarigudang_Click(sender As Object, e As EventArgs) Handles btncarigudang.Click
-
+        tutupgudang = 7
+        fcarigudang.ShowDialog()
     End Sub
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click

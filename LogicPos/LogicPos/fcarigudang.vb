@@ -40,6 +40,8 @@ Public Class fcarigudang
             ftransferbarang.cmbdarigudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
         ElseIf tutupgudang = 6 Then
             ftransferbarang.cmbkegudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+        ElseIf tutupgudang = 7 Then
+            flaporanmutasibarang.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
         End If
         Me.Hide()
     End Sub

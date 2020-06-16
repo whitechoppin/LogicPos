@@ -635,7 +635,7 @@ Public Class fbarangmasuk
     End Sub
 
     Private Sub btncari_Click(sender As Object, e As EventArgs) Handles btncari.Click
-        tutup = 3
+        tutupcaribarang = 3
         fcaribarang.ShowDialog()
     End Sub
 

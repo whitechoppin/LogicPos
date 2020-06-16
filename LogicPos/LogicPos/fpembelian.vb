@@ -1663,7 +1663,7 @@ Public Class fpembelian
         e.Handled = ValidAngka(e)
     End Sub
     Private Sub btncari_Click(sender As Object, e As EventArgs) Handles btncari.Click
-        tutup = 2
+        tutupcaribarang = 2
         fcaribarang.ShowDialog()
     End Sub
     Private Sub btncarisupplier_Click(sender As Object, e As EventArgs) Handles btncarisupplier.Click
