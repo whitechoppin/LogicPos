@@ -1,4 +1,5 @@
 ﻿Imports System.Data.Odbc
+Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class flaporanmutasibarang
     Public kodeakses As Integer
@@ -77,7 +78,12 @@ Public Class flaporanmutasibarang
         Call koneksii()
         cmbstok.Items.Clear()
         cmbstok.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_stok", cnn)
+        If cmbbarang.Text.Length = 0 Then
+            cmmd = New OdbcCommand("SELECT * FROM tb_stok", cnn)
+        Else
+            cmmd = New OdbcCommand("SELECT * FROM tb_stok WHERE kode_barang='" & cmbbarang.Text & "'", cnn)
+        End If
+        'cmmd = New OdbcCommand("SELECT * FROM tb_stok", cnn)
         dr = cmmd.ExecuteReader()
         If dr.HasRows = True Then
             While dr.Read()
@@ -313,6 +319,14 @@ Public Class flaporanmutasibarang
         Call grid()
     End Sub
 
+    Private Sub cmbbarang_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbbarang.SelectedIndexChanged
+        Call comboboxstok()
+    End Sub
+
+    Private Sub cmbbarang_TextChanged(sender As Object, e As EventArgs) Handles cmbbarang.TextChanged
+        Call comboboxstok()
+    End Sub
+
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
 
     End Sub
@@ -363,7 +377,35 @@ Public Class flaporanmutasibarang
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
+        Dim rptmutasibarang As ReportDocument
+        Dim tabel_mutasi_barang As New DataTable
+        Dim baris As DataRow
 
+        With tabel_mutasi_barang
+            .Columns.Add("kode_tabel")
+            .Columns.Add("kode_barang")
+            .Columns.Add("kode_stok")
+            .Columns.Add("qty", GetType(Double))
+            .Columns.Add("tanggal")
+        End With
+
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_mutasi_barang.NewRow
+            baris("kode_tabel") = GridView1.GetRowCellValue(i, "kode_tabel")
+            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+            baris("qty") = GridView1.GetRowCellValue(i, "qty")
+            baris("tanggal") = GridView1.GetRowCellValue(i, "tanggal")
+            tabel_mutasi_barang.Rows.Add(baris)
+        Next
+
+        rptmutasibarang = New rptrekapmutasibarang
+        rptmutasibarang.SetDataSource(tabel_mutasi_barang)
+
+        flapmutasibarang.CrystalReportViewer1.ReportSource = rptmutasibarang
+        flapmutasibarang.ShowDialog()
+        flapmutasibarang.WindowState = FormWindowState.Maximized
     End Sub
 
     Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click
