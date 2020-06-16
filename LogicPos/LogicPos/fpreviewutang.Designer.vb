@@ -46,7 +46,7 @@ Partial Class fpreviewutang
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cbperiode = New System.Windows.Forms.CheckBox()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -283,15 +283,17 @@ Partial Class fpreviewutang
         Me.Label3.TabIndex = 54
         Me.Label3.Text = "Status"
         '
-        'Label4
+        'cbperiode
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(530, 64)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(63, 16)
-        Me.Label4.TabIndex = 55
-        Me.Label4.Text = "Periode"
+        Me.cbperiode.AutoSize = True
+        Me.cbperiode.Checked = True
+        Me.cbperiode.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbperiode.Location = New System.Drawing.Point(533, 61)
+        Me.cbperiode.Name = "cbperiode"
+        Me.cbperiode.Size = New System.Drawing.Size(78, 22)
+        Me.cbperiode.TabIndex = 57
+        Me.cbperiode.Text = "Periode"
+        Me.cbperiode.UseVisualStyleBackColor = True
         '
         'fpreviewutang
         '
@@ -299,7 +301,7 @@ Partial Class fpreviewutang
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1272, 535)
-        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.cbperiode)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label7)
@@ -345,7 +347,7 @@ Partial Class fpreviewutang
     Friend WithEvents Label7 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cbperiode As CheckBox
 End Class

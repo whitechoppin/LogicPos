@@ -41,12 +41,12 @@ Partial Class fpreviewpiutang
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cbperiode = New System.Windows.Forms.CheckBox()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -233,16 +233,6 @@ Partial Class fpreviewpiutang
         Me.Label3.TabIndex = 53
         Me.Label3.Text = "Status"
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(530, 64)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(63, 16)
-        Me.Label4.TabIndex = 54
-        Me.Label4.Text = "Periode"
-        '
         'GridControl2
         '
         Me.GridControl2.Location = New System.Drawing.Point(721, 135)
@@ -295,14 +285,26 @@ Partial Class fpreviewpiutang
         Me.GridColumn10.Visible = True
         Me.GridColumn10.VisibleIndex = 2
         '
+        'cbperiode
+        '
+        Me.cbperiode.AutoSize = True
+        Me.cbperiode.Checked = True
+        Me.cbperiode.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbperiode.Location = New System.Drawing.Point(533, 61)
+        Me.cbperiode.Name = "cbperiode"
+        Me.cbperiode.Size = New System.Drawing.Size(78, 22)
+        Me.cbperiode.TabIndex = 56
+        Me.cbperiode.Text = "Periode"
+        Me.cbperiode.UseVisualStyleBackColor = True
+        '
         'fpreviewpiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1272, 535)
+        Me.Controls.Add(Me.cbperiode)
         Me.Controls.Add(Me.GridControl2)
-        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label7)
@@ -341,7 +343,6 @@ Partial Class fpreviewpiutang
     Friend WithEvents Label7 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
@@ -349,4 +350,5 @@ Partial Class fpreviewpiutang
     Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cbperiode As CheckBox
 End Class
