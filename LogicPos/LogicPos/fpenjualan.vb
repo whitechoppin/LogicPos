@@ -1984,20 +1984,12 @@ Public Class fpenjualan
 
         If e.Column.FieldName = "harga_satuan" Then
             If (Val(e.Value) < Val(GridView1.GetRowCellValue(e.RowHandle, "modal_barang"))) Then
-                'GridView1.SetRowCellValue(e.RowHandle, "harga_satuan", GridView1.GetRowCellValue(e.RowHandle, "modal_barang"))
                 MsgBox("Harga Dibawah Modal", MsgBoxStyle.Information, "Peringatan")
-
             End If
-            'Try
-            '    GridView1.SetRowCellValue(e.RowHandle, "diskon_nominal", GridView1.GetRowCellValue(e.RowHandle, "diskon_persen") / 100 * e.Value)
-            '    GridView1.SetRowCellValue(e.RowHandle, "harga_diskon", e.Value - GridView1.GetRowCellValue(e.RowHandle, "diskon_persen") / 100 * e.Value)
-            '    GridView1.SetRowCellValue(e.RowHandle, "subtotal", GridView1.GetRowCellValue(e.RowHandle, "banyak") * GridView1.GetRowCellValue(e.RowHandle, "harga_diskon"))
-            '    GridView1.SetRowCellValue(e.RowHandle, "laba", (GridView1.GetRowCellValue(e.RowHandle, "harga_diskon") - GridView1.GetRowCellValue(e.RowHandle, "modal_barang")) * GridView1.GetRowCellValue(e.RowHandle, "banyak"))
-            'Catch ex As Exception
-            '    'error jika nulai qty=blank
-            '    GridView1.SetRowCellValue(e.RowHandle, "subtotal", 0)
-            'End Try
-            'BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+        ElseIf e.Column.FieldName = "diskon_persen" Then
+            If (Val(e.Value) < Val(GridView1.GetRowCellValue(e.RowHandle, "modal_barang"))) Then
+                MsgBox("Harga Dibawah Modal", MsgBoxStyle.Information, "Peringatan")
+            End If
         End If
 
     End Sub

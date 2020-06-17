@@ -1082,6 +1082,12 @@ Public Class flunaspiutang
         fcarilunasjual.ShowDialog()
     End Sub
 
+    Private Sub GridView1_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles GridView1.RowCellClick
+        If e.Column.FieldName = "total_penjualan" And btnbatal.Enabled = True Then
+            GridView1.SetRowCellValue(e.RowHandle, "terima_piutang", Val(GridView1.GetRowCellValue(e.RowHandle, "total_penjualan")) - Val(GridView1.GetRowCellValue(e.RowHandle, "bayar_piutang")))
+        End If
+    End Sub
+
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
         BeginInvoke(New MethodInvoker(AddressOf UpdateSelisihText))
     End Sub
@@ -1131,7 +1137,7 @@ Public Class flunaspiutang
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
-                    tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, sisapiutangtbh)
+                    tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, 0)
                     Call reload_tabel()
                 Else
                     Dim lokasi As Integer = -1
@@ -1143,7 +1149,7 @@ Public Class flunaspiutang
                     Next
 
                     If lokasi = -1 Then
-                        tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, sisapiutangtbh)
+                        tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, 0)
                         Call reload_tabel()
                     Else
                         MsgBox("Nota sudah di tabel pelunasan !")

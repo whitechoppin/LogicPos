@@ -12,7 +12,7 @@
     <Shape ID="DesignTable:tabelbarangmasuk" ZOrder="4" X="544" Y="87" Height="143" Width="174" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="139" />
     <Shape ID="DesignTable:tabelpiutang" ZOrder="3" X="730" Y="91" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
     <Shape ID="DesignTable:tabelutang" ZOrder="2" X="893" Y="92" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
-    <Shape ID="DesignTable:tabelmutasibarang" ZOrder="1" X="64" Y="351" Height="143" Width="175" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="139" />
+    <Shape ID="DesignTable:tabelmutasibarang" ZOrder="1" X="62" Y="338" Height="162" Width="175" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="158" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
