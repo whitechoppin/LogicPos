@@ -1987,8 +1987,8 @@ Public Class fpenjualan
                 MsgBox("Harga Dibawah Modal", MsgBoxStyle.Information, "Peringatan")
             End If
         ElseIf e.Column.FieldName = "diskon_persen" Then
-            If (Val(e.Value) < Val(GridView1.GetRowCellValue(e.RowHandle, "modal_barang"))) Then
-                MsgBox("Harga Dibawah Modal", MsgBoxStyle.Information, "Peringatan")
+            If (Val(e.Value) > 10) Then
+                MsgBox("Persentase Lebih dari 10%", MsgBoxStyle.Information, "Peringatan")
             End If
         End If
 

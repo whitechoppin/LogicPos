@@ -242,4 +242,50 @@ Public Class fpreviewutang
     Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
         Call tabel_lunas()
     End Sub
+
+    Sub ExportToExcel1()
+
+        Dim filename As String = InputBox("Nama File", "Input Nama file ")
+        Dim pathdata As String = "C:\ExportLogicPos"
+        Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"
+
+        If filename <> "" Then
+            If (Not System.IO.Directory.Exists(pathdata)) Then
+                System.IO.Directory.CreateDirectory(pathdata)
+            End If
+
+            GridView1.ExportToXls(yourpath)
+            MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
+            ' Do something
+        ElseIf DialogResult.Cancel Then
+            MsgBox("You've canceled")
+        End If
+    End Sub
+
+    Sub ExportToExcel2()
+
+        Dim filename As String = InputBox("Nama File", "Input Nama file ")
+        Dim pathdata As String = "C:\ExportLogicPos"
+        Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"
+
+        If filename <> "" Then
+            If (Not System.IO.Directory.Exists(pathdata)) Then
+                System.IO.Directory.CreateDirectory(pathdata)
+            End If
+
+            GridView2.ExportToXls(yourpath)
+            MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
+            ' Do something
+        ElseIf DialogResult.Cancel Then
+            MsgBox("You've canceled")
+        End If
+    End Sub
+
+    Private Sub btnexcel1_Click(sender As Object, e As EventArgs) Handles btnexcel1.Click
+        Call ExportToExcel1()
+    End Sub
+
+    Private Sub btnexcel2_Click(sender As Object, e As EventArgs) Handles btnexcel2.Click
+        Call ExportToExcel2()
+    End Sub
 End Class

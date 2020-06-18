@@ -47,6 +47,10 @@ Partial Class fpreviewpiutang
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.cbperiode = New System.Windows.Forms.CheckBox()
+        Me.btnexcel1 = New System.Windows.Forms.Button()
+        Me.btnexcel2 = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -55,7 +59,7 @@ Partial Class fpreviewpiutang
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 135)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 168)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(703, 389)
@@ -235,7 +239,7 @@ Partial Class fpreviewpiutang
         '
         'GridControl2
         '
-        Me.GridControl2.Location = New System.Drawing.Point(721, 135)
+        Me.GridControl2.Location = New System.Drawing.Point(721, 168)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.Size = New System.Drawing.Size(539, 388)
@@ -297,12 +301,54 @@ Partial Class fpreviewpiutang
         Me.cbperiode.Text = "Periode"
         Me.cbperiode.UseVisualStyleBackColor = True
         '
+        'btnexcel1
+        '
+        Me.btnexcel1.Location = New System.Drawing.Point(601, 131)
+        Me.btnexcel1.Name = "btnexcel1"
+        Me.btnexcel1.Size = New System.Drawing.Size(114, 31)
+        Me.btnexcel1.TabIndex = 57
+        Me.btnexcel1.Text = "Export Excel"
+        Me.btnexcel1.UseVisualStyleBackColor = True
+        '
+        'btnexcel2
+        '
+        Me.btnexcel2.Location = New System.Drawing.Point(1146, 131)
+        Me.btnexcel2.Name = "btnexcel2"
+        Me.btnexcel2.Size = New System.Drawing.Size(114, 31)
+        Me.btnexcel2.TabIndex = 58
+        Me.btnexcel2.Text = "Export Excel"
+        Me.btnexcel2.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(943, 146)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(118, 16)
+        Me.Label4.TabIndex = 63
+        Me.Label4.Text = "Data Pelunasan"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(289, 146)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(114, 16)
+        Me.Label5.TabIndex = 62
+        Me.Label5.Text = "Data Penjualan"
+        '
         'fpreviewpiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1272, 535)
+        Me.ClientSize = New System.Drawing.Size(1272, 568)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.btnexcel2)
+        Me.Controls.Add(Me.btnexcel1)
         Me.Controls.Add(Me.cbperiode)
         Me.Controls.Add(Me.GridControl2)
         Me.Controls.Add(Me.Label3)
@@ -351,4 +397,8 @@ Partial Class fpreviewpiutang
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents cbperiode As CheckBox
+    Friend WithEvents btnexcel1 As Button
+    Friend WithEvents btnexcel2 As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
 End Class

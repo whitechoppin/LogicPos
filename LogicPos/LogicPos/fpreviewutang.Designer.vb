@@ -47,6 +47,9 @@ Partial Class fpreviewutang
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cbperiode = New System.Windows.Forms.CheckBox()
+        Me.btnexcel2 = New System.Windows.Forms.Button()
+        Me.btnexcel1 = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -55,7 +58,7 @@ Partial Class fpreviewutang
         '
         'GridControl2
         '
-        Me.GridControl2.Location = New System.Drawing.Point(721, 135)
+        Me.GridControl2.Location = New System.Drawing.Point(721, 168)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.Size = New System.Drawing.Size(539, 388)
@@ -107,7 +110,7 @@ Partial Class fpreviewutang
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 135)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 168)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(704, 389)
@@ -200,11 +203,11 @@ Partial Class fpreviewutang
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(817, 91)
+        Me.Label1.Location = New System.Drawing.Point(289, 146)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(119, 16)
         Me.Label1.TabIndex = 35
-        Me.Label1.Text = "Sampai Dengan"
+        Me.Label1.Text = "Data Pembelian"
         '
         'dtakhir
         '
@@ -295,12 +298,43 @@ Partial Class fpreviewutang
         Me.cbperiode.Text = "Periode"
         Me.cbperiode.UseVisualStyleBackColor = True
         '
+        'btnexcel2
+        '
+        Me.btnexcel2.Location = New System.Drawing.Point(1147, 131)
+        Me.btnexcel2.Name = "btnexcel2"
+        Me.btnexcel2.Size = New System.Drawing.Size(114, 31)
+        Me.btnexcel2.TabIndex = 60
+        Me.btnexcel2.Text = "Export Excel"
+        Me.btnexcel2.UseVisualStyleBackColor = True
+        '
+        'btnexcel1
+        '
+        Me.btnexcel1.Location = New System.Drawing.Point(602, 131)
+        Me.btnexcel1.Name = "btnexcel1"
+        Me.btnexcel1.Size = New System.Drawing.Size(114, 31)
+        Me.btnexcel1.TabIndex = 59
+        Me.btnexcel1.Text = "Export Excel"
+        Me.btnexcel1.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(943, 146)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(118, 16)
+        Me.Label4.TabIndex = 61
+        Me.Label4.Text = "Data Pelunasan"
+        '
         'fpreviewutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1272, 535)
+        Me.ClientSize = New System.Drawing.Size(1272, 568)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.btnexcel2)
+        Me.Controls.Add(Me.btnexcel1)
         Me.Controls.Add(Me.cbperiode)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -350,4 +384,7 @@ Partial Class fpreviewutang
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents cbperiode As CheckBox
+    Friend WithEvents btnexcel2 As Button
+    Friend WithEvents btnexcel1 As Button
+    Friend WithEvents Label4 As Label
 End Class

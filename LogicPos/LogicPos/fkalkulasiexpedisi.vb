@@ -14,8 +14,9 @@ Public Class fkalkulasiexpedisi
     Dim viewtglpengiriman As DateTime
 
     'variabel bantuan hitung gridview
-    Dim ongkirbarangulang, totalongkirbarangulang, totalvolumebarangbefore As Double
-    Dim summarytotalvolumebefore, volumebarangbefore, qtybarangbefore, totalhargabarangulang, grandtotalbarangulang As Double
+    Dim ongkirbarangulang, totalongkirbarangulang, totalvolumebarangbefore, totalhargabarangulang, grandtotalbarangulang As Double
+
+    'Dim summarytotalvolumebefore, volumebarangbefore, qtybarangbefore As Double
 
     Private Sub fkalkulasiexpedisi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
@@ -687,24 +688,6 @@ Public Class fkalkulasiexpedisi
             Exit Sub
         End If
 
-        'With tabel
-        '    .Columns.Add("kode_barang")
-        '    .Columns.Add("nama_barang")
-        '    .Columns.Add("panjang_barang", GetType(Double))
-        '    .Columns.Add("lebar_barang", GetType(Double))
-        '    .Columns.Add("tinggi_barang", GetType(Double))
-        '    .Columns.Add("volume_barang", GetType(Double))
-        '    .Columns.Add("qty", GetType(Double))
-        '    .Columns.Add("total_volume", GetType(Double))
-        '    .Columns.Add("harga_barang", GetType(Double))
-        '    .Columns.Add("ongkos_kirim", GetType(Double))
-        '    .Columns.Add("total_ongkos_kirim", GetType(Double))
-        '    .Columns.Add("total_harga_barang", GetType(Double))
-        '    .Columns.Add("grand_total_barang", GetType(Double))
-        'End With
-
-        'functionnya disini
-        'barang
         volumebarang = panjangbarang * lebarbarang * tinggibarang
         totalvolumebarang = volumebarang * banyakbarang
         totalhargabarang = hargabarang * banyakbarang
@@ -721,18 +704,27 @@ Public Class fkalkulasiexpedisi
         Call tambah()
     End Sub
 
-    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+    Private Sub btnreset_Click(sender As Object, e As EventArgs) Handles btnreset.Click
         For i As Integer = 0 To GridView1.RowCount - 1
-            ongkirbarangulang = totalhargaongkir * (GridView1.GetRowCellValue(i, "volume_barang") / (grandtotalvolumebarang))
+
+            GridView1.SetRowCellValue(i, "ongkos_kirim", 0)
+            GridView1.SetRowCellValue(i, "total_ongkos_kirim", 0)
+            GridView1.SetRowCellValue(i, "grand_total_barang", 0)
+        Next
+    End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        grandtotalvolumebarang = Val(GridView1.Columns("total_volume").SummaryItem.SummaryValue)
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            ongkirbarangulang = totalhargaongkir * (Val(GridView1.GetRowCellValue(i, "volume_barang")) / grandtotalvolumebarang)
 
             totalongkirbarangulang = ongkirbarangulang * 1
-            totalhargabarangulang = Val(GridView1.GetRowCellValue(i, "harga_barang")) * 1
 
             grandtotalbarangulang = totalhargabarangulang + totalongkirbarangulang
 
             GridView1.SetRowCellValue(i, "ongkos_kirim", ongkirbarangulang)
             GridView1.SetRowCellValue(i, "total_ongkos_kirim", totalongkirbarangulang)
-            GridView1.SetRowCellValue(i, "total_harga_barang", totalhargabarangulang)
             GridView1.SetRowCellValue(i, "grand_total_barang", grandtotalbarangulang)
         Next
     End Sub
@@ -744,83 +736,30 @@ Public Class fkalkulasiexpedisi
                 Try
                     'rumus ongkos kirim
                     totalvolumebarangbefore = GridView1.GetRowCellValue(e.RowHandle, "volume_barang") * GridView1.GetRowCellValue(e.RowHandle, "qty")
-
                     grandtotalvolumebarang = (GridView1.Columns("total_volume").SummaryItem.SummaryValue - totalvolumebarangbefore) + GridView1.GetRowCellValue(e.RowHandle, "volume_barang") * e.Value
-
                     GridView1.SetRowCellValue(e.RowHandle, "total_volume", GridView1.GetRowCellValue(e.RowHandle, "volume_barang") * 1)
-                    'For i As Integer = 0 To GridView1.RowCount - 1
-                    '    ongkirbarangulang = totalhargaongkir * (GridView1.GetRowCellValue(i, "volume_barang") / (grandtotalvolumebarang))
-                    '    If e.RowHandle.Equals(i) Then
-                    '        totalongkirbarangulang = ongkirbarangulang * 1
-                    '        totalhargabarangulang = Val(GridView1.GetRowCellValue(i, "harga_barang")) * 1
-                    '    Else
-                    '        totalongkirbarangulang = ongkirbarangulang * 1
-                    '        totalhargabarangulang = Val(GridView1.GetRowCellValue(i, "harga_barang")) * 1
-                    '    End If
-
-                    '    grandtotalbarangulang = totalhargabarangulang + totalongkirbarangulang
-
-                    '    GridView1.SetRowCellValue(i, "ongkos_kirim", ongkirbarangulang)
-                    '    GridView1.SetRowCellValue(i, "total_ongkos_kirim", totalongkirbarangulang)
-                    '    GridView1.SetRowCellValue(i, "total_harga_barang", totalhargabarangulang)
-                    '    GridView1.SetRowCellValue(i, "grand_total_barang", grandtotalbarangulang)
-                    'Next
 
                 Catch ex As Exception
-                    'error jika nulai qty=blank
-                    'GridView1.SetRowCellValue(e.RowHandle, "grand_total_barang", 0)
+
                 End Try
             Else
-                Try
-                    'baris terfokus
-                    'inisiasi variabel
-                    summarytotalvolumebefore = GridView1.Columns("total_volume").SummaryItem.SummaryValue
-                    volumebarangbefore = GridView1.GetRowCellValue(e.RowHandle, "volume_barang")
-                    qtybarangbefore = GridView1.GetRowCellValue(e.RowHandle, "qty")
-                    'kalkulasi
-                    totalvolumebarangbefore = volumebarangbefore * qtybarangbefore
-                    grandtotalvolumebarang = ((summarytotalvolumebefore - totalvolumebarangbefore) + (volumebarangbefore * e.Value))
-                    'set variabel
-                    GridView1.SetRowCellValue(e.RowHandle, "total_volume", GridView1.GetRowCellValue(e.RowHandle, "volume_barang") * e.Value)
 
-                    ongkirbarangulang = totalhargaongkir * (volumebarangbefore / (grandtotalvolumebarang))
-                    totalongkirbarangulang = ongkirbarangulang * e.Value
-                    totalhargabarangulang = Val(GridView1.GetRowCellValue(e.RowHandle, "harga_barang")) * e.Value
-                Catch ex As Exception
-                    'Error jika nulai qty=blank
-                    'GridView1.SetRowCellValue(e.RowHandle, "grand_total_barang", 0)
-                End Try
             End If
         End If
     End Sub
 
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
-        'Dim ongkirbarangulangdel, totalongkirbarangulangdel As Double
-        'Dim grandtotalbarangulangdel As Double
-
         If e.KeyCode = Keys.Delete And btnbatal.Enabled = True Then
-            If GridView1.RowCount = 1 Then
-                GridView1.DeleteSelectedRows()
-            Else
-                GridView1.DeleteSelectedRows()
-
-                'grandtotalvolumebarang = GridView1.Columns("total_volume").SummaryItem.SummaryValue
-
-                'For i As Integer = 0 To GridView1.RowCount - 1
-                '    ongkirbarangulangdel = totalhargaongkir * (GridView1.GetRowCellValue(i, "volume_barang") / (grandtotalvolumebarang))
-                '    totalongkirbarangulangdel = ongkirbarangulangdel * Val(GridView1.GetRowCellValue(i, "qty"))
-                '    grandtotalbarangulangdel = GridView1.GetRowCellValue(i, "total_harga_barang") + totalongkirbarangulangdel
-
-                '    GridView1.SetRowCellValue(i, "ongkos_kirim", ongkirbarangulangdel)
-                '    GridView1.SetRowCellValue(i, "total_ongkos_kirim", totalongkirbarangulangdel)
-                '    GridView1.SetRowCellValue(i, "grand_total_barang", grandtotalbarangulangdel)
-                'Next
-            End If
+            GridView1.DeleteSelectedRows()
         End If
     End Sub
 
     Private Sub ritenumber_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritenumber.KeyPress
         e.Handled = ValidAngka(e)
+    End Sub
+
+    Private Sub fkalkulasiexpedisi_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
 End Class
