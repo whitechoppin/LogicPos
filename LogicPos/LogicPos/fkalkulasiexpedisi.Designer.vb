@@ -69,11 +69,12 @@ Partial Class fkalkulasiexpedisi
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.cbposted = New System.Windows.Forms.CheckBox()
         Me.cbprinted = New System.Windows.Forms.CheckBox()
         Me.txttotalongkir = New System.Windows.Forms.TextBox()
         Me.txttelpexpedisi = New System.Windows.Forms.TextBox()
-        Me.txtsales = New System.Windows.Forms.TextBox()
+        Me.txtuser = New System.Windows.Forms.TextBox()
         Me.txtalamatexpedisi = New System.Windows.Forms.TextBox()
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.txtnamaexpedisi = New System.Windows.Forms.TextBox()
@@ -86,12 +87,11 @@ Partial Class fkalkulasiexpedisi
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.cmbsales = New System.Windows.Forms.ComboBox()
+        Me.cmbuser = New System.Windows.Forms.ComboBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.btntambahbarang = New System.Windows.Forms.Button()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnreset = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -568,17 +568,20 @@ Partial Class fkalkulasiexpedisi
         Me.TabPage2.Location = New System.Drawing.Point(4, 27)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1317, 171)
+        Me.TabPage2.Size = New System.Drawing.Size(1245, 127)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Keterangan"
         '
         'txtketerangan
         '
+        Me.txtketerangan.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.txtketerangan.Location = New System.Drawing.Point(7, 7)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(1288, 136)
+        Me.txtketerangan.Size = New System.Drawing.Size(1231, 113)
         Me.txtketerangan.TabIndex = 56
         Me.txtketerangan.Text = ""
         '
@@ -590,7 +593,7 @@ Partial Class fkalkulasiexpedisi
         Me.TabPage1.Controls.Add(Me.cbprinted)
         Me.TabPage1.Controls.Add(Me.txttotalongkir)
         Me.TabPage1.Controls.Add(Me.txttelpexpedisi)
-        Me.TabPage1.Controls.Add(Me.txtsales)
+        Me.TabPage1.Controls.Add(Me.txtuser)
         Me.TabPage1.Controls.Add(Me.txtalamatexpedisi)
         Me.TabPage1.Controls.Add(Me.txtnonota)
         Me.TabPage1.Controls.Add(Me.txtnamaexpedisi)
@@ -603,13 +606,24 @@ Partial Class fkalkulasiexpedisi
         Me.TabPage1.Controls.Add(Me.Label16)
         Me.TabPage1.Controls.Add(Me.Label18)
         Me.TabPage1.Controls.Add(Me.Label15)
-        Me.TabPage1.Controls.Add(Me.cmbsales)
+        Me.TabPage1.Controls.Add(Me.cmbuser)
         Me.TabPage1.Location = New System.Drawing.Point(4, 27)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage1.Size = New System.Drawing.Size(1245, 127)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Detail Expedisi"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label4.Location = New System.Drawing.Point(868, 19)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(50, 18)
+        Me.Label4.TabIndex = 62
+        Me.Label4.Text = "Status"
         '
         'cbposted
         '
@@ -654,14 +668,14 @@ Partial Class fkalkulasiexpedisi
         Me.txttelpexpedisi.Size = New System.Drawing.Size(266, 24)
         Me.txttelpexpedisi.TabIndex = 60
         '
-        'txtsales
+        'txtuser
         '
-        Me.txtsales.Enabled = False
-        Me.txtsales.Location = New System.Drawing.Point(120, 81)
-        Me.txtsales.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtsales.Name = "txtsales"
-        Me.txtsales.Size = New System.Drawing.Size(276, 24)
-        Me.txtsales.TabIndex = 56
+        Me.txtuser.Enabled = False
+        Me.txtuser.Location = New System.Drawing.Point(120, 81)
+        Me.txtuser.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtuser.Name = "txtuser"
+        Me.txtuser.Size = New System.Drawing.Size(276, 24)
+        Me.txtuser.TabIndex = 56
         '
         'txtalamatexpedisi
         '
@@ -758,9 +772,9 @@ Partial Class fkalkulasiexpedisi
         Me.Label16.Location = New System.Drawing.Point(21, 50)
         Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(84, 18)
+        Me.Label16.Size = New System.Drawing.Size(79, 18)
         Me.Label16.TabIndex = 37
-        Me.Label16.Text = "Kode Sales"
+        Me.Label16.Text = "Kode User"
         '
         'Label18
         '
@@ -769,9 +783,9 @@ Partial Class fkalkulasiexpedisi
         Me.Label18.Location = New System.Drawing.Point(21, 84)
         Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(89, 18)
+        Me.Label18.Size = New System.Drawing.Size(84, 18)
         Me.Label18.TabIndex = 57
-        Me.Label18.Text = "Nama Sales"
+        Me.Label18.Text = "Nama User"
         '
         'Label15
         '
@@ -784,15 +798,15 @@ Partial Class fkalkulasiexpedisi
         Me.Label15.TabIndex = 30
         Me.Label15.Text = "Nama Expedisi"
         '
-        'cmbsales
+        'cmbuser
         '
-        Me.cmbsales.FormattingEnabled = True
-        Me.cmbsales.Location = New System.Drawing.Point(120, 47)
-        Me.cmbsales.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbsales.MaxLength = 99
-        Me.cmbsales.Name = "cmbsales"
-        Me.cmbsales.Size = New System.Drawing.Size(276, 26)
-        Me.cmbsales.TabIndex = 13
+        Me.cmbuser.FormattingEnabled = True
+        Me.cmbuser.Location = New System.Drawing.Point(120, 47)
+        Me.cmbuser.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbuser.MaxLength = 99
+        Me.cmbuser.Name = "cmbuser"
+        Me.cmbuser.Size = New System.Drawing.Size(276, 26)
+        Me.cmbuser.TabIndex = 13
         '
         'TabControl1
         '
@@ -839,17 +853,6 @@ Partial Class fkalkulasiexpedisi
         Me.btnreset.Size = New System.Drawing.Size(41, 37)
         Me.btnreset.TabIndex = 36
         Me.btnreset.UseVisualStyleBackColor = True
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label4.Location = New System.Drawing.Point(868, 19)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(50, 18)
-        Me.Label4.TabIndex = 62
-        Me.Label4.Text = "Status"
         '
         'Label19
         '
@@ -967,7 +970,7 @@ Partial Class fkalkulasiexpedisi
     Friend WithEvents cbprinted As CheckBox
     Friend WithEvents txttotalongkir As TextBox
     Friend WithEvents txttelpexpedisi As TextBox
-    Friend WithEvents txtsales As TextBox
+    Friend WithEvents txtuser As TextBox
     Friend WithEvents txtalamatexpedisi As TextBox
     Friend WithEvents txtnonota As TextBox
     Friend WithEvents txtnamaexpedisi As TextBox
@@ -980,7 +983,7 @@ Partial Class fkalkulasiexpedisi
     Friend WithEvents Label16 As Label
     Friend WithEvents Label18 As Label
     Friend WithEvents Label15 As Label
-    Friend WithEvents cmbsales As ComboBox
+    Friend WithEvents cmbuser As ComboBox
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents btntambahbarang As Button
     Friend WithEvents btnrefresh As Button

@@ -919,7 +919,7 @@ Public Class fpembelian
             End If
         End If
     End Sub
-    Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodebarang.TextChanged, txtnonota.TextChanged
+    Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodebarang.TextChanged
         Call caribarang()
     End Sub
     Private Sub txthargabarang_TextChanged(sender As Object, e As EventArgs) Handles txthargabarang.TextChanged

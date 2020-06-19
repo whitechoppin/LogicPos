@@ -526,13 +526,11 @@ Public Class fpenjualan
 
         If nomorkode IsNot "" Then
             Call koneksii()
-
-            'Using cnn As New OdbcConnection(strConn)
             sql = "SELECT * FROM tb_penjualan WHERE kode_penjualan = '" + nomorkode.ToString + "'"
-                cmmd = New OdbcCommand(sql, cnn)
-            'cnn.Open()
+            cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             dr.Read()
+
             If dr.HasRows Then
                 'header
                 nomornota = dr("kode_penjualan")
@@ -618,9 +616,7 @@ Public Class fpenjualan
                 cmbpembayaran.Text = viewpembayaran
                 txtbayar.Text = nilaibayar
 
-                'cnn.Close()
             End If
-            'End Using
         Else
             txtnonota.Clear()
             cmbcustomer.Text = ""
