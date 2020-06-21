@@ -101,6 +101,12 @@
       <DependentUpon>flaporantransferbarang.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fakturexpedisi.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fakturexpedisi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="fakturkaskeluar.vb">
       <DependentUpon>fakturkaskeluar.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -944,6 +950,10 @@
     <Compile Include="validasiangka.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="fakturexpedisi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>fakturexpedisi.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="fakturkaskeluar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturkaskeluar.vb</LastGenOutput>

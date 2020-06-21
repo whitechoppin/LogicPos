@@ -752,7 +752,7 @@ Public Class flunasutang
 
 
     Public Sub cetak_faktur()
-        Dim faktur As String
+        'Dim faktur As String
         Dim tabel_faktur As New DataTable
         With tabel_faktur
             .Columns.Add("kode_pembelian")

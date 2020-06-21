@@ -1499,7 +1499,7 @@ Public Class fpenjualan
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
     End Sub
-    Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
+    Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
         Dim faktur As String
         Call koneksii()
         sql = "SELECT * FROM tb_printer WHERE nomor='2'"
