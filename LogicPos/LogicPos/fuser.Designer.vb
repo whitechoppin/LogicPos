@@ -364,6 +364,7 @@ Partial Class fuser
         '
         'txtkode
         '
+        Me.txtkode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkode.Location = New System.Drawing.Point(108, 66)
         Me.txtkode.Margin = New System.Windows.Forms.Padding(4)

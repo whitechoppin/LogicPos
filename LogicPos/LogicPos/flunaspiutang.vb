@@ -58,6 +58,7 @@ Public Class flunaspiutang
             'buat sum harga
             .Columns("total_penjualan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_penjualan", "{0:n0}")
             .Columns("bayar_piutang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "bayar_piutang", "{0:n0}")
+            .Columns("sisa_piutang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "sisa_piutang", "{0:n0}")
             .Columns("terima_piutang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "terima_piutang", "{0:n0}")
         End With
 
@@ -546,6 +547,7 @@ Public Class flunaspiutang
             .Columns.Add("tanggal_jatuhtempo")
             .Columns.Add("total_penjualan", GetType(Double))
             .Columns.Add("bayar_piutang", GetType(Double))
+            .Columns.Add("sisa_piutang", GetType(Double))
             .Columns.Add("terima_piutang", GetType(Double))
         End With
 
@@ -583,11 +585,17 @@ Public Class flunaspiutang
         GridColumn6.DisplayFormat.FormatString = "{0:n0}"
         GridColumn6.Width = 40
 
-        GridColumn7.FieldName = "terima_piutang"
-        GridColumn7.Caption = "Terima"
+        GridColumn7.FieldName = "sisa_piutang"
+        GridColumn7.Caption = "Sisa Nota"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
         GridColumn7.Width = 40
+
+        GridColumn8.FieldName = "terima_piutang"
+        GridColumn8.Caption = "Terima Uang"
+        GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
+        GridColumn8.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn8.Width = 40
     End Sub
 
     Sub previewpelunasan(lihat As String)
@@ -598,6 +606,7 @@ Public Class flunaspiutang
         '    .Columns.Add("tanggal_jatuhtempo")
         '    .Columns.Add("total_penjualan", GetType(Double))
         '    .Columns.Add("bayar_piutang", GetType(Double))
+        '    .Columns.Add("sisa_piutang", GetType(Double))
         '    .Columns.Add("terima_piutang", GetType(Double))
         'End With
 
@@ -606,7 +615,7 @@ Public Class flunaspiutang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel.Rows.Add(dr("kode_penjualan"), dr("kode_pelanggan"), dr("tanggal_penjualan"), dr("tanggal_jatuhtempo"), Val(dr("total_penjualan")), Val(dr("bayar_piutang")), Val(dr("terima_piutang")))
+            tabel.Rows.Add(dr("kode_penjualan"), dr("kode_pelanggan"), dr("tanggal_penjualan"), dr("tanggal_jatuhtempo"), Val(dr("total_penjualan")), Val(dr("bayar_piutang")), Val(dr("sisa_piutang")), Val(dr("terima_piutang")))
             GridControl1.RefreshDataSource()
         End While
     End Sub
@@ -681,7 +690,7 @@ Public Class flunaspiutang
             tglpenjualansimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_penjualan"))
             tgljatuhtemposimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_jatuhtempo"))
 
-            sql = "INSERT INTO tb_pelunasan_piutang_detail (kode_lunas, kode_penjualan, kode_pelanggan, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, bayar_piutang, terima_piutang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunaspiutang & "', '" & GridView1.GetRowCellValue(i, "kode_penjualan") & "', '" & GridView1.GetRowCellValue(i, "kode_customer") & "', '" & Format(tglpenjualansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_penjualan") & "','" & GridView1.GetRowCellValue(i, "bayar_piutang") & "','" & GridView1.GetRowCellValue(i, "terima_piutang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_pelunasan_piutang_detail (kode_lunas, kode_penjualan, kode_pelanggan, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, bayar_piutang, sisa_piutang, terima_piutang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunaspiutang & "', '" & GridView1.GetRowCellValue(i, "kode_penjualan") & "', '" & GridView1.GetRowCellValue(i, "kode_customer") & "', '" & Format(tglpenjualansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_penjualan") & "','" & GridView1.GetRowCellValue(i, "bayar_piutang") & "','" & GridView1.GetRowCellValue(i, "sisa_piutang") & "','" & GridView1.GetRowCellValue(i, "terima_piutang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Next
@@ -913,7 +922,7 @@ Public Class flunaspiutang
             tglpenjualansimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_penjualan"))
             tgljatuhtemposimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_jatuhtempo"))
 
-            sql = "INSERT INTO tb_pelunasan_piutang_detail (kode_lunas, kode_penjualan, kode_pelanggan, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, bayar_piutang, terima_piutang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunaspiutang & "', '" & GridView1.GetRowCellValue(i, "kode_penjualan") & "', '" & GridView1.GetRowCellValue(i, "kode_customer") & "', '" & Format(tglpenjualansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_penjualan") & "','" & GridView1.GetRowCellValue(i, "bayar_piutang") & "','" & GridView1.GetRowCellValue(i, "terima_piutang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_pelunasan_piutang_detail (kode_lunas, kode_penjualan, kode_pelanggan, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, bayar_piutang, sisa_piutang, terima_piutang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunaspiutang & "', '" & GridView1.GetRowCellValue(i, "kode_penjualan") & "', '" & GridView1.GetRowCellValue(i, "kode_customer") & "', '" & Format(tglpenjualansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_penjualan") & "','" & GridView1.GetRowCellValue(i, "bayar_piutang") & "','" & GridView1.GetRowCellValue(i, "sisa_piutang") & "','" & GridView1.GetRowCellValue(i, "terima_piutang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Next
@@ -1083,12 +1092,17 @@ Public Class flunaspiutang
     End Sub
 
     Private Sub GridView1_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles GridView1.RowCellClick
-        If e.Column.FieldName = "total_penjualan" And btnbatal.Enabled = True Then
+        If e.Column.FieldName = "sisa_piutang" And btnbatal.Enabled = True Then
+            GridView1.SetRowCellValue(e.RowHandle, "sisa_piutang", 0)
             GridView1.SetRowCellValue(e.RowHandle, "terima_piutang", Val(GridView1.GetRowCellValue(e.RowHandle, "total_penjualan")) - Val(GridView1.GetRowCellValue(e.RowHandle, "bayar_piutang")))
         End If
+        GridView1.RefreshData()
     End Sub
 
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
+        If e.Column.FieldName = "terima_piutang" Then
+            GridView1.SetRowCellValue(e.RowHandle, "sisa_piutang", Val(GridView1.GetRowCellValue(e.RowHandle, "total_penjualan")) - Val(GridView1.GetRowCellValue(e.RowHandle, "bayar_piutang")) - e.Value)
+        End If
         BeginInvoke(New MethodInvoker(AddressOf UpdateSelisihText))
     End Sub
 
@@ -1137,19 +1151,19 @@ Public Class flunaspiutang
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
-                    tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, 0)
+                    tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, sisapiutangtbh, 0)
                     Call reload_tabel()
                 Else
                     Dim lokasi As Integer = -1
 
                     For i As Integer = 0 To GridView1.RowCount - 1
-                        If GridView1.GetRowCellValue(i, "kode_penjualan").Equals(txtkodepenjualan.Text) Then
+                        If String.Equals(GridView1.GetRowCellValue(i, "kode_penjualan").ToString, txtkodepenjualan.Text.ToUpper) Or GridView1.GetRowCellValue(i, "kode_penjualan").ToString.Equals(txtkodepenjualan.Text.ToUpper) Then
                             lokasi = i
                         End If
                     Next
 
                     If lokasi = -1 Then
-                        tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, 0)
+                        tabel.Rows.Add(kodepenjualantbh, kodepelanggantbh, tgljualtbh, tgljatuhtempotbh, totaljualtbh, bayarpiutangtbh, sisapiutangtbh, 0)
                         Call reload_tabel()
                     Else
                         MsgBox("Nota sudah di tabel pelunasan !")

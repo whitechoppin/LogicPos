@@ -39,11 +39,11 @@ Partial Class fcarilunasjual
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.dtakhir = New System.Windows.Forms.DateTimePicker()
         Me.dtawal = New System.Windows.Forms.DateTimePicker()
+        Me.cbperiode = New System.Windows.Forms.CheckBox()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,10 +52,12 @@ Partial Class fcarilunasjual
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 76)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
+        Me.GridControl1.Location = New System.Drawing.Point(18, 105)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(752, 401)
+        Me.GridControl1.Size = New System.Drawing.Size(770, 555)
         Me.GridControl1.TabIndex = 22
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -152,7 +154,8 @@ Partial Class fcarilunasjual
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(14, 13)
+        Me.Label1.Location = New System.Drawing.Point(21, 18)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(250, 24)
         Me.Label1.TabIndex = 23
@@ -160,10 +163,12 @@ Partial Class fcarilunasjual
         '
         'GridControl2
         '
-        Me.GridControl2.Location = New System.Drawing.Point(770, 76)
+        Me.GridControl2.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
+        Me.GridControl2.Location = New System.Drawing.Point(796, 105)
         Me.GridControl2.MainView = Me.GridView2
+        Me.GridControl2.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(539, 401)
+        Me.GridControl2.Size = New System.Drawing.Size(552, 555)
         Me.GridControl2.TabIndex = 24
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -214,28 +219,20 @@ Partial Class fcarilunasjual
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(766, 13)
+        Me.Label2.Location = New System.Drawing.Point(1008, 58)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(155, 24)
         Me.Label2.TabIndex = 27
         Me.Label2.Text = "Data Pelunasan"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(222, 50)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(66, 16)
-        Me.Label3.TabIndex = 41
-        Me.Label3.Text = "Tanggal"
         '
         'btnrefresh
         '
         Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
-        Me.btnrefresh.Location = New System.Drawing.Point(730, 44)
+        Me.btnrefresh.Location = New System.Drawing.Point(745, 56)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
         Me.btnrefresh.TabIndex = 40
@@ -245,7 +242,8 @@ Partial Class fcarilunasjual
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(493, 50)
+        Me.Label4.Location = New System.Drawing.Point(407, 62)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(34, 16)
         Me.Label4.TabIndex = 39
@@ -254,26 +252,41 @@ Partial Class fcarilunasjual
         'dtakhir
         '
         Me.dtakhir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtakhir.Location = New System.Drawing.Point(531, 46)
+        Me.dtakhir.Location = New System.Drawing.Point(449, 57)
+        Me.dtakhir.Margin = New System.Windows.Forms.Padding(4)
         Me.dtakhir.Name = "dtakhir"
-        Me.dtakhir.Size = New System.Drawing.Size(193, 24)
+        Me.dtakhir.Size = New System.Drawing.Size(288, 24)
         Me.dtakhir.TabIndex = 38
         '
         'dtawal
         '
         Me.dtawal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtawal.Location = New System.Drawing.Point(294, 46)
+        Me.dtawal.Location = New System.Drawing.Point(111, 57)
+        Me.dtawal.Margin = New System.Windows.Forms.Padding(4)
         Me.dtawal.Name = "dtawal"
-        Me.dtawal.Size = New System.Drawing.Size(193, 24)
+        Me.dtawal.Size = New System.Drawing.Size(288, 24)
         Me.dtawal.TabIndex = 37
+        '
+        'cbperiode
+        '
+        Me.cbperiode.AutoSize = True
+        Me.cbperiode.Checked = True
+        Me.cbperiode.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbperiode.Location = New System.Drawing.Point(25, 59)
+        Me.cbperiode.Margin = New System.Windows.Forms.Padding(6)
+        Me.cbperiode.Name = "cbperiode"
+        Me.cbperiode.Size = New System.Drawing.Size(78, 22)
+        Me.cbperiode.TabIndex = 58
+        Me.cbperiode.Text = "Periode"
+        Me.cbperiode.UseVisualStyleBackColor = True
         '
         'fcarilunasjual
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1321, 488)
-        Me.Controls.Add(Me.Label3)
+        Me.ClientSize = New System.Drawing.Size(1364, 674)
+        Me.Controls.Add(Me.cbperiode)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.dtakhir)
@@ -282,7 +295,9 @@ Partial Class fcarilunasjual
         Me.Controls.Add(Me.GridControl2)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.Label1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "fcarilunasjual"
@@ -310,11 +325,11 @@ Partial Class fcarilunasjual
     Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
     Friend WithEvents btnrefresh As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents dtakhir As DateTimePicker
     Friend WithEvents dtawal As DateTimePicker
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cbperiode As CheckBox
 End Class

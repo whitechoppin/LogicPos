@@ -85,6 +85,7 @@ Partial Class flunasutang
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txtselisih = New System.Windows.Forms.TextBox()
         Me.btnsesuaikan = New System.Windows.Forms.Button()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -575,7 +576,7 @@ Partial Class flunasutang
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -659,10 +660,10 @@ Partial Class flunasutang
         Me.GridColumn7.AppearanceCell.Options.UseFont = True
         Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn7.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn7.Caption = "Terima"
-        Me.GridColumn7.ColumnEdit = Me.riteterimapelunasan
+        Me.GridColumn7.Caption = "Sisa Nota"
         Me.GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.OptionsColumn.AllowEdit = False
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
         '
@@ -780,6 +781,19 @@ Partial Class flunasutang
         Me.btnsesuaikan.Text = "-/+"
         Me.btnsesuaikan.UseVisualStyleBackColor = True
         '
+        'GridColumn8
+        '
+        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceCell.Options.UseFont = True
+        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn8.Caption = "Terima Uang"
+        Me.GridColumn8.ColumnEdit = Me.riteterimapelunasan
+        Me.GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 7
+        '
         'flunasutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -890,4 +904,5 @@ Partial Class flunasutang
     Friend WithEvents Label13 As Label
     Friend WithEvents txtselisih As TextBox
     Friend WithEvents btnsesuaikan As Button
+    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

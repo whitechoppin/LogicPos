@@ -120,7 +120,7 @@ Public Class fpreviewutang
                 ElseIf cmbsupplier.Text.Length = 0 And cmbstatus.Text.Length > 0 Then
                     If cmbstatus.Text.Equals("Lunas") Then
                         status = 1
-                    Else
+                    ElseIf cmbstatus.Text.Equals("Belum Lunas") Then
                         status = 0
                     End If
                     sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
@@ -128,7 +128,7 @@ Public Class fpreviewutang
                 ElseIf cmbsupplier.Text.Length > 0 And cmbstatus.Text.Length > 0 Then
                     If cmbstatus.Text.Equals("Lunas") Then
                         status = 1
-                    Else
+                    ElseIf cmbstatus.Text.Equals("Belum Lunas") Then
                         status = 0
                     End If
                     sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
@@ -145,7 +145,7 @@ Public Class fpreviewutang
                 ElseIf cmbsupplier.Text.Length = 0 And cmbstatus.Text.Length > 0 Then
                     If cmbstatus.Text.Equals("Lunas") Then
                         status = 1
-                    Else
+                    ElseIf cmbstatus.Text.Equals("Belum Lunas") Then
                         status = 0
                     End If
                     sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
@@ -153,7 +153,7 @@ Public Class fpreviewutang
                 ElseIf cmbsupplier.Text.Length > 0 And cmbstatus.Text.Length > 0 Then
                     If cmbstatus.Text.Equals("Lunas") Then
                         status = 1
-                    Else
+                    ElseIf cmbstatus.Text.Equals("Belum Lunas") Then
                         status = 0
                     End If
                     sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
@@ -173,7 +173,7 @@ Public Class fpreviewutang
             ElseIf cmbsupplier.Text.Length = 0 And cmbstatus.Text.Length > 0 Then
                 If cmbstatus.Text.Equals("Lunas") Then
                     status = 1
-                Else
+                ElseIf cmbstatus.Text.Equals("Belum Lunas") Then
                     status = 0
                 End If
                 sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian 
@@ -181,7 +181,7 @@ Public Class fpreviewutang
             ElseIf cmbsupplier.Text.Length > 0 And cmbstatus.Text.Length > 0 Then
                 If cmbstatus.Text.Equals("Lunas") Then
                     status = 1
-                Else
+                ElseIf cmbstatus.Text.Equals("Belum Lunas") Then
                     status = 0
                 End If
                 sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (Select IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) As bayar_pembelian, (total_pembelian - (Select IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) As sisa_pembelian 

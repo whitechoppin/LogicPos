@@ -222,6 +222,7 @@ Partial Class fsupplier
         '
         'txtkode
         '
+        Me.txtkode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkode.Location = New System.Drawing.Point(138, 120)
         Me.txtkode.Margin = New System.Windows.Forms.Padding(4)

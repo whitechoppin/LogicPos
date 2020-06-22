@@ -82,13 +82,21 @@ Public Class fcarilunasbeli
     Sub tabel()
         Call koneksii()
 
-        If dtawal.Value.Equals(dtakhir.Value) Then
-            sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian, no_nota_pembelian, keterangan_pembelian 
+        If cbperiode.Checked = True Then
+            If dtawal.Value.Equals(dtakhir.Value) Then
+                sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian, no_nota_pembelian, keterangan_pembelian 
                     FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.kode_supplier='" & kodelunassupplier & "' AND tb_pembelian.lunas_pembelian =0 AND DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian, no_nota_pembelian, keterangan_pembelian 
+                    FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.kode_supplier='" & kodelunassupplier & "' AND tb_pembelian.lunas_pembelian =0 AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            End If
         Else
             sql = "SELECT kode_pembelian, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.kode_pembelian = tb_pembelian.kode_pembelian)) AS sisa_pembelian, no_nota_pembelian, keterangan_pembelian 
-                    FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.kode_supplier='" & kodelunassupplier & "' AND tb_pembelian.lunas_pembelian =0 AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                   FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.kode_supplier='" & kodelunassupplier & "' AND tb_pembelian.lunas_pembelian =0"
+
         End If
+
+
 
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -127,5 +135,15 @@ Public Class fcarilunasbeli
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel()
+    End Sub
+
+    Private Sub cbperiode_CheckedChanged(sender As Object, e As EventArgs) Handles cbperiode.CheckedChanged
+        If cbperiode.Checked = True Then
+            dtawal.Enabled = True
+            dtakhir.Enabled = True
+        Else
+            dtawal.Enabled = False
+            dtakhir.Enabled = False
+        End If
     End Sub
 End Class
