@@ -16,7 +16,7 @@ Public Class fpenjualan
     Dim dateterm, datetermnow As Date
     Public jenis, satuan, kodepenjualan, kodetransaksi, kodegudang As String
     Dim diskonpersennilai, diskonnominalnilai As Double
-    Dim term, banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
+    Dim term, banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, selisihkategori, bayar, sisa As Double
 
     'variabel bantuan view penjualan
     Dim nomornota, nomorcustomer, nomorsales, nomorgudang, viewketerangan, viewnamaexpedisi, viewalamatexpedisi, viewpembayaran, kodepembayaran As String
@@ -987,15 +987,25 @@ Public Class fpenjualan
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 If dr.HasRows Then
+                    selisihkategori = Val(dr("selisih_kategori"))
+                    modalpenjualan = Val(dr("modal_barang"))
+
                     txtnamabarang.Text = dr("nama_barang")
                     txtkodebarang.Text = dr("kode_barang")
                     satuan = dr("satuan_barang")
                     lblsatuan.Text = satuan
                     lblsatuanjual.Text = satuan
                     jenis = dr("jenis_barang")
-                    txtharga.Text = Format(Val(dr("modal_barang")) + Val(dr("selisih_kategori")), "##,##0")
-                    txtharga.SelectionStart = Len(txtharga.Text)
-                    modalpenjualan = Val(dr("modal_barang"))
+
+                    If selisihkategori.Equals(0) Then
+                        txtharga.Text = Format(Val(dr("modal_barang")) + selisihkategori, "##,##0")
+                        txtharga.SelectionStart = Len(txtharga.Text)
+
+                        MsgBox("Harga Merupakan Modal Karena Selisih Kategori Rp.0 dan Tidak ada Data Pricelist !!!")
+                    Else
+                        txtharga.Text = Format(Val(dr("modal_barang")) + selisihkategori, "##,##0")
+                        txtharga.SelectionStart = Len(txtharga.Text)
+                    End If
                 Else
 
                     txtnamabarang.Text = ""

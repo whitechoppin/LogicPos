@@ -29,10 +29,14 @@ Public Class fcarireturjual
     Sub tabel()
         Call koneksii()
 
-        If dtawal.Value.Equals(dtakhir.Value) Then
-            sql = "SELECT * FROM tb_retur_penjualan WHERE DATE(tgl_returjual) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+        If cbperiode.Checked = True Then
+            If dtawal.Value.Equals(dtakhir.Value) Then
+                sql = "SELECT * FROM tb_retur_penjualan WHERE DATE(tgl_returjual) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "SELECT * FROM tb_retur_penjualan WHERE tgl_returjual BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            End If
         Else
-            sql = "SELECT * FROM tb_retur_penjualan WHERE tgl_returjual BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT * FROM tb_retur_penjualan"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -52,5 +56,15 @@ Public Class fcarireturjual
             freturjual.txtgoretur.Text = Me.GridView1.GetFocusedRowCellValue("kode_retur")
         End If
         Me.Hide()
+    End Sub
+
+    Private Sub cbperiode_CheckedChanged(sender As Object, e As EventArgs) Handles cbperiode.CheckedChanged
+        If cbperiode.Checked = True Then
+            dtawal.Enabled = True
+            dtakhir.Enabled = True
+        Else
+            dtawal.Enabled = False
+            dtakhir.Enabled = False
+        End If
     End Sub
 End Class

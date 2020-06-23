@@ -31,21 +31,23 @@ Partial Class fcaripembelian
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dtakhir = New System.Windows.Forms.DateTimePicker()
         Me.dtawal = New System.Windows.Forms.DateTimePicker()
+        Me.cbperiode = New System.Windows.Forms.CheckBox()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(13, 67)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Location = New System.Drawing.Point(13, 100)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(969, 400)
+        Me.GridControl1.Size = New System.Drawing.Size(754, 432)
         Me.GridControl1.TabIndex = 20
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -116,30 +118,22 @@ Partial Class fcaripembelian
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 14)
+        Me.Label1.Location = New System.Drawing.Point(13, 9)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(256, 24)
         Me.Label1.TabIndex = 21
         Me.Label1.Text = "Pencarian Data Pembelian"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(510, 14)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(66, 16)
-        Me.Label3.TabIndex = 36
-        Me.Label3.Text = "Tanggal"
         '
         'btnrefresh
         '
         Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
-        Me.btnrefresh.Location = New System.Drawing.Point(946, 35)
+        Me.btnrefresh.Location = New System.Drawing.Point(737, 48)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnrefresh.Name = "btnrefresh"
-        Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
+        Me.btnrefresh.Size = New System.Drawing.Size(30, 27)
         Me.btnrefresh.TabIndex = 35
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
@@ -147,7 +141,8 @@ Partial Class fcaripembelian
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(709, 41)
+        Me.Label2.Location = New System.Drawing.Point(399, 57)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(34, 16)
         Me.Label2.TabIndex = 34
@@ -156,32 +151,49 @@ Partial Class fcaripembelian
         'dtakhir
         '
         Me.dtakhir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtakhir.Location = New System.Drawing.Point(747, 37)
+        Me.dtakhir.Location = New System.Drawing.Point(441, 50)
+        Me.dtakhir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtakhir.Name = "dtakhir"
-        Me.dtakhir.Size = New System.Drawing.Size(193, 24)
+        Me.dtakhir.Size = New System.Drawing.Size(288, 24)
         Me.dtakhir.TabIndex = 33
         '
         'dtawal
         '
         Me.dtawal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtawal.Location = New System.Drawing.Point(510, 37)
+        Me.dtawal.Location = New System.Drawing.Point(103, 51)
+        Me.dtawal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtawal.Name = "dtawal"
-        Me.dtawal.Size = New System.Drawing.Size(193, 24)
+        Me.dtawal.Size = New System.Drawing.Size(288, 24)
         Me.dtawal.TabIndex = 32
+        '
+        'cbperiode
+        '
+        Me.cbperiode.AutoSize = True
+        Me.cbperiode.Checked = True
+        Me.cbperiode.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbperiode.Location = New System.Drawing.Point(17, 51)
+        Me.cbperiode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbperiode.Name = "cbperiode"
+        Me.cbperiode.Size = New System.Drawing.Size(78, 22)
+        Me.cbperiode.TabIndex = 57
+        Me.cbperiode.Text = "Periode"
+        Me.cbperiode.UseVisualStyleBackColor = True
         '
         'fcaripembelian
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(993, 481)
-        Me.Controls.Add(Me.Label3)
+        Me.ClientSize = New System.Drawing.Size(781, 545)
+        Me.Controls.Add(Me.cbperiode)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.dtakhir)
         Me.Controls.Add(Me.dtawal)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.Label1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fcaripembelian"
         Me.Text = "Pencarian Pembelian"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -198,10 +210,10 @@ Partial Class fcaripembelian
     Friend WithEvents Label1 As Label
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents Label3 As Label
     Friend WithEvents btnrefresh As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents dtakhir As DateTimePicker
     Friend WithEvents dtawal As DateTimePicker
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cbperiode As CheckBox
 End Class

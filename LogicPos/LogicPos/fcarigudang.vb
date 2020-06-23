@@ -45,4 +45,8 @@ Public Class fcarigudang
         End If
         Me.Hide()
     End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call tabel()
+    End Sub
 End Class

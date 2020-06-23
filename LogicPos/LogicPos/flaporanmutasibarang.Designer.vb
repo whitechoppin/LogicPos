@@ -34,6 +34,7 @@ Partial Class flaporanmutasibarang
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -50,7 +51,7 @@ Partial Class flaporanmutasibarang
         Me.cmbstok = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtgbr = New System.Windows.Forms.Label()
-        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,7 +59,7 @@ Partial Class flaporanmutasibarang
         '
         'btnrefresh
         '
-        Me.btnrefresh.Location = New System.Drawing.Point(871, 229)
+        Me.btnrefresh.Location = New System.Drawing.Point(1157, 229)
         Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(306, 35)
@@ -68,7 +69,7 @@ Partial Class flaporanmutasibarang
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(871, 272)
+        Me.btnexcel.Location = New System.Drawing.Point(1157, 272)
         Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(306, 35)
@@ -78,7 +79,7 @@ Partial Class flaporanmutasibarang
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(871, 315)
+        Me.btnrekap.Location = New System.Drawing.Point(1157, 315)
         Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(306, 35)
@@ -89,17 +90,17 @@ Partial Class flaporanmutasibarang
         'GridControl1
         '
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl1.Location = New System.Drawing.Point(20, 120)
+        Me.GridControl1.Location = New System.Drawing.Point(13, 120)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(843, 496)
+        Me.GridControl1.Size = New System.Drawing.Size(1136, 496)
         Me.GridControl1.TabIndex = 26
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
@@ -156,6 +157,7 @@ Partial Class flaporanmutasibarang
         Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn5.AppearanceHeader.Options.UseFont = True
         Me.GridColumn5.Caption = "GridColumn5"
+        Me.GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
@@ -171,9 +173,20 @@ Partial Class flaporanmutasibarang
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
         '
+        'GridColumn7
+        '
+        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceCell.Options.UseFont = True
+        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn7.Caption = "GridColumn7"
+        Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.Visible = True
+        Me.GridColumn7.VisibleIndex = 6
+        '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(871, 358)
+        Me.PictureBox1.Location = New System.Drawing.Point(1157, 358)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(306, 236)
@@ -195,7 +208,7 @@ Partial Class flaporanmutasibarang
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(957, 175)
+        Me.Label2.Location = New System.Drawing.Point(1243, 175)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(126, 18)
@@ -204,7 +217,7 @@ Partial Class flaporanmutasibarang
         '
         'dtakhir
         '
-        Me.dtakhir.Location = New System.Drawing.Point(871, 197)
+        Me.dtakhir.Location = New System.Drawing.Point(1157, 197)
         Me.dtakhir.Margin = New System.Windows.Forms.Padding(4)
         Me.dtakhir.Name = "dtakhir"
         Me.dtakhir.Size = New System.Drawing.Size(306, 24)
@@ -212,7 +225,7 @@ Partial Class flaporanmutasibarang
         '
         'dtawal
         '
-        Me.dtawal.Location = New System.Drawing.Point(871, 147)
+        Me.dtawal.Location = New System.Drawing.Point(1157, 147)
         Me.dtawal.Margin = New System.Windows.Forms.Padding(4)
         Me.dtawal.Name = "dtawal"
         Me.dtawal.Size = New System.Drawing.Size(306, 24)
@@ -290,7 +303,7 @@ Partial Class flaporanmutasibarang
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(871, 125)
+        Me.Label5.Location = New System.Drawing.Point(1157, 125)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(66, 18)
@@ -338,30 +351,30 @@ Partial Class flaporanmutasibarang
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtgbr.AutoSize = True
         Me.txtgbr.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtgbr.Location = New System.Drawing.Point(871, 598)
+        Me.txtgbr.Location = New System.Drawing.Point(1157, 598)
         Me.txtgbr.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtgbr.Name = "txtgbr"
         Me.txtgbr.Size = New System.Drawing.Size(106, 18)
         Me.txtgbr.TabIndex = 72
         Me.txtgbr.Text = "Nama Gambar"
         '
-        'GridColumn7
+        'GridColumn8
         '
-        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn7.AppearanceCell.Options.UseFont = True
-        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn7.Caption = "GridColumn7"
-        Me.GridColumn7.Name = "GridColumn7"
-        Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 6
+        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceCell.Options.UseFont = True
+        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn8.Caption = "GridColumn8"
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 7
         '
         'flaporanmutasibarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1198, 627)
+        Me.ClientSize = New System.Drawing.Size(1474, 627)
         Me.Controls.Add(Me.txtgbr)
         Me.Controls.Add(Me.btncaristok)
         Me.Controls.Add(Me.cmbstok)
@@ -421,4 +434,5 @@ Partial Class flaporanmutasibarang
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents txtgbr As Label
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

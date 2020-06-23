@@ -32,11 +32,16 @@ Public Class fcarilunaspiutang
     Sub tabel()
         Call koneksii()
 
-        If dtawal.Value.Equals(dtakhir.Value) Then
-            sql = "SELECT tb_pelunasan_piutang.kode_lunas, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan AND DATE(tb_pelunasan_piutang.tanggal_transaksi) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+        If cbperiode.Checked = True Then
+            If dtawal.Value.Equals(dtakhir.Value) Then
+                sql = "SELECT tb_pelunasan_piutang.kode_lunas, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan AND DATE(tb_pelunasan_piutang.tanggal_transaksi) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "SELECT tb_pelunasan_piutang.kode_lunas, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_pelunasan_piutang.tanggal_transaksi BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            End If
         Else
-            sql = "SELECT tb_pelunasan_piutang.kode_lunas, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_pelunasan_piutang.tanggal_transaksi BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT tb_pelunasan_piutang.kode_lunas, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan"
         End If
+
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -54,5 +59,15 @@ Public Class fcarilunaspiutang
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel()
+    End Sub
+
+    Private Sub cbperiode_CheckedChanged(sender As Object, e As EventArgs) Handles cbperiode.CheckedChanged
+        If cbperiode.Checked = True Then
+            dtawal.Enabled = True
+            dtakhir.Enabled = True
+        Else
+            dtawal.Enabled = False
+            dtakhir.Enabled = False
+        End If
     End Sub
 End Class

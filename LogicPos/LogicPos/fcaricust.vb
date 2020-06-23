@@ -5,16 +5,16 @@ Public Class fcaricust
     Private Sub fcaricust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Me.MdiParent = fmenu
         'Call koneksii()
-        Call awal()
+        'Call awal()
         Call tabel()
     End Sub
-    Sub awal()
-        cmbcari.SelectedIndex = 1
-        'txtcari.Clear()
-        txtcari.Focus()
-        txtcari.Text = isicari2
+    'Sub awal()
+    '    cmbcari.SelectedIndex = 1
+    '    'txtcari.Clear()
+    '    txtcari.Focus()
+    '    txtcari.Text = isicari2
 
-    End Sub
+    'End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"
         GridColumn1.FieldName = "kode_pelanggan"
@@ -23,52 +23,48 @@ Public Class fcaricust
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        'Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "Select tb_pelanggan.kode_pelanggan, tb_pelanggan.nama_pelanggan from tb_pelanggan"
-            da = New OdbcDataAdapter(sql, cnn)
-            cnn.Open()
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-            cnn.Close()
-        End Using
+        Call koneksii()
+        sql = "SELECT tb_pelanggan.kode_pelanggan, tb_pelanggan.nama_pelanggan FROM tb_pelanggan"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
     End Sub
-    Sub cari()
-        'Call koneksii()
-        If cmbcari.SelectedIndex = 0 Then
-            pilih = "tb_pelanggan.kode_pelanggan"
-        Else
-            If cmbcari.SelectedIndex = 1 Then
-                pilih = "tb_pelanggan.nama_pelanggan"
-            End If
-        End If
-        Using cnn As New OdbcConnection(strConn)
-            sql = "Select tb_pelanggan.kode_pelanggan, tb_pelanggan.nama_pelanggan from tb_pelanggan where " & pilih & " LIKE '%" & txtcari.Text & "%'  "
-            da = New OdbcDataAdapter(sql, cnn)
-            cnn.Open()
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-            cnn.Close()
-        End Using
+    'Sub cari()
+    '    'Call koneksii()
+    '    If cmbcari.SelectedIndex = 0 Then
+    '        pilih = "tb_pelanggan.kode_pelanggan"
+    '    Else
+    '        If cmbcari.SelectedIndex = 1 Then
+    '            pilih = "tb_pelanggan.nama_pelanggan"
+    '        End If
+    '    End If
+    '    Using cnn As New OdbcConnection(strConn)
+    '        sql = "Select tb_pelanggan.kode_pelanggan, tb_pelanggan.nama_pelanggan from tb_pelanggan where " & pilih & " LIKE '%" & txtcari.Text & "%'  "
+    '        da = New OdbcDataAdapter(sql, cnn)
+    '        cnn.Open()
+    '        ds = New DataSet
+    '        da.Fill(ds)
+    '        GridControl1.DataSource = Nothing
+    '        GridControl1.DataSource = ds.Tables(0)
+    '        Call grid()
+    '        cnn.Close()
+    '    End Using
 
-    End Sub
-    Private Sub txtcari_TextChanged(sender As Object, e As EventArgs) Handles txtcari.TextChanged
-        Call cari()
-    End Sub
-    Private Sub btnmasuk_Click(sender As Object, e As EventArgs) Handles btnmasuk.Click
-        If tutupcus = 1 Then
-            fpricelist.txtkodecus.Text = Me.GridView1.GetFocusedRowCellValue("kode_pelanggan")
-            'Else
-            '    flaporanpenjualan.txtkodekasir.Text = Me.GridView1.GetFocusedRowCellValue("id")
-        End If
-        Me.Close()
-    End Sub
+    'End Sub
+    'Private Sub txtcari_TextChanged(sender As Object, e As EventArgs)
+    '    Call cari()
+    'End Sub
+    'Private Sub btnmasuk_Click(sender As Object, e As EventArgs)
+    '    If tutupcus = 1 Then
+    '        fpricelist.txtkodecus.Text = Me.GridView1.GetFocusedRowCellValue("kode_pelanggan")
+    '        'Else
+    '        '    flaporanpenjualan.txtkodekasir.Text = Me.GridView1.GetFocusedRowCellValue("id")
+    '    End If
+    '    Me.Close()
+    'End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupcus = 1 Then
@@ -81,5 +77,9 @@ Public Class fcaricust
             flaporanpricelist.cmbcustomer.Text = Me.GridView1.GetFocusedRowCellValue("kode_pelanggan")
         End If
         Me.Close()
+    End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call tabel()
     End Sub
 End Class
