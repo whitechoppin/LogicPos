@@ -763,6 +763,7 @@ Public Class flunasutang
     Public Sub cetak_faktur()
         'Dim faktur As String
         Dim tabel_faktur As New DataTable
+
         With tabel_faktur
             .Columns.Add("kode_pembelian")
             .Columns.Add("kode_supplier")
@@ -770,6 +771,7 @@ Public Class flunasutang
             .Columns.Add("tanggal_jatuhtempo", GetType(Date))
             .Columns.Add("total_pembelian", GetType(Double))
             .Columns.Add("bayar_utang", GetType(Double))
+            .Columns.Add("sisa_utang", GetType(Double))
             .Columns.Add("terima_utang", GetType(Double))
         End With
 
@@ -782,6 +784,7 @@ Public Class flunasutang
             baris("tanggal_jatuhtempo") = GridView1.GetRowCellValue(i, "tanggal_jatuhtempo")
             baris("total_pembelian") = GridView1.GetRowCellValue(i, "total_pembelian")
             baris("bayar_utang") = GridView1.GetRowCellValue(i, "bayar_utang")
+            baris("sisa_utang") = GridView1.GetRowCellValue(i, "sisa_utang")
             baris("terima_utang") = GridView1.GetRowCellValue(i, "terima_utang")
             tabel_faktur.Rows.Add(baris)
         Next

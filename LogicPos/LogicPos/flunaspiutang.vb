@@ -775,6 +775,7 @@ Public Class flunaspiutang
             .Columns.Add("tanggal_jatuhtempo", GetType(Date))
             .Columns.Add("total_penjualan", GetType(Double))
             .Columns.Add("bayar_piutang", GetType(Double))
+            .Columns.Add("sisa_piutang", GetType(Double))
             .Columns.Add("terima_piutang", GetType(Double))
         End With
 
@@ -787,6 +788,7 @@ Public Class flunaspiutang
             baris("tanggal_jatuhtempo") = GridView1.GetRowCellValue(i, "tanggal_jatuhtempo")
             baris("total_penjualan") = GridView1.GetRowCellValue(i, "total_penjualan")
             baris("bayar_piutang") = GridView1.GetRowCellValue(i, "bayar_piutang")
+            baris("sisa_piutang") = GridView1.GetRowCellValue(i, "sisa_piutang")
             baris("terima_piutang") = GridView1.GetRowCellValue(i, "terima_piutang")
             tabel_faktur.Rows.Add(baris)
         Next
