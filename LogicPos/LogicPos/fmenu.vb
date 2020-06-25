@@ -300,15 +300,6 @@ Public Class fmenu
         End If
     End Sub
 
-    Private Sub LTransferBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferBarangToolStripMenuItem.Click
-        Dim masterstatus As Integer = 0
-        masterstatus = flogin.lap_transfer_barang
-        If masterstatus > 0 Then
-            flaporantransferbarang.kodeakses = masterstatus
-            flaporantransferbarang.Show()
-        End If
-
-    End Sub
 
     Private Sub LogOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOutToolStripMenuItem.Click
         Call historysave("User Log Out Program", "N/A")
@@ -456,9 +447,21 @@ Public Class fmenu
         flaporanmutasibarang.Show()
     End Sub
 
-    Private Sub KonfigurasiDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KonfigurasiDatabaseToolStripMenuItem.Click
+    Private Sub LTransferBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransferBarangToolStripMenuItem.Click
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_transfer_barang
+        If masterstatus > 0 Then
+            flaporantransferbarang.kodeakses = masterstatus
+            flaporantransferbarang.Show()
+        End If
 
     End Sub
 
+    Private Sub PenyesuaianStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PenyesuaianStokToolStripMenuItem.Click
 
+    End Sub
+
+    Private Sub KonfigurasiDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KonfigurasiDatabaseToolStripMenuItem.Click
+
+    End Sub
 End Class
