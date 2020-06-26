@@ -57,10 +57,10 @@ Partial Class fkasmasuk
         '
         'GridControl1
         '
-        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Location = New System.Drawing.Point(13, 80)
         Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(1001, 277)
         Me.GridControl1.TabIndex = 0
@@ -120,9 +120,9 @@ Partial Class fkasmasuk
         '
         Me.dttransaksi.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dttransaksi.Location = New System.Drawing.Point(587, 369)
-        Me.dttransaksi.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.dttransaksi.Margin = New System.Windows.Forms.Padding(6)
         Me.dttransaksi.Name = "dttransaksi"
-        Me.dttransaksi.Size = New System.Drawing.Size(284, 24)
+        Me.dttransaksi.Size = New System.Drawing.Size(338, 24)
         Me.dttransaksi.TabIndex = 41
         '
         'Label3
@@ -140,8 +140,8 @@ Partial Class fkasmasuk
         '
         Me.cbposted.AutoSize = True
         Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(915, 462)
-        Me.cbposted.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.cbposted.Location = New System.Drawing.Point(939, 450)
+        Me.cbposted.Margin = New System.Windows.Forms.Padding(6)
         Me.cbposted.Name = "cbposted"
         Me.cbposted.Size = New System.Drawing.Size(74, 22)
         Me.cbposted.TabIndex = 41
@@ -153,8 +153,8 @@ Partial Class fkasmasuk
         Me.cbprinted.AutoSize = True
         Me.cbprinted.Enabled = False
         Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(915, 419)
-        Me.cbprinted.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.cbprinted.Location = New System.Drawing.Point(939, 407)
+        Me.cbprinted.Margin = New System.Windows.Forms.Padding(6)
         Me.cbprinted.Name = "cbprinted"
         Me.cbprinted.Size = New System.Drawing.Size(73, 22)
         Me.cbprinted.TabIndex = 40
@@ -164,7 +164,7 @@ Partial Class fkasmasuk
         'btnprint
         '
         Me.btnprint.Location = New System.Drawing.Point(864, 13)
-        Me.btnprint.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.btnprint.Margin = New System.Windows.Forms.Padding(6)
         Me.btnprint.Name = "btnprint"
         Me.btnprint.Size = New System.Drawing.Size(150, 31)
         Me.btnprint.TabIndex = 31
@@ -175,9 +175,9 @@ Partial Class fkasmasuk
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtketerangan.Location = New System.Drawing.Point(587, 443)
-        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(284, 58)
+        Me.txtketerangan.Size = New System.Drawing.Size(338, 58)
         Me.txtketerangan.TabIndex = 29
         Me.txtketerangan.Text = ""
         '
@@ -196,9 +196,9 @@ Partial Class fkasmasuk
         '
         Me.txtsaldomasuk.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtsaldomasuk.Location = New System.Drawing.Point(587, 405)
-        Me.txtsaldomasuk.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtsaldomasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.txtsaldomasuk.Name = "txtsaldomasuk"
-        Me.txtsaldomasuk.Size = New System.Drawing.Size(284, 24)
+        Me.txtsaldomasuk.Size = New System.Drawing.Size(338, 24)
         Me.txtsaldomasuk.TabIndex = 26
         '
         'Label8
@@ -217,7 +217,7 @@ Partial Class fkasmasuk
         Me.txtnamakas.Enabled = False
         Me.txtnamakas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnamakas.Location = New System.Drawing.Point(156, 477)
-        Me.txtnamakas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtnamakas.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnamakas.Name = "txtnamakas"
         Me.txtnamakas.Size = New System.Drawing.Size(265, 24)
         Me.txtnamakas.TabIndex = 22
@@ -248,7 +248,7 @@ Partial Class fkasmasuk
         '
         Me.cmbkas.FormattingEnabled = True
         Me.cmbkas.Location = New System.Drawing.Point(156, 441)
-        Me.cmbkas.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.cmbkas.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbkas.MaxLength = 99
         Me.cmbkas.Name = "cmbkas"
         Me.cmbkas.Size = New System.Drawing.Size(265, 26)
@@ -258,7 +258,7 @@ Partial Class fkasmasuk
         '
         Me.cmbsales.FormattingEnabled = True
         Me.cmbsales.Location = New System.Drawing.Point(156, 403)
-        Me.cmbsales.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.cmbsales.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbsales.MaxLength = 99
         Me.cmbsales.Name = "cmbsales"
         Me.cmbsales.Size = New System.Drawing.Size(265, 26)
@@ -267,7 +267,7 @@ Partial Class fkasmasuk
         'btnbatal
         '
         Me.btnbatal.Location = New System.Drawing.Point(704, 13)
-        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(150, 31)
         Me.btnbatal.TabIndex = 13
@@ -277,7 +277,7 @@ Partial Class fkasmasuk
         'btnhapus
         '
         Me.btnhapus.Location = New System.Drawing.Point(544, 13)
-        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(150, 31)
         Me.btnhapus.TabIndex = 14
@@ -287,7 +287,7 @@ Partial Class fkasmasuk
         'btnedit
         '
         Me.btnedit.Location = New System.Drawing.Point(386, 13)
-        Me.btnedit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnedit.Name = "btnedit"
         Me.btnedit.Size = New System.Drawing.Size(150, 31)
         Me.btnedit.TabIndex = 15
@@ -297,7 +297,7 @@ Partial Class fkasmasuk
         'btntambah
         '
         Me.btntambah.Location = New System.Drawing.Point(226, 13)
-        Me.btntambah.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btntambah.Margin = New System.Windows.Forms.Padding(4)
         Me.btntambah.Name = "btntambah"
         Me.btntambah.Size = New System.Drawing.Size(150, 31)
         Me.btntambah.TabIndex = 16
@@ -309,7 +309,7 @@ Partial Class fkasmasuk
         Me.txtkodemasuk.Enabled = False
         Me.txtkodemasuk.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkodemasuk.Location = New System.Drawing.Point(156, 369)
-        Me.txtkodemasuk.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtkodemasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkodemasuk.Name = "txtkodemasuk"
         Me.txtkodemasuk.Size = New System.Drawing.Size(265, 24)
         Me.txtkodemasuk.TabIndex = 1
@@ -351,7 +351,7 @@ Partial Class fkasmasuk
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(911, 379)
+        Me.Label5.Location = New System.Drawing.Point(935, 367)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(56, 20)
@@ -389,7 +389,7 @@ Partial Class fkasmasuk
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.cmbkas)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fkasmasuk"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Akun Kas Masuk"

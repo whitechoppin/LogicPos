@@ -123,7 +123,7 @@ Partial Class fkaskeluar
         Me.dttransaksi.Location = New System.Drawing.Point(587, 369)
         Me.dttransaksi.Margin = New System.Windows.Forms.Padding(6)
         Me.dttransaksi.Name = "dttransaksi"
-        Me.dttransaksi.Size = New System.Drawing.Size(284, 24)
+        Me.dttransaksi.Size = New System.Drawing.Size(338, 24)
         Me.dttransaksi.TabIndex = 41
         '
         'Label3
@@ -141,7 +141,7 @@ Partial Class fkaskeluar
         '
         Me.cbposted.AutoSize = True
         Me.cbposted.Enabled = False
-        Me.cbposted.Location = New System.Drawing.Point(915, 462)
+        Me.cbposted.Location = New System.Drawing.Point(939, 450)
         Me.cbposted.Margin = New System.Windows.Forms.Padding(6)
         Me.cbposted.Name = "cbposted"
         Me.cbposted.Size = New System.Drawing.Size(74, 22)
@@ -154,7 +154,7 @@ Partial Class fkaskeluar
         Me.cbprinted.AutoSize = True
         Me.cbprinted.Enabled = False
         Me.cbprinted.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cbprinted.Location = New System.Drawing.Point(915, 419)
+        Me.cbprinted.Location = New System.Drawing.Point(939, 407)
         Me.cbprinted.Margin = New System.Windows.Forms.Padding(6)
         Me.cbprinted.Name = "cbprinted"
         Me.cbprinted.Size = New System.Drawing.Size(73, 22)
@@ -178,7 +178,7 @@ Partial Class fkaskeluar
         Me.txtketerangan.Location = New System.Drawing.Point(587, 443)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
-        Me.txtketerangan.Size = New System.Drawing.Size(284, 58)
+        Me.txtketerangan.Size = New System.Drawing.Size(338, 58)
         Me.txtketerangan.TabIndex = 29
         Me.txtketerangan.Text = ""
         '
@@ -199,7 +199,7 @@ Partial Class fkaskeluar
         Me.txtsaldokeluar.Location = New System.Drawing.Point(587, 405)
         Me.txtsaldokeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.txtsaldokeluar.Name = "txtsaldokeluar"
-        Me.txtsaldokeluar.Size = New System.Drawing.Size(284, 24)
+        Me.txtsaldokeluar.Size = New System.Drawing.Size(338, 24)
         Me.txtsaldokeluar.TabIndex = 26
         '
         'Label8
@@ -353,7 +353,7 @@ Partial Class fkaskeluar
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(911, 379)
+        Me.Label5.Location = New System.Drawing.Point(935, 367)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(56, 20)

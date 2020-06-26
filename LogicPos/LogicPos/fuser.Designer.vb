@@ -128,8 +128,14 @@ Partial Class fuser
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.cbpenyesuaianstok = New System.Windows.Forms.CheckBox()
+        Me.clbpenyesuaianstok = New System.Windows.Forms.CheckedListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.clblapmutasibarang = New System.Windows.Forms.CheckedListBox()
+        Me.cblapmutasibarang = New System.Windows.Forms.CheckBox()
+        Me.clblappenyesuaianstok = New System.Windows.Forms.CheckedListBox()
+        Me.cblappenyesuaianstok = New System.Windows.Forms.CheckBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cbauth = New System.Windows.Forms.CheckBox()
         Me.txtmaxprint = New System.Windows.Forms.TextBox()
@@ -1375,6 +1381,8 @@ Partial Class fuser
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage2.Controls.Add(Me.cbpenyesuaianstok)
+        Me.TabPage2.Controls.Add(Me.clbpenyesuaianstok)
         Me.TabPage2.Controls.Add(Me.clbpenjualan)
         Me.TabPage2.Controls.Add(Me.cbpembelian)
         Me.TabPage2.Controls.Add(Me.clbpembelian)
@@ -1396,6 +1404,30 @@ Partial Class fuser
         Me.TabPage2.Size = New System.Drawing.Size(1002, 344)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Transaksi"
+        '
+        'cbpenyesuaianstok
+        '
+        Me.cbpenyesuaianstok.AutoSize = True
+        Me.cbpenyesuaianstok.Location = New System.Drawing.Point(442, 111)
+        Me.cbpenyesuaianstok.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbpenyesuaianstok.Name = "cbpenyesuaianstok"
+        Me.cbpenyesuaianstok.Size = New System.Drawing.Size(146, 22)
+        Me.cbpenyesuaianstok.TabIndex = 80
+        Me.cbpenyesuaianstok.Text = "Penyesuaian Stok"
+        Me.cbpenyesuaianstok.UseVisualStyleBackColor = True
+        '
+        'clbpenyesuaianstok
+        '
+        Me.clbpenyesuaianstok.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbpenyesuaianstok.CheckOnClick = True
+        Me.clbpenyesuaianstok.FormattingEnabled = True
+        Me.clbpenyesuaianstok.Items.AddRange(New Object() {"Tambah", "Edit", "Print"})
+        Me.clbpenyesuaianstok.Location = New System.Drawing.Point(459, 141)
+        Me.clbpenyesuaianstok.Margin = New System.Windows.Forms.Padding(4)
+        Me.clbpenyesuaianstok.Name = "clbpenyesuaianstok"
+        Me.clbpenyesuaianstok.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbpenyesuaianstok.Size = New System.Drawing.Size(100, 61)
+        Me.clbpenyesuaianstok.TabIndex = 81
         '
         'TabPage3
         '
@@ -1419,6 +1451,10 @@ Partial Class fuser
         'TabPage4
         '
         Me.TabPage4.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage4.Controls.Add(Me.clblapmutasibarang)
+        Me.TabPage4.Controls.Add(Me.cblapmutasibarang)
+        Me.TabPage4.Controls.Add(Me.clblappenyesuaianstok)
+        Me.TabPage4.Controls.Add(Me.cblappenyesuaianstok)
         Me.TabPage4.Controls.Add(Me.clblappricelist)
         Me.TabPage4.Controls.Add(Me.cblappricelist)
         Me.TabPage4.Controls.Add(Me.clblapmodalbarang)
@@ -1456,6 +1492,54 @@ Partial Class fuser
         Me.TabPage4.Size = New System.Drawing.Size(1002, 344)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Laporan"
+        '
+        'clblapmutasibarang
+        '
+        Me.clblapmutasibarang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblapmutasibarang.CheckOnClick = True
+        Me.clblapmutasibarang.FormattingEnabled = True
+        Me.clblapmutasibarang.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblapmutasibarang.Location = New System.Drawing.Point(728, 123)
+        Me.clblapmutasibarang.Margin = New System.Windows.Forms.Padding(4)
+        Me.clblapmutasibarang.Name = "clblapmutasibarang"
+        Me.clblapmutasibarang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblapmutasibarang.Size = New System.Drawing.Size(134, 42)
+        Me.clblapmutasibarang.TabIndex = 119
+        '
+        'cblapmutasibarang
+        '
+        Me.cblapmutasibarang.AutoSize = True
+        Me.cblapmutasibarang.Location = New System.Drawing.Point(714, 93)
+        Me.cblapmutasibarang.Margin = New System.Windows.Forms.Padding(4)
+        Me.cblapmutasibarang.Name = "cblapmutasibarang"
+        Me.cblapmutasibarang.Size = New System.Drawing.Size(154, 22)
+        Me.cblapmutasibarang.TabIndex = 118
+        Me.cblapmutasibarang.Text = "Lap. Mutasi Barang"
+        Me.cblapmutasibarang.UseVisualStyleBackColor = True
+        '
+        'clblappenyesuaianstok
+        '
+        Me.clblappenyesuaianstok.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblappenyesuaianstok.CheckOnClick = True
+        Me.clblappenyesuaianstok.FormattingEnabled = True
+        Me.clblappenyesuaianstok.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblappenyesuaianstok.Location = New System.Drawing.Point(728, 43)
+        Me.clblappenyesuaianstok.Margin = New System.Windows.Forms.Padding(4)
+        Me.clblappenyesuaianstok.Name = "clblappenyesuaianstok"
+        Me.clblappenyesuaianstok.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblappenyesuaianstok.Size = New System.Drawing.Size(134, 42)
+        Me.clblappenyesuaianstok.TabIndex = 117
+        '
+        'cblappenyesuaianstok
+        '
+        Me.cblappenyesuaianstok.AutoSize = True
+        Me.cblappenyesuaianstok.Location = New System.Drawing.Point(714, 13)
+        Me.cblappenyesuaianstok.Margin = New System.Windows.Forms.Padding(4)
+        Me.cblappenyesuaianstok.Name = "cblappenyesuaianstok"
+        Me.cblappenyesuaianstok.Size = New System.Drawing.Size(178, 22)
+        Me.cblappenyesuaianstok.TabIndex = 116
+        Me.cblappenyesuaianstok.Text = "Lap. Penyesuaian Stok"
+        Me.cblappenyesuaianstok.UseVisualStyleBackColor = True
         '
         'Label9
         '
@@ -1677,4 +1761,10 @@ Partial Class fuser
     Friend WithEvents txtmaxprint As TextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents btnpassword As Button
+    Friend WithEvents cbpenyesuaianstok As CheckBox
+    Friend WithEvents clbpenyesuaianstok As CheckedListBox
+    Friend WithEvents clblappenyesuaianstok As CheckedListBox
+    Friend WithEvents cblappenyesuaianstok As CheckBox
+    Friend WithEvents clblapmutasibarang As CheckedListBox
+    Friend WithEvents cblapmutasibarang As CheckBox
 End Class

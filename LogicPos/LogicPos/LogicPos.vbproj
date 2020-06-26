@@ -195,6 +195,12 @@
       <DependentUpon>flaporantransferkas.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fbarcodebarang.Designer.vb">
+      <DependentUpon>fbarcodebarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fbarcodebarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fcaribarangkeluar.Designer.vb">
       <DependentUpon>fcaribarangkeluar.vb</DependentUpon>
     </Compile>
@@ -1015,6 +1021,9 @@
     <EmbeddedResource Include="fakturpenjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpenjualan.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fbarcodebarang.resx">
+      <DependentUpon>fbarcodebarang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fcaribarangkeluar.resx">
       <DependentUpon>fcaribarangkeluar.vb</DependentUpon>
