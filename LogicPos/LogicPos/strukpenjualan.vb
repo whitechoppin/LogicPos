@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class Struk_Penjualan
+Public Class strukpenjualan
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class Struk_Penjualan
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "Struk_Penjualan.rpt"
+            Return "strukpenjualan.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class Struk_Penjualan
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "LogicPos.Struk_Penjualan.rpt"
+            Return "LogicPos.strukpenjualan.rpt"
         End Get
         Set
             'Do nothing
@@ -126,7 +126,7 @@ Public Class Struk_Penjualan
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedStruk_Penjualan
+Public Class Cachedstrukpenjualan
     Inherits Component
     Implements ICachedReport
     
@@ -168,7 +168,7 @@ Public Class CachedStruk_Penjualan
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As Struk_Penjualan = New Struk_Penjualan()
+        Dim rpt As strukpenjualan = New strukpenjualan()
         rpt.Site = Me.Site
         Return rpt
     End Function

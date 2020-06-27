@@ -1183,7 +1183,7 @@ Public Class fpenjualan
         End If
 
         Dim rpt As ReportDocument
-        rpt = New Struk_Penjualan
+        rpt = New strukpenjualan
         rpt.SetDataSource(tabel_struk)
         rpt.SetParameterValue("nofaktur", txtnonota.Text)
         rpt.SetParameterValue("kasir", fmenu.statususer.Text)

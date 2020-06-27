@@ -797,7 +797,7 @@ Public Class flunasutang
         rpt_faktur.SetParameterValue("tanggal", dtpelunasan.Value)
         rpt_faktur.SetParameterValue("metode", cmbbayar.Text)
         rpt_faktur.SetParameterValue("bukti", txtbukti.Text)
-        rpt_faktur.SetParameterValue("totalbayar", totalbayar)
+        'rpt_faktur.SetParameterValue("totalbayar", totalbayar)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
         rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
 

@@ -712,10 +712,10 @@
       <DependentUpon>rptrekappenjualan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Struk_Penjualan.vb">
+    <Compile Include="strukpenjualan.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Struk_Penjualan.rpt</DependentUpon>
+      <DependentUpon>strukpenjualan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="fbarang.designer.vb">
@@ -1325,9 +1325,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekappenjualan.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Struk_Penjualan.rpt">
+    <EmbeddedResource Include="strukpenjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Struk_Penjualan.vb</LastGenOutput>
+      <LastGenOutput>strukpenjualan.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="fbarang.resx">
       <DependentUpon>fbarang.vb</DependentUpon>
