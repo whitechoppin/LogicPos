@@ -1360,23 +1360,6 @@ Public Class fpenjualan
 
     Public Sub cetak_faktur()
         Dim tabel_faktur As New DataTable
-        'ambil data alamat
-        Dim alamat, telp, rekening As String
-
-        Call koneksii()
-        sql = "SELECT * FROM tb_info_perusahaan LIMIT 1"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows Then
-            alamat = dr("alamat")
-            telp = dr("telepon")
-            rekening = dr("rekening")
-        Else
-            alamat = ""
-            telp = ""
-            rekening = ""
-        End If
-        '==================
 
         With tabel_faktur
             .Columns.Add("kode_barang")
@@ -1413,8 +1396,6 @@ Public Class fpenjualan
         rpt_faktur.SetDataSource(tabel_faktur)
 
         rpt_faktur.SetParameterValue("nofaktur", kodepenjualan)
-        rpt_faktur.SetParameterValue("alamatperusahaan", alamat)
-        rpt_faktur.SetParameterValue("teleponperusahaan", telp)
         rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
         rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
         rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
@@ -1435,23 +1416,6 @@ Public Class fpenjualan
 
     Public Sub cetak_surat()
         Dim tabel_faktur As New DataTable
-        'ambil data alamat
-        Dim alamat, telp, rekening As String
-
-        Call koneksii()
-        sql = "SELECT * FROM tb_info_perusahaan LIMIT 1"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows Then
-            alamat = dr("alamat")
-            telp = dr("telepon")
-            rekening = dr("rekening")
-        Else
-            alamat = ""
-            telp = ""
-            rekening = ""
-        End If
-        '==================
 
         With tabel_faktur
             .Columns.Add("kode_barang")
@@ -1488,8 +1452,6 @@ Public Class fpenjualan
         rpt_faktur.SetDataSource(tabel_faktur)
 
         rpt_faktur.SetParameterValue("nofaktur", kodepenjualan)
-        rpt_faktur.SetParameterValue("alamatperusahaan", alamat)
-        rpt_faktur.SetParameterValue("teleponperusahaan", telp)
         rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
         rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
         rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
