@@ -22,6 +22,7 @@ Partial Class fpenjualan
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fpenjualan))
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btncaribarang = New System.Windows.Forms.Button()
@@ -115,7 +116,7 @@ Partial Class fpenjualan
         Me.cmbpembayaran = New System.Windows.Forms.ComboBox()
         Me.txtrekening = New System.Windows.Forms.TextBox()
         Me.btncarikas = New System.Windows.Forms.Button()
-        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.PrintDocument = New System.Drawing.Printing.PrintDocument()
         Me.btnbayarfull = New System.Windows.Forms.Button()
         Me.dtcreated = New System.Windows.Forms.DateTimePicker()
         Me.Label25 = New System.Windows.Forms.Label()
@@ -136,6 +137,7 @@ Partial Class fpenjualan
         Me.txtdiskonnominal = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtdiskonpersen = New System.Windows.Forms.TextBox()
+        Me.ImageList = New System.Windows.Forms.ImageList(Me.components)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritehargasatuan, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1153,7 +1155,7 @@ Partial Class fpenjualan
         Me.btncarikas.TabIndex = 31
         Me.btncarikas.UseVisualStyleBackColor = True
         '
-        'PrintDocument1
+        'PrintDocument
         '
         '
         'btnbayarfull
@@ -1409,6 +1411,12 @@ Partial Class fpenjualan
         Me.txtdiskonpersen.Size = New System.Drawing.Size(42, 24)
         Me.txtdiskonpersen.TabIndex = 56
         '
+        'ImageList
+        '
+        Me.ImageList.ImageStream = CType(resources.GetObject("ImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList.Images.SetKeyName(0, "no-image.jpg")
+        '
         'fpenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -1577,7 +1585,7 @@ Partial Class fpenjualan
     Friend WithEvents cmbpembayaran As ComboBox
     Friend WithEvents txtrekening As TextBox
     Friend WithEvents btncarikas As Button
-    Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents PrintDocument As Printing.PrintDocument
     Friend WithEvents ritehargasatuan As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents btnbayarfull As Button
     Friend WithEvents rbsurat As RadioButton
@@ -1601,4 +1609,5 @@ Partial Class fpenjualan
     Friend WithEvents Label24 As Label
     Friend WithEvents txtdiskonpersen As TextBox
     Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents ImageList As ImageList
 End Class

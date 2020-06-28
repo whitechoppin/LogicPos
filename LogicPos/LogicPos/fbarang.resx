@@ -177,18 +177,18 @@
         ZLxR56gI4QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="OpenFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="OpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="ImageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="ImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>159, 17</value>
   </metadata>
-  <data name="ImageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="ImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABo
-        awcAAk1TRnQBSQFMAwEBAAHQAQAB0AIAAQEBAAEBBP8BIQEACP8BQgFNATYHAAE2AwABKAQAAQQDAAEB
+        awcAAk1TRnQBSQFMAwEBAAHgAQAB4AIAAQEBAAEBBP8BIQEACP8BQgFNATYHAAE2AwABKAQAAQQDAAEB
         AgABAQEAASAHAAEQEQADfwH+A/0B/wP+Af8D/gH/A/oB/wPwAf8D6wH/AeYB5AHjAf8B5gHkAeMB/wHm
         AeQB4wH/AeYB5AHjAf8B5gHkAeMB/wHmAeQB4wH/AeYB5AHjAf8B5gHkAeMB/wHlAeMB4gH/AeUB4wHi
         Af8B5QHjAeIB/wHlAeMB4gH/AeQB4gHhAf8B5AHiAeEB/wHlAeMB4gH/AeUB4wHiAf8B5QHjAeIB/wHl

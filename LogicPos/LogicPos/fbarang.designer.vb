@@ -55,8 +55,8 @@ Partial Class fbarang
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.ImageList = New System.Windows.Forms.ImageList(Me.components)
         Me.txtgbr = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -385,15 +385,15 @@ Partial Class fbarang
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
         '
-        'OpenFileDialog1
+        'OpenFileDialog
         '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        Me.OpenFileDialog.FileName = "OpenFileDialog"
         '
-        'ImageList1
+        'ImageList
         '
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "no-image.jpg")
+        Me.ImageList.ImageStream = CType(resources.GetObject("ImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList.Images.SetKeyName(0, "no-image.jpg")
         '
         'txtgbr
         '
@@ -476,9 +476,9 @@ Partial Class fbarang
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GridControl As DevExpress.XtraGrid.GridControl
     Friend WithEvents btnupload As Button
-    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents OpenFileDialog As OpenFileDialog
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents ImageList As ImageList
     Friend WithEvents Label3 As Label
     Friend WithEvents cmbjenis As ComboBox
     Friend WithEvents btnauto As Button

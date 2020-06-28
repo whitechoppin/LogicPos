@@ -105,7 +105,7 @@ Public Class fbarang
 
         Call isitabel()
         txtgbr.Text = ""
-        PictureBox1.Image = ImageList1.Images(0)
+        PictureBox1.Image = ImageList.Images(0)
         btnupload.Enabled = False
         cnn.Close()
     End Sub
