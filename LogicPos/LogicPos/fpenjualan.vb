@@ -1243,7 +1243,7 @@ Public Class fpenjualan
     Private Sub PrintDocument_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument.PrintPage
         'ambil data alamat
         Dim nama, alamat, telp, rekening As String
-        Dim countnama, countalamat, counttelp, countrekening, center As Integer
+        Dim countnama, countalamat, counttelp, countrekening As Integer
         Dim fotostruk As Byte()
         Dim resized As Image
 
@@ -1257,13 +1257,13 @@ Public Class fpenjualan
             telp = dr("telepon")
             rekening = dr("rekening")
             fotostruk = dr("logo")
-            resized = ResizeGambar(Image.FromStream(New IO.MemoryStream(fotostruk)), New Size(50, 50))
+            resized = ResizeGambar(Image.FromStream(New IO.MemoryStream(fotostruk)), New Size(65, 65))
         Else
             nama = ""
             alamat = ""
             telp = ""
             rekening = ""
-            resized = ResizeGambar(ImageList.Images(0), New Size(50, 50))
+            resized = ResizeGambar(ImageList.Images(0), New Size(65, 65))
         End If
         '==================
 
@@ -1274,40 +1274,43 @@ Public Class fpenjualan
 
         tinggi += 0
         e.Graphics.Flush()
+        e.Graphics.DrawImage(New Bitmap(resized), 10, 0)
 
-        e.Graphics.DrawImage(New Bitmap(resized), 108, 20)
+        tinggi += 0
+        If countnama > 15 Then
+            e.Graphics.DrawString(nama, New System.Drawing.Font("Arial", 10), Brushes.Red, 80, tinggi)
+            tinggi += 17
+        Else
+            e.Graphics.DrawString(nama, New System.Drawing.Font("Arial", 15), Brushes.Red, 80, tinggi)
+            tinggi += 25
+        End If
 
-        tinggi += 70
-        e.Graphics.DrawString("SJT", New System.Drawing.Font("Arial", 16), Brushes.Black, 108, tinggi)
-
-        center = Convert.ToSingle((e.PageBounds.Width / 3.5 - e.Graphics.MeasureString(alamat, New System.Drawing.Font("Arial", 6)).Width) / 2)
-
-        tinggi += 25
-        e.Graphics.DrawString(alamat, New System.Drawing.Font("Arial", 6), Brushes.Black, center + 4, tinggi)
+        e.Graphics.DrawString(alamat, New System.Drawing.Font("Arial", 7), Brushes.Black, 80, tinggi)
         tinggi += 15
-        e.Graphics.DrawString("Makassar", New System.Drawing.Font("Arial", 6), Brushes.Black, 108, tinggi)
+        e.Graphics.DrawString("Telp : " + telp, New System.Drawing.Font("Arial", 7), Brushes.Black, 80, tinggi)
         tinggi += 15
-        e.Graphics.DrawString("Telp 085 363 930 370", New System.Drawing.Font("Arial", 6), Brushes.Black, 80, tinggi)
+        e.Graphics.DrawString("Rek : " + rekening, New System.Drawing.Font("Arial", 7), Brushes.Black, 80, tinggi)
 
-        tinggi += 15
-        e.Graphics.DrawString("No.Nota", New System.Drawing.Font("Arial", 6), Brushes.Black, 8, tinggi)
-        e.Graphics.DrawString(": " + txtnonota.Text, New System.Drawing.Font("Arial", 6), Brushes.Black, 60, tinggi)
+        tinggi += 30
 
-        tinggi += 15
-        e.Graphics.DrawString("Customer", New System.Drawing.Font("Arial", 6), Brushes.Black, 8, tinggi)
-        e.Graphics.DrawString(": " + txtcustomer.Text, New System.Drawing.Font("Arial", 6), Brushes.Black, 60, tinggi)
-
-        tinggi += 15
-        e.Graphics.DrawString("Tanggal", New System.Drawing.Font("Arial", 6), Brushes.Black, 8, tinggi)
-        e.Graphics.DrawString(": " + dtpenjualan.Text, New System.Drawing.Font("Arial", 6), Brushes.Black, 60, tinggi)
+        e.Graphics.DrawString("No.Nota", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString(": " + txtnonota.Text, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
 
         tinggi += 15
-        e.Graphics.DrawString("Kasir", New System.Drawing.Font("Arial", 6), Brushes.Black, 8, tinggi)
-        e.Graphics.DrawString(": " + fmenu.statususer.Text, New System.Drawing.Font("Arial", 6), Brushes.Black, 60, tinggi)
+        e.Graphics.DrawString("Customer", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString(": " + txtcustomer.Text, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
 
         tinggi += 15
-        e.Graphics.DrawString("Sales", New System.Drawing.Font("Arial", 6), Brushes.Black, 8, tinggi)
-        e.Graphics.DrawString(": " + cmbsales.Text, New System.Drawing.Font("Arial", 6), Brushes.Black, 60, tinggi)
+        e.Graphics.DrawString("Tanggal", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString(": " + Format(dtpenjualan.Value, "dd MMMM yyyy HH:mm:ss").ToString, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
+
+        tinggi += 15
+        e.Graphics.DrawString("Kasir", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString(": " + fmenu.statususer.Text, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
+
+        tinggi += 15
+        e.Graphics.DrawString("Sales", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString(": " + cmbsales.Text, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
 
         tinggi += 5
         e.Graphics.DrawString("___________________________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 2, tinggi)
@@ -1353,7 +1356,7 @@ Public Class fpenjualan
         e.Graphics.DrawString(": " + FormatNumber(txttotal.Text, 0), New System.Drawing.Font("Arial", 7), Brushes.Black, 175, tinggi)
 
         tinggi += 15
-        e.Graphics.DrawString("______________________", New System.Drawing.Font("Arial", 7), Brushes.Black, 110, tinggi)
+        e.Graphics.DrawString("________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 110, tinggi)
 
         tinggi += 15
         e.Graphics.DrawString("Bayar ", New System.Drawing.Font("Arial", 7), Brushes.Black, 110, tinggi)
@@ -1365,7 +1368,7 @@ Public Class fpenjualan
 
 
         tinggi += 30
-        e.Graphics.DrawString("Keterangan :", New System.Drawing.Font("Arial", 6), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString("Keterangan :", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
 
         tinggi += 5
         e.Graphics.DrawString("___________________________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 2, tinggi)
