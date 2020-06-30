@@ -80,7 +80,7 @@ Public Class flaporanbarangmasuk
     End Sub
     Sub tabel()
         Call koneksii()
-        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+        If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.kode_barang_masuk=tb_barang_masuk_detail.kode_barang_masuk JOIN tb_supplier ON tb_supplier.kode_supplier = tb_barang_masuk.kode_supplier WHERE DATE(tgl_barang_masuk) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
             sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.kode_barang_masuk=tb_barang_masuk_detail.kode_barang_masuk JOIN tb_supplier ON tb_supplier.kode_supplier = tb_barang_masuk.kode_supplier WHERE tgl_barang_masuk BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
@@ -146,7 +146,7 @@ Public Class flaporanbarangmasuk
 
             Call koneksii()
 
-            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_barang_masuk WHERE DATE(tgl_barang_masuk) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
                 sql = "SELECT * FROM tb_barang_masuk WHERE tgl_barang_masuk BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"

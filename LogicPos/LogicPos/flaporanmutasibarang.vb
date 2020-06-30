@@ -148,7 +148,7 @@ Public Class flaporanmutasibarang
     End Sub
     Sub tabel()
         Call koneksii()
-        If dtawal.Value.Equals(dtakhir.Value) Then
+        If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
             If cmbbarang.Text.Length > 0 Then
                 If cmbstok.Text.Length > 0 Then
                     If cmbgudang.Text.Length > 0 Then

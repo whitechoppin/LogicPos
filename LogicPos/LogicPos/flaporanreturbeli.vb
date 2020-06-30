@@ -72,7 +72,7 @@ Public Class flaporanreturbeli
     End Sub
     Sub tabel()
         Call koneksii()
-        If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+        If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.kode_retur=tb_retur_pembelian_detail.kode_retur  WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
             sql = "SELECT * FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.kode_retur=tb_retur_pembelian_detail.kode_retur  WHERE tgl_returbeli BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
@@ -100,7 +100,7 @@ Public Class flaporanreturbeli
 
             Call koneksii()
 
-            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
                 sql = "SELECT * FROM tb_retur_pembelian WHERE tgl_returbeli BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
@@ -189,7 +189,7 @@ Public Class flaporanreturbeli
 
             Call koneksii()
 
-            If DateTimePicker1.Value.Equals(DateTimePicker2.Value) Then
+            If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
                 sql = "SELECT * FROM tb_retur_pembelian WHERE tgl_returbeli BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
