@@ -592,8 +592,6 @@ Public Class fbarangmasuk
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
-
-
     Sub carigudang()
         Call koneksii()
         sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbgudang.Text & "'"
