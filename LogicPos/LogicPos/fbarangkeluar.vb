@@ -754,8 +754,6 @@ Public Class fbarangkeluar
             .Columns.Add("jenis_barang")
         End With
 
-        MsgBox("1")
-
         Dim baris As DataRow
         For i As Integer = 0 To GridView1.RowCount - 1
             baris = tabel_faktur.NewRow
@@ -767,8 +765,6 @@ Public Class fbarangkeluar
             baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
             tabel_faktur.Rows.Add(baris)
         Next
-
-        MsgBox("2")
 
         rpt_faktur = New fakturbarangkeluar
         rpt_faktur.SetDataSource(tabel_faktur)
