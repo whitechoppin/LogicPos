@@ -649,12 +649,6 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="rptrekapbarangmasuk.vb">
-      <DependentUpon>rptrekapbarangmasuk.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="rptrekapmutasibarang.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1287,10 +1281,6 @@
     <EmbeddedResource Include="rptrekapkas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapkas.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rptrekapbarangmasuk.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptrekapbarangmasuk.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekapmutasibarang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
