@@ -148,11 +148,13 @@ Public Class flaporanmutasibarang
     End Sub
     Sub tabel()
         Call koneksii()
-        If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
-            If cmbbarang.Text.Length > 0 Then
-                If cmbstok.Text.Length > 0 Then
-                    If cmbgudang.Text.Length > 0 Then
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+
+        If cbperiode.Checked = True Then
+            If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
+                If cmbbarang.Text.Length > 0 Then
+                    If cmbstok.Text.Length > 0 Then
+                        If cmbgudang.Text.Length > 0 Then
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang, tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE DATE(tb_pembelian.tgl_pembelian)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
@@ -162,8 +164,8 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_dari_gudang='" & cmbgudang.Text & "') 
                                 ORDER BY tanggal ASC"
-                    Else
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')
+                        Else
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE DATE(tb_pembelian.tgl_pembelian)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')
                                 UNION 
@@ -173,10 +175,10 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')                                 
                                 ORDER BY tanggal ASC"
-                    End If
-                Else
-                    If cmbgudang.Text.Length > 0 Then
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                        End If
+                    Else
+                        If cmbgudang.Text.Length > 0 Then
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE DATE(tb_pembelian.tgl_pembelian)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
@@ -186,8 +188,8 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "' AND kode_dari_gudang='" & cmbgudang.Text & "')                                 
                                 ORDER BY tanggal ASC"
-                    Else
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "')
+                        Else
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE DATE(tb_pembelian.tgl_pembelian)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "')
                                 UNION 
@@ -197,12 +199,12 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND Kode_barang='" & cmbbarang.Text & "')                                 
                                 ORDER BY tanggal ASC"
+                        End If
                     End If
-                End If
-            Else
-                If cmbstok.Text.Length > 0 Then
-                    If cmbgudang.Text.Length > 0 Then
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                Else
+                    If cmbstok.Text.Length > 0 Then
+                        If cmbgudang.Text.Length > 0 Then
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE DATE(tb_pembelian.tgl_pembelian)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
@@ -212,8 +214,8 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_stok='" & cmbstok.Text & "' AND kode_dari_gudang='" & cmbgudang.Text & "')                                 
                                 ORDER BY tanggal ASC"
-                    Else
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_stok='" & cmbstok.Text & "')
+                        Else
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_stok='" & cmbstok.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE DATE(tb_pembelian.tgl_pembelian)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_stok='" & cmbstok.Text & "')
                                 UNION 
@@ -223,10 +225,10 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_stok='" & cmbstok.Text & "')                                 
                                 ORDER BY tanggal ASC"
-                    End If
-                Else
-                    If cmbgudang.Text.Length > 0 Then
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_gudang='" & cmbgudang.Text & "')
+                        End If
+                    Else
+                        If cmbgudang.Text.Length > 0 Then
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE DATE(tb_pembelian.tgl_pembelian)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
@@ -236,8 +238,8 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang)='" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_dari_gudang='" & cmbgudang.Text & "') 
                                 ORDER BY tanggal ASC"
-                    Else
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "')
+                        Else
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE DATE(tb_penjualan.tgl_penjualan)='" & Format(dtawal.Value, "yyyy-MM-dd") & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE DATE(tb_pembelian.tgl_pembelian)='" & Format(dtawal.Value, "yyyy-MM-dd") & "')
                                 UNION 
@@ -247,17 +249,17 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang)='" & Format(dtawal.Value, "yyyy-MM-dd") & "') 
                                 ORDER BY tanggal ASC"
+                        End If
                     End If
                 End If
-            End If
 
-        Else
-            '==========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+            Else
+                '==========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
 
-            If cmbbarang.Text.Length > 0 Then
-                If cmbstok.Text.Length > 0 Then
-                    If cmbgudang.Text.Length > 0 Then
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                If cmbbarang.Text.Length > 0 Then
+                    If cmbstok.Text.Length > 0 Then
+                        If cmbgudang.Text.Length > 0 Then
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
@@ -267,8 +269,8 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "') 
                                 ORDER BY tanggal ASC"
-                    Else
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')
+                        Else
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')
                                 UNION 
@@ -278,10 +280,10 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "') 
                                 ORDER BY tanggal ASC"
-                    End If
-                Else
-                    If cmbgudang.Text.Length > 0 Then
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                        End If
+                    Else
+                        If cmbgudang.Text.Length > 0 Then
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
@@ -291,8 +293,8 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "') 
                                 ORDER BY tanggal ASC"
-                    Else
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "')
+                        Else
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "')
                                 UNION 
@@ -302,12 +304,12 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND Kode_barang='" & cmbbarang.Text & "') 
                                 ORDER BY tanggal ASC"
+                        End If
                     End If
-                End If
-            Else
-                If cmbstok.Text.Length > 0 Then
-                    If cmbgudang.Text.Length > 0 Then
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                Else
+                    If cmbstok.Text.Length > 0 Then
+                        If cmbgudang.Text.Length > 0 Then
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
@@ -317,8 +319,8 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "') 
                                 ORDER BY tanggal ASC"
-                    Else
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_stok='" & cmbstok.Text & "')
+                        Else
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_stok='" & cmbstok.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_stok='" & cmbstok.Text & "')
                                 UNION 
@@ -328,10 +330,10 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_stok='" & cmbstok.Text & "') 
                                 ORDER BY tanggal ASC"
-                    End If
-                Else
-                    If cmbgudang.Text.Length > 0 Then
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_gudang='" & cmbgudang.Text & "')
+                        End If
+                    Else
+                        If cmbgudang.Text.Length > 0 Then
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION 
@@ -339,10 +341,10 @@ Public Class flaporanmutasibarang
                                 UNION 
                                 (SELECT tb_barang_keluar_detail.kode_barang_keluar AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_keluar.kode_gudang AS dari_gudang, tb_barang_keluar.kode_gudang AS ke_gudang , tb_barang_keluar.tgl_barang_keluar AS tanggal FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar_detail.kode_barang_keluar = tb_barang_keluar.kode_barang_keluar WHERE tb_barang_keluar.tgl_barang_keluar BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_gudang='" & cmbgudang.Text & "')
                                 UNION
-                                (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE DATE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_gudang='" & cmbgudang.Text & "') 
+                                (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY AND kode_gudang='" & cmbgudang.Text & "') 
                                 ORDER BY tanggal ASC"
-                    Else
-                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY )
+                        Else
+                            sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY )
                                 UNION 
                                 (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY )
                                 UNION 
@@ -352,11 +354,118 @@ Public Class flaporanmutasibarang
                                 UNION
                                 (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY) 
                                 ORDER BY tanggal ASC"
+                        End If
+                    End If
+                End If
+
+            End If
+        Else
+            '=======================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+            If cmbbarang.Text.Length > 0 Then
+                If cmbstok.Text.Length > 0 Then
+                    If cmbgudang.Text.Length > 0 Then
+                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_barang_masuk_detail.kode_barang_masuk AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_masuk.kode_gudang AS dari_gudang, tb_barang_masuk.kode_gudang AS ke_gudang , tb_barang_masuk.tgl_barang_masuk AS tanggal FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk_detail.kode_barang_masuk = tb_barang_masuk.kode_barang_masuk WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_barang_keluar_detail.kode_barang_keluar AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_keluar.kode_gudang AS dari_gudang, tb_barang_keluar.kode_gudang AS ke_gudang , tb_barang_keluar.tgl_barang_keluar AS tanggal FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar_detail.kode_barang_keluar = tb_barang_keluar.kode_barang_keluar WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION
+                                (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "') 
+                                ORDER BY tanggal ASC"
+                    Else
+                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')
+                                UNION 
+                                (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')
+                                UNION 
+                                (SELECT tb_barang_masuk_detail.kode_barang_masuk AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_masuk.kode_gudang AS dari_gudang, tb_barang_masuk.kode_gudang AS ke_gudang , tb_barang_masuk.tgl_barang_masuk AS tanggal FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk_detail.kode_barang_masuk = tb_barang_masuk.kode_barang_masuk WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')
+                                UNION 
+                                (SELECT tb_barang_keluar_detail.kode_barang_keluar AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_keluar.kode_gudang AS dari_gudang, tb_barang_keluar.kode_gudang AS ke_gudang , tb_barang_keluar.tgl_barang_keluar AS tanggal FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar_detail.kode_barang_keluar = tb_barang_keluar.kode_barang_keluar WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "')
+                                UNION
+                                (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_stok='" & cmbstok.Text & "') 
+                                ORDER BY tanggal ASC"
+                    End If
+                Else
+                    If cmbgudang.Text.Length > 0 Then
+                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_barang_masuk_detail.kode_barang_masuk AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_masuk.kode_gudang AS dari_gudang, tb_barang_masuk.kode_gudang AS ke_gudang , tb_barang_masuk.tgl_barang_masuk AS tanggal FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk_detail.kode_barang_masuk = tb_barang_masuk.kode_barang_masuk WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_barang_keluar_detail.kode_barang_keluar AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_keluar.kode_gudang AS dari_gudang, tb_barang_keluar.kode_gudang AS ke_gudang , tb_barang_keluar.tgl_barang_keluar AS tanggal FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar_detail.kode_barang_keluar = tb_barang_keluar.kode_barang_keluar WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION
+                                (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE Kode_barang='" & cmbbarang.Text & "' AND kode_gudang='" & cmbgudang.Text & "') 
+                                ORDER BY tanggal ASC"
+                    Else
+                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE Kode_barang='" & cmbbarang.Text & "')
+                                UNION 
+                                (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE Kode_barang='" & cmbbarang.Text & "')
+                                UNION 
+                                (SELECT tb_barang_masuk_detail.kode_barang_masuk AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_masuk.kode_gudang AS dari_gudang, tb_barang_masuk.kode_gudang AS ke_gudang , tb_barang_masuk.tgl_barang_masuk AS tanggal FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk_detail.kode_barang_masuk = tb_barang_masuk.kode_barang_masuk WHERE Kode_barang='" & cmbbarang.Text & "')
+                                UNION 
+                                (SELECT tb_barang_keluar_detail.kode_barang_keluar AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_keluar.kode_gudang AS dari_gudang, tb_barang_keluar.kode_gudang AS ke_gudang , tb_barang_keluar.tgl_barang_keluar AS tanggal FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar_detail.kode_barang_keluar = tb_barang_keluar.kode_barang_keluar WHERE Kode_barang='" & cmbbarang.Text & "')
+                                UNION
+                                (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE Kode_barang='" & cmbbarang.Text & "') 
+                                ORDER BY tanggal ASC"
+                    End If
+                End If
+            Else
+                If cmbstok.Text.Length > 0 Then
+                    If cmbgudang.Text.Length > 0 Then
+                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_barang_masuk_detail.kode_barang_masuk AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_masuk.kode_gudang AS dari_gudang, tb_barang_masuk.kode_gudang AS ke_gudang , tb_barang_masuk.tgl_barang_masuk AS tanggal FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk_detail.kode_barang_masuk = tb_barang_masuk.kode_barang_masuk WHERE kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_barang_keluar_detail.kode_barang_keluar AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_keluar.kode_gudang AS dari_gudang, tb_barang_keluar.kode_gudang AS ke_gudang , tb_barang_keluar.tgl_barang_keluar AS tanggal FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar_detail.kode_barang_keluar = tb_barang_keluar.kode_barang_keluar WHERE kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "')
+                                UNION
+                                (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE kode_stok='" & cmbstok.Text & "' AND kode_gudang='" & cmbgudang.Text & "') 
+                                ORDER BY tanggal ASC"
+                    Else
+                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE kode_stok='" & cmbstok.Text & "')
+                                UNION 
+                                (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE kode_stok='" & cmbstok.Text & "')
+                                UNION 
+                                (SELECT tb_barang_masuk_detail.kode_barang_masuk AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_masuk.kode_gudang AS dari_gudang, tb_barang_masuk.kode_gudang AS ke_gudang , tb_barang_masuk.tgl_barang_masuk AS tanggal FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk_detail.kode_barang_masuk = tb_barang_masuk.kode_barang_masuk WHERE kode_stok='" & cmbstok.Text & "')
+                                UNION 
+                                (SELECT tb_barang_keluar_detail.kode_barang_keluar AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_keluar.kode_gudang AS dari_gudang, tb_barang_keluar.kode_gudang AS ke_gudang , tb_barang_keluar.tgl_barang_keluar AS tanggal FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar_detail.kode_barang_keluar = tb_barang_keluar.kode_barang_keluar WHERE kode_stok='" & cmbstok.Text & "')
+                                UNION
+                                (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE kode_stok='" & cmbstok.Text & "') 
+                                ORDER BY tanggal ASC"
+                    End If
+                Else
+                    If cmbgudang.Text.Length > 0 Then
+                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan WHERE kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian WHERE kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_barang_masuk_detail.kode_barang_masuk AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_masuk.kode_gudang AS dari_gudang, tb_barang_masuk.kode_gudang AS ke_gudang , tb_barang_masuk.tgl_barang_masuk AS tanggal FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk_detail.kode_barang_masuk = tb_barang_masuk.kode_barang_masuk WHERE kode_gudang='" & cmbgudang.Text & "')
+                                UNION 
+                                (SELECT tb_barang_keluar_detail.kode_barang_keluar AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_keluar.kode_gudang AS dari_gudang, tb_barang_keluar.kode_gudang AS ke_gudang , tb_barang_keluar.tgl_barang_keluar AS tanggal FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar_detail.kode_barang_keluar = tb_barang_keluar.kode_barang_keluar WHERE kode_gudang='" & cmbgudang.Text & "')
+                                UNION
+                                (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang WHERE kode_gudang='" & cmbgudang.Text & "') 
+                                ORDER BY tanggal ASC"
+                    Else
+                        sql = "(SELECT tb_penjualan.kode_penjualan AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_penjualan.kode_gudang AS dari_gudang, tb_penjualan.kode_gudang AS ke_gudang , tb_penjualan.tgl_penjualan AS tanggal FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan_detail.kode_penjualan = tb_penjualan.kode_penjualan )
+                                UNION 
+                                (SELECT tb_pembelian.kode_pembelian AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_pembelian.kode_gudang AS dari_gudang, tb_pembelian.kode_gudang AS ke_gudang , tb_pembelian.tgl_pembelian AS tanggal FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian_detail.kode_pembelian = tb_pembelian.kode_pembelian )
+                                UNION 
+                                (SELECT tb_barang_masuk_detail.kode_barang_masuk AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_masuk.kode_gudang AS dari_gudang, tb_barang_masuk.kode_gudang AS ke_gudang , tb_barang_masuk.tgl_barang_masuk AS tanggal FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk_detail.kode_barang_masuk = tb_barang_masuk.kode_barang_masuk )
+                                UNION 
+                                (SELECT tb_barang_keluar_detail.kode_barang_keluar AS kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_barang_keluar.kode_gudang AS dari_gudang, tb_barang_keluar.kode_gudang AS ke_gudang , tb_barang_keluar.tgl_barang_keluar AS tanggal FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar_detail.kode_barang_keluar = tb_barang_keluar.kode_barang_keluar )
+                                UNION
+                                (SELECT tb_transfer_barang_detail.kode_transfer_barang as kode_tabel, kode_barang, kode_stok, nama_barang, qty, tb_transfer_barang.kode_dari_gudang as dari_gudang, tb_transfer_barang.kode_ke_gudang as ke_gudang, tb_transfer_barang.tanggal_transfer_barang as tanggal FROM tb_transfer_barang_detail JOIN tb_transfer_barang ON tb_transfer_barang_detail.kode_transfer_barang = tb_transfer_barang.kode_transfer_barang ) 
+                                ORDER BY tanggal ASC"
                     End If
                 End If
             End If
 
         End If
+
+
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -456,7 +565,8 @@ Public Class flaporanmutasibarang
 
         rptmutasibarang = New rptrekapmutasibarang
         rptmutasibarang.SetDataSource(tabel_mutasi_barang)
-
+        rptmutasibarang.SetParameterValue("tglawal", dtawal.Text)
+        rptmutasibarang.SetParameterValue("tglakhir", dtakhir.Text)
         flapmutasibarang.CrystalReportViewer1.ReportSource = rptmutasibarang
         flapmutasibarang.ShowDialog()
         flapmutasibarang.WindowState = FormWindowState.Maximized
@@ -472,6 +582,16 @@ Public Class flaporanmutasibarang
 
     Private Sub GridControl1_KeyUp(sender As Object, e As KeyEventArgs) Handles GridControl1.KeyUp
         Call ambil_gbr()
+    End Sub
+
+    Private Sub cbperiode_CheckedChanged(sender As Object, e As EventArgs) Handles cbperiode.CheckedChanged
+        If cbperiode.Checked = True Then
+            dtawal.Enabled = True
+            dtakhir.Enabled = True
+        Else
+            dtawal.Enabled = False
+            dtakhir.Enabled = False
+        End If
     End Sub
 
     Private Sub flaporanmutasibarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

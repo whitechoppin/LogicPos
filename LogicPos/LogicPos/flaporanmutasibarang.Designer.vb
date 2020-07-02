@@ -35,6 +35,7 @@ Partial Class flaporanmutasibarang
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -46,12 +47,11 @@ Partial Class flaporanmutasibarang
         Me.btncarigudang = New System.Windows.Forms.Button()
         Me.cmbgudang = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.btncaristok = New System.Windows.Forms.Button()
         Me.cmbstok = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtgbr = New System.Windows.Forms.Label()
-        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cbperiode = New System.Windows.Forms.CheckBox()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -184,6 +184,17 @@ Partial Class flaporanmutasibarang
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
         '
+        'GridColumn8
+        '
+        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceCell.Options.UseFont = True
+        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn8.Caption = "GridColumn8"
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 7
+        '
         'PictureBox1
         '
         Me.PictureBox1.Location = New System.Drawing.Point(1157, 358)
@@ -299,17 +310,6 @@ Partial Class flaporanmutasibarang
         Me.Label3.TabIndex = 65
         Me.Label3.Text = "Dari Gudang"
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(1157, 125)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(66, 18)
-        Me.Label5.TabIndex = 68
-        Me.Label5.Text = "Periode"
-        '
         'btncaristok
         '
         Me.btncaristok.BackgroundImage = CType(resources.GetObject("btncaristok.BackgroundImage"), System.Drawing.Image)
@@ -358,16 +358,17 @@ Partial Class flaporanmutasibarang
         Me.txtgbr.TabIndex = 72
         Me.txtgbr.Text = "Nama Gambar"
         '
-        'GridColumn8
+        'cbperiode
         '
-        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn8.AppearanceCell.Options.UseFont = True
-        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn8.Caption = "GridColumn8"
-        Me.GridColumn8.Name = "GridColumn8"
-        Me.GridColumn8.Visible = True
-        Me.GridColumn8.VisibleIndex = 7
+        Me.cbperiode.AutoSize = True
+        Me.cbperiode.Checked = True
+        Me.cbperiode.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbperiode.Location = New System.Drawing.Point(1157, 120)
+        Me.cbperiode.Name = "cbperiode"
+        Me.cbperiode.Size = New System.Drawing.Size(78, 22)
+        Me.cbperiode.TabIndex = 73
+        Me.cbperiode.Text = "Periode"
+        Me.cbperiode.UseVisualStyleBackColor = True
         '
         'flaporanmutasibarang
         '
@@ -375,6 +376,7 @@ Partial Class flaporanmutasibarang
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1474, 627)
+        Me.Controls.Add(Me.cbperiode)
         Me.Controls.Add(Me.txtgbr)
         Me.Controls.Add(Me.btncaristok)
         Me.Controls.Add(Me.cmbstok)
@@ -383,7 +385,6 @@ Partial Class flaporanmutasibarang
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnexcel)
         Me.Controls.Add(Me.btnrekap)
-        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btncarigudang)
         Me.Controls.Add(Me.cmbgudang)
         Me.Controls.Add(Me.Label3)
@@ -427,7 +428,6 @@ Partial Class flaporanmutasibarang
     Friend WithEvents btncarigudang As Button
     Friend WithEvents cmbgudang As ComboBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label5 As Label
     Friend WithEvents btncaristok As Button
     Friend WithEvents cmbstok As ComboBox
     Friend WithEvents Label6 As Label
@@ -435,4 +435,5 @@ Partial Class flaporanmutasibarang
     Friend WithEvents txtgbr As Label
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cbperiode As CheckBox
 End Class
