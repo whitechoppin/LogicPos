@@ -141,7 +141,7 @@ Public Class flaporanlunaspiutang
             dr = cmmd.ExecuteReader
 
             If dr.HasRows Then
-                rptrekap = New rptrekappiutang
+                rptrekap = New rptrekaplunaspiutang
 
                 awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
                 awalPFDs = rptrekap.DataDefinition.ParameterFields
@@ -161,7 +161,7 @@ Public Class flaporanlunaspiutang
                 flaplunaspiutang.ShowDialog()
                 flaplunaspiutang.WindowState = FormWindowState.Maximized
 
-                Call historysave("Merekap Detail Laporan Pelunasan Piutang", "N/A")
+                Call historysave("Merekap Laporan Pelunasan Piutang", "N/A")
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If

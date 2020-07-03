@@ -643,6 +643,18 @@
       <DependentUpon>rptperfakturjual.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptrekapdetaillunaspiutang.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekapdetaillunaspiutang.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptrekapdetaillunasutang.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekapdetaillunasutang.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptrekapkas.vb">
       <DependentUpon>rptrekapkas.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -691,8 +703,8 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="rptrekappiutang.vb">
-      <DependentUpon>rptrekappiutang.rpt</DependentUpon>
+    <Compile Include="rptrekaplunaspiutang.vb">
+      <DependentUpon>rptrekaplunaspiutang.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -703,8 +715,8 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="rptrekaputang.vb">
-      <DependentUpon>rptrekaputang.rpt</DependentUpon>
+    <Compile Include="rptrekaplunasutang.vb">
+      <DependentUpon>rptrekaplunasutang.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -1278,6 +1290,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptperfakturjual.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="rptrekapdetaillunaspiutang.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekapdetaillunaspiutang.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekapdetaillunasutang.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekapdetaillunasutang.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptrekapkas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapkas.vb</LastGenOutput>
@@ -1310,17 +1330,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapkasmasuk.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="rptrekappiutang.rpt">
+    <EmbeddedResource Include="rptrekaplunaspiutang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptrekappiutang.vb</LastGenOutput>
+      <LastGenOutput>rptrekaplunaspiutang.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekapkaskeluar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapkaskeluar.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="rptrekaputang.rpt">
+    <EmbeddedResource Include="rptrekaplunasutang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptrekaputang.vb</LastGenOutput>
+      <LastGenOutput>rptrekaplunasutang.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekappembelian.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
