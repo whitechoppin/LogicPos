@@ -274,7 +274,7 @@ Public Class fkaskeluar
         kodekeluar = autonumber()
 
         Call koneksii()
-        sql = "INSERT INTO tb_kas_keluar (kode_kas_keluar, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodekeluar & "','" & cmbkas.Text & "','" & cmbsales.Text & "','KEluar', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldokeluar & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+        sql = "INSERT INTO tb_kas_keluar (kode_kas_keluar, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodekeluar & "','" & cmbkas.Text & "','" & cmbsales.Text & "','Keluar', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldokeluar & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
@@ -282,7 +282,7 @@ Public Class fkaskeluar
 
         If kodekas IsNot "" Then
             Call koneksii()
-            sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_kas_keluar, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekas & "','" & kodekeluar & "', 'MASUK','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas Keluar Nomor " & kodekeluar & "','" & saldokeluar & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+            sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_kas_keluar, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekas & "','" & kodekeluar & "', 'KELUAR','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas Keluar Nomor " & kodekeluar & "','" & saldokeluar & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         End If
