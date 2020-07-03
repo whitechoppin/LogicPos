@@ -558,7 +558,7 @@ Public Class flaporanmutasibarang
             baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
             baris("qty") = GridView1.GetRowCellValue(i, "qty")
             baris("dari_gudang") = GridView1.GetRowCellValue(i, "dari_gudang")
-            baris("ke_gudang") = GridView1.GetRowCellValue(i, "qty")
+            baris("ke_gudang") = GridView1.GetRowCellValue(i, "ke_gudang")
             baris("tanggal") = GridView1.GetRowCellValue(i, "tanggal")
             tabel_mutasi_barang.Rows.Add(baris)
         Next
