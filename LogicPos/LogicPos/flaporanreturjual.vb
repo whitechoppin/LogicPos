@@ -116,7 +116,7 @@ Public Class flaporanreturjual
             dr = cmmd.ExecuteReader
 
             If dr.HasRows Then
-                rptrekap = New rptrekapreturjual
+                rptrekap = New rptrekapreturpenjualan
 
                 awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
                 awalPFDs = rptrekap.DataDefinition.ParameterFields
