@@ -8,6 +8,28 @@ Public Class flaporanbarangmasuk
     Dim exportstatus, printstatus As Boolean
     Public isi As String
     Public isi2 As String
+
+    '==== autosize form ====
+    Dim CuRWidth As Integer = Me.Width
+    Dim CuRHeight As Integer = Me.Height
+
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
+        Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
+
+        For Each ctrl As Control In Controls
+            ctrl.Width += ctrl.Width * RatioWidth
+            ctrl.Left += ctrl.Left * RatioWidth
+            ctrl.Top += ctrl.Top * RatioHeight
+            ctrl.Height += ctrl.Height * RatioHeight
+        Next
+
+        CuRHeight = Me.Height
+        CuRWidth = Me.Width
+    End Sub
+
+    '=======================
+
     Private Sub flaporanpembelian_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
@@ -19,7 +41,7 @@ Public Class flaporanbarangmasuk
         With GridView1
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
-            .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
+            .Columns("qty").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "qty", "{0:n0}")
         End With
 
         Select Case kodeakses
@@ -48,32 +70,17 @@ Public Class flaporanbarangmasuk
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn4.Caption = "Item"
+        GridColumn4.Caption = "Nama Barang"
         GridColumn4.FieldName = "nama_barang"
 
-        GridColumn5.Caption = "Banyak"
+        GridColumn5.Caption = "Qty"
         GridColumn5.FieldName = "qty"
 
         GridColumn6.Caption = "Satuan"
         GridColumn6.FieldName = "satuan_barang"
 
-        GridColumn7.Caption = "Harga Beli"
-        GridColumn7.FieldName = "harga_beli"
-        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn7.DisplayFormat.FormatString = "##,##0"
-        GridColumn7.Visible = False
-
-        GridColumn8.Caption = "Subtotal"
-        GridColumn8.FieldName = "subtotal"
-        GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn8.DisplayFormat.FormatString = "##,##0"
-        GridColumn8.Visible = False
-
-        GridColumn9.Caption = "Kasir Penerima"
-        GridColumn9.FieldName = "kode_user"
-
-        GridColumn10.Caption = "Keterangan"
-        GridColumn10.FieldName = "Keterangan_barang_masuk"
+        GridColumn7.Caption = "User"
+        GridColumn7.FieldName = "kode_user"
 
         GridControl1.Visible = True
     End Sub
@@ -84,6 +91,7 @@ Public Class flaporanbarangmasuk
         Else
             sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.kode_barang_masuk=tb_barang_masuk_detail.kode_barang_masuk JOIN tb_supplier ON tb_supplier.kode_supplier = tb_barang_masuk.kode_supplier WHERE tgl_barang_masuk BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
         End If
+
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
