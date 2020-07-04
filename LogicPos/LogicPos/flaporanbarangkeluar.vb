@@ -77,11 +77,14 @@ Public Class flaporanbarangkeluar
         GridColumn9.Visible = False
 
         GridColumn10.Visible = False
+
         GridColumn11.Caption = "Kasir"
         GridColumn11.FieldName = "kode_user"
+
         GridColumn12.Caption = "Metode Bayar"
         GridColumn12.FieldName = "metode_pembayaran"
         GridColumn12.Visible = False
+
         GridControl1.Visible = True
     End Sub
     Sub tabel()

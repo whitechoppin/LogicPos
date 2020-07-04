@@ -22,7 +22,25 @@ Partial Class ftokosejati
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.btnsend = New System.Windows.Forms.Button()
+        Me.txtemailto = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
+        '
+        'btnsend
+        '
+        Me.btnsend.Location = New System.Drawing.Point(163, 126)
+        Me.btnsend.Name = "btnsend"
+        Me.btnsend.Size = New System.Drawing.Size(75, 23)
+        Me.btnsend.TabIndex = 0
+        Me.btnsend.Text = "Send Email"
+        Me.btnsend.UseVisualStyleBackColor = True
+        '
+        'txtemailto
+        '
+        Me.txtemailto.Location = New System.Drawing.Point(276, 126)
+        Me.txtemailto.Name = "txtemailto"
+        Me.txtemailto.Size = New System.Drawing.Size(100, 20)
+        Me.txtemailto.TabIndex = 1
         '
         'ftokosejati
         '
@@ -30,10 +48,16 @@ Partial Class ftokosejati
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(940, 438)
+        Me.Controls.Add(Me.txtemailto)
+        Me.Controls.Add(Me.btnsend)
         Me.KeyPreview = True
         Me.Name = "ftokosejati"
         Me.Text = "ftokosejati"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
+
+    Friend WithEvents btnsend As Button
+    Friend WithEvents txtemailto As TextBox
 End Class

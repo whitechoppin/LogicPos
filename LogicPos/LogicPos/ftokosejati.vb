@@ -1,4 +1,6 @@
-﻿Public Class ftokosejati
+﻿Imports System.Net.Mail
+
+Public Class ftokosejati
     Private Sub ftokosejati_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
     End Sub
@@ -29,4 +31,28 @@
 
     End Sub
 
+    Private Sub btnsend_Click(sender As Object, e As EventArgs) Handles btnsend.Click
+        Try
+
+            Dim SmtpServer As New SmtpClient()
+            Dim mail As New MailMessage()
+
+            SmtpServer.UseDefaultCredentials = False
+            SmtpServer.Credentials = New Net.NetworkCredential("logicpos@sjtsupplies.com", "17agustus1945")
+
+            SmtpServer.Port = 587
+            SmtpServer.Host = "mail.sjtsupplies.com"
+            SmtpServer.EnableSsl = True
+            SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network
+
+            mail = New MailMessage()
+            mail.From = New MailAddress("logicpos@sjtsupplies.com")
+            mail.To.Add(txtemailto.Text)
+            mail.Subject = "Testing Email From Logic Pos"
+            mail.Body = "will give you data or document"
+            SmtpServer.Send(mail)
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
 End Class

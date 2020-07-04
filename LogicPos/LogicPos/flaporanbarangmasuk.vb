@@ -20,7 +20,6 @@ Public Class flaporanbarangmasuk
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
-            ' .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
         End With
 
         Select Case kodeakses
