@@ -41,6 +41,7 @@ Partial Class flaporanlunasutang
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.btndetailrekap = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,6 +87,7 @@ Partial Class flaporanlunasutang
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.btndetailrekap)
         Me.GroupBox4.Controls.Add(Me.btnrekap)
         Me.GroupBox4.Controls.Add(Me.btnexcel)
         Me.GroupBox4.Controls.Add(Me.btntabel)
@@ -205,6 +207,15 @@ Partial Class flaporanlunasutang
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Pelunasan Utang"
         '
+        'btndetailrekap
+        '
+        Me.btndetailrekap.Location = New System.Drawing.Point(380, 17)
+        Me.btndetailrekap.Name = "btndetailrekap"
+        Me.btndetailrekap.Size = New System.Drawing.Size(180, 50)
+        Me.btndetailrekap.TabIndex = 20
+        Me.btndetailrekap.Text = "Rekap Detail Laporan"
+        Me.btndetailrekap.UseVisualStyleBackColor = True
+        '
         'flaporanlunasutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -246,4 +257,5 @@ Partial Class flaporanlunasutang
     Friend WithEvents btnexcel As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents btnrekap As Button
+    Friend WithEvents btndetailrekap As Button
 End Class
