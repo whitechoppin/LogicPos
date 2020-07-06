@@ -22,7 +22,6 @@ Partial Class flaporanmodalbarang
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btnrekap = New System.Windows.Forms.Button()
@@ -35,61 +34,51 @@ Partial Class flaporanmodalbarang
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.btnrefresh)
-        Me.GroupBox4.Controls.Add(Me.btnexcel)
-        Me.GroupBox4.Controls.Add(Me.btnrekap)
-        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(992, 43)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(282, 196)
-        Me.GroupBox4.TabIndex = 23
-        Me.GroupBox4.TabStop = False
-        '
         'btnrefresh
         '
-        Me.btnrefresh.Location = New System.Drawing.Point(9, 23)
+        Me.btnrefresh.Location = New System.Drawing.Point(941, 73)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnrefresh.Name = "btnrefresh"
-        Me.btnrefresh.Size = New System.Drawing.Size(267, 50)
+        Me.btnrefresh.Size = New System.Drawing.Size(293, 47)
         Me.btnrefresh.TabIndex = 18
         Me.btnrefresh.Text = "Refresh"
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(9, 79)
+        Me.btnexcel.Location = New System.Drawing.Point(941, 128)
+        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(267, 50)
+        Me.btnexcel.Size = New System.Drawing.Size(293, 47)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(9, 135)
+        Me.btnrekap.Location = New System.Drawing.Point(941, 183)
+        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(267, 50)
+        Me.btnrekap.Size = New System.Drawing.Size(293, 47)
         Me.btnrekap.TabIndex = 10
         Me.btnrekap.Text = "Report"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(15, 52)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Location = New System.Drawing.Point(19, 72)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(971, 515)
+        Me.GridControl1.Size = New System.Drawing.Size(914, 411)
         Me.GridControl1.TabIndex = 22
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -178,20 +167,12 @@ Partial Class flaporanmodalbarang
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(992, 245)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(282, 240)
-        Me.GroupBox1.TabIndex = 21
-        Me.GroupBox1.TabStop = False
-        '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(7, 14)
+        Me.PictureBox1.Location = New System.Drawing.Point(941, 253)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(269, 219)
+        Me.PictureBox1.Size = New System.Drawing.Size(293, 230)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -199,7 +180,8 @@ Partial Class flaporanmodalbarang
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Location = New System.Drawing.Point(13, 9)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(307, 31)
         Me.Label1.TabIndex = 20
@@ -207,27 +189,27 @@ Partial Class flaporanmodalbarang
         '
         'flaporanmodalbarang
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1292, 590)
-        Me.Controls.Add(Me.GroupBox4)
+        Me.ClientSize = New System.Drawing.Size(1253, 501)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.btnrefresh)
+        Me.Controls.Add(Me.btnexcel)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.btnrekap)
         Me.Controls.Add(Me.Label1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "flaporanmodalbarang"
         Me.Text = "Laporan Modal Barang"
-        Me.GroupBox4.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents btnrefresh As Button
     Friend WithEvents btnexcel As Button
     Friend WithEvents btnrekap As Button
@@ -240,7 +222,6 @@ Partial Class flaporanmodalbarang
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
 End Class

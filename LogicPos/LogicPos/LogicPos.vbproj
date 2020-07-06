@@ -667,6 +667,18 @@
       <DependentUpon>rptrekapmutasibarang.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptrekappembelianbarang.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekappembelianbarang.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptrekappenjualanbarang.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekappenjualanbarang.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptrekappenjualanpajak.vb">
       <DependentUpon>rptrekappenjualanpajak.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1305,6 +1317,14 @@
     <EmbeddedResource Include="rptrekapmutasibarang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapmutasibarang.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekappembelianbarang.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekappembelianbarang.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekappenjualanbarang.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekappenjualanbarang.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekappenjualanpajak.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

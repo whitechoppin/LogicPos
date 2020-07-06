@@ -32,22 +32,18 @@ Partial Class flaporanstokbarang
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnshow = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LabelHarga = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btnrekap = New System.Windows.Forms.Button()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'GridView1
@@ -137,34 +133,24 @@ Partial Class flaporanstokbarang
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(11, 68)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
+        Me.GridControl1.Location = New System.Drawing.Point(13, 72)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(971, 515)
+        Me.GridControl1.Size = New System.Drawing.Size(942, 457)
         Me.GridControl1.TabIndex = 18
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.btnshow)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.LabelHarga)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(988, 261)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(282, 322)
-        Me.GroupBox1.TabIndex = 17
-        Me.GroupBox1.TabStop = False
         '
         'btnshow
         '
         Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
         Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnshow.ImageIndex = 0
-        Me.btnshow.Location = New System.Drawing.Point(111, 239)
+        Me.btnshow.Location = New System.Drawing.Point(1216, 491)
+        Me.btnshow.Margin = New System.Windows.Forms.Padding(4)
         Me.btnshow.Name = "btnshow"
-        Me.btnshow.Size = New System.Drawing.Size(29, 22)
+        Me.btnshow.Size = New System.Drawing.Size(30, 27)
         Me.btnshow.TabIndex = 26
         Me.btnshow.UseVisualStyleBackColor = True
         '
@@ -172,7 +158,8 @@ Partial Class flaporanstokbarang
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(61, 276)
+        Me.Label3.Location = New System.Drawing.Point(1077, 497)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(33, 17)
         Me.Label3.TabIndex = 3
@@ -182,7 +169,8 @@ Partial Class flaporanstokbarang
         '
         Me.LabelHarga.AutoSize = True
         Me.LabelHarga.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelHarga.Location = New System.Drawing.Point(100, 276)
+        Me.LabelHarga.Location = New System.Drawing.Point(1118, 497)
+        Me.LabelHarga.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelHarga.Name = "LabelHarga"
         Me.LabelHarga.Size = New System.Drawing.Size(17, 17)
         Me.LabelHarga.TabIndex = 2
@@ -192,7 +180,8 @@ Partial Class flaporanstokbarang
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 241)
+        Me.Label2.Location = New System.Drawing.Point(970, 497)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(99, 16)
         Me.Label2.TabIndex = 1
@@ -200,9 +189,10 @@ Partial Class flaporanstokbarang
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(7, 14)
+        Me.PictureBox1.Location = New System.Drawing.Point(963, 247)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(269, 219)
+        Me.PictureBox1.Size = New System.Drawing.Size(283, 231)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -210,70 +200,67 @@ Partial Class flaporanstokbarang
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(8, 25)
+        Me.Label1.Location = New System.Drawing.Point(18, 12)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(288, 31)
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Laporan Stok Barang"
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.btnrefresh)
-        Me.GroupBox4.Controls.Add(Me.btnexcel)
-        Me.GroupBox4.Controls.Add(Me.btnrekap)
-        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(988, 59)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(282, 196)
-        Me.GroupBox4.TabIndex = 19
-        Me.GroupBox4.TabStop = False
-        '
         'btnrefresh
         '
-        Me.btnrefresh.Location = New System.Drawing.Point(9, 23)
+        Me.btnrefresh.Location = New System.Drawing.Point(963, 72)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
-        Me.btnrefresh.Size = New System.Drawing.Size(267, 50)
+        Me.btnrefresh.Size = New System.Drawing.Size(283, 45)
         Me.btnrefresh.TabIndex = 18
         Me.btnrefresh.Text = "Refresh Tabel"
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(9, 79)
+        Me.btnexcel.Location = New System.Drawing.Point(963, 125)
+        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(267, 50)
+        Me.btnexcel.Size = New System.Drawing.Size(283, 45)
         Me.btnexcel.TabIndex = 17
-        Me.btnexcel.Text = "Convert Excel"
+        Me.btnexcel.Text = "Export Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(9, 135)
+        Me.btnrekap.Location = New System.Drawing.Point(963, 178)
+        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(267, 50)
+        Me.btnrekap.Size = New System.Drawing.Size(283, 45)
         Me.btnrekap.TabIndex = 10
         Me.btnrekap.Text = "Report"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
         'flaporanstokbarang
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1279, 595)
-        Me.Controls.Add(Me.GroupBox4)
+        Me.ClientSize = New System.Drawing.Size(1265, 551)
+        Me.Controls.Add(Me.btnrefresh)
+        Me.Controls.Add(Me.btnshow)
+        Me.Controls.Add(Me.btnexcel)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.btnrekap)
+        Me.Controls.Add(Me.LabelHarga)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "flaporanstokbarang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Laporan Stok Barang"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox4.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -287,12 +274,10 @@ Partial Class flaporanstokbarang
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label3 As Label
     Friend WithEvents LabelHarga As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents btnexcel As Button
     Friend WithEvents btnrekap As Button
     Friend WithEvents PictureBox1 As PictureBox

@@ -32,10 +32,8 @@ Partial Class flaporanpricelist
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btnrekap = New System.Windows.Forms.Button()
@@ -48,9 +46,7 @@ Partial Class flaporanpricelist
         Me.btncaricustomer = New System.Windows.Forms.Button()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'GridView1
@@ -140,27 +136,21 @@ Partial Class flaporanpricelist
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(11, 82)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
+        Me.GridControl1.Location = New System.Drawing.Point(16, 57)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(971, 411)
+        Me.GridControl1.Size = New System.Drawing.Size(1035, 518)
         Me.GridControl1.TabIndex = 18
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(988, 246)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(282, 247)
-        Me.GroupBox1.TabIndex = 17
-        Me.GroupBox1.TabStop = False
-        '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(7, 14)
+        Me.PictureBox1.Location = New System.Drawing.Point(1068, 369)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(269, 219)
+        Me.PictureBox1.Size = New System.Drawing.Size(258, 203)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -168,47 +158,39 @@ Partial Class flaporanpricelist
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(10, 9)
+        Me.Label1.Location = New System.Drawing.Point(13, 9)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(334, 31)
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Laporan Pricelist Barang"
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.btnrefresh)
-        Me.GroupBox4.Controls.Add(Me.btnexcel)
-        Me.GroupBox4.Controls.Add(Me.btnrekap)
-        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(988, 39)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(282, 200)
-        Me.GroupBox4.TabIndex = 19
-        Me.GroupBox4.TabStop = False
-        '
         'btnrefresh
         '
-        Me.btnrefresh.Location = New System.Drawing.Point(9, 23)
+        Me.btnrefresh.Location = New System.Drawing.Point(1068, 227)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
-        Me.btnrefresh.Size = New System.Drawing.Size(267, 50)
+        Me.btnrefresh.Size = New System.Drawing.Size(258, 37)
         Me.btnrefresh.TabIndex = 18
         Me.btnrefresh.Text = "Refresh"
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(9, 79)
+        Me.btnexcel.Location = New System.Drawing.Point(1068, 272)
+        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(267, 50)
+        Me.btnexcel.Size = New System.Drawing.Size(258, 37)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(9, 135)
+        Me.btnrekap.Location = New System.Drawing.Point(1068, 317)
+        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(267, 50)
+        Me.btnrekap.Size = New System.Drawing.Size(258, 37)
         Me.btnrekap.TabIndex = 10
         Me.btnrekap.Text = "Report"
         Me.btnrekap.UseVisualStyleBackColor = True
@@ -217,7 +199,8 @@ Partial Class flaporanpricelist
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(14, 51)
+        Me.Label4.Location = New System.Drawing.Point(1134, 57)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(119, 20)
         Me.Label4.TabIndex = 20
@@ -227,92 +210,94 @@ Partial Class flaporanpricelist
         '
         Me.cmbcustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbcustomer.FormattingEnabled = True
-        Me.cmbcustomer.Location = New System.Drawing.Point(140, 49)
-        Me.cmbcustomer.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbcustomer.Location = New System.Drawing.Point(1068, 83)
+        Me.cmbcustomer.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbcustomer.MaxLength = 99
         Me.cmbcustomer.Name = "cmbcustomer"
-        Me.cmbcustomer.Size = New System.Drawing.Size(213, 26)
+        Me.cmbcustomer.Size = New System.Drawing.Size(214, 26)
         Me.cmbcustomer.TabIndex = 22
         '
         'txttelp
         '
         Me.txttelp.Enabled = False
         Me.txttelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txttelp.Location = New System.Drawing.Point(758, 50)
-        Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
+        Me.txttelp.Location = New System.Drawing.Point(1068, 193)
+        Me.txttelp.Margin = New System.Windows.Forms.Padding(6)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(222, 24)
+        Me.txttelp.Size = New System.Drawing.Size(258, 24)
         Me.txttelp.TabIndex = 60
         '
         'Label22
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label22.Location = New System.Drawing.Point(692, 53)
-        Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label22.Location = New System.Drawing.Point(1135, 169)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(63, 18)
+        Me.Label22.Size = New System.Drawing.Size(131, 18)
         Me.Label22.TabIndex = 59
-        Me.Label22.Text = "Tlp Cust"
+        Me.Label22.Text = "Telepon Customer"
         '
         'txtcustomer
         '
         Me.txtcustomer.Enabled = False
         Me.txtcustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcustomer.Location = New System.Drawing.Point(522, 50)
-        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtcustomer.Location = New System.Drawing.Point(1068, 139)
+        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(6)
         Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(169, 24)
+        Me.txtcustomer.Size = New System.Drawing.Size(258, 24)
         Me.txtcustomer.TabIndex = 58
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label2.Location = New System.Drawing.Point(435, 53)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(1135, 115)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(83, 18)
+        Me.Label2.Size = New System.Drawing.Size(186, 18)
         Me.Label2.TabIndex = 57
-        Me.Label2.Text = "Nama Cust"
+        Me.Label2.Text = "Nama Customer                 "
         '
         'btncaricustomer
         '
         Me.btncaricustomer.BackgroundImage = CType(resources.GetObject("btncaricustomer.BackgroundImage"), System.Drawing.Image)
         Me.btncaricustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncaricustomer.ImageIndex = 0
-        Me.btncaricustomer.Location = New System.Drawing.Point(361, 48)
-        Me.btncaricustomer.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncaricustomer.Location = New System.Drawing.Point(1287, 82)
+        Me.btncaricustomer.Margin = New System.Windows.Forms.Padding(6)
         Me.btncaricustomer.Name = "btncaricustomer"
-        Me.btncaricustomer.Size = New System.Drawing.Size(30, 29)
+        Me.btncaricustomer.Size = New System.Drawing.Size(39, 26)
         Me.btncaricustomer.TabIndex = 61
         Me.btncaricustomer.UseVisualStyleBackColor = True
         '
         'flaporanpricelist
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1279, 507)
+        Me.ClientSize = New System.Drawing.Size(1341, 588)
         Me.Controls.Add(Me.btncaricustomer)
+        Me.Controls.Add(Me.btnrefresh)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.btnexcel)
+        Me.Controls.Add(Me.btnrekap)
         Me.Controls.Add(Me.txttelp)
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.txtcustomer)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cmbcustomer)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "flaporanpricelist"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Laporan Pricelist"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox4.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -326,9 +311,7 @@ Partial Class flaporanpricelist
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents btnexcel As Button
     Friend WithEvents btnrekap As Button
     Friend WithEvents PictureBox1 As PictureBox
