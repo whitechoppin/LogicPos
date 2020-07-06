@@ -64,24 +64,24 @@ Public Class flaporantransferkas
         GridColumn1.Caption = "No.Transfer Kas"
         GridColumn1.FieldName = "kode_transfer_kas"
 
-        GridColumn2.Caption = "Kode Kas (Dari)"
+        GridColumn2.Caption = "Dari Kas"
         GridColumn2.FieldName = "kode_dari_kas"
 
-        GridColumn3.Caption = "Kode Kas (Ke)"
+        GridColumn3.Caption = "Ke Kas"
         GridColumn3.FieldName = "kode_ke_kas"
 
-        GridColumn4.Caption = "Admin"
+        GridColumn4.Caption = "User"
         GridColumn4.FieldName = "kode_user"
 
-        GridColumn5.Caption = "Jenis Trf Kas"
+        GridColumn5.Caption = "Jenis Transfer"
         GridColumn5.FieldName = "jenis_transfer_kas"
 
-        GridColumn6.Caption = "Tanggal Transfer Kas"
+        GridColumn6.Caption = "Tanggal Transfer"
         GridColumn6.FieldName = "tanggal_transfer_kas"
         GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn6.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn7.Caption = "Saldo Trf Kas"
+        GridColumn7.Caption = "Saldo Transfer"
         GridColumn7.FieldName = "saldo_transfer_kas"
         GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn7.DisplayFormat.FormatString = "##,##0"
@@ -99,6 +99,7 @@ Public Class flaporantransferkas
         Else
             sql = "SELECT * FROM tb_transfer_kas WHERE tanggal_transfer_kas BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
         End If
+
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)

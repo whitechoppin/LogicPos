@@ -41,6 +41,7 @@ Public Class flaporantransferbarang
         With GridView1
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
+            '.Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
 
         Select Case kodeakses
@@ -92,38 +93,6 @@ Public Class flaporantransferbarang
         GridColumn5.Caption = "Keterangan"
         GridColumn5.FieldName = "keterangan_transfer_barang"
 
-        GridColumn6.Caption = "Debet"
-        GridColumn6.FieldName = "debet_kas"
-        GridColumn6.Visible = False
-        GridColumn7.Caption = "Kredit"
-        GridColumn7.FieldName = "kredit_kas"
-        GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn7.DisplayFormat.FormatString = "##,##0"
-        GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn6.DisplayFormat.FormatString = "##,##0"
-        GridColumn6.Visible = False
-        GridColumn7.Visible = False
-
-        GridColumn8.Caption = "Keterangan"
-        GridColumn8.FieldName = "keterangan_transfer_kas"
-
-        GridColumn9.Caption = "Laba"
-        GridColumn9.FieldName = "keuntungan"
-        GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn9.DisplayFormat.FormatString = "##,##0"
-        GridColumn9.Visible = False
-
-        'GridColumn10.Caption = "Idbrg"
-        'GridColumn10.FieldName = "idbarang"
-        GridColumn10.Visible = False
-        GridColumn11.Caption = "Kasir"
-        GridColumn11.FieldName = "kode_user"
-        GridColumn11.Visible = False
-
-        GridColumn12.Caption = "Metode Bayar"
-        GridColumn12.FieldName = "metode_pembayaran"
-        GridColumn12.Visible = False
-
         GridControl1.Visible = True
     End Sub
     Sub tabel()
@@ -134,6 +103,7 @@ Public Class flaporantransferbarang
         Else
             sql = "SELECT * FROM tb_transfer_barang WHERE tanggal_transfer_barang BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
         End If
+
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
