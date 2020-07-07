@@ -267,6 +267,58 @@ Public Class flaporanpenjualan
         End If
     End Sub
 
+    Private Sub btnrekappenjualanbarang_Click(sender As Object, e As EventArgs) Handles btnrekappenjualanbarang.Click
+        If printstatus.Equals(True) Then
+            Dim rptrekap As ReportDocument
+            Dim awalPFDs As ParameterFieldDefinitions
+            Dim awalPFD As ParameterFieldDefinition
+            Dim awalPVs As New ParameterValues
+            Dim awalPDV As New ParameterDiscreteValue
+
+            Dim akhirPFDs As ParameterFieldDefinitions
+            Dim akhirPFD As ParameterFieldDefinition
+            Dim akhirPVs As New ParameterValues
+            Dim akhirPDV As New ParameterDiscreteValue
+
+            If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
+                sql = "SELECT * FROM tb_penjualan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "SELECT * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            End If
+
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+
+            If dr.HasRows Then
+                rptrekap = New rptrekappenjualanbarang
+
+                awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
+                awalPFDs = rptrekap.DataDefinition.ParameterFields
+                awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
+                awalPVs.Clear()
+                awalPVs.Add(awalPDV)
+                awalPFD.ApplyCurrentValues(awalPVs)
+
+                akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
+                akhirPFDs = rptrekap.DataDefinition.ParameterFields
+                akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
+                akhirPVs.Clear()
+                akhirPVs.Add(akhirPDV)
+                akhirPFD.ApplyCurrentValues(akhirPVs)
+
+                flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
+                flappenjualan.ShowDialog()
+                flappenjualan.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Laporan Penjualan Barang", "N/A")
+            Else
+                MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
+            End If
+        Else
+            MsgBox("Tidak ada akses")
+        End If
+    End Sub
+
     Private Sub flaporanpenjualan_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub

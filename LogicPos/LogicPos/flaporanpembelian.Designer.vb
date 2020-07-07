@@ -42,6 +42,7 @@ Partial Class flaporanpembelian
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnrekappembelianbarang = New System.Windows.Forms.Button()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -120,7 +121,7 @@ Partial Class flaporanpembelian
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1175, 662)
+        Me.GridControl1.Size = New System.Drawing.Size(1175, 531)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -212,12 +213,23 @@ Partial Class flaporanpembelian
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Pembelian"
         '
+        'btnrekappembelianbarang
+        '
+        Me.btnrekappembelianbarang.Location = New System.Drawing.Point(541, 94)
+        Me.btnrekappembelianbarang.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrekappembelianbarang.Name = "btnrekappembelianbarang"
+        Me.btnrekappembelianbarang.Size = New System.Drawing.Size(197, 46)
+        Me.btnrekappembelianbarang.TabIndex = 18
+        Me.btnrekappembelianbarang.Text = "Rekap Pembelian Barang"
+        Me.btnrekappembelianbarang.UseVisualStyleBackColor = True
+        '
         'flaporanpembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1213, 830)
+        Me.ClientSize = New System.Drawing.Size(1213, 696)
+        Me.Controls.Add(Me.btnrekappembelianbarang)
         Me.Controls.Add(Me.btntabel)
         Me.Controls.Add(Me.btnperfaktur)
         Me.Controls.Add(Me.btnexcel)
@@ -258,4 +270,5 @@ Partial Class flaporanpembelian
     Friend WithEvents btnexcel As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents btnperfaktur As Button
+    Friend WithEvents btnrekappembelianbarang As Button
 End Class
