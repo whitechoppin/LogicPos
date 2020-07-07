@@ -26,6 +26,7 @@ Partial Class fpassword
         Me.btnlogin = New System.Windows.Forms.Button()
         Me.txtpassword = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btnlogin
@@ -33,7 +34,7 @@ Partial Class fpassword
         Me.btnlogin.BackgroundImage = CType(resources.GetObject("btnlogin.BackgroundImage"), System.Drawing.Image)
         Me.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnlogin.Location = New System.Drawing.Point(406, 7)
-        Me.btnlogin.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnlogin.Margin = New System.Windows.Forms.Padding(4)
         Me.btnlogin.Name = "btnlogin"
         Me.btnlogin.Size = New System.Drawing.Size(42, 40)
         Me.btnlogin.TabIndex = 7
@@ -43,7 +44,7 @@ Partial Class fpassword
         '
         Me.txtpassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpassword.Location = New System.Drawing.Point(109, 14)
-        Me.txtpassword.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtpassword.Margin = New System.Windows.Forms.Padding(4)
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.Size = New System.Drawing.Size(289, 26)
         Me.txtpassword.TabIndex = 6
@@ -59,18 +60,29 @@ Partial Class fpassword
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Password"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(106, 44)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(133, 15)
+        Me.Label1.TabIndex = 8
+        Me.Label1.Text = "Request PIN/Password"
+        '
         'fpassword
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(458, 56)
+        Me.ClientSize = New System.Drawing.Size(459, 67)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnlogin)
         Me.Controls.Add(Me.txtpassword)
         Me.Controls.Add(Me.Label2)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "fpassword"
@@ -84,4 +96,5 @@ Partial Class fpassword
     Friend WithEvents btnlogin As Button
     Friend WithEvents txtpassword As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
 End Class

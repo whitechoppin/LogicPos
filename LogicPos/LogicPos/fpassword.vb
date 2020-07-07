@@ -1,7 +1,10 @@
 ﻿Imports System.Data.Odbc
+Imports System.Data.SqlClient
+Imports System.Net.Mail
 
 Public Class fpassword
     Dim kodeuser As String
+    Dim kodepassword As String
     Public kodetabel, kodemode, kodejabatan As String
     Dim authuser As String
     Dim statuscode As Boolean = False
@@ -191,6 +194,56 @@ Public Class fpassword
                 End If
             End If
         End If
+    End Sub
+
+    Function trueString() As String
+        Dim tResult As String = ""
+
+        tResult = GenerateRandomString(6)
+
+        Call koneksii()
+        sql = "SELECT * FROM tb_password WHERE kode_password ='" & kodepassword & "' LIMIT 1"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            'tResult = trueString()
+            tResult = GenerateRandomString(6)
+        End If
+
+        Return tResult
+    End Function
+
+    Private Sub Label1_DoubleClick(sender As Object, e As EventArgs) Handles Label1.DoubleClick
+        Call koneksii()
+        kodepassword = trueString()
+
+        sql = "INSERT INTO tb_password (kode_password, created_by, date_created) VALUES ('" & kodepassword & "','" & fmenu.statususer.Text & "',now())"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        Try
+
+            Dim SmtpServer As New SmtpClient()
+            Dim mail As New MailMessage()
+
+            SmtpServer.UseDefaultCredentials = False
+            SmtpServer.Credentials = New Net.NetworkCredential("logicpos@sjtsupplies.com", "17agustus1945")
+
+            SmtpServer.Port = 587
+            SmtpServer.Host = "mail.sjtsupplies.com"
+            SmtpServer.EnableSsl = True
+            SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network
+
+            mail = New MailMessage()
+            mail.From = New MailAddress("logicpos@sjtsupplies.com")
+            mail.To.Add("alexanderwibowo.aw@gmail.com")
+            mail.Subject = "PIN/Password Logic POS"
+            mail.Body = "Kode PIN/Password Anda : " + kodepassword
+            SmtpServer.Send(mail)
+            MsgBox("PIN/Password telah dikirim !")
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
