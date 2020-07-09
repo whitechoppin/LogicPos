@@ -24,6 +24,7 @@ Partial Class ftokosejati
     Private Sub InitializeComponent()
         Me.btnsend = New System.Windows.Forms.Button()
         Me.txtemailto = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnsend
@@ -42,12 +43,22 @@ Partial Class ftokosejati
         Me.txtemailto.Size = New System.Drawing.Size(100, 20)
         Me.txtemailto.TabIndex = 1
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(136, 236)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(273, 69)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "test transactional"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'ftokosejati
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(940, 438)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtemailto)
         Me.Controls.Add(Me.btnsend)
         Me.KeyPreview = True
@@ -60,4 +71,5 @@ Partial Class ftokosejati
 
     Friend WithEvents btnsend As Button
     Friend WithEvents txtemailto As TextBox
+    Friend WithEvents Button1 As Button
 End Class
