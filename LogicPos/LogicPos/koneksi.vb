@@ -3,6 +3,7 @@
 Module koneksi
     'koneksi
     Public cnn As New OdbcConnection
+    Public cnnx As New OdbcConnection
     Public cmmd As OdbcCommand
     Public dr As OdbcDataReader
     Public drpenjualan As OdbcDataReader
@@ -28,9 +29,17 @@ Module koneksi
         'If cnn.State <> ConnectionState.Closed Then cnn.Close()
         'cnn.Open()
         Try
+            'untuk koneksi biasa : select atau delete data gak penting
             cnn = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
+            'untuk koneksi data berbasis transaksi : sekali save query > 1 query
+            cnnx = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
+
             If cnn.State = ConnectionState.Closed Then
                 cnn.Open()
+            End If
+
+            If cnnx.State = ConnectionState.Closed Then
+                cnnx.Open()
             End If
         Catch ex As Exception
             MsgBox("Koneksi ke Database bermasalah, Periksa koneksi Jaringan Anda.")

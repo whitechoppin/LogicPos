@@ -1644,9 +1644,13 @@ Public Class fpenjualan
         fcaricust.ShowDialog()
     End Sub
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
-        tutupcaristok = 1
-        kodegudangcari = cmbgudang.Text
-        fcaristok.ShowDialog()
+        If txtgudang.Text = "" Then
+            MsgBox("Isi Kode Gudang", MsgBoxStyle.Information, "Informasi")
+        Else
+            tutupcaristok = 1
+            kodegudangcari = cmbgudang.Text
+            fcaristok.ShowDialog()
+        End If
     End Sub
     Private Sub btncarigudang_Click(sender As Object, e As EventArgs) Handles btncarigudang.Click
         tutupgudang = 2
@@ -2176,15 +2180,15 @@ Public Class fpenjualan
         Call koneksii()
 
 
-        Dim myCommand As OdbcCommand = cnn.CreateCommand()
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
         Dim myTrans As OdbcTransaction
 
 
         ' Start a local transaction
-        myTrans = cnn.BeginTransaction()
+        myTrans = cnnx.BeginTransaction()
         ' Must assign both transaction object and connection
         ' to Command object for a pending local transaction
-        myCommand.Connection = cnn
+        myCommand.Connection = cnnx
         myCommand.Transaction = myTrans
 
 
@@ -2258,8 +2262,13 @@ Public Class fpenjualan
         Dim statusavailable As Boolean = True
 
         Dim kodegudangupdate As String
+        'variabel transactional
+        '=======================
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
+        Dim myTrans As OdbcTransaction
+        '=======================
 
-        'cari nota  yang sebelumnya (kembalikan stok dulu)
+        'cari nota  yang sebelumnya (kembalikan stok dulu) cek dulu disini
         sql = "SELECT kode_gudang FROM tb_penjualan WHERE kode_penjualan = '" & kodepenjualan & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -2301,78 +2310,98 @@ Public Class fpenjualan
 
         If statusavailable = True Then
             'hapus di tabel jual detail
-            Call koneksii()
-            sql = "DELETE FROM tb_penjualan_detail where kode_penjualan = '" & nomornota & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
 
-            'update stok kembalikan 
-            Call koneksii()
-            sql = "SELECT * FROM tb_penjualan_detail_sementara where kode_penjualan = '" & nomornota & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
+            ' Start a local transaction
+            myTrans = cnnx.BeginTransaction()
+            ' Must assign both transaction object and connection
+            ' to Command object for a pending local transaction
+            myCommand.Connection = cnnx
+            myCommand.Transaction = myTrans
 
-            While dr.Read
-                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang ='" & kodegudangupdate & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                drpenjualan = cmmd.ExecuteReader()
-            End While
-
-            'hapus panjar
-            sql = "DELETE FROM tb_transaksi_kas where kode_penjualan = '" & nomornota & "' and jenis_kas ='AWAL'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-
-
-            'hapus di tabel jual sementara
-            Call koneksii()
-            sql = "DELETE FROM tb_penjualan_detail_sementara where kode_penjualan = '" & nomornota & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-
-
-
-            For i As Integer = 0 To GridView1.RowCount - 1
-                sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & kodegudang & "'"
+            Try
+                'update stok kembalikan 
+                Call koneksii()
+                sql = "SELECT * FROM tb_penjualan_detail_sementara where kode_penjualan = '" & nomornota & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
-            Next
 
-            For i As Integer = 0 To GridView1.RowCount - 1
-                diskonpersennilai = GridView1.GetRowCellValue(i, "diskon_persen")
-                diskonnominalnilai = GridView1.GetRowCellValue(i, "diskon_nominal")
-                sql = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, updated_by, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & diskonpersennilai & "','" & diskonnominalnilai & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal_barang") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "',now())"
+                While dr.Read
+                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang ='" & kodegudangupdate & "'"
+                    myCommand.ExecuteNonQuery()
+                End While
+
+                Call koneksii()
+                myCommand.CommandText = "DELETE FROM tb_penjualan_detail where kode_penjualan = '" & nomornota & "'"
+                myCommand.ExecuteNonQuery()
+
+                'hapus panjar
+                myCommand.CommandText = "DELETE FROM tb_transaksi_kas where kode_penjualan = '" & nomornota & "' and jenis_kas ='AWAL'"
+                myCommand.ExecuteNonQuery()
+
+                'hapus di tabel jual sementara
+                Call koneksii()
+                sql = "DELETE FROM tb_penjualan_detail_sementara where kode_penjualan = '" & nomornota & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
-            Next
 
-            If bayar.Equals(grandtotal) Then
-                lunasstatus = 1
-            Else
-                lunasstatus = 0
-            End If
 
-            Call koneksii()
-            sql = "UPDATE tb_penjualan SET kode_pelanggan ='" & cmbcustomer.Text & "', kode_gudang ='" & kodegudang & "', kode_user ='" & cmbsales.Text & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', term_penjualan='" & term & "', lunas_penjualan = '" & lunasstatus & "',keterangan_penjualan ='" & txtketerangan.Text & "',nama_expedisi ='" & txtnamaexpedisi.Text & "',alamat_expedisi ='" & txtalamatexpedisi.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_penjualan ='" & kodepenjualan & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & kodegudang & "'"
+                    myCommand.ExecuteNonQuery()
+                Next
 
-            kodepembayaran = cmbpembayaran.Text
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    diskonpersennilai = GridView1.GetRowCellValue(i, "diskon_persen")
+                    diskonnominalnilai = GridView1.GetRowCellValue(i, "diskon_nominal")
+                    myCommand.CommandText = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, updated_by, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & diskonpersennilai & "','" & diskonnominalnilai & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal_barang") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "',now())"
+                    myCommand.ExecuteNonQuery()
+                Next
 
-            If kodepembayaran IsNot "" Then
-                sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepenjualan & "','" & sisa & "', '" & bayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-            End If
+                If bayar.Equals(grandtotal) Then
+                    lunasstatus = 1
+                Else
+                    lunasstatus = 0
+                End If
 
-            'history user ==========
-            Call historysave("Mengedit Data Penjualan Kode " + txtnonota.Text, txtnonota.Text)
-            '========================
+                Call koneksii()
+                myCommand.CommandText = "UPDATE tb_penjualan SET kode_pelanggan ='" & cmbcustomer.Text & "', kode_gudang ='" & kodegudang & "', kode_user ='" & cmbsales.Text & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', term_penjualan='" & term & "', lunas_penjualan = '" & lunasstatus & "',keterangan_penjualan ='" & txtketerangan.Text & "',nama_expedisi ='" & txtnamaexpedisi.Text & "',alamat_expedisi ='" & txtalamatexpedisi.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_penjualan ='" & kodepenjualan & "'"
+                myCommand.ExecuteNonQuery()
 
-            MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
-            Call inisialisasi(txtnonota.Text)
-            'Call inisialisasi(nomornota)
-            btnedit.Text = "Edit"
+                kodepembayaran = cmbpembayaran.Text
+
+                If kodepembayaran IsNot "" Then
+                    myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepenjualan & "','" & sisa & "', '" & bayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                    myCommand.ExecuteNonQuery()
+                End If
+
+                myTrans.Commit()
+                Console.WriteLine("Both records are written to database.")
+
+                'history user ==========
+                Call historysave("Mengedit Data Penjualan Kode " + txtnonota.Text, txtnonota.Text)
+                '========================
+                MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
+                Call inisialisasi(txtnonota.Text)
+                'Call inisialisasi(nomornota)
+                btnedit.Text = "Edit"
+
+            Catch e As Exception
+                Try
+                    myTrans.Rollback()
+                Catch ex As OdbcException
+                    If Not myTrans.Connection Is Nothing Then
+                        Console.WriteLine("An exception of type " + ex.GetType().ToString() +
+                    " was encountered while attempting to roll back the transaction.")
+                    End If
+                End Try
+
+                Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
+                Console.WriteLine("Neither record was written to database.")
+
+                MsgBox("Update Gagal", MsgBoxStyle.Information, "Sukses")
+            End Try
+
+
         End If
     End Sub
     Private Function CpuId() As String

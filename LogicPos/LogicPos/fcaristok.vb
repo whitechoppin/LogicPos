@@ -45,12 +45,19 @@ Public Class fcaristok
         'Call koneksii()
         If tutupcaristok > 0 Then
             Call koneksii()
+
             If kodegudangcari.Length > 0 Then
-                sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.kode_gudang ='" & kodegudangcari & "' AND tb_stok.jumlah_stok > 0"
-
+                If cbstokkosong.Checked = True Then
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.kode_gudang ='" & kodegudangcari & "'"
+                Else
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.kode_gudang ='" & kodegudangcari & "' AND tb_stok.jumlah_stok > 0"
+                End If
             Else
-                sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.jumlah_stok > 0"
-
+                If cbstokkosong.Checked = True Then
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang"
+                Else
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.jumlah_stok > 0"
+                End If
             End If
 
             da = New OdbcDataAdapter(sql, cnn)
@@ -138,4 +145,5 @@ Public Class fcaristok
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel()
     End Sub
+
 End Class

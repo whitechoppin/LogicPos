@@ -31,7 +31,6 @@ Partial Class fcaristok
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnshow = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LabelHarga = New System.Windows.Forms.Label()
@@ -39,9 +38,9 @@ Partial Class fcaristok
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
+        Me.cbstokkosong = New System.Windows.Forms.CheckBox()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -121,34 +120,24 @@ Partial Class fcaristok
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(11, 40)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
+        Me.GridControl1.Location = New System.Drawing.Point(16, 55)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(834, 311)
+        Me.GridControl1.Size = New System.Drawing.Size(1064, 346)
         Me.GridControl1.TabIndex = 15
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.btnshow)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.LabelHarga)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(851, 33)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(282, 318)
-        Me.GroupBox1.TabIndex = 14
-        Me.GroupBox1.TabStop = False
         '
         'btnshow
         '
         Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
         Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnshow.ImageIndex = 0
-        Me.btnshow.Location = New System.Drawing.Point(114, 238)
+        Me.btnshow.Location = New System.Drawing.Point(1371, 371)
+        Me.btnshow.Margin = New System.Windows.Forms.Padding(4)
         Me.btnshow.Name = "btnshow"
-        Me.btnshow.Size = New System.Drawing.Size(29, 22)
+        Me.btnshow.Size = New System.Drawing.Size(44, 30)
         Me.btnshow.TabIndex = 27
         Me.btnshow.UseVisualStyleBackColor = True
         '
@@ -156,7 +145,8 @@ Partial Class fcaristok
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(61, 276)
+        Me.Label3.Location = New System.Drawing.Point(1209, 379)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(33, 17)
         Me.Label3.TabIndex = 3
@@ -166,7 +156,8 @@ Partial Class fcaristok
         '
         Me.LabelHarga.AutoSize = True
         Me.LabelHarga.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelHarga.Location = New System.Drawing.Point(100, 276)
+        Me.LabelHarga.Location = New System.Drawing.Point(1267, 379)
+        Me.LabelHarga.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelHarga.Name = "LabelHarga"
         Me.LabelHarga.Size = New System.Drawing.Size(17, 17)
         Me.LabelHarga.TabIndex = 2
@@ -176,7 +167,8 @@ Partial Class fcaristok
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 241)
+        Me.Label2.Location = New System.Drawing.Point(1099, 379)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(102, 16)
         Me.Label2.TabIndex = 1
@@ -184,19 +176,21 @@ Partial Class fcaristok
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(7, 14)
+        Me.PictureBox1.Location = New System.Drawing.Point(1088, 55)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(269, 219)
+        Me.PictureBox1.Size = New System.Drawing.Size(327, 303)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 13)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(18, 18)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(197, 24)
+        Me.Label1.Size = New System.Drawing.Size(282, 31)
         Me.Label1.TabIndex = 13
         Me.Label1.Text = "Pencarian Data Stok"
         '
@@ -205,23 +199,42 @@ Partial Class fcaristok
         Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
-        Me.btnrefresh.Location = New System.Drawing.Point(215, 7)
+        Me.btnrefresh.Location = New System.Drawing.Point(1029, 10)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
-        Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
+        Me.btnrefresh.Size = New System.Drawing.Size(51, 37)
         Me.btnrefresh.TabIndex = 28
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
+        'cbstokkosong
+        '
+        Me.cbstokkosong.AutoSize = True
+        Me.cbstokkosong.Location = New System.Drawing.Point(899, 18)
+        Me.cbstokkosong.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbstokkosong.Name = "cbstokkosong"
+        Me.cbstokkosong.Size = New System.Drawing.Size(122, 22)
+        Me.cbstokkosong.TabIndex = 29
+        Me.cbstokkosong.Text = "Stok Kososng"
+        Me.cbstokkosong.UseVisualStyleBackColor = True
+        '
         'fcaristok
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1145, 364)
+        Me.ClientSize = New System.Drawing.Size(1428, 420)
+        Me.Controls.Add(Me.btnshow)
+        Me.Controls.Add(Me.cbstokkosong)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnrefresh)
+        Me.Controls.Add(Me.LabelHarga)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "fcaristok"
@@ -229,8 +242,6 @@ Partial Class fcaristok
         Me.Text = "Pencarian Stok"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -243,7 +254,6 @@ Partial Class fcaristok
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label3 As Label
     Friend WithEvents LabelHarga As Label
     Friend WithEvents Label2 As Label
@@ -253,4 +263,5 @@ Partial Class fcaristok
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnshow As Button
     Friend WithEvents btnrefresh As Button
+    Friend WithEvents cbstokkosong As CheckBox
 End Class
