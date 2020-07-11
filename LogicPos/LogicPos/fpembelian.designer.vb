@@ -710,9 +710,9 @@ Partial Class fpembelian
         Me.Label11.Location = New System.Drawing.Point(18, 93)
         Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(113, 18)
+        Me.Label11.Size = New System.Drawing.Size(152, 18)
         Me.Label11.TabIndex = 26
-        Me.Label11.Text = "Pembayaran Ke"
+        Me.Label11.Text = "Pembayaran Dari Kas"
         '
         'cbppn
         '

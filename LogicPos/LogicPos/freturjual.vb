@@ -624,53 +624,77 @@ Public Class freturjual
     End Sub
     Sub simpan()
         kodereturjual = autonumber()
-
-        Call koneksii()
-        For i As Integer = 0 To GridView2.RowCount - 1
-            sql = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView2.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView2.GetRowCellValue(i, "kode_stok") & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-        Next
-
-        sql = "DELETE FROM tb_penjualan_detail WHERE kode_penjualan = '" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
-        For i As Integer = 0 To GridView1.RowCount - 1
-            sql = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & GridView1.GetRowCellValue(i, "diskon_persen") & "','" & GridView1.GetRowCellValue(i, "diskon_nominal") & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal_barang") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-        Next
-
+        'ambil total retur dan total penjualan
         Dim total_penjualan As Double = GridView1.Columns("subtotal").SummaryItem.SummaryValue
+        Dim total_retur As Double = GridView2.Columns("subtotal").SummaryItem.SummaryValue
         Dim statusvoid As Integer = 0
 
-        If GridView1.DataRowCount = 0 Then
-            statusvoid = 1
-        End If
-
         Call koneksii()
-        sql = "UPDATE tb_penjualan SET total_penjualan = '" & total_penjualan & "', sisa_penjualan = '" & total_penjualan & "'- bayar_penjualan, void_penjualan ='" & statusvoid & "' WHERE kode_penjualan ='" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
 
-        For i As Integer = 0 To GridView2.RowCount - 1
-            sql = "INSERT INTO tb_retur_penjualan_detail (kode_retur, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodereturjual & "', '" & GridView2.GetRowCellValue(i, "kode_stok") & "', '" & GridView2.GetRowCellValue(i, "kode_barang") & "', '" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "banyak") & "','" & GridView2.GetRowCellValue(i, "harga_satuan") & "','" & GridView2.GetRowCellValue(i, "diskon_persen") & "','" & GridView2.GetRowCellValue(i, "diskon_nominal") & "' ,'" & GridView2.GetRowCellValue(i, "subtotal") & "','" & GridView2.GetRowCellValue(i, "modal_barang") & "','" & GridView2.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-        Next
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
+        Dim myTrans As OdbcTransaction
 
-        Dim total_retur As Double = GridView2.Columns("subtotal").SummaryItem.SummaryValue
-        sql = "INSERT INTO tb_retur_penjualan (kode_retur, kode_user, kode_penjualan, tgl_returjual, print_returjual, posted_returjual, keterangan_returjual, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturjual & "','" & cmbsales.Text & "','" & txtnonota.Text & "','" & Format(dtreturjual.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        ' Start a local transaction
+        myTrans = cnnx.BeginTransaction()
+        ' Must assign both transaction object and connection
+        ' to Command object for a pending local transaction
+        myCommand.Connection = cnnx
+        myCommand.Transaction = myTrans
 
-        'history user ==========
-        Call historysave("Menyimpan Data Retur Jual Kode " + kodereturjual, kodereturjual)
-        '========================
+        Try
 
-        MsgBox("Retur Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
-        Call inisialisasi(kodereturjual)
+            For i As Integer = 0 To GridView2.RowCount - 1
+                myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView2.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView2.GetRowCellValue(i, "kode_stok") & "'"
+                myCommand.ExecuteNonQuery()
+            Next
+
+            myCommand.CommandText = "DELETE FROM tb_penjualan_detail WHERE kode_penjualan = '" & txtnonota.Text & "'"
+            myCommand.ExecuteNonQuery()
+
+            For i As Integer = 0 To GridView1.RowCount - 1
+                myCommand.CommandText = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & GridView1.GetRowCellValue(i, "diskon_persen") & "','" & GridView1.GetRowCellValue(i, "diskon_nominal") & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal_barang") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                myCommand.ExecuteNonQuery()
+            Next
+
+            If GridView1.DataRowCount = 0 Then
+                statusvoid = 1
+            End If
+
+            Call koneksii()
+            myCommand.CommandText = "UPDATE tb_penjualan SET total_penjualan = '" & total_penjualan & "', sisa_penjualan = '" & total_penjualan & "'- bayar_penjualan, void_penjualan ='" & statusvoid & "' WHERE kode_penjualan ='" & txtnonota.Text & "'"
+            myCommand.ExecuteNonQuery()
+
+            For i As Integer = 0 To GridView2.RowCount - 1
+                myCommand.CommandText = "INSERT INTO tb_retur_penjualan_detail (kode_retur, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodereturjual & "', '" & GridView2.GetRowCellValue(i, "kode_stok") & "', '" & GridView2.GetRowCellValue(i, "kode_barang") & "', '" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "banyak") & "','" & GridView2.GetRowCellValue(i, "harga_satuan") & "','" & GridView2.GetRowCellValue(i, "diskon_persen") & "','" & GridView2.GetRowCellValue(i, "diskon_nominal") & "' ,'" & GridView2.GetRowCellValue(i, "subtotal") & "','" & GridView2.GetRowCellValue(i, "modal_barang") & "','" & GridView2.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                myCommand.ExecuteNonQuery()
+            Next
+
+
+            myCommand.CommandText = "INSERT INTO tb_retur_penjualan (kode_retur, kode_user, kode_penjualan, tgl_returjual, print_returjual, posted_returjual, keterangan_returjual, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturjual & "','" & cmbsales.Text & "','" & txtnonota.Text & "','" & Format(dtreturjual.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            myCommand.ExecuteNonQuery()
+
+            myTrans.Commit()
+            Console.WriteLine("Both records are written to database.")
+
+            'history user ==========
+            Call historysave("Menyimpan Data Retur Jual Kode " + kodereturjual, kodereturjual)
+            '========================
+            MsgBox("Retur Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
+            Call inisialisasi(kodereturjual)
+
+        Catch e As Exception
+            Try
+                myTrans.Rollback()
+            Catch ex As OdbcException
+                If Not myTrans.Connection Is Nothing Then
+                    Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
+                End If
+            End Try
+
+            Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
+            Console.WriteLine("Neither record was written to database.")
+            MsgBox("Retur Gagal Dilakukan", MsgBoxStyle.Information, "Gagal")
+        End Try
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click

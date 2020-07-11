@@ -679,34 +679,60 @@ Public Class flunasutang
         Dim tglpembeliansimpan, tgljatuhtemposimpan As Date
 
         Call koneksii()
-
-        For i As Integer = 0 To GridView1.RowCount - 1
-            tglpembeliansimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_pembelian"))
-            tgljatuhtemposimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_jatuhtempo"))
-
-            sql = "INSERT INTO tb_pelunasan_utang_detail (kode_lunas, kode_pembelian, kode_supplier, tanggal_pembelian, tanggal_jatuhtempo, total_pembelian, bayar_utang, sisa_utang, terima_utang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "', '" & GridView1.GetRowCellValue(i, "kode_supplier") & "', '" & Format(tglpembeliansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_pembelian") & "','" & GridView1.GetRowCellValue(i, "bayar_utang") & "','" & GridView1.GetRowCellValue(i, "sisa_utang") & "','" & GridView1.GetRowCellValue(i, "terima_utang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-        Next
-
-        sql = "INSERT INTO tb_pelunasan_utang (kode_lunas, kode_user, tanggal_transaksi, kode_supplier, kode_kas, jenis_kas, bayar_lunas, no_bukti, keterangan_lunas, void_lunas, print_lunas, posted_lunas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & cmbsales.Text & "', '" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', '" & cmbsupplier.Text & "', '" & cmbbayar.Text & "', '" & cmbbayar.Text & "', '" & totalbayar & "','" & txtbukti.Text & "','" & txtketerangan.Text & "','" & 0 & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        Dim myCommand As OdbcCommand = cnn.CreateCommand()
+        Dim myTrans As OdbcTransaction
 
 
-        sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_utang, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & cmbbayar.Text & "','" & kodelunasutang & "', 'BAYAR', now(), 'Transaksi Pelunasan Nomor " & kodelunasutang & "','" & totalbayar & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        ' Start a local transaction
+        myTrans = cnn.BeginTransaction()
+        ' Must assign both transaction object and connection
+        ' to Command object for a pending local transaction
+        myCommand.Connection = cnn
+        myCommand.Transaction = myTrans
 
-        MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-        Me.Refresh()
+        Try
+            For i As Integer = 0 To GridView1.RowCount - 1
+                tglpembeliansimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_pembelian"))
+                tgljatuhtemposimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_jatuhtempo"))
 
-        'history user ==========
-        Call historysave("Menyimpan Data Lunas Utang Kode " + kodelunasutang, kodelunasutang)
-        '========================
+                myCommand.CommandText = "INSERT INTO tb_pelunasan_utang_detail (kode_lunas, kode_pembelian, kode_supplier, tanggal_pembelian, tanggal_jatuhtempo, total_pembelian, bayar_utang, sisa_utang, terima_utang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "', '" & GridView1.GetRowCellValue(i, "kode_supplier") & "', '" & Format(tglpembeliansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_pembelian") & "','" & GridView1.GetRowCellValue(i, "bayar_utang") & "','" & GridView1.GetRowCellValue(i, "sisa_utang") & "','" & GridView1.GetRowCellValue(i, "terima_utang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                myCommand.ExecuteNonQuery()
+            Next
 
-        'kodelunasutang = txtnolunasutang.Text
-        Call inisialisasi(kodelunasutang)
+            myCommand.CommandText = "INSERT INTO tb_pelunasan_utang (kode_lunas, kode_user, tanggal_transaksi, kode_supplier, kode_kas, jenis_kas, bayar_lunas, no_bukti, keterangan_lunas, void_lunas, print_lunas, posted_lunas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & cmbsales.Text & "', '" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', '" & cmbsupplier.Text & "', '" & cmbbayar.Text & "', '" & cmbbayar.Text & "', '" & totalbayar & "','" & txtbukti.Text & "','" & txtketerangan.Text & "','" & 0 & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            myCommand.ExecuteNonQuery()
+
+
+            myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_utang, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & cmbbayar.Text & "','" & kodelunasutang & "', 'BAYAR', now(), 'Transaksi Pelunasan Nomor " & kodelunasutang & "','" & totalbayar & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+            myCommand.ExecuteNonQuery()
+
+            myTrans.Commit()
+            Console.WriteLine("Both records are written to database.")
+
+            MsgBox("Transaksi Berhasil", MsgBoxStyle.Information, "Berhasil")
+            Me.Refresh()
+
+            'history user ==========
+            Call historysave("Menyimpan Data Lunas Utang Kode " + kodelunasutang, kodelunasutang)
+            '========================
+            'kodelunasutang = txtnolunasutang.Text
+            Call inisialisasi(kodelunasutang)
+
+        Catch e As Exception
+            Try
+                myTrans.Rollback()
+            Catch ex As OdbcException
+                If Not myTrans.Connection Is Nothing Then
+                    Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
+                End If
+            End Try
+
+            Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
+            Console.WriteLine("Neither record was written to database.")
+
+            MsgBox("Transaksi Gagal", MsgBoxStyle.Information, "Gagal")
+        End Try
+
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click

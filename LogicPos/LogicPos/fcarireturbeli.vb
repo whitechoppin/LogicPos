@@ -30,7 +30,7 @@ Public Class fcarireturbeli
         Call koneksii()
 
         If cbperiode.Checked = True Then
-            If dtawal.Value.Equals(dtakhir.Value) Then
+            If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
                 sql = "SELECT * FROM tb_retur_pembelian WHERE tgl_returbeli BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"

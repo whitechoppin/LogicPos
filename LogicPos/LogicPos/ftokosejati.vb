@@ -45,6 +45,7 @@ Public Class ftokosejati
         ' to Command object for a pending local transaction
         myCommand.Connection = cnn
         myCommand.Transaction = myTrans
+
         Try
             'benar
             myCommand.CommandText = "Insert into tb_pajak (pajak) VALUES (100)"
@@ -59,13 +60,11 @@ Public Class ftokosejati
                 myTrans.Rollback()
             Catch ex As OdbcException
                 If Not myTrans.Connection Is Nothing Then
-                    Console.WriteLine("An exception of type " + ex.GetType().ToString() +
-                    " was encountered while attempting to roll back the transaction.")
+                    Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
                 End If
             End Try
 
-            Console.WriteLine("An exception of type " + e.GetType().ToString() +
-            "was encountered while inserting the data.")
+            Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
             Console.WriteLine("Neither record was written to database.")
         Finally
             'myConnection.Close()

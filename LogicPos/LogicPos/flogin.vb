@@ -290,6 +290,15 @@ Public Class flogin
         txtpassword.PasswordChar = "•"
     End Sub
 
+    Private Sub txtusername_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtusername.KeyPress
+        e.Handled = ValidAngkaHuruf(e)
+    End Sub
+
+    Private Sub txtpassword_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtpassword.KeyPress
+        e.Handled = ValidAngkaHuruf(e)
+    End Sub
+
+
     Private Sub txtpassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtpassword.KeyDown
         If e.KeyCode = Keys.Enter Then
             If txtusername.Text = "" Then

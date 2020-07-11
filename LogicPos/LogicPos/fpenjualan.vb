@@ -2179,10 +2179,8 @@ Public Class fpenjualan
         kodegudang = cmbgudang.Text
         Call koneksii()
 
-
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()
         Dim myTrans As OdbcTransaction
-
 
         ' Start a local transaction
         myTrans = cnnx.BeginTransaction()
@@ -2190,7 +2188,6 @@ Public Class fpenjualan
         ' to Command object for a pending local transaction
         myCommand.Connection = cnnx
         myCommand.Transaction = myTrans
-
 
         Try
 
@@ -2260,8 +2257,8 @@ Public Class fpenjualan
         Dim stokdatabasesementara As Integer
         Dim namastokdatabase As String
         Dim statusavailable As Boolean = True
-
         Dim kodegudangupdate As String
+
         'variabel transactional
         '=======================
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()
@@ -2309,8 +2306,6 @@ Public Class fpenjualan
         Next
 
         If statusavailable = True Then
-            'hapus di tabel jual detail
-
             ' Start a local transaction
             myTrans = cnnx.BeginTransaction()
             ' Must assign both transaction object and connection
@@ -2330,7 +2325,7 @@ Public Class fpenjualan
                     myCommand.ExecuteNonQuery()
                 End While
 
-                Call koneksii()
+                'hapus barang dari tabel keluar detail
                 myCommand.CommandText = "DELETE FROM tb_penjualan_detail where kode_penjualan = '" & nomornota & "'"
                 myCommand.ExecuteNonQuery()
 
@@ -2343,7 +2338,6 @@ Public Class fpenjualan
                 sql = "DELETE FROM tb_penjualan_detail_sementara where kode_penjualan = '" & nomornota & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
-
 
                 For i As Integer = 0 To GridView1.RowCount - 1
                     myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & kodegudang & "'"
@@ -2404,23 +2398,23 @@ Public Class fpenjualan
 
         End If
     End Sub
-    Private Function CpuId() As String
-        Dim computer As String = "."
-        Dim wmi As Object = GetObject("winmgmts:" &
-        "{impersonationLevel=impersonate}!\\" &
-        computer & "\root\cimv2")
-        Dim processors As Object = wmi.ExecQuery("Select * from " &
-        "Win32_Processor")
+    'Private Function CpuId() As String
+    '    Dim computer As String = "."
+    '    Dim wmi As Object = GetObject("winmgmts:" &
+    '    "{impersonationLevel=impersonate}!\\" &
+    '    computer & "\root\cimv2")
+    '    Dim processors As Object = wmi.ExecQuery("Select * from " &
+    '    "Win32_Processor")
 
-        Dim cpu_ids As String = ""
-        For Each cpu As Object In processors
-            cpu_ids = cpu_ids & ", " & cpu.ProcessorId
-        Next cpu
-        If cpu_ids.Length > 0 Then cpu_ids =
-        cpu_ids.Substring(2)
+    '    Dim cpu_ids As String = ""
+    '    For Each cpu As Object In processors
+    '        cpu_ids = cpu_ids & ", " & cpu.ProcessorId
+    '    Next cpu
+    '    If cpu_ids.Length > 0 Then cpu_ids =
+    '    cpu_ids.Substring(2)
 
-        Return cpu_ids
-    End Function
+    '    Return cpu_ids
+    'End Function
 
     'Sub printer()
     '    sql = "select * from tb_printer where cpuid='" & CpuId() & "'"

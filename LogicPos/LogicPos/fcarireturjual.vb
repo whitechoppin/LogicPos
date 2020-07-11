@@ -30,7 +30,7 @@ Public Class fcarireturjual
         Call koneksii()
 
         If cbperiode.Checked = True Then
-            If dtawal.Value.Equals(dtakhir.Value) Then
+            If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_retur_penjualan WHERE DATE(tgl_returjual) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
                 sql = "SELECT * FROM tb_retur_penjualan WHERE tgl_returjual BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"

@@ -60,7 +60,7 @@ Public Class fcaritransferbarang
         Call koneksii()
 
         If cbperiode.Checked = True Then
-            If dtawal.Value.Equals(dtakhir.Value) Then
+            If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
                 sql = "SELECT * FROM tb_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"

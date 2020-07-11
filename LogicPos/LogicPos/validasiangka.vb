@@ -8,6 +8,15 @@
         End If
     End Function
 
+    Function ValidAngkaHuruf(ByVal e As System.Windows.Forms.KeyPressEventArgs) As Boolean
+        Dim strValid As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLOMNOPQRSTUVWXYZ0123456789"
+        If Strings.InStr(strValid, e.KeyChar) = 0 And Not (e.KeyChar = Strings.Chr(Keys.Back)) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
     Public Function GenerateRandomString(ByRef iLength As Integer) As String
         Dim rdm As New Random()
         Dim allowChrs() As Char = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLOMNOPQRSTUVWXYZ0123456789".ToCharArray()
