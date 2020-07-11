@@ -35,15 +35,15 @@ Public Class ftokosejati
 
     Public Sub saveuser()
         Call koneksii()
-        Dim myCommand As OdbcCommand = cnn.CreateCommand()
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
         Dim myTrans As OdbcTransaction
 
 
         ' Start a local transaction
-        myTrans = cnn.BeginTransaction()
+        myTrans = cnnx.BeginTransaction()
         ' Must assign both transaction object and connection
         ' to Command object for a pending local transaction
-        myCommand.Connection = cnn
+        myCommand.Connection = cnnx
         myCommand.Transaction = myTrans
 
         Try

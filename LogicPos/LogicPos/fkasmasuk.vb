@@ -274,53 +274,101 @@ Public Class fkasmasuk
         kodemasuk = autonumber()
 
         Call koneksii()
-        sql = "INSERT INTO tb_kas_masuk (kode_kas_masuk, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodemasuk & "','" & cmbkas.Text & "','" & cmbsales.Text & "','MASUK', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldomasuk & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
+        Dim myTrans As OdbcTransaction
 
-        kodekas = cmbkas.Text
+        ' Start a local transaction
+        myTrans = cnnx.BeginTransaction()
+        ' Must assign both transaction object and connection
+        ' to Command object for a pending local transaction
+        myCommand.Connection = cnnx
+        myCommand.Transaction = myTrans
 
-        If kodekas IsNot "" Then
-            Call koneksii()
-            sql = "INSERT INTO tb_transaksi_kas (kode_kas, kode_kas_masuk, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekas & "','" & kodemasuk & "', 'MASUK','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas Masuk Nomor " & kodemasuk & "','" & 0 & "', '" & saldomasuk & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-        End If
+        Try
+            myCommand.CommandText = "INSERT INTO tb_kas_masuk (kode_kas_masuk, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodemasuk & "','" & cmbkas.Text & "','" & cmbsales.Text & "','MASUK', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldomasuk & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            myCommand.ExecuteNonQuery()
 
-        'history user ==========
-        Call historysave("Menyimpan Data Kas Masuk Kode " + kodemasuk, kodemasuk)
-        '========================
+            kodekas = cmbkas.Text
 
-        MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-        btntambah.Text = "Tambah"
-        Me.Refresh()
-        Call awal()
+            If kodekas IsNot "" Then
+                Call koneksii()
+                myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_kas_masuk, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekas & "','" & kodemasuk & "', 'MASUK','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas Masuk Nomor " & kodemasuk & "','" & 0 & "', '" & saldomasuk & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                myCommand.ExecuteNonQuery()
+            End If
 
+            myTrans.Commit()
+            Console.WriteLine("Both records are written to database.")
+
+            'history user ==========
+            Call historysave("Menyimpan Data Kas Masuk Kode " + kodemasuk, kodemasuk)
+            '========================
+            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+            btntambah.Text = "Tambah"
+            Me.Refresh()
+            Call awal()
+        Catch e As Exception
+            Try
+                myTrans.Rollback()
+            Catch ex As OdbcException
+                If Not myTrans.Connection Is Nothing Then
+                    Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
+                End If
+            End Try
+
+            Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
+            Console.WriteLine("Neither record was written to database.")
+            MsgBox("Data Gagal tersimpan", MsgBoxStyle.Information, "Gagal")
+        End Try
+        
     End Sub
 
     Sub edit()
         Call koneksii()
-        sql = "UPDATE tb_kas_masuk SET kode_user='" & cmbsales.Text & "',kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', saldo_kas='" & saldomasuk & "', keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_kas_masuk='" & txtkodemasuk.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
+        Dim myTrans As OdbcTransaction
 
-        kodekas = cmbkas.Text
+        ' Start a local transaction
+        myTrans = cnnx.BeginTransaction()
+        ' Must assign both transaction object and connection
+        ' to Command object for a pending local transaction
+        myCommand.Connection = cnnx
+        myCommand.Transaction = myTrans
 
-        If kodekas IsNot "" Then
-            Call koneksii()
-            sql = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & 0 & "', kredit_kas='" & saldomasuk & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_kas_masuk='" & txtkodemasuk.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-        End If
+        Try
+            myCommand.CommandText = "UPDATE tb_kas_masuk SET kode_user='" & cmbsales.Text & "',kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', saldo_kas='" & saldomasuk & "', keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_kas_masuk='" & txtkodemasuk.Text & "'"
+            myCommand.ExecuteNonQuery()
 
-        'history user ==========
-        Call historysave("Mengedit Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
-        '========================
+            kodekas = cmbkas.Text
 
-        MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-        btnedit.Text = "Edit"
-        Me.Refresh()
-        Call awal()
+            If kodekas IsNot "" Then
+                myCommand.CommandText = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & 0 & "', kredit_kas='" & saldomasuk & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_kas_masuk='" & txtkodemasuk.Text & "'"
+                myCommand.ExecuteNonQuery()
+            End If
+
+            myTrans.Commit()
+            Console.WriteLine("Both records are written to database.")
+
+            'history user ==========
+            Call historysave("Mengedit Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
+            '========================
+
+            MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
+            Me.Refresh()
+            Call awal()
+        Catch e As Exception
+            Try
+                myTrans.Rollback()
+            Catch ex As OdbcException
+                If Not myTrans.Connection Is Nothing Then
+                    Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
+                End If
+            End Try
+
+            Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
+            Console.WriteLine("Neither record was written to database.")
+            MsgBox("Data Gagal Update", MsgBoxStyle.Information, "Gagal")
+        End Try
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
