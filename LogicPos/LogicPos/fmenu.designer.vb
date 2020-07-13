@@ -45,6 +45,7 @@ Partial Class fmenu
         Me.BarangMasukToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BarangKeluarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransferBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PenyesuaianStokToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdministrasiMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.PelunasanUtangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PreviewUtangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -75,6 +76,7 @@ Partial Class fmenu
         Me.LaporanMutasiBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanLabaRugiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanRekapanAkhirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanPenyesuaianStokToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.InfoPerusahaanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrinterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -94,8 +96,7 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
-        Me.PenyesuaianStokToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LaporanPenyesuaianStokToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BarcodeGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -232,6 +233,12 @@ Partial Class fmenu
         Me.TransferBarangToolStripMenuItem.Name = "TransferBarangToolStripMenuItem"
         Me.TransferBarangToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.TransferBarangToolStripMenuItem.Text = "Transfer Barang"
+        '
+        'PenyesuaianStokToolStripMenuItem
+        '
+        Me.PenyesuaianStokToolStripMenuItem.Name = "PenyesuaianStokToolStripMenuItem"
+        Me.PenyesuaianStokToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.PenyesuaianStokToolStripMenuItem.Text = "Penyesuaian Stok"
         '
         'AdministrasiMenu
         '
@@ -417,9 +424,15 @@ Partial Class fmenu
         Me.LaporanRekapanAkhirToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.LaporanRekapanAkhirToolStripMenuItem.Text = "Laporan Rekapan Akhir"
         '
+        'LaporanPenyesuaianStokToolStripMenuItem
+        '
+        Me.LaporanPenyesuaianStokToolStripMenuItem.Name = "LaporanPenyesuaianStokToolStripMenuItem"
+        Me.LaporanPenyesuaianStokToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.LaporanPenyesuaianStokToolStripMenuItem.Text = "Laporan Penyesuaian Stok"
+        '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KalkulasiExpedisiToolStripMenuItem, Me.KonfigurasiDatabaseToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KalkulasiExpedisiToolStripMenuItem, Me.KonfigurasiDatabaseToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
@@ -489,13 +502,13 @@ Partial Class fmenu
         'LogicHouseToolStripMenuItem
         '
         Me.LogicHouseToolStripMenuItem.Name = "LogicHouseToolStripMenuItem"
-        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.LogicHouseToolStripMenuItem.Text = "Logic House"
         '
         'TokoSejatiToolStripMenuItem
         '
         Me.TokoSejatiToolStripMenuItem.Name = "TokoSejatiToolStripMenuItem"
-        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.TokoSejatiToolStripMenuItem.Text = "Toko Sejati"
         '
         'StatusStrip
@@ -545,17 +558,11 @@ Partial Class fmenu
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
         '
-        'PenyesuaianStokToolStripMenuItem
+        'BarcodeGeneratorToolStripMenuItem
         '
-        Me.PenyesuaianStokToolStripMenuItem.Name = "PenyesuaianStokToolStripMenuItem"
-        Me.PenyesuaianStokToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
-        Me.PenyesuaianStokToolStripMenuItem.Text = "Penyesuaian Stok"
-        '
-        'LaporanPenyesuaianStokToolStripMenuItem
-        '
-        Me.LaporanPenyesuaianStokToolStripMenuItem.Name = "LaporanPenyesuaianStokToolStripMenuItem"
-        Me.LaporanPenyesuaianStokToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
-        Me.LaporanPenyesuaianStokToolStripMenuItem.Text = "Laporan Penyesuaian Stok"
+        Me.BarcodeGeneratorToolStripMenuItem.Name = "BarcodeGeneratorToolStripMenuItem"
+        Me.BarcodeGeneratorToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.BarcodeGeneratorToolStripMenuItem.Text = "Barcode Generator"
         '
         'fmenu
         '
@@ -653,4 +660,5 @@ Partial Class fmenu
     Friend WithEvents PelunasanPiutangToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents PenyesuaianStokToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanPenyesuaianStokToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BarcodeGeneratorToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -97,6 +97,14 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="zxing, Version=0.16.5.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.5\lib\net45\zxing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.5.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.5\lib\net45\zxing.presentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -256,6 +264,12 @@
       <DependentUpon>fcaritransferbarang.vb</DependentUpon>
     </Compile>
     <Compile Include="fcaritransferbarang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fgeneratebarcode.Designer.vb">
+      <DependentUpon>fgeneratebarcode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fgeneratebarcode.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fgeneratepassword.Designer.vb">
@@ -1079,6 +1093,9 @@
     <EmbeddedResource Include="fcaritransferbarang.resx">
       <DependentUpon>fcaritransferbarang.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fgeneratebarcode.resx">
+      <DependentUpon>fgeneratebarcode.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fgeneratepassword.resx">
       <DependentUpon>fgeneratepassword.vb</DependentUpon>
     </EmbeddedResource>
@@ -1483,6 +1500,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="POS.xsc">
       <DependentUpon>POS.xsd</DependentUpon>
     </None>

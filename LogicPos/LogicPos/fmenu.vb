@@ -464,4 +464,8 @@ Public Class fmenu
     Private Sub KonfigurasiDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KonfigurasiDatabaseToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub BarcodeGeneratorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeGeneratorToolStripMenuItem.Click
+        fgeneratebarcode.Show()
+    End Sub
 End Class
