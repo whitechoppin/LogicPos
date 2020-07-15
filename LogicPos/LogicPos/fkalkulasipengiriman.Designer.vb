@@ -905,7 +905,7 @@ Partial Class fkalkulasipengiriman
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtkodebarang)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fkalkulasipengiriman"
         Me.Text = "fkalkulasipengiriman"
         Me.TabControl1.ResumeLayout(False)

@@ -136,6 +136,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="fakturpengiriman.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fakturpengiriman.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="fakturpopembelian.vb">
       <DependentUpon>fakturpopembelian.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -669,6 +675,12 @@
       <DependentUpon>rptrekapdetaillunasutang.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptrekapexpedisi.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekapexpedisi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptrekapkas.vb">
       <DependentUpon>rptrekapkas.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -686,6 +698,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptrekappembelianbarang.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptrekappengiriman.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekappengiriman.rpt</DependentUpon>
     </Compile>
     <Compile Include="rptrekappenjualanbarang.vb">
       <AutoGen>True</AutoGen>
@@ -1017,6 +1034,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturkaskeluar.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="fakturpengiriman.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>fakturpengiriman.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="fakturpopembelian.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpopembelian.vb</LastGenOutput>
@@ -1327,6 +1348,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapdetaillunasutang.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="rptrekapexpedisi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekapexpedisi.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptrekapkas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapkas.vb</LastGenOutput>
@@ -1338,6 +1363,10 @@
     <EmbeddedResource Include="rptrekappembelianbarang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekappembelianbarang.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekappengiriman.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekappengiriman.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekappenjualanbarang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
