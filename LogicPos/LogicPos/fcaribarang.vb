@@ -74,20 +74,20 @@ Public Class fcaribarang
         Call ambil_gbr()
     End Sub
 
-    Sub ExportToExcel()
-        'https://www.devexpress.com/Support/Center/Question/Details/Q430217
-        'https://documentation.devexpress.com/#WindowsForms/CustomDocument1874
-        'storing current layout
-        GridView1.SaveLayoutToXml("C:\data\tempLayout.xml")
-        For Each column As GridColumn In GridView1.Columns
-            'make all export columns visible
-            column.Visible = True
-        Next
-        Dim a As String = InputBox("Nama File", "Input Nama file ")
-        GridView1.ExportToXls("C:\data\" + a + ".xls")
-        'restoring the layout, the layout file needs to be deleted manually
-        GridView1.RestoreLayoutFromXml("C:\data\tempLayout.xml")
-    End Sub
+    'Sub ExportToExcel()
+    '    'https://www.devexpress.com/Support/Center/Question/Details/Q430217
+    '    'https://documentation.devexpress.com/#WindowsForms/CustomDocument1874
+    '    'storing current layout
+    '    GridView1.SaveLayoutToXml("C:\data\tempLayout.xml")
+    '    For Each column As GridColumn In GridView1.Columns
+    '        'make all export columns visible
+    '        column.Visible = True
+    '    Next
+    '    Dim a As String = InputBox("Nama File", "Input Nama file ")
+    '    GridView1.ExportToXls("C:\data\" + a + ".xls")
+    '    'restoring the layout, the layout file needs to be deleted manually
+    '    GridView1.RestoreLayoutFromXml("C:\data\tempLayout.xml")
+    'End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupcaribarang = 1 Then

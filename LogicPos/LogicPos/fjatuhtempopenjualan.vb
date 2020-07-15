@@ -49,13 +49,13 @@ Public Class fjatuhtempopenjualan
 
         GridColumn3.Caption = "Tanggal Penjualan"
         GridColumn3.FieldName = "tgl_penjualan"
-        GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
+        'GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        'GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
 
         GridColumn4.Caption = "Tanggal Jatuh Tempo"
         GridColumn4.FieldName = "tgl_jatuhtempo_penjualan"
-        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "dd/MM/yyy"
+        'GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        'GridColumn4.DisplayFormat.FormatString = "dd/MM/yyy"
 
         GridColumn5.Caption = "Total Penjualan"
         GridColumn5.FieldName = "total_penjualan"
@@ -87,8 +87,10 @@ Public Class fjatuhtempopenjualan
 
         GridColumn8.Caption = "Kode"
         GridColumn8.FieldName = "kode_lunas"
+
         GridColumn9.Caption = "Tanggal"
         GridColumn9.FieldName = "tgl_pelunasan"
+
         GridColumn10.Caption = "Terima"
         GridColumn10.FieldName = "terima_piutang"
         GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom

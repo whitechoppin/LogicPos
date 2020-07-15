@@ -42,10 +42,10 @@ Partial Class fcaripembelian
         '
         'GridControl1
         '
-        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Location = New System.Drawing.Point(13, 100)
         Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(754, 432)
         Me.GridControl1.TabIndex = 20
@@ -77,6 +77,8 @@ Partial Class fcaripembelian
         Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn2.AppearanceHeader.Options.UseFont = True
         Me.GridColumn2.Caption = "Tanggal"
+        Me.GridColumn2.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm"
+        Me.GridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
@@ -131,7 +133,7 @@ Partial Class fcaripembelian
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
         Me.btnrefresh.Location = New System.Drawing.Point(737, 48)
-        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(30, 27)
         Me.btnrefresh.TabIndex = 35
@@ -152,7 +154,7 @@ Partial Class fcaripembelian
         '
         Me.dtakhir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtakhir.Location = New System.Drawing.Point(441, 50)
-        Me.dtakhir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtakhir.Margin = New System.Windows.Forms.Padding(4)
         Me.dtakhir.Name = "dtakhir"
         Me.dtakhir.Size = New System.Drawing.Size(288, 24)
         Me.dtakhir.TabIndex = 33
@@ -161,7 +163,7 @@ Partial Class fcaripembelian
         '
         Me.dtawal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtawal.Location = New System.Drawing.Point(103, 51)
-        Me.dtawal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtawal.Margin = New System.Windows.Forms.Padding(4)
         Me.dtawal.Name = "dtawal"
         Me.dtawal.Size = New System.Drawing.Size(288, 24)
         Me.dtawal.TabIndex = 32
@@ -172,7 +174,7 @@ Partial Class fcaripembelian
         Me.cbperiode.Checked = True
         Me.cbperiode.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbperiode.Location = New System.Drawing.Point(17, 51)
-        Me.cbperiode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbperiode.Margin = New System.Windows.Forms.Padding(4)
         Me.cbperiode.Name = "cbperiode"
         Me.cbperiode.Size = New System.Drawing.Size(78, 22)
         Me.cbperiode.TabIndex = 57
@@ -193,7 +195,7 @@ Partial Class fcaripembelian
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fcaripembelian"
         Me.Text = "Pencarian Pembelian"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()

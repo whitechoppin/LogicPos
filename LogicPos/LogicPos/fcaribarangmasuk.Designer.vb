@@ -46,7 +46,7 @@ Partial Class fcaribarangmasuk
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
         Me.btnrefresh.Location = New System.Drawing.Point(747, 57)
-        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(30, 27)
         Me.btnrefresh.TabIndex = 42
@@ -67,7 +67,7 @@ Partial Class fcaribarangmasuk
         '
         Me.dtakhir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtakhir.Location = New System.Drawing.Point(451, 58)
-        Me.dtakhir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtakhir.Margin = New System.Windows.Forms.Padding(4)
         Me.dtakhir.Name = "dtakhir"
         Me.dtakhir.Size = New System.Drawing.Size(288, 24)
         Me.dtakhir.TabIndex = 40
@@ -76,17 +76,17 @@ Partial Class fcaribarangmasuk
         '
         Me.dtawal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtawal.Location = New System.Drawing.Point(113, 58)
-        Me.dtawal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtawal.Margin = New System.Windows.Forms.Padding(4)
         Me.dtawal.Name = "dtawal"
         Me.dtawal.Size = New System.Drawing.Size(288, 24)
         Me.dtawal.TabIndex = 39
         '
         'GridControl1
         '
-        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Location = New System.Drawing.Point(18, 93)
         Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(1090, 555)
         Me.GridControl1.TabIndex = 37
@@ -118,6 +118,8 @@ Partial Class fcaribarangmasuk
         Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn2.AppearanceHeader.Options.UseFont = True
         Me.GridColumn2.Caption = "Tanggal"
+        Me.GridColumn2.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm"
+        Me.GridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
@@ -172,7 +174,7 @@ Partial Class fcaribarangmasuk
         Me.cbperiode.Checked = True
         Me.cbperiode.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbperiode.Location = New System.Drawing.Point(27, 60)
-        Me.cbperiode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbperiode.Margin = New System.Windows.Forms.Padding(4)
         Me.cbperiode.Name = "cbperiode"
         Me.cbperiode.Size = New System.Drawing.Size(78, 22)
         Me.cbperiode.TabIndex = 57
@@ -194,7 +196,7 @@ Partial Class fcaribarangmasuk
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fcaribarangmasuk"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pencarian Barang Masuk"

@@ -52,15 +52,15 @@ Public Class fhistoryuser
         GridColumn3.FieldName = "kode_tabel"
         GridColumn3.Width = 10
 
-        GridColumn4.Caption = "Created By"
+        GridColumn4.Caption = "Oleh"
         GridColumn4.FieldName = "created_by"
         GridColumn4.Width = 10
 
-        GridColumn5.Caption = "Date Created"
+        GridColumn5.Caption = "Waktu"
         GridColumn5.FieldName = "date_created"
         GridColumn5.Width = 10
-        GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn5.DisplayFormat.FormatString = "dd/MM/yyy HH:mm:ss"
+        'GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        'GridColumn5.DisplayFormat.FormatString = "dd/MM/yyy HH:mm:ss"
 
     End Sub
 

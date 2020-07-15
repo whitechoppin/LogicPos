@@ -102,6 +102,8 @@ Partial Class fjatuhtempopenjualan
         Me.GridColumn3.AppearanceCell.Options.UseFont = True
         Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn3.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm"
+        Me.GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.OptionsColumn.AllowEdit = False
         Me.GridColumn3.Visible = True
@@ -113,6 +115,8 @@ Partial Class fjatuhtempopenjualan
         Me.GridColumn4.AppearanceCell.Options.UseFont = True
         Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn4.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm"
+        Me.GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.OptionsColumn.AllowEdit = False
         Me.GridColumn4.Visible = True
@@ -203,6 +207,8 @@ Partial Class fjatuhtempopenjualan
         Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn9.AppearanceHeader.Options.UseFont = True
         Me.GridColumn9.Caption = "Tanggal"
+        Me.GridColumn9.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm"
+        Me.GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn9.Name = "GridColumn9"
         Me.GridColumn9.Visible = True
         Me.GridColumn9.VisibleIndex = 1
