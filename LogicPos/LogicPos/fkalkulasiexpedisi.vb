@@ -710,66 +710,55 @@ Public Class fkalkulasiexpedisi
         End If
     End Sub
 
-    Sub cetak_faktur()
+    Public Sub cetak_faktur()
         Dim tabel_faktur As New DataTable
-        'ambil data alamat
-        Dim alamat, telp, rekening As String
-
-        Call koneksii()
-        sql = "SELECT * FROM tb_info_perusahaan LIMIT 1"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows Then
-            alamat = dr("alamat")
-            telp = dr("telepon")
-            rekening = dr("rekening")
-        Else
-            alamat = ""
-            telp = ""
-            rekening = ""
-        End If
-        '==================
 
         With tabel_faktur
-            .Columns.Add("kode_stok")
             .Columns.Add("kode_barang")
             .Columns.Add("nama_barang")
+            .Columns.Add("panjang_barang")
+            .Columns.Add("lebar_barang")
+            .Columns.Add("tinggi_barang")
+            .Columns.Add("volume_barang")
             .Columns.Add("qty", GetType(Double))
-            .Columns.Add("satuan_barang")
-            .Columns.Add("jenis_barang")
-            .Columns.Add("harga", GetType(Double))
-            .Columns.Add("subtotal", GetType(Double))
+            .Columns.Add("total_volume", GetType(Double))
+            .Columns.Add("harga_barang", GetType(Double))
+            .Columns.Add("ongkos_kirim", GetType(Double))
+            .Columns.Add("total_ongkos_kirim", GetType(Double))
+            .Columns.Add("total_harga_barang", GetType(Double))
+            .Columns.Add("grand_total_barang", GetType(Double))
+
         End With
 
         Dim baris As DataRow
         For i As Integer = 0 To GridView1.RowCount - 1
             baris = tabel_faktur.NewRow
-            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
             baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
             baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+            baris("panjang_barang") = GridView1.GetRowCellValue(i, "panjang_barang")
+            baris("lebar_barang") = GridView1.GetRowCellValue(i, "lebar_barang")
+            baris("tinggi_barang") = GridView1.GetRowCellValue(i, "tinggi_barang")
+            baris("volume_barang") = GridView1.GetRowCellValue(i, "volume_barang")
             baris("qty") = GridView1.GetRowCellValue(i, "qty")
-            baris("satuan_barang") = GridView1.GetRowCellValue(i, "satuan_barang")
-            baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
-            baris("harga") = GridView1.GetRowCellValue(i, "harga")
-            baris("subtotal") = GridView1.GetRowCellValue(i, "subtotal")
+            baris("total_volume") = GridView1.GetRowCellValue(i, "total_volume")
+            baris("harga_barang") = GridView1.GetRowCellValue(i, "harga_barang")
+            baris("ongkos_kirim") = GridView1.GetRowCellValue(i, "ongkos_kirim")
+            baris("total_ongkos_kirim") = GridView1.GetRowCellValue(i, "total_ongkos_kirim")
+            baris("total_harga_barang") = GridView1.GetRowCellValue(i, "total_harga_barang")
+            baris("grand_total_barang") = GridView1.GetRowCellValue(i, "grand_total_barang")
             tabel_faktur.Rows.Add(baris)
         Next
 
-        'rpt_faktur = New fakturpembelian
-        'rpt_faktur.SetDataSource(tabel_faktur)
+        rpt_faktur = New fakturexpedisi
+        rpt_faktur.SetDataSource(tabel_faktur)
 
-        'rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
-        'rpt_faktur.SetParameterValue("alamatperusahaan", alamat)
-        'rpt_faktur.SetParameterValue("teleponperusahaan", telp)
-        'rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
-        'rpt_faktur.SetParameterValue("diskon", diskonnominal)
-        'rpt_faktur.SetParameterValue("grandtotal", grandtotal)
-        'rpt_faktur.SetParameterValue("ppn", ppnnominal)
-        'rpt_faktur.SetParameterValue("ongkir", ongkir)
-        'rpt_faktur.SetParameterValue("tanggal", dtpembelian.Text)
-        'rpt_faktur.SetParameterValue("supplier", txtsupplier.Text)
-        'rpt_faktur.SetParameterValue("user", fmenu.statususer.Text)
-        'rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
+        rpt_faktur.SetParameterValue("nofaktur", kodepengiriman)
+        rpt_faktur.SetParameterValue("user", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("namaexpedisi", txtnamaexpedisi.Text)
+        rpt_faktur.SetParameterValue("teleponexpedisi", txttelpexpedisi.Text)
+        rpt_faktur.SetParameterValue("alamatexpedisi", txtalamatexpedisi.Text)
+        rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
+        rpt_faktur.SetParameterValue("tanggal", Format(dtpengiriman.Value, "dd MMMM yyyy HH:mm:ss").ToString)
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)

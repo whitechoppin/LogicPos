@@ -314,7 +314,7 @@ Public Class fkalkulasipengiriman
         Call comboboxuser()
 
         If nomorkode IsNot "" Then
-            sql = "SELECT * FROM tb_pengiriman WHERE kode_pengiriman = '" + nomorkode.ToString + "'"
+            sql = "SELECT * FROM tb_kirim WHERE kode_kirim = '" + nomorkode.ToString + "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             dr.Read()
