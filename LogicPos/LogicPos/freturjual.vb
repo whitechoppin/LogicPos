@@ -128,7 +128,7 @@ Public Class freturjual
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
@@ -149,7 +149,7 @@ Public Class freturjual
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
@@ -175,7 +175,7 @@ Public Class freturjual
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
     Private Sub nextnumber(nextingnumber As String)
@@ -200,7 +200,7 @@ Public Class freturjual
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
     Sub previewreturpenjualan(lihatjual As String, lihatretur As String)
@@ -233,17 +233,18 @@ Public Class freturjual
         dr = cmmd.ExecuteReader()
         While dr.Read
             tabel1.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - dr("diskon") / 100, Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
-            GridControl1.RefreshDataSource()
+            'GridControl1.RefreshDataSource()
         End While
+        GridControl1.RefreshDataSource()
 
         sql = "SELECT * FROM tb_retur_penjualan_detail WHERE kode_retur ='" & lihatretur & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
             tabel2.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - dr("diskon") / 100, Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
-            GridControl2.RefreshDataSource()
+            'GridControl2.RefreshDataSource()
         End While
-
+        GridControl2.RefreshDataSource()
     End Sub
     Sub comboboxuser()
         Call koneksii()
@@ -618,9 +619,9 @@ Public Class freturjual
         While dr.Read
             tabel1.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - (Val(dr("harga_jual")) * Val(dr("diskon")) / 100), Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
             'tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), dr("diskon"), 0, dr("harga_diskon"), dr("subtotal"), 0, 0)
-            GridControl1.RefreshDataSource()
+            'GridControl1.RefreshDataSource()
         End While
-
+        GridControl1.RefreshDataSource()
     End Sub
     Sub simpan()
         kodereturjual = autonumber()

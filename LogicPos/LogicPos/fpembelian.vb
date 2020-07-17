@@ -124,7 +124,7 @@ Public Class fpembelian
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
@@ -206,8 +206,8 @@ Public Class fpembelian
         dr = cmmd.ExecuteReader()
         While dr.Read
             tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), dr("harga_beli"), dr("subtotal"))
-            GridControl1.RefreshDataSource()
         End While
+        GridControl1.RefreshDataSource()
     End Sub
     Sub inisialisasi(nomorkode As String)
         'bersihkan dan set default value

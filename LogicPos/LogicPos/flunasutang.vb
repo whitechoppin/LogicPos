@@ -164,7 +164,7 @@ Public Class flunasutang
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
@@ -612,8 +612,9 @@ Public Class flunasutang
         dr = cmmd.ExecuteReader()
         While dr.Read
             tabel.Rows.Add(dr("kode_pembelian"), dr("kode_supplier"), dr("tanggal_pembelian"), dr("tanggal_jatuhtempo"), Val(dr("total_pembelian")), Val(dr("bayar_utang")), Val(dr("sisa_utang")), Val(dr("terima_utang")))
-            GridControl1.RefreshDataSource()
+            'GridControl1.RefreshDataSource()
         End While
+        GridControl1.RefreshDataSource()
     End Sub
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click

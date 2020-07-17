@@ -131,7 +131,7 @@ Public Class fpenjualan
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
@@ -213,8 +213,8 @@ Public Class fpenjualan
         dr = cmmd.ExecuteReader()
         While dr.Read
             tabel.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), Val(dr("diskon")), Val(dr("harga_jual")) * Val(dr("diskon")) / 100, dr("harga_jual") - (Val(dr("harga_jual")) * Val(dr("diskon")) / 100), Val(dr("subtotal")), Val(dr("keuntungan")), Val(dr("modal")))
-            GridControl1.RefreshDataSource()
         End While
+        GridControl1.RefreshDataSource()
     End Sub
     Sub comboboxcustomer()
         Call koneksii()

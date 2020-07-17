@@ -113,7 +113,7 @@ Public Class ftransferbarang
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
@@ -135,7 +135,7 @@ Public Class ftransferbarang
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
@@ -162,7 +162,7 @@ Public Class ftransferbarang
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
     Private Sub nextnumber(nextingnumber As String)
@@ -187,7 +187,7 @@ Public Class ftransferbarang
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
     End Sub
 
@@ -211,8 +211,8 @@ Public Class ftransferbarang
         dr = cmmd.ExecuteReader()
         While dr.Read
             tabel.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"))
-            GridControl1.RefreshDataSource()
         End While
+        GridControl1.RefreshDataSource()
     End Sub
 
     Sub tabel_utama()

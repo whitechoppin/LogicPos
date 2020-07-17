@@ -73,24 +73,24 @@ Public Class fkalkulasiexpedisi
             If dr.HasRows Then
                 dr.Read()
                 If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
-                    Return "KM" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                    Return "PM" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                 Else
                     If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
-                        Return "KM" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                        Return "PM" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                     Else
                         If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
-                            Return "KM" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+                            Return "PM" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
                         End If
                     End If
                 End If
             Else
-                Return "KM" + Format(Now.Date, "yyMMdd") + "001"
+                Return "PM" + Format(Now.Date, "yyMMdd") + "001"
             End If
 
         Catch ex As Exception
             pesan = ex.Message.ToString
         Finally
-            cnn.Close()
+            'cnn.Close()
         End Try
         Return pesan
     End Function
