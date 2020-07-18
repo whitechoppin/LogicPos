@@ -457,7 +457,7 @@ Public Class fkaskeluar
         rpt_faktur.SetParameterValue("nofaktur", txtkodekeluar.Text)
         rpt_faktur.SetParameterValue("kodekas", txtnamakas.Text)
         rpt_faktur.SetParameterValue("saldo", saldokeluar)
-        rpt_faktur.SetParameterValue("tanggal", dttransaksi.Text)
+        rpt_faktur.SetParameterValue("tanggal", Format(dttransaksi.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
         rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
 

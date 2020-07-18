@@ -824,7 +824,7 @@ Public Class flunaspiutang
         rpt_faktur.SetParameterValue("nofaktur", txtnolunaspiutang.Text)
         rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
         rpt_faktur.SetParameterValue("alamat", txtalamat.Text)
-        rpt_faktur.SetParameterValue("tanggal", dtpelunasan.Value)
+        rpt_faktur.SetParameterValue("tanggal", Format(dtpelunasan.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         rpt_faktur.SetParameterValue("metode", cmbbayar.Text)
         rpt_faktur.SetParameterValue("bukti", txtbukti.Text)
         'rpt_faktur.SetParameterValue("totalbayar", totalbayar)

@@ -28,7 +28,7 @@ Partial Class fkalkulasipengiriman
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cbposted = New System.Windows.Forms.CheckBox()
         Me.cbprinted = New System.Windows.Forms.CheckBox()
-        Me.txttotalongkir = New System.Windows.Forms.TextBox()
+        Me.txthargakubik = New System.Windows.Forms.TextBox()
         Me.txttelpexpedisi = New System.Windows.Forms.TextBox()
         Me.txtuser = New System.Windows.Forms.TextBox()
         Me.txtalamatexpedisi = New System.Windows.Forms.TextBox()
@@ -77,8 +77,12 @@ Partial Class fkalkulasipengiriman
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtkodebarang = New System.Windows.Forms.TextBox()
+        Me.txtkubik = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -104,7 +108,7 @@ Partial Class fkalkulasipengiriman
         Me.TabPage1.Controls.Add(Me.Label4)
         Me.TabPage1.Controls.Add(Me.cbposted)
         Me.TabPage1.Controls.Add(Me.cbprinted)
-        Me.TabPage1.Controls.Add(Me.txttotalongkir)
+        Me.TabPage1.Controls.Add(Me.txthargakubik)
         Me.TabPage1.Controls.Add(Me.txttelpexpedisi)
         Me.TabPage1.Controls.Add(Me.txtuser)
         Me.TabPage1.Controls.Add(Me.txtalamatexpedisi)
@@ -163,15 +167,15 @@ Partial Class fkalkulasipengiriman
         Me.cbprinted.Text = "Printed"
         Me.cbprinted.UseVisualStyleBackColor = True
         '
-        'txttotalongkir
+        'txthargakubik
         '
-        Me.txttotalongkir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.txttotalongkir.Location = New System.Drawing.Point(821, 81)
-        Me.txttotalongkir.Margin = New System.Windows.Forms.Padding(4)
-        Me.txttotalongkir.MaxLength = 12
-        Me.txttotalongkir.Name = "txttotalongkir"
-        Me.txttotalongkir.Size = New System.Drawing.Size(195, 24)
-        Me.txttotalongkir.TabIndex = 55
+        Me.txthargakubik.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.txthargakubik.Location = New System.Drawing.Point(821, 81)
+        Me.txthargakubik.Margin = New System.Windows.Forms.Padding(4)
+        Me.txthargakubik.MaxLength = 12
+        Me.txthargakubik.Name = "txthargakubik"
+        Me.txthargakubik.Size = New System.Drawing.Size(195, 24)
+        Me.txthargakubik.TabIndex = 55
         '
         'txttelpexpedisi
         '
@@ -233,9 +237,9 @@ Partial Class fkalkulasipengiriman
         Me.Label14.Location = New System.Drawing.Point(695, 85)
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(89, 18)
+        Me.Label14.Size = New System.Drawing.Size(87, 18)
         Me.Label14.TabIndex = 53
-        Me.Label14.Text = "Total Ongkir"
+        Me.Label14.Text = "Harga kubik"
         '
         'dtpengiriman
         '
@@ -350,7 +354,7 @@ Partial Class fkalkulasipengiriman
         Me.btntambahbarang.BackgroundImage = CType(resources.GetObject("btntambahbarang.BackgroundImage"), System.Drawing.Image)
         Me.btntambahbarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btntambahbarang.ImageIndex = 0
-        Me.btntambahbarang.Location = New System.Drawing.Point(965, 245)
+        Me.btntambahbarang.Location = New System.Drawing.Point(975, 247)
         Me.btntambahbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.btntambahbarang.Name = "btntambahbarang"
         Me.btntambahbarang.Size = New System.Drawing.Size(41, 37)
@@ -372,18 +376,18 @@ Partial Class fkalkulasipengiriman
         'txthargabarang
         '
         Me.txthargabarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txthargabarang.Location = New System.Drawing.Point(707, 258)
+        Me.txthargabarang.Location = New System.Drawing.Point(685, 260)
         Me.txthargabarang.Margin = New System.Windows.Forms.Padding(4)
         Me.txthargabarang.MaxLength = 12
         Me.txthargabarang.Name = "txthargabarang"
-        Me.txthargabarang.Size = New System.Drawing.Size(189, 24)
+        Me.txthargabarang.Size = New System.Drawing.Size(183, 24)
         Me.txthargabarang.TabIndex = 85
         '
         'Label13
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(677, 261)
+        Me.Label13.Location = New System.Drawing.Point(655, 263)
         Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(27, 18)
@@ -404,7 +408,7 @@ Partial Class fkalkulasipengiriman
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(710, 235)
+        Me.Label17.Location = New System.Drawing.Point(688, 237)
         Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(99, 18)
@@ -493,11 +497,11 @@ Partial Class fkalkulasipengiriman
         'txtbanyakbarang
         '
         Me.txtbanyakbarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbanyakbarang.Location = New System.Drawing.Point(904, 258)
+        Me.txtbanyakbarang.Location = New System.Drawing.Point(876, 260)
         Me.txtbanyakbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.txtbanyakbarang.MaxLength = 12
         Me.txtbanyakbarang.Name = "txtbanyakbarang"
-        Me.txtbanyakbarang.Size = New System.Drawing.Size(50, 24)
+        Me.txtbanyakbarang.Size = New System.Drawing.Size(37, 24)
         Me.txtbanyakbarang.TabIndex = 75
         '
         'btncaribarang
@@ -505,7 +509,7 @@ Partial Class fkalkulasipengiriman
         Me.btncaribarang.BackgroundImage = CType(resources.GetObject("btncaribarang.BackgroundImage"), System.Drawing.Image)
         Me.btncaribarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncaribarang.ImageIndex = 0
-        Me.btncaribarang.Location = New System.Drawing.Point(198, 257)
+        Me.btncaribarang.Location = New System.Drawing.Point(192, 259)
         Me.btncaribarang.Margin = New System.Windows.Forms.Padding(4)
         Me.btncaribarang.Name = "btncaribarang"
         Me.btncaribarang.Size = New System.Drawing.Size(30, 27)
@@ -516,7 +520,7 @@ Partial Class fkalkulasipengiriman
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(910, 235)
+        Me.Label3.Location = New System.Drawing.Point(879, 237)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(31, 18)
@@ -537,17 +541,17 @@ Partial Class fkalkulasipengiriman
         'txtnamabarang
         '
         Me.txtnamabarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamabarang.Location = New System.Drawing.Point(235, 258)
+        Me.txtnamabarang.Location = New System.Drawing.Point(228, 260)
         Me.txtnamabarang.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnamabarang.Name = "txtnamabarang"
-        Me.txtnamabarang.Size = New System.Drawing.Size(434, 24)
+        Me.txtnamabarang.Size = New System.Drawing.Size(425, 24)
         Me.txtnamabarang.TabIndex = 74
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(235, 235)
+        Me.Label5.Location = New System.Drawing.Point(228, 237)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(99, 18)
@@ -568,7 +572,7 @@ Partial Class fkalkulasipengiriman
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
@@ -632,9 +636,9 @@ Partial Class fkalkulasipengiriman
         Me.GridColumn5.AppearanceCell.Options.UseFont = True
         Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn5.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn5.Caption = "Ongkos Kirim"
+        Me.GridColumn5.Caption = "Kubik"
+        Me.GridColumn5.ColumnEdit = Me.ritenumber
         Me.GridColumn5.Name = "GridColumn5"
-        Me.GridColumn5.OptionsColumn.AllowEdit = False
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
         '
@@ -644,7 +648,7 @@ Partial Class fkalkulasipengiriman
         Me.GridColumn6.AppearanceCell.Options.UseFont = True
         Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn6.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn6.Caption = "Total Ongkos Kirim"
+        Me.GridColumn6.Caption = "Ongkos Kirim"
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.OptionsColumn.AllowEdit = False
         Me.GridColumn6.Visible = True
@@ -656,7 +660,7 @@ Partial Class fkalkulasipengiriman
         Me.GridColumn7.AppearanceCell.Options.UseFont = True
         Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn7.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn7.Caption = "Total Harga Barang"
+        Me.GridColumn7.Caption = "Harga + Ongkir"
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.OptionsColumn.AllowEdit = False
         Me.GridColumn7.Visible = True
@@ -668,17 +672,41 @@ Partial Class fkalkulasipengiriman
         Me.GridColumn8.AppearanceCell.Options.UseFont = True
         Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn8.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn8.Caption = "Grand Total Barang"
+        Me.GridColumn8.Caption = "Total Ongkos Kirim"
         Me.GridColumn8.Name = "GridColumn8"
         Me.GridColumn8.OptionsColumn.AllowEdit = False
         Me.GridColumn8.Visible = True
         Me.GridColumn8.VisibleIndex = 7
         '
+        'GridColumn9
+        '
+        Me.GridColumn9.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceCell.Options.UseFont = True
+        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn9.Caption = "Total Harga Barang"
+        Me.GridColumn9.Name = "GridColumn9"
+        Me.GridColumn9.OptionsColumn.AllowEdit = False
+        Me.GridColumn9.Visible = True
+        Me.GridColumn9.VisibleIndex = 8
+        '
+        'GridColumn10
+        '
+        Me.GridColumn10.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn10.AppearanceCell.Options.UseFont = True
+        Me.GridColumn10.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn10.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn10.Caption = "Grand Total Barang"
+        Me.GridColumn10.Name = "GridColumn10"
+        Me.GridColumn10.OptionsColumn.AllowEdit = False
+        Me.GridColumn10.Visible = True
+        Me.GridColumn10.VisibleIndex = 9
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(21, 235)
+        Me.Label2.Location = New System.Drawing.Point(21, 237)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(94, 18)
@@ -688,22 +716,43 @@ Partial Class fkalkulasipengiriman
         'txtkodebarang
         '
         Me.txtkodebarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkodebarang.Location = New System.Drawing.Point(17, 258)
+        Me.txtkodebarang.Location = New System.Drawing.Point(17, 260)
         Me.txtkodebarang.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkodebarang.Name = "txtkodebarang"
-        Me.txtkodebarang.Size = New System.Drawing.Size(177, 24)
+        Me.txtkodebarang.Size = New System.Drawing.Size(171, 24)
         Me.txtkodebarang.TabIndex = 71
+        '
+        'txtkubik
+        '
+        Me.txtkubik.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtkubik.Location = New System.Drawing.Point(919, 260)
+        Me.txtkubik.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtkubik.MaxLength = 12
+        Me.txtkubik.Name = "txtkubik"
+        Me.txtkubik.Size = New System.Drawing.Size(37, 24)
+        Me.txtkubik.TabIndex = 96
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(922, 237)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(45, 18)
+        Me.Label8.TabIndex = 95
+        Me.Label8.Text = "Kubik"
         '
         'btnrefresh
         '
         Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
-        Me.btnrefresh.Location = New System.Drawing.Point(1014, 245)
+        Me.btnrefresh.Location = New System.Drawing.Point(1019, 247)
         Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(41, 37)
-        Me.btnrefresh.TabIndex = 94
+        Me.btnrefresh.TabIndex = 97
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'fkalkulasipengiriman
@@ -713,6 +762,8 @@ Partial Class fkalkulasipengiriman
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1076, 649)
         Me.Controls.Add(Me.btnrefresh)
+        Me.Controls.Add(Me.txtkubik)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.btntambahbarang)
         Me.Controls.Add(Me.btncaridata)
@@ -757,7 +808,7 @@ Partial Class fkalkulasipengiriman
     Friend WithEvents Label4 As Label
     Friend WithEvents cbposted As CheckBox
     Friend WithEvents cbprinted As CheckBox
-    Friend WithEvents txttotalongkir As TextBox
+    Friend WithEvents txthargakubik As TextBox
     Friend WithEvents txttelpexpedisi As TextBox
     Friend WithEvents txtuser As TextBox
     Friend WithEvents txtalamatexpedisi As TextBox
@@ -802,11 +853,15 @@ Partial Class fkalkulasipengiriman
     Friend WithEvents ritenumber As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label2 As Label
     Friend WithEvents txtkodebarang As TextBox
+    Friend WithEvents txtkubik As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnrefresh As Button
 End Class

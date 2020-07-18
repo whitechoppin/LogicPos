@@ -785,7 +785,7 @@ Public Class freturjual
         rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
         rpt_faktur.SetParameterValue("jatem", dtjatuhtempo.Text)
         rpt_faktur.SetParameterValue("alamat", txtalamat.Text)
-        rpt_faktur.SetParameterValue("tanggal", dtreturjual.Text)
+        rpt_faktur.SetParameterValue("tanggal", Format(dtreturjual.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
 

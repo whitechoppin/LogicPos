@@ -475,36 +475,12 @@ Public Class ftransferkas
         End If
     End Sub
     Sub cetak_faktur()
-        'Dim faktur As String
-        'Dim tabel_faktur As New DataTable
-        'With tabel_faktur
-        '    .Columns.Add("kode_stok")
-        '    .Columns.Add("kode_barang")
-        '    .Columns.Add("nama_barang")
-        '    .Columns.Add("qty", GetType(Double))
-        '    .Columns.Add("satuan_barang")
-        '    .Columns.Add("jenis_barang")
-        'End With
-
-        'Dim baris As DataRow
-        'For i As Integer = 0 To GridView1.RowCount - 1
-        '    baris = tabel_faktur.NewRow
-        '    baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
-        '    baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
-        '    baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
-        '    baris("qty") = GridView1.GetRowCellValue(i, "qty")
-        '    baris("satuan_barang") = GridView1.GetRowCellValue(i, "satuan_barang")
-        '    baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
-        '    tabel_faktur.Rows.Add(baris)
-        'Next
 
         rpt_faktur = New fakturtransferkas
-        'rpt_faktur.SetDataSource(tabel_faktur)
-        'rpt.SetParameterValue("total", total2)
         rpt_faktur.SetParameterValue("nofaktur", txtkodetransfer.Text)
         rpt_faktur.SetParameterValue("darikas", txtnamadarikas.Text)
         rpt_faktur.SetParameterValue("kekas", txtnamakekas.Text)
-        rpt_faktur.SetParameterValue("tanggal", dttransaksi.Text)
+        rpt_faktur.SetParameterValue("tanggal", Format(dttransaksi.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         rpt_faktur.SetParameterValue("keterangan", txtketerangantransfer.Text)
         rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
         rpt_faktur.SetParameterValue("saldo", saldotransfer)

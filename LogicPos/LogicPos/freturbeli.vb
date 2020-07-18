@@ -742,7 +742,7 @@ Public Class freturbeli
         rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
         rpt_faktur.SetParameterValue("supplier", txtsupplier.Text)
         rpt_faktur.SetParameterValue("alamat", txtalamat.Text)
-        rpt_faktur.SetParameterValue("tanggal", dtreturbeli.Text)
+        rpt_faktur.SetParameterValue("tanggal", Format(dtreturbeli.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
 
