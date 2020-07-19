@@ -176,7 +176,7 @@ Public Class fkalkulasiexpedisi
         Call inisialisasi(txtnonota.Text)
     End Sub
 
-    Private Sub btncaripembelian_Click(sender As Object, e As EventArgs) Handles btncaridata.Click
+    Private Sub btncaridata_Click(sender As Object, e As EventArgs) Handles btncaridata.Click
 
     End Sub
 

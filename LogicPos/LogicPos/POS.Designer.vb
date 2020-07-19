@@ -4832,6 +4832,26 @@ Partial Public Class POS
     Partial Public Class tabelkirimDataTable
         Inherits Global.System.Data.TypedTableBase(Of tabelkirimRow)
         
+        Private columnkode_barang As Global.System.Data.DataColumn
+        
+        Private columnnama_barang As Global.System.Data.DataColumn
+        
+        Private columnqty As Global.System.Data.DataColumn
+        
+        Private columnharga_barang As Global.System.Data.DataColumn
+        
+        Private columnkubik As Global.System.Data.DataColumn
+        
+        Private columnongkos_kirim As Global.System.Data.DataColumn
+        
+        Private columnharga_tambah_ongkir As Global.System.Data.DataColumn
+        
+        Private columntotal_ongkos_kirim As Global.System.Data.DataColumn
+        
+        Private columntotal_harga_barang As Global.System.Data.DataColumn
+        
+        Private columngrand_total_barang As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -4866,6 +4886,86 @@ Partial Public Class POS
             MyBase.New(info, context)
             Me.InitVars
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property kode_barangColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnkode_barang
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property nama_barangColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnama_barang
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property qtyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnqty
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property harga_barangColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnharga_barang
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property kubikColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnkubik
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ongkos_kirimColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnongkos_kirim
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property harga_tambah_ongkirColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnharga_tambah_ongkir
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property total_ongkos_kirimColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntotal_ongkos_kirim
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property total_harga_barangColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntotal_harga_barang
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property grand_total_barangColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columngrand_total_barang
+            End Get
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
@@ -4904,9 +5004,9 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtabelkirimRow() As tabelkirimRow
+        Public Overloads Function AddtabelkirimRow(ByVal kode_barang As String, ByVal nama_barang As String, ByVal qty As String, ByVal harga_barang As String, ByVal kubik As String, ByVal ongkos_kirim As String, ByVal harga_tambah_ongkir As String, ByVal total_ongkos_kirim As String, ByVal total_harga_barang As String, ByVal grand_total_barang As String) As tabelkirimRow
             Dim rowtabelkirimRow As tabelkirimRow = CType(Me.NewRow,tabelkirimRow)
-            Dim columnValuesArray(-1) As Object
+            Dim columnValuesArray() As Object = New Object() {kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang}
             rowtabelkirimRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtabelkirimRow)
             Return rowtabelkirimRow
@@ -4929,11 +5029,41 @@ Partial Public Class POS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub InitVars()
+            Me.columnkode_barang = MyBase.Columns("kode_barang")
+            Me.columnnama_barang = MyBase.Columns("nama_barang")
+            Me.columnqty = MyBase.Columns("qty")
+            Me.columnharga_barang = MyBase.Columns("harga_barang")
+            Me.columnkubik = MyBase.Columns("kubik")
+            Me.columnongkos_kirim = MyBase.Columns("ongkos_kirim")
+            Me.columnharga_tambah_ongkir = MyBase.Columns("harga_tambah_ongkir")
+            Me.columntotal_ongkos_kirim = MyBase.Columns("total_ongkos_kirim")
+            Me.columntotal_harga_barang = MyBase.Columns("total_harga_barang")
+            Me.columngrand_total_barang = MyBase.Columns("grand_total_barang")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitClass()
+            Me.columnkode_barang = New Global.System.Data.DataColumn("kode_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkode_barang)
+            Me.columnnama_barang = New Global.System.Data.DataColumn("nama_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnama_barang)
+            Me.columnqty = New Global.System.Data.DataColumn("qty", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnqty)
+            Me.columnharga_barang = New Global.System.Data.DataColumn("harga_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnharga_barang)
+            Me.columnkubik = New Global.System.Data.DataColumn("kubik", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkubik)
+            Me.columnongkos_kirim = New Global.System.Data.DataColumn("ongkos_kirim", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnongkos_kirim)
+            Me.columnharga_tambah_ongkir = New Global.System.Data.DataColumn("harga_tambah_ongkir", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnharga_tambah_ongkir)
+            Me.columntotal_ongkos_kirim = New Global.System.Data.DataColumn("total_ongkos_kirim", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntotal_ongkos_kirim)
+            Me.columntotal_harga_barang = New Global.System.Data.DataColumn("total_harga_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntotal_harga_barang)
+            Me.columngrand_total_barang = New Global.System.Data.DataColumn("grand_total_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columngrand_total_barang)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7887,6 +8017,276 @@ Partial Public Class POS
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
             Me.tabletabelkirim = CType(Me.Table,tabelkirimDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property kode_barang() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelkirim.kode_barangColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_barang' in table 'tabelkirim' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelkirim.kode_barangColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property nama_barang() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelkirim.nama_barangColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'nama_barang' in table 'tabelkirim' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelkirim.nama_barangColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property qty() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelkirim.qtyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'qty' in table 'tabelkirim' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelkirim.qtyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property harga_barang() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelkirim.harga_barangColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'harga_barang' in table 'tabelkirim' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelkirim.harga_barangColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property kubik() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelkirim.kubikColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'kubik' in table 'tabelkirim' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelkirim.kubikColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ongkos_kirim() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelkirim.ongkos_kirimColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ongkos_kirim' in table 'tabelkirim' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelkirim.ongkos_kirimColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property harga_tambah_ongkir() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelkirim.harga_tambah_ongkirColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'harga_tambah_ongkir' in table 'tabelkirim' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelkirim.harga_tambah_ongkirColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property total_ongkos_kirim() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelkirim.total_ongkos_kirimColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'total_ongkos_kirim' in table 'tabelkirim' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelkirim.total_ongkos_kirimColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property total_harga_barang() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelkirim.total_harga_barangColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'total_harga_barang' in table 'tabelkirim' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelkirim.total_harga_barangColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property grand_total_barang() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelkirim.grand_total_barangColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'grand_total_barang' in table 'tabelkirim' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelkirim.grand_total_barangColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Iskode_barangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelkirim.kode_barangColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setkode_barangNull()
+            Me(Me.tabletabelkirim.kode_barangColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isnama_barangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelkirim.nama_barangColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setnama_barangNull()
+            Me(Me.tabletabelkirim.nama_barangColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsqtyNull() As Boolean
+            Return Me.IsNull(Me.tabletabelkirim.qtyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetqtyNull()
+            Me(Me.tabletabelkirim.qtyColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isharga_barangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelkirim.harga_barangColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setharga_barangNull()
+            Me(Me.tabletabelkirim.harga_barangColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IskubikNull() As Boolean
+            Return Me.IsNull(Me.tabletabelkirim.kubikColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetkubikNull()
+            Me(Me.tabletabelkirim.kubikColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isongkos_kirimNull() As Boolean
+            Return Me.IsNull(Me.tabletabelkirim.ongkos_kirimColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setongkos_kirimNull()
+            Me(Me.tabletabelkirim.ongkos_kirimColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isharga_tambah_ongkirNull() As Boolean
+            Return Me.IsNull(Me.tabletabelkirim.harga_tambah_ongkirColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setharga_tambah_ongkirNull()
+            Me(Me.tabletabelkirim.harga_tambah_ongkirColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Istotal_ongkos_kirimNull() As Boolean
+            Return Me.IsNull(Me.tabletabelkirim.total_ongkos_kirimColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Settotal_ongkos_kirimNull()
+            Me(Me.tabletabelkirim.total_ongkos_kirimColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Istotal_harga_barangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelkirim.total_harga_barangColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Settotal_harga_barangNull()
+            Me(Me.tabletabelkirim.total_harga_barangColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isgrand_total_barangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelkirim.grand_total_barangColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setgrand_total_barangNull()
+            Me(Me.tabletabelkirim.grand_total_barangColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

@@ -16,7 +16,7 @@ Public Class fkalkulasipengiriman
     Dim viewhargacolly As Double
 
     'variabel bantuan hitung gridview
-    Dim ongkirbarangulang, totalongkirbarangulang, totalhargabarangulang, grandtotalbarangulang As Double
+    Dim ongkirbarangulang, hargatambahongkirulang, totalongkirbarangulang, totalhargabarangulang, grandtotalbarangulang As Double
 
     Dim summarytotalvolumebefore, volumebarangbefore, qtybarangbefore, totalvolumebarangbefore As Double
 
@@ -35,7 +35,7 @@ Public Class fkalkulasipengiriman
             .OptionsView.ShowFooter = True
             'buat sum harga
             .Columns("kubik").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "kubik", "{0:n0}")
-            .Columns("ongkos_kirim").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "ongkos_kirim", "{0:n0}")
+            '.Columns("ongkos_kirim").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "ongkos_kirim", "{0:n0}")
             .Columns("total_ongkos_kirim").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_ongkos_kirim", "{0:n0}")
             .Columns("total_harga_barang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_harga_barang", "{0:n0}")
             .Columns("grand_total_barang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "grand_total_barang", "{0:n0}")
@@ -226,6 +226,7 @@ Public Class fkalkulasipengiriman
         txthargabarang.Enabled = True
 
         btntambahbarang.Enabled = True
+        btnrefresh.Enabled = True
 
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = True
@@ -308,6 +309,7 @@ Public Class fkalkulasipengiriman
         txthargabarang.Enabled = False
 
         btntambahbarang.Enabled = False
+        btnrefresh.Enabled = False
 
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = False
@@ -329,20 +331,20 @@ Public Class fkalkulasipengiriman
 
             If dr.HasRows Then
                 'header
-                nomorpengiriman = dr("kode_pengiriman")
+                nomorpengiriman = dr("kode_kirim")
                 nomoruser = dr("kode_user")
 
                 namaexpedisi = dr("nama_expedisi")
                 alamatexpedisi = dr("alamat_expedisi")
                 telpexpedisi = dr("telp_expedisi")
 
-                statusprint = dr("print_pengiriman")
-                statusposted = dr("posted_pengiriman")
+                statusprint = dr("print_kirim")
+                statusposted = dr("posted_kirim")
 
-                viewhargacolly = dr("harga_colly")
-                viewtglpengiriman = dr("tgl_pengiriman")
+                viewhargacolly = dr("harga_kubik")
+                viewtglpengiriman = dr("tgl_kirim")
 
-                viewketerangan = dr("keterangan_pengiriman")
+                viewketerangan = dr("keterangan_kirim")
 
                 'isi data pengiriman
                 txtnonota.Text = nomorpengiriman
@@ -441,6 +443,7 @@ Public Class fkalkulasipengiriman
         txthargabarang.Enabled = True
 
         btntambahbarang.Enabled = True
+        btnrefresh.Enabled = True
 
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = True
@@ -546,24 +549,235 @@ Public Class fkalkulasipengiriman
         Call awalbaru()
     End Sub
 
-    Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
+    Sub simpan()
+        kodepengiriman = autonumber()
+        Call koneksii()
 
+        If GridView1.RowCount = 0 Then
+            MsgBox("Data masih kosong")
+            'Exit Sub
+        Else
+            'tabel.Rows.Add(txtkodebarang.Text, txtnamabarang.Text, Val(banyakbarang), Val(hargabarang), Val(kubikbarang), Val(ongkirbarang), Val(hargatambahongkir), Val(totalongkirbarang), Val(totalhargabarang), Val(grandtotalbarang))
+
+            For i As Integer = 0 To GridView1.RowCount - 1
+                sql = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "harga_barang") & "','" & GridView1.GetRowCellValue(i, "kubik") & "','" & GridView1.GetRowCellValue(i, "ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "harga_tambah_ongkir") & "','" & GridView1.GetRowCellValue(i, "total_ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_harga_barang") & "','" & GridView1.GetRowCellValue(i, "grand_total_barang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            Next
+            sql = "INSERT INTO tb_kirim (kode_kirim, kode_user, nama_expedisi, alamat_expedisi, telp_expedisi, tgl_kirim, harga_kubik, print_kirim, posted_kirim, keterangan_kirim, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & cmbuser.Text & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txttelpexpedisi.Text & "','" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "','" & hargakubik & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+
+            MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Sukses")
+
+            'history user ==========
+            Call historysave("Menyimpan Data Kirim Kode " + kodepengiriman, kodepengiriman)
+            '========================
+            Call inisialisasi(kodepengiriman)
+        End If
+    End Sub
+
+    Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
+        Call kalkulasi()
+
+        If GridView1.DataRowCount > 0 Then
+            If txtuser.Text IsNot "" Then
+                If txtnamaexpedisi.Text IsNot "" Then
+                    If txtalamatexpedisi.Text IsNot "" Then
+                        If txttelpexpedisi.Text IsNot "" Then
+                            If txthargakubik.Text IsNot "" Or hargakubik <= 0 Then
+                                Call simpan()
+                            Else
+                                MsgBox("Isi biaya kubikasi")
+                            End If
+                        Else
+                            MsgBox("Isi Telepon Expedisi")
+                        End If
+                    Else
+                        MsgBox("Isi Alamat Expedisi")
+                    End If
+                Else
+                    MsgBox("Isi Nama Expedisi")
+                End If
+            Else
+                MsgBox("Isi User")
+            End If
+        Else
+            MsgBox("Keranjang Masih Kosong")
+        End If
+    End Sub
+
+    Public Sub cetak_faktur()
+        Dim tabel_faktur As New DataTable
+
+        With tabel_faktur
+            .Columns.Add("kode_barang")
+            .Columns.Add("nama_barang")
+            .Columns.Add("qty", GetType(Double))
+            .Columns.Add("total_volume", GetType(Double))
+            .Columns.Add("harga_barang", GetType(Double))
+            .Columns.Add("ongkos_kirim", GetType(Double))
+            .Columns.Add("total_ongkos_kirim", GetType(Double))
+            .Columns.Add("total_harga_barang", GetType(Double))
+            .Columns.Add("grand_total_barang", GetType(Double))
+
+        End With
+
+        Dim baris As DataRow
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_faktur.NewRow
+            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+            baris("qty") = GridView1.GetRowCellValue(i, "qty")
+            baris("total_volume") = GridView1.GetRowCellValue(i, "total_volume")
+            baris("harga_barang") = GridView1.GetRowCellValue(i, "harga_barang")
+            baris("ongkos_kirim") = GridView1.GetRowCellValue(i, "ongkos_kirim")
+            baris("total_ongkos_kirim") = GridView1.GetRowCellValue(i, "total_ongkos_kirim")
+            baris("total_harga_barang") = GridView1.GetRowCellValue(i, "total_harga_barang")
+            baris("grand_total_barang") = GridView1.GetRowCellValue(i, "grand_total_barang")
+            tabel_faktur.Rows.Add(baris)
+        Next
+
+        rpt_faktur = New fakturpengiriman
+        rpt_faktur.SetDataSource(tabel_faktur)
+
+        rpt_faktur.SetParameterValue("nofaktur", kodepengiriman)
+        rpt_faktur.SetParameterValue("user", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("namaexpedisi", txtnamaexpedisi.Text)
+        rpt_faktur.SetParameterValue("teleponexpedisi", txttelpexpedisi.Text)
+        rpt_faktur.SetParameterValue("alamatexpedisi", txtalamatexpedisi.Text)
+        rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
+        rpt_faktur.SetParameterValue("tanggal", Format(dtpengiriman.Value, "dd MMMM yyyy HH:mm:ss").ToString)
+
+        SetReportPageSize("Faktur", 1)
+        rpt_faktur.PrintToPrinter(1, False, 0, 0)
+    End Sub
+
+    Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
+        Dim faktur As String
+        Call koneksii()
+        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
+        Else
+            faktur = ""
+        End If
+
+        Try
+            Dim ObjPrinterSetting As New System.Drawing.Printing.PrinterSettings
+            Dim PkSize As New System.Drawing.Printing.PaperSize
+            ObjPrinterSetting.PrinterName = faktur
+            For i As Integer = 0 To ObjPrinterSetting.PaperSizes.Count - 1
+                If ObjPrinterSetting.PaperSizes.Item(i).PaperName = mPaperSize.Trim Then
+                    PkSize = ObjPrinterSetting.PaperSizes.Item(i)
+                    Exit For
+                End If
+            Next
+
+            If PkSize IsNot Nothing Then
+                Dim myAppPrintOptions As CrystalDecisions.CrystalReports.Engine.PrintOptions = rpt_faktur.PrintOptions
+                myAppPrintOptions.PrinterName = faktur
+                myAppPrintOptions.PaperSize = CType(PkSize.RawKind, CrystalDecisions.Shared.PaperSize)
+                rpt_faktur.PrintOptions.PaperOrientation = IIf(PaperOrientation = 1, CrystalDecisions.Shared.PaperOrientation.Portrait, CrystalDecisions.Shared.PaperOrientation.Landscape)
+            End If
+            PkSize = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
 
     End Sub
 
-    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+    Sub perbarui(nomornota As String)
 
+        'hapus tb_pembelian_detail
+        Call koneksii()
+        sql = "DELETE FROM tb_kirim_detail WHERE kode_kirim = '" & nomornota & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        'loop isi pembelian detail
+
+        If GridView1.RowCount = 0 Then
+            MsgBox("Data masih kosong")
+            Exit Sub
+        Else
+            For i As Integer = 0 To GridView1.RowCount - 1
+                sql = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & nomornota & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "harga_barang") & "','" & GridView1.GetRowCellValue(i, "kubik") & "','" & GridView1.GetRowCellValue(i, "ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "harga_tambah_ongkir") & "','" & GridView1.GetRowCellValue(i, "total_ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_harga_barang") & "','" & GridView1.GetRowCellValue(i, "grand_total_barang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+            Next
+
+            Call koneksii()
+            sql = "UPDATE tb_kirim SET kode_user = '" & cmbuser.Text & "', nama_expedisi = '" & txtnamaexpedisi.Text & "', alamat_expedisi = '" & txtalamatexpedisi.Text & "', telp_expedisi = '" & txttelpexpedisi.Text & "', tgl_kirim = '" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "', harga_kubik='" & hargakubik & "', print_kirim = 0, posted_kirim = 1, keterangan_kirim = '" & txtketerangan.Text & "', updated_by = '" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_kirim = '" & nomornota & "' "
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+
+            'history user ==========
+            Call historysave("Mengedit Data Kirim Kode " + nomornota, nomornota)
+            '========================
+
+            MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
+            Call inisialisasi(nomornota)
+
+        End If
+    End Sub
+
+    Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
+        If btnedit.Text = "Edit" Then
+            btnedit.Text = "Update"
+            Call awaledit()
+        Else
+            If btnedit.Text = "Update" Then
+                Call kalkulasi()
+
+                If GridView1.DataRowCount > 0 Then
+                    If txtuser.Text IsNot "" Then
+                        If txtnamaexpedisi.Text IsNot "" Then
+                            If txtalamatexpedisi.Text IsNot "" Then
+                                If txttelpexpedisi.Text IsNot "" Then
+                                    If txthargakubik.Text IsNot "" Or hargakubik <= 0 Then
+                                        btnedit.Text = "Edit"
+                                        'isi disini sub updatenya
+                                        Call perbarui(txtnonota.Text)
+                                    Else
+                                        MsgBox("Isi Biaya Kubikasi")
+                                    End If
+                                Else
+                                    MsgBox("Isi Telepon Expedisi")
+                                End If
+                            Else
+                                MsgBox("Isi Alamat Expedisi")
+                            End If
+                        Else
+                            MsgBox("Isi Nama Expedisi")
+                        End If
+                    Else
+                        MsgBox("Isi User")
+                    End If
+                Else
+                    MsgBox("Keranjang Masih Kosong")
+                End If
+
+            End If
+        End If
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
-
+        If btnedit.Text.Equals("Edit") Then
+            Call inisialisasi(kodepengiriman)
+        ElseIf btnedit.Text.Equals("Update") Then
+            btnedit.Text = "Edit"
+            Call inisialisasi(txtnonota.Text)
+        End If
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
-
+        Call prevnumber(txtnonota.Text)
     End Sub
 
     Private Sub btncaridata_Click(sender As Object, e As EventArgs) Handles btncaridata.Click
@@ -571,13 +785,28 @@ Public Class fkalkulasipengiriman
     End Sub
 
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
-
+        Call inisialisasi(txtnonota.Text)
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-
+        Call nextnumber(txtnonota.Text)
     End Sub
 
+    Sub cariuser()
+        Call koneksii()
+        sql = "SELECT * FROM tb_user WHERE kode_user = '" & cmbuser.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            txtuser.Text = dr("nama_user")
+        Else
+            txtuser.Text = ""
+        End If
+    End Sub
+
+    Private Sub cmbuser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbuser.SelectedIndexChanged
+        Call cariuser()
+    End Sub
 
     Sub caribarang()
         Call koneksii()
@@ -681,17 +910,20 @@ Public Class fkalkulasipengiriman
         'tambahkan total barang ulang
         For i As Integer = 0 To GridView1.RowCount - 1
             'mendapatkan ongkir satuan barang
-            'ongkirbarangulang = totalongkospengiriman * (Val(GridView1.GetRowCellValue(i, "volume_barang")) / grandtotalvolumebarang)
-            ''mendapatkan total ongkir satuan barang  x qty
-            'totalongkirbarangulang = ongkirbarangulang * Val(GridView1.GetRowCellValue(i, "qty"))
-            ''mendapatkan total harga barang
-            'totalhargabarangulang = Val(GridView1.GetRowCellValue(i, "harga_barang")) * Val(GridView1.GetRowCellValue(i, "qty"))
+            totalongkirbarangulang = hargakubik * Val(GridView1.GetRowCellValue(i, "kubik"))
+            'mendapatkan total ongkir satuan barang  x qty
+            ongkirbarangulang = totalongkirbarangulang / Val(GridView1.GetRowCellValue(i, "qty"))
+            hargatambahongkirulang = Val(GridView1.GetRowCellValue(i, "harga_barang")) + ongkirbarangulang
+            'mendapatkan total harga barang
+            totalhargabarangulang = Val(GridView1.GetRowCellValue(i, "harga_barang")) * Val(GridView1.GetRowCellValue(i, "qty"))
+            grandtotalbarangulang = totalhargabarangulang + totalongkirbarangulang
 
-            'grandtotalbarangulang = totalhargabarangulang + totalongkirbarangulang
 
-            'GridView1.SetRowCellValue(i, "ongkos_kirim", ongkirbarangulang)
-            'GridView1.SetRowCellValue(i, "total_ongkos_kirim", totalongkirbarangulang)
-            'GridView1.SetRowCellValue(i, "grand_total_barang", grandtotalbarangulang)
+            GridView1.SetRowCellValue(i, "ongkos_kirim", ongkirbarangulang)
+            GridView1.SetRowCellValue(i, "harga_tambah_ongkir", hargatambahongkirulang)
+            GridView1.SetRowCellValue(i, "total_ongkos_kirim", totalongkirbarangulang)
+            GridView1.SetRowCellValue(i, "total_harga_barang", totalhargabarangulang)
+            GridView1.SetRowCellValue(i, "grand_total_barang", grandtotalbarangulang)
         Next
 
         GridView1.RefreshData()
