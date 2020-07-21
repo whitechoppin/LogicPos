@@ -4,8 +4,9 @@ Imports DevExpress.Utils
 
 Public Class flunasutang
     Public kodeakses As Integer
+    Dim kode As String
     Dim tambahstatus, editstatus, printstatus As Boolean
-    Public tabel As DataTable
+    Public tabel, tabellunas As DataTable
     'body
     Dim kodepembeliantbh, kodesuppliertbh As String
     Dim tglbelitbh, tgljatuhtempotbh As Date
@@ -512,6 +513,9 @@ Public Class flunasutang
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = True
 
+        GridControl2.DataSource = Nothing
+        GridControl2.RefreshDataSource()
+
         'total tabel pembelian
         txtketerangan.Enabled = True
 
@@ -580,18 +584,59 @@ Public Class flunasutang
         GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn6.DisplayFormat.FormatString = "{0:n0}"
         GridColumn6.Width = 40
+        GridColumn6.Visible = False
 
         GridColumn7.FieldName = "sisa_utang"
         GridColumn7.Caption = "Sisa Nota"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
         GridColumn7.Width = 40
+        GridColumn7.Visible = False
 
         GridColumn8.FieldName = "terima_utang"
         GridColumn8.Caption = "Terima Uang"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
         GridColumn8.Width = 40
+    End Sub
+
+    Sub gridlunas()
+        tabellunas = New DataTable
+
+        With tabellunas
+            .Columns.Add("kode_lunas")
+            .Columns.Add("tgl_pelunasan")
+            .Columns.Add("terima_utang", GetType(Double))
+        End With
+
+        GridControl2.DataSource = tabellunas
+
+        GridColumn9.Caption = "Kode"
+        GridColumn9.FieldName = "kode_lunas"
+
+        GridColumn10.Caption = "Tanggal"
+        GridColumn10.FieldName = "tgl_pelunasan"
+        GridColumn11.Caption = "Terima"
+        GridColumn11.FieldName = "terima_utang"
+        GridColumn11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn11.DisplayFormat.FormatString = "##,#0"
+
+        GridControl2.Visible = True
+    End Sub
+
+    Sub tabel_lunas()
+        Call gridlunas()
+        kode = Me.GridView1.GetFocusedRowCellValue("kode_pembelian")
+
+        Call koneksii()
+        sql = "SELECT tb_pelunasan_utang_detail.kode_lunas, tb_pelunasan_utang.tanggal_transaksi, tb_pelunasan_utang_detail.terima_utang FROM tb_pelunasan_utang_detail JOIN tb_pelunasan_utang ON tb_pelunasan_utang.kode_lunas = tb_pelunasan_utang_detail.kode_lunas WHERE tb_pelunasan_utang_detail.kode_pembelian ='" & kode & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            tabellunas.Rows.Add(dr("kode_lunas"), dr("tanggal_transaksi"), dr("terima_utang"))
+        End While
+
+        GridControl2.RefreshDataSource()
     End Sub
 
     Sub previewpelunasan(lihat As String)
@@ -1146,6 +1191,10 @@ Public Class flunasutang
             GridView1.SetRowCellValue(e.RowHandle, "terima_utang", Val(GridView1.GetRowCellValue(e.RowHandle, "total_pembelian")) - Val(GridView1.GetRowCellValue(e.RowHandle, "bayar_utang")))
         End If
         GridView1.RefreshData()
+    End Sub
+
+    Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
+        Call tabel_lunas()
     End Sub
 
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging

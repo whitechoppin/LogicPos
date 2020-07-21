@@ -74,6 +74,7 @@ Partial Class fkalkulasipengiriman
         Me.ritenumber = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ritedesimal = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -90,6 +91,7 @@ Partial Class fkalkulasipengiriman
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ritedesimal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -565,7 +567,7 @@ Partial Class fkalkulasipengiriman
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ritenumber})
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ritenumber, Me.ritedesimal})
         Me.GridControl1.Size = New System.Drawing.Size(1043, 336)
         Me.GridControl1.TabIndex = 73
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -637,10 +639,16 @@ Partial Class fkalkulasipengiriman
         Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn5.AppearanceHeader.Options.UseFont = True
         Me.GridColumn5.Caption = "Kubik"
-        Me.GridColumn5.ColumnEdit = Me.ritenumber
+        Me.GridColumn5.ColumnEdit = Me.ritedesimal
+        Me.GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
+        '
+        'ritedesimal
+        '
+        Me.ritedesimal.AutoHeight = False
+        Me.ritedesimal.Name = "ritedesimal"
         '
         'GridColumn6
         '
@@ -799,6 +807,7 @@ Partial Class fkalkulasipengiriman
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ritedesimal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -864,4 +873,5 @@ Partial Class fkalkulasipengiriman
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnrefresh As Button
+    Friend WithEvents ritedesimal As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
 End Class

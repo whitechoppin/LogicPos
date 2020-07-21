@@ -100,4 +100,12 @@ Public Class ftokosejati
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Call saveuser()
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim contoh As Double
+
+        contoh = TextBox1.Text
+        contoh.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
+        MsgBox(contoh.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US")))
+    End Sub
 End Class

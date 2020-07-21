@@ -25,43 +25,70 @@ Partial Class ftokosejati
         Me.btnsend = New System.Windows.Forms.Button()
         Me.txtemailto = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnsend
         '
-        Me.btnsend.Location = New System.Drawing.Point(163, 126)
+        Me.btnsend.Location = New System.Drawing.Point(62, 59)
+        Me.btnsend.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnsend.Name = "btnsend"
-        Me.btnsend.Size = New System.Drawing.Size(75, 23)
+        Me.btnsend.Size = New System.Drawing.Size(112, 32)
         Me.btnsend.TabIndex = 0
         Me.btnsend.Text = "Send Email"
         Me.btnsend.UseVisualStyleBackColor = True
         '
         'txtemailto
         '
-        Me.txtemailto.Location = New System.Drawing.Point(276, 126)
+        Me.txtemailto.Location = New System.Drawing.Point(232, 59)
+        Me.txtemailto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtemailto.Name = "txtemailto"
-        Me.txtemailto.Size = New System.Drawing.Size(100, 20)
+        Me.txtemailto.Size = New System.Drawing.Size(148, 24)
         Me.txtemailto.TabIndex = 1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(136, 236)
+        Me.Button1.Location = New System.Drawing.Point(22, 212)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(273, 69)
+        Me.Button1.Size = New System.Drawing.Size(410, 96)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "test transactional"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(516, 144)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(148, 24)
+        Me.TextBox1.TabIndex = 3
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(694, 120)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(207, 96)
+        Me.Button2.TabIndex = 4
+        Me.Button2.Text = "test transactional"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'ftokosejati
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(940, 438)
+        Me.ClientSize = New System.Drawing.Size(1025, 349)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtemailto)
         Me.Controls.Add(Me.btnsend)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.KeyPreview = True
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "ftokosejati"
         Me.Text = "ftokosejati"
         Me.ResumeLayout(False)
@@ -72,4 +99,6 @@ Partial Class ftokosejati
     Friend WithEvents btnsend As Button
     Friend WithEvents txtemailto As TextBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Button2 As Button
 End Class

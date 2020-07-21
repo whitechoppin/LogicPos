@@ -498,7 +498,7 @@ Public Class fkalkulasipengiriman
         GridColumn5.FieldName = "kubik"
         GridColumn5.Caption = "kubik"
         GridColumn5.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn5.DisplayFormat.FormatString = "{0:n0}"
+        'GridColumn5.DisplayFormat.FormatString = "{0:n0}"
         GridColumn5.Width = 30
 
         GridColumn6.FieldName = "ongkos_kirim"
@@ -551,6 +551,8 @@ Public Class fkalkulasipengiriman
 
     Sub simpan()
         kodepengiriman = autonumber()
+        Dim kubikstring As String
+
         Call koneksii()
 
         If GridView1.RowCount = 0 Then
@@ -560,7 +562,9 @@ Public Class fkalkulasipengiriman
             'tabel.Rows.Add(txtkodebarang.Text, txtnamabarang.Text, Val(banyakbarang), Val(hargabarang), Val(kubikbarang), Val(ongkirbarang), Val(hargatambahongkir), Val(totalongkirbarang), Val(totalhargabarang), Val(grandtotalbarang))
 
             For i As Integer = 0 To GridView1.RowCount - 1
-                sql = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "harga_barang") & "','" & GridView1.GetRowCellValue(i, "kubik") & "','" & GridView1.GetRowCellValue(i, "ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "harga_tambah_ongkir") & "','" & GridView1.GetRowCellValue(i, "total_ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_harga_barang") & "','" & GridView1.GetRowCellValue(i, "grand_total_barang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                kubikstring = GridView1.GetRowCellValue(i, "kubik")
+
+                sql = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & Val(GridView1.GetRowCellValue(i, "qty")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_barang")) & "','" & kubikstring.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US")) & "','" & Val(GridView1.GetRowCellValue(i, "ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_tambah_ongkir")) & "','" & Val(GridView1.GetRowCellValue(i, "total_ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "total_harga_barang")) & "','" & Val(GridView1.GetRowCellValue(i, "grand_total_barang")) & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             Next
@@ -614,9 +618,10 @@ Public Class fkalkulasipengiriman
             .Columns.Add("kode_barang")
             .Columns.Add("nama_barang")
             .Columns.Add("qty", GetType(Double))
-            .Columns.Add("total_volume", GetType(Double))
             .Columns.Add("harga_barang", GetType(Double))
+            .Columns.Add("kubik", GetType(Double))
             .Columns.Add("ongkos_kirim", GetType(Double))
+            .Columns.Add("harga_tambah_ongkir", GetType(Double))
             .Columns.Add("total_ongkos_kirim", GetType(Double))
             .Columns.Add("total_harga_barang", GetType(Double))
             .Columns.Add("grand_total_barang", GetType(Double))
@@ -629,9 +634,10 @@ Public Class fkalkulasipengiriman
             baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
             baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
             baris("qty") = GridView1.GetRowCellValue(i, "qty")
-            baris("total_volume") = GridView1.GetRowCellValue(i, "total_volume")
             baris("harga_barang") = GridView1.GetRowCellValue(i, "harga_barang")
+            baris("kubik") = GridView1.GetRowCellValue(i, "kubik")
             baris("ongkos_kirim") = GridView1.GetRowCellValue(i, "ongkos_kirim")
+            baris("harga_tambah_ongkir") = GridView1.GetRowCellValue(i, "harga_tambah_ongkir")
             baris("total_ongkos_kirim") = GridView1.GetRowCellValue(i, "total_ongkos_kirim")
             baris("total_harga_barang") = GridView1.GetRowCellValue(i, "total_harga_barang")
             baris("grand_total_barang") = GridView1.GetRowCellValue(i, "grand_total_barang")
@@ -689,11 +695,20 @@ Public Class fkalkulasipengiriman
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+        Call cetak_faktur()
 
+        Call koneksii()
+        sql = "UPDATE tb_kirim SET print_kirim = 1 WHERE kode_kirim = '" & txtnonota.Text & "' "
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        cbprinted.Checked = True
+
+        Call historysave("Mencetak Data Expedisi Kode " + txtnonota.Text, txtnonota.Text)
     End Sub
 
     Sub perbarui(nomornota As String)
-
+        Dim kubikstring As String
         'hapus tb_pembelian_detail
         Call koneksii()
         sql = "DELETE FROM tb_kirim_detail WHERE kode_kirim = '" & nomornota & "'"
@@ -707,7 +722,9 @@ Public Class fkalkulasipengiriman
             Exit Sub
         Else
             For i As Integer = 0 To GridView1.RowCount - 1
-                sql = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & nomornota & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "harga_barang") & "','" & GridView1.GetRowCellValue(i, "kubik") & "','" & GridView1.GetRowCellValue(i, "ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "harga_tambah_ongkir") & "','" & GridView1.GetRowCellValue(i, "total_ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_harga_barang") & "','" & GridView1.GetRowCellValue(i, "grand_total_barang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                kubikstring = GridView1.GetRowCellValue(i, "kubik")
+
+                sql = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & Val(GridView1.GetRowCellValue(i, "qty")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_barang")) & "','" & kubikstring.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US")) & "','" & Val(GridView1.GetRowCellValue(i, "ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_tambah_ongkir")) & "','" & Val(GridView1.GetRowCellValue(i, "total_ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "total_harga_barang")) & "','" & Val(GridView1.GetRowCellValue(i, "grand_total_barang")) & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             Next
@@ -878,13 +895,13 @@ Public Class fkalkulasipengiriman
             txtkubik.Text = 0
         Else
             kubikbarang = txtkubik.Text
-            txtkubik.Text = Format(kubikbarang, "##,##0")
-            txtkubik.SelectionStart = Len(txtkubik.Text)
+            'txtkubik.Text = Format(kubikbarang, "##,##0")
+            'txtkubik.SelectionStart = Len(txtkubik.Text)
         End If
     End Sub
 
     Private Sub txtkubik_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkubik.KeyPress
-        e.Handled = ValidAngka(e)
+        e.Handled = Validdesimal(e)
     End Sub
 
     Sub tambah()

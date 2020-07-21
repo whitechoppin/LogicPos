@@ -32,6 +32,7 @@ Partial Class flunaspiutang
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.riteterimapelunasan = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtbukti = New System.Windows.Forms.TextBox()
@@ -85,13 +86,19 @@ Partial Class flunaspiutang
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txtselisih = New System.Windows.Forms.TextBox()
         Me.btnsesuaikan = New System.Windows.Forms.Button()
-        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
+        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridControl1
@@ -102,7 +109,7 @@ Partial Class flunaspiutang
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.riteterimapelunasan})
-        Me.GridControl1.Size = New System.Drawing.Size(1189, 347)
+        Me.GridControl1.Size = New System.Drawing.Size(1189, 209)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -198,6 +205,19 @@ Partial Class flunaspiutang
         Me.GridColumn7.OptionsColumn.AllowEdit = False
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
+        '
+        'GridColumn8
+        '
+        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceCell.Options.UseFont = True
+        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn8.Caption = "Terima Uang"
+        Me.GridColumn8.ColumnEdit = Me.riteterimapelunasan
+        Me.GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 7
         '
         'riteterimapelunasan
         '
@@ -754,7 +774,7 @@ Partial Class flunaspiutang
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label13.Location = New System.Drawing.Point(885, 684)
+        Me.Label13.Location = New System.Drawing.Point(885, 740)
         Me.Label13.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(51, 18)
@@ -765,7 +785,7 @@ Partial Class flunaspiutang
         '
         Me.txtselisih.Enabled = False
         Me.txtselisih.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtselisih.Location = New System.Drawing.Point(939, 681)
+        Me.txtselisih.Location = New System.Drawing.Point(939, 737)
         Me.txtselisih.Margin = New System.Windows.Forms.Padding(6)
         Me.txtselisih.Name = "txtselisih"
         Me.txtselisih.Size = New System.Drawing.Size(210, 24)
@@ -773,7 +793,7 @@ Partial Class flunaspiutang
         '
         'btnsesuaikan
         '
-        Me.btnsesuaikan.Location = New System.Drawing.Point(1155, 680)
+        Me.btnsesuaikan.Location = New System.Drawing.Point(1155, 736)
         Me.btnsesuaikan.Margin = New System.Windows.Forms.Padding(4)
         Me.btnsesuaikan.Name = "btnsesuaikan"
         Me.btnsesuaikan.Size = New System.Drawing.Size(50, 27)
@@ -781,25 +801,64 @@ Partial Class flunaspiutang
         Me.btnsesuaikan.Text = "-/+"
         Me.btnsesuaikan.UseVisualStyleBackColor = True
         '
-        'GridColumn8
+        'GridControl2
         '
-        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn8.AppearanceCell.Options.UseFont = True
-        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn8.Caption = "Terima Uang"
-        Me.GridColumn8.ColumnEdit = Me.riteterimapelunasan
-        Me.GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn8.Name = "GridColumn8"
-        Me.GridColumn8.Visible = True
-        Me.GridColumn8.VisibleIndex = 7
+        Me.GridControl2.Location = New System.Drawing.Point(16, 541)
+        Me.GridControl2.MainView = Me.GridView2
+        Me.GridControl2.Name = "GridControl2"
+        Me.GridControl2.Size = New System.Drawing.Size(1190, 187)
+        Me.GridControl2.TabIndex = 93
+        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
+        '
+        'GridView2
+        '
+        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn9, Me.GridColumn10, Me.GridColumn11})
+        Me.GridView2.GridControl = Me.GridControl2
+        Me.GridView2.Name = "GridView2"
+        Me.GridView2.OptionsBehavior.Editable = False
+        Me.GridView2.OptionsView.ShowFooter = True
+        '
+        'GridColumn9
+        '
+        Me.GridColumn9.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceCell.Options.UseFont = True
+        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn9.Caption = "Kode"
+        Me.GridColumn9.Name = "GridColumn9"
+        Me.GridColumn9.Visible = True
+        Me.GridColumn9.VisibleIndex = 0
+        '
+        'GridColumn10
+        '
+        Me.GridColumn10.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn10.AppearanceCell.Options.UseFont = True
+        Me.GridColumn10.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn10.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn10.Caption = "Tanggal"
+        Me.GridColumn10.Name = "GridColumn10"
+        Me.GridColumn10.Visible = True
+        Me.GridColumn10.VisibleIndex = 1
+        '
+        'GridColumn11
+        '
+        Me.GridColumn11.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn11.AppearanceCell.Options.UseFont = True
+        Me.GridColumn11.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn11.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn11.Caption = "Terima"
+        Me.GridColumn11.Name = "GridColumn11"
+        Me.GridColumn11.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "terima_piutang", "{0:n0}")})
+        Me.GridColumn11.Visible = True
+        Me.GridColumn11.VisibleIndex = 2
         '
         'flunaspiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1223, 727)
+        Me.ClientSize = New System.Drawing.Size(1223, 777)
+        Me.Controls.Add(Me.GridControl2)
         Me.Controls.Add(Me.btnsesuaikan)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.txtselisih)
@@ -838,6 +897,8 @@ Partial Class flunaspiutang
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -906,4 +967,9 @@ Partial Class flunaspiutang
     Friend WithEvents txtselisih As TextBox
     Friend WithEvents btnsesuaikan As Button
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
 End Class
