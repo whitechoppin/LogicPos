@@ -27,12 +27,13 @@ Partial Class ftokosejati
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnsend
         '
         Me.btnsend.Location = New System.Drawing.Point(62, 59)
-        Me.btnsend.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnsend.Margin = New System.Windows.Forms.Padding(4)
         Me.btnsend.Name = "btnsend"
         Me.btnsend.Size = New System.Drawing.Size(112, 32)
         Me.btnsend.TabIndex = 0
@@ -42,7 +43,7 @@ Partial Class ftokosejati
         'txtemailto
         '
         Me.txtemailto.Location = New System.Drawing.Point(232, 59)
-        Me.txtemailto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtemailto.Margin = New System.Windows.Forms.Padding(4)
         Me.txtemailto.Name = "txtemailto"
         Me.txtemailto.Size = New System.Drawing.Size(148, 24)
         Me.txtemailto.TabIndex = 1
@@ -50,7 +51,7 @@ Partial Class ftokosejati
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(22, 212)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(410, 96)
         Me.Button1.TabIndex = 2
@@ -60,7 +61,7 @@ Partial Class ftokosejati
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(516, 144)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(148, 24)
         Me.TextBox1.TabIndex = 3
@@ -68,12 +69,22 @@ Partial Class ftokosejati
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(694, 120)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(207, 96)
         Me.Button2.TabIndex = 4
         Me.Button2.Text = "test transactional"
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(479, 212)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(207, 96)
+        Me.Button3.TabIndex = 5
+        Me.Button3.Text = "region separator"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'ftokosejati
         '
@@ -81,6 +92,7 @@ Partial Class ftokosejati
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1025, 349)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button1)
@@ -88,7 +100,7 @@ Partial Class ftokosejati
         Me.Controls.Add(Me.btnsend)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.KeyPreview = True
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "ftokosejati"
         Me.Text = "ftokosejati"
         Me.ResumeLayout(False)
@@ -101,4 +113,5 @@ Partial Class ftokosejati
     Friend WithEvents Button1 As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
 End Class

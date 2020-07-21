@@ -1,6 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data.Odbc
 Imports System.Net.Mail
+Imports System.Threading
+Imports System.Globalization
 
 Public Class ftokosejati
     Private Sub ftokosejati_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -107,5 +109,16 @@ Public Class ftokosejati
         contoh = TextBox1.Text
         contoh.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
         MsgBox(contoh.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US")))
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim decimalSeparator As String = Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator
+
+        For Each ci As CultureInfo In CultureInfo.GetCultures(CultureTypes.AllCultures)
+            MsgBox(ci.EnglishName + " - " + ci.Name)
+        Next
+
+        MsgBox(Thread.CurrentThread.CurrentCulture.Name)
+        MsgBox(decimalSeparator)
     End Sub
 End Class

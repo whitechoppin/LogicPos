@@ -640,7 +640,7 @@ Partial Class fkalkulasipengiriman
         Me.GridColumn5.AppearanceHeader.Options.UseFont = True
         Me.GridColumn5.Caption = "Kubik"
         Me.GridColumn5.ColumnEdit = Me.ritedesimal
-        Me.GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4

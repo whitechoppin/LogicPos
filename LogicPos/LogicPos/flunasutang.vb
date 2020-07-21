@@ -307,6 +307,9 @@ Public Class flunasutang
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = True
 
+        GridControl2.DataSource = Nothing
+        GridControl2.RefreshDataSource()
+
         txtketerangan.Enabled = True
         txtketerangan.Clear()
 
@@ -383,6 +386,9 @@ Public Class flunasutang
         'bersihkan dan set default value
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = False
+
+        GridControl2.DataSource = Nothing
+        GridControl2.RefreshDataSource()
 
         'total tabel penjualan
         txtketerangan.Enabled = False
@@ -852,8 +858,8 @@ Public Class flunasutang
             baris = tabel_faktur.NewRow
             baris("kode_pembelian") = GridView1.GetRowCellValue(i, "kode_pembelian")
             baris("kode_supplier") = GridView1.GetRowCellValue(i, "kode_supplier")
-            baris("tanggal_pembelian") = GridView1.GetRowCellValue(i, "tanggal_pembelian")
-            baris("tanggal_jatuhtempo") = GridView1.GetRowCellValue(i, "tanggal_jatuhtempo")
+            baris("tanggal_pembelian") = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_pembelian"))
+            baris("tanggal_jatuhtempo") = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_jatuhtempo"))
             baris("total_pembelian") = GridView1.GetRowCellValue(i, "total_pembelian")
             baris("bayar_utang") = GridView1.GetRowCellValue(i, "bayar_utang")
             baris("sisa_utang") = GridView1.GetRowCellValue(i, "sisa_utang")

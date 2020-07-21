@@ -828,7 +828,7 @@ Public Class fpenjualan
         GridColumn8.FieldName = "diskon_persen"
         GridColumn8.Caption = "Diskon %"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn8.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn8.DisplayFormat.FormatString = "{0:n3}"
         GridColumn8.Width = 20
 
         GridColumn9.FieldName = "diskon_nominal"

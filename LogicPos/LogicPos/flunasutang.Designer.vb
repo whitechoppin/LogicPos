@@ -848,7 +848,7 @@ Partial Class flunasutang
         Me.GridColumn11.AppearanceHeader.Options.UseFont = True
         Me.GridColumn11.Caption = "Terima"
         Me.GridColumn11.Name = "GridColumn11"
-        Me.GridColumn11.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "terima_piutang", "{0:n0}")})
+        Me.GridColumn11.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "terima_utang", "{0:n0}")})
         Me.GridColumn11.Visible = True
         Me.GridColumn11.VisibleIndex = 2
         '
