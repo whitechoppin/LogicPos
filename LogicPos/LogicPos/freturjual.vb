@@ -5,6 +5,7 @@ Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class freturjual
     Public kodeakses As Integer
+    Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
     Public tabel1, tabel2 As DataTable
     Dim hitnumber As Integer
@@ -729,17 +730,38 @@ Public Class freturjual
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
-            Call cetak_faktur()
-            Call koneksii()
-            sql = "UPDATE tb_retur_penjualan SET print_returjual = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
 
-            'history user ==========
-            Call historysave("Mencetak Data Retur Jual Kode " + txtnonota.Text, txtnonota.Text)
-            '========================
+            If cekcetakan(txtnonota.Text).Equals(True) Then
+                statusizincetak = False
+                passwordid = 9
+                fpassword.kodetabel = txtnonota.Text
+                fpassword.ShowDialog()
+                If statusizincetak.Equals(True) Then
+                    Call cetak_faktur()
+                    Call koneksii()
+                    sql = "UPDATE tb_retur_penjualan SET print_returjual = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
 
-            cbprinted.Checked = True
+                    'history user ==========
+                    Call historysave("Mencetak Data Retur Jual Kode " + txtnonota.Text, txtnonota.Text)
+                    '========================
+
+                    cbprinted.Checked = True
+                End If
+            Else
+                Call cetak_faktur()
+                Call koneksii()
+                sql = "UPDATE tb_retur_penjualan SET print_returjual = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
+                'history user ==========
+                Call historysave("Mencetak Data Retur Jual Kode " + txtnonota.Text, txtnonota.Text)
+                '========================
+
+                cbprinted.Checked = True
+            End If
         Else
             MsgBox("Tidak ada akses")
         End If

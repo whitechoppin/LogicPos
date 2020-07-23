@@ -1085,6 +1085,10 @@ Public Class fpembelian
                             cmmd = New OdbcCommand(sql, cnn)
                             dr = cmmd.ExecuteReader()
 
+                            'history user ==========
+                            Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
+                            '========================
+
                             cbprinted.Checked = True
                         ElseIf rbpo.Checked Then
                             Call cetak_po()
@@ -1093,6 +1097,10 @@ Public Class fpembelian
                             sql = "UPDATE tb_pembelian SET print_pembelian = 1 WHERE kode_pembelian = '" & txtnonota.Text & "' "
                             cmmd = New OdbcCommand(sql, cnn)
                             dr = cmmd.ExecuteReader()
+
+                            'history user ==========
+                            Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
+                            '========================
 
                             cbprinted.Checked = True
                         End If
@@ -1106,6 +1114,10 @@ Public Class fpembelian
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
 
+                        'history user ==========
+                        Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
+                        '========================
+
                         cbprinted.Checked = True
                     ElseIf rbpo.Checked Then
                         Call cetak_po()
@@ -1115,13 +1127,15 @@ Public Class fpembelian
                         cmmd = New OdbcCommand(sql, cnn)
                         dr = cmmd.ExecuteReader()
 
+                        'history user ==========
+                        Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
+                        '========================
+
                         cbprinted.Checked = True
                     End If
                 End If
 
-                'history user ==========
-                Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
-                '========================
+
             Else
                     MsgBox("Nota sudah void !")
             End If

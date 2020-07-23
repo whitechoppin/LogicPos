@@ -3,6 +3,7 @@ Imports DevExpress.Utils
 
 Public Class ftransferbarang
     Public kodeakses As Integer
+    Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
     Public tabel As DataTable
     Dim hitnumber As Integer
@@ -700,17 +701,38 @@ Public Class ftransferbarang
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
-            Call cetak_faktur()
-            Call koneksii()
-            sql = "UPDATE tb_transfer_barang SET print_transfer_barang = 1 WHERE kode_transfer_barang = '" & txtnonota.Text & "' "
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
 
-            'history user ==========
-            Call historysave("Mencetak Data Transfer Barang Kode " + txtnonota.Text, txtnonota.Text)
-            '========================
+            If cekcetakan(txtnonota.Text).Equals(True) Then
+                statusizincetak = False
+                passwordid = 12
+                fpassword.kodetabel = txtnonota.Text
+                fpassword.ShowDialog()
+                If statusizincetak.Equals(True) Then
+                    Call cetak_faktur()
+                    Call koneksii()
+                    sql = "UPDATE tb_transfer_barang SET print_transfer_barang = 1 WHERE kode_transfer_barang = '" & txtnonota.Text & "' "
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
 
-            cbprinted.Checked = True
+                    'history user ==========
+                    Call historysave("Mencetak Data Transfer Barang Kode " + txtnonota.Text, txtnonota.Text)
+                    '========================
+
+                    cbprinted.Checked = True
+                End If
+            Else
+                Call cetak_faktur()
+                Call koneksii()
+                sql = "UPDATE tb_transfer_barang SET print_transfer_barang = 1 WHERE kode_transfer_barang = '" & txtnonota.Text & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
+                'history user ==========
+                Call historysave("Mencetak Data Transfer Barang Kode " + txtnonota.Text, txtnonota.Text)
+                '========================
+
+                cbprinted.Checked = True
+            End If
         Else
             MsgBox("Tidak ada akses")
         End If

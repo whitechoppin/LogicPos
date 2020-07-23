@@ -2,6 +2,7 @@
 
 Public Class fkasmasuk
     Public kodeakses As Integer
+    Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
     Dim kodemasuk, kodekas, viewketerangan, viewkodekas, viewkodesales As String
     Dim saldomasuk As Double
@@ -435,17 +436,40 @@ Public Class fkasmasuk
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
-            Call cetak_faktur()
+            If cekcetakan(txtkodemasuk.Text).Equals(True) Then
+                statusizincetak = False
+                passwordid = 15
+                fpassword.kodetabel = txtkodemasuk.Text
+                fpassword.ShowDialog()
+                If statusizincetak.Equals(True) Then
+                    Call cetak_faktur()
 
-            sql = "UPDATE tb_kas_masuk SET print_kas = 1 WHERE kode_kas_masuk = '" & txtkodemasuk.Text & "' "
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
+                    sql = "UPDATE tb_kas_masuk SET print_kas = 1 WHERE kode_kas_masuk = '" & txtkodemasuk.Text & "' "
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
 
-            'history user ==========
-            Call historysave("Mencetak Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
-            '========================
+                    'history user ==========
+                    Call historysave("Mencetak Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
+                    '========================
 
-            cbprinted.Checked = True
+                    cbprinted.Checked = True
+
+                End If
+            Else
+                Call cetak_faktur()
+
+                sql = "UPDATE tb_kas_masuk SET print_kas = 1 WHERE kode_kas_masuk = '" & txtkodemasuk.Text & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
+                'history user ==========
+                Call historysave("Mencetak Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
+                '========================
+
+                cbprinted.Checked = True
+            End If
+
+
         Else
             MsgBox("Tidak ada akses")
         End If

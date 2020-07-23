@@ -2,6 +2,7 @@
 
 Public Class fbarangmasuk
     Public kodeakses As Integer
+    Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
     Dim tabel As DataTable
     Dim hitnumber As Integer
@@ -753,17 +754,37 @@ Public Class fbarangmasuk
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
-            Call cetak_faktur()
-            Call koneksii()
-            sql = "UPDATE tb_barang_masuk SET print_barang_masuk = 1 WHERE kode_barang_masuk = '" & txtnonota.Text & "' "
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
+            If cekcetakan(txtnonota.Text).Equals(True) Then
+                statusizincetak = False
+                passwordid = 10
+                fpassword.kodetabel = txtnonota.Text
+                fpassword.ShowDialog()
+                If statusizincetak.Equals(True) Then
+                    Call cetak_faktur()
+                    Call koneksii()
+                    sql = "UPDATE tb_barang_masuk SET print_barang_masuk = 1 WHERE kode_barang_masuk = '" & txtnonota.Text & "' "
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
 
-            'history user ==========
-            Call historysave("Mencetak Data Barang Masuk Kode " + txtnonota.Text, txtnonota.Text)
-            '========================
+                    'history user ==========
+                    Call historysave("Mencetak Data Barang Masuk Kode " + txtnonota.Text, txtnonota.Text)
+                    '========================
 
-            cbprinted.Checked = True
+                    cbprinted.Checked = True
+                End If
+            Else
+                Call cetak_faktur()
+                Call koneksii()
+                sql = "UPDATE tb_barang_masuk SET print_barang_masuk = 1 WHERE kode_barang_masuk = '" & txtnonota.Text & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
+                'history user ==========
+                Call historysave("Mencetak Data Barang Masuk Kode " + txtnonota.Text, txtnonota.Text)
+                '========================
+
+                cbprinted.Checked = True
+            End If
         Else
             MsgBox("Tidak ada akses")
         End If

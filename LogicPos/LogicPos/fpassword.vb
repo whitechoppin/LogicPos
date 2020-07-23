@@ -71,6 +71,7 @@ Public Class fpassword
                     MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
                     txtpassword.Text = ""
                     statuscode = False
+
                 ElseIf passwordid = 6 Then
                     'cetakan
                     fpembelian.statusizincetak = True
@@ -78,6 +79,46 @@ Public Class fpassword
                 ElseIf passwordid = 7 Then
                     'cetakan
                     fpenjualan.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 8 Then
+                    'cetakan
+                    freturbeli.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 9 Then
+                    'cetakan
+                    freturjual.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 10 Then
+                    'cetakan
+                    fbarangmasuk.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 11 Then
+                    'cetakan
+                    fbarangkeluar.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 12 Then
+                    'cetakan
+                    ftransferbarang.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 13 Then
+                    'cetakan
+                    flunasutang.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 14 Then
+                    'cetakan
+                    flunaspiutang.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 15 Then
+                    'cetakan
+                    fkasmasuk.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 16 Then
+                    'cetakan
+                    fkaskeluar.statusizincetak = True
+                    statuscode = True
+                ElseIf passwordid = 17 Then
+                    'cetakan
+                    ftransferkas.statusizincetak = True
                     statuscode = True
                 End If
 
@@ -118,12 +159,43 @@ Public Class fpassword
                 ElseIf passwordid = 5 Then
                     'modal barang
                     fpricelist.txthidden.Visible = False
+
                 ElseIf passwordid = 6 Then
                     'cetakan
                     fpembelian.statusizincetak = True
                 ElseIf passwordid = 7 Then
                     'cetakan
                     fpenjualan.statusizincetak = True
+                ElseIf passwordid = 8 Then
+                    'cetakan
+                    freturbeli.statusizincetak = True
+                ElseIf passwordid = 9 Then
+                    'cetakan
+                    freturjual.statusizincetak = True
+                ElseIf passwordid = 10 Then
+                    'cetakan
+                    fbarangmasuk.statusizincetak = True
+                ElseIf passwordid = 11 Then
+                    'cetakan
+                    fbarangkeluar.statusizincetak = True
+                ElseIf passwordid = 12 Then
+                    'cetakan
+                    ftransferbarang.statusizincetak = True
+                ElseIf passwordid = 13 Then
+                    'cetakan
+                    flunasutang.statusizincetak = True
+                ElseIf passwordid = 14 Then
+                    'cetakan
+                    flunaspiutang.statusizincetak = True
+                ElseIf passwordid = 15 Then
+                    'cetakan
+                    fkasmasuk.statusizincetak = True
+                ElseIf passwordid = 16 Then
+                    'cetakan
+                    fkaskeluar.statusizincetak = True
+                ElseIf passwordid = 17 Then
+                    'cetakan
+                    ftransferkas.statusizincetak = True
                 End If
 
                 'history user ==========
@@ -169,6 +241,7 @@ Public Class fpassword
                         MsgBox("Tidak Ada Akses !", MsgBoxStyle.Exclamation, "Error Login")
                         txtpassword.Text = ""
                         statuscode = False
+
                     ElseIf passwordid = 6 Then
                         'cetakan
                         fpembelian.statusizincetak = True
@@ -176,6 +249,46 @@ Public Class fpassword
                     ElseIf passwordid = 7 Then
                         'cetakan
                         fpenjualan.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 8 Then
+                        'cetakan
+                        freturbeli.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 9 Then
+                        'cetakan
+                        freturjual.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 10 Then
+                        'cetakan
+                        fbarangmasuk.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 11 Then
+                        'cetakan
+                        fbarangkeluar.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 12 Then
+                        'cetakan
+                        ftransferbarang.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 13 Then
+                        'cetakan
+                        flunasutang.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 14 Then
+                        'cetakan
+                        flunaspiutang.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 15 Then
+                        'cetakan
+                        fkasmasuk.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 16 Then
+                        'cetakan
+                        fkaskeluar.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 17 Then
+                        'cetakan
+                        ftransferkas.statusizincetak = True
                         statuscode = True
                     End If
 

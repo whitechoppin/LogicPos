@@ -2,6 +2,7 @@
 
 Public Class ftransferkas
     Public kodeakses As Integer
+    Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
     Dim kodetransfer, kodedarikas, kodekekas, viewketerangan, viewkodekekas, viewkodedarikas, viewkodesales As String
     Dim saldotransfer As Double
@@ -469,7 +470,37 @@ Public Class ftransferkas
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
-            Call cetak_faktur()
+            If cekcetakan(txtkodetransfer.Text).Equals(True) Then
+                statusizincetak = False
+                passwordid = 17
+                fpassword.kodetabel = txtkodetransfer.Text
+                fpassword.ShowDialog()
+                If statusizincetak.Equals(True) Then
+                    Call cetak_faktur()
+
+                    sql = "UPDATE tb_transfer_kas SET print_transfer_kas = 1 WHERE kode_transfer_kas = '" & txtkodetransfer.Text & "' "
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
+
+                    'history user ==========
+                    Call historysave("Mencetak Data Transfer Kas Kode " + txtkodetransfer.Text, txtkodetransfer.Text)
+                    '========================
+
+                    cbprinted.Checked = True
+                End If
+            Else
+                Call cetak_faktur()
+
+                sql = "UPDATE tb_transfer_kas SET print_transfer_kas = 1 WHERE kode_transfer_kas = '" & txtkodetransfer.Text & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
+                'history user ==========
+                Call historysave("Mencetak Data Transfer Kas Kode " + txtkodetransfer.Text, txtkodetransfer.Text)
+                '========================
+
+                cbprinted.Checked = True
+            End If
         Else
             MsgBox("Tidak ada akses")
         End If

@@ -4,6 +4,7 @@ Imports DevExpress.Utils
 
 Public Class flunaspiutang
     Public kodeakses As Integer
+    Public statusizincetak As Boolean
     Dim kode As String
     Dim tambahstatus, editstatus, printstatus As Boolean
     Public tabel, tabellunas As DataTable
@@ -836,17 +837,38 @@ Public Class flunaspiutang
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
-            Call cetak_faktur()
-            Call koneksii()
-            sql = "UPDATE tb_pelunasan_piutang SET print_lunas = 1 WHERE kode_lunas = '" & txtnolunaspiutang.Text & "' "
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
 
-            'history user ==========
-            Call historysave("Mencetak Data Lunas Piutang Kode " + txtnolunaspiutang.Text, txtnolunaspiutang.Text)
-            '========================
+            If cekcetakan(txtnolunaspiutang.Text).Equals(True) Then
+                statusizincetak = False
+                passwordid = 14
+                fpassword.kodetabel = txtnolunaspiutang.Text
+                fpassword.ShowDialog()
+                If statusizincetak.Equals(True) Then
+                    Call cetak_faktur()
+                    Call koneksii()
+                    sql = "UPDATE tb_pelunasan_piutang SET print_lunas = 1 WHERE kode_lunas = '" & txtnolunaspiutang.Text & "' "
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
 
-            cbprinted.Checked = True
+                    'history user ==========
+                    Call historysave("Mencetak Data Lunas Piutang Kode " + txtnolunaspiutang.Text, txtnolunaspiutang.Text)
+                    '========================
+
+                    cbprinted.Checked = True
+                End If
+            Else
+                Call cetak_faktur()
+                Call koneksii()
+                sql = "UPDATE tb_pelunasan_piutang SET print_lunas = 1 WHERE kode_lunas = '" & txtnolunaspiutang.Text & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
+                'history user ==========
+                Call historysave("Mencetak Data Lunas Piutang Kode " + txtnolunaspiutang.Text, txtnolunaspiutang.Text)
+                '========================
+
+                cbprinted.Checked = True
+            End If
         Else
             MsgBox("Tidak ada akses")
         End If
