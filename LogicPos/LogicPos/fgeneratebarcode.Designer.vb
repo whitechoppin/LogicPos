@@ -47,6 +47,7 @@ Partial Class fgeneratebarcode
         '
         Me.txtInput.Location = New System.Drawing.Point(168, 320)
         Me.txtInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtInput.MaxLength = 30
         Me.txtInput.Name = "txtInput"
         Me.txtInput.Size = New System.Drawing.Size(228, 24)
         Me.txtInput.TabIndex = 17

@@ -554,6 +554,16 @@ Public Class fkalkulasipengiriman
         kodepengiriman = autonumber()
 
         Call koneksii()
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
+        Dim myTrans As OdbcTransaction
+
+
+        ' Start a local transaction
+        myTrans = cnnx.BeginTransaction()
+        ' Must assign both transaction object and connection
+        ' to Command object for a pending local transaction
+        myCommand.Connection = cnnx
+        myCommand.Transaction = myTrans
 
         If GridView1.RowCount = 0 Then
             MsgBox("Data masih kosong")
@@ -563,28 +573,41 @@ Public Class fkalkulasipengiriman
             Dim nilaikubik As Double
             Dim hurufkubik As String
 
+            Try
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    nilaikubik = Val(GridView1.GetRowCellValue(i, "kubik"))
+                    hurufkubik = nilaikubik.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
+                    'MsgBox(hurufkubik)
+                    '(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
+                    myCommand.CommandText = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & Val(GridView1.GetRowCellValue(i, "qty")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_barang")) & "','" & hurufkubik & "','" & Val(GridView1.GetRowCellValue(i, "ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_tambah_ongkir")) & "','" & Val(GridView1.GetRowCellValue(i, "total_ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "total_harga_barang")) & "','" & Val(GridView1.GetRowCellValue(i, "grand_total_barang")) & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                    myCommand.ExecuteNonQuery()
+                Next
+                myCommand.CommandText = "INSERT INTO tb_kirim (kode_kirim, kode_user, nama_expedisi, alamat_expedisi, telp_expedisi, tgl_kirim, harga_kubik, print_kirim, posted_kirim, keterangan_kirim, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & cmbuser.Text & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txttelpexpedisi.Text & "','" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "','" & hargakubik & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                myCommand.ExecuteNonQuery()
+
+                myTrans.Commit()
+                Console.WriteLine("Both records are written to database.")
+
+                MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Sukses")
+
+                'history user ==========
+                Call historysave("Menyimpan Data Kirim Kode " + kodepengiriman, kodepengiriman)
+                '========================
+                Call inisialisasi(kodepengiriman)
+            Catch e As Exception
+                Try
+                    myTrans.Rollback()
+                Catch ex As OdbcException
+                    If Not myTrans.Connection Is Nothing Then
+                        Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
+                    End If
+                End Try
+
+                Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
+                Console.WriteLine("Neither record was written to database.")
+            End Try
 
 
-            For i As Integer = 0 To GridView1.RowCount - 1
-                nilaikubik = Val(GridView1.GetRowCellValue(i, "kubik"))
-                hurufkubik = nilaikubik.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
-                'MsgBox(hurufkubik)
-                '(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
-                sql = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & Val(GridView1.GetRowCellValue(i, "qty")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_barang")) & "','" & hurufkubik & "','" & Val(GridView1.GetRowCellValue(i, "ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_tambah_ongkir")) & "','" & Val(GridView1.GetRowCellValue(i, "total_ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "total_harga_barang")) & "','" & Val(GridView1.GetRowCellValue(i, "grand_total_barang")) & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-                MsgBox(sql)
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-            Next
-            sql = "INSERT INTO tb_kirim (kode_kirim, kode_user, nama_expedisi, alamat_expedisi, telp_expedisi, tgl_kirim, harga_kubik, print_kirim, posted_kirim, keterangan_kirim, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & cmbuser.Text & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txttelpexpedisi.Text & "','" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "','" & hargakubik & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-
-            MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Sukses")
-
-            'history user ==========
-            Call historysave("Menyimpan Data Kirim Kode " + kodepengiriman, kodepengiriman)
-            '========================
-            Call inisialisasi(kodepengiriman)
         End If
     End Sub
 
@@ -717,9 +740,18 @@ Public Class fkalkulasipengiriman
     Sub perbarui(nomornota As String)
         'hapus tb_pembelian_detail
         Call koneksii()
-        sql = "DELETE FROM tb_kirim_detail WHERE kode_kirim = '" & nomornota & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
+        Dim myTrans As OdbcTransaction
+
+
+        ' Start a local transaction
+        myTrans = cnnx.BeginTransaction()
+        ' Must assign both transaction object and connection
+        ' to Command object for a pending local transaction
+        myCommand.Connection = cnnx
+        myCommand.Transaction = myTrans
+
+
 
         'loop isi pembelian detail
 
@@ -730,27 +762,45 @@ Public Class fkalkulasipengiriman
             Dim nilaikubik As Double
             Dim hurufkubik As String
 
-            For i As Integer = 0 To GridView1.RowCount - 1
-                nilaikubik = Val(GridView1.GetRowCellValue(i, "kubik"))
-                hurufkubik = nilaikubik.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
-                '.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
-                sql = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & nomornota & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & Val(GridView1.GetRowCellValue(i, "qty")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_barang")) & "','" & hurufkubik & "','" & Val(GridView1.GetRowCellValue(i, "ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_tambah_ongkir")) & "','" & Val(GridView1.GetRowCellValue(i, "total_ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "total_harga_barang")) & "','" & Val(GridView1.GetRowCellValue(i, "grand_total_barang")) & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-                MsgBox(sql)
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-            Next
-
-            Call koneksii()
-            sql = "UPDATE tb_kirim SET kode_user = '" & cmbuser.Text & "', nama_expedisi = '" & txtnamaexpedisi.Text & "', alamat_expedisi = '" & txtalamatexpedisi.Text & "', telp_expedisi = '" & txttelpexpedisi.Text & "', tgl_kirim = '" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "', harga_kubik='" & hargakubik & "', print_kirim = 0, posted_kirim = 1, keterangan_kirim = '" & txtketerangan.Text & "', updated_by = '" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_kirim = '" & nomornota & "' "
+            sql = "DELETE FROM tb_kirim_detail WHERE kode_kirim = '" & nomornota & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
 
-            'history user ==========
-            Call historysave("Mengedit Data Kirim Kode " + nomornota, nomornota)
-            '========================
+            Try
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    nilaikubik = Val(GridView1.GetRowCellValue(i, "kubik"))
+                    hurufkubik = nilaikubik.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
+                    '.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
+                    myCommand.CommandText = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & nomornota & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & Val(GridView1.GetRowCellValue(i, "qty")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_barang")) & "','" & hurufkubik & "','" & Val(GridView1.GetRowCellValue(i, "ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_tambah_ongkir")) & "','" & Val(GridView1.GetRowCellValue(i, "total_ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "total_harga_barang")) & "','" & Val(GridView1.GetRowCellValue(i, "grand_total_barang")) & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                    myCommand.ExecuteNonQuery()
+                Next
 
-            MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
-            Call inisialisasi(nomornota)
+                Call koneksii()
+                myCommand.CommandText = "UPDATE tb_kirim SET kode_user = '" & cmbuser.Text & "', nama_expedisi = '" & txtnamaexpedisi.Text & "', alamat_expedisi = '" & txtalamatexpedisi.Text & "', telp_expedisi = '" & txttelpexpedisi.Text & "', tgl_kirim = '" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "', harga_kubik='" & hargakubik & "', print_kirim = 0, posted_kirim = 1, keterangan_kirim = '" & txtketerangan.Text & "', updated_by = '" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_kirim = '" & nomornota & "' "
+                myCommand.ExecuteNonQuery()
+
+                myTrans.Commit()
+                Console.WriteLine("Both records are written to database.")
+
+                'history user ==========
+                Call historysave("Mengedit Data Kirim Kode " + nomornota, nomornota)
+                '========================
+
+                MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
+                Call inisialisasi(nomornota)
+
+            Catch e As Exception
+                Try
+                    myTrans.Rollback()
+                Catch ex As OdbcException
+                    If Not myTrans.Connection Is Nothing Then
+                        Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
+                    End If
+                End Try
+
+                Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
+                Console.WriteLine("Neither record was written to database.")
+            End Try
 
         End If
     End Sub
