@@ -1011,6 +1011,45 @@ Public Class fkalkulasipengiriman
         Call kalkulasi()
     End Sub
 
+    Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
+
+        If e.Column.FieldName = "qty" Then
+            If e.Value = "" Or e.Value = "0" Then
+                GridView1.SetRowCellValue(e.RowHandle, "qty", 1)
+                Try
+                    GridView1.SetRowCellValue(e.RowHandle, "total_ongkos_kirim", Val(GridView1.GetRowCellValue(e.RowHandle, "ongkos_kirim")) * 1)
+                    GridView1.SetRowCellValue(e.RowHandle, "total_harga_barang", Val(GridView1.GetRowCellValue(e.RowHandle, "harga_barang")) * 1)
+                    GridView1.SetRowCellValue(e.RowHandle, "grand_total_barang", (Val(GridView1.GetRowCellValue(e.RowHandle, "ongkos_kirim")) * 1) + (Val(GridView1.GetRowCellValue(e.RowHandle, "harga_barang")) * 1))
+                Catch ex As Exception
+
+                End Try
+            Else
+                GridView1.SetRowCellValue(e.RowHandle, "total_ongkos_kirim", Val(GridView1.GetRowCellValue(e.RowHandle, "ongkos_kirim")) * e.Value)
+                GridView1.SetRowCellValue(e.RowHandle, "total_harga_barang", Val(GridView1.GetRowCellValue(e.RowHandle, "harga_barang")) * e.Value)
+                GridView1.SetRowCellValue(e.RowHandle, "grand_total_barang", (Val(GridView1.GetRowCellValue(e.RowHandle, "ongkos_kirim")) * e.Value) + (Val(GridView1.GetRowCellValue(e.RowHandle, "harga_barang")) * e.Value))
+            End If
+            '============================================
+
+        ElseIf e.Column.FieldName = "harga_barang" Then
+            If e.Value = "" Or e.Value = "0" Then
+                GridView1.SetRowCellValue(e.RowHandle, "harga_barang", 1)
+                Try
+                    GridView1.SetRowCellValue(e.RowHandle, "harga_tambah_ongkir", Val(GridView1.GetRowCellValue(e.RowHandle, "ongkos_kirim")) + 1)
+                    GridView1.SetRowCellValue(e.RowHandle, "total_harga_barang", Val(GridView1.GetRowCellValue(e.RowHandle, "qty")) * 1)
+                    GridView1.SetRowCellValue(e.RowHandle, "grand_total_barang", (Val(GridView1.GetRowCellValue(e.RowHandle, "ongkos_kirim")) + 1) + Val(GridView1.GetRowCellValue(e.RowHandle, "qty")) * 1)
+                Catch ex As Exception
+
+                End Try
+            Else
+                GridView1.SetRowCellValue(e.RowHandle, "harga_tambah_ongkir", Val(GridView1.GetRowCellValue(e.RowHandle, "ongkos_kirim")) + e.Value)
+                GridView1.SetRowCellValue(e.RowHandle, "total_harga_barang", Val(GridView1.GetRowCellValue(e.RowHandle, "qty")) * e.Value)
+                GridView1.SetRowCellValue(e.RowHandle, "grand_total_barang", (Val(GridView1.GetRowCellValue(e.RowHandle, "ongkos_kirim")) + e.Value) + Val(GridView1.GetRowCellValue(e.RowHandle, "qty")) * e.Value)
+            End If
+        End If
+
+        GridView1.RefreshData()
+    End Sub
+
     Private Sub ritedesimal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritedesimal.KeyPress
         e.Handled = ValidDesimal(e)
     End Sub
