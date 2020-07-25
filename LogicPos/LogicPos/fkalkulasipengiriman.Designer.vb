@@ -640,7 +640,7 @@ Partial Class fkalkulasipengiriman
         Me.GridColumn5.AppearanceHeader.Options.UseFont = True
         Me.GridColumn5.Caption = "Kubik"
         Me.GridColumn5.ColumnEdit = Me.ritedesimal
-        Me.GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
@@ -799,7 +799,7 @@ Partial Class fkalkulasipengiriman
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fkalkulasipengiriman"
-        Me.Text = "fkalkulasipengiriman"
+        Me.Text = "Kalkulasi Pengiriman"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()

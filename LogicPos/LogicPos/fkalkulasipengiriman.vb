@@ -34,11 +34,11 @@ Public Class fkalkulasipengiriman
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
             'buat sum harga
-            .Columns("kubik").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "kubik", "{0:n0}")
+            .Columns("kubik").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "kubik", "{0:N}")
             '.Columns("ongkos_kirim").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "ongkos_kirim", "{0:n0}")
-            .Columns("total_ongkos_kirim").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_ongkos_kirim", "{0:n0}")
-            .Columns("total_harga_barang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_harga_barang", "{0:n0}")
-            .Columns("grand_total_barang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "grand_total_barang", "{0:n0}")
+            .Columns("total_ongkos_kirim").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_ongkos_kirim", "{0:C}")
+            .Columns("total_harga_barang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_harga_barang", "{0:C}")
+            .Columns("grand_total_barang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "grand_total_barang", "{0:C}")
         End With
     End Sub
 
@@ -493,43 +493,43 @@ Public Class fkalkulasipengiriman
         GridColumn4.FieldName = "harga_barang"
         GridColumn4.Caption = "Harga Barang"
         GridColumn4.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn4.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn4.DisplayFormat.FormatString = "{0:C}"
         GridColumn4.Width = 30
 
         GridColumn5.FieldName = "kubik"
         GridColumn5.Caption = "kubik"
         GridColumn5.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn5.DisplayFormat.FormatString = "{0:n3}"
+        GridColumn5.DisplayFormat.FormatString = "{0:N}"
         GridColumn5.Width = 30
 
         GridColumn6.FieldName = "ongkos_kirim"
         GridColumn6.Caption = "Ongkos_kirim"
         GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn6.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn6.DisplayFormat.FormatString = "{0:C}"
         GridColumn6.Width = 30
 
         GridColumn7.FieldName = "harga_tambah_ongkir"
         GridColumn7.Caption = "harga_tambah_ongkir"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn7.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn7.DisplayFormat.FormatString = "{0:C}"
         GridColumn7.Width = 30
 
         GridColumn8.FieldName = "total_ongkos_kirim"
         GridColumn8.Caption = "Total Ongkos Kirim"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn8.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn8.DisplayFormat.FormatString = "{0:C}"
         GridColumn8.Width = 30
 
         GridColumn9.FieldName = "total_harga_barang"
         GridColumn9.Caption = "Total Harga Barang"
         GridColumn9.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn9.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn9.DisplayFormat.FormatString = "{0:C}"
         GridColumn9.Width = 30
 
         GridColumn10.FieldName = "grand_total_barang"
         GridColumn10.Caption = "Grand Total Barang"
         GridColumn10.DisplayFormat.FormatType = FormatType.Numeric
-        GridColumn10.DisplayFormat.FormatString = "{0:n0}"
+        GridColumn10.DisplayFormat.FormatString = "{0:C}"
         GridColumn10.Width = 30
 
     End Sub
