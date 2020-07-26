@@ -5,6 +5,7 @@ Imports System.Data
 Imports CrystalDecisions.Shared
 Imports System.IO
 Imports System.Drawing.Drawing2D
+Imports ZXing
 
 Public Class fpenjualan
     Public kodeakses As Integer
@@ -1245,7 +1246,8 @@ Public Class fpenjualan
         Dim nama, alamat, telp, rekening As String
         Dim countnama, countalamat, counttelp, countrekening As Integer
         Dim fotostruk As Byte()
-        Dim resized As Image
+        Dim resized, barcode As Image
+        Dim writer As New BarcodeWriter
 
         Call koneksii()
         sql = "SELECT * FROM tb_info_perusahaan LIMIT 1"
@@ -1265,12 +1267,21 @@ Public Class fpenjualan
             rekening = ""
             resized = ResizeGambar(ImageList.Images(0), New Size(65, 65))
         End If
-        '==================
+        '============================================================================================================
 
         countnama = nama.Length
         countalamat = alamat.Length
         counttelp = telp.Length
         countrekening = rekening.Length
+
+        '============================================================================================================
+
+        writer.Options.Height = 150
+        writer.Options.Width = 150
+        writer.Format = BarcodeFormat.QR_CODE
+        barcode = writer.Write(txtnonota.Text)
+
+        '============================================================================================================
 
         tinggi += 0
         e.Graphics.Flush()
@@ -1393,6 +1404,9 @@ Public Class fpenjualan
 
         tinggi += 40
         e.Graphics.DrawString("___________________________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 2, tinggi)
+
+        tinggi += 20
+        e.Graphics.DrawImage(barcode, 50, tinggi)
     End Sub
 
     Public Sub cetak_faktur()
