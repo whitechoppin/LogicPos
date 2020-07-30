@@ -29,7 +29,7 @@ Partial Class fpenyesuaianstok
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(787, 459)
+        Me.ClientSize = New System.Drawing.Size(1047, 459)
         Me.Name = "fpenyesuaianstok"
         Me.Text = "Penyesuaian Stok"
         Me.ResumeLayout(False)

@@ -607,6 +607,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mform.vb" />
+    <Compile Include="rptlaporbarcode.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptlaporbarcode.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptlaporprice.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1304,6 +1310,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fnotifikasistok.resx">
       <DependentUpon>fnotifikasistok.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptlaporbarcode.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptlaporbarcode.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptlaporprice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

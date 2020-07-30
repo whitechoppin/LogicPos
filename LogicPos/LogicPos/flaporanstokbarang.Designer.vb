@@ -41,6 +41,9 @@ Partial Class flaporanstokbarang
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btnrekap = New System.Windows.Forms.Button()
+        Me.btnbarcode = New System.Windows.Forms.Button()
+        Me.cmbstatus = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -134,11 +137,11 @@ Partial Class flaporanstokbarang
         'GridControl1
         '
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl1.Location = New System.Drawing.Point(13, 72)
+        Me.GridControl1.Location = New System.Drawing.Point(13, 60)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(942, 457)
+        Me.GridControl1.Size = New System.Drawing.Size(942, 469)
         Me.GridControl1.TabIndex = 18
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -189,10 +192,10 @@ Partial Class flaporanstokbarang
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(963, 247)
+        Me.PictureBox1.Location = New System.Drawing.Point(963, 272)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(283, 231)
+        Me.PictureBox1.Size = New System.Drawing.Size(283, 206)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -209,7 +212,7 @@ Partial Class flaporanstokbarang
         '
         'btnrefresh
         '
-        Me.btnrefresh.Location = New System.Drawing.Point(963, 72)
+        Me.btnrefresh.Location = New System.Drawing.Point(963, 113)
         Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(283, 45)
@@ -219,7 +222,7 @@ Partial Class flaporanstokbarang
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(963, 125)
+        Me.btnexcel.Location = New System.Drawing.Point(963, 166)
         Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(283, 45)
@@ -229,7 +232,7 @@ Partial Class flaporanstokbarang
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(963, 178)
+        Me.btnrekap.Location = New System.Drawing.Point(963, 219)
         Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(283, 45)
@@ -237,12 +240,48 @@ Partial Class flaporanstokbarang
         Me.btnrekap.Text = "Report"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
+        'btnbarcode
+        '
+        Me.btnbarcode.Location = New System.Drawing.Point(963, 60)
+        Me.btnbarcode.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnbarcode.Name = "btnbarcode"
+        Me.btnbarcode.Size = New System.Drawing.Size(283, 45)
+        Me.btnbarcode.TabIndex = 27
+        Me.btnbarcode.Text = "Barcode Barang"
+        Me.btnbarcode.UseVisualStyleBackColor = True
+        '
+        'cmbstatus
+        '
+        Me.cmbstatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbstatus.FormattingEnabled = True
+        Me.cmbstatus.Items.AddRange(New Object() {"Semua", "Tersedia", "Tidak Tersedia"})
+        Me.cmbstatus.Location = New System.Drawing.Point(725, 17)
+        Me.cmbstatus.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbstatus.MaxLength = 99
+        Me.cmbstatus.Name = "cmbstatus"
+        Me.cmbstatus.Size = New System.Drawing.Size(230, 26)
+        Me.cmbstatus.TabIndex = 65
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(620, 20)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(101, 20)
+        Me.Label4.TabIndex = 64
+        Me.Label4.Text = "Status Stok :"
+        '
         'flaporanstokbarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1265, 551)
+        Me.Controls.Add(Me.cmbstatus)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.btnbarcode)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.btnshow)
         Me.Controls.Add(Me.btnexcel)
@@ -284,4 +323,7 @@ Partial Class flaporanstokbarang
     Friend WithEvents btnrefresh As Button
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnshow As Button
+    Friend WithEvents btnbarcode As Button
+    Friend WithEvents cmbstatus As ComboBox
+    Friend WithEvents Label4 As Label
 End Class

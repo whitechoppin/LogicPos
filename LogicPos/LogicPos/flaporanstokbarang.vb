@@ -1,5 +1,7 @@
 ﻿Imports System.Data.Odbc
+Imports System.IO
 Imports CrystalDecisions.CrystalReports.Engine
+Imports ZXing
 
 Public Class flaporanstokbarang
     Public kodeakses As Integer
@@ -166,6 +168,70 @@ Public Class flaporanstokbarang
 
     Private Sub flaporanstokbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
+    End Sub
+
+    Private Sub btnbarcode_Click(sender As Object, e As EventArgs) Handles btnbarcode.Click
+        Dim rptbarcodebarang As ReportDocument
+        Dim tabel_barcode_barang As New DataTable
+        Dim baris As DataRow
+
+
+        Dim writer As New BarcodeWriter
+        Dim ms As MemoryStream = New MemoryStream
+
+        With tabel_barcode_barang
+            .Columns.Add("kode_stok")
+            .Columns.Add("nama_barang")
+            .Columns.Add("jenis_barang")
+            .Columns.Add("harga_satuan")
+            .Columns.Add("satuan_barang")
+            .Columns.Add("barcode_barang", GetType(Byte()))
+        End With
+
+        'GridColumn1.Caption = "Kode"
+        'GridColumn1.FieldName = "kode_stok"
+        'GridColumn2.Caption = "Kode Barang"
+        'GridColumn2.FieldName = "kode_barang"
+        'GridColumn3.Caption = "Nama Barang"
+        'GridColumn3.FieldName = "nama_barang"
+        'GridColumn4.Caption = "Jenis"
+        'GridColumn4.FieldName = "jenis_barang"
+        'GridColumn5.Caption = "Satuan"
+        'GridColumn5.FieldName = "satuan_barang"
+        'GridColumn6.Caption = "Jumlah Stok"
+        'GridColumn6.FieldName = "jumlah_stok"
+        'GridColumn7.Caption = "Kode Gudang"
+        'GridColumn7.FieldName = "kode_gudang"
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            Dim barcode As Image
+
+            baris = tabel_barcode_barang.NewRow
+            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+            baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
+            baris("harga_satuan") = GridView1.GetRowCellValue(i, "jumlah_stok")
+            baris("satuan_barang") = GridView1.GetRowCellValue(i, "satuan_barang")
+
+            writer.Options.Height = 100
+            writer.Options.Width = 100
+            writer.Format = BarcodeFormat.CODE_128
+
+            barcode = writer.Write(GridView1.GetRowCellValue(i, "kode_stok").ToString)
+            barcode.Save(ms, Imaging.ImageFormat.Bmp)
+            ms.ToArray()
+            baris("barcode_barang") = ms.ToArray
+
+            tabel_barcode_barang.Rows.Add(baris)
+        Next
+
+        rptbarcodebarang = New rptlaporbarcode
+        rptbarcodebarang.SetDataSource(tabel_barcode_barang)
+        'rptbarcodebarang.SetParameterValue("tglawal", dtawal.Text)
+        'rptbarcodebarang.SetParameterValue("tglakhir", dtakhir.Text)
+        flapmutasibarang.CrystalReportViewer1.ReportSource = rptbarcodebarang
+        flapmutasibarang.ShowDialog()
+        flapmutasibarang.WindowState = FormWindowState.Maximized
     End Sub
 
     Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
