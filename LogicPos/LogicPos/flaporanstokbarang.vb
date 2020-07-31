@@ -177,7 +177,7 @@ Public Class flaporanstokbarang
 
 
         Dim writer As New BarcodeWriter
-        Dim ms As MemoryStream = New MemoryStream
+
 
         With tabel_barcode_barang
             .Columns.Add("kode_stok")
@@ -205,6 +205,8 @@ Public Class flaporanstokbarang
 
         For i As Integer = 0 To GridView1.RowCount - 1
             Dim barcode As Image
+            Dim ms As MemoryStream = New MemoryStream
+
 
             baris = tabel_barcode_barang.NewRow
             baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
@@ -215,10 +217,10 @@ Public Class flaporanstokbarang
 
             writer.Options.Height = 100
             writer.Options.Width = 100
-            writer.Format = BarcodeFormat.CODE_128
+            writer.Format = BarcodeFormat.QR_CODE
 
             barcode = writer.Write(GridView1.GetRowCellValue(i, "kode_stok").ToString)
-            barcode.Save(ms, Imaging.ImageFormat.Bmp)
+            barcode.Save(ms, Imaging.ImageFormat.Jpeg)
             ms.ToArray()
             baris("barcode_barang") = ms.ToArray
 
