@@ -306,6 +306,12 @@
     <Compile Include="fkonfigurasidatabase.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flapbarcode.Designer.vb">
+      <DependentUpon>flapbarcode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flapbarcode.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flapmutasibarang.Designer.vb">
       <DependentUpon>flapmutasibarang.vb</DependentUpon>
     </Compile>
@@ -1139,6 +1145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fkonfigurasidatabase.resx">
       <DependentUpon>fkonfigurasidatabase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flapbarcode.resx">
+      <DependentUpon>flapbarcode.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flapmutasibarang.resx">
       <DependentUpon>flapmutasibarang.vb</DependentUpon>

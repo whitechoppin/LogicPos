@@ -44,7 +44,7 @@ Partial Class flaplunaspiutang
         Me.ClientSize = New System.Drawing.Size(947, 472)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Name = "flaplunaspiutang"
-        Me.Text = "flaplunaspiutang"
+        Me.Text = "Laporan Lunas Piutang"
         Me.ResumeLayout(False)
 
     End Sub

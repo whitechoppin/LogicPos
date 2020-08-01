@@ -172,19 +172,15 @@ Public Class flaporanstokbarang
 
     Private Sub btnbarcode_Click(sender As Object, e As EventArgs) Handles btnbarcode.Click
         Dim rptbarcodebarang As ReportDocument
-        Dim tabel_barcode_barang As New DataTable
+        Dim tabel_barcode As New DataTable
         Dim baris As DataRow
-
 
         Dim writer As New BarcodeWriter
 
-
-        With tabel_barcode_barang
+        With tabel_barcode
             .Columns.Add("kode_stok")
             .Columns.Add("nama_barang")
             .Columns.Add("jenis_barang")
-            .Columns.Add("harga_satuan")
-            .Columns.Add("satuan_barang")
             .Columns.Add("barcode_barang", GetType(Byte()))
         End With
 
@@ -207,16 +203,13 @@ Public Class flaporanstokbarang
             Dim barcode As Image
             Dim ms As MemoryStream = New MemoryStream
 
-
-            baris = tabel_barcode_barang.NewRow
+            baris = tabel_barcode.NewRow
             baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
             baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
             baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
-            baris("harga_satuan") = GridView1.GetRowCellValue(i, "jumlah_stok")
-            baris("satuan_barang") = GridView1.GetRowCellValue(i, "satuan_barang")
 
-            writer.Options.Height = 100
-            writer.Options.Width = 100
+            writer.Options.Height = 150
+            writer.Options.Width = 150
             writer.Format = BarcodeFormat.QR_CODE
 
             barcode = writer.Write(GridView1.GetRowCellValue(i, "kode_stok").ToString)
@@ -224,16 +217,16 @@ Public Class flaporanstokbarang
             ms.ToArray()
             baris("barcode_barang") = ms.ToArray
 
-            tabel_barcode_barang.Rows.Add(baris)
+            tabel_barcode.Rows.Add(baris)
         Next
 
         rptbarcodebarang = New rptlaporbarcode
-        rptbarcodebarang.SetDataSource(tabel_barcode_barang)
+        rptbarcodebarang.SetDataSource(tabel_barcode)
         'rptbarcodebarang.SetParameterValue("tglawal", dtawal.Text)
         'rptbarcodebarang.SetParameterValue("tglakhir", dtakhir.Text)
-        flapmutasibarang.CrystalReportViewer1.ReportSource = rptbarcodebarang
-        flapmutasibarang.ShowDialog()
-        flapmutasibarang.WindowState = FormWindowState.Maximized
+        flapbarcode.CrystalReportViewer1.ReportSource = rptbarcodebarang
+        flapbarcode.ShowDialog()
+        flapbarcode.WindowState = FormWindowState.Maximized
     End Sub
 
     Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click

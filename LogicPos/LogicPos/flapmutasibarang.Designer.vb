@@ -44,7 +44,7 @@ Partial Class flapmutasibarang
         Me.ClientSize = New System.Drawing.Size(777, 439)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Name = "flapmutasibarang"
-        Me.Text = "flapmutasibarang"
+        Me.Text = "Laporan Mutasi Barang"
         Me.ResumeLayout(False)
 
     End Sub

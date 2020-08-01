@@ -44,7 +44,7 @@ Partial Class flapmodalbarang
         Me.ClientSize = New System.Drawing.Size(825, 348)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Name = "flapmodalbarang"
-        Me.Text = "flapmodalbarang"
+        Me.Text = "Laporan Modal Barang"
         Me.ResumeLayout(False)
 
     End Sub

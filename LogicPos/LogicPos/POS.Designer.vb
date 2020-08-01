@@ -51,7 +51,7 @@ Partial Public Class POS
     
     Private tabletabelkirim As tabelkirimDataTable
     
-    Private tabletabelbarang As tabelbarangDataTable
+    Private tabletabelbarcode As tabelbarcodeDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -121,8 +121,8 @@ Partial Public Class POS
             If (Not (ds.Tables("tabelkirim")) Is Nothing) Then
                 MyBase.Tables.Add(New tabelkirimDataTable(ds.Tables("tabelkirim")))
             End If
-            If (Not (ds.Tables("tabelbarang")) Is Nothing) Then
-                MyBase.Tables.Add(New tabelbarangDataTable(ds.Tables("tabelbarang")))
+            If (Not (ds.Tables("tabelbarcode")) Is Nothing) Then
+                MyBase.Tables.Add(New tabelbarcodeDataTable(ds.Tables("tabelbarcode")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -275,9 +275,9 @@ Partial Public Class POS
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property tabelbarang() As tabelbarangDataTable
+    Public ReadOnly Property tabelbarcode() As tabelbarcodeDataTable
         Get
-            Return Me.tabletabelbarang
+            Return Me.tabletabelbarcode
         End Get
     End Property
     
@@ -387,8 +387,8 @@ Partial Public Class POS
             If (Not (ds.Tables("tabelkirim")) Is Nothing) Then
                 MyBase.Tables.Add(New tabelkirimDataTable(ds.Tables("tabelkirim")))
             End If
-            If (Not (ds.Tables("tabelbarang")) Is Nothing) Then
-                MyBase.Tables.Add(New tabelbarangDataTable(ds.Tables("tabelbarang")))
+            If (Not (ds.Tables("tabelbarcode")) Is Nothing) Then
+                MyBase.Tables.Add(New tabelbarcodeDataTable(ds.Tables("tabelbarcode")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -500,10 +500,10 @@ Partial Public Class POS
                 Me.tabletabelkirim.InitVars
             End If
         End If
-        Me.tabletabelbarang = CType(MyBase.Tables("tabelbarang"),tabelbarangDataTable)
+        Me.tabletabelbarcode = CType(MyBase.Tables("tabelbarcode"),tabelbarcodeDataTable)
         If (initTable = true) Then
-            If (Not (Me.tabletabelbarang) Is Nothing) Then
-                Me.tabletabelbarang.InitVars
+            If (Not (Me.tabletabelbarcode) Is Nothing) Then
+                Me.tabletabelbarcode.InitVars
             End If
         End If
     End Sub
@@ -542,8 +542,8 @@ Partial Public Class POS
         MyBase.Tables.Add(Me.tabletabelpengiriman)
         Me.tabletabelkirim = New tabelkirimDataTable()
         MyBase.Tables.Add(Me.tabletabelkirim)
-        Me.tabletabelbarang = New tabelbarangDataTable()
-        MyBase.Tables.Add(Me.tabletabelbarang)
+        Me.tabletabelbarcode = New tabelbarcodeDataTable()
+        MyBase.Tables.Add(Me.tabletabelbarcode)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -626,7 +626,7 @@ Partial Public Class POS
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializetabelbarang() As Boolean
+    Private Function ShouldSerializetabelbarcode() As Boolean
         Return false
     End Function
     
@@ -728,7 +728,7 @@ Partial Public Class POS
     Public Delegate Sub tabelkirimRowChangeEventHandler(ByVal sender As Object, ByVal e As tabelkirimRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub tabelbarangRowChangeEventHandler(ByVal sender As Object, ByVal e As tabelbarangRowChangeEvent)
+    Public Delegate Sub tabelbarcodeRowChangeEventHandler(ByVal sender As Object, ByVal e As tabelbarcodeRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -5233,8 +5233,8 @@ Partial Public Class POS
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class tabelbarangDataTable
-        Inherits Global.System.Data.TypedTableBase(Of tabelbarangRow)
+    Partial Public Class tabelbarcodeDataTable
+        Inherits Global.System.Data.TypedTableBase(Of tabelbarcodeRow)
         
         Private columnkode_stok As Global.System.Data.DataColumn
         
@@ -5242,17 +5242,13 @@ Partial Public Class POS
         
         Private columnjenis_barang As Global.System.Data.DataColumn
         
-        Private columnharga_satuan As Global.System.Data.DataColumn
-        
-        Private columnsatuan_barang As Global.System.Data.DataColumn
-        
         Private columnbarcode_barang As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "tabelbarang"
+            Me.TableName = "tabelbarcode"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -5309,22 +5305,6 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property harga_satuanColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnharga_satuan
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property satuan_barangColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnsatuan_barang
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property barcode_barangColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnbarcode_barang
@@ -5342,44 +5322,44 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As tabelbarangRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As tabelbarcodeRow
             Get
-                Return CType(Me.Rows(index),tabelbarangRow)
+                Return CType(Me.Rows(index),tabelbarcodeRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelbarangRowChanging As tabelbarangRowChangeEventHandler
+        Public Event tabelbarcodeRowChanging As tabelbarcodeRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelbarangRowChanged As tabelbarangRowChangeEventHandler
+        Public Event tabelbarcodeRowChanged As tabelbarcodeRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelbarangRowDeleting As tabelbarangRowChangeEventHandler
+        Public Event tabelbarcodeRowDeleting As tabelbarcodeRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event tabelbarangRowDeleted As tabelbarangRowChangeEventHandler
+        Public Event tabelbarcodeRowDeleted As tabelbarcodeRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddtabelbarangRow(ByVal row As tabelbarangRow)
+        Public Overloads Sub AddtabelbarcodeRow(ByVal row As tabelbarcodeRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtabelbarangRow(ByVal kode_stok As String, ByVal nama_barang As String, ByVal jenis_barang As String, ByVal harga_satuan As String, ByVal satuan_barang As String, ByVal barcode_barang() As Byte) As tabelbarangRow
-            Dim rowtabelbarangRow As tabelbarangRow = CType(Me.NewRow,tabelbarangRow)
-            Dim columnValuesArray() As Object = New Object() {kode_stok, nama_barang, jenis_barang, harga_satuan, satuan_barang, barcode_barang}
-            rowtabelbarangRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowtabelbarangRow)
-            Return rowtabelbarangRow
+        Public Overloads Function AddtabelbarcodeRow(ByVal kode_stok As String, ByVal nama_barang As String, ByVal jenis_barang As String, ByVal barcode_barang() As Byte) As tabelbarcodeRow
+            Dim rowtabelbarcodeRow As tabelbarcodeRow = CType(Me.NewRow,tabelbarcodeRow)
+            Dim columnValuesArray() As Object = New Object() {kode_stok, nama_barang, jenis_barang, barcode_barang}
+            rowtabelbarcodeRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowtabelbarcodeRow)
+            Return rowtabelbarcodeRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As tabelbarangDataTable = CType(MyBase.Clone,tabelbarangDataTable)
+            Dim cln As tabelbarcodeDataTable = CType(MyBase.Clone,tabelbarcodeDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -5387,7 +5367,7 @@ Partial Public Class POS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New tabelbarangDataTable()
+            Return New tabelbarcodeDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5396,8 +5376,6 @@ Partial Public Class POS
             Me.columnkode_stok = MyBase.Columns("kode_stok")
             Me.columnnama_barang = MyBase.Columns("nama_barang")
             Me.columnjenis_barang = MyBase.Columns("jenis_barang")
-            Me.columnharga_satuan = MyBase.Columns("harga_satuan")
-            Me.columnsatuan_barang = MyBase.Columns("satuan_barang")
             Me.columnbarcode_barang = MyBase.Columns("barcode_barang")
         End Sub
         
@@ -5410,38 +5388,34 @@ Partial Public Class POS
             MyBase.Columns.Add(Me.columnnama_barang)
             Me.columnjenis_barang = New Global.System.Data.DataColumn("jenis_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnjenis_barang)
-            Me.columnharga_satuan = New Global.System.Data.DataColumn("harga_satuan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnharga_satuan)
-            Me.columnsatuan_barang = New Global.System.Data.DataColumn("satuan_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsatuan_barang)
             Me.columnbarcode_barang = New Global.System.Data.DataColumn("barcode_barang", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbarcode_barang)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewtabelbarangRow() As tabelbarangRow
-            Return CType(Me.NewRow,tabelbarangRow)
+        Public Function NewtabelbarcodeRow() As tabelbarcodeRow
+            Return CType(Me.NewRow,tabelbarcodeRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New tabelbarangRow(builder)
+            Return New tabelbarcodeRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(tabelbarangRow)
+            Return GetType(tabelbarcodeRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.tabelbarangRowChangedEvent) Is Nothing) Then
-                RaiseEvent tabelbarangRowChanged(Me, New tabelbarangRowChangeEvent(CType(e.Row,tabelbarangRow), e.Action))
+            If (Not (Me.tabelbarcodeRowChangedEvent) Is Nothing) Then
+                RaiseEvent tabelbarcodeRowChanged(Me, New tabelbarcodeRowChangeEvent(CType(e.Row,tabelbarcodeRow), e.Action))
             End If
         End Sub
         
@@ -5449,8 +5423,8 @@ Partial Public Class POS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.tabelbarangRowChangingEvent) Is Nothing) Then
-                RaiseEvent tabelbarangRowChanging(Me, New tabelbarangRowChangeEvent(CType(e.Row,tabelbarangRow), e.Action))
+            If (Not (Me.tabelbarcodeRowChangingEvent) Is Nothing) Then
+                RaiseEvent tabelbarcodeRowChanging(Me, New tabelbarcodeRowChangeEvent(CType(e.Row,tabelbarcodeRow), e.Action))
             End If
         End Sub
         
@@ -5458,8 +5432,8 @@ Partial Public Class POS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.tabelbarangRowDeletedEvent) Is Nothing) Then
-                RaiseEvent tabelbarangRowDeleted(Me, New tabelbarangRowChangeEvent(CType(e.Row,tabelbarangRow), e.Action))
+            If (Not (Me.tabelbarcodeRowDeletedEvent) Is Nothing) Then
+                RaiseEvent tabelbarcodeRowDeleted(Me, New tabelbarcodeRowChangeEvent(CType(e.Row,tabelbarcodeRow), e.Action))
             End If
         End Sub
         
@@ -5467,14 +5441,14 @@ Partial Public Class POS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.tabelbarangRowDeletingEvent) Is Nothing) Then
-                RaiseEvent tabelbarangRowDeleting(Me, New tabelbarangRowChangeEvent(CType(e.Row,tabelbarangRow), e.Action))
+            If (Not (Me.tabelbarcodeRowDeletingEvent) Is Nothing) Then
+                RaiseEvent tabelbarcodeRowDeleting(Me, New tabelbarcodeRowChangeEvent(CType(e.Row,tabelbarcodeRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemovetabelbarangRow(ByVal row As tabelbarangRow)
+        Public Sub RemovetabelbarcodeRow(ByVal row As tabelbarcodeRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -5501,7 +5475,7 @@ Partial Public Class POS
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "tabelbarangDataTable"
+            attribute2.FixedValue = "tabelbarcodeDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -8645,16 +8619,16 @@ Partial Public Class POS
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class tabelbarangRow
+    Partial Public Class tabelbarcodeRow
         Inherits Global.System.Data.DataRow
         
-        Private tabletabelbarang As tabelbarangDataTable
+        Private tabletabelbarcode As tabelbarcodeDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tabletabelbarang = CType(Me.Table,tabelbarangDataTable)
+            Me.tabletabelbarcode = CType(Me.Table,tabelbarcodeDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8662,13 +8636,13 @@ Partial Public Class POS
         Public Property kode_stok() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelbarang.kode_stokColumn),String)
+                    Return CType(Me(Me.tabletabelbarcode.kode_stokColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_stok' in table 'tabelbarang' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_stok' in table 'tabelbarcode' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabelbarang.kode_stokColumn) = value
+                Me(Me.tabletabelbarcode.kode_stokColumn) = value
             End Set
         End Property
         
@@ -8677,13 +8651,13 @@ Partial Public Class POS
         Public Property nama_barang() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelbarang.nama_barangColumn),String)
+                    Return CType(Me(Me.tabletabelbarcode.nama_barangColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'nama_barang' in table 'tabelbarang' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'nama_barang' in table 'tabelbarcode' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabelbarang.nama_barangColumn) = value
+                Me(Me.tabletabelbarcode.nama_barangColumn) = value
             End Set
         End Property
         
@@ -8692,43 +8666,13 @@ Partial Public Class POS
         Public Property jenis_barang() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelbarang.jenis_barangColumn),String)
+                    Return CType(Me(Me.tabletabelbarcode.jenis_barangColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'jenis_barang' in table 'tabelbarang' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'jenis_barang' in table 'tabelbarcode' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabelbarang.jenis_barangColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property harga_satuan() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelbarang.harga_satuanColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'harga_satuan' in table 'tabelbarang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelbarang.harga_satuanColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property satuan_barang() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelbarang.satuan_barangColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'satuan_barang' in table 'tabelbarang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelbarang.satuan_barangColumn) = value
+                Me(Me.tabletabelbarcode.jenis_barangColumn) = value
             End Set
         End Property
         
@@ -8737,86 +8681,62 @@ Partial Public Class POS
         Public Property barcode_barang() As Byte()
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelbarang.barcode_barangColumn),Byte())
+                    Return CType(Me(Me.tabletabelbarcode.barcode_barangColumn),Byte())
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'barcode_barang' in table 'tabelbarang' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'barcode_barang' in table 'tabelbarcode' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabelbarang.barcode_barangColumn) = value
+                Me(Me.tabletabelbarcode.barcode_barangColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Iskode_stokNull() As Boolean
-            Return Me.IsNull(Me.tabletabelbarang.kode_stokColumn)
+            Return Me.IsNull(Me.tabletabelbarcode.kode_stokColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setkode_stokNull()
-            Me(Me.tabletabelbarang.kode_stokColumn) = Global.System.Convert.DBNull
+            Me(Me.tabletabelbarcode.kode_stokColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isnama_barangNull() As Boolean
-            Return Me.IsNull(Me.tabletabelbarang.nama_barangColumn)
+            Return Me.IsNull(Me.tabletabelbarcode.nama_barangColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setnama_barangNull()
-            Me(Me.tabletabelbarang.nama_barangColumn) = Global.System.Convert.DBNull
+            Me(Me.tabletabelbarcode.nama_barangColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isjenis_barangNull() As Boolean
-            Return Me.IsNull(Me.tabletabelbarang.jenis_barangColumn)
+            Return Me.IsNull(Me.tabletabelbarcode.jenis_barangColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setjenis_barangNull()
-            Me(Me.tabletabelbarang.jenis_barangColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isharga_satuanNull() As Boolean
-            Return Me.IsNull(Me.tabletabelbarang.harga_satuanColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setharga_satuanNull()
-            Me(Me.tabletabelbarang.harga_satuanColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Issatuan_barangNull() As Boolean
-            Return Me.IsNull(Me.tabletabelbarang.satuan_barangColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setsatuan_barangNull()
-            Me(Me.tabletabelbarang.satuan_barangColumn) = Global.System.Convert.DBNull
+            Me(Me.tabletabelbarcode.jenis_barangColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isbarcode_barangNull() As Boolean
-            Return Me.IsNull(Me.tabletabelbarang.barcode_barangColumn)
+            Return Me.IsNull(Me.tabletabelbarcode.barcode_barangColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setbarcode_barangNull()
-            Me(Me.tabletabelbarang.barcode_barangColumn) = Global.System.Convert.DBNull
+            Me(Me.tabletabelbarcode.barcode_barangColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -9292,16 +9212,16 @@ Partial Public Class POS
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class tabelbarangRowChangeEvent
+    Public Class tabelbarcodeRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As tabelbarangRow
+        Private eventRow As tabelbarcodeRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As tabelbarangRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As tabelbarcodeRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -9309,7 +9229,7 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As tabelbarangRow
+        Public ReadOnly Property Row() As tabelbarcodeRow
             Get
                 Return Me.eventRow
             End Get

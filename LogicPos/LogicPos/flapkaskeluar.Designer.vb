@@ -44,7 +44,7 @@ Partial Class flapkaskeluar
         Me.ClientSize = New System.Drawing.Size(931, 466)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Name = "flapkaskeluar"
-        Me.Text = "flapkaskeluar"
+        Me.Text = "Laporan Kas Keluar"
         Me.ResumeLayout(False)
 
     End Sub
