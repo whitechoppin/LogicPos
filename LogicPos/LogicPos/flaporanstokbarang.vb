@@ -33,6 +33,8 @@ Public Class flaporanstokbarang
 
     Private Sub flaporanstokbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
+        cmbstatus.SelectedIndex = 0
+
         Call tabel()
         LabelHarga.Visible = False
         With GridView1
@@ -76,7 +78,14 @@ Public Class flaporanstokbarang
     End Sub
     Sub tabel()
         Call koneksii()
-        sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang "
+        If cmbstatus.SelectedIndex = 0 Then
+            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang "
+        ElseIf cmbstatus.SelectedIndex = 1 Then
+            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.jumlah_stok > 0"
+        ElseIf cmbstatus.SelectedIndex = 2 Then
+            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.jumlah_stok = 0"
+        End If
+
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -208,8 +217,8 @@ Public Class flaporanstokbarang
             baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
             baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
 
-            writer.Options.Height = 150
-            writer.Options.Width = 150
+            writer.Options.Height = 180
+            writer.Options.Width = 180
             writer.Format = BarcodeFormat.QR_CODE
 
             barcode = writer.Write(GridView1.GetRowCellValue(i, "kode_stok").ToString)

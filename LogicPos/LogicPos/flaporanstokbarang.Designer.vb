@@ -212,7 +212,7 @@ Partial Class flaporanstokbarang
         '
         'btnrefresh
         '
-        Me.btnrefresh.Location = New System.Drawing.Point(963, 113)
+        Me.btnrefresh.Location = New System.Drawing.Point(963, 60)
         Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(283, 45)
@@ -222,7 +222,7 @@ Partial Class flaporanstokbarang
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(963, 166)
+        Me.btnexcel.Location = New System.Drawing.Point(963, 113)
         Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(283, 45)
@@ -232,7 +232,7 @@ Partial Class flaporanstokbarang
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(963, 219)
+        Me.btnrekap.Location = New System.Drawing.Point(963, 166)
         Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(283, 45)
@@ -242,7 +242,7 @@ Partial Class flaporanstokbarang
         '
         'btnbarcode
         '
-        Me.btnbarcode.Location = New System.Drawing.Point(963, 60)
+        Me.btnbarcode.Location = New System.Drawing.Point(963, 219)
         Me.btnbarcode.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbarcode.Name = "btnbarcode"
         Me.btnbarcode.Size = New System.Drawing.Size(283, 45)
@@ -252,6 +252,7 @@ Partial Class flaporanstokbarang
         '
         'cmbstatus
         '
+        Me.cmbstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbstatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbstatus.FormattingEnabled = True
         Me.cmbstatus.Items.AddRange(New Object() {"Semua", "Tersedia", "Tidak Tersedia"})
