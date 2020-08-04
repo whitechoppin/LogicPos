@@ -328,7 +328,7 @@ Public Class fpenjualan
         txtnamabarang.Clear()
 
         txtbanyak.Clear()
-        txtbanyak.Text = 0
+        txtbanyak.Text = 1
         txtbanyak.Enabled = True
 
         txtharga.Clear()
@@ -456,7 +456,7 @@ Public Class fpenjualan
         txtnamabarang.Clear()
 
         txtbanyak.Clear()
-        txtbanyak.Text = 0
+        txtbanyak.Text = 1
         txtbanyak.Enabled = False
 
         txtharga.Clear()
@@ -707,7 +707,7 @@ Public Class fpenjualan
         txtnamabarang.Clear()
 
         txtbanyak.Clear()
-        txtbanyak.Text = 0
+        txtbanyak.Text = 1
         txtbanyak.Enabled = True
 
         txtharga.Clear()
@@ -1276,8 +1276,8 @@ Public Class fpenjualan
 
         '============================================================================================================
 
-        writer.Options.Height = 150
-        writer.Options.Width = 150
+        writer.Options.Height = 85
+        writer.Options.Width = 85
         writer.Format = BarcodeFormat.QR_CODE
         barcode = writer.Write(txtnonota.Text)
 
@@ -1306,6 +1306,8 @@ Public Class fpenjualan
 
         e.Graphics.DrawString("No.Nota", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
         e.Graphics.DrawString(": " + txtnonota.Text, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
+        'tinggi += 20
+        e.Graphics.DrawImage(barcode, 170, tinggi - 10)
 
         tinggi += 15
         e.Graphics.DrawString("Customer", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
@@ -1405,8 +1407,6 @@ Public Class fpenjualan
         tinggi += 40
         e.Graphics.DrawString("___________________________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 2, tinggi)
 
-        tinggi += 20
-        e.Graphics.DrawImage(barcode, 50, tinggi)
     End Sub
 
     Public Sub cetak_faktur()
@@ -2479,7 +2479,7 @@ Public Class fpenjualan
 
     Private Sub txtbanyak_TextChanged(sender As Object, e As EventArgs) Handles txtbanyak.TextChanged
         If txtbanyak.Text = "" Then
-            txtbanyak.Text = 0
+            txtbanyak.Text = 1
         Else
             banyak = txtbanyak.Text
             txtbanyak.Text = Format(banyak, "##,##0")
