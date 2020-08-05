@@ -1276,8 +1276,8 @@ Public Class fpenjualan
 
         '============================================================================================================
 
-        writer.Options.Height = 85
-        writer.Options.Width = 85
+        writer.Options.Height = 88
+        writer.Options.Width = 88
         writer.Format = BarcodeFormat.QR_CODE
         barcode = writer.Write(txtnonota.Text)
 
@@ -1370,6 +1370,10 @@ Public Class fpenjualan
 
         tinggi += 15
         e.Graphics.DrawString("________________________", New System.Drawing.Font("Arial Black", 8), Brushes.Black, 110, tinggi)
+
+        tinggi += 15
+        e.Graphics.DrawString("Pembayaran ", New System.Drawing.Font("Arial", 7), Brushes.Black, 110, tinggi)
+        e.Graphics.DrawString(": " + cmbpembayaran.Text, New System.Drawing.Font("Arial", 7), Brushes.Black, 175, tinggi)
 
         tinggi += 15
         e.Graphics.DrawString("Bayar ", New System.Drawing.Font("Arial", 7), Brushes.Black, 110, tinggi)

@@ -1,4 +1,6 @@
 ﻿Imports System.Data.Odbc
+Imports System.IO
+Imports ZXing
 
 Public Class fbarangmasuk
     Public kodeakses As Integer
@@ -790,7 +792,34 @@ Public Class fbarangmasuk
         End If
     End Sub
     Sub cetak_faktur()
-        'Dim faktur As String
+        'barcode
+        Dim tabel_barcode As New DataTable
+        Dim baris_barcode As DataRow
+
+        Dim writer As New BarcodeWriter
+        Dim barcode As Image
+        Dim ms As MemoryStream = New MemoryStream
+
+        With tabel_barcode
+            .Columns.Add("kode_barcode")
+            .Columns.Add("gambar_barcode", GetType(Byte()))
+        End With
+
+        baris_barcode = tabel_barcode.NewRow
+        baris_barcode("kode_barcode") = txtnonota.Text
+
+        writer.Options.Height = 180
+        writer.Options.Width = 180
+        writer.Format = BarcodeFormat.QR_CODE
+
+        barcode = writer.Write(txtnonota.Text)
+        barcode.Save(ms, Imaging.ImageFormat.Jpeg)
+        ms.ToArray()
+
+        baris_barcode("gambar_barcode") = ms.ToArray
+        tabel_barcode.Rows.Add(baris_barcode)
+        '====================
+
         Dim tabel_faktur As New DataTable
         With tabel_faktur
             .Columns.Add("kode_stok")
@@ -814,17 +843,17 @@ Public Class fbarangmasuk
         Next
 
         rpt_faktur = New fakturbarangmasuk
-        rpt_faktur.SetDataSource(tabel_faktur)
-        'rpt.SetParameterValue("total", total2)
+        'rpt_faktur.SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(0).SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
+
         rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
-
         rpt_faktur.SetParameterValue("tanggal", Format(dtbarangmasuk.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
-
     End Sub
 
     Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
