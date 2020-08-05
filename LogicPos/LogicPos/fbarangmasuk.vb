@@ -808,12 +808,12 @@ Public Class fbarangmasuk
         baris_barcode = tabel_barcode.NewRow
         baris_barcode("kode_barcode") = txtnonota.Text
 
-        writer.Options.Height = 180
-        writer.Options.Width = 180
+        writer.Options.Height = 200
+        writer.Options.Width = 200
         writer.Format = BarcodeFormat.QR_CODE
 
         barcode = writer.Write(txtnonota.Text)
-        barcode.Save(ms, Imaging.ImageFormat.Jpeg)
+        barcode.Save(ms, Imaging.ImageFormat.Bmp)
         ms.ToArray()
 
         baris_barcode("gambar_barcode") = ms.ToArray

@@ -1,5 +1,7 @@
 ﻿Imports System.Data.Odbc
+Imports System.IO
 Imports DevExpress.Utils
+Imports ZXing
 
 Public Class fbarangkeluar
     Public kodeakses As Integer
@@ -754,7 +756,34 @@ Public Class fbarangkeluar
         End If
     End Sub
     Sub cetak_faktur()
-        'Dim faktur As String
+        'barcode
+        Dim tabel_barcode As New DataTable
+        Dim baris_barcode As DataRow
+
+        Dim writer As New BarcodeWriter
+        Dim barcode As Image
+        Dim ms As MemoryStream = New MemoryStream
+
+        With tabel_barcode
+            .Columns.Add("kode_barcode")
+            .Columns.Add("gambar_barcode", GetType(Byte()))
+        End With
+
+        baris_barcode = tabel_barcode.NewRow
+        baris_barcode("kode_barcode") = txtnonota.Text
+
+        writer.Options.Height = 200
+        writer.Options.Width = 200
+        writer.Format = BarcodeFormat.QR_CODE
+
+        barcode = writer.Write(txtnonota.Text)
+        barcode.Save(ms, Imaging.ImageFormat.Bmp)
+        ms.ToArray()
+
+        baris_barcode("gambar_barcode") = ms.ToArray
+        tabel_barcode.Rows.Add(baris_barcode)
+        '====================
+
         Dim tabel_faktur As New DataTable
         With tabel_faktur
             .Columns.Add("kode_stok")
@@ -778,8 +807,10 @@ Public Class fbarangkeluar
         Next
 
         rpt_faktur = New fakturbarangkeluar
-        rpt_faktur.SetDataSource(tabel_faktur)
-        'rpt.SetParameterValue("total", total2)
+        'rpt_faktur.SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(0).SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
+
         rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
 
@@ -788,7 +819,6 @@ Public Class fbarangkeluar
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
-
     End Sub
 
     Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
