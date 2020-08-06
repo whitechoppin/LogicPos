@@ -1,4 +1,6 @@
 ﻿Imports System.Data.Odbc
+Imports System.IO
+Imports ZXing
 
 Public Class ftransferkas
     Public kodeakses As Integer
@@ -506,8 +508,37 @@ Public Class ftransferkas
         End If
     End Sub
     Sub cetak_faktur()
+        'barcode
+        Dim tabel_barcode As New DataTable
+        Dim baris_barcode As DataRow
+
+        Dim writer As New BarcodeWriter
+        Dim barcode As Image
+        Dim ms As MemoryStream = New MemoryStream
+
+        With tabel_barcode
+            .Columns.Add("kode_barcode")
+            .Columns.Add("gambar_barcode", GetType(Byte()))
+        End With
+
+        baris_barcode = tabel_barcode.NewRow
+        baris_barcode("kode_barcode") = txtkodetransfer.Text
+
+        writer.Options.Height = 200
+        writer.Options.Width = 200
+        writer.Format = BarcodeFormat.QR_CODE
+
+        barcode = writer.Write(txtkodetransfer.Text)
+        barcode.Save(ms, Imaging.ImageFormat.Bmp)
+        ms.ToArray()
+
+        baris_barcode("gambar_barcode") = ms.ToArray
+        tabel_barcode.Rows.Add(baris_barcode)
+        '====================
 
         rpt_faktur = New fakturtransferkas
+        rpt_faktur.Database.Tables(1).SetDataSource(tabel_barcode)
+
         rpt_faktur.SetParameterValue("nofaktur", txtkodetransfer.Text)
         rpt_faktur.SetParameterValue("darikas", txtnamadarikas.Text)
         rpt_faktur.SetParameterValue("kekas", txtnamakekas.Text)
