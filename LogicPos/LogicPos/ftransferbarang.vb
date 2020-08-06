@@ -195,8 +195,8 @@ Public Class ftransferbarang
     End Sub
 
     Private Sub txtbanyak_TextChanged(sender As Object, e As EventArgs) Handles txtbanyak.TextChanged
-        If txtbanyak.Text = "" Then
-            txtbanyak.Text = 0
+        If txtbanyak.Text = "" Or txtbanyak.Text = "0" Then
+            txtbanyak.Text = 1
         Else
             banyak = txtbanyak.Text
             txtbanyak.Text = Format(banyak, "##,##0")
@@ -362,7 +362,7 @@ Public Class ftransferbarang
         txtnamabarang.Clear()
 
         txtbanyak.Clear()
-        txtbanyak.Text = 0
+        txtbanyak.Text = 1
         txtbanyak.Enabled = True
 
         lblsatuan.Text = "satuan"
@@ -430,7 +430,7 @@ Public Class ftransferbarang
         txtnamabarang.Clear()
 
         txtbanyak.Clear()
-        txtbanyak.Text = 0
+        txtbanyak.Text = 1
         txtbanyak.Enabled = True
 
         lblsatuan.Text = "satuan"
@@ -509,7 +509,7 @@ Public Class ftransferbarang
         txtnamabarang.Clear()
 
         txtbanyak.Clear()
-        txtbanyak.Text = 0
+        txtbanyak.Text = 1
         txtbanyak.Enabled = False
 
         btntambah.Enabled = False

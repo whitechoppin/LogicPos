@@ -2511,7 +2511,7 @@ Public Class fpenjualan
     End Sub
 
     Private Sub txtbanyak_TextChanged(sender As Object, e As EventArgs) Handles txtbanyak.TextChanged
-        If txtbanyak.Text = "" Then
+        If txtbanyak.Text = "" Or txtbanyak.Text = "0" Then
             txtbanyak.Text = 1
         Else
             banyak = txtbanyak.Text

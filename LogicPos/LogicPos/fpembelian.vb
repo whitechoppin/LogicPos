@@ -274,7 +274,7 @@ Public Class fpembelian
         txtnamabarang.Enabled = False
 
         txtbanyakbarang.Clear()
-        txtbanyakbarang.Text = 0
+        txtbanyakbarang.Text = 1
         txtbanyakbarang.Enabled = False
 
         txthargabarang.Clear()
@@ -519,7 +519,7 @@ Public Class fpembelian
         txtnamabarang.Enabled = False
 
         txtbanyakbarang.Clear()
-        txtbanyakbarang.Text = 0
+        txtbanyakbarang.Text = 1
         txtbanyakbarang.Enabled = True
 
         txthargabarang.Clear()
@@ -1501,7 +1501,7 @@ Public Class fpembelian
         txtnamabarang.Clear()
 
         txtbanyakbarang.Clear()
-        txtbanyakbarang.Text = 0
+        txtbanyakbarang.Text = 1
         txtbanyakbarang.Enabled = True
 
         txthargabarang.Clear()
@@ -1721,8 +1721,8 @@ Public Class fpembelian
         End If
     End Sub
     Private Sub txtbanyakbarang_TextChanged(sender As Object, e As EventArgs) Handles txtbanyakbarang.TextChanged
-        If txtbanyakbarang.Text = "" Then
-            txtbanyakbarang.Text = 0
+        If txtbanyakbarang.Text = "" Or txtbanyakbarang.Text = "0" Then
+            txtbanyakbarang.Text = 1
         Else
             banyak = txtbanyakbarang.Text
             txtbanyakbarang.Text = Format(banyak, "##,##0")
