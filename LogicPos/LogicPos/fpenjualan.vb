@@ -1414,8 +1414,35 @@ Public Class fpenjualan
     End Sub
 
     Public Sub cetak_faktur()
-        Dim tabel_faktur As New DataTable
+        'barcode
+        Dim tabel_barcode As New DataTable
+        Dim baris_barcode As DataRow
 
+        Dim writer As New BarcodeWriter
+        Dim barcode As Image
+        Dim ms As MemoryStream = New MemoryStream
+
+        With tabel_barcode
+            .Columns.Add("kode_barcode")
+            .Columns.Add("gambar_barcode", GetType(Byte()))
+        End With
+
+        baris_barcode = tabel_barcode.NewRow
+        baris_barcode("kode_barcode") = txtnonota.Text
+
+        writer.Options.Height = 200
+        writer.Options.Width = 200
+        writer.Format = BarcodeFormat.QR_CODE
+
+        barcode = writer.Write(txtnonota.Text)
+        barcode.Save(ms, Imaging.ImageFormat.Bmp)
+        ms.ToArray()
+
+        baris_barcode("gambar_barcode") = ms.ToArray
+        tabel_barcode.Rows.Add(baris_barcode)
+        '====================
+
+        Dim tabel_faktur As New DataTable
         With tabel_faktur
             .Columns.Add("kode_barang")
             .Columns.Add("kode_stok")
@@ -1448,7 +1475,9 @@ Public Class fpenjualan
         Next
 
         rpt_faktur = New fakturpenjualan
-        rpt_faktur.SetDataSource(tabel_faktur)
+        'rpt_faktur.SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(0).SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
 
         rpt_faktur.SetParameterValue("nofaktur", kodepenjualan)
         rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)

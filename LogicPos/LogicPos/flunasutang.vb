@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
+Imports System.IO
 Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.Utils
+Imports ZXing
 
 Public Class flunasutang
     Public kodeakses As Integer
@@ -861,7 +863,34 @@ Public Class flunasutang
 
 
     Public Sub cetak_faktur()
-        'Dim faktur As String
+        'barcode
+        Dim tabel_barcode As New DataTable
+        Dim baris_barcode As DataRow
+
+        Dim writer As New BarcodeWriter
+        Dim barcode As Image
+        Dim ms As MemoryStream = New MemoryStream
+
+        With tabel_barcode
+            .Columns.Add("kode_barcode")
+            .Columns.Add("gambar_barcode", GetType(Byte()))
+        End With
+
+        baris_barcode = tabel_barcode.NewRow
+        baris_barcode("kode_barcode") = txtnolunasutang.Text
+
+        writer.Options.Height = 200
+        writer.Options.Width = 200
+        writer.Format = BarcodeFormat.QR_CODE
+
+        barcode = writer.Write(txtnolunasutang.Text)
+        barcode.Save(ms, Imaging.ImageFormat.Bmp)
+        ms.ToArray()
+
+        baris_barcode("gambar_barcode") = ms.ToArray
+        tabel_barcode.Rows.Add(baris_barcode)
+        '====================
+
         Dim tabel_faktur As New DataTable
 
         With tabel_faktur
@@ -889,7 +918,9 @@ Public Class flunasutang
             tabel_faktur.Rows.Add(baris)
         Next
         rpt_faktur = New fakturlunasutang
-        rpt_faktur.SetDataSource(tabel_faktur)
+        'rpt_faktur.SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(0).SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
 
         rpt_faktur.SetParameterValue("nofaktur", txtnolunasutang.Text)
         rpt_faktur.SetParameterValue("supplier", txtsupplier.Text)

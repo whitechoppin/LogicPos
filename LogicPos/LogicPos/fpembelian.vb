@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 Imports DevExpress.Utils
 Imports CrystalDecisions.CrystalReports.Engine
+Imports ZXing
+Imports System.IO
 
 Public Class fpembelian
     Public kodeakses As Integer
@@ -335,7 +337,7 @@ Public Class fpembelian
 
             'Using cnn As New OdbcConnection(strConn)
             sql = "SELECT * FROM tb_pembelian WHERE kode_pembelian = '" + nomorkode.ToString + "'"
-                cmmd = New OdbcCommand(sql, cnn)
+            cmmd = New OdbcCommand(sql, cnn)
             'cnn.Open()
             dr = cmmd.ExecuteReader
             dr.Read()
@@ -1025,7 +1027,7 @@ Public Class fpembelian
             Console.WriteLine("Neither record was written to database.")
             MsgBox("Transaksi Gagal Dilakukan", MsgBoxStyle.Information, "Sukses")
         End Try
-        
+
     End Sub
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         If GridView1.DataRowCount > 0 Then
@@ -1137,15 +1139,42 @@ Public Class fpembelian
 
 
             Else
-                    MsgBox("Nota sudah void !")
+                MsgBox("Nota sudah void !")
             End If
         Else
             MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub cetak_faktur()
-        Dim tabel_faktur As New DataTable
+        'barcode
+        Dim tabel_barcode As New DataTable
+        Dim baris_barcode As DataRow
 
+        Dim writer As New BarcodeWriter
+        Dim barcode As Image
+        Dim ms As MemoryStream = New MemoryStream
+
+        With tabel_barcode
+            .Columns.Add("kode_barcode")
+            .Columns.Add("gambar_barcode", GetType(Byte()))
+        End With
+
+        baris_barcode = tabel_barcode.NewRow
+        baris_barcode("kode_barcode") = txtnonota.Text
+
+        writer.Options.Height = 200
+        writer.Options.Width = 200
+        writer.Format = BarcodeFormat.QR_CODE
+
+        barcode = writer.Write(txtnonota.Text)
+        barcode.Save(ms, Imaging.ImageFormat.Bmp)
+        ms.ToArray()
+
+        baris_barcode("gambar_barcode") = ms.ToArray
+        tabel_barcode.Rows.Add(baris_barcode)
+        '====================
+
+        Dim tabel_faktur As New DataTable
         With tabel_faktur
             .Columns.Add("kode_stok")
             .Columns.Add("kode_barang")
@@ -1172,7 +1201,9 @@ Public Class fpembelian
         Next
 
         rpt_faktur = New fakturpembelian
-        rpt_faktur.SetDataSource(tabel_faktur)
+        'rpt_faktur.SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(0).SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
 
         rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
         rpt_faktur.SetParameterValue("jatem", Format(dtjatuhtempo.Value, "dd MMMM yyyy HH:mm:ss").ToString)
