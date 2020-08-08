@@ -672,6 +672,12 @@ Public Class fbarangkeluar
         Call caribarang()
     End Sub
 
+    Private Sub txtkodestok_KeyDown(sender As Object, e As KeyEventArgs) Handles txtkodestok.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Call tambah()
+        End If
+    End Sub
+
     Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
         tutupcus = 3
         fcaricust.ShowDialog()

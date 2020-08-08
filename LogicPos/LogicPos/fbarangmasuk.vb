@@ -659,6 +659,12 @@ Public Class fbarangmasuk
         Call caribarang()
     End Sub
 
+    Private Sub txtkodebarang_KeyDown(sender As Object, e As KeyEventArgs) Handles txtkodebarang.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Call tambah()
+        End If
+    End Sub
+
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
         If tambahstatus.Equals(True) Then
             Call awalbaru()

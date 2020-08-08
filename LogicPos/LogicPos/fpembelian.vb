@@ -924,6 +924,14 @@ Public Class fpembelian
     Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodebarang.TextChanged
         Call caribarang()
     End Sub
+
+    Private Sub txtkodebarang_KeyDown(sender As Object, e As KeyEventArgs) Handles txtkodebarang.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Call tambah()
+            BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+        End If
+    End Sub
+
     Private Sub txthargabarang_TextChanged(sender As Object, e As EventArgs) Handles txthargabarang.TextChanged
         If txthargabarang.Text = "" Then
             txthargabarang.Text = 0

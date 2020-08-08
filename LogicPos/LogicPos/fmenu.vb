@@ -1,7 +1,7 @@
 ﻿Imports System.Data.Odbc
 Public Class fmenu
     Private Sub exitStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitStripMenuItem.Click
-        Call historysave("User Close Program", "N/A")
+        Call historysave("User Close Program", Me.statususer.Text)
         Me.Close()
         Me.Dispose()
         Application.Exit()
@@ -13,7 +13,7 @@ Public Class fmenu
         fjatuhtempopenjualan.Show()
         fnotifikasistok.Show()
 
-        Call historysave("User Login Program", "N/A")
+        Call historysave("User Login Program", Me.statususer.Text)
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick

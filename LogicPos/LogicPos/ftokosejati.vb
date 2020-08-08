@@ -3,6 +3,7 @@ Imports System.Data.Odbc
 Imports System.Net.Mail
 Imports System.Threading
 Imports System.Globalization
+Imports System.Net.NetworkInformation
 
 Public Class ftokosejati
     Private Sub ftokosejati_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -114,11 +115,75 @@ Public Class ftokosejati
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim decimalSeparator As String = Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator
 
-        For Each ci As CultureInfo In CultureInfo.GetCultures(CultureTypes.AllCultures)
-            MsgBox(ci.EnglishName + " - " + ci.Name)
-        Next
+        'For Each ci As CultureInfo In CultureInfo.GetCultures(CultureTypes.AllCultures)
+        '    MsgBox(ci.EnglishName + " - " + ci.Name)
+        'Next
 
         MsgBox(Thread.CurrentThread.CurrentCulture.Name)
         MsgBox(decimalSeparator)
+    End Sub
+
+    Private Function CpuId() As String
+        Dim computer As String = "."
+        Dim wmi As Object = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & computer & "\root\cimv2")
+        Dim processors As Object = wmi.ExecQuery("Select * from Win32_Processor")
+        Dim cpu_ids As String = ""
+
+        For Each cpu As Object In processors
+            cpu_ids = cpu_ids & ", " & cpu.ProcessorId
+        Next cpu
+
+        If cpu_ids.Length > 0 Then
+            cpu_ids = cpu_ids.Substring(2)
+        End If
+
+        Return cpu_ids
+    End Function
+
+    Sub ProcessorSpeed()
+        ' shows the processor name and speed of the computer
+        Dim MyOBJ As Object
+        Dim cpu As Object
+
+        MyOBJ = GetObject("WinMgmts:").instancesof("Win32_Processor")
+        For Each cpu In MyOBJ
+            MsgBox(cpu.Name.ToString + " " + cpu.CurrentClockSpeed.ToString + " Mhz  CPU ID : " + cpu.ProcessorId, vbInformation)
+        Next
+    End Sub
+
+    Function getMacAddress()
+        Dim nics() As NetworkInterface = NetworkInterface.GetAllNetworkInterfaces()
+        Return nics(1).GetPhysicalAddress.ToString
+    End Function
+
+    Private Function getMacAddressx() As String
+        Try
+            Dim adapters As NetworkInterface() = NetworkInterface.GetAllNetworkInterfaces()
+            Dim adapter As NetworkInterface
+            Dim myMac As String = String.Empty
+
+            For Each adapter In adapters
+                Select Case adapter.NetworkInterfaceType
+                'Exclude Tunnels, Loopbacks and PPP
+                    Case NetworkInterfaceType.Tunnel, NetworkInterfaceType.Loopback, NetworkInterfaceType.Ppp
+                    Case Else
+                        If Not adapter.GetPhysicalAddress.ToString = String.Empty And Not adapter.GetPhysicalAddress.ToString = "00000000000000E0" Then
+                            myMac = adapter.GetPhysicalAddress.ToString
+                            Exit For ' Got a mac so exit for
+                        End If
+
+                End Select
+            Next adapter
+
+            Return myMac
+        Catch ex As Exception
+            Return String.Empty
+        End Try
+    End Function
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        MsgBox(CpuId() + " " + getMacAddress() + " " + getMacAddressx())
+        Call ProcessorSpeed()
+        'MsgBox(CreateObject("WScript.Shell").RegRead("HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0\ProcessorNameString"))
     End Sub
 End Class

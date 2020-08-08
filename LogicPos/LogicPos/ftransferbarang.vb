@@ -922,6 +922,12 @@ Public Class ftransferbarang
         Call caribarang()
     End Sub
 
+    Private Sub txtkodestok_KeyDown(sender As Object, e As KeyEventArgs) Handles txtkodestok.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Call tambah()
+        End If
+    End Sub
+
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         Call tambah()
     End Sub

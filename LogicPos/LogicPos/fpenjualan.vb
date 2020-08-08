@@ -1741,8 +1741,15 @@ Public Class fpenjualan
         End If
     End Sub
 
-    Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
+    Private Sub txtkodestok_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
         Call caribarang()
+    End Sub
+
+    Private Sub txtkodestok_KeyDown(sender As Object, e As KeyEventArgs) Handles txtkodestok.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Call tambah()
+            BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+        End If
     End Sub
 
     Sub tambah()
