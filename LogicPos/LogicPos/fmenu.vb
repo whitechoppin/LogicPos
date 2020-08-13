@@ -95,6 +95,11 @@ Public Class fmenu
         fuser.Show()
     End Sub
     Private Sub fmenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        Call koneksii()
+        sql = "DELETE FROM tb_status_user WHERE kode_user='" & Me.statususer.Text & "'AND computer_id='" & flogin.CPUIDPOS & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+
         Application.Exit()
     End Sub
     Private Sub PrinterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrinterToolStripMenuItem.Click

@@ -65,20 +65,22 @@ Public Class flogin
     End Sub
     Sub login()
         Call koneksii()
-        sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtusername.Text + "' AND password_user= '" + txtpassword.Text + "'"
+
+        sql = "SELECT * FROM tb_status_user WHERE kode_user = '" + txtusername.Text + "' AND computer_id='" + CPUIDPOS + "' AND DATE(date_created)='" + Format(Date.Today, "yyyy-MM-dd") + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         dr.Read()
 
         If dr.HasRows = 0 Then
-            MsgBox("Username atau Password ada yang salah !", MsgBoxStyle.Exclamation, "Error Login")
-        Else
-            sql = "SELECT * FROM tb_status_user WHERE kode_user = '" + txtusername.Text + "' AND computer_id='" + CPUIDPOS + "'"
+            sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtusername.Text + "' AND password_user= '" + txtpassword.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             dr.Read()
 
             If dr.HasRows = 0 Then
+                MsgBox("Username atau Password ada yang salah !", MsgBoxStyle.Exclamation, "Error Login")
+            Else
+
                 MsgBox("Selamat Datang " & txtusername.Text & " ! ", MsgBoxStyle.Information, "Successfull Login")
                 Call offform()
 
@@ -279,12 +281,16 @@ Public Class flogin
 
                 fmenu.SettingMenu.DropDownItems.Item(0).Visible = True 'set printer
 
+                sql = "INSERT INTO tb_status_user( kode_user, computer_id, status_user, created_by, date_created) VALUES ('" & txtusername.Text & "','" & CPUIDPOS & "','" & 1 & "','" & fmenu.statususer.Text & "',now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
                 Me.Hide()
                 fmenu.statususer.Text = txtusername.Text.ToUpper
                 fmenu.Show()
-            Else
-                MsgBox("Anda Sudah Login !!!", MsgBoxStyle.Exclamation, "Error Login")
             End If
+        Else
+            MsgBox("Anda Sudah Login !!!", MsgBoxStyle.Exclamation, "Error Login")
         End If
     End Sub
 
