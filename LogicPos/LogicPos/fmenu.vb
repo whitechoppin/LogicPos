@@ -96,7 +96,7 @@ Public Class fmenu
     End Sub
     Private Sub fmenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Call koneksii()
-        sql = "DELETE FROM tb_status_user WHERE kode_user='" & Me.statususer.Text & "'AND computer_id='" & flogin.CPUIDPOS & "'"
+        sql = "DELETE FROM tb_status_user WHERE kode_user='" & Me.statususer.Text & "'AND computer_id='" & flogin.CPUIDPOS & "'AND status_user='" & flogin.STATUSPOS & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
