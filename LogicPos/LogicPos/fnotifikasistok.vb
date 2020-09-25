@@ -5,18 +5,18 @@ Public Class fnotifikasistok
     Private Sub fnotifikasistok_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call koneksii()
-        Call tabel_stok()
-
-        'With GridView1
-        '    .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
-        '    'buat sum harga
-        '    .Columns("total_penjualan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "total_penjualan", "{0:n0}")
-        '    .Columns("bayar_penjualan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "bayar_penjualan", "{0:n0}")
-        '    .Columns("sisa_penjualan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "sisa_penjualan", "{0:n0}")
-        'End With
+        Call grid_stok()
     End Sub
 
     Sub grid_stok()
+        Call koneksii()
+        sql = "SELECT kode_stok, tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.jenis_barang, tb_barang.satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_stok JOIN tb_barang ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id WHERE tb_stok.jumlah_stok < 20"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+
         GridColumn1.Caption = "Kode Stok"
         GridColumn1.FieldName = "kode_stok"
         GridColumn1.Width = 30
@@ -43,22 +43,11 @@ Public Class fnotifikasistok
         GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn6.DisplayFormat.FormatString = "{0:n0}"
 
-        GridControl1.Visible = True
+        GridColumn7.Caption = "Gudang"
+        GridColumn7.FieldName = "nama_gudang"
+        GridColumn7.Width = 15
 
-    End Sub
-    Sub tabel_stok()
-        Call koneksii()
-        'Using cnn As New OdbcConnection(strConn)
-        sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.jumlah_stok < 20"
-        da = New OdbcDataAdapter(sql, cnn)
-        'cnn.Open()
-        ds = New DataSet
-        da.Fill(ds)
-        GridControl1.DataSource = Nothing
-        GridControl1.DataSource = ds.Tables(0)
-        Call grid_stok()
-        'cnn.Close()
-        'End Using
+        GridControl1.Visible = True
     End Sub
 
     Private Sub fnotifikasistok_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -66,11 +55,10 @@ Public Class fnotifikasistok
     End Sub
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
-        Call tabel_stok()
+        Call grid_stok()
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
-        Call tabel_stok()
-
+        Call grid_stok()
     End Sub
 End Class

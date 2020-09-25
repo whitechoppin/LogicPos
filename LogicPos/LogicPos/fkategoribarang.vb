@@ -3,7 +3,7 @@
 Public Class fkategoribarang
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
-    Dim kodekategoriedit As String
+    Dim idkategoriedit, kodekategoriedit As String
     Dim selisihharga As Double
 
     '==== autosize form ====
@@ -87,7 +87,17 @@ Public Class fkategoribarang
         GridControl.Enabled = True
         Call isitabel()
     End Sub
-    Sub kolom()
+
+    Sub isitabel()
+        Call koneksii()
+        sql = "SELECT * FROM tb_kategori_barang"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+
+        GridControl.DataSource = Nothing
+        GridControl.DataSource = ds.Tables(0)
+
         GridColumn1.Caption = "Kode Kategori"
         GridColumn1.Width = 100
         GridColumn1.FieldName = "kode_kategori"
@@ -103,16 +113,11 @@ Public Class fkategoribarang
         GridColumn4.Caption = "Keterangan Kategori"
         GridColumn4.FieldName = "keterangan_kategori"
         GridColumn4.Width = 300
-    End Sub
-    Sub isitabel()
-        Call koneksii()
-        sql = "SELECT * FROM tb_kategori_barang"
-        da = New OdbcDataAdapter(sql, cnn)
-        ds = New DataSet
-        da.Fill(ds)
-        GridControl.DataSource = Nothing
-        GridControl.DataSource = ds.Tables(0)
-        Call kolom()
+
+        GridColumn5.Caption = "id"
+        GridColumn5.FieldName = "id"
+        GridColumn5.Width = "40"
+        GridColumn5.Visible = False
     End Sub
     Sub index()
         txtkode.TabIndex = 1
@@ -138,6 +143,7 @@ Public Class fkategoribarang
             sql = "INSERT INTO tb_kategori_barang (kode_kategori, nama_kategori, selisih_kategori, keterangan_kategori, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "','" & selisihharga & "', '" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
+
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
             btntambah.Text = "Tambah"
             Me.Refresh()
@@ -178,29 +184,29 @@ Public Class fkategoribarang
     End Sub
 
     Sub edit()
-        Call koneksii()
         If txtkode.Text.Equals(kodekategoriedit) Then
-            sql = "UPDATE tb_kategori_barang SET  nama_kategori='" & txtnama.Text & "', selisih_kategori='" & selisihharga & "', keterangan_kategori='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE  kode_kategori='" & kodekategoriedit & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-            MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-            btnedit.Text = "Edit"
-            Me.Refresh()
+            Call perbarui()
         Else
+            Call koneksii()
             sql = "SELECT * FROM tb_kategori_barang WHERE kode_kategori  = '" + txtkode.Text + "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kategori"), MsgBoxStyle.Information, "Pemberitahuan")
             Else
-                sql = "UPDATE tb_kategori_barang SET kode_kategori='" & txtkode.Text & "', nama_kategori='" & txtnama.Text & "', selisih_kategori='" & selisihharga & "', keterangan_kategori='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE  kode_kategori='" & kodekategoriedit & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-                MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-                btnedit.Text = "Edit"
-                Me.Refresh()
+                Call perbarui()
             End If
         End If
+    End Sub
+
+    Sub perbarui()
+        Call koneksii()
+        sql = "UPDATE tb_kategori_barang SET kode_kategori='" & txtkode.Text & "', nama_kategori='" & txtnama.Text & "', selisih_kategori='" & selisihharga & "', keterangan_kategori='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE  id='" & idkategoriedit & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+        btnedit.Text = "Edit"
+        Me.Refresh()
 
         Call historysave("Mengedit Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
         Call awal()
@@ -216,7 +222,7 @@ Public Class fkategoribarang
                 GridControl.Enabled = False
             Else
                 If txtkode.Text.Length = 0 Then
-                    MsgBox("ID belum terisi !")
+                    MsgBox("kode belum terisi !")
                 Else
                     If txtnama.Text.Length = 0 Then
                         MsgBox("Nama belum terisi !")
@@ -258,8 +264,9 @@ Public Class fkategoribarang
     End Sub
 
     Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
-        txtkode.Text = GridView.GetFocusedRowCellValue("kode_kategori")
         kodekategoriedit = GridView.GetFocusedRowCellValue("kode_kategori")
+        txtkode.Text = kodekategoriedit
+        idkategoriedit = GridView.GetFocusedRowCellValue("id")
         txtnama.Text = GridView.GetFocusedRowCellValue("nama_kategori")
         txtselisih.Text = GridView.GetFocusedRowCellValue("selisih_kategori")
         txtketerangan.Text = GridView.GetFocusedRowCellValue("keterangan_kategori")

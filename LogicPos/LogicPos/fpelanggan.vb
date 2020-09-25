@@ -1,7 +1,7 @@
 ﻿Imports System.Data.Odbc
 Imports System.Drawing.Drawing2D
 Imports System.IO
-Public Class fcustomer
+Public Class fpelanggan
     Dim kodecustomeredit As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
@@ -27,7 +27,7 @@ Public Class fcustomer
 
     '=======================
 
-    Private Sub fcustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub fpelanggan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
         Select Case kodeakses
@@ -439,9 +439,9 @@ Public Class fcustomer
         Dim rekening As Integer
         rekening = flogin.rekeningcustomer
         If rekening > 0 Then
-            frekeningcustomer.kode_customer = Me.txtkode.Text
-            frekeningcustomer.kodeakses = rekening
-            frekeningcustomer.ShowDialog()
+            frekeningpelanggan.kodepelanggan = Me.txtkode.Text
+            frekeningpelanggan.kodeakses = rekening
+            frekeningpelanggan.ShowDialog()
         Else
             MsgBox("Anda tidak memiliki akses", MsgBoxStyle.Information, "Gagal")
         End If

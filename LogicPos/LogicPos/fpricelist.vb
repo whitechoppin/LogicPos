@@ -116,18 +116,14 @@ Public Class fpricelist
         GridControl1.Visible = True
     End Sub
     Sub caricust()
-        'Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT tb_barang.kode_barang, tb_barang.nama_barang , tb_barang.jenis_barang ,tb_barang.satuan_barang , tb_price_group.harga_jual, tb_pelanggan.kode_pelanggan, tb_pelanggan.nama_pelanggan AS cust FROM tb_price_group JOIN tb_barang ON tb_barang.kode_barang=tb_price_group.kode_barang JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_price_group.kode_pelanggan WHERE tb_pelanggan.kode_pelanggan = '" & txtkodecus.Text & "' "
-            da = New OdbcDataAdapter(sql, cnn)
-            cnn.Open()
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-            cnn.Close()
-        End Using
+        Call koneksii()
+        sql = "SELECT tb_barang.kode_barang, tb_barang.nama_barang , tb_barang.jenis_barang ,tb_barang.satuan_barang , tb_price_group.harga_jual, tb_pelanggan.kode_pelanggan, tb_pelanggan.nama_pelanggan AS cust FROM tb_price_group JOIN tb_barang ON tb_barang.kode_barang=tb_price_group.kode_barang JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_price_group.kode_pelanggan WHERE tb_pelanggan.kode_pelanggan = '" & txtkodecus.Text & "' "
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
 
         Call koneksii()
         sql = "SELECT tb_pelanggan.nama_pelanggan FROM tb_pelanggan WHERE tb_pelanggan.kode_pelanggan = '" & txtkodecus.Text & "' "

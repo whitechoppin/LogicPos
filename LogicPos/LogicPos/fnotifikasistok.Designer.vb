@@ -33,6 +33,7 @@ Partial Class fnotifikasistok
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,13 +62,13 @@ Partial Class fnotifikasistok
         Me.GridControl1.Location = New System.Drawing.Point(12, 61)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(810, 376)
+        Me.GridControl1.Size = New System.Drawing.Size(1010, 376)
         Me.GridControl1.TabIndex = 22
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsFind.AlwaysVisible = True
@@ -138,13 +139,23 @@ Partial Class fnotifikasistok
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
         '
+        'GridColumn7
+        '
+        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceCell.Options.UseFont = True
+        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.Visible = True
+        Me.GridColumn7.VisibleIndex = 6
+        '
         'btnrefresh
         '
         Me.btnrefresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
-        Me.btnrefresh.Location = New System.Drawing.Point(788, 26)
+        Me.btnrefresh.Location = New System.Drawing.Point(988, 26)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
         Me.btnrefresh.TabIndex = 29
@@ -160,7 +171,7 @@ Partial Class fnotifikasistok
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(834, 449)
+        Me.ClientSize = New System.Drawing.Size(1034, 449)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
@@ -185,4 +196,5 @@ Partial Class fnotifikasistok
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnrefresh As Button
     Friend WithEvents Timer As Timer
+    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

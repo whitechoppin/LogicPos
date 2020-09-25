@@ -32,7 +32,7 @@ Partial Class fbarang
         Me.btnauto = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox = New System.Windows.Forms.PictureBox()
         Me.btnupload = New System.Windows.Forms.Button()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btnhapus = New System.Windows.Forms.Button()
@@ -59,7 +59,8 @@ Partial Class fbarang
         Me.ImageList = New System.Windows.Forms.ImageList(Me.components)
         Me.txtgbr = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -101,7 +102,6 @@ Partial Class fbarang
         '
         Me.cmbkategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbkategori.FormattingEnabled = True
-        Me.cmbkategori.Items.AddRange(New Object() {"Lembaran", "Rol"})
         Me.cmbkategori.Location = New System.Drawing.Point(155, 210)
         Me.cmbkategori.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbkategori.Name = "cmbkategori"
@@ -152,15 +152,15 @@ Partial Class fbarang
         Me.Label3.TabIndex = 21
         Me.Label3.Text = "Jenis"
         '
-        'PictureBox1
+        'PictureBox
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(794, 42)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(335, 281)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 22
-        Me.PictureBox1.TabStop = False
+        Me.PictureBox.Location = New System.Drawing.Point(794, 42)
+        Me.PictureBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.PictureBox.Name = "PictureBox"
+        Me.PictureBox.Size = New System.Drawing.Size(335, 281)
+        Me.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox.TabIndex = 22
+        Me.PictureBox.TabStop = False
         '
         'btnupload
         '
@@ -317,7 +317,7 @@ Partial Class fbarang
         '
         'GridView
         '
-        Me.GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
+        Me.GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7})
         Me.GridView.GridControl = Me.GridControl
         Me.GridView.Name = "GridView"
         Me.GridView.OptionsBehavior.Editable = False
@@ -420,6 +420,16 @@ Partial Class fbarang
         Me.Label8.TabIndex = 40
         Me.Label8.Text = "Data Barang"
         '
+        'GridColumn7
+        '
+        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceCell.Options.UseFont = True
+        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.Visible = True
+        Me.GridColumn7.VisibleIndex = 6
+        '
         'fbarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -431,7 +441,7 @@ Partial Class fbarang
         Me.Controls.Add(Me.txtgbr)
         Me.Controls.Add(Me.txtketerangan)
         Me.Controls.Add(Me.btnshow)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.PictureBox)
         Me.Controls.Add(Me.cmbkategori)
         Me.Controls.Add(Me.GridControl)
         Me.Controls.Add(Me.Label6)
@@ -457,7 +467,7 @@ Partial Class fbarang
         Me.Name = "fbarang"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Barang"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -477,7 +487,7 @@ Partial Class fbarang
     Friend WithEvents GridControl As DevExpress.XtraGrid.GridControl
     Friend WithEvents btnupload As Button
     Friend WithEvents OpenFileDialog As OpenFileDialog
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox As PictureBox
     Friend WithEvents ImageList As ImageList
     Friend WithEvents Label3 As Label
     Friend WithEvents cmbjenis As ComboBox
@@ -500,4 +510,5 @@ Partial Class fbarang
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents txtgbr As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

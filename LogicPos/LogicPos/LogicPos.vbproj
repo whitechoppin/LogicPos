@@ -871,10 +871,10 @@
     <Compile Include="fcariuser.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fcustomer.designer.vb">
-      <DependentUpon>fcustomer.vb</DependentUpon>
+    <Compile Include="fpelanggan.designer.vb">
+      <DependentUpon>fpelanggan.vb</DependentUpon>
     </Compile>
-    <Compile Include="fcustomer.vb">
+    <Compile Include="fpelanggan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fgudang.Designer.vb">
@@ -949,10 +949,10 @@
     <Compile Include="fpricelist.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frekeningcustomer.Designer.vb">
-      <DependentUpon>frekeningcustomer.vb</DependentUpon>
+    <Compile Include="frekeningpelanggan.Designer.vb">
+      <DependentUpon>frekeningpelanggan.vb</DependentUpon>
     </Compile>
-    <Compile Include="frekeningcustomer.vb">
+    <Compile Include="frekeningpelanggan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frekeningsupplier.Designer.vb">
@@ -1480,8 +1480,8 @@
     <EmbeddedResource Include="fcariuser.resx">
       <DependentUpon>fcariuser.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fcustomer.resx">
-      <DependentUpon>fcustomer.vb</DependentUpon>
+    <EmbeddedResource Include="fpelanggan.resx">
+      <DependentUpon>fpelanggan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fgudang.resx">
       <DependentUpon>fgudang.vb</DependentUpon>
@@ -1507,8 +1507,8 @@
     <EmbeddedResource Include="fpricelist.resx">
       <DependentUpon>fpricelist.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frekeningcustomer.resx">
-      <DependentUpon>frekeningcustomer.vb</DependentUpon>
+    <EmbeddedResource Include="frekeningpelanggan.resx">
+      <DependentUpon>frekeningpelanggan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frekeningsupplier.resx">
       <DependentUpon>frekeningsupplier.vb</DependentUpon>

@@ -41,6 +41,7 @@ Partial Class fkategoribarang
         Me.btntambah = New System.Windows.Forms.Button()
         Me.txtselisih = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -58,7 +59,7 @@ Partial Class fkategoribarang
         '
         'GridView
         '
-        Me.GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
+        Me.GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
         Me.GridView.GridControl = Me.GridControl
         Me.GridView.Name = "GridView"
         Me.GridView.OptionsBehavior.Editable = False
@@ -242,6 +243,16 @@ Partial Class fkategoribarang
         Me.Label6.TabIndex = 39
         Me.Label6.Text = "Data Kategori Barang"
         '
+        'GridColumn5
+        '
+        Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceCell.Options.UseFont = True
+        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.Visible = True
+        Me.GridColumn5.VisibleIndex = 4
+        '
         'fkategoribarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -293,4 +304,5 @@ Partial Class fkategoribarang
     Friend WithEvents btntambah As Button
     Friend WithEvents txtselisih As TextBox
     Friend WithEvents Label6 As Label
+    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

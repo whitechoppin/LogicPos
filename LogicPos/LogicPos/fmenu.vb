@@ -31,8 +31,8 @@ Public Class fmenu
         Dim masterstatus As Integer = 0
         masterstatus = flogin.master_customer
         If masterstatus > 0 Then
-            fcustomer.kodeakses = masterstatus
-            fcustomer.Show()
+            fpelanggan.kodeakses = masterstatus
+            fpelanggan.Show()
         End If
     End Sub
     Private Sub DataSupplierToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataSupplierToolStripMenuItem.Click

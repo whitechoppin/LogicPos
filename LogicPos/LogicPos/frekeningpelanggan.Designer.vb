@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frekeningcustomer
+Partial Class frekeningpelanggan
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -142,7 +142,7 @@ Partial Class frekeningcustomer
         Me.GroupBox1.Size = New System.Drawing.Size(613, 254)
         Me.GroupBox1.TabIndex = 25
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Input Data Rekening Customer"
+        Me.GroupBox1.Text = "Input Data Rekening Pelanggan"
         '
         'txtkoderekening
         '
@@ -275,7 +275,7 @@ Partial Class frekeningcustomer
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Nama Rekening"
         '
-        'frekeningcustomer
+        'frekeningpelanggan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -287,9 +287,9 @@ Partial Class frekeningcustomer
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frekeningcustomer"
+        Me.Name = "frekeningpelanggan"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Data Rekening Customer"
+        Me.Text = "Data Rekening Pelanggan"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
