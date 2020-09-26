@@ -29,7 +29,7 @@ Partial Class fmenu
         Me.DataBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataKategoriBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGudangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DataCustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DataPelangganToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataSupplierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataKasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -87,6 +87,7 @@ Partial Class fmenu
         Me.ContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PengirimanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KonfigurasiDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BarcodeGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TokoSejatiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -96,7 +97,6 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
-        Me.BarcodeGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -113,7 +113,7 @@ Partial Class fmenu
         '
         'MasterMenu
         '
-        Me.MasterMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataBarangToolStripMenuItem, Me.DataKategoriBarangToolStripMenuItem, Me.DataGudangToolStripMenuItem, Me.DataCustomerToolStripMenuItem, Me.DataSupplierToolStripMenuItem, Me.DataUserToolStripMenuItem, Me.DataKasToolStripMenuItem, Me.PricelistGroupToolStripMenuItem, Me.ToolStripSeparator, Me.LogOutToolStripMenuItem, Me.ExitStripMenuItem})
+        Me.MasterMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataBarangToolStripMenuItem, Me.DataKategoriBarangToolStripMenuItem, Me.DataGudangToolStripMenuItem, Me.DataPelangganToolStripMenuItem, Me.DataSupplierToolStripMenuItem, Me.DataUserToolStripMenuItem, Me.DataKasToolStripMenuItem, Me.PricelistGroupToolStripMenuItem, Me.ToolStripSeparator, Me.LogOutToolStripMenuItem, Me.ExitStripMenuItem})
         Me.MasterMenu.Name = "MasterMenu"
         Me.MasterMenu.Size = New System.Drawing.Size(55, 20)
         Me.MasterMenu.Text = "&Master"
@@ -136,11 +136,11 @@ Partial Class fmenu
         Me.DataGudangToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
         Me.DataGudangToolStripMenuItem.Text = "Data &Gudang"
         '
-        'DataCustomerToolStripMenuItem
+        'DataPelangganToolStripMenuItem
         '
-        Me.DataCustomerToolStripMenuItem.Name = "DataCustomerToolStripMenuItem"
-        Me.DataCustomerToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
-        Me.DataCustomerToolStripMenuItem.Text = "Data &Customer"
+        Me.DataPelangganToolStripMenuItem.Name = "DataPelangganToolStripMenuItem"
+        Me.DataPelangganToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
+        Me.DataPelangganToolStripMenuItem.Text = "Data &Pelanggan"
         '
         'DataSupplierToolStripMenuItem
         '
@@ -492,6 +492,12 @@ Partial Class fmenu
         Me.KonfigurasiDatabaseToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.KonfigurasiDatabaseToolStripMenuItem.Text = "Konfigurasi Database"
         '
+        'BarcodeGeneratorToolStripMenuItem
+        '
+        Me.BarcodeGeneratorToolStripMenuItem.Name = "BarcodeGeneratorToolStripMenuItem"
+        Me.BarcodeGeneratorToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.BarcodeGeneratorToolStripMenuItem.Text = "Barcode Generator"
+        '
         'AboutMenu
         '
         Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogicHouseToolStripMenuItem, Me.TokoSejatiToolStripMenuItem})
@@ -558,12 +564,6 @@ Partial Class fmenu
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
         '
-        'BarcodeGeneratorToolStripMenuItem
-        '
-        Me.BarcodeGeneratorToolStripMenuItem.Name = "BarcodeGeneratorToolStripMenuItem"
-        Me.BarcodeGeneratorToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.BarcodeGeneratorToolStripMenuItem.Text = "Barcode Generator"
-        '
         'fmenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -591,7 +591,7 @@ Partial Class fmenu
     Friend WithEvents MenuUtama As System.Windows.Forms.MenuStrip
     Friend WithEvents MasterMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DataBarangToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents DataCustomerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DataPelangganToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DataUserToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ExitStripMenuItem As System.Windows.Forms.ToolStripMenuItem

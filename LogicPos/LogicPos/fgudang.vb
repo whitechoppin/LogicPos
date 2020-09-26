@@ -2,7 +2,7 @@
 Imports System.Drawing.Drawing2D
 Imports System.IO
 Public Class fgudang
-    Dim kodegudangedit As String
+    Dim idgudangedit, kodegudangedit As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
 
@@ -96,32 +96,39 @@ Public Class fgudang
         GridControl.Enabled = True
         Call isitabel()
     End Sub
-    Sub kolom()
-        GridColumn1.Caption = "Kode Gudang"
-        GridColumn1.Width = 40
-        GridColumn1.FieldName = "kode_gudang"
-        GridColumn2.Caption = "Nama Gudang"
-        GridColumn2.Width = 60
-        GridColumn2.FieldName = "nama_gudang"
-        GridColumn3.Caption = "Alamat"
-        GridColumn3.Width = 80
-        GridColumn3.FieldName = "alamat_gudang"
-        GridColumn4.Caption = "Telepon"
-        GridColumn4.Width = 40
-        GridColumn4.FieldName = "telepon_gudang"
-        GridColumn5.Caption = "Keterangan"
-        GridColumn5.Width = 70
-        GridColumn5.FieldName = "keterangan_gudang"
-    End Sub
     Sub isitabel()
-        'Call koneksii()
+        Call koneksii()
         sql = "SELECT * FROM tb_gudang"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
         GridControl.DataSource = Nothing
         GridControl.DataSource = ds.Tables(0)
-        Call kolom()
+
+        GridColumn1.Caption = "Kode Gudang"
+        GridColumn1.Width = 40
+        GridColumn1.FieldName = "kode_gudang"
+
+        GridColumn2.Caption = "Nama Gudang"
+        GridColumn2.Width = 60
+        GridColumn2.FieldName = "nama_gudang"
+
+        GridColumn3.Caption = "Alamat"
+        GridColumn3.Width = 80
+        GridColumn3.FieldName = "alamat_gudang"
+
+        GridColumn4.Caption = "Telepon"
+        GridColumn4.Width = 40
+        GridColumn4.FieldName = "telepon_gudang"
+
+        GridColumn5.Caption = "Keterangan"
+        GridColumn5.Width = 70
+        GridColumn5.FieldName = "keterangan_gudang"
+
+        GridColumn6.Caption = "id"
+        GridColumn6.Width = 25
+        GridColumn6.FieldName = "id"
+        GridColumn6.Visible = False
     End Sub
     Sub index()
         txtkode.TabIndex = 0
@@ -180,6 +187,7 @@ Public Class fgudang
                 btntambah.Text = "Simpan"
                 Call enable_text()
                 Call index()
+
                 txtkode.Text = autonumber()
                 GridControl.Enabled = False
             Else
@@ -214,21 +222,24 @@ Public Class fgudang
             MsgBox("Kode Gudang Sudah ada dengan nama " + dr("nama_gudang"), MsgBoxStyle.Information, "Pemberitahuan")
             txtkode.Focus()
         Else
-            sql = "INSERT INTO tb_gudang (kode_gudang, nama_gudang, telepon_gudang, alamat_gudang, keterangan_gudang, created_by, updated_by,date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+            Try
+                Call koneksii()
+                sql = "INSERT INTO tb_gudang (kode_gudang, nama_gudang, telepon_gudang, alamat_gudang, keterangan_gudang, created_by, updated_by,date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
 
+                MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+                btntambah.Text = "Tambah"
+                Me.Refresh()
 
-            'history user ==========
-            Call historysave("Menyimpan Data Gudang Kode " + txtkode.Text, txtkode.Text)
-            '========================
-
-            btntambah.Text = "Tambah"
-            Me.Refresh()
-            Call awal()
+                'history user ==========
+                Call historysave("Menyimpan Data Gudang Kode " + txtkode.Text, txtkode.Text)
+                '=======================
+                Call awal()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
-        'Call koneksii()
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If btnedit.Text = "Edit" Then
@@ -258,40 +269,48 @@ Public Class fgudang
         End If
     End Sub
     Sub edit()
-        Call koneksii()
         If txtkode.Text.Equals(kodegudangedit) Then
-            sql = "UPDATE tb_gudang SET nama_gudang='" & txtnama.Text & "',alamat_gudang='" & txtalamat.Text & "', telepon_gudang='" & txttelp.Text & "',keterangan_gudang='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_gudang='" & kodegudangedit & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-            MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-            btnedit.Text = "Edit"
+            Call perbaharui()
         Else
-            sql = "SELECT * FROM tb_gudang WHERE kode_gudang  = '" + txtkode.Text + "'"
+            Call koneksii()
+            sql = "SELECT * FROM tb_gudang WHERE kode_gudang  = '" + txtkode.Text + "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 MsgBox("Kode Gudang Sudah ada dengan nama " + dr("nama_gudang"), MsgBoxStyle.Information, "Pemberitahuan")
+                txtkode.Focus()
             Else
-                sql = "UPDATE tb_gudang SET  kode_gudang='" & txtkode.Text & "',nama_gudang='" & txtnama.Text & "',alamat_gudang='" & txtalamat.Text & "', telepon_gudang='" & txttelp.Text & "',keterangan_gudang='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_gudang='" & kodegudangedit & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-                MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-                btnedit.Text = "Edit"
+                Call perbaharui()
             End If
         End If
-
-        'history user ==========
-        Call historysave("Mengedit Data Gudang Kode " + txtkode.Text, txtkode.Text)
-        '=======================
-        Me.Refresh()
-        Call awal()
     End Sub
+
+    Sub perbaharui()
+        Try
+            Call koneksii()
+            sql = "UPDATE tb_gudang SET kode_gudang='" & txtkode.Text & "',nama_gudang='" & txtnama.Text & "',alamat_gudang='" & txtalamat.Text & "', telepon_gudang='" & txttelp.Text & "',keterangan_gudang='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE id='" & idgudangedit & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
+
+            'history user ==========
+            Call historysave("Mengedit Data Gudang Kode " + txtkode.Text, txtkode.Text)
+            '=======================
+            Me.Refresh()
+            Call awal()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
     End Sub
     Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
-        txtkode.Text = GridView.GetFocusedRowCellValue("kode_gudang")
         kodegudangedit = GridView.GetFocusedRowCellValue("kode_gudang")
+        txtkode.Text = kodegudangedit
+        idgudangedit = GridView.GetFocusedRowCellValue("id")
         txtnama.Text = GridView.GetFocusedRowCellValue("nama_gudang")
         txtalamat.Text = GridView.GetFocusedRowCellValue("alamat_gudang")
         txttelp.Text = GridView.GetFocusedRowCellValue("telepon_gudang")
@@ -305,24 +324,32 @@ Public Class fgudang
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If hapusstatus.Equals(True) Then
-            Call koneksii()
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-                sql = "DELETE FROM tb_gudang WHERE  kode_gudang='" & txtkode.Text & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader
-                MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Try
+                    Call koneksii()
+                    sql = "DELETE FROM tb_gudang WHERE  id='" & idgudangedit & "'"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                'history user ==========
-                Call historysave("Menghapus Data Gudang Kode" + txtkode.Text, txtkode.Text)
-                '========================
-
-                Me.Refresh()
-                Call awal()
+                    'history user ===========
+                    Call historysave("Menghapus Data Gudang Kode" + txtkode.Text, txtkode.Text)
+                    '========================
+                    Me.Refresh()
+                    Call awal()
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
             End If
         Else
             MsgBox("Tidak ada akses")
         End If
     End Sub
+
+    Private Sub txtkode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkode.KeyPress
+        e.Handled = ValidAngkaHuruf(e)
+    End Sub
+
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
         e.Handled = ValidAngka(e)
     End Sub

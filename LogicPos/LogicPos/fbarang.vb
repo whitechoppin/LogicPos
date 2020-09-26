@@ -147,33 +147,33 @@ Public Class fbarang
 
             GridColumn1.Caption = "Kode"
             GridColumn1.FieldName = "kode_barang"
-            GridColumn1.Width = "40"
+            GridColumn1.Width = 40
 
             GridColumn2.Caption = "Nama Barang"
             GridColumn2.FieldName = "nama_barang"
-            GridColumn2.Width = "80"
+            GridColumn2.Width = 80
 
             GridColumn3.Caption = "Jenis"
             GridColumn3.FieldName = "jenis_barang"
-            GridColumn3.Width = "40"
+            GridColumn3.Width = 40
 
             GridColumn4.Caption = "Satuan"
             GridColumn4.FieldName = "satuan_barang"
-            GridColumn4.Width = "40"
+            GridColumn4.Width = 40
 
             GridColumn5.Caption = "Modal"
             GridColumn5.FieldName = "modal_barang"
-            GridColumn5.Width = "60"
+            GridColumn5.Width = 60
             GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
             GridColumn5.DisplayFormat.FormatString = "Rp ##,#0"
 
             GridColumn6.Caption = "Kategori"
             GridColumn6.FieldName = "nama_kategori"
-            GridColumn6.Width = "40"
+            GridColumn6.Width = 40
 
             GridColumn7.Caption = "id"
             GridColumn7.FieldName = "id"
-            GridColumn7.Width = "40"
+            GridColumn7.Width = 30
             GridColumn7.Visible = False
 
             GridControl.Visible = True
@@ -244,30 +244,36 @@ Public Class fbarang
             PictureBox.Image.Save(ms, Imaging.ImageFormat.Jpeg)
             'merubah gambar pada ms ke array
             ms.ToArray()
-            sql = "INSERT INTO tb_barang (kode_barang, nama_barang, jenis_barang, kategori_barang_id, satuan_barang, keterangan_barang, modal_barang, gambar_barang, created_by, updated_by, date_created, last_updated) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)"
-            cmmd = New OdbcCommand(sql, cnn)
-            cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
-            cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
-            cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
-            cmmd.Parameters.AddWithValue("@kategori_barang_id", cmbkategori.SelectedValue)
-            cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
-            cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
-            cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
-            cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
-            cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
-            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
-            cmmd.Parameters.AddWithValue("@date_created", Date.Now)
-            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
-            cmmd.ExecuteNonQuery()
-            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
 
-            'history user ==========
-            Call historysave("Menyimpan Data Barang Kode " + txtkode.Text, txtkode.Text)
-            '========================
+            Try
+                Call koneksii()
+                sql = "INSERT INTO tb_barang (kode_barang, nama_barang, jenis_barang, kategori_barang_id, satuan_barang, keterangan_barang, modal_barang, gambar_barang, created_by, updated_by, date_created, last_updated) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)"
+                cmmd = New OdbcCommand(sql, cnn)
+                cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
+                cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
+                cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
+                cmmd.Parameters.AddWithValue("@kategori_barang_id", cmbkategori.SelectedValue)
+                cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
+                cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
+                cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
+                cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
+                cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@date_created", Date.Now)
+                cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+                cmmd.ExecuteNonQuery()
+                MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
 
-            btntambah.Text = "Tambah"
-            Me.Refresh()
-            Call awal()
+                'history user ==========
+                Call historysave("Menyimpan Data Barang Kode " + txtkode.Text, txtkode.Text)
+                '========================
+
+                btntambah.Text = "Tambah"
+                Me.Refresh()
+                Call awal()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
     End Sub
 
@@ -384,34 +390,37 @@ Public Class fbarang
         PictureBox.Image.Save(ms, Imaging.ImageFormat.Jpeg)
         ms.ToArray()
 
-        Call koneksii()
+        Try
+            Call koneksii()
+            sql = "UPDATE tb_barang SET kode_barang=?, nama_barang=?, jenis_barang=?, kategori_barang_id=?, satuan_barang=?, keterangan_barang=?, modal_barang=?, gambar_barang=?, updated_by=?, last_updated=? WHERE  id='" & idbarang & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
+            cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
+            cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
+            cmmd.Parameters.AddWithValue("@kategori_barang_id", cmbkategori.SelectedValue)
+            cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
+            cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
+            cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
+            cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+            cmmd.ExecuteNonQuery()
 
-        sql = "UPDATE tb_barang SET kode_barang=?, nama_barang=?, jenis_barang=?, kategori_barang_id=?, satuan_barang=?, keterangan_barang=?, modal_barang=?, gambar_barang=?, updated_by=?, last_updated=? WHERE  id='" & idbarang & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
-        cmmd.Parameters.AddWithValue("@nama_barang", txtnama.Text)
-        cmmd.Parameters.AddWithValue("@jenis_barang", cmbjenis.Text)
-        cmmd.Parameters.AddWithValue("@kategori_barang_id", cmbkategori.SelectedValue)
-        cmmd.Parameters.AddWithValue("@satuan_barang", cmbsatuan.Text)
-        cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
-        cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
-        cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
-        cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
-        cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
-        cmmd.ExecuteNonQuery()
+            MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "&Edit"
 
-        MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
-        btnedit.Text = "&Edit"
+            'history user ==========
+            Call historysave("Mengedit Data Barang Kode " + txtkode.Text, txtkode.Text)
+            '========================
 
-        'history user ==========
-        Call historysave("Mengedit Data Barang Kode " + txtkode.Text, txtkode.Text)
-        '========================
-
-        Me.Refresh()
-        Call awal()
+            Me.Refresh()
+            Call awal()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
     Sub edit()
-        If txtkode.Text = kodebarang Then
+        If txtkode.Text.Equals(kodebarang) Then
             Call perbaharui()
         Else
             Call koneksii()
@@ -420,11 +429,15 @@ Public Class fbarang
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 MsgBox("Kode barang Sudah ada dengan nama " + dr("nama_barang"), MsgBoxStyle.Exclamation, "Pemberitahuan")
+                txtkode.Focus()
             Else
                 Call perbaharui()
             End If
         End If
+    End Sub
 
+    Private Sub txtkode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkode.KeyPress
+        e.Handled = ValidAngkaHuruf(e)
     End Sub
 
     Private Sub fbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -434,20 +447,22 @@ Public Class fbarang
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If hapusstatus.Equals(True) Then
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+                Try
+                    Call koneksii()
+                    sql = "DELETE FROM tb_barang WHERE id='" & idbarang & "'"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                Call koneksii()
-                sql = "DELETE FROM tb_barang WHERE kode_barang ='" & txtkode.Text & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader
+                    'history user ===========
+                    Call historysave("Menghapus Data Barang Kode" + txtkode.Text, txtkode.Text)
+                    '========================
+                    Me.Refresh()
+                    Call awal()
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
 
-                MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-                'history user ==========
-                Call historysave("Menghapus Data Barang Kode" + txtkode.Text, txtkode.Text)
-                '========================
-
-                Me.Refresh()
-                Call awal()
             End If
         Else
             MsgBox("Tidak ada akses")
@@ -524,7 +539,6 @@ Public Class fbarang
         If txthidden.Visible = True Then
             passwordid = 1
             fpassword.ShowDialog()
-            'txthidden.Visible = False
         ElseIf txthidden.Visible = False Then
             txthidden.Visible = True
         End If

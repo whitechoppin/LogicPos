@@ -27,8 +27,6 @@ Partial Class frekeningsupplier
         Me.btnedit = New System.Windows.Forms.Button()
         Me.btntambah = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtkoderekening = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtketeranganrekening = New System.Windows.Forms.RichTextBox()
         Me.txtnamabank = New System.Windows.Forms.TextBox()
@@ -44,6 +42,7 @@ Partial Class frekeningsupplier
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,8 +90,6 @@ Partial Class frekeningsupplier
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.txtkoderekening)
-        Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.btnhapus)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.txtketeranganrekening)
@@ -113,29 +110,11 @@ Partial Class frekeningsupplier
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Input Data Rekening Supplier"
         '
-        'txtkoderekening
-        '
-        Me.txtkoderekening.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtkoderekening.Location = New System.Drawing.Point(17, 105)
-        Me.txtkoderekening.Name = "txtkoderekening"
-        Me.txtkoderekening.Size = New System.Drawing.Size(287, 24)
-        Me.txtkoderekening.TabIndex = 24
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(17, 84)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(122, 18)
-        Me.Label5.TabIndex = 23
-        Me.Label5.Text = "Kode Rekening"
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(310, 138)
+        Me.Label4.Location = New System.Drawing.Point(310, 90)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(168, 18)
         Me.Label4.TabIndex = 22
@@ -144,16 +123,16 @@ Partial Class frekeningsupplier
         'txtketeranganrekening
         '
         Me.txtketeranganrekening.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketeranganrekening.Location = New System.Drawing.Point(313, 159)
+        Me.txtketeranganrekening.Location = New System.Drawing.Point(313, 111)
         Me.txtketeranganrekening.Name = "txtketeranganrekening"
-        Me.txtketeranganrekening.Size = New System.Drawing.Size(287, 82)
+        Me.txtketeranganrekening.Size = New System.Drawing.Size(287, 120)
         Me.txtketeranganrekening.TabIndex = 21
         Me.txtketeranganrekening.Text = ""
         '
         'txtnamabank
         '
         Me.txtnamabank.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamabank.Location = New System.Drawing.Point(313, 105)
+        Me.txtnamabank.Location = New System.Drawing.Point(17, 111)
         Me.txtnamabank.Name = "txtnamabank"
         Me.txtnamabank.Size = New System.Drawing.Size(287, 24)
         Me.txtnamabank.TabIndex = 2
@@ -162,7 +141,7 @@ Partial Class frekeningsupplier
         '
         Me.label3.AutoSize = True
         Me.label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.label3.Location = New System.Drawing.Point(310, 84)
+        Me.label3.Location = New System.Drawing.Point(17, 90)
         Me.label3.Name = "label3"
         Me.label3.Size = New System.Drawing.Size(95, 18)
         Me.label3.TabIndex = 3
@@ -181,7 +160,7 @@ Partial Class frekeningsupplier
         'txtnamarekening
         '
         Me.txtnamarekening.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamarekening.Location = New System.Drawing.Point(17, 216)
+        Me.txtnamarekening.Location = New System.Drawing.Point(17, 207)
         Me.txtnamarekening.Name = "txtnamarekening"
         Me.txtnamarekening.Size = New System.Drawing.Size(287, 24)
         Me.txtnamarekening.TabIndex = 2
@@ -198,7 +177,7 @@ Partial Class frekeningsupplier
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(17, 195)
+        Me.Label1.Location = New System.Drawing.Point(17, 186)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(127, 18)
         Me.Label1.TabIndex = 3
@@ -215,7 +194,7 @@ Partial Class frekeningsupplier
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
@@ -275,6 +254,16 @@ Partial Class frekeningsupplier
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
         '
+        'GridColumn6
+        '
+        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceCell.Options.UseFont = True
+        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn6.Name = "GridColumn6"
+        Me.GridColumn6.Visible = True
+        Me.GridColumn6.VisibleIndex = 5
+        '
         'frekeningsupplier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -315,7 +304,6 @@ Partial Class frekeningsupplier
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents txtkoderekening As TextBox
-    Friend WithEvents Label5 As Label
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

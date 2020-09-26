@@ -36,26 +36,27 @@ Partial Class fpelanggan
         Me.GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl = New DevExpress.XtraGrid.GridControl()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnrekening = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox = New System.Windows.Forms.PictureBox()
         Me.txtgbr = New System.Windows.Forms.Label()
         Me.btnupload = New System.Windows.Forms.Button()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.ImageList = New System.Windows.Forms.ImageList(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btngenerate = New System.Windows.Forms.Button()
         Me.btnauto = New System.Windows.Forms.Button()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridColumn4
@@ -153,7 +154,7 @@ Partial Class fpelanggan
         '
         'GridView
         '
-        Me.GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
+        Me.GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
         Me.GridView.GridControl = Me.GridControl
         Me.GridView.Name = "GridView"
         Me.GridView.OptionsBehavior.Editable = False
@@ -178,6 +179,16 @@ Partial Class fpelanggan
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
+        '
+        'GridColumn6
+        '
+        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceCell.Options.UseFont = True
+        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn6.Name = "GridColumn6"
+        Me.GridColumn6.Visible = True
+        Me.GridColumn6.VisibleIndex = 5
         '
         'GridControl
         '
@@ -244,15 +255,15 @@ Partial Class fpelanggan
         Me.btnrekening.Text = "Data Rekening"
         Me.btnrekening.UseVisualStyleBackColor = True
         '
-        'PictureBox1
+        'PictureBox
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(974, 50)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(392, 312)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 23
-        Me.PictureBox1.TabStop = False
+        Me.PictureBox.Location = New System.Drawing.Point(974, 50)
+        Me.PictureBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.PictureBox.Name = "PictureBox"
+        Me.PictureBox.Size = New System.Drawing.Size(392, 312)
+        Me.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox.TabIndex = 23
+        Me.PictureBox.TabStop = False
         '
         'txtgbr
         '
@@ -318,11 +329,11 @@ Partial Class fpelanggan
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Telepon"
         '
-        'ImageList1
+        'ImageList
         '
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "no-image.jpg")
+        Me.ImageList.ImageStream = CType(resources.GetObject("ImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList.Images.SetKeyName(0, "no-image.jpg")
         '
         'Label6
         '
@@ -331,9 +342,9 @@ Partial Class fpelanggan
         Me.Label6.Location = New System.Drawing.Point(13, 9)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(185, 29)
+        Me.Label6.Size = New System.Drawing.Size(198, 29)
         Me.Label6.TabIndex = 27
-        Me.Label6.Text = "Data Customer"
+        Me.Label6.Text = "Data Pelanggan"
         '
         'btngenerate
         '
@@ -357,7 +368,7 @@ Partial Class fpelanggan
         Me.btnauto.Text = "Auto"
         Me.btnauto.UseVisualStyleBackColor = True
         '
-        'fcustomer
+        'fpelanggan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -367,7 +378,7 @@ Partial Class fpelanggan
         Me.Controls.Add(Me.btnauto)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtgbr)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.PictureBox)
         Me.Controls.Add(Me.btnedit)
         Me.Controls.Add(Me.btnhapus)
         Me.Controls.Add(Me.btntambah)
@@ -387,12 +398,12 @@ Partial Class fpelanggan
         Me.Controls.Add(Me.txtkode)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "fcustomer"
+        Me.Name = "fpelanggan"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Data Customer"
+        Me.Text = "Data Pelanggan"
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -417,8 +428,8 @@ Partial Class fpelanggan
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtgbr As Label
     Friend WithEvents btnupload As Button
-    Friend WithEvents ImageList1 As ImageList
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents ImageList As ImageList
+    Friend WithEvents PictureBox As PictureBox
     Friend WithEvents btnrekening As Button
     Friend WithEvents txtketerangan As RichTextBox
     Friend WithEvents Label5 As Label
@@ -426,4 +437,5 @@ Partial Class fpelanggan
     Friend WithEvents Label6 As Label
     Friend WithEvents btngenerate As Button
     Friend WithEvents btnauto As Button
+    Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

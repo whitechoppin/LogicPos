@@ -2,7 +2,7 @@
 Imports System.Drawing.Drawing2D
 Imports System.IO
 Public Class fsupplier
-    Dim kodesupplieredit As String
+    Dim idsupplieredit, kodesupplieredit As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
 
@@ -92,23 +92,6 @@ Public Class fsupplier
         GridControl1.Enabled = True
         Call isitabel()
     End Sub
-    Sub kolom()
-        GridColumn1.Caption = "Kode Supplier"
-        GridColumn1.Width = 30
-        GridColumn1.FieldName = "kode_supplier"
-        GridColumn2.Caption = "Nama Supplier"
-        GridColumn2.Width = 50
-        GridColumn2.FieldName = "nama_supplier"
-        GridColumn3.Caption = "Alamat"
-        GridColumn3.Width = 75
-        GridColumn3.FieldName = "alamat_supplier"
-        GridColumn4.Caption = "Telepon"
-        GridColumn4.Width = 30
-        GridColumn4.FieldName = "telepon_supplier"
-        GridColumn5.Caption = "Keterangan"
-        GridColumn5.Width = 75
-        GridColumn5.FieldName = "keterangan_supplier"
-    End Sub
     Sub isitabel()
         Call koneksii()
         sql = "SELECT * FROM tb_supplier"
@@ -117,7 +100,31 @@ Public Class fsupplier
         da.Fill(ds)
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
-        Call kolom()
+
+        GridColumn1.Caption = "Kode Supplier"
+        GridColumn1.Width = 30
+        GridColumn1.FieldName = "kode_supplier"
+
+        GridColumn2.Caption = "Nama Supplier"
+        GridColumn2.Width = 50
+        GridColumn2.FieldName = "nama_supplier"
+
+        GridColumn3.Caption = "Alamat"
+        GridColumn3.Width = 75
+        GridColumn3.FieldName = "alamat_supplier"
+
+        GridColumn4.Caption = "Telepon"
+        GridColumn4.Width = 30
+        GridColumn4.FieldName = "telepon_supplier"
+
+        GridColumn5.Caption = "Keterangan"
+        GridColumn5.Width = 75
+        GridColumn5.FieldName = "keterangan_supplier"
+
+        GridColumn6.Caption = "id"
+        GridColumn6.Width = 20
+        GridColumn6.FieldName = "id"
+        GridColumn6.Visible = False
     End Sub
     Sub index()
         txtkode.TabIndex = 1
@@ -201,19 +208,23 @@ Public Class fsupplier
         If dr.HasRows Then
             MsgBox("Kode Supplier Sudah ada dengan nama " + dr("nama_supplier"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_supplier (kode_supplier, nama_supplier, telepon_supplier, alamat_supplier, keterangan_supplier, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-            btntambah.Text = "Tambah"
+            Try
+                Call koneksii()
+                sql = "INSERT INTO tb_supplier (kode_supplier, nama_supplier, telepon_supplier, alamat_supplier, keterangan_supplier, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+                MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+                btntambah.Text = "Tambah"
 
-            'history user ==========
-            Call historysave("Menyimpan Data Supplier Kode " + txtkode.Text, txtkode.Text)
-            '========================
-            Me.Refresh()
-            Call awal()
+                'history user ==========
+                Call historysave("Menyimpan Data Supplier Kode " + txtkode.Text, txtkode.Text)
+                '========================
+                Me.Refresh()
+                Call awal()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
-
     End Sub
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If editstatus.Equals(True) Then
@@ -241,27 +252,39 @@ Public Class fsupplier
         End If
     End Sub
     Sub edit()
-        Call koneksii()
-
         If txtkode.Text.Equals(kodesupplieredit) Then
-            sql = "UPDATE tb_supplier SET  nama_supplier='" & txtnama.Text & "',alamat_supplier='" & txtalamat.Text & "', telepon_supplier='" & txttelp.Text & "',keterangan_supplier='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_supplier='" & kodesupplieredit & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-            MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-            btnedit.Text = "Edit"
+            Call perbaharui()
         Else
-            sql = "UPDATE tb_supplier SET  kode_supplier='" & txtkode.Text & "',nama_supplier='" & txtnama.Text & "',alamat_supplier='" & txtalamat.Text & "', telepon_supplier='" & txttelp.Text & "',keterangan_supplier='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  kode_supplier='" & kodesupplieredit & "'"
+            Call koneksii()
+            sql = "SELECT * FROM tb_supplier WHERE kode_supplier  = '" + txtkode.Text + "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                MsgBox("Kode supplier sudah ada dengan nama " + dr("nama_supplier"), MsgBoxStyle.Information, "Pemberitahuan")
+                txtkode.Focus()
+            Else
+                Call perbaharui()
+            End If
+        End If
+    End Sub
+
+    Sub perbaharui()
+        Try
+            Call koneksii()
+            sql = "UPDATE tb_supplier SET  kode_supplier='" & txtkode.Text & "',nama_supplier='" & txtnama.Text & "',alamat_supplier='" & txtalamat.Text & "', telepon_supplier='" & txttelp.Text & "',keterangan_supplier='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated= now()  WHERE  id='" & idsupplieredit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "Edit"
-        End If
 
-        'history user ==========
-        Call historysave("Mengedit Data Supplier Kode " + txtkode.Text, txtkode.Text)
-        '=======================
-        Me.Refresh()
-        Call awal()
+            'history user ==========
+            Call historysave("Mengedit Data Supplier Kode " + txtkode.Text, txtkode.Text)
+            '=======================
+            Me.Refresh()
+            Call awal()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
@@ -282,8 +305,9 @@ Public Class fsupplier
         txtkode.Text = sb.ToString()
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        txtkode.Text = GridView1.GetFocusedRowCellValue("kode_supplier")
         kodesupplieredit = GridView1.GetFocusedRowCellValue("kode_supplier")
+        txtkode.Text = kodesupplieredit
+        idsupplieredit = GridView1.GetFocusedRowCellValue("id")
         txtnama.Text = GridView1.GetFocusedRowCellValue("nama_supplier")
         txtalamat.Text = GridView1.GetFocusedRowCellValue("alamat_supplier")
         txttelp.Text = GridView1.GetFocusedRowCellValue("telepon_supplier")
@@ -299,30 +323,38 @@ Public Class fsupplier
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If hapusstatus.Equals(True) Then
-            Call koneksii()
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-                sql = "DELETE FROM tb_supplier WHERE  kode_supplier='" & txtkode.Text & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader
-                MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Try
+                    Call koneksii()
+                    sql = "DELETE FROM tb_supplier WHERE id='" & idsupplieredit & "'"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                'history user ==========
-                Call historysave("Menghapus Data Supplier Kode" + txtkode.Text, txtkode.Text)
-                '========================
+                    'history user ==========
+                    Call historysave("Menghapus Data Supplier Kode" + txtkode.Text, txtkode.Text)
+                    '========================
 
-                Me.Refresh()
-                Call awal()
+                    Me.Refresh()
+                    Call awal()
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
             End If
         Else
             MsgBox("Tidak ada akses")
         End If
     End Sub
 
+    Private Sub txtkode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkode.KeyPress
+        e.Handled = ValidAngkaHuruf(e)
+    End Sub
+
     Private Sub btnrekening_Click(sender As Object, e As EventArgs) Handles btnrekening.Click
         Dim rekening As Integer
         rekening = flogin.rekeningsupplier
         If rekening > 0 Then
-            frekeningsupplier.kode_supplier = Me.txtkode.Text
+            frekeningsupplier.idsupplier = idsupplieredit
             frekeningsupplier.kodeakses = rekening
             frekeningsupplier.ShowDialog()
         Else

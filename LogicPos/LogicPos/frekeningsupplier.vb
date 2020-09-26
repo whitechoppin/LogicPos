@@ -1,7 +1,7 @@
 ﻿Imports System.Data.Odbc
 
 Public Class frekeningsupplier
-    Public kode_supplier As String
+    Public idsupplier, idrekening As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
     Private Sub frekening_supplier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -108,7 +108,7 @@ Public Class frekeningsupplier
         If dr.HasRows Then
             MsgBox("Nomor Rekening Sudah ada dengan nama " + dr("nama_supplier"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_rekening_supplier (kode_rekening, nomor_rekening, nama_bank, nama_rekening, keterangan_rekening, kode_supplier, created_by, update_by,date_created,last_updated) VALUES ('" & txtkoderekening.Text & "', '" & txtnorekening.Text & "', '" & txtnamabank.Text & "','" & txtnamarekening.Text & "','" & txtketeranganrekening.Text & "','" & kode_supplier & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            sql = "INSERT INTO tb_rekening_supplier (nomor_rekening, nama_bank, nama_rekening, keterangan_rekening, supplier_id, created_by, update_by,date_created,last_updated) VALUES ('" & txtnorekening.Text & "', '" & txtnamabank.Text & "','" & txtnamarekening.Text & "','" & txtketeranganrekening.Text & "','" & idsupplier & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -119,7 +119,7 @@ Public Class frekeningsupplier
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_rekening_supplier WHERE kode_supplier = '" & kode_supplier & "'"
+        sql = "SELECT * FROM tb_rekening_supplier WHERE supplier_id = '" & idsupplier & "'"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -127,25 +127,29 @@ Public Class frekeningsupplier
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
 
-        GridColumn1.Caption = "Kode Rekening"
-        GridColumn1.Width = 30
-        GridColumn1.FieldName = "kode_rekening"
+        GridColumn1.Caption = "id"
+        GridColumn1.Width = 20
+        GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Nomor Rekening"
-        GridColumn2.Width = 65
+        GridColumn2.Width = 50
         GridColumn2.FieldName = "nomor_rekening"
 
         GridColumn3.Caption = "Nama Rekening"
-        GridColumn3.Width = 65
+        GridColumn3.Width = 50
         GridColumn3.FieldName = "nama_rekening"
 
         GridColumn4.Caption = "Nama Bank"
-        GridColumn4.Width = 65
+        GridColumn4.Width = 50
         GridColumn4.FieldName = "nama_bank"
 
         GridColumn5.Caption = "Keterangan Rekening"
         GridColumn5.Width = 75
         GridColumn5.FieldName = "keterangan_rekening"
+
+        GridColumn6.Caption = "Created By"
+        GridColumn6.Width = 30
+        GridColumn6.FieldName = "created_by"
     End Sub
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
@@ -157,7 +161,7 @@ Public Class frekeningsupplier
         If hapusstatus.Equals(True) Then
             Call koneksii()
             If MessageBox.Show("Hapus " & Me.txtnorekening.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-                sql = "DELETE FROM tb_rekening_supplier WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & txtkoderekening.Text & "'"
+                sql = "DELETE FROM tb_rekening_supplier WHERE  supplier_id='" & idsupplier & "' and id= '" & idrekening & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 MessageBox.Show("Rekening " + txtnorekening.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -196,10 +200,8 @@ Public Class frekeningsupplier
         End If
     End Sub
     Sub edit()
-        Dim norek As String
-        norek = txtkoderekening.Text
         Call koneksii()
-        sql = "UPDATE tb_rekening_supplier SET nomor_rekening='" & txtnorekening.Text & "', nama_bank='" & txtnamabank.Text & "', nama_rekening='" & txtnamarekening.Text & "', keterangan_rekening='" & txtketeranganrekening.Text & "', update_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE  kode_supplier='" & kode_supplier & "' and kode_rekening= '" & norek & "'"
+        sql = "UPDATE tb_rekening_supplier SET nomor_rekening='" & txtnorekening.Text & "', nama_bank='" & txtnamabank.Text & "', nama_rekening='" & txtnamarekening.Text & "', keterangan_rekening='" & txtketeranganrekening.Text & "', update_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE  supplier_id='" & idsupplier & "' and id= '" & idrekening & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -210,7 +212,7 @@ Public Class frekeningsupplier
     End Sub
 
     Private Sub GridControl1_DoubleClick(sender As Object, e As EventArgs) Handles GridControl1.DoubleClick
-        txtkoderekening.Text = GridView1.GetFocusedRowCellValue("kode_rekening")
+        idrekening = GridView1.GetFocusedRowCellValue("id")
         txtnorekening.Text = GridView1.GetFocusedRowCellValue("nomor_rekening")
         txtnamarekening.Text = GridView1.GetFocusedRowCellValue("nama_rekening")
         txtnamabank.Text = GridView1.GetFocusedRowCellValue("nama_bank")

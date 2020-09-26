@@ -27,9 +27,9 @@ Public Class fmenu
             fbarang.Show()
         End If
     End Sub
-    Private Sub DataCustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataCustomerToolStripMenuItem.Click
+    Private Sub DataPelangganToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataPelangganToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
-        masterstatus = flogin.master_customer
+        masterstatus = flogin.master_pelanggan
         If masterstatus > 0 Then
             fpelanggan.kodeakses = masterstatus
             fpelanggan.Show()
@@ -112,9 +112,6 @@ Public Class fmenu
             fpricelist.kodeakses = masterstatus
             fpricelist.Show()
         End If
-    End Sub
-    Private Sub MenuStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuUtama.ItemClicked
-
     End Sub
     Private Sub DataGudangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataGudangToolStripMenuItem.Click
         Dim masterstatus As Integer = 0

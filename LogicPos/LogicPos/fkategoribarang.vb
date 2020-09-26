@@ -116,7 +116,7 @@ Public Class fkategoribarang
 
         GridColumn5.Caption = "id"
         GridColumn5.FieldName = "id"
-        GridColumn5.Width = "40"
+        GridColumn5.Width = 40
         GridColumn5.Visible = False
     End Sub
     Sub index()
@@ -139,21 +139,27 @@ Public Class fkategoribarang
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             MsgBox("Kode Kategori Sudah ada dengan nama " + dr("nama_kategori"), MsgBoxStyle.Information, "Pemberitahuan")
+            txtkode.Focus()
         Else
-            sql = "INSERT INTO tb_kategori_barang (kode_kategori, nama_kategori, selisih_kategori, keterangan_kategori, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "','" & selisihharga & "', '" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
+            Try
+                Call koneksii()
+                sql = "INSERT INTO tb_kategori_barang (kode_kategori, nama_kategori, selisih_kategori, keterangan_kategori, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "','" & selisihharga & "', '" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
 
-            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-            btntambah.Text = "Tambah"
-            Me.Refresh()
+                MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+                btntambah.Text = "Tambah"
+                Me.Refresh()
 
-            Call historysave("Menyimpan Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
-            Call awal()
+                'history user ==========
+                Call historysave("Menyimpan Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
+                '=======================
+                Call awal()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
-
     End Sub
-
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If tambahstatus.Equals(True) Then
             If btntambah.Text = "Tambah" Then
@@ -185,7 +191,7 @@ Public Class fkategoribarang
 
     Sub edit()
         If txtkode.Text.Equals(kodekategoriedit) Then
-            Call perbarui()
+            Call perbaharui()
         Else
             Call koneksii()
             sql = "SELECT * FROM tb_kategori_barang WHERE kode_kategori  = '" + txtkode.Text + "' LIMIT 1"
@@ -193,23 +199,30 @@ Public Class fkategoribarang
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
                 MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kategori"), MsgBoxStyle.Information, "Pemberitahuan")
+                txtkode.Focus()
             Else
-                Call perbarui()
+                Call perbaharui()
             End If
         End If
     End Sub
 
-    Sub perbarui()
-        Call koneksii()
-        sql = "UPDATE tb_kategori_barang SET kode_kategori='" & txtkode.Text & "', nama_kategori='" & txtnama.Text & "', selisih_kategori='" & selisihharga & "', keterangan_kategori='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE  id='" & idkategoriedit & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-        btnedit.Text = "Edit"
-        Me.Refresh()
+    Sub perbaharui()
+        Try
+            Call koneksii()
+            sql = "UPDATE tb_kategori_barang SET kode_kategori='" & txtkode.Text & "', nama_kategori='" & txtnama.Text & "', selisih_kategori='" & selisihharga & "', keterangan_kategori='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE id='" & idkategoriedit & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
 
-        Call historysave("Mengedit Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
-        Call awal()
+            'history user ==========
+            Call historysave("Mengedit Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
+            '=======================
+            Me.Refresh()
+            Call awal()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
@@ -242,17 +255,22 @@ Public Class fkategoribarang
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If hapusstatus.Equals(True) Then
-            Call koneksii()
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-                sql = "DELETE FROM tb_kategori_barang WHERE  kode_kategori='" & txtkode.Text & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader
-                MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Me.Refresh()
+                Try
+                    Call koneksii()
+                    sql = "DELETE FROM tb_kategori_barang WHERE  id='" & idkategoriedit & "'"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                Call historysave("Menghapus Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
-
-                Call awal()
+                    'history user ===========
+                    Call historysave("Menghapus Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
+                    '========================
+                    Me.Refresh()
+                    Call awal()
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
             End If
         Else
             MsgBox("Tidak ada akses")
@@ -276,6 +294,10 @@ Public Class fkategoribarang
         btnhapus.Enabled = True
         btntambah.Enabled = False
         btntambah.Text = "Tambah"
+    End Sub
+
+    Private Sub txtkode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkode.KeyPress
+        e.Handled = ValidAngkaHuruf(e)
     End Sub
 
     Private Sub fkategoribarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

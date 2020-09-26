@@ -2,7 +2,7 @@
 Imports System.Drawing.Drawing2D
 Imports System.IO
 Public Class fpelanggan
-    Dim kodecustomeredit As String
+    Dim idpelanggan, kodepelanggan, namapelanggan, alamatpelanggan, teleponpelanggan, keteranganpelanggan As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
 
@@ -64,7 +64,7 @@ Public Class fpelanggan
         Call historysave("Membuka Master Customer", "N/A")
     End Sub
 
-    Private Sub fcustomer_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+    Private Sub fpelanggan_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
@@ -96,27 +96,10 @@ Public Class fpelanggan
         btnedit.Text = "Edit"
 
         txtgbr.Text = ""
-        PictureBox1.Image = ImageList1.Images(0)
+        PictureBox.Image = ImageList.Images(0)
 
         GridControl.Enabled = True
         Call isitabel()
-    End Sub
-    Sub kolom()
-        GridColumn1.Caption = "Kode"
-        GridColumn1.Width = 40
-        GridColumn1.FieldName = "kode_pelanggan"
-        GridColumn2.Caption = "Nama"
-        GridColumn2.Width = 40
-        GridColumn2.FieldName = "nama_pelanggan"
-        GridColumn3.Caption = "Alamat"
-        GridColumn3.Width = 65
-        GridColumn3.FieldName = "alamat_pelanggan"
-        GridColumn4.Caption = "Telepon"
-        GridColumn4.Width = 40
-        GridColumn4.FieldName = "telepon_pelanggan"
-        GridColumn5.Caption = "Keterangan"
-        GridColumn5.Width = 40
-        GridColumn5.FieldName = "keterangan_pelanggan"
     End Sub
     Sub isitabel()
         Call koneksii()
@@ -124,10 +107,33 @@ Public Class fpelanggan
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+
         GridControl.DataSource = Nothing
-        'GridView1.Columns.Clear()
         GridControl.DataSource = ds.Tables(0)
-        Call kolom()
+
+        GridColumn1.Caption = "Kode"
+        GridColumn1.Width = 40
+        GridColumn1.FieldName = "kode_pelanggan"
+
+        GridColumn2.Caption = "Nama"
+        GridColumn2.Width = 40
+        GridColumn2.FieldName = "nama_pelanggan"
+
+        GridColumn3.Caption = "Alamat"
+        GridColumn3.Width = 65
+        GridColumn3.FieldName = "alamat_pelanggan"
+
+        GridColumn4.Caption = "Telepon"
+        GridColumn4.Width = 40
+        GridColumn4.FieldName = "telepon_pelanggan"
+
+        GridColumn5.Caption = "Keterangan"
+        GridColumn5.Width = 50
+        GridColumn5.FieldName = "keterangan_pelanggan"
+
+        GridColumn6.Caption = "id"
+        GridColumn6.Width = 20
+        GridColumn6.FieldName = "id"
     End Sub
     Sub index()
         txtkode.TabIndex = 1
@@ -211,36 +217,41 @@ Public Class fpelanggan
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            MsgBox("Kode Customer Sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
+            MsgBox("Kode pelanggan sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
             txtkode.Focus()
         Else
             Dim ms As MemoryStream = New MemoryStream
             'menyimpan gambar ke dalam ms dengan format jpeg
-            PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
+            PictureBox.Image.Save(ms, Imaging.ImageFormat.Jpeg)
             ms.ToArray()
 
-            sql = "INSERT INTO tb_pelanggan (kode_pelanggan,nama_pelanggan,alamat_pelanggan,telepon_pelanggan,keterangan_pelanggan,foto_pelanggan,created_by,updated_by,date_created,last_updated) VALUES (?,?,?,?,?,?,?,?,?,?)"
-            cmmd = New OdbcCommand(sql, cnn)
-            cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
-            cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
-            cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
-            cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
-            cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
-            cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
-            cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
-            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
-            cmmd.Parameters.AddWithValue("@date_created", Date.Now)
-            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
-            cmmd.ExecuteNonQuery()
-            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+            Try
+                Call koneksii()
+                sql = "INSERT INTO tb_pelanggan (kode_pelanggan, nama_pelanggan, alamat_pelanggan, telepon_pelanggan, keterangan_pelanggan, foto_pelanggan, created_by, updated_by, date_created, last_updated) VALUES (?,?,?,?,?,?,?,?,?,?)"
+                cmmd = New OdbcCommand(sql, cnn)
+                cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
+                cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
+                cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
+                cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
+                cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
+                cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
+                cmmd.Parameters.AddWithValue("@created_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
+                cmmd.Parameters.AddWithValue("@date_created", Date.Now)
+                cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
+                cmmd.ExecuteNonQuery()
 
-            'history user ==========
-            Call historysave("Menyimpan Data Customer Kode " + txtkode.Text, txtkode.Text)
-            '========================
+                MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
 
-            btntambah.Text = "Tambah"
-            Me.Refresh()
-            Call awal()
+                'history user ==========
+                Call historysave("Menyimpan Data Customer Kode " + txtkode.Text, txtkode.Text)
+                '========================
+                btntambah.Text = "Tambah"
+                Me.Refresh()
+                Call awal()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
     End Sub
     Private Function ResizeGambar(ByVal gmb As Image,
@@ -278,7 +289,7 @@ Public Class fpelanggan
                 GridControl.Enabled = False
             Else
                 If txtkode.Text.Length = 0 Then
-                    MsgBox("ID belum terisi!!!")
+                    MsgBox("Kode belum terisi!!!")
                 Else
                     If txtnama.Text.Length = 0 Then
                         MsgBox("Nama belum terisi!!!")
@@ -292,14 +303,30 @@ Public Class fpelanggan
         End If
     End Sub
     Sub edit()
+        If txtkode.Text.Equals(kodepelanggan) Then
+            Call perbaharui()
+        Else
+            Call koneksii()
+            sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" + txtkode.Text + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                MsgBox("Kode pelanggan sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Exclamation, "Pemberitahuan")
+                txtkode.Focus()
+            Else
+                Call perbaharui()
+            End If
+        End If
+    End Sub
+    Sub perbaharui()
         Dim ms As MemoryStream = New MemoryStream
         'menyimpan gambar ke dalam ms dengan format jpeg
-        PictureBox1.Image.Save(ms, Imaging.ImageFormat.Jpeg)
+        PictureBox.Image.Save(ms, Imaging.ImageFormat.Jpeg)
         ms.ToArray()
 
-        Call koneksii()
-        If txtkode.Text.Equals(kodecustomeredit) Then
-            sql = "UPDATE tb_pelanggan SET nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & kodecustomeredit & "'"
+        Try
+            Call koneksii()
+            sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  id='" & idpelanggan & "'"
             cmmd = New OdbcCommand(sql, cnn)
             cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
             cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
@@ -310,84 +337,83 @@ Public Class fpelanggan
             cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
             cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
             cmmd.ExecuteNonQuery()
+
             MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "Edit"
-        Else
-            'Try
 
-            'Catch ex As Exception
+            'history user ===========
+            Call historysave("Mengedit Data Pelanggan Kode " + txtkode.Text, txtkode.Text)
+            '========================
 
-            'End Try
-            sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  kode_pelanggan='" & kodecustomeredit & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
-            cmmd.Parameters.AddWithValue("@nama_pelanggan", txtnama.Text)
-            cmmd.Parameters.AddWithValue("@alamat_pelanggan", txtalamat.Text)
-            cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
-            cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
-            cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
-            cmmd.Parameters.AddWithValue("@updated_by", fmenu.statususer.Text)
-            cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
-            cmmd.ExecuteNonQuery()
-            MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
-            btnedit.Text = "Edit"
-        End If
-
-        'history user ==========
-        Call historysave("Mengedit Data Customer Kode " + txtkode.Text, txtkode.Text)
-        '========================
-
-        Me.Refresh()
-        Call awal()
+            Me.Refresh()
+            Call awal()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call awal()
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If hapusstatus.Equals(True) Then
-            Call koneksii()
+
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-                sql = "DELETE FROM tb_pelanggan WHERE  kode_pelanggan='" & txtkode.Text & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader
-                MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Try
+                    Call koneksii()
+                    sql = "DELETE FROM tb_pelanggan WHERE id='" & idpelanggan & "'"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                'history user ==========
-                Call historysave("Menghapus Data Customer Kode" + txtkode.Text, txtkode.Text)
-                '========================
-
-                Me.Refresh()
-                Call awal()
+                    'history user ===========
+                    Call historysave("Menghapus Data Customer Kode" + txtkode.Text, txtkode.Text)
+                    '========================
+                    Me.Refresh()
+                    Call awal()
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
             End If
         Else
             MsgBox("Tidak ada akses")
         End If
     End Sub
+
+    Private Sub txtkode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkode.KeyPress
+        e.Handled = ValidAngkaHuruf(e)
+    End Sub
+
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
-    Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
-        txtkode.Text = GridView.GetFocusedRowCellValue("kode_pelanggan")
-        kodecustomeredit = GridView.GetFocusedRowCellValue("kode_pelanggan")
+
+    Sub cari()
+        idpelanggan = GridView.GetFocusedRowCellValue("id")
         'menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
         Dim foto As Byte()
 
         Call koneksii()
-
-        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" + txtkode.Text + "'"
+        sql = "SELECT * FROM tb_pelanggan WHERE id  = '" + idpelanggan + "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()
 
         If dr.HasRows Then
-            txtnama.Text = dr("nama_pelanggan")
-            txtalamat.Text = dr("alamat_pelanggan")
-            txttelp.Text = dr("telepon_pelanggan")
-            txtketerangan.Text = dr("keterangan_pelanggan")
+            kodepelanggan = dr("kode_pelanggan")
+            namapelanggan = dr("nama_pelanggan")
+            alamatpelanggan = dr("alamat_pelanggan")
+            teleponpelanggan = dr("telepon_pelanggan")
+            keteranganpelanggan = dr("keterangan_pelanggan")
             foto = dr("foto_pelanggan")
 
-            PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-            PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
+            PictureBox.SizeMode = PictureBoxSizeMode.StretchImage
+            PictureBox.Image = Image.FromStream(New IO.MemoryStream(foto))
+
+            txtkode.Text = kodepelanggan
+            txtnama.Text = namapelanggan
+            txtalamat.Text = alamatpelanggan
+            txttelp.Text = teleponpelanggan
+            txtketerangan.Text = keteranganpelanggan
             txtgbr.Text = txtnama.Text
 
             'tombol
@@ -399,6 +425,10 @@ Public Class fpelanggan
             btntambah.Enabled = False
             btntambah.Text = "Tambah"
         End If
+    End Sub
+
+    Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
+        Call cari()
     End Sub
 
     Private Sub btnauto_Click(sender As Object, e As EventArgs) Handles btnauto.Click
@@ -430,16 +460,16 @@ Public Class fpelanggan
             Dim resized As Image = ResizeGambar(Image.FromFile(filena), New Size(260, 260))
             Dim memStream As MemoryStream = New MemoryStream()
             resized.Save(memStream, System.Drawing.Imaging.ImageFormat.Jpeg)
-            PictureBox1.Image = resized
+            PictureBox.Image = resized
             txtgbr.Text = oD.SafeFileName
         End If
     End Sub
 
     Private Sub btnrekening_Click(sender As Object, e As EventArgs) Handles btnrekening.Click
         Dim rekening As Integer
-        rekening = flogin.rekeningcustomer
+        rekening = flogin.rekeningpelanggan
         If rekening > 0 Then
-            frekeningpelanggan.kodepelanggan = Me.txtkode.Text
+            frekeningpelanggan.idpelanggan = idpelanggan
             frekeningpelanggan.kodeakses = rekening
             frekeningpelanggan.ShowDialog()
         Else

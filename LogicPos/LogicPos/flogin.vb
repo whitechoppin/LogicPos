@@ -1,8 +1,8 @@
 ﻿Imports System.Data.Odbc
 Public Class flogin
     Public CPUIDPOS, STATUSPOS As String
-    Public rekeningsupplier, rekeningcustomer, maxprinting As Integer
-    Public master_barang, master_kategori, master_gudang, master_customer, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_cust, master_max_print As Integer
+    Public rekeningsupplier, rekeningpelanggan, maxprinting As Integer
+    Public master_barang, master_kategori, master_gudang, master_pelanggan, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_pelanggan, master_max_print As Integer
     Public pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang As Integer
     Public lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar As Integer
     Public lap_pricelist, lap_pembelian, lap_penjualan, lap_returbeli, lap_returjual, lap_barangmasuk, lap_barangkeluar, lap_lunas_utang, lap_lunas_piutang, lap_stok_barang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transfer_barang, lap_transaksi_kas, lap_modal_barang As Integer
@@ -24,13 +24,13 @@ Public Class flogin
         master_barang = 0
         master_kategori = 0
         master_gudang = 0
-        master_customer = 0
+        master_pelanggan = 0
         master_supplier = 0
         master_user = 0
         master_kas = 0
         master_pricelist = 0
         master_rek_supplier = 0
-        master_rek_cust = 0
+        master_rek_pelanggan = 0
 
         pembelian = 0
         penjualan = 0
@@ -67,7 +67,6 @@ Public Class flogin
         Dim counteruser As Integer
 
         Call koneksii()
-        'SELECT CONNECTION_ID();
         sql = "SELECT COUNT(kode_user) AS total_user FROM tb_status_user WHERE kode_user='" + txtusername.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -97,13 +96,13 @@ Public Class flogin
                 master_barang = dr("master_barang")
                 master_kategori = dr("master_kategori")
                 master_gudang = dr("master_gudang")
-                master_customer = dr("master_customer")
+                master_pelanggan = dr("master_pelanggan")
                 master_supplier = dr("master_supplier")
                 master_user = dr("master_user")
                 master_kas = dr("master_kas")
                 master_pricelist = dr("master_pricelist")
                 master_rek_supplier = dr("master_rek_supp")
-                master_rek_cust = dr("master_rek_cust")
+                master_rek_pelanggan = dr("master_rek_cust")
 
                 If master_barang > 0 Then
                     fmenu.MasterMenu.DropDownItems.Item(0).Visible = True 'master barang
@@ -117,8 +116,8 @@ Public Class flogin
                     fmenu.MasterMenu.DropDownItems.Item(2).Visible = True 'master Gudang
                 End If
 
-                If master_customer > 0 Then
-                    fmenu.MasterMenu.DropDownItems.Item(3).Visible = True 'master customer
+                If master_pelanggan > 0 Then
+                    fmenu.MasterMenu.DropDownItems.Item(3).Visible = True 'master pelanggan
                 End If
 
                 If master_supplier > 0 Then
@@ -137,7 +136,7 @@ Public Class flogin
                     fmenu.MasterMenu.DropDownItems.Item(7).Visible = True 'master price
                 End If
 
-                rekeningcustomer = master_rek_cust
+                rekeningpelanggan = master_rek_pelanggan
                 rekeningsupplier = master_rek_supplier
                 maxprinting = master_max_print
 
@@ -324,13 +323,13 @@ Public Class flogin
                     master_barang = dr("master_barang")
                     master_kategori = dr("master_kategori")
                     master_gudang = dr("master_gudang")
-                    master_customer = dr("master_customer")
+                    master_pelanggan = dr("master_pelanggan")
                     master_supplier = dr("master_supplier")
                     master_user = dr("master_user")
                     master_kas = dr("master_kas")
                     master_pricelist = dr("master_pricelist")
                     master_rek_supplier = dr("master_rek_supp")
-                    master_rek_cust = dr("master_rek_cust")
+                    master_rek_pelanggan = dr("master_rek_cust")
 
                     If master_barang > 0 Then
                         fmenu.MasterMenu.DropDownItems.Item(0).Visible = True 'master barang
@@ -344,8 +343,8 @@ Public Class flogin
                         fmenu.MasterMenu.DropDownItems.Item(2).Visible = True 'master Gudang
                     End If
 
-                    If master_customer > 0 Then
-                        fmenu.MasterMenu.DropDownItems.Item(3).Visible = True 'master customer
+                    If master_pelanggan > 0 Then
+                        fmenu.MasterMenu.DropDownItems.Item(3).Visible = True 'master pelanggan
                     End If
 
                     If master_supplier > 0 Then
@@ -364,7 +363,7 @@ Public Class flogin
                         fmenu.MasterMenu.DropDownItems.Item(7).Visible = True 'master price
                     End If
 
-                    rekeningcustomer = master_rek_cust
+                    rekeningpelanggan = master_rek_pelanggan
                     rekeningsupplier = master_rek_supplier
                     maxprinting = master_max_print
 
