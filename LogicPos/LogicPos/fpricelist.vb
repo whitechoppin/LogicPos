@@ -227,7 +227,7 @@ Public Class fpricelist
 
     Sub save_exist_item()
         Call koneksii()
-        sql = "UPDATE tb_price_group SET harga_jual='" & harga & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_barang='" & txtkode.Text & "' AND kode_pelanggan='" & txtkodecus.Text & "'"
+        sql = "UPDATE tb_price_group SET harga_jual='" & harga & "', updated_by='" & fmenu.namauser.Text & "', last_updated=now() WHERE kode_barang='" & txtkode.Text & "' AND kode_pelanggan='" & txtkodecus.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 

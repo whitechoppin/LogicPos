@@ -1,7 +1,7 @@
 ﻿Imports System.Data.Odbc
 Public Class fmenu
     Private Sub exitStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitStripMenuItem.Click
-        Call historysave("User Close Program", Me.statususer.Text)
+        Call historysave("User Close Program", Me.namauser.Text)
         Me.Close()
         Me.Dispose()
         Application.Exit()
@@ -13,7 +13,7 @@ Public Class fmenu
         fjatuhtempopenjualan.Show()
         fnotifikasistok.Show()
 
-        Call historysave("User Login Program", Me.statususer.Text)
+        Call historysave("User Login Program", Me.namauser.Text)
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
@@ -96,7 +96,7 @@ Public Class fmenu
     End Sub
     Private Sub fmenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Call koneksii()
-        sql = "DELETE FROM tb_status_user WHERE kode_user='" & Me.statususer.Text & "'AND computer_id='" & flogin.CPUIDPOS & "'AND status_user='" & flogin.STATUSPOS & "'"
+        sql = "DELETE FROM tb_status_user WHERE kode_user='" & Me.namauser.Text & "'AND computer_id='" & flogin.CPUIDPOS & "'AND status_user='" & flogin.STATUSPOS & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
@@ -265,7 +265,7 @@ Public Class fmenu
         End If
     End Sub
 
-    Private Sub LaporanTransaksiKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransaksiKasToolStripMenuItem.Click
+    Private Sub LTransaksiKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LTransaksiKasToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
         masterstatus = flogin.lap_transaksi_kas
         If masterstatus > 0 Then
@@ -330,7 +330,7 @@ Public Class fmenu
         End If
     End Sub
 
-    Private Sub LaporanPricelistBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LPricelistBarangToolStripMenuItem.Click
+    Private Sub LPricelistBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LPricelistBarangToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
         masterstatus = flogin.lap_pricelist
         If masterstatus > 0 Then
@@ -339,7 +339,7 @@ Public Class fmenu
         End If
     End Sub
 
-    Private Sub LaporanReturBeliToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LReturBeliToolStripMenuItem.Click
+    Private Sub LReturBeliToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LReturBeliToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
         masterstatus = flogin.lap_returbeli
         If masterstatus > 0 Then
@@ -349,7 +349,7 @@ Public Class fmenu
 
     End Sub
 
-    Private Sub LaporanReturJualToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LReturJualToolStripMenuItem.Click
+    Private Sub LReturJualToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LReturJualToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
         masterstatus = flogin.lap_returjual
         If masterstatus > 0 Then
@@ -358,7 +358,7 @@ Public Class fmenu
         End If
     End Sub
 
-    Private Sub LaporanBarangMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LBarangMasukToolStripMenuItem.Click
+    Private Sub LBarangMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LBarangMasukToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
         masterstatus = flogin.lap_barangmasuk
         If masterstatus > 0 Then
@@ -367,7 +367,7 @@ Public Class fmenu
         End If
     End Sub
 
-    Private Sub LaporanBarangKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LBarangKeluarToolStripMenuItem.Click
+    Private Sub LBarangKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LBarangKeluarToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
         masterstatus = flogin.lap_barangkeluar
         If masterstatus > 0 Then
@@ -420,7 +420,7 @@ Public Class fmenu
         TryCast(TryCast(sender, Form).Tag, TabPage).Dispose()
     End Sub
 
-    Private Sub LaporanModalBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LModalBarangToolStripMenuItem.Click
+    Private Sub LModalBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LModalBarangToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
         masterstatus = flogin.lap_modal_barang
         If masterstatus > 0 Then
@@ -441,11 +441,11 @@ Public Class fmenu
         ftokosejati.Show()
     End Sub
 
-    Private Sub LaporanRekapanAkhirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LRekapanAkhirToolStripMenuItem.Click
+    Private Sub LRekapanAkhirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LRekapanAkhirToolStripMenuItem.Click
 
     End Sub
 
-    Private Sub LaporanMutasiBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LMutasiBarangToolStripMenuItem.Click
+    Private Sub LMutasiBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LMutasiBarangToolStripMenuItem.Click
         flaporanmutasibarang.Show()
     End Sub
 

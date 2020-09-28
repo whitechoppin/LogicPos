@@ -288,14 +288,14 @@ Public Class fkaskeluar
         myCommand.Transaction = myTrans
 
         Try
-            myCommand.CommandText = "INSERT INTO tb_kas_keluar (kode_kas_keluar, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodekeluar & "','" & cmbkas.Text & "','" & cmbsales.Text & "','Keluar', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldokeluar & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            myCommand.CommandText = "INSERT INTO tb_kas_keluar (kode_kas_keluar, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodekeluar & "','" & cmbkas.Text & "','" & cmbsales.Text & "','Keluar', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldokeluar & "','" & 0 & "','" & 1 & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
             myCommand.ExecuteNonQuery()
 
             kodekas = cmbkas.Text
 
             If kodekas IsNot "" Then
                 Call koneksii()
-                myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_kas_keluar, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekas & "','" & kodekeluar & "', 'KELUAR','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas Keluar Nomor " & kodekeluar & "','" & saldokeluar & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_kas_keluar, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekas & "','" & kodekeluar & "', 'KELUAR','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas Keluar Nomor " & kodekeluar & "','" & saldokeluar & "', '" & 0 & "', '" & fmenu.namauser.Text & "', '" & fmenu.namauser.Text & "', now(), now())"
                 myCommand.ExecuteNonQuery()
             End If
 
@@ -340,13 +340,13 @@ Public Class fkaskeluar
         myCommand.Transaction = myTrans
 
         Try
-            myCommand.CommandText = "UPDATE tb_kas_keluar SET kode_user='" & cmbsales.Text & "',kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', saldo_kas='" & saldokeluar & "', keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.statususer.Text & "',last_updated=now()  WHERE  kode_kas_keluar='" & txtkodekeluar.Text & "'"
+            myCommand.CommandText = "UPDATE tb_kas_keluar SET kode_user='" & cmbsales.Text & "',kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', saldo_kas='" & saldokeluar & "', keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.namauser.Text & "',last_updated=now()  WHERE  kode_kas_keluar='" & txtkodekeluar.Text & "'"
             myCommand.ExecuteNonQuery()
 
             kodekas = cmbkas.Text
 
             If kodekas IsNot "" Then
-                myCommand.CommandText = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & saldokeluar & "', kredit_kas='" & 0 & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_kas_keluar='" & txtkodekeluar.Text & "'"
+                myCommand.CommandText = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & saldokeluar & "', kredit_kas='" & 0 & "', updated_by='" & fmenu.namauser.Text & "', last_updated=now() WHERE kode_kas_keluar='" & txtkodekeluar.Text & "'"
                 myCommand.ExecuteNonQuery()
             End If
 
@@ -513,7 +513,7 @@ Public Class fkaskeluar
         rpt_faktur.SetParameterValue("saldo", saldokeluar)
         rpt_faktur.SetParameterValue("tanggal", Format(dttransaksi.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
-        rpt_faktur.SetParameterValue("penerima", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("penerima", fmenu.namauser.Text)
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)

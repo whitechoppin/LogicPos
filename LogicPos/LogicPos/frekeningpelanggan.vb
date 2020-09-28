@@ -118,7 +118,7 @@ Public Class frekeningpelanggan
         Else
             Try
                 Call koneksii()
-                sql = "INSERT INTO tb_rekening_pelanggan (nomor_rekening, nama_bank, nama_rekening, keterangan_rekening, pelanggan_id, created_by, update_by,date_created,last_updated) VALUES ('" & txtnorekening.Text & "', '" & txtnamabank.Text & "','" & txtnamarekening.Text & "','" & txtketeranganrekening.Text & "','" & idpelanggan & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                sql = "INSERT INTO tb_rekening_pelanggan (nomor_rekening, nama_bank, nama_rekening, keterangan_rekening, pelanggan_id, created_by, update_by,date_created,last_updated) VALUES ('" & txtnorekening.Text & "', '" & txtnamabank.Text & "','" & txtnamarekening.Text & "','" & txtketeranganrekening.Text & "','" & idpelanggan & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -261,7 +261,7 @@ Public Class frekeningpelanggan
     Sub perbaharui()
         Try
             Call koneksii()
-            sql = "UPDATE tb_rekening_pelanggan SET nomor_rekening='" & txtnorekening.Text & "', nama_bank='" & txtnamabank.Text & "', nama_rekening='" & txtnamarekening.Text & "', keterangan_rekening='" & txtketeranganrekening.Text & "', update_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE pelanggan_id='" & idpelanggan & "' AND id= '" & idrekening & "'"
+            sql = "UPDATE tb_rekening_pelanggan SET nomor_rekening='" & txtnorekening.Text & "', nama_bank='" & txtnamabank.Text & "', nama_rekening='" & txtnamarekening.Text & "', keterangan_rekening='" & txtketeranganrekening.Text & "', update_by='" & fmenu.namauser.Text & "', last_updated= now()  WHERE pelanggan_id='" & idpelanggan & "' AND id= '" & idrekening & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")

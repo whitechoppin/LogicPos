@@ -750,15 +750,15 @@ Public Class flunasutang
                 tglpembeliansimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_pembelian"))
                 tgljatuhtemposimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_jatuhtempo"))
 
-                myCommand.CommandText = "INSERT INTO tb_pelunasan_utang_detail (kode_lunas, kode_pembelian, kode_supplier, tanggal_pembelian, tanggal_jatuhtempo, total_pembelian, bayar_utang, sisa_utang, terima_utang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "', '" & GridView1.GetRowCellValue(i, "kode_supplier") & "', '" & Format(tglpembeliansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_pembelian") & "','" & GridView1.GetRowCellValue(i, "bayar_utang") & "','" & GridView1.GetRowCellValue(i, "sisa_utang") & "','" & GridView1.GetRowCellValue(i, "terima_utang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_pelunasan_utang_detail (kode_lunas, kode_pembelian, kode_supplier, tanggal_pembelian, tanggal_jatuhtempo, total_pembelian, bayar_utang, sisa_utang, terima_utang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "', '" & GridView1.GetRowCellValue(i, "kode_supplier") & "', '" & Format(tglpembeliansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_pembelian") & "','" & GridView1.GetRowCellValue(i, "bayar_utang") & "','" & GridView1.GetRowCellValue(i, "sisa_utang") & "','" & GridView1.GetRowCellValue(i, "terima_utang") & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
-            myCommand.CommandText = "INSERT INTO tb_pelunasan_utang (kode_lunas, kode_user, tanggal_transaksi, kode_supplier, kode_kas, jenis_kas, bayar_lunas, no_bukti, keterangan_lunas, void_lunas, print_lunas, posted_lunas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & cmbsales.Text & "', '" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', '" & cmbsupplier.Text & "', '" & cmbbayar.Text & "', '" & cmbbayar.Text & "', '" & totalbayar & "','" & txtbukti.Text & "','" & txtketerangan.Text & "','" & 0 & "','" & 0 & "','" & 1 & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            myCommand.CommandText = "INSERT INTO tb_pelunasan_utang (kode_lunas, kode_user, tanggal_transaksi, kode_supplier, kode_kas, jenis_kas, bayar_lunas, no_bukti, keterangan_lunas, void_lunas, print_lunas, posted_lunas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & cmbsales.Text & "', '" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', '" & cmbsupplier.Text & "', '" & cmbbayar.Text & "', '" & cmbbayar.Text & "', '" & totalbayar & "','" & txtbukti.Text & "','" & txtketerangan.Text & "','" & 0 & "','" & 0 & "','" & 1 & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
             myCommand.ExecuteNonQuery()
 
 
-            myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_utang, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & cmbbayar.Text & "','" & kodelunasutang & "', 'BAYAR', now(), 'Transaksi Pelunasan Nomor " & kodelunasutang & "','" & totalbayar & "', '" & 0 & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+            myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_utang, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & cmbbayar.Text & "','" & kodelunasutang & "', 'BAYAR', now(), 'Transaksi Pelunasan Nomor " & kodelunasutang & "','" & totalbayar & "', '" & 0 & "', '" & fmenu.namauser.Text & "', '" & fmenu.namauser.Text & "', now(), now())"
             myCommand.ExecuteNonQuery()
 
             myTrans.Commit()
@@ -930,7 +930,7 @@ Public Class flunasutang
         rpt_faktur.SetParameterValue("bukti", txtbukti.Text)
         'rpt_faktur.SetParameterValue("totalbayar", totalbayar)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
-        rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("namakasir", fmenu.namauser.Text)
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
@@ -1062,14 +1062,14 @@ Public Class flunasutang
                 tglpembeliansimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_pembelian"))
                 tgljatuhtemposimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_jatuhtempo"))
 
-                myCommand.CommandText = "INSERT INTO tb_pelunasan_utang_detail (kode_lunas, kode_pembelian, kode_supplier, tanggal_pembelian, tanggal_jatuhtempo, total_pembelian, bayar_utang, sisa_utang, terima_utang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "', '" & GridView1.GetRowCellValue(i, "kode_supplier") & "', '" & Format(tglpembeliansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_pembelian") & "','" & GridView1.GetRowCellValue(i, "bayar_utang") & "','" & GridView1.GetRowCellValue(i, "sisa_utang") & "','" & GridView1.GetRowCellValue(i, "terima_utang") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_pelunasan_utang_detail (kode_lunas, kode_pembelian, kode_supplier, tanggal_pembelian, tanggal_jatuhtempo, total_pembelian, bayar_utang, sisa_utang, terima_utang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodelunasutang & "', '" & GridView1.GetRowCellValue(i, "kode_pembelian") & "', '" & GridView1.GetRowCellValue(i, "kode_supplier") & "', '" & Format(tglpembeliansimpan, "yyyy-MM-dd HH:mm:ss") & "','" & Format(tgljatuhtemposimpan, "yyyy-MM-dd HH:mm:ss") & "','" & GridView1.GetRowCellValue(i, "total_pembelian") & "','" & GridView1.GetRowCellValue(i, "bayar_utang") & "','" & GridView1.GetRowCellValue(i, "sisa_utang") & "','" & GridView1.GetRowCellValue(i, "terima_utang") & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
-            myCommand.CommandText = "UPDATE tb_pelunasan_utang SET  kode_user='" & cmbsales.Text & "',tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', kode_supplier='" & cmbsupplier.Text & "',kode_kas='" & cmbbayar.Text & "', bayar_lunas='" & totalbayar & "', no_bukti='" & txtbukti.Text & "' ,keterangan_lunas='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now()  WHERE  kode_lunas='" & kodelunasutang & "'"
+            myCommand.CommandText = "UPDATE tb_pelunasan_utang SET  kode_user='" & cmbsales.Text & "',tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', kode_supplier='" & cmbsupplier.Text & "',kode_kas='" & cmbbayar.Text & "', bayar_lunas='" & totalbayar & "', no_bukti='" & txtbukti.Text & "' ,keterangan_lunas='" & txtketerangan.Text & "', updated_by='" & fmenu.namauser.Text & "', last_updated=now()  WHERE  kode_lunas='" & kodelunasutang & "'"
             myCommand.ExecuteNonQuery()
 
-            myCommand.CommandText = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbbayar.Text & "', kode_utang='" & kodelunasutang & "', tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & totalbayar & "', updated_by='" & fmenu.statususer.Text & "', last_updated=now() WHERE kode_utang='" & kodelunasutang & "'"
+            myCommand.CommandText = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbbayar.Text & "', kode_utang='" & kodelunasutang & "', tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & totalbayar & "', updated_by='" & fmenu.namauser.Text & "', last_updated=now() WHERE kode_utang='" & kodelunasutang & "'"
             myCommand.ExecuteNonQuery()
 
             myTrans.Commit()

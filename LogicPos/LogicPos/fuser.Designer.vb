@@ -90,8 +90,8 @@ Partial Class fuser
         Me.cbtransferbarang = New System.Windows.Forms.CheckBox()
         Me.cbbarangkeluar = New System.Windows.Forms.CheckBox()
         Me.cbbarangmasuk = New System.Windows.Forms.CheckBox()
-        Me.clbmasterrekcust = New System.Windows.Forms.CheckedListBox()
-        Me.cbmasterrekcust = New System.Windows.Forms.CheckBox()
+        Me.clbmasterrekplng = New System.Windows.Forms.CheckedListBox()
+        Me.cbmasterrekplng = New System.Windows.Forms.CheckBox()
         Me.clbmasterreksupp = New System.Windows.Forms.CheckedListBox()
         Me.cbmasterreksupp = New System.Windows.Forms.CheckBox()
         Me.clblapstokbarang = New System.Windows.Forms.CheckedListBox()
@@ -159,6 +159,7 @@ Partial Class fuser
         '
         'cmbjabatan
         '
+        Me.cmbjabatan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbjabatan.FormattingEnabled = True
         Me.cmbjabatan.Items.AddRange(New Object() {"Kasir", "Administrasi", "Supervisor", "Owner"})
         Me.cmbjabatan.Location = New System.Drawing.Point(108, 158)
@@ -919,29 +920,29 @@ Partial Class fuser
         Me.cbbarangmasuk.Text = "Barang Masuk"
         Me.cbbarangmasuk.UseVisualStyleBackColor = True
         '
-        'clbmasterrekcust
+        'clbmasterrekplng
         '
-        Me.clbmasterrekcust.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.clbmasterrekcust.CheckOnClick = True
-        Me.clbmasterrekcust.FormattingEnabled = True
-        Me.clbmasterrekcust.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
-        Me.clbmasterrekcust.Location = New System.Drawing.Point(455, 132)
-        Me.clbmasterrekcust.Margin = New System.Windows.Forms.Padding(4)
-        Me.clbmasterrekcust.Name = "clbmasterrekcust"
-        Me.clbmasterrekcust.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmasterrekcust.Size = New System.Drawing.Size(100, 61)
-        Me.clbmasterrekcust.TabIndex = 73
+        Me.clbmasterrekplng.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbmasterrekplng.CheckOnClick = True
+        Me.clbmasterrekplng.FormattingEnabled = True
+        Me.clbmasterrekplng.Items.AddRange(New Object() {"Tambah", "Edit", "Hapus"})
+        Me.clbmasterrekplng.Location = New System.Drawing.Point(455, 132)
+        Me.clbmasterrekplng.Margin = New System.Windows.Forms.Padding(4)
+        Me.clbmasterrekplng.Name = "clbmasterrekplng"
+        Me.clbmasterrekplng.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbmasterrekplng.Size = New System.Drawing.Size(100, 61)
+        Me.clbmasterrekplng.TabIndex = 73
         '
-        'cbmasterrekcust
+        'cbmasterrekplng
         '
-        Me.cbmasterrekcust.AutoSize = True
-        Me.cbmasterrekcust.Location = New System.Drawing.Point(439, 102)
-        Me.cbmasterrekcust.Margin = New System.Windows.Forms.Padding(4)
-        Me.cbmasterrekcust.Name = "cbmasterrekcust"
-        Me.cbmasterrekcust.Size = New System.Drawing.Size(139, 22)
-        Me.cbmasterrekcust.TabIndex = 72
-        Me.cbmasterrekcust.Text = "Master Rek Cust"
-        Me.cbmasterrekcust.UseVisualStyleBackColor = True
+        Me.cbmasterrekplng.AutoSize = True
+        Me.cbmasterrekplng.Location = New System.Drawing.Point(439, 102)
+        Me.cbmasterrekplng.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbmasterrekplng.Name = "cbmasterrekplng"
+        Me.cbmasterrekplng.Size = New System.Drawing.Size(177, 22)
+        Me.cbmasterrekplng.TabIndex = 72
+        Me.cbmasterrekplng.Text = "Master Rek Pelanggan"
+        Me.cbmasterrekplng.UseVisualStyleBackColor = True
         '
         'clbmasterreksupp
         '
@@ -962,9 +963,9 @@ Partial Class fuser
         Me.cbmasterreksupp.Location = New System.Drawing.Point(439, 8)
         Me.cbmasterreksupp.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmasterreksupp.Name = "cbmasterreksupp"
-        Me.cbmasterreksupp.Size = New System.Drawing.Size(142, 22)
+        Me.cbmasterreksupp.Size = New System.Drawing.Size(161, 22)
         Me.cbmasterreksupp.TabIndex = 70
-        Me.cbmasterreksupp.Text = "Master Rek Supp"
+        Me.cbmasterreksupp.Text = "Master Rek Supplier"
         Me.cbmasterreksupp.UseVisualStyleBackColor = True
         '
         'clblapstokbarang
@@ -1383,10 +1384,10 @@ Partial Class fuser
         Me.TabPage1.Controls.Add(Me.cbmasterkas)
         Me.TabPage1.Controls.Add(Me.clbmasterkas)
         Me.TabPage1.Controls.Add(Me.cbmasterpricelist)
-        Me.TabPage1.Controls.Add(Me.clbmasterrekcust)
+        Me.TabPage1.Controls.Add(Me.clbmasterrekplng)
         Me.TabPage1.Controls.Add(Me.cbmasterreksupp)
         Me.TabPage1.Controls.Add(Me.clbmasterreksupp)
-        Me.TabPage1.Controls.Add(Me.cbmasterrekcust)
+        Me.TabPage1.Controls.Add(Me.cbmasterrekplng)
         Me.TabPage1.Location = New System.Drawing.Point(4, 27)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage1.Name = "TabPage1"
@@ -1802,8 +1803,8 @@ Partial Class fuser
     Friend WithEvents cblaputang As CheckBox
     Friend WithEvents clblappembelian As CheckedListBox
     Friend WithEvents cblappembelian As CheckBox
-    Friend WithEvents clbmasterrekcust As CheckedListBox
-    Friend WithEvents cbmasterrekcust As CheckBox
+    Friend WithEvents clbmasterrekplng As CheckedListBox
+    Friend WithEvents cbmasterrekplng As CheckBox
     Friend WithEvents clbmasterreksupp As CheckedListBox
     Friend WithEvents cbmasterreksupp As CheckBox
     Friend WithEvents clbtransferbarang As CheckedListBox

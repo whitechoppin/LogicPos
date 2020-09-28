@@ -1190,7 +1190,7 @@ Public Class fpenjualan
         rpt = New strukpenjualan
         rpt.SetDataSource(tabel_struk)
         rpt.SetParameterValue("nofaktur", txtnonota.Text)
-        rpt.SetParameterValue("kasir", fmenu.statususer.Text)
+        rpt.SetParameterValue("kasir", fmenu.namauser.Text)
         rpt.SetParameterValue("customer", txtcustomer.Text)
         rpt.SetParameterValue("tgl", dtpenjualan.Text)
         rpt.PrintOptions.PrinterName = struk
@@ -1319,7 +1319,7 @@ Public Class fpenjualan
 
         tinggi += 15
         e.Graphics.DrawString("Kasir", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
-        e.Graphics.DrawString(": " + fmenu.statususer.Text, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
+        e.Graphics.DrawString(": " + fmenu.namauser.Text, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
 
         tinggi += 15
         e.Graphics.DrawString("Sales", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
@@ -1480,7 +1480,7 @@ Public Class fpenjualan
         rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
 
         rpt_faktur.SetParameterValue("nofaktur", kodepenjualan)
-        rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("namakasir", fmenu.namauser.Text)
         rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
         rpt_faktur.SetParameterValue("jatem", Format(dtjatuhtempo.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         rpt_faktur.SetParameterValue("bayar", bayar)
@@ -1536,7 +1536,7 @@ Public Class fpenjualan
         rpt_faktur.SetDataSource(tabel_faktur)
 
         rpt_faktur.SetParameterValue("nofaktur", kodepenjualan)
-        rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("namakasir", fmenu.namauser.Text)
         rpt_faktur.SetParameterValue("pembeli", txtcustomer.Text)
         rpt_faktur.SetParameterValue("jatem", Format(dtjatuhtempo.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         rpt_faktur.SetParameterValue("bayar", bayar)
@@ -2253,7 +2253,7 @@ Public Class fpenjualan
             For i As Integer = 0 To GridView1.RowCount - 1
                 diskonpersennilai = GridView1.GetRowCellValue(i, "diskon_persen")
                 diskonnominalnilai = GridView1.GetRowCellValue(i, "diskon_nominal")
-                myCommand.CommandText = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & diskonpersennilai & "','" & diskonnominalnilai & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal_barang") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & diskonpersennilai & "','" & diskonnominalnilai & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal_barang") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
@@ -2263,13 +2263,13 @@ Public Class fpenjualan
                 lunasstatus = 0
             End If
 
-            myCommand.CommandText = "INSERT INTO tb_penjualan (kode_penjualan, kode_pelanggan, kode_gudang, kode_user, tgl_penjualan, tgl_jatuhtempo_penjualan, term_penjualan, lunas_penjualan, void_penjualan, print_penjualan, posted_penjualan, keterangan_penjualan, nama_expedisi, alamat_expedisi, diskon_penjualan, pajak_penjualan, ongkir_penjualan, total_penjualan, metode_pembayaran, rekening, bayar_penjualan, sisa_penjualan, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepenjualan & "','" & cmbcustomer.Text & "','" & kodegudang & "','" & cmbsales.Text & "' , '" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & term & "','" & lunasstatus & "','" & 0 & "','" & 0 & "','" & 1 & "','" & txtketerangan.Text & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & ongkir & "','" & grandtotal & "','" & cmbpembayaran.Text & "', '" & txtrekening.Text & "','" & bayar & "','" & sisa & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+            myCommand.CommandText = "INSERT INTO tb_penjualan (kode_penjualan, kode_pelanggan, kode_gudang, kode_user, tgl_penjualan, tgl_jatuhtempo_penjualan, term_penjualan, lunas_penjualan, void_penjualan, print_penjualan, posted_penjualan, keterangan_penjualan, nama_expedisi, alamat_expedisi, diskon_penjualan, pajak_penjualan, ongkir_penjualan, total_penjualan, metode_pembayaran, rekening, bayar_penjualan, sisa_penjualan, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepenjualan & "','" & cmbcustomer.Text & "','" & kodegudang & "','" & cmbsales.Text & "' , '" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & term & "','" & lunasstatus & "','" & 0 & "','" & 0 & "','" & 1 & "','" & txtketerangan.Text & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & ongkir & "','" & grandtotal & "','" & cmbpembayaran.Text & "', '" & txtrekening.Text & "','" & bayar & "','" & sisa & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
             myCommand.ExecuteNonQuery()
 
             kodepembayaran = cmbpembayaran.Text
 
             If kodepembayaran IsNot "" Then
-                myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'AWAL','" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Nota Nomor " & kodepenjualan & "','" & sisa & "', '" & bayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'AWAL','" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Nota Nomor " & kodepenjualan & "','" & sisa & "', '" & bayar & "', '" & fmenu.namauser.Text & "', '" & fmenu.namauser.Text & "', now(), now())"
                 myCommand.ExecuteNonQuery()
             End If
 
@@ -2401,7 +2401,7 @@ Public Class fpenjualan
                 For i As Integer = 0 To GridView1.RowCount - 1
                     diskonpersennilai = GridView1.GetRowCellValue(i, "diskon_persen")
                     diskonnominalnilai = GridView1.GetRowCellValue(i, "diskon_nominal")
-                    myCommand.CommandText = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, updated_by, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & diskonpersennilai & "','" & diskonnominalnilai & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal_barang") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.statususer.Text & "',now())"
+                    myCommand.CommandText = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, updated_by, last_updated) VALUES ('" & kodepenjualan & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & diskonpersennilai & "','" & diskonnominalnilai & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal_barang") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.namauser.Text & "',now())"
                     myCommand.ExecuteNonQuery()
                 Next
 
@@ -2412,13 +2412,13 @@ Public Class fpenjualan
                 End If
 
                 Call koneksii()
-                myCommand.CommandText = "UPDATE tb_penjualan SET kode_pelanggan ='" & cmbcustomer.Text & "', kode_gudang ='" & kodegudang & "', kode_user ='" & cmbsales.Text & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', term_penjualan='" & term & "', lunas_penjualan = '" & lunasstatus & "',keterangan_penjualan ='" & txtketerangan.Text & "',nama_expedisi ='" & txtnamaexpedisi.Text & "',alamat_expedisi ='" & txtalamatexpedisi.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.statususer.Text & "', last_updated = now() WHERE kode_penjualan ='" & kodepenjualan & "'"
+                myCommand.CommandText = "UPDATE tb_penjualan SET kode_pelanggan ='" & cmbcustomer.Text & "', kode_gudang ='" & kodegudang & "', kode_user ='" & cmbsales.Text & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', term_penjualan='" & term & "', lunas_penjualan = '" & lunasstatus & "',keterangan_penjualan ='" & txtketerangan.Text & "',nama_expedisi ='" & txtnamaexpedisi.Text & "',alamat_expedisi ='" & txtalamatexpedisi.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.namauser.Text & "', last_updated = now() WHERE kode_penjualan ='" & kodepenjualan & "'"
                 myCommand.ExecuteNonQuery()
 
                 kodepembayaran = cmbpembayaran.Text
 
                 If kodepembayaran IsNot "" Then
-                    myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepenjualan & "','" & sisa & "', '" & bayar & "', '" & fmenu.statususer.Text & "', '" & fmenu.statususer.Text & "', now(), now())"
+                    myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_penjualan, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepembayaran & "','" & kodepenjualan & "', 'AWAL', now(), 'Transaksi Nota Nomor " & kodepenjualan & "','" & sisa & "', '" & bayar & "', '" & fmenu.namauser.Text & "', '" & fmenu.namauser.Text & "', now(), now())"
                     myCommand.ExecuteNonQuery()
                 End If
 

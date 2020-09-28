@@ -143,7 +143,7 @@ Public Class fkategoribarang
         Else
             Try
                 Call koneksii()
-                sql = "INSERT INTO tb_kategori_barang (kode_kategori, nama_kategori, selisih_kategori, keterangan_kategori, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "','" & selisihharga & "', '" & txtketerangan.Text & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                sql = "INSERT INTO tb_kategori_barang (kode_kategori, nama_kategori, selisih_kategori, keterangan_kategori, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "','" & selisihharga & "', '" & txtketerangan.Text & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
@@ -209,7 +209,7 @@ Public Class fkategoribarang
     Sub perbaharui()
         Try
             Call koneksii()
-            sql = "UPDATE tb_kategori_barang SET kode_kategori='" & txtkode.Text & "', nama_kategori='" & txtnama.Text & "', selisih_kategori='" & selisihharga & "', keterangan_kategori='" & txtketerangan.Text & "', updated_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE id='" & idkategoriedit & "'"
+            sql = "UPDATE tb_kategori_barang SET kode_kategori='" & txtkode.Text & "', nama_kategori='" & txtnama.Text & "', selisih_kategori='" & selisihharga & "', keterangan_kategori='" & txtketerangan.Text & "', updated_by='" & fmenu.namauser.Text & "', last_updated= now()  WHERE id='" & idkategoriedit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")

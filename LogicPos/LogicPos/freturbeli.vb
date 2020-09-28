@@ -631,7 +631,7 @@ Public Class freturbeli
             myCommand.ExecuteNonQuery()
 
             For i As Integer = 0 To GridView1.RowCount - 1
-                myCommand.CommandText = "INSERT INTO tb_pembelian_detail ( kode_pembelian, kode_barang, kode_stok, nama_barang,  jenis_barang, satuan_barang, qty, harga_beli, subtotal, created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "harga_beli") & "','" & GridView1.GetRowCellValue(i, "subtotal") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_pembelian_detail ( kode_pembelian, kode_barang, kode_stok, nama_barang,  jenis_barang, satuan_barang, qty, harga_beli, subtotal, created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "harga_beli") & "','" & GridView1.GetRowCellValue(i, "subtotal") & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
@@ -644,12 +644,12 @@ Public Class freturbeli
             myCommand.ExecuteNonQuery()
 
             For i As Integer = 0 To GridView2.RowCount - 1
-                myCommand.CommandText = "INSERT INTO tb_retur_pembelian_detail (kode_retur, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty, harga_beli, subtotal, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturbeli & "','" & GridView2.GetRowCellValue(i, "kode_barang") & "','" & GridView2.GetRowCellValue(i, "kode_stok") & "','" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView2.GetRowCellValue(i, "harga_beli") & "','" & GridView2.GetRowCellValue(i, "subtotal") & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_retur_pembelian_detail (kode_retur, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty, harga_beli, subtotal, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturbeli & "','" & GridView2.GetRowCellValue(i, "kode_barang") & "','" & GridView2.GetRowCellValue(i, "kode_stok") & "','" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView2.GetRowCellValue(i, "harga_beli") & "','" & GridView2.GetRowCellValue(i, "subtotal") & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
 
-            myCommand.CommandText = "INSERT INTO tb_retur_pembelian (kode_retur, kode_user, kode_pembelian, tgl_returbeli, print_returbeli, posted_returbeli, keterangan_returbeli, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturbeli & "','" & cmbsales.Text & "','" & txtnonota.Text & "','" & Format(dtreturbeli.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "', now() , now())"
+            myCommand.CommandText = "INSERT INTO tb_retur_pembelian (kode_retur, kode_user, kode_pembelian, tgl_returbeli, print_returbeli, posted_returbeli, keterangan_returbeli, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturbeli & "','" & cmbsales.Text & "','" & txtnonota.Text & "','" & Format(dtreturbeli.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "', now() , now())"
             myCommand.ExecuteNonQuery()
 
             myTrans.Commit()
@@ -793,7 +793,7 @@ Public Class freturbeli
         rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
 
         rpt_faktur.SetParameterValue("nofaktur", txtnoretur.Text)
-        rpt_faktur.SetParameterValue("namakasir", fmenu.statususer.Text)
+        rpt_faktur.SetParameterValue("namakasir", fmenu.namauser.Text)
         rpt_faktur.SetParameterValue("supplier", txtsupplier.Text)
         rpt_faktur.SetParameterValue("alamat", txtalamat.Text)
         rpt_faktur.SetParameterValue("tanggal", Format(dtreturbeli.Value, "dd MMMM yyyy HH:mm:ss").ToString)

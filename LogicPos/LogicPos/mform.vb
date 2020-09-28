@@ -23,6 +23,7 @@
         fmenu.TransaksiMenu.DropDownItems.Item(4).Visible = False
         fmenu.TransaksiMenu.DropDownItems.Item(5).Visible = False
         fmenu.TransaksiMenu.DropDownItems.Item(6).Visible = False
+        fmenu.TransaksiMenu.DropDownItems.Item(7).Visible = False
 
         fmenu.AdministrasiMenu.DropDownItems.Item(0).Visible = False
         fmenu.AdministrasiMenu.DropDownItems.Item(1).Visible = False
@@ -46,7 +47,12 @@
         fmenu.LaporanMenu.DropDownItems.Item(13).Visible = False
         fmenu.LaporanMenu.DropDownItems.Item(14).Visible = False
         fmenu.LaporanMenu.DropDownItems.Item(15).Visible = False
+        fmenu.LaporanMenu.DropDownItems.Item(16).Visible = False
+        fmenu.LaporanMenu.DropDownItems.Item(17).Visible = False
+        fmenu.LaporanMenu.DropDownItems.Item(18).Visible = False
+        fmenu.LaporanMenu.DropDownItems.Item(19).Visible = False
+        fmenu.LaporanMenu.DropDownItems.Item(20).Visible = False
 
-        fmenu.SettingMenu.DropDownItems.Item(0).Visible = False
+        'fmenu.SettingMenu.DropDownItems.Item(0).Visible = False
     End Sub
 End Module
