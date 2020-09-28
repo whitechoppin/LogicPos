@@ -1,7 +1,7 @@
 ﻿Imports System.Data.Odbc
 
 Public Class frekeningpelanggan
-    Public idpelanggan, idrekening As String
+    Public idpelanggan, idrekening, norekening As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
     Private Sub frekeningpelanggan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -64,13 +64,13 @@ Public Class frekeningpelanggan
         txtnorekening.Enabled = True
         txtnamarekening.Enabled = True
         txtketeranganrekening.Enabled = True
-        txtnamarekening.Focus()
+        txtnamabank.Focus()
     End Sub
     Sub index()
-        txtnamarekening.TabIndex = 0
-        txtnorekening.TabIndex = 1
-        txtnamabank.TabIndex = 2
-        txtketeranganrekening.TabIndex = 3
+        txtnamabank.TabIndex = 1
+        txtnorekening.TabIndex = 2
+        txtnamarekening.TabIndex = 3
+        txtketeranganrekening.TabIndex = 4
     End Sub
 
     Sub isitabel()
@@ -110,19 +110,28 @@ Public Class frekeningpelanggan
 
     Sub simpan()
         Call koneksii()
-        sql = "SELECT * FROM tb_rekening_pelanggan WHERE nomor_rekening  = '" + txtnorekening.Text + "'"
+        sql = "SELECT * FROM tb_rekening_pelanggan JOIN tb_pelanggan ON tb_rekening_pelanggan.pelanggan_id = tb_pelanggan.id WHERE nomor_rekening = '" + txtnorekening.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            MsgBox("Nomor Rekening Sudah ada dengan nama " + dr("nama_customer"), MsgBoxStyle.Information, "Pemberitahuan")
+            MsgBox("Nomor Rekening Sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
-            sql = "INSERT INTO tb_rekening_pelanggan (nomor_rekening, nama_bank, nama_rekening, keterangan_rekening, pelanggan_id, created_by, update_by,date_created,last_updated) VALUES ('" & txtnorekening.Text & "', '" & txtnamabank.Text & "','" & txtnamarekening.Text & "','" & txtketeranganrekening.Text & "','" & idpelanggan & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-            btntambah.Text = "Tambah"
-            Me.Refresh()
-            Call awal()
+            Try
+                Call koneksii()
+                sql = "INSERT INTO tb_rekening_pelanggan (nomor_rekening, nama_bank, nama_rekening, keterangan_rekening, pelanggan_id, created_by, update_by,date_created,last_updated) VALUES ('" & txtnorekening.Text & "', '" & txtnamabank.Text & "','" & txtnamarekening.Text & "','" & txtketeranganrekening.Text & "','" & idpelanggan & "','" & fmenu.statususer.Text & "','" & fmenu.statususer.Text & "',now(),now())"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+                MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+                btntambah.Text = "Tambah"
+
+                'history user ===========
+                Call historysave("Menyimpan Data Rekening Pelanggan Nomor Rekening" + txtnorekening.Text, txtnorekening.Text)
+                '========================
+                Me.Refresh()
+                Call awal()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
     End Sub
 
@@ -162,6 +171,8 @@ Public Class frekeningpelanggan
 
     Private Sub GridControl1_DoubleClick(sender As Object, e As EventArgs) Handles GridControl1.DoubleClick
         idrekening = GridView1.GetFocusedRowCellValue("id")
+        norekening = GridView1.GetFocusedRowCellValue("nomor_rekening")
+
         txtnorekening.Text = GridView1.GetFocusedRowCellValue("nomor_rekening")
         txtnamarekening.Text = GridView1.GetFocusedRowCellValue("nama_rekening")
         txtnamabank.Text = GridView1.GetFocusedRowCellValue("nama_bank")
@@ -180,19 +191,27 @@ Public Class frekeningpelanggan
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If hapusstatus.Equals(True) Then
-            Call koneksii()
             If MessageBox.Show("Hapus " & Me.txtnorekening.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-                sql = "DELETE FROM tb_rekening_pelanggan WHERE  pelanggan_id='" & idpelanggan & "' AND id= '" & idrekening & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader
-                MessageBox.Show("Rekening " + txtnorekening.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Me.Refresh()
-                Call awal()
+                Try
+                    Call koneksii()
+                    sql = "DELETE FROM tb_rekening_pelanggan WHERE pelanggan_id='" & idpelanggan & "' AND id= '" & idrekening & "'"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    MessageBox.Show("Rekening " + txtnorekening.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    'history user ===========
+                    Call historysave("Menghapus Data Rekening Pelanggan Nomor Rekening" + txtnorekening.Text, txtnorekening.Text)
+                    '========================
+
+                    Me.Refresh()
+                    Call awal()
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
             End If
         Else
             MsgBox("Tidak ada akses")
         End If
-
     End Sub
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
@@ -222,16 +241,40 @@ Public Class frekeningpelanggan
             MsgBox("Tidak ada akses")
         End If
     End Sub
-
     Sub edit()
-        Call koneksii()
-        sql = "UPDATE tb_rekening_pelanggan SET nomor_rekening='" & txtnorekening.Text & "', nama_bank='" & txtnamabank.Text & "', nama_rekening='" & txtnamarekening.Text & "', keterangan_rekening='" & txtketeranganrekening.Text & "', update_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE  pelanggan_id='" & idpelanggan & "' AND id= '" & idrekening & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
-        btnedit.Text = "Edit"
+        If txtnorekening.Text.Equals(norekening) Then
+            Call perbaharui()
+        Else
+            Call koneksii()
+            sql = "SELECT * FROM tb_rekening_pelanggan JOIN tb_pelanggan ON tb_rekening_pelanggan.pelanggan_id = tb_pelanggan.id WHERE nomor_rekening ='" + norekening + "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                MsgBox("Data Rekening sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
+                txtnorekening.Focus()
+            Else
+                Call perbaharui()
+            End If
+        End If
+    End Sub
 
-        Me.Refresh()
-        Call awal()
+    Sub perbaharui()
+        Try
+            Call koneksii()
+            sql = "UPDATE tb_rekening_pelanggan SET nomor_rekening='" & txtnorekening.Text & "', nama_bank='" & txtnamabank.Text & "', nama_rekening='" & txtnamarekening.Text & "', keterangan_rekening='" & txtketeranganrekening.Text & "', update_by='" & fmenu.statususer.Text & "', last_updated= now()  WHERE pelanggan_id='" & idpelanggan & "' AND id= '" & idrekening & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
+            btnedit.Text = "Edit"
+
+            'history user ==========
+            Call historysave("Mengedit Data Rekening Pelanggan Nomor Rekening " + txtnorekening.Text, txtnorekening.Text)
+            '=======================
+
+            Me.Refresh()
+            Call awal()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class
