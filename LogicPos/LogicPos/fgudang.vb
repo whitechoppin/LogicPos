@@ -310,6 +310,7 @@ Public Class fgudang
     Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
         kodegudangedit = GridView.GetFocusedRowCellValue("kode_gudang")
         txtkode.Text = kodegudangedit
+
         idgudangedit = GridView.GetFocusedRowCellValue("id")
         txtnama.Text = GridView.GetFocusedRowCellValue("nama_gudang")
         txtalamat.Text = GridView.GetFocusedRowCellValue("alamat_gudang")

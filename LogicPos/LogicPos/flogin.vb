@@ -129,6 +129,11 @@ Public Class flogin
 
     Sub procced()
         Call koneksii()
+        sql = "DELETE FROM tb_status_user WHERE kode_user='" & txtusername.Text & "' AND computer_id='" & CPUIDPOS & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+
+        Call koneksii()
         sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtusername.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
