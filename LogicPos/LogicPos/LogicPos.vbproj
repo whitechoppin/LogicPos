@@ -1581,6 +1581,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Graphicloads-Seo-Services-Conversion.ico" />
     <Content Include="logo.ico" />
     <Content Include="Untitled-1.ico" />
   </ItemGroup>

@@ -75,8 +75,6 @@ Public Class fgudang
         txttelp.Clear()
         txtketerangan.Clear()
 
-        Call koneksii()
-
         txtkode.Enabled = False
         btnauto.Enabled = False
         btngenerate.Enabled = False

@@ -107,7 +107,6 @@ Public Class fbarang
         txtgbr.Text = ""
         PictureBox.Image = ImageList.Images(0)
         btnupload.Enabled = False
-        cnn.Close()
     End Sub
 
     Sub comboboxkategori()

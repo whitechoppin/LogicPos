@@ -29,6 +29,7 @@ Public Class fkas
     Private Sub fkas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
+
         Select Case kodeakses
             Case 1
                 tambahstatus = True
@@ -98,8 +99,6 @@ Public Class fkas
         txtrekening.Clear()
         txtketerangan.Clear()
 
-        Call koneksii()
-
         cbjeniskas.Enabled = False
         txtkode.Enabled = False
         btnauto.Enabled = False
@@ -125,29 +124,34 @@ Public Class fkas
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+
         GridControl.DataSource = Nothing
         GridControl.DataSource = ds.Tables(0)
 
         GridColumn1.Caption = "Kode Kas"
-        GridColumn1.Width = 100
+        GridColumn1.Width = 20
         GridColumn1.FieldName = "kode_kas"
 
         GridColumn2.Caption = "Nama Kas"
-        GridColumn2.Width = 200
+        GridColumn2.Width = 60
         GridColumn2.FieldName = "nama_kas"
 
         GridColumn3.Caption = "Jenis Kas"
         GridColumn3.FieldName = "jenis_kas"
-        GridColumn3.Width = 100
+        GridColumn3.Width = 20
 
         GridColumn4.Caption = "Keterangan Kas"
         GridColumn4.FieldName = "keterangan_kas"
-        GridColumn4.Width = 300
+        GridColumn4.Width = 60
 
-        GridColumn5.Caption = "id"
-        GridColumn5.Width = 25
-        GridColumn5.FieldName = "id"
-        GridColumn5.Visible = False
+        GridColumn5.Caption = "Rekening Kas"
+        GridColumn5.Width = 40
+        GridColumn5.FieldName = "rekening_kas"
+
+        GridColumn6.Caption = "id"
+        GridColumn6.Width = 10
+        GridColumn6.FieldName = "id"
+        GridColumn6.Visible = False
     End Sub
     Sub index()
         txtkode.TabIndex = 1
@@ -170,7 +174,7 @@ Public Class fkas
     End Sub
     Sub simpan()
         Call koneksii()
-        sql = "SELECT * FROM tb_kas WHERE kode_kas  = '" + txtkode.Text + "'"
+        sql = "SELECT * FROM tb_kas WHERE kode_kas ='" + txtkode.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
@@ -178,7 +182,7 @@ Public Class fkas
         Else
             Try
                 Call koneksii()
-                sql = "INSERT INTO tb_kas(kode_kas, nama_kas, keterangan_kas, jenis_kas, rekening_kas, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & cbjeniskas.Text & "','" & txtrekening.Text & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
+                sql = "INSERT INTO tb_kas(kode_kas, nama_kas, keterangan_kas, jenis_kas, rekening_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & cbjeniskas.Text & "','" & txtrekening.Text & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -198,7 +202,6 @@ Public Class fkas
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If hapusstatus.Equals(True) Then
-
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 Try
                     Call koneksii()
@@ -227,10 +230,11 @@ Public Class fkas
         kodekasedit = GridView1.GetFocusedRowCellValue("kode_kas")
 
         txtkode.Text = kodekasedit
-        kodekasedit = GridView1.GetFocusedRowCellValue("kode_kas")
         txtnama.Text = GridView1.GetFocusedRowCellValue("nama_kas")
-        cbjeniskas.Text = GridView1.GetFocusedRowCellValue("saldo_awal")
+        cbjeniskas.Text = GridView1.GetFocusedRowCellValue("jenis_kas")
+        txtrekening.Text = GridView1.GetFocusedRowCellValue("rekening_kas")
         txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_kas")
+
         btnedit.Enabled = True
         btnbatal.Enabled = True
         btnhapus.Enabled = True
@@ -248,7 +252,7 @@ Public Class fkas
             Call perbaharui()
         Else
             Call koneksii()
-            sql = "SELECT * FROM tb_kas WHERE kode_kas = '" + txtkode.Text + "'"
+            sql = "SELECT * FROM tb_kas WHERE kode_kas ='" + txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
@@ -338,6 +342,10 @@ Public Class fkas
         Else
             MsgBox("Tidak ada akses")
         End If
+    End Sub
+
+    Private Sub txtkode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkode.KeyPress
+        e.Handled = ValidAngkaHuruf(e)
     End Sub
 
     Private Sub fkas_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

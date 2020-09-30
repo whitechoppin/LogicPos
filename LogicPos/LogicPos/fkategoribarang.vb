@@ -29,6 +29,7 @@ Public Class fkategoribarang
     Private Sub fkategoribarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
+
         Select Case kodeakses
             Case 1
                 tambahstatus = True

@@ -225,44 +225,53 @@ Public Class fpricelist
             MsgBox("Harga Sudah ada")
             Exit Sub
         Else
-            Call koneksii()
-            sql = "INSERT INTO tb_price_group(barang_id, pelanggan_id, harga_jual) VALUES('" & idbarang & "', '" & idpelanggan & "', '" & hargabarang & "')"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            MsgBox("Data Tersimpan")
+            Try
+                Call koneksii()
+                sql = "INSERT INTO tb_price_group(barang_id, pelanggan_id, harga_jual) VALUES('" & idbarang & "', '" & idpelanggan & "', '" & hargabarang & "')"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
 
-            'history user ==========
-            Call historysave("Menyimpan Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
-            '========================
+                'history user ==========
+                Call historysave("Menyimpan Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
+                '========================
 
-            Call resetbarang()
+                Call resetbarang()
+                Call caricust()
+
+                MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Success")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
-        Call caricust()
     End Sub
 
     Sub save_exist_item()
-        Call koneksii()
-        sql = "UPDATE tb_price_group SET harga_jual='" & hargabarang & "',updated_by='" & fmenu.namauser.Text & "', last_updated=now() WHERE id='" & idprice & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader
+        Try
+            Call koneksii()
+            sql = "UPDATE tb_price_group SET harga_jual='" & hargabarang & "',updated_by='" & fmenu.namauser.Text & "', last_updated=now() WHERE id='" & idprice & "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
 
-        'history user ==========
-        Call historysave("Mengedit Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
-        '========================
+            'history user ==========
+            Call historysave("Mengedit Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
+            '========================
 
-        Call resetbarang()
-        Call caricust()
+            Call resetbarang()
+            Call caricust()
 
-        MsgBox("Data Terupdate", MsgBoxStyle.Information, "Success")
+            MsgBox("Data Terupdate", MsgBoxStyle.Information, "Success")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If tambahstatus.Equals(True) Then
             If txtkodecus.Text.Length = 0 Then
-                MsgBox("Customer Belum Di pilih")
+                MsgBox("Pelanggan Belum Di isi")
             Else
                 If txtkode.Text.Length = 0 Then
-                    MsgBox("Item Belum Di isi")
+                    MsgBox("Kode Barang Belum Di isi")
                 Else
                     If txtharga.Text.Length = 0 Then
                         MsgBox("Harga jual Belum Di isi")
@@ -293,18 +302,22 @@ Public Class fpricelist
 
     Sub hapus()
         If MessageBox.Show("Hapus data price barang " & txtkode.Text & " untuk pelanggan " & txtnamacus.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            Call koneksii()
-            sql = "DELETE FROM tb_price_group WHERE id='" & idprice & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
+            Try
+                Call koneksii()
+                sql = "DELETE FROM tb_price_group WHERE id='" & idprice & "'"
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader
 
-            MessageBox.Show(txtnama.Text + " Berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show(txtnama.Text + " Berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            'history user ==========
-            Call historysave("Menghapus Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
-            '========================
-            Me.Refresh()
-            Call awal()
+                'history user ==========
+                Call historysave("Menghapus Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
+                '========================
+                Me.Refresh()
+                Call awal()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
@@ -350,7 +363,7 @@ Public Class fpricelist
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If editstatus.Equals(True) Then
             If txtkodecus.Text.Length = 0 Then
-                MsgBox("Customer Belum Di pilih")
+                MsgBox("Pelanggan Belum Di isi")
             Else
                 If txtkode.Text.Length = 0 Then
                     MsgBox("Item Belum Di isi")
