@@ -593,40 +593,36 @@ Public Class ftransferkas
     End Sub
     Sub cari()
         txtkodetransfer.Text = GridView1.GetFocusedRowCellValue("kode_transfer_kas")
+        Call koneksii()
+        sql = "SELECT * FROM tb_transfer_kas WHERE kode_transfer_kas  = '" & txtkodetransfer.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        dr.Read()
+        If dr.HasRows Then
+            viewkodesales = dr("kode_user")
+            viewkodedarikas = dr("kode_dari_kas")
+            viewkodekekas = dr("kode_ke_kas")
+            viewtglkas = dr("tanggal_transfer_kas")
+            saldotransfer = dr("saldo_transfer_kas")
+            viewketerangan = dr("keterangan_transfer_kas")
+            statusprint = dr("print_transfer_kas")
+            statusposted = dr("posted_transfer_kas")
 
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_transfer_kas WHERE kode_transfer_kas  = '" & txtkodetransfer.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            cnn.Open()
-            dr = cmmd.ExecuteReader
-            dr.Read()
-            If dr.HasRows Then
-                viewkodesales = dr("kode_user")
-                viewkodedarikas = dr("kode_dari_kas")
-                viewkodekekas = dr("kode_ke_kas")
-                viewtglkas = dr("tanggal_transfer_kas")
-                saldotransfer = dr("saldo_transfer_kas")
-                viewketerangan = dr("keterangan_transfer_kas")
-                statusprint = dr("print_transfer_kas")
-                statusposted = dr("posted_transfer_kas")
+            cmbsales.Text = viewkodesales
+            cmbdarikas.Text = viewkodedarikas
+            cmbkekas.Text = viewkodekekas
+            dttransaksi.Value = viewtglkas
+            txtsaldotransfer.Text = Format(saldotransfer, "##,##0")
+            txtketerangantransfer.Text = viewketerangan
+            cbprinted.Checked = statusprint
+            cbposted.Checked = statusposted
 
-                cmbsales.Text = viewkodesales
-                cmbdarikas.Text = viewkodedarikas
-                cmbkekas.Text = viewkodekekas
-                dttransaksi.Value = viewtglkas
-                txtsaldotransfer.Text = Format(saldotransfer, "##,##0")
-                txtketerangantransfer.Text = viewketerangan
-                cbprinted.Checked = statusprint
-                cbposted.Checked = statusposted
-
-                btnedit.Enabled = True
-                btnbatal.Enabled = True
-                btnhapus.Enabled = True
-                btntambah.Enabled = False
-                btntambah.Text = "Tambah"
-            End If
-            cnn.Close()
-        End Using
+            btnedit.Enabled = True
+            btnbatal.Enabled = True
+            btnhapus.Enabled = True
+            btntambah.Enabled = False
+            btntambah.Text = "Tambah"
+        End If
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick

@@ -29,17 +29,15 @@ Public Class fcaribarang
     End Sub
     Sub tabel()
         If tutupcaribarang > 0 Then
-            Using cnn As New OdbcConnection(strConn)
-                sql = "SELECT tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.satuan_barang, tb_barang.jenis_barang from tb_barang "
-                da = New OdbcDataAdapter(sql, cnn)
-                cnn.Open()
-                ds = New DataSet
-                da.Fill(ds)
-                GridControl1.DataSource = Nothing
-                GridControl1.DataSource = ds.Tables(0)
-                Call grid()
-                cnn.Close()
-            End Using
+            Call koneksii()
+            sql = "SELECT tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.satuan_barang, tb_barang.jenis_barang from tb_barang "
+            da = New OdbcDataAdapter(sql, cnn)
+            cnn.Open()
+            ds = New DataSet
+            da.Fill(ds)
+            GridControl1.DataSource = Nothing
+            GridControl1.DataSource = ds.Tables(0)
+            Call grid()
         End If
 
     End Sub

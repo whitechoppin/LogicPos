@@ -1,53 +1,62 @@
 ﻿Imports System.Data.Odbc
 
 Module koneksi
-    'koneksi
     Public cnn As New OdbcConnection
     Public cnnx As New OdbcConnection
+
     Public cmmd As OdbcCommand
+
     Public dr As OdbcDataReader
+
     Public drpenjualan As OdbcDataReader
     Public drpembelian As OdbcDataReader
+
     Public drlunaspenjualan As OdbcDataReader
     Public drlunaspembelian As OdbcDataReader
 
     Public sql As String
     Public da As OdbcDataAdapter
     Public ds As DataSet
-    Public strConn As String = "DSN=dsn_logicpos"
     '=========================
 
     'counter printing
-
     Dim counter As Integer
-
     '=========================
 
     Public Sub koneksii()
-        Dim keluar As MsgBoxResult
-        'cnn = New OdbcConnection(strConn)
-        'If cnn.State <> ConnectionState.Closed Then cnn.Close()
-        'cnn.Open()
+        Dim status As MsgBoxResult
         Try
             'untuk koneksi biasa : select atau delete data gak penting
-            cnn = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
-            'untuk koneksi data berbasis transaksi : sekali save query > 1 query
-            cnnx = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
-
             If cnn.State = ConnectionState.Closed Then
+                cnn = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
                 cnn.Open()
             End If
 
+            'untuk koneksi data berbasis transaksi : sekali save query > 1 query
             If cnnx.State = ConnectionState.Closed Then
+                cnnx = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
                 cnnx.Open()
             End If
         Catch ex As Exception
             MsgBox("Koneksi ke Database bermasalah, Periksa koneksi Jaringan Anda.")
-            keluar = MsgBox("Aplikasi akan di Close karena tidak terkoneksi database.", MsgBoxStyle.OkOnly, "Peringatan!!!")
-            If keluar = MsgBoxResult.Ok Then
+            status = MsgBox("Refresh koneksi database logicpos ?", MsgBoxStyle.YesNo, "Peringatan !")
+            If status = MsgBoxResult.Yes Then
+                Call koneksii()
+            Else
                 End
             End If
         End Try
+    End Sub
+
+    Public Sub diskoneksii()
+        If cnn.State = ConnectionState.Open Then
+            cnn.Close()
+        End If
+
+        'untuk koneksi data berbasis transaksi : sekali save query > 1 query
+        If cnnx.State = ConnectionState.Open Then
+            cnnx.Close()
+        End If
     End Sub
 
     Public Sub historysave(keterangan As String, kode As String)

@@ -365,43 +365,40 @@ Public Class freturjual
         txtketerangan.Clear()
 
         If nomorkode IsNot "" Then
-            Using cnn As New OdbcConnection(strConn)
-                sql = "SELECT * FROM tb_retur_penjualan WHERE kode_retur = '" + nomorkode.ToString + "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                cnn.Open()
-                dr = cmmd.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    'header
-                    nomorretur = dr("kode_retur")
-                    nomorsales = dr("kode_user")
-                    nomornota = dr("kode_penjualan")
-                    viewtglretur = dr("tgl_returjual")
+            Call koneksii()
+            sql = "SELECT * FROM tb_retur_penjualan WHERE kode_retur = '" + nomorkode.ToString + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                'header
+                nomorretur = dr("kode_retur")
+                nomorsales = dr("kode_user")
+                nomornota = dr("kode_penjualan")
+                viewtglretur = dr("tgl_returjual")
 
-                    statusprint = dr("print_returjual")
-                    statusposted = dr("posted_returjual")
+                statusprint = dr("print_returjual")
+                statusposted = dr("posted_returjual")
 
-                    viewketerangan = dr("keterangan_returjual")
+                viewketerangan = dr("keterangan_returjual")
 
-                    txtnoretur.Text = nomorretur
-                    cmbsales.Text = nomorsales
-                    txtnonota.Text = nomornota
-                    dtreturjual.Value = viewtglretur
+                txtnoretur.Text = nomorretur
+                cmbsales.Text = nomorsales
+                txtnonota.Text = nomornota
+                dtreturjual.Value = viewtglretur
 
-                    cbprinted.Checked = statusprint
-                    cbposted.Checked = statusposted
+                cbprinted.Checked = statusprint
+                cbposted.Checked = statusposted
 
-                    'isi tabel view pembelian
+                'isi tabel view pembelian
 
-                    Call previewreturpenjualan(nomornota, nomorkode)
+                Call previewreturpenjualan(nomornota, nomorkode)
 
-                    'total tabel pembelian
+                'total tabel pembelian
 
-                    txtketerangan.Text = viewketerangan
+                txtketerangan.Text = viewketerangan
 
-                    cnn.Close()
-                End If
-            End Using
+            End If
         Else
             txtnoretur.Clear()
             txtnonota.Clear()

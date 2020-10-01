@@ -135,48 +135,46 @@ Public Class fbarang
     End Sub
     Sub isitabel()
         Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_barang JOIN tb_kategori_barang ON tb_barang.kategori_barang_id = tb_kategori_barang.id"
-            da = New OdbcDataAdapter(sql, cnn)
-            ds = New DataSet
+        sql = "SELECT * FROM tb_barang JOIN tb_kategori_barang ON tb_barang.kategori_barang_id = tb_kategori_barang.id"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
 
-            da.Fill(ds)
-            GridControl.DataSource = Nothing
-            GridControl.DataSource = ds.Tables(0)
+        da.Fill(ds)
+        GridControl.DataSource = Nothing
+        GridControl.DataSource = ds.Tables(0)
 
-            GridColumn1.Caption = "Kode"
-            GridColumn1.FieldName = "kode_barang"
-            GridColumn1.Width = 40
+        GridColumn1.Caption = "Kode"
+        GridColumn1.FieldName = "kode_barang"
+        GridColumn1.Width = 40
 
-            GridColumn2.Caption = "Nama Barang"
-            GridColumn2.FieldName = "nama_barang"
-            GridColumn2.Width = 80
+        GridColumn2.Caption = "Nama Barang"
+        GridColumn2.FieldName = "nama_barang"
+        GridColumn2.Width = 80
 
-            GridColumn3.Caption = "Jenis"
-            GridColumn3.FieldName = "jenis_barang"
-            GridColumn3.Width = 40
+        GridColumn3.Caption = "Jenis"
+        GridColumn3.FieldName = "jenis_barang"
+        GridColumn3.Width = 40
 
-            GridColumn4.Caption = "Satuan"
-            GridColumn4.FieldName = "satuan_barang"
-            GridColumn4.Width = 40
+        GridColumn4.Caption = "Satuan"
+        GridColumn4.FieldName = "satuan_barang"
+        GridColumn4.Width = 40
 
-            GridColumn5.Caption = "Modal"
-            GridColumn5.FieldName = "modal_barang"
-            GridColumn5.Width = 60
-            GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-            GridColumn5.DisplayFormat.FormatString = "Rp ##,#0"
+        GridColumn5.Caption = "Modal"
+        GridColumn5.FieldName = "modal_barang"
+        GridColumn5.Width = 60
+        GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn5.DisplayFormat.FormatString = "Rp ##,#0"
 
-            GridColumn6.Caption = "Kategori"
-            GridColumn6.FieldName = "nama_kategori"
-            GridColumn6.Width = 40
+        GridColumn6.Caption = "Kategori"
+        GridColumn6.FieldName = "nama_kategori"
+        GridColumn6.Width = 40
 
-            GridColumn7.Caption = "id"
-            GridColumn7.FieldName = "id"
-            GridColumn7.Width = 30
-            GridColumn7.Visible = False
+        GridColumn7.Caption = "id"
+        GridColumn7.FieldName = "id"
+        GridColumn7.Width = 30
+        GridColumn7.Visible = False
 
-            GridControl.Visible = True
-        End Using
+        GridControl.Visible = True
     End Sub
     Sub enable_text()
         btnauto.Enabled = True

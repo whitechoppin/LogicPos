@@ -562,37 +562,34 @@ Public Class fkaskeluar
     Sub cari()
         txtkodekeluar.Text = GridView1.GetFocusedRowCellValue("kode_kas_keluar")
 
-        Using cnn As New OdbcConnection(strConn)
-            sql = "SELECT * FROM tb_kas_keluar WHERE kode_kas_keluar  = '" & txtkodekeluar.Text & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            cnn.Open()
-            dr = cmmd.ExecuteReader
-            dr.Read()
-            If dr.HasRows Then
-                viewkodesales = dr("kode_user")
-                viewkodekas = dr("kode_kas")
-                viewtglkas = dr("tanggal_transaksi")
-                saldokeluar = dr("saldo_kas")
-                viewketerangan = dr("keterangan_kas")
-                statusprint = dr("print_kas")
-                statusposted = dr("posted_kas")
+        Call koneksii()
+        sql = "SELECT * FROM tb_kas_keluar WHERE kode_kas_keluar  = '" & txtkodekeluar.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        dr.Read()
+        If dr.HasRows Then
+            viewkodesales = dr("kode_user")
+            viewkodekas = dr("kode_kas")
+            viewtglkas = dr("tanggal_transaksi")
+            saldokeluar = dr("saldo_kas")
+            viewketerangan = dr("keterangan_kas")
+            statusprint = dr("print_kas")
+            statusposted = dr("posted_kas")
 
-                cmbsales.Text = viewkodesales
-                cmbkas.Text = viewkodekas
-                dttransaksi.Value = viewtglkas
-                txtsaldokeluar.Text = Format(saldokeluar, "##,##0")
-                txtketerangan.Text = viewketerangan
-                cbprinted.Checked = statusprint
-                cbposted.Checked = statusposted
+            cmbsales.Text = viewkodesales
+            cmbkas.Text = viewkodekas
+            dttransaksi.Value = viewtglkas
+            txtsaldokeluar.Text = Format(saldokeluar, "##,##0")
+            txtketerangan.Text = viewketerangan
+            cbprinted.Checked = statusprint
+            cbposted.Checked = statusposted
 
-                btnedit.Enabled = True
-                btnbatal.Enabled = True
-                btnhapus.Enabled = True
-                btntambah.Enabled = False
-                btntambah.Text = "Tambah"
-            End If
-            cnn.Close()
-        End Using
+            btnedit.Enabled = True
+            btnbatal.Enabled = True
+            btnhapus.Enabled = True
+            btntambah.Enabled = False
+            btntambah.Text = "Tambah"
+        End If
     End Sub
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick

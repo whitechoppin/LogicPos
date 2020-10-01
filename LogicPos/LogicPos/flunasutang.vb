@@ -408,50 +408,48 @@ Public Class flunasutang
         Call tabel_utama()
 
         If nomorkode IsNot "" Then
-            Using cnn As New OdbcConnection(strConn)
-                sql = "SELECT * FROM tb_pelunasan_utang WHERE kode_lunas = '" + nomorkode.ToString + "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                cnn.Open()
-                dr = cmmd.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    'header
-                    viewkodelunas = dr("kode_lunas")
-                    viewkodesales = dr("kode_user")
-                    viewkodesupplier = dr("kode_supplier")
-                    viewkodebayar = dr("kode_kas")
-                    viewtglpelunasan = dr("tanggal_transaksi")
-                    viewtotallunas = dr("bayar_lunas")
-                    viewnobukti = dr("no_bukti")
+            Call koneksii()
+            sql = "SELECT * FROM tb_pelunasan_utang WHERE kode_lunas = '" + nomorkode.ToString + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                'header
+                viewkodelunas = dr("kode_lunas")
+                viewkodesales = dr("kode_user")
+                viewkodesupplier = dr("kode_supplier")
+                viewkodebayar = dr("kode_kas")
+                viewtglpelunasan = dr("tanggal_transaksi")
+                viewtotallunas = dr("bayar_lunas")
+                viewnobukti = dr("no_bukti")
 
-                    statusvoid = dr("void_lunas")
-                    statusprint = dr("print_lunas")
-                    statusposted = dr("posted_lunas")
+                statusvoid = dr("void_lunas")
+                statusprint = dr("print_lunas")
+                statusposted = dr("posted_lunas")
 
-                    viewketerangan = dr("keterangan_lunas")
+                viewketerangan = dr("keterangan_lunas")
 
-                    txtnolunasutang.Text = viewkodelunas
-                    cmbsales.Text = viewkodesales
-                    cmbsupplier.Text = viewkodesupplier
-                    cmbbayar.Text = viewkodebayar
-                    txttotalbayar.Text = viewtotallunas
-                    txtbukti.Text = viewnobukti
+                txtnolunasutang.Text = viewkodelunas
+                cmbsales.Text = viewkodesales
+                cmbsupplier.Text = viewkodesupplier
+                cmbbayar.Text = viewkodebayar
+                txttotalbayar.Text = viewtotallunas
+                txtbukti.Text = viewnobukti
 
-                    cbvoid.Checked = statusvoid
-                    cbprinted.Checked = statusprint
-                    cbposted.Checked = statusposted
+                cbvoid.Checked = statusvoid
+                cbprinted.Checked = statusprint
+                cbposted.Checked = statusposted
 
-                    dtpelunasan.Value = viewtglpelunasan
+                dtpelunasan.Value = viewtglpelunasan
 
-                    'isi tabel view pembelian
+                'isi tabel view pembelian
 
-                    Call previewpelunasan(nomorkode)
+                Call previewpelunasan(nomorkode)
 
-                    'total tabel pembelian
+                'total tabel pembelian
 
-                    txtketerangan.Text = viewketerangan
-                End If
-            End Using
+                txtketerangan.Text = viewketerangan
+            End If
         Else
             cbvoid.Checked = False
             cbprinted.Checked = False

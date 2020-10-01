@@ -537,46 +537,43 @@ Public Class fbarangkeluar
         Call comboboxgudang()
 
         If nomorkode IsNot "" Then
-            Using cnn As New OdbcConnection(strConn)
-                sql = "SELECT * FROM tb_barang_keluar WHERE kode_barang_keluar = '" + nomorkode.ToString + "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                cnn.Open()
-                dr = cmmd.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    'header
-                    nomornota = dr("kode_barang_keluar")
-                    nomorcustomer = dr("kode_pelanggan")
-                    nomorsales = dr("kode_user")
-                    nomorgudang = dr("kode_gudang")
+            Call koneksii()
+            sql = "SELECT * FROM tb_barang_keluar WHERE kode_barang_keluar = '" + nomorkode.ToString + "'"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                'header
+                nomornota = dr("kode_barang_keluar")
+                nomorcustomer = dr("kode_pelanggan")
+                nomorsales = dr("kode_user")
+                nomorgudang = dr("kode_gudang")
 
-                    statusprint = dr("print_barang_keluar")
-                    statusposted = dr("posted_barang_keluar")
+                statusprint = dr("print_barang_keluar")
+                statusposted = dr("posted_barang_keluar")
 
-                    viewtglbarangkeluar = dr("tgl_barang_keluar")
-                    viewketerangan = dr("keterangan_barang_keluar")
+                viewtglbarangkeluar = dr("tgl_barang_keluar")
+                viewketerangan = dr("keterangan_barang_keluar")
 
-                    txtnonota.Text = nomornota
-                    cmbcustomer.Text = nomorcustomer
-                    cmbsales.Text = nomorsales
-                    cmbgudang.Text = nomorgudang
+                txtnonota.Text = nomornota
+                cmbcustomer.Text = nomorcustomer
+                cmbsales.Text = nomorsales
+                cmbgudang.Text = nomorgudang
 
-                    cbprinted.Checked = statusprint
-                    cbposted.Checked = statusposted
+                cbprinted.Checked = statusprint
+                cbposted.Checked = statusposted
 
-                    dtbarangkeluar.Value = viewtglbarangkeluar
+                dtbarangkeluar.Value = viewtglbarangkeluar
 
-                    'isi tabel view pembelian
+                'isi tabel view pembelian
 
-                    Call previewbarangkeluar(nomorkode)
+                Call previewbarangkeluar(nomorkode)
 
-                    'total tabel pembelian
+                'total tabel pembelian
 
-                    txtketerangan.Text = viewketerangan
+                txtketerangan.Text = viewketerangan
 
-                    cnn.Close()
-                End If
-            End Using
+            End If
         Else
             txtnonota.Clear()
             cmbcustomer.Text = ""

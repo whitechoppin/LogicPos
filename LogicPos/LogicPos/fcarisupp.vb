@@ -14,18 +14,15 @@ Public Class fcarisupp
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        'Call koneksii()
-        Using cnn As New OdbcConnection(strConn)
-            sql = "Select tb_supplier.kode_supplier, tb_supplier.nama_supplier from tb_supplier"
-            da = New OdbcDataAdapter(sql, cnn)
-            cnn.Open()
-            ds = New DataSet
-            da.Fill(ds)
-            GridControl1.DataSource = Nothing
-            GridControl1.DataSource = ds.Tables(0)
-            Call grid()
-            cnn.Close()
-        End Using
+        Call koneksii()
+        sql = "Select tb_supplier.kode_supplier, tb_supplier.nama_supplier from tb_supplier"
+        da = New OdbcDataAdapter(sql, cnn)
+        cnn.Open()
+        ds = New DataSet
+        da.Fill(ds)
+        GridControl1.DataSource = Nothing
+        GridControl1.DataSource = ds.Tables(0)
+        Call grid()
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupsup = 1 Then
