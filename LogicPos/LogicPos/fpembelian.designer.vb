@@ -75,8 +75,6 @@ Partial Class fpembelian
         Me.Label13 = New System.Windows.Forms.Label()
         Me.dtpembelian = New System.Windows.Forms.DateTimePicker()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.cmbbayar = New System.Windows.Forms.ComboBox()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.cbppn = New System.Windows.Forms.CheckBox()
         Me.cbdiskon = New System.Windows.Forms.CheckBox()
         Me.txtdiskonpersen = New System.Windows.Forms.TextBox()
@@ -210,6 +208,7 @@ Partial Class fpembelian
         '
         'txtnamabarang
         '
+        Me.txtnamabarang.Enabled = False
         Me.txtnamabarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnamabarang.Location = New System.Drawing.Point(274, 300)
         Me.txtnamabarang.Margin = New System.Windows.Forms.Padding(4)
@@ -692,28 +691,6 @@ Partial Class fpembelian
         Me.Label12.TabIndex = 16
         Me.Label12.Text = "Tgl Pembelian"
         '
-        'cmbbayar
-        '
-        Me.cmbbayar.BackColor = System.Drawing.SystemColors.Window
-        Me.cmbbayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.cmbbayar.FormattingEnabled = True
-        Me.cmbbayar.Location = New System.Drawing.Point(20, 122)
-        Me.cmbbayar.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbbayar.Name = "cmbbayar"
-        Me.cmbbayar.Size = New System.Drawing.Size(343, 26)
-        Me.cmbbayar.TabIndex = 35
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label11.Location = New System.Drawing.Point(18, 93)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(152, 18)
-        Me.Label11.TabIndex = 26
-        Me.Label11.Text = "Pembayaran Dari Kas"
-        '
         'cbppn
         '
         Me.cbppn.AutoSize = True
@@ -1111,8 +1088,6 @@ Partial Class fpembelian
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage2.Controls.Add(Me.Label11)
-        Me.TabPage2.Controls.Add(Me.cmbbayar)
         Me.TabPage2.Controls.Add(Me.Label20)
         Me.TabPage2.Controls.Add(Me.txtnosupplier)
         Me.TabPage2.Location = New System.Drawing.Point(4, 27)
@@ -1267,8 +1242,6 @@ Partial Class fpembelian
     Friend WithEvents txtongkir As TextBox
     Friend WithEvents cbongkir As CheckBox
     Friend WithEvents lblsatuan As Label
-    Friend WithEvents cmbbayar As ComboBox
-    Friend WithEvents Label11 As Label
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents lblsatuanbeli As Label
     Friend WithEvents dtpembelian As DateTimePicker

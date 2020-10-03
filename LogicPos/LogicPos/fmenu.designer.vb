@@ -100,6 +100,11 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
+        Me.kodeuser = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.prefixkode = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.prefixnama = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.prefixemail = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.prefixjabatan = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -486,13 +491,13 @@ Partial Class fmenu
         'ContainerToolStripMenuItem
         '
         Me.ContainerToolStripMenuItem.Name = "ContainerToolStripMenuItem"
-        Me.ContainerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ContainerToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.ContainerToolStripMenuItem.Text = "Container"
         '
         'PengirimanToolStripMenuItem
         '
         Me.PengirimanToolStripMenuItem.Name = "PengirimanToolStripMenuItem"
-        Me.PengirimanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PengirimanToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.PengirimanToolStripMenuItem.Text = "Pengiriman"
         '
         'KonfigurasiDatabaseToolStripMenuItem
@@ -529,7 +534,7 @@ Partial Class fmenu
         'StatusStrip
         '
         Me.StatusStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.namauser, Me.emailuser, Me.jabatanuser, Me.statusjam, Me.statustgl})
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.prefixkode, Me.kodeuser, Me.prefixnama, Me.namauser, Me.prefixemail, Me.emailuser, Me.prefixjabatan, Me.jabatanuser, Me.statusjam, Me.statustgl})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 581)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -546,6 +551,7 @@ Partial Class fmenu
         '
         'emailuser
         '
+        Me.emailuser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.emailuser.Name = "emailuser"
         Me.emailuser.Padding = New System.Windows.Forms.Padding(100, 0, 0, 0)
         Me.emailuser.Size = New System.Drawing.Size(162, 17)
@@ -553,6 +559,7 @@ Partial Class fmenu
         '
         'jabatanuser
         '
+        Me.jabatanuser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.jabatanuser.Name = "jabatanuser"
         Me.jabatanuser.Padding = New System.Windows.Forms.Padding(100, 0, 0, 0)
         Me.jabatanuser.Size = New System.Drawing.Size(173, 17)
@@ -560,14 +567,15 @@ Partial Class fmenu
         '
         'statusjam
         '
+        Me.statusjam.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.statusjam.Name = "statusjam"
         Me.statusjam.Padding = New System.Windows.Forms.Padding(100, 0, 0, 0)
         Me.statusjam.Size = New System.Drawing.Size(128, 17)
         Me.statusjam.Text = "Jam"
-        Me.statusjam.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'statustgl
         '
+        Me.statustgl.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.statustgl.Name = "statustgl"
         Me.statustgl.Padding = New System.Windows.Forms.Padding(50, 0, 0, 0)
         Me.statustgl.Size = New System.Drawing.Size(98, 17)
@@ -586,6 +594,38 @@ Partial Class fmenu
         Me.tabform.Size = New System.Drawing.Size(1050, 23)
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
+        '
+        'kodeuser
+        '
+        Me.kodeuser.Name = "kodeuser"
+        Me.kodeuser.Size = New System.Drawing.Size(60, 17)
+        Me.kodeuser.Text = "Kode User"
+        '
+        'prefixkode
+        '
+        Me.prefixkode.Name = "prefixkode"
+        Me.prefixkode.Size = New System.Drawing.Size(40, 17)
+        Me.prefixkode.Text = "Kode :"
+        '
+        'prefixnama
+        '
+        Me.prefixnama.Name = "prefixnama"
+        Me.prefixnama.Size = New System.Drawing.Size(45, 17)
+        Me.prefixnama.Text = "Nama :"
+        '
+        'prefixemail
+        '
+        Me.prefixemail.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.prefixemail.Name = "prefixemail"
+        Me.prefixemail.Size = New System.Drawing.Size(42, 17)
+        Me.prefixemail.Text = "Email :"
+        '
+        'prefixjabatan
+        '
+        Me.prefixjabatan.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.prefixjabatan.Name = "prefixjabatan"
+        Me.prefixjabatan.Size = New System.Drawing.Size(56, 17)
+        Me.prefixjabatan.Text = "Jabatan : "
         '
         'fmenu
         '
@@ -687,4 +727,9 @@ Partial Class fmenu
     Friend WithEvents LPenjualanPajakToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents emailuser As ToolStripStatusLabel
     Friend WithEvents jabatanuser As ToolStripStatusLabel
+    Friend WithEvents kodeuser As ToolStripStatusLabel
+    Friend WithEvents prefixkode As ToolStripStatusLabel
+    Friend WithEvents prefixnama As ToolStripStatusLabel
+    Friend WithEvents prefixemail As ToolStripStatusLabel
+    Friend WithEvents prefixjabatan As ToolStripStatusLabel
 End Class

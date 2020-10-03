@@ -22,6 +22,7 @@ Partial Class fsupplier
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fsupplier))
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -48,6 +49,7 @@ Partial Class fsupplier
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btngenerate = New System.Windows.Forms.Button()
         Me.btnauto = New System.Windows.Forms.Button()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -318,12 +320,25 @@ Partial Class fsupplier
         Me.btnauto.Text = "Auto"
         Me.btnauto.UseVisualStyleBackColor = True
         '
+        'btnrefresh
+        '
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(18, 264)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(41, 37)
+        Me.btnrefresh.TabIndex = 43
+        Me.btnrefresh.UseVisualStyleBackColor = True
+        '
         'fsupplier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(909, 718)
+        Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.btngenerate)
         Me.Controls.Add(Me.btnauto)
         Me.Controls.Add(Me.Label6)
@@ -380,4 +395,5 @@ Partial Class fsupplier
     Friend WithEvents btngenerate As Button
     Friend WithEvents btnauto As Button
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents btnrefresh As Button
 End Class

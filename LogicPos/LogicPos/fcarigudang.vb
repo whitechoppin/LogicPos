@@ -9,17 +9,26 @@ Public Class fcarigudang
     Sub grid()
         GridColumn1.Caption = "Kode"
         GridColumn1.FieldName = "kode_gudang"
+        GridColumn1.Width = 15
+
         GridColumn2.Caption = "Nama Gudang"
         GridColumn2.FieldName = "nama_gudang"
+        GridColumn2.Width = 35
+
+        GridColumn3.Caption = "Alamat Gudang"
+        GridColumn3.FieldName = "alamat_gudang"
+        GridColumn3.Width = 55
+
         GridControl1.Visible = True
     End Sub
     Sub tabel()
         Call koneksii()
-        sql = "Select tb_gudang.kode_gudang, tb_gudang.nama_gudang from tb_gudang"
+        sql = "SELECT * FROM tb_gudang"
         da = New OdbcDataAdapter(sql, cnn)
-        cnn.Open()
         ds = New DataSet
         da.Fill(ds)
+        da.Dispose()
+
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
         Call grid()

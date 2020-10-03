@@ -124,12 +124,12 @@ Public Class fpassword
 
                 If statuscode = True Then
                     Call koneksii()
-                    sql = "UPDATE tb_password SET status = 1, kode_user='" & fmenu.namauser.Text & "' WHERE  kode_password='" & txtpassword.Text & "'"
+                    sql = "UPDATE tb_password SET status = 1, kode_user='" & fmenu.kodeuser.text & "' WHERE  kode_password='" & txtpassword.Text & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Otorisasi Passcode Diberikan dengan kode " + txtpassword.Text + " Kepada " + fmenu.namauser.Text, kodetabel)
+                    Call historysave("Otorisasi Passcode Diberikan dengan kode " + txtpassword.Text + " Kepada " + fmenu.kodeuser.text, kodetabel)
                     '========================
 
                     txtpassword.Text = ""
@@ -199,7 +199,7 @@ Public Class fpassword
                 End If
 
                 'history user ==========
-                Call historysave("Otorisasi Passcode Diberikan Oleh " + kodeuser + " Kepada " + fmenu.namauser.Text, kodetabel)
+                Call historysave("Otorisasi Passcode Diberikan Oleh " + kodeuser + " Kepada " + fmenu.kodeuser.text, kodetabel)
                 '========================
 
                 txtpassword.Text = ""
@@ -294,7 +294,7 @@ Public Class fpassword
 
                     If statuscode = True Then
                         'history user ==========
-                        Call historysave("Otorisasi Passcode Diberikan Oleh " + kodeuser + " Kepada " + fmenu.namauser.Text, kodetabel)
+                        Call historysave("Otorisasi Passcode Diberikan Oleh " + kodeuser + " Kepada " + fmenu.kodeuser.text, kodetabel)
                         '========================
 
                         txtpassword.Text = ""
@@ -330,7 +330,7 @@ Public Class fpassword
         Call koneksii()
         kodepassword = trueString()
 
-        sql = "INSERT INTO tb_password (kode_password, created_by, date_created) VALUES ('" & kodepassword & "','" & fmenu.namauser.Text & "',now())"
+        sql = "INSERT INTO tb_password (kode_password, created_by, date_created) VALUES ('" & kodepassword & "','" & fmenu.kodeuser.text & "',now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 

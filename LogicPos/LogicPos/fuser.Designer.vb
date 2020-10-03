@@ -22,6 +22,7 @@ Partial Class fuser
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fuser))
         Me.cmbjabatan = New System.Windows.Forms.ComboBox()
         Me.GridControl = New DevExpress.XtraGrid.GridControl()
         Me.GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -148,6 +149,7 @@ Partial Class fuser
         Me.txtmaxprint = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.btnpassword = New System.Windows.Forms.Button()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -319,7 +321,7 @@ Partial Class fuser
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(717, 9)
+        Me.btnbatal.Location = New System.Drawing.Point(657, 9)
         Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(149, 37)
@@ -329,7 +331,7 @@ Partial Class fuser
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(560, 9)
+        Me.btnhapus.Location = New System.Drawing.Point(500, 9)
         Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(149, 37)
@@ -339,7 +341,7 @@ Partial Class fuser
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(403, 9)
+        Me.btnedit.Location = New System.Drawing.Point(343, 9)
         Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnedit.Name = "btnedit"
         Me.btnedit.Size = New System.Drawing.Size(149, 37)
@@ -349,7 +351,7 @@ Partial Class fuser
         '
         'btntambah
         '
-        Me.btntambah.Location = New System.Drawing.Point(246, 9)
+        Me.btntambah.Location = New System.Drawing.Point(186, 9)
         Me.btntambah.Margin = New System.Windows.Forms.Padding(4)
         Me.btntambah.Name = "btntambah"
         Me.btntambah.Size = New System.Drawing.Size(149, 37)
@@ -1682,7 +1684,7 @@ Partial Class fuser
         '
         'btnpassword
         '
-        Me.btnpassword.Location = New System.Drawing.Point(874, 9)
+        Me.btnpassword.Location = New System.Drawing.Point(814, 9)
         Me.btnpassword.Margin = New System.Windows.Forms.Padding(4)
         Me.btnpassword.Name = "btnpassword"
         Me.btnpassword.Size = New System.Drawing.Size(149, 37)
@@ -1690,12 +1692,25 @@ Partial Class fuser
         Me.btnpassword.Text = "Generate Pass"
         Me.btnpassword.UseVisualStyleBackColor = True
         '
+        'btnrefresh
+        '
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(982, 9)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(41, 37)
+        Me.btnrefresh.TabIndex = 108
+        Me.btnrefresh.UseVisualStyleBackColor = True
+        '
         'fuser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1039, 775)
+        Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.btnpassword)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.txtmaxprint)
@@ -1870,4 +1885,5 @@ Partial Class fuser
     Friend WithEvents cblaplabarugi As CheckBox
     Friend WithEvents clblaprekapanakhir As CheckedListBox
     Friend WithEvents cblaprekapanakhir As CheckBox
+    Friend WithEvents btnrefresh As Button
 End Class

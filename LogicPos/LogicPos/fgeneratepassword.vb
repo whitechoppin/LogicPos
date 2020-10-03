@@ -82,7 +82,7 @@ Public Class fgeneratepassword
         For i As Integer = 0 To banyak - 1
             kode = trueString()
 
-            sql = "INSERT INTO tb_password (kode_password, created_by, date_created) VALUES ('" & kode & "','" & fmenu.namauser.Text & "',now())"
+            sql = "INSERT INTO tb_password (kode_password, created_by, date_created) VALUES ('" & kode & "','" & fmenu.kodeuser.Text & "',now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
         Next

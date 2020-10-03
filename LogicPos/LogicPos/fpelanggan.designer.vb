@@ -54,6 +54,7 @@ Partial Class fpelanggan
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btngenerate = New System.Windows.Forms.Button()
         Me.btnauto = New System.Windows.Forms.Button()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -368,12 +369,25 @@ Partial Class fpelanggan
         Me.btnauto.Text = "Auto"
         Me.btnauto.UseVisualStyleBackColor = True
         '
+        'btnrefresh
+        '
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(18, 351)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(41, 37)
+        Me.btnrefresh.TabIndex = 41
+        Me.btnrefresh.UseVisualStyleBackColor = True
+        '
         'fpelanggan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1386, 808)
+        Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.btngenerate)
         Me.Controls.Add(Me.btnauto)
         Me.Controls.Add(Me.Label6)
@@ -438,4 +452,5 @@ Partial Class fpelanggan
     Friend WithEvents btngenerate As Button
     Friend WithEvents btnauto As Button
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents btnrefresh As Button
 End Class

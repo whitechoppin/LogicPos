@@ -138,8 +138,9 @@ Public Class fbarang
         sql = "SELECT * FROM tb_barang JOIN tb_kategori_barang ON tb_barang.kategori_barang_id = tb_kategori_barang.id"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
-
         da.Fill(ds)
+        da.Dispose()
+
         GridControl.DataSource = Nothing
         GridControl.DataSource = ds.Tables(0)
 
@@ -254,8 +255,8 @@ Public Class fbarang
                 cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
                 cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
                 cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
-                cmmd.Parameters.AddWithValue("@created_by", fmenu.namauser.Text)
-                cmmd.Parameters.AddWithValue("@updated_by", fmenu.namauser.Text)
+                cmmd.Parameters.AddWithValue("@created_by", fmenu.kodeuser.Text)
+                cmmd.Parameters.AddWithValue("@updated_by", fmenu.kodeuser.Text)
                 cmmd.Parameters.AddWithValue("@date_created", Date.Now)
                 cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
                 cmmd.ExecuteNonQuery()
@@ -299,7 +300,7 @@ Public Class fbarang
         Dim foto As Byte()
 
         Call koneksii()
-        sql = "SELECT * FROM tb_barang WHERE id = '" + idbarang + "' LIMIT 1"
+        sql = "SELECT * FROM tb_barang WHERE id = '" & idbarang & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()
@@ -399,7 +400,7 @@ Public Class fbarang
             cmmd.Parameters.AddWithValue("@keterangan_barang", txtketerangan.Text)
             cmmd.Parameters.AddWithValue("@modal_barang", hargabarang)
             cmmd.Parameters.AddWithValue("@gambar_barang", ms.ToArray)
-            cmmd.Parameters.AddWithValue("@updated_by", fmenu.namauser.Text)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.kodeuser.Text)
             cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
             cmmd.ExecuteNonQuery()
 
@@ -435,6 +436,10 @@ Public Class fbarang
 
     Private Sub txtkode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkode.KeyPress
         e.Handled = ValidAngkaHuruf(e)
+    End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call isitabel()
     End Sub
 
     Private Sub fbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

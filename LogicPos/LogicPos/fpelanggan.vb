@@ -107,6 +107,7 @@ Public Class fpelanggan
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+        da.Dispose()
 
         GridControl.DataSource = Nothing
         GridControl.DataSource = ds.Tables(0)
@@ -134,6 +135,7 @@ Public Class fpelanggan
         GridColumn6.Caption = "id"
         GridColumn6.Width = 20
         GridColumn6.FieldName = "id"
+        GridColumn6.Visible = False
     End Sub
     Sub index()
         txtkode.TabIndex = 1
@@ -235,8 +237,8 @@ Public Class fpelanggan
                 cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
                 cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
                 cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
-                cmmd.Parameters.AddWithValue("@created_by", fmenu.namauser.Text)
-                cmmd.Parameters.AddWithValue("@updated_by", fmenu.namauser.Text)
+                cmmd.Parameters.AddWithValue("@created_by", fmenu.kodeuser.text)
+                cmmd.Parameters.AddWithValue("@updated_by", fmenu.kodeuser.text)
                 cmmd.Parameters.AddWithValue("@date_created", Date.Now)
                 cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
                 cmmd.ExecuteNonQuery()
@@ -334,7 +336,7 @@ Public Class fpelanggan
             cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
             cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
             cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
-            cmmd.Parameters.AddWithValue("@updated_by", fmenu.namauser.Text)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.kodeuser.text)
             cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
             cmmd.ExecuteNonQuery()
 
@@ -381,6 +383,10 @@ Public Class fpelanggan
 
     Private Sub txtkode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkode.KeyPress
         e.Handled = ValidAngkaHuruf(e)
+    End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call isitabel()
     End Sub
 
     Private Sub txttelp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txttelp.KeyPress

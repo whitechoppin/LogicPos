@@ -22,6 +22,7 @@ Partial Class fgudang
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fgudang))
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
         Me.btngenerate = New System.Windows.Forms.Button()
@@ -45,8 +46,9 @@ Partial Class fgudang
         Me.GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -285,6 +287,16 @@ Partial Class fgudang
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
         '
+        'GridColumn6
+        '
+        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceCell.Options.UseFont = True
+        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn6.Name = "GridColumn6"
+        Me.GridColumn6.Visible = True
+        Me.GridColumn6.VisibleIndex = 5
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -296,15 +308,17 @@ Partial Class fgudang
         Me.Label6.TabIndex = 29
         Me.Label6.Text = "Data Gudang"
         '
-        'GridColumn6
+        'btnrefresh
         '
-        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn6.AppearanceCell.Options.UseFont = True
-        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn6.Name = "GridColumn6"
-        Me.GridColumn6.Visible = True
-        Me.GridColumn6.VisibleIndex = 5
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(18, 301)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(41, 37)
+        Me.btnrefresh.TabIndex = 36
+        Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'fgudang
         '
@@ -312,6 +326,7 @@ Partial Class fgudang
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(790, 751)
+        Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.btngenerate)
         Me.Controls.Add(Me.btnauto)
@@ -366,4 +381,5 @@ Partial Class fgudang
     Friend WithEvents btnauto As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents btnrefresh As Button
 End Class

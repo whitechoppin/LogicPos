@@ -124,6 +124,7 @@ Public Class fkas
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+        da.Dispose()
 
         GridControl.DataSource = Nothing
         GridControl.DataSource = ds.Tables(0)
@@ -182,7 +183,7 @@ Public Class fkas
         Else
             Try
                 Call koneksii()
-                sql = "INSERT INTO tb_kas(kode_kas, nama_kas, keterangan_kas, jenis_kas, rekening_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & cbjeniskas.Text & "','" & txtrekening.Text & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
+                sql = "INSERT INTO tb_kas(kode_kas, nama_kas, keterangan_kas, jenis_kas, rekening_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & cbjeniskas.Text & "','" & txtrekening.Text & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -266,7 +267,7 @@ Public Class fkas
     Sub perbaharui()
         Try
             Call koneksii()
-            sql = "UPDATE tb_kas SET kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', jenis_kas='" & cbjeniskas.Text & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.namauser.Text & "',last_updated= now()  WHERE id='" & idkasedit & "'"
+            sql = "UPDATE tb_kas SET kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', jenis_kas='" & cbjeniskas.Text & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.kodeuser.text & "',last_updated= now()  WHERE id='" & idkasedit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
 
@@ -346,6 +347,10 @@ Public Class fkas
 
     Private Sub txtkode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkode.KeyPress
         e.Handled = ValidAngkaHuruf(e)
+    End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call isitabel()
     End Sub
 
     Private Sub fkas_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

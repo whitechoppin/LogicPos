@@ -61,14 +61,14 @@ Module koneksi
 
     Public Sub historysave(keterangan As String, kode As String)
         Call koneksii()
-        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('" & keterangan & "','" & kode & "','" & fmenu.namauser.Text & "',now())"
+        sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, created_by, date_created) VALUES ('" & keterangan & "','" & kode & "','" & fmenu.kodeuser.Text & "',now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
     End Sub
 
     Public Function cekcetakan(nomor As String) As Boolean
         Call koneksii()
-        sql = "SELECT IFNULL(COUNT(*), 0) AS penghitung FROM tb_history_user WHERE keterangan_history LIKE '%mencetak%' AND created_by='" & fmenu.namauser.Text & "' AND kode_tabel = '" & nomor & "'"
+        sql = "SELECT IFNULL(COUNT(*), 0) AS penghitung FROM tb_history_user WHERE keterangan_history LIKE '%mencetak%' AND created_by='" & fmenu.kodeuser.Text & "' AND kode_tabel = '" & nomor & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then

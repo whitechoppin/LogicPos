@@ -98,6 +98,8 @@ Public Class fsupplier
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+        da.Dispose()
+
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
 
@@ -210,7 +212,7 @@ Public Class fsupplier
         Else
             Try
                 Call koneksii()
-                sql = "INSERT INTO tb_supplier (kode_supplier, nama_supplier, telepon_supplier, alamat_supplier, keterangan_supplier, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
+                sql = "INSERT INTO tb_supplier (kode_supplier, nama_supplier, telepon_supplier, alamat_supplier, keterangan_supplier, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -271,7 +273,7 @@ Public Class fsupplier
     Sub perbaharui()
         Try
             Call koneksii()
-            sql = "UPDATE tb_supplier SET  kode_supplier='" & txtkode.Text & "',nama_supplier='" & txtnama.Text & "',alamat_supplier='" & txtalamat.Text & "', telepon_supplier='" & txttelp.Text & "',keterangan_supplier='" & txtketerangan.Text & "',updated_by='" & fmenu.namauser.Text & "',last_updated= now()  WHERE  id='" & idsupplieredit & "'"
+            sql = "UPDATE tb_supplier SET  kode_supplier='" & txtkode.Text & "',nama_supplier='" & txtnama.Text & "',alamat_supplier='" & txtalamat.Text & "', telepon_supplier='" & txttelp.Text & "',keterangan_supplier='" & txtketerangan.Text & "',updated_by='" & fmenu.kodeuser.Text & "',last_updated= now()  WHERE  id='" & idsupplieredit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -348,6 +350,10 @@ Public Class fsupplier
 
     Private Sub txtkode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkode.KeyPress
         e.Handled = ValidAngkaHuruf(e)
+    End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call isitabel()
     End Sub
 
     Private Sub btnrekening_Click(sender As Object, e As EventArgs) Handles btnrekening.Click

@@ -17,9 +17,9 @@ Public Class fcarisupp
         Call koneksii()
         sql = "Select tb_supplier.kode_supplier, tb_supplier.nama_supplier from tb_supplier"
         da = New OdbcDataAdapter(sql, cnn)
-        cnn.Open()
         ds = New DataSet
         da.Fill(ds)
+
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
         Call grid()

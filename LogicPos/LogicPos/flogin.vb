@@ -1,6 +1,7 @@
 ﻿Imports System.Data.Odbc
 Public Class flogin
     Public CPUIDPOS, STATUSPOS As String
+    Public USERID As Integer
     Public rekeningsupplier, rekeningpelanggan, maxprinting As Integer
     Public master_barang, master_kategori, master_gudang, master_pelanggan, master_supplier, master_user, master_kas, master_pricelist, master_rek_supplier, master_rek_pelanggan, master_max_print As Integer
     Public pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang, penyesuaian_stok As Integer
@@ -8,7 +9,7 @@ Public Class flogin
     Public lap_pricelist, lap_pembelian, lap_penjualan, lap_penjualan_pajak, lap_returbeli, lap_returjual, lap_barangmasuk, lap_barangkeluar,
             lap_transfer_barang, lap_stok_barang, lap_lunas_utang, lap_lunas_piutang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transaksi_kas,
             lap_modal_barang, lap_mutasi_barang, lap_penyesuaian_stok, lap_laba_rugi, lap_rekapan_akhir As Integer
-    Dim namauser, emailuser, jabatanuser As String
+    Dim kodeuser, namauser, emailuser, jabatanuser As String
 
     Sub ProcessorID()
         'shows the processor name and speed of the computer
@@ -81,43 +82,36 @@ Public Class flogin
         Dim counteruser As Integer
 
         Call koneksii()
-        sql = "SELECT COUNT(kode_user) AS total_user FROM tb_status_user WHERE kode_user='" + txtusername.Text + "'"
+        sql = "SELECT * FROM tb_user WHERE kode_user = '" & txtusername.Text & "' AND password_user= '" & txtpassword.Text & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         dr.Read()
 
-        counteruser = dr("total_user")
+        If dr.HasRows = 0 Then
+            MsgBox("Username atau Password anda salah !", MsgBoxStyle.Exclamation, "Error Login")
+        Else
+            USERID = dr("id")
 
-        If counteruser = 0 Then
             Call koneksii()
-            sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtusername.Text + "' AND password_user= '" + txtpassword.Text + "' LIMIT 1"
+            sql = "SELECT COUNT(user_id) AS total_user FROM tb_status_user WHERE user_id='" & USERID & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             dr.Read()
 
-            If dr.HasRows = 0 Then
-                MsgBox("Username atau Password ada yang salah !", MsgBoxStyle.Exclamation, "Error Login")
-            Else
+            counteruser = Val(dr("total_user"))
+
+            If counteruser = 0 Then
                 MsgBox("Selamat Datang " & txtusername.Text & " ! ", MsgBoxStyle.Information, "Successfull Login")
                 Call offform()
                 Call procced()
-            End If
-        Else
-            sql = "SELECT * FROM tb_status_user WHERE kode_user = '" + txtusername.Text + "' AND computer_id='" + CPUIDPOS + "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-            dr.Read()
-
-            If dr.HasRows = 0 Then
-                MsgBox("Anda Sudah Login !!!", MsgBoxStyle.Exclamation, "Error Login")
             Else
-                sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtusername.Text + "' AND password_user= '" + txtpassword.Text + "'"
+                sql = "SELECT * FROM tb_status_user WHERE user_id = '" & USERID & "' AND computer_id='" & CPUIDPOS & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 dr.Read()
 
                 If dr.HasRows = 0 Then
-                    MsgBox("Username atau Password ada yang salah !", MsgBoxStyle.Exclamation, "Error Login")
+                    MsgBox("Anda Sudah Login !", MsgBoxStyle.Exclamation, "Error Login")
                 Else
                     MsgBox("Selamat Datang " & txtusername.Text & " ! ", MsgBoxStyle.Information, "Successfull Login")
                     Call offform()
@@ -129,16 +123,17 @@ Public Class flogin
 
     Sub procced()
         Call koneksii()
-        sql = "DELETE FROM tb_status_user WHERE kode_user='" & txtusername.Text & "' AND computer_id='" & CPUIDPOS & "'"
+        sql = "DELETE FROM tb_status_user WHERE user_id='" & USERID & "' AND computer_id='" & CPUIDPOS & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
         Call koneksii()
-        sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtusername.Text + "'"
+        sql = "SELECT * FROM tb_user WHERE id = '" & USERID & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         dr.Read()
 
+        kodeuser = dr("kode_user")
         namauser = dr("nama_user")
         emailuser = dr("email_user")
         jabatanuser = dr("jabatan_user")
@@ -381,11 +376,13 @@ Public Class flogin
 
         'fmenu.SettingMenu.DropDownItems.Item(0).Visible = True 'set printer
 
-        sql = "INSERT INTO tb_status_user(kode_user, computer_id, status_user, created_by, date_created) VALUES ('" & txtusername.Text & "','" & CPUIDPOS & "','" & STATUSPOS & "','" & txtusername.Text & "',now())"
+        sql = "INSERT INTO tb_status_user(user_id, computer_id, status_user, created_by, date_created) VALUES ('" & USERID & "','" & CPUIDPOS & "','" & STATUSPOS & "','" & txtusername.Text & "',now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
         Me.Hide()
+
+        fmenu.kodeuser.Text = kodeuser
         fmenu.namauser.Text = namauser
         fmenu.emailuser.Text = emailuser
         fmenu.jabatanuser.Text = jabatanuser

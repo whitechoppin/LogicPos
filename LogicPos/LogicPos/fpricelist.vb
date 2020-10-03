@@ -104,39 +104,41 @@ Public Class fpricelist
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+        da.Dispose()
+
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
 
         GridColumn1.Caption = "Kode"
         GridColumn1.FieldName = "kode_barang"
-        GridColumn1.Width = 25
+        GridColumn1.Width = 15
 
         GridColumn2.Caption = "Nama Barang"
         GridColumn2.FieldName = "nama_barang"
-        GridColumn2.Width = 50
+        GridColumn2.Width = 35
 
         GridColumn3.Caption = "Jenis"
         GridColumn3.FieldName = "jenis_barang"
-        GridColumn3.Width = 20
+        GridColumn3.Width = 15
 
         GridColumn4.Caption = "Satuan"
         GridColumn4.FieldName = "satuan_barang"
-        GridColumn4.Width = 20
+        GridColumn4.Width = 15
 
         GridColumn5.Caption = "Harga Jual"
         GridColumn5.FieldName = "harga_jual"
-        GridColumn5.Width = 35
+        GridColumn5.Width = 25
         GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn5.DisplayFormat.FormatString = "Rp ##,##0"
 
         GridColumn6.Caption = "id"
         GridColumn6.FieldName = "id"
-        GridColumn6.Width = 20
+        GridColumn6.Width = 10
         GridColumn6.Visible = False
 
         GridColumn7.Caption = "Id Barang"
         GridColumn7.FieldName = "barang_id"
-        GridColumn7.Width = 20
+        GridColumn7.Width = 10
         GridColumn7.Visible = False
 
         GridControl1.Visible = True
@@ -149,6 +151,7 @@ Public Class fpricelist
             idpelanggan = dr("id")
             txtnamacus.Text = dr("nama_pelanggan")
         Else
+            idpelanggan = "0"
             txtnamacus.Text = ""
         End If
     End Sub
@@ -248,7 +251,7 @@ Public Class fpricelist
     Sub save_exist_item()
         Try
             Call koneksii()
-            sql = "UPDATE tb_price_group SET harga_jual='" & hargabarang & "',updated_by='" & fmenu.namauser.Text & "', last_updated=now() WHERE id='" & idprice & "'"
+            sql = "UPDATE tb_price_group SET harga_jual='" & hargabarang & "',updated_by='" & fmenu.kodeuser.text & "', last_updated=now() WHERE id='" & idprice & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
 
@@ -345,6 +348,10 @@ Public Class fpricelist
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         Call resetbarang()
+    End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call caricust()
     End Sub
 
     Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click

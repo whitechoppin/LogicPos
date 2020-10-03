@@ -3,9 +3,9 @@ Public Class fmenu
     Private Sub main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         statustgl.Text = Now.ToLongDateString
         Timer.Start()
-        fjatuhtempopembelian.Show()
-        fjatuhtempopenjualan.Show()
-        fnotifikasistok.Show()
+        'fjatuhtempopembelian.Show()
+        'fjatuhtempopenjualan.Show()
+        'fnotifikasistok.Show()
 
         Call historysave("User Login Program", Me.namauser.Text)
     End Sub
@@ -41,10 +41,11 @@ Public Class fmenu
     End Sub
     Private Sub fmenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Call koneksii()
-        sql = "DELETE FROM tb_status_user WHERE kode_user='" & Me.namauser.Text & "'AND computer_id='" & flogin.CPUIDPOS & "'AND status_user='" & flogin.STATUSPOS & "'"
+        sql = "DELETE FROM tb_status_user WHERE user_id='" & flogin.USERID & "'AND computer_id='" & flogin.CPUIDPOS & "'AND status_user='" & flogin.STATUSPOS & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
+        Call diskoneksii()
         Application.Exit()
     End Sub
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick

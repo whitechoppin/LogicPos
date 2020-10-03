@@ -363,6 +363,8 @@ Public Class fuser
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+        da.Dispose()
+
         GridControl.DataSource = Nothing
         GridControl.DataSource = ds.Tables(0)
 
@@ -1528,7 +1530,7 @@ Public Class fuser
                     '" & ceklaptransferbarang & "','" & ceklapstokbarang & "','" & ceklaputang & "','" & ceklappiutang & "',
                     '" & ceklapakunmasuk & "','" & ceklapakunkeluar & "','" & ceklaptransferkas & "','" & ceklaptransaksikas & "',
                     '" & ceklapmodalbarang & "','" & ceklapmutasibarang & "','" & ceklappenyesuaianstok & "','" & ceklaplabarugi & "','" & ceklaprekapanakhir & "',
-                    '" & fmenu.namauser.Text & "','" & fmenu.namauser.Text & "',now(),now())"
+                    '" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Berhasil")
@@ -1680,7 +1682,7 @@ Public Class fuser
 
             cmmd.Parameters.AddWithValue("@lap_rekapan_akhir", ceklaprekapanakhir)
             ' end akses
-            cmmd.Parameters.AddWithValue("@updated_by", fmenu.namauser.Text)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.kodeuser.Text)
             cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
             cmmd.ExecuteNonQuery()
 
@@ -3368,6 +3370,10 @@ Public Class fuser
                 Me.clbmastersupplier.SetItemChecked(id, False)
             Next
         End If
+    End Sub
+
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+        Call isitabel()
     End Sub
 
     Private Sub cbmasteruser_CheckedChanged(sender As Object, e As EventArgs) Handles cbmasteruser.CheckedChanged

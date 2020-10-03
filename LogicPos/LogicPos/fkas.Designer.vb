@@ -22,6 +22,7 @@ Partial Class fkas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fkas))
         Me.cbjeniskas = New System.Windows.Forms.ComboBox()
         Me.btngenerate = New System.Windows.Forms.Button()
         Me.txtrekening = New System.Windows.Forms.TextBox()
@@ -45,8 +46,9 @@ Partial Class fkas
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -55,7 +57,7 @@ Partial Class fkas
         '
         Me.cbjeniskas.FormattingEnabled = True
         Me.cbjeniskas.Items.AddRange(New Object() {"Fisik", "Non Fisik"})
-        Me.cbjeniskas.Location = New System.Drawing.Point(108, 198)
+        Me.cbjeniskas.Location = New System.Drawing.Point(108, 211)
         Me.cbjeniskas.Margin = New System.Windows.Forms.Padding(4)
         Me.cbjeniskas.Name = "cbjeniskas"
         Me.cbjeniskas.Size = New System.Drawing.Size(259, 26)
@@ -64,7 +66,7 @@ Partial Class fkas
         'btngenerate
         '
         Me.btngenerate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btngenerate.Location = New System.Drawing.Point(243, 132)
+        Me.btngenerate.Location = New System.Drawing.Point(243, 145)
         Me.btngenerate.Margin = New System.Windows.Forms.Padding(4)
         Me.btngenerate.Name = "btngenerate"
         Me.btngenerate.Size = New System.Drawing.Size(124, 26)
@@ -75,7 +77,7 @@ Partial Class fkas
         'txtrekening
         '
         Me.txtrekening.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtrekening.Location = New System.Drawing.Point(108, 232)
+        Me.txtrekening.Location = New System.Drawing.Point(108, 245)
         Me.txtrekening.Margin = New System.Windows.Forms.Padding(4)
         Me.txtrekening.Name = "txtrekening"
         Me.txtrekening.Size = New System.Drawing.Size(259, 24)
@@ -85,7 +87,7 @@ Partial Class fkas
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(27, 235)
+        Me.Label5.Location = New System.Drawing.Point(27, 248)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(70, 18)
@@ -95,7 +97,7 @@ Partial Class fkas
         'btnauto
         '
         Me.btnauto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnauto.Location = New System.Drawing.Point(108, 132)
+        Me.btnauto.Location = New System.Drawing.Point(108, 145)
         Me.btnauto.Margin = New System.Windows.Forms.Padding(4)
         Me.btnauto.Name = "btnauto"
         Me.btnauto.Size = New System.Drawing.Size(134, 26)
@@ -106,7 +108,7 @@ Partial Class fkas
         'txtketerangan
         '
         Me.txtketerangan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtketerangan.Location = New System.Drawing.Point(375, 132)
+        Me.txtketerangan.Location = New System.Drawing.Point(375, 145)
         Me.txtketerangan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtketerangan.Name = "txtketerangan"
         Me.txtketerangan.Size = New System.Drawing.Size(350, 124)
@@ -115,7 +117,7 @@ Partial Class fkas
         '
         'btnbatal
         '
-        Me.btnbatal.Location = New System.Drawing.Point(554, 43)
+        Me.btnbatal.Location = New System.Drawing.Point(554, 56)
         Me.btnbatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbatal.Name = "btnbatal"
         Me.btnbatal.Size = New System.Drawing.Size(171, 48)
@@ -125,7 +127,7 @@ Partial Class fkas
         '
         'btnhapus
         '
-        Me.btnhapus.Location = New System.Drawing.Point(375, 43)
+        Me.btnhapus.Location = New System.Drawing.Point(375, 56)
         Me.btnhapus.Margin = New System.Windows.Forms.Padding(4)
         Me.btnhapus.Name = "btnhapus"
         Me.btnhapus.Size = New System.Drawing.Size(171, 48)
@@ -135,7 +137,7 @@ Partial Class fkas
         '
         'btnedit
         '
-        Me.btnedit.Location = New System.Drawing.Point(196, 43)
+        Me.btnedit.Location = New System.Drawing.Point(196, 56)
         Me.btnedit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnedit.Name = "btnedit"
         Me.btnedit.Size = New System.Drawing.Size(171, 48)
@@ -145,7 +147,7 @@ Partial Class fkas
         '
         'btntambah
         '
-        Me.btntambah.Location = New System.Drawing.Point(17, 43)
+        Me.btntambah.Location = New System.Drawing.Point(17, 56)
         Me.btntambah.Margin = New System.Windows.Forms.Padding(4)
         Me.btntambah.Name = "btntambah"
         Me.btntambah.Size = New System.Drawing.Size(171, 48)
@@ -156,7 +158,7 @@ Partial Class fkas
         'txtnama
         '
         Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnama.Location = New System.Drawing.Point(108, 166)
+        Me.txtnama.Location = New System.Drawing.Point(108, 179)
         Me.txtnama.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnama.Name = "txtnama"
         Me.txtnama.Size = New System.Drawing.Size(259, 24)
@@ -166,7 +168,7 @@ Partial Class fkas
         '
         Me.txtkode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtkode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkode.Location = New System.Drawing.Point(108, 100)
+        Me.txtkode.Location = New System.Drawing.Point(108, 113)
         Me.txtkode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkode.Name = "txtkode"
         Me.txtkode.Size = New System.Drawing.Size(259, 24)
@@ -176,7 +178,7 @@ Partial Class fkas
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(372, 103)
+        Me.Label4.Location = New System.Drawing.Point(372, 116)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(83, 18)
@@ -187,7 +189,7 @@ Partial Class fkas
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(27, 201)
+        Me.Label3.Location = New System.Drawing.Point(27, 214)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(73, 18)
@@ -198,7 +200,7 @@ Partial Class fkas
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(27, 169)
+        Me.Label2.Location = New System.Drawing.Point(27, 182)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(78, 18)
@@ -209,7 +211,7 @@ Partial Class fkas
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(27, 103)
+        Me.Label1.Location = New System.Drawing.Point(27, 116)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(73, 18)
@@ -219,7 +221,7 @@ Partial Class fkas
         'GridControl
         '
         Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl.Location = New System.Drawing.Point(17, 264)
+        Me.GridControl.Location = New System.Drawing.Point(17, 282)
         Me.GridControl.MainView = Me.GridView1
         Me.GridControl.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Name = "GridControl"
@@ -286,6 +288,16 @@ Partial Class fkas
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
         '
+        'GridColumn6
+        '
+        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceCell.Options.UseFont = True
+        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn6.Name = "GridColumn6"
+        Me.GridColumn6.Visible = True
+        Me.GridColumn6.VisibleIndex = 5
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -297,22 +309,25 @@ Partial Class fkas
         Me.Label6.TabIndex = 41
         Me.Label6.Text = "Data Kas"
         '
-        'GridColumn6
+        'btnrefresh
         '
-        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn6.AppearanceCell.Options.UseFont = True
-        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn6.Name = "GridColumn6"
-        Me.GridColumn6.Visible = True
-        Me.GridColumn6.VisibleIndex = 5
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(684, 11)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(41, 37)
+        Me.btnrefresh.TabIndex = 42
+        Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'fkas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(743, 613)
+        Me.ClientSize = New System.Drawing.Size(743, 624)
+        Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.cbjeniskas)
         Me.Controls.Add(Me.GridControl)
@@ -334,7 +349,7 @@ Partial Class fkas
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "fkas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Input Data Kas"
+        Me.Text = "Data Kas"
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -366,4 +381,5 @@ Partial Class fkas
     Friend WithEvents Label6 As Label
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents btnrefresh As Button
 End Class
