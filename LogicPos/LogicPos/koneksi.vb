@@ -1,5 +1,6 @@
 ﻿Imports System.Data.Odbc
 
+
 Module koneksi
     Public cnn As New OdbcConnection
     Public cnnx As New OdbcConnection
