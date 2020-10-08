@@ -510,7 +510,7 @@ Public Class flaporanmutasibarang
 
     Private Sub btncaristok_Click(sender As Object, e As EventArgs) Handles btncaristok.Click
         tutupcaristok = 4
-        kodegudangcari = cmbgudang.Text
+        idgudangcari = cmbgudang.Text
         fcaristok.ShowDialog()
     End Sub
 

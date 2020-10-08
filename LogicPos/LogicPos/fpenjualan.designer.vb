@@ -64,7 +64,7 @@ Partial Class fpenjualan
         Me.rbfaktur = New System.Windows.Forms.RadioButton()
         Me.rbstruk = New System.Windows.Forms.RadioButton()
         Me.rbsurat = New System.Windows.Forms.RadioButton()
-        Me.txtcustomer = New System.Windows.Forms.TextBox()
+        Me.txtpelanggan = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btncaricustomer = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -85,7 +85,7 @@ Partial Class fpenjualan
         Me.Label14 = New System.Windows.Forms.Label()
         Me.dtpenjualan = New System.Windows.Forms.DateTimePicker()
         Me.Label17 = New System.Windows.Forms.Label()
-        Me.cmbcustomer = New System.Windows.Forms.ComboBox()
+        Me.cmbpelanggan = New System.Windows.Forms.ComboBox()
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
@@ -138,6 +138,8 @@ Partial Class fpenjualan
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtdiskonpersen = New System.Windows.Forms.TextBox()
         Me.ImageList = New System.Windows.Forms.ImageList(Me.components)
+        Me.GridColumn14 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn15 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritehargasatuan, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -157,9 +159,9 @@ Partial Class fpenjualan
         Me.Label6.Location = New System.Drawing.Point(21, 91)
         Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(113, 18)
+        Me.Label6.Size = New System.Drawing.Size(116, 18)
         Me.Label6.TabIndex = 19
-        Me.Label6.Text = "Kode Customer"
+        Me.Label6.Text = "Kode Pelanggan"
         '
         'btncaribarang
         '
@@ -335,7 +337,7 @@ Partial Class fpenjualan
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13, Me.GridColumn14, Me.GridColumn15})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -592,14 +594,14 @@ Partial Class fpenjualan
         Me.rbsurat.Text = "Surat"
         Me.rbsurat.UseVisualStyleBackColor = True
         '
-        'txtcustomer
+        'txtpelanggan
         '
-        Me.txtcustomer.Enabled = False
-        Me.txtcustomer.Location = New System.Drawing.Point(155, 125)
-        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(6)
-        Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(268, 24)
-        Me.txtcustomer.TabIndex = 46
+        Me.txtpelanggan.Enabled = False
+        Me.txtpelanggan.Location = New System.Drawing.Point(155, 125)
+        Me.txtpelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtpelanggan.Name = "txtpelanggan"
+        Me.txtpelanggan.Size = New System.Drawing.Size(268, 24)
+        Me.txtpelanggan.TabIndex = 46
         '
         'Label4
         '
@@ -608,9 +610,9 @@ Partial Class fpenjualan
         Me.Label4.Location = New System.Drawing.Point(21, 128)
         Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(118, 18)
+        Me.Label4.Size = New System.Drawing.Size(121, 18)
         Me.Label4.TabIndex = 19
-        Me.Label4.Text = "Nama Customer"
+        Me.Label4.Text = "Nama Pelanggan"
         '
         'btncaricustomer
         '
@@ -662,9 +664,9 @@ Partial Class fpenjualan
         Me.Label22.Location = New System.Drawing.Point(459, 92)
         Me.Label22.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(98, 18)
+        Me.Label22.Size = New System.Drawing.Size(101, 18)
         Me.Label22.TabIndex = 48
-        Me.Label22.Text = "Tlp Customer"
+        Me.Label22.Text = "Tlp Pelanggan"
         '
         'Label20
         '
@@ -673,9 +675,9 @@ Partial Class fpenjualan
         Me.Label20.Location = New System.Drawing.Point(443, 16)
         Me.Label20.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(123, 18)
+        Me.Label20.Size = New System.Drawing.Size(126, 18)
         Me.Label20.TabIndex = 47
-        Me.Label20.Text = "Alamat Customer"
+        Me.Label20.Text = "Alamat Pelanggan"
         '
         'cmbsales
         '
@@ -823,16 +825,16 @@ Partial Class fpenjualan
         Me.Label17.TabIndex = 16
         Me.Label17.Text = "Tgl Penjualan"
         '
-        'cmbcustomer
+        'cmbpelanggan
         '
-        Me.cmbcustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbcustomer.FormattingEnabled = True
-        Me.cmbcustomer.Location = New System.Drawing.Point(155, 87)
-        Me.cmbcustomer.Margin = New System.Windows.Forms.Padding(6)
-        Me.cmbcustomer.MaxLength = 99
-        Me.cmbcustomer.Name = "cmbcustomer"
-        Me.cmbcustomer.Size = New System.Drawing.Size(239, 26)
-        Me.cmbcustomer.TabIndex = 10
+        Me.cmbpelanggan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbpelanggan.FormattingEnabled = True
+        Me.cmbpelanggan.Location = New System.Drawing.Point(155, 87)
+        Me.cmbpelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbpelanggan.MaxLength = 99
+        Me.cmbpelanggan.Name = "cmbpelanggan"
+        Me.cmbpelanggan.Size = New System.Drawing.Size(239, 26)
+        Me.cmbpelanggan.TabIndex = 10
         '
         'txtnonota
         '
@@ -1267,7 +1269,7 @@ Partial Class fpenjualan
         Me.TabPage1.Controls.Add(Me.txtterm)
         Me.TabPage1.Controls.Add(Me.cblunas)
         Me.TabPage1.Controls.Add(Me.cbvoid)
-        Me.TabPage1.Controls.Add(Me.cmbcustomer)
+        Me.TabPage1.Controls.Add(Me.cmbpelanggan)
         Me.TabPage1.Controls.Add(Me.Label4)
         Me.TabPage1.Controls.Add(Me.dtpenjualan)
         Me.TabPage1.Controls.Add(Me.Label17)
@@ -1288,7 +1290,7 @@ Partial Class fpenjualan
         Me.TabPage1.Controls.Add(Me.Label14)
         Me.TabPage1.Controls.Add(Me.txtnonota)
         Me.TabPage1.Controls.Add(Me.btncaricustomer)
-        Me.TabPage1.Controls.Add(Me.txtcustomer)
+        Me.TabPage1.Controls.Add(Me.txtpelanggan)
         Me.TabPage1.Location = New System.Drawing.Point(4, 27)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage1.Name = "TabPage1"
@@ -1417,6 +1419,26 @@ Partial Class fpenjualan
         Me.ImageList.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList.Images.SetKeyName(0, "no-image.jpg")
         '
+        'GridColumn14
+        '
+        Me.GridColumn14.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn14.AppearanceCell.Options.UseFont = True
+        Me.GridColumn14.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn14.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn14.Name = "GridColumn14"
+        Me.GridColumn14.Visible = True
+        Me.GridColumn14.VisibleIndex = 13
+        '
+        'GridColumn15
+        '
+        Me.GridColumn15.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn15.AppearanceCell.Options.UseFont = True
+        Me.GridColumn15.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn15.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn15.Name = "GridColumn15"
+        Me.GridColumn15.Visible = True
+        Me.GridColumn15.VisibleIndex = 14
+        '
         'fpenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -1526,7 +1548,7 @@ Partial Class fpenjualan
     Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents txtcustomer As TextBox
+    Friend WithEvents txtpelanggan As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents btncaricustomer As Button
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
@@ -1548,7 +1570,7 @@ Partial Class fpenjualan
     Friend WithEvents Label19 As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents dtjatuhtempo As DateTimePicker
-    Friend WithEvents cmbcustomer As ComboBox
+    Friend WithEvents cmbpelanggan As ComboBox
     Friend WithEvents btnprev As Button
     Friend WithEvents btnnext As Button
     Friend WithEvents txtgopenjualan As TextBox
@@ -1610,4 +1632,6 @@ Partial Class fpenjualan
     Friend WithEvents txtdiskonpersen As TextBox
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents ImageList As ImageList
+    Friend WithEvents GridColumn14 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn15 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

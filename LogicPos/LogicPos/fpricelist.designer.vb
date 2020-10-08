@@ -48,14 +48,14 @@ Partial Class fpricelist
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.txtkodecus = New System.Windows.Forms.TextBox()
-        Me.txtnamacus = New System.Windows.Forms.TextBox()
+        Me.txtnamapelanggan = New System.Windows.Forms.TextBox()
         Me.btncaricus = New System.Windows.Forms.Button()
         Me.txthidden = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
+        Me.cmbpelanggan = New System.Windows.Forms.ComboBox()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -67,9 +67,9 @@ Partial Class fpricelist
         Me.Label1.Location = New System.Drawing.Point(20, 95)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(113, 18)
+        Me.Label1.Size = New System.Drawing.Size(116, 18)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Kode Customer"
+        Me.Label1.Text = "Kode Pelanggan"
         '
         'Label2
         '
@@ -78,9 +78,9 @@ Partial Class fpricelist
         Me.Label2.Location = New System.Drawing.Point(20, 125)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(118, 18)
+        Me.Label2.Size = New System.Drawing.Size(121, 18)
         Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Nama Customer"
+        Me.Label2.Text = "Nama Pelanggan"
         '
         'btnshow
         '
@@ -316,34 +316,25 @@ Partial Class fpricelist
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
         '
-        'txtkodecus
+        'txtnamapelanggan
         '
-        Me.txtkodecus.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkodecus.Location = New System.Drawing.Point(141, 91)
-        Me.txtkodecus.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtkodecus.Name = "txtkodecus"
-        Me.txtkodecus.Size = New System.Drawing.Size(377, 24)
-        Me.txtkodecus.TabIndex = 7
-        '
-        'txtnamacus
-        '
-        Me.txtnamacus.Enabled = False
-        Me.txtnamacus.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtnamacus.Location = New System.Drawing.Point(141, 122)
-        Me.txtnamacus.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtnamacus.Name = "txtnamacus"
-        Me.txtnamacus.Size = New System.Drawing.Size(407, 24)
-        Me.txtnamacus.TabIndex = 7
+        Me.txtnamapelanggan.Enabled = False
+        Me.txtnamapelanggan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnamapelanggan.Location = New System.Drawing.Point(141, 122)
+        Me.txtnamapelanggan.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnamapelanggan.Name = "txtnamapelanggan"
+        Me.txtnamapelanggan.Size = New System.Drawing.Size(410, 24)
+        Me.txtnamapelanggan.TabIndex = 7
         '
         'btncaricus
         '
         Me.btncaricus.BackgroundImage = CType(resources.GetObject("btncaricus.BackgroundImage"), System.Drawing.Image)
         Me.btncaricus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncaricus.ImageIndex = 0
-        Me.btncaricus.Location = New System.Drawing.Point(517, 91)
+        Me.btncaricus.Location = New System.Drawing.Point(520, 90)
         Me.btncaricus.Margin = New System.Windows.Forms.Padding(4)
         Me.btncaricus.Name = "btncaricus"
-        Me.btncaricus.Size = New System.Drawing.Size(31, 24)
+        Me.btncaricus.Size = New System.Drawing.Size(31, 26)
         Me.btncaricus.TabIndex = 11
         Me.btncaricus.UseVisualStyleBackColor = True
         '
@@ -402,12 +393,24 @@ Partial Class fpricelist
         Me.btnrefresh.TabIndex = 44
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
+        'cmbpelanggan
+        '
+        Me.cmbpelanggan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbpelanggan.FormattingEnabled = True
+        Me.cmbpelanggan.Location = New System.Drawing.Point(141, 90)
+        Me.cmbpelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbpelanggan.MaxLength = 99
+        Me.cmbpelanggan.Name = "cmbpelanggan"
+        Me.cmbpelanggan.Size = New System.Drawing.Size(378, 26)
+        Me.cmbpelanggan.TabIndex = 45
+        '
         'fpricelist
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1036, 587)
+        Me.Controls.Add(Me.cmbpelanggan)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
@@ -415,14 +418,13 @@ Partial Class fpricelist
         Me.Controls.Add(Me.btnbatal)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnshow)
-        Me.Controls.Add(Me.txtkodecus)
         Me.Controls.Add(Me.btncaricus)
         Me.Controls.Add(Me.txthidden)
         Me.Controls.Add(Me.btntambah)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.btnhapus)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.txtnamacus)
+        Me.Controls.Add(Me.txtnamapelanggan)
         Me.Controls.Add(Me.btncari)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtharga)
@@ -464,8 +466,7 @@ Partial Class fpricelist
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btncari As Button
-    Friend WithEvents txtkodecus As TextBox
-    Friend WithEvents txtnamacus As TextBox
+    Friend WithEvents txtnamapelanggan As TextBox
     Friend WithEvents btncaricus As Button
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label6 As Label
@@ -478,4 +479,5 @@ Partial Class fpricelist
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnrefresh As Button
+    Friend WithEvents cmbpelanggan As ComboBox
 End Class

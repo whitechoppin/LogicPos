@@ -2,7 +2,6 @@
 Imports DevExpress.Utils
 
 Public Class fcaristok
-
     Dim pilih As String
     Dim kode As String
     Dim modalbarang As Double
@@ -10,7 +9,6 @@ Public Class fcaristok
     Private Sub fcaristok_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call tabel()
         LabelHarga.Visible = False
-
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode Stok"
@@ -42,21 +40,19 @@ Public Class fcaristok
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        'Call koneksii()
         If tutupcaristok > 0 Then
             Call koneksii()
-
-            If kodegudangcari.Length > 0 Then
+            If idgudangcari > 0 Then
                 If cbstokkosong.Checked = True Then
-                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.kode_gudang ='" & kodegudangcari & "'"
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id WHERE tb_stok.gudang_id ='" & idgudangcari & "'"
                 Else
-                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.kode_gudang ='" & kodegudangcari & "' AND tb_stok.jumlah_stok > 0"
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id WHERE tb_stok.gudang_id ='" & idgudangcari & "' AND tb_stok.jumlah_stok > 0"
                 End If
             Else
                 If cbstokkosong.Checked = True Then
-                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang"
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id"
                 Else
-                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.jumlah_stok > 0"
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id WHERE tb_stok.jumlah_stok > 0"
                 End If
             End If
 
@@ -76,10 +72,8 @@ Public Class fcaristok
         'menyiapkan koneksi database
         Call koneksii()
 
-        'Using cnn As New OdbcConnection(strConn)
         sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
         cmmd = New OdbcCommand(sql, cnn)
-        'cnn.Open()
         dr = cmmd.ExecuteReader
         dr.Read()
         If dr.HasRows Then
@@ -88,9 +82,7 @@ Public Class fcaristok
             foto = dr("gambar_barang")
             PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
             PictureBox1.Image = Image.FromStream(New IO.MemoryStream(foto))
-            'cnn.Close()
         End If
-        'End Using
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupcaristok = 1 Then

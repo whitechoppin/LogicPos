@@ -4,7 +4,7 @@
     Public tutupcaribarang As Integer
     Public kodes As String
     'String Pencarian kode gudang
-    Public kodegudangcari As String
+    Public idgudangcari As Integer
     'master
     Public tutupcus As Integer
     Public tutupsup As Integer

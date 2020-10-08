@@ -67,14 +67,14 @@ Public Class fpricelist
         Call historysave("Membuka Master Pricelist", "N/A")
     End Sub
     Sub awal()
-        txtkodecus.Clear()
-        txtnamacus.Clear()
+        Call comboboxpelanggan()
+
+        cmbpelanggan.SelectedIndex = 0
         txtkode.Clear()
         txtnama.Clear()
 
         txtharga.Text = 0
         txtmodal.Text = 0
-        txtkodecus.Text = "00000000"
 
         txtkode.Focus()
 
@@ -89,6 +89,7 @@ Public Class fpricelist
         txtnama.Clear()
         txtharga.Text = 0
         txtmodal.Text = 0
+        idbarang = 0
 
         txtkode.Focus()
 
@@ -98,9 +99,9 @@ Public Class fpricelist
         btnbatal.Enabled = False
     End Sub
 
-    Sub caricust()
+    Sub datatable()
         Call koneksii()
-        sql = "SELECT tb_barang.id as barang_id, tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.jenis_barang ,tb_barang.satuan_barang, tb_price_group.harga_jual, tb_price_group.id FROM tb_price_group JOIN tb_barang ON tb_barang.id=tb_price_group.barang_id JOIN tb_pelanggan ON tb_pelanggan.id=tb_price_group.pelanggan_id WHERE tb_pelanggan.kode_pelanggan = '" & txtkodecus.Text & "' "
+        sql = "SELECT tb_barang.id as barang_id, tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.jenis_barang ,tb_barang.satuan_barang, tb_price_group.harga_jual, tb_price_group.id FROM tb_price_group JOIN tb_barang ON tb_barang.id=tb_price_group.barang_id JOIN tb_pelanggan ON tb_pelanggan.id=tb_price_group.pelanggan_id WHERE tb_pelanggan.id = '" & idpelanggan & "' "
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -142,21 +143,34 @@ Public Class fpricelist
         GridColumn7.Visible = False
 
         GridControl1.Visible = True
+    End Sub
 
+    Sub comboboxpelanggan()
         Call koneksii()
-        sql = "SELECT * FROM tb_pelanggan WHERE tb_pelanggan.kode_pelanggan = '" & txtkodecus.Text & "' "
+        sql = "SELECT * FROM tb_pelanggan"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbpelanggan.DataSource = ds.Tables(0)
+        cmbpelanggan.ValueMember = "id"
+        cmbpelanggan.DisplayMember = "kode_pelanggan"
+    End Sub
+
+    Sub caripelanggan()
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & cmbpelanggan.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             idpelanggan = dr("id")
-            txtnamacus.Text = dr("nama_pelanggan")
+            txtnamapelanggan.Text = dr("nama_pelanggan")
         Else
-            idpelanggan = "0"
-            txtnamacus.Text = ""
+            txtnamapelanggan.Text = ""
         End If
-    End Sub
-    Private Sub txtkodecus_TextChanged(sender As Object, e As EventArgs) Handles txtkodecus.TextChanged
-        Call caricust()
+
+        Call datatable()
     End Sub
     Private Sub txtkode_TextChanged(sender As Object, e As EventArgs) Handles txtkode.TextChanged
         Call cari()
@@ -235,11 +249,11 @@ Public Class fpricelist
                 dr = cmmd.ExecuteReader
 
                 'history user ==========
-                Call historysave("Menyimpan Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
+                Call historysave("Menyimpan Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + cmbpelanggan.Text, txtkode.Text)
                 '========================
 
                 Call resetbarang()
-                Call caricust()
+                Call datatable()
 
                 MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Success")
             Catch ex As Exception
@@ -251,16 +265,16 @@ Public Class fpricelist
     Sub save_exist_item()
         Try
             Call koneksii()
-            sql = "UPDATE tb_price_group SET harga_jual='" & hargabarang & "',updated_by='" & fmenu.kodeuser.text & "', last_updated=now() WHERE id='" & idprice & "'"
+            sql = "UPDATE tb_price_group SET harga_jual='" & hargabarang & "',updated_by='" & fmenu.kodeuser.Text & "', last_updated=now() WHERE id='" & idprice & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
 
             'history user ==========
-            Call historysave("Mengedit Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
+            Call historysave("Mengedit Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + cmbpelanggan.Text, txtkode.Text)
             '========================
 
             Call resetbarang()
-            Call caricust()
+            Call datatable()
 
             MsgBox("Data Terupdate", MsgBoxStyle.Information, "Success")
         Catch ex As Exception
@@ -270,7 +284,7 @@ Public Class fpricelist
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If tambahstatus.Equals(True) Then
-            If txtkodecus.Text.Length = 0 Then
+            If cmbpelanggan.SelectedIndex = -1 Then
                 MsgBox("Pelanggan Belum Di isi")
             Else
                 If txtkode.Text.Length = 0 Then
@@ -304,7 +318,7 @@ Public Class fpricelist
     End Sub
 
     Sub hapus()
-        If MessageBox.Show("Hapus data price barang " & txtkode.Text & " untuk pelanggan " & txtnamacus.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+        If MessageBox.Show("Hapus data price barang " & txtkode.Text & " untuk pelanggan " & txtnamapelanggan.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             Try
                 Call koneksii()
                 sql = "DELETE FROM tb_price_group WHERE id='" & idprice & "'"
@@ -314,7 +328,7 @@ Public Class fpricelist
                 MessageBox.Show(txtnama.Text + " Berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 'history user ==========
-                Call historysave("Menghapus Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + txtkodecus.Text, txtkode.Text)
+                Call historysave("Menghapus Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + cmbpelanggan.Text, txtkode.Text)
                 '========================
                 Me.Refresh()
                 Call awal()
@@ -351,7 +365,15 @@ Public Class fpricelist
     End Sub
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
-        Call caricust()
+        Call datatable()
+    End Sub
+
+    Private Sub cmbpelanggan_TextChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.TextChanged
+        Call caripelanggan()
+    End Sub
+
+    Private Sub cmbpelanggan_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.SelectedIndexChanged
+        Call caripelanggan()
     End Sub
 
     Private Sub btnshow_Click(sender As Object, e As EventArgs) Handles btnshow.Click
@@ -369,7 +391,7 @@ Public Class fpricelist
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If editstatus.Equals(True) Then
-            If txtkodecus.Text.Length = 0 Then
+            If cmbpelanggan.SelectedIndex = -1 Then
                 MsgBox("Pelanggan Belum Di isi")
             Else
                 If txtkode.Text.Length = 0 Then
