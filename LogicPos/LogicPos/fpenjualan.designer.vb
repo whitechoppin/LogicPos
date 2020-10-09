@@ -58,6 +58,8 @@ Partial Class fpenjualan
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn13 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn14 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn15 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.txtinformasi = New System.Windows.Forms.RichTextBox()
         Me.txttotal = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -138,8 +140,6 @@ Partial Class fpenjualan
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtdiskonpersen = New System.Windows.Forms.TextBox()
         Me.ImageList = New System.Windows.Forms.ImageList(Me.components)
-        Me.GridColumn14 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn15 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritehargasatuan, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -305,6 +305,7 @@ Partial Class fpenjualan
         '
         'txtkodestok
         '
+        Me.txtkodestok.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtkodestok.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkodestok.Location = New System.Drawing.Point(13, 292)
         Me.txtkodestok.Margin = New System.Windows.Forms.Padding(6)
@@ -522,6 +523,26 @@ Partial Class fpenjualan
         Me.GridColumn13.OptionsColumn.AllowEdit = False
         Me.GridColumn13.Visible = True
         Me.GridColumn13.VisibleIndex = 12
+        '
+        'GridColumn14
+        '
+        Me.GridColumn14.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn14.AppearanceCell.Options.UseFont = True
+        Me.GridColumn14.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn14.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn14.Name = "GridColumn14"
+        Me.GridColumn14.Visible = True
+        Me.GridColumn14.VisibleIndex = 13
+        '
+        'GridColumn15
+        '
+        Me.GridColumn15.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn15.AppearanceCell.Options.UseFont = True
+        Me.GridColumn15.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn15.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn15.Name = "GridColumn15"
+        Me.GridColumn15.Visible = True
+        Me.GridColumn15.VisibleIndex = 14
         '
         'txtinformasi
         '
@@ -1418,26 +1439,6 @@ Partial Class fpenjualan
         Me.ImageList.ImageStream = CType(resources.GetObject("ImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList.Images.SetKeyName(0, "no-image.jpg")
-        '
-        'GridColumn14
-        '
-        Me.GridColumn14.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn14.AppearanceCell.Options.UseFont = True
-        Me.GridColumn14.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn14.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn14.Name = "GridColumn14"
-        Me.GridColumn14.Visible = True
-        Me.GridColumn14.VisibleIndex = 13
-        '
-        'GridColumn15
-        '
-        Me.GridColumn15.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn15.AppearanceCell.Options.UseFont = True
-        Me.GridColumn15.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn15.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn15.Name = "GridColumn15"
-        Me.GridColumn15.Visible = True
-        Me.GridColumn15.VisibleIndex = 14
         '
         'fpenjualan
         '

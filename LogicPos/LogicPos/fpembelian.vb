@@ -1301,7 +1301,7 @@ Public Class fpembelian
                                     If cmbsales.Text IsNot "" Then
                                         btnedit.Text = "Edit"
                                         'isi disini sub updatenya
-                                        Call perbarui(txtnonota.Text)
+                                        Call perbaharui(txtnonota.Text)
                                     Else
                                         MsgBox("Isi Sales")
                                     End If
@@ -1398,7 +1398,7 @@ Public Class fpembelian
         e.Handled = ValidAngka(e)
     End Sub
 
-    Sub perbarui(nomornota As String)
+    Sub perbaharui(nomornota As Integer)
         Dim idgudanglama As Integer
 
         'variabel transactional
@@ -1463,7 +1463,7 @@ Public Class fpembelian
                 End If
             Next
 
-            'hapus tb_pembelian_detail
+            'update kembali dari transaksi sebelumnya
             For i As Integer = 0 To tabelsementara.Rows.Count - 1
                 myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & tabelsementara.Rows(i).Item(3) & "' WHERE id = '" & tabelsementara.Rows(i).Item(9) & "' AND gudang_id ='" & idgudanglama & "'"
                 myCommand.ExecuteNonQuery()
@@ -1511,7 +1511,7 @@ Public Class fpembelian
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Mengedit Data Pembelian Kode " + nomornota, nomornota)
+            Call historysave("Mengedit Data Pembelian Kode " + nomornota.ToString, nomornota)
             '========================
             MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(nomornota)
