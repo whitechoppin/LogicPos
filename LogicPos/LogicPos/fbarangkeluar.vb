@@ -455,20 +455,6 @@ Public Class fbarangkeluar
         Call comboboxuser()
         Call comboboxgudang()
 
-        'simpan di tabel sementara
-        Call koneksii()
-
-        'hapus di tabel jual sementara
-        Call koneksii()
-        sql = "DELETE FROM tb_barang_keluar_detail_sementara"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
-        'isi tabel sementara dengan data tabel detail
-        sql = "INSERT INTO tb_barang_keluar_detail_sementara SELECT * FROM tb_barang_keluar_detail WHERE kode_barang_keluar ='" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
     End Sub
 
     Sub inisialisasi(nomorkode As String)

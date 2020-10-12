@@ -6,7 +6,9 @@ Public Class fkaskeluar
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
-    Dim kodekeluar, kodekas, viewketerangan, viewkodekas, viewkodesales As String
+
+    Dim idkaskeluar, idkas, iduser As Integer
+    Dim viewketerangan, viewkodekas, viewkodesales As String
     Dim saldokeluar As Double
     Dim viewtglkas As DateTime
     Dim statusprint, statusposted As Boolean
@@ -80,30 +82,28 @@ Public Class fkaskeluar
 
     Sub comboboxuser()
         Call koneksii()
-        cmbsales.Items.Clear()
-        cmbsales.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbsales.AutoCompleteCustomSource.Add(dr("kode_user"))
-                cmbsales.Items.Add(dr("kode_user"))
-            End While
-        End If
+        sql = "SELECT * FROM tb_user"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbsales.DataSource = ds.Tables(0)
+        cmbsales.ValueMember = "id"
+        cmbsales.DisplayMember = "kode_user"
     End Sub
 
     Sub comboboxkas()
         Call koneksii()
-        cmbkas.Items.Clear()
-        cmbkas.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_kas", cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbkas.AutoCompleteCustomSource.Add(dr("kode_kas"))
-                cmbkas.Items.Add(dr("kode_kas"))
-            End While
-        End If
+        sql = "SELECT * FROM tb_kas"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbkas.DataSource = ds.Tables(0)
+        cmbkas.ValueMember = "id"
+        cmbkas.DisplayMember = "kode_kas"
     End Sub
 
     Sub carikas()
@@ -112,9 +112,22 @@ Public Class fkaskeluar
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
+            idkas = dr("id")
             txtnamakas.Text = dr("nama_kas")
         Else
             txtnamakas.Text = ""
+        End If
+    End Sub
+
+    Sub carisales()
+        Call koneksii()
+        sql = "SELECT * FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            iduser = dr("id")
+        Else
+            iduser = 0
         End If
     End Sub
 
@@ -129,16 +142,16 @@ Public Class fkaskeluar
         btntambah.Text = "Tambah"
         btnedit.Text = "Edit"
 
+        Call comboboxuser()
+        Call comboboxkas()
+
         'bersihkan form
         txtkodekeluar.Clear()
         cmbsales.SelectedIndex = -1
         cmbkas.SelectedIndex = -1
-        txtnamakas.Clear()
 
         txtsaldokeluar.Clear()
         txtketerangan.Clear()
-
-        Call koneksii()
 
         cmbsales.Enabled = False
         cmbkas.Enabled = False
@@ -154,37 +167,34 @@ Public Class fkaskeluar
         GridView1.OptionsBehavior.Editable = False
         Call isitabel()
 
-        Call comboboxuser()
-        Call comboboxkas()
-    End Sub
-    Sub kolom()
-        GridColumn1.Caption = "Kode Kas Keluar"
-        GridColumn1.FieldName = "kode_kas_keluar"
-        GridColumn1.Width = "40"
-
-        GridColumn2.Caption = "Kode Kas"
-        GridColumn2.FieldName = "kode_kas"
-        GridColumn2.Width = "40"
-
-        GridColumn3.Caption = "Tanggal Transaksi"
-        GridColumn3.FieldName = "tanggal_transaksi"
-        GridColumn3.Width = "40"
-
-        GridColumn4.Caption = "Saldo Kas"
-        GridColumn4.FieldName = "saldo_kas"
-        GridColumn4.Width = "60"
-        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
     End Sub
     Sub isitabel()
-        'Call koneksii()
+        Call koneksii()
         sql = "SELECT * FROM tb_kas_keluar"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
-        Call kolom()
+
+        GridColumn1.Caption = "id"
+        GridColumn1.FieldName = "id"
+        GridColumn1.Width = 10
+
+        GridColumn2.Caption = "Kas"
+        GridColumn2.FieldName = "kas_id"
+        GridColumn2.Width = 20
+
+        GridColumn3.Caption = "Tanggal"
+        GridColumn3.FieldName = "tanggal"
+        GridColumn3.Width = 10
+
+        GridColumn4.Caption = "Saldo Kas"
+        GridColumn4.FieldName = "saldo_kas"
+        GridColumn4.Width = 50
+        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn4.DisplayFormat.FormatString = "Rp ##,#0"
     End Sub
 
     Sub index()
@@ -200,37 +210,6 @@ Public Class fkaskeluar
         txtketerangan.TabIndex = 10
     End Sub
 
-    Function autonumber()
-        Call koneksii()
-        sql = "SELECT RIGHT(kode_kas_keluar,3) FROM tb_kas_keluar WHERE DATE_FORMAT(MID(`kode_kas_keluar`, 3 , 6), ' %y ')+ MONTH(MID(`kode_kas_keluar`,3 , 6)) + DAY(MID(`kode_kas_keluar`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_kas_keluar,3) DESC"
-        Dim pesan As String = ""
-        Try
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            If dr.HasRows Then
-                dr.Read()
-                If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
-                    Return "KK" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                Else
-                    If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
-                        Return "KK" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                    Else
-                        If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
-                            Return "KK" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                        End If
-                    End If
-                End If
-            Else
-                Return "KK" + Format(Now.Date, "yyMMdd") + "001"
-            End If
-
-        Catch ex As Exception
-            pesan = ex.Message.ToString
-        Finally
-            cnn.Close()
-        End Try
-        Return pesan
-    End Function
     Sub enable_text()
         cmbsales.Enabled = True
         cmbkas.Enabled = True
@@ -247,23 +226,18 @@ Public Class fkaskeluar
                 btntambah.Text = "Simpan"
                 Call enable_text()
                 Call index()
-                txtkodekeluar.Text = autonumber()
                 GridControl1.Enabled = False
             Else
-                If txtkodekeluar.Text.Length = 0 Then
-                    MsgBox("Kode belum terisi !")
+                If cmbsales.SelectedIndex = -1 Then
+                    MsgBox("Sales belum terisi !")
                 Else
-                    If cmbsales.SelectedIndex = -1 Then
-                        MsgBox("Sales belum terisi !")
+                    If cmbkas.SelectedIndex = -1 Then
+                        MsgBox("Kas belum terisi !")
                     Else
-                        If cmbkas.SelectedIndex = -1 Then
-                            MsgBox("Kas belum terisi !")
+                        If txtsaldokeluar.Text.Length = 0 Then
+                            MsgBox("Saldo belum terisi !")
                         Else
-                            If txtsaldokeluar.Text.Length = 0 Then
-                                MsgBox("Saldo belum terisi !")
-                            Else
-                                Call simpan()
-                            End If
+                            Call simpan()
                         End If
                     End If
                 End If
@@ -274,57 +248,26 @@ Public Class fkaskeluar
     End Sub
 
     Sub simpan()
-        kodekeluar = autonumber()
-
         Call koneksii()
-        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
-        Dim myTrans As OdbcTransaction
 
-        ' Start a local transaction
-        myTrans = cnnx.BeginTransaction()
-        ' Must assign both transaction object and connection
-        ' to Command object for a pending local transaction
-        myCommand.Connection = cnnx
-        myCommand.Transaction = myTrans
+        sql = "INSERT INTO tb_kas_keluar(kas_id, user_id, jenis_kas, tanggal, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & idkas & "','" & cmbsales.SelectedValue & "','Keluar', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldokeluar & "','" & 0 & "','" & 1 & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
+        cmmd = New OdbcCommand(sql, cnn)
+        idkaskeluar = CInt(cmmd.ExecuteScalar())
 
-        Try
-            myCommand.CommandText = "INSERT INTO tb_kas_keluar (kode_kas_keluar, kode_kas, kode_user, jenis_kas, tanggal_transaksi, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & kodekeluar & "','" & cmbkas.Text & "','" & cmbsales.Text & "','Keluar', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldokeluar & "','" & 0 & "','" & 1 & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
-            myCommand.ExecuteNonQuery()
+        If idkas > 0 Then
+            Call koneksii()
+            sql = "INSERT INTO tb_transaksi_kas(kode_kas, kode_kas_keluar, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & idkas & "','" & idkaskeluar & "', 'KELUAR','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas Keluar Nomor " & idkaskeluar & "','" & saldokeluar & "', '" & 0 & "', '" & fmenu.kodeuser.Text & "', '" & fmenu.kodeuser.Text & "', now(), now())"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+        End If
 
-            kodekas = cmbkas.Text
-
-            If kodekas IsNot "" Then
-                Call koneksii()
-                myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_kas_keluar, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & kodekas & "','" & kodekeluar & "', 'KELUAR','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas Keluar Nomor " & kodekeluar & "','" & saldokeluar & "', '" & 0 & "', '" & fmenu.kodeuser.text & "', '" & fmenu.kodeuser.text & "', now(), now())"
-                myCommand.ExecuteNonQuery()
-            End If
-
-            myTrans.Commit()
-            Console.WriteLine("Both records are written to database.")
-
-            'history user ==========
-            Call historysave("Menyimpan Data Kas Keluar Kode " + kodekeluar, kodekeluar)
-            '========================
-            MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
-            btntambah.Text = "Tambah"
-            Me.Refresh()
-            Call awal()
-        Catch e As Exception
-            Try
-                myTrans.Rollback()
-            Catch ex As OdbcException
-                If Not myTrans.Connection Is Nothing Then
-                    Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
-                End If
-            End Try
-
-            Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
-            Console.WriteLine("Neither record was written to database.")
-            MsgBox("Data Gagal tersimpan", MsgBoxStyle.Information, "Gagal")
-        Finally
-            'myConnection.Close()
-        End Try
-
+        'history user ==========
+        Call historysave("Menyimpan Data Kas Keluar Kode " & idkaskeluar, idkaskeluar)
+        '========================
+        MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
+        btntambah.Text = "Tambah"
+        Me.Refresh()
+        Call awal()
     End Sub
 
     Sub edit()
@@ -340,13 +283,13 @@ Public Class fkaskeluar
         myCommand.Transaction = myTrans
 
         Try
-            myCommand.CommandText = "UPDATE tb_kas_keluar SET kode_user='" & cmbsales.Text & "',kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', saldo_kas='" & saldokeluar & "', keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.kodeuser.text & "',last_updated=now()  WHERE  kode_kas_keluar='" & txtkodekeluar.Text & "'"
+            myCommand.CommandText = "UPDATE tb_kas_keluar SET user_id='" & iduser & "',kas_id='" & idkas & "', tanggal='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', saldo_kas='" & saldokeluar & "', keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.kodeuser.Text & "',last_updated=now() WHERE id='" & idkaskeluar & "'"
             myCommand.ExecuteNonQuery()
 
-            kodekas = cmbkas.Text
+            idkas = cmbkas.SelectedValue
 
-            If kodekas IsNot "" Then
-                myCommand.CommandText = "UPDATE tb_transaksi_kas SET kode_kas='" & cmbkas.Text & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & saldokeluar & "', kredit_kas='" & 0 & "', updated_by='" & fmenu.kodeuser.text & "', last_updated=now() WHERE kode_kas_keluar='" & txtkodekeluar.Text & "'"
+            If idkas > 0 Then
+                myCommand.CommandText = "UPDATE tb_transaksi_kas SET kode_kas='" & idkas & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & saldokeluar & "', kredit_kas='" & 0 & "', updated_by='" & fmenu.kodeuser.Text & "', last_updated=now() WHERE id='" & idkaskeluar & "'"
                 myCommand.ExecuteNonQuery()
             End If
 
@@ -354,7 +297,7 @@ Public Class fkaskeluar
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Mengedit Data Kas Keluar Kode " + txtkodekeluar.Text, txtkodekeluar.Text)
+            Call historysave("Mengedit Data Kas Keluar Kode " & idkaskeluar, idkaskeluar)
             '========================
 
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -384,20 +327,16 @@ Public Class fkaskeluar
                 Call index()
                 GridControl1.Enabled = False
             Else
-                If txtkodekeluar.Text.Length = 0 Then
-                    MsgBox("Kode belum terisi !")
+                If cmbsales.SelectedIndex = -1 Then
+                    MsgBox("Sales belum terisi !")
                 Else
-                    If cmbsales.SelectedIndex = -1 Then
-                        MsgBox("Sales belum terisi !")
+                    If cmbkas.SelectedIndex = -1 Then
+                        MsgBox("Kas belum terisi !")
                     Else
-                        If cmbkas.SelectedIndex = -1 Then
-                            MsgBox("Kas belum terisi !")
+                        If txtsaldokeluar.Text.Length = 0 Then
+                            MsgBox("Saldo belum terisi !")
                         Else
-                            If txtsaldokeluar.Text.Length = 0 Then
-                                MsgBox("Saldo belum terisi !")
-                            Else
-                                Call edit()
-                            End If
+                            Call edit()
                         End If
                     End If
                 End If
@@ -411,11 +350,11 @@ Public Class fkaskeluar
         If editstatus.Equals(True) Then
             Call koneksii()
             If MessageBox.Show("Hapus Data Kas Keluar " & Me.txtkodekeluar.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-                sql = "DELETE FROM tb_kas_keluar WHERE  kode_kas_keluar='" & txtkodekeluar.Text & "'"
+                sql = "DELETE FROM tb_kas_keluar WHERE id='" & txtkodekeluar.Text & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
 
-                sql = "DELETE FROM tb_transaksi_kas WHERE  kode_kas_keluar='" & txtkodekeluar.Text & "'"
+                sql = "DELETE FROM tb_transaksi_kas WHERE kode_kas_keluar='" & txtkodekeluar.Text & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
 
@@ -445,10 +384,9 @@ Public Class fkaskeluar
                 fpassword.kodetabel = txtkodekeluar.Text
                 fpassword.ShowDialog()
                 If statusizincetak.Equals(True) Then
-
                     Call cetak_faktur()
 
-                    sql = "UPDATE tb_kas_keluar SET print_kas = 1 WHERE kode_kas_keluar = '" & txtkodekeluar.Text & "' "
+                    sql = "UPDATE tb_kas_keluar SET print_kas = 1 WHERE id='" & txtkodekeluar.Text & "' "
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
 
@@ -523,6 +461,14 @@ Public Class fkaskeluar
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
+    Private Sub cmbsales_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsales.SelectedIndexChanged
+        Call carisales()
+    End Sub
+
+    Private Sub cmbsales_TextChanged(sender As Object, e As EventArgs) Handles cmbsales.TextChanged
+        Call carisales()
+    End Sub
+
     Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
         Dim faktur As String
         Call koneksii()
@@ -560,24 +506,25 @@ Public Class fkaskeluar
     End Sub
 
     Sub cari()
-        txtkodekeluar.Text = GridView1.GetFocusedRowCellValue("kode_kas_keluar")
+        idkaskeluar = GridView1.GetFocusedRowCellValue("id")
+        txtkodekeluar.Text = idkaskeluar
 
         Call koneksii()
-        sql = "SELECT * FROM tb_kas_keluar WHERE kode_kas_keluar  = '" & txtkodekeluar.Text & "'"
+        sql = "SELECT * FROM tb_kas_keluar WHERE id='" & idkaskeluar & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()
         If dr.HasRows Then
-            viewkodesales = dr("kode_user")
-            viewkodekas = dr("kode_kas")
-            viewtglkas = dr("tanggal_transaksi")
+            viewkodesales = dr("user_id")
+            viewkodekas = dr("kas_id")
+            viewtglkas = dr("tanggal")
             saldokeluar = dr("saldo_kas")
             viewketerangan = dr("keterangan_kas")
             statusprint = dr("print_kas")
             statusposted = dr("posted_kas")
 
-            cmbsales.Text = viewkodesales
-            cmbkas.Text = viewkodekas
+            cmbsales.SelectedValue = viewkodesales
+            cmbkas.SelectedValue = viewkodekas
             dttransaksi.Value = viewtglkas
             txtsaldokeluar.Text = Format(saldokeluar, "##,##0")
             txtketerangan.Text = viewketerangan

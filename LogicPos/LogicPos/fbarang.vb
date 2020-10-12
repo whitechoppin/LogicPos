@@ -9,8 +9,6 @@ Public Class fbarang
     Dim hargabarang, modalbarang As Double
     Public passwrodstatus As Boolean = False
     Dim idbarang, kodebarang, namabarang, satuanbarang, jenisbarang, kategoribarang, keteranganbarang As String
-    Dim minstok As Integer
-    Private PathFile As String = Nothing
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -405,7 +403,7 @@ Public Class fbarang
             cmmd.ExecuteNonQuery()
 
             MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
-            btnedit.Text = "&Edit"
+            btnedit.Text = "Edit"
 
             'history user ==========
             Call historysave("Mengedit Data Barang Kode " + txtkode.Text, txtkode.Text)

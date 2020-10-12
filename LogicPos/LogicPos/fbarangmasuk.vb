@@ -474,15 +474,6 @@ Public Class fbarangmasuk
 
         txtketerangan.Enabled = True
 
-        Call koneksii()
-        sql = "DELETE FROM tb_barang_masuk_detail_sementara"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
-        sql = "INSERT INTO tb_barang_masuk_detail_sementara SELECT * FROM tb_barang_masuk_detail WHERE kode_barang_masuk ='" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
     End Sub
 
     Sub tabel_utama()
