@@ -61,7 +61,6 @@ Public Class fpenjualan
 
     Private Sub fpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
         hitnumber = 0
         idpenjualan = currentnumber()
         Call inisialisasi(idpenjualan)
@@ -797,24 +796,24 @@ Public Class fpenjualan
         GridColumn12.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn12.DisplayFormat.FormatString = "{0:n0}"
         GridColumn12.Width = 20
-        'GridColumn12.Visible = False
+        GridColumn12.Visible = False
 
         GridColumn13.FieldName = "modal_barang"
         GridColumn13.Caption = "Modal Barang"
         GridColumn13.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn13.DisplayFormat.FormatString = "{0:n0}"
         GridColumn13.Width = 20
-        'GridColumn13.Visible = False
+        GridColumn13.Visible = False
 
         GridColumn14.FieldName = "barang_id"
         GridColumn14.Caption = "Barang id"
         GridColumn14.Width = 15
-        'GridColumn14.Visible = False
+        GridColumn14.Visible = False
 
         GridColumn15.FieldName = "stok_id"
         GridColumn15.Caption = "stok id"
         GridColumn15.Width = 15
-        'GridColumn15.Visible = False
+        GridColumn15.Visible = False
     End Sub
 
     Sub reload_tabel()
@@ -916,7 +915,6 @@ Public Class fpenjualan
     Private Sub cmbpembayaran_TextChanged(sender As Object, e As EventArgs) Handles cmbpembayaran.TextChanged
         Call caripembayaran()
     End Sub
-
     Private Sub ritehargasatuan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ritehargasatuan.KeyPress
         e.Handled = ValidAngka(e)
     End Sub
@@ -1676,7 +1674,7 @@ Public Class fpenjualan
                 MsgBox("Isi Kode Pelanggan", MsgBoxStyle.Information, "Informasi")
             Else
                 tutupcaristok = 1
-                idgudangcari = cmbgudang.SelectedValue
+                idgudangcari = idgudang
                 fcaristok.ShowDialog()
             End If
         End If
@@ -2314,7 +2312,6 @@ Public Class fpenjualan
             If dr.HasRows Then
                 stok = GridView1.GetRowCellValue(i, "banyak")
                 stokdatabase = dr("jumlah_stok")
-
                 namastokdatabase = dr("nama_stok")
 
                 'mengambil selisih qty dari penjualan detail
@@ -2347,6 +2344,7 @@ Public Class fpenjualan
 
 
             'cari nota  yang sebelumnya (kembalikan stok dulu) cek dulu disini
+            Call koneksii()
             sql = "SELECT gudang_id FROM tb_penjualan WHERE id = '" & nomornota & "'"
             cmmd = New OdbcCommand(sql, cnn)
             idgudanglama = Val(cmmd.ExecuteScalar())

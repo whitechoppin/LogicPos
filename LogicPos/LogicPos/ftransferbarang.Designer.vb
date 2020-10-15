@@ -413,9 +413,9 @@ Partial Class ftransferbarang
         Me.Label7.Location = New System.Drawing.Point(10, 17)
         Me.Label7.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(191, 31)
+        Me.Label7.Size = New System.Drawing.Size(225, 31)
         Me.Label7.TabIndex = 64
-        Me.Label7.Text = "Transfer Stok"
+        Me.Label7.Text = "Transfer Barang"
         '
         'GridControl1
         '

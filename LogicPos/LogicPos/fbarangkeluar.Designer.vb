@@ -34,7 +34,7 @@ Partial Class fbarangkeluar
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnsimpan = New System.Windows.Forms.Button()
         Me.btncaricustomer = New System.Windows.Forms.Button()
-        Me.cmbcustomer = New System.Windows.Forms.ComboBox()
+        Me.cmbpelanggan = New System.Windows.Forms.ComboBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -63,6 +63,8 @@ Partial Class fbarangkeluar
         Me.ritebanyak = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.txtkodebarang = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.lblsatuan = New System.Windows.Forms.Label()
@@ -77,8 +79,8 @@ Partial Class fbarangkeluar
         Me.btncarikeluar = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Label30 = New System.Windows.Forms.Label()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritebanyak, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -201,19 +203,20 @@ Partial Class fbarangkeluar
         Me.btncaricustomer.TabIndex = 57
         Me.btncaricustomer.UseVisualStyleBackColor = True
         '
-        'cmbcustomer
+        'cmbpelanggan
         '
-        Me.cmbcustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbcustomer.FormattingEnabled = True
-        Me.cmbcustomer.Location = New System.Drawing.Point(114, 89)
-        Me.cmbcustomer.Margin = New System.Windows.Forms.Padding(6)
-        Me.cmbcustomer.MaxLength = 99
-        Me.cmbcustomer.Name = "cmbcustomer"
-        Me.cmbcustomer.Size = New System.Drawing.Size(191, 26)
-        Me.cmbcustomer.TabIndex = 58
+        Me.cmbpelanggan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbpelanggan.FormattingEnabled = True
+        Me.cmbpelanggan.Location = New System.Drawing.Point(114, 89)
+        Me.cmbpelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbpelanggan.MaxLength = 99
+        Me.cmbpelanggan.Name = "cmbpelanggan"
+        Me.cmbpelanggan.Size = New System.Drawing.Size(191, 26)
+        Me.cmbpelanggan.TabIndex = 58
         '
         'txttelp
         '
+        Me.txttelp.Enabled = False
         Me.txttelp.Location = New System.Drawing.Point(415, 88)
         Me.txttelp.Margin = New System.Windows.Forms.Padding(6)
         Me.txttelp.Name = "txttelp"
@@ -222,6 +225,7 @@ Partial Class fbarangkeluar
         '
         'txtalamat
         '
+        Me.txtalamat.Enabled = False
         Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.txtalamat.Location = New System.Drawing.Point(415, 14)
         Me.txtalamat.Margin = New System.Windows.Forms.Padding(6)
@@ -400,9 +404,9 @@ Partial Class fbarangkeluar
         Me.Label4.Location = New System.Drawing.Point(17, 93)
         Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(74, 18)
+        Me.Label4.Size = New System.Drawing.Size(77, 18)
         Me.Label4.TabIndex = 19
-        Me.Label4.Text = "Customer"
+        Me.Label4.Text = "Pelanggan"
         '
         'Label7
         '
@@ -429,7 +433,7 @@ Partial Class fbarangkeluar
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -511,6 +515,28 @@ Partial Class fbarangkeluar
         Me.GridColumn6.OptionsColumn.AllowEdit = False
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
+        '
+        'GridColumn7
+        '
+        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceCell.Options.UseFont = True
+        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn7.Caption = "id barang"
+        Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.Visible = True
+        Me.GridColumn7.VisibleIndex = 6
+        '
+        'GridColumn8
+        '
+        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceCell.Options.UseFont = True
+        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn8.Caption = "id stok"
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 7
         '
         'txtkodebarang
         '
@@ -610,6 +636,7 @@ Partial Class fbarangkeluar
         '
         'txtkodestok
         '
+        Me.txtkodestok.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtkodestok.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkodestok.Location = New System.Drawing.Point(14, 266)
         Me.txtkodestok.Margin = New System.Windows.Forms.Padding(6)
@@ -669,7 +696,7 @@ Partial Class fbarangkeluar
         Me.TabPage1.Controls.Add(Me.dtbarangkeluar)
         Me.TabPage1.Controls.Add(Me.Label20)
         Me.TabPage1.Controls.Add(Me.Label17)
-        Me.TabPage1.Controls.Add(Me.cmbcustomer)
+        Me.TabPage1.Controls.Add(Me.cmbpelanggan)
         Me.TabPage1.Controls.Add(Me.Label4)
         Me.TabPage1.Controls.Add(Me.Label19)
         Me.TabPage1.Controls.Add(Me.txtnonota)
@@ -681,17 +708,6 @@ Partial Class fbarangkeluar
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Detail Barang Keluar"
         '
-        'TabPage2
-        '
-        Me.TabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage2.Controls.Add(Me.txtketerangan)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 27)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1142, 134)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Keterangan"
-        '
         'Label30
         '
         Me.Label30.AutoSize = True
@@ -702,6 +718,17 @@ Partial Class fbarangkeluar
         Me.Label30.Size = New System.Drawing.Size(50, 18)
         Me.Label30.TabIndex = 87
         Me.Label30.Text = "Status"
+        '
+        'TabPage2
+        '
+        Me.TabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage2.Controls.Add(Me.txtketerangan)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(1142, 134)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Keterangan"
         '
         'fbarangkeluar
         '
@@ -799,11 +826,13 @@ Partial Class fbarangkeluar
     Friend WithEvents txtkodestok As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents btncaricustomer As Button
-    Friend WithEvents cmbcustomer As ComboBox
+    Friend WithEvents cmbpelanggan As ComboBox
     Friend WithEvents ritebanyak As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents btncarikeluar As Button
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents Label30 As Label
+    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
 End Class
