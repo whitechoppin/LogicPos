@@ -72,7 +72,7 @@ Public Class fcaristok
         'menyiapkan koneksi database
         Call koneksii()
 
-        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
+        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()

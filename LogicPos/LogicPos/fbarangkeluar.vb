@@ -7,6 +7,7 @@ Public Class fbarangkeluar
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
+
     Public tabel, tabelsementara As DataTable
     Dim hitnumber As Integer
     'variabel dalam penjualan
@@ -980,9 +981,8 @@ Public Class fbarangkeluar
                 stok = GridView1.GetRowCellValue(i, "banyak")
                 stokdatabase = dr("jumlah_stok")
                 If stokdatabase < stok Then
-                    MsgBox("Stok dengan nama stok " + dr("nama_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                    MsgBox("Stok dengan kode stok " + dr("kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
                     statusavailable = False
-                    'Exit Sub
                 End If
             Else
                 MsgBox("Kode Stok Barang ini " + GridView1.GetRowCellValue(i, "stok_id") + " tidak ada di gudang.", MsgBoxStyle.Information, "Informasi")
@@ -1131,7 +1131,7 @@ Public Class fbarangkeluar
                 Console.WriteLine("Both records are written to database.")
 
                 'history user ==========
-                Call historysave("Mengedit Data Barang Keluar Kode " + idbarangkeluar, idbarangkeluar)
+                Call historysave("Mengedit Data Barang Keluar Kode " & idbarangkeluar, idbarangkeluar)
                 '========================
                 MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
                 'Call inisialisasi(nomornota)

@@ -7,10 +7,13 @@ Public Class ftransferbarang
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
-    Public tabel As DataTable
+
+    Public tabel, tabelsementara As DataTable
     Dim hitnumber As Integer
     'variabel dalam penjualan
-    Public jenis, satuan, kodetransferbarang, kodetransaksi As String
+    Public jenis, satuan As String
+    Dim idbarang, iddaristok, idkestok As Integer
+    Dim idtransferbarang, iddarigudang, idkegudang, iduser As String
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
     'variabel bantuan view penjualan
     Dim nomornota, nomorcustomer, nomorsales, nomordarigudang, nomorkegudang, viewketerangan As String
@@ -45,9 +48,8 @@ Public Class ftransferbarang
 
     Private Sub ftransferbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-
-        kodetransferbarang = currentnumber()
-        Call inisialisasi(kodetransferbarang)
+        idtransferbarang = currentnumber()
+        Call inisialisasi(idtransferbarang)
         With GridView1
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
@@ -89,41 +91,41 @@ Public Class ftransferbarang
         Call historysave("Membuka Transaksi Transfer Barang", "N/A")
     End Sub
 
-    Function autonumber()
-        Call koneksii()
-        sql = "SELECT RIGHT(kode_transfer_barang,3) FROM tb_transfer_barang WHERE DATE_FORMAT(MID(`kode_transfer_barang`, 3 , 6), ' %y ')+ MONTH(MID(`kode_transfer_barang`,3 , 6)) + DAY(MID(`kode_transfer_barang`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_transfer_barang,3) DESC"
-        Dim pesan As String = ""
-        Try
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            If dr.HasRows Then
-                dr.Read()
-                If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
-                    Return "TB" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                Else
-                    If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
-                        Return "TB" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                    Else
-                        If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
-                            Return "TB" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                        End If
-                    End If
-                End If
-            Else
-                Return "TB" + Format(Now.Date, "yyMMdd") + "001"
-            End If
+    'Function autonumber()
+    '    Call koneksii()
+    '    sql = "SELECT RIGHT(kode_transfer_barang,3) FROM tb_transfer_barang WHERE DATE_FORMAT(MID(`kode_transfer_barang`, 3 , 6), ' %y ')+ MONTH(MID(`kode_transfer_barang`,3 , 6)) + DAY(MID(`kode_transfer_barang`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_transfer_barang,3) DESC"
+    '    Dim pesan As String = ""
+    '    Try
+    '        cmmd = New OdbcCommand(sql, cnn)
+    '        dr = cmmd.ExecuteReader
+    '        If dr.HasRows Then
+    '            dr.Read()
+    '            If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
+    '                Return "TB" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+    '            Else
+    '                If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
+    '                    Return "TB" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+    '                Else
+    '                    If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
+    '                        Return "TB" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+    '                    End If
+    '                End If
+    '            End If
+    '        Else
+    '            Return "TB" + Format(Now.Date, "yyMMdd") + "001"
+    '        End If
 
-        Catch ex As Exception
-            pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
-        End Try
-        Return pesan
-    End Function
+    '    Catch ex As Exception
+    '        pesan = ex.Message.ToString
+    '    Finally
+    '        'cnn.Close()
+    '    End Try
+    '    Return pesan
+    'End Function
 
     Function currentnumber()
         Call koneksii()
-        sql = "SELECT kode_transfer_barang FROM tb_transfer_barang ORDER BY kode_transfer_barang DESC LIMIT 1;"
+        sql = "SELECT id FROM tb_transfer_barang ORDER BY id DESC LIMIT 1;"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -132,20 +134,18 @@ Public Class ftransferbarang
                 dr.Read()
                 Return dr.Item(0).ToString
             Else
-                Return ""
+                Return 0
             End If
 
         Catch ex As Exception
             pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
         End Try
         Return pesan
     End Function
 
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
-        sql = "SELECT kode_transfer_barang FROM tb_transfer_barang WHERE date_created < (SELECT date_created FROM tb_transfer_barang WHERE kode_transfer_barang = '" + previousnumber + "') ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT id FROM tb_transfer_barang WHERE date_created < (SELECT date_created FROM tb_transfer_barang WHERE id = '" + previousnumber + "') ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -164,13 +164,11 @@ Public Class ftransferbarang
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
         End Try
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT kode_transfer_barang FROM tb_transfer_barang WHERE date_created > (SELECT date_created FROM tb_transfer_barang WHERE kode_transfer_barang = '" + nextingnumber + "') ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT id FROM tb_transfer_barang WHERE date_created > (SELECT date_created FROM tb_transfer_barang WHERE id = '" + nextingnumber + "') ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -189,8 +187,6 @@ Public Class ftransferbarang
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
         End Try
     End Sub
 
@@ -209,18 +205,18 @@ Public Class ftransferbarang
     End Sub
 
     Sub previewtransferbarang(lihat As String)
-        sql = "SELECT * FROM tb_transfer_barang_detail WHERE kode_transfer_barang ='" & lihat & "'"
+        sql = "SELECT * FROM tb_transfer_barang_detail WHERE transfer_barang_id ='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"))
+            tabel.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), dr("barang_id"), dr("dari_stok_id"), dr("ke_stok_id"))
+            tabelsementara.Rows.Add(dr("kode_barang"), dr("kode_stok"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), dr("barang_id"), dr("dari_stok_id"), dr("ke_stok_id"))
         End While
         GridControl1.RefreshDataSource()
     End Sub
 
     Sub tabel_utama()
         tabel = New DataTable
-
         With tabel
             .Columns.Add("kode_barang")
             .Columns.Add("kode_stok")
@@ -228,22 +224,37 @@ Public Class ftransferbarang
             .Columns.Add("banyak", GetType(Double))
             .Columns.Add("satuan_barang")
             .Columns.Add("jenis_barang")
+            .Columns.Add("barang_id")
+            .Columns.Add("dari_stok_id")
+            .Columns.Add("ke_stok_id")
+        End With
 
+        tabelsementara = New DataTable
+        With tabelsementara
+            .Columns.Add("kode_barang")
+            .Columns.Add("kode_stok")
+            .Columns.Add("nama_barang")
+            .Columns.Add("banyak", GetType(Double))
+            .Columns.Add("satuan_barang")
+            .Columns.Add("jenis_barang")
+            .Columns.Add("barang_id")
+            .Columns.Add("dari_stok_id")
+            .Columns.Add("ke_stok_id")
         End With
 
         GridControl1.DataSource = tabel
 
         GridColumn1.FieldName = "kode_barang"
         GridColumn1.Caption = "Kode Barang"
-        GridColumn1.Width = 20
+        GridColumn1.Width = 10
 
         GridColumn2.FieldName = "kode_stok"
         GridColumn2.Caption = "Kode Stok"
-        GridColumn2.Width = 20
+        GridColumn2.Width = 10
 
         GridColumn3.FieldName = "nama_barang"
         GridColumn3.Caption = "Nama Barang"
-        GridColumn3.Width = 70
+        GridColumn3.Width = 35
 
         GridColumn4.FieldName = "banyak"
         GridColumn4.Caption = "banyak"
@@ -259,6 +270,18 @@ Public Class ftransferbarang
         GridColumn6.Caption = "Jenis Barang"
         GridColumn6.Width = 10
 
+        GridColumn7.FieldName = "barang_id"
+        GridColumn7.Caption = "id barang"
+        GridColumn7.Width = 10
+
+        GridColumn8.FieldName = "dari_stok_id"
+        GridColumn8.Caption = "id dari stok"
+        GridColumn8.Width = 10
+
+        GridColumn9.FieldName = "ke_stok_id"
+        GridColumn9.Caption = "id ke stok"
+        GridColumn9.Width = 10
+
     End Sub
 
     Sub reload_tabel()
@@ -273,43 +296,40 @@ Public Class ftransferbarang
 
     Sub comboboxkegudang()
         Call koneksii()
-        cmbkegudang.Items.Clear()
-        cmbkegudang.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_gudang", cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbkegudang.AutoCompleteCustomSource.Add(dr("kode_gudang"))
-                cmbkegudang.Items.Add(dr("kode_gudang"))
-            End While
-        End If
+        sql = "SELECT * FROM tb_gudang"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbkegudang.DataSource = ds.Tables(0)
+        cmbkegudang.ValueMember = "id"
+        cmbkegudang.DisplayMember = "kode_gudang"
     End Sub
 
     Sub comboboxdarigudang()
         Call koneksii()
-        cmbdarigudang.Items.Clear()
-        cmbdarigudang.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_gudang", cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbdarigudang.AutoCompleteCustomSource.Add(dr("kode_gudang"))
-                cmbdarigudang.Items.Add(dr("kode_gudang"))
-            End While
-        End If
+        sql = "SELECT * FROM tb_gudang"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbdarigudang.DataSource = ds.Tables(0)
+        cmbdarigudang.ValueMember = "id"
+        cmbdarigudang.DisplayMember = "kode_gudang"
     End Sub
     Sub comboboxuser()
         Call koneksii()
-        cmbsales.Items.Clear()
-        cmbsales.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbsales.AutoCompleteCustomSource.Add(dr("kode_user"))
-                cmbsales.Items.Add(dr("kode_user"))
-            End While
-        End If
+        sql = "SELECT * FROM tb_user"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbsales.DataSource = ds.Tables(0)
+        cmbsales.ValueMember = "id"
+        cmbsales.DisplayMember = "kode_user"
     End Sub
 
     Sub awalbaru()
@@ -328,9 +348,13 @@ Public Class ftransferbarang
         btncaritransfer.Enabled = False
         btnnext.Enabled = False
 
+        'isi combo box
+        Call comboboxuser()
+        Call comboboxdarigudang()
+        Call comboboxkegudang()
+
         'header
         txtnonota.Clear()
-        txtnonota.Text = autonumber()
         txtnonota.Enabled = False
 
         cmbsales.SelectedIndex = 0
@@ -376,10 +400,6 @@ Public Class ftransferbarang
         txtketerangan.Enabled = True
         txtketerangan.Clear()
 
-        'isi combo box
-        Call comboboxuser()
-        Call comboboxdarigudang()
-        Call comboboxkegudang()
 
         'buat tabel
         Call tabel_utama()
@@ -443,29 +463,9 @@ Public Class ftransferbarang
         'total tabel pembelian
         txtketerangan.Enabled = True
 
-
-        'isi combo box
-        Call comboboxuser()
-        Call comboboxkegudang()
-        Call comboboxdarigudang()
-
-        'simpan di tabel sementara
-        Call koneksii()
-
-        'hapus di tabel jual sementara
-        Call koneksii()
-        sql = "DELETE FROM tb_transfer_barang_detail_sementara"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
-        'isi tabel sementara dengan data tabel detail
-        sql = "INSERT INTO tb_transfer_barang_detail_sementara SELECT * FROM tb_transfer_barang_detail WHERE kode_transfer_barang ='" & txtnonota.Text & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-
     End Sub
 
-    Sub inisialisasi(nomorkode As String)
+    Sub inisialisasi(nomorkode As Integer)
 
         'bersihkan dan set default value
         'button tools
@@ -481,6 +481,11 @@ Public Class ftransferbarang
         txtgotransferbarang.Enabled = True
         btncaritransfer.Enabled = True
         btnnext.Enabled = True
+
+        'isi combo box
+        Call comboboxuser()
+        Call comboboxdarigudang()
+        Call comboboxkegudang()
 
         'header
         txtnonota.Clear()
@@ -523,23 +528,18 @@ Public Class ftransferbarang
         txtketerangan.Enabled = False
         txtketerangan.Clear()
 
-        'isi combo box
-        Call comboboxuser()
-        Call comboboxdarigudang()
-        Call comboboxkegudang()
-
-        If nomorkode IsNot "" Then
+        If nomorkode > 0 Then
             Call koneksii()
-            sql = "SELECT * FROM tb_transfer_barang WHERE kode_transfer_barang = '" + nomorkode.ToString + "'"
+            sql = "SELECT * FROM tb_transfer_barang WHERE id = '" & nomorkode & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             dr.Read()
             If dr.HasRows Then
                 'header
-                nomornota = dr("kode_transfer_barang")
-                nomorsales = dr("kode_user")
-                nomordarigudang = dr("kode_dari_gudang")
-                nomorkegudang = dr("kode_ke_gudang")
+                nomornota = dr("id")
+                nomorsales = dr("user_id")
+                nomordarigudang = dr("dari_gudang_id")
+                nomorkegudang = dr("ke_gudang_id")
 
                 statusprint = dr("print_transfer_barang")
                 statusposted = dr("posted_transfer_barang")
@@ -548,9 +548,9 @@ Public Class ftransferbarang
                 viewketerangan = dr("keterangan_transfer_barang")
 
                 txtnonota.Text = nomornota
-                cmbsales.Text = nomorsales
-                cmbdarigudang.Text = nomordarigudang
-                cmbkegudang.Text = nomorkegudang
+                cmbsales.SelectedValue = nomorsales
+                cmbdarigudang.SelectedValue = nomordarigudang
+                cmbkegudang.SelectedValue = nomorkegudang
 
                 cbprinted.Checked = statusprint
                 cbposted.Checked = statusposted
@@ -568,10 +568,10 @@ Public Class ftransferbarang
             End If
         Else
             txtnonota.Clear()
-            cmbsales.Text = ""
+            cmbsales.SelectedIndex = -1
 
-            cmbdarigudang.Text = ""
-            cmbkegudang.Text = ""
+            cmbdarigudang.SelectedIndex = -1
+            cmbkegudang.SelectedIndex = -1
 
             cbprinted.Checked = False
             cbposted.Checked = False
@@ -590,6 +590,7 @@ Public Class ftransferbarang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
+            iddarigudang = dr("id")
             txtdarigudang.Text = dr("nama_gudang")
         Else
             txtdarigudang.Text = ""
@@ -600,15 +601,34 @@ Public Class ftransferbarang
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
+    Private Sub cmbsales_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsales.SelectedIndexChanged
+        Call carisales()
+    End Sub
+
+    Private Sub cmbsales_TextChanged(sender As Object, e As EventArgs) Handles cmbsales.TextChanged
+        Call carisales()
+    End Sub
+
     Sub carikegudang()
         Call koneksii()
         sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbkegudang.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
+            idkegudang = dr("id")
             txtkegudang.Text = dr("nama_gudang")
         Else
             txtkegudang.Text = ""
+        End If
+    End Sub
+
+    Sub carisales()
+        Call koneksii()
+        sql = "SELECT * FROM tb_user WHERE kode_user ='" & cmbsales.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            iduser = dr("id")
         End If
     End Sub
 
@@ -616,14 +636,17 @@ Public Class ftransferbarang
         e.Handled = ValidAngka(e)
     End Sub
 
-    Sub caribarang()
+    Sub caristok()
         Call koneksii()
-        sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_stok.kode_gudang ='" & cmbdarigudang.Text & "'"
+        sql = "SELECT tb_stok.id as idstok, tb_barang.id as idbarang, tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.satuan_barang, tb_barang.jenis_barang FROM tb_stok JOIN tb_barang ON tb_barang.id = tb_stok.barang_id WHERE kode_stok = '" & txtkodestok.Text & "' AND gudang_id ='" & iddarigudang & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            txtnamabarang.Text = dr("nama_barang")
+            iddaristok = Val(dr("idstok"))
+            idbarang = Val(dr("idbarang"))
+
             txtkodebarang.Text = dr("kode_barang")
+            txtnamabarang.Text = dr("nama_barang")
             satuan = dr("satuan_barang")
             lblsatuan.Text = satuan
             jenis = dr("jenis_barang")
@@ -690,7 +713,7 @@ Public Class ftransferbarang
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         If btnedit.Text.Equals("Edit") Then
-            Call inisialisasi(kodetransferbarang)
+            Call inisialisasi(idtransferbarang)
         ElseIf btnedit.Text.Equals("Update") Then
             btnedit.Text = "Edit"
             Call inisialisasi(txtnonota.Text)
@@ -709,7 +732,7 @@ Public Class ftransferbarang
                 If statusizincetak.Equals(True) Then
                     Call cetak_faktur()
                     Call koneksii()
-                    sql = "UPDATE tb_transfer_barang SET print_transfer_barang = 1 WHERE kode_transfer_barang = '" & txtnonota.Text & "' "
+                    sql = "UPDATE tb_transfer_barang SET print_transfer_barang = 1 WHERE id = '" & txtnonota.Text & "' "
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
 
@@ -722,12 +745,12 @@ Public Class ftransferbarang
             Else
                 Call cetak_faktur()
                 Call koneksii()
-                sql = "UPDATE tb_transfer_barang SET print_transfer_barang = 1 WHERE kode_transfer_barang = '" & txtnonota.Text & "' "
+                sql = "UPDATE tb_transfer_barang SET print_transfer_barang = 1 WHERE id = '" & txtnonota.Text & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
                 'history user ==========
-                Call historysave("Mencetak Data Transfer Barang Kode " + txtnonota.Text, txtnonota.Text)
+                Call historysave("Mencetak Data Transfer Barang Kode " & txtnonota.Text, txtnonota.Text)
                 '========================
 
                 cbprinted.Checked = True
@@ -788,7 +811,6 @@ Public Class ftransferbarang
         Next
 
         rpt_faktur = New fakturtransferbarang
-        'rpt_faktur.SetDataSource(tabel_faktur)
         rpt_faktur.Database.Tables(0).SetDataSource(tabel_faktur)
         rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
 
@@ -796,7 +818,7 @@ Public Class ftransferbarang
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
 
         rpt_faktur.SetParameterValue("tanggal", Format(dttransferbarang.Value, "dd MMMM yyyy HH:mm:ss").ToString)
-        rpt_faktur.SetParameterValue("penerima", fmenu.kodeuser.text)
+        rpt_faktur.SetParameterValue("penerima", fmenu.kodeuser.Text)
         rpt_faktur.SetParameterValue("dari", txtdarigudang.Text)
         rpt_faktur.SetParameterValue("ke", txtkegudang.Text)
 
@@ -879,7 +901,7 @@ Public Class ftransferbarang
             MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
         Else
             Call koneksii()
-            sql = "SELECT kode_transfer_barang FROM tb_transfer_barang WHERE kode_transfer_barang  = '" + txtgotransferbarang.Text + "' LIMIT 1"
+            sql = "SELECT id FROM tb_transfer_barang WHERE id= '" & txtgotransferbarang.Text & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
@@ -911,12 +933,12 @@ Public Class ftransferbarang
 
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
         tutupcaristok = 3
-        idgudangcari = cmbdarigudang.Text
+        idgudangcari = iddarigudang
         fcaristok.ShowDialog()
     End Sub
 
     Private Sub txtkodestok_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
-        Call caribarang()
+        Call caristok()
     End Sub
 
     Private Sub txtkodestok_KeyDown(sender As Object, e As KeyEventArgs) Handles txtkodestok.KeyDown
@@ -930,56 +952,52 @@ Public Class ftransferbarang
     End Sub
 
     Sub tambah()
+        Dim tbbanyak As Integer = 0
+        Dim lokasi As Integer = -1
         'Columns.Add("kode_barang")
         'Columns.Add("kode_stok")
         'Columns.Add("nama_barang")
         'Columns.Add("banyak", GetType(Double))
         'Columns.Add("satuan_barang")
         'Columns.Add("jenis_barang")
+        'Columns.Add("barang_id")
+        'Columns.Add("dari_stok_id")
+        'Columns.Add("ke_stok_id")
 
         If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txtbanyak.Text = "" Or banyak = 0 Then
             MsgBox("Barang Kosong", MsgBoxStyle.Information, "Informasi")
-            'Exit Sub
         Else
             If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
-                sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND kode_gudang ='" & cmbdarigudang.Text & "' LIMIT 1"
+                sql = "SELECT * FROM tb_stok WHERE id = '" & iddaristok & "' AND gudang_id ='" & iddarigudang & "' LIMIT 1"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 If dr.HasRows Then
                     If dr("jumlah_stok") < banyak Then
                         MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
-                        'Exit Sub
                     Else
-                        tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak, satuan, jenis)
+                        tabel.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak, satuan, jenis, idbarang, iddaristok, 0)
                         Call reload_tabel()
                     End If
                 End If
             Else 'kalau ada isi
-                Dim tbbanyak As Integer = 0
-                Dim tbnilaipersen As Double = 0
-                Dim tbnilainominal As Double = 0
-                Dim lokasi As Integer = -1
-
-                sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND kode_gudang ='" & cmbdarigudang.Text & "' LIMIT 1"
+                sql = "SELECT * FROM tb_stok WHERE id = '" & iddaristok & "' AND gudang_id ='" & iddarigudang & "' LIMIT 1"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
                 dr.Read()
                 If dr.HasRows Then
                     For i As Integer = 0 To GridView1.RowCount - 1
-                        If GridView1.GetRowCellValue(i, "kode_stok").Equals(txtkodestok.Text) Then
+                        If GridView1.GetRowCellValue(i, "dari_stok_id").Equals(iddaristok) Then
                             lokasi = i
                         End If
                     Next
 
                     tbbanyak = GridView1.GetRowCellValue(lokasi, "banyak")
-                    tbnilaipersen = GridView1.GetRowCellValue(lokasi, "diskon_persen")
-                    tbnilainominal = GridView1.GetRowCellValue(lokasi, "diskon_nominal")
 
                     If lokasi = -1 Then
                         If dr("jumlah_stok") < (banyak + tbbanyak) Then
                             MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                         Else
-                            tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis)
+                            tabel.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, iddaristok, 0)
                             Call reload_tabel()
                         End If
                     Else
@@ -987,46 +1005,12 @@ Public Class ftransferbarang
                             MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
                         Else
                             GridView1.DeleteRow(GridView1.GetRowHandle(lokasi))
-                            tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis)
+                            tabel.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, iddaristok, 0)
                             Call reload_tabel()
                         End If
                     End If
                 Else
-                    sql = "SELECT * FROM tb_barang JOIN tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE kode_stok = '" & txtkodestok.Text & "' AND kode_gudang ='" & cmbdarigudang.Text & "' LIMIT 1"
-                    cmmd = New OdbcCommand(sql, cnn)
-                    dr = cmmd.ExecuteReader
-                    dr.Read()
-
-                    If dr.HasRows Then
-                        For i As Integer = 0 To GridView1.RowCount - 1
-                            If GridView1.GetRowCellValue(i, "kode_stok").Equals(txtkodestok.Text) Then
-                                lokasi = i
-                            End If
-                        Next
-
-                        tbbanyak = GridView1.GetRowCellValue(lokasi, "banyak")
-                        tbnilaipersen = GridView1.GetRowCellValue(lokasi, "diskon_persen")
-                        tbnilainominal = GridView1.GetRowCellValue(lokasi, "diskon_nominal")
-
-                        If lokasi = -1 Then
-                            If dr("jumlah_stok") < (banyak + tbbanyak) Then
-                                MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
-                            Else
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, Val(txtbanyak.Text) + tbbanyak, satuan, jenis)
-                                Call reload_tabel()
-                            End If
-                        Else
-                            If dr("jumlah_stok") < (banyak + tbbanyak) Then
-                                MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
-                            Else
-                                GridView1.DeleteRow(GridView1.GetRowHandle(lokasi))
-                                tabel.Rows.Add(dr("kode_barang"), txtkodestok.Text, txtnamabarang.Text, Val(txtbanyak.Text) + tbbanyak, satuan, jenis)
-                                Call reload_tabel()
-                            End If
-                        End If
-                    Else
-                        MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
-                    End If
+                    MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
                 End If
             End If
         End If
@@ -1038,7 +1022,7 @@ Public Class ftransferbarang
         Dim statusavailable As Boolean = True
 
         For i As Integer = 0 To GridView1.RowCount - 1
-            sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbdarigudang.Text & "' LIMIT 1"
+            sql = "SELECT * FROM tb_stok WHERE id = '" & GridView1.GetRowCellValue(i, "dari_stok_id") & "' AND gudang_id ='" & iddarigudang & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             dr.Read()
@@ -1048,12 +1032,10 @@ Public Class ftransferbarang
                 If stokdatabase < stok Then
                     MsgBox("Stok dengan kode stok " + dr("kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
                     statusavailable = False
-                    'Exit Sub
                 End If
             Else
                 MsgBox("Kode Stok Barang ini " + GridView1.GetRowCellValue(i, "kode_stok") + " tidak ada di gudang.", MsgBoxStyle.Information, "Informasi")
                 statusavailable = False
-                'Exit Sub
             End If
         Next
 
@@ -1063,7 +1045,6 @@ Public Class ftransferbarang
     End Sub
 
     Sub simpan()
-        kodetransferbarang = autonumber()
         Call koneksii()
 
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()
@@ -1071,44 +1052,60 @@ Public Class ftransferbarang
 
         ' Start a local transaction
         myTrans = cnnx.BeginTransaction()
-        ' Must assign both transaction object and connection
-        ' to Command object for a pending local transaction
         myCommand.Connection = cnnx
         myCommand.Transaction = myTrans
 
         Try
+            'sediakan wadah stok nya dulu
             For i As Integer = 0 To GridView1.RowCount - 1
-                myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbdarigudang.Text & "'"
-                myCommand.ExecuteNonQuery()
-
-                sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang='" & cmbkegudang.Text & "' LIMIT 1"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-                If dr.HasRows Then
-                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbkegudang.Text & "'"
-                    myCommand.ExecuteNonQuery()
+                If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
+                    Call koneksii()
+                    sql = "SELECT * FROM tb_stok WHERE barang_id = '" & GridView1.GetRowCellValue(i, "barang_id") & "' AND gudang_id='" & idkegudang & "' LIMIT 1"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
+                    If dr.HasRows Then
+                        idkestok = Val(dr("id"))
+                        GridView1.SetRowCellValue(i, "ke_stok_id", idkestok)
+                    Else
+                        Call koneksii()
+                        sql = "INSERT INTO tb_stok(kode_stok, kode_barang, nama_stok, status_stok, jumlah_stok, barang_id, gudang_id, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','1', '0','" & GridView1.GetRowCellValue(i, "barang_id") & "','" & idkegudang & "', '" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
+                        cmmd = New OdbcCommand(sql, cnn)
+                        idkestok = CInt(cmmd.ExecuteScalar())
+                        GridView1.SetRowCellValue(i, "ke_stok_id", idkestok)
+                    End If
                 Else
-                    myCommand.CommandText = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','1', '" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & cmbkegudang.Text & "', '" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "', now(), now() )"
-                    myCommand.ExecuteNonQuery()
+                    Call koneksii()
+                    sql = "INSERT INTO tb_stok(kode_stok, kode_barang, nama_stok, status_stok, jumlah_stok, barang_id, gudang_id, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','0', '0','" & GridView1.GetRowCellValue(i, "barang_id") & "','" & idkegudang & "', '" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    idkestok = CInt(cmmd.ExecuteScalar())
+                    GridView1.SetRowCellValue(i, "ke_stok_id", idkestok)
                 End If
             Next
 
+            sql = "INSERT INTO tb_transfer_barang(dari_gudang_id, ke_gudang_id, user_id, tanggal_transfer_barang, print_transfer_barang, posted_transfer_barang, keterangan_transfer_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & iddarigudang & "','" & idkegudang & "','" & iduser & "' , '" & Format(dttransferbarang.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
+            cmmd = New OdbcCommand(sql, cnn)
+            idtransferbarang = CInt(cmmd.ExecuteScalar())
+
             For i As Integer = 0 To GridView1.RowCount - 1
-                myCommand.CommandText = "INSERT INTO tb_transfer_barang_detail ( kode_transfer_barang, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, created_by, updated_by,date_created, last_updated) VALUES ('" & kodetransferbarang & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
+                myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & Val(GridView1.GetRowCellValue(i, "banyak")) & "' WHERE id = '" & GridView1.GetRowCellValue(i, "ke_stok_id") & "' AND gudang_id ='" & idkegudang & "'"
+                myCommand.ExecuteNonQuery()
+
+                myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & Val(GridView1.GetRowCellValue(i, "banyak")) & "' WHERE id = '" & GridView1.GetRowCellValue(i, "dari_stok_id") & "' AND gudang_id ='" & iddarigudang & "'"
+                myCommand.ExecuteNonQuery()
+
+                myCommand.CommandText = "INSERT INTO tb_transfer_barang_detail(transfer_barang_id, barang_id, dari_stok_id, ke_stok_id, kode_barang, kode_stok, nama_barang, satuan_barang, jenis_barang, qty, created_by, updated_by,date_created, last_updated) VALUES ('" & idtransferbarang & "','" & GridView1.GetRowCellValue(i, "barang_id") & "','" & GridView1.GetRowCellValue(i, "dari_stok_id") & "','" & GridView1.GetRowCellValue(i, "ke_stok_id") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
-            myCommand.CommandText = "INSERT INTO tb_transfer_barang (kode_transfer_barang, kode_dari_gudang, kode_ke_gudang, kode_user, tanggal_transfer_barang, print_transfer_barang, posted_transfer_barang, keterangan_transfer_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodetransferbarang & "','" & cmbdarigudang.Text & "','" & cmbkegudang.Text & "','" & cmbsales.Text & "' , '" & Format(dttransferbarang.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
-            myCommand.ExecuteNonQuery()
 
             myTrans.Commit()
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Menyimpan Data Transfer Barang Kode " + kodetransferbarang, kodetransferbarang)
+            Call historysave("Menyimpan Data Transfer Barang Kode " + idtransferbarang, idtransferbarang)
             '========================
             MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
-            Call inisialisasi(kodetransferbarang)
+            Call inisialisasi(idtransferbarang)
         Catch e As Exception
             Try
                 myTrans.Rollback()
@@ -1127,15 +1124,14 @@ Public Class ftransferbarang
     End Sub
 
     Sub perbarui(nomornota As String)
-        kodetransferbarang = nomornota
-
         'periksa di barang di stok dulu
         Dim stok As Integer
         Dim stokdatabase As Integer
         Dim stokdatabasesementara As Integer
-        Dim namastokdatabase As String
+
+        Dim kodestokdatabase As String
         Dim statusavailable As Boolean = True
-        Dim kodedarigudangupdate, kodekegudangupdate As String
+        Dim kodedarigudanglama, kodekegudanglama As Integer
 
         'variabel transactional
         '=======================
@@ -1143,28 +1139,19 @@ Public Class ftransferbarang
         Dim myTrans As OdbcTransaction
         '=======================
 
-        'cari nota  yang sebelumnya (kembalikan stok dulu)
-        sql = "SELECT kode_dari_gudang, kode_ke_gudang FROM tb_transfer_barang WHERE kode_transfer_barang = '" & kodetransferbarang & "'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        dr.Read()
-
-        kodedarigudangupdate = dr("kode_dari_gudang")
-        kodekegudangupdate = dr("kode_ke_gudang")
-
         'periksa stok
         For i As Integer = 0 To GridView1.RowCount - 1
-            sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbdarigudang.Text & "' LIMIT 1"
+            sql = "SELECT * FROM tb_stok WHERE id='" & GridView1.GetRowCellValue(i, "dari_stok_id") & "' AND gudang_id ='" & iddarigudang & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             dr.Read()
             If dr.HasRows Then
                 stok = GridView1.GetRowCellValue(i, "banyak")
                 stokdatabase = dr("jumlah_stok")
-                namastokdatabase = dr("nama_stok")
+                kodestokdatabase = dr("kode_stok")
 
-                'mengambil selisih qty dari penjualan detail
-                sql = "SELECT * FROM tb_transfer_barang_detail WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_transfer_barang ='" & kodetransferbarang & "' LIMIT 1"
+                'mengambil selisih qty dari transfer barang detail
+                sql = "SELECT * FROM tb_transfer_barang_detail WHERE dari_stok_id = '" & GridView1.GetRowCellValue(i, "dari_stok_id") & "' AND transfer_barang_id ='" & nomornota & "' LIMIT 1"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 dr.Read()
@@ -1176,85 +1163,110 @@ Public Class ftransferbarang
                 '=============================================
 
                 If (stokdatabase + stokdatabasesementara) < stok Then
-                    MsgBox("Stok dengan kode stok " + namastokdatabase + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                    MsgBox("Stok dengan kode stok " & kodestokdatabase & " tidak mencukupi.", MsgBoxStyle.Information, "Information")
                     statusavailable = False
                 End If
             Else
-                MsgBox("Kode Stok Barang ini " + GridView1.GetRowCellValue(i, "kode_stok") + " tidak ada di gudang.", MsgBoxStyle.Information, "Informasi")
+                MsgBox("Kode Stok Barang ini " & GridView1.GetRowCellValue(i, "kode_stok") & " tidak ada.", MsgBoxStyle.Information, "Informasi")
                 statusavailable = False
             End If
         Next
 
+        'cari nota  yang sebelumnya (kembalikan stok dulu)
+        sql = "SELECT dari_gudang_id, ke_gudang_id FROM tb_transfer_barang WHERE id = '" & nomornota & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        dr.Read()
+        kodedarigudanglama = Val(dr("dari_gudang_id"))
+        kodekegudanglama = Val(dr("ke_gudang_id"))
+
         If statusavailable = True Then
             ' Start a local transaction
             myTrans = cnnx.BeginTransaction()
-            ' Must assign both transaction object and connection
-            ' to Command object for a pending local transaction
             myCommand.Connection = cnnx
             myCommand.Transaction = myTrans
 
             Try
-
-                'update stok kembalikan
-                Call koneksii()
-                sql = "SELECT * FROM tb_transfer_barang_detail_sementara WHERE kode_transfer_barang = '" & nomornota & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-
-                While dr.Read
-                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang ='" & kodedarigudangupdate & "'"
-                    myCommand.ExecuteNonQuery()
-
-                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & dr("qty") & "' WHERE kode_stok = '" & dr("kode_stok") & "' AND kode_gudang ='" & kodekegudangupdate & "'"
-                    myCommand.ExecuteNonQuery()
-                End While
-
-                'hapus di tabel transfer detail
-                myCommand.CommandText = "DELETE FROM tb_transfer_barang_detail WHERE kode_transfer_barang = '" & nomornota & "'"
-                myCommand.ExecuteNonQuery()
-
-                'hapus di tabel jual sementara
-                Call koneksii()
-                sql = "DELETE FROM tb_transfer_barang_detail_sementara where kode_transfer_barang = '" & nomornota & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-
-                'gudang awal
+                'sediakan wadah stok nya dulu
                 For i As Integer = 0 To GridView1.RowCount - 1
-                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbdarigudang.Text & "'"
-                    myCommand.ExecuteNonQuery()
-                Next
-
-                'gudang tujuan
-                For i As Integer = 0 To GridView1.RowCount - 1
-                    sql = "SELECT * FROM tb_stok WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang='" & cmbkegudang.Text & "' LIMIT 1"
-                    cmmd = New OdbcCommand(sql, cnn)
-                    dr = cmmd.ExecuteReader()
-                    If dr.HasRows Then
-                        myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView1.GetRowCellValue(i, "kode_stok") & "' AND kode_gudang ='" & cmbkegudang.Text & "'"
-                        myCommand.ExecuteNonQuery()
+                    If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
+                        Call koneksii()
+                        sql = "SELECT * FROM tb_stok WHERE barang_id = '" & GridView1.GetRowCellValue(i, "barang_id") & "' AND gudang_id='" & idkegudang & "' LIMIT 1"
+                        cmmd = New OdbcCommand(sql, cnn)
+                        dr = cmmd.ExecuteReader()
+                        If dr.HasRows Then
+                            idkestok = Val(dr("id"))
+                            GridView1.SetRowCellValue(i, "ke_stok_id", idkestok)
+                        Else
+                            Call koneksii()
+                            sql = "INSERT INTO tb_stok(kode_stok, kode_barang, nama_stok, status_stok, jumlah_stok, barang_id, gudang_id, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','1', '0','" & GridView1.GetRowCellValue(i, "barang_id") & "','" & idkegudang & "', '" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
+                            cmmd = New OdbcCommand(sql, cnn)
+                            idkestok = CInt(cmmd.ExecuteScalar())
+                            GridView1.SetRowCellValue(i, "ke_stok_id", idkestok)
+                        End If
                     Else
-                        myCommand.CommandText = "INSERT INTO tb_stok ( kode_stok, nama_stok, status_stok, jumlah_stok, kode_barang, kode_gudang, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','1', '" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & cmbkegudang.Text & "', '" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "', now(), now() )"
-                        myCommand.ExecuteNonQuery()
+                        'update di wadah yang sama
+                        If GridView1.GetRowCellValue(i, "stok_id") = 0 Then
+                            Call koneksii()
+                            sql = "INSERT INTO tb_stok(kode_stok, kode_barang, nama_stok, status_stok, jumlah_stok, barang_id, gudang_id, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','0', '0','" & GridView1.GetRowCellValue(i, "barang_id") & "','" & idkegudang & "', '" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
+                            cmmd = New OdbcCommand(sql, cnn)
+                            idkestok = CInt(cmmd.ExecuteScalar())
+                            GridView1.SetRowCellValue(i, "ke_stok_id", idkestok)
+                        Else
+                            Call koneksii()
+                            sql = "SELECT * FROM tb_stok WHERE id = '" & GridView1.GetRowCellValue(i, "ke_stok_id") & "' AND gudang_id='" & idkegudang & "' LIMIT 1"
+                            cmmd = New OdbcCommand(sql, cnn)
+                            dr = cmmd.ExecuteReader()
+                            If dr.HasRows Then
+                                idkestok = Val(dr("id"))
+                                GridView1.SetRowCellValue(i, "ke_stok_id", idkestok)
+                            Else
+                                Call koneksii()
+                                sql = "INSERT INTO tb_stok(kode_stok, kode_barang, nama_stok, status_stok, jumlah_stok, barang_id, gudang_id, created_by, updated_by, date_created, last_updated) VALUES ('" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','0', '0','" & GridView1.GetRowCellValue(i, "barang_id") & "','" & idkegudang & "', '" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
+                                cmmd = New OdbcCommand(sql, cnn)
+                                idkestok = CInt(cmmd.ExecuteScalar())
+                                GridView1.SetRowCellValue(i, "ke_stok_id", idkestok)
+                            End If
+                        End If
                     End If
                 Next
 
-                For i As Integer = 0 To GridView1.RowCount - 1
-                    myCommand.CommandText = "INSERT INTO tb_transfer_barang_detail ( kode_transfer_barang, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, created_by, updated_by, date_created, last_updated) VALUES ('" & kodetransferbarang & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
+                'update kembali dari transaksi sebelumnya
+                Call koneksii()
+                For i As Integer = 0 To tabelsementara.Rows.Count - 1
+                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & tabelsementara.Rows(i).Item(3) & "' WHERE id = '" & tabelsementara.Rows(i).Item(7) & "' AND gudang_id ='" & kodedarigudanglama & "'"
+                    myCommand.ExecuteNonQuery()
+
+                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & tabelsementara.Rows(i).Item(3) & "' WHERE id = '" & tabelsementara.Rows(i).Item(8) & "' AND gudang_id ='" & kodekegudanglama & "'"
                     myCommand.ExecuteNonQuery()
                 Next
 
-                myCommand.CommandText = "UPDATE tb_transfer_barang SET kode_dari_gudang ='" & cmbdarigudang.Text & "', kode_ke_gudang ='" & cmbkegudang.Text & "', kode_user ='" & cmbsales.Text & "' , tanggal_transfer_barang ='" & Format(dttransferbarang.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_transfer_barang ='" & txtketerangan.Text & "', updated_by ='" & fmenu.kodeuser.text & "', last_updated = now() WHERE kode_transfer_barang ='" & kodetransferbarang & "'"
+                'hapus di tabel transfer detail
+                myCommand.CommandText = "DELETE FROM tb_transfer_barang_detail WHERE transfer_barang_id = '" & nomornota & "'"
+                myCommand.ExecuteNonQuery()
+
+                'gudang awal
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & Val(GridView1.GetRowCellValue(i, "banyak")) & "' WHERE id = '" & GridView1.GetRowCellValue(i, "ke_stok_id") & "' AND gudang_id ='" & idkegudang & "'"
+                    myCommand.ExecuteNonQuery()
+
+                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & Val(GridView1.GetRowCellValue(i, "banyak")) & "' WHERE id = '" & GridView1.GetRowCellValue(i, "dari_stok_id") & "' AND gudang_id ='" & iddarigudang & "'"
+                    myCommand.ExecuteNonQuery()
+
+                    myCommand.CommandText = "INSERT INTO tb_transfer_barang_detail(transfer_barang_id, barang_id, dari_stok_id, ke_stok_id, kode_barang, kode_stok, nama_barang, satuan_barang, jenis_barang, qty, created_by, updated_by,date_created, last_updated) VALUES ('" & nomornota & "','" & GridView1.GetRowCellValue(i, "barang_id") & "','" & GridView1.GetRowCellValue(i, "dari_stok_id") & "','" & GridView1.GetRowCellValue(i, "ke_stok_id") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
+                    myCommand.ExecuteNonQuery()
+                Next
+
+                myCommand.CommandText = "UPDATE tb_transfer_barang SET dari_gudang_id ='" & iddarigudang & "', ke_gudang_id ='" & idkegudang & "', user_id ='" & iduser & "' , tanggal_transfer_barang ='" & Format(dttransferbarang.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_transfer_barang ='" & txtketerangan.Text & "', updated_by ='" & fmenu.kodeuser.Text & "', last_updated = now() WHERE id ='" & nomornota & "'"
                 myCommand.ExecuteNonQuery()
 
                 myTrans.Commit()
                 Console.WriteLine("Both records are written to database.")
 
                 'history user ==========
-                Call historysave("Mengedit Data Transfer Barang Kode " + txtnonota.Text, txtnonota.Text)
+                Call historysave("Mengedit Data Transfer Barang Kode " & txtnonota.Text, txtnonota.Text)
                 '=======================
                 MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
-                'Call inisialisasi(nomornota)
                 Call inisialisasi(txtnonota.Text)
                 btnedit.Text = "Edit"
             Catch e As Exception

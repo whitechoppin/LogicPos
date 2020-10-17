@@ -876,11 +876,11 @@ Public Class fpembelian
 
             For i As Integer = 0 To GridView1.RowCount - 1
                 If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
-                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE id = '" & GridView1.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "'"
+                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & Val(GridView1.GetRowCellValue(i, "qty")) & "' WHERE id = '" & GridView1.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "'"
                     myCommand.ExecuteNonQuery()
                 Else
                     GridView1.SetRowCellValue(i, "kode_stok", String.Concat(GridView1.GetRowCellValue(i, "kode_barang"), GridView1.GetRowCellValue(i, "stok_id")))
-                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "', kode_stok = CONCAT(kode_barang,id), status_stok='1' WHERE id = '" & GridView1.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "'"
+                    myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & Val(GridView1.GetRowCellValue(i, "qty")) & "', kode_stok = CONCAT(kode_barang,id), status_stok='1' WHERE id = '" & GridView1.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "'"
                     myCommand.ExecuteNonQuery()
                 End If
 
@@ -1462,7 +1462,6 @@ Public Class fpembelian
                             GridView1.SetRowCellValue(i, "stok_id", idstok)
                         End If
                     End If
-
                 End If
             Next
 

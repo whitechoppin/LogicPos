@@ -63,6 +63,9 @@ Partial Class ftransferbarang
         Me.ritebanyak = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.txtkodebarang = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.lblsatuan = New System.Windows.Forms.Label()
@@ -431,7 +434,7 @@ Partial Class ftransferbarang
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -513,6 +516,39 @@ Partial Class ftransferbarang
         Me.GridColumn6.OptionsColumn.AllowEdit = False
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
+        '
+        'GridColumn7
+        '
+        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceCell.Options.UseFont = True
+        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn7.Caption = "id barang"
+        Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.Visible = True
+        Me.GridColumn7.VisibleIndex = 6
+        '
+        'GridColumn8
+        '
+        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceCell.Options.UseFont = True
+        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn8.Caption = "id dari stok"
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 7
+        '
+        'GridColumn9
+        '
+        Me.GridColumn9.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceCell.Options.UseFont = True
+        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn9.Caption = "id ke stok"
+        Me.GridColumn9.Name = "GridColumn9"
+        Me.GridColumn9.Visible = True
+        Me.GridColumn9.VisibleIndex = 8
         '
         'txtkodebarang
         '
@@ -612,6 +648,7 @@ Partial Class ftransferbarang
         '
         'txtkodestok
         '
+        Me.txtkodestok.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtkodestok.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkodestok.Location = New System.Drawing.Point(18, 249)
         Me.txtkodestok.Margin = New System.Windows.Forms.Padding(6)
@@ -807,4 +844,7 @@ Partial Class ftransferbarang
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents Label24 As Label
+    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

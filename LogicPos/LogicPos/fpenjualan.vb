@@ -1641,7 +1641,7 @@ Public Class fpenjualan
             MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
         Else
             Call koneksii()
-            sql = "SELECT kode_penjualan FROM tb_penjualan WHERE kode_penjualan  = '" + txtgopenjualan.Text + "'"
+            sql = "SELECT kode_penjualan FROM tb_penjualan WHERE kode_penjualan  = '" & txtgopenjualan.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
@@ -2293,7 +2293,7 @@ Public Class fpenjualan
         Dim stokdatabase As Integer
         Dim stokdatabasesementara As Integer
 
-        Dim namastokdatabase As String
+        Dim kodestokdatabase As String
         Dim statusavailable As Boolean = True
         Dim idgudanglama As Integer
 
@@ -2303,7 +2303,7 @@ Public Class fpenjualan
         Dim myTrans As OdbcTransaction
         '=======================
 
-
+        'periksa stok
         For i As Integer = 0 To GridView1.RowCount - 1
             sql = "SELECT * FROM tb_stok WHERE id = '" & GridView1.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
@@ -2312,7 +2312,7 @@ Public Class fpenjualan
             If dr.HasRows Then
                 stok = GridView1.GetRowCellValue(i, "banyak")
                 stokdatabase = dr("jumlah_stok")
-                namastokdatabase = dr("nama_stok")
+                kodestokdatabase = dr("kode_stok")
 
                 'mengambil selisih qty dari penjualan detail
                 sql = "SELECT * FROM tb_penjualan_detail WHERE stok_id = '" & GridView1.GetRowCellValue(i, "stok_id") & "' AND penjualan_id ='" & nomornota & "' LIMIT 1"
@@ -2327,11 +2327,11 @@ Public Class fpenjualan
                 '=============================================
 
                 If (stokdatabase + stokdatabasesementara) < stok Then
-                    MsgBox("Stok dengan nama stok " + namastokdatabase + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                    MsgBox("Stok dengan kode stok " & kodestokdatabase & " tidak mencukupi.", MsgBoxStyle.Information, "Information")
                     statusavailable = False
                 End If
             Else
-                MsgBox("Kode Stok Barang ini " + GridView1.GetRowCellValue(i, "kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Informasi")
+                MsgBox("Kode Stok Barang ini " & GridView1.GetRowCellValue(i, "kode_stok") & " tidak ada.", MsgBoxStyle.Information, "Informasi")
                 statusavailable = False
             End If
         Next
@@ -2462,7 +2462,7 @@ Public Class fpenjualan
                 stok = Val(GridView1.GetRowCellValue(i, "banyak"))
                 stokdatabase = Val(dr("jumlah_stok"))
                 If stokdatabase < stok Then
-                    MsgBox("Stok dengan nama " + dr("nama_stok").ToString + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                    MsgBox("Stok dengan kode stok " + dr("kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
                     statusavailable = False
                 End If
             Else
