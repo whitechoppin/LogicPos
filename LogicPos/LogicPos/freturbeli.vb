@@ -860,6 +860,8 @@ Public Class freturbeli
             fretbeli.banyak = GridView1.GetFocusedRowCellValue("qty")
             fretbeli.harga_beli = GridView1.GetFocusedRowCellValue("harga_beli")
             fretbeli.subtotal = GridView1.GetFocusedRowCellValue("subtotal")
+            fretbeli.idbarang = GridView1.GetFocusedRowCellValue("barang_id")
+            fretbeli.idstok = GridView1.GetFocusedRowCellValue("stok_id")
 
             fretbeli.ShowDialog()
         End If

@@ -56,14 +56,14 @@ Public Class freturjual
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
             'buat sum harga
-            .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
+            .Columns("qty").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "qty", "{0:n0}")
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
         With GridView2
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
             'buat sum harga
-            .Columns("banyak").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "banyak", "{0:n0}")
+            .Columns("qty").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "qty", "{0:n0}")
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
         End With
 
@@ -391,7 +391,7 @@ Public Class freturjual
             .Columns.Add("kode_barang")
             .Columns.Add("kode_stok")
             .Columns.Add("nama_barang")
-            .Columns.Add("banyak", GetType(Double))
+            .Columns.Add("qty", GetType(Double))
             .Columns.Add("satuan_barang")
             .Columns.Add("jenis_barang")
             .Columns.Add("harga_satuan", GetType(Double))
@@ -419,8 +419,8 @@ Public Class freturjual
         GridColumn3.Caption = "Nama Barang"
         GridColumn3.Width = 70
 
-        GridColumn4.FieldName = "banyak"
-        GridColumn4.Caption = "banyak"
+        GridColumn4.FieldName = "qty"
+        GridColumn4.Caption = "Qty"
         GridColumn4.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn4.DisplayFormat.FormatString = "{0:n0}"
         GridColumn4.Width = 5
@@ -495,7 +495,7 @@ Public Class freturjual
             .Columns.Add("kode_barang")
             .Columns.Add("kode_stok")
             .Columns.Add("nama_barang")
-            .Columns.Add("banyak", GetType(Double))
+            .Columns.Add("qty", GetType(Double))
             .Columns.Add("satuan_barang")
             .Columns.Add("jenis_barang")
             .Columns.Add("harga_satuan", GetType(Double))
@@ -523,8 +523,8 @@ Public Class freturjual
         GridColumn16.Caption = "Nama Barang"
         GridColumn16.Width = 70
 
-        GridColumn17.FieldName = "banyak"
-        GridColumn17.Caption = "banyak"
+        GridColumn17.FieldName = "qty"
+        GridColumn17.Caption = "Qty"
         GridColumn17.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn17.DisplayFormat.FormatString = "{0:n0}"
         GridColumn17.Width = 5
@@ -625,7 +625,7 @@ Public Class freturjual
         Try
 
             For i As Integer = 0 To GridView2.RowCount - 1
-                myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView2.GetRowCellValue(i, "banyak") & "' WHERE kode_stok = '" & GridView2.GetRowCellValue(i, "kode_stok") & "'"
+                myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView2.GetRowCellValue(i, "qty") & "' WHERE kode_stok = '" & GridView2.GetRowCellValue(i, "kode_stok") & "'"
                 myCommand.ExecuteNonQuery()
             Next
 
@@ -633,7 +633,7 @@ Public Class freturjual
             myCommand.ExecuteNonQuery()
 
             For i As Integer = 0 To GridView1.RowCount - 1
-                myCommand.CommandText = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "banyak") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & GridView1.GetRowCellValue(i, "diskon_persen") & "','" & GridView1.GetRowCellValue(i, "diskon_nominal") & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal_barang") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_penjualan_detail ( kode_penjualan, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "harga_satuan") & "','" & GridView1.GetRowCellValue(i, "diskon_persen") & "','" & GridView1.GetRowCellValue(i, "diskon_nominal") & "' ,'" & GridView1.GetRowCellValue(i, "subtotal") & "','" & GridView1.GetRowCellValue(i, "modal_barang") & "','" & GridView1.GetRowCellValue(i, "laba") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
@@ -646,7 +646,7 @@ Public Class freturjual
             myCommand.ExecuteNonQuery()
 
             For i As Integer = 0 To GridView2.RowCount - 1
-                myCommand.CommandText = "INSERT INTO tb_retur_penjualan_detail (kode_retur, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodereturjual & "', '" & GridView2.GetRowCellValue(i, "kode_stok") & "', '" & GridView2.GetRowCellValue(i, "kode_barang") & "', '" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "banyak") & "','" & GridView2.GetRowCellValue(i, "harga_satuan") & "','" & GridView2.GetRowCellValue(i, "diskon_persen") & "','" & GridView2.GetRowCellValue(i, "diskon_nominal") & "' ,'" & GridView2.GetRowCellValue(i, "subtotal") & "','" & GridView2.GetRowCellValue(i, "modal_barang") & "','" & GridView2.GetRowCellValue(i, "laba") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_retur_penjualan_detail (kode_retur, kode_stok, kode_barang, nama_barang, satuan_barang, jenis_barang, qty, harga_jual, diskon, harga_diskon, subtotal, modal, keuntungan, created_by, updated_by,date_created, last_updated) VALUES ('" & kodereturjual & "', '" & GridView2.GetRowCellValue(i, "kode_stok") & "', '" & GridView2.GetRowCellValue(i, "kode_barang") & "', '" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView2.GetRowCellValue(i, "harga_satuan") & "','" & GridView2.GetRowCellValue(i, "diskon_persen") & "','" & GridView2.GetRowCellValue(i, "diskon_nominal") & "' ,'" & GridView2.GetRowCellValue(i, "subtotal") & "','" & GridView2.GetRowCellValue(i, "modal_barang") & "','" & GridView2.GetRowCellValue(i, "laba") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
@@ -678,7 +678,6 @@ Public Class freturjual
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
-
         If GridView2.DataRowCount > 0 Then
             If txtnoretur.Text IsNot "" Then
                 If txtnonota.Text IsNot "" Then
@@ -778,7 +777,7 @@ Public Class freturjual
             .Columns.Add("kode_barang")
             .Columns.Add("kode_stok")
             .Columns.Add("nama_barang")
-            .Columns.Add("banyak", GetType(Double))
+            .Columns.Add("qty", GetType(Double))
             .Columns.Add("satuan")
             .Columns.Add("jenis")
             .Columns.Add("harga_satuan", GetType(Double))
@@ -794,7 +793,7 @@ Public Class freturjual
             baris("kode_barang") = GridView2.GetRowCellValue(a, "kode_barang")
             baris("kode_stok") = GridView2.GetRowCellValue(a, "kode_stok")
             baris("nama_barang") = GridView2.GetRowCellValue(a, "nama_barang")
-            baris("banyak") = GridView2.GetRowCellValue(a, "banyak")
+            baris("qty") = GridView2.GetRowCellValue(a, "qty")
             baris("satuan") = GridView2.GetRowCellValue(a, "satuan_barang")
             baris("jenis") = GridView2.GetRowCellValue(a, "jenis_barang")
             baris("harga_satuan") = GridView2.GetRowCellValue(a, "harga_satuan")
@@ -931,7 +930,7 @@ Public Class freturjual
             fretjual.nama_barang = GridView1.GetFocusedRowCellValue("nama_barang")
             fretjual.satuan_barang = GridView1.GetFocusedRowCellValue("satuan_barang")
             fretjual.jenis_barang = GridView1.GetFocusedRowCellValue("jenis_barang")
-            fretjual.banyak = GridView1.GetFocusedRowCellValue("banyak")
+            fretjual.banyak = GridView1.GetFocusedRowCellValue("qty")
             fretjual.harga_satuan = GridView1.GetFocusedRowCellValue("harga_satuan")
             fretjual.diskon_persen = GridView1.GetFocusedRowCellValue("diskon_persen")
             fretjual.diskon_nominal = GridView1.GetFocusedRowCellValue("diskon_nominal")
@@ -939,6 +938,8 @@ Public Class freturjual
             fretjual.subtotal = GridView1.GetFocusedRowCellValue("subtotal")
             fretjual.laba = GridView1.GetFocusedRowCellValue("laba")
             fretjual.modal_barang = GridView1.GetFocusedRowCellValue("modal_barang")
+            fretjual.idbarang = GridView1.GetFocusedRowCellValue("barang_id")
+            fretjual.idstok = GridView1.GetFocusedRowCellValue("stok_id")
 
             fretjual.ShowDialog()
         End If
@@ -946,7 +947,7 @@ Public Class freturjual
     Private Sub GridView2_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView2.KeyDown
         Dim kode_stok As String = GridView1.GetFocusedRowCellValue("kode_stok")
         Dim kode_stok2 As String = GridView2.GetFocusedRowCellValue("kode_stok")
-        Dim banyak2 As Integer = GridView2.GetFocusedRowCellValue("banyak")
+        Dim banyak2 As Integer = GridView2.GetFocusedRowCellValue("qty")
 
         Dim hargadiskon As Integer = GridView1.GetFocusedRowCellValue("harga_diskon")
         'MsgBox(kode_stok2)
@@ -955,7 +956,7 @@ Public Class freturjual
 
         If e.KeyCode = Keys.Delete And btnsimpan.Enabled = True Then
             If GridView1.RowCount = 0 Then
-                tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("banyak"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"))
+                tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("qty"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"))
                 GridView2.DeleteSelectedRows()
             Else
                 counting = False
@@ -963,11 +964,11 @@ Public Class freturjual
                 For i As Integer = 0 To GridView1.RowCount - 1
                     If GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok2) Then
                         For a As Integer = 0 To GridView1.RowCount - 1
-                            Dim banyak As Integer = GridView1.GetRowCellValue(a, "banyak")
+                            Dim banyak As Integer = GridView1.GetRowCellValue(a, "qty")
                             If GridView1.GetRowCellValue(a, "kode_stok") = kode_stok2 Then
                                 lokasi = a
-                                Dim banyak1 As Integer = GridView2.GetFocusedRowCellValue("banyak")
-                                GridView1.SetRowCellValue(lokasi, "banyak", Val(banyak) + Val(banyak1))
+                                Dim banyak1 As Integer = GridView2.GetFocusedRowCellValue("qty")
+                                GridView1.SetRowCellValue(lokasi, "qty", Val(banyak) + Val(banyak1))
                                 GridView1.SetRowCellValue(lokasi, "subtotal", hargadiskon * (Val(banyak) + Val(banyak1)))
 
                                 GridControl1.RefreshDataSource()
@@ -980,7 +981,7 @@ Public Class freturjual
                 Next
 
                 If counting = False Then
-                    tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("banyak"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"))
+                    tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("qty"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"))
                     GridView2.DeleteSelectedRows()
                 End If
             End If
