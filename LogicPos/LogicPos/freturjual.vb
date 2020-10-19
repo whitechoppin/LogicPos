@@ -409,15 +409,15 @@ Public Class freturjual
 
         GridColumn1.FieldName = "kode_barang"
         GridColumn1.Caption = "Kode Barang"
-        GridColumn1.Width = 20
+        GridColumn1.Width = 10
 
         GridColumn2.FieldName = "kode_stok"
         GridColumn2.Caption = "Kode Stok"
-        GridColumn2.Width = 20
+        GridColumn2.Width = 10
 
         GridColumn3.FieldName = "nama_barang"
         GridColumn3.Caption = "Nama Barang"
-        GridColumn3.Width = 70
+        GridColumn3.Width = 35
 
         GridColumn4.FieldName = "qty"
         GridColumn4.Caption = "Qty"
@@ -427,65 +427,65 @@ Public Class freturjual
 
         GridColumn5.FieldName = "satuan_barang"
         GridColumn5.Caption = "Satuan Barang"
-        GridColumn5.Width = 10
+        GridColumn5.Width = 5
 
         GridColumn6.FieldName = "jenis_barang"
         GridColumn6.Caption = "Jenis Barang"
-        GridColumn6.Width = 10
+        GridColumn6.Width = 5
 
         GridColumn7.FieldName = "harga_satuan"
         GridColumn7.Caption = "Harga Satuan"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn7.Width = 20
+        GridColumn7.Width = 10
 
         GridColumn8.FieldName = "diskon_persen"
         GridColumn8.Caption = "Diskon %"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn8.Width = 20
+        GridColumn8.Width = 5
 
         GridColumn9.FieldName = "diskon_nominal"
         GridColumn9.Caption = "Diskon Nominal"
         GridColumn9.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn9.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn9.Width = 30
+        GridColumn9.Width = 10
 
         GridColumn10.FieldName = "harga_diskon"
         GridColumn10.Caption = "Harga Diskon"
         GridColumn10.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn10.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn10.Width = 30
+        GridColumn10.Width = 10
 
         GridColumn11.FieldName = "subtotal"
         GridColumn11.Caption = "Subtotal"
         GridColumn11.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn11.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn11.Width = 30
+        GridColumn11.Width = 10
 
         GridColumn12.FieldName = "laba"
         GridColumn12.Caption = "Laba"
         GridColumn12.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn12.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn12.Width = 20
-        GridColumn12.Visible = False
+        GridColumn12.Width = 5
+        'GridColumn12.Visible = False
 
         GridColumn13.FieldName = "modal_barang"
         GridColumn13.Caption = "Modal Barang"
         GridColumn13.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn13.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn13.Width = 20
-        GridColumn13.Visible = False
+        GridColumn13.Width = 5
+        'GridColumn13.Visible = False
 
         GridColumn27.FieldName = "barang_id"
         GridColumn27.Caption = "Barang id"
-        GridColumn27.Width = 15
-        GridColumn27.Visible = False
+        GridColumn27.Width = 5
+        'GridColumn27.Visible = False
 
         GridColumn28.FieldName = "stok_id"
         GridColumn28.Caption = "stok id"
-        GridColumn28.Width = 15
-        GridColumn28.Visible = False
+        GridColumn28.Width = 5
+        'GridColumn28.Visible = False
 
     End Sub
     Sub tabel_retur()
@@ -513,15 +513,15 @@ Public Class freturjual
 
         GridColumn14.FieldName = "kode_barang"
         GridColumn14.Caption = "Kode Barang"
-        GridColumn14.Width = 20
+        GridColumn14.Width = 10
 
         GridColumn15.FieldName = "kode_stok"
         GridColumn15.Caption = "Kode Stok"
-        GridColumn15.Width = 20
+        GridColumn15.Width = 10
 
         GridColumn16.FieldName = "nama_barang"
         GridColumn16.Caption = "Nama Barang"
-        GridColumn16.Width = 70
+        GridColumn16.Width = 35
 
         GridColumn17.FieldName = "qty"
         GridColumn17.Caption = "Qty"
@@ -531,65 +531,65 @@ Public Class freturjual
 
         GridColumn18.FieldName = "satuan_barang"
         GridColumn18.Caption = "Satuan Barang"
-        GridColumn18.Width = 10
+        GridColumn18.Width = 5
 
         GridColumn19.FieldName = "jenis_barang"
         GridColumn19.Caption = "Jenis Barang"
-        GridColumn19.Width = 10
+        GridColumn19.Width = 5
 
         GridColumn20.FieldName = "harga_satuan"
         GridColumn20.Caption = "Harga Satuan"
         GridColumn20.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn20.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn20.Width = 20
+        GridColumn20.Width = 10
 
         GridColumn21.FieldName = "diskon_persen"
         GridColumn21.Caption = "Diskon %"
         GridColumn21.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn21.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn21.Width = 20
+        GridColumn21.Width = 5
 
         GridColumn22.FieldName = "diskon_nominal"
         GridColumn22.Caption = "Diskon Nominal"
         GridColumn22.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn22.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn22.Width = 30
+        GridColumn22.Width = 10
 
         GridColumn23.FieldName = "harga_diskon"
         GridColumn23.Caption = "Harga Diskon"
         GridColumn23.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn23.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn23.Width = 30
+        GridColumn23.Width = 10
 
         GridColumn24.FieldName = "subtotal"
         GridColumn24.Caption = "Subtotal"
         GridColumn24.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn24.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn24.Width = 30
+        GridColumn24.Width = 10
 
         GridColumn25.FieldName = "laba"
         GridColumn25.Caption = "Laba"
         GridColumn25.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn25.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn25.Width = 20
-        GridColumn25.Visible = False
+        GridColumn25.Width = 5
+        'GridColumn25.Visible = False
 
         GridColumn26.FieldName = "modal_barang"
         GridColumn26.Caption = "Modal Barang"
         GridColumn26.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn26.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn26.Width = 20
-        GridColumn26.Visible = False
+        GridColumn26.Width = 5
+        'GridColumn26.Visible = False
 
         GridColumn29.FieldName = "barang_id"
         GridColumn29.Caption = "Barang id"
-        GridColumn29.Width = 15
-        GridColumn29.Visible = False
+        GridColumn29.Width = 5
+        'GridColumn29.Visible = False
 
         GridColumn30.FieldName = "stok_id"
         GridColumn30.Caption = "stok id"
-        GridColumn30.Width = 15
-        GridColumn30.Visible = False
+        GridColumn30.Width = 5
+        'GridColumn30.Visible = False
     End Sub
     Sub reload_tabel()
         GridControl1.RefreshDataSource()
@@ -892,7 +892,7 @@ Public Class freturjual
     End Sub
     Sub cari_nota()
         Call koneksii()
-        sql = "SELECT * FROM tb_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan = tb_penjualan.kode_pelanggan WHERE tb_penjualan.kode_penjualan = '" & txtnonota.Text & "'"
+        sql = "SELECT * FROM tb_penjualan JOIN tb_pelanggan ON tb_pelanggan.id = tb_penjualan.pelanggan_id JOIN tb_gudang ON tb_gudang.id = tb_penjualan.gudang_id WHERE tb_penjualan.id = '" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
@@ -906,7 +906,7 @@ Public Class freturjual
 
             dtpenjualan.Value = viewtglpenjualan
             dtjatuhtempo.Value = viewtgljatuhtempo
-            txtgudang.Text = dr("kode_gudang")
+            txtgudang.Text = dr("nama_gudang")
 
             Call loadingpenjualan(txtnonota.Text)
         Else
@@ -945,43 +945,46 @@ Public Class freturjual
         End If
     End Sub
     Private Sub GridView2_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView2.KeyDown
-        Dim kode_stok As String = GridView1.GetFocusedRowCellValue("kode_stok")
-        Dim kode_stok2 As String = GridView2.GetFocusedRowCellValue("kode_stok")
-        Dim banyak2 As Integer = GridView2.GetFocusedRowCellValue("qty")
+        Dim idstok As Integer = Val(GridView2.GetFocusedRowCellValue("stok_id"))
+        Dim hargadiskon As Integer = GridView2.GetFocusedRowCellValue("harga_diskon")
+        Dim hargamodal As Integer = GridView2.GetFocusedRowCellValue("modal_barang")
 
-        Dim hargadiskon As Integer = GridView1.GetFocusedRowCellValue("harga_diskon")
-        'MsgBox(kode_stok2)
         Dim lokasi As Integer
         Dim counting As Boolean = False
+        Dim banyakjual, banyakretur As Integer
+
+        lokasi = -1
+        banyakjual = 0
+        banyakretur = 0
+        counting = False
 
         If e.KeyCode = Keys.Delete And btnsimpan.Enabled = True Then
             If GridView1.RowCount = 0 Then
-                tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("qty"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"))
+                tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("qty"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"), GridView2.GetFocusedRowCellValue("barang_id"), GridView2.GetFocusedRowCellValue("stok_id"))
                 GridView2.DeleteSelectedRows()
             Else
-                counting = False
-
                 For i As Integer = 0 To GridView1.RowCount - 1
-                    If GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok2) Then
-                        For a As Integer = 0 To GridView1.RowCount - 1
-                            Dim banyak As Integer = GridView1.GetRowCellValue(a, "qty")
-                            If GridView1.GetRowCellValue(a, "kode_stok") = kode_stok2 Then
-                                lokasi = a
-                                Dim banyak1 As Integer = GridView2.GetFocusedRowCellValue("qty")
-                                GridView1.SetRowCellValue(lokasi, "qty", Val(banyak) + Val(banyak1))
-                                GridView1.SetRowCellValue(lokasi, "subtotal", hargadiskon * (Val(banyak) + Val(banyak1)))
-
-                                GridControl1.RefreshDataSource()
-                                GridView2.DeleteSelectedRows()
-
-                                counting = True
-                            End If
-                        Next
+                    If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                        lokasi = i
                     End If
                 Next
 
-                If counting = False Then
-                    tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("qty"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"))
+                If lokasi > -1 Then
+                    banyakjual = Val(GridView1.GetRowCellValue(lokasi, "qty"))
+                    banyakretur = Val(GridView2.GetFocusedRowCellValue("qty"))
+
+                    GridView1.SetRowCellValue(lokasi, "qty", Val(banyakjual) + Val(banyakretur))
+                    GridView1.SetRowCellValue(lokasi, "subtotal", hargadiskon * (Val(banyakjual) + Val(banyakretur)))
+                    GridView1.SetRowCellValue(lokasi, "laba", (hargadiskon - hargamodal) * (Val(banyakjual) + Val(banyakretur)))
+
+                    GridControl1.RefreshDataSource()
+                    GridView2.DeleteSelectedRows()
+
+                    counting = True
+                End If
+
+                If counting.Equals(False) Then
+                    tabel1.Rows.Add(GridView2.GetFocusedRowCellValue("kode_barang"), GridView2.GetFocusedRowCellValue("kode_stok"), GridView2.GetFocusedRowCellValue("nama_barang"), GridView2.GetFocusedRowCellValue("qty"), GridView2.GetFocusedRowCellValue("satuan_barang"), GridView2.GetFocusedRowCellValue("jenis_barang"), GridView2.GetFocusedRowCellValue("harga_satuan"), GridView2.GetFocusedRowCellValue("diskon_persen"), GridView2.GetFocusedRowCellValue("diskon_nominal"), GridView2.GetFocusedRowCellValue("harga_diskon"), GridView2.GetFocusedRowCellValue("subtotal"), GridView2.GetFocusedRowCellValue("laba"), GridView2.GetFocusedRowCellValue("modal_barang"), GridView2.GetFocusedRowCellValue("barang_id"), GridView2.GetFocusedRowCellValue("stok_id"))
                     GridView2.DeleteSelectedRows()
                 End If
             End If

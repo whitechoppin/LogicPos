@@ -12,8 +12,8 @@ Public Class fcaripembelian
         'dtakhir.MaxDate = Now
     End Sub
     Sub grid()
-        GridColumn1.Caption = "Kode"
-        GridColumn1.FieldName = "kode_pembelian"
+        GridColumn1.Caption = "id"
+        GridColumn1.FieldName = "id"
         GridColumn2.Caption = "Tanggal"
         GridColumn2.FieldName = "tgl_pembelian"
         GridColumn3.Caption = "Nama Supplier"
@@ -32,12 +32,12 @@ Public Class fcaripembelian
 
         If cbperiode.Checked = True Then
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
-                sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT tb_pembelian.id, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                sql = "SELECT tb_pembelian.id, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
         Else
-            sql = "SELECT tb_pembelian.kode_pembelian, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier WHERE tb_pembelian.kode_supplier = tb_supplier.kode_supplier"
+            sql = "SELECT tb_pembelian.id, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id"
         End If
 
 
@@ -51,9 +51,9 @@ Public Class fcaripembelian
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupbeli = 1 Then
-            freturbeli.txtnonota.Text = Me.GridView1.GetFocusedRowCellValue("kode_pembelian")
+            freturbeli.txtnonota.Text = Me.GridView1.GetFocusedRowCellValue("id")
         ElseIf tutupbeli = 2 Then
-            fpembelian.txtgopembelian.Text = Me.GridView1.GetFocusedRowCellValue("kode_pembelian")
+            fpembelian.txtgopembelian.Text = Me.GridView1.GetFocusedRowCellValue("id")
         End If
         Me.Hide()
     End Sub

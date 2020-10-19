@@ -64,6 +64,8 @@ Partial Class freturjual
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn13 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn27 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn28 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -82,6 +84,8 @@ Partial Class freturjual
         Me.GridColumn24 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn25 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn26 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn29 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn30 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btncariretur = New System.Windows.Forms.Button()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
@@ -94,12 +98,8 @@ Partial Class freturjual
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.txtgudang = New System.Windows.Forms.TextBox()
-        Me.GridColumn27 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn28 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn29 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn30 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
         CType(Me.ritediskonpersen, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritediskonnominal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -440,7 +440,7 @@ Partial Class freturjual
         Me.GridColumn4.AppearanceCell.Options.UseFont = True
         Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn4.Caption = "Banyak"
+        Me.GridColumn4.Caption = "Qty"
         Me.GridColumn4.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
@@ -552,6 +552,28 @@ Partial Class freturjual
         Me.GridColumn13.Name = "GridColumn13"
         Me.GridColumn13.Visible = True
         Me.GridColumn13.VisibleIndex = 12
+        '
+        'GridColumn27
+        '
+        Me.GridColumn27.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn27.AppearanceCell.Options.UseFont = True
+        Me.GridColumn27.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn27.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn27.Caption = "id barang"
+        Me.GridColumn27.Name = "GridColumn27"
+        Me.GridColumn27.Visible = True
+        Me.GridColumn27.VisibleIndex = 13
+        '
+        'GridColumn28
+        '
+        Me.GridColumn28.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn28.AppearanceCell.Options.UseFont = True
+        Me.GridColumn28.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn28.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn28.Caption = "id stok"
+        Me.GridColumn28.Name = "GridColumn28"
+        Me.GridColumn28.Visible = True
+        Me.GridColumn28.VisibleIndex = 14
         '
         'Label1
         '
@@ -748,6 +770,28 @@ Partial Class freturjual
         Me.GridColumn26.Visible = True
         Me.GridColumn26.VisibleIndex = 12
         '
+        'GridColumn29
+        '
+        Me.GridColumn29.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn29.AppearanceCell.Options.UseFont = True
+        Me.GridColumn29.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn29.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn29.Caption = "id barang"
+        Me.GridColumn29.Name = "GridColumn29"
+        Me.GridColumn29.Visible = True
+        Me.GridColumn29.VisibleIndex = 13
+        '
+        'GridColumn30
+        '
+        Me.GridColumn30.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn30.AppearanceCell.Options.UseFont = True
+        Me.GridColumn30.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn30.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn30.Caption = "id stok"
+        Me.GridColumn30.Name = "GridColumn30"
+        Me.GridColumn30.Visible = True
+        Me.GridColumn30.VisibleIndex = 14
+        '
         'btncariretur
         '
         Me.btncariretur.BackgroundImage = CType(resources.GetObject("btncariretur.BackgroundImage"), System.Drawing.Image)
@@ -894,6 +938,15 @@ Partial Class freturjual
         Me.TabPage1.TabIndex = 1
         Me.TabPage1.Text = "Retur Faktur"
         '
+        'txtgudang
+        '
+        Me.txtgudang.Enabled = False
+        Me.txtgudang.Location = New System.Drawing.Point(967, 79)
+        Me.txtgudang.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtgudang.Name = "txtgudang"
+        Me.txtgudang.Size = New System.Drawing.Size(258, 24)
+        Me.txtgudang.TabIndex = 77
+        '
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption
@@ -904,59 +957,6 @@ Partial Class freturjual
         Me.TabPage2.Size = New System.Drawing.Size(1248, 150)
         Me.TabPage2.TabIndex = 0
         Me.TabPage2.Text = "Keterangan"
-        '
-        'txtgudang
-        '
-        Me.txtgudang.Enabled = False
-        Me.txtgudang.Location = New System.Drawing.Point(967, 79)
-        Me.txtgudang.Margin = New System.Windows.Forms.Padding(6)
-        Me.txtgudang.Name = "txtgudang"
-        Me.txtgudang.Size = New System.Drawing.Size(258, 24)
-        Me.txtgudang.TabIndex = 77
-        '
-        'GridColumn27
-        '
-        Me.GridColumn27.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn27.AppearanceCell.Options.UseFont = True
-        Me.GridColumn27.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn27.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn27.Caption = "id barang"
-        Me.GridColumn27.Name = "GridColumn27"
-        Me.GridColumn27.Visible = True
-        Me.GridColumn27.VisibleIndex = 13
-        '
-        'GridColumn28
-        '
-        Me.GridColumn28.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn28.AppearanceCell.Options.UseFont = True
-        Me.GridColumn28.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn28.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn28.Caption = "id stok"
-        Me.GridColumn28.Name = "GridColumn28"
-        Me.GridColumn28.Visible = True
-        Me.GridColumn28.VisibleIndex = 14
-        '
-        'GridColumn29
-        '
-        Me.GridColumn29.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn29.AppearanceCell.Options.UseFont = True
-        Me.GridColumn29.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn29.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn29.Caption = "id barang"
-        Me.GridColumn29.Name = "GridColumn29"
-        Me.GridColumn29.Visible = True
-        Me.GridColumn29.VisibleIndex = 13
-        '
-        'GridColumn30
-        '
-        Me.GridColumn30.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn30.AppearanceCell.Options.UseFont = True
-        Me.GridColumn30.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn30.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn30.Caption = "id stok"
-        Me.GridColumn30.Name = "GridColumn30"
-        Me.GridColumn30.Visible = True
-        Me.GridColumn30.VisibleIndex = 14
         '
         'freturjual
         '
