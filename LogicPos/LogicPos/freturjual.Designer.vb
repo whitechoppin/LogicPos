@@ -35,7 +35,6 @@ Partial Class freturjual
         Me.Label20 = New System.Windows.Forms.Label()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.cmbgudang = New System.Windows.Forms.ComboBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.dtpenjualan = New System.Windows.Forms.DateTimePicker()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -96,6 +95,11 @@ Partial Class freturjual
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.txtgudang = New System.Windows.Forms.TextBox()
+        Me.GridColumn27 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn28 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn29 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn30 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.ritediskonpersen, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ritediskonnominal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -224,18 +228,6 @@ Partial Class freturjual
         Me.Label16.TabIndex = 66
         Me.Label16.Text = "Kode Sales"
         '
-        'cmbgudang
-        '
-        Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
-        Me.cmbgudang.Enabled = False
-        Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(967, 76)
-        Me.cmbgudang.Margin = New System.Windows.Forms.Padding(6)
-        Me.cmbgudang.MaxLength = 99
-        Me.cmbgudang.Name = "cmbgudang"
-        Me.cmbgudang.Size = New System.Drawing.Size(257, 26)
-        Me.cmbgudang.TabIndex = 58
-        '
         'Label14
         '
         Me.Label14.AutoSize = True
@@ -243,9 +235,9 @@ Partial Class freturjual
         Me.Label14.Location = New System.Drawing.Point(844, 79)
         Me.Label14.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(99, 18)
+        Me.Label14.Size = New System.Drawing.Size(104, 18)
         Me.Label14.TabIndex = 64
-        Me.Label14.Text = "Kode Gudang"
+        Me.Label14.Text = "Nama Gudang"
         '
         'dtpenjualan
         '
@@ -402,7 +394,7 @@ Partial Class freturjual
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13, Me.GridColumn27, Me.GridColumn28})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -586,7 +578,7 @@ Partial Class freturjual
         '
         'GridView2
         '
-        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn14, Me.GridColumn15, Me.GridColumn16, Me.GridColumn17, Me.GridColumn18, Me.GridColumn19, Me.GridColumn20, Me.GridColumn21, Me.GridColumn22, Me.GridColumn23, Me.GridColumn24, Me.GridColumn25, Me.GridColumn26})
+        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn14, Me.GridColumn15, Me.GridColumn16, Me.GridColumn17, Me.GridColumn18, Me.GridColumn19, Me.GridColumn20, Me.GridColumn21, Me.GridColumn22, Me.GridColumn23, Me.GridColumn24, Me.GridColumn25, Me.GridColumn26, Me.GridColumn29, Me.GridColumn30})
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
         '
@@ -873,7 +865,7 @@ Partial Class freturjual
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage1.Controls.Add(Me.cmbgudang)
+        Me.TabPage1.Controls.Add(Me.txtgudang)
         Me.TabPage1.Controls.Add(Me.Label14)
         Me.TabPage1.Controls.Add(Me.txttelp)
         Me.TabPage1.Controls.Add(Me.dtpenjualan)
@@ -912,6 +904,59 @@ Partial Class freturjual
         Me.TabPage2.Size = New System.Drawing.Size(1248, 150)
         Me.TabPage2.TabIndex = 0
         Me.TabPage2.Text = "Keterangan"
+        '
+        'txtgudang
+        '
+        Me.txtgudang.Enabled = False
+        Me.txtgudang.Location = New System.Drawing.Point(967, 79)
+        Me.txtgudang.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtgudang.Name = "txtgudang"
+        Me.txtgudang.Size = New System.Drawing.Size(258, 24)
+        Me.txtgudang.TabIndex = 77
+        '
+        'GridColumn27
+        '
+        Me.GridColumn27.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn27.AppearanceCell.Options.UseFont = True
+        Me.GridColumn27.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn27.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn27.Caption = "id barang"
+        Me.GridColumn27.Name = "GridColumn27"
+        Me.GridColumn27.Visible = True
+        Me.GridColumn27.VisibleIndex = 13
+        '
+        'GridColumn28
+        '
+        Me.GridColumn28.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn28.AppearanceCell.Options.UseFont = True
+        Me.GridColumn28.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn28.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn28.Caption = "id stok"
+        Me.GridColumn28.Name = "GridColumn28"
+        Me.GridColumn28.Visible = True
+        Me.GridColumn28.VisibleIndex = 14
+        '
+        'GridColumn29
+        '
+        Me.GridColumn29.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn29.AppearanceCell.Options.UseFont = True
+        Me.GridColumn29.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn29.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn29.Caption = "id barang"
+        Me.GridColumn29.Name = "GridColumn29"
+        Me.GridColumn29.Visible = True
+        Me.GridColumn29.VisibleIndex = 13
+        '
+        'GridColumn30
+        '
+        Me.GridColumn30.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn30.AppearanceCell.Options.UseFont = True
+        Me.GridColumn30.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn30.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn30.Caption = "id stok"
+        Me.GridColumn30.Name = "GridColumn30"
+        Me.GridColumn30.Visible = True
+        Me.GridColumn30.VisibleIndex = 14
         '
         'freturjual
         '
@@ -1012,7 +1057,6 @@ Partial Class freturjual
     Friend WithEvents Label20 As Label
     Friend WithEvents cmbsales As ComboBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents cmbgudang As ComboBox
     Friend WithEvents Label14 As Label
     Friend WithEvents dtpenjualan As DateTimePicker
     Friend WithEvents Label17 As Label
@@ -1029,4 +1073,9 @@ Partial Class freturjual
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents txtgudang As TextBox
+    Friend WithEvents GridColumn27 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn28 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn29 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn30 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

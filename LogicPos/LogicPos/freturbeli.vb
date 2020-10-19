@@ -44,9 +44,6 @@ Public Class freturbeli
 
     Private Sub freturbeli_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
-        'Call printer()
-        'Call cek_kas()
         hitnumber = 0
         kodereturbeli = currentnumber()
         Call inisialisasi(kodereturbeli)
@@ -101,41 +98,9 @@ Public Class freturbeli
         Call historysave("Membuka Transaksi Retur Pembelian", "N/A")
     End Sub
 
-    Function autonumber()
-        Call koneksii()
-        sql = "SELECT RIGHT(kode_retur,3) FROM tb_retur_pembelian WHERE DATE_FORMAT(MID(`kode_retur`, 3 , 6), ' %y ')+ MONTH(MID(`kode_retur`,3 , 6)) + DAY(MID(`kode_retur`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_retur,3) DESC"
-        Dim pesan As String = ""
-        Try
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            If dr.HasRows Then
-                dr.Read()
-                If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
-                    Return "RB" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                Else
-                    If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
-                        Return "RB" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                    Else
-                        If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
-                            Return "RB" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                        End If
-                    End If
-                End If
-            Else
-                Return "RB" + Format(Now.Date, "yyMMdd") + "001"
-            End If
-
-        Catch ex As Exception
-            pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
-        End Try
-        Return pesan
-    End Function
-
     Function currentnumber()
         Call koneksii()
-        sql = "SELECT kode_retur FROM tb_retur_pembelian ORDER BY kode_retur DESC LIMIT 1;"
+        sql = "SELECT id FROM tb_retur_pembelian ORDER BY id DESC LIMIT 1;"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -144,20 +109,18 @@ Public Class freturbeli
                 dr.Read()
                 Return dr.Item(0).ToString
             Else
-                Return ""
+                Return 0
             End If
 
         Catch ex As Exception
             pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
         End Try
         Return pesan
     End Function
 
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
-        sql = "SELECT kode_retur FROM tb_retur_pembelian WHERE date_created < (SELECT date_created FROM tb_retur_pembelian WHERE kode_retur = '" + previousnumber + "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT id FROM tb_retur_pembelian WHERE date_created < (SELECT date_created FROM tb_retur_pembelian WHERE id = '" & previousnumber & "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -176,13 +139,11 @@ Public Class freturbeli
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
         End Try
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT kode_retur FROM tb_retur_pembelian WHERE date_created > (SELECT date_created FROM tb_retur_pembelian WHERE kode_retur = '" + nextingnumber + "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT id FROM tb_retur_pembelian WHERE date_created > (SELECT date_created FROM tb_retur_pembelian WHERE id = '" & nextingnumber & "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -201,28 +162,25 @@ Public Class freturbeli
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
         End Try
     End Sub
 
     Sub previewreturpembelian(lihatbeli As String, lihatretur As String)
         Call koneksii()
-        sql = "SELECT * FROM tb_pembelian WHERE kode_pembelian ='" & lihatbeli & "'"
+        sql = "SELECT * FROM tb_pembelian WHERE id ='" & lihatbeli & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            nomorsupplier = dr("kode_supplier")
-            nomorgudang = dr("kode_gudang")
+            nomorsupplier = dr("supplier_id")
+            nomorgudang = dr("gudang_id")
             viewtglpembelian = dr("tgl_pembelian")
             viewtgljatuhtempo = dr("tgl_jatuhtempo_pembelian")
 
-            cmbgudang.Text = nomorgudang
             dtpembelian.Value = viewtglpembelian
             dtjatuhtempo.Value = viewtgljatuhtempo
         End While
 
-        sql = "SELECT * FROM tb_supplier WHERE kode_supplier ='" & nomorsupplier & "'"
+        sql = "SELECT * FROM tb_supplier WHERE id ='" & nomorsupplier & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
@@ -231,21 +189,26 @@ Public Class freturbeli
             txtalamat.Text = dr("alamat_supplier")
         End While
 
-        sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihatbeli & "'"
+        sql = "SELECT * FROM tb_gudang WHERE id ='" & nomorgudang & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        While dr.Read
+            txtgudang.Text = dr("nama_gudang")
+        End While
+
+        sql = "SELECT * FROM tb_pembelian_detail WHERE pembelian_id ='" & lihatbeli & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
             tabel1.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_beli")), Val(dr("subtotal")))
-            'GridControl1.RefreshDataSource()
         End While
         GridControl1.RefreshDataSource()
 
-        sql = "SELECT * FROM tb_retur_pembelian_detail WHERE kode_retur ='" & lihatretur & "'"
+        sql = "SELECT * FROM tb_retur_pembelian_detail WHERE retur_pembelian_id ='" & lihatretur & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
             tabel2.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_beli")), Val(dr("subtotal")))
-            'GridControl2.RefreshDataSource()
         End While
         GridControl2.RefreshDataSource()
 
@@ -253,16 +216,15 @@ Public Class freturbeli
 
     Sub comboboxuser()
         Call koneksii()
-        cmbsales.Items.Clear()
-        cmbsales.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbsales.AutoCompleteCustomSource.Add(dr("kode_user"))
-                cmbsales.Items.Add(dr("kode_user"))
-            End While
-        End If
+        sql = "SELECT * FROM tb_user"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbsales.DataSource = ds.Tables(0)
+        cmbsales.ValueMember = "id"
+        cmbsales.DisplayMember = "kode_user"
     End Sub
 
     Sub awalbaru()
@@ -280,9 +242,10 @@ Public Class freturbeli
         btncariretur.Enabled = False
         btnnext.Enabled = False
 
+        Call comboboxuser()
+
         'header
         txtnoretur.Clear()
-        txtnoretur.Text = autonumber()
         txtnoretur.Enabled = False
 
         txtnonota.Clear()
@@ -290,6 +253,7 @@ Public Class freturbeli
         btncarinota.Enabled = True
         btngo.Enabled = True
 
+        cmbsales.SelectedIndex = -1
         cmbsales.Enabled = True
 
         txtsupplier.Clear()
@@ -316,10 +280,9 @@ Public Class freturbeli
         Call tabel_utama()
         Call tabel_retur()
 
-        Call comboboxuser()
     End Sub
 
-    Sub inisialisasi(nomorkode As String)
+    Sub inisialisasi(nomorkode As Integer)
 
         'bersihkan dan set default value
         'button tools
@@ -335,9 +298,10 @@ Public Class freturbeli
         btncariretur.Enabled = True
         btnnext.Enabled = True
 
+        Call comboboxuser()
+
         'header
         txtnoretur.Clear()
-        txtnoretur.Text = autonumber()
         txtnoretur.Enabled = False
 
         txtnonota.Clear()
@@ -367,17 +331,17 @@ Public Class freturbeli
         txtketerangan.Enabled = False
         txtketerangan.Clear()
 
-        If nomorkode IsNot "" Then
+        If nomorkode > 0 Then
             Call koneksii()
-            sql = "SELECT * FROM tb_retur_pembelian WHERE kode_retur = '" + nomorkode.ToString + "'"
+            sql = "SELECT * FROM tb_retur_pembelian WHERE id = '" & nomorkode & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             dr.Read()
             If dr.HasRows Then
                 'header
-                nomorretur = dr("kode_retur")
-                nomorsales = dr("kode_user")
-                nomornota = dr("kode_pembelian")
+                nomorretur = dr("id")
+                nomorsales = dr("user_id")
+                nomornota = dr("pembelian_id")
                 viewtglretur = dr("tgl_returbeli")
 
                 statusprint = dr("print_returbeli")
@@ -386,7 +350,7 @@ Public Class freturbeli
                 viewketerangan = dr("keterangan_returbeli")
 
                 txtnoretur.Text = nomorretur
-                cmbsales.Text = nomorsales
+                cmbsales.SelectedValue = nomorsales
                 txtnonota.Text = nomornota
                 dtreturbeli.Value = viewtglretur
 
@@ -406,7 +370,7 @@ Public Class freturbeli
             txtnoretur.Clear()
             txtnonota.Clear()
             dtreturbeli.Value = Date.Now
-            cmbsales.Text = ""
+            cmbsales.SelectedIndex = -1
 
             cbprinted.Checked = False
             cbposted.Checked = False
@@ -418,7 +382,7 @@ Public Class freturbeli
             dtpembelian.Value = Date.Now
             dtjatuhtempo.Value = Date.Now
 
-            cmbgudang.Text = ""
+            txtgudang.Text = ""
 
             txtketerangan.Text = ""
         End If
@@ -438,8 +402,10 @@ Public Class freturbeli
             .Columns.Add("qty", GetType(Double))
             .Columns.Add("satuan_barang")
             .Columns.Add("jenis_barang")
-            .Columns.Add("harga_beli", GetType(Double))
+            .Columns.Add("harga", GetType(Double))
             .Columns.Add("subtotal", GetType(Double))
+            .Columns.Add("barang_id")
+            .Columns.Add("stok_id")
 
         End With
         GridControl1.DataSource = tabel1
@@ -450,7 +416,7 @@ Public Class freturbeli
 
         GridColumn2.FieldName = "kode_barang"
         GridColumn2.Caption = "Kode Barang"
-        GridColumn2.Visible = False
+        GridColumn2.Width = 15
 
         GridColumn3.FieldName = "nama_barang"
         GridColumn3.Caption = "Nama Barang"
@@ -480,6 +446,16 @@ Public Class freturbeli
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
         GridColumn8.Width = 55
 
+        GridColumn17.FieldName = "barang_id"
+        GridColumn17.Caption = "Barang id"
+        GridColumn17.Width = 15
+        GridColumn17.Visible = False
+
+        GridColumn18.FieldName = "stok_id"
+        GridColumn18.Caption = "stok id"
+        GridColumn18.Width = 15
+        GridColumn18.Visible = False
+
     End Sub
     Sub tabel_retur()
         tabel2 = New DataTable
@@ -490,8 +466,10 @@ Public Class freturbeli
             .Columns.Add("qty", GetType(Double))
             .Columns.Add("satuan_barang")
             .Columns.Add("jenis_barang")
-            .Columns.Add("harga_beli", GetType(Double))
+            .Columns.Add("harga", GetType(Double))
             .Columns.Add("subtotal", GetType(Double))
+            .Columns.Add("barang_id")
+            .Columns.Add("stok_id")
 
         End With
         GridControl2.DataSource = tabel2
@@ -502,7 +480,7 @@ Public Class freturbeli
 
         GridColumn10.FieldName = "kode_barang"
         GridColumn10.Caption = "Kode Barang"
-        GridColumn10.Visible = False
+        GridColumn10.Width = 15
 
         GridColumn11.FieldName = "nama_barang"
         GridColumn11.Caption = "Nama Barang"
@@ -531,6 +509,16 @@ Public Class freturbeli
         GridColumn16.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn16.DisplayFormat.FormatString = "{0:n0}"
         GridColumn16.Width = 55
+
+        GridColumn19.FieldName = "barang_id"
+        GridColumn19.Caption = "Barang id"
+        GridColumn19.Width = 15
+        GridColumn19.Visible = False
+
+        GridColumn20.FieldName = "stok_id"
+        GridColumn20.Caption = "stok id"
+        GridColumn20.Width = 15
+        GridColumn20.Visible = False
     End Sub
 
     Sub reload_tabel()
@@ -541,13 +529,11 @@ Public Class freturbeli
     Sub loadingpembelian(lihat As String)
         Call tabel_utama()
         Call tabel_retur()
-        sql = "SELECT * FROM tb_pembelian_detail WHERE kode_pembelian ='" & lihat & "'"
+        sql = "SELECT * FROM tb_pembelian_detail WHERE pembelian_id ='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel1.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_beli")), Val(dr("subtotal")))
-            'tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_jual")), dr("diskon"), 0, dr("harga_diskon"), dr("subtotal"), 0, 0)
-            'GridControl1.RefreshDataSource()
+            tabel1.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_beli")), Val(dr("subtotal")), dr("barang_id"), dr("stok_id"))
         End While
         GridControl1.RefreshDataSource()
     End Sub
@@ -567,7 +553,7 @@ Public Class freturbeli
 
             dtpembelian.Value = viewtglpembelian
             dtjatuhtempo.Value = viewtgljatuhtempo
-            cmbgudang.Text = dr("kode_gudang")
+            txtgudang.Text = dr("kode_gudang")
 
             Call loadingpembelian(txtnonota.Text)
         Else
@@ -600,7 +586,6 @@ Public Class freturbeli
     End Sub
 
     Sub simpan()
-        kodereturbeli = autonumber()
         'ambil total retur dan total penjualan
         Dim total_retur As Double = GridView2.Columns("subtotal").SummaryItem.SummaryValue
         Dim total_pembelian As Double = GridView1.Columns("subtotal").SummaryItem.SummaryValue
@@ -628,7 +613,7 @@ Public Class freturbeli
             myCommand.ExecuteNonQuery()
 
             For i As Integer = 0 To GridView1.RowCount - 1
-                myCommand.CommandText = "INSERT INTO tb_pembelian_detail ( kode_pembelian, kode_barang, kode_stok, nama_barang,  jenis_barang, satuan_barang, qty, harga_beli, subtotal, created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "harga_beli") & "','" & GridView1.GetRowCellValue(i, "subtotal") & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_pembelian_detail ( kode_pembelian, kode_barang, kode_stok, nama_barang,  jenis_barang, satuan_barang, qty, harga_beli, subtotal, created_by, updated_by,date_created, last_updated) VALUES ('" & txtnonota.Text & "', '" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "kode_stok") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "harga_beli") & "','" & GridView1.GetRowCellValue(i, "subtotal") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
@@ -641,12 +626,12 @@ Public Class freturbeli
             myCommand.ExecuteNonQuery()
 
             For i As Integer = 0 To GridView2.RowCount - 1
-                myCommand.CommandText = "INSERT INTO tb_retur_pembelian_detail (kode_retur, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty, harga_beli, subtotal, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturbeli & "','" & GridView2.GetRowCellValue(i, "kode_barang") & "','" & GridView2.GetRowCellValue(i, "kode_stok") & "','" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView2.GetRowCellValue(i, "harga_beli") & "','" & GridView2.GetRowCellValue(i, "subtotal") & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_retur_pembelian_detail (kode_retur, kode_barang, kode_stok, nama_barang, jenis_barang, satuan_barang, qty, harga_beli, subtotal, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturbeli & "','" & GridView2.GetRowCellValue(i, "kode_barang") & "','" & GridView2.GetRowCellValue(i, "kode_stok") & "','" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView2.GetRowCellValue(i, "harga_beli") & "','" & GridView2.GetRowCellValue(i, "subtotal") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
 
-            myCommand.CommandText = "INSERT INTO tb_retur_pembelian (kode_retur, kode_user, kode_pembelian, tgl_returbeli, print_returbeli, posted_returbeli, keterangan_returbeli, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturbeli & "','" & cmbsales.Text & "','" & txtnonota.Text & "','" & Format(dtreturbeli.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "', now() , now())"
+            myCommand.CommandText = "INSERT INTO tb_retur_pembelian (kode_retur, kode_user, kode_pembelian, tgl_returbeli, print_returbeli, posted_returbeli, keterangan_returbeli, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & kodereturbeli & "','" & cmbsales.Text & "','" & txtnonota.Text & "','" & Format(dtreturbeli.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "', now() , now())"
             myCommand.ExecuteNonQuery()
 
             myTrans.Commit()
@@ -702,12 +687,12 @@ Public Class freturbeli
                 If statusizincetak.Equals(True) Then
                     Call cetak_faktur()
                     Call koneksii()
-                    sql = "UPDATE tb_retur_pembelian SET print_returbeli = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
+                    sql = "UPDATE tb_retur_pembelian SET print_returbeli = 1 WHERE id = '" & txtnonota.Text & "' "
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Mencetak Data Retur Beli Kode " + txtnonota.Text, txtnonota.Text)
+                    Call historysave("Mencetak Data Retur Beli Kode " & txtnonota.Text, txtnonota.Text)
                     '========================
 
                     cbprinted.Checked = True
@@ -715,7 +700,7 @@ Public Class freturbeli
             Else
                 Call cetak_faktur()
                 Call koneksii()
-                sql = "UPDATE tb_retur_pembelian SET print_returbeli = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
+                sql = "UPDATE tb_retur_pembelian SET print_returbeli = 1 WHERE id = '" & txtnonota.Text & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
@@ -846,7 +831,7 @@ Public Class freturbeli
             MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
         Else
             Call koneksii()
-            sql = "SELECT * FROM tb_retur_pembelian WHERE kode_retur = '" + txtgoretur.Text + "'"
+            sql = "SELECT * FROM tb_retur_pembelian WHERE id = '" & txtgoretur.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then

@@ -124,7 +124,7 @@ Public Class fpembelian
     End Function
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
-        sql = "SELECT id FROM tb_pembelian WHERE date_created < (SELECT date_created FROM tb_pembelian WHERE id = '" + previousnumber + "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT id FROM tb_pembelian WHERE date_created < (SELECT date_created FROM tb_pembelian WHERE id = '" & previousnumber & "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -147,7 +147,7 @@ Public Class fpembelian
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT id FROM tb_pembelian WHERE date_created > (SELECT date_created FROM tb_pembelian WHERE id = '" + nextingnumber + "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT id FROM tb_pembelian WHERE date_created > (SELECT date_created FROM tb_pembelian WHERE id = '" & nextingnumber & "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -255,8 +255,8 @@ Public Class fpembelian
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), dr("harga_beli"), dr("subtotal"), dr("barang_id"), dr("stok_id"))
-            tabelsementara.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), dr("harga_beli"), dr("subtotal"), dr("barang_id"), dr("stok_id"))
+            tabel.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_beli")), Val(dr("subtotal")), dr("barang_id"), dr("stok_id"))
+            tabelsementara.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("nama_barang"), dr("qty"), dr("satuan_barang"), dr("jenis_barang"), Val(dr("harga_beli")), Val(dr("subtotal")), dr("barang_id"), dr("stok_id"))
         End While
         GridControl1.RefreshDataSource()
     End Sub

@@ -384,7 +384,7 @@ Partial Class fpenjualan
         Me.GridColumn4.AppearanceCell.Options.UseFont = True
         Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn4.Caption = "Banyak"
+        Me.GridColumn4.Caption = "Qty"
         Me.GridColumn4.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
@@ -530,6 +530,7 @@ Partial Class fpenjualan
         Me.GridColumn14.AppearanceCell.Options.UseFont = True
         Me.GridColumn14.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn14.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn14.Caption = "id barang"
         Me.GridColumn14.Name = "GridColumn14"
         Me.GridColumn14.Visible = True
         Me.GridColumn14.VisibleIndex = 13
@@ -540,6 +541,7 @@ Partial Class fpenjualan
         Me.GridColumn15.AppearanceCell.Options.UseFont = True
         Me.GridColumn15.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn15.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn15.Caption = "id stok"
         Me.GridColumn15.Name = "GridColumn15"
         Me.GridColumn15.Visible = True
         Me.GridColumn15.VisibleIndex = 14

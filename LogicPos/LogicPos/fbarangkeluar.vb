@@ -114,7 +114,7 @@ Public Class fbarangkeluar
 
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
-        sql = "SELECT id FROM tb_barang_keluar WHERE date_created < (SELECT date_created FROM tb_barang_keluar WHERE id = '" + previousnumber + "')ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT id FROM tb_barang_keluar WHERE date_created < (SELECT date_created FROM tb_barang_keluar WHERE id = '" & previousnumber & "')ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -137,7 +137,7 @@ Public Class fbarangkeluar
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT id FROM tb_barang_keluar WHERE date_created > (SELECT date_created FROM tb_barang_keluar WHERE id = '" + nextingnumber + "')ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT id FROM tb_barang_keluar WHERE date_created > (SELECT date_created FROM tb_barang_keluar WHERE id = '" & nextingnumber & "')ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)

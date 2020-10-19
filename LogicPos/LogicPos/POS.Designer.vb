@@ -779,7 +779,7 @@ Partial Public Class POS
         
         Private columnnama_barang As Global.System.Data.DataColumn
         
-        Private columnbanyak As Global.System.Data.DataColumn
+        Private columnqty As Global.System.Data.DataColumn
         
         Private columnsatuan As Global.System.Data.DataColumn
         
@@ -856,9 +856,9 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property banyakColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property qtyColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnbanyak
+                Return Me.columnqty
             End Get
         End Property
         
@@ -955,9 +955,9 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtabeljualRow(ByVal kode_barang As String, ByVal kode_stok As String, ByVal nama_barang As String, ByVal banyak As Double, ByVal satuan As String, ByVal jenis As String, ByVal harga_satuan As Double, ByVal diskon_persen As Double, ByVal harga_diskon As Double, ByVal subtotal As Double, ByVal diskon_nominal As Double) As tabeljualRow
+        Public Overloads Function AddtabeljualRow(ByVal kode_barang As String, ByVal kode_stok As String, ByVal nama_barang As String, ByVal qty As Double, ByVal satuan As String, ByVal jenis As String, ByVal harga_satuan As Double, ByVal diskon_persen As Double, ByVal harga_diskon As Double, ByVal subtotal As Double, ByVal diskon_nominal As Double) As tabeljualRow
             Dim rowtabeljualRow As tabeljualRow = CType(Me.NewRow,tabeljualRow)
-            Dim columnValuesArray() As Object = New Object() {kode_barang, kode_stok, nama_barang, banyak, satuan, jenis, harga_satuan, diskon_persen, harga_diskon, subtotal, diskon_nominal}
+            Dim columnValuesArray() As Object = New Object() {kode_barang, kode_stok, nama_barang, qty, satuan, jenis, harga_satuan, diskon_persen, harga_diskon, subtotal, diskon_nominal}
             rowtabeljualRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtabeljualRow)
             Return rowtabeljualRow
@@ -983,7 +983,7 @@ Partial Public Class POS
             Me.columnkode_barang = MyBase.Columns("kode_barang")
             Me.columnkode_stok = MyBase.Columns("kode_stok")
             Me.columnnama_barang = MyBase.Columns("nama_barang")
-            Me.columnbanyak = MyBase.Columns("banyak")
+            Me.columnqty = MyBase.Columns("qty")
             Me.columnsatuan = MyBase.Columns("satuan")
             Me.columnjenis = MyBase.Columns("jenis")
             Me.columnharga_satuan = MyBase.Columns("harga_satuan")
@@ -1002,8 +1002,8 @@ Partial Public Class POS
             MyBase.Columns.Add(Me.columnkode_stok)
             Me.columnnama_barang = New Global.System.Data.DataColumn("nama_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnnama_barang)
-            Me.columnbanyak = New Global.System.Data.DataColumn("banyak", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnbanyak)
+            Me.columnqty = New Global.System.Data.DataColumn("qty", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnqty)
             Me.columnsatuan = New Global.System.Data.DataColumn("satuan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnsatuan)
             Me.columnjenis = New Global.System.Data.DataColumn("jenis", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -3775,7 +3775,7 @@ Partial Public Class POS
         
         Private columnnama_barang As Global.System.Data.DataColumn
         
-        Private columnbanyak As Global.System.Data.DataColumn
+        Private columnqty As Global.System.Data.DataColumn
         
         Private columnsatuan As Global.System.Data.DataColumn
         
@@ -3852,9 +3852,9 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property banyakColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property qtyColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnbanyak
+                Return Me.columnqty
             End Get
         End Property
         
@@ -3951,9 +3951,9 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtabelreturjualRow(ByVal kode_barang As String, ByVal kode_stok As String, ByVal nama_barang As String, ByVal banyak As Double, ByVal satuan As String, ByVal jenis As String, ByVal harga_satuan As Double, ByVal diskon_persen As Double, ByVal harga_diskon As Double, ByVal subtotal As Double, ByVal diskon_nominal As Double) As tabelreturjualRow
+        Public Overloads Function AddtabelreturjualRow(ByVal kode_barang As String, ByVal kode_stok As String, ByVal nama_barang As String, ByVal qty As Double, ByVal satuan As String, ByVal jenis As String, ByVal harga_satuan As Double, ByVal diskon_persen As Double, ByVal harga_diskon As Double, ByVal subtotal As Double, ByVal diskon_nominal As Double) As tabelreturjualRow
             Dim rowtabelreturjualRow As tabelreturjualRow = CType(Me.NewRow,tabelreturjualRow)
-            Dim columnValuesArray() As Object = New Object() {kode_barang, kode_stok, nama_barang, banyak, satuan, jenis, harga_satuan, diskon_persen, harga_diskon, subtotal, diskon_nominal}
+            Dim columnValuesArray() As Object = New Object() {kode_barang, kode_stok, nama_barang, qty, satuan, jenis, harga_satuan, diskon_persen, harga_diskon, subtotal, diskon_nominal}
             rowtabelreturjualRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtabelreturjualRow)
             Return rowtabelreturjualRow
@@ -3979,7 +3979,7 @@ Partial Public Class POS
             Me.columnkode_barang = MyBase.Columns("kode_barang")
             Me.columnkode_stok = MyBase.Columns("kode_stok")
             Me.columnnama_barang = MyBase.Columns("nama_barang")
-            Me.columnbanyak = MyBase.Columns("banyak")
+            Me.columnqty = MyBase.Columns("qty")
             Me.columnsatuan = MyBase.Columns("satuan")
             Me.columnjenis = MyBase.Columns("jenis")
             Me.columnharga_satuan = MyBase.Columns("harga_satuan")
@@ -3998,8 +3998,8 @@ Partial Public Class POS
             MyBase.Columns.Add(Me.columnkode_stok)
             Me.columnnama_barang = New Global.System.Data.DataColumn("nama_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnnama_barang)
-            Me.columnbanyak = New Global.System.Data.DataColumn("banyak", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnbanyak)
+            Me.columnqty = New Global.System.Data.DataColumn("qty", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnqty)
             Me.columnsatuan = New Global.System.Data.DataColumn("satuan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnsatuan)
             Me.columnjenis = New Global.System.Data.DataColumn("jenis", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -5881,16 +5881,16 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property banyak() As Double
+        Public Property qty() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tabletabeljual.banyakColumn),Double)
+                    Return CType(Me(Me.tabletabeljual.qtyColumn),Double)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'banyak' in table 'tabeljual' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'qty' in table 'tabeljual' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabeljual.banyakColumn) = value
+                Me(Me.tabletabeljual.qtyColumn) = value
             End Set
         End Property
         
@@ -6037,14 +6037,14 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsbanyakNull() As Boolean
-            Return Me.IsNull(Me.tabletabeljual.banyakColumn)
+        Public Function IsqtyNull() As Boolean
+            Return Me.IsNull(Me.tabletabeljual.qtyColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetbanyakNull()
-            Me(Me.tabletabeljual.banyakColumn) = Global.System.Convert.DBNull
+        Public Sub SetqtyNull()
+            Me(Me.tabletabeljual.qtyColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7780,16 +7780,16 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property banyak() As Double
+        Public Property qty() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelreturjual.banyakColumn),Double)
+                    Return CType(Me(Me.tabletabelreturjual.qtyColumn),Double)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'banyak' in table 'tabelreturjual' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'qty' in table 'tabelreturjual' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabelreturjual.banyakColumn) = value
+                Me(Me.tabletabelreturjual.qtyColumn) = value
             End Set
         End Property
         
@@ -7936,14 +7936,14 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsbanyakNull() As Boolean
-            Return Me.IsNull(Me.tabletabelreturjual.banyakColumn)
+        Public Function IsqtyNull() As Boolean
+            Return Me.IsNull(Me.tabletabelreturjual.qtyColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetbanyakNull()
-            Me(Me.tabletabelreturjual.banyakColumn) = Global.System.Convert.DBNull
+        Public Sub SetqtyNull()
+            Me(Me.tabletabelreturjual.qtyColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

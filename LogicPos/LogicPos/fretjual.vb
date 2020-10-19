@@ -1,13 +1,14 @@
 ﻿Public Class fretjual
     Public kode_barang, kode_stok, nama_barang, satuan_barang, jenis_barang As String
     Public banyak, harga_satuan, diskon_persen, diskon_nominal, harga_diskon, subtotal, laba, modal_barang, banyak_selisih, banyak_retur As Double
+    Public idbarang, idstok As Integer
 
     Private Sub fretjual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call awal()
     End Sub
     Sub awal()
         txtretur.Clear()
-        lblnamaibarang.Text = "( " + kode_barang + " ) " + nama_barang
+        lblnamaibarang.Text = "( " & kode_barang & " ) " & nama_barang
         txtretur.Focus()
     End Sub
     Sub proses_pindah()
@@ -19,8 +20,6 @@
             If (banyak - banyak_retur).Equals(0) Then
                 For i As Integer = 0 To freturjual.GridView1.RowCount - 1
                     If freturjual.GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok) Then
-                        'freturjual.GridView1.DeleteRow(i)
-                        'Me.Close()
                         Lokasi = i
                     End If
                 Next
@@ -30,6 +29,7 @@
                     Lokasi = -1
                     Me.Close()
                 End If
+                'MsgBox("bagian 1")
             Else
                 For i As Integer = 0 To freturjual.GridView1.RowCount - 1
                     If freturjual.GridView1.GetRowCellValue(i, "kode_stok").Equals(kode_stok) Then

@@ -1,13 +1,14 @@
 ﻿Public Class fretbeli
     Public kode_barang, kode_stok, nama_barang, satuan_barang, jenis_barang As String
     Public banyak, harga_beli, subtotal, banyak_selisih, banyak_retur As Double
+    Public idbarang, idstok As Integer
 
     Private Sub fretbeli_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call awal()
     End Sub
     Sub awal()
         txtretur.Clear()
-        lblnamaibarang.Text = "( " + kode_barang + " ) " + nama_barang
+        lblnamaibarang.Text = "( " & kode_barang & " ) " & nama_barang
         txtretur.Focus()
     End Sub
     Sub proses_pindah()

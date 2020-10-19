@@ -69,7 +69,6 @@ Partial Class freturbeli
         Me.Label20 = New System.Windows.Forms.Label()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.cmbgudang = New System.Windows.Forms.ComboBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.dtpembelian = New System.Windows.Forms.DateTimePicker()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -82,6 +81,11 @@ Partial Class freturbeli
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.txtgudang = New System.Windows.Forms.TextBox()
+        Me.GridColumn17 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn18 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn19 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn20 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -158,7 +162,7 @@ Partial Class freturbeli
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn17, Me.GridColumn18})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
@@ -266,7 +270,7 @@ Partial Class freturbeli
         '
         'GridView2
         '
-        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13, Me.GridColumn14, Me.GridColumn15, Me.GridColumn16})
+        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13, Me.GridColumn14, Me.GridColumn15, Me.GridColumn16, Me.GridColumn19, Me.GridColumn20})
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
         '
@@ -581,18 +585,6 @@ Partial Class freturbeli
         Me.Label16.TabIndex = 66
         Me.Label16.Text = "Kode Sales"
         '
-        'cmbgudang
-        '
-        Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
-        Me.cmbgudang.Enabled = False
-        Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(967, 76)
-        Me.cmbgudang.Margin = New System.Windows.Forms.Padding(6)
-        Me.cmbgudang.MaxLength = 99
-        Me.cmbgudang.Name = "cmbgudang"
-        Me.cmbgudang.Size = New System.Drawing.Size(257, 26)
-        Me.cmbgudang.TabIndex = 58
-        '
         'Label14
         '
         Me.Label14.AutoSize = True
@@ -600,9 +592,9 @@ Partial Class freturbeli
         Me.Label14.Location = New System.Drawing.Point(844, 79)
         Me.Label14.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(99, 18)
+        Me.Label14.Size = New System.Drawing.Size(104, 18)
         Me.Label14.TabIndex = 64
-        Me.Label14.Text = "Kode Gudang"
+        Me.Label14.Text = "Nama Gudang"
         '
         'dtpembelian
         '
@@ -704,7 +696,7 @@ Partial Class freturbeli
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage1.Controls.Add(Me.cmbgudang)
+        Me.TabPage1.Controls.Add(Me.txtgudang)
         Me.TabPage1.Controls.Add(Me.Label14)
         Me.TabPage1.Controls.Add(Me.txttelp)
         Me.TabPage1.Controls.Add(Me.dtpembelian)
@@ -743,6 +735,59 @@ Partial Class freturbeli
         Me.TabPage2.Size = New System.Drawing.Size(1248, 150)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Keterangan"
+        '
+        'txtgudang
+        '
+        Me.txtgudang.Enabled = False
+        Me.txtgudang.Location = New System.Drawing.Point(966, 79)
+        Me.txtgudang.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtgudang.Name = "txtgudang"
+        Me.txtgudang.Size = New System.Drawing.Size(258, 24)
+        Me.txtgudang.TabIndex = 76
+        '
+        'GridColumn17
+        '
+        Me.GridColumn17.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn17.AppearanceCell.Options.UseFont = True
+        Me.GridColumn17.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn17.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn17.Caption = "id barang"
+        Me.GridColumn17.Name = "GridColumn17"
+        Me.GridColumn17.Visible = True
+        Me.GridColumn17.VisibleIndex = 8
+        '
+        'GridColumn18
+        '
+        Me.GridColumn18.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn18.AppearanceCell.Options.UseFont = True
+        Me.GridColumn18.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn18.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn18.Caption = "id stok"
+        Me.GridColumn18.Name = "GridColumn18"
+        Me.GridColumn18.Visible = True
+        Me.GridColumn18.VisibleIndex = 9
+        '
+        'GridColumn19
+        '
+        Me.GridColumn19.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn19.AppearanceCell.Options.UseFont = True
+        Me.GridColumn19.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn19.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn19.Caption = "id barang"
+        Me.GridColumn19.Name = "GridColumn19"
+        Me.GridColumn19.Visible = True
+        Me.GridColumn19.VisibleIndex = 8
+        '
+        'GridColumn20
+        '
+        Me.GridColumn20.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn20.AppearanceCell.Options.UseFont = True
+        Me.GridColumn20.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn20.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn20.Caption = "id stok"
+        Me.GridColumn20.Name = "GridColumn20"
+        Me.GridColumn20.Visible = True
+        Me.GridColumn20.VisibleIndex = 9
         '
         'freturbeli
         '
@@ -828,7 +873,6 @@ Partial Class freturbeli
     Friend WithEvents Label20 As Label
     Friend WithEvents cmbsales As ComboBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents cmbgudang As ComboBox
     Friend WithEvents Label14 As Label
     Friend WithEvents dtpembelian As DateTimePicker
     Friend WithEvents Label17 As Label
@@ -842,4 +886,9 @@ Partial Class freturbeli
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents txtgudang As TextBox
+    Friend WithEvents GridColumn17 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn18 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn19 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn20 As DevExpress.XtraGrid.Columns.GridColumn
 End Class
