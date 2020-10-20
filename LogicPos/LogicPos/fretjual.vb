@@ -109,6 +109,7 @@
         End If
         freturjual.GridView1.RefreshData()
         freturjual.GridView2.RefreshData()
+        freturjual.statusnonota(False)
         Me.Close()
     End Sub
     Private Sub btnok_Click(sender As Object, e As EventArgs) Handles btnok.Click

@@ -103,6 +103,7 @@
         End If
         freturbeli.GridView1.RefreshData()
         freturbeli.GridView2.RefreshData()
+        freturbeli.statusnonota(False)
         Me.Close()
     End Sub
     Private Sub btnok_Click(sender As Object, e As EventArgs) Handles btnok.Click
