@@ -35,7 +35,7 @@ Partial Class fpreviewpiutang
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtakhir = New System.Windows.Forms.DateTimePicker()
         Me.dtawal = New System.Windows.Forms.DateTimePicker()
-        Me.cmbcustomer = New System.Windows.Forms.ComboBox()
+        Me.cmbpelanggan = New System.Windows.Forms.ComboBox()
         Me.cmbstatus = New System.Windows.Forms.ComboBox()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -174,15 +174,15 @@ Partial Class fpreviewpiutang
         Me.dtawal.Size = New System.Drawing.Size(275, 24)
         Me.dtawal.TabIndex = 34
         '
-        'cmbcustomer
+        'cmbpelanggan
         '
-        Me.cmbcustomer.FormattingEnabled = True
-        Me.cmbcustomer.Location = New System.Drawing.Point(12, 86)
-        Me.cmbcustomer.Margin = New System.Windows.Forms.Padding(6)
-        Me.cmbcustomer.MaxLength = 99
-        Me.cmbcustomer.Name = "cmbcustomer"
-        Me.cmbcustomer.Size = New System.Drawing.Size(268, 26)
-        Me.cmbcustomer.TabIndex = 37
+        Me.cmbpelanggan.FormattingEnabled = True
+        Me.cmbpelanggan.Location = New System.Drawing.Point(12, 86)
+        Me.cmbpelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbpelanggan.MaxLength = 99
+        Me.cmbpelanggan.Name = "cmbpelanggan"
+        Me.cmbpelanggan.Size = New System.Drawing.Size(268, 26)
+        Me.cmbpelanggan.TabIndex = 37
         '
         'cmbstatus
         '
@@ -223,9 +223,9 @@ Partial Class fpreviewpiutang
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(12, 64)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(73, 16)
+        Me.Label2.Size = New System.Drawing.Size(83, 16)
         Me.Label2.TabIndex = 52
-        Me.Label2.Text = "Customer"
+        Me.Label2.Text = "Pelanggan"
         '
         'Label3
         '
@@ -356,7 +356,7 @@ Partial Class fpreviewpiutang
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.cmbstatus)
-        Me.Controls.Add(Me.cmbcustomer)
+        Me.Controls.Add(Me.cmbpelanggan)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dtakhir)
         Me.Controls.Add(Me.dtawal)
@@ -383,7 +383,7 @@ Partial Class fpreviewpiutang
     Friend WithEvents Label1 As Label
     Friend WithEvents dtakhir As DateTimePicker
     Friend WithEvents dtawal As DateTimePicker
-    Friend WithEvents cmbcustomer As ComboBox
+    Friend WithEvents cmbpelanggan As ComboBox
     Friend WithEvents cmbstatus As ComboBox
     Friend WithEvents btnrefresh As Button
     Friend WithEvents Label7 As Label

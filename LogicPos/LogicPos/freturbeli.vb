@@ -290,11 +290,9 @@ Public Class freturbeli
         'buat tabel
         Call tabel_utama()
         Call tabel_retur()
-
     End Sub
 
     Sub inisialisasi(nomorkode As Integer)
-
         'bersihkan dan set default value
         'button tools
         btnbaru.Enabled = True
@@ -394,10 +392,8 @@ Public Class freturbeli
             dtjatuhtempo.Value = Date.Now
 
             txtgudang.Text = ""
-
             txtketerangan.Text = ""
         End If
-
     End Sub
 
     Private Sub freturbeli_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

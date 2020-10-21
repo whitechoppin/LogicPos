@@ -245,7 +245,6 @@ Public Class freturjual
         btnbaru.Enabled = False
         btnsimpan.Enabled = True
         btnprint.Enabled = False
-        'btnedit.Enabled = False
         btnbatal.Enabled = True
 
         'button navigations
@@ -254,6 +253,8 @@ Public Class freturjual
         txtgoretur.Enabled = False
         btncariretur.Enabled = False
         btnnext.Enabled = False
+
+        Call comboboxuser()
 
         'header
         txtnoretur.Clear()
@@ -264,6 +265,7 @@ Public Class freturjual
         btncarinota.Enabled = True
         btngo.Enabled = True
 
+        cmbsales.SelectedIndex = -1
         cmbsales.Enabled = True
 
         txtcustomer.Clear()
@@ -289,11 +291,8 @@ Public Class freturjual
         'buat tabel
         Call tabel_utama()
         Call tabel_retur()
-
-        Call comboboxuser()
     End Sub
     Sub inisialisasi(nomorkode As String)
-
         'bersihkan dan set default value
         'button tools
         btnbaru.Enabled = True
@@ -307,6 +306,8 @@ Public Class freturjual
         txtgoretur.Enabled = True
         btncariretur.Enabled = True
         btnnext.Enabled = True
+
+        Call comboboxuser()
 
         'header
         txtnoretur.Clear()
@@ -348,8 +349,8 @@ Public Class freturjual
             If dr.HasRows Then
                 'header
                 nomorretur = dr("id")
-                nomorsales = dr("kode_user")
-                nomornota = dr("kode_penjualan")
+                nomorsales = dr("user_id")
+                nomornota = dr("penjualan_id")
                 viewtglretur = dr("tgl_returjual")
 
                 statusprint = dr("print_returjual")
@@ -391,10 +392,8 @@ Public Class freturjual
             dtjatuhtempo.Value = Date.Now
 
             txtgudang.Text = ""
-
             txtketerangan.Text = ""
         End If
-
     End Sub
     Sub tabel_utama()
         tabel1 = New DataTable
@@ -688,7 +687,6 @@ Public Class freturjual
             '========================
             MsgBox("Retur Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(idreturjual)
-
         Catch e As Exception
             Try
                 myTrans.Rollback()

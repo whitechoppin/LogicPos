@@ -41,21 +41,20 @@ Public Class fpreviewutang
 
     Sub comboboxsupplier()
         Call koneksii()
-        cmmd = New OdbcCommand("SELECT * FROM tb_supplier", cnn)
-        cmbsupplier.Items.Clear()
-        cmbsupplier.AutoCompleteCustomSource.Clear()
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbsupplier.AutoCompleteCustomSource.Add(dr("kode_supplier"))
-                cmbsupplier.Items.Add(dr("kode_supplier"))
-            End While
-        End If
+        sql = "SELECT * FROM tb_supplier"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbsupplier.DataSource = ds.Tables(0)
+        cmbsupplier.ValueMember = "id"
+        cmbsupplier.DisplayMember = "kode_supplier"
     End Sub
 
     Sub grid_pembelian()
         GridColumn1.Caption = "No.Nota"
-        GridColumn1.FieldName = "kode_pembelian"
+        GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Supplier"
         GridColumn2.FieldName = "nama_supplier"
@@ -244,7 +243,6 @@ Public Class fpreviewutang
     End Sub
 
     Sub ExportToExcel1()
-
         Dim filename As String = InputBox("Nama File", "Input Nama file ")
         Dim pathdata As String = "C:\ExportLogicPos"
         Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"
@@ -263,7 +261,6 @@ Public Class fpreviewutang
     End Sub
 
     Sub ExportToExcel2()
-
         Dim filename As String = InputBox("Nama File", "Input Nama file ")
         Dim pathdata As String = "C:\ExportLogicPos"
         Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"

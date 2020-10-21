@@ -36,9 +36,9 @@ Partial Class flunaspiutang
         Me.riteterimapelunasan = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtbukti = New System.Windows.Forms.TextBox()
-        Me.cmbcustomer = New System.Windows.Forms.ComboBox()
+        Me.cmbpelanggan = New System.Windows.Forms.ComboBox()
         Me.txtalamat = New System.Windows.Forms.RichTextBox()
-        Me.txtcustomer = New System.Windows.Forms.TextBox()
+        Me.txtpelanggan = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cmbbayar = New System.Windows.Forms.ComboBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
@@ -245,15 +245,15 @@ Partial Class flunaspiutang
         Me.txtbukti.Size = New System.Drawing.Size(245, 24)
         Me.txtbukti.TabIndex = 82
         '
-        'cmbcustomer
+        'cmbpelanggan
         '
-        Me.cmbcustomer.FormattingEnabled = True
-        Me.cmbcustomer.Location = New System.Drawing.Point(152, 124)
-        Me.cmbcustomer.Margin = New System.Windows.Forms.Padding(6)
-        Me.cmbcustomer.MaxLength = 99
-        Me.cmbcustomer.Name = "cmbcustomer"
-        Me.cmbcustomer.Size = New System.Drawing.Size(245, 26)
-        Me.cmbcustomer.TabIndex = 81
+        Me.cmbpelanggan.FormattingEnabled = True
+        Me.cmbpelanggan.Location = New System.Drawing.Point(152, 124)
+        Me.cmbpelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbpelanggan.MaxLength = 99
+        Me.cmbpelanggan.Name = "cmbpelanggan"
+        Me.cmbpelanggan.Size = New System.Drawing.Size(245, 26)
+        Me.cmbpelanggan.TabIndex = 81
         '
         'txtalamat
         '
@@ -266,14 +266,14 @@ Partial Class flunaspiutang
         Me.txtalamat.TabIndex = 70
         Me.txtalamat.Text = ""
         '
-        'txtcustomer
+        'txtpelanggan
         '
-        Me.txtcustomer.Enabled = False
-        Me.txtcustomer.Location = New System.Drawing.Point(533, 15)
-        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(6)
-        Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(245, 24)
-        Me.txtcustomer.TabIndex = 46
+        Me.txtpelanggan.Enabled = False
+        Me.txtpelanggan.Location = New System.Drawing.Point(533, 15)
+        Me.txtpelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtpelanggan.Name = "txtpelanggan"
+        Me.txtpelanggan.Size = New System.Drawing.Size(245, 24)
+        Me.txtpelanggan.TabIndex = 46
         '
         'Label4
         '
@@ -282,9 +282,9 @@ Partial Class flunaspiutang
         Me.Label4.Location = New System.Drawing.Point(408, 18)
         Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(118, 18)
+        Me.Label4.Size = New System.Drawing.Size(121, 18)
         Me.Label4.TabIndex = 19
-        Me.Label4.Text = "Nama Customer"
+        Me.Label4.Text = "Nama Pelanggan"
         '
         'cmbbayar
         '
@@ -323,9 +323,9 @@ Partial Class flunaspiutang
         Me.Label20.Location = New System.Drawing.Point(406, 92)
         Me.Label20.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(123, 18)
+        Me.Label20.Size = New System.Drawing.Size(126, 18)
         Me.Label20.TabIndex = 68
-        Me.Label20.Text = "Alamat Customer"
+        Me.Label20.Text = "Alamat Pelanggan"
         '
         'Label1
         '
@@ -355,9 +355,9 @@ Partial Class flunaspiutang
         Me.Label22.Location = New System.Drawing.Point(414, 55)
         Me.Label22.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(98, 18)
+        Me.Label22.Size = New System.Drawing.Size(101, 18)
         Me.Label22.TabIndex = 69
-        Me.Label22.Text = "Tlp Customer"
+        Me.Label22.Text = "Tlp Pelanggan"
         '
         'dtpelunasan
         '
@@ -467,9 +467,9 @@ Partial Class flunaspiutang
         Me.Label19.Location = New System.Drawing.Point(21, 127)
         Me.Label19.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(113, 18)
+        Me.Label19.Size = New System.Drawing.Size(116, 18)
         Me.Label19.TabIndex = 7
-        Me.Label19.Text = "Kode Customer"
+        Me.Label19.Text = "Kode Pelanggan"
         '
         'txtketerangan
         '
@@ -730,8 +730,8 @@ Partial Class flunaspiutang
         Me.TabPage1.Controls.Add(Me.txttotalbayar)
         Me.TabPage1.Controls.Add(Me.Label19)
         Me.TabPage1.Controls.Add(Me.txtalamat)
-        Me.TabPage1.Controls.Add(Me.cmbcustomer)
-        Me.TabPage1.Controls.Add(Me.txtcustomer)
+        Me.TabPage1.Controls.Add(Me.cmbpelanggan)
+        Me.TabPage1.Controls.Add(Me.txtpelanggan)
         Me.TabPage1.Controls.Add(Me.Label16)
         Me.TabPage1.Controls.Add(Me.Label4)
         Me.TabPage1.Controls.Add(Me.cmbsales)
@@ -919,7 +919,7 @@ Partial Class flunaspiutang
     Friend WithEvents Label22 As Label
     Friend WithEvents cmbsales As ComboBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents txtcustomer As TextBox
+    Friend WithEvents txtpelanggan As TextBox
     Friend WithEvents Label19 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents btnprev As Button
@@ -939,7 +939,7 @@ Partial Class flunaspiutang
     Friend WithEvents txtalamat As RichTextBox
     Friend WithEvents txtketerangan As RichTextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents cmbcustomer As ComboBox
+    Friend WithEvents cmbpelanggan As ComboBox
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
