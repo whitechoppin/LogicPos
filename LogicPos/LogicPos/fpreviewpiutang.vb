@@ -9,6 +9,8 @@ Public Class fpreviewpiutang
     Dim CuRWidth As Integer = Me.Width
     Dim CuRHeight As Integer = Me.Height
 
+    Dim idpelanggan As Integer
+
     Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
         Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
@@ -52,6 +54,18 @@ Public Class fpreviewpiutang
         cmbpelanggan.DisplayMember = "kode_pelanggan"
     End Sub
 
+    Sub caripelanggan()
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan ='" & cmbpelanggan.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            idpelanggan = dr("id")
+        Else
+
+        End If
+    End Sub
+
     Sub grid_penjualan()
         GridColumn1.Caption = "No.Nota"
         GridColumn1.FieldName = "id"
@@ -90,17 +104,19 @@ Public Class fpreviewpiutang
         tabellunas = New DataTable
 
         With tabellunas
-            .Columns.Add("kode_lunas")
+            .Columns.Add("id")
             .Columns.Add("tgl_pelunasan")
             .Columns.Add("terima_piutang", GetType(Double))
         End With
 
         GridControl2.DataSource = tabellunas
 
-        GridColumn8.Caption = "Kode"
-        GridColumn8.FieldName = "kode_lunas"
+        GridColumn8.Caption = "id"
+        GridColumn8.FieldName = "id"
+
         GridColumn9.Caption = "Tanggal"
         GridColumn9.FieldName = "tgl_pelunasan"
+
         GridColumn10.Caption = "Terima"
         GridColumn10.FieldName = "terima_piutang"
         GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
@@ -114,79 +130,79 @@ Public Class fpreviewpiutang
         If cbperiode.Checked = True Then
             If dtawal.Value.Equals(dtakhir.Value) Then
                 If cmbpelanggan.Text.Length > 0 And cmbstatus.Text.Length = 0 Then
-                    sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & cmbpelanggan.Text & "' AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+                    sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.pelanggan_id='" & idpelanggan & "' AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
                 ElseIf cmbpelanggan.Text.Length = 0 And cmbstatus.Text.Length > 0 Then
                     If cmbstatus.SelectedIndex = 0 Then
                         status = 1
                     ElseIf cmbstatus.SelectedIndex = 1 Then
                         status = 0
                     End If
-                    sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelangganAND tb_penjualan.lunas_penjualan ='" & status & "' AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+                    sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.lunas_penjualan ='" & status & "' AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
                 ElseIf cmbpelanggan.Text.Length > 0 And cmbstatus.Text.Length > 0 Then
                     If cmbstatus.SelectedIndex = 0 Then
                         status = 1
                     ElseIf cmbstatus.SelectedIndex = 1 Then
                         status = 0
                     End If
-                    sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & cmbpelanggan.Text & "' AND tb_penjualan.lunas_penjualan ='" & status & "' AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+                    sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.pelanggan_id='" & idpelanggan & "' AND tb_penjualan.lunas_penjualan ='" & status & "' AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
                 ElseIf cmbpelanggan.Text.Length = 0 And cmbstatus.Text.Length = 0 Then
-                    sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+                    sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
                 End If
             Else
 
                 If cmbpelanggan.Text.Length > 0 And cmbstatus.Text.Length = 0 Then
-                    sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & cmbpelanggan.Text & "' AND tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                    sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.pelanggan_id='" & idpelanggan & "' AND tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
                 ElseIf cmbpelanggan.Text.Length = 0 And cmbstatus.Text.Length > 0 Then
                     If cmbstatus.SelectedIndex = 0 Then
                         status = 1
                     ElseIf cmbstatus.SelectedIndex = 1 Then
                         status = 0
                     End If
-                    sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.lunas_penjualan ='" & status & "' AND tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                    sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.lunas_penjualan ='" & status & "' AND tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
                 ElseIf cmbpelanggan.Text.Length > 0 And cmbstatus.Text.Length > 0 Then
                     If cmbstatus.SelectedIndex = 0 Then
                         status = 1
                     ElseIf cmbstatus.SelectedIndex = 1 Then
                         status = 0
                     End If
-                    sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & cmbpelanggan.Text & "' AND tb_penjualan.lunas_penjualan ='" & status & "' AND tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                    sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.pelanggan_id='" & idpelanggan & "' AND tb_penjualan.lunas_penjualan ='" & status & "' AND tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
                 ElseIf cmbpelanggan.Text.Length = 0 And cmbstatus.Text.Length = 0 Then
-                    sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                    sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.tgl_penjualan BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
                 End If
             End If
         Else
             '============================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
 
             If cmbpelanggan.Text.Length > 0 And cmbstatus.Text.Length = 0 Then
-                sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & cmbpelanggan.Text & "'"
+                sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.pelanggan_id='" & idpelanggan & "'"
             ElseIf cmbpelanggan.Text.Length = 0 And cmbstatus.Text.Length > 0 Then
                 If cmbstatus.SelectedIndex = 0 Then
                     status = 1
                 ElseIf cmbstatus.SelectedIndex = 1 Then
                     status = 0
                 End If
-                sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelangganAND tb_penjualan.lunas_penjualan ='" & status & "'"
+                sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.lunas_penjualan ='" & status & "'"
             ElseIf cmbpelanggan.Text.Length > 0 And cmbstatus.Text.Length > 0 Then
                 If cmbstatus.SelectedIndex = 0 Then
                     status = 1
                 ElseIf cmbstatus.SelectedIndex = 1 Then
                     status = 0
                 End If
-                sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_penjualan.kode_pelanggan='" & cmbpelanggan.Text & "' AND tb_penjualan.lunas_penjualan ='" & status & "'"
+                sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.pelanggan_id='" & idpelanggan & "' AND tb_penjualan.lunas_penjualan ='" & status & "'"
             ElseIf cmbpelanggan.Text.Length = 0 And cmbstatus.Text.Length = 0 Then
-                sql = "SELECT kode_penjualan, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.kode_penjualan = tb_penjualan.kode_penjualan))) AS sisa_penjualan 
-                        FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.kode_pelanggan = tb_pelanggan.kode_pelanggan"
+                sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
+                        FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id"
             End If
         End If
 
@@ -206,22 +222,22 @@ Public Class fpreviewpiutang
 
     Sub tabel_lunas()
         Call gridlunas()
-        kode = Me.GridView1.GetFocusedRowCellValue("kode_penjualan")
+        kode = Me.GridView1.GetFocusedRowCellValue("id")
 
         Call koneksii()
-        sql = "SELECT * FROM tb_penjualan WHERE kode_penjualan = '" & kode & "' LIMIT 1"
+        sql = "SELECT * FROM tb_penjualan WHERE id = '" & kode & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            tabellunas.Rows.Add("DP : " + dr("kode_penjualan"), dr("last_updated"), dr("bayar_penjualan"))
+            tabellunas.Rows.Add("DP : " & dr("id"), dr("last_updated"), dr("bayar_penjualan"))
         End If
 
         Call koneksii()
-        sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE kode_penjualan ='" & kode & "'"
+        sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE penjualan_id ='" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabellunas.Rows.Add(dr("kode_lunas"), dr("last_updated"), dr("terima_piutang"))
+            tabellunas.Rows.Add(dr("pelunasan_piutang_id"), dr("last_updated"), dr("terima_piutang"))
         End While
 
         GridControl2.RefreshDataSource()
@@ -294,5 +310,13 @@ Public Class fpreviewpiutang
 
     Private Sub btnexcel2_Click(sender As Object, e As EventArgs) Handles btnexcel2.Click
         Call ExportToExcel2()
+    End Sub
+
+    Private Sub cmbpelanggan_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.SelectedIndexChanged
+        Call caripelanggan()
+    End Sub
+
+    Private Sub cmbpelanggan_TextChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.TextChanged
+        Call caripelanggan()
     End Sub
 End Class

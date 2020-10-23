@@ -516,11 +516,11 @@ Public Class flunaspiutang
 
         GridColumn1.FieldName = "penjualan_id"
         GridColumn1.Caption = "id penjualan"
-        GridColumn1.Width = 15
+        GridColumn1.Width = 5
 
         GridColumn2.FieldName = "pelanggan_id"
         GridColumn2.Caption = "id pelanggan"
-        GridColumn2.Width = 15
+        GridColumn2.Width = 5
 
         GridColumn3.FieldName = "tanggal_penjualan"
         GridColumn3.Caption = "Tgl Penjualan"
@@ -538,27 +538,27 @@ Public Class flunaspiutang
         GridColumn5.Caption = "Total Nota"
         GridColumn5.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn5.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn5.Width = 40
+        GridColumn5.Width = 20
 
         GridColumn6.FieldName = "bayar_piutang"
         GridColumn6.Caption = "Telah Dibayar"
         GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn6.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn6.Width = 40
+        GridColumn6.Width = 20
         GridColumn6.Visible = False
 
         GridColumn7.FieldName = "sisa_piutang"
         GridColumn7.Caption = "Sisa Nota"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn7.Width = 40
+        GridColumn7.Width = 20
         GridColumn7.Visible = False
 
         GridColumn8.FieldName = "terima_piutang"
         GridColumn8.Caption = "Terima Uang"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn8.Width = 40
+        GridColumn8.Width = 20
     End Sub
 
     Sub gridlunas()
@@ -623,7 +623,7 @@ Public Class flunaspiutang
         'End With
 
         Call koneksii()
-        sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE pelunasan_piutang__id='" & lihat & "'"
+        sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE pelunasan_piutang_id='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
@@ -682,7 +682,7 @@ Public Class flunaspiutang
             If (bayarjual(i) + Val(GridView1.GetRowCellValue(i, "terima_piutang"))).Equals(totaljual(i)) Then
                 lunasstatus = 1
 
-                sql = "UPDATE tb_penjualan SET lunas_penjualan = '" & lunasstatus & "' WHERE penjualan_id = '" & GridView1.GetRowCellValue(i, "penjualan_id") & "' "
+                sql = "UPDATE tb_penjualan SET lunas_penjualan = '" & lunasstatus & "' WHERE id = '" & GridView1.GetRowCellValue(i, "penjualan_id") & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             Else
@@ -752,31 +752,29 @@ Public Class flunaspiutang
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         If GridView1.DataRowCount > 0 Then
-            If txtnolunaspiutang.Text IsNot "" Then
-                If cmbsales.Text IsNot "" Then
-                    If cmbbayar.Text IsNot "" Then
-                        If txttotalbayar.Text > 0 Then
-                            If totalbayar.Equals(Val(GridView1.Columns("terima_piutang").SummaryItem.SummaryValue)) Then
-                                Call prosessimpan()
-                            Else
-                                If totalselisih > 0 Then
-                                    MsgBox("Pembayaran Lebih " + Format(totalselisih, "##,##0").ToString)
-                                ElseIf totalselisih < 0 Then
-                                    MsgBox("Pembayaran Kurang " + Format(totalselisih, "##,##0").ToString)
-                                End If
-                            End If
+
+            If cmbsales.Text IsNot "" Then
+                If cmbbayar.Text IsNot "" Then
+                    If txttotalbayar.Text > 0 Then
+                        If totalbayar.Equals(Val(GridView1.Columns("terima_piutang").SummaryItem.SummaryValue)) Then
+                            Call prosessimpan()
                         Else
-                            MsgBox("Isi Nominal Pembayaran")
+                            If totalselisih > 0 Then
+                                MsgBox("Pembayaran Lebih " + Format(totalselisih, "##,##0").ToString)
+                            ElseIf totalselisih < 0 Then
+                                MsgBox("Pembayaran Kurang " + Format(totalselisih, "##,##0").ToString)
+                            End If
                         End If
                     Else
-                        MsgBox("Isi Pembayaran")
+                        MsgBox("Isi Nominal Pembayaran")
                     End If
                 Else
-                    MsgBox("Isi User")
+                    MsgBox("Isi Pembayaran")
                 End If
             Else
-                MsgBox("Isi No Nota Pelunasan")
+                MsgBox("Isi User")
             End If
+
         Else
             MsgBox("Isi Tabel Pelunasan")
         End If
@@ -1056,30 +1054,26 @@ Public Class flunaspiutang
                 btnedit.Text = "Update"
                 Call awaledit()
             ElseIf btnedit.Text.Equals("Update") Then
-                If txtnolunaspiutang.Text IsNot "" Then
-                    If cmbsales.Text IsNot "" Then
-                        If cmbbayar.Text IsNot "" Then
-                            If txttotalbayar.Text > 0 Then
-                                If totalbayar.Equals(Val(GridView1.Columns("terima_piutang").SummaryItem.SummaryValue)) Then
-                                    Call prosesperbarui(txtnolunaspiutang.Text)
-                                Else
-                                    If totalselisih > 0 Then
-                                        MsgBox("Pembayaran Lebih " + Format(totalselisih, "##,##0").ToString)
-                                    ElseIf totalselisih < 0 Then
-                                        MsgBox("Pembayaran Kurang " + Format(totalselisih, "##,##0").ToString)
-                                    End If
-                                End If
+                If cmbsales.Text IsNot "" Then
+                    If cmbbayar.Text IsNot "" Then
+                        If txttotalbayar.Text > 0 Then
+                            If totalbayar.Equals(Val(GridView1.Columns("terima_piutang").SummaryItem.SummaryValue)) Then
+                                Call prosesperbarui(txtnolunaspiutang.Text)
                             Else
-                                MsgBox("Isi Nominal Pembayaran")
+                                If totalselisih > 0 Then
+                                    MsgBox("Pembayaran Lebih " + Format(totalselisih, "##,##0").ToString)
+                                ElseIf totalselisih < 0 Then
+                                    MsgBox("Pembayaran Kurang " + Format(totalselisih, "##,##0").ToString)
+                                End If
                             End If
                         Else
-                            MsgBox("Isi Pembayaran")
+                            MsgBox("Isi Nominal Pembayaran")
                         End If
                     Else
-                        MsgBox("Isi User")
+                        MsgBox("Isi Pembayaran")
                     End If
                 Else
-                    MsgBox("Isi Nota Penjualan")
+                    MsgBox("Isi User")
                 End If
             End If
         Else
@@ -1371,8 +1365,6 @@ Public Class flunaspiutang
         totalselisih = totalbayar - totalterima
         txtselisih.Text = totalselisih
     End Sub
-
-
 
     Private Sub btnsesuaikan_Click(sender As Object, e As EventArgs) Handles btnsesuaikan.Click
         Dim lokasi As Integer = -1

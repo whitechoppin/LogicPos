@@ -512,11 +512,11 @@ Public Class flunasutang
 
         GridColumn1.FieldName = "pembelian_id"
         GridColumn1.Caption = "id pembelian"
-        GridColumn1.Width = 15
+        GridColumn1.Width = 5
 
         GridColumn2.FieldName = "supplier_id"
         GridColumn2.Caption = "id supplier"
-        GridColumn2.Width = 15
+        GridColumn2.Width = 5
 
         GridColumn3.FieldName = "tanggal_pembelian"
         GridColumn3.Caption = "Tgl Pembelian"
@@ -534,27 +534,27 @@ Public Class flunasutang
         GridColumn5.Caption = "Total Nota"
         GridColumn5.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn5.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn5.Width = 40
+        GridColumn5.Width = 20
 
         GridColumn6.FieldName = "bayar_utang"
         GridColumn6.Caption = "Telah Dibayar"
         GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn6.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn6.Width = 40
+        GridColumn6.Width = 20
         GridColumn6.Visible = False
 
         GridColumn7.FieldName = "sisa_utang"
         GridColumn7.Caption = "Sisa Nota"
         GridColumn7.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn7.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn7.Width = 40
+        GridColumn7.Width = 20
         GridColumn7.Visible = False
 
         GridColumn8.FieldName = "terima_utang"
         GridColumn8.Caption = "Terima Uang"
         GridColumn8.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn8.DisplayFormat.FormatString = "{0:n0}"
-        GridColumn8.Width = 40
+        GridColumn8.Width = 20
     End Sub
 
     Sub gridlunas()
@@ -669,7 +669,7 @@ Public Class flunasutang
             If (bayarbeli(i) + Val(GridView1.GetRowCellValue(i, "terima_utang"))).Equals(totalbeli(i)) Then
                 lunasstatus = 1
 
-                sql = "UPDATE tb_pembelian SET lunas_pembelian = '" & lunasstatus & "' WHERE pembelian_id = '" & GridView1.GetRowCellValue(i, "pembelian_id") & "' "
+                sql = "UPDATE tb_pembelian SET lunas_pembelian = '" & lunasstatus & "' WHERE id = '" & GridView1.GetRowCellValue(i, "pembelian_id") & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
             Else
