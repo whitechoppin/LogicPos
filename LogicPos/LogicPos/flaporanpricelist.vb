@@ -32,7 +32,7 @@ Public Class flaporanpricelist
     Private Sub flaporanpricelist_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call tabel()
-        Call comboboxcustomer()
+        Call comboboxpelanggan()
 
         Select Case kodeakses
             Case 1
@@ -49,21 +49,20 @@ Public Class flaporanpricelist
         Call historysave("Membuka Laporan Pricelist", "N/A")
     End Sub
 
-    Sub comboboxcustomer()
+    Sub comboboxpelanggan()
         Call koneksii()
-        cmbcustomer.Items.Clear()
-        cmbcustomer.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_pelanggan", cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbcustomer.AutoCompleteCustomSource.Add(dr("kode_pelanggan"))
-                cmbcustomer.Items.Add(dr("kode_pelanggan"))
-            End While
-        End If
+        sql = "SELECT * FROM tb_pelanggan"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbpelanggan.DataSource = ds.Tables(0)
+        cmbpelanggan.ValueMember = "id"
+        cmbpelanggan.DisplayMember = "kode_pelanggan"
     End Sub
     Sub grid()
-        GridColumn1.Caption = "Kode Customer"
+        GridColumn1.Caption = "Kode Pelanggan"
         GridColumn1.FieldName = "kode_pelanggan"
 
         GridColumn2.Caption = "Kode Barang"
@@ -91,10 +90,11 @@ Public Class flaporanpricelist
     End Sub
     Sub tabel()
         Call koneksii()
-        sql = "SELECT tb_barang.kode_barang, nama_barang, tb_price_group.harga_jual, tb_price_group.kode_pelanggan, tb_barang.jenis_barang, tb_barang.kategori_barang FROM tb_barang JOIN tb_price_group ON tb_price_group.kode_barang=tb_barang.kode_barang WHERE tb_price_group.kode_pelanggan = '" & cmbcustomer.Text & "' "
+        sql = "SELECT tb_barang.kode_barang, nama_barang, tb_price_group.harga_jual, tb_price_group.kode_pelanggan, tb_barang.jenis_barang, tb_barang.kategori_barang FROM tb_barang JOIN tb_price_group ON tb_price_group.kode_barang=tb_barang.kode_barang WHERE tb_price_group.kode_pelanggan = '" & cmbpelanggan.Text & "' "
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
         Call grid()
@@ -121,7 +121,7 @@ Public Class flaporanpricelist
 
     Sub caripelanggan()
         Call koneksii()
-        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & cmbcustomer.Text & "'"
+        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & cmbpelanggan.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
@@ -177,14 +177,14 @@ Public Class flaporanpricelist
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
         If printstatus.Equals(True) Then
-            If cmbcustomer.Text = "" Then
+            If cmbpelanggan.Text = "" Then
                 MsgBox("Kode Customer kosong !")
             Else
                 Dim rptstok As ReportDocument
 
                 Call historysave("Merekap Laporan Pricelist", "N/A")
                 rptstok = New rptlaporprice
-                rptstok.SetParameterValue("kode", cmbcustomer.Text)
+                rptstok.SetParameterValue("kode", cmbpelanggan.Text)
                 flappricelist.CrystalReportViewer1.ReportSource = rptstok
                 flappricelist.ShowDialog()
                 flappricelist.WindowState = FormWindowState.Maximized
@@ -201,11 +201,11 @@ Public Class flaporanpricelist
         Call historysave("Merefresh Laporan Pricelist", "N/A")
     End Sub
 
-    Private Sub cmbcustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbcustomer.SelectedIndexChanged
+    Private Sub cmbcustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.SelectedIndexChanged
         Call caripelanggan()
     End Sub
 
-    Private Sub cmbcustomer_TextChanged(sender As Object, e As EventArgs) Handles cmbcustomer.TextChanged
+    Private Sub cmbcustomer_TextChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.TextChanged
         Call caripelanggan()
     End Sub
 

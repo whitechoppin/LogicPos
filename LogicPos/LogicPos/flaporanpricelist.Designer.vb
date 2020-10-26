@@ -38,7 +38,7 @@ Partial Class flaporanpricelist
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btnrekap = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.cmbcustomer = New System.Windows.Forms.ComboBox()
+        Me.cmbpelanggan = New System.Windows.Forms.ComboBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.txtcustomer = New System.Windows.Forms.TextBox()
@@ -202,20 +202,20 @@ Partial Class flaporanpricelist
         Me.Label4.Location = New System.Drawing.Point(1134, 57)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(119, 20)
+        Me.Label4.Size = New System.Drawing.Size(126, 20)
         Me.Label4.TabIndex = 20
-        Me.Label4.Text = "Kode Customer"
+        Me.Label4.Text = "Kode Pelanggan"
         '
-        'cmbcustomer
+        'cmbpelanggan
         '
-        Me.cmbcustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbcustomer.FormattingEnabled = True
-        Me.cmbcustomer.Location = New System.Drawing.Point(1068, 83)
-        Me.cmbcustomer.Margin = New System.Windows.Forms.Padding(6)
-        Me.cmbcustomer.MaxLength = 99
-        Me.cmbcustomer.Name = "cmbcustomer"
-        Me.cmbcustomer.Size = New System.Drawing.Size(214, 26)
-        Me.cmbcustomer.TabIndex = 22
+        Me.cmbpelanggan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbpelanggan.FormattingEnabled = True
+        Me.cmbpelanggan.Location = New System.Drawing.Point(1068, 83)
+        Me.cmbpelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbpelanggan.MaxLength = 99
+        Me.cmbpelanggan.Name = "cmbpelanggan"
+        Me.cmbpelanggan.Size = New System.Drawing.Size(214, 26)
+        Me.cmbpelanggan.TabIndex = 22
         '
         'txttelp
         '
@@ -234,9 +234,9 @@ Partial Class flaporanpricelist
         Me.Label22.Location = New System.Drawing.Point(1135, 169)
         Me.Label22.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(131, 18)
+        Me.Label22.Size = New System.Drawing.Size(134, 18)
         Me.Label22.TabIndex = 59
-        Me.Label22.Text = "Telepon Customer"
+        Me.Label22.Text = "Telepon Pelanggan"
         '
         'txtcustomer
         '
@@ -255,9 +255,9 @@ Partial Class flaporanpricelist
         Me.Label2.Location = New System.Drawing.Point(1135, 115)
         Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(186, 18)
+        Me.Label2.Size = New System.Drawing.Size(121, 18)
         Me.Label2.TabIndex = 57
-        Me.Label2.Text = "Nama Customer                 "
+        Me.Label2.Text = "Nama Pelanggan"
         '
         'btncaricustomer
         '
@@ -286,7 +286,7 @@ Partial Class flaporanpricelist
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.txtcustomer)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.cmbcustomer)
+        Me.Controls.Add(Me.cmbpelanggan)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.Label1)
@@ -318,7 +318,7 @@ Partial Class flaporanpricelist
     Friend WithEvents btnrefresh As Button
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label4 As Label
-    Friend WithEvents cmbcustomer As ComboBox
+    Friend WithEvents cmbpelanggan As ComboBox
     Friend WithEvents txttelp As TextBox
     Friend WithEvents Label22 As Label
     Friend WithEvents txtcustomer As TextBox

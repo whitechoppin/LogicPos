@@ -33,7 +33,7 @@ Public Class fcaricust
         ElseIf tutupcus = 3 Then
             fbarangkeluar.cmbpelanggan.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
         ElseIf tutupcus = 4 Then
-            flaporanpricelist.cmbcustomer.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
+            flaporanpricelist.cmbpelanggan.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
         End If
         Me.Close()
     End Sub
