@@ -32,8 +32,6 @@ Public Class flaporanpenjualan
 
     Private Sub flaporanpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
-
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
         Call grid()
@@ -62,7 +60,7 @@ Public Class flaporanpenjualan
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Nota"
-        GridColumn1.FieldName = "kode_penjualan"
+        GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Pelangan"
         GridColumn2.FieldName = "nama_pelanggan"
@@ -72,10 +70,10 @@ Public Class flaporanpenjualan
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy"
 
-        GridColumn4.Caption = "Item"
+        GridColumn4.Caption = "Barang"
         GridColumn4.FieldName = "nama_barang"
 
-        GridColumn5.Caption = "Banyak"
+        GridColumn5.Caption = "Qty"
         GridColumn5.FieldName = "qty"
 
         GridColumn6.Caption = "Satuan"
@@ -101,7 +99,7 @@ Public Class flaporanpenjualan
         GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn10.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn11.Caption = "Kasir"
+        GridColumn11.Caption = "User"
         GridColumn11.FieldName = "kode_user"
 
         GridColumn12.Caption = "Metode Bayar"
@@ -111,11 +109,10 @@ Public Class flaporanpenjualan
     End Sub
     Sub tabel()
         Call koneksii()
-
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan ON tb_pelanggan.id =tb_penjualan.pelanggan_id JOIN tb_user ON tb_user.id = tb_penjualan.user_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan On tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan On tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan On tb_pelanggan.id =tb_penjualan.pelanggan_id JOIN tb_user ON tb_user.id = tb_penjualan.user_id WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet

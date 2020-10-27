@@ -40,7 +40,6 @@ Partial Class flaporanpembelian
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnrekappembelianbarang = New System.Windows.Forms.Button()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -127,7 +126,7 @@ Partial Class flaporanpembelian
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsFind.AlwaysVisible = True
@@ -195,13 +194,6 @@ Partial Class flaporanpembelian
         Me.GridColumn9.Visible = True
         Me.GridColumn9.VisibleIndex = 8
         '
-        'GridColumn10
-        '
-        Me.GridColumn10.Name = "GridColumn10"
-        Me.GridColumn10.OptionsColumn.AllowEdit = False
-        Me.GridColumn10.Visible = True
-        Me.GridColumn10.VisibleIndex = 9
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -265,7 +257,6 @@ Partial Class flaporanpembelian
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btntabel As Button
     Friend WithEvents btnexcel As Button
     Friend WithEvents Label2 As Label

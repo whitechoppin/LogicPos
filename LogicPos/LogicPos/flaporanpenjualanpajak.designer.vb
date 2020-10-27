@@ -22,12 +22,10 @@ Partial Class flaporanpenjualanpajak
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.btnrekap = New System.Windows.Forms.Button()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btntabel = New System.Windows.Forms.Button()
         Me.btnfaktur = New System.Windows.Forms.Button()
@@ -45,30 +43,16 @@ Partial Class flaporanpenjualanpajak
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.DateTimePicker2)
-        Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(271, 12)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(787, 56)
-        Me.GroupBox1.TabIndex = 9
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Periode"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(372, 23)
+        Me.Label1.Location = New System.Drawing.Point(283, 63)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(119, 16)
         Me.Label1.TabIndex = 7
@@ -76,73 +60,68 @@ Partial Class flaporanpenjualanpajak
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(501, 19)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(410, 57)
+        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(275, 24)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(251, 24)
         Me.DateTimePicker2.TabIndex = 3
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(88, 19)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(24, 57)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(275, 24)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(251, 24)
         Me.DateTimePicker1.TabIndex = 2
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(210, 23)
+        Me.btnrekap.Location = New System.Drawing.Point(191, 100)
+        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(180, 50)
+        Me.btnrekap.Size = New System.Drawing.Size(159, 48)
         Me.btnrekap.TabIndex = 10
         Me.btnrekap.Text = "Rekap Faktur"
         Me.btnrekap.UseVisualStyleBackColor = True
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.btnexcel)
-        Me.GroupBox4.Controls.Add(Me.btntabel)
-        Me.GroupBox4.Controls.Add(Me.btnfaktur)
-        Me.GroupBox4.Controls.Add(Me.btnrekap)
-        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(14, 74)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(1044, 83)
-        Me.GroupBox4.TabIndex = 15
-        Me.GroupBox4.TabStop = False
-        '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(829, 23)
+        Me.btnexcel.Location = New System.Drawing.Point(525, 100)
+        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(200, 50)
+        Me.btnexcel.Size = New System.Drawing.Size(159, 48)
         Me.btnexcel.TabIndex = 17
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(24, 23)
+        Me.btntabel.Location = New System.Drawing.Point(21, 100)
+        Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
         Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(180, 50)
+        Me.btntabel.Size = New System.Drawing.Size(162, 48)
         Me.btntabel.TabIndex = 17
         Me.btntabel.Text = "Rekap Tabel"
         Me.btntabel.UseVisualStyleBackColor = True
         '
         'btnfaktur
         '
-        Me.btnfaktur.Location = New System.Drawing.Point(396, 23)
+        Me.btnfaktur.Location = New System.Drawing.Point(358, 100)
+        Me.btnfaktur.Margin = New System.Windows.Forms.Padding(4)
         Me.btnfaktur.Name = "btnfaktur"
-        Me.btnfaktur.Size = New System.Drawing.Size(180, 50)
+        Me.btnfaktur.Size = New System.Drawing.Size(159, 48)
         Me.btnfaktur.TabIndex = 10
         Me.btnfaktur.Text = "Rekap Detail Faktur"
         Me.btnfaktur.UseVisualStyleBackColor = True
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(14, 163)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
+        Me.GridControl1.Location = New System.Drawing.Point(21, 156)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1044, 486)
+        Me.GridControl1.Size = New System.Drawing.Size(1363, 458)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -233,7 +212,8 @@ Partial Class flaporanpenjualanpajak
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(8, 25)
+        Me.Label2.Location = New System.Drawing.Point(18, 12)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(257, 31)
         Me.Label2.TabIndex = 17
@@ -241,33 +221,34 @@ Partial Class flaporanpenjualanpajak
         '
         'flaporanpenjualanpajak
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1070, 661)
+        Me.ClientSize = New System.Drawing.Size(1407, 631)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.btnexcel)
+        Me.Controls.Add(Me.DateTimePicker2)
+        Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.btntabel)
+        Me.Controls.Add(Me.btnfaktur)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.GroupBox4)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.btnrekap)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "flaporanpenjualanpajak"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Laporan Penjualan"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label1 As Label
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents btnrekap As Button
-    Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn

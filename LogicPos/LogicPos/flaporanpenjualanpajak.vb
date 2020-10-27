@@ -7,10 +7,29 @@ Public Class flaporanpenjualanpajak
     Public kodeakses As Integer
     Public isi As String
     Public isi2 As String
+
+    '==== autosize form ====
+    Dim CuRWidth As Integer = Me.Width
+    Dim CuRHeight As Integer = Me.Height
+
+    Private Sub Main_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim RatioHeight As Double = (Me.Height - CuRHeight) / CuRHeight
+        Dim RatioWidth As Double = (Me.Width - CuRWidth) / CuRWidth
+
+        For Each ctrl As Control In Controls
+            ctrl.Width += ctrl.Width * RatioWidth
+            ctrl.Left += ctrl.Left * RatioWidth
+            ctrl.Top += ctrl.Top * RatioHeight
+            ctrl.Height += ctrl.Height * RatioHeight
+        Next
+
+        CuRHeight = Me.Height
+        CuRWidth = Me.Width
+    End Sub
+
+    '=======================
     Private Sub flaporanpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
-
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
         Call grid()
@@ -20,12 +39,11 @@ Public Class flaporanpenjualanpajak
             'buat sum harga
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
             .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
-
         End With
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Nota"
-        GridColumn1.FieldName = "kode_penjualan"
+        GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Pelangan"
         GridColumn2.FieldName = "nama_pelanggan"
@@ -33,12 +51,12 @@ Public Class flaporanpenjualanpajak
         GridColumn3.Caption = "Tanggal Penjualan"
         GridColumn3.FieldName = "tgl_penjualan"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy"
 
-        GridColumn4.Caption = "Item"
+        GridColumn4.Caption = "Barang"
         GridColumn4.FieldName = "nama_barang"
 
-        GridColumn5.Caption = "Banyak"
+        GridColumn5.Caption = "Qty"
         GridColumn5.FieldName = "qty"
 
         GridColumn6.Caption = "Satuan"
@@ -70,7 +88,6 @@ Public Class flaporanpenjualanpajak
     End Sub
     Sub tabel()
         Call koneksii()
-        'Using cnn As New OdbcConnection(strConn)
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT tb_penjualan_detail.kode_penjualan, tb_penjualan.tgl_penjualan,tb_pelanggan.nama_pelanggan, tb_penjualan_detail.nama_barang, tb_penjualan_detail.nama_barang, tb_penjualan_detail.qty, tb_penjualan_detail.satuan_barang, (tb_penjualan_detail.harga_jual - (tb_penjualan_detail.harga_jual * (select tb_pajak.persen FROM tb_pajak)/100)) AS harga_jual, (tb_penjualan_detail.subtotal - (tb_penjualan_detail.subtotal  * (select tb_pajak.persen FROM tb_pajak)/100)) as subtotal, tb_penjualan.metode_pembayaran, tb_penjualan.kode_user FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else

@@ -90,20 +90,17 @@ Public Class flaporanpembelian
         GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn8.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn9.Caption = "Admin"
+        GridColumn9.Caption = "User"
         GridColumn9.FieldName = "kode_user"
-
-        GridColumn10.Caption = "Metode Bayar"
-        GridColumn10.FieldName = "pembayaran_pembelian"
 
         GridControl1.Visible = True
     End Sub
     Sub tabel()
         Call koneksii()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id JOIN tb_supplier ON tb_supplier.id = tb_pembelian.supplier_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id JOIN tb_supplier ON tb_supplier.id = tb_pembelian.supplier_id JOIN tb_user ON tb_user.id = tb_pembelian.user_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id JOIN tb_supplier ON tb_supplier.id = tb_pembelian.supplier_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id JOIN tb_supplier ON tb_supplier.id = tb_pembelian.supplier_id JOIN tb_user ON tb_user.id = tb_pembelian.user_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -169,7 +166,6 @@ Public Class flaporanpembelian
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
-
         Call historysave("Merefresh Laporan Pembelian", "N/A")
     End Sub
     Sub ExportToExcel()
