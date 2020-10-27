@@ -1611,7 +1611,7 @@ Public Class fpenjualan
 
     Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
         tutupcus = 2
-        fcaricust.ShowDialog()
+        fcaripelanggan.ShowDialog()
     End Sub
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
         If txtgudang.Text = "" Then

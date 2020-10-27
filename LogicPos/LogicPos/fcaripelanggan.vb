@@ -1,5 +1,5 @@
 ﻿Imports System.Data.Odbc
-Public Class fcaricust
+Public Class fcaripelanggan
     Dim pilih As String
     Dim kode As String
     Private Sub fcaricust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -22,6 +22,7 @@ Public Class fcaricust
 
         GridColumn3.Caption = "id"
         GridColumn3.FieldName = "id"
+        GridColumn3.Visible = False
 
         GridControl1.Visible = True
     End Sub

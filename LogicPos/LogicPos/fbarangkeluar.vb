@@ -651,7 +651,7 @@ Public Class fbarangkeluar
 
     Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
         tutupcus = 3
-        fcaricust.ShowDialog()
+        fcaripelanggan.ShowDialog()
     End Sub
 
     Private Sub btncarigudang_Click(sender As Object, e As EventArgs) Handles btncarigudang.Click

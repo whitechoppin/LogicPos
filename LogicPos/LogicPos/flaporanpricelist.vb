@@ -7,6 +7,7 @@ Public Class flaporanpricelist
     Dim pilih As String
     Dim kode As String
     Dim modalbarang As Double
+    Dim idpelanggan As String
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -62,8 +63,9 @@ Public Class flaporanpricelist
         cmbpelanggan.DisplayMember = "kode_pelanggan"
     End Sub
     Sub grid()
-        GridColumn1.Caption = "Kode Pelanggan"
-        GridColumn1.FieldName = "kode_pelanggan"
+        GridColumn1.Caption = "id pelanggan"
+        GridColumn1.FieldName = "pelanggan_id"
+        GridColumn1.Visible = False
 
         GridColumn2.Caption = "Kode Barang"
         GridColumn2.FieldName = "kode_barang"
@@ -75,22 +77,18 @@ Public Class flaporanpricelist
         GridColumn4.FieldName = "jenis_barang"
 
         GridColumn5.Caption = "Kategori"
-        GridColumn5.FieldName = "kategori_barang"
+        GridColumn5.FieldName = "nama_kategori"
 
         GridColumn6.Caption = "Harga Jual"
         GridColumn6.FieldName = "harga_jual"
         GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn6.DisplayFormat.FormatString = "Rp ##,##0"
 
-        GridColumn7.Caption = "Kode Gudang"
-        GridColumn7.FieldName = "kode_gudang"
-        GridColumn7.Visible = False
-
         GridControl1.Visible = True
     End Sub
     Sub tabel()
         Call koneksii()
-        sql = "SELECT tb_barang.kode_barang, nama_barang, tb_price_group.harga_jual, tb_price_group.kode_pelanggan, tb_barang.jenis_barang, tb_barang.kategori_barang FROM tb_barang JOIN tb_price_group ON tb_price_group.kode_barang=tb_barang.kode_barang WHERE tb_price_group.kode_pelanggan = '" & cmbpelanggan.Text & "' "
+        sql = "SELECT kode_barang, nama_barang, tb_price_group.harga_jual, tb_price_group.pelanggan_id, tb_barang.jenis_barang, tb_kategori_barang.nama_kategori FROM tb_barang JOIN tb_price_group ON tb_price_group.barang_id = tb_barang.id JOIN tb_kategori_barang ON tb_kategori_barang.id = tb_barang.kategori_barang_id WHERE tb_price_group.pelanggan_id = '" & idpelanggan & "' "
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -105,7 +103,7 @@ Public Class flaporanpricelist
         Dim foto As Byte()
         'menyiapkan koneksi database
         Call koneksii()
-        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
+        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()
@@ -125,10 +123,11 @@ Public Class flaporanpricelist
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            txtcustomer.Text = dr("nama_pelanggan")
+            idpelanggan = dr("id")
+            txtpelanggan.Text = dr("nama_pelanggan")
             txttelp.Text = dr("telepon_pelanggan")
         Else
-            txtcustomer.Text = ""
+            txtpelanggan.Text = ""
             txttelp.Text = ""
         End If
     End Sub
@@ -178,13 +177,13 @@ Public Class flaporanpricelist
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
         If printstatus.Equals(True) Then
             If cmbpelanggan.Text = "" Then
-                MsgBox("Kode Customer kosong !")
+                MsgBox("Kode pelanggan kosong !")
             Else
                 Dim rptstok As ReportDocument
 
                 Call historysave("Merekap Laporan Pricelist", "N/A")
                 rptstok = New rptlaporprice
-                rptstok.SetParameterValue("kode", cmbpelanggan.Text)
+                rptstok.SetParameterValue("kode", idpelanggan)
                 flappricelist.CrystalReportViewer1.ReportSource = rptstok
                 flappricelist.ShowDialog()
                 flappricelist.WindowState = FormWindowState.Maximized
@@ -197,7 +196,6 @@ Public Class flaporanpricelist
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel()
-
         Call historysave("Merefresh Laporan Pricelist", "N/A")
     End Sub
 
@@ -215,6 +213,6 @@ Public Class flaporanpricelist
 
     Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
         tutupcus = 4
-        fcaricust.ShowDialog()
+        fcaripelanggan.ShowDialog()
     End Sub
 End Class

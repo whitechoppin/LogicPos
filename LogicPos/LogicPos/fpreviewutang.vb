@@ -156,7 +156,7 @@ Public Class fpreviewutang
 
                 If cmbsupplier.Text.Length > 0 And cmbstatus.Text.Length = 0 Then
                     sql = "SELECT tb_pembelian.id, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.pembelian_id = tb_pembelian.id) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.pembelian_id = tb_pembelian.id)) AS sisa_pembelian 
-                        FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.supplier_id='" & idsupplier & "' AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                        FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.supplier_id='" & idsupplier & "' AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
                 ElseIf cmbsupplier.Text.Length = 0 And cmbstatus.Text.Length > 0 Then
                     If cmbstatus.SelectedIndex = 0 Then
                         status = 1
@@ -164,7 +164,7 @@ Public Class fpreviewutang
                         status = 0
                     End If
                     sql = "SELECT tb_pembelian.id, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.pembelian_id = tb_pembelian.id) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.pembelian_id = tb_pembelian.id)) AS sisa_pembelian 
-                        FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.lunas_pembelian ='" & status & "' AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                        FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.lunas_pembelian ='" & status & "' AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
                 ElseIf cmbsupplier.Text.Length > 0 And cmbstatus.Text.Length > 0 Then
                     If cmbstatus.SelectedIndex = 0 Then
                         status = 1
@@ -172,10 +172,10 @@ Public Class fpreviewutang
                         status = 0
                     End If
                     sql = "SELECT tb_pembelian.id, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.pembelian_id = tb_pembelian.id) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.pembelian_id = tb_pembelian.id)) AS sisa_pembelian 
-                        FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.supplier_id='" & idsupplier & "' AND tb_pembelian.lunas_pembelian ='" & status & "' AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                        FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.supplier_id='" & idsupplier & "' AND tb_pembelian.lunas_pembelian ='" & status & "' AND tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
                 ElseIf cmbsupplier.Text.Length = 0 And cmbstatus.Text.Length = 0 Then
                     sql = "SELECT tb_pembelian.id, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.pembelian_id = tb_pembelian.id) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.pembelian_id = tb_pembelian.id)) AS sisa_pembelian 
-                        FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                        FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
                 End If
 
             End If

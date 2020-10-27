@@ -840,10 +840,10 @@
     <Compile Include="fcaribarang.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fcaricust.designer.vb">
-      <DependentUpon>fcaricust.vb</DependentUpon>
+    <Compile Include="fcaripelanggan.designer.vb">
+      <DependentUpon>fcaripelanggan.vb</DependentUpon>
     </Compile>
-    <Compile Include="fcaricust.vb">
+    <Compile Include="fcaripelanggan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fcarigudang.Designer.vb">
@@ -1472,8 +1472,8 @@
     <EmbeddedResource Include="fcaribarang.resx">
       <DependentUpon>fcaribarang.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fcaricust.resx">
-      <DependentUpon>fcaricust.vb</DependentUpon>
+    <EmbeddedResource Include="fcaripelanggan.resx">
+      <DependentUpon>fcaripelanggan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fcarigudang.resx">
       <DependentUpon>fcarigudang.vb</DependentUpon>

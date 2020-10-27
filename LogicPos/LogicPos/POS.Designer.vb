@@ -1817,7 +1817,7 @@ Partial Public Class POS
         
         Private columnkode_penjualan As Global.System.Data.DataColumn
         
-        Private columnkode_customer As Global.System.Data.DataColumn
+        Private columnkode_pelanggan As Global.System.Data.DataColumn
         
         Private columntanggal_penjualan As Global.System.Data.DataColumn
         
@@ -1876,9 +1876,9 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property kode_customerColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property kode_pelangganColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnkode_customer
+                Return Me.columnkode_pelanggan
             End Get
         End Property
         
@@ -1967,9 +1967,9 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtabelpiutangRow(ByVal kode_penjualan As String, ByVal kode_customer As String, ByVal tanggal_penjualan As Date, ByVal tanggal_jatuhtempo As Date, ByVal total_penjualan As Double, ByVal bayar_piutang As Double, ByVal sisa_piutang As Double, ByVal terima_piutang As Double) As tabelpiutangRow
+        Public Overloads Function AddtabelpiutangRow(ByVal kode_penjualan As String, ByVal kode_pelanggan As String, ByVal tanggal_penjualan As Date, ByVal tanggal_jatuhtempo As Date, ByVal total_penjualan As Double, ByVal bayar_piutang As Double, ByVal sisa_piutang As Double, ByVal terima_piutang As Double) As tabelpiutangRow
             Dim rowtabelpiutangRow As tabelpiutangRow = CType(Me.NewRow,tabelpiutangRow)
-            Dim columnValuesArray() As Object = New Object() {kode_penjualan, kode_customer, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, bayar_piutang, sisa_piutang, terima_piutang}
+            Dim columnValuesArray() As Object = New Object() {kode_penjualan, kode_pelanggan, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, bayar_piutang, sisa_piutang, terima_piutang}
             rowtabelpiutangRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtabelpiutangRow)
             Return rowtabelpiutangRow
@@ -1993,7 +1993,7 @@ Partial Public Class POS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnkode_penjualan = MyBase.Columns("kode_penjualan")
-            Me.columnkode_customer = MyBase.Columns("kode_customer")
+            Me.columnkode_pelanggan = MyBase.Columns("kode_pelanggan")
             Me.columntanggal_penjualan = MyBase.Columns("tanggal_penjualan")
             Me.columntanggal_jatuhtempo = MyBase.Columns("tanggal_jatuhtempo")
             Me.columntotal_penjualan = MyBase.Columns("total_penjualan")
@@ -2007,8 +2007,8 @@ Partial Public Class POS
         Private Sub InitClass()
             Me.columnkode_penjualan = New Global.System.Data.DataColumn("kode_penjualan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnkode_penjualan)
-            Me.columnkode_customer = New Global.System.Data.DataColumn("kode_customer", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnkode_customer)
+            Me.columnkode_pelanggan = New Global.System.Data.DataColumn("kode_pelanggan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkode_pelanggan)
             Me.columntanggal_penjualan = New Global.System.Data.DataColumn("tanggal_penjualan", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntanggal_penjualan)
             Me.columntanggal_jatuhtempo = New Global.System.Data.DataColumn("tanggal_jatuhtempo", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
@@ -6574,16 +6574,16 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property kode_customer() As String
+        Public Property kode_pelanggan() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelpiutang.kode_customerColumn),String)
+                    Return CType(Me(Me.tabletabelpiutang.kode_pelangganColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_customer' in table 'tabelpiutang' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'kode_pelanggan' in table 'tabelpiutang' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabelpiutang.kode_customerColumn) = value
+                Me(Me.tabletabelpiutang.kode_pelangganColumn) = value
             End Set
         End Property
         
@@ -6691,14 +6691,14 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iskode_customerNull() As Boolean
-            Return Me.IsNull(Me.tabletabelpiutang.kode_customerColumn)
+        Public Function Iskode_pelangganNull() As Boolean
+            Return Me.IsNull(Me.tabletabelpiutang.kode_pelangganColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setkode_customerNull()
-            Me(Me.tabletabelpiutang.kode_customerColumn) = Global.System.Convert.DBNull
+        Public Sub Setkode_pelangganNull()
+            Me(Me.tabletabelpiutang.kode_pelangganColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

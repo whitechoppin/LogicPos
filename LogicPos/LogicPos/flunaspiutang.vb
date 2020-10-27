@@ -851,7 +851,7 @@ Public Class flunaspiutang
         Dim tabel_faktur As New DataTable
         With tabel_faktur
             .Columns.Add("kode_penjualan")
-            .Columns.Add("kode_customer")
+            .Columns.Add("kode_pelanggan")
             .Columns.Add("tanggal_penjualan", GetType(Date))
             .Columns.Add("tanggal_jatuhtempo", GetType(Date))
             .Columns.Add("total_penjualan", GetType(Double))
@@ -864,7 +864,7 @@ Public Class flunaspiutang
         For i As Integer = 0 To GridView1.RowCount - 1
             baris = tabel_faktur.NewRow
             baris("kode_penjualan") = GridView1.GetRowCellValue(i, "penjualan_id")
-            baris("kode_customer") = GridView1.GetRowCellValue(i, "pelanggan_id")
+            baris("kode_pelanggan") = GridView1.GetRowCellValue(i, "pelanggan_id")
             baris("tanggal_penjualan") = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_penjualan"))
             baris("tanggal_jatuhtempo") = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_jatuhtempo"))
             baris("total_penjualan") = GridView1.GetRowCellValue(i, "total_penjualan")

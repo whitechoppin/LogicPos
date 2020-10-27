@@ -30,7 +30,6 @@ Partial Class flaporanpricelist
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -41,7 +40,7 @@ Partial Class flaporanpricelist
         Me.cmbpelanggan = New System.Windows.Forms.ComboBox()
         Me.txttelp = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
-        Me.txtcustomer = New System.Windows.Forms.TextBox()
+        Me.txtpelanggan = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btncaricustomer = New System.Windows.Forms.Button()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,7 +50,7 @@ Partial Class flaporanpricelist
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
@@ -63,7 +62,7 @@ Partial Class flaporanpricelist
         Me.GridColumn1.AppearanceCell.Options.UseFont = True
         Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn1.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn1.Caption = "GridColumn1"
+        Me.GridColumn1.Caption = "pelanggan id"
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.Visible = True
         Me.GridColumn1.VisibleIndex = 0
@@ -74,7 +73,7 @@ Partial Class flaporanpricelist
         Me.GridColumn2.AppearanceCell.Options.UseFont = True
         Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn2.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn2.Caption = "GridColumn2"
+        Me.GridColumn2.Caption = "kode barang"
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
@@ -85,7 +84,7 @@ Partial Class flaporanpricelist
         Me.GridColumn3.AppearanceCell.Options.UseFont = True
         Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn3.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn3.Caption = "GridColumn3"
+        Me.GridColumn3.Caption = "nama barang"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
         Me.GridColumn3.VisibleIndex = 2
@@ -96,7 +95,7 @@ Partial Class flaporanpricelist
         Me.GridColumn4.AppearanceCell.Options.UseFont = True
         Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn4.Caption = "GridColumn4"
+        Me.GridColumn4.Caption = "jenis barang"
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
@@ -107,7 +106,7 @@ Partial Class flaporanpricelist
         Me.GridColumn5.AppearanceCell.Options.UseFont = True
         Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn5.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn5.Caption = "GridColumn5"
+        Me.GridColumn5.Caption = "kategori barang"
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
@@ -118,21 +117,10 @@ Partial Class flaporanpricelist
         Me.GridColumn6.AppearanceCell.Options.UseFont = True
         Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.GridColumn6.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn6.Caption = "GridColumn6"
+        Me.GridColumn6.Caption = "harga jual"
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
-        '
-        'GridColumn7
-        '
-        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn7.AppearanceCell.Options.UseFont = True
-        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn7.Caption = "GridColumn7"
-        Me.GridColumn7.Name = "GridColumn7"
-        Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 6
         '
         'GridControl1
         '
@@ -238,15 +226,15 @@ Partial Class flaporanpricelist
         Me.Label22.TabIndex = 59
         Me.Label22.Text = "Telepon Pelanggan"
         '
-        'txtcustomer
+        'txtpelanggan
         '
-        Me.txtcustomer.Enabled = False
-        Me.txtcustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcustomer.Location = New System.Drawing.Point(1068, 139)
-        Me.txtcustomer.Margin = New System.Windows.Forms.Padding(6)
-        Me.txtcustomer.Name = "txtcustomer"
-        Me.txtcustomer.Size = New System.Drawing.Size(258, 24)
-        Me.txtcustomer.TabIndex = 58
+        Me.txtpelanggan.Enabled = False
+        Me.txtpelanggan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpelanggan.Location = New System.Drawing.Point(1068, 139)
+        Me.txtpelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtpelanggan.Name = "txtpelanggan"
+        Me.txtpelanggan.Size = New System.Drawing.Size(258, 24)
+        Me.txtpelanggan.TabIndex = 58
         '
         'Label2
         '
@@ -284,7 +272,7 @@ Partial Class flaporanpricelist
         Me.Controls.Add(Me.btnrekap)
         Me.Controls.Add(Me.txttelp)
         Me.Controls.Add(Me.Label22)
-        Me.Controls.Add(Me.txtcustomer)
+        Me.Controls.Add(Me.txtpelanggan)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cmbpelanggan)
         Me.Controls.Add(Me.Label4)
@@ -316,12 +304,11 @@ Partial Class flaporanpricelist
     Friend WithEvents btnrekap As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents btnrefresh As Button
-    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label4 As Label
     Friend WithEvents cmbpelanggan As ComboBox
     Friend WithEvents txttelp As TextBox
     Friend WithEvents Label22 As Label
-    Friend WithEvents txtcustomer As TextBox
+    Friend WithEvents txtpelanggan As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents btncaricustomer As Button
 End Class
