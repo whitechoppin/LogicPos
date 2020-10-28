@@ -1517,17 +1517,17 @@ Public Class fpenjualan
         Dim statuspiutang As Boolean = False
 
         If cbvoid.Checked = False Then
-            'Call koneksii()
-            'sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE kode_penjualan = '" & txtnonota.Text & "' LIMIT 1"
-            'cmmd = New OdbcCommand(sql, cnn)
-            'dr = cmmd.ExecuteReader
-            'dr.Read()
+            Call koneksii()
+            sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE penjualan_id = '" & txtnonota.Text & "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            dr.Read()
 
-            'If dr.HasRows Then
-            '    statuspiutang = True
-            'Else
-            '    statuspiutang = False
-            'End If
+            If dr.HasRows Then
+                statuspiutang = True
+            Else
+                statuspiutang = False
+            End If
 
             If statuspiutang = False Then
 

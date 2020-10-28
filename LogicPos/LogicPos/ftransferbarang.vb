@@ -1058,7 +1058,7 @@ Public Class ftransferbarang
         Try
             'sediakan wadah stok nya dulu
             For i As Integer = 0 To GridView1.RowCount - 1
-                If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
+                If GridView1.GetRowCellValue(i, "jenis_barang").Equals("Satuan") Then
                     Call koneksii()
                     sql = "SELECT * FROM tb_stok WHERE barang_id = '" & GridView1.GetRowCellValue(i, "barang_id") & "' AND gudang_id='" & idkegudang & "' LIMIT 1"
                     cmmd = New OdbcCommand(sql, cnn)
@@ -1189,7 +1189,7 @@ Public Class ftransferbarang
             Try
                 'sediakan wadah stok nya dulu
                 For i As Integer = 0 To GridView1.RowCount - 1
-                    If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
+                    If GridView1.GetRowCellValue(i, "jenis_barang").Equals("Satuan") Then
                         Call koneksii()
                         sql = "SELECT * FROM tb_stok WHERE barang_id = '" & GridView1.GetRowCellValue(i, "barang_id") & "' AND gudang_id='" & idkegudang & "' LIMIT 1"
                         cmmd = New OdbcCommand(sql, cnn)

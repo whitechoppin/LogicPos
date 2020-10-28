@@ -38,7 +38,6 @@ Public Class flaporanpenjualanpajak
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
-            .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
         End With
     End Sub
     Sub grid()
@@ -72,26 +71,20 @@ Public Class flaporanpenjualanpajak
         GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn8.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn9.Caption = "Laba"
-        GridColumn9.FieldName = "keuntungan"
-        GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn9.DisplayFormat.FormatString = "##,##0"
-        GridColumn9.Visible = False
+        GridColumn9.Caption = "User"
+        GridColumn9.FieldName = "user_id"
 
-        GridColumn10.Caption = "Kasir"
-        GridColumn10.FieldName = "kode_user"
-
-        GridColumn11.Caption = "Metode Bayar"
-        GridColumn11.FieldName = "metode_pembayaran"
+        GridColumn10.Caption = "Metode Bayar"
+        GridColumn10.FieldName = "metode_pembayaran"
 
         GridControl1.Visible = True
     End Sub
     Sub tabel()
         Call koneksii()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT tb_penjualan_detail.kode_penjualan, tb_penjualan.tgl_penjualan,tb_pelanggan.nama_pelanggan, tb_penjualan_detail.nama_barang, tb_penjualan_detail.nama_barang, tb_penjualan_detail.qty, tb_penjualan_detail.satuan_barang, (tb_penjualan_detail.harga_jual - (tb_penjualan_detail.harga_jual * (select tb_pajak.persen FROM tb_pajak)/100)) AS harga_jual, (tb_penjualan_detail.subtotal - (tb_penjualan_detail.subtotal  * (select tb_pajak.persen FROM tb_pajak)/100)) as subtotal, tb_penjualan.metode_pembayaran, tb_penjualan.kode_user FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT tb_penjualan.id, tb_penjualan.tgl_penjualan, tb_pelanggan.nama_pelanggan, tb_penjualan_detail.nama_barang, tb_penjualan_detail.nama_barang, tb_penjualan_detail.qty, tb_penjualan_detail.satuan_barang, (tb_penjualan_detail.harga_jual - (tb_penjualan_detail.harga_jual * (SELECT tb_pajak.persentase_pajak FROM tb_pajak)/100)) AS harga_jual, (tb_penjualan_detail.subtotal - (tb_penjualan_detail.subtotal  * (SELECT tb_pajak.persentase_pajak FROM tb_pajak)/100)) as subtotal, tb_penjualan.metode_pembayaran, tb_penjualan.user_id FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan ON tb_pelanggan.id =tb_penjualan.pelanggan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT tb_penjualan_detail.kode_penjualan, tb_penjualan.tgl_penjualan,tb_pelanggan.nama_pelanggan, tb_penjualan_detail.nama_barang, tb_penjualan_detail.nama_barang, tb_penjualan_detail.qty, tb_penjualan_detail.satuan_barang, (tb_penjualan_detail.harga_jual - (tb_penjualan_detail.harga_jual * (select tb_pajak.persen FROM tb_pajak)/100)) AS harga_jual, (tb_penjualan_detail.subtotal - (tb_penjualan_detail.subtotal  * (select tb_pajak.persen FROM tb_pajak)/100)) as subtotal, tb_penjualan.metode_pembayaran, tb_penjualan.kode_user FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.kode_penjualan=tb_penjualan_detail.kode_penjualan JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_penjualan.kode_pelanggan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT tb_penjualan.id, tb_penjualan.tgl_penjualan, tb_pelanggan.nama_pelanggan, tb_penjualan_detail.nama_barang, tb_penjualan_detail.nama_barang, tb_penjualan_detail.qty, tb_penjualan_detail.satuan_barang, (tb_penjualan_detail.harga_jual - (tb_penjualan_detail.harga_jual * (SELECT tb_pajak.persentase_pajak FROM tb_pajak)/100)) AS harga_jual, (tb_penjualan_detail.subtotal - (tb_penjualan_detail.subtotal  * (SELECT tb_pajak.persentase_pajak FROM tb_pajak)/100)) as subtotal, tb_penjualan.metode_pembayaran, tb_penjualan.user_id FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan ON tb_pelanggan.id =tb_penjualan.pelanggan_id WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -100,7 +93,6 @@ Public Class flaporanpenjualanpajak
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
         Call grid()
-        'End Using
     End Sub
 
 
@@ -178,8 +170,6 @@ Public Class flaporanpenjualanpajak
         Else
             MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
         End If
-
-
     End Sub
 
     Private Sub btnfaktur_Click(sender As Object, e As EventArgs) Handles btnfaktur.Click

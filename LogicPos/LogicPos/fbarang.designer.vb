@@ -207,7 +207,7 @@ Partial Class fbarang
         '
         Me.cmbjenis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbjenis.FormattingEnabled = True
-        Me.cmbjenis.Items.AddRange(New Object() {"Lembaran", "Rol"})
+        Me.cmbjenis.Items.AddRange(New Object() {"Satuan", "Roll"})
         Me.cmbjenis.Location = New System.Drawing.Point(155, 176)
         Me.cmbjenis.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbjenis.Name = "cmbjenis"

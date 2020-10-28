@@ -764,7 +764,7 @@ Public Class fpembelian
         Else
             idstok = 0
             If GridView1.RowCount = 0 Then
-                If lblsatuan.Text = "Pcs" Then
+                If jenis.Equals("Satuan") Then
                     'tambahkan data ke tabel keranjang
                     tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, Val(banyak), satuan, jenis, Val(hargabarang), Val(banyak) * Val(hargabarang), idbarang, idstok)
                     Call reload_tabel()
@@ -778,7 +778,7 @@ Public Class fpembelian
                 Dim qtytambah As Integer
                 If GridView1.RowCount <> 0 Then
                     'MsgBox("data ada")
-                    If lblsatuan.Text = "Pcs" Then
+                    If jenis.Equals("Satuan") Then
                         'MsgBox("ini pcs")
                         For i As Integer = 0 To GridView1.RowCount - 1
                             If GridView1.GetRowCellValue(i, "kode_barang").Equals(txtkodebarang.Text) And GridView1.GetRowCellValue(i, "satuan_barang").Equals("Pcs") Then
@@ -843,7 +843,7 @@ Public Class fpembelian
         Try
             'sediakan wadah stok nya dulu
             For i As Integer = 0 To GridView1.RowCount - 1
-                If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
+                If GridView1.GetRowCellValue(i, "jenis_barang").Equals("Satuan") Then
                     Call koneksii()
                     sql = "SELECT * FROM tb_stok WHERE barang_id = '" & GridView1.GetRowCellValue(i, "barang_id") & "' AND gudang_id='" & idgudang & "' LIMIT 1"
                     cmmd = New OdbcCommand(sql, cnn)
@@ -875,7 +875,7 @@ Public Class fpembelian
             idpembelian = CInt(cmmd.ExecuteScalar())
 
             For i As Integer = 0 To GridView1.RowCount - 1
-                If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
+                If GridView1.GetRowCellValue(i, "jenis_barang").Equals("Satuan") Then
                     myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & Val(GridView1.GetRowCellValue(i, "qty")) & "' WHERE id = '" & GridView1.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "'"
                     myCommand.ExecuteNonQuery()
                 Else
@@ -1280,17 +1280,17 @@ Public Class fpembelian
         Dim statusutang As Boolean = False
 
         If cbvoid.Checked = False Then
-            'Call koneksii()
-            'sql = "SELECT * FROM tb_pelunasan_utang_detail WHERE pembelian_id = '" & txtnonota.Text & "' LIMIT 1"
-            'cmmd = New OdbcCommand(sql, cnn)
-            'dr = cmmd.ExecuteReader
-            'dr.Read()
+            Call koneksii()
+            sql = "SELECT * FROM tb_pelunasan_utang_detail WHERE pembelian_id = '" & txtnonota.Text & "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            dr.Read()
 
-            'If dr.HasRows Then
-            '    statusutang = True
-            'Else
-            '    statusutang = False
-            'End If
+            If dr.HasRows Then
+                statusutang = True
+            Else
+                statusutang = False
+            End If
 
             If statusutang = False Then
                 If btnedit.Text = "Edit" Then
@@ -1423,7 +1423,7 @@ Public Class fpembelian
         Try
             'sediakan wadah stok nya dulu
             For i As Integer = 0 To GridView1.RowCount - 1
-                If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
+                If GridView1.GetRowCellValue(i, "jenis_barang").Equals("Satuan") Then
                     Call koneksii()
                     sql = "SELECT * FROM tb_stok WHERE barang_id = '" & GridView1.GetRowCellValue(i, "barang_id") & "' AND gudang_id='" & idgudang & "' LIMIT 1"
                     cmmd = New OdbcCommand(sql, cnn)
@@ -1484,7 +1484,7 @@ Public Class fpembelian
             myCommand.ExecuteNonQuery()
 
             For i As Integer = 0 To GridView1.RowCount - 1
-                If GridView1.GetRowCellValue(i, "satuan_barang") = "Pcs" Then
+                If GridView1.GetRowCellValue(i, "jenis_barang").Equals("Satuan") Then
                     myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & GridView1.GetRowCellValue(i, "qty") & "' WHERE id = '" & GridView1.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "'"
                     myCommand.ExecuteNonQuery()
                 Else

@@ -276,7 +276,7 @@ Public Class fbarang
     Sub isi_satuan()
         cmbsatuan.Items.Clear()
         cmbsatuan.AutoCompleteCustomSource.Clear()
-        If cmbjenis.Text.Equals("Rol") Then
+        If cmbjenis.Text.Equals("Roll") Then
             cmbsatuan.Items.Clear()
             cmbsatuan.AutoCompleteCustomSource.Clear()
             cmbsatuan.AutoCompleteCustomSource.Add("Meter")
@@ -284,7 +284,7 @@ Public Class fbarang
             cmbsatuan.AutoCompleteCustomSource.Add("Centimeter")
             cmbsatuan.Items.Add("Centimeter")
             cmbsatuan.SelectedIndex = 0
-        ElseIf cmbjenis.Text.Equals("Lembaran") Then
+        ElseIf cmbjenis.Text.Equals("Satuan") Then
             cmbsatuan.Items.Clear()
             cmbsatuan.AutoCompleteCustomSource.Clear()
             cmbsatuan.AutoCompleteCustomSource.Add("Pcs")
