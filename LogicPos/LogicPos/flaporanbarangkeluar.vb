@@ -32,8 +32,6 @@ Public Class flaporanbarangkeluar
 
     Private Sub flaporanpenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
-
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
         Call grid()
@@ -60,7 +58,7 @@ Public Class flaporanbarangkeluar
     End Sub
     Sub grid()
         GridColumn1.Caption = "No Nota"
-        GridColumn1.FieldName = "kode_barang_keluar"
+        GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Pelanggan"
         GridColumn2.FieldName = "nama_pelanggan"
@@ -88,9 +86,9 @@ Public Class flaporanbarangkeluar
         Call koneksii()
 
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar.kode_barang_keluar=tb_barang_keluar_detail.kode_barang_keluar JOIN tb_pelanggan ON tb_pelanggan.kode_pelanggan=tb_barang_keluar.kode_pelanggan WHERE DATE(tgl_barang_keluar) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar.id = tb_barang_keluar_detail.barang_keluar_id JOIN tb_pelanggan ON tb_pelanggan.id = tb_barang_keluar.pelanggan_id JOIN tb_user ON tb_user.id = tb_barang_keluar.user_id WHERE DATE(tgl_barang_keluar) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "Select * FROM tb_barang_keluar_detail JOIN tb_barang_keluar On tb_barang_keluar.kode_barang_keluar=tb_barang_keluar_detail.kode_barang_keluar JOIN tb_pelanggan On tb_pelanggan.kode_pelanggan=tb_barang_keluar.kode_pelanggan WHERE tgl_barang_keluar BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT * FROM tb_barang_keluar_detail JOIN tb_barang_keluar On tb_barang_keluar.id = tb_barang_keluar_detail.barang_keluar_id JOIN tb_pelanggan On tb_pelanggan.id = tb_barang_keluar.pelanggan_id JOIN tb_user ON tb_user.id = tb_barang_keluar.user_id WHERE tgl_barang_keluar BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)

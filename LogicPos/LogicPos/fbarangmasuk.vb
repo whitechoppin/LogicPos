@@ -317,18 +317,18 @@ Public Class fbarangmasuk
         txtnonota.Enabled = False
 
         cmbsupplier.Enabled = True
-        cmbsupplier.SelectedIndex = 0
+        cmbsupplier.SelectedIndex = -1
         cmbsupplier.Focus()
         btncarisupplier.Enabled = True
 
         txtalamat.Enabled = True
         txttelp.Enabled = True
 
-        cmbsales.SelectedIndex = 0
+        cmbsales.SelectedIndex = -1
         cmbsales.Enabled = True
 
         cmbgudang.Enabled = True
-        cmbgudang.SelectedIndex = 0
+        cmbgudang.SelectedIndex = -1
         btncarigudang.Enabled = True
         txtgudang.Enabled = False
 

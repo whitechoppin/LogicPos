@@ -61,7 +61,7 @@ Public Class flaporanreturjual
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Retur"
-        GridColumn1.FieldName = "kode_retur"
+        GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "User"
         GridColumn2.FieldName = "kode_user"
@@ -71,10 +71,10 @@ Public Class flaporanreturjual
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn4.Caption = "Item"
+        GridColumn4.Caption = "Barang"
         GridColumn4.FieldName = "nama_barang"
 
-        GridColumn5.Caption = "Banyak"
+        GridColumn5.Caption = "Qty"
         GridColumn5.FieldName = "qty"
 
         GridColumn6.Caption = "Satuan"
@@ -100,9 +100,9 @@ Public Class flaporanreturjual
     Sub tabel()
         Call koneksii() '
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_retur_penjualan_detail JOIN tb_retur_penjualan ON tb_retur_penjualan.kode_retur=tb_retur_penjualan_detail.kode_retur WHERE DATE(tgl_returjual) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_retur_penjualan_detail JOIN tb_retur_penjualan ON tb_retur_penjualan.id = tb_retur_penjualan_detail.retur_penjualan_id JOIN tb_user ON tb_user.id = tb_retur_penjualan.user_id WHERE DATE(tgl_returjual) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_retur_penjualan_detail JOIN tb_retur_penjualan On tb_retur_penjualan.kode_retur=tb_retur_penjualan_detail.kode_retur  WHERE tgl_returjual BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT * FROM tb_retur_penjualan_detail JOIN tb_retur_penjualan On tb_retur_penjualan.id = tb_retur_penjualan_detail.retur_penjualan_id JOIN tb_user ON tb_user.id = tb_retur_penjualan.user_id WHERE tgl_returjual BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet

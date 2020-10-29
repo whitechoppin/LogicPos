@@ -50,6 +50,8 @@ Partial Class fpembelian
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtjatuhtempo = New System.Windows.Forms.DateTimePicker()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -114,8 +116,6 @@ Partial Class fpembelian
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.dtupdated = New System.Windows.Forms.DateTimePicker()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.ritenumber, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -417,6 +417,28 @@ Partial Class fpembelian
         Me.GridColumn8.OptionsColumn.AllowEdit = False
         Me.GridColumn8.Visible = True
         Me.GridColumn8.VisibleIndex = 7
+        '
+        'GridColumn9
+        '
+        Me.GridColumn9.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceCell.Options.UseFont = True
+        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn9.Caption = "id barang"
+        Me.GridColumn9.Name = "GridColumn9"
+        Me.GridColumn9.Visible = True
+        Me.GridColumn9.VisibleIndex = 8
+        '
+        'GridColumn10
+        '
+        Me.GridColumn10.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn10.AppearanceCell.Options.UseFont = True
+        Me.GridColumn10.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn10.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn10.Caption = "id stok"
+        Me.GridColumn10.Name = "GridColumn10"
+        Me.GridColumn10.Visible = True
+        Me.GridColumn10.VisibleIndex = 9
         '
         'Label1
         '
@@ -932,7 +954,6 @@ Partial Class fpembelian
         Me.txtnosupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.txtnosupplier.Location = New System.Drawing.Point(20, 54)
         Me.txtnosupplier.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtnosupplier.MaxLength = 12
         Me.txtnosupplier.Name = "txtnosupplier"
         Me.txtnosupplier.Size = New System.Drawing.Size(343, 24)
         Me.txtnosupplier.TabIndex = 45
@@ -1145,28 +1166,6 @@ Partial Class fpembelian
         Me.Label21.Size = New System.Drawing.Size(106, 18)
         Me.Label21.TabIndex = 78
         Me.Label21.Text = "Date Updated :"
-        '
-        'GridColumn9
-        '
-        Me.GridColumn9.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn9.AppearanceCell.Options.UseFont = True
-        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn9.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn9.Caption = "id barang"
-        Me.GridColumn9.Name = "GridColumn9"
-        Me.GridColumn9.Visible = True
-        Me.GridColumn9.VisibleIndex = 8
-        '
-        'GridColumn10
-        '
-        Me.GridColumn10.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn10.AppearanceCell.Options.UseFont = True
-        Me.GridColumn10.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn10.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn10.Caption = "id stok"
-        Me.GridColumn10.Name = "GridColumn10"
-        Me.GridColumn10.Visible = True
-        Me.GridColumn10.VisibleIndex = 9
         '
         'fpembelian
         '

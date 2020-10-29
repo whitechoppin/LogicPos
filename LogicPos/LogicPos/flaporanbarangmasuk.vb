@@ -32,8 +32,6 @@ Public Class flaporanbarangmasuk
 
     Private Sub flaporanpembelian_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
-
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
         Call grid()
@@ -60,7 +58,7 @@ Public Class flaporanbarangmasuk
     End Sub
     Sub grid()
         GridColumn1.Caption = "No Nota"
-        GridColumn1.FieldName = "kode_barang_masuk"
+        GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Supplier"
         GridColumn2.FieldName = "nama_supplier"
@@ -87,9 +85,9 @@ Public Class flaporanbarangmasuk
     Sub tabel()
         Call koneksii()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.kode_barang_masuk=tb_barang_masuk_detail.kode_barang_masuk JOIN tb_supplier ON tb_supplier.kode_supplier = tb_barang_masuk.kode_supplier WHERE DATE(tgl_barang_masuk) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.id = tb_barang_masuk_detail.barang_masuk_id JOIN tb_supplier ON tb_supplier.id = tb_barang_masuk.supplier_id JOIN tb_user ON tb_user.id = tb_barang_masuk.user_id WHERE DATE(tgl_barang_masuk) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.kode_barang_masuk=tb_barang_masuk_detail.kode_barang_masuk JOIN tb_supplier ON tb_supplier.kode_supplier = tb_barang_masuk.kode_supplier WHERE tgl_barang_masuk BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.id = tb_barang_masuk_detail.barang_masuk_id JOIN tb_supplier ON tb_supplier.id = tb_barang_masuk.supplier_id JOIN tb_user ON tb_user.id = tb_barang_masuk.user_id WHERE tgl_barang_masuk BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
