@@ -207,12 +207,14 @@ Partial Class flaporanpenjualan
         'GridColumn11
         '
         Me.GridColumn11.Name = "GridColumn11"
+        Me.GridColumn11.OptionsColumn.AllowEdit = False
         Me.GridColumn11.Visible = True
         Me.GridColumn11.VisibleIndex = 6
         '
         'GridColumn12
         '
         Me.GridColumn12.Name = "GridColumn12"
+        Me.GridColumn12.OptionsColumn.AllowEdit = False
         Me.GridColumn12.Visible = True
         Me.GridColumn12.VisibleIndex = 11
         '

@@ -36,6 +36,10 @@ Partial Class flaporantransferbarang
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -54,7 +58,7 @@ Partial Class flaporantransferbarang
         'DateTimePicker2
         '
         Me.DateTimePicker2.Location = New System.Drawing.Point(269, 84)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(204, 24)
         Me.DateTimePicker2.TabIndex = 3
@@ -62,7 +66,7 @@ Partial Class flaporantransferbarang
         'DateTimePicker1
         '
         Me.DateTimePicker1.Location = New System.Drawing.Point(19, 84)
-        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(204, 24)
         Me.DateTimePicker1.TabIndex = 2
@@ -70,7 +74,7 @@ Partial Class flaporantransferbarang
         'btnrekap
         '
         Me.btnrekap.Location = New System.Drawing.Point(241, 144)
-        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(215, 43)
         Me.btnrekap.TabIndex = 20
@@ -80,7 +84,7 @@ Partial Class flaporantransferbarang
         'btnexcel
         '
         Me.btnexcel.Location = New System.Drawing.Point(816, 144)
-        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(215, 43)
         Me.btnexcel.TabIndex = 17
@@ -90,7 +94,7 @@ Partial Class flaporantransferbarang
         'btntabel
         '
         Me.btntabel.Location = New System.Drawing.Point(18, 144)
-        Me.btntabel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
         Me.btntabel.Name = "btntabel"
         Me.btntabel.Size = New System.Drawing.Size(215, 43)
         Me.btntabel.TabIndex = 17
@@ -99,10 +103,10 @@ Partial Class flaporantransferbarang
         '
         'GridControl1
         '
-        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Location = New System.Drawing.Point(18, 195)
         Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(1013, 392)
         Me.GridControl1.TabIndex = 16
@@ -110,7 +114,7 @@ Partial Class flaporantransferbarang
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsFind.AlwaysVisible = True
@@ -181,6 +185,50 @@ Partial Class flaporantransferbarang
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Transfer Barang"
         '
+        'GridColumn6
+        '
+        Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceCell.Options.UseFont = True
+        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn6.Name = "GridColumn6"
+        Me.GridColumn6.OptionsColumn.AllowEdit = False
+        Me.GridColumn6.Visible = True
+        Me.GridColumn6.VisibleIndex = 5
+        '
+        'GridColumn7
+        '
+        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceCell.Options.UseFont = True
+        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.OptionsColumn.AllowEdit = False
+        Me.GridColumn7.Visible = True
+        Me.GridColumn7.VisibleIndex = 6
+        '
+        'GridColumn8
+        '
+        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceCell.Options.UseFont = True
+        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.OptionsColumn.AllowEdit = False
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 7
+        '
+        'GridColumn9
+        '
+        Me.GridColumn9.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceCell.Options.UseFont = True
+        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn9.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn9.Name = "GridColumn9"
+        Me.GridColumn9.OptionsColumn.AllowEdit = False
+        Me.GridColumn9.Visible = True
+        Me.GridColumn9.VisibleIndex = 8
+        '
         'flaporantransferbarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -196,7 +244,7 @@ Partial Class flaporantransferbarang
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.GridControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "flaporantransferbarang"
         Me.Text = "Laporan Transfer Kas"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -219,4 +267,8 @@ Partial Class flaporantransferbarang
     Friend WithEvents btnexcel As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents btnrekap As Button
+    Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

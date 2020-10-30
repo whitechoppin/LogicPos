@@ -58,50 +58,44 @@ Public Class flaporantransferbarang
 
         Call historysave("Membuka Laporan Transfer Barang", "N/A")
     End Sub
-    Sub new_tabel()
-        tabel1 = New DataTable
-        With tabel1
-            .Columns.Add("kode_transfer_barang")
-            .Columns.Add("kode_dari_gudang")
-            .Columns.Add("kode_ke_gudang")
-            .Columns.Add("tanggal_transfer_barang")
-            .Columns.Add("keterangan_transfer_barang")
-
-        End With
-        GridControl1.DataSource = tabel1
-        'readonly
-        For i As Integer = 0 To GridView1.Columns.Count - 1
-            GridView1.Columns(i).OptionsColumn.AllowEdit = False
-        Next
-    End Sub
     Sub grid()
-        GridColumn1.Caption = "Kode Transfer Barang"
-        GridColumn1.FieldName = "kode_transfer_barang"
-
+        GridColumn1.Caption = "No Faktur"
+        GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Gudang Asal"
-        GridColumn2.FieldName = "kode_dari_gudang"
+        GridColumn2.FieldName = "dari_gudang"
 
         GridColumn3.Caption = "Gudang Tujuan"
-        GridColumn3.FieldName = "kode_ke_gudang"
+        GridColumn3.FieldName = "ke_gudang"
 
         GridColumn4.Caption = "Tanggal Transfer"
         GridColumn4.FieldName = "tanggal_transfer_barang"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn4.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn5.Caption = "Keterangan"
-        GridColumn5.FieldName = "keterangan_transfer_barang"
+        GridColumn5.Caption = "Kode Barang"
+        GridColumn5.FieldName = "kode_barang"
+
+        GridColumn6.Caption = "Kode Stok"
+        GridColumn6.FieldName = "kode_stok"
+
+        GridColumn7.Caption = "Nama Barang"
+        GridColumn7.FieldName = "nama_barang"
+
+        GridColumn8.Caption = "Qty"
+        GridColumn8.FieldName = "qty"
+
+        GridColumn9.Caption = "User"
+        GridColumn9.FieldName = "kode_user"
 
         GridControl1.Visible = True
     End Sub
     Sub tabel()
         Call koneksii()
-
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tanggal_transfer_barang) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, tbd.kode_barang, tbd.kode_stok, tbd.nama_barang, tbd.qty, usr.kode_user FROM tb_transfer_barang_detail AS tbd JOIN tb_transfer_barang AS tb ON tb.id = tbd.transfer_barang_id JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE DATE(tanggal_transfer_barang) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_transfer_barang WHERE tanggal_transfer_barang BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, tbd.kode_barang, tbd.kode_stok, tbd.nama_barang, tbd.qty, usr.kode_user FROM tb_transfer_barang_detail AS tbd JOIN tb_transfer_barang AS tb ON tb.id = tbd.transfer_barang_id JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE tanggal_transfer_barang BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)

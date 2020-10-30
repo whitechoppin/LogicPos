@@ -64,6 +64,7 @@ Partial Class flaporanpricelist
         Me.GridColumn1.AppearanceHeader.Options.UseFont = True
         Me.GridColumn1.Caption = "pelanggan id"
         Me.GridColumn1.Name = "GridColumn1"
+        Me.GridColumn1.OptionsColumn.AllowEdit = False
         Me.GridColumn1.Visible = True
         Me.GridColumn1.VisibleIndex = 0
         '
@@ -75,6 +76,7 @@ Partial Class flaporanpricelist
         Me.GridColumn2.AppearanceHeader.Options.UseFont = True
         Me.GridColumn2.Caption = "kode barang"
         Me.GridColumn2.Name = "GridColumn2"
+        Me.GridColumn2.OptionsColumn.AllowEdit = False
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 1
         '
@@ -86,6 +88,7 @@ Partial Class flaporanpricelist
         Me.GridColumn3.AppearanceHeader.Options.UseFont = True
         Me.GridColumn3.Caption = "nama barang"
         Me.GridColumn3.Name = "GridColumn3"
+        Me.GridColumn3.OptionsColumn.AllowEdit = False
         Me.GridColumn3.Visible = True
         Me.GridColumn3.VisibleIndex = 2
         '
@@ -97,6 +100,7 @@ Partial Class flaporanpricelist
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
         Me.GridColumn4.Caption = "jenis barang"
         Me.GridColumn4.Name = "GridColumn4"
+        Me.GridColumn4.OptionsColumn.AllowEdit = False
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
@@ -108,6 +112,7 @@ Partial Class flaporanpricelist
         Me.GridColumn5.AppearanceHeader.Options.UseFont = True
         Me.GridColumn5.Caption = "kategori barang"
         Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.OptionsColumn.AllowEdit = False
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
         '
@@ -119,6 +124,7 @@ Partial Class flaporanpricelist
         Me.GridColumn6.AppearanceHeader.Options.UseFont = True
         Me.GridColumn6.Caption = "harga jual"
         Me.GridColumn6.Name = "GridColumn6"
+        Me.GridColumn6.OptionsColumn.AllowEdit = False
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
         '

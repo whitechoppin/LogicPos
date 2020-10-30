@@ -357,16 +357,16 @@ Public Class ftransferbarang
         txtnonota.Clear()
         txtnonota.Enabled = False
 
-        cmbsales.SelectedIndex = 0
+        cmbsales.SelectedIndex = -1
         cmbsales.Enabled = True
 
         cmbdarigudang.Enabled = True
-        cmbdarigudang.SelectedIndex = 0
+        cmbdarigudang.SelectedIndex = -1
         btncaridarigudang.Enabled = True
         txtdarigudang.Enabled = False
 
         cmbkegudang.Enabled = True
-        cmbkegudang.SelectedIndex = 0
+        cmbkegudang.SelectedIndex = -1
         btncarikegudang.Enabled = True
         txtkegudang.Enabled = False
 
