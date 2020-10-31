@@ -1,6 +1,7 @@
 ﻿Imports System.Data.Odbc
 Imports System.IO
 Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
 Imports ZXing
 
 Public Class flaporanstokbarang
@@ -61,29 +62,35 @@ Public Class flaporanstokbarang
     Sub grid()
         GridColumn1.Caption = "Kode"
         GridColumn1.FieldName = "kode_stok"
+
         GridColumn2.Caption = "Kode Barang"
         GridColumn2.FieldName = "kode_barang"
+
         GridColumn3.Caption = "Nama Barang"
         GridColumn3.FieldName = "nama_barang"
+
         GridColumn4.Caption = "Jenis"
         GridColumn4.FieldName = "jenis_barang"
+
         GridColumn5.Caption = "Satuan"
         GridColumn5.FieldName = "satuan_barang"
+
         GridColumn6.Caption = "Jumlah Stok"
         GridColumn6.FieldName = "jumlah_stok"
-        GridColumn7.Caption = "Kode Gudang"
-        GridColumn7.FieldName = "kode_gudang"
+
+        GridColumn7.Caption = "Gudang"
+        GridColumn7.FieldName = "nama_gudang"
 
         GridControl1.Visible = True
     End Sub
     Sub tabel()
         Call koneksii()
         If cmbstatus.SelectedIndex = 0 Then
-            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang "
+            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id"
         ElseIf cmbstatus.SelectedIndex = 1 Then
-            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.jumlah_stok > 0"
+            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id WHERE tb_stok.jumlah_stok > 0"
         ElseIf cmbstatus.SelectedIndex = 2 Then
-            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_stok.kode_gudang FROM tb_barang join tb_stok ON tb_barang.kode_barang = tb_stok.kode_barang WHERE tb_stok.jumlah_stok = 0"
+            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id WHERE tb_stok.jumlah_stok = 0"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -99,7 +106,7 @@ Public Class flaporanstokbarang
         Dim foto As Byte()
         'menyiapkan koneksi database
         Call koneksii()
-        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
+        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()
@@ -159,6 +166,18 @@ Public Class flaporanstokbarang
         If printstatus.Equals(True) Then
             Dim rptstok As ReportDocument
             rptstok = New rptlaporstok
+
+            Dim statusPFDs As ParameterFieldDefinitions
+            Dim statusPFD As ParameterFieldDefinition
+            Dim statusPVs As New ParameterValues
+            Dim statusPDV As New ParameterDiscreteValue
+
+            statusPDV.Value = cmbstatus.SelectedIndex
+            statusPFDs = rptstok.DataDefinition.ParameterFields
+            statusPFD = statusPFDs.Item("status") 'tanggal merupakan nama parameter
+            statusPVs.Clear()
+            statusPVs.Add(statusPDV)
+            statusPFD.ApplyCurrentValues(statusPVs)
 
             flapstokbarang.CrystalReportViewer1.ReportSource = rptstok
             flapstokbarang.ShowDialog()
@@ -242,7 +261,6 @@ Public Class flaporanstokbarang
         If LabelHarga.Visible = False Then
             passwordid = 2
             fpassword.Show()
-            'LabelHarga.Visible = False
         ElseIf LabelHarga.Visible = True Then
             LabelHarga.Visible = False
         End If

@@ -41,7 +41,7 @@ Public Class flaporanlunaspiutang
         With GridView1
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
-            .Columns("bayar_lunas").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "bayar_lunas", "{0:n0}")
+            .Columns("terima_piutang").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "terima_piutang", "{0:n0}")
         End With
 
         Select Case kodeakses
@@ -59,42 +59,57 @@ Public Class flaporanlunaspiutang
         Call historysave("Membuka Laporan Pelunasan Piutang", "N/A")
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No.Pelunasan"
-        GridColumn1.FieldName = "kode_lunas"
+        GridColumn1.Caption = "No Faktur"
+        GridColumn1.FieldName = "id"
 
-        GridColumn2.Caption = "Customer"
-        GridColumn2.FieldName = "kode_pelanggan"
+        GridColumn2.Caption = "No Penjualan"
+        GridColumn2.FieldName = "penjualan_id"
 
-        GridColumn3.Caption = "Tanggal Transaksi"
-        GridColumn3.FieldName = "tanggal_transaksi"
+        GridColumn3.Caption = "Tanggal Penjualan"
+        GridColumn3.FieldName = "tanggal_penjualan"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn4.Caption = "User"
-        GridColumn4.FieldName = "kode_user"
+        GridColumn4.Caption = "Tanggal Jatuh Tempo"
+        GridColumn4.FieldName = "tanggal_jatuhtempo"
+        GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn4.DisplayFormat.FormatString = "dd/MM/yyy"
 
-        GridColumn5.Caption = "Kas"
-        GridColumn5.FieldName = "kode_kas"
+        GridColumn5.Caption = "Pelanggan"
+        GridColumn5.FieldName = "nama_pelanggan"
 
-        GridColumn6.Caption = "Jenis"
-        GridColumn6.FieldName = "jenis_kas"
+        GridColumn6.Caption = "Total Penjualan"
+        GridColumn6.FieldName = "total_penjualan"
+        GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn6.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn7.Caption = "Bayar"
-        GridColumn7.FieldName = "bayar_lunas"
+        GridColumn7.Caption = "Pelunasan"
+        GridColumn7.FieldName = "terima_piutang"
         GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn7.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn8.Caption = "Keterangan"
-        GridColumn8.FieldName = "keterangan"
+        GridColumn8.Caption = "User"
+        GridColumn8.FieldName = "nama_user"
+
+        GridColumn9.Caption = "Kas"
+        GridColumn9.FieldName = "nama_kas"
+
+        GridColumn10.Caption = "Tanggal Transaksi"
+        GridColumn10.FieldName = "tanggal_transaksi"
+        GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn10.DisplayFormat.FormatString = "dd/MM/yyy"
+
+        GridColumn11.Caption = "No bukti"
+        GridColumn11.FieldName = "no_bukti"
 
         GridControl1.Visible = True
     End Sub
     Sub tabel()
         Call koneksii()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_pelunasan_piutang  WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT tb_pelunasan_piutang.id, penjualan_id, tb_pelanggan.nama_pelanggan, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, terima_piutang, nama_user, nama_kas, tanggal_transaksi, no_bukti FROM tb_pelunasan_piutang_detail JOIN tb_pelunasan_piutang ON tb_pelunasan_piutang.id = tb_pelunasan_piutang_detail.pelunasan_piutang_id JOIN tb_pelanggan ON tb_pelanggan.id = tb_pelunasan_piutang.pelanggan_id JOIN tb_user ON tb_user.id = tb_pelunasan_piutang.user_id JOIN tb_kas ON tb_kas.id = tb_pelunasan_piutang.kas_id WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_pelunasan_piutang WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'  + INTERVAL 1 DAY"
+            sql = "SELECT tb_pelunasan_piutang.id, penjualan_id, tb_pelanggan.nama_pelanggan, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, terima_piutang, nama_user, nama_kas, tanggal_transaksi, no_bukti FROM tb_pelunasan_piutang_detail JOIN tb_pelunasan_piutang ON tb_pelunasan_piutang.id = tb_pelunasan_piutang_detail.pelunasan_piutang_id JOIN tb_pelanggan ON tb_pelanggan.id = tb_pelunasan_piutang.pelanggan_id JOIN tb_user ON tb_user.id = tb_pelunasan_piutang.user_id JOIN tb_kas ON tb_kas.id = tb_pelunasan_piutang.kas_id WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
