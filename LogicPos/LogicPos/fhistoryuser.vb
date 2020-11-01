@@ -40,13 +40,13 @@ Public Class fhistoryuser
     End Sub
 
     Sub grid_history()
-        GridColumn1.Caption = "Kode History"
-        GridColumn1.FieldName = "kode_history"
-        GridColumn1.Width = 10
+        GridColumn1.Caption = "id"
+        GridColumn1.FieldName = "id"
+        GridColumn1.Width = 5
 
         GridColumn2.Caption = "Keterangan"
         GridColumn2.FieldName = "keterangan_history"
-        GridColumn2.Width = 50
+        GridColumn2.Width = 30
 
         GridColumn3.Caption = "Kode Tabel"
         GridColumn3.FieldName = "kode_tabel"
@@ -59,8 +59,8 @@ Public Class fhistoryuser
         GridColumn5.Caption = "Waktu"
         GridColumn5.FieldName = "date_created"
         GridColumn5.Width = 10
-        'GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        'GridColumn5.DisplayFormat.FormatString = "dd/MM/yyy HH:mm:ss"
+        GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn5.DisplayFormat.FormatString = "dd/MM/yyy HH:mm:ss"
 
     End Sub
 
@@ -70,9 +70,17 @@ Public Class fhistoryuser
         oleh = txtoleh.Text
 
         If dtawal.Value.Equals(dtakhir.Value) Then
-            sql = "SELECT * FROM tb_history_user WHERE DATE(date_created) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_tabel LIKE '%" + kode + "%' AND created_by LIKE '%" + oleh + "%'"
+            If kode.Length > 0 Then
+                sql = "SELECT * FROM tb_history_user WHERE DATE(date_created) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_tabel ='" & kode & "' AND created_by LIKE '%" & oleh & "%'"
+            Else
+                sql = "SELECT * FROM tb_history_user WHERE DATE(date_created) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND created_by LIKE '%" & oleh & "%'"
+            End If
         Else
-            sql = "SELECT * FROM tb_history_user WHERE kode_tabel LIKE '%" + kode + "%' AND created_by LIKE '%" + oleh + "%' AND date_created BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            If kode.Length > 0 Then
+                sql = "SELECT * FROM tb_history_user WHERE kode_tabel='" & kode & "' AND created_by LIKE '%" & oleh & "%' AND date_created BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "SELECT * FROM tb_history_user WHERE created_by LIKE '%" & oleh & "%' AND date_created BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+            End If
         End If
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -103,6 +111,10 @@ Public Class fhistoryuser
 
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
         Call ExportToExcel()
+    End Sub
+
+    Private Sub txtkodetabel_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkodetabel.KeyPress
+        e.Handled = ValidAngka(e)
     End Sub
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
