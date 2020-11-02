@@ -170,7 +170,7 @@ Public Class fkaskeluar
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_kas_keluar"
+        sql = "SELECT * FROM tb_kas_keluar JOIN tb_kas ON tb_kas.id = tb_kas_masuk.kas_id"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -183,7 +183,7 @@ Public Class fkaskeluar
         GridColumn1.Width = 10
 
         GridColumn2.Caption = "Kas"
-        GridColumn2.FieldName = "kas_id"
+        GridColumn2.FieldName = "kode_kas"
         GridColumn2.Width = 20
 
         GridColumn3.Caption = "Tanggal"

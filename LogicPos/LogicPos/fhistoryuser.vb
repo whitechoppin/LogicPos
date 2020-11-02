@@ -69,7 +69,7 @@ Public Class fhistoryuser
         kode = txtkodetabel.Text
         oleh = txtoleh.Text
 
-        If dtawal.Value.Equals(dtakhir.Value) Then
+        If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
             If kode.Length > 0 Then
                 sql = "SELECT * FROM tb_history_user WHERE DATE(date_created) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND kode_tabel ='" & kode & "' AND created_by LIKE '%" & oleh & "%'"
             Else
