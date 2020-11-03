@@ -39,7 +39,7 @@ Public Class flaporanmodalbarang
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
             'buat sum harga
-            .Columns("jumlah_stok").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "jumlah_stok", "{0:n0}")
+            '.Columns("jumlah_stok").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "jumlah_stok", "{0:n0}")
         End With
 
         Select Case kodeakses
@@ -57,9 +57,8 @@ Public Class flaporanmodalbarang
         Call historysave("Membuka Laporan Modal Barang", "N/A")
     End Sub
     Sub grid()
-        GridColumn1.Caption = "Kode"
-        GridColumn1.FieldName = "kode_stok"
-        GridColumn1.Visible = False
+        GridColumn1.Caption = "id"
+        GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Kode Barang"
         GridColumn2.FieldName = "kode_barang"
@@ -73,10 +72,8 @@ Public Class flaporanmodalbarang
         GridColumn5.Caption = "Satuan"
         GridColumn5.FieldName = "satuan_barang"
 
-        GridColumn6.Caption = "Jumlah Stok"
-        GridColumn6.FieldName = "jumlah_stok"
-
-        GridColumn6.Visible = False
+        GridColumn6.Caption = "Kategori"
+        GridColumn6.FieldName = "nama_kategori"
 
         GridColumn7.Caption = "Harga Modal"
         GridColumn7.FieldName = "modal_barang"
@@ -87,10 +84,11 @@ Public Class flaporanmodalbarang
     End Sub
     Sub tabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_barang"
+        sql = "SELECT * FROM tb_barang JOIN tb_kategori_barang ON tb_kategori_barang.id = tb_barang.kategori_barang_id"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
         Call grid()
@@ -100,7 +98,7 @@ Public Class flaporanmodalbarang
         Dim foto As Byte()
         'menyiapkan koneksi database
         Call koneksii()
-        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + kode + "'"
+        sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()

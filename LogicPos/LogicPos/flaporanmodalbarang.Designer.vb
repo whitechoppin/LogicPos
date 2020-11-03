@@ -44,7 +44,7 @@ Partial Class flaporanmodalbarang
         'btnrefresh
         '
         Me.btnrefresh.Location = New System.Drawing.Point(941, 73)
-        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(293, 47)
         Me.btnrefresh.TabIndex = 18
@@ -54,7 +54,7 @@ Partial Class flaporanmodalbarang
         'btnexcel
         '
         Me.btnexcel.Location = New System.Drawing.Point(941, 128)
-        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(293, 47)
         Me.btnexcel.TabIndex = 17
@@ -64,7 +64,7 @@ Partial Class flaporanmodalbarang
         'btnrekap
         '
         Me.btnrekap.Location = New System.Drawing.Point(941, 183)
-        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(293, 47)
         Me.btnrekap.TabIndex = 10
@@ -73,10 +73,10 @@ Partial Class flaporanmodalbarang
         '
         'GridControl1
         '
-        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Location = New System.Drawing.Point(19, 72)
         Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(914, 411)
         Me.GridControl1.TabIndex = 22
@@ -170,7 +170,7 @@ Partial Class flaporanmodalbarang
         'PictureBox1
         '
         Me.PictureBox1.Location = New System.Drawing.Point(941, 253)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(293, 230)
         Me.PictureBox1.TabIndex = 0
@@ -200,8 +200,9 @@ Partial Class flaporanmodalbarang
         Me.Controls.Add(Me.btnrekap)
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "flaporanmodalbarang"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Laporan Modal Barang"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
