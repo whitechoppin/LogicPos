@@ -240,12 +240,12 @@ Public Class fbarangkeluar
         GridColumn7.FieldName = "barang_id"
         GridColumn7.Caption = "Barang id"
         GridColumn7.Width = 15
-        'GridColumn7.Visible = False
+        GridColumn7.Visible = False
 
         GridColumn8.FieldName = "stok_id"
         GridColumn8.Caption = "stok id"
         GridColumn8.Width = 15
-        'GridColumn8.Visible = False
+        GridColumn8.Visible = False
     End Sub
 
     Sub reload_tabel()

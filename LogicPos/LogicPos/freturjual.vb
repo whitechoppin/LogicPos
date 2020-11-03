@@ -479,24 +479,24 @@ Public Class freturjual
         GridColumn12.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn12.DisplayFormat.FormatString = "{0:n0}"
         GridColumn12.Width = 5
-        'GridColumn12.Visible = False
+        GridColumn12.Visible = False
 
         GridColumn13.FieldName = "modal_barang"
         GridColumn13.Caption = "Modal Barang"
         GridColumn13.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn13.DisplayFormat.FormatString = "{0:n0}"
         GridColumn13.Width = 5
-        'GridColumn13.Visible = False
+        GridColumn13.Visible = False
 
         GridColumn27.FieldName = "barang_id"
         GridColumn27.Caption = "Barang id"
         GridColumn27.Width = 5
-        'GridColumn27.Visible = False
+        GridColumn27.Visible = False
 
         GridColumn28.FieldName = "stok_id"
         GridColumn28.Caption = "stok id"
         GridColumn28.Width = 5
-        'GridColumn28.Visible = False
+        GridColumn28.Visible = False
 
     End Sub
 
@@ -592,24 +592,24 @@ Public Class freturjual
         GridColumn25.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn25.DisplayFormat.FormatString = "{0:n0}"
         GridColumn25.Width = 5
-        'GridColumn25.Visible = False
+        GridColumn25.Visible = False
 
         GridColumn26.FieldName = "modal_barang"
         GridColumn26.Caption = "Modal Barang"
         GridColumn26.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn26.DisplayFormat.FormatString = "{0:n0}"
         GridColumn26.Width = 5
-        'GridColumn26.Visible = False
+        GridColumn26.Visible = False
 
         GridColumn29.FieldName = "barang_id"
         GridColumn29.Caption = "Barang id"
         GridColumn29.Width = 5
-        'GridColumn29.Visible = False
+        GridColumn29.Visible = False
 
         GridColumn30.FieldName = "stok_id"
         GridColumn30.Caption = "stok id"
         GridColumn30.Width = 5
-        'GridColumn30.Visible = False
+        GridColumn30.Visible = False
     End Sub
     Sub reload_tabel()
         GridControl1.RefreshDataSource()

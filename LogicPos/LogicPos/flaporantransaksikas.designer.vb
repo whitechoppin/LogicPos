@@ -53,7 +53,7 @@ Partial Class flaporantransaksikas
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(287, 95)
+        Me.Label1.Location = New System.Drawing.Point(287, 69)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(30, 16)
@@ -62,7 +62,7 @@ Partial Class flaporantransaksikas
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(325, 88)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(325, 62)
         Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(256, 24)
@@ -70,7 +70,7 @@ Partial Class flaporantransaksikas
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(19, 88)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(19, 62)
         Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(256, 24)
@@ -78,7 +78,7 @@ Partial Class flaporantransaksikas
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(915, 62)
+        Me.btnrekap.Location = New System.Drawing.Point(915, 36)
         Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(182, 49)
@@ -88,7 +88,7 @@ Partial Class flaporantransaksikas
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(1105, 62)
+        Me.btnexcel.Location = New System.Drawing.Point(1105, 36)
         Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(182, 50)
@@ -98,7 +98,7 @@ Partial Class flaporantransaksikas
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(725, 62)
+        Me.btntabel.Location = New System.Drawing.Point(725, 36)
         Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
         Me.btntabel.Name = "btntabel"
         Me.btntabel.Size = New System.Drawing.Size(182, 50)
@@ -109,7 +109,7 @@ Partial Class flaporantransaksikas
         'GridControl1
         '
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl1.Location = New System.Drawing.Point(19, 136)
+        Me.GridControl1.Location = New System.Drawing.Point(19, 107)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
@@ -271,16 +271,16 @@ Partial Class flaporantransaksikas
         Me.Label2.Location = New System.Drawing.Point(13, 9)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(304, 31)
+        Me.Label2.Size = New System.Drawing.Size(314, 31)
         Me.Label2.TabIndex = 17
-        Me.Label2.Text = "Laporan Tansaksi Kas"
+        Me.Label2.Text = "Laporan Transaksi Kas"
         '
         'flaporantransaksikas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1305, 668)
+        Me.ClientSize = New System.Drawing.Size(1305, 596)
         Me.Controls.Add(Me.btnrekap)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btntabel)
@@ -292,6 +292,7 @@ Partial Class flaporantransaksikas
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "flaporantransaksikas"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Laporan Kas"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()

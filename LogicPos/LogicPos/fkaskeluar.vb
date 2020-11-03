@@ -170,7 +170,7 @@ Public Class fkaskeluar
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_kas_keluar JOIN tb_kas ON tb_kas.id = tb_kas_masuk.kas_id"
+        sql = "SELECT * FROM tb_kas_keluar JOIN tb_kas ON tb_kas.id = tb_kas_keluar.kas_id"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)

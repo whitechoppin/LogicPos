@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class rptrekapkas
+Public Class rptrekaptransaksikas
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class rptrekapkas
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "rptrekapkas.rpt"
+            Return "rptrekaptransaksikas.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class rptrekapkas
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "LogicPos.rptrekapkas.rpt"
+            Return "LogicPos.rptrekaptransaksikas.rpt"
         End Get
         Set
             'Do nothing
@@ -110,7 +110,7 @@ Public Class rptrekapkas
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class Cachedrptrekapkas
+Public Class Cachedrptrekaptransaksikas
     Inherits Component
     Implements ICachedReport
     
@@ -152,7 +152,7 @@ Public Class Cachedrptrekapkas
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As rptrekapkas = New rptrekapkas()
+        Dim rpt As rptrekaptransaksikas = New rptrekaptransaksikas()
         rpt.Site = Me.Site
         Return rpt
     End Function

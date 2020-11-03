@@ -57,7 +57,7 @@ Partial Class flaporantransferkas
         'DateTimePicker2
         '
         Me.DateTimePicker2.Location = New System.Drawing.Point(281, 66)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(217, 24)
         Me.DateTimePicker2.TabIndex = 3
@@ -65,15 +65,15 @@ Partial Class flaporantransferkas
         'DateTimePicker1
         '
         Me.DateTimePicker1.Location = New System.Drawing.Point(18, 66)
-        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(217, 24)
         Me.DateTimePicker1.TabIndex = 2
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(221, 133)
-        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnrekap.Location = New System.Drawing.Point(221, 103)
+        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(195, 49)
         Me.btnrekap.TabIndex = 20
@@ -82,8 +82,8 @@ Partial Class flaporantransferkas
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(885, 133)
-        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnexcel.Location = New System.Drawing.Point(885, 103)
+        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(195, 49)
         Me.btnexcel.TabIndex = 17
@@ -92,8 +92,8 @@ Partial Class flaporantransferkas
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(18, 133)
-        Me.btntabel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btntabel.Location = New System.Drawing.Point(18, 103)
+        Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
         Me.btntabel.Name = "btntabel"
         Me.btntabel.Size = New System.Drawing.Size(195, 49)
         Me.btntabel.TabIndex = 17
@@ -102,12 +102,12 @@ Partial Class flaporantransferkas
         '
         'GridControl1
         '
-        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GridControl1.Location = New System.Drawing.Point(18, 190)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
+        Me.GridControl1.Location = New System.Drawing.Point(18, 160)
         Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1062, 581)
+        Me.GridControl1.Size = New System.Drawing.Size(1062, 397)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -222,7 +222,7 @@ Partial Class flaporantransferkas
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1096, 784)
+        Me.ClientSize = New System.Drawing.Size(1096, 578)
         Me.Controls.Add(Me.btnexcel)
         Me.Controls.Add(Me.btnrekap)
         Me.Controls.Add(Me.DateTimePicker2)
@@ -232,7 +232,7 @@ Partial Class flaporantransferkas
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "flaporantransferkas"
         Me.Text = "Laporan Transfer Kas"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()

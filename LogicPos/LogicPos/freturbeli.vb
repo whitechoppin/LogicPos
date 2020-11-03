@@ -456,12 +456,12 @@ Public Class freturbeli
         GridColumn17.FieldName = "barang_id"
         GridColumn17.Caption = "Barang id"
         GridColumn17.Width = 5
-        'GridColumn17.Visible = False
+        GridColumn17.Visible = False
 
         GridColumn18.FieldName = "stok_id"
         GridColumn18.Caption = "stok id"
         GridColumn18.Width = 5
-        'GridColumn18.Visible = False
+        GridColumn18.Visible = False
 
     End Sub
 
@@ -529,12 +529,12 @@ Public Class freturbeli
         GridColumn19.FieldName = "barang_id"
         GridColumn19.Caption = "Barang id"
         GridColumn19.Width = 5
-        'GridColumn19.Visible = False
+        GridColumn19.Visible = False
 
         GridColumn20.FieldName = "stok_id"
         GridColumn20.Caption = "stok id"
         GridColumn20.Width = 5
-        'GridColumn20.Visible = False
+        GridColumn20.Visible = False
     End Sub
 
     Sub reload_tabel()

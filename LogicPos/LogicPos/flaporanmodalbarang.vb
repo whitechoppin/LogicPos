@@ -63,14 +63,19 @@ Public Class flaporanmodalbarang
 
         GridColumn2.Caption = "Kode Barang"
         GridColumn2.FieldName = "kode_barang"
+
         GridColumn3.Caption = "Nama Barang"
         GridColumn3.FieldName = "nama_barang"
+
         GridColumn4.Caption = "Jenis"
         GridColumn4.FieldName = "jenis_barang"
+
         GridColumn5.Caption = "Satuan"
         GridColumn5.FieldName = "satuan_barang"
+
         GridColumn6.Caption = "Jumlah Stok"
         GridColumn6.FieldName = "jumlah_stok"
+
         GridColumn6.Visible = False
 
         GridColumn7.Caption = "Harga Modal"

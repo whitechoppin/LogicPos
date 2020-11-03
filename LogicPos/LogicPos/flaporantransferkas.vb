@@ -61,23 +61,23 @@ Public Class flaporantransferkas
     End Sub
 
     Sub grid()
-        GridColumn1.Caption = "No.Transfer Kas"
-        GridColumn1.FieldName = "kode_transfer_kas"
+        GridColumn1.Caption = "No Faktur"
+        GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Dari Kas"
-        GridColumn2.FieldName = "kode_dari_kas"
+        GridColumn2.FieldName = "dari_kas"
 
         GridColumn3.Caption = "Ke Kas"
-        GridColumn3.FieldName = "kode_ke_kas"
+        GridColumn3.FieldName = "ke_kas"
 
         GridColumn4.Caption = "User"
-        GridColumn4.FieldName = "kode_user"
+        GridColumn4.FieldName = "nama_user"
 
         GridColumn5.Caption = "Jenis Transfer"
         GridColumn5.FieldName = "jenis_transfer_kas"
 
         GridColumn6.Caption = "Tanggal Transfer"
-        GridColumn6.FieldName = "tanggal_transfer_kas"
+        GridColumn6.FieldName = "tanggal"
         GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn6.DisplayFormat.FormatString = "dd/MM/yyy"
 
@@ -95,9 +95,9 @@ Public Class flaporantransferkas
         Call koneksii()
 
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_transfer_kas WHERE DATE(tanggal_transfer_kas) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT tk.id, dari.nama_kas AS dari_kas, ke.nama_kas AS ke_kas, usr.nama_user, tk.jenis_transfer_kas, tk.tanggal, tk.saldo_transfer_kas, tk.keterangan_transfer_kas FROM tb_transfer_kas AS tk JOIN tb_kas AS dari ON dari.id = tk.dari_kas_id JOIN tb_kas AS ke ON ke.id = tk.ke_kas_id JOIN tb_user AS usr ON usr.id = tk.user_id WHERE DATE(tanggal) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_transfer_kas WHERE tanggal_transfer_kas BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+            sql = "SELECT tk.id, dari.nama_kas AS dari_kas, ke.nama_kas AS ke_kas, usr.nama_user, tk.jenis_transfer_kas, tk.tanggal, tk.saldo_transfer_kas, tk.keterangan_transfer_kas FROM tb_transfer_kas AS tk JOIN tb_kas AS dari ON dari.id = tk.dari_kas_id JOIN tb_kas AS ke ON ke.id = tk.ke_kas_id JOIN tb_user AS usr ON usr.id = tk.user_id WHERE tanggal BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -157,9 +157,9 @@ Public Class flaporantransferkas
             Call koneksii()
 
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-                sql = "SELECT * FROM tb_transfer_kas WHERE DATE(tanggal_transfer_kas) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_transfer_kas WHERE DATE(tanggal) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_transfer_kas WHERE tanggal_transfer_kas BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_transfer_kas WHERE tanggal BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
             End If
 
             cmmd = New OdbcCommand(sql, cnn)

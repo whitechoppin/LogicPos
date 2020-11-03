@@ -273,14 +273,17 @@ Public Class ftransferbarang
         GridColumn7.FieldName = "barang_id"
         GridColumn7.Caption = "id barang"
         GridColumn7.Width = 10
+        GridColumn7.Visible = False
 
         GridColumn8.FieldName = "dari_stok_id"
         GridColumn8.Caption = "id dari stok"
         GridColumn8.Width = 10
+        GridColumn8.Visible = False
 
         GridColumn9.FieldName = "ke_stok_id"
         GridColumn9.Caption = "id ke stok"
         GridColumn9.Width = 10
+        GridColumn9.Visible = False
 
     End Sub
 

@@ -178,7 +178,7 @@ Public Class ftransferkas
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_transfer_kas"
+        sql = "SELECT tk.id, dari.nama_kas AS dari_kas, ke.nama_kas AS ke_kas, usr.nama_user, tk.tanggal, tk.saldo_transfer_kas FROM tb_transfer_kas AS tk JOIN tb_kas AS dari ON dari.id = tk.dari_kas_id JOIN tb_kas AS ke ON ke.id = tk.ke_kas_id JOIN tb_user AS usr ON usr.id = tk.user_id"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -191,15 +191,15 @@ Public Class ftransferkas
         GridColumn1.Width = 10
 
         GridColumn2.Caption = "Dari Kas"
-        GridColumn2.FieldName = "dari_kas_id"
+        GridColumn2.FieldName = "dari_kas"
         GridColumn2.Width = 20
 
         GridColumn3.Caption = "Ke Kas"
-        GridColumn3.FieldName = "ke_kas_id"
+        GridColumn3.FieldName = "ke_kas"
         GridColumn3.Width = 20
 
         GridColumn4.Caption = "User"
-        GridColumn4.FieldName = "user_id"
+        GridColumn4.FieldName = "nama_user"
         GridColumn4.Width = 10
 
         GridColumn5.Caption = "Tanggal"
