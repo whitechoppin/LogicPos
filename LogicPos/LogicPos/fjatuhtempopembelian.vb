@@ -39,7 +39,7 @@ Public Class fjatuhtempopembelian
     End Sub
 
     Sub grid_pembelian()
-        GridColumn1.Caption = "No.Nota"
+        GridColumn1.Caption = "No Nota"
         GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Supplier"
@@ -83,8 +83,8 @@ Public Class fjatuhtempopembelian
 
         GridControl2.DataSource = tabellunas
 
-        GridColumn8.Caption = "Kode"
-        GridColumn8.FieldName = "kode_lunas"
+        GridColumn8.Caption = "No Pelunasan"
+        GridColumn8.FieldName = "id"
 
         GridColumn9.Caption = "Tanggal"
         GridColumn9.FieldName = "tgl_pelunasan"
@@ -101,6 +101,7 @@ Public Class fjatuhtempopembelian
 
         sql = "SELECT tb_pembelian.id, nama_supplier, tgl_pembelian, tgl_jatuhtempo_pembelian, total_pembelian, (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.pembelian_id = tb_pembelian.id) as bayar_pembelian, (total_pembelian - (SELECT IFNULL(SUM(terima_utang), 0) FROM tb_pelunasan_utang_detail WHERE tb_pelunasan_utang_detail.pembelian_id = tb_pembelian.id)) AS sisa_pembelian 
                 FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.lunas_pembelian = 0 AND tb_pembelian.tgl_jatuhtempo_pembelian < now()"
+
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -111,7 +112,7 @@ Public Class fjatuhtempopembelian
 
     Sub tabel_lunas()
         Call gridlunas()
-        kode = Me.GridView1.GetFocusedRowCellValue("kode_pembelian")
+        kode = Me.GridView1.GetFocusedRowCellValue("id")
 
         Call koneksii()
         sql = "SELECT * FROM tb_pelunasan_utang_detail WHERE pembelian_id ='" & kode & "'"

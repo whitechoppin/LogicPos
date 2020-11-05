@@ -3,9 +3,9 @@ Public Class fmenu
     Private Sub main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         statustgl.Text = Now.ToLongDateString
         Timer.Start()
-        'fjatuhtempopembelian.Show()
-        'fjatuhtempopenjualan.Show()
-        'fnotifikasistok.Show()
+        fjatuhtempopembelian.Show()
+        fjatuhtempopenjualan.Show()
+        fnotifikasistok.Show()
 
         Call historysave("User Login Program", Me.namauser.Text)
     End Sub
