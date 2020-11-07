@@ -948,7 +948,7 @@ Public Class flunaspiutang
 
             'IFNULL(SUM(kredit_kas), 0)
             Call koneksii()
-            sql = "SELECT IFNULL(SUM(terima_piutang), 0) AS terima_piutang FROM tb_pelunasan_piutang_detail WHERE penjualan_id = '" & GridView1.GetRowCellValue(i, "penjualan_id") & "' AND pelanggan_id ='" & idpelanggan & "' AND NOT kode_lunas ='" & nomornota & "'"
+            sql = "SELECT IFNULL(SUM(terima_piutang), 0) AS terima_piutang FROM tb_pelunasan_piutang_detail WHERE penjualan_id = '" & GridView1.GetRowCellValue(i, "penjualan_id") & "' AND pelanggan_id ='" & idpelanggan & "' AND NOT pelunasan_piutang_id ='" & nomornota & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then

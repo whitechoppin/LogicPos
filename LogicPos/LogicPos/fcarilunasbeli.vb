@@ -121,7 +121,7 @@ Public Class fcarilunasbeli
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabellunas.Rows.Add(dr("id"), dr("last_updated"), dr("terima_utang"))
+            tabellunas.Rows.Add(dr("pelunasan_utang_id"), dr("last_updated"), dr("terima_utang"))
             GridControl2.RefreshDataSource()
         End While
     End Sub
