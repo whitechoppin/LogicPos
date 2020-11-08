@@ -29,13 +29,13 @@ Module koneksi
         Try
             'untuk koneksi biasa : select atau delete data gak penting
             If cnn.State = ConnectionState.Closed Then
-                cnn = New OdbcConnection("DSN=dsnlogicpos;MultipleActiveResultSets=True")
+                cnn = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
                 cnn.Open()
             End If
 
             'untuk koneksi data berbasis transaksi : sekali save query > 1 query
             If cnnx.State = ConnectionState.Closed Then
-                cnnx = New OdbcConnection("DSN=dsnlogicpos;MultipleActiveResultSets=True")
+                cnnx = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
                 cnnx.Open()
             End If
         Catch ex As Exception
