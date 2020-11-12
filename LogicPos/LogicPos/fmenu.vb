@@ -192,7 +192,12 @@ Public Class fmenu
         End If
     End Sub
     Private Sub PenyesuaianStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PenyesuaianStokToolStripMenuItem.Click
-        fpenyesuaianstok.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.penyesuaian_stok
+        If masterstatus > 0 Then
+            fpenyesuaianstok.kodeakses = masterstatus
+            fpenyesuaianstok.Show()
+        End If
     End Sub
     'administrasi =========================================================================================================================
     Private Sub PreviewUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PreviewUtangToolStripMenuItem.Click

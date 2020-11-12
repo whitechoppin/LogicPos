@@ -33,7 +33,8 @@ Partial Class fprinter
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 18)
+        Me.Label1.Location = New System.Drawing.Point(19, 16)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(103, 18)
         Me.Label1.TabIndex = 0
@@ -43,7 +44,8 @@ Partial Class fprinter
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 49)
+        Me.Label2.Location = New System.Drawing.Point(14, 54)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(111, 18)
         Me.Label2.TabIndex = 1
@@ -53,40 +55,46 @@ Partial Class fprinter
         '
         Me.cmbstruk.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbstruk.FormattingEnabled = True
-        Me.cmbstruk.Location = New System.Drawing.Point(134, 19)
+        Me.cmbstruk.Location = New System.Drawing.Point(133, 13)
+        Me.cmbstruk.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbstruk.Name = "cmbstruk"
-        Me.cmbstruk.Size = New System.Drawing.Size(195, 21)
+        Me.cmbstruk.Size = New System.Drawing.Size(290, 26)
         Me.cmbstruk.TabIndex = 2
         '
         'cmbfaktur
         '
         Me.cmbfaktur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbfaktur.FormattingEnabled = True
-        Me.cmbfaktur.Location = New System.Drawing.Point(134, 46)
+        Me.cmbfaktur.Location = New System.Drawing.Point(133, 51)
+        Me.cmbfaktur.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbfaktur.Name = "cmbfaktur"
-        Me.cmbfaktur.Size = New System.Drawing.Size(195, 21)
+        Me.cmbfaktur.Size = New System.Drawing.Size(290, 26)
         Me.cmbfaktur.TabIndex = 2
         '
         'btnsimpan
         '
-        Me.btnsimpan.Location = New System.Drawing.Point(344, 19)
+        Me.btnsimpan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsimpan.Location = New System.Drawing.Point(431, 13)
+        Me.btnsimpan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnsimpan.Name = "btnsimpan"
-        Me.btnsimpan.Size = New System.Drawing.Size(99, 48)
+        Me.btnsimpan.Size = New System.Drawing.Size(104, 64)
         Me.btnsimpan.TabIndex = 3
         Me.btnsimpan.Text = "Simpan"
         Me.btnsimpan.UseVisualStyleBackColor = True
         '
         'fprinter
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(455, 90)
+        Me.ClientSize = New System.Drawing.Size(547, 92)
         Me.Controls.Add(Me.btnsimpan)
         Me.Controls.Add(Me.cmbfaktur)
         Me.Controls.Add(Me.cmbstruk)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fprinter"
         Me.Text = "Printer Setting"
         Me.ResumeLayout(False)

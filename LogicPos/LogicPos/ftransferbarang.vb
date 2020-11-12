@@ -10,20 +10,18 @@ Public Class ftransferbarang
 
     Public tabel, tabelsementara As DataTable
     Dim hitnumber As Integer
-    'variabel dalam penjualan
+    'variabel dalam transfer barang
     Public jenis, satuan As String
     Dim idbarang, iddaristok, idkestok As Integer
     Dim idtransferbarang, iddarigudang, idkegudang, iduser As String
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
-    'variabel bantuan view penjualan
-    Dim nomornota, nomorcustomer, nomorsales, nomordarigudang, nomorkegudang, viewketerangan As String
+    'variabel bantuan view transfer barang
+    Dim nomornota, nomorsales, nomordarigudang, nomorkegudang, viewketerangan As String
     Dim statuslunas, statusvoid, statusprint, statusposted, statusedit As Boolean
     Dim viewtgltransfer As DateTime
-    Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
     'variabel edit penjualan
     'variabel report
     Dim rpt_faktur As New CrystalDecisions.CrystalReports.Engine.ReportDocument
-    Dim countingbarang As Integer
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -145,7 +143,7 @@ Public Class ftransferbarang
 
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
-        sql = "SELECT id FROM tb_transfer_barang WHERE date_created < (SELECT date_created FROM tb_transfer_barang WHERE id = '" + previousnumber + "') ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT id FROM tb_transfer_barang WHERE date_created < (SELECT date_created FROM tb_transfer_barang WHERE id = '" & previousnumber & "') ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -168,7 +166,7 @@ Public Class ftransferbarang
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT id FROM tb_transfer_barang WHERE date_created > (SELECT date_created FROM tb_transfer_barang WHERE id = '" + nextingnumber + "') ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT id FROM tb_transfer_barang WHERE date_created > (SELECT date_created FROM tb_transfer_barang WHERE id = '" & nextingnumber & "') ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
