@@ -33,6 +33,29 @@ Public Class fcarigudang
         GridControl1.DataSource = ds.Tables(0)
         Call grid()
     End Sub
+
+    Private Sub GridControl1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles GridControl1.KeyPress
+        If e.KeyChar = Strings.Chr(Keys.Enter) Then
+            If tutupgudang = 1 Then
+                fpembelian.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+            ElseIf tutupgudang = 2 Then
+                fpenjualan.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+            ElseIf tutupgudang = 3 Then
+                fbarangkeluar.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+            ElseIf tutupgudang = 4 Then
+                fbarangmasuk.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+            ElseIf tutupgudang = 5 Then
+                ftransferbarang.cmbdarigudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+            ElseIf tutupgudang = 6 Then
+                ftransferbarang.cmbkegudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+            ElseIf tutupgudang = 7 Then
+                flaporanmutasibarang.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+            ElseIf tutupgudang = 8 Then
+                fpenyesuaianstok.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+            End If
+            Me.Hide()
+        End If
+    End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupgudang = 1 Then
             fpembelian.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
@@ -48,6 +71,8 @@ Public Class fcarigudang
             ftransferbarang.cmbkegudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
         ElseIf tutupgudang = 7 Then
             flaporanmutasibarang.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
+        ElseIf tutupgudang = 8 Then
+            fpenyesuaianstok.cmbgudang.Text = Me.GridView1.GetFocusedRowCellValue("kode_gudang")
         End If
         Me.Hide()
     End Sub

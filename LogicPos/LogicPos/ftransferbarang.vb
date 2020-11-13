@@ -933,9 +933,13 @@ Public Class ftransferbarang
     End Sub
 
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
-        tutupcaristok = 3
-        idgudangcari = iddarigudang
-        fcaristok.ShowDialog()
+        If txtdarigudang.Text = "" Or txtkegudang.Text = "" Then
+            MsgBox("Isi Kode Gudang", MsgBoxStyle.Information, "Informasi")
+        Else
+            tutupcaristok = 3
+            idgudangcari = iddarigudang
+            fcaristok.ShowDialog()
+        End If
     End Sub
 
     Private Sub txtkodestok_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
@@ -987,7 +991,7 @@ Public Class ftransferbarang
                 dr.Read()
                 If dr.HasRows Then
                     For i As Integer = 0 To GridView1.RowCount - 1
-                        If GridView1.GetRowCellValue(i, "dari_stok_id").Equals(iddaristok) Then
+                        If Val(GridView1.GetRowCellValue(i, "dari_stok_id")).Equals(iddaristok) Then
                             lokasi = i
                         End If
                     Next

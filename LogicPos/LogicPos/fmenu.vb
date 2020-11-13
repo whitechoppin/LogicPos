@@ -404,13 +404,13 @@ Public Class fmenu
         flaporanmutasibarang.Show()
     End Sub
     Private Sub LPenyesuaianStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LPenyesuaianStokToolStripMenuItem.Click
-
+        flaporanpenyesuaianstok.Show()
     End Sub
     Private Sub LLabaRugiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LLabaRugiToolStripMenuItem.Click
-
+        flaporanlabarugi.Show()
     End Sub
     Private Sub LRekapanAkhirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LRekapanAkhirToolStripMenuItem.Click
-
+        flaporanrekapanakhir.Show()
     End Sub
 
     'settings =============================================================================================================================

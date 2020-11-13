@@ -113,7 +113,7 @@ Public Class fpenyesuaianstok
     End Sub
 
     Sub previewtransferbarang(lihat As String)
-        sql = "SELECT * FROM tb_penyesuaian_stok_detail WHERE penyesuaian_stok_id ='" & lihat & "'"
+        sql = "SELECT * FROM tb_penyesuaian_stok_detail WHERE penyesuaian_stok_id ='" & lihat & "' AND status_barang='PLUS'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
@@ -121,7 +121,7 @@ Public Class fpenyesuaianstok
         End While
         GridControl1.RefreshDataSource()
 
-        sql = "SELECT * FROM tb_penyesuaian_stok_detail WHERE penyesuaian_stok_id ='" & lihat & "'"
+        sql = "SELECT * FROM tb_penyesuaian_stok_detail WHERE penyesuaian_stok_id ='" & lihat & "' AND status_barang='MINUS'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
@@ -188,12 +188,12 @@ Public Class fpenyesuaianstok
         GridColumn7.FieldName = "barang_id"
         GridColumn7.Caption = "id barang"
         GridColumn7.Width = 10
-        GridColumn7.Visible = False
+        'GridColumn7.Visible = False
 
         GridColumn8.FieldName = "stok_id"
         GridColumn8.Caption = "id stok"
         GridColumn8.Width = 10
-        GridColumn8.Visible = False
+        'GridColumn8.Visible = False
 
         GridColumn9.FieldName = "status_stok"
         GridColumn9.Caption = "status stok"
@@ -230,12 +230,12 @@ Public Class fpenyesuaianstok
         GridColumn16.FieldName = "barang_id"
         GridColumn16.Caption = "id barang"
         GridColumn16.Width = 10
-        GridColumn16.Visible = False
+        'GridColumn16.Visible = False
 
         GridColumn17.FieldName = "stok_id"
         GridColumn17.Caption = "id stok"
         GridColumn17.Width = 10
-        GridColumn17.Visible = False
+        'GridColumn17.Visible = False
 
         GridColumn18.FieldName = "status_stok"
         GridColumn18.Caption = "status stok"
@@ -504,9 +504,7 @@ Public Class fpenyesuaianstok
             dttransferbarang.Value = Date.Now
 
             txtketerangan.Text = ""
-
         End If
-
     End Sub
 
     Sub carigudang()
@@ -657,12 +655,12 @@ Public Class fpenyesuaianstok
     End Sub
 
     Private Sub btncarigudang_Click(sender As Object, e As EventArgs) Handles btncarigudang.Click
-        tutupgudang = 7
+        tutupgudang = 8
         fcarigudang.ShowDialog()
     End Sub
 
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
-        tutupcaristok = 4
+        tutupcaristok = 5
         idgudangcari = idgudang
         fcaristok.ShowDialog()
     End Sub
@@ -701,56 +699,115 @@ Public Class fpenyesuaianstok
         'Columns.Add("satuan_barang")
         'Columns.Add("jenis_barang")
         'Columns.Add("barang_id")
-        'Columns.Add("dari_stok_id")
-        'Columns.Add("ke_stok_id")
+        'Columns.Add("stok_id")
+        'Columns.Add("status_stok")
 
         If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txtbanyak.Text = "" Or banyak = 0 Then
             MsgBox("Barang Kosong", MsgBoxStyle.Information, "Informasi")
         Else
-            If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
-                sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader
-                If dr.HasRows Then
-                    If dr("jumlah_stok") < banyak Then
-                        MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
-                    Else
-                        tabelplus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak, satuan, jenis, idbarang, idstok, "PLUS")
-                        Call reload_tabel()
+            If GridView2.RowCount > 0 Then
+                For i As Integer = 0 To GridView2.RowCount - 1
+                    If Val(GridView2.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                        lokasi = i
+                    End If
+                Next
+
+                If lokasi > -1 Then
+                    MsgBox("Stok sudah ada di tabel minus", MsgBoxStyle.Information, "Informasi")
+                Else
+                    If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
+                        sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
+                        cmmd = New OdbcCommand(sql, cnn)
+                        dr = cmmd.ExecuteReader
+                        If dr.HasRows Then
+                            If dr("jumlah_stok") < banyak Then
+                                MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
+                            Else
+                                tabelplus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak, satuan, jenis, idbarang, idstok, "PLUS")
+                                Call reload_tabel()
+                            End If
+                        End If
+                    Else 'kalau ada isi
+                        sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
+                        cmmd = New OdbcCommand(sql, cnn)
+                        dr = cmmd.ExecuteReader
+                        dr.Read()
+                        If dr.HasRows Then
+                            For i As Integer = 0 To GridView1.RowCount - 1
+                                If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                                    lokasi = i
+                                End If
+                            Next
+
+                            tbbanyak = GridView1.GetRowCellValue(lokasi, "qty")
+
+                            If lokasi = -1 Then
+                                If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                    MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                                Else
+                                    tabelplus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "PLUS")
+                                    Call reload_tabel()
+                                End If
+                            Else
+                                If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                    MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                                Else
+                                    GridView1.DeleteRow(GridView1.GetRowHandle(lokasi))
+                                    tabelplus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "PLUS")
+                                    Call reload_tabel()
+                                End If
+                            End If
+                        Else
+                            MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                        End If
                     End If
                 End If
-            Else 'kalau ada isi
-                sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    For i As Integer = 0 To GridView1.RowCount - 1
-                        If GridView1.GetRowCellValue(i, "dari_stok_id").Equals(idstok) Then
-                            lokasi = i
-                        End If
-                    Next
-
-                    tbbanyak = GridView1.GetRowCellValue(lokasi, "banyak")
-
-                    If lokasi = -1 Then
-                        If dr("jumlah_stok") < (banyak + tbbanyak) Then
-                            MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+            Else
+                If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
+                    sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    If dr.HasRows Then
+                        If dr("jumlah_stok") < banyak Then
+                            MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
                         Else
-                            tabelplus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "PLUS")
-                            Call reload_tabel()
-                        End If
-                    Else
-                        If dr("jumlah_stok") < (banyak + tbbanyak) Then
-                            MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
-                        Else
-                            GridView1.DeleteRow(GridView1.GetRowHandle(lokasi))
-                            tabelplus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "PLUS")
+                            tabelplus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak, satuan, jenis, idbarang, idstok, "PLUS")
                             Call reload_tabel()
                         End If
                     End If
-                Else
-                    MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                Else 'kalau ada isi
+                    sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    dr.Read()
+                    If dr.HasRows Then
+                        For i As Integer = 0 To GridView1.RowCount - 1
+                            If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                                lokasi = i
+                            End If
+                        Next
+
+                        tbbanyak = GridView1.GetRowCellValue(lokasi, "qty")
+
+                        If lokasi = -1 Then
+                            If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                            Else
+                                tabelplus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "PLUS")
+                                Call reload_tabel()
+                            End If
+                        Else
+                            If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                            Else
+                                GridView1.DeleteRow(GridView1.GetRowHandle(lokasi))
+                                tabelplus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "PLUS")
+                                Call reload_tabel()
+                            End If
+                        End If
+                    Else
+                        MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                    End If
                 End If
             End If
         End If
@@ -766,56 +823,115 @@ Public Class fpenyesuaianstok
         'Columns.Add("satuan_barang")
         'Columns.Add("jenis_barang")
         'Columns.Add("barang_id")
-        'Columns.Add("dari_stok_id")
-        'Columns.Add("ke_stok_id")
+        'Columns.Add("stok_id")
+        'Columns.Add("status_stok")
 
         If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txtbanyak.Text = "" Or banyak = 0 Then
             MsgBox("Barang Kosong", MsgBoxStyle.Information, "Informasi")
         Else
-            If GridView2.RowCount = 0 Then 'kondisi keranjang kosong
-                sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader
-                If dr.HasRows Then
-                    If dr("jumlah_stok") < banyak Then
-                        MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
-                    Else
-                        tabelminus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak, satuan, jenis, idbarang, idstok, "MINUS")
-                        Call reload_tabel()
+            If GridView1.RowCount > 0 Then
+                For i As Integer = 0 To GridView1.RowCount - 1
+                    If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                        lokasi = i
+                    End If
+                Next
+
+                If lokasi > -1 Then
+                    MsgBox("Stok sudah ada di tabel plus", MsgBoxStyle.Information, "Informasi")
+                Else
+                    If GridView2.RowCount = 0 Then 'kondisi keranjang kosong
+                        sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
+                        cmmd = New OdbcCommand(sql, cnn)
+                        dr = cmmd.ExecuteReader
+                        If dr.HasRows Then
+                            If dr("jumlah_stok") < banyak Then
+                                MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
+                            Else
+                                tabelminus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak, satuan, jenis, idbarang, idstok, "MINUS")
+                                Call reload_tabel()
+                            End If
+                        End If
+                    Else 'kalau ada isi
+                        sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
+                        cmmd = New OdbcCommand(sql, cnn)
+                        dr = cmmd.ExecuteReader
+                        dr.Read()
+                        If dr.HasRows Then
+                            For i As Integer = 0 To GridView2.RowCount - 1
+                                If Val(GridView2.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                                    lokasi = i
+                                End If
+                            Next
+
+                            tbbanyak = GridView2.GetRowCellValue(lokasi, "qty")
+
+                            If lokasi = -1 Then
+                                If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                    MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                                Else
+                                    tabelminus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "MINUS")
+                                    Call reload_tabel()
+                                End If
+                            Else
+                                If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                    MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                                Else
+                                    GridView2.DeleteRow(GridView1.GetRowHandle(lokasi))
+                                    tabelminus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "MINUS")
+                                    Call reload_tabel()
+                                End If
+                            End If
+                        Else
+                            MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                        End If
                     End If
                 End If
-            Else 'kalau ada isi
-                sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    For i As Integer = 0 To GridView1.RowCount - 1
-                        If GridView2.GetRowCellValue(i, "dari_stok_id").Equals(idstok) Then
-                            lokasi = i
-                        End If
-                    Next
-
-                    tbbanyak = GridView2.GetRowCellValue(lokasi, "banyak")
-
-                    If lokasi = -1 Then
-                        If dr("jumlah_stok") < (banyak + tbbanyak) Then
-                            MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+            Else
+                If GridView2.RowCount = 0 Then 'kondisi keranjang kosong
+                    sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    If dr.HasRows Then
+                        If dr("jumlah_stok") < banyak Then
+                            MsgBox("Stok Tidak Mencukupi", MsgBoxStyle.Information, "Informasi")
                         Else
-                            tabelminus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "MINUS")
-                            Call reload_tabel()
-                        End If
-                    Else
-                        If dr("jumlah_stok") < (banyak + tbbanyak) Then
-                            MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
-                        Else
-                            GridView2.DeleteRow(GridView1.GetRowHandle(lokasi))
-                            tabelminus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "MINUS")
+                            tabelminus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak, satuan, jenis, idbarang, idstok, "MINUS")
                             Call reload_tabel()
                         End If
                     End If
-                Else
-                    MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                Else 'kalau ada isi
+                    sql = "SELECT * FROM tb_stok WHERE id = '" & idstok & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader
+                    dr.Read()
+                    If dr.HasRows Then
+                        For i As Integer = 0 To GridView2.RowCount - 1
+                            If Val(GridView2.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                                lokasi = i
+                            End If
+                        Next
+
+                        tbbanyak = GridView2.GetRowCellValue(lokasi, "qty")
+
+                        If lokasi = -1 Then
+                            If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                            Else
+                                tabelminus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "MINUS")
+                                Call reload_tabel()
+                            End If
+                        Else
+                            If dr("jumlah_stok") < (banyak + tbbanyak) Then
+                                MsgBox("Stok Tidak mencukupi", MsgBoxStyle.Information, "Informasi")
+                            Else
+                                GridView2.DeleteRow(GridView1.GetRowHandle(lokasi))
+                                tabelminus.Rows.Add(txtkodebarang.Text, txtkodestok.Text, txtnamabarang.Text, banyak + tbbanyak, satuan, jenis, idbarang, idstok, "MINUS")
+                                Call reload_tabel()
+                            End If
+                        End If
+                    Else
+                        MsgBox("Stok Kosong", MsgBoxStyle.Information, "Informasi")
+                    End If
                 End If
             End If
         End If

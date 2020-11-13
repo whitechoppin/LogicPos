@@ -93,6 +93,8 @@ Public Class fcaristok
             ftransferbarang.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
         ElseIf tutupcaristok = 4 Then
             flaporanmutasibarang.cmbstok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
+        ElseIf tutupcaristok = 5 Then
+            fpenyesuaianstok.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
         End If
         Me.Hide()
     End Sub
@@ -119,6 +121,8 @@ Public Class fcaristok
                 ftransferbarang.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
             ElseIf tutupcaristok = 4 Then
                 flaporanmutasibarang.cmbstok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
+            ElseIf tutupcaristok = 5 Then
+                fpenyesuaianstok.txtkodestok.Text = Me.GridView1.GetFocusedRowCellValue("kode_stok")
             End If
             Me.Hide()
         End If

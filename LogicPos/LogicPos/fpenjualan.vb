@@ -1766,7 +1766,7 @@ Public Class fpenjualan
                 dr.Read()
                 If dr.HasRows Then
                     For i As Integer = 0 To GridView1.RowCount - 1
-                        If GridView1.GetRowCellValue(i, "kode_stok").Equals(txtkodestok.Text) Then
+                        If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
                             lokasi = i
                         End If
                     Next
@@ -1804,7 +1804,7 @@ Public Class fpenjualan
                     dr.Read()
                     If dr.HasRows Then
                         For i As Integer = 0 To GridView1.RowCount - 1
-                            If GridView1.GetRowCellValue(i, "kode_stok").Equals(txtkodestok.Text) Then
+                            If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
                                 lokasi = i
                             End If
                         Next
@@ -1842,7 +1842,7 @@ Public Class fpenjualan
                         If dr.HasRows Then
 
                             For i As Integer = 0 To GridView1.RowCount - 1
-                                If GridView1.GetRowCellValue(i, "kode_stok").Equals(txtkodestok.Text) Then
+                                If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
                                     lokasi = i
                                 End If
                             Next
