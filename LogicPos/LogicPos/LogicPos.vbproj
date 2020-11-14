@@ -347,6 +347,18 @@
     <Compile Include="flapmutasibarang.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flaporankalkulasiexpedisi.Designer.vb">
+      <DependentUpon>flaporankalkulasiexpedisi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporankalkulasiexpedisi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporankalkulasipengiriman.Designer.vb">
+      <DependentUpon>flaporankalkulasipengiriman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporankalkulasipengiriman.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporanlabarugi.Designer.vb">
       <DependentUpon>flaporanlabarugi.vb</DependentUpon>
     </Compile>
@@ -1205,6 +1217,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="flapmutasibarang.resx">
       <DependentUpon>flapmutasibarang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporankalkulasiexpedisi.resx">
+      <DependentUpon>flaporankalkulasiexpedisi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporankalkulasipengiriman.resx">
+      <DependentUpon>flaporankalkulasipengiriman.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanlabarugi.resx">
       <DependentUpon>flaporanlabarugi.vb</DependentUpon>

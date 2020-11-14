@@ -113,7 +113,7 @@ Public Class fpenyesuaianstok
     End Sub
 
     Sub previewtransferbarang(lihat As String)
-        sql = "SELECT * FROM tb_penyesuaian_stok_detail WHERE penyesuaian_stok_id ='" & lihat & "' AND status_barang='PLUS'"
+        sql = "SELECT * FROM tb_penyesuaian_stok_detail WHERE penyesuaian_stok_id ='" & lihat & "' AND status_stok='PLUS'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
@@ -121,7 +121,7 @@ Public Class fpenyesuaianstok
         End While
         GridControl1.RefreshDataSource()
 
-        sql = "SELECT * FROM tb_penyesuaian_stok_detail WHERE penyesuaian_stok_id ='" & lihat & "' AND status_barang='MINUS'"
+        sql = "SELECT * FROM tb_penyesuaian_stok_detail WHERE penyesuaian_stok_id ='" & lihat & "' AND status_stok='MINUS'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
@@ -480,11 +480,11 @@ Public Class fpenyesuaianstok
                 nomorsales = dr("user_id")
                 nomorgudang = dr("gudang_id")
 
-                statusprint = dr("print_transfer_barang")
-                statusposted = dr("posted_transfer_barang")
+                statusprint = dr("print_penyesuaian_stok")
+                statusposted = dr("posted_penyesuaian_stok")
 
-                viewtgltransfer = dr("tanggal_transfer_barang")
-                viewketerangan = dr("keterangan_transfer_barang")
+                viewtgltransfer = dr("tanggal_penyesuaian_stok")
+                viewketerangan = dr("keterangan_penyesuaian_stok")
 
                 txtnonota.Text = nomornota
                 cmbsales.SelectedValue = nomorsales
@@ -682,7 +682,7 @@ Public Class fpenyesuaianstok
                 myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & Val(GridView2.GetRowCellValue(i, "qty")) & "' WHERE id = '" & GridView2.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "'"
                 myCommand.ExecuteNonQuery()
 
-                myCommand.CommandText = "INSERT INTO tb_penyesuaian_stok_detail(penyesuaian_stok_id, barang_id, stok_id, kode_barang, kode_stok, nama_barang, satuan_barang, jenis_barang, qty, status_stok, created_by, updated_by,date_created, last_updated) VALUES ('" & idpenyesuaianstok & "','" & GridView2.GetRowCellValue(i, "barang_id") & "','" & GridView2.GetRowCellValue(i, "stok_id") & "','" & GridView2.GetRowCellValue(i, "kode_barang") & "','" & GridView2.GetRowCellValue(i, "kode_stok") & "','" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "status_stok") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_penyesuaian_stok_detail(penyesuaian_stok_id, barang_id, stok_id, kode_barang, kode_stok, nama_barang, satuan_barang, jenis_barang, qty, status_stok, created_by, updated_by,date_created, last_updated) VALUES ('" & idpenyesuaianstok & "','" & GridView2.GetRowCellValue(i, "barang_id") & "','" & GridView2.GetRowCellValue(i, "stok_id") & "','" & GridView2.GetRowCellValue(i, "kode_barang") & "','" & GridView2.GetRowCellValue(i, "kode_stok") & "','" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView2.GetRowCellValue(i, "status_stok") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
             Next
 
@@ -885,13 +885,22 @@ Public Class fpenyesuaianstok
     End Sub
 
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click
-        tutupcaristok = 5
-        idgudangcari = idgudang
-        fcaristok.ShowDialog()
+        If txtgudang.Text = "" Then
+            MsgBox("Isi Kode Gudang", MsgBoxStyle.Information, "Informasi")
+        Else
+            tutupcaristok = 5
+            idgudangcari = idgudang
+            fcaristok.ShowDialog()
+        End If
     End Sub
 
     Private Sub txtkodestok_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
-        Call caristok()
+        If txtgudang.Text = "" Then
+            MsgBox("Isi Kode Gudang", MsgBoxStyle.Information, "Informasi")
+        Else
+            Call caristok()
+        End If
+
     End Sub
 
     Private Sub txtkodestok_KeyDown(sender As Object, e As KeyEventArgs) Handles txtkodestok.KeyDown

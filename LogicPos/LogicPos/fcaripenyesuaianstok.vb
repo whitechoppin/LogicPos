@@ -22,14 +22,18 @@ Public Class fcaripenyesuaianstok
     Sub grid()
         GridColumn1.Caption = "id"
         GridColumn1.FieldName = "id"
+
         GridColumn2.Caption = "Tanggal"
-        GridColumn2.FieldName = "tanggal"
+        GridColumn2.FieldName = "tanggal_penyesuaian_stok"
+
         GridColumn3.Caption = "Gudang"
-        GridColumn3.FieldName = "kode_gudang"
+        GridColumn3.FieldName = "nama_gudang"
+
         GridColumn4.Caption = "User"
         GridColumn4.FieldName = "nama_user"
+
         GridColumn5.Caption = "Keterangan"
-        GridColumn5.FieldName = "keterangan_penyesuaian_Stok"
+        GridColumn5.FieldName = "keterangan_penyesuaian_stok"
 
         GridControl1.Visible = True
     End Sub
@@ -41,6 +45,7 @@ Public Class fcaripenyesuaianstok
             .Columns.Add("kode_stok")
             .Columns.Add("kode_barang")
             .Columns.Add("qty", GetType(Double))
+            .Columns.Add("status_stok")
         End With
 
         GridControl2.DataSource = tabelbarang
@@ -53,6 +58,8 @@ Public Class fcaripenyesuaianstok
         GridColumn8.FieldName = "qty"
         GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn8.DisplayFormat.FormatString = "##,#0"
+        GridColumn9.Caption = "Status Stok"
+        GridColumn9.FieldName = "status_stok"
 
         GridControl2.Visible = True
     End Sub
@@ -61,12 +68,12 @@ Public Class fcaripenyesuaianstok
 
         If cbperiode.Checked = True Then
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
-                sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_penyesuaian_stok JOIN tb_gudang ON tb_gudang.id = tb_penyesuaian_stok.gudang_id JOIN tb_user ON tb_user.id = tb_penyesuaian_stok.user_id WHERE DATE(tb_penyesuaian_stok.tanggal_penyesuaian_stok) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                sql = "SELECT * FROM tb_penyesuaian_stok JOIN tb_gudang ON tb_gudang.id = tb_penyesuaian_stok.gudang_id JOIN tb_user ON tb_user.id = tb_penyesuaian_stok.user_id WHERE tb_penyesuaian_stok.tanggal_penyesuaian_stok BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
         Else
-            sql = "SELECT * FROM tb_transfer_barang"
+            sql = "SELECT * FROM tb_penyesuaian_stok JOIN tb_gudang ON tb_gudang.id = tb_penyesuaian_stok.gudang_id JOIN tb_user ON tb_user.id = tb_penyesuaian_stok.user_id"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -86,14 +93,14 @@ Public Class fcaripenyesuaianstok
 
     Sub tabel_lunas()
         Call gridlunas()
-        kode = Me.GridView1.GetFocusedRowCellValue("kode_transfer_barang")
+        kode = Me.GridView1.GetFocusedRowCellValue("id")
 
         Call koneksii()
-        sql = "SELECT * FROM tb_transfer_barang_detail WHERE kode_transfer_barang ='" & kode & "'"
+        sql = "SELECT * FROM tb_penyesuaian_stok_detail WHERE penyesuaian_stok_id ='" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabelbarang.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("qty"))
+            tabelbarang.Rows.Add(dr("kode_stok"), dr("kode_barang"), dr("qty"), dr("status_stok"))
         End While
 
         GridControl2.RefreshDataSource()

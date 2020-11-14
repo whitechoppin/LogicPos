@@ -25,9 +25,9 @@ Public Class fcaritransferbarang
         GridColumn2.Caption = "Tanggal"
         GridColumn2.FieldName = "tanggal_transfer_barang"
         GridColumn3.Caption = "Dari Gudang"
-        GridColumn3.FieldName = "kode_dari_gudang"
+        GridColumn3.FieldName = "dari_gudang"
         GridColumn4.Caption = "Ke Gudang"
-        GridColumn4.FieldName = "kode_ke_gudang"
+        GridColumn4.FieldName = "ke_gudang"
         GridColumn5.Caption = "User"
         GridColumn5.FieldName = "kode_user"
 
@@ -61,12 +61,12 @@ Public Class fcaritransferbarang
 
         If cbperiode.Checked = True Then
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
-                sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tb_transfer_barang.tanggal_transfer_barang) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, usr.kode_user FROM tb_transfer_barang AS tb JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE DATE(tanggal_transfer_barang) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_transfer_barang WHERE tb_transfer_barang.tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, usr.kode_user FROM tb_transfer_barang AS tb JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
         Else
-            sql = "SELECT * FROM tb_transfer_barang"
+            sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, usr.kode_user FROM tb_transfer_barang AS tb JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
