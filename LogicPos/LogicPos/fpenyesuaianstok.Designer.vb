@@ -37,14 +37,14 @@ Partial Class fpenyesuaianstok
         Me.txtnonota = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
-        Me.dttransferbarang = New System.Windows.Forms.DateTimePicker()
+        Me.dttransaksi = New System.Windows.Forms.DateTimePicker()
         Me.cmbsales = New System.Windows.Forms.ComboBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.txtketerangan = New System.Windows.Forms.RichTextBox()
         Me.btncaripenyesuaian = New System.Windows.Forms.Button()
         Me.btnprev = New System.Windows.Forms.Button()
         Me.btnnext = New System.Windows.Forms.Button()
-        Me.txtgotransferbarang = New System.Windows.Forms.TextBox()
+        Me.txtgopenyesuaianstok = New System.Windows.Forms.TextBox()
         Me.btnbatal = New System.Windows.Forms.Button()
         Me.btngo = New System.Windows.Forms.Button()
         Me.btnbaru = New System.Windows.Forms.Button()
@@ -125,7 +125,7 @@ Partial Class fpenyesuaianstok
         Me.TabPage1.Controls.Add(Me.txtnonota)
         Me.TabPage1.Controls.Add(Me.Label14)
         Me.TabPage1.Controls.Add(Me.Label17)
-        Me.TabPage1.Controls.Add(Me.dttransferbarang)
+        Me.TabPage1.Controls.Add(Me.dttransaksi)
         Me.TabPage1.Controls.Add(Me.cmbsales)
         Me.TabPage1.Location = New System.Drawing.Point(4, 27)
         Me.TabPage1.Name = "TabPage1"
@@ -267,14 +267,14 @@ Partial Class fpenyesuaianstok
         Me.Label17.TabIndex = 16
         Me.Label17.Text = "Tanggal"
         '
-        'dttransferbarang
+        'dttransaksi
         '
-        Me.dttransferbarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.dttransferbarang.Location = New System.Drawing.Point(801, 12)
-        Me.dttransferbarang.Margin = New System.Windows.Forms.Padding(6)
-        Me.dttransferbarang.Name = "dttransferbarang"
-        Me.dttransferbarang.Size = New System.Drawing.Size(235, 23)
-        Me.dttransferbarang.TabIndex = 17
+        Me.dttransaksi.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.dttransaksi.Location = New System.Drawing.Point(801, 12)
+        Me.dttransaksi.Margin = New System.Windows.Forms.Padding(6)
+        Me.dttransaksi.Name = "dttransaksi"
+        Me.dttransaksi.Size = New System.Drawing.Size(235, 23)
+        Me.dttransaksi.TabIndex = 17
         '
         'cmbsales
         '
@@ -342,13 +342,13 @@ Partial Class fpenyesuaianstok
         Me.btnnext.Text = ">>"
         Me.btnnext.UseVisualStyleBackColor = True
         '
-        'txtgotransferbarang
+        'txtgopenyesuaianstok
         '
-        Me.txtgotransferbarang.Location = New System.Drawing.Point(819, 13)
-        Me.txtgotransferbarang.Margin = New System.Windows.Forms.Padding(6)
-        Me.txtgotransferbarang.Name = "txtgotransferbarang"
-        Me.txtgotransferbarang.Size = New System.Drawing.Size(174, 24)
-        Me.txtgotransferbarang.TabIndex = 77
+        Me.txtgopenyesuaianstok.Location = New System.Drawing.Point(819, 13)
+        Me.txtgopenyesuaianstok.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtgopenyesuaianstok.Name = "txtgopenyesuaianstok"
+        Me.txtgopenyesuaianstok.Size = New System.Drawing.Size(174, 24)
+        Me.txtgopenyesuaianstok.TabIndex = 77
         '
         'btnbatal
         '
@@ -849,7 +849,7 @@ Partial Class fpenyesuaianstok
         Me.Controls.Add(Me.btncaripenyesuaian)
         Me.Controls.Add(Me.btnprev)
         Me.Controls.Add(Me.btnnext)
-        Me.Controls.Add(Me.txtgotransferbarang)
+        Me.Controls.Add(Me.txtgopenyesuaianstok)
         Me.Controls.Add(Me.btnbatal)
         Me.Controls.Add(Me.btngo)
         Me.Controls.Add(Me.btnbaru)
@@ -890,14 +890,14 @@ Partial Class fpenyesuaianstok
     Friend WithEvents txtnonota As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents Label17 As Label
-    Friend WithEvents dttransferbarang As DateTimePicker
+    Friend WithEvents dttransaksi As DateTimePicker
     Friend WithEvents cmbsales As ComboBox
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents txtketerangan As RichTextBox
     Friend WithEvents btncaripenyesuaian As Button
     Friend WithEvents btnprev As Button
     Friend WithEvents btnnext As Button
-    Friend WithEvents txtgotransferbarang As TextBox
+    Friend WithEvents txtgopenyesuaianstok As TextBox
     Friend WithEvents btnbatal As Button
     Friend WithEvents btngo As Button
     Friend WithEvents btnbaru As Button

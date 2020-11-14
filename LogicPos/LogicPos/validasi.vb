@@ -24,6 +24,8 @@
 
     'variable text go pada transfer barang
     Public tutupcaritransferbarang As Integer
+    'variable text go pada penyesuaian stok
+    Public tutupcaripenyesuaianstok As Integer
 
     '======================
     'pelunasan jual dan beli

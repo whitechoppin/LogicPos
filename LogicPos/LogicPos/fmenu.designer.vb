@@ -105,6 +105,8 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
+        Me.LaporanContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanPengirimanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -483,7 +485,7 @@ Partial Class fmenu
         '
         'KalkulasiExpedisiToolStripMenuItem
         '
-        Me.KalkulasiExpedisiToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContainerToolStripMenuItem, Me.PengirimanToolStripMenuItem})
+        Me.KalkulasiExpedisiToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContainerToolStripMenuItem, Me.PengirimanToolStripMenuItem, Me.LaporanContainerToolStripMenuItem, Me.LaporanPengirimanToolStripMenuItem})
         Me.KalkulasiExpedisiToolStripMenuItem.Name = "KalkulasiExpedisiToolStripMenuItem"
         Me.KalkulasiExpedisiToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.KalkulasiExpedisiToolStripMenuItem.Text = "Kalkulasi Expedisi"
@@ -491,13 +493,13 @@ Partial Class fmenu
         'ContainerToolStripMenuItem
         '
         Me.ContainerToolStripMenuItem.Name = "ContainerToolStripMenuItem"
-        Me.ContainerToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.ContainerToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
         Me.ContainerToolStripMenuItem.Text = "Container"
         '
         'PengirimanToolStripMenuItem
         '
         Me.PengirimanToolStripMenuItem.Name = "PengirimanToolStripMenuItem"
-        Me.PengirimanToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.PengirimanToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
         Me.PengirimanToolStripMenuItem.Text = "Pengiriman"
         '
         'KonfigurasiDatabaseToolStripMenuItem
@@ -627,6 +629,18 @@ Partial Class fmenu
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
         '
+        'LaporanContainerToolStripMenuItem
+        '
+        Me.LaporanContainerToolStripMenuItem.Name = "LaporanContainerToolStripMenuItem"
+        Me.LaporanContainerToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.LaporanContainerToolStripMenuItem.Text = "Laporan Container"
+        '
+        'LaporanPengirimanToolStripMenuItem
+        '
+        Me.LaporanPengirimanToolStripMenuItem.Name = "LaporanPengirimanToolStripMenuItem"
+        Me.LaporanPengirimanToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.LaporanPengirimanToolStripMenuItem.Text = "Laporan Pengiriman"
+        '
         'fmenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -732,4 +746,6 @@ Partial Class fmenu
     Friend WithEvents prefixnama As ToolStripStatusLabel
     Friend WithEvents prefixemail As ToolStripStatusLabel
     Friend WithEvents prefixjabatan As ToolStripStatusLabel
+    Friend WithEvents LaporanContainerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LaporanPengirimanToolStripMenuItem As ToolStripMenuItem
 End Class

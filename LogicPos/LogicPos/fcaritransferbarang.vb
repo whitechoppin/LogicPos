@@ -20,8 +20,8 @@ Public Class fcaritransferbarang
     End Sub
 
     Sub grid()
-        GridColumn1.Caption = "Kode"
-        GridColumn1.FieldName = "kode_transfer_barang"
+        GridColumn1.Caption = "id"
+        GridColumn1.FieldName = "id"
         GridColumn2.Caption = "Tanggal"
         GridColumn2.FieldName = "tanggal_transfer_barang"
         GridColumn3.Caption = "Dari Gudang"
@@ -86,10 +86,10 @@ Public Class fcaritransferbarang
 
     Sub tabel_lunas()
         Call gridlunas()
-        kode = Me.GridView1.GetFocusedRowCellValue("kode_transfer_barang")
+        kode = Me.GridView1.GetFocusedRowCellValue("id")
 
         Call koneksii()
-        sql = "SELECT * FROM tb_transfer_barang_detail WHERE kode_transfer_barang ='" & kode & "'"
+        sql = "SELECT * FROM tb_transfer_barang_detail WHERE transfer_barang_id ='" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read

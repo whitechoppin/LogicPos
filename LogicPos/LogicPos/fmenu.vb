@@ -401,16 +401,36 @@ Public Class fmenu
         End If
     End Sub
     Private Sub LMutasiBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LMutasiBarangToolStripMenuItem.Click
-        flaporanmutasibarang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_mutasi_barang
+        If masterstatus > 0 Then
+            flaporanmutasibarang.kodeakses = masterstatus
+            flaporanmutasibarang.Show()
+        End If
     End Sub
     Private Sub LPenyesuaianStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LPenyesuaianStokToolStripMenuItem.Click
-        flaporanpenyesuaianstok.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_penyesuaian_stok
+        If masterstatus > 0 Then
+            flaporanpenyesuaianstok.kodeakses = masterstatus
+            flaporanpenyesuaianstok.Show()
+        End If
     End Sub
     Private Sub LLabaRugiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LLabaRugiToolStripMenuItem.Click
-        flaporanlabarugi.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_laba_rugi
+        If masterstatus > 0 Then
+            flaporanlabarugi.kodeakses = masterstatus
+            flaporanlabarugi.Show()
+        End If
     End Sub
     Private Sub LRekapanAkhirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LRekapanAkhirToolStripMenuItem.Click
-        flaporanrekapanakhir.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.lap_rekapan_akhir
+        If masterstatus > 0 Then
+            flaporanrekapanakhir.kodeakses = masterstatus
+            flaporanrekapanakhir.Show()
+        End If
     End Sub
 
     'settings =============================================================================================================================
@@ -441,6 +461,14 @@ Public Class fmenu
     Private Sub PengirimanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PengirimanToolStripMenuItem.Click
         fkalkulasipengiriman.Show()
     End Sub
+
+    Private Sub LaporanContainerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanContainerToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub LaporanPengirimanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanPengirimanToolStripMenuItem.Click
+
+    End Sub
     Private Sub KonfigurasiDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KonfigurasiDatabaseToolStripMenuItem.Click
 
     End Sub
@@ -455,4 +483,5 @@ Public Class fmenu
     Private Sub TokoSejatiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TokoSejatiToolStripMenuItem.Click
         ftokosejati.Show()
     End Sub
+
 End Class

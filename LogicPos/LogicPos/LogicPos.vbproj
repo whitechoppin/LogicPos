@@ -163,6 +163,12 @@
       <DependentUpon>fakturpengiriman.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="fakturpenyesuaianstok.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fakturpenyesuaianstok.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="fakturpopembelian.vb">
       <DependentUpon>fakturpopembelian.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -732,6 +738,12 @@
       <DependentUpon>rptrekapexpedisi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptrekappenyesuaianstok.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekappenyesuaianstok.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptrekaptransaksikas.vb">
       <DependentUpon>rptrekaptransaksikas.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1090,6 +1102,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpengiriman.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="fakturpenyesuaianstok.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>fakturpenyesuaianstok.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="fakturpopembelian.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturpopembelian.vb</LastGenOutput>
@@ -1419,6 +1435,10 @@
     <EmbeddedResource Include="rptrekapexpedisi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapexpedisi.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekappenyesuaianstok.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekappenyesuaianstok.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekaptransaksikas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

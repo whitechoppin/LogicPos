@@ -289,7 +289,7 @@ Public Class fpenyesuaianstok
         'button navigations
         btnprev.Enabled = False
         btngo.Enabled = False
-        txtgotransferbarang.Enabled = False
+        txtgopenyesuaianstok.Enabled = False
         btncaripenyesuaian.Enabled = False
         btnnext.Enabled = False
 
@@ -312,8 +312,8 @@ Public Class fpenyesuaianstok
         cbprinted.Checked = False
         cbposted.Checked = False
 
-        dttransferbarang.Enabled = True
-        dttransferbarang.Value = Date.Now
+        dttransaksi.Enabled = True
+        dttransaksi.Value = Date.Now
 
 
         'body
@@ -331,9 +331,13 @@ Public Class fpenyesuaianstok
         lblsatuan.Text = "satuan"
 
         btntambah.Enabled = True
+        btnkurang.Enabled = True
 
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = True
+
+        GridControl2.Enabled = True
+        GridView2.OptionsBehavior.Editable = True
 
         'total tabel pembelian
         txtketerangan.Enabled = True
@@ -356,7 +360,7 @@ Public Class fpenyesuaianstok
         'button navigations
         btnprev.Enabled = False
         btngo.Enabled = False
-        txtgotransferbarang.Enabled = False
+        txtgopenyesuaianstok.Enabled = False
         btncaripenyesuaian.Enabled = False
         btnnext.Enabled = False
 
@@ -373,7 +377,7 @@ Public Class fpenyesuaianstok
         btncarigudang.Enabled = True
         txtgudang.Enabled = False
 
-        dttransferbarang.Enabled = True
+        dttransaksi.Enabled = True
 
         'body
         txtkodestok.Clear()
@@ -390,9 +394,13 @@ Public Class fpenyesuaianstok
         lblsatuan.Text = "satuan"
 
         btntambah.Enabled = True
+        btnkurang.Enabled = True
 
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = True
+
+        GridControl2.Enabled = True
+        GridView2.OptionsBehavior.Editable = True
 
         'total tabel pembelian
         txtketerangan.Enabled = True
@@ -411,7 +419,7 @@ Public Class fpenyesuaianstok
         'button navigations
         btnprev.Enabled = True
         btngo.Enabled = True
-        txtgotransferbarang.Enabled = True
+        txtgopenyesuaianstok.Enabled = True
         btncaripenyesuaian.Enabled = True
         btnnext.Enabled = True
 
@@ -430,8 +438,8 @@ Public Class fpenyesuaianstok
         btncarigudang.Enabled = False
         txtgudang.Enabled = False
 
-        dttransferbarang.Enabled = False
-        dttransferbarang.Value = Date.Now
+        dttransaksi.Enabled = False
+        dttransaksi.Value = Date.Now
 
         'body
         txtkodestok.Clear()
@@ -446,9 +454,13 @@ Public Class fpenyesuaianstok
         txtbanyak.Enabled = False
 
         btntambah.Enabled = False
+        btnkurang.Enabled = False
 
         GridControl1.Enabled = True
         GridView1.OptionsBehavior.Editable = False
+
+        GridControl2.Enabled = True
+        GridView2.OptionsBehavior.Editable = False
 
         Call tabel_utama()
 
@@ -481,7 +493,7 @@ Public Class fpenyesuaianstok
                 cbprinted.Checked = statusprint
                 cbposted.Checked = statusposted
 
-                dttransferbarang.Value = viewtgltransfer
+                dttransaksi.Value = viewtgltransfer
 
                 'isi tabel view pembelian
 
@@ -501,7 +513,7 @@ Public Class fpenyesuaianstok
             cbprinted.Checked = False
             cbposted.Checked = False
 
-            dttransferbarang.Value = Date.Now
+            dttransaksi.Value = Date.Now
 
             txtketerangan.Text = ""
         End If
@@ -607,11 +619,211 @@ Public Class fpenyesuaianstok
     End Sub
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
-        Call awalbaru()
+        If tambahstatus.Equals(True) Then
+            Call awalbaru()
+        Else
+            MsgBox("Tidak ada akses")
+        End If
+    End Sub
+
+    Sub proses()
+        Dim stok As Integer
+        Dim stokdatabase As Integer
+        Dim statusavailable As Boolean = True
+
+        For i As Integer = 0 To GridView1.RowCount - 1
+            sql = "SELECT * FROM tb_stok WHERE id = '" & GridView1.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader()
+            dr.Read()
+            If dr.HasRows Then
+                stok = GridView1.GetRowCellValue(i, "qty")
+                stokdatabase = dr("jumlah_stok")
+                If stokdatabase < stok Then
+                    MsgBox("Stok dengan kode stok " + dr("kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                    statusavailable = False
+                End If
+            Else
+                MsgBox("Kode Stok Barang ini " + GridView1.GetRowCellValue(i, "kode_stok") + " tidak ada di gudang.", MsgBoxStyle.Information, "Informasi")
+                statusavailable = False
+            End If
+        Next
+
+        If statusavailable = True Then
+            Call simpan()
+        End If
+    End Sub
+
+    Sub simpan()
+        Call koneksii()
+
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
+        Dim myTrans As OdbcTransaction
+
+        ' Start a local transaction
+        myTrans = cnnx.BeginTransaction()
+        myCommand.Connection = cnnx
+        myCommand.Transaction = myTrans
+
+        Try
+            sql = "INSERT INTO tb_penyesuaian_stok(gudang_id, user_id, tanggal_penyesuaian_stok, print_penyesuaian_stok, posted_penyesuaian_stok, keterangan_penyesuaian_stok, created_by, updated_by, date_created, last_updated) VALUES ('" & idgudang & "','" & iduser & "' , '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
+            cmmd = New OdbcCommand(sql, cnn)
+            idpenyesuaianstok = CInt(cmmd.ExecuteScalar())
+
+            For i As Integer = 0 To GridView1.RowCount - 1
+                myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok + '" & Val(GridView1.GetRowCellValue(i, "qty")) & "' WHERE id = '" & GridView1.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "'"
+                myCommand.ExecuteNonQuery()
+
+                myCommand.CommandText = "INSERT INTO tb_penyesuaian_stok_detail(penyesuaian_stok_id, barang_id, stok_id, kode_barang, kode_stok, nama_barang, satuan_barang, jenis_barang, qty, status_stok, created_by, updated_by,date_created, last_updated) VALUES ('" & idpenyesuaianstok & "','" & GridView1.GetRowCellValue(i, "barang_id") & "','" & GridView1.GetRowCellValue(i, "stok_id") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "','" & GridView1.GetRowCellValue(i, "kode_stok") & "','" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "satuan_barang") & "','" & GridView1.GetRowCellValue(i, "jenis_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "status_stok") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
+                myCommand.ExecuteNonQuery()
+            Next
+
+            For i As Integer = 0 To GridView2.RowCount - 1
+                myCommand.CommandText = "UPDATE tb_stok SET jumlah_stok = jumlah_stok - '" & Val(GridView2.GetRowCellValue(i, "qty")) & "' WHERE id = '" & GridView2.GetRowCellValue(i, "stok_id") & "' AND gudang_id ='" & idgudang & "'"
+                myCommand.ExecuteNonQuery()
+
+                myCommand.CommandText = "INSERT INTO tb_penyesuaian_stok_detail(penyesuaian_stok_id, barang_id, stok_id, kode_barang, kode_stok, nama_barang, satuan_barang, jenis_barang, qty, status_stok, created_by, updated_by,date_created, last_updated) VALUES ('" & idpenyesuaianstok & "','" & GridView2.GetRowCellValue(i, "barang_id") & "','" & GridView2.GetRowCellValue(i, "stok_id") & "','" & GridView2.GetRowCellValue(i, "kode_barang") & "','" & GridView2.GetRowCellValue(i, "kode_stok") & "','" & GridView2.GetRowCellValue(i, "nama_barang") & "','" & GridView2.GetRowCellValue(i, "satuan_barang") & "','" & GridView2.GetRowCellValue(i, "jenis_barang") & "','" & GridView2.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "status_stok") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
+                myCommand.ExecuteNonQuery()
+            Next
+
+            myTrans.Commit()
+            Console.WriteLine("Both records are written to database.")
+
+            'history user ==========
+            Call historysave("Menyimpan Data Penyesuaian Stok Kode " + idpenyesuaianstok, idpenyesuaianstok)
+            '========================
+            MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
+            Call inisialisasi(idpenyesuaianstok)
+        Catch e As Exception
+            Try
+                myTrans.Rollback()
+            Catch ex As OdbcException
+                If Not myTrans.Connection Is Nothing Then
+                    Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
+                End If
+            End Try
+
+            Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
+            Console.WriteLine("Neither record was written to database.")
+            MsgBox("Transaksi Gagal Dilakukan", MsgBoxStyle.Information, "Gagal")
+        End Try
     End Sub
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
+        If GridView1.DataRowCount > 0 Or GridView2.DataRowCount > 0 Then
+            If txtgudang.Text IsNot "" Then
+                If cmbsales.Text IsNot "" Then
+                    Call proses()
+                Else
+                    MsgBox("Isi Sales")
+                End If
+            Else
+                MsgBox("Isi Gudang")
+            End If
+        Else
+            MsgBox("Keranjang Masih Kosong")
+        End If
+    End Sub
 
+    Sub cetak_faktur()
+        'barcode
+        Dim tabel_barcode As New DataTable
+        Dim baris_barcode As DataRow
+
+        Dim writer As New BarcodeWriter
+        Dim barcode As Image
+        Dim ms As MemoryStream = New MemoryStream
+
+        With tabel_barcode
+            .Columns.Add("kode_barcode")
+            .Columns.Add("gambar_barcode", GetType(Byte()))
+        End With
+
+        baris_barcode = tabel_barcode.NewRow
+        baris_barcode("kode_barcode") = txtnonota.Text
+
+        writer.Options.Height = 200
+        writer.Options.Width = 200
+        writer.Format = BarcodeFormat.QR_CODE
+
+        barcode = writer.Write(txtnonota.Text)
+        barcode.Save(ms, Imaging.ImageFormat.Bmp)
+        ms.ToArray()
+
+        baris_barcode("gambar_barcode") = ms.ToArray
+        tabel_barcode.Rows.Add(baris_barcode)
+        '====================
+
+        Dim tabel_faktur As New DataTable
+        With tabel_faktur
+            .Columns.Add("kode_stok")
+            .Columns.Add("kode_barang")
+            .Columns.Add("nama_barang")
+            .Columns.Add("qty", GetType(Double))
+            .Columns.Add("satuan_barang")
+            .Columns.Add("jenis_barang")
+        End With
+
+        Dim baris As DataRow
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_faktur.NewRow
+            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+            baris("qty") = GridView1.GetRowCellValue(i, "banyak")
+            baris("satuan_barang") = GridView1.GetRowCellValue(i, "satuan_barang")
+            baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
+            tabel_faktur.Rows.Add(baris)
+        Next
+
+        rpt_faktur = New fakturtransferbarang
+        rpt_faktur.Database.Tables(0).SetDataSource(tabel_faktur)
+        rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
+
+        rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
+        rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
+
+        rpt_faktur.SetParameterValue("tanggal", Format(dttransaksi.Value, "dd MMMM yyyy HH:mm:ss").ToString)
+        rpt_faktur.SetParameterValue("penerima", fmenu.kodeuser.Text)
+        rpt_faktur.SetParameterValue("dari", txtgudang.Text)
+
+        SetReportPageSize("Faktur", 1)
+        rpt_faktur.PrintToPrinter(1, False, 0, 0)
+
+    End Sub
+    Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
+        Dim faktur As String
+        Call koneksii()
+        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        If dr.HasRows Then
+            faktur = dr("nama_printer")
+        Else
+            faktur = ""
+        End If
+
+        Try
+            Dim ObjPrinterSetting As New System.Drawing.Printing.PrinterSettings
+            Dim PkSize As New System.Drawing.Printing.PaperSize
+            ObjPrinterSetting.PrinterName = faktur
+            For i As Integer = 0 To ObjPrinterSetting.PaperSizes.Count - 1
+                If ObjPrinterSetting.PaperSizes.Item(i).PaperName = mPaperSize.Trim Then
+                    PkSize = ObjPrinterSetting.PaperSizes.Item(i)
+                    Exit For
+                End If
+            Next
+
+            If PkSize IsNot Nothing Then
+                Dim myAppPrintOptions As CrystalDecisions.CrystalReports.Engine.PrintOptions = rpt_faktur.PrintOptions
+                myAppPrintOptions.PrinterName = faktur
+                myAppPrintOptions.PaperSize = CType(PkSize.RawKind, CrystalDecisions.Shared.PaperSize)
+                rpt_faktur.PrintOptions.PaperOrientation = IIf(PaperOrientation = 1, CrystalDecisions.Shared.PaperOrientation.Portrait, CrystalDecisions.Shared.PaperOrientation.Landscape)
+            End If
+            PkSize = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
@@ -623,19 +835,32 @@ Public Class fpenyesuaianstok
     End Sub
 
     Private Sub btnprev_Click(sender As Object, e As EventArgs) Handles btnprev.Click
-
+        Call prevnumber(txtnonota.Text)
     End Sub
 
     Private Sub btncaripenyesuaian_Click(sender As Object, e As EventArgs) Handles btncaripenyesuaian.Click
-
+        tutupcaripenyesuaianstok = 1
+        fcaripenyesuaianstok.ShowDialog()
     End Sub
 
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click
-
+        If txtgopenyesuaianstok.Text = "" Then
+            MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+        Else
+            Call koneksii()
+            sql = "SELECT id FROM tb_penyesuaian_stok WHERE id= '" & txtgopenyesuaianstok.Text & "' LIMIT 1"
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+            If dr.HasRows Then
+                Call inisialisasi(txtgopenyesuaianstok.Text)
+            Else
+                MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
+            End If
+        End If
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
-
+        Call nextnumber(txtnonota.Text)
     End Sub
 
     Private Sub cmbsales_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsales.SelectedIndexChanged
