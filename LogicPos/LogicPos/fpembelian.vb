@@ -5,6 +5,8 @@ Imports ZXing
 Imports System.IO
 
 Public Class fpembelian
+    Public namaform As String = "transaksi-pembelian"
+
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
@@ -101,7 +103,7 @@ Public Class fpembelian
                 printstatus = True
         End Select
 
-        Call historysave("Membuka Transaksi Pembelian", "N/A")
+        Call historysave("Membuka Transaksi Pembelian", "N/A", namaform)
     End Sub
     Function currentnumber()
         Call koneksii()
@@ -905,7 +907,7 @@ Public Class fpembelian
 
             MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
             'history user ==========
-            Call historysave("Menyimpan Data Pembelian Kode " + idpembelian, idpembelian)
+            Call historysave("Menyimpan Data Pembelian Kode " + idpembelian, idpembelian, namaform)
             '========================
             Call inisialisasi(idpembelian)
 
@@ -963,7 +965,7 @@ Public Class fpembelian
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
             If cbvoid.Checked = False Then
-                If cekcetakan(txtnonota.Text).Equals(True) Then
+                If cekcetakan(txtnonota.Text, namaform).Equals(True) Then
                     statusizincetak = False
                     passwordid = 6
                     fpassword.kodetabel = txtnonota.Text
@@ -978,7 +980,7 @@ Public Class fpembelian
                             dr = cmmd.ExecuteReader()
 
                             'history user ==========
-                            Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
+                            Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text, namaform)
                             '========================
 
                             cbprinted.Checked = True
@@ -991,7 +993,7 @@ Public Class fpembelian
                             dr = cmmd.ExecuteReader()
 
                             'history user ==========
-                            Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
+                            Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text, namaform)
                             '========================
 
                             cbprinted.Checked = True
@@ -1007,7 +1009,7 @@ Public Class fpembelian
                         dr = cmmd.ExecuteReader()
 
                         'history user ==========
-                        Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
+                        Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text, namaform)
                         '========================
 
                         cbprinted.Checked = True
@@ -1020,7 +1022,7 @@ Public Class fpembelian
                         dr = cmmd.ExecuteReader()
 
                         'history user ==========
-                        Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text)
+                        Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text, namaform)
                         '========================
 
                         cbprinted.Checked = True
@@ -1514,7 +1516,7 @@ Public Class fpembelian
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Mengedit Data Pembelian Kode " + nomornota.ToString, nomornota)
+            Call historysave("Mengedit Data Pembelian Kode " + nomornota.ToString, nomornota, namaform)
             '========================
             MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(nomornota)

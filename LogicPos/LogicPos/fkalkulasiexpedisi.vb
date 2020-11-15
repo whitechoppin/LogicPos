@@ -3,6 +3,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.Utils
 
 Public Class fkalkulasiexpedisi
+    Public namaform As String = "tools-kalkulasi_expedisi"
+
     Dim hitnumber As Integer
     Public tabel As DataTable
     'variabel dalam expedisi
@@ -685,7 +687,7 @@ Public Class fkalkulasiexpedisi
                 MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Sukses")
 
                 'history user ==========
-                Call historysave("Menyimpan Data Pengiriman Container Kode " + kodepengiriman, kodepengiriman)
+                Call historysave("Menyimpan Data Pengiriman Container Kode " + kodepengiriman, kodepengiriman, namaform)
                 '========================
 
                 Call inisialisasi(kodepengiriman)
@@ -836,7 +838,7 @@ Public Class fkalkulasiexpedisi
 
         cbprinted.Checked = True
 
-        Call historysave("Mencetak Data Expedisi Kode " + txtnonota.Text, txtnonota.Text)
+        Call historysave("Mencetak Data Expedisi Kode " + txtnonota.Text, txtnonota.Text, namaform)
     End Sub
 
     Sub perbarui(nomornota As String)
@@ -876,7 +878,7 @@ Public Class fkalkulasiexpedisi
                 Console.WriteLine("Both records are written to database.")
 
                 'history user ==========
-                Call historysave("Mengedit Data Pengiriman Kode " + nomornota, nomornota)
+                Call historysave("Mengedit Data Pengiriman Kode " + nomornota, nomornota, namaform)
                 '========================
 
                 MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")

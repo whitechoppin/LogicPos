@@ -8,6 +8,8 @@ Imports System.Drawing.Drawing2D
 Imports ZXing
 
 Public Class fpenjualan
+    Public namaform As String = "transaksi-penjualan"
+
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
@@ -103,7 +105,7 @@ Public Class fpenjualan
                 printstatus = True
         End Select
 
-        Call historysave("Membuka Transaksi Penjualan", "N/A")
+        Call historysave("Membuka Transaksi Penjualan", "N/A", namaform)
     End Sub
 
     Function currentnumber()
@@ -1040,7 +1042,7 @@ Public Class fpenjualan
         If printstatus.Equals(True) Then
             If cbvoid.Checked = False Then
 
-                If cekcetakan(txtnonota.Text).Equals(True) Then
+                If cekcetakan(txtnonota.Text, namaform).Equals(True) Then
                     statusizincetak = False
                     passwordid = 7
                     fpassword.kodetabel = txtnonota.Text
@@ -1112,7 +1114,7 @@ Public Class fpenjualan
                 End If
 
                 'history user ==========
-                Call historysave("Mencetak Data Penjualan Kode " + txtnonota.Text, txtnonota.Text)
+                Call historysave("Mencetak Data Penjualan Kode " + txtnonota.Text, txtnonota.Text, namaform)
                 '========================
             Else
                 MsgBox("Nota sudah void !")
@@ -2238,7 +2240,7 @@ Public Class fpenjualan
 
             MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
             'history user ==========
-            Call historysave("Menyimpan Data Penjualan Kode " + idpenjualan, idpenjualan)
+            Call historysave("Menyimpan Data Penjualan Kode " + idpenjualan, idpenjualan, namaform)
             '========================
             Call inisialisasi(idpenjualan)
 
@@ -2370,7 +2372,7 @@ Public Class fpenjualan
                 Console.WriteLine("Both records are written to database.")
 
                 'history user ==========
-                Call historysave("Mengedit Data Penjualan Kode " + nomornota.ToString, nomornota)
+                Call historysave("Mengedit Data Penjualan Kode " + nomornota.ToString, nomornota, namaform)
                 '========================
                 MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
                 Call inisialisasi(nomornota)

@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 
 Public Class frekeningsupplier
+    Public namaform As String = "master-rekening_supplier"
+
     Public idsupplier, idrekening, norekening As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
@@ -37,6 +39,8 @@ Public Class frekeningsupplier
                 editstatus = True
                 hapusstatus = True
         End Select
+
+        Call historysave("Membuka Master Rekening Supplier", "N/A", namaform)
     End Sub
     Sub awal()
         txtnamabank.Enabled = False
@@ -117,7 +121,7 @@ Public Class frekeningsupplier
                 btntambah.Text = "Tambah"
 
                 'history user ===========
-                Call historysave("Menyimpan Data Rekening Supplier Nomor Rekening" + txtnorekening.Text, txtnorekening.Text)
+                Call historysave("Menyimpan Data Rekening Supplier Nomor Rekening" + txtnorekening.Text, txtnorekening.Text, namaform)
                 '========================
                 Me.Refresh()
                 Call awal()
@@ -177,7 +181,7 @@ Public Class frekeningsupplier
                     MessageBox.Show("Rekening " + txtnorekening.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     'history user ===========
-                    Call historysave("Menghapus Data Rekening Supplier Nomor Rekening" + txtnorekening.Text, txtnorekening.Text)
+                    Call historysave("Menghapus Data Rekening Supplier Nomor Rekening" + txtnorekening.Text, txtnorekening.Text, namaform)
                     '========================
 
                     Me.Refresh()
@@ -244,7 +248,7 @@ Public Class frekeningsupplier
             btnedit.Text = "Edit"
 
             'history user ==========
-            Call historysave("Mengedit Data Rekening Supplier Nomor Rekening " + txtnorekening.Text, txtnorekening.Text)
+            Call historysave("Mengedit Data Rekening Supplier Nomor Rekening " + txtnorekening.Text, txtnorekening.Text, namaform)
             '=======================
 
             Me.Refresh()

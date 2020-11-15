@@ -4,6 +4,8 @@ Imports DevExpress.Utils
 Imports ZXing
 
 Public Class ftransferbarang
+    Public namaform As String = "transaksi-transfer_barang"
+
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
@@ -86,7 +88,7 @@ Public Class ftransferbarang
                 printstatus = True
         End Select
 
-        Call historysave("Membuka Transaksi Transfer Barang", "N/A")
+        Call historysave("Membuka Transaksi Transfer Barang", "N/A", namaform)
     End Sub
 
     'Function autonumber()
@@ -725,7 +727,7 @@ Public Class ftransferbarang
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
 
-            If cekcetakan(txtnonota.Text).Equals(True) Then
+            If cekcetakan(txtnonota.Text, namaform).Equals(True) Then
                 statusizincetak = False
                 passwordid = 12
                 fpassword.kodetabel = txtnonota.Text
@@ -738,7 +740,7 @@ Public Class ftransferbarang
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Mencetak Data Transfer Barang Kode " + txtnonota.Text, txtnonota.Text)
+                    Call historysave("Mencetak Data Transfer Barang Kode " + txtnonota.Text, txtnonota.Text, namaform)
                     '========================
 
                     cbprinted.Checked = True
@@ -751,7 +753,7 @@ Public Class ftransferbarang
                 dr = cmmd.ExecuteReader()
 
                 'history user ==========
-                Call historysave("Mencetak Data Transfer Barang Kode " & txtnonota.Text, txtnonota.Text)
+                Call historysave("Mencetak Data Transfer Barang Kode " & txtnonota.Text, txtnonota.Text, namaform)
                 '========================
 
                 cbprinted.Checked = True
@@ -1111,7 +1113,7 @@ Public Class ftransferbarang
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Menyimpan Data Transfer Barang Kode " + idtransferbarang, idtransferbarang)
+            Call historysave("Menyimpan Data Transfer Barang Kode " + idtransferbarang, idtransferbarang, namaform)
             '========================
             MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(idtransferbarang)
@@ -1273,7 +1275,7 @@ Public Class ftransferbarang
                 Console.WriteLine("Both records are written to database.")
 
                 'history user ==========
-                Call historysave("Mengedit Data Transfer Barang Kode " & txtnonota.Text, txtnonota.Text)
+                Call historysave("Mengedit Data Transfer Barang Kode " & txtnonota.Text, txtnonota.Text, namaform)
                 '=======================
                 MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
                 Call inisialisasi(txtnonota.Text)

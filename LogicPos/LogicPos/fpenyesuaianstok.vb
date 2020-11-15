@@ -4,6 +4,8 @@ Imports DevExpress.Utils
 Imports ZXing
 
 Public Class fpenyesuaianstok
+    Public namaform As String = "transaksi-penyesuaian_stok"
+
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
@@ -615,7 +617,7 @@ Public Class fpenyesuaianstok
                 printstatus = True
         End Select
 
-        Call historysave("Membuka Transaksi Penyesuaian Stok", "N/A")
+        Call historysave("Membuka Transaksi Penyesuaian Stok", "N/A", namaform)
     End Sub
 
     Private Sub btnbaru_Click(sender As Object, e As EventArgs) Handles btnbaru.Click
@@ -690,7 +692,7 @@ Public Class fpenyesuaianstok
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Menyimpan Data Penyesuaian Stok Kode " + idpenyesuaianstok, idpenyesuaianstok)
+            Call historysave("Menyimpan Data Penyesuaian Stok Kode " + idpenyesuaianstok, idpenyesuaianstok, namaform)
             '========================
             MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(idpenyesuaianstok)

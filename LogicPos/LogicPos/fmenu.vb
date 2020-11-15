@@ -1,5 +1,6 @@
 ﻿Imports System.Data.Odbc
 Public Class fmenu
+    Public namaform As String = "menu"
     Private Sub main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         statustgl.Text = Now.ToLongDateString
         Timer.Start()
@@ -7,7 +8,7 @@ Public Class fmenu
         fjatuhtempopenjualan.Show()
         fnotifikasistok.Show()
 
-        Call historysave("User Login Program", Me.namauser.Text)
+        Call historysave("User Login Program", Me.namauser.Text, namaform)
     End Sub
     Public Sub ActiveMdiChild_FormClosed(sender As Object)
         TryCast(TryCast(sender, Form).Tag, TabPage).Dispose()
@@ -118,7 +119,7 @@ Public Class fmenu
         End If
     End Sub
     Private Sub LogOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOutToolStripMenuItem.Click
-        Call historysave("User Log Out Program", "N/A")
+        Call historysave("User Log Out Program", "N/A", namaform)
 
         Me.Hide()
 
@@ -128,7 +129,7 @@ Public Class fmenu
     End Sub
 
     Private Sub ExitStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitStripMenuItem.Click
-        Call historysave("User Close Program", Me.namauser.Text)
+        Call historysave("User Close Program", Me.namauser.Text, namaform)
         Me.Close()
         Me.Dispose()
         Application.Exit()

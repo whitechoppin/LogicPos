@@ -3,6 +3,8 @@ Imports System.Drawing.Drawing2D
 Imports System.IO
 
 Public Class fperusahaan
+    Public namaform As String = "tools-info_perusahaan"
+
     Dim namaawal, namaakhir As String
     Dim alamatawal, alamatakhir As String
     Dim telpawal, telpakhir As String
@@ -12,7 +14,7 @@ Public Class fperusahaan
     Private Sub falamat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
         Call awal()
-        Call historysave("Membuka Setting Alamat", "N/A")
+        Call historysave("Membuka Setting Alamat", "N/A", namaform)
     End Sub
 
     Private Sub falamat_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -141,6 +143,6 @@ Public Class fperusahaan
 
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         Call simpan()
-        Call historysave("Mengupdate Setting Alamat", "N/A")
+        Call historysave("Mengupdate Setting Alamat", "N/A", namaform)
     End Sub
 End Class

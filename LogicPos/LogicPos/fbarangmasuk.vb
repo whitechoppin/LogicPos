@@ -3,6 +3,8 @@ Imports System.IO
 Imports ZXing
 
 Public Class fbarangmasuk
+    Public namaform As String = "master-barang_masuk"
+
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
@@ -87,7 +89,7 @@ Public Class fbarangmasuk
                 printstatus = True
         End Select
 
-        Call historysave("Membuka Transaksi Barang Masuk", "N/A")
+        Call historysave("Membuka Transaksi Barang Masuk", "N/A", namaform)
     End Sub
 
     Function currentnumber()
@@ -715,7 +717,7 @@ Public Class fbarangmasuk
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Menyimpan Data Barang Masuk Kode " + idbarangmasuk, idbarangmasuk)
+            Call historysave("Menyimpan Data Barang Masuk Kode " + idbarangmasuk, idbarangmasuk, namaform)
             '========================
             MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(idbarangmasuk)
@@ -757,7 +759,7 @@ Public Class fbarangmasuk
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
-            If cekcetakan(txtnonota.Text).Equals(True) Then
+            If cekcetakan(txtnonota.Text, namaform).Equals(True) Then
                 statusizincetak = False
                 passwordid = 10
                 fpassword.kodetabel = txtnonota.Text
@@ -770,7 +772,7 @@ Public Class fbarangmasuk
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Mencetak Data Barang Masuk Kode " + txtnonota.Text, txtnonota.Text)
+                    Call historysave("Mencetak Data Barang Masuk Kode " + txtnonota.Text, txtnonota.Text, namaform)
                     '========================
 
                     cbprinted.Checked = True
@@ -783,7 +785,7 @@ Public Class fbarangmasuk
                 dr = cmmd.ExecuteReader()
 
                 'history user ==========
-                Call historysave("Mencetak Data Barang Masuk Kode " + txtnonota.Text, txtnonota.Text)
+                Call historysave("Mencetak Data Barang Masuk Kode " + txtnonota.Text, txtnonota.Text, namaform)
                 '========================
 
                 cbprinted.Checked = True
@@ -992,7 +994,7 @@ Public Class fbarangmasuk
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Mengedit Data Barang Masuk Kode " + nomornota, nomornota)
+            Call historysave("Mengedit Data Barang Masuk Kode " + nomornota, nomornota, namaform)
             '========================
             MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(nomornota)

@@ -5,6 +5,8 @@ Imports DevExpress.Utils
 Imports ZXing
 
 Public Class flunasutang
+    Public namaform As String = "administrasi-lunas_utang"
+
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim kode As String
@@ -96,7 +98,7 @@ Public Class flunasutang
                 printstatus = True
         End Select
 
-        Call historysave("Membuka Administrasi Lunas Utang", "N/A")
+        Call historysave("Membuka Administrasi Lunas Utang", "N/A", namaform)
     End Sub
 
     Sub comboboxuser()
@@ -714,7 +716,7 @@ Public Class flunasutang
             Me.Refresh()
 
             'history user ==========
-            Call historysave("Menyimpan Data Lunas Utang Kode " & idlunasutang, idlunasutang)
+            Call historysave("Menyimpan Data Lunas Utang Kode " & idlunasutang, idlunasutang, namaform)
             '========================
             'kodelunasutang = txtnolunasutang.Text
             Call inisialisasi(idlunasutang)
@@ -769,7 +771,7 @@ Public Class flunasutang
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
 
-            If cekcetakan(txtnolunasutang.Text).Equals(True) Then
+            If cekcetakan(txtnolunasutang.Text, namaform).Equals(True) Then
                 statusizincetak = False
                 passwordid = 13
                 fpassword.kodetabel = txtnolunasutang.Text
@@ -782,7 +784,7 @@ Public Class flunasutang
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Mencetak Data Lunas Utang Kode " & txtnolunasutang.Text, txtnolunasutang.Text)
+                    Call historysave("Mencetak Data Lunas Utang Kode " & txtnolunasutang.Text, txtnolunasutang.Text, namaform)
                     '========================
 
                     cbprinted.Checked = True
@@ -795,7 +797,7 @@ Public Class flunasutang
                 dr = cmmd.ExecuteReader()
 
                 'history user ==========
-                Call historysave("Mencetak Data Lunas Utang Kode " & txtnolunasutang.Text, txtnolunasutang.Text)
+                Call historysave("Mencetak Data Lunas Utang Kode " & txtnolunasutang.Text, txtnolunasutang.Text, namaform)
                 '========================
 
                 cbprinted.Checked = True
@@ -1013,7 +1015,7 @@ Public Class flunasutang
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Mengedit Data Lunas Utang Kode " & nomornota, nomornota)
+            Call historysave("Mengedit Data Lunas Utang Kode " & nomornota, nomornota, namaform)
             '========================
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "Edit"

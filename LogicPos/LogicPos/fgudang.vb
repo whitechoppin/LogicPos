@@ -2,6 +2,8 @@
 Imports System.Drawing.Drawing2D
 Imports System.IO
 Public Class fgudang
+    Public namaform As String = "master-gudang"
+
     Dim idgudangedit, kodegudangedit As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
@@ -61,7 +63,7 @@ Public Class fgudang
                 hapusstatus = True
         End Select
 
-        Call historysave("Membuka Master Gudang", "N/A")
+        Call historysave("Membuka Master Gudang", "N/A", namaform)
     End Sub
 
     Private Sub fgudang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -233,7 +235,7 @@ Public Class fgudang
                 Me.Refresh()
 
                 'history user ==========
-                Call historysave("Menyimpan Data Gudang Kode " + txtkode.Text, txtkode.Text)
+                Call historysave("Menyimpan Data Gudang Kode " + txtkode.Text, txtkode.Text, namaform)
                 '=======================
                 Call awal()
             Catch ex As Exception
@@ -295,7 +297,7 @@ Public Class fgudang
             btnedit.Text = "Edit"
 
             'history user ==========
-            Call historysave("Mengedit Data Gudang Kode " + txtkode.Text, txtkode.Text)
+            Call historysave("Mengedit Data Gudang Kode " + txtkode.Text, txtkode.Text, namaform)
             '=======================
             Me.Refresh()
             Call awal()
@@ -334,7 +336,7 @@ Public Class fgudang
                     MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     'history user ===========
-                    Call historysave("Menghapus Data Gudang Kode" + txtkode.Text, txtkode.Text)
+                    Call historysave("Menghapus Data Gudang Kode" + txtkode.Text, txtkode.Text, namaform)
                     '========================
                     Me.Refresh()
                     Call awal()

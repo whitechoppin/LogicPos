@@ -3,6 +3,8 @@ Imports System.IO
 Imports ZXing
 
 Public Class fkasmasuk
+    Public namaform As String = "administrasi-kas_masuk"
+
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
@@ -77,7 +79,7 @@ Public Class fkasmasuk
                 printstatus = True
         End Select
 
-        Call historysave("Membuka Administrasi Kas Masuk", "N/A")
+        Call historysave("Membuka Administrasi Kas Masuk", "N/A", namaform)
     End Sub
 
     Sub comboboxuser()
@@ -260,7 +262,7 @@ Public Class fkasmasuk
         End If
 
         'history user ==========
-        Call historysave("Menyimpan Data Kas Masuk Kode " & idkasmasuk, idkasmasuk)
+        Call historysave("Menyimpan Data Kas Masuk Kode " & idkasmasuk, idkasmasuk, namaform)
         '========================
         MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
 
@@ -294,7 +296,7 @@ Public Class fkasmasuk
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Mengedit Data Kas Masuk Kode " & idkasmasuk, idkasmasuk)
+            Call historysave("Mengedit Data Kas Masuk Kode " & idkasmasuk, idkasmasuk, namaform)
             '========================
 
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
@@ -357,7 +359,7 @@ Public Class fkasmasuk
                 dr = cmmd.ExecuteReader
 
                 'history user ==========
-                Call historysave("Menghapus Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
+                Call historysave("Menghapus Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text, namaform)
                 '========================
 
                 MessageBox.Show(txtkodemasuk.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -376,7 +378,7 @@ Public Class fkasmasuk
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
-            If cekcetakan(txtkodemasuk.Text).Equals(True) Then
+            If cekcetakan(txtkodemasuk.Text, namaform).Equals(True) Then
                 statusizincetak = False
                 passwordid = 15
                 fpassword.kodetabel = txtkodemasuk.Text
@@ -389,7 +391,7 @@ Public Class fkasmasuk
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Mencetak Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
+                    Call historysave("Mencetak Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text, namaform)
                     '========================
 
                     cbprinted.Checked = True
@@ -403,7 +405,7 @@ Public Class fkasmasuk
                 dr = cmmd.ExecuteReader()
 
                 'history user ==========
-                Call historysave("Mencetak Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text)
+                Call historysave("Mencetak Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text, namaform)
                 '========================
 
                 cbprinted.Checked = True
@@ -451,7 +453,7 @@ Public Class fkasmasuk
         rpt_faktur.SetParameterValue("saldo", saldomasuk)
         rpt_faktur.SetParameterValue("tanggal", Format(dttransaksi.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
-        rpt_faktur.SetParameterValue("penerima", fmenu.kodeuser.text)
+        rpt_faktur.SetParameterValue("penerima", fmenu.kodeuser.Text)
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)

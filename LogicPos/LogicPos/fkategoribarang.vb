@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fkategoribarang
+    Public namaform As String = "master-kategori_barang"
+
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
     Dim idkategoriedit, kodekategoriedit As String
@@ -61,7 +63,7 @@ Public Class fkategoribarang
                 hapusstatus = True
         End Select
 
-        Call historysave("Membuka Master Kategori Barang", "N/A")
+        Call historysave("Membuka Master Kategori Barang", "N/A", namaform)
     End Sub
 
     Sub awal()
@@ -154,7 +156,7 @@ Public Class fkategoribarang
                 Me.Refresh()
 
                 'history user ==========
-                Call historysave("Menyimpan Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
+                Call historysave("Menyimpan Data Kategory Barang kode " + txtkode.Text, txtkode.Text, namaform)
                 '=======================
                 Call awal()
             Catch ex As Exception
@@ -218,7 +220,7 @@ Public Class fkategoribarang
             btnedit.Text = "Edit"
 
             'history user ==========
-            Call historysave("Mengedit Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
+            Call historysave("Mengedit Data Kategory Barang kode " + txtkode.Text, txtkode.Text, namaform)
             '=======================
             Me.Refresh()
             Call awal()
@@ -266,7 +268,7 @@ Public Class fkategoribarang
                     MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     'history user ===========
-                    Call historysave("Menghapus Data Kategory Barang kode " + txtkode.Text, txtkode.Text)
+                    Call historysave("Menghapus Data Kategory Barang kode " + txtkode.Text, txtkode.Text, namaform)
                     '========================
                     Me.Refresh()
                     Call awal()

@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fpricelist
+    Public namaform As String = "master-pricelist"
+
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
 
@@ -64,7 +66,7 @@ Public Class fpricelist
                 hapusstatus = True
         End Select
 
-        Call historysave("Membuka Master Pricelist", "N/A")
+        Call historysave("Membuka Master Pricelist", "N/A", namaform)
     End Sub
     Sub awal()
         Call comboboxpelanggan()
@@ -249,7 +251,7 @@ Public Class fpricelist
                 dr = cmmd.ExecuteReader
 
                 'history user ==========
-                Call historysave("Menyimpan Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + cmbpelanggan.Text, txtkode.Text)
+                Call historysave("Menyimpan Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + cmbpelanggan.Text, txtkode.Text, namaform)
                 '========================
 
                 Call resetbarang()
@@ -270,7 +272,7 @@ Public Class fpricelist
             dr = cmmd.ExecuteReader
 
             'history user ==========
-            Call historysave("Mengedit Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + cmbpelanggan.Text, txtkode.Text)
+            Call historysave("Mengedit Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + cmbpelanggan.Text, txtkode.Text, namaform)
             '========================
 
             Call resetbarang()
@@ -328,7 +330,7 @@ Public Class fpricelist
                 MessageBox.Show(txtnama.Text + " Berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 'history user ==========
-                Call historysave("Menghapus Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + cmbpelanggan.Text, txtkode.Text)
+                Call historysave("Menghapus Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + cmbpelanggan.Text, txtkode.Text, namaform)
                 '========================
                 Me.Refresh()
                 Call awal()

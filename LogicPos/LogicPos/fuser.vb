@@ -1536,7 +1536,7 @@ Public Class fuser
                 MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Berhasil")
                 btntambah.Text = "Tambah"
 
-                Call historysave("Menyimpan Data User kode " + txtkode.Text, txtkode.Text)
+                Call historysave("Menyimpan Data User kode " + txtkode.Text, txtkode.Text, "master-user")
 
                 Me.Refresh()
                 Call awal()
@@ -1712,7 +1712,7 @@ Public Class fuser
                     dr = cmmd.ExecuteReader
                     MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                    Call historysave("Menghapus Data User kode " + txtkode.Text, txtkode.Text)
+                    Call historysave("Menghapus Data User kode " + txtkode.Text, txtkode.Text, "master-user")
 
                     Me.Refresh()
                     Call awal()

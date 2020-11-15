@@ -4,6 +4,8 @@ Imports System.Drawing.Drawing2D
 Imports System.IO
 
 Public Class fbarang
+    Public namaform As String = "master-barang"
+
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
     Dim hargabarang, modalbarang As Double
@@ -65,7 +67,7 @@ Public Class fbarang
                 hapusstatus = True
         End Select
 
-        Call historysave("Membuka Master Barang", "N/A")
+        Call historysave("Membuka Master Barang", "N/A", namaform)
     End Sub
 
     Sub awal()
@@ -261,7 +263,7 @@ Public Class fbarang
                 MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
 
                 'history user ==========
-                Call historysave("Menyimpan Data Barang Kode " + txtkode.Text, txtkode.Text)
+                Call historysave("Menyimpan Data Barang Kode " + txtkode.Text, txtkode.Text, namaform)
                 '========================
 
                 btntambah.Text = "Tambah"
@@ -406,7 +408,7 @@ Public Class fbarang
             btnedit.Text = "Edit"
 
             'history user ==========
-            Call historysave("Mengedit Data Barang Kode " + txtkode.Text, txtkode.Text)
+            Call historysave("Mengedit Data Barang Kode " + txtkode.Text, txtkode.Text, namaform)
             '========================
 
             Me.Refresh()
@@ -455,7 +457,7 @@ Public Class fbarang
                     MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     'history user ===========
-                    Call historysave("Menghapus Data Barang Kode" + txtkode.Text, txtkode.Text)
+                    Call historysave("Menghapus Data Barang Kode" + txtkode.Text, txtkode.Text, namaform)
                     '========================
                     Me.Refresh()
                     Call awal()

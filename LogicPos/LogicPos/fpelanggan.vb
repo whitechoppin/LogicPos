@@ -2,6 +2,8 @@
 Imports System.Drawing.Drawing2D
 Imports System.IO
 Public Class fpelanggan
+    Public namaform As String = "master-pelanggan"
+
     Dim idpelanggan, kodepelanggan, namapelanggan, alamatpelanggan, teleponpelanggan, keteranganpelanggan As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
@@ -61,7 +63,7 @@ Public Class fpelanggan
                 hapusstatus = True
         End Select
 
-        Call historysave("Membuka Master Customer", "N/A")
+        Call historysave("Membuka Master Customer", "N/A", namaform)
     End Sub
 
     Private Sub fpelanggan_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -237,8 +239,8 @@ Public Class fpelanggan
                 cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
                 cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
                 cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
-                cmmd.Parameters.AddWithValue("@created_by", fmenu.kodeuser.text)
-                cmmd.Parameters.AddWithValue("@updated_by", fmenu.kodeuser.text)
+                cmmd.Parameters.AddWithValue("@created_by", fmenu.kodeuser.Text)
+                cmmd.Parameters.AddWithValue("@updated_by", fmenu.kodeuser.Text)
                 cmmd.Parameters.AddWithValue("@date_created", Date.Now)
                 cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
                 cmmd.ExecuteNonQuery()
@@ -246,7 +248,7 @@ Public Class fpelanggan
                 MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
 
                 'history user ==========
-                Call historysave("Menyimpan Data Customer Kode " + txtkode.Text, txtkode.Text)
+                Call historysave("Menyimpan Data Customer Kode " + txtkode.Text, txtkode.Text, namaform)
                 '========================
                 btntambah.Text = "Tambah"
                 Me.Refresh()
@@ -336,7 +338,7 @@ Public Class fpelanggan
             cmmd.Parameters.AddWithValue("@telepon_pelanggan", txttelp.Text)
             cmmd.Parameters.AddWithValue("@keterangan_pelanggan", txtketerangan.Text)
             cmmd.Parameters.AddWithValue("@foto_pelanggan", ms.ToArray)
-            cmmd.Parameters.AddWithValue("@updated_by", fmenu.kodeuser.text)
+            cmmd.Parameters.AddWithValue("@updated_by", fmenu.kodeuser.Text)
             cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
             cmmd.ExecuteNonQuery()
 
@@ -344,7 +346,7 @@ Public Class fpelanggan
             btnedit.Text = "Edit"
 
             'history user ===========
-            Call historysave("Mengedit Data Pelanggan Kode " + txtkode.Text, txtkode.Text)
+            Call historysave("Mengedit Data Pelanggan Kode " + txtkode.Text, txtkode.Text, namaform)
             '========================
 
             Me.Refresh()
@@ -368,7 +370,7 @@ Public Class fpelanggan
                     MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     'history user ===========
-                    Call historysave("Menghapus Data Customer Kode" + txtkode.Text, txtkode.Text)
+                    Call historysave("Menghapus Data Customer Kode" + txtkode.Text, txtkode.Text, namaform)
                     '========================
                     Me.Refresh()
                     Call awal()

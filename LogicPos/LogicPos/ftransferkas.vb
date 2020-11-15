@@ -3,6 +3,8 @@ Imports System.IO
 Imports ZXing
 
 Public Class ftransferkas
+    Public namaform As String = "administrasi-transfer_kas"
+
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
@@ -68,6 +70,8 @@ Public Class ftransferkas
                 editstatus = True
                 printstatus = True
         End Select
+
+        Call historysave("Membuka Administrasi Transfer Kas", "N/A", namaform)
     End Sub
 
     Sub comboboxuser()
@@ -255,6 +259,8 @@ Public Class ftransferkas
                             MsgBox("Saldo belum terisi !")
                         Else
                             Call simpan()
+
+                            Call historysave("Menyimpan Transfer Kas", "N/A", namaform)
                         End If
                     End If
                 End If
@@ -289,6 +295,10 @@ Public Class ftransferkas
 
             myTrans.Commit()
             Console.WriteLine("Both records are written to database.")
+
+            'history user ==========
+            Call historysave("Menyimpan Data Transfer Kas Kode " & idtransfer, idtransfer, namaform)
+            '========================
 
             MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
             btntambah.Text = "Tambah"
@@ -339,6 +349,10 @@ Public Class ftransferkas
 
             myTrans.Commit()
             Console.WriteLine("Both records are written to database.")
+
+            'history user ==========
+            Call historysave("Mengedit Data Transfer Kas Kode " & idtransfer, idtransfer, namaform)
+            '========================
 
             MsgBox("Data di Update", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "Edit"
@@ -399,6 +413,10 @@ Public Class ftransferkas
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
 
+                'history user ==========
+                Call historysave("Menghapus Data Transfer Kas Kode " + txtkodetransfer.Text, txtkodetransfer.Text, namaform)
+                '========================
+
                 MessageBox.Show(txtkodetransfer.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Refresh()
                 Call awal()
@@ -415,7 +433,7 @@ Public Class ftransferkas
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
-            If cekcetakan(txtkodetransfer.Text).Equals(True) Then
+            If cekcetakan(txtkodetransfer.Text, namaform).Equals(True) Then
                 statusizincetak = False
                 passwordid = 17
                 fpassword.kodetabel = txtkodetransfer.Text
@@ -428,7 +446,7 @@ Public Class ftransferkas
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Mencetak Data Transfer Kas Kode " + txtkodetransfer.Text, txtkodetransfer.Text)
+                    Call historysave("Mencetak Data Transfer Kas Kode " + txtkodetransfer.Text, txtkodetransfer.Text, namaform)
                     '========================
 
                     cbprinted.Checked = True
@@ -441,7 +459,7 @@ Public Class ftransferkas
                 dr = cmmd.ExecuteReader()
 
                 'history user ==========
-                Call historysave("Mencetak Data Transfer Kas Kode " & idtransfer, idtransfer)
+                Call historysave("Mencetak Data Transfer Kas Kode " & idtransfer, idtransfer, namaform)
                 '========================
 
                 cbprinted.Checked = True
@@ -487,7 +505,7 @@ Public Class ftransferkas
         rpt_faktur.SetParameterValue("kekas", txtnamakekas.Text)
         rpt_faktur.SetParameterValue("tanggal", Format(dttransaksi.Value, "dd MMMM yyyy HH:mm:ss").ToString)
         rpt_faktur.SetParameterValue("keterangan", txtketerangantransfer.Text)
-        rpt_faktur.SetParameterValue("penerima", fmenu.kodeuser.text)
+        rpt_faktur.SetParameterValue("penerima", fmenu.kodeuser.Text)
         rpt_faktur.SetParameterValue("saldo", saldotransfer)
 
         SetReportPageSize("Faktur", 1)

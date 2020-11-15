@@ -26,7 +26,7 @@ Partial Class fpassword
         Me.btnlogin = New System.Windows.Forms.Button()
         Me.txtpassword = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Labelrequest = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btnlogin
@@ -60,15 +60,15 @@ Partial Class fpassword
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Password"
         '
-        'Label1
+        'Labelrequest
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(106, 44)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(133, 15)
-        Me.Label1.TabIndex = 8
-        Me.Label1.Text = "Request PIN/Password"
+        Me.Labelrequest.AutoSize = True
+        Me.Labelrequest.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Labelrequest.Location = New System.Drawing.Point(106, 44)
+        Me.Labelrequest.Name = "Labelrequest"
+        Me.Labelrequest.Size = New System.Drawing.Size(133, 15)
+        Me.Labelrequest.TabIndex = 8
+        Me.Labelrequest.Text = "Request PIN/Password"
         '
         'fpassword
         '
@@ -76,7 +76,7 @@ Partial Class fpassword
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(459, 67)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Labelrequest)
         Me.Controls.Add(Me.btnlogin)
         Me.Controls.Add(Me.txtpassword)
         Me.Controls.Add(Me.Label2)
@@ -96,5 +96,5 @@ Partial Class fpassword
     Friend WithEvents btnlogin As Button
     Friend WithEvents txtpassword As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents Labelrequest As Label
 End Class

@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fhistoryuser
+    Public namaform As String = "tools-history_user"
+
     Dim oleh, kode As String
 
     '==== autosize form ====
@@ -32,7 +34,7 @@ Public Class fhistoryuser
         dtawal.MaxDate = Now
         dtakhir.MaxDate = Now
 
-        Call historysave("Membuka Form History", "N/A")
+        Call historysave("Membuka Form History", "N/A", namaform)
     End Sub
 
     Private Sub fhistoryuser_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

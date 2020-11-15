@@ -6,6 +6,8 @@ Imports ZXing
 Imports System.IO
 
 Public Class freturjual
+    Public namaform As String = "transaksi-retur_jual"
+
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
@@ -99,7 +101,7 @@ Public Class freturjual
                 printstatus = True
         End Select
 
-        Call historysave("Membuka Transaksi Retur Penjualan", "N/A")
+        Call historysave("Membuka Transaksi Retur Penjualan", "N/A", namaform)
     End Sub
 
     Function currentnumber()
@@ -683,7 +685,7 @@ Public Class freturjual
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Menyimpan Data Retur Jual Kode " & idreturjual, idreturjual)
+            Call historysave("Menyimpan Data Retur Jual Kode " & idreturjual, idreturjual, namaform)
             '========================
             MsgBox("Retur Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(idreturjual)
@@ -728,7 +730,7 @@ Public Class freturjual
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
-            If cekcetakan(txtnonota.Text).Equals(True) Then
+            If cekcetakan(txtnonota.Text, namaform).Equals(True) Then
                 statusizincetak = False
                 passwordid = 9
                 fpassword.kodetabel = txtnonota.Text
@@ -741,7 +743,7 @@ Public Class freturjual
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Mencetak Data Retur Jual Kode " & txtnonota.Text, txtnonota.Text)
+                    Call historysave("Mencetak Data Retur Jual Kode " & txtnonota.Text, txtnonota.Text, namaform)
                     '========================
 
                     cbprinted.Checked = True
@@ -754,7 +756,7 @@ Public Class freturjual
                 dr = cmmd.ExecuteReader()
 
                 'history user ==========
-                Call historysave("Mencetak Data Retur Jual Kode " + txtnonota.Text, txtnonota.Text)
+                Call historysave("Mencetak Data Retur Jual Kode " + txtnonota.Text, txtnonota.Text, namaform)
                 '========================
 
                 cbprinted.Checked = True

@@ -4,6 +4,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
 Public Class flaporanbarangkeluar
+    Public namaform As String = "laporan-barang_keluar"
+
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
     Public isi As String
@@ -54,7 +56,7 @@ Public Class flaporanbarangkeluar
                 exportstatus = True
         End Select
 
-        Call historysave("Membuka Laporan Barang Keluar", "N/A")
+        Call historysave("Membuka Laporan Barang Keluar", "N/A", namaform)
     End Sub
     Sub grid()
         GridColumn1.Caption = "No Nota"
@@ -101,7 +103,7 @@ Public Class flaporanbarangkeluar
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
-        Call historysave("Merefresh Laporan Barang Keluar", "N/A")
+        Call historysave("Merefresh Laporan Barang Keluar", "N/A", namaform)
     End Sub
     Sub ExportToExcel()
 
@@ -126,7 +128,7 @@ Public Class flaporanbarangkeluar
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
-                Call historysave("Mengexport Laporan Barang Keluar", "N/A")
+                Call historysave("Mengexport Laporan Barang Keluar", "N/A", namaform)
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -184,7 +186,7 @@ Public Class flaporanbarangkeluar
                 flapbarangkeluar.ShowDialog()
                 flapbarangkeluar.WindowState = FormWindowState.Maximized
 
-                Call historysave("Merekap Laporan Barang Keluar", "N/A")
+                Call historysave("Merekap Laporan Barang Keluar", "N/A", namaform)
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If

@@ -47,10 +47,12 @@ Partial Class fhistoryuser
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 109)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GridControl1.Location = New System.Drawing.Point(18, 151)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(981, 411)
+        Me.GridControl1.Size = New System.Drawing.Size(1134, 569)
         Me.GridControl1.TabIndex = 2
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -122,7 +124,8 @@ Partial Class fhistoryuser
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 9)
+        Me.Label2.Location = New System.Drawing.Point(18, 12)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(177, 31)
         Me.Label2.TabIndex = 3
@@ -131,24 +134,27 @@ Partial Class fhistoryuser
         'dtakhir
         '
         Me.dtakhir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtakhir.Location = New System.Drawing.Point(760, 79)
+        Me.dtakhir.Location = New System.Drawing.Point(820, 109)
+        Me.dtakhir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtakhir.Name = "dtakhir"
-        Me.dtakhir.Size = New System.Drawing.Size(193, 24)
+        Me.dtakhir.Size = New System.Drawing.Size(288, 24)
         Me.dtakhir.TabIndex = 5
         '
         'dtawal
         '
         Me.dtawal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtawal.Location = New System.Drawing.Point(523, 79)
+        Me.dtawal.Location = New System.Drawing.Point(479, 109)
+        Me.dtawal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtawal.Name = "dtawal"
-        Me.dtawal.Size = New System.Drawing.Size(193, 24)
+        Me.dtawal.Size = New System.Drawing.Size(288, 24)
         Me.dtawal.TabIndex = 4
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(722, 83)
+        Me.Label1.Location = New System.Drawing.Point(778, 115)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(34, 16)
         Me.Label1.TabIndex = 8
@@ -159,25 +165,28 @@ Partial Class fhistoryuser
         Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
-        Me.btnrefresh.Location = New System.Drawing.Point(959, 77)
+        Me.btnrefresh.Location = New System.Drawing.Point(1116, 106)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnrefresh.Name = "btnrefresh"
-        Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
+        Me.btnrefresh.Size = New System.Drawing.Size(36, 31)
         Me.btnrefresh.TabIndex = 29
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'txtkodetabel
         '
         Me.txtkodetabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkodetabel.Location = New System.Drawing.Point(13, 79)
+        Me.txtkodetabel.Location = New System.Drawing.Point(20, 109)
+        Me.txtkodetabel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtkodetabel.Name = "txtkodetabel"
-        Me.txtkodetabel.Size = New System.Drawing.Size(160, 24)
+        Me.txtkodetabel.Size = New System.Drawing.Size(217, 24)
         Me.txtkodetabel.TabIndex = 30
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(523, 56)
+        Me.Label3.Location = New System.Drawing.Point(476, 89)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(66, 16)
         Me.Label3.TabIndex = 31
@@ -187,7 +196,8 @@ Partial Class fhistoryuser
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(13, 56)
+        Me.Label4.Location = New System.Drawing.Point(17, 87)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(89, 16)
         Me.Label4.TabIndex = 32
@@ -197,7 +207,8 @@ Partial Class fhistoryuser
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(177, 56)
+        Me.Label5.Location = New System.Drawing.Point(242, 87)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(40, 16)
         Me.Label5.TabIndex = 34
@@ -206,26 +217,28 @@ Partial Class fhistoryuser
         'txtoleh
         '
         Me.txtoleh.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtoleh.Location = New System.Drawing.Point(177, 79)
+        Me.txtoleh.Location = New System.Drawing.Point(245, 109)
+        Me.txtoleh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtoleh.Name = "txtoleh"
-        Me.txtoleh.Size = New System.Drawing.Size(167, 24)
+        Me.txtoleh.Size = New System.Drawing.Size(217, 24)
         Me.txtoleh.TabIndex = 33
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(901, 12)
+        Me.btnexcel.Location = New System.Drawing.Point(1016, 36)
+        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(91, 50)
+        Me.btnexcel.Size = New System.Drawing.Size(136, 46)
         Me.btnexcel.TabIndex = 35
         Me.btnexcel.Text = "Convert Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
         'fhistoryuser
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1005, 531)
+        Me.ClientSize = New System.Drawing.Size(1169, 735)
         Me.Controls.Add(Me.btnexcel)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtoleh)
@@ -238,6 +251,8 @@ Partial Class fhistoryuser
         Me.Controls.Add(Me.dtawal)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GridControl1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fhistoryuser"
         Me.Text = "History User"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()

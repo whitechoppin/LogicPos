@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fkas
+    Public namaform As String = "master-kas"
+
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
     Dim idkasedit, kodekasedit As String
@@ -61,7 +63,7 @@ Public Class fkas
                 hapusstatus = True
         End Select
 
-        Call historysave("Membuka Master Kas", "N/A")
+        Call historysave("Membuka Master Kas", "N/A", namaform)
     End Sub
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If tambahstatus.Equals(True) Then
@@ -183,14 +185,14 @@ Public Class fkas
         Else
             Try
                 Call koneksii()
-                sql = "INSERT INTO tb_kas(kode_kas, nama_kas, keterangan_kas, jenis_kas, rekening_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & cbjeniskas.Text & "','" & txtrekening.Text & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
+                sql = "INSERT INTO tb_kas(kode_kas, nama_kas, keterangan_kas, jenis_kas, rekening_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & cbjeniskas.Text & "','" & txtrekening.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
                 MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
                 btntambah.Text = "Tambah"
 
                 'history user ==========
-                Call historysave("Menyimpan Data Kas Kode " + txtkode.Text, txtkode.Text)
+                Call historysave("Menyimpan Data Kas Kode " + txtkode.Text, txtkode.Text, namaform)
                 '========================
 
                 Me.Refresh()
@@ -212,7 +214,7 @@ Public Class fkas
                     MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     'history user ==========
-                    Call historysave("Menghapus Data Kas Kode" + txtkode.Text, txtkode.Text)
+                    Call historysave("Menghapus Data Kas Kode" + txtkode.Text, txtkode.Text, namaform)
                     '========================
 
                     Me.Refresh()
@@ -267,7 +269,7 @@ Public Class fkas
     Sub perbaharui()
         Try
             Call koneksii()
-            sql = "UPDATE tb_kas SET kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', jenis_kas='" & cbjeniskas.Text & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.kodeuser.text & "',last_updated= now()  WHERE id='" & idkasedit & "'"
+            sql = "UPDATE tb_kas SET kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', jenis_kas='" & cbjeniskas.Text & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.kodeuser.Text & "',last_updated= now()  WHERE id='" & idkasedit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
 
@@ -275,7 +277,7 @@ Public Class fkas
             btnedit.Text = "Edit"
 
             'history user ==========
-            Call historysave("Mengedit Data Kas Kode " + txtkode.Text, txtkode.Text)
+            Call historysave("Mengedit Data Kas Kode " + txtkode.Text, txtkode.Text, namaform)
             '========================
 
             Me.Refresh()

@@ -1,5 +1,7 @@
 ﻿Imports System.Data.Odbc
 Public Class flogin
+    Public namaform As String = "login"
+
     Public CPUIDPOS, STATUSPOS As String
     Public USERID As Integer
     Public rekeningsupplier, rekeningpelanggan, maxprinting As Integer

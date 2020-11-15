@@ -2,6 +2,8 @@
 Imports System.Drawing.Drawing2D
 Imports System.IO
 Public Class fsupplier
+    Public namaform As String = "master-supplier"
+
     Dim idsupplieredit, kodesupplieredit As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
@@ -61,7 +63,7 @@ Public Class fsupplier
                 hapusstatus = True
         End Select
 
-        Call historysave("Membuka Master Supplier", "N/A")
+        Call historysave("Membuka Master Supplier", "N/A", namaform)
     End Sub
     Sub awal()
         txtkode.Clear()
@@ -219,7 +221,7 @@ Public Class fsupplier
                 btntambah.Text = "Tambah"
 
                 'history user ==========
-                Call historysave("Menyimpan Data Supplier Kode " + txtkode.Text, txtkode.Text)
+                Call historysave("Menyimpan Data Supplier Kode " + txtkode.Text, txtkode.Text, namaform)
                 '========================
                 Me.Refresh()
                 Call awal()
@@ -280,7 +282,7 @@ Public Class fsupplier
             btnedit.Text = "Edit"
 
             'history user ==========
-            Call historysave("Mengedit Data Supplier Kode " + txtkode.Text, txtkode.Text)
+            Call historysave("Mengedit Data Supplier Kode " + txtkode.Text, txtkode.Text, namaform)
             '=======================
             Me.Refresh()
             Call awal()
@@ -334,7 +336,7 @@ Public Class fsupplier
                     MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     'history user ==========
-                    Call historysave("Menghapus Data Supplier Kode" + txtkode.Text, txtkode.Text)
+                    Call historysave("Menghapus Data Supplier Kode" + txtkode.Text, txtkode.Text, namaform)
                     '========================
 
                     Me.Refresh()

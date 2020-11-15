@@ -3,6 +3,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.Utils
 
 Public Class fkalkulasipengiriman
+    Public namaform As String = "tools-kalkulasi_pengiriman"
+
     Dim hitnumber As Integer
     Public tabel As DataTable
     'variabel dalam expedisi
@@ -579,10 +581,10 @@ Public Class fkalkulasipengiriman
                     hurufkubik = nilaikubik.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
                     'MsgBox(hurufkubik)
                     '(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
-                    myCommand.CommandText = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & Val(GridView1.GetRowCellValue(i, "qty")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_barang")) & "','" & hurufkubik & "','" & Val(GridView1.GetRowCellValue(i, "ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_tambah_ongkir")) & "','" & Val(GridView1.GetRowCellValue(i, "total_ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "total_harga_barang")) & "','" & Val(GridView1.GetRowCellValue(i, "grand_total_barang")) & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
+                    myCommand.CommandText = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & Val(GridView1.GetRowCellValue(i, "qty")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_barang")) & "','" & hurufkubik & "','" & Val(GridView1.GetRowCellValue(i, "ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_tambah_ongkir")) & "','" & Val(GridView1.GetRowCellValue(i, "total_ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "total_harga_barang")) & "','" & Val(GridView1.GetRowCellValue(i, "grand_total_barang")) & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                     myCommand.ExecuteNonQuery()
                 Next
-                myCommand.CommandText = "INSERT INTO tb_kirim (kode_kirim, kode_user, nama_expedisi, alamat_expedisi, telp_expedisi, tgl_kirim, harga_kubik, print_kirim, posted_kirim, keterangan_kirim, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & cmbuser.Text & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txttelpexpedisi.Text & "','" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "','" & hargakubik & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
+                myCommand.CommandText = "INSERT INTO tb_kirim (kode_kirim, kode_user, nama_expedisi, alamat_expedisi, telp_expedisi, tgl_kirim, harga_kubik, print_kirim, posted_kirim, keterangan_kirim, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & cmbuser.Text & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txttelpexpedisi.Text & "','" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "','" & hargakubik & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 myCommand.ExecuteNonQuery()
 
                 myTrans.Commit()
@@ -591,7 +593,7 @@ Public Class fkalkulasipengiriman
                 MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Sukses")
 
                 'history user ==========
-                Call historysave("Menyimpan Data Kirim Kode " + kodepengiriman, kodepengiriman)
+                Call historysave("Menyimpan Data Kirim Kode " + kodepengiriman, kodepengiriman, namaform)
                 '========================
                 Call inisialisasi(kodepengiriman)
             Catch e As Exception
@@ -678,7 +680,7 @@ Public Class fkalkulasipengiriman
         rpt_faktur.SetDataSource(tabel_faktur)
 
         rpt_faktur.SetParameterValue("nofaktur", kodepengiriman)
-        rpt_faktur.SetParameterValue("user", fmenu.kodeuser.text)
+        rpt_faktur.SetParameterValue("user", fmenu.kodeuser.Text)
         rpt_faktur.SetParameterValue("namaexpedisi", txtnamaexpedisi.Text)
         rpt_faktur.SetParameterValue("teleponexpedisi", txttelpexpedisi.Text)
         rpt_faktur.SetParameterValue("alamatexpedisi", txtalamatexpedisi.Text)
@@ -734,7 +736,7 @@ Public Class fkalkulasipengiriman
 
         cbprinted.Checked = True
 
-        Call historysave("Mencetak Data Expedisi Kode " + txtnonota.Text, txtnonota.Text)
+        Call historysave("Mencetak Data Expedisi Kode " + txtnonota.Text, txtnonota.Text, namaform)
     End Sub
 
     Sub perbarui(nomornota As String)
@@ -771,19 +773,19 @@ Public Class fkalkulasipengiriman
                     nilaikubik = Val(GridView1.GetRowCellValue(i, "kubik"))
                     hurufkubik = nilaikubik.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
                     '.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
-                    myCommand.CommandText = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & nomornota & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & Val(GridView1.GetRowCellValue(i, "qty")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_barang")) & "','" & hurufkubik & "','" & Val(GridView1.GetRowCellValue(i, "ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_tambah_ongkir")) & "','" & Val(GridView1.GetRowCellValue(i, "total_ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "total_harga_barang")) & "','" & Val(GridView1.GetRowCellValue(i, "grand_total_barang")) & "','" & fmenu.kodeuser.text & "','" & fmenu.kodeuser.text & "',now(),now())"
+                    myCommand.CommandText = "INSERT INTO tb_kirim_detail (kode_kirim, kode_barang, nama_barang, qty, harga_barang, kubik, ongkos_kirim, harga_tambah_ongkir, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & nomornota & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & Val(GridView1.GetRowCellValue(i, "qty")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_barang")) & "','" & hurufkubik & "','" & Val(GridView1.GetRowCellValue(i, "ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "harga_tambah_ongkir")) & "','" & Val(GridView1.GetRowCellValue(i, "total_ongkos_kirim")) & "','" & Val(GridView1.GetRowCellValue(i, "total_harga_barang")) & "','" & Val(GridView1.GetRowCellValue(i, "grand_total_barang")) & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                     myCommand.ExecuteNonQuery()
                 Next
 
                 Call koneksii()
-                myCommand.CommandText = "UPDATE tb_kirim SET kode_user = '" & cmbuser.Text & "', nama_expedisi = '" & txtnamaexpedisi.Text & "', alamat_expedisi = '" & txtalamatexpedisi.Text & "', telp_expedisi = '" & txttelpexpedisi.Text & "', tgl_kirim = '" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "', harga_kubik='" & hargakubik & "', print_kirim = 0, posted_kirim = 1, keterangan_kirim = '" & txtketerangan.Text & "', updated_by = '" & fmenu.kodeuser.text & "', last_updated = now() WHERE kode_kirim = '" & nomornota & "' "
+                myCommand.CommandText = "UPDATE tb_kirim SET kode_user = '" & cmbuser.Text & "', nama_expedisi = '" & txtnamaexpedisi.Text & "', alamat_expedisi = '" & txtalamatexpedisi.Text & "', telp_expedisi = '" & txttelpexpedisi.Text & "', tgl_kirim = '" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "', harga_kubik='" & hargakubik & "', print_kirim = 0, posted_kirim = 1, keterangan_kirim = '" & txtketerangan.Text & "', updated_by = '" & fmenu.kodeuser.Text & "', last_updated = now() WHERE kode_kirim = '" & nomornota & "' "
                 myCommand.ExecuteNonQuery()
 
                 myTrans.Commit()
                 Console.WriteLine("Both records are written to database.")
 
                 'history user ==========
-                Call historysave("Mengedit Data Kirim Kode " + nomornota, nomornota)
+                Call historysave("Mengedit Data Kirim Kode " + nomornota, nomornota, namaform)
                 '========================
 
                 MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")

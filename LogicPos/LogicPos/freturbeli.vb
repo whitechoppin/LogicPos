@@ -6,6 +6,8 @@ Imports DevExpress.XtraGrid.Views.Grid
 Imports ZXing
 
 Public Class freturbeli
+    Public namaform As String = "transaksi-retur_beli"
+
     Public kodeakses As Integer
     Public statusizincetak As Boolean
     Dim tambahstatus, editstatus, printstatus As Boolean
@@ -96,7 +98,7 @@ Public Class freturbeli
                 printstatus = True
         End Select
 
-        Call historysave("Membuka Transaksi Retur Pembelian", "N/A")
+        Call historysave("Membuka Transaksi Retur Pembelian", "N/A", namaform)
     End Sub
 
     Function currentnumber()
@@ -657,7 +659,7 @@ Public Class freturbeli
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Menyimpan Data Retur Beli Kode " & idreturbeli, idreturbeli)
+            Call historysave("Menyimpan Data Retur Beli Kode " & idreturbeli, idreturbeli, namaform)
             '========================
             MsgBox("Retur Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(idreturbeli)
@@ -694,7 +696,7 @@ Public Class freturbeli
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         If printstatus.Equals(True) Then
 
-            If cekcetakan(txtnonota.Text).Equals(True) Then
+            If cekcetakan(txtnonota.Text, namaform).Equals(True) Then
                 statusizincetak = False
                 passwordid = 8
                 fpassword.kodetabel = txtnonota.Text
@@ -707,7 +709,7 @@ Public Class freturbeli
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Mencetak Data Retur Beli Kode " & txtnonota.Text, txtnonota.Text)
+                    Call historysave("Mencetak Data Retur Beli Kode " & txtnonota.Text, txtnonota.Text, namaform)
                     '========================
 
                     cbprinted.Checked = True
@@ -720,7 +722,7 @@ Public Class freturbeli
                 dr = cmmd.ExecuteReader()
 
                 'history user ==========
-                Call historysave("Mencetak Data Retur Beli Kode " + txtnonota.Text, txtnonota.Text)
+                Call historysave("Mencetak Data Retur Beli Kode " + txtnonota.Text, txtnonota.Text, namaform)
                 '========================
 
                 cbprinted.Checked = True
