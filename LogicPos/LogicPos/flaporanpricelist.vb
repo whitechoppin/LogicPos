@@ -2,6 +2,8 @@
 Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class flaporanpricelist
+    Public namaform As String = "laporan-pricelist"
+
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
     Dim pilih As String
@@ -47,7 +49,7 @@ Public Class flaporanpricelist
                 exportstatus = True
         End Select
 
-        Call historysave("Membuka Laporan Pricelist", "N/A")
+        Call historysave("Membuka Laporan Pricelist", "N/A", namaform)
     End Sub
 
     Sub comboboxpelanggan()
@@ -147,7 +149,7 @@ Public Class flaporanpricelist
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
-                Call historysave("Mengexport Pricelist", "N/A")
+                Call historysave("Mengexport Pricelist", "N/A", namaform)
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -181,7 +183,7 @@ Public Class flaporanpricelist
             Else
                 Dim rptstok As ReportDocument
 
-                Call historysave("Merekap Laporan Pricelist", "N/A")
+                Call historysave("Merekap Laporan Pricelist", "N/A", namaform)
                 rptstok = New rptlaporprice
                 rptstok.SetParameterValue("kode", idpelanggan)
                 flappricelist.CrystalReportViewer1.ReportSource = rptstok
@@ -196,7 +198,7 @@ Public Class flaporanpricelist
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel()
-        Call historysave("Merefresh Laporan Pricelist", "N/A")
+        Call historysave("Merefresh Laporan Pricelist", "N/A", namaform)
     End Sub
 
     Private Sub cmbcustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.SelectedIndexChanged

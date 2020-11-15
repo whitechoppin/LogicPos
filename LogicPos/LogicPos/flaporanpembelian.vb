@@ -4,6 +4,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
 Public Class flaporanpembelian
+    Public namaform As String = "laporan-pembelian"
+
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
     Public isi As String
@@ -57,7 +59,7 @@ Public Class flaporanpembelian
                 exportstatus = True
         End Select
 
-        Call historysave("Membuka Laporan Pembelian", "N/A")
+        Call historysave("Membuka Laporan Pembelian", "N/A", namaform)
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Nota"
@@ -153,7 +155,7 @@ Public Class flaporanpembelian
                 flappembelian.ShowDialog()
                 flappembelian.WindowState = FormWindowState.Maximized
 
-                Call historysave("Merekap Faktur Laporan Pembelian", "N/A")
+                Call historysave("Merekap Faktur Laporan Pembelian", "N/A", namaform)
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
@@ -166,7 +168,7 @@ Public Class flaporanpembelian
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
-        Call historysave("Merefresh Laporan Pembelian", "N/A")
+        Call historysave("Merefresh Laporan Pembelian", "N/A", namaform)
     End Sub
     Sub ExportToExcel()
 
@@ -191,7 +193,7 @@ Public Class flaporanpembelian
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
 
-                Call historysave("Mengexport Laporan Pembelian", "N/A")
+                Call historysave("Mengexport Laporan Pembelian", "N/A", namaform)
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -242,7 +244,7 @@ Public Class flaporanpembelian
                 flappembelian.ShowDialog()
                 flappembelian.WindowState = FormWindowState.Maximized
 
-                Call historysave("Merekap Faktur Detail Laporan Pembelian", "N/A")
+                Call historysave("Merekap Faktur Detail Laporan Pembelian", "N/A", namaform)
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
@@ -293,7 +295,7 @@ Public Class flaporanpembelian
                 flappembelian.ShowDialog()
                 flappembelian.WindowState = FormWindowState.Maximized
 
-                Call historysave("Merekap Laporan Pembelian Barang", "N/A")
+                Call historysave("Merekap Laporan Pembelian Barang", "N/A", namaform)
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If

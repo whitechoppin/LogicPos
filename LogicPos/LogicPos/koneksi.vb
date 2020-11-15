@@ -69,7 +69,7 @@ Module koneksi
 
     Public Function cekcetakan(nomor As String, jenis As String) As Boolean
         Call koneksii()
-        sql = "SELECT IFNULL(COUNT(*), 0) AS penghitung FROM tb_history_user WHERE keterangan_history LIKE '%mencetak%' AND created_by='" & fmenu.kodeuser.Text & "' AND kode_tabel = '" & nomor & "'"
+        sql = "SELECT IFNULL(COUNT(*), 0) AS penghitung FROM tb_history_user WHERE keterangan_history LIKE '%mencetak%' AND created_by='" & fmenu.kodeuser.Text & "' AND kode_tabel = '" & nomor & "' AND jenis_tabel='" & jenis & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then

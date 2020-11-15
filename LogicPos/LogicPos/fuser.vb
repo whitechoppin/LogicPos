@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Odbc
 
 Public Class fuser
+    Public namaform As String = "master-user"
+
     Dim kodeuser, iduser As String
     Public kodeakses As Integer
     Dim tambahstatus, editstatus, hapusstatus As Boolean
@@ -78,7 +80,7 @@ Public Class fuser
                 editstatus = True
                 hapusstatus = True
         End Select
-        Call historysave("Membuka Master User", "N/A")
+        Call historysave("Membuka Master User", "N/A", namaform)
     End Sub
 
     Private Sub fuser_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -1536,7 +1538,7 @@ Public Class fuser
                 MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Berhasil")
                 btntambah.Text = "Tambah"
 
-                Call historysave("Menyimpan Data User kode " + txtkode.Text, txtkode.Text, "master-user")
+                Call historysave("Menyimpan Data User kode " + txtkode.Text, txtkode.Text, namaform)
 
                 Me.Refresh()
                 Call awal()
@@ -1689,7 +1691,7 @@ Public Class fuser
             MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "Edit"
 
-            Call historysave("Mengedit Data User kode " + txtkode.Text, txtkode.Text)
+            Call historysave("Mengedit Data User kode " + txtkode.Text, txtkode.Text, namaform)
 
             Me.Refresh()
             Call awal()
@@ -1712,7 +1714,7 @@ Public Class fuser
                     dr = cmmd.ExecuteReader
                     MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                    Call historysave("Menghapus Data User kode " + txtkode.Text, txtkode.Text, "master-user")
+                    Call historysave("Menghapus Data User kode " + txtkode.Text, txtkode.Text, namaform)
 
                     Me.Refresh()
                     Call awal()

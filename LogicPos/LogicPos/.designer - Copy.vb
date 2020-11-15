@@ -35,11 +35,11 @@ Partial Class flaporantransferbarang
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -48,7 +48,7 @@ Partial Class flaporantransferbarang
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(231, 91)
+        Me.Label1.Location = New System.Drawing.Point(230, 61)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(30, 16)
@@ -57,7 +57,7 @@ Partial Class flaporantransferbarang
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(269, 84)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(268, 54)
         Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(204, 24)
@@ -65,7 +65,7 @@ Partial Class flaporantransferbarang
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(19, 84)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(18, 54)
         Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(204, 24)
@@ -73,7 +73,7 @@ Partial Class flaporantransferbarang
         '
         'btnrekap
         '
-        Me.btnrekap.Location = New System.Drawing.Point(241, 144)
+        Me.btnrekap.Location = New System.Drawing.Point(241, 94)
         Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekap.Name = "btnrekap"
         Me.btnrekap.Size = New System.Drawing.Size(215, 43)
@@ -83,7 +83,7 @@ Partial Class flaporantransferbarang
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(816, 144)
+        Me.btnexcel.Location = New System.Drawing.Point(816, 94)
         Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(215, 43)
@@ -93,7 +93,7 @@ Partial Class flaporantransferbarang
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(18, 144)
+        Me.btntabel.Location = New System.Drawing.Point(18, 94)
         Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
         Me.btntabel.Name = "btntabel"
         Me.btntabel.Size = New System.Drawing.Size(215, 43)
@@ -104,11 +104,11 @@ Partial Class flaporantransferbarang
         'GridControl1
         '
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.GridControl1.Location = New System.Drawing.Point(18, 195)
+        Me.GridControl1.Location = New System.Drawing.Point(18, 145)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1013, 392)
+        Me.GridControl1.Size = New System.Drawing.Size(1013, 442)
         Me.GridControl1.TabIndex = 16
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -174,17 +174,6 @@ Partial Class flaporantransferbarang
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(13, 9)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(339, 31)
-        Me.Label2.TabIndex = 17
-        Me.Label2.Text = "Laporan Transfer Barang"
-        '
         'GridColumn6
         '
         Me.GridColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
@@ -228,6 +217,17 @@ Partial Class flaporantransferbarang
         Me.GridColumn9.OptionsColumn.AllowEdit = False
         Me.GridColumn9.Visible = True
         Me.GridColumn9.VisibleIndex = 8
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(13, 9)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(339, 31)
+        Me.Label2.TabIndex = 17
+        Me.Label2.Text = "Laporan Transfer Barang"
         '
         'flaporantransferbarang
         '

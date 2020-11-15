@@ -5,6 +5,8 @@ Imports CrystalDecisions.Shared
 Imports ZXing
 
 Public Class flaporanstokbarang
+    Public namaform As String = "laporan-stok_barang"
+
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
     Dim pilih As String
@@ -57,7 +59,7 @@ Public Class flaporanstokbarang
                 exportstatus = True
         End Select
 
-        Call historysave("Membuka Laporan Stok Barang", "N/A")
+        Call historysave("Membuka Laporan Stok Barang", "N/A", namaform)
     End Sub
     Sub grid()
         GridColumn1.Caption = "Kode"
@@ -135,7 +137,7 @@ Public Class flaporanstokbarang
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
-                Call historysave("Mengexport Laporan Stok Barang", "N/A")
+                Call historysave("Mengexport Laporan Stok Barang", "N/A", namaform)
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -183,7 +185,7 @@ Public Class flaporanstokbarang
             flapstokbarang.ShowDialog()
             flapstokbarang.WindowState = FormWindowState.Maximized
 
-            Call historysave("Merekap Laporan Stok Barang", "N/A")
+            Call historysave("Merekap Laporan Stok Barang", "N/A", namaform)
         Else
             MsgBox("Tidak ada akses")
         End If
@@ -191,7 +193,7 @@ Public Class flaporanstokbarang
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel()
-        Call historysave("Merefresh Laporan Stok Barang", "N/A")
+        Call historysave("Merefresh Laporan Stok Barang", "N/A", namaform)
     End Sub
 
     Private Sub flaporanstokbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

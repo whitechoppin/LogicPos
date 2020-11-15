@@ -122,6 +122,10 @@ Public Class fpassword
                     'cetakan
                     ftransferkas.statusizincetak = True
                     statuscode = True
+                ElseIf passwordid = 18 Then
+                    'cetakan
+                    fpenyesuaianstok.statusizincetak = True
+                    statuscode = True
                 End If
 
                 If statuscode = True Then
@@ -198,6 +202,9 @@ Public Class fpassword
                 ElseIf passwordid = 17 Then
                     'cetakan
                     ftransferkas.statusizincetak = True
+                ElseIf passwordid = 18 Then
+                    'cetakan
+                    fpenyesuaianstok.statusizincetak = True
                 End If
 
                 'history user ==========
@@ -291,6 +298,10 @@ Public Class fpassword
                     ElseIf passwordid = 17 Then
                         'cetakan
                         ftransferkas.statusizincetak = True
+                        statuscode = True
+                    ElseIf passwordid = 18 Then
+                        'cetakan
+                        fpenyesuaianstok.statusizincetak = True
                         statuscode = True
                     End If
 

@@ -4,6 +4,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
 Public Class flaporanreturjual
+    Public namaform As String = "laporan-retur_jual"
+
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
     Public isi As String
@@ -57,7 +59,7 @@ Public Class flaporanreturjual
                 exportstatus = True
         End Select
 
-        Call historysave("Membuka Laporan Retur Penjualan", "N/A")
+        Call historysave("Membuka Laporan Retur Penjualan", "N/A", namaform)
     End Sub
     Sub grid()
         GridColumn1.Caption = "No.Retur"
@@ -158,7 +160,7 @@ Public Class flaporanreturjual
                 flapreturpenjualan.ShowDialog()
                 flapreturpenjualan.WindowState = FormWindowState.Maximized
 
-                Call historysave("Merekap Faktur Laporan Retur Penjualan", "N/A")
+                Call historysave("Merekap Faktur Laporan Retur Penjualan", "N/A", namaform)
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
@@ -169,7 +171,7 @@ Public Class flaporanreturjual
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
-        Call historysave("Merefresh Laporan Retur Penjualan", "N/A")
+        Call historysave("Merefresh Laporan Retur Penjualan", "N/A", namaform)
     End Sub
     Sub ExportToExcel()
 
@@ -194,7 +196,7 @@ Public Class flaporanreturjual
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
-                Call historysave("Mengexport Laporan Retur Penjualan", "N/A")
+                Call historysave("Mengexport Laporan Retur Penjualan", "N/A", namaform)
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -248,7 +250,7 @@ Public Class flaporanreturjual
                 flapreturpenjualan.ShowDialog()
                 flapreturpenjualan.WindowState = FormWindowState.Maximized
 
-                Call historysave("Merekap Faktur Detail Laporan Retur Penjualan", "N/A")
+                Call historysave("Merekap Faktur Detail Laporan Retur Penjualan", "N/A", namaform)
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If

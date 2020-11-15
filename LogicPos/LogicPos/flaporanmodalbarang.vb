@@ -3,6 +3,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.Utils
 
 Public Class flaporanmodalbarang
+    Public namaform As String = "laporan-modal_barang"
+
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
 
@@ -54,7 +56,7 @@ Public Class flaporanmodalbarang
                 exportstatus = True
         End Select
 
-        Call historysave("Membuka Laporan Modal Barang", "N/A")
+        Call historysave("Membuka Laporan Modal Barang", "N/A", namaform)
     End Sub
     Sub grid()
         GridColumn1.Caption = "id"
@@ -123,7 +125,7 @@ Public Class flaporanmodalbarang
         If exportstatus.Equals(True) Then
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
-                Call historysave("Mengexport Laporan Modal Barang", "N/A")
+                Call historysave("Mengexport Laporan Modal Barang", "N/A", namaform)
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -158,14 +160,14 @@ Public Class flaporanmodalbarang
             flapmodalbarang.ShowDialog()
             flapmodalbarang.WindowState = FormWindowState.Maximized
 
-            Call historysave("Merekap Laporan Modal Barang", "N/A")
+            Call historysave("Merekap Laporan Modal Barang", "N/A", namaform)
         Else
             MsgBox("Tidak ada akses")
         End If
     End Sub
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call tabel()
-        Call historysave("Merefresh Laporan Modal Barang", "N/A")
+        Call historysave("Merefresh Laporan Modal Barang", "N/A", namaform)
     End Sub
     Private Sub flaporanmodalbarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)

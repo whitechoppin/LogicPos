@@ -190,12 +190,12 @@ Public Class fpenyesuaianstok
         GridColumn7.FieldName = "barang_id"
         GridColumn7.Caption = "id barang"
         GridColumn7.Width = 10
-        'GridColumn7.Visible = False
+        GridColumn7.Visible = False
 
         GridColumn8.FieldName = "stok_id"
         GridColumn8.Caption = "id stok"
         GridColumn8.Width = 10
-        'GridColumn8.Visible = False
+        GridColumn8.Visible = False
 
         GridColumn9.FieldName = "status_stok"
         GridColumn9.Caption = "status stok"
@@ -232,12 +232,12 @@ Public Class fpenyesuaianstok
         GridColumn16.FieldName = "barang_id"
         GridColumn16.Caption = "id barang"
         GridColumn16.Width = 10
-        'GridColumn16.Visible = False
+        GridColumn16.Visible = False
 
         GridColumn17.FieldName = "stok_id"
         GridColumn17.Caption = "id stok"
         GridColumn17.Width = 10
-        'GridColumn17.Visible = False
+        GridColumn17.Visible = False
 
         GridColumn18.FieldName = "status_stok"
         GridColumn18.Caption = "status stok"
@@ -764,21 +764,40 @@ Public Class fpenyesuaianstok
             .Columns.Add("qty", GetType(Double))
             .Columns.Add("satuan_barang")
             .Columns.Add("jenis_barang")
+            .Columns.Add("status_stok")
         End With
 
         Dim baris As DataRow
-        For i As Integer = 0 To GridView1.RowCount - 1
-            baris = tabel_faktur.NewRow
-            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
-            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
-            baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
-            baris("qty") = GridView1.GetRowCellValue(i, "banyak")
-            baris("satuan_barang") = GridView1.GetRowCellValue(i, "satuan_barang")
-            baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
-            tabel_faktur.Rows.Add(baris)
-        Next
+        If GridView1.RowCount > 0 Then
+            For i As Integer = 0 To GridView1.RowCount - 1
+                baris = tabel_faktur.NewRow
+                baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+                baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+                baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
+                baris("qty") = GridView1.GetRowCellValue(i, "qty")
+                baris("satuan_barang") = GridView1.GetRowCellValue(i, "satuan_barang")
+                baris("jenis_barang") = GridView1.GetRowCellValue(i, "jenis_barang")
+                baris("status_stok") = GridView1.GetRowCellValue(i, "status_stok")
+                tabel_faktur.Rows.Add(baris)
+            Next
+        End If
 
-        rpt_faktur = New fakturtransferbarang
+        If GridView2.RowCount > 0 Then
+            For i As Integer = 0 To GridView2.RowCount - 1
+                baris = tabel_faktur.NewRow
+                baris("kode_stok") = GridView2.GetRowCellValue(i, "kode_stok")
+                baris("kode_barang") = GridView2.GetRowCellValue(i, "kode_barang")
+                baris("nama_barang") = GridView2.GetRowCellValue(i, "nama_barang")
+                baris("qty") = GridView2.GetRowCellValue(i, "qty")
+                baris("satuan_barang") = GridView2.GetRowCellValue(i, "satuan_barang")
+                baris("jenis_barang") = GridView2.GetRowCellValue(i, "jenis_barang")
+                baris("status_stok") = GridView2.GetRowCellValue(i, "status_stok")
+                tabel_faktur.Rows.Add(baris)
+            Next
+        End If
+
+
+        rpt_faktur = New fakturpenyesuaianstok
         rpt_faktur.Database.Tables(0).SetDataSource(tabel_faktur)
         rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
 
@@ -786,13 +805,14 @@ Public Class fpenyesuaianstok
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
 
         rpt_faktur.SetParameterValue("tanggal", Format(dttransaksi.Value, "dd MMMM yyyy HH:mm:ss").ToString)
-        rpt_faktur.SetParameterValue("penerima", fmenu.kodeuser.Text)
-        rpt_faktur.SetParameterValue("dari", txtgudang.Text)
+        rpt_faktur.SetParameterValue("user", fmenu.kodeuser.Text)
+        rpt_faktur.SetParameterValue("gudang", txtgudang.Text)
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
 
     End Sub
+
     Public Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
         Dim faktur As String
         Call koneksii()
@@ -829,7 +849,42 @@ Public Class fpenyesuaianstok
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+        If printstatus.Equals(True) Then
 
+            If cekcetakan(txtnonota.Text, namaform).Equals(True) Then
+                statusizincetak = False
+                passwordid = 18
+                fpassword.kodetabel = txtnonota.Text
+                fpassword.ShowDialog()
+                If statusizincetak.Equals(True) Then
+                    Call cetak_faktur()
+                    Call koneksii()
+                    sql = "UPDATE tb_penyesuaian_stok SET print_penyesuaian_stok = 1 WHERE id = '" & txtnonota.Text & "' "
+                    cmmd = New OdbcCommand(sql, cnn)
+                    dr = cmmd.ExecuteReader()
+
+                    'history user ==========
+                    Call historysave("Mencetak Data Penyesuaian Stok Kode " + txtnonota.Text, txtnonota.Text, namaform)
+                    '========================
+
+                    cbprinted.Checked = True
+                End If
+            Else
+                Call cetak_faktur()
+                Call koneksii()
+                sql = "UPDATE tb_penyesuaian_stok SET print_penyesuaian_stok = 1 WHERE id = '" & txtnonota.Text & "' "
+                cmmd = New OdbcCommand(sql, cnn)
+                dr = cmmd.ExecuteReader()
+
+                'history user ==========
+                Call historysave("Mencetak Data Penyesuaian Stok Kode " + txtnonota.Text, txtnonota.Text, namaform)
+                '========================
+
+                cbprinted.Checked = True
+            End If
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click

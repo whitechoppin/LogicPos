@@ -4,6 +4,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
 Public Class flaporanpenjualanpajak
+    Public namaform As String = "laporan-penjualan_pajak"
+
     Public kodeakses As Integer
     Public isi As String
     Public isi2 As String

@@ -2,6 +2,8 @@
 Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class flaporanmutasibarang
+    Public namaform As String = "laporan-mutasi_barang"
+
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
     Dim kode As String
@@ -59,7 +61,7 @@ Public Class flaporanmutasibarang
         Call comboboxstok()
         Call comboboxgudang()
 
-        Call historysave("Membuka Laporan Mutasi Barang", "N/A")
+        Call historysave("Membuka Laporan Mutasi Barang", "N/A", namaform)
     End Sub
 
     Sub ambil_gbr()
@@ -551,7 +553,7 @@ Public Class flaporanmutasibarang
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
 
-                Call historysave("Mengexport Laporan Mutasi Barang", "N/A")
+                Call historysave("Mengexport Laporan Mutasi Barang", "N/A", namaform)
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If

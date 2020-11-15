@@ -4,6 +4,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports DevExpress.XtraGrid.Columns
 Public Class flaporanlunaspiutang
+    Public namaform As String = "laporan-lunas_piutang"
+
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
     Public isi As String
@@ -56,7 +58,7 @@ Public Class flaporanlunaspiutang
                 exportstatus = True
         End Select
 
-        Call historysave("Membuka Laporan Pelunasan Piutang", "N/A")
+        Call historysave("Membuka Laporan Pelunasan Piutang", "N/A", namaform)
     End Sub
     Sub grid()
         GridColumn1.Caption = "No Faktur"
@@ -122,7 +124,7 @@ Public Class flaporanlunaspiutang
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
-        Call historysave("Merefresh Laporan Pelunasan Piutang", "N/A")
+        Call historysave("Merefresh Laporan Pelunasan Piutang", "N/A", namaform)
     End Sub
     Sub ExportToExcel()
         Dim filename As String = InputBox("Nama File", "Input Nama file ")
@@ -146,7 +148,7 @@ Public Class flaporanlunaspiutang
             If GridView1.DataRowCount > 0 Then
                 ExportToExcel()
 
-                Call historysave("Mengexport Laporan Pelunasan Piutang", "N/A")
+                Call historysave("Mengexport Laporan Pelunasan Piutang", "N/A", namaform)
             Else
                 MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
             End If
@@ -198,7 +200,7 @@ Public Class flaporanlunaspiutang
                 flaplunaspiutang.ShowDialog()
                 flaplunaspiutang.WindowState = FormWindowState.Maximized
 
-                Call historysave("Merekap Laporan Pelunasan Piutang", "N/A")
+                Call historysave("Merekap Laporan Pelunasan Piutang", "N/A", namaform)
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
@@ -250,7 +252,7 @@ Public Class flaporanlunaspiutang
                 flaplunaspiutang.ShowDialog()
                 flaplunaspiutang.WindowState = FormWindowState.Maximized
 
-                Call historysave("Merekap Laporan Detail Pelunasan Piutang", "N/A")
+                Call historysave("Merekap Laporan Detail Pelunasan Piutang", "N/A", namaform)
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
