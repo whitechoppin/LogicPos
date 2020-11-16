@@ -65,41 +65,41 @@ Public Class fkalkulasiexpedisi
         End With
     End Sub
 
-    Function autonumber()
-        Call koneksii()
-        sql = "SELECT RIGHT(kode_pengiriman,3) FROM tb_pengiriman WHERE DATE_FORMAT(MID(`kode_pengiriman`, 3 , 6), ' %y ')+ MONTH(MID(`kode_pengiriman`,3 , 6)) + DAY(MID(`kode_pengiriman`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pengiriman,3) DESC"
-        Dim pesan As String = ""
-        Try
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            If dr.HasRows Then
-                dr.Read()
-                If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
-                    Return "PM" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                Else
-                    If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
-                        Return "PM" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                    Else
-                        If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
-                            Return "PM" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                        End If
-                    End If
-                End If
-            Else
-                Return "PM" + Format(Now.Date, "yyMMdd") + "001"
-            End If
+    'Function autonumber()
+    '    Call koneksii()
+    '    sql = "SELECT RIGHT(kode_pengiriman,3) FROM tb_pengiriman WHERE DATE_FORMAT(MID(`kode_pengiriman`, 3 , 6), ' %y ')+ MONTH(MID(`kode_pengiriman`,3 , 6)) + DAY(MID(`kode_pengiriman`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pengiriman,3) DESC"
+    '    Dim pesan As String = ""
+    '    Try
+    '        cmmd = New OdbcCommand(sql, cnn)
+    '        dr = cmmd.ExecuteReader
+    '        If dr.HasRows Then
+    '            dr.Read()
+    '            If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
+    '                Return "PM" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+    '            Else
+    '                If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
+    '                    Return "PM" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+    '                Else
+    '                    If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
+    '                        Return "PM" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+    '                    End If
+    '                End If
+    '            End If
+    '        Else
+    '            Return "PM" + Format(Now.Date, "yyMMdd") + "001"
+    '        End If
 
-        Catch ex As Exception
-            pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
-        End Try
-        Return pesan
-    End Function
+    '    Catch ex As Exception
+    '        pesan = ex.Message.ToString
+    '    Finally
+    '        'cnn.Close()
+    '    End Try
+    '    Return pesan
+    'End Function
 
     Function currentnumber()
         Call koneksii()
-        sql = "SELECT kode_pengiriman FROM tb_pengiriman ORDER BY kode_pengiriman DESC LIMIT 1;"
+        sql = "SELECT id FROM tb_pengiriman ORDER BY id DESC LIMIT 1;"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -188,16 +188,15 @@ Public Class fkalkulasiexpedisi
 
     Sub comboboxuser()
         Call koneksii()
-        cmbuser.Items.Clear()
-        cmbuser.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbuser.AutoCompleteCustomSource.Add(dr("kode_user"))
-                cmbuser.Items.Add(dr("kode_user"))
-            End While
-        End If
+        sql = "SELECT * FROM tb_user"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbuser.DataSource = ds.Tables(0)
+        cmbuser.ValueMember = "id"
+        cmbuser.DisplayMember = "kode_user"
     End Sub
 
     Sub awalbaru()
@@ -216,9 +215,11 @@ Public Class fkalkulasiexpedisi
         btncaridata.Enabled = False
         btnnext.Enabled = False
 
+        'isi combo box
+        Call comboboxuser()
+
         'header
         txtnonota.Clear()
-        txtnonota.Text = autonumber()
         txtnonota.Enabled = False
 
         cmbuser.SelectedIndex = 0
@@ -283,9 +284,6 @@ Public Class fkalkulasiexpedisi
         txtketerangan.Enabled = True
         txtketerangan.Clear()
 
-        'isi combo box
-        Call comboboxuser()
-
         'buat tabel
         Call tabel_utama()
 
@@ -293,7 +291,7 @@ Public Class fkalkulasiexpedisi
 
     Sub previewpengiriman(lihat As String)
         Call koneksii()
-        sql = "SELECT * FROM tb_pengiriman_detail WHERE kode_pengiriman ='" & lihat & "'"
+        sql = "SELECT * FROM tb_pengiriman_detail WHERE pengiriman_id ='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
@@ -318,6 +316,9 @@ Public Class fkalkulasiexpedisi
         txtgodata.Enabled = True
         btncaridata.Enabled = True
         btnnext.Enabled = True
+
+        'isi combo box
+        Call comboboxuser()
 
         'header
         txtnonota.Clear()
@@ -378,11 +379,9 @@ Public Class fkalkulasiexpedisi
         txtketerangan.Enabled = False
         txtketerangan.Clear()
 
-        'isi combo box
-        Call comboboxuser()
 
         If nomorkode IsNot "" Then
-            sql = "SELECT * FROM tb_pengiriman WHERE kode_pengiriman = '" + nomorkode.ToString + "'"
+            sql = "SELECT * FROM tb_pengiriman WHERE id = '" & nomorkode.ToString & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             dr.Read()
@@ -464,6 +463,9 @@ Public Class fkalkulasiexpedisi
         btncaridata.Enabled = False
         btnnext.Enabled = False
 
+        'isi combo box
+        Call comboboxuser()
+
         'header
         'txtnonota.Clear()
         'txtnonota.Text = autonumber()
@@ -519,8 +521,6 @@ Public Class fkalkulasiexpedisi
         txtketerangan.Enabled = True
         'txtketerangan.Clear()
 
-        'isi combo box
-        Call comboboxuser()
 
     End Sub
 
@@ -541,7 +541,6 @@ Public Class fkalkulasiexpedisi
             .Columns.Add("total_ongkos_kirim", GetType(Double))
             .Columns.Add("total_harga_barang", GetType(Double))
             .Columns.Add("grand_total_barang", GetType(Double))
-
         End With
 
         GridControl1.DataSource = tabel
@@ -652,7 +651,7 @@ Public Class fkalkulasiexpedisi
     End Sub
 
     Sub simpan()
-        kodepengiriman = autonumber()
+        'kodepengiriman = autonumber()
         Call koneksii()
 
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()
@@ -1061,18 +1060,18 @@ Public Class fkalkulasiexpedisi
     Sub tambah()
         If txtkodebarang.Text = "" Or txtnamabarang.Text = "" Or txthargabarang.Text = "" Or txtpanjangbarang.Text = "" Or txtlebarbarang.Text = "" Or txttinggibarang.Text = "" Or txtbanyakbarang.Text = "" Or banyakbarang <= 0 Then
             Exit Sub
+        Else
+            volumebarang = panjangbarang * lebarbarang * tinggibarang
+            totalvolumebarang = volumebarang * banyakbarang
+            totalhargabarang = hargabarang * banyakbarang
+
+            ongkirbarang = 0
+            totalongkirbarang = 0
+            grandtotalbarang = 0
+
+            tabel.Rows.Add(txtkodebarang.Text, txtnamabarang.Text, Val(panjangbarang), Val(lebarbarang), Val(tinggibarang), Val(volumebarang), Val(banyakbarang), Val(totalvolumebarang), Val(hargabarang), Val(ongkirbarang), Val(totalongkirbarang), Val(totalhargabarang), Val(grandtotalbarang))
+            Call reload_tabel()
         End If
-
-        volumebarang = panjangbarang * lebarbarang * tinggibarang
-        totalvolumebarang = volumebarang * banyakbarang
-        totalhargabarang = hargabarang * banyakbarang
-
-        ongkirbarang = 0
-        totalongkirbarang = 0
-        grandtotalbarang = 0
-
-        tabel.Rows.Add(txtkodebarang.Text, txtnamabarang.Text, Val(panjangbarang), Val(lebarbarang), Val(tinggibarang), Val(volumebarang), Val(banyakbarang), Val(totalvolumebarang), Val(hargabarang), Val(ongkirbarang), Val(totalongkirbarang), Val(totalhargabarang), Val(grandtotalbarang))
-        Call reload_tabel()
     End Sub
 
     Private Sub btntambahbarang_Click(sender As Object, e As EventArgs) Handles btntambahbarang.Click

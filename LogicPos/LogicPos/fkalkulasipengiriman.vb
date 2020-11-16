@@ -46,54 +46,53 @@ Public Class fkalkulasipengiriman
 
     Sub comboboxuser()
         Call koneksii()
-        cmbuser.Items.Clear()
-        cmbuser.AutoCompleteCustomSource.Clear()
-        cmmd = New OdbcCommand("SELECT * FROM tb_user", cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows = True Then
-            While dr.Read()
-                cmbuser.AutoCompleteCustomSource.Add(dr("kode_user"))
-                cmbuser.Items.Add(dr("kode_user"))
-            End While
-        End If
+        sql = "SELECT * FROM tb_user"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbuser.DataSource = ds.Tables(0)
+        cmbuser.ValueMember = "id"
+        cmbuser.DisplayMember = "kode_user"
     End Sub
 
-    Function autonumber()
-        Call koneksii()
-        sql = "SELECT RIGHT(kode_kirim,3) FROM tb_kirim WHERE DATE_FORMAT(MID(`kode_kirim`, 3 , 6), ' %y ')+ MONTH(MID(`kode_kirim`,3 , 6)) + DAY(MID(`kode_kirim`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_kirim,3) DESC"
-        Dim pesan As String = ""
-        Try
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
-            If dr.HasRows Then
-                dr.Read()
-                If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
-                    Return "KM" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                Else
-                    If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
-                        Return "KM" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                    Else
-                        If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
-                            Return "KM" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
-                        End If
-                    End If
-                End If
-            Else
-                Return "KM" + Format(Now.Date, "yyMMdd") + "001"
-            End If
+    'Function autonumber()
+    '    Call koneksii()
+    '    sql = "SELECT RIGHT(kode_kirim,3) FROM tb_kirim WHERE DATE_FORMAT(MID(`kode_kirim`, 3 , 6), ' %y ')+ MONTH(MID(`kode_kirim`,3 , 6)) + DAY(MID(`kode_kirim`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_kirim,3) DESC"
+    '    Dim pesan As String = ""
+    '    Try
+    '        cmmd = New OdbcCommand(sql, cnn)
+    '        dr = cmmd.ExecuteReader
+    '        If dr.HasRows Then
+    '            dr.Read()
+    '            If (dr.Item(0).ToString() + 1).ToString.Length = 1 Then
+    '                Return "KM" + Format(Now.Date, "yyMMdd") + "00" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+    '            Else
+    '                If (dr.Item(0).ToString() + 1).ToString.Length = 2 Then
+    '                    Return "KM" + Format(Now.Date, "yyMMdd") + "0" + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+    '                Else
+    '                    If (dr.Item(0).ToString() + 1).ToString.Length = 3 Then
+    '                        Return "KM" + Format(Now.Date, "yyMMdd") + (Val(Trim(dr.Item(0).ToString)) + 1).ToString
+    '                    End If
+    '                End If
+    '            End If
+    '        Else
+    '            Return "KM" + Format(Now.Date, "yyMMdd") + "001"
+    '        End If
 
-        Catch ex As Exception
-            pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
-        End Try
-        Return pesan
-    End Function
+    '    Catch ex As Exception
+    '        pesan = ex.Message.ToString
+    '    Finally
+    '        'cnn.Close()
+    '    End Try
+    '    Return pesan
+    'End Function
 
 
     Function currentnumber()
         Call koneksii()
-        sql = "SELECT kode_kirim FROM tb_kirim ORDER BY kode_kirim DESC LIMIT 1;"
+        sql = "SELECT id FROM tb_kirim ORDER BY id DESC LIMIT 1;"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -180,9 +179,11 @@ Public Class fkalkulasipengiriman
         btncaridata.Enabled = False
         btnnext.Enabled = False
 
+        'isi combo box
+        Call comboboxuser()
+
         'header
         txtnonota.Clear()
-        txtnonota.Text = autonumber()
         txtnonota.Enabled = False
 
         cmbuser.SelectedIndex = 0
@@ -237,9 +238,6 @@ Public Class fkalkulasipengiriman
         txtketerangan.Enabled = True
         txtketerangan.Clear()
 
-        'isi combo box
-        Call comboboxuser()
-
         'buat tabel
         Call tabel_utama()
 
@@ -247,8 +245,7 @@ Public Class fkalkulasipengiriman
 
     Sub previewpengiriman(lihat As String)
         Call koneksii()
-
-        sql = "SELECT * FROM tb_kirim_detail WHERE kode_kirim ='" & lihat & "'"
+        sql = "SELECT * FROM tb_kirim_detail WHERE kirim_id ='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
@@ -273,6 +270,9 @@ Public Class fkalkulasipengiriman
         txtgodata.Enabled = True
         btncaridata.Enabled = True
         btnnext.Enabled = True
+
+        'isi combo box
+        Call comboboxuser()
 
         'header
         txtnonota.Clear()
@@ -323,11 +323,8 @@ Public Class fkalkulasipengiriman
         txtketerangan.Enabled = False
         txtketerangan.Clear()
 
-        'isi combo box
-        Call comboboxuser()
-
         If nomorkode IsNot "" Then
-            sql = "SELECT * FROM tb_kirim WHERE kode_kirim = '" + nomorkode.ToString + "'"
+            sql = "SELECT * FROM tb_kirim WHERE id = '" & nomorkode.ToString & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             dr.Read()
@@ -409,6 +406,9 @@ Public Class fkalkulasipengiriman
         btncaridata.Enabled = False
         btnnext.Enabled = False
 
+        'isi combo box
+        Call comboboxuser()
+
         'header
         'txtnonota.Clear()
         'txtnonota.Text = autonumber()
@@ -455,8 +455,6 @@ Public Class fkalkulasipengiriman
         txtketerangan.Enabled = True
         'txtketerangan.Clear()
 
-        'isi combo box
-        Call comboboxuser()
 
     End Sub
 
@@ -553,7 +551,7 @@ Public Class fkalkulasipengiriman
     End Sub
 
     Sub simpan()
-        kodepengiriman = autonumber()
+        'kodepengiriman = autonumber()
 
         Call koneksii()
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()

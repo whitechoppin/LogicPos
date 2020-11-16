@@ -269,6 +269,18 @@
     <Compile Include="fcaribarangmasuk.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fcarikalkulasiexpedisi.Designer.vb">
+      <DependentUpon>fcarikalkulasiexpedisi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcarikalkulasiexpedisi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fcarikalkulasipengiriman.Designer.vb">
+      <DependentUpon>fcarikalkulasipengiriman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fcarikalkulasipengiriman.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fcarilunaspiutang.Designer.vb">
       <DependentUpon>fcarilunaspiutang.vb</DependentUpon>
     </Compile>
@@ -1178,6 +1190,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fcaribarangmasuk.resx">
       <DependentUpon>fcaribarangmasuk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcarikalkulasiexpedisi.resx">
+      <DependentUpon>fcarikalkulasiexpedisi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fcarikalkulasipengiriman.resx">
+      <DependentUpon>fcarikalkulasipengiriman.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fcarilunaspiutang.resx">
       <DependentUpon>fcarilunaspiutang.vb</DependentUpon>

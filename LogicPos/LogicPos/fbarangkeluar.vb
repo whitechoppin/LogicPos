@@ -797,7 +797,7 @@ Public Class fbarangkeluar
         rpt_faktur.SetParameterValue("keterangan", txtketerangan.Text)
 
         rpt_faktur.SetParameterValue("tanggal", Format(dtbarangkeluar.Value, "dd MMMM yyyy HH:mm:ss").ToString)
-        rpt_faktur.SetParameterValue("penerima", fmenu.kodeuser.Text)
+        rpt_faktur.SetParameterValue("user", fmenu.kodeuser.Text)
 
         SetReportPageSize("Faktur", 1)
         rpt_faktur.PrintToPrinter(1, False, 0, 0)
