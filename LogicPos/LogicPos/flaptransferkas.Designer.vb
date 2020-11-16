@@ -44,7 +44,7 @@ Partial Class flaptransferkas
         Me.ClientSize = New System.Drawing.Size(928, 484)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Name = "flaptransferkas"
-        Me.Text = "flaptransferkas"
+        Me.Text = "Laporan Transfer Kas"
         Me.ResumeLayout(False)
 
     End Sub

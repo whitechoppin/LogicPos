@@ -442,6 +442,7 @@ Public Class fuser
         cbbarangmasuk.Enabled = True
         cbbarangkeluar.Enabled = True
         cbtransferbarang.Enabled = True
+        cbpenyesuaianstok.Enabled = True
 
         'administrasi
         cblunasutang.Enabled = True
