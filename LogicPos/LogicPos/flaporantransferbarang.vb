@@ -8,9 +8,7 @@ Public Class flaporantransferbarang
 
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
-    Dim tabel1 As DataTable
-    Public isi As String
-    Public isi2 As String
+    Dim tabeltransfer As DataTable
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -36,8 +34,8 @@ Public Class flaporantransferbarang
         Me.MdiParent = fmenu
         Call koneksii()
 
-        DateTimePicker1.MaxDate = Now
-        DateTimePicker2.MaxDate = Now
+        dtawal.MaxDate = Now
+        dtakhir.MaxDate = Now
         Call grid()
 
         With GridView1
@@ -94,10 +92,10 @@ Public Class flaporantransferbarang
     End Sub
     Sub tabel()
         Call koneksii()
-        If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, tbd.kode_barang, tbd.kode_stok, tbd.nama_barang, tbd.qty, usr.kode_user FROM tb_transfer_barang_detail AS tbd JOIN tb_transfer_barang AS tb ON tb.id = tbd.transfer_barang_id JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE DATE(tanggal_transfer_barang) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+        If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
+            sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, tbd.kode_barang, tbd.kode_stok, tbd.nama_barang, tbd.qty, usr.kode_user FROM tb_transfer_barang_detail AS tbd JOIN tb_transfer_barang AS tb ON tb.id = tbd.transfer_barang_id JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE DATE(tanggal_transfer_barang) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, tbd.kode_barang, tbd.kode_stok, tbd.nama_barang, tbd.qty, usr.kode_user FROM tb_transfer_barang_detail AS tbd JOIN tb_transfer_barang AS tb ON tb.id = tbd.transfer_barang_id JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE tanggal_transfer_barang BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, tbd.kode_barang, tbd.kode_stok, tbd.nama_barang, tbd.qty, usr.kode_user FROM tb_transfer_barang_detail AS tbd JOIN tb_transfer_barang AS tb ON tb.id = tbd.transfer_barang_id JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -156,10 +154,10 @@ Public Class flaporantransferbarang
 
             Call koneksii()
 
-            If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-                sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tanggal_transfer_barang) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
+                sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tanggal_transfer_barang) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_transfer_barang WHERE tanggal_transfer_barang BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_transfer_barang WHERE tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
 
             cmmd = New OdbcCommand(sql, cnn)
@@ -168,14 +166,14 @@ Public Class flaporantransferbarang
             If dr.HasRows Then
                 rptrekap = New rptrekaptransferbarang
 
-                awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
+                awalPDV.Value = Format(dtawal.Value, "yyyy-MM-dd")
                 awalPFDs = rptrekap.DataDefinition.ParameterFields
                 awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
                 awalPVs.Clear()
                 awalPVs.Add(awalPDV)
                 awalPFD.ApplyCurrentValues(awalPVs)
 
-                akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
+                akhirPDV.Value = Format(dtakhir.Value, "yyyy-MM-dd")
                 akhirPFDs = rptrekap.DataDefinition.ParameterFields
                 akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
                 akhirPVs.Clear()

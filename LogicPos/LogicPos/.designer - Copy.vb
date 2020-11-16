@@ -23,8 +23,8 @@ Partial Class flaporantransferbarang
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.dtakhir = New System.Windows.Forms.DateTimePicker()
+        Me.dtawal = New System.Windows.Forms.DateTimePicker()
         Me.btnrekap = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.btntabel = New System.Windows.Forms.Button()
@@ -55,21 +55,21 @@ Partial Class flaporantransferbarang
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "s/d"
         '
-        'DateTimePicker2
+        'dtakhir
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(268, 54)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(204, 24)
-        Me.DateTimePicker2.TabIndex = 3
+        Me.dtakhir.Location = New System.Drawing.Point(268, 54)
+        Me.dtakhir.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtakhir.Name = "dtakhir"
+        Me.dtakhir.Size = New System.Drawing.Size(204, 24)
+        Me.dtakhir.TabIndex = 3
         '
-        'DateTimePicker1
+        'dtawal
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(18, 54)
-        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(204, 24)
-        Me.DateTimePicker1.TabIndex = 2
+        Me.dtawal.Location = New System.Drawing.Point(18, 54)
+        Me.dtawal.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtawal.Name = "dtawal"
+        Me.dtawal.Size = New System.Drawing.Size(204, 24)
+        Me.dtawal.TabIndex = 2
         '
         'btnrekap
         '
@@ -240,8 +240,8 @@ Partial Class flaporantransferbarang
         Me.Controls.Add(Me.btntabel)
         Me.Controls.Add(Me.btnexcel)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.DateTimePicker2)
-        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.dtakhir)
+        Me.Controls.Add(Me.dtawal)
         Me.Controls.Add(Me.GridControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
@@ -254,8 +254,8 @@ Partial Class flaporantransferbarang
 
     End Sub
     Friend WithEvents Label1 As Label
-    Friend WithEvents DateTimePicker2 As DateTimePicker
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents dtakhir As DateTimePicker
+    Friend WithEvents dtawal As DateTimePicker
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
