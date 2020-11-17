@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class fbarcodebarang
+Partial Class fsatuan
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,14 +24,13 @@ Partial Class fbarcodebarang
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
-        'fbarcodebarang
+        'fsatuan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(665, 423)
-        Me.Name = "fbarcodebarang"
-        Me.Text = "fbarcodebarang"
+        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.Name = "fsatuan"
+        Me.Text = "Master Satuan Barang"
         Me.ResumeLayout(False)
 
     End Sub

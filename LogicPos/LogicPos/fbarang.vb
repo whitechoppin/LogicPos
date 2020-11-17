@@ -165,6 +165,7 @@ Public Class fbarang
         GridColumn5.Width = 60
         GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn5.DisplayFormat.FormatString = "Rp ##,#0"
+        GridColumn5.Visible = False
 
         GridColumn6.Caption = "Kategori"
         GridColumn6.FieldName = "nama_kategori"
