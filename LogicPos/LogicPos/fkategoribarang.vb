@@ -93,7 +93,7 @@ Public Class fkategoribarang
 
     Sub isitabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_kategori_barang"
+        sql = "SELECT * FROM tb_kategori_barang ORDER BY nama_kategori ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)

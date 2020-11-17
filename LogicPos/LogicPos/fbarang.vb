@@ -162,7 +162,7 @@ Public Class fbarang
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_barang JOIN tb_kategori_barang ON tb_barang.kategori_barang_id = tb_kategori_barang.id"
+        sql = "SELECT * FROM tb_barang JOIN tb_kategori_barang ON tb_barang.kategori_barang_id = tb_kategori_barang.id ORDER BY nama_barang ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)

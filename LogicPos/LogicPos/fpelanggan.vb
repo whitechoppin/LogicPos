@@ -105,7 +105,7 @@ Public Class fpelanggan
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_pelanggan"
+        sql = "SELECT * FROM tb_pelanggan ORDER BY nama_pelanggan ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)

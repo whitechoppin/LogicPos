@@ -122,7 +122,7 @@ Public Class fkas
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_kas"
+        sql = "SELECT * FROM tb_kas ORDER BY nama_kas ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)

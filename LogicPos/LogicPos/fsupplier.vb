@@ -96,7 +96,7 @@ Public Class fsupplier
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_supplier"
+        sql = "SELECT * FROM tb_supplier ORDER BY nama_supplier ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -260,7 +260,7 @@ Public Class fsupplier
             Call perbaharui()
         Else
             Call koneksii()
-            sql = "SELECT * FROM tb_supplier WHERE kode_supplier  = '" + txtkode.Text + "' LIMIT 1"
+            sql = "SELECT * FROM tb_supplier WHERE kode_supplier  = '" & txtkode.Text & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then

@@ -361,7 +361,7 @@ Public Class fuser
     End Sub
     Sub isitabel()
         Call koneksii()
-        sql = "SELECT * FROM tb_user"
+        sql = "SELECT * FROM tb_user ORDER BY nama_user ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -1739,7 +1739,7 @@ Public Class fuser
     Sub cari()
         iduser = GridView.GetFocusedRowCellValue("id")
 
-        sql = "SELECT * FROM tb_user WHERE id ='" + iduser + "'"
+        sql = "SELECT * FROM tb_user WHERE id ='" & iduser & "'"
         cmmd = New OdbcCommand(sql, cnn)
 
         dr = cmmd.ExecuteReader
