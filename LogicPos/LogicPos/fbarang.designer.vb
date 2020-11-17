@@ -216,7 +216,6 @@ Partial Class fbarang
         '
         'cmbsatuan
         '
-        Me.cmbsatuan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbsatuan.FormattingEnabled = True
         Me.cmbsatuan.Location = New System.Drawing.Point(465, 176)
         Me.cmbsatuan.Margin = New System.Windows.Forms.Padding(4)

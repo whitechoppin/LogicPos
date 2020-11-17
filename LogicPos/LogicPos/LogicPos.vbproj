@@ -671,12 +671,6 @@
     <Compile Include="fnotifikasistok.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fsatuan.Designer.vb">
-      <DependentUpon>fsatuan.vb</DependentUpon>
-    </Compile>
-    <Compile Include="fsatuan.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="mform.vb" />
     <Compile Include="rptlaporbarcode.vb">
       <AutoGen>True</AutoGen>
@@ -1403,9 +1397,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fprinter.resx">
       <DependentUpon>fprinter.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fsatuan.resx">
-      <DependentUpon>fsatuan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ftokosejati.resx">
       <DependentUpon>ftokosejati.vb</DependentUpon>

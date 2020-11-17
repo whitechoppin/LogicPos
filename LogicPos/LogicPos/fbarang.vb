@@ -80,7 +80,8 @@ Public Class fbarang
         txtnama.Enabled = False
         txtnama.Clear()
         cmbsatuan.Enabled = False
-        cmbsatuan.SelectedIndex = -1
+        cmbsatuan.Text = ""
+
         cmbjenis.Enabled = False
         cmbjenis.SelectedIndex = -1
         cmbkategori.Enabled = False
@@ -107,6 +108,32 @@ Public Class fbarang
         txtgbr.Text = ""
         PictureBox.Image = ImageList.Images(0)
         btnupload.Enabled = False
+    End Sub
+
+    Sub comboboxsatuan()
+        Call koneksii()
+        sql = "SELECT DISTINCT satuan_barang FROM tb_barang WHERE jenis_barang='Satuan'"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbsatuan.DataSource = ds.Tables(0)
+        cmbsatuan.ValueMember = "satuan_barang"
+        cmbsatuan.DisplayMember = "satuan_barang"
+    End Sub
+
+    Sub comboboxroll()
+        Call koneksii()
+        sql = "SELECT DISTINCT satuan_barang FROM tb_barang WHERE jenis_barang='Roll'"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbsatuan.DataSource = ds.Tables(0)
+        cmbsatuan.ValueMember = "satuan_barang"
+        cmbsatuan.DisplayMember = "satuan_barang"
     End Sub
 
     Sub comboboxkategori()
@@ -208,7 +235,7 @@ Public Class fbarang
                     If txtnama.Text.Length = 0 Then
                         MsgBox("Nama barang belum terisi !")
                     Else
-                        If cmbsatuan.SelectedIndex = -1 Then
+                        If cmbsatuan.Text.Length = 0 Then
                             MsgBox("Satuan belum terpilih !")
                         Else
                             If cmbjenis.SelectedIndex = -1 Then
@@ -277,22 +304,10 @@ Public Class fbarang
     End Sub
 
     Sub isi_satuan()
-        cmbsatuan.Items.Clear()
-        cmbsatuan.AutoCompleteCustomSource.Clear()
         If cmbjenis.Text.Equals("Roll") Then
-            cmbsatuan.Items.Clear()
-            cmbsatuan.AutoCompleteCustomSource.Clear()
-            cmbsatuan.AutoCompleteCustomSource.Add("Meter")
-            cmbsatuan.Items.Add("Meter")
-            cmbsatuan.AutoCompleteCustomSource.Add("Centimeter")
-            cmbsatuan.Items.Add("Centimeter")
-            cmbsatuan.SelectedIndex = 0
+            Call comboboxroll()
         ElseIf cmbjenis.Text.Equals("Satuan") Then
-            cmbsatuan.Items.Clear()
-            cmbsatuan.AutoCompleteCustomSource.Clear()
-            cmbsatuan.AutoCompleteCustomSource.Add("Pcs")
-            cmbsatuan.Items.Add("Pcs")
-            cmbsatuan.SelectedIndex = 0
+            Call comboboxsatuan()
         End If
     End Sub
     Sub cari()
@@ -363,10 +378,10 @@ Public Class fbarang
                     If txtnama.Text.Length = 0 Then
                         MsgBox("Nama barang belum terisi !")
                     Else
-                        If cmbsatuan.SelectedIndex = -1 Then
+                        If cmbsatuan.Text.Length = 0 Then
                             MsgBox("Satuan belum terpilih !")
                         Else
-                            If cmbjenis.SelectedIndex = -1 Then
+                            If cmbkategori.SelectedIndex = -1 Then
                                 MsgBox("Kategori belum terisi !")
                             Else
                                 If cmbjenis.SelectedIndex = -1 Then
