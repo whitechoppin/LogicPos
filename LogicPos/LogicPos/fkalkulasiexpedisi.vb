@@ -8,7 +8,7 @@ Public Class fkalkulasiexpedisi
     Dim hitnumber As Integer
     Public tabel As DataTable
     'variabel dalam expedisi
-    Public kodepengiriman As String
+    Public idpengiriman, iduser, idbarang As String
     Dim totalongkospengiriman, hargabarang, panjangbarang, lebarbarang, tinggibarang, volumebarang, banyakbarang, totalvolumebarang, ongkirbarang, totalongkirbarang, totalhargabarang, grandtotalbarang, grandtotalvolumebarang As Double
 
     'variabel bantuan view pengiriman
@@ -50,8 +50,8 @@ Public Class fkalkulasiexpedisi
         Call koneksii()
 
         hitnumber = 0
-        kodepengiriman = currentnumber()
-        Call inisialisasi(kodepengiriman)
+        idpengiriman = currentnumber()
+        Call inisialisasi(idpengiriman)
 
         With GridView1
             'agar muncul footer untuk sum/avg/count
@@ -113,15 +113,13 @@ Public Class fkalkulasiexpedisi
 
         Catch ex As Exception
             pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
         End Try
         Return pesan
     End Function
 
     Private Sub prevnumber(previousnumber As String)
         Call koneksii()
-        sql = "SELECT kode_pengiriman FROM tb_pengiriman WHERE date_created < (SELECT date_created FROM tb_pengiriman WHERE kode_pengiriman = '" + previousnumber + "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT id FROM tb_pengiriman WHERE date_created < (SELECT date_created FROM tb_pengiriman WHERE id = '" & previousnumber & "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -140,13 +138,11 @@ Public Class fkalkulasiexpedisi
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
         End Try
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksii()
-        sql = "SELECT kode_pengiriman FROM tb_pengiriman WHERE date_created > (SELECT date_created FROM tb_pengiriman WHERE kode_pengiriman = '" + nextingnumber + "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT id FROM tb_pengiriman WHERE date_created > (SELECT date_created FROM tb_pengiriman WHERE id = '" & nextingnumber & "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -165,8 +161,6 @@ Public Class fkalkulasiexpedisi
             End If
         Catch ex As Exception
             pesan = ex.Message.ToString
-        Finally
-            'cnn.Close()
         End Try
     End Sub
 
@@ -222,7 +216,7 @@ Public Class fkalkulasiexpedisi
         txtnonota.Clear()
         txtnonota.Enabled = False
 
-        cmbuser.SelectedIndex = 0
+        cmbuser.SelectedIndex = -1
         cmbuser.Enabled = True
 
         txtnamaexpedisi.Clear()
@@ -295,7 +289,7 @@ Public Class fkalkulasiexpedisi
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabel.Rows.Add(dr("kode_barang"), dr("nama_barang"), Val(dr("panjang_barang")), Val(dr("lebar_barang")), Val(dr("tinggi_barang")), Val(dr("volume_barang")), Val(dr("qty")), Val(dr("total_volume")), Val(dr("harga_barang")), Val(dr("ongkos_kirim")), Val(dr("total_ongkos_kirim")), Val(dr("total_harga_barang")), Val(dr("grand_total_barang")))
+            tabel.Rows.Add(dr("kode_barang"), dr("nama_barang"), Val(dr("panjang_barang")), Val(dr("lebar_barang")), Val(dr("tinggi_barang")), Val(dr("volume_barang")), Val(dr("qty")), Val(dr("total_volume")), Val(dr("harga_barang")), Val(dr("ongkos_kirim")), Val(dr("total_ongkos_kirim")), Val(dr("total_harga_barang")), Val(dr("grand_total_barang")), dr("barang_id"))
             GridControl1.RefreshDataSource()
         End While
     End Sub
@@ -388,8 +382,8 @@ Public Class fkalkulasiexpedisi
 
             If dr.HasRows Then
                 'header
-                nomorpengiriman = dr("kode_pengiriman")
-                nomoruser = dr("kode_user")
+                nomorpengiriman = dr("id")
+                nomoruser = dr("user_id")
 
                 namaexpedisi = dr("nama_expedisi")
                 alamatexpedisi = dr("alamat_expedisi")
@@ -425,13 +419,10 @@ Public Class fkalkulasiexpedisi
                 Call previewpengiriman(nomorkode)
 
                 'total tabel pembelian
-
-
-
             End If
         Else
             txtnonota.Clear()
-            cmbuser.Text = ""
+            cmbuser.SelectedIndex = -1
 
             txtnamaexpedisi.Text = ""
             txtalamatexpedisi.Text = ""
@@ -541,6 +532,7 @@ Public Class fkalkulasiexpedisi
             .Columns.Add("total_ongkos_kirim", GetType(Double))
             .Columns.Add("total_harga_barang", GetType(Double))
             .Columns.Add("grand_total_barang", GetType(Double))
+            .Columns.Add("barang_id")
         End With
 
         GridControl1.DataSource = tabel
@@ -619,6 +611,9 @@ Public Class fkalkulasiexpedisi
         GridColumn13.DisplayFormat.FormatString = "{0:C}"
         GridColumn13.Width = 30
 
+        GridColumn14.FieldName = "barang_id"
+        GridColumn14.Caption = "id barang"
+        GridColumn14.Width = 20
     End Sub
 
     Sub reload_tabel()
@@ -640,8 +635,10 @@ Public Class fkalkulasiexpedisi
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
+            iduser = dr("id")
             txtuser.Text = dr("nama_user")
         Else
+            iduser = "0"
             txtuser.Text = ""
         End If
     End Sub
@@ -660,8 +657,6 @@ Public Class fkalkulasiexpedisi
 
         ' Start a local transaction
         myTrans = cnnx.BeginTransaction()
-        ' Must assign both transaction object and connection
-        ' to Command object for a pending local transaction
         myCommand.Connection = cnnx
         myCommand.Transaction = myTrans
 
@@ -671,14 +666,15 @@ Public Class fkalkulasiexpedisi
             Exit Sub
         Else
             Try
-                'tabel.Rows.Add(dr("kode_barang"), dr("nama_barang"), Val(dr("panjang_barang")), Val(dr("lebar_barang")), Val(dr("tinggi_barang")), Val(dr("volume_barang")), Val(dr("qty")), Val(dr("total_volume")), Val(dr("harga_barang")), Val(dr("ongkos_kirim")), Val(dr("total_ongkos_kirim")), Val(dr("total_harga_barang")), Val(dr("grand_total_barang")))
+                Call koneksii()
+                sql = "INSERT INTO tb_pengiriman (user_id, nama_expedisi, alamat_expedisi, telp_expedisi, tgl_pengiriman, total_pengiriman, print_pengiriman, posted_pengiriman, keterangan_pengiriman, created_by, updated_by,date_created, last_updated) VALUES ('" & iduser & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txttelpexpedisi.Text & "','" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "','" & totalongkospengiriman & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
+                cmmd = New OdbcCommand(sql, cnn)
+                idpengiriman = CInt(cmmd.ExecuteScalar())
 
                 For i As Integer = 0 To GridView1.RowCount - 1
-                    myCommand.CommandText = "INSERT INTO tb_pengiriman_detail (kode_pengiriman, kode_barang, nama_barang, panjang_barang, lebar_barang, tinggi_barang, volume_barang, qty, total_volume, harga_barang, ongkos_kirim, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & kodepengiriman & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "panjang_barang") & "','" & GridView1.GetRowCellValue(i, "lebar_barang") & "','" & GridView1.GetRowCellValue(i, "tinggi_barang") & "','" & GridView1.GetRowCellValue(i, "volume_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "total_volume") & "', '" & GridView1.GetRowCellValue(i, "harga_barang") & "','" & GridView1.GetRowCellValue(i, "ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_harga_barang") & "','" & GridView1.GetRowCellValue(i, "grand_total_barang") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
+                    myCommand.CommandText = "INSERT INTO tb_pengiriman_detail (pengiriman_id, barang_id, kode_barang, nama_barang, panjang_barang, lebar_barang, tinggi_barang, volume_barang, qty, total_volume, harga_barang, ongkos_kirim, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & idpengiriman & "','" & GridView1.GetRowCellValue(i, "barang_id") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "panjang_barang") & "','" & GridView1.GetRowCellValue(i, "lebar_barang") & "','" & GridView1.GetRowCellValue(i, "tinggi_barang") & "','" & GridView1.GetRowCellValue(i, "volume_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "total_volume") & "', '" & GridView1.GetRowCellValue(i, "harga_barang") & "','" & GridView1.GetRowCellValue(i, "ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_harga_barang") & "','" & GridView1.GetRowCellValue(i, "grand_total_barang") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                     myCommand.ExecuteNonQuery()
                 Next
-                myCommand.CommandText = "INSERT INTO tb_pengiriman (kode_pengiriman, kode_user, nama_expedisi, alamat_expedisi, telp_expedisi, tgl_pengiriman, total_pengiriman, print_pengiriman, posted_pengiriman, keterangan_pengiriman, created_by, updated_by,date_created, last_updated) VALUES ('" & kodepengiriman & "','" & cmbuser.Text & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txttelpexpedisi.Text & "','" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "','" & totalongkospengiriman & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
-                myCommand.ExecuteNonQuery()
 
                 myTrans.Commit()
                 Console.WriteLine("Both records are written to database.")
@@ -686,10 +682,10 @@ Public Class fkalkulasiexpedisi
                 MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Sukses")
 
                 'history user ==========
-                Call historysave("Menyimpan Data Pengiriman Container Kode " + kodepengiriman, kodepengiriman, namaform)
+                Call historysave("Menyimpan Data Pengiriman Container Kode " & idpengiriman, idpengiriman, namaform)
                 '========================
 
-                Call inisialisasi(kodepengiriman)
+                Call inisialisasi(idpengiriman)
             Catch e As Exception
                 Try
                     myTrans.Rollback()
@@ -780,7 +776,7 @@ Public Class fkalkulasiexpedisi
         rpt_faktur = New fakturexpedisi
         rpt_faktur.SetDataSource(tabel_faktur)
 
-        rpt_faktur.SetParameterValue("nofaktur", kodepengiriman)
+        rpt_faktur.SetParameterValue("nofaktur", idpengiriman)
         rpt_faktur.SetParameterValue("user", fmenu.kodeuser.Text)
         rpt_faktur.SetParameterValue("namaexpedisi", txtnamaexpedisi.Text)
         rpt_faktur.SetParameterValue("teleponexpedisi", txttelpexpedisi.Text)
@@ -831,7 +827,7 @@ Public Class fkalkulasiexpedisi
         Call cetak_faktur()
 
         Call koneksii()
-        sql = "UPDATE tb_pengiriman SET print_pengiriman = 1 WHERE kode_pengiriman = '" & txtnonota.Text & "' "
+        sql = "UPDATE tb_pengiriman SET print_pengiriman = 1 WHERE id = '" & txtnonota.Text & "' "
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
@@ -850,27 +846,23 @@ Public Class fkalkulasiexpedisi
 
         ' Start a local transaction
         myTrans = cnnx.BeginTransaction()
-        ' Must assign both transaction object and connection
-        ' to Command object for a pending local transaction
         myCommand.Connection = cnnx
         myCommand.Transaction = myTrans
-
-        'loop isi pembelian detail
 
         If GridView1.RowCount = 0 Then
             MsgBox("Data masih kosong")
             Exit Sub
         Else
             Try
-                myCommand.CommandText = "DELETE FROM tb_pengiriman_detail WHERE kode_pengiriman = '" & nomornota & "'"
+                myCommand.CommandText = "DELETE FROM tb_pengiriman_detail WHERE pengiriman_id = '" & nomornota & "'"
                 myCommand.ExecuteNonQuery()
 
                 For i As Integer = 0 To GridView1.RowCount - 1
-                    myCommand.CommandText = "INSERT INTO tb_pengiriman_detail (kode_pengiriman, kode_barang, nama_barang, panjang_barang, lebar_barang, tinggi_barang, volume_barang, qty, total_volume, harga_barang, ongkos_kirim, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & nomornota & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "panjang_barang") & "','" & GridView1.GetRowCellValue(i, "lebar_barang") & "','" & GridView1.GetRowCellValue(i, "tinggi_barang") & "','" & GridView1.GetRowCellValue(i, "volume_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "total_volume") & "', '" & GridView1.GetRowCellValue(i, "harga_barang") & "','" & GridView1.GetRowCellValue(i, "ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_harga_barang") & "','" & GridView1.GetRowCellValue(i, "grand_total_barang") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
+                    myCommand.CommandText = "INSERT INTO tb_pengiriman_detail (pengiriman_id, barang_id, kode_barang, nama_barang, panjang_barang, lebar_barang, tinggi_barang, volume_barang, qty, total_volume, harga_barang, ongkos_kirim, total_ongkos_kirim, total_harga_barang, grand_total_barang, created_by, updated_by, date_created, last_updated) VALUES ('" & nomornota & "','" & GridView1.GetRowCellValue(i, "barang_id") & "','" & GridView1.GetRowCellValue(i, "kode_barang") & "', '" & GridView1.GetRowCellValue(i, "nama_barang") & "','" & GridView1.GetRowCellValue(i, "panjang_barang") & "','" & GridView1.GetRowCellValue(i, "lebar_barang") & "','" & GridView1.GetRowCellValue(i, "tinggi_barang") & "','" & GridView1.GetRowCellValue(i, "volume_barang") & "','" & GridView1.GetRowCellValue(i, "qty") & "','" & GridView1.GetRowCellValue(i, "total_volume") & "', '" & GridView1.GetRowCellValue(i, "harga_barang") & "','" & GridView1.GetRowCellValue(i, "ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_ongkos_kirim") & "','" & GridView1.GetRowCellValue(i, "total_harga_barang") & "','" & GridView1.GetRowCellValue(i, "grand_total_barang") & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                     myCommand.ExecuteNonQuery()
                 Next
 
-                myCommand.CommandText = "UPDATE tb_pengiriman SET kode_user = '" & cmbuser.Text & "', nama_expedisi = '" & txtnamaexpedisi.Text & "', alamat_expedisi = '" & txtalamatexpedisi.Text & "', telp_expedisi = '" & txttelpexpedisi.Text & "', tgl_pengiriman = '" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "', total_pengiriman='" & totalongkospengiriman & "', print_pengiriman = 0, posted_pengiriman = 1, keterangan_pengiriman = '" & txtketerangan.Text & "', updated_by = '" & fmenu.kodeuser.Text & "', last_updated = now() WHERE kode_pengiriman = '" & nomornota & "' "
+                myCommand.CommandText = "UPDATE tb_pengiriman SET user_id = '" & iduser & "', nama_expedisi = '" & txtnamaexpedisi.Text & "', alamat_expedisi = '" & txtalamatexpedisi.Text & "', telp_expedisi = '" & txttelpexpedisi.Text & "', tgl_pengiriman = '" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "', total_pengiriman='" & totalongkospengiriman & "', print_pengiriman = 0, posted_pengiriman = 1, keterangan_pengiriman = '" & txtketerangan.Text & "', updated_by = '" & fmenu.kodeuser.Text & "', last_updated = now() WHERE id = '" & nomornota & "' "
                 myCommand.ExecuteNonQuery()
 
                 myTrans.Commit()
@@ -939,7 +931,7 @@ Public Class fkalkulasiexpedisi
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
         If btnedit.Text.Equals("Edit") Then
-            Call inisialisasi(kodepengiriman)
+            Call inisialisasi(idpengiriman)
         ElseIf btnedit.Text.Equals("Update") Then
             btnedit.Text = "Edit"
             Call inisialisasi(txtnonota.Text)
@@ -1040,6 +1032,7 @@ Public Class fkalkulasiexpedisi
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
+            idbarang = dr("id")
             txtnamabarang.Text = dr("nama_barang")
             hargabarang = dr("modal_barang")
             txthargabarang.Text = Format(hargabarang, "##,##0")
@@ -1069,7 +1062,7 @@ Public Class fkalkulasiexpedisi
             totalongkirbarang = 0
             grandtotalbarang = 0
 
-            tabel.Rows.Add(txtkodebarang.Text, txtnamabarang.Text, Val(panjangbarang), Val(lebarbarang), Val(tinggibarang), Val(volumebarang), Val(banyakbarang), Val(totalvolumebarang), Val(hargabarang), Val(ongkirbarang), Val(totalongkirbarang), Val(totalhargabarang), Val(grandtotalbarang))
+            tabel.Rows.Add(txtkodebarang.Text, txtnamabarang.Text, Val(panjangbarang), Val(lebarbarang), Val(tinggibarang), Val(volumebarang), Val(banyakbarang), Val(totalvolumebarang), Val(hargabarang), Val(ongkirbarang), Val(totalongkirbarang), Val(totalhargabarang), Val(grandtotalbarang), idbarang)
             Call reload_tabel()
         End If
     End Sub

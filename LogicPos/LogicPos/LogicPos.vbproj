@@ -347,6 +347,18 @@
     <Compile Include="flapbarcode.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flapkalkulasiexpedisi.Designer.vb">
+      <DependentUpon>flapkalkulasiexpedisi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flapkalkulasiexpedisi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flapkalkulasipengiriman.Designer.vb">
+      <DependentUpon>flapkalkulasipengiriman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flapkalkulasipengiriman.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flapmutasibarang.Designer.vb">
       <DependentUpon>flapmutasibarang.vb</DependentUpon>
     </Compile>
