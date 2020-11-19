@@ -40,6 +40,9 @@ Partial Class flaporankalkulasiexpedisi
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -77,7 +80,7 @@ Partial Class flaporankalkulasiexpedisi
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(811, 102)
+        Me.btnexcel.Location = New System.Drawing.Point(887, 102)
         Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(215, 43)
@@ -92,9 +95,9 @@ Partial Class flaporankalkulasiexpedisi
         Me.Label2.Location = New System.Drawing.Point(8, 17)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(339, 31)
+        Me.Label2.Size = New System.Drawing.Size(364, 31)
         Me.Label2.TabIndex = 27
-        Me.Label2.Text = "Laporan Transfer Barang"
+        Me.Label2.Text = "Laporan Kalkulasi Expedisi"
         '
         'dtakhir
         '
@@ -119,13 +122,13 @@ Partial Class flaporankalkulasiexpedisi
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1013, 442)
+        Me.GridControl1.Size = New System.Drawing.Size(1089, 442)
         Me.GridControl1.TabIndex = 24
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12})
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsFind.AlwaysVisible = True
@@ -229,12 +232,33 @@ Partial Class flaporankalkulasiexpedisi
         Me.GridColumn9.Visible = True
         Me.GridColumn9.VisibleIndex = 8
         '
+        'GridColumn10
+        '
+        Me.GridColumn10.Caption = "GridColumn10"
+        Me.GridColumn10.Name = "GridColumn10"
+        Me.GridColumn10.Visible = True
+        Me.GridColumn10.VisibleIndex = 9
+        '
+        'GridColumn11
+        '
+        Me.GridColumn11.Caption = "GridColumn11"
+        Me.GridColumn11.Name = "GridColumn11"
+        Me.GridColumn11.Visible = True
+        Me.GridColumn11.VisibleIndex = 10
+        '
+        'GridColumn12
+        '
+        Me.GridColumn12.Caption = "GridColumn12"
+        Me.GridColumn12.Name = "GridColumn12"
+        Me.GridColumn12.Visible = True
+        Me.GridColumn12.VisibleIndex = 11
+        '
         'flaporankalkulasiexpedisi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1036, 609)
+        Me.ClientSize = New System.Drawing.Size(1115, 609)
         Me.Controls.Add(Me.btnrekap)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btntabel)
@@ -244,7 +268,7 @@ Partial Class flaporankalkulasiexpedisi
         Me.Controls.Add(Me.dtawal)
         Me.Controls.Add(Me.GridControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "flaporankalkulasiexpedisi"
         Me.Text = "flaporankalkulasiexpedisi"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -272,4 +296,7 @@ Partial Class flaporankalkulasiexpedisi
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

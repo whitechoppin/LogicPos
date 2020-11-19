@@ -464,11 +464,11 @@ Public Class fmenu
     End Sub
 
     Private Sub LaporanContainerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanContainerToolStripMenuItem.Click
-
+        flaporankalkulasiexpedisi.Show()
     End Sub
 
     Private Sub LaporanPengirimanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanPengirimanToolStripMenuItem.Click
-
+        flaporankalkulasipengiriman.Show()
     End Sub
     Private Sub KonfigurasiDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KonfigurasiDatabaseToolStripMenuItem.Click
 

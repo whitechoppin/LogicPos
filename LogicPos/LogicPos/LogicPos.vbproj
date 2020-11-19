@@ -1236,6 +1236,12 @@
     <EmbeddedResource Include="flapbarcode.resx">
       <DependentUpon>flapbarcode.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="flapkalkulasiexpedisi.resx">
+      <DependentUpon>flapkalkulasiexpedisi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flapkalkulasipengiriman.resx">
+      <DependentUpon>flapkalkulasipengiriman.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flapmutasibarang.resx">
       <DependentUpon>flapmutasibarang.vb</DependentUpon>
     </EmbeddedResource>
