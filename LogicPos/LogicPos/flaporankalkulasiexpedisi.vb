@@ -54,6 +54,9 @@ Public Class flaporankalkulasiexpedisi
             Case 4
                 printstatus = True
                 exportstatus = True
+            Case Else
+                printstatus = True
+                exportstatus = True
         End Select
 
         Call historysave("Membuka Laporan Kalkulasi Expedisi", "N/A", namaform)
@@ -85,30 +88,44 @@ Public Class flaporankalkulasiexpedisi
 
         GridColumn8.Caption = "Volume"
         GridColumn8.FieldName = "volume_barang"
+        GridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn8.DisplayFormat.FormatString = "##,##0"
 
         GridColumn9.Caption = "Qty"
         GridColumn9.FieldName = "qty"
 
-        GridColumn6.Caption = "Total Volume"
-        GridColumn6.FieldName = "total_volume"
+        GridColumn10.Caption = "Total Volume"
+        GridColumn10.FieldName = "total_volume"
+        GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn10.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn7.Caption = "Harga Barang"
-        GridColumn7.FieldName = "harga_barang"
+        GridColumn11.Caption = "Harga Barang"
+        GridColumn11.FieldName = "harga_barang"
+        GridColumn11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn11.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn8.Caption = "Harga + Ongkir"
-        GridColumn8.FieldName = "harga_tambah_ongkir"
+        GridColumn12.Caption = "Ongkos Kirim"
+        GridColumn12.FieldName = "ongkos_kirim"
+        GridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn12.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn9.Caption = "Total Ongkir"
-        GridColumn9.FieldName = "total_ongkir"
+        GridColumn13.Caption = "Total Ongkir"
+        GridColumn13.FieldName = "total_ongkos_kirim"
+        GridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn13.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn10.Caption = "Total Harga Barang"
-        GridColumn10.FieldName = "total_harga_barang"
+        GridColumn14.Caption = "Total Harga Barang"
+        GridColumn14.FieldName = "total_harga_barang"
+        GridColumn14.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn14.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn11.Caption = "Grand Total Barang"
-        GridColumn11.FieldName = "grand_total_barang"
+        GridColumn15.Caption = "Grand Total Barang"
+        GridColumn15.FieldName = "grand_total_barang"
+        GridColumn15.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn15.DisplayFormat.FormatString = "##,##0"
 
-        GridColumn12.Caption = "User"
-        GridColumn12.FieldName = "nama_user"
+        GridColumn16.Caption = "User"
+        GridColumn16.FieldName = "nama_user"
 
         GridControl1.Visible = True
     End Sub
@@ -134,7 +151,57 @@ Public Class flaporankalkulasiexpedisi
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
+        If printstatus.Equals(True) Then
+            Dim rptrekap As ReportDocument
+            Dim awalPFDs As ParameterFieldDefinitions
+            Dim awalPFD As ParameterFieldDefinition
+            Dim awalPVs As New ParameterValues
+            Dim awalPDV As New ParameterDiscreteValue
 
+            Dim akhirPFDs As ParameterFieldDefinitions
+            Dim akhirPFD As ParameterFieldDefinition
+            Dim akhirPVs As New ParameterValues
+            Dim akhirPDV As New ParameterDiscreteValue
+
+            Call koneksii()
+
+            If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
+                sql = "SELECT * FROM tb_pengiriman WHERE DATE(tgl_pengiriman) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+            Else
+                sql = "SELECT * FROM tb_pengiriman WHERE tgl_pengiriman BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+            End If
+
+            cmmd = New OdbcCommand(sql, cnn)
+            dr = cmmd.ExecuteReader
+
+            If dr.HasRows Then
+                rptrekap = New rptrekapexpedisi
+
+                awalPDV.Value = Format(dtawal.Value, "yyyy-MM-dd")
+                awalPFDs = rptrekap.DataDefinition.ParameterFields
+                awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
+                awalPVs.Clear()
+                awalPVs.Add(awalPDV)
+                awalPFD.ApplyCurrentValues(awalPVs)
+
+                akhirPDV.Value = Format(dtakhir.Value, "yyyy-MM-dd")
+                akhirPFDs = rptrekap.DataDefinition.ParameterFields
+                akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
+                akhirPVs.Clear()
+                akhirPVs.Add(akhirPDV)
+                akhirPFD.ApplyCurrentValues(akhirPVs)
+
+                flaptransferbarang.CrystalReportViewer1.ReportSource = rptrekap
+                flaptransferbarang.ShowDialog()
+                flaptransferbarang.WindowState = FormWindowState.Maximized
+
+                Call historysave("Merekap Laporan Transfer Barang", "N/A", namaform)
+            Else
+                MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
+            End If
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
 
     Sub ExportToExcel()
@@ -156,7 +223,16 @@ Public Class flaporankalkulasiexpedisi
     End Sub
 
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
-
+        If exportstatus.Equals(True) Then
+            If GridView1.DataRowCount > 0 Then
+                ExportToExcel()
+                Call historysave("Mengexport Laporan Transfer Barang", "N/A", namaform)
+            Else
+                MsgBox("Export Gagal, Rekap Tabel terlebih dahulu  !", MsgBoxStyle.Information, "Gagal")
+            End If
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
 
     Private Sub flaporankalkulasiexpedisi_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed

@@ -113,6 +113,8 @@ Public Class fkategoribarang
         GridColumn3.Caption = "Selisih Kategori"
         GridColumn3.FieldName = "selisih_kategori"
         GridColumn3.Width = 100
+        GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        GridColumn3.DisplayFormat.FormatString = "##,##0"
 
         GridColumn4.Caption = "Keterangan Kategori"
         GridColumn4.FieldName = "keterangan_kategori"
