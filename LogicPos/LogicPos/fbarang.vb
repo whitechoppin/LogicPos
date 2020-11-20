@@ -499,7 +499,7 @@ Public Class fbarang
             Dim rawData() As Byte = New Byte(CType(fs.Length, Integer)) {}
             fs.Read(rawData, 0, System.Convert.ToInt32(fs.Length))
             fs.Close()
-            Dim resized As Image = ResizeGambar(Image.FromFile(filena), New Size(260, 260))
+            Dim resized As Image = ResizeGambar(Image.FromFile(filena), New Size(1240, 1754))
             Dim memStream As MemoryStream = New MemoryStream()
             resized.Save(memStream, System.Drawing.Imaging.ImageFormat.Jpeg)
             PictureBox.Image = resized
