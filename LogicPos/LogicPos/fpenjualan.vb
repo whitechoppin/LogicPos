@@ -577,7 +577,7 @@ Public Class fpenjualan
                 txtppnpersen.Enabled = False
                 txtdiskonpersen.Enabled = False
 
-                cmbpembayaran.SelectedItem = viewpembayaran
+                cmbpembayaran.Text = viewpembayaran
                 txtbayar.Text = nilaibayar
             End If
         Else
