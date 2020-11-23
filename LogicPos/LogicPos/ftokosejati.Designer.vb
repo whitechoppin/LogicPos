@@ -37,6 +37,7 @@ Partial Class ftokosejati
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
+        Me.DashboardDesigner1 = New DevExpress.DashboardWin.DashboardDesigner()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -121,12 +122,24 @@ Partial Class ftokosejati
         Me.ChartControl1.Size = New System.Drawing.Size(669, 200)
         Me.ChartControl1.TabIndex = 7
         '
+        'DashboardDesigner1
+        '
+        Me.DashboardDesigner1.CustomDBSchemaProvider = Nothing
+        Me.DashboardDesigner1.Location = New System.Drawing.Point(17, 352)
+        Me.DashboardDesigner1.Name = "DashboardDesigner1"
+        Me.DashboardDesigner1.PrintingOptions.DocumentContentOptions.FilterState = DevExpress.DashboardWin.DashboardPrintingFilterState.SeparatePage
+        Me.DashboardDesigner1.PrintingOptions.FontInfo.GdiCharSet = CType(0, Byte)
+        Me.DashboardDesigner1.PrintingOptions.FontInfo.Name = Nothing
+        Me.DashboardDesigner1.Size = New System.Drawing.Size(744, 179)
+        Me.DashboardDesigner1.TabIndex = 8
+        '
         'ftokosejati
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1025, 349)
+        Me.ClientSize = New System.Drawing.Size(1025, 554)
+        Me.Controls.Add(Me.DashboardDesigner1)
         Me.Controls.Add(Me.ChartControl1)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -156,4 +169,5 @@ Partial Class ftokosejati
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents ChartControl1 As DevExpress.XtraCharts.ChartControl
+    Friend WithEvents DashboardDesigner1 As DevExpress.DashboardWin.DashboardDesigner
 End Class

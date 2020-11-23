@@ -100,6 +100,74 @@ Public Class ftokosejati
         End Try
     End Sub
 
+    Sub LoadChart()
+
+        Me.Cursor = Cursors.WaitCursor
+
+        Dim dtTemp As New DataTable
+
+        Try
+
+            dtTemp = FillDataTable("SELECT SUM(NET) AS NETT, TGL2 FROM DAT2 WHERE year(TGL2)=" & tgl.Year & " AND month(TGL2)=" & tgl.Month & " AND PROD LIKE 'c%' GROUP BY TGL2 ORDER BY TGL2")
+
+            ChartControl1.Series("Series 1").Visible = True
+
+            ChartControl1.Series("Series 1").DataSource = dtTemp.Copy
+
+            ChartControl1.Series("Series 1").ValueDataMembersSerializable = "NETT"
+
+            ChartControl1.Series("Series 1").ArgumentDataMember = "TGL2"
+
+
+
+            dtTemp = FillDataTable("SELECT SUM(NET) AS NETT, TGL2 FROM DAT2 WHERE year(TGL2)=" & tgl.Year & " AND month(TGL2)=" & tgl.Month & " AND PROD LIKE 'p%' GROUP BY TGL2 ORDER BY TGL2")
+
+            ChartControl1.Series("Series 3").Visible = True
+
+            ChartControl1.Series("Series 3").DataSource = dtTemp.Copy
+
+            ChartControl1.Series("Series 3").ValueDataMembersSerializable = "NETT"
+
+            ChartControl1.Series("Series 3").ArgumentDataMember = "TGL2"
+
+
+
+            dtTemp = FillDataTable("SELECT SUM(NET) AS NETT, TGL2 FROM DAT2 WHERE year(TGL2)=" & tgl.Year & " AND month(TGL2)=" & tgl.Month & " AND PROD LIKE 't%' GROUP BY TGL2 ORDER BY TGL2")
+
+            ChartControl1.Series("Series 2").Visible = True
+
+            ChartControl1.Series("Series 2").DataSource = dtTemp.Copy
+
+            ChartControl1.Series("Series 2").ValueDataMembersSerializable = "NETT"
+
+            ChartControl1.Series("Series 2").ArgumentDataMember = "TGL2"
+
+
+
+            ChartControl1.Titles(1).Text = "PERIODE : " & Format(tgl, "MMMM yyyy")
+
+        Catch ex As Exception
+
+            Dim strErr As String
+
+            strErr = "Stack trace = " & ex.StackTrace & vbCrLf
+
+                & "Soure = " & ex.Source _
+
+                & "Error = " & ex.Message
+
+            WriteToEventLog(strErr, EventLogEntryType.Error, "LoadChart")
+
+            MsgBox("Ada kesalahan, silahkan tutup form lalu coba buka kembali." & vbCrLf & "Error : " & ex.Message, vbInformation)
+
+        End Try
+
+
+
+        Me.Cursor = Cursors.Arrow
+
+    End Sub
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Call saveuser()
     End Sub
