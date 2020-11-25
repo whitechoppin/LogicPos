@@ -4,6 +4,7 @@ Imports System.Net.Mail
 Imports System.Threading
 Imports System.Globalization
 Imports System.Net.NetworkInformation
+Imports System.IO
 
 Public Class ftokosejati
     Private Sub ftokosejati_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -98,6 +99,23 @@ Public Class ftokosejati
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+    End Sub
+    Sub exportChart()
+        Dim filename As String = InputBox("Nama File", "Input Nama file ")
+        Dim pathdata As String = "C:\ExportLogicPos"
+        Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"
+
+        If filename <> "" Then
+            If (Not System.IO.Directory.Exists(pathdata)) Then
+                System.IO.Directory.CreateDirectory(pathdata)
+            End If
+
+            ChartControl1.ExportToXls(yourpath)
+            MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
+            ' Do something
+        ElseIf DialogResult.Cancel Then
+            MsgBox("You've canceled")
+        End If
     End Sub
 
     Sub LoadChart()
@@ -232,6 +250,7 @@ Public Class ftokosejati
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         MsgBox(CpuId() + " " + getMacAddress() + " " + getMacAddressx())
         Call ProcessorSpeed()
+        Call exportChart()
         'MsgBox(CreateObject("WScript.Shell").RegRead("HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0\ProcessorNameString"))
     End Sub
 End Class

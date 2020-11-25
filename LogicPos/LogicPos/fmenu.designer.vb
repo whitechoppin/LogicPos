@@ -87,6 +87,8 @@ Partial Class fmenu
         Me.KalkulasiExpedisiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PengirimanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LaporanPengirimanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KonfigurasiDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BarcodeGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -105,8 +107,9 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
-        Me.LaporanContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LaporanPengirimanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChartMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChartPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChartPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -114,7 +117,7 @@ Partial Class fmenu
         'MenuUtama
         '
         Me.MenuUtama.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuUtama.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterMenu, Me.TransaksiMenu, Me.AdministrasiMenu, Me.LaporanMenu, Me.SettingMenu, Me.AboutMenu})
+        Me.MenuUtama.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterMenu, Me.TransaksiMenu, Me.AdministrasiMenu, Me.LaporanMenu, Me.ChartMenu, Me.SettingMenu, Me.AboutMenu})
         Me.MenuUtama.Location = New System.Drawing.Point(0, 0)
         Me.MenuUtama.Name = "MenuUtama"
         Me.MenuUtama.Size = New System.Drawing.Size(1050, 24)
@@ -502,6 +505,18 @@ Partial Class fmenu
         Me.PengirimanToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
         Me.PengirimanToolStripMenuItem.Text = "Pengiriman"
         '
+        'LaporanContainerToolStripMenuItem
+        '
+        Me.LaporanContainerToolStripMenuItem.Name = "LaporanContainerToolStripMenuItem"
+        Me.LaporanContainerToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.LaporanContainerToolStripMenuItem.Text = "Laporan Container"
+        '
+        'LaporanPengirimanToolStripMenuItem
+        '
+        Me.LaporanPengirimanToolStripMenuItem.Name = "LaporanPengirimanToolStripMenuItem"
+        Me.LaporanPengirimanToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.LaporanPengirimanToolStripMenuItem.Text = "Laporan Pengiriman"
+        '
         'KonfigurasiDatabaseToolStripMenuItem
         '
         Me.KonfigurasiDatabaseToolStripMenuItem.Name = "KonfigurasiDatabaseToolStripMenuItem"
@@ -629,17 +644,24 @@ Partial Class fmenu
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
         '
-        'LaporanContainerToolStripMenuItem
+        'ChartMenu
         '
-        Me.LaporanContainerToolStripMenuItem.Name = "LaporanContainerToolStripMenuItem"
-        Me.LaporanContainerToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
-        Me.LaporanContainerToolStripMenuItem.Text = "Laporan Container"
+        Me.ChartMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChartPembelianToolStripMenuItem, Me.ChartPenjualanToolStripMenuItem})
+        Me.ChartMenu.Name = "ChartMenu"
+        Me.ChartMenu.Size = New System.Drawing.Size(48, 20)
+        Me.ChartMenu.Text = "&Chart"
         '
-        'LaporanPengirimanToolStripMenuItem
+        'ChartPenjualanToolStripMenuItem
         '
-        Me.LaporanPengirimanToolStripMenuItem.Name = "LaporanPengirimanToolStripMenuItem"
-        Me.LaporanPengirimanToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
-        Me.LaporanPengirimanToolStripMenuItem.Text = "Laporan Pengiriman"
+        Me.ChartPenjualanToolStripMenuItem.Name = "ChartPenjualanToolStripMenuItem"
+        Me.ChartPenjualanToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.ChartPenjualanToolStripMenuItem.Text = "Chart Penjualan"
+        '
+        'ChartPembelianToolStripMenuItem
+        '
+        Me.ChartPembelianToolStripMenuItem.Name = "ChartPembelianToolStripMenuItem"
+        Me.ChartPembelianToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.ChartPembelianToolStripMenuItem.Text = "Chart Pembelian"
         '
         'fmenu
         '
@@ -748,4 +770,7 @@ Partial Class fmenu
     Friend WithEvents prefixjabatan As ToolStripStatusLabel
     Friend WithEvents LaporanContainerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LaporanPengirimanToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ChartMenu As ToolStripMenuItem
+    Friend WithEvents ChartPenjualanToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ChartPembelianToolStripMenuItem As ToolStripMenuItem
 End Class

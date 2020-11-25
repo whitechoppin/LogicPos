@@ -332,6 +332,18 @@
     <Compile Include="fcaritransferbarang.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fchartpembelian.Designer.vb">
+      <DependentUpon>fchartpembelian.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fchartpembelian.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fchartpenjualan.Designer.vb">
+      <DependentUpon>fchartpenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fchartpenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fgeneratebarcode.Designer.vb">
       <DependentUpon>fgeneratebarcode.vb</DependentUpon>
     </Compile>
@@ -1238,6 +1250,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fcaritransferbarang.resx">
       <DependentUpon>fcaritransferbarang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fchartpembelian.resx">
+      <DependentUpon>fchartpembelian.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fchartpenjualan.resx">
+      <DependentUpon>fchartpenjualan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fgeneratebarcode.resx">
       <DependentUpon>fgeneratebarcode.vb</DependentUpon>

@@ -485,4 +485,11 @@ Public Class fmenu
         ftokosejati.Show()
     End Sub
 
+    Private Sub ChartPembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPembelianToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ChartPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPenjualanToolStripMenuItem.Click
+
+    End Sub
 End Class
