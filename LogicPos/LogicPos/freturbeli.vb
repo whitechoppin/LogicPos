@@ -588,6 +588,10 @@ Public Class freturbeli
             txttelp.Text = ""
             txtalamat.Text = ""
 
+            dtpembelian.Value = Date.Now
+            dtjatuhtempo.Value = Date.Now
+            txtgudang.Text = ""
+
             MsgBox("Nota Tidak Ditemukan", MsgBoxStyle.Information, "Gagal")
         End If
 

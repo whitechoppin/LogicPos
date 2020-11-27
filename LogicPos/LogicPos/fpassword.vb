@@ -364,14 +364,13 @@ Public Class fpassword
             mail.From = New MailAddress("logicpos@sjtsupplies.com")
             mail.To.Add("suryaminharsono89@gmail.com")
             mail.Subject = "PIN/Password Logic POS"
-            mail.Body = "Kode PIN/Password Anda : " + kodepassword
+            mail.Body = "Kode PIN/Password Anda : " & kodepassword
             SmtpServer.Send(mail)
             MsgBox("PIN/Password telah dikirim !")
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
-
 
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
         Call proceed()

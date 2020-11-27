@@ -938,6 +938,10 @@ Public Class freturjual
             txttelp.Text = ""
             txtalamat.Text = ""
 
+            dtpenjualan.Value = Date.Now
+            dtjatuhtempo.Value = Date.Now
+            txtgudang.Text = ""
+
             MsgBox("Nota Tidak Ditemukan", MsgBoxStyle.Information, "Gagal")
         End If
 

@@ -850,7 +850,8 @@ Public Class fkalkulasipengiriman
     End Sub
 
     Private Sub btncaridata_Click(sender As Object, e As EventArgs) Handles btncaridata.Click
-
+        tutupcarikalkulasipengiriman = 2
+        fcarikalkulasipengiriman.ShowDialog()
     End Sub
 
     Private Sub btngo_Click(sender As Object, e As EventArgs) Handles btngo.Click

@@ -263,6 +263,7 @@ Partial Class fpreviewpiutang
         Me.GridColumn8.AppearanceHeader.Options.UseFont = True
         Me.GridColumn8.Caption = "Kode"
         Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.OptionsColumn.AllowEdit = False
         Me.GridColumn8.Visible = True
         Me.GridColumn8.VisibleIndex = 0
         '
@@ -274,6 +275,7 @@ Partial Class fpreviewpiutang
         Me.GridColumn9.AppearanceHeader.Options.UseFont = True
         Me.GridColumn9.Caption = "Tanggal"
         Me.GridColumn9.Name = "GridColumn9"
+        Me.GridColumn9.OptionsColumn.AllowEdit = False
         Me.GridColumn9.Visible = True
         Me.GridColumn9.VisibleIndex = 1
         '
@@ -285,6 +287,7 @@ Partial Class fpreviewpiutang
         Me.GridColumn10.AppearanceHeader.Options.UseFont = True
         Me.GridColumn10.Caption = "Terima"
         Me.GridColumn10.Name = "GridColumn10"
+        Me.GridColumn10.OptionsColumn.AllowEdit = False
         Me.GridColumn10.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "terima_piutang", "{0:n0}")})
         Me.GridColumn10.Visible = True
         Me.GridColumn10.VisibleIndex = 2

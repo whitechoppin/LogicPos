@@ -128,7 +128,7 @@ Public Class fpreviewpiutang
         Call koneksii()
 
         If cbperiode.Checked = True Then
-            If dtawal.Value.Equals(dtakhir.Value) Then
+            If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 If cmbpelanggan.Text.Length > 0 And cmbstatus.Text.Length = 0 Then
                     sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
                         FROM tb_penjualan JOIN tb_pelanggan ON tb_penjualan.pelanggan_id = tb_pelanggan.id WHERE tb_penjualan.pelanggan_id='" & idpelanggan & "' AND DATE(tb_penjualan.tgl_penjualan) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"

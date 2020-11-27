@@ -173,7 +173,8 @@ Public Class fkalkulasiexpedisi
     End Sub
 
     Private Sub btncaridata_Click(sender As Object, e As EventArgs) Handles btncaridata.Click
-
+        tutupcarikalkulasiexpedisi = 2
+        fcarikalkulasiexpedisi.ShowDialog()
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click

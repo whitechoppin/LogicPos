@@ -38,6 +38,11 @@
     Public tutupcaripelunasanutang As Integer
     Public tutupcaripelunasanpiutang As Integer
     '======================
+
+    'variabel text go pada kalkulasi expedisi dan kalkulasi pengiriman
+    Public tutupcarikalkulasiexpedisi As Integer
+    Public tutupcarikalkulasipengiriman As Integer
+    '======================
     Public msgbox1 As Integer
     Public passwordid As Integer
 End Module
