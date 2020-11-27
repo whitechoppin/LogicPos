@@ -122,7 +122,7 @@ Public Class ftokosejati
         Me.Cursor = Cursors.WaitCursor
 
         Call koneksii()
-        sql = "SELECT * FROM tb_kategori_barang"
+        sql = "SELECT SUM(total_penjualan) AS total, MONTH(tgl_penjualan) as bulan FROM tb_penjualan GROUP BY MONTH(tgl_penjualan)"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -135,8 +135,8 @@ Public Class ftokosejati
 
             ChartControl1.Series("Series 1").Visible = True
             ChartControl1.Series("Series 1").DataSource = ds.Tables(0)
-            ChartControl1.Series("Series 1").ValueDataMembersSerializable = "selisih_kategori"
-            ChartControl1.Series("Series 1").ArgumentDataMember = "kode_kategori"
+            ChartControl1.Series("Series 1").ValueDataMembersSerializable = "total"
+            ChartControl1.Series("Series 1").ArgumentDataMember = "bulan"
 
             'dtTemp = FillDataTable("SELECT SUM(NET) AS NETT, TGL2 FROM DAT2 WHERE year(TGL2)=" & tgl.Year & " AND month(TGL2)=" & tgl.Month & " AND PROD LIKE 't%' GROUP BY TGL2 ORDER BY TGL2")
 
