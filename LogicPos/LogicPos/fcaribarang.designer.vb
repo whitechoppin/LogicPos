@@ -39,8 +39,8 @@ Partial Class fcaribarang
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.btnrefresh = New System.Windows.Forms.Button()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -50,9 +50,10 @@ Partial Class fcaribarang
         'txtcari
         '
         Me.txtcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcari.Location = New System.Drawing.Point(120, 39)
+        Me.txtcari.Location = New System.Drawing.Point(180, 54)
+        Me.txtcari.Margin = New System.Windows.Forms.Padding(4)
         Me.txtcari.Name = "txtcari"
-        Me.txtcari.Size = New System.Drawing.Size(290, 24)
+        Me.txtcari.Size = New System.Drawing.Size(433, 24)
         Me.txtcari.TabIndex = 7
         '
         'cmbcari
@@ -61,9 +62,10 @@ Partial Class fcaribarang
         Me.cmbcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbcari.FormattingEnabled = True
         Me.cmbcari.Items.AddRange(New Object() {"Kode", "Nama"})
-        Me.cmbcari.Location = New System.Drawing.Point(11, 38)
+        Me.cmbcari.Location = New System.Drawing.Point(16, 53)
+        Me.cmbcari.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbcari.Name = "cmbcari"
-        Me.cmbcari.Size = New System.Drawing.Size(103, 26)
+        Me.cmbcari.Size = New System.Drawing.Size(152, 26)
         Me.cmbcari.TabIndex = 6
         '
         'GroupBox1
@@ -73,9 +75,11 @@ Partial Class fcaribarang
         Me.GroupBox1.Controls.Add(Me.LabelHarga)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(736, 31)
+        Me.GroupBox1.Location = New System.Drawing.Point(926, 50)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(282, 318)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Size = New System.Drawing.Size(340, 392)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         '
@@ -84,9 +88,10 @@ Partial Class fcaribarang
         Me.btnshow.BackgroundImage = CType(resources.GetObject("btnshow.BackgroundImage"), System.Drawing.Image)
         Me.btnshow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnshow.ImageIndex = 0
-        Me.btnshow.Location = New System.Drawing.Point(105, 238)
+        Me.btnshow.Location = New System.Drawing.Point(293, 296)
+        Me.btnshow.Margin = New System.Windows.Forms.Padding(4)
         Me.btnshow.Name = "btnshow"
-        Me.btnshow.Size = New System.Drawing.Size(29, 22)
+        Me.btnshow.Size = New System.Drawing.Size(37, 33)
         Me.btnshow.TabIndex = 28
         Me.btnshow.UseVisualStyleBackColor = True
         '
@@ -94,7 +99,8 @@ Partial Class fcaribarang
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(61, 276)
+        Me.Label3.Location = New System.Drawing.Point(74, 305)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(33, 17)
         Me.Label3.TabIndex = 3
@@ -104,7 +110,8 @@ Partial Class fcaribarang
         '
         Me.LabelHarga.AutoSize = True
         Me.LabelHarga.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelHarga.Location = New System.Drawing.Point(100, 276)
+        Me.LabelHarga.Location = New System.Drawing.Point(132, 305)
+        Me.LabelHarga.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelHarga.Name = "LabelHarga"
         Me.LabelHarga.Size = New System.Drawing.Size(17, 17)
         Me.LabelHarga.TabIndex = 2
@@ -114,7 +121,8 @@ Partial Class fcaribarang
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 241)
+        Me.Label2.Location = New System.Drawing.Point(8, 277)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(99, 16)
         Me.Label2.TabIndex = 1
@@ -122,9 +130,10 @@ Partial Class fcaribarang
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(7, 14)
+        Me.PictureBox1.Location = New System.Drawing.Point(8, 25)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(269, 219)
+        Me.PictureBox1.Size = New System.Drawing.Size(322, 245)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -132,7 +141,8 @@ Partial Class fcaribarang
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 11)
+        Me.Label1.Location = New System.Drawing.Point(18, 15)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(223, 24)
         Me.Label1.TabIndex = 9
@@ -142,18 +152,21 @@ Partial Class fcaribarang
         '
         Me.btnmasuk.BackgroundImage = CType(resources.GetObject("btnmasuk.BackgroundImage"), System.Drawing.Image)
         Me.btnmasuk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnmasuk.Location = New System.Drawing.Point(415, 41)
+        Me.btnmasuk.Location = New System.Drawing.Point(622, 57)
+        Me.btnmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.btnmasuk.Name = "btnmasuk"
-        Me.btnmasuk.Size = New System.Drawing.Size(91, 24)
+        Me.btnmasuk.Size = New System.Drawing.Size(136, 33)
         Me.btnmasuk.TabIndex = 11
         Me.btnmasuk.UseVisualStyleBackColor = True
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(11, 38)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
+        Me.GridControl1.Location = New System.Drawing.Point(16, 53)
         Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(719, 311)
+        Me.GridControl1.Size = New System.Drawing.Size(902, 389)
         Me.GridControl1.TabIndex = 12
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -209,17 +222,6 @@ Partial Class fcaribarang
         Me.GridColumn4.VisibleIndex = 3
         Me.GridColumn4.Width = 123
         '
-        'btnrefresh
-        '
-        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
-        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnrefresh.ImageIndex = 0
-        Me.btnrefresh.Location = New System.Drawing.Point(241, 8)
-        Me.btnrefresh.Name = "btnrefresh"
-        Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
-        Me.btnrefresh.TabIndex = 28
-        Me.btnrefresh.UseVisualStyleBackColor = True
-        '
         'GridColumn5
         '
         Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
@@ -230,12 +232,24 @@ Partial Class fcaribarang
         Me.GridColumn5.Visible = True
         Me.GridColumn5.VisibleIndex = 4
         '
+        'btnrefresh
+        '
+        Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
+        Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnrefresh.ImageIndex = 0
+        Me.btnrefresh.Location = New System.Drawing.Point(1229, 15)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(37, 33)
+        Me.btnrefresh.TabIndex = 28
+        Me.btnrefresh.UseVisualStyleBackColor = True
+        '
         'fcaribarang
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1030, 364)
+        Me.ClientSize = New System.Drawing.Size(1280, 453)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.btnmasuk)
@@ -243,7 +257,9 @@ Partial Class fcaribarang
         Me.Controls.Add(Me.cmbcari)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "fcaribarang"

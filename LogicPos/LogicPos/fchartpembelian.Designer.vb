@@ -29,7 +29,23 @@ Partial Class fchartpembelian
         Dim SeriesPoint8 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
         Dim SeriesPoint9 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
         Dim SeriesPoint10 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpembelian))
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.cmbsales = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.cmbsupplier = New System.Windows.Forms.ComboBox()
+        Me.btncarisupplier = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.cmbgudang = New System.Windows.Forms.ComboBox()
+        Me.btncarigudang = New System.Windows.Forms.Button()
+        Me.btntabel = New System.Windows.Forms.Button()
+        Me.btnexcel = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(XyDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -40,29 +56,219 @@ Partial Class fchartpembelian
         XyDiagram2.AxisX.VisibleInPanesSerializable = "-1"
         XyDiagram2.AxisY.VisibleInPanesSerializable = "-1"
         Me.ChartControl1.Diagram = XyDiagram2
-        Me.ChartControl1.Location = New System.Drawing.Point(12, 59)
+        Me.ChartControl1.Location = New System.Drawing.Point(13, 189)
+        Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ChartControl1.Name = "ChartControl1"
         Series2.Name = "Series 1"
         Series2.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint6, SeriesPoint7, SeriesPoint8, SeriesPoint9, SeriesPoint10})
         Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series2}
-        Me.ChartControl1.Size = New System.Drawing.Size(889, 393)
+        Me.ChartControl1.Size = New System.Drawing.Size(1358, 609)
         Me.ChartControl1.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(324, 61)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(119, 16)
+        Me.Label1.TabIndex = 20
+        Me.Label1.Text = "Sampai Dengan"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(13, 9)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(264, 31)
+        Me.Label2.TabIndex = 21
+        Me.Label2.Text = "Laporan Pembelian"
+        '
+        'DateTimePicker2
+        '
+        Me.DateTimePicker2.Location = New System.Drawing.Point(451, 57)
+        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(231, 24)
+        Me.DateTimePicker2.TabIndex = 19
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(85, 57)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(231, 24)
+        Me.DateTimePicker1.TabIndex = 18
+        '
+        'cmbsales
+        '
+        Me.cmbsales.FormattingEnabled = True
+        Me.cmbsales.Location = New System.Drawing.Point(21, 126)
+        Me.cmbsales.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbsales.MaxLength = 99
+        Me.cmbsales.Name = "cmbsales"
+        Me.cmbsales.Size = New System.Drawing.Size(268, 26)
+        Me.cmbsales.TabIndex = 41
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(302, 102)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(100, 18)
+        Me.Label6.TabIndex = 38
+        Me.Label6.Text = "Kode Supplier"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(18, 102)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(84, 18)
+        Me.Label16.TabIndex = 42
+        Me.Label16.Text = "Kode Sales"
+        '
+        'cmbsupplier
+        '
+        Me.cmbsupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbsupplier.FormattingEnabled = True
+        Me.cmbsupplier.Location = New System.Drawing.Point(305, 126)
+        Me.cmbsupplier.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbsupplier.MaxLength = 99
+        Me.cmbsupplier.Name = "cmbsupplier"
+        Me.cmbsupplier.Size = New System.Drawing.Size(239, 26)
+        Me.cmbsupplier.TabIndex = 39
+        '
+        'btncarisupplier
+        '
+        Me.btncarisupplier.BackgroundImage = CType(resources.GetObject("btncarisupplier.BackgroundImage"), System.Drawing.Image)
+        Me.btncarisupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarisupplier.ImageIndex = 0
+        Me.btncarisupplier.Location = New System.Drawing.Point(544, 125)
+        Me.btncarisupplier.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncarisupplier.Name = "btncarisupplier"
+        Me.btncarisupplier.Size = New System.Drawing.Size(29, 28)
+        Me.btncarisupplier.TabIndex = 40
+        Me.btncarisupplier.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(587, 102)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(99, 18)
+        Me.Label13.TabIndex = 45
+        Me.Label13.Text = "Kode Gudang"
+        '
+        'cmbgudang
+        '
+        Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
+        Me.cmbgudang.FormattingEnabled = True
+        Me.cmbgudang.Location = New System.Drawing.Point(590, 125)
+        Me.cmbgudang.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbgudang.MaxLength = 99
+        Me.cmbgudang.Name = "cmbgudang"
+        Me.cmbgudang.Size = New System.Drawing.Size(239, 26)
+        Me.cmbgudang.TabIndex = 43
+        '
+        'btncarigudang
+        '
+        Me.btncarigudang.BackgroundImage = CType(resources.GetObject("btncarigudang.BackgroundImage"), System.Drawing.Image)
+        Me.btncarigudang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarigudang.ImageIndex = 0
+        Me.btncarigudang.Location = New System.Drawing.Point(829, 124)
+        Me.btncarigudang.Margin = New System.Windows.Forms.Padding(4)
+        Me.btncarigudang.Name = "btncarigudang"
+        Me.btncarigudang.Size = New System.Drawing.Size(29, 28)
+        Me.btncarigudang.TabIndex = 44
+        Me.btncarigudang.UseVisualStyleBackColor = True
+        '
+        'btntabel
+        '
+        Me.btntabel.Location = New System.Drawing.Point(1205, 56)
+        Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
+        Me.btntabel.Name = "btntabel"
+        Me.btntabel.Size = New System.Drawing.Size(166, 46)
+        Me.btntabel.TabIndex = 46
+        Me.btntabel.Text = "Refresh Tabel"
+        Me.btntabel.UseVisualStyleBackColor = True
+        '
+        'btnexcel
+        '
+        Me.btnexcel.Location = New System.Drawing.Point(1205, 110)
+        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnexcel.Name = "btnexcel"
+        Me.btnexcel.Size = New System.Drawing.Size(166, 46)
+        Me.btnexcel.TabIndex = 47
+        Me.btnexcel.Text = "Export Excel"
+        Me.btnexcel.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label3.Location = New System.Drawing.Point(15, 59)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(60, 18)
+        Me.Label3.TabIndex = 51
+        Me.Label3.Text = "Tanggal"
         '
         'fchartpembelian
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(913, 464)
+        Me.ClientSize = New System.Drawing.Size(1384, 811)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.btntabel)
+        Me.Controls.Add(Me.btnexcel)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.cmbgudang)
+        Me.Controls.Add(Me.btncarigudang)
+        Me.Controls.Add(Me.cmbsales)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.cmbsupplier)
+        Me.Controls.Add(Me.btncarisupplier)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.DateTimePicker2)
+        Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.ChartControl1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fchartpembelian"
         Me.Text = "fchartpembelian"
         CType(XyDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents ChartControl1 As DevExpress.XtraCharts.ChartControl
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents cmbsales As ComboBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents cmbsupplier As ComboBox
+    Friend WithEvents btncarisupplier As Button
+    Friend WithEvents Label13 As Label
+    Friend WithEvents cmbgudang As ComboBox
+    Friend WithEvents btncarigudang As Button
+    Friend WithEvents btntabel As Button
+    Friend WithEvents btnexcel As Button
+    Friend WithEvents Label3 As Label
 End Class
