@@ -35,7 +35,7 @@ Public Class fchartpembelian
         Me.Cursor = Cursors.WaitCursor
 
         Call koneksii()
-        sql = "SELECT SUM(total_penjualan) AS total, MONTH(tgl_penjualan) as bulan FROM tb_penjualan GROUP BY MONTH(tgl_penjualan)"
+        sql = "SELECT SUM(total_pembelian) AS total, MONTH(tgl_pembelian) as bulan FROM tb_pembelian GROUP BY MONTH(tgl_pembelian)"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
