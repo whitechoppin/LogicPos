@@ -2,6 +2,7 @@
 
 Public Class fchartpembelian
     Public namaform As String = "chart-pembelian"
+    Dim idgudang, iduser, idsupplier As Integer
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -28,18 +29,286 @@ Public Class fchartpembelian
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
 
+        Call comboboxsupplier()
+        Call comboboxgudang()
+        Call comboboxuser()
+
         Call historysave("Membuka Chart Pembelian", "N/A", namaform)
+    End Sub
+
+    Sub comboboxsupplier()
+        Call koneksii()
+        sql = "SELECT * FROM tb_supplier"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbsupplier.DataSource = ds.Tables(0)
+        cmbsupplier.ValueMember = "id"
+        cmbsupplier.DisplayMember = "kode_supplier"
+    End Sub
+    Sub comboboxgudang()
+        Call koneksii()
+        sql = "SELECT * FROM tb_gudang"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbgudang.DataSource = ds.Tables(0)
+        cmbgudang.ValueMember = "id"
+        cmbgudang.DisplayMember = "kode_gudang"
+    End Sub
+    Sub comboboxuser()
+        Call koneksii()
+        sql = "SELECT * FROM tb_user"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbsales.DataSource = ds.Tables(0)
+        cmbsales.ValueMember = "id"
+        cmbsales.DisplayMember = "kode_user"
+    End Sub
+
+    Sub carisupplier()
+        Call koneksii()
+        sql = "SELECT * FROM tb_supplier WHERE kode_supplier='" & cmbsupplier.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+
+        If dr.HasRows Then
+            idsupplier = Val(dr("id"))
+        Else
+            idsupplier = 0
+        End If
+    End Sub
+    Sub carigudang()
+        Call koneksii()
+        sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbgudang.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+
+        If dr.HasRows Then
+            idgudang = Val(dr("id"))
+        Else
+            idgudang = 0
+        End If
+    End Sub
+
+    Sub cariuser()
+        Call koneksii()
+        sql = "SELECT id FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+
+        If dr.HasRows Then
+            iduser = Val(dr("id"))
+        Else
+            iduser = 0
+        End If
     End Sub
 
     Sub LoadChart()
         Me.Cursor = Cursors.WaitCursor
 
+        Call koneksii()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
+            If rbharian.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        End If
+                    End If
+                End If
+            ElseIf rbbulanan.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        End If
+                    End If
+                End If
+            ElseIf rbtahunan.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        End If
+                    End If
+                End If
+            End If
         Else
+            If rbharian.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                        End If
+                    End If
+                End If
+            ElseIf rbbulanan.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                        End If
+                    End If
+                End If
+            ElseIf rbtahunan.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        End If
+                    Else
+                        If idsupplier > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                        End If
+                    End If
+                End If
+            End If
+
+            'If rbharian.Checked Then
+            '    sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+            'ElseIf rbbulanan.Checked Then
+            '    sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+            'ElseIf rbtahunan.Checked Then
+            '    sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+            'End If
         End If
 
-        Call koneksii()
-        sql = "SELECT SUM(total_pembelian) AS total, MONTH(tgl_pembelian) as bulan FROM tb_pembelian GROUP BY MONTH(tgl_pembelian)"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -49,7 +318,7 @@ Public Class fchartpembelian
             ChartControl1.Series("Series 1").Visible = True
             ChartControl1.Series("Series 1").DataSource = ds.Tables(0)
             ChartControl1.Series("Series 1").ValueDataMembersSerializable = "total"
-            ChartControl1.Series("Series 1").ArgumentDataMember = "bulan"
+            ChartControl1.Series("Series 1").ArgumentDataMember = "tgl"
 
             'ChartControl1.Series("Series 2").Visible = True
             'ChartControl1.Series("Series 2").DataSource = ds.Tables(0)
@@ -68,7 +337,7 @@ Public Class fchartpembelian
     End Sub
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
-
+        Call LoadChart()
     End Sub
 
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click

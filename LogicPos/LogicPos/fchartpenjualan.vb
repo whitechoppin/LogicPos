@@ -2,6 +2,7 @@
 
 Public Class fchartpenjualan
     Public namaform As String = "chart-penjualan"
+    Dim idgudang, iduser, idpelanggan As Integer
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -28,19 +29,277 @@ Public Class fchartpenjualan
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
 
+        Call comboboxpelanggan()
+        Call comboboxgudang()
+        Call comboboxuser()
+
         Call historysave("Membuka Chart Penjualan", "N/A", namaform)
+    End Sub
+
+    Sub comboboxpelanggan()
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelanggan"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbpelanggan.DataSource = ds.Tables(0)
+        cmbpelanggan.ValueMember = "id"
+        cmbpelanggan.DisplayMember = "kode_pelanggan"
+    End Sub
+    Sub comboboxgudang()
+        Call koneksii()
+        sql = "SELECT * FROM tb_gudang"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbgudang.DataSource = ds.Tables(0)
+        cmbgudang.ValueMember = "id"
+        cmbgudang.DisplayMember = "kode_gudang"
+    End Sub
+    Sub comboboxuser()
+        Call koneksii()
+        sql = "SELECT * FROM tb_user"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbsales.DataSource = ds.Tables(0)
+        cmbsales.ValueMember = "id"
+        cmbsales.DisplayMember = "kode_user"
+    End Sub
+
+    Sub caripelanggan()
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & cmbpelanggan.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            idpelanggan = Val(dr("id"))
+        Else
+            idpelanggan = 0
+        End If
+    End Sub
+
+    Sub carigudang()
+        Call koneksii()
+        sql = "SELECT * FROM tb_gudang WHERE kode_gudang ='" & cmbgudang.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            idgudang = Val(dr("id"))
+        Else
+            idgudang = 0
+        End If
+    End Sub
+
+    Sub carisales()
+        Call koneksii()
+        sql = "SELECT * FROM tb_user WHERE kode_user ='" & cmbsales.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            iduser = Val(dr("id"))
+        Else
+            iduser = 0
+        End If
     End Sub
 
     Sub LoadChart()
         Me.Cursor = Cursors.WaitCursor
 
+        Call koneksii()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
+            If rbharian.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        End If
+                    End If
+                End If
+            ElseIf rbbulanan.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        End If
+                    End If
+                End If
+            ElseIf rbtahunan.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        End If
+                    End If
+                End If
+            End If
         Else
+            If rbharian.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, tgl_penjualan as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY tgl_penjualan"
+                        End If
+                    End If
+                End If
+            ElseIf rbbulanan.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY MONTH(tgl_penjualan)"
+                        End If
+                    End If
+                End If
+            ElseIf rbtahunan.Checked Then
+                If iduser > 0 Then
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        End If
+                    End If
+                Else
+                    If idgudang > 0 Then
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        End If
+                    Else
+                        If idpelanggan > 0 Then
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        Else
+                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id GROUP BY YEAR(tgl_penjualan)"
+                        End If
+                    End If
+                End If
+            End If
+
         End If
 
-
-        Call koneksii()
-        sql = "SELECT SUM(total_penjualan) AS total, MONTH(tgl_penjualan) as bulan FROM tb_penjualan GROUP BY MONTH(tgl_penjualan)"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
@@ -50,7 +309,7 @@ Public Class fchartpenjualan
             ChartControl1.Series("Series 1").Visible = True
             ChartControl1.Series("Series 1").DataSource = ds.Tables(0)
             ChartControl1.Series("Series 1").ValueDataMembersSerializable = "total"
-            ChartControl1.Series("Series 1").ArgumentDataMember = "bulan"
+            ChartControl1.Series("Series 1").ArgumentDataMember = "tgl"
 
             'ChartControl1.Series("Series 2").Visible = True
             'ChartControl1.Series("Series 2").DataSource = ds.Tables(0)
@@ -69,7 +328,7 @@ Public Class fchartpenjualan
     End Sub
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
-
+        Call LoadChart()
     End Sub
 
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click

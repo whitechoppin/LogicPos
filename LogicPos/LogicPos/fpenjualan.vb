@@ -350,6 +350,8 @@ Public Class fpenjualan
         btncarikas.Enabled = True
 
         btnbayarfull.Enabled = True
+        btnbayarfull.Text = "Bayar"
+
         txtbayar.Enabled = True
         txtbayar.Clear()
         txtbayar.Text = 0

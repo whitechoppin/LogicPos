@@ -434,6 +434,16 @@ Public Class fmenu
         End If
     End Sub
 
+    'chart =============================================================================================================================
+
+    Private Sub ChartPembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPembelianToolStripMenuItem.Click
+        fchartpembelian.Show()
+    End Sub
+
+    Private Sub ChartPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPenjualanToolStripMenuItem.Click
+        fchartpenjualan.Show()
+    End Sub
+
     'settings =============================================================================================================================
     Private Sub InfoPerusahaanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InfoPerusahaanToolStripMenuItem.Click
         fperusahaan.Show()
@@ -485,11 +495,4 @@ Public Class fmenu
         ftokosejati.Show()
     End Sub
 
-    Private Sub ChartPembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPembelianToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ChartPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPenjualanToolStripMenuItem.Click
-
-    End Sub
 End Class
