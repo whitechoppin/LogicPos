@@ -344,10 +344,22 @@
     <Compile Include="fchartpembelian.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fchartpembeliandetail.Designer.vb">
+      <DependentUpon>fchartpembeliandetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fchartpembeliandetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fchartpenjualan.Designer.vb">
       <DependentUpon>fchartpenjualan.vb</DependentUpon>
     </Compile>
     <Compile Include="fchartpenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fchartpenjualandetail.Designer.vb">
+      <DependentUpon>fchartpenjualandetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fchartpenjualandetail.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fgeneratebarcode.Designer.vb">

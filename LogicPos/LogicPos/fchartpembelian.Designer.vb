@@ -46,6 +46,9 @@ Partial Class fchartpembelian
         Me.btntabel = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.rbharian = New System.Windows.Forms.RadioButton()
+        Me.rbbulanan = New System.Windows.Forms.RadioButton()
+        Me.rbtahunan = New System.Windows.Forms.RadioButton()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(XyDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,7 +60,7 @@ Partial Class fchartpembelian
         XyDiagram2.AxisY.VisibleInPanesSerializable = "-1"
         Me.ChartControl1.Diagram = XyDiagram2
         Me.ChartControl1.Location = New System.Drawing.Point(13, 189)
-        Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartControl1.Name = "ChartControl1"
         Series2.Name = "Series 1"
         Series2.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint6, SeriesPoint7, SeriesPoint8, SeriesPoint9, SeriesPoint10})
@@ -221,12 +224,48 @@ Partial Class fchartpembelian
         Me.Label3.TabIndex = 51
         Me.Label3.Text = "Tanggal"
         '
+        'rbharian
+        '
+        Me.rbharian.AutoSize = True
+        Me.rbharian.Location = New System.Drawing.Point(726, 63)
+        Me.rbharian.Name = "rbharian"
+        Me.rbharian.Size = New System.Drawing.Size(69, 22)
+        Me.rbharian.TabIndex = 52
+        Me.rbharian.TabStop = True
+        Me.rbharian.Text = "Harian"
+        Me.rbharian.UseVisualStyleBackColor = True
+        '
+        'rbbulanan
+        '
+        Me.rbbulanan.AutoSize = True
+        Me.rbbulanan.Location = New System.Drawing.Point(801, 63)
+        Me.rbbulanan.Name = "rbbulanan"
+        Me.rbbulanan.Size = New System.Drawing.Size(79, 22)
+        Me.rbbulanan.TabIndex = 53
+        Me.rbbulanan.TabStop = True
+        Me.rbbulanan.Text = "Bulanan"
+        Me.rbbulanan.UseVisualStyleBackColor = True
+        '
+        'rbtahunan
+        '
+        Me.rbtahunan.AutoSize = True
+        Me.rbtahunan.Location = New System.Drawing.Point(886, 63)
+        Me.rbtahunan.Name = "rbtahunan"
+        Me.rbtahunan.Size = New System.Drawing.Size(83, 22)
+        Me.rbtahunan.TabIndex = 54
+        Me.rbtahunan.TabStop = True
+        Me.rbtahunan.Text = "Tahunan"
+        Me.rbtahunan.UseVisualStyleBackColor = True
+        '
         'fchartpembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1384, 811)
+        Me.Controls.Add(Me.rbtahunan)
+        Me.Controls.Add(Me.rbbulanan)
+        Me.Controls.Add(Me.rbharian)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btntabel)
         Me.Controls.Add(Me.btnexcel)
@@ -244,7 +283,7 @@ Partial Class fchartpembelian
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.ChartControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fchartpembelian"
         Me.Text = "fchartpembelian"
         CType(XyDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -271,4 +310,7 @@ Partial Class fchartpembelian
     Friend WithEvents btntabel As Button
     Friend WithEvents btnexcel As Button
     Friend WithEvents Label3 As Label
+    Friend WithEvents rbharian As RadioButton
+    Friend WithEvents rbbulanan As RadioButton
+    Friend WithEvents rbtahunan As RadioButton
 End Class

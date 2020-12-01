@@ -34,6 +34,10 @@ Public Class fchartpembelian
     Sub LoadChart()
         Me.Cursor = Cursors.WaitCursor
 
+        If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
+        Else
+        End If
+
         Call koneksii()
         sql = "SELECT SUM(total_pembelian) AS total, MONTH(tgl_pembelian) as bulan FROM tb_pembelian GROUP BY MONTH(tgl_pembelian)"
         da = New OdbcDataAdapter(sql, cnn)
@@ -41,33 +45,18 @@ Public Class fchartpembelian
         da.Fill(ds)
         da.Dispose()
 
-        Dim dtTemp As New DataTable
-
         Try
-            'dtTemp = FillDataTable("SELECT SUM(NET) AS NETT, TGL2 FROM DAT2 WHERE year(TGL2)=" & tgl.Year & " AND month(TGL2)=" & tgl.Month & " AND PROD LIKE 'c%' GROUP BY TGL2 ORDER BY TGL2")
-
             ChartControl1.Series("Series 1").Visible = True
             ChartControl1.Series("Series 1").DataSource = ds.Tables(0)
             ChartControl1.Series("Series 1").ValueDataMembersSerializable = "total"
             ChartControl1.Series("Series 1").ArgumentDataMember = "bulan"
-
-            'dtTemp = FillDataTable("SELECT SUM(NET) AS NETT, TGL2 FROM DAT2 WHERE year(TGL2)=" & tgl.Year & " AND month(TGL2)=" & tgl.Month & " AND PROD LIKE 't%' GROUP BY TGL2 ORDER BY TGL2")
 
             'ChartControl1.Series("Series 2").Visible = True
             'ChartControl1.Series("Series 2").DataSource = ds.Tables(0)
             'ChartControl1.Series("Series 2").ValueDataMembersSerializable = "NETT"
             'ChartControl1.Series("Series 2").ArgumentDataMember = "TGL2"
 
-
-            'dtTemp = FillDataTable("SELECT SUM(NET) AS NETT, TGL2 FROM DAT2 WHERE year(TGL2)=" & tgl.Year & " AND month(TGL2)=" & tgl.Month & " AND PROD LIKE 'p%' GROUP BY TGL2 ORDER BY TGL2")
-
-            'ChartControl1.Series("Series 3").Visible = True
-            'ChartControl1.Series("Series 3").DataSource = ds.Tables(0)
-            'ChartControl1.Series("Series 3").ValueDataMembersSerializable = "NETT"
-            'ChartControl1.Series("Series 3").ArgumentDataMember = "TGL2"
-
             'ChartControl1.Titles(1).Text = "PERIODE : " & Format(tgl, "MMMM yyyy")
-
         Catch ex As Exception
             Dim strErr As String
 
