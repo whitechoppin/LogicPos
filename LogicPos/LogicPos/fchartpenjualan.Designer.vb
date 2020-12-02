@@ -22,13 +22,13 @@ Partial Class fchartpenjualan
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim XyDiagram1 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
-        Dim Series1 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim SeriesPoint1 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
-        Dim SeriesPoint2 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
-        Dim SeriesPoint3 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
-        Dim SeriesPoint4 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
-        Dim SeriesPoint5 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
+        Dim XyDiagram2 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim SeriesPoint6 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
+        Dim SeriesPoint7 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
+        Dim SeriesPoint8 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
+        Dim SeriesPoint9 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
+        Dim SeriesPoint10 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpenjualan))
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -49,23 +49,26 @@ Partial Class fchartpenjualan
         Me.rbtahunan = New System.Windows.Forms.RadioButton()
         Me.rbbulanan = New System.Windows.Forms.RadioButton()
         Me.rbharian = New System.Windows.Forms.RadioButton()
+        Me.btncaribarang = New System.Windows.Forms.Button()
+        Me.txtkodestok = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ChartControl1
         '
-        XyDiagram1.AxisX.VisibleInPanesSerializable = "-1"
-        XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
-        Me.ChartControl1.Diagram = XyDiagram1
-        Me.ChartControl1.Location = New System.Drawing.Point(13, 191)
+        XyDiagram2.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram2.AxisY.VisibleInPanesSerializable = "-1"
+        Me.ChartControl1.Diagram = XyDiagram2
+        Me.ChartControl1.Location = New System.Drawing.Point(13, 164)
         Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartControl1.Name = "ChartControl1"
-        Series1.Name = "Series 1"
-        Series1.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint1, SeriesPoint2, SeriesPoint3, SeriesPoint4, SeriesPoint5})
-        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1}
-        Me.ChartControl1.Size = New System.Drawing.Size(1358, 607)
+        Series2.Name = "Series 1"
+        Series2.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint6, SeriesPoint7, SeriesPoint8, SeriesPoint9, SeriesPoint10})
+        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series2}
+        Me.ChartControl1.Size = New System.Drawing.Size(1358, 384)
         Me.ChartControl1.TabIndex = 1
         '
         'Label1
@@ -86,9 +89,9 @@ Partial Class fchartpenjualan
         Me.Label2.Location = New System.Drawing.Point(13, 9)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(257, 31)
+        Me.Label2.Size = New System.Drawing.Size(223, 31)
         Me.Label2.TabIndex = 21
-        Me.Label2.Text = "Laporan Penjualan"
+        Me.Label2.Text = "Chart Penjualan"
         '
         'DateTimePicker2
         '
@@ -259,12 +262,48 @@ Partial Class fchartpenjualan
         Me.rbharian.Text = "Harian"
         Me.rbharian.UseVisualStyleBackColor = True
         '
+        'btncaribarang
+        '
+        Me.btncaribarang.BackgroundImage = CType(resources.GetObject("btncaribarang.BackgroundImage"), System.Drawing.Image)
+        Me.btncaribarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncaribarang.ImageIndex = 0
+        Me.btncaribarang.Location = New System.Drawing.Point(1063, 126)
+        Me.btncaribarang.Margin = New System.Windows.Forms.Padding(6)
+        Me.btncaribarang.Name = "btncaribarang"
+        Me.btncaribarang.Size = New System.Drawing.Size(29, 28)
+        Me.btncaribarang.TabIndex = 58
+        Me.btncaribarang.UseVisualStyleBackColor = True
+        '
+        'txtkodestok
+        '
+        Me.txtkodestok.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtkodestok.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtkodestok.Location = New System.Drawing.Point(861, 128)
+        Me.txtkodestok.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtkodestok.Name = "txtkodestok"
+        Me.txtkodestok.Size = New System.Drawing.Size(200, 24)
+        Me.txtkodestok.TabIndex = 60
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label4.Location = New System.Drawing.Point(864, 104)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(78, 18)
+        Me.Label4.TabIndex = 59
+        Me.Label4.Text = "Kode Stok"
+        '
         'fchartpenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1384, 811)
+        Me.ClientSize = New System.Drawing.Size(1384, 561)
+        Me.Controls.Add(Me.btncaribarang)
+        Me.Controls.Add(Me.txtkodestok)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.rbtahunan)
         Me.Controls.Add(Me.rbbulanan)
         Me.Controls.Add(Me.rbharian)
@@ -287,9 +326,9 @@ Partial Class fchartpenjualan
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fchartpenjualan"
-        Me.Text = "fchartpenjualan"
-        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Text = "Chart Penjualan"
+        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -315,4 +354,7 @@ Partial Class fchartpenjualan
     Friend WithEvents rbtahunan As RadioButton
     Friend WithEvents rbbulanan As RadioButton
     Friend WithEvents rbharian As RadioButton
+    Friend WithEvents btncaribarang As Button
+    Friend WithEvents txtkodestok As TextBox
+    Friend WithEvents Label4 As Label
 End Class

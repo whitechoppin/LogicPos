@@ -33,6 +33,10 @@ Public Class fchartpenjualan
         Call comboboxgudang()
         Call comboboxuser()
 
+        cmbsales.Text = ""
+        cmbgudang.Text = ""
+        cmbpelanggan.Text = ""
+
         Call historysave("Membuka Chart Penjualan", "N/A", namaform)
     End Sub
 
@@ -328,7 +332,11 @@ Public Class fchartpenjualan
     End Sub
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
-        Call LoadChart()
+        If rbharian.Checked Or rbbulanan.Checked Or rbtahunan.Checked Then
+            Call LoadChart()
+        Else
+            MsgBox("Pilih grup harian, bulanan atau tahunan", vbInformation)
+        End If
     End Sub
 
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
