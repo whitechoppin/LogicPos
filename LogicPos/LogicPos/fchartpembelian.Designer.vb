@@ -29,6 +29,7 @@ Partial Class fchartpembelian
         Dim SeriesPoint3 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
         Dim SeriesPoint4 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
         Dim SeriesPoint5 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
+        Dim ChartTitle1 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpembelian))
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -65,11 +66,14 @@ Partial Class fchartpembelian
         Me.ChartControl1.Location = New System.Drawing.Point(13, 164)
         Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartControl1.Name = "ChartControl1"
-        Series1.Name = "Series 1"
+        Series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
+        Series1.Name = "Pembelian"
         Series1.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint1, SeriesPoint2, SeriesPoint3, SeriesPoint4, SeriesPoint5})
         Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1}
         Me.ChartControl1.Size = New System.Drawing.Size(1358, 384)
         Me.ChartControl1.TabIndex = 0
+        ChartTitle1.Text = "Periode :"
+        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle1})
         '
         'Label1
         '

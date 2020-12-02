@@ -124,29 +124,29 @@ Public Class fchartpembelian
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         End If
                     End If
                 End If
@@ -154,29 +154,29 @@ Public Class fchartpembelian
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         End If
                     End If
                 End If
@@ -184,29 +184,29 @@ Public Class fchartpembelian
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         End If
                     End If
                 End If
@@ -216,29 +216,29 @@ Public Class fchartpembelian
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
+                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_pembelian)"
                         End If
                     End If
                 End If
@@ -246,29 +246,29 @@ Public Class fchartpembelian
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y-%m') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y-%m')"
                         End If
                     End If
                 End If
@@ -276,41 +276,33 @@ Public Class fchartpembelian
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         End If
                     Else
                         If idsupplier > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
+                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_pembelian,'%Y') as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_pembelian,'%Y')"
                         End If
                     End If
                 End If
             End If
-
-            'If rbharian.Checked Then
-            '    sql = "SELECT SUM(subtotal) AS total, tgl_pembelian as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY tgl_pembelian"
-            'ElseIf rbbulanan.Checked Then
-            '    sql = "SELECT SUM(subtotal) AS total, MONTH(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY MONTH(tgl_pembelian)"
-            'ElseIf rbtahunan.Checked Then
-            '    sql = "SELECT SUM(subtotal) AS total, YEAR(tgl_pembelian) as tgl FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id GROUP BY YEAR(tgl_pembelian)"
-            'End If
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -319,17 +311,17 @@ Public Class fchartpembelian
         da.Dispose()
 
         Try
-            ChartControl1.Series("Series 1").Visible = True
-            ChartControl1.Series("Series 1").DataSource = ds.Tables(0)
-            ChartControl1.Series("Series 1").ValueDataMembersSerializable = "total"
-            ChartControl1.Series("Series 1").ArgumentDataMember = "tgl"
+            ChartControl1.Series("Pembelian").Visible = True
+            ChartControl1.Series("Pembelian").DataSource = ds.Tables(0)
+            ChartControl1.Series("Pembelian").ValueDataMembersSerializable = "total"
+            ChartControl1.Series("Pembelian").ArgumentDataMember = "tgl"
 
             'ChartControl1.Series("Series 2").Visible = True
             'ChartControl1.Series("Series 2").DataSource = ds.Tables(0)
             'ChartControl1.Series("Series 2").ValueDataMembersSerializable = "NETT"
             'ChartControl1.Series("Series 2").ArgumentDataMember = "TGL2"
 
-            'ChartControl1.Titles(1).Text = "PERIODE : " & Format(tgl, "MMMM yyyy")
+            ChartControl1.Titles(0).Text = "PERIODE : " & Format(DateTimePicker1.Value, "dd MMMM yyyy") & " S/D " & Format(DateTimePicker2.Value, "dd MMMM yyyy")
         Catch ex As Exception
             Dim strErr As String
 

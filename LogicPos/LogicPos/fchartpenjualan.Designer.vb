@@ -22,13 +22,14 @@ Partial Class fchartpenjualan
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim XyDiagram2 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
-        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim SeriesPoint6 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
-        Dim SeriesPoint7 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
-        Dim SeriesPoint8 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
-        Dim SeriesPoint9 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
-        Dim SeriesPoint10 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
+        Dim XyDiagram1 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+        Dim Series1 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim SeriesPoint1 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
+        Dim SeriesPoint2 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
+        Dim SeriesPoint3 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
+        Dim SeriesPoint4 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
+        Dim SeriesPoint5 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
+        Dim ChartTitle1 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpenjualan))
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -53,23 +54,26 @@ Partial Class fchartpenjualan
         Me.txtkodestok = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ChartControl1
         '
-        XyDiagram2.AxisX.VisibleInPanesSerializable = "-1"
-        XyDiagram2.AxisY.VisibleInPanesSerializable = "-1"
-        Me.ChartControl1.Diagram = XyDiagram2
+        XyDiagram1.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
+        Me.ChartControl1.Diagram = XyDiagram1
         Me.ChartControl1.Location = New System.Drawing.Point(13, 164)
         Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartControl1.Name = "ChartControl1"
-        Series2.Name = "Series 1"
-        Series2.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint6, SeriesPoint7, SeriesPoint8, SeriesPoint9, SeriesPoint10})
-        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series2}
+        Series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
+        Series1.Name = "Penjualan"
+        Series1.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint1, SeriesPoint2, SeriesPoint3, SeriesPoint4, SeriesPoint5})
+        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1}
         Me.ChartControl1.Size = New System.Drawing.Size(1358, 384)
         Me.ChartControl1.TabIndex = 1
+        ChartTitle1.Text = "Periode :"
+        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle1})
         '
         'Label1
         '
@@ -327,8 +331,8 @@ Partial Class fchartpenjualan
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fchartpenjualan"
         Me.Text = "Chart Penjualan"
-        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
