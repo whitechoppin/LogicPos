@@ -11,6 +11,8 @@ Public Class fpassword
     Dim authuser As String
     Dim statuscode As Boolean = False
 
+    Dim kodeuserrequest, namauserrequest, emailuserrequest, jabatanuserrequest As String
+
     Private Sub fpassword_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtpassword.UseSystemPasswordChar = False
         txtpassword.PasswordChar = "•"
@@ -27,7 +29,7 @@ Public Class fpassword
             '=== coba pake password generate ===
 
             Call koneksii()
-            sql = "SELECT * FROM tb_password WHERE kode_password = '" + txtpassword.Text + "'AND status = 0 LIMIT 1"
+            sql = "SELECT * FROM tb_password WHERE kode_password = '" & txtpassword.Text & "'AND status = 0 LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             dr.Read()
@@ -339,7 +341,10 @@ Public Class fpassword
         Return tResult
     End Function
 
-    Private Sub Labelrequest_DoubleClick(sender As Object, e As EventArgs) Handles Labelrequest.DoubleClick
+    Private Sub labelrequest_DoubleClick(sender As Object, e As EventArgs) Handles labelrequest.DoubleClick
+        Dim SmtpServer As New SmtpClient()
+        Dim mail As New MailMessage()
+
         Call koneksii()
         kodepassword = trueString()
 
@@ -347,22 +352,29 @@ Public Class fpassword
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
+        Call koneksii()
+        sql = "SELECT * FROM tb_user WHERE jabatan_user = 'Owner' LIMIT 1"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader()
+        dr.Read()
+
+        kodeuser = dr("kode_user")
+        namauserrequest = dr("nama_user")
+        emailuserrequest = dr("email_user")
+        jabatanuserrequest = dr("jabatan_user")
+
         Try
-
-            Dim SmtpServer As New SmtpClient()
-            Dim mail As New MailMessage()
-
             SmtpServer.UseDefaultCredentials = False
-            SmtpServer.Credentials = New Net.NetworkCredential("logicpos@sjtsupplies.com", "17agustus1945")
+            SmtpServer.Credentials = New Net.NetworkCredential("requestlogicpos@rumahlogika.id", "RumahLogika07092019")
 
             SmtpServer.Port = 587
-            SmtpServer.Host = "mail.sjtsupplies.com"
+            SmtpServer.Host = "mail.rumahlogika.id"
             SmtpServer.EnableSsl = True
             SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network
 
             mail = New MailMessage()
-            mail.From = New MailAddress("logicpos@sjtsupplies.com")
-            mail.To.Add("suryaminharsono89@gmail.com")
+            mail.From = New MailAddress("requestlogicpos@rumahlogika.id")
+            mail.To.Add(emailuserrequest)
             mail.Subject = "PIN/Password Logic POS"
             mail.Body = "Kode PIN/Password Anda : " & kodepassword
             SmtpServer.Send(mail)
@@ -370,6 +382,10 @@ Public Class fpassword
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+    End Sub
+
+    Private Sub labelrequest_Click(sender As Object, e As EventArgs) Handles labelrequest.Click
+
     End Sub
 
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click

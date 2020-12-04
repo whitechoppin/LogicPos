@@ -374,6 +374,12 @@
     <Compile Include="fgeneratepassword.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fjabatan.Designer.vb">
+      <DependentUpon>fjabatan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fjabatan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fkalkulasiexpedisi.Designer.vb">
       <DependentUpon>fkalkulasiexpedisi.vb</DependentUpon>
     </Compile>
@@ -732,6 +738,12 @@
       <DependentUpon>fnotifikasistok.vb</DependentUpon>
     </Compile>
     <Compile Include="fnotifikasistok.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fsetting.Designer.vb">
+      <DependentUpon>fsetting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fsetting.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mform.vb" />

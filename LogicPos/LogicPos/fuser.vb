@@ -1,4 +1,5 @@
 ﻿Imports System.Data.Odbc
+Imports System.Text.RegularExpressions
 
 Public Class fuser
     Public namaform As String = "master-user"
@@ -3377,6 +3378,31 @@ Public Class fuser
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call isitabel()
+    End Sub
+
+    Private Sub txtemail_TextChanged(sender As Object, e As EventArgs) Handles txtemail.TextChanged
+
+    End Sub
+
+    Function EmailAddressCheck(ByVal emailAddress As String) As Boolean
+        Dim pattern As String = "^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]" &
+        "*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"
+        Dim emailAddressMatch As Match = Regex.Match(emailAddress, pattern)
+
+        If emailAddressMatch.Success Then
+            EmailAddressCheck = True
+        Else
+            EmailAddressCheck = False
+        End If
+    End Function
+
+    Private Sub txtemail_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtemail.Validating
+        Dim email As String = txtemail.Text
+        If EmailAddressCheck(email) = False Then
+            txtemail.BackColor = Color.Red
+        Else
+            txtemail.BackColor = Color.White
+        End If
     End Sub
 
     Private Sub cbmasteruser_CheckedChanged(sender As Object, e As EventArgs) Handles cbmasteruser.CheckedChanged

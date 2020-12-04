@@ -1374,6 +1374,7 @@ Public Class fpembelian
 
         txthargabarang.Clear()
         txthargabarang.Text = 0
+        txthargabarang.Enabled = True
 
         lblsatuan.Text = "satuan"
         lblsatuanbeli.Text = "satuan"

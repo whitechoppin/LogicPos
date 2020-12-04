@@ -2209,6 +2209,12 @@ Public Class fpenjualan
         myCommand.Transaction = myTrans
 
         Try
+            If bayar.Equals(grandtotal) Then
+                lunasstatus = 1
+            Else
+                lunasstatus = 0
+            End If
+
             sql = "INSERT INTO tb_penjualan(pelanggan_id, gudang_id, user_id, tgl_penjualan, tgl_jatuhtempo_penjualan, term_penjualan, lunas_penjualan, void_penjualan, print_penjualan, posted_penjualan, keterangan_penjualan, nama_expedisi, alamat_expedisi, diskon_penjualan, pajak_penjualan, ongkir_penjualan, total_penjualan, metode_pembayaran, rekening, bayar_penjualan, sisa_penjualan, created_by, updated_by, date_created, last_updated) VALUES('" & idpelanggan & "','" & idgudang & "','" & iduser & "' , '" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "','" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "','" & term & "','" & lunasstatus & "','" & 0 & "','" & 0 & "','" & 1 & "','" & txtketerangan.Text & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txtdiskonpersen.Text & "','" & txtppnpersen.Text & "','" & ongkir & "','" & grandtotal & "','" & cmbpembayaran.Text & "', '" & txtrekening.Text & "','" & bayar & "','" & sisa & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
             cmmd = New OdbcCommand(sql, cnn)
             idpenjualan = CInt(cmmd.ExecuteScalar())
@@ -2224,12 +2230,6 @@ Public Class fpenjualan
                 myCommand.ExecuteNonQuery()
             Next
 
-            If bayar.Equals(grandtotal) Then
-                lunasstatus = 1
-            Else
-                lunasstatus = 0
-            End If
-
             kodepembayaran = cmbpembayaran.Text
 
             If kodepembayaran IsNot "" Then
@@ -2242,7 +2242,7 @@ Public Class fpenjualan
 
             MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
             'history user ==========
-            Call historysave("Menyimpan Data Penjualan Kode " + idpenjualan, idpenjualan, namaform)
+            Call historysave("Menyimpan Data Penjualan Kode " & idpenjualan, idpenjualan, namaform)
             '========================
             Call inisialisasi(idpenjualan)
 
@@ -2354,14 +2354,14 @@ Public Class fpenjualan
                     myCommand.ExecuteNonQuery()
                 Next
 
-                myCommand.CommandText = "UPDATE tb_penjualan SET pelanggan_id ='" & idpelanggan & "', gudang_id ='" & idgudang & "', user_id ='" & iduser & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', term_penjualan='" & term & "', lunas_penjualan = '" & lunasstatus & "',keterangan_penjualan ='" & txtketerangan.Text & "',nama_expedisi ='" & txtnamaexpedisi.Text & "',alamat_expedisi ='" & txtalamatexpedisi.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.kodeuser.Text & "', last_updated = now() WHERE id ='" & nomornota & "'"
-                myCommand.ExecuteNonQuery()
-
                 If bayar.Equals(grandtotal) Then
                     lunasstatus = 1
                 Else
                     lunasstatus = 0
                 End If
+
+                myCommand.CommandText = "UPDATE tb_penjualan SET pelanggan_id ='" & idpelanggan & "', gudang_id ='" & idgudang & "', user_id ='" & iduser & "' , tgl_penjualan ='" & Format(dtpenjualan.Value, "yyyy-MM-dd HH:mm:ss") & "', tgl_jatuhtempo_penjualan ='" & Format(dtjatuhtempo.Value, "yyyy-MM-dd HH:mm:ss") & "', term_penjualan='" & term & "', lunas_penjualan = '" & lunasstatus & "',keterangan_penjualan ='" & txtketerangan.Text & "',nama_expedisi ='" & txtnamaexpedisi.Text & "',alamat_expedisi ='" & txtalamatexpedisi.Text & "', diskon_penjualan ='" & txtdiskonpersen.Text & "', pajak_penjualan ='" & txtppnpersen.Text & "', ongkir_penjualan ='" & ongkir & "', total_penjualan ='" & grandtotal & "',metode_pembayaran ='" & cmbpembayaran.Text & "',rekening ='" & txtrekening.Text & "', bayar_penjualan ='" & bayar & "', sisa_penjualan ='" & sisa & "', updated_by ='" & fmenu.kodeuser.Text & "', last_updated = now() WHERE id ='" & nomornota & "'"
+                myCommand.ExecuteNonQuery()
 
                 kodepembayaran = cmbpembayaran.Text
 
@@ -2373,8 +2373,13 @@ Public Class fpenjualan
                 myTrans.Commit()
                 Console.WriteLine("Both records are written to database.")
 
+                'Dim mystring = ""
+                'For Each ts As DataRow In tabelsementara.Rows
+                '    mystring &= ts.Item(0)
+                'Next
+
                 'history user ==========
-                Call historysave("Mengedit Data Penjualan Kode " + nomornota.ToString, nomornota, namaform)
+                Call historysave("Mengedit Data Penjualan Kode " & nomornota.ToString, nomornota, namaform)
                 '========================
                 MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
                 Call inisialisasi(nomornota)
@@ -2396,6 +2401,9 @@ Public Class fpenjualan
             End Try
         End If
     End Sub
+
+
+
     'Private Function CpuId() As String
     '    Dim computer As String = "."
     '    Dim wmi As Object = GetObject("winmgmts:" &
