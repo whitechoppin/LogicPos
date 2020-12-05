@@ -20,7 +20,7 @@ Public Class fpassword
 
     Sub proceed()
         Call koneksii()
-        sql = "SELECT * FROM tb_user WHERE password_user= '" + txtpassword.Text + "' LIMIT 1"
+        sql = "SELECT * FROM tb_user WHERE password_user= '" & txtpassword.Text & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         dr.Read()
@@ -137,7 +137,7 @@ Public Class fpassword
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Otorisasi Passcode Diberikan dengan kode " + txtpassword.Text + " Kepada " + fmenu.kodeuser.Text, kodetabel, namaform)
+                    Call historysave("Otorisasi Passcode Diberikan dengan kode " & txtpassword.Text & " Kepada " & fmenu.kodeuser.Text, kodetabel, namaform)
                     '========================
 
                     txtpassword.Text = ""
@@ -210,7 +210,7 @@ Public Class fpassword
                 End If
 
                 'history user ==========
-                Call historysave("Otorisasi Passcode Diberikan Oleh " + kodeuser + " Kepada " + fmenu.kodeuser.Text, kodetabel, namaform)
+                Call historysave("Otorisasi Passcode Diberikan Oleh " & kodeuser & " Kepada " & fmenu.kodeuser.Text, kodetabel, namaform)
                 '========================
 
                 txtpassword.Text = ""
@@ -309,7 +309,7 @@ Public Class fpassword
 
                     If statuscode = True Then
                         'history user ==========
-                        Call historysave("Otorisasi Passcode Diberikan Oleh " + kodeuser + " Kepada " + fmenu.kodeuser.Text, kodetabel, namaform)
+                        Call historysave("Otorisasi Passcode Diberikan Oleh " & kodeuser & " Kepada " & fmenu.kodeuser.Text, kodetabel, namaform)
                         '========================
 
                         txtpassword.Text = ""

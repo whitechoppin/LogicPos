@@ -127,7 +127,7 @@ Partial Class fchartpembelian
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(302, 102)
+        Me.Label6.Location = New System.Drawing.Point(579, 102)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(100, 18)
@@ -148,7 +148,7 @@ Partial Class fchartpembelian
         '
         Me.cmbsupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbsupplier.FormattingEnabled = True
-        Me.cmbsupplier.Location = New System.Drawing.Point(305, 126)
+        Me.cmbsupplier.Location = New System.Drawing.Point(582, 126)
         Me.cmbsupplier.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbsupplier.MaxLength = 99
         Me.cmbsupplier.Name = "cmbsupplier"
@@ -160,7 +160,7 @@ Partial Class fchartpembelian
         Me.btncarisupplier.BackgroundImage = CType(resources.GetObject("btncarisupplier.BackgroundImage"), System.Drawing.Image)
         Me.btncarisupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarisupplier.ImageIndex = 0
-        Me.btncarisupplier.Location = New System.Drawing.Point(544, 125)
+        Me.btncarisupplier.Location = New System.Drawing.Point(821, 125)
         Me.btncarisupplier.Margin = New System.Windows.Forms.Padding(4)
         Me.btncarisupplier.Name = "btncarisupplier"
         Me.btncarisupplier.Size = New System.Drawing.Size(29, 28)
@@ -170,7 +170,7 @@ Partial Class fchartpembelian
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(587, 102)
+        Me.Label13.Location = New System.Drawing.Point(303, 103)
         Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(99, 18)
@@ -181,7 +181,7 @@ Partial Class fchartpembelian
         '
         Me.cmbgudang.BackColor = System.Drawing.SystemColors.Window
         Me.cmbgudang.FormattingEnabled = True
-        Me.cmbgudang.Location = New System.Drawing.Point(590, 125)
+        Me.cmbgudang.Location = New System.Drawing.Point(306, 126)
         Me.cmbgudang.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
@@ -193,7 +193,7 @@ Partial Class fchartpembelian
         Me.btncarigudang.BackgroundImage = CType(resources.GetObject("btncarigudang.BackgroundImage"), System.Drawing.Image)
         Me.btncarigudang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncarigudang.ImageIndex = 0
-        Me.btncarigudang.Location = New System.Drawing.Point(829, 124)
+        Me.btncarigudang.Location = New System.Drawing.Point(545, 125)
         Me.btncarigudang.Margin = New System.Windows.Forms.Padding(4)
         Me.btncarigudang.Name = "btncarigudang"
         Me.btncarigudang.Size = New System.Drawing.Size(29, 28)
@@ -269,7 +269,7 @@ Partial Class fchartpembelian
         Me.btncari.BackgroundImage = CType(resources.GetObject("btncari.BackgroundImage"), System.Drawing.Image)
         Me.btncari.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btncari.ImageIndex = 0
-        Me.btncari.Location = New System.Drawing.Point(1083, 124)
+        Me.btncari.Location = New System.Drawing.Point(1075, 125)
         Me.btncari.Margin = New System.Windows.Forms.Padding(4)
         Me.btncari.Name = "btncari"
         Me.btncari.Size = New System.Drawing.Size(29, 28)
@@ -279,7 +279,7 @@ Partial Class fchartpembelian
         'txtkodebarang
         '
         Me.txtkodebarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtkodebarang.Location = New System.Drawing.Point(866, 126)
+        Me.txtkodebarang.Location = New System.Drawing.Point(858, 127)
         Me.txtkodebarang.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkodebarang.Name = "txtkodebarang"
         Me.txtkodebarang.Size = New System.Drawing.Size(213, 24)
@@ -289,7 +289,7 @@ Partial Class fchartpembelian
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(869, 100)
+        Me.Label4.Location = New System.Drawing.Point(861, 101)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(94, 18)
