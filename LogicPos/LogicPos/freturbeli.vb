@@ -19,7 +19,8 @@ Public Class freturbeli
 
     'variabel bantuan view pembelian
     Dim nomorretur, nomornota, nomorsupplier, nomorsales, nomorgudang, viewketerangan As String
-    Dim statusvoid, statusprint, statusposted, statusedit As Boolean
+    Dim statusprint, statusposted, statusedit As Boolean
+    Dim statusvoid As Integer
     Dim viewtglretur, viewtglpembelian, viewtgljatuhtempo As DateTime
     Dim nilaidiskon, nilaippn, nilaiongkir, nilaibayar As Double
     Dim rpt_faktur As New ReportDocument
@@ -649,6 +650,8 @@ Public Class freturbeli
 
             If GridView1.DataRowCount = 0 Then
                 statusvoid = 1
+            Else
+                statusvoid = 0
             End If
 
             For i As Integer = 0 To GridView1.RowCount - 1
@@ -672,12 +675,12 @@ Public Class freturbeli
                 myTrans.Rollback()
             Catch ex As OdbcException
                 If Not myTrans.Connection Is Nothing Then
-                    Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
+                    'Console.WriteLine("An exception of type " + ex.GetType().ToString() + " was encountered while attempting to roll back the transaction.")
                 End If
             End Try
 
-            Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
-            Console.WriteLine("Neither record was written to database.")
+            'Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
+            'Console.WriteLine("Neither record was written to database.")
             MsgBox("Retur Gagal Dilakukan", MsgBoxStyle.Information, "Gagal")
         End Try
     End Sub

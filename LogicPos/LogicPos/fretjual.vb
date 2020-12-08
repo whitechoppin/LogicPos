@@ -33,13 +33,13 @@
                 If (banyak - banyak_retur).Equals(0) Then
                     freturjual.GridView1.DeleteRow(lokasi)
                     lokasi = -1
-                    MsgBox("bagian 1")
+                    'MsgBox("bagian 1")
                 Else
                     freturjual.GridView1.SetRowCellValue(lokasi, "qty", banyak - banyak_retur)
                     freturjual.GridView1.SetRowCellValue(lokasi, "subtotal", harga_diskon * (banyak - banyak_retur))
                     freturjual.GridView1.SetRowCellValue(lokasi, "laba", (harga_diskon - modal_barang) * (banyak - banyak_retur))
                     lokasi = -1
-                    MsgBox("bagian 2")
+                    'MsgBox("bagian 2")
                 End If
             End If
         Else
@@ -51,8 +51,8 @@
                 End If
             Next
 
-            MsgBox(lokasi)
-            MsgBox(idstok)
+            'MsgBox(lokasi)
+            'MsgBox(idstok)
             If lokasi > -1 Then
                 banyak_dulu = Val(freturjual.GridView2.GetRowCellValue(lokasi, "qty"))
                 freturjual.GridView2.SetRowCellValue(lokasi, "qty", banyak_dulu + banyak_retur)
@@ -71,14 +71,14 @@
                     If (banyak_potong - banyak_retur).Equals(0) Then
                         freturjual.GridView1.DeleteRow(lokasi1)
                         lokasi1 = -1
-                        MsgBox("bagian 3")
+                        'MsgBox("bagian 3")
                     Else
                         freturjual.GridView1.SetRowCellValue(lokasi1, "qty", banyak_potong - banyak_retur)
                         freturjual.GridView1.SetRowCellValue(lokasi1, "subtotal", harga_diskon * (banyak_potong - banyak_retur))
                         freturjual.GridView1.SetRowCellValue(lokasi1, "laba", (harga_diskon - modal_barang) * (banyak - banyak_retur))
 
                         lokasi1 = -1
-                        MsgBox("bagian 4")
+                        'MsgBox("bagian 4")
                     End If
                 End If
             Else
@@ -95,14 +95,14 @@
                     If (banyak - banyak_retur).Equals(0) Then
                         freturjual.GridView1.DeleteRow(lokasi2)
                         lokasi2 = -1
-                        MsgBox("bagian 5")
+                        'MsgBox("bagian 5")
                     Else
                         freturjual.GridView1.SetRowCellValue(lokasi2, "qty", banyak - banyak_retur)
                         freturjual.GridView1.SetRowCellValue(lokasi2, "subtotal", harga_diskon * (banyak - banyak_retur))
                         freturjual.GridView1.SetRowCellValue(lokasi2, "laba", (harga_diskon - modal_barang) * (banyak - banyak_retur))
 
                         lokasi2 = -1
-                        MsgBox("bagian 6")
+                        'MsgBox("bagian 6")
                     End If
                 End If
             End If
