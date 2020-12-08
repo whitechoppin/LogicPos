@@ -444,6 +444,22 @@ Public Class fmenu
         fchartpenjualan.Show()
     End Sub
 
+    Private Sub ChartPelunasanUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPelunasanUtangToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ChartPelunasanPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPelunasanPiutangToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ChartKasMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartKasMasukToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ChartKasKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartKasKeluarToolStripMenuItem.Click
+
+    End Sub
+
     'settings =============================================================================================================================
     Private Sub InfoPerusahaanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InfoPerusahaanToolStripMenuItem.Click
         fperusahaan.Show()

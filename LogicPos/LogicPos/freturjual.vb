@@ -701,6 +701,7 @@ Public Class freturjual
             Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
             Console.WriteLine("Neither record was written to database.")
             MsgBox("Retur Gagal Dilakukan", MsgBoxStyle.Information, "Gagal")
+            MsgBox(e.GetType().ToString())
         End Try
     End Sub
 
