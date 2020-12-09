@@ -30,6 +30,7 @@ Partial Class fchartpelunasanpiutang
         Dim SeriesPoint4 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
         Dim SeriesPoint5 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
         Dim ChartTitle1 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpelunasanpiutang))
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         Me.rbtahunan = New System.Windows.Forms.RadioButton()
         Me.rbbulanan = New System.Windows.Forms.RadioButton()
@@ -39,6 +40,14 @@ Partial Class fchartpelunasanpiutang
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.btncarikas = New System.Windows.Forms.Button()
+        Me.cmbkas = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.cmbpelanggan = New System.Windows.Forms.ComboBox()
+        Me.cmbsales = New System.Windows.Forms.ComboBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.btncaricustomer = New System.Windows.Forms.Button()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,8 +58,8 @@ Partial Class fchartpelunasanpiutang
         XyDiagram1.AxisX.VisibleInPanesSerializable = "-1"
         XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
         Me.ChartControl1.Diagram = XyDiagram1
-        Me.ChartControl1.Location = New System.Drawing.Point(19, 209)
-        Me.ChartControl1.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.ChartControl1.Location = New System.Drawing.Point(18, 174)
+        Me.ChartControl1.Margin = New System.Windows.Forms.Padding(6)
         Me.ChartControl1.Name = "ChartControl1"
         Series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
         Series1.Name = "Penjualan"
@@ -123,9 +132,9 @@ Partial Class fchartpelunasanpiutang
         Me.Label2.Location = New System.Drawing.Point(13, 9)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(230, 31)
+        Me.Label2.Size = New System.Drawing.Size(338, 31)
         Me.Label2.TabIndex = 58
-        Me.Label2.Text = "Chart Pembelian"
+        Me.Label2.Text = "Chart Pelunasan Piutang"
         '
         'DateTimePicker2
         '
@@ -143,12 +152,109 @@ Partial Class fchartpelunasanpiutang
         Me.DateTimePicker1.Size = New System.Drawing.Size(231, 24)
         Me.DateTimePicker1.TabIndex = 55
         '
+        'btncarikas
+        '
+        Me.btncarikas.BackgroundImage = CType(resources.GetObject("btncarikas.BackgroundImage"), System.Drawing.Image)
+        Me.btncarikas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarikas.ImageIndex = 0
+        Me.btncarikas.Location = New System.Drawing.Point(542, 128)
+        Me.btncarikas.Margin = New System.Windows.Forms.Padding(6)
+        Me.btncarikas.Name = "btncarikas"
+        Me.btncarikas.Size = New System.Drawing.Size(29, 28)
+        Me.btncarikas.TabIndex = 69
+        Me.btncarikas.UseVisualStyleBackColor = True
+        '
+        'cmbkas
+        '
+        Me.cmbkas.BackColor = System.Drawing.SystemColors.Window
+        Me.cmbkas.FormattingEnabled = True
+        Me.cmbkas.Location = New System.Drawing.Point(303, 129)
+        Me.cmbkas.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbkas.MaxLength = 99
+        Me.cmbkas.Name = "cmbkas"
+        Me.cmbkas.Size = New System.Drawing.Size(236, 26)
+        Me.cmbkas.TabIndex = 68
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label14.Location = New System.Drawing.Point(300, 105)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(73, 18)
+        Me.Label14.TabIndex = 70
+        Me.Label14.Text = "Kode Kas"
+        '
+        'cmbpelanggan
+        '
+        Me.cmbpelanggan.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbpelanggan.FormattingEnabled = True
+        Me.cmbpelanggan.Location = New System.Drawing.Point(584, 130)
+        Me.cmbpelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbpelanggan.MaxLength = 99
+        Me.cmbpelanggan.Name = "cmbpelanggan"
+        Me.cmbpelanggan.Size = New System.Drawing.Size(239, 26)
+        Me.cmbpelanggan.TabIndex = 64
+        '
+        'cmbsales
+        '
+        Me.cmbsales.FormattingEnabled = True
+        Me.cmbsales.Location = New System.Drawing.Point(18, 129)
+        Me.cmbsales.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbsales.MaxLength = 99
+        Me.cmbsales.Name = "cmbsales"
+        Me.cmbsales.Size = New System.Drawing.Size(268, 26)
+        Me.cmbsales.TabIndex = 65
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label16.Location = New System.Drawing.Point(15, 105)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(84, 18)
+        Me.Label16.TabIndex = 67
+        Me.Label16.Text = "Kode Sales"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label6.Location = New System.Drawing.Point(581, 106)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(116, 18)
+        Me.Label6.TabIndex = 66
+        Me.Label6.Text = "Kode Pelanggan"
+        '
+        'btncaricustomer
+        '
+        Me.btncaricustomer.BackgroundImage = CType(resources.GetObject("btncaricustomer.BackgroundImage"), System.Drawing.Image)
+        Me.btncaricustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncaricustomer.ImageIndex = 0
+        Me.btncaricustomer.Location = New System.Drawing.Point(823, 129)
+        Me.btncaricustomer.Margin = New System.Windows.Forms.Padding(6)
+        Me.btncaricustomer.Name = "btncaricustomer"
+        Me.btncaricustomer.Size = New System.Drawing.Size(29, 28)
+        Me.btncaricustomer.TabIndex = 63
+        Me.btncaricustomer.UseVisualStyleBackColor = True
+        '
         'fchartpelunasanpiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1604, 756)
+        Me.ClientSize = New System.Drawing.Size(1604, 724)
+        Me.Controls.Add(Me.btncarikas)
+        Me.Controls.Add(Me.cmbkas)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.cmbpelanggan)
+        Me.Controls.Add(Me.cmbsales)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.btncaricustomer)
         Me.Controls.Add(Me.rbtahunan)
         Me.Controls.Add(Me.rbbulanan)
         Me.Controls.Add(Me.rbharian)
@@ -159,9 +265,9 @@ Partial Class fchartpelunasanpiutang
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.ChartControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fchartpelunasanpiutang"
-        Me.Text = "fchartpelunasanpiutang"
+        Me.Text = "Chart Pelunasan Piutang"
         CType(XyDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Series1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -179,4 +285,12 @@ Partial Class fchartpelunasanpiutang
     Friend WithEvents Label2 As Label
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents btncarikas As Button
+    Friend WithEvents cmbkas As ComboBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents cmbpelanggan As ComboBox
+    Friend WithEvents cmbsales As ComboBox
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents btncaricustomer As Button
 End Class

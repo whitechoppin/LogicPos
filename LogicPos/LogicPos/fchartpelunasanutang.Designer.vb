@@ -22,14 +22,15 @@ Partial Class fchartpelunasanutang
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim XyDiagram2 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
-        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim SeriesPoint6 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
-        Dim SeriesPoint7 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
-        Dim SeriesPoint8 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
-        Dim SeriesPoint9 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
-        Dim SeriesPoint10 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
-        Dim ChartTitle2 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
+        Dim XyDiagram1 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+        Dim Series1 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim SeriesPoint1 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
+        Dim SeriesPoint2 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
+        Dim SeriesPoint3 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
+        Dim SeriesPoint4 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
+        Dim SeriesPoint5 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
+        Dim ChartTitle1 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpelunasanutang))
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         Me.rbtahunan = New System.Windows.Forms.RadioButton()
         Me.rbbulanan = New System.Windows.Forms.RadioButton()
@@ -39,27 +40,35 @@ Partial Class fchartpelunasanutang
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.btncarikas = New System.Windows.Forms.Button()
+        Me.cmbkas = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.cmbsupplier = New System.Windows.Forms.ComboBox()
+        Me.cmbsales = New System.Windows.Forms.ComboBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.btncarisupplier = New System.Windows.Forms.Button()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ChartControl1
         '
-        XyDiagram2.AxisX.VisibleInPanesSerializable = "-1"
-        XyDiagram2.AxisY.VisibleInPanesSerializable = "-1"
-        Me.ChartControl1.Diagram = XyDiagram2
-        Me.ChartControl1.Location = New System.Drawing.Point(14, 231)
-        Me.ChartControl1.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        XyDiagram1.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
+        Me.ChartControl1.Diagram = XyDiagram1
+        Me.ChartControl1.Location = New System.Drawing.Point(17, 176)
+        Me.ChartControl1.Margin = New System.Windows.Forms.Padding(6)
         Me.ChartControl1.Name = "ChartControl1"
-        Series2.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
-        Series2.Name = "Pembelian"
-        Series2.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint6, SeriesPoint7, SeriesPoint8, SeriesPoint9, SeriesPoint10})
-        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series2}
+        Series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
+        Series1.Name = "Pembelian"
+        Series1.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint1, SeriesPoint2, SeriesPoint3, SeriesPoint4, SeriesPoint5})
+        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1}
         Me.ChartControl1.Size = New System.Drawing.Size(1520, 532)
         Me.ChartControl1.TabIndex = 1
-        ChartTitle2.Text = "Periode :"
-        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle2})
+        ChartTitle1.Text = "Periode :"
+        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle1})
         '
         'rbtahunan
         '
@@ -123,9 +132,9 @@ Partial Class fchartpelunasanutang
         Me.Label2.Location = New System.Drawing.Point(13, 9)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(230, 31)
+        Me.Label2.Size = New System.Drawing.Size(317, 31)
         Me.Label2.TabIndex = 58
-        Me.Label2.Text = "Chart Pembelian"
+        Me.Label2.Text = "Chart Pelunasan Utang"
         '
         'DateTimePicker2
         '
@@ -143,12 +152,109 @@ Partial Class fchartpelunasanutang
         Me.DateTimePicker1.Size = New System.Drawing.Size(231, 24)
         Me.DateTimePicker1.TabIndex = 55
         '
+        'btncarikas
+        '
+        Me.btncarikas.BackgroundImage = CType(resources.GetObject("btncarikas.BackgroundImage"), System.Drawing.Image)
+        Me.btncarikas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarikas.ImageIndex = 0
+        Me.btncarikas.Location = New System.Drawing.Point(543, 133)
+        Me.btncarikas.Margin = New System.Windows.Forms.Padding(6)
+        Me.btncarikas.Name = "btncarikas"
+        Me.btncarikas.Size = New System.Drawing.Size(29, 28)
+        Me.btncarikas.TabIndex = 69
+        Me.btncarikas.UseVisualStyleBackColor = True
+        '
+        'cmbkas
+        '
+        Me.cmbkas.BackColor = System.Drawing.SystemColors.Window
+        Me.cmbkas.FormattingEnabled = True
+        Me.cmbkas.Location = New System.Drawing.Point(304, 134)
+        Me.cmbkas.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbkas.MaxLength = 99
+        Me.cmbkas.Name = "cmbkas"
+        Me.cmbkas.Size = New System.Drawing.Size(236, 26)
+        Me.cmbkas.TabIndex = 68
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label14.Location = New System.Drawing.Point(301, 110)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(73, 18)
+        Me.Label14.TabIndex = 70
+        Me.Label14.Text = "Kode Kas"
+        '
+        'cmbsupplier
+        '
+        Me.cmbsupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbsupplier.FormattingEnabled = True
+        Me.cmbsupplier.Location = New System.Drawing.Point(585, 135)
+        Me.cmbsupplier.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbsupplier.MaxLength = 99
+        Me.cmbsupplier.Name = "cmbsupplier"
+        Me.cmbsupplier.Size = New System.Drawing.Size(239, 26)
+        Me.cmbsupplier.TabIndex = 64
+        '
+        'cmbsales
+        '
+        Me.cmbsales.FormattingEnabled = True
+        Me.cmbsales.Location = New System.Drawing.Point(19, 134)
+        Me.cmbsales.Margin = New System.Windows.Forms.Padding(6)
+        Me.cmbsales.MaxLength = 99
+        Me.cmbsales.Name = "cmbsales"
+        Me.cmbsales.Size = New System.Drawing.Size(268, 26)
+        Me.cmbsales.TabIndex = 65
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label16.Location = New System.Drawing.Point(16, 110)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(84, 18)
+        Me.Label16.TabIndex = 67
+        Me.Label16.Text = "Kode Sales"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.Label6.Location = New System.Drawing.Point(582, 111)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(100, 18)
+        Me.Label6.TabIndex = 66
+        Me.Label6.Text = "Kode Supplier"
+        '
+        'btncarisupplier
+        '
+        Me.btncarisupplier.BackgroundImage = CType(resources.GetObject("btncarisupplier.BackgroundImage"), System.Drawing.Image)
+        Me.btncarisupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarisupplier.ImageIndex = 0
+        Me.btncarisupplier.Location = New System.Drawing.Point(824, 134)
+        Me.btncarisupplier.Margin = New System.Windows.Forms.Padding(6)
+        Me.btncarisupplier.Name = "btncarisupplier"
+        Me.btncarisupplier.Size = New System.Drawing.Size(29, 28)
+        Me.btncarisupplier.TabIndex = 63
+        Me.btncarisupplier.UseVisualStyleBackColor = True
+        '
         'fchartpelunasanutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1554, 777)
+        Me.ClientSize = New System.Drawing.Size(1554, 723)
+        Me.Controls.Add(Me.btncarikas)
+        Me.Controls.Add(Me.cmbkas)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.cmbsupplier)
+        Me.Controls.Add(Me.cmbsales)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.btncarisupplier)
         Me.Controls.Add(Me.rbtahunan)
         Me.Controls.Add(Me.rbbulanan)
         Me.Controls.Add(Me.rbharian)
@@ -159,11 +265,11 @@ Partial Class fchartpelunasanutang
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.ChartControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fchartpelunasanutang"
-        Me.Text = "fchartpelunasanutang"
-        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Text = "Chart Pelunasan Utang"
+        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -179,4 +285,12 @@ Partial Class fchartpelunasanutang
     Friend WithEvents Label2 As Label
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents btncarikas As Button
+    Friend WithEvents cmbkas As ComboBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents cmbsupplier As ComboBox
+    Friend WithEvents cmbsales As ComboBox
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents btncarisupplier As Button
 End Class

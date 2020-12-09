@@ -63,7 +63,7 @@ Partial Class fchartpenjualan
         XyDiagram1.AxisX.VisibleInPanesSerializable = "-1"
         XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
         Me.ChartControl1.Diagram = XyDiagram1
-        Me.ChartControl1.Location = New System.Drawing.Point(13, 164)
+        Me.ChartControl1.Location = New System.Drawing.Point(21, 164)
         Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartControl1.Name = "ChartControl1"
         Series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
@@ -204,7 +204,7 @@ Partial Class fchartpenjualan
         '
         'btntabel
         '
-        Me.btntabel.Location = New System.Drawing.Point(1205, 54)
+        Me.btntabel.Location = New System.Drawing.Point(1213, 54)
         Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
         Me.btntabel.Name = "btntabel"
         Me.btntabel.Size = New System.Drawing.Size(166, 46)
@@ -214,7 +214,7 @@ Partial Class fchartpenjualan
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(1205, 108)
+        Me.btnexcel.Location = New System.Drawing.Point(1213, 108)
         Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(166, 46)
@@ -304,7 +304,7 @@ Partial Class fchartpenjualan
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1384, 561)
+        Me.ClientSize = New System.Drawing.Size(1396, 561)
         Me.Controls.Add(Me.btncaribarang)
         Me.Controls.Add(Me.txtkodestok)
         Me.Controls.Add(Me.Label4)
