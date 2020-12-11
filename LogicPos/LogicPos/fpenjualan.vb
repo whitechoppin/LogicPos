@@ -21,7 +21,8 @@ Public Class fpenjualan
 
     Dim dateterm, datetermnow As Date
     'variabel penjualan detail
-    Dim idpenjualan, idgudang, iduser, idpelanggan As String
+    Dim idpenjualan As String
+    Dim idgudang, iduser, idpelanggan As Integer
     Public jenis, satuan As String
     Dim idbarang, idstok As Integer
 
@@ -837,12 +838,12 @@ Public Class fpenjualan
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idpelanggan = dr("id")
+            idpelanggan = Val(dr("id"))
             txtpelanggan.Text = dr("nama_pelanggan")
             txtalamat.Text = dr("alamat_pelanggan")
             txttelp.Text = dr("telepon_pelanggan")
         Else
-            idpelanggan = "0"
+            idpelanggan = 0
             txtpelanggan.Text = ""
             txtalamat.Text = ""
             txttelp.Text = ""
@@ -855,10 +856,10 @@ Public Class fpenjualan
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idgudang = dr("id")
+            idgudang = Val(dr("id"))
             txtgudang.Text = dr("nama_gudang")
         Else
-            idgudang = "0"
+            idgudang = 0
             txtgudang.Text = ""
         End If
     End Sub
@@ -869,9 +870,9 @@ Public Class fpenjualan
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            iduser = dr("id")
+            iduser = Val(dr("id"))
         Else
-            iduser = "0"
+            iduser = 0
         End If
     End Sub
 
@@ -1023,7 +1024,7 @@ Public Class fpenjualan
         If GridView1.DataRowCount > 0 Then
             If txtpelanggan.Text IsNot "" Then
                 If txtgudang.Text IsNot "" Then
-                    If cmbsales.Text IsNot "" Then
+                    If cmbsales.Text IsNot "" And iduser > 0 Then
                         If txtrekening.Text IsNot "" Then
                             Call proses()
                         Else
@@ -1574,7 +1575,7 @@ Public Class fpenjualan
                     If GridView1.DataRowCount > 0 Then
                         If txtpelanggan.Text IsNot "" Then
                             If txtgudang.Text IsNot "" Then
-                                If cmbsales.Text IsNot "" Then
+                                If cmbsales.Text IsNot "" And iduser > 0 Then
                                     If txtrekening.Text IsNot "" Then
                                         'isi disini sub updatenya
                                         Call perbaharui(txtnonota.Text)

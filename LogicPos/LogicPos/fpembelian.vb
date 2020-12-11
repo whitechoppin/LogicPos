@@ -18,7 +18,8 @@ Public Class fpembelian
     Dim lunasstatus As Integer = 0
 
     Dim dateterm, datetermnow As Date
-    Dim idsupplier, idpembelian, idgudang, iduser As String
+    Dim idpembelian As String
+    Dim idsupplier, idgudang, iduser As Integer
     'variable detail pembelian
     Dim satuan, jenis As String
     Dim idbarang, idstok As Integer
@@ -664,6 +665,7 @@ Public Class fpembelian
             modalpembelian = dr("modal_barang")
             txthargabarang.Text = Format(modalpembelian, "##,##0")
         Else
+            idbarang = 0
             txtnamabarang.Text = ""
             lblsatuan.Text = "satuan"
             lblsatuanbeli.Text = "satuan"
@@ -677,12 +679,12 @@ Public Class fpembelian
         dr = cmmd.ExecuteReader
 
         If dr.HasRows Then
-            idsupplier = dr("id")
+            idsupplier = Val(dr("id"))
             txtsupplier.Text = dr("nama_supplier")
             txtalamat.Text = dr("alamat_supplier")
             txttelp.Text = dr("telepon_supplier")
         Else
-            idsupplier = "0"
+            idsupplier = 0
             txtsupplier.Text = ""
             txtalamat.Text = ""
             txttelp.Text = ""
@@ -695,10 +697,10 @@ Public Class fpembelian
         dr = cmmd.ExecuteReader
 
         If dr.HasRows Then
-            idgudang = dr("id")
+            idgudang = Val(dr("id"))
             txtgudang.Text = dr("nama_gudang")
         Else
-            idgudang = "0"
+            idgudang = 0
             txtgudang.Text = ""
         End If
     End Sub
@@ -710,9 +712,9 @@ Public Class fpembelian
         dr = cmmd.ExecuteReader
 
         If dr.HasRows Then
-            iduser = dr("id")
+            iduser = Val(dr("id"))
         Else
-            iduser = "0"
+            iduser = 0
         End If
     End Sub
 
@@ -931,7 +933,7 @@ Public Class fpembelian
         If GridView1.DataRowCount > 0 Then
             If txtsupplier.Text IsNot "" Then
                 If txtgudang.Text IsNot "" Then
-                    If cmbsales.Text IsNot "" Then
+                    If cmbsales.Text IsNot "" And iduser > 0 Then
                         Call simpan()
                     Else
                         MsgBox("Isi Sales")
@@ -1303,7 +1305,7 @@ Public Class fpembelian
                         If GridView1.DataRowCount > 0 Then
                             If txtsupplier.Text IsNot "" Then
                                 If txtgudang.Text IsNot "" Then
-                                    If cmbsales.Text IsNot "" Then
+                                    If cmbsales.Text IsNot "" And iduser > 0 Then
                                         btnedit.Text = "Edit"
                                         'isi disini sub updatenya
                                         Call perbaharui(txtnonota.Text)
