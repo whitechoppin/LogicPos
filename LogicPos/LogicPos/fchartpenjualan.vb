@@ -2,7 +2,7 @@
 
 Public Class fchartpenjualan
     Public namaform As String = "chart-penjualan"
-    Dim idgudang, iduser, idpelanggan As Integer
+    Dim idgudang, iduser, idpelanggan, idstok, idbarang As Integer
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -84,8 +84,10 @@ Public Class fchartpenjualan
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             idpelanggan = Val(dr("id"))
+            txtpelanggan.Text = dr("nama_pelanggan")
         Else
             idpelanggan = 0
+            txtpelanggan.Text = ""
         End If
     End Sub
 
@@ -96,8 +98,10 @@ Public Class fchartpenjualan
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             idgudang = Val(dr("id"))
+            txtgudang.Text = dr("nama_gudang")
         Else
             idgudang = 0
+            txtgudang.Text = ""
         End If
     End Sub
 
@@ -110,6 +114,24 @@ Public Class fchartpenjualan
             iduser = Val(dr("id"))
         Else
             iduser = 0
+        End If
+    End Sub
+
+    Sub caristok()
+        Call koneksii()
+        sql = "SELECT tb_stok.id as idstok, tb_barang.id as idbarang, tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.satuan_barang, tb_barang.jenis_barang, tb_barang.modal_barang FROM tb_stok JOIN tb_barang ON tb_barang.id = tb_stok.barang_id WHERE kode_stok = '" & txtkodestok.Text & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            idstok = Val(dr("idstok"))
+            idbarang = Val(dr("idbarang"))
+
+            txtnamabarang.Text = dr("nama_barang")
+        Else
+            idstok = 0
+            idbarang = 0
+
+            txtnamabarang.Text = ""
         End If
     End Sub
 
@@ -373,5 +395,9 @@ Public Class fchartpenjualan
 
     Private Sub cmbgudang_TextChanged(sender As Object, e As EventArgs) Handles cmbgudang.TextChanged
         Call carigudang()
+    End Sub
+
+    Private Sub txtkodestok_TextChanged(sender As Object, e As EventArgs) Handles txtkodestok.TextChanged
+
     End Sub
 End Class

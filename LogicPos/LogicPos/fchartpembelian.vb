@@ -2,7 +2,7 @@
 
 Public Class fchartpembelian
     Public namaform As String = "chart-pembelian"
-    Dim idgudang, iduser, idsupplier As Integer
+    Dim idgudang, iduser, idsupplier, idbarang As Integer
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -85,8 +85,10 @@ Public Class fchartpembelian
 
         If dr.HasRows Then
             idsupplier = Val(dr("id"))
+            txtsupplier.Text = dr("nama_supplier")
         Else
             idsupplier = 0
+            txtsupplier.Text = ""
         End If
     End Sub
     Sub carigudang()
@@ -94,11 +96,12 @@ Public Class fchartpembelian
         sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbgudang.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
-
         If dr.HasRows Then
             idgudang = Val(dr("id"))
+            txtgudang.Text = dr("nama_gudang")
         Else
             idgudang = 0
+            txtgudang.Text = ""
         End If
     End Sub
 
@@ -107,11 +110,24 @@ Public Class fchartpembelian
         sql = "SELECT id FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
-
         If dr.HasRows Then
             iduser = Val(dr("id"))
         Else
             iduser = 0
+        End If
+    End Sub
+
+    Sub caribarang()
+        Call koneksii()
+        sql = "SELECT * FROM tb_barang WHERE kode_barang='" & txtkodebarang.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            idbarang = Val(dr("id"))
+            txtnamabarang.Text = dr("nama_barang")
+        Else
+            idbarang = 0
+            txtnamabarang.Text = ""
         End If
     End Sub
 
@@ -375,5 +391,9 @@ Public Class fchartpembelian
 
     Private Sub cmbgudang_TextChanged(sender As Object, e As EventArgs) Handles cmbgudang.TextChanged
         Call carigudang()
+    End Sub
+
+    Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodebarang.TextChanged
+
     End Sub
 End Class

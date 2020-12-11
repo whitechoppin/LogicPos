@@ -842,7 +842,7 @@ Public Class fpenjualan
             txtalamat.Text = dr("alamat_pelanggan")
             txttelp.Text = dr("telepon_pelanggan")
         Else
-
+            idpelanggan = "0"
             txtpelanggan.Text = ""
             txtalamat.Text = ""
             txttelp.Text = ""
@@ -858,6 +858,7 @@ Public Class fpenjualan
             idgudang = dr("id")
             txtgudang.Text = dr("nama_gudang")
         Else
+            idgudang = "0"
             txtgudang.Text = ""
         End If
     End Sub
@@ -869,6 +870,8 @@ Public Class fpenjualan
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             iduser = dr("id")
+        Else
+            iduser = "0"
         End If
     End Sub
 
