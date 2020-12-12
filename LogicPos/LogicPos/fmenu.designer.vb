@@ -90,15 +90,16 @@ Partial Class fmenu
         Me.PrinterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JatuhTempoPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JatuhTempoPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NotifikasiStokToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HistoryUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.KonfigurasiDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PengaturanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KalkulasiExpedisiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PengirimanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaporanPengirimanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.KonfigurasiDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BarcodeGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PengaturanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
@@ -498,7 +499,7 @@ Partial Class fmenu
         '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KalkulasiExpedisiToolStripMenuItem, Me.KonfigurasiDatabaseToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem, Me.PengaturanToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.NotifikasiStokToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KonfigurasiDatabaseToolStripMenuItem, Me.PengaturanToolStripMenuItem, Me.KalkulasiExpedisiToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
@@ -527,11 +528,29 @@ Partial Class fmenu
         Me.JatuhTempoPenjualanToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.JatuhTempoPenjualanToolStripMenuItem.Text = "Jatuh Tempo Penjualan"
         '
+        'NotifikasiStokToolStripMenuItem
+        '
+        Me.NotifikasiStokToolStripMenuItem.Name = "NotifikasiStokToolStripMenuItem"
+        Me.NotifikasiStokToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.NotifikasiStokToolStripMenuItem.Text = "Notifikasi Stok"
+        '
         'HistoryUserToolStripMenuItem
         '
         Me.HistoryUserToolStripMenuItem.Name = "HistoryUserToolStripMenuItem"
         Me.HistoryUserToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.HistoryUserToolStripMenuItem.Text = "History User"
+        '
+        'KonfigurasiDatabaseToolStripMenuItem
+        '
+        Me.KonfigurasiDatabaseToolStripMenuItem.Name = "KonfigurasiDatabaseToolStripMenuItem"
+        Me.KonfigurasiDatabaseToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.KonfigurasiDatabaseToolStripMenuItem.Text = "Konfigurasi Database"
+        '
+        'PengaturanToolStripMenuItem
+        '
+        Me.PengaturanToolStripMenuItem.Name = "PengaturanToolStripMenuItem"
+        Me.PengaturanToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.PengaturanToolStripMenuItem.Text = "Pengaturan"
         '
         'KalkulasiExpedisiToolStripMenuItem
         '
@@ -564,23 +583,11 @@ Partial Class fmenu
         Me.LaporanPengirimanToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
         Me.LaporanPengirimanToolStripMenuItem.Text = "Laporan Pengiriman"
         '
-        'KonfigurasiDatabaseToolStripMenuItem
-        '
-        Me.KonfigurasiDatabaseToolStripMenuItem.Name = "KonfigurasiDatabaseToolStripMenuItem"
-        Me.KonfigurasiDatabaseToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.KonfigurasiDatabaseToolStripMenuItem.Text = "Konfigurasi Database"
-        '
         'BarcodeGeneratorToolStripMenuItem
         '
         Me.BarcodeGeneratorToolStripMenuItem.Name = "BarcodeGeneratorToolStripMenuItem"
         Me.BarcodeGeneratorToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.BarcodeGeneratorToolStripMenuItem.Text = "Barcode Generator"
-        '
-        'PengaturanToolStripMenuItem
-        '
-        Me.PengaturanToolStripMenuItem.Name = "PengaturanToolStripMenuItem"
-        Me.PengaturanToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.PengaturanToolStripMenuItem.Text = "Pengaturan"
         '
         'AboutMenu
         '
@@ -705,7 +712,7 @@ Partial Class fmenu
         Me.MainMenuStrip = Me.MenuUtama
         Me.Name = "fmenu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = " "
+        Me.Text = "Aplikasi Logic POS"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuUtama.ResumeLayout(False)
         Me.MenuUtama.PerformLayout()
@@ -805,4 +812,5 @@ Partial Class fmenu
     Friend WithEvents ChartKasMasukToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ChartKasKeluarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PengaturanToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NotifikasiStokToolStripMenuItem As ToolStripMenuItem
 End Class

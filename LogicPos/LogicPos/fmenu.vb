@@ -477,8 +477,20 @@ Public Class fmenu
         fjatuhtempopenjualan.Show()
     End Sub
 
+    Private Sub NotifikasiStokToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotifikasiStokToolStripMenuItem.Click
+        fnotifikasistok.Show()
+    End Sub
+
     Private Sub HistoryUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistoryUserToolStripMenuItem.Click
         fhistoryuser.Show()
+    End Sub
+
+    Private Sub KonfigurasiDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KonfigurasiDatabaseToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub PengaturanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PengaturanToolStripMenuItem.Click
+
     End Sub
 
     Private Sub ContainerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContainerToolStripMenuItem.Click
@@ -496,9 +508,6 @@ Public Class fmenu
     Private Sub LaporanPengirimanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanPengirimanToolStripMenuItem.Click
         flaporankalkulasipengiriman.Show()
     End Sub
-    Private Sub KonfigurasiDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles KonfigurasiDatabaseToolStripMenuItem.Click
-
-    End Sub
 
     Private Sub BarcodeGeneratorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeGeneratorToolStripMenuItem.Click
         fgeneratebarcode.Show()
@@ -507,5 +516,6 @@ Public Class fmenu
     Private Sub LogicHouseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogicHouseToolStripMenuItem.Click
         flogichouse.Show()
     End Sub
+
 
 End Class
