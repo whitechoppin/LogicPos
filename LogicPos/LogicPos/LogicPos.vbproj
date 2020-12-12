@@ -1131,12 +1131,6 @@
     <Compile Include="fsupplier.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ftokosejati.Designer.vb">
-      <DependentUpon>ftokosejati.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ftokosejati.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ftransferbarang.Designer.vb">
       <DependentUpon>ftransferbarang.vb</DependentUpon>
     </Compile>
@@ -1493,9 +1487,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fprinter.resx">
       <DependentUpon>fprinter.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ftokosejati.resx">
-      <DependentUpon>ftokosejati.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ftransferkas.resx">
       <DependentUpon>ftransferkas.vb</DependentUpon>

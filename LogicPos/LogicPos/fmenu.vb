@@ -507,8 +507,5 @@ Public Class fmenu
     Private Sub LogicHouseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogicHouseToolStripMenuItem.Click
         flogichouse.Show()
     End Sub
-    Private Sub PerusahaanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PerusahaanToolStripMenuItem.Click
-        ftokosejati.Show()
-    End Sub
 
 End Class
