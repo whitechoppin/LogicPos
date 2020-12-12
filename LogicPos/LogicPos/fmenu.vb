@@ -462,7 +462,7 @@ Public Class fmenu
 
     'settings =============================================================================================================================
     Private Sub InfoPerusahaanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InfoPerusahaanToolStripMenuItem.Click
-        fperusahaan.Show()
+        finfoperusahaan.Show()
     End Sub
 
     Private Sub PrinterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrinterToolStripMenuItem.Click
@@ -507,7 +507,7 @@ Public Class fmenu
     Private Sub LogicHouseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogicHouseToolStripMenuItem.Click
         flogichouse.Show()
     End Sub
-    Private Sub TokoSejatiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TokoSejatiToolStripMenuItem.Click
+    Private Sub PerusahaanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PerusahaanToolStripMenuItem.Click
         ftokosejati.Show()
     End Sub
 

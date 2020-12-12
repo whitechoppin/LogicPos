@@ -76,7 +76,7 @@ Public Class ftokosejati
     End Sub
 
 
-    Private Sub btnsend_Click(sender As Object, e As EventArgs) Handles btnsend.Click
+    Private Sub btnsend_Click(sender As Object, e As EventArgs)
         Try
 
             Dim SmtpServer As New SmtpClient()
@@ -92,7 +92,7 @@ Public Class ftokosejati
 
             mail = New MailMessage()
             mail.From = New MailAddress("logicpos@sjtsupplies.com")
-            mail.To.Add(txtemailto.Text)
+            'mail.To.Add(txtemailto.Text)
             mail.Subject = "Testing Email From Logic Pos"
             mail.Body = "will give you data or document"
             SmtpServer.Send(mail)
@@ -110,7 +110,7 @@ Public Class ftokosejati
                 System.IO.Directory.CreateDirectory(pathdata)
             End If
 
-            ChartControl1.ExportToXls(yourpath)
+            'ChartControl1.ExportToXls(yourpath)
             MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
             ' Do something
         ElseIf DialogResult.Cancel Then
@@ -133,10 +133,10 @@ Public Class ftokosejati
         Try
             'dtTemp = FillDataTable("SELECT SUM(NET) AS NETT, TGL2 FROM DAT2 WHERE year(TGL2)=" & tgl.Year & " AND month(TGL2)=" & tgl.Month & " AND PROD LIKE 'c%' GROUP BY TGL2 ORDER BY TGL2")
 
-            ChartControl1.Series("Series 1").Visible = True
-            ChartControl1.Series("Series 1").DataSource = ds.Tables(0)
-            ChartControl1.Series("Series 1").ValueDataMembersSerializable = "total"
-            ChartControl1.Series("Series 1").ArgumentDataMember = "bulan"
+            'ChartControl1.Series("Series 1").Visible = True
+            'ChartControl1.Series("Series 1").DataSource = ds.Tables(0)
+            'ChartControl1.Series("Series 1").ValueDataMembersSerializable = "total"
+            'ChartControl1.Series("Series 1").ArgumentDataMember = "bulan"
 
             'dtTemp = FillDataTable("SELECT SUM(NET) AS NETT, TGL2 FROM DAT2 WHERE year(TGL2)=" & tgl.Year & " AND month(TGL2)=" & tgl.Month & " AND PROD LIKE 't%' GROUP BY TGL2 ORDER BY TGL2")
 
@@ -165,20 +165,20 @@ Public Class ftokosejati
         Me.Cursor = Cursors.Arrow
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         'Call saveuser()
         Call LoadChart()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
         Dim contoh As Double
 
-        contoh = TextBox1.Text
+        'contoh = TextBox1.Text
         contoh.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
         MsgBox(contoh.ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US")))
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
         Dim decimalSeparator As String = Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator
 
         'For Each ci As CultureInfo In CultureInfo.GetCultures(CultureTypes.AllCultures)
@@ -247,7 +247,7 @@ Public Class ftokosejati
         End Try
     End Function
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs)
         MsgBox(CpuId() + " " + getMacAddress() + " " + getMacAddressx())
         Call ProcessorSpeed()
         Call exportChart()

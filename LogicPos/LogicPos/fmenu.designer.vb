@@ -101,7 +101,7 @@ Partial Class fmenu
         Me.PengaturanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TokoSejatiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PerusahaanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.prefixkode = New System.Windows.Forms.ToolStripStatusLabel()
         Me.kodeuser = New System.Windows.Forms.ToolStripStatusLabel()
@@ -585,7 +585,7 @@ Partial Class fmenu
         '
         'AboutMenu
         '
-        Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogicHouseToolStripMenuItem, Me.TokoSejatiToolStripMenuItem})
+        Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogicHouseToolStripMenuItem, Me.PerusahaanToolStripMenuItem})
         Me.AboutMenu.Name = "AboutMenu"
         Me.AboutMenu.Size = New System.Drawing.Size(52, 20)
         Me.AboutMenu.Text = "Abou&t"
@@ -593,14 +593,14 @@ Partial Class fmenu
         'LogicHouseToolStripMenuItem
         '
         Me.LogicHouseToolStripMenuItem.Name = "LogicHouseToolStripMenuItem"
-        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.LogicHouseToolStripMenuItem.Text = "Logic House"
         '
-        'TokoSejatiToolStripMenuItem
+        'PerusahaanToolStripMenuItem
         '
-        Me.TokoSejatiToolStripMenuItem.Name = "TokoSejatiToolStripMenuItem"
-        Me.TokoSejatiToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
-        Me.TokoSejatiToolStripMenuItem.Text = "Toko Sejati"
+        Me.PerusahaanToolStripMenuItem.Name = "PerusahaanToolStripMenuItem"
+        Me.PerusahaanToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PerusahaanToolStripMenuItem.Text = "Perusahaan"
         '
         'StatusStrip
         '
@@ -766,7 +766,7 @@ Partial Class fmenu
     Friend WithEvents LTransferBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutMenu As ToolStripMenuItem
     Friend WithEvents LogicHouseToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TokoSejatiToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PerusahaanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LTransaksiKasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LogOutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents JatuhTempoPembelianToolStripMenuItem As ToolStripMenuItem

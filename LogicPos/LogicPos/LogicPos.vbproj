@@ -470,10 +470,10 @@
     <Compile Include="fpenyesuaianstok.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fperusahaan.Designer.vb">
-      <DependentUpon>fperusahaan.vb</DependentUpon>
+    <Compile Include="finfoperusahaan.Designer.vb">
+      <DependentUpon>finfoperusahaan.vb</DependentUpon>
     </Compile>
-    <Compile Include="fperusahaan.vb">
+    <Compile Include="finfoperusahaan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fcarilunasbeli.Designer.vb">
@@ -1347,8 +1347,8 @@
     <EmbeddedResource Include="fpenyesuaianstok.resx">
       <DependentUpon>fpenyesuaianstok.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fperusahaan.resx">
-      <DependentUpon>fperusahaan.vb</DependentUpon>
+    <EmbeddedResource Include="finfoperusahaan.resx">
+      <DependentUpon>finfoperusahaan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fcarilunasbeli.resx">
       <DependentUpon>fcarilunasbeli.vb</DependentUpon>

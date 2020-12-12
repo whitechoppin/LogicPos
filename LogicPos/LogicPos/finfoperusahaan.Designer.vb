@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class fperusahaan
+Partial Class finfoperusahaan
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,7 +23,7 @@ Partial Class fperusahaan
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fperusahaan))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(finfoperusahaan))
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btnsimpan = New System.Windows.Forms.Button()
         Me.txttelepon = New System.Windows.Forms.TextBox()

@@ -2,7 +2,7 @@
 Imports System.Drawing.Drawing2D
 Imports System.IO
 
-Public Class fperusahaan
+Public Class finfoperusahaan
     Public namaform As String = "tools-info_perusahaan"
 
     Dim namaawal, namaakhir As String
@@ -17,7 +17,7 @@ Public Class fperusahaan
         Call historysave("Membuka Setting Alamat", "N/A", namaform)
     End Sub
 
-    Private Sub falamat_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+    Private Sub finfoperusahaan_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fmenu.ActiveMdiChild_FormClosed(sender)
     End Sub
 
