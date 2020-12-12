@@ -114,9 +114,10 @@ Public Class fkaskeluar
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idkas = dr("id")
+            idkas = Val(dr("id"))
             txtnamakas.Text = dr("nama_kas")
         Else
+            idkas = 0
             txtnamakas.Text = ""
         End If
     End Sub
@@ -127,9 +128,11 @@ Public Class fkaskeluar
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            iduser = dr("id")
+            iduser = Val(dr("id"))
+            cmbsales.ForeColor = Color.Black
         Else
             iduser = 0
+            cmbsales.ForeColor = Color.Red
         End If
     End Sub
 

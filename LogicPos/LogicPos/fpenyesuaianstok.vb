@@ -16,7 +16,8 @@ Public Class fpenyesuaianstok
     'variabel dalam penyesuaian
     Public jenis, satuan As String
     Dim idbarang, idstok As Integer
-    Dim idpenyesuaianstok, idgudang, iduser As String
+    Dim idpenyesuaianstok As String
+    Dim idgudang, iduser As Integer
     Dim banyak As Double
     'variabel bantuan view penyesuaian
     Dim nomornota, nomorsales, nomorgudang, viewketerangan As String
@@ -527,9 +528,10 @@ Public Class fpenyesuaianstok
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idgudang = dr("id")
+            idgudang = Val(dr("id"))
             txtgudang.Text = dr("nama_gudang")
         Else
+            idgudang = 0
             txtgudang.Text = ""
         End If
     End Sub
@@ -540,7 +542,11 @@ Public Class fpenyesuaianstok
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            iduser = dr("id")
+            iduser = Val(dr("id"))
+            cmbsales.ForeColor = Color.Black
+        Else
+            iduser = 0
+            cmbsales.ForeColor = Color.Red
         End If
     End Sub
 
@@ -559,6 +565,9 @@ Public Class fpenyesuaianstok
             lblsatuan.Text = satuan
             jenis = dr("jenis_barang")
         Else
+            idstok = 0
+            idbarang = 0
+
             txtnamabarang.Text = ""
             txtkodebarang.Text = ""
             satuan = "satuan"
@@ -714,7 +723,7 @@ Public Class fpenyesuaianstok
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         If GridView1.DataRowCount > 0 Or GridView2.DataRowCount > 0 Then
             If txtgudang.Text IsNot "" Then
-                If cmbsales.Text IsNot "" Then
+                If cmbsales.Text IsNot "" And iduser > 0 Then
                     Call proses()
                 Else
                     MsgBox("Isi Sales")

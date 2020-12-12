@@ -237,7 +237,11 @@ Public Class freturbeli
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            iduser = dr("id")
+            iduser = Val(dr("id"))
+            cmbsales.ForeColor = Color.Black
+        Else
+            iduser = 0
+            cmbsales.ForeColor = Color.Red
         End If
     End Sub
 
@@ -687,7 +691,7 @@ Public Class freturbeli
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         If GridView2.DataRowCount > 0 Then
             If txtnonota.Text IsNot "" Then
-                If cmbsales.Text IsNot "" Then
+                If cmbsales.Text IsNot "" And iduser > 0 Then
                     Call simpan()
                 Else
                     MsgBox("Isi Sales")

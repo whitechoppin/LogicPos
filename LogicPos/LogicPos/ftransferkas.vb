@@ -119,9 +119,10 @@ Public Class ftransferkas
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            iddarikas = dr("id")
+            iddarikas = Val(dr("id"))
             txtnamadarikas.Text = dr("nama_kas")
         Else
+            iddarikas = 0
             txtnamadarikas.Text = ""
         End If
     End Sub
@@ -132,9 +133,10 @@ Public Class ftransferkas
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idkekas = dr("id")
+            idkekas = Val(dr("id"))
             txtnamakekas.Text = dr("nama_kas")
         Else
+            idkekas = 0
             txtnamakekas.Text = ""
         End If
     End Sub
@@ -523,9 +525,11 @@ Public Class ftransferkas
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            iduser = dr("id")
+            iduser = Val(dr("id"))
+            cmbsales.ForeColor = Color.Black
         Else
             iduser = 0
+            cmbsales.ForeColor = Color.Red
         End If
     End Sub
 

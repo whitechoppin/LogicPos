@@ -54,8 +54,9 @@ Partial Class fchartpenjualan
         Me.txtkodestok = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtnamabarang = New System.Windows.Forms.TextBox()
-        Me.txtpelanggan = New System.Windows.Forms.TextBox()
-        Me.txtgudang = New System.Windows.Forms.TextBox()
+        Me.txtnamapelanggan = New System.Windows.Forms.TextBox()
+        Me.txtnamagudang = New System.Windows.Forms.TextBox()
+        Me.txtnamasales = New System.Windows.Forms.TextBox()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(XyDiagram3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Series3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -312,23 +313,32 @@ Partial Class fchartpenjualan
         Me.txtnamabarang.Size = New System.Drawing.Size(231, 24)
         Me.txtnamabarang.TabIndex = 61
         '
-        'txtpelanggan
+        'txtnamapelanggan
         '
-        Me.txtpelanggan.Enabled = False
-        Me.txtpelanggan.Location = New System.Drawing.Point(587, 164)
-        Me.txtpelanggan.Margin = New System.Windows.Forms.Padding(6)
-        Me.txtpelanggan.Name = "txtpelanggan"
-        Me.txtpelanggan.Size = New System.Drawing.Size(268, 24)
-        Me.txtpelanggan.TabIndex = 62
+        Me.txtnamapelanggan.Enabled = False
+        Me.txtnamapelanggan.Location = New System.Drawing.Point(587, 164)
+        Me.txtnamapelanggan.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtnamapelanggan.Name = "txtnamapelanggan"
+        Me.txtnamapelanggan.Size = New System.Drawing.Size(268, 24)
+        Me.txtnamapelanggan.TabIndex = 62
         '
-        'txtgudang
+        'txtnamagudang
         '
-        Me.txtgudang.Enabled = False
-        Me.txtgudang.Location = New System.Drawing.Point(306, 164)
-        Me.txtgudang.Margin = New System.Windows.Forms.Padding(6)
-        Me.txtgudang.Name = "txtgudang"
-        Me.txtgudang.Size = New System.Drawing.Size(268, 24)
-        Me.txtgudang.TabIndex = 63
+        Me.txtnamagudang.Enabled = False
+        Me.txtnamagudang.Location = New System.Drawing.Point(306, 164)
+        Me.txtnamagudang.Margin = New System.Windows.Forms.Padding(6)
+        Me.txtnamagudang.Name = "txtnamagudang"
+        Me.txtnamagudang.Size = New System.Drawing.Size(268, 24)
+        Me.txtnamagudang.TabIndex = 63
+        '
+        'txtnamasales
+        '
+        Me.txtnamasales.Enabled = False
+        Me.txtnamasales.Location = New System.Drawing.Point(21, 164)
+        Me.txtnamasales.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnamasales.Name = "txtnamasales"
+        Me.txtnamasales.Size = New System.Drawing.Size(268, 24)
+        Me.txtnamasales.TabIndex = 64
         '
         'fchartpenjualan
         '
@@ -336,8 +346,9 @@ Partial Class fchartpenjualan
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1396, 561)
-        Me.Controls.Add(Me.txtgudang)
-        Me.Controls.Add(Me.txtpelanggan)
+        Me.Controls.Add(Me.txtnamasales)
+        Me.Controls.Add(Me.txtnamagudang)
+        Me.Controls.Add(Me.txtnamapelanggan)
         Me.Controls.Add(Me.txtnamabarang)
         Me.Controls.Add(Me.btncaribarang)
         Me.Controls.Add(Me.txtkodestok)
@@ -396,6 +407,7 @@ Partial Class fchartpenjualan
     Friend WithEvents txtkodestok As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents txtnamabarang As TextBox
-    Friend WithEvents txtpelanggan As TextBox
-    Friend WithEvents txtgudang As TextBox
+    Friend WithEvents txtnamapelanggan As TextBox
+    Friend WithEvents txtnamagudang As TextBox
+    Friend WithEvents txtnamasales As TextBox
 End Class

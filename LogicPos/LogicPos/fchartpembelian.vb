@@ -85,10 +85,10 @@ Public Class fchartpembelian
 
         If dr.HasRows Then
             idsupplier = Val(dr("id"))
-            txtsupplier.Text = dr("nama_supplier")
+            txtnamasupplier.Text = dr("nama_supplier")
         Else
             idsupplier = 0
-            txtsupplier.Text = ""
+            txtnamasupplier.Text = ""
         End If
     End Sub
     Sub carigudang()
@@ -98,22 +98,24 @@ Public Class fchartpembelian
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             idgudang = Val(dr("id"))
-            txtgudang.Text = dr("nama_gudang")
+            txtnamagudang.Text = dr("nama_gudang")
         Else
             idgudang = 0
-            txtgudang.Text = ""
+            txtnamagudang.Text = ""
         End If
     End Sub
 
     Sub cariuser()
         Call koneksii()
-        sql = "SELECT id FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
+        sql = "SELECT * FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             iduser = Val(dr("id"))
+            txtnamasales.Text = dr("nama_user")
         Else
             iduser = 0
+            txtnamasales.Text = ""
         End If
     End Sub
 

@@ -15,7 +15,8 @@ Public Class fbarangkeluar
     'variabel dalam penjualan
     Public jenis, satuan As String
     Dim idbarang, idstok As Integer
-    Dim idbarangkeluar, idgudang, iduser, idpelanggan As String
+    Dim idbarangkeluar As String
+    Dim idgudang, iduser, idpelanggan As Integer
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
 
     'variabel bantuan view penjualan
@@ -550,10 +551,11 @@ Public Class fbarangkeluar
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idpelanggan = dr("id")
+            idpelanggan = Val(dr("id"))
             txtalamat.Text = dr("alamat_pelanggan")
             txttelp.Text = dr("telepon_pelanggan")
         Else
+            idpelanggan = 0
             txtalamat.Text = ""
             txttelp.Text = ""
         End If
@@ -565,20 +567,25 @@ Public Class fbarangkeluar
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idgudang = dr("id")
+            idgudang = Val(dr("id"))
             txtgudang.Text = dr("nama_gudang")
         Else
+            idgudang = 0
             txtgudang.Text = ""
         End If
     End Sub
 
-    Sub carisales()
+    Sub cariuser()
         Call koneksii()
         sql = "SELECT * FROM tb_user WHERE kode_user ='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            iduser = dr("id")
+            iduser = Val(dr("id"))
+            cmbsales.ForeColor = Color.Black
+        Else
+            iduser = 0
+            cmbsales.ForeColor = Color.Red
         End If
     End Sub
 
@@ -597,6 +604,9 @@ Public Class fbarangkeluar
             lblsatuan.Text = satuan
             jenis = dr("jenis_barang")
         Else
+            idstok = 0
+            idbarang = 0
+
             txtnamabarang.Text = ""
             txtkodebarang.Text = ""
             satuan = "satuan"
@@ -606,11 +616,11 @@ Public Class fbarangkeluar
     End Sub
 
     Private Sub cmbsales_TextChanged(sender As Object, e As EventArgs) Handles cmbsales.TextChanged
-        Call carisales()
+        Call cariuser()
     End Sub
 
     Private Sub cmbsales_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsales.SelectedIndexChanged
-        Call carisales()
+        Call cariuser()
     End Sub
 
     Private Sub fbarangkeluar_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -684,7 +694,7 @@ Public Class fbarangkeluar
         If GridView1.DataRowCount > 0 Then
             If cmbpelanggan.Text IsNot "" Then
                 If txtgudang.Text IsNot "" Then
-                    If cmbsales.Text IsNot "" Then
+                    If cmbsales.Text IsNot "" And iduser > 0 Then
                         Call proses()
                     Else
                         MsgBox("Isi Sales")
@@ -846,7 +856,7 @@ Public Class fbarangkeluar
                 If GridView1.DataRowCount > 0 Then
                     If cmbpelanggan.Text IsNot "" Then
                         If txtgudang.Text IsNot "" Then
-                            If cmbsales.Text IsNot "" Then
+                            If cmbsales.Text IsNot "" And iduser > 0 Then
                                 'isi disini sub updatenya
                                 Call perbarui(txtnonota.Text)
                             Else

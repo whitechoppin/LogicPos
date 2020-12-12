@@ -12,7 +12,9 @@ Public Class fbarangmasuk
     Dim hitnumber As Integer
 
     Dim harga, modalpembelian, ongkir, ppn, diskonpersen, diskonnominal, ppnpersen, ppnnominal, total1, total2, grandtotal, banyak As Double
-    Dim satuan, jenis, idsupplier, idbarangmasuk, idgudang, iduser As String
+    Dim satuan, jenis As String
+    Dim idbarangmasuk As String
+    Dim idsupplier, idgudang, iduser As Integer
     Dim idbarang, idstok As Integer
 
     'variabel bantuan view pembelian
@@ -544,12 +546,13 @@ Public Class fbarangmasuk
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idbarang = dr("id")
+            idbarang = Val(dr("id"))
             txtnamabarang.Text = dr("nama_barang")
             satuan = dr("satuan_barang")
             lblsatuan.Text = satuan
             jenis = dr("jenis_barang")
         Else
+            idbarang = 0
             txtnamabarang.Text = ""
             lblsatuan.Text = "satuan"
         End If
@@ -565,9 +568,10 @@ Public Class fbarangmasuk
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idgudang = dr("id")
+            idgudang = Val(dr("id"))
             txtgudang.Text = dr("nama_gudang")
         Else
+            idgudang = 0
             txtgudang.Text = ""
         End If
     End Sub
@@ -578,10 +582,11 @@ Public Class fbarangmasuk
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idsupplier = dr("id")
+            idsupplier = Val(dr("id"))
             txtalamat.Text = dr("alamat_supplier")
             txttelp.Text = dr("telepon_supplier")
         Else
+            idsupplier = 0
             txtalamat.Text = ""
             txttelp.Text = ""
         End If
@@ -594,9 +599,11 @@ Public Class fbarangmasuk
         dr = cmmd.ExecuteReader
 
         If dr.HasRows Then
-            iduser = dr("id")
+            iduser = Val(dr("id"))
+            cmbsales.ForeColor = Color.Black
         Else
             iduser = 0
+            cmbsales.ForeColor = Color.Red
         End If
     End Sub
 
@@ -741,7 +748,7 @@ Public Class fbarangmasuk
         If GridView1.DataRowCount > 0 Then
             If cmbsupplier.Text IsNot "" Then
                 If txtgudang.Text IsNot "" Then
-                    If cmbsales.Text IsNot "" Then
+                    If cmbsales.Text IsNot "" And iduser > 0 Then
                         Call simpan()
                     Else
                         MsgBox("Isi Sales")
@@ -1023,7 +1030,7 @@ Public Class fbarangmasuk
                     If GridView1.DataRowCount > 0 Then
                         If cmbsupplier.Text IsNot "" Then
                             If txtgudang.Text IsNot "" Then
-                                If cmbsales.Text IsNot "" Then
+                                If cmbsales.Text IsNot "" And iduser > 0 Then
                                     btnedit.Text = "Edit"
                                     Call perbarui(txtnonota.Text)
                                 Else

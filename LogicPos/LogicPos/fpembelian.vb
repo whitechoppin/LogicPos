@@ -713,8 +713,10 @@ Public Class fpembelian
 
         If dr.HasRows Then
             iduser = Val(dr("id"))
+            cmbsales.ForeColor = Color.Black
         Else
             iduser = 0
+            cmbsales.ForeColor = Color.Red
         End If
     End Sub
 

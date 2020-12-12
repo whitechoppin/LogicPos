@@ -26,7 +26,8 @@ Public Class flunasutang
     Dim lunasstatus As Integer = 0
     Dim hitnumber As Integer
 
-    Public idlunasutang, idsupplier, iduser, idkas As String
+    Dim idlunasutang As String
+    Dim idsupplier, iduser, idkas As Integer
     Dim totalbayar, totalterima, totalselisih As Double
     Dim rpt_faktur As New ReportDocument
 
@@ -741,7 +742,7 @@ Public Class flunasutang
     Private Sub btnsimpan_Click(sender As Object, e As EventArgs) Handles btnsimpan.Click
         If GridView1.DataRowCount > 0 Then
 
-            If cmbsales.Text IsNot "" Then
+            If cmbsales.Text IsNot "" And iduser > 0 Then
                 If cmbbayar.Text IsNot "" Then
                     If txttotalbayar.Text > 0 Then
                         If totalbayar.Equals(Val(GridView1.Columns("terima_utang").SummaryItem.SummaryValue)) Then
@@ -890,7 +891,6 @@ Public Class flunasutang
         dr = cmmd.ExecuteReader()
         If dr.HasRows Then
             faktur = dr("nama_printer")
-
         Else
             faktur = ""
         End If
@@ -1046,7 +1046,7 @@ Public Class flunasutang
                 Call awaledit()
             ElseIf btnedit.Text.Equals("Update") Then
 
-                If cmbsales.Text IsNot "" Then
+                If cmbsales.Text IsNot "" And iduser > 0 Then
                     If cmbbayar.Text IsNot "" Then
                         If txttotalbayar.Text > 0 Then
                             If totalbayar.Equals(Val(GridView1.Columns("terima_utang").SummaryItem.SummaryValue)) Then
@@ -1174,9 +1174,9 @@ Public Class flunasutang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idkas = dr("id")
+            idkas = Val(dr("id"))
         Else
-            idkas = "0"
+            idkas = 0
         End If
     End Sub
 
@@ -1185,11 +1185,12 @@ Public Class flunasutang
         sql = "SELECT id FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
-
         If dr.HasRows Then
-            iduser = dr("id")
+            iduser = Val(dr("id"))
+            cmbsales.ForeColor = Color.Black
         Else
-            iduser = "0"
+            iduser = 0
+            cmbsales.ForeColor = Color.Red
         End If
     End Sub
 
@@ -1199,11 +1200,12 @@ Public Class flunasutang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idsupplier = dr("id")
+            idsupplier = Val(dr("id"))
             txtsupplier.Text = dr("nama_supplier")
             txtalamat.Text = dr("alamat_supplier")
             txttelp.Text = dr("telepon_supplier")
         Else
+            idsupplier = 0
             txtsupplier.Text = ""
             txtalamat.Text = ""
             txttelp.Text = ""
@@ -1354,7 +1356,7 @@ Public Class flunasutang
     End Sub
 
     Private Sub UpdateSelisihText()
-        totalterima = GridView1.Columns("terima_utang").SummaryItem.SummaryValue
+        totalterima = Val(GridView1.Columns("terima_utang").SummaryItem.SummaryValue)
         totalselisih = totalbayar - totalterima
         txtselisih.Text = totalselisih
     End Sub

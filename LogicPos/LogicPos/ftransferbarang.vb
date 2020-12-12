@@ -15,7 +15,8 @@ Public Class ftransferbarang
     'variabel dalam transfer barang
     Public jenis, satuan As String
     Dim idbarang, iddaristok, idkestok As Integer
-    Dim idtransferbarang, iddarigudang, idkegudang, iduser As String
+    Dim iddarigudang, idkegudang, iduser As Integer
+    Dim idtransferbarang As String
     Dim banyak, totalbelanja, grandtotal, ongkir, diskonpersen, diskonnominal, ppnpersen, ppnnominal, modalpenjualan, bayar, sisa As Double
     'variabel bantuan view transfer barang
     Dim nomornota, nomorsales, nomordarigudang, nomorkegudang, viewketerangan As String
@@ -593,9 +594,10 @@ Public Class ftransferbarang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            iddarigudang = dr("id")
+            iddarigudang = Val(dr("id"))
             txtdarigudang.Text = dr("nama_gudang")
         Else
+            iddarigudang = 0
             txtdarigudang.Text = ""
         End If
     End Sub
@@ -618,9 +620,10 @@ Public Class ftransferbarang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idkegudang = dr("id")
+            idkegudang = Val(dr("id"))
             txtkegudang.Text = dr("nama_gudang")
         Else
+            idkegudang = 0
             txtkegudang.Text = ""
         End If
     End Sub
@@ -631,7 +634,9 @@ Public Class ftransferbarang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            iduser = dr("id")
+            iduser = Val(dr("id"))
+        Else
+            iduser = 0
         End If
     End Sub
 
@@ -687,7 +692,7 @@ Public Class ftransferbarang
                 If GridView1.DataRowCount > 0 Then
                     If txtdarigudang.Text IsNot "" Then
                         If txtkegudang.Text IsNot "" Then
-                            If cmbsales.Text IsNot "" Then
+                            If cmbsales.Text IsNot "" And iduser > 0 Then
                                 'isi disini sub updatenya
 
                                 If txtkegudang.Text.Equals(txtdarigudang.Text) Then
@@ -867,7 +872,7 @@ Public Class ftransferbarang
         If GridView1.DataRowCount > 0 Then
             If txtdarigudang.Text IsNot "" Then
                 If txtkegudang.Text IsNot "" Then
-                    If cmbsales.Text IsNot "" Then
+                    If cmbsales.Text IsNot "" And iduser > 0 Then
                         If txtkegudang.Text.Equals(txtdarigudang.Text) Then
                             MsgBox("Gudang Tidak Boleh Sama")
                         Else

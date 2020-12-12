@@ -864,15 +864,17 @@ Public Class fpenjualan
         End If
     End Sub
 
-    Sub carisales()
+    Sub cariuser()
         Call koneksii()
         sql = "SELECT * FROM tb_user WHERE kode_user ='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             iduser = Val(dr("id"))
+            cmbsales.ForeColor = Color.Black
         Else
             iduser = 0
+            cmbsales.ForeColor = Color.Red
         End If
     End Sub
 
@@ -889,11 +891,11 @@ Public Class fpenjualan
     End Sub
 
     Private Sub cmbsales_TextChanged(sender As Object, e As EventArgs) Handles cmbsales.TextChanged
-        Call carisales()
+        Call cariuser()
     End Sub
 
     Private Sub cmbsales_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsales.SelectedIndexChanged
-        Call carisales()
+        Call cariuser()
     End Sub
 
     Private Sub cmbcustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.SelectedIndexChanged

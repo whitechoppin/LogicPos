@@ -84,10 +84,10 @@ Public Class fchartpenjualan
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             idpelanggan = Val(dr("id"))
-            txtpelanggan.Text = dr("nama_pelanggan")
+            txtnamapelanggan.Text = dr("nama_pelanggan")
         Else
             idpelanggan = 0
-            txtpelanggan.Text = ""
+            txtnamapelanggan.Text = ""
         End If
     End Sub
 
@@ -98,10 +98,10 @@ Public Class fchartpenjualan
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             idgudang = Val(dr("id"))
-            txtgudang.Text = dr("nama_gudang")
+            txtnamagudang.Text = dr("nama_gudang")
         Else
             idgudang = 0
-            txtgudang.Text = ""
+            txtnamagudang.Text = ""
         End If
     End Sub
 
@@ -112,8 +112,10 @@ Public Class fchartpenjualan
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             iduser = Val(dr("id"))
+            txtnamasales.Text = dr("nama_user")
         Else
             iduser = 0
+            txtnamasales.Text = ""
         End If
     End Sub
 
