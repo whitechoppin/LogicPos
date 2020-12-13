@@ -205,7 +205,7 @@ Partial Class fpembelian
         Me.txthargabarang.Margin = New System.Windows.Forms.Padding(4)
         Me.txthargabarang.MaxLength = 12
         Me.txthargabarang.Name = "txthargabarang"
-        Me.txthargabarang.Size = New System.Drawing.Size(353, 24)
+        Me.txthargabarang.Size = New System.Drawing.Size(319, 24)
         Me.txthargabarang.TabIndex = 23
         '
         'txtnamabarang

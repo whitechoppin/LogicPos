@@ -286,7 +286,7 @@ Partial Class fpenjualan
         'lblsatuanjual
         '
         Me.lblsatuanjual.AutoSize = True
-        Me.lblsatuanjual.Location = New System.Drawing.Point(1086, 270)
+        Me.lblsatuanjual.Location = New System.Drawing.Point(1077, 270)
         Me.lblsatuanjual.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblsatuanjual.Name = "lblsatuanjual"
         Me.lblsatuanjual.Size = New System.Drawing.Size(54, 18)

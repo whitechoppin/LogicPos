@@ -374,6 +374,18 @@
     <Compile Include="fgeneratepassword.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fhistoryhargapembelian.Designer.vb">
+      <DependentUpon>fhistoryhargapembelian.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fhistoryhargapembelian.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fhistoryhargapenjualan.Designer.vb">
+      <DependentUpon>fhistoryhargapenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fhistoryhargapenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fjabatan.Designer.vb">
       <DependentUpon>fjabatan.vb</DependentUpon>
     </Compile>
@@ -1297,6 +1309,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fgeneratepassword.resx">
       <DependentUpon>fgeneratepassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fhistoryhargapembelian.resx">
+      <DependentUpon>fhistoryhargapembelian.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fhistoryhargapenjualan.resx">
+      <DependentUpon>fhistoryhargapenjualan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fkalkulasiexpedisi.resx">
       <DependentUpon>fkalkulasiexpedisi.vb</DependentUpon>
