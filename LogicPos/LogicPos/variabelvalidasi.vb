@@ -1,4 +1,4 @@
-﻿Module validasi
+﻿Module variabelvalidasi
     Public isicari As String = ""
     Public isicari2 As String = ""
     Public tutupcaribarang As Integer
@@ -43,6 +43,8 @@
     Public tutupcarikalkulasiexpedisi As Integer
     Public tutupcarikalkulasipengiriman As Integer
     '======================
-    Public msgbox1 As Integer
+
+    'variabel password id 
     Public passwordid As Integer
+    '======================
 End Module

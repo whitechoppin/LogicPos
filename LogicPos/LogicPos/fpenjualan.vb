@@ -1249,7 +1249,11 @@ Public Class fpenjualan
 
         tinggi += 15
         e.Graphics.DrawString("Tanggal", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
-        e.Graphics.DrawString(": " + Format(dtpenjualan.Value, "dd MMMM yyyy HH:mm:ss").ToString, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
+        e.Graphics.DrawString(": " + Format(dtpenjualan.Value, "dd MMMM yyyy").ToString, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
+
+        tinggi += 15
+        e.Graphics.DrawString("Jam", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)
+        e.Graphics.DrawString(": " + Format(dtpenjualan.Value, "HH:mm:ss").ToString, New System.Drawing.Font("Arial", 7), Brushes.Black, 60, tinggi)
 
         tinggi += 15
         e.Graphics.DrawString("Kasir", New System.Drawing.Font("Arial", 7), Brushes.Black, 8, tinggi)

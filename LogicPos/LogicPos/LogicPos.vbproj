@@ -1173,7 +1173,7 @@
     <Compile Include="POS.vb">
       <DependentUpon>POS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="validasi.vb" />
+    <Compile Include="variabelvalidasi.vb" />
     <Compile Include="validasiangka.vb" />
   </ItemGroup>
   <ItemGroup>
