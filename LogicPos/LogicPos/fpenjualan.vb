@@ -1134,16 +1134,9 @@ Public Class fpenjualan
 
     Sub PrintTransaksi()
         Dim struk As String
-        Call koneksii()
-        sql = "SELECT * FROM tb_printer WHERE nomor='1'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows Then
-            struk = dr("nama_printer")
-        Else
-            struk = ""
-        End If
-        tinggi = 0
+
+        struk = GetPrinterName(1)
+
         With Me.PrintDocument
             .PrinterSettings.PrinterName = struk
             .PrinterSettings.DefaultPageSettings.Landscape = False
@@ -1522,15 +1515,8 @@ Public Class fpenjualan
     End Sub
     Sub SetReportPageSize(ByVal mPaperSize As String, ByVal PaperOrientation As Integer)
         Dim faktur As String
-        Call koneksii()
-        sql = "SELECT * FROM tb_printer WHERE nomor='2'"
-        cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
-        If dr.HasRows Then
-            faktur = dr("nama_printer")
-        Else
-            faktur = ""
-        End If
+
+        faktur = GetPrinterName(2)
 
         Try
             Dim ObjPrinterSetting As New System.Drawing.Printing.PrinterSettings
