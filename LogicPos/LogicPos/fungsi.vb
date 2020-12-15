@@ -29,7 +29,7 @@ Module fungsi
     Public Function GetPrinterName(ByVal nomor As Integer) As String
         Dim sResult As String = ""
         Call koneksii()
-        sql = "SELECT * FROM tb_printer WHERE nomor='" & nomor & "' AND computer_id='" & cpuid & "' LIMIT 1"
+        sql = "SELECT * FROM tb_printer WHERE nomor='" & nomor & "' AND computer_id='" & cpuid & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 

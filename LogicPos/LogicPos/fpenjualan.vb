@@ -1209,6 +1209,7 @@ Public Class fpenjualan
         barcode = writer.Write(txtnonota.Text)
 
         '============================================================================================================
+        tinggi = 0
 
         tinggi += 0
         e.Graphics.Flush()
