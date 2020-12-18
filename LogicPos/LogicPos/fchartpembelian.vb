@@ -350,7 +350,7 @@ Public Class fchartpembelian
         Me.Cursor = Cursors.Arrow
     End Sub
 
-    Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         If rbharian.Checked Or rbbulanan.Checked Or rbtahunan.Checked Then
             Call LoadChart()
         Else
@@ -385,6 +385,10 @@ Public Class fchartpembelian
 
     Private Sub cmbsupplier_TextChanged(sender As Object, e As EventArgs) Handles cmbsupplier.TextChanged
         Call carisupplier()
+    End Sub
+
+    Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+        ChartControl1.ShowPrintPreview()
     End Sub
 
     Private Sub cmbgudang_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbgudang.SelectedIndexChanged

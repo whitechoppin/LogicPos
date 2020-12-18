@@ -22,14 +22,14 @@ Partial Class fchartpenjualan
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim XyDiagram3 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
-        Dim Series3 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim SeriesPoint11 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
-        Dim SeriesPoint12 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
-        Dim SeriesPoint13 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
-        Dim SeriesPoint14 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
-        Dim SeriesPoint15 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
-        Dim ChartTitle3 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
+        Dim XyDiagram2 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim SeriesPoint6 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
+        Dim SeriesPoint7 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
+        Dim SeriesPoint8 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
+        Dim SeriesPoint9 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
+        Dim SeriesPoint10 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
+        Dim ChartTitle2 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpenjualan))
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -44,7 +44,7 @@ Partial Class fchartpenjualan
         Me.btncarigudang = New System.Windows.Forms.Button()
         Me.cmbgudang = New System.Windows.Forms.ComboBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.btntabel = New System.Windows.Forms.Button()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.rbtahunan = New System.Windows.Forms.RadioButton()
@@ -57,27 +57,28 @@ Partial Class fchartpenjualan
         Me.txtnamapelanggan = New System.Windows.Forms.TextBox()
         Me.txtnamagudang = New System.Windows.Forms.TextBox()
         Me.txtnamasales = New System.Windows.Forms.TextBox()
+        Me.btnprint = New System.Windows.Forms.Button()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(XyDiagram3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ChartControl1
         '
-        XyDiagram3.AxisX.VisibleInPanesSerializable = "-1"
-        XyDiagram3.AxisY.VisibleInPanesSerializable = "-1"
-        Me.ChartControl1.Diagram = XyDiagram3
+        XyDiagram2.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram2.AxisY.VisibleInPanesSerializable = "-1"
+        Me.ChartControl1.Diagram = XyDiagram2
         Me.ChartControl1.Location = New System.Drawing.Point(21, 201)
         Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartControl1.Name = "ChartControl1"
-        Series3.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
-        Series3.Name = "Penjualan"
-        Series3.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint11, SeriesPoint12, SeriesPoint13, SeriesPoint14, SeriesPoint15})
-        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series3}
+        Series2.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
+        Series2.Name = "Penjualan"
+        Series2.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint6, SeriesPoint7, SeriesPoint8, SeriesPoint9, SeriesPoint10})
+        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series2}
         Me.ChartControl1.Size = New System.Drawing.Size(1358, 347)
         Me.ChartControl1.TabIndex = 1
-        ChartTitle3.Text = "Periode :"
-        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle3})
+        ChartTitle2.Text = "Periode :"
+        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle2})
         '
         'Label1
         '
@@ -206,19 +207,19 @@ Partial Class fchartpenjualan
         Me.Label14.TabIndex = 45
         Me.Label14.Text = "Kode Gudang"
         '
-        'btntabel
+        'btnrefresh
         '
-        Me.btntabel.Location = New System.Drawing.Point(1213, 54)
-        Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
-        Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(166, 46)
-        Me.btntabel.TabIndex = 48
-        Me.btntabel.Text = "Refresh Tabel"
-        Me.btntabel.UseVisualStyleBackColor = True
+        Me.btnrefresh.Location = New System.Drawing.Point(1213, 39)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(166, 46)
+        Me.btnrefresh.TabIndex = 48
+        Me.btnrefresh.Text = "Refresh"
+        Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(1213, 108)
+        Me.btnexcel.Location = New System.Drawing.Point(1213, 93)
         Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(166, 46)
@@ -340,12 +341,23 @@ Partial Class fchartpenjualan
         Me.txtnamasales.Size = New System.Drawing.Size(268, 24)
         Me.txtnamasales.TabIndex = 64
         '
+        'btnprint
+        '
+        Me.btnprint.Location = New System.Drawing.Point(1213, 147)
+        Me.btnprint.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnprint.Name = "btnprint"
+        Me.btnprint.Size = New System.Drawing.Size(166, 46)
+        Me.btnprint.TabIndex = 65
+        Me.btnprint.Text = "Print Chart"
+        Me.btnprint.UseVisualStyleBackColor = True
+        '
         'fchartpenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1396, 561)
+        Me.Controls.Add(Me.btnprint)
         Me.Controls.Add(Me.txtnamasales)
         Me.Controls.Add(Me.txtnamagudang)
         Me.Controls.Add(Me.txtnamapelanggan)
@@ -357,7 +369,7 @@ Partial Class fchartpenjualan
         Me.Controls.Add(Me.rbbulanan)
         Me.Controls.Add(Me.rbharian)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.btntabel)
+        Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.btnexcel)
         Me.Controls.Add(Me.btncarigudang)
         Me.Controls.Add(Me.cmbgudang)
@@ -376,8 +388,8 @@ Partial Class fchartpenjualan
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fchartpenjualan"
         Me.Text = "Chart Penjualan"
-        CType(XyDiagram3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -397,7 +409,7 @@ Partial Class fchartpenjualan
     Friend WithEvents btncarigudang As Button
     Friend WithEvents cmbgudang As ComboBox
     Friend WithEvents Label14 As Label
-    Friend WithEvents btntabel As Button
+    Friend WithEvents btnrefresh As Button
     Friend WithEvents btnexcel As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents rbtahunan As RadioButton
@@ -410,4 +422,5 @@ Partial Class fchartpenjualan
     Friend WithEvents txtnamapelanggan As TextBox
     Friend WithEvents txtnamagudang As TextBox
     Friend WithEvents txtnamasales As TextBox
+    Friend WithEvents btnprint As Button
 End Class

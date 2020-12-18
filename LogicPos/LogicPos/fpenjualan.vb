@@ -1122,7 +1122,7 @@ Public Class fpenjualan
                 End If
 
                 'history user ==========
-                Call historysave("Mencetak Data Penjualan Kode " + txtnonota.Text, txtnonota.Text, namaform)
+                Call historysave("Mencetak Data Penjualan Kode " & txtnonota.Text, txtnonota.Text, namaform)
                 '========================
             Else
                 MsgBox("Nota sudah void !")

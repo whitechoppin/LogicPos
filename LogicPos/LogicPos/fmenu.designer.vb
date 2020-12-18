@@ -94,6 +94,7 @@ Partial Class fmenu
         Me.HistoryUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KonfigurasiDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PengaturanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FeatureMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.KalkulasiExpedisiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContainerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PengirimanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -122,7 +123,7 @@ Partial Class fmenu
         'MenuUtama
         '
         Me.MenuUtama.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuUtama.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterMenu, Me.TransaksiMenu, Me.AdministrasiMenu, Me.LaporanMenu, Me.ChartMenu, Me.SettingMenu, Me.AboutMenu})
+        Me.MenuUtama.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterMenu, Me.TransaksiMenu, Me.AdministrasiMenu, Me.LaporanMenu, Me.ChartMenu, Me.FeatureMenu, Me.SettingMenu, Me.AboutMenu})
         Me.MenuUtama.Location = New System.Drawing.Point(0, 0)
         Me.MenuUtama.Name = "MenuUtama"
         Me.MenuUtama.Size = New System.Drawing.Size(1050, 24)
@@ -499,7 +500,7 @@ Partial Class fmenu
         '
         'SettingMenu
         '
-        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.NotifikasiStokToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KonfigurasiDatabaseToolStripMenuItem, Me.PengaturanToolStripMenuItem, Me.KalkulasiExpedisiToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem})
+        Me.SettingMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoPerusahaanToolStripMenuItem, Me.PrinterToolStripMenuItem, Me.JatuhTempoPembelianToolStripMenuItem, Me.JatuhTempoPenjualanToolStripMenuItem, Me.NotifikasiStokToolStripMenuItem, Me.HistoryUserToolStripMenuItem, Me.KonfigurasiDatabaseToolStripMenuItem, Me.PengaturanToolStripMenuItem})
         Me.SettingMenu.Name = "SettingMenu"
         Me.SettingMenu.Size = New System.Drawing.Size(56, 20)
         Me.SettingMenu.Text = "&Setting"
@@ -552,11 +553,18 @@ Partial Class fmenu
         Me.PengaturanToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.PengaturanToolStripMenuItem.Text = "Pengaturan"
         '
+        'FeatureMenu
+        '
+        Me.FeatureMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.KalkulasiExpedisiToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem})
+        Me.FeatureMenu.Name = "FeatureMenu"
+        Me.FeatureMenu.Size = New System.Drawing.Size(58, 20)
+        Me.FeatureMenu.Text = "&Feature"
+        '
         'KalkulasiExpedisiToolStripMenuItem
         '
         Me.KalkulasiExpedisiToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContainerToolStripMenuItem, Me.PengirimanToolStripMenuItem, Me.LaporanContainerToolStripMenuItem, Me.LaporanPengirimanToolStripMenuItem})
         Me.KalkulasiExpedisiToolStripMenuItem.Name = "KalkulasiExpedisiToolStripMenuItem"
-        Me.KalkulasiExpedisiToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.KalkulasiExpedisiToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.KalkulasiExpedisiToolStripMenuItem.Text = "Kalkulasi Expedisi"
         '
         'ContainerToolStripMenuItem
@@ -586,7 +594,7 @@ Partial Class fmenu
         'BarcodeGeneratorToolStripMenuItem
         '
         Me.BarcodeGeneratorToolStripMenuItem.Name = "BarcodeGeneratorToolStripMenuItem"
-        Me.BarcodeGeneratorToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.BarcodeGeneratorToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.BarcodeGeneratorToolStripMenuItem.Text = "Barcode Generator"
         '
         'AboutMenu
@@ -780,11 +788,8 @@ Partial Class fmenu
     Friend WithEvents tabform As TabControl
     Friend WithEvents InfoPerusahaanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LModalBarangToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents KalkulasiExpedisiToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LLabaRugiToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LRekapanAkhirToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ContainerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PengirimanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LMutasiBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents KonfigurasiDatabaseToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PreviewUtangToolStripMenuItem As ToolStripMenuItem
@@ -793,7 +798,6 @@ Partial Class fmenu
     Friend WithEvents PelunasanPiutangToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents PenyesuaianStokToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LPenyesuaianStokToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents BarcodeGeneratorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LPenjualanPajakToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents emailuser As ToolStripStatusLabel
     Friend WithEvents jabatanuser As ToolStripStatusLabel
@@ -802,8 +806,6 @@ Partial Class fmenu
     Friend WithEvents prefixnama As ToolStripStatusLabel
     Friend WithEvents prefixemail As ToolStripStatusLabel
     Friend WithEvents prefixjabatan As ToolStripStatusLabel
-    Friend WithEvents LaporanContainerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents LaporanPengirimanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ChartMenu As ToolStripMenuItem
     Friend WithEvents ChartPenjualanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ChartPembelianToolStripMenuItem As ToolStripMenuItem
@@ -813,4 +815,11 @@ Partial Class fmenu
     Friend WithEvents ChartKasKeluarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PengaturanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NotifikasiStokToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FeatureMenu As ToolStripMenuItem
+    Friend WithEvents KalkulasiExpedisiToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ContainerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PengirimanToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LaporanContainerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LaporanPengirimanToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BarcodeGeneratorToolStripMenuItem As ToolStripMenuItem
 End Class

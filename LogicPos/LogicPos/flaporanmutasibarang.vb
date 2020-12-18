@@ -130,11 +130,11 @@ Public Class flaporanmutasibarang
     Sub grid()
         GridColumn1.Caption = "Tabel"
         GridColumn1.FieldName = "tabel"
-        GridColumn1.Width = 15
+        GridColumn1.Width = 5
 
         GridColumn2.Caption = "id"
         GridColumn2.FieldName = "id"
-        GridColumn2.Width = 15
+        GridColumn2.Width = 5
 
         GridColumn3.Caption = "Kode Barang"
         GridColumn3.FieldName = "kode_barang"
@@ -146,7 +146,7 @@ Public Class flaporanmutasibarang
 
         GridColumn5.Caption = "Nama Barang"
         GridColumn5.FieldName = "nama_barang"
-        GridColumn5.Width = 35
+        GridColumn5.Width = 50
 
         GridColumn6.Caption = "Banyak"
         GridColumn6.FieldName = "qty"
@@ -156,17 +156,17 @@ Public Class flaporanmutasibarang
 
         GridColumn7.Caption = "Dari Gudang"
         GridColumn7.FieldName = "dari_gudang"
-        GridColumn7.Width = 20
+        GridColumn7.Width = 15
 
         GridColumn8.Caption = "Ke Gudang"
         GridColumn8.FieldName = "ke_gudang"
-        GridColumn8.Width = 20
+        GridColumn8.Width = 15
 
         GridColumn9.Caption = "Tanggal Transaksi"
         GridColumn9.FieldName = "tanggal"
-        GridColumn9.Width = 20
+        GridColumn9.Width = 30
         GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn9.DisplayFormat.FormatString = "dd/MM/yyyy"
+        GridColumn9.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridControl1.Visible = True
     End Sub

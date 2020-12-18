@@ -445,11 +445,11 @@ Public Class fmenu
     End Sub
 
     Private Sub ChartPelunasanUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPelunasanUtangToolStripMenuItem.Click
-
+        fchartpelunasanutang.Show()
     End Sub
 
     Private Sub ChartPelunasanPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPelunasanPiutangToolStripMenuItem.Click
-
+        fchartpelunasanpiutang.Show()
     End Sub
 
     Private Sub ChartKasMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartKasMasukToolStripMenuItem.Click
@@ -458,6 +458,28 @@ Public Class fmenu
 
     Private Sub ChartKasKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartKasKeluarToolStripMenuItem.Click
 
+    End Sub
+
+    'feature ==============================================================================================================================
+
+    Private Sub ContainerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContainerToolStripMenuItem.Click
+        fkalkulasiexpedisi.Show()
+    End Sub
+
+    Private Sub PengirimanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PengirimanToolStripMenuItem.Click
+        fkalkulasipengiriman.Show()
+    End Sub
+
+    Private Sub LaporanContainerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanContainerToolStripMenuItem.Click
+        flaporankalkulasiexpedisi.Show()
+    End Sub
+
+    Private Sub LaporanPengirimanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanPengirimanToolStripMenuItem.Click
+        flaporankalkulasipengiriman.Show()
+    End Sub
+
+    Private Sub BarcodeGeneratorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeGeneratorToolStripMenuItem.Click
+        fgeneratebarcode.Show()
     End Sub
 
     'settings =============================================================================================================================
@@ -493,25 +515,7 @@ Public Class fmenu
 
     End Sub
 
-    Private Sub ContainerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContainerToolStripMenuItem.Click
-        fkalkulasiexpedisi.Show()
-    End Sub
 
-    Private Sub PengirimanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PengirimanToolStripMenuItem.Click
-        fkalkulasipengiriman.Show()
-    End Sub
-
-    Private Sub LaporanContainerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanContainerToolStripMenuItem.Click
-        flaporankalkulasiexpedisi.Show()
-    End Sub
-
-    Private Sub LaporanPengirimanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LaporanPengirimanToolStripMenuItem.Click
-        flaporankalkulasipengiriman.Show()
-    End Sub
-
-    Private Sub BarcodeGeneratorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeGeneratorToolStripMenuItem.Click
-        fgeneratebarcode.Show()
-    End Sub
     'about ================================================================================================================================
     Private Sub LogicHouseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogicHouseToolStripMenuItem.Click
         flogichouse.Show()

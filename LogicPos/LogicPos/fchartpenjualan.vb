@@ -354,7 +354,7 @@ Public Class fchartpenjualan
         Me.Cursor = Cursors.Arrow
     End Sub
 
-    Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
+    Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         If rbharian.Checked Or rbbulanan.Checked Or rbtahunan.Checked Then
             Call LoadChart()
         Else
@@ -385,6 +385,10 @@ Public Class fchartpenjualan
 
     Private Sub cmbpelanggan_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.SelectedIndexChanged
         Call caripelanggan()
+    End Sub
+
+    Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+        ChartControl1.ShowPrintPreview()
     End Sub
 
     Private Sub cmbpelanggan_TextChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.TextChanged

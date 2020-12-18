@@ -53,6 +53,23 @@
         fmenu.LaporanMenu.DropDownItems.Item(19).Visible = False
         fmenu.LaporanMenu.DropDownItems.Item(20).Visible = False
 
-        'fmenu.SettingMenu.DropDownItems.Item(0).Visible = False
+        fmenu.ChartMenu.DropDownItems.Item(0).Visible = False
+        fmenu.ChartMenu.DropDownItems.Item(1).Visible = False
+        fmenu.ChartMenu.DropDownItems.Item(2).Visible = False
+        fmenu.ChartMenu.DropDownItems.Item(3).Visible = False
+        fmenu.ChartMenu.DropDownItems.Item(4).Visible = False
+        fmenu.ChartMenu.DropDownItems.Item(5).Visible = False
+
+        fmenu.FeatureMenu.DropDownItems.Item(0).Visible = False
+        fmenu.FeatureMenu.DropDownItems.Item(1).Visible = False
+
+        fmenu.SettingMenu.DropDownItems.Item(0).Visible = False
+        fmenu.SettingMenu.DropDownItems.Item(1).Visible = False
+        fmenu.SettingMenu.DropDownItems.Item(2).Visible = True
+        fmenu.SettingMenu.DropDownItems.Item(3).Visible = True
+        fmenu.SettingMenu.DropDownItems.Item(4).Visible = True
+        fmenu.SettingMenu.DropDownItems.Item(5).Visible = True
+        fmenu.SettingMenu.DropDownItems.Item(6).Visible = False
+        fmenu.SettingMenu.DropDownItems.Item(7).Visible = False
     End Sub
 End Module

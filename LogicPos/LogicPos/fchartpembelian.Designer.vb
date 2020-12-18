@@ -22,14 +22,14 @@ Partial Class fchartpembelian
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim XyDiagram2 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
-        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim SeriesPoint6 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
-        Dim SeriesPoint7 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
-        Dim SeriesPoint8 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
-        Dim SeriesPoint9 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
-        Dim SeriesPoint10 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
-        Dim ChartTitle2 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
+        Dim XyDiagram1 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+        Dim Series1 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim SeriesPoint1 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
+        Dim SeriesPoint2 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
+        Dim SeriesPoint3 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
+        Dim SeriesPoint4 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
+        Dim SeriesPoint5 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
+        Dim ChartTitle1 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpembelian))
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -44,7 +44,7 @@ Partial Class fchartpembelian
         Me.Label13 = New System.Windows.Forms.Label()
         Me.cmbgudang = New System.Windows.Forms.ComboBox()
         Me.btncarigudang = New System.Windows.Forms.Button()
-        Me.btntabel = New System.Windows.Forms.Button()
+        Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.rbharian = New System.Windows.Forms.RadioButton()
@@ -57,27 +57,28 @@ Partial Class fchartpembelian
         Me.txtnamasupplier = New System.Windows.Forms.TextBox()
         Me.txtnamagudang = New System.Windows.Forms.TextBox()
         Me.txtnamasales = New System.Windows.Forms.TextBox()
+        Me.btnprint = New System.Windows.Forms.Button()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ChartControl1
         '
-        XyDiagram2.AxisX.VisibleInPanesSerializable = "-1"
-        XyDiagram2.AxisY.VisibleInPanesSerializable = "-1"
-        Me.ChartControl1.Diagram = XyDiagram2
-        Me.ChartControl1.Location = New System.Drawing.Point(20, 213)
+        XyDiagram1.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
+        Me.ChartControl1.Diagram = XyDiagram1
+        Me.ChartControl1.Location = New System.Drawing.Point(23, 199)
         Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartControl1.Name = "ChartControl1"
-        Series2.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
-        Series2.Name = "Pembelian"
-        Series2.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint6, SeriesPoint7, SeriesPoint8, SeriesPoint9, SeriesPoint10})
-        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series2}
-        Me.ChartControl1.Size = New System.Drawing.Size(1358, 341)
+        Series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
+        Series1.Name = "Pembelian"
+        Series1.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint1, SeriesPoint2, SeriesPoint3, SeriesPoint4, SeriesPoint5})
+        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1}
+        Me.ChartControl1.Size = New System.Drawing.Size(1358, 349)
         Me.ChartControl1.TabIndex = 0
-        ChartTitle2.Text = "Periode :"
-        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle2})
+        ChartTitle1.Text = "Periode :"
+        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle1})
         '
         'Label1
         '
@@ -204,19 +205,19 @@ Partial Class fchartpembelian
         Me.btncarigudang.TabIndex = 44
         Me.btncarigudang.UseVisualStyleBackColor = True
         '
-        'btntabel
+        'btnrefresh
         '
-        Me.btntabel.Location = New System.Drawing.Point(1212, 53)
-        Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
-        Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(166, 46)
-        Me.btntabel.TabIndex = 46
-        Me.btntabel.Text = "Refresh Tabel"
-        Me.btntabel.UseVisualStyleBackColor = True
+        Me.btnrefresh.Location = New System.Drawing.Point(1212, 30)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(166, 46)
+        Me.btnrefresh.TabIndex = 46
+        Me.btnrefresh.Text = "Refresh"
+        Me.btnrefresh.UseVisualStyleBackColor = True
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(1212, 107)
+        Me.btnexcel.Location = New System.Drawing.Point(1212, 84)
         Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(166, 46)
@@ -337,12 +338,23 @@ Partial Class fchartpembelian
         Me.txtnamasales.Size = New System.Drawing.Size(268, 24)
         Me.txtnamasales.TabIndex = 61
         '
+        'btnprint
+        '
+        Me.btnprint.Location = New System.Drawing.Point(1212, 138)
+        Me.btnprint.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnprint.Name = "btnprint"
+        Me.btnprint.Size = New System.Drawing.Size(166, 46)
+        Me.btnprint.TabIndex = 62
+        Me.btnprint.Text = "Print Chart"
+        Me.btnprint.UseVisualStyleBackColor = True
+        '
         'fchartpembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1393, 561)
+        Me.Controls.Add(Me.btnprint)
         Me.Controls.Add(Me.txtnamasales)
         Me.Controls.Add(Me.txtnamagudang)
         Me.Controls.Add(Me.txtnamasupplier)
@@ -354,7 +366,7 @@ Partial Class fchartpembelian
         Me.Controls.Add(Me.rbbulanan)
         Me.Controls.Add(Me.rbharian)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.btntabel)
+        Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.btnexcel)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.cmbgudang)
@@ -373,8 +385,8 @@ Partial Class fchartpembelian
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fchartpembelian"
         Me.Text = "Chart Pembelian"
-        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -394,7 +406,7 @@ Partial Class fchartpembelian
     Friend WithEvents Label13 As Label
     Friend WithEvents cmbgudang As ComboBox
     Friend WithEvents btncarigudang As Button
-    Friend WithEvents btntabel As Button
+    Friend WithEvents btnrefresh As Button
     Friend WithEvents btnexcel As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents rbharian As RadioButton
@@ -407,4 +419,5 @@ Partial Class fchartpembelian
     Friend WithEvents txtnamasupplier As TextBox
     Friend WithEvents txtnamagudang As TextBox
     Friend WithEvents txtnamasales As TextBox
+    Friend WithEvents btnprint As Button
 End Class

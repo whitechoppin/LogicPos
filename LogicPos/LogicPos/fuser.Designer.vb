@@ -127,13 +127,13 @@ Partial Class fuser
         Me.cbmastergudang = New System.Windows.Forms.CheckBox()
         Me.clbmasterbarang = New System.Windows.Forms.CheckedListBox()
         Me.cbmasterbarang = New System.Windows.Forms.CheckBox()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TabControl = New System.Windows.Forms.TabControl()
+        Me.MasterTab = New System.Windows.Forms.TabPage()
+        Me.TransaksiTab = New System.Windows.Forms.TabPage()
         Me.cbpenyesuaianstok = New System.Windows.Forms.CheckBox()
         Me.clbpenyesuaianstok = New System.Windows.Forms.CheckedListBox()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.AdministrasiTab = New System.Windows.Forms.TabPage()
+        Me.LaporanTab = New System.Windows.Forms.TabPage()
         Me.clblaprekapanakhir = New System.Windows.Forms.CheckedListBox()
         Me.cblaprekapanakhir = New System.Windows.Forms.CheckBox()
         Me.clblaplabarugi = New System.Windows.Forms.CheckedListBox()
@@ -144,7 +144,7 @@ Partial Class fuser
         Me.cblapmutasibarang = New System.Windows.Forms.CheckBox()
         Me.clblappenyesuaianstok = New System.Windows.Forms.CheckedListBox()
         Me.cblappenyesuaianstok = New System.Windows.Forms.CheckBox()
-        Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.ChartTab = New System.Windows.Forms.TabPage()
         Me.CheckedListBox5 = New System.Windows.Forms.CheckedListBox()
         Me.CheckBox5 = New System.Windows.Forms.CheckBox()
         Me.CheckedListBox6 = New System.Windows.Forms.CheckedListBox()
@@ -157,21 +157,30 @@ Partial Class fuser
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.CheckedListBox2 = New System.Windows.Forms.CheckedListBox()
+        Me.SettingTab = New System.Windows.Forms.TabPage()
+        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox10 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox11 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox12 = New System.Windows.Forms.CheckBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cbauth = New System.Windows.Forms.CheckBox()
         Me.txtmaxprint = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.btnpassword = New System.Windows.Forms.Button()
         Me.btnrefresh = New System.Windows.Forms.Button()
-        Me.TabPage6 = New System.Windows.Forms.TabPage()
+        Me.FeatureTab = New System.Windows.Forms.TabPage()
+        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
-        Me.TabPage4.SuspendLayout()
-        Me.TabPage5.SuspendLayout()
+        Me.TabControl.SuspendLayout()
+        Me.MasterTab.SuspendLayout()
+        Me.TransaksiTab.SuspendLayout()
+        Me.AdministrasiTab.SuspendLayout()
+        Me.LaporanTab.SuspendLayout()
+        Me.ChartTab.SuspendLayout()
+        Me.SettingTab.SuspendLayout()
+        Me.FeatureTab.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmbjabatan
@@ -1369,78 +1378,79 @@ Partial Class fuser
         Me.cbmasterbarang.Text = "Master Barang"
         Me.cbmasterbarang.UseVisualStyleBackColor = True
         '
-        'TabControl1
+        'TabControl
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Controls.Add(Me.TabPage4)
-        Me.TabControl1.Controls.Add(Me.TabPage5)
-        Me.TabControl1.Controls.Add(Me.TabPage6)
-        Me.TabControl1.Location = New System.Drawing.Point(13, 387)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1010, 375)
-        Me.TabControl1.TabIndex = 18
+        Me.TabControl.Controls.Add(Me.MasterTab)
+        Me.TabControl.Controls.Add(Me.TransaksiTab)
+        Me.TabControl.Controls.Add(Me.AdministrasiTab)
+        Me.TabControl.Controls.Add(Me.LaporanTab)
+        Me.TabControl.Controls.Add(Me.ChartTab)
+        Me.TabControl.Controls.Add(Me.FeatureTab)
+        Me.TabControl.Controls.Add(Me.SettingTab)
+        Me.TabControl.Location = New System.Drawing.Point(13, 387)
+        Me.TabControl.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabControl.Name = "TabControl"
+        Me.TabControl.SelectedIndex = 0
+        Me.TabControl.Size = New System.Drawing.Size(1010, 375)
+        Me.TabControl.TabIndex = 18
         '
-        'TabPage1
+        'MasterTab
         '
-        Me.TabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage1.Controls.Add(Me.cbmasterbarang)
-        Me.TabPage1.Controls.Add(Me.clbmasterbarang)
-        Me.TabPage1.Controls.Add(Me.cbmasterkategori)
-        Me.TabPage1.Controls.Add(Me.clbmasterkategori)
-        Me.TabPage1.Controls.Add(Me.cbmastergudang)
-        Me.TabPage1.Controls.Add(Me.clbmastergudang)
-        Me.TabPage1.Controls.Add(Me.cbmasterpelanggan)
-        Me.TabPage1.Controls.Add(Me.clbmasterpelanggan)
-        Me.TabPage1.Controls.Add(Me.clbmasteruser)
-        Me.TabPage1.Controls.Add(Me.cbmastersupplier)
-        Me.TabPage1.Controls.Add(Me.clbmastersupplier)
-        Me.TabPage1.Controls.Add(Me.cbmasteruser)
-        Me.TabPage1.Controls.Add(Me.clbmasterpricelist)
-        Me.TabPage1.Controls.Add(Me.cbmasterkas)
-        Me.TabPage1.Controls.Add(Me.clbmasterkas)
-        Me.TabPage1.Controls.Add(Me.cbmasterpricelist)
-        Me.TabPage1.Controls.Add(Me.clbmasterrekplng)
-        Me.TabPage1.Controls.Add(Me.cbmasterreksupp)
-        Me.TabPage1.Controls.Add(Me.clbmasterreksupp)
-        Me.TabPage1.Controls.Add(Me.cbmasterrekplng)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 27)
-        Me.TabPage1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage1.Size = New System.Drawing.Size(1002, 344)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Master"
+        Me.MasterTab.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.MasterTab.Controls.Add(Me.cbmasterbarang)
+        Me.MasterTab.Controls.Add(Me.clbmasterbarang)
+        Me.MasterTab.Controls.Add(Me.cbmasterkategori)
+        Me.MasterTab.Controls.Add(Me.clbmasterkategori)
+        Me.MasterTab.Controls.Add(Me.cbmastergudang)
+        Me.MasterTab.Controls.Add(Me.clbmastergudang)
+        Me.MasterTab.Controls.Add(Me.cbmasterpelanggan)
+        Me.MasterTab.Controls.Add(Me.clbmasterpelanggan)
+        Me.MasterTab.Controls.Add(Me.clbmasteruser)
+        Me.MasterTab.Controls.Add(Me.cbmastersupplier)
+        Me.MasterTab.Controls.Add(Me.clbmastersupplier)
+        Me.MasterTab.Controls.Add(Me.cbmasteruser)
+        Me.MasterTab.Controls.Add(Me.clbmasterpricelist)
+        Me.MasterTab.Controls.Add(Me.cbmasterkas)
+        Me.MasterTab.Controls.Add(Me.clbmasterkas)
+        Me.MasterTab.Controls.Add(Me.cbmasterpricelist)
+        Me.MasterTab.Controls.Add(Me.clbmasterrekplng)
+        Me.MasterTab.Controls.Add(Me.cbmasterreksupp)
+        Me.MasterTab.Controls.Add(Me.clbmasterreksupp)
+        Me.MasterTab.Controls.Add(Me.cbmasterrekplng)
+        Me.MasterTab.Location = New System.Drawing.Point(4, 27)
+        Me.MasterTab.Margin = New System.Windows.Forms.Padding(4)
+        Me.MasterTab.Name = "MasterTab"
+        Me.MasterTab.Padding = New System.Windows.Forms.Padding(4)
+        Me.MasterTab.Size = New System.Drawing.Size(1002, 344)
+        Me.MasterTab.TabIndex = 0
+        Me.MasterTab.Text = "Master"
         '
-        'TabPage2
+        'TransaksiTab
         '
-        Me.TabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage2.Controls.Add(Me.cbpenyesuaianstok)
-        Me.TabPage2.Controls.Add(Me.clbpenyesuaianstok)
-        Me.TabPage2.Controls.Add(Me.clbpenjualan)
-        Me.TabPage2.Controls.Add(Me.cbpembelian)
-        Me.TabPage2.Controls.Add(Me.clbpembelian)
-        Me.TabPage2.Controls.Add(Me.cbpenjualan)
-        Me.TabPage2.Controls.Add(Me.clbreturjual)
-        Me.TabPage2.Controls.Add(Me.cbreturbeli)
-        Me.TabPage2.Controls.Add(Me.cbreturjual)
-        Me.TabPage2.Controls.Add(Me.clbreturbeli)
-        Me.TabPage2.Controls.Add(Me.clbbarangkeluar)
-        Me.TabPage2.Controls.Add(Me.cbbarangmasuk)
-        Me.TabPage2.Controls.Add(Me.cbbarangkeluar)
-        Me.TabPage2.Controls.Add(Me.clbbarangmasuk)
-        Me.TabPage2.Controls.Add(Me.cbtransferbarang)
-        Me.TabPage2.Controls.Add(Me.clbtransferbarang)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 27)
-        Me.TabPage2.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage2.Size = New System.Drawing.Size(1002, 344)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Transaksi"
+        Me.TransaksiTab.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TransaksiTab.Controls.Add(Me.cbpenyesuaianstok)
+        Me.TransaksiTab.Controls.Add(Me.clbpenyesuaianstok)
+        Me.TransaksiTab.Controls.Add(Me.clbpenjualan)
+        Me.TransaksiTab.Controls.Add(Me.cbpembelian)
+        Me.TransaksiTab.Controls.Add(Me.clbpembelian)
+        Me.TransaksiTab.Controls.Add(Me.cbpenjualan)
+        Me.TransaksiTab.Controls.Add(Me.clbreturjual)
+        Me.TransaksiTab.Controls.Add(Me.cbreturbeli)
+        Me.TransaksiTab.Controls.Add(Me.cbreturjual)
+        Me.TransaksiTab.Controls.Add(Me.clbreturbeli)
+        Me.TransaksiTab.Controls.Add(Me.clbbarangkeluar)
+        Me.TransaksiTab.Controls.Add(Me.cbbarangmasuk)
+        Me.TransaksiTab.Controls.Add(Me.cbbarangkeluar)
+        Me.TransaksiTab.Controls.Add(Me.clbbarangmasuk)
+        Me.TransaksiTab.Controls.Add(Me.cbtransferbarang)
+        Me.TransaksiTab.Controls.Add(Me.clbtransferbarang)
+        Me.TransaksiTab.Location = New System.Drawing.Point(4, 27)
+        Me.TransaksiTab.Margin = New System.Windows.Forms.Padding(4)
+        Me.TransaksiTab.Name = "TransaksiTab"
+        Me.TransaksiTab.Padding = New System.Windows.Forms.Padding(4)
+        Me.TransaksiTab.Size = New System.Drawing.Size(1002, 344)
+        Me.TransaksiTab.TabIndex = 1
+        Me.TransaksiTab.Text = "Transaksi"
         '
         'cbpenyesuaianstok
         '
@@ -1466,75 +1476,75 @@ Partial Class fuser
         Me.clbpenyesuaianstok.Size = New System.Drawing.Size(100, 61)
         Me.clbpenyesuaianstok.TabIndex = 81
         '
-        'TabPage3
+        'AdministrasiTab
         '
-        Me.TabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage3.Controls.Add(Me.clbtransferkas)
-        Me.TabPage3.Controls.Add(Me.clbakunkeluar)
-        Me.TabPage3.Controls.Add(Me.clblunaspiutang)
-        Me.TabPage3.Controls.Add(Me.clbakunmasuk)
-        Me.TabPage3.Controls.Add(Me.cbtransferkas)
-        Me.TabPage3.Controls.Add(Me.cbakunmasuk)
-        Me.TabPage3.Controls.Add(Me.cblunaspiutang)
-        Me.TabPage3.Controls.Add(Me.cbakunkeluar)
-        Me.TabPage3.Controls.Add(Me.clblunasutang)
-        Me.TabPage3.Controls.Add(Me.cblunasutang)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 27)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(1002, 344)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Administrasi"
+        Me.AdministrasiTab.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.AdministrasiTab.Controls.Add(Me.clbtransferkas)
+        Me.AdministrasiTab.Controls.Add(Me.clbakunkeluar)
+        Me.AdministrasiTab.Controls.Add(Me.clblunaspiutang)
+        Me.AdministrasiTab.Controls.Add(Me.clbakunmasuk)
+        Me.AdministrasiTab.Controls.Add(Me.cbtransferkas)
+        Me.AdministrasiTab.Controls.Add(Me.cbakunmasuk)
+        Me.AdministrasiTab.Controls.Add(Me.cblunaspiutang)
+        Me.AdministrasiTab.Controls.Add(Me.cbakunkeluar)
+        Me.AdministrasiTab.Controls.Add(Me.clblunasutang)
+        Me.AdministrasiTab.Controls.Add(Me.cblunasutang)
+        Me.AdministrasiTab.Location = New System.Drawing.Point(4, 27)
+        Me.AdministrasiTab.Name = "AdministrasiTab"
+        Me.AdministrasiTab.Size = New System.Drawing.Size(1002, 344)
+        Me.AdministrasiTab.TabIndex = 2
+        Me.AdministrasiTab.Text = "Administrasi"
         '
-        'TabPage4
+        'LaporanTab
         '
-        Me.TabPage4.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage4.Controls.Add(Me.clblaprekapanakhir)
-        Me.TabPage4.Controls.Add(Me.cblaprekapanakhir)
-        Me.TabPage4.Controls.Add(Me.clblaplabarugi)
-        Me.TabPage4.Controls.Add(Me.cblaplabarugi)
-        Me.TabPage4.Controls.Add(Me.clblappenjualanpajak)
-        Me.TabPage4.Controls.Add(Me.cblappenjualanpajak)
-        Me.TabPage4.Controls.Add(Me.clblapmutasibarang)
-        Me.TabPage4.Controls.Add(Me.cblapmutasibarang)
-        Me.TabPage4.Controls.Add(Me.clblappenyesuaianstok)
-        Me.TabPage4.Controls.Add(Me.cblappenyesuaianstok)
-        Me.TabPage4.Controls.Add(Me.clblappricelist)
-        Me.TabPage4.Controls.Add(Me.cblappricelist)
-        Me.TabPage4.Controls.Add(Me.clblapmodalbarang)
-        Me.TabPage4.Controls.Add(Me.clblappenjualan)
-        Me.TabPage4.Controls.Add(Me.cblapmodalbarang)
-        Me.TabPage4.Controls.Add(Me.cblappenjualan)
-        Me.TabPage4.Controls.Add(Me.clblapbarangkeluar)
-        Me.TabPage4.Controls.Add(Me.clblapstokbarang)
-        Me.TabPage4.Controls.Add(Me.cblapbarangkeluar)
-        Me.TabPage4.Controls.Add(Me.cblapstokbarang)
-        Me.TabPage4.Controls.Add(Me.clblaptransaksikas)
-        Me.TabPage4.Controls.Add(Me.cblappembelian)
-        Me.TabPage4.Controls.Add(Me.cblaptransaksikas)
-        Me.TabPage4.Controls.Add(Me.clblapbarangmasuk)
-        Me.TabPage4.Controls.Add(Me.clblaptransferbarang)
-        Me.TabPage4.Controls.Add(Me.cblaptransferbarang)
-        Me.TabPage4.Controls.Add(Me.clblappembelian)
-        Me.TabPage4.Controls.Add(Me.clblaptransferkas)
-        Me.TabPage4.Controls.Add(Me.cblapbarangmasuk)
-        Me.TabPage4.Controls.Add(Me.cblaptransferkas)
-        Me.TabPage4.Controls.Add(Me.clblapreturjual)
-        Me.TabPage4.Controls.Add(Me.cblapreturbeli)
-        Me.TabPage4.Controls.Add(Me.clblapreturbeli)
-        Me.TabPage4.Controls.Add(Me.cblapreturjual)
-        Me.TabPage4.Controls.Add(Me.clblapakunkeluar)
-        Me.TabPage4.Controls.Add(Me.cblapakunmasuk)
-        Me.TabPage4.Controls.Add(Me.clblapakunmasuk)
-        Me.TabPage4.Controls.Add(Me.cblapakunkeluar)
-        Me.TabPage4.Controls.Add(Me.cblaputang)
-        Me.TabPage4.Controls.Add(Me.clblaputang)
-        Me.TabPage4.Controls.Add(Me.cblappiutang)
-        Me.TabPage4.Controls.Add(Me.clblappiutang)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 27)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(1002, 344)
-        Me.TabPage4.TabIndex = 3
-        Me.TabPage4.Text = "Laporan"
+        Me.LaporanTab.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.LaporanTab.Controls.Add(Me.clblaprekapanakhir)
+        Me.LaporanTab.Controls.Add(Me.cblaprekapanakhir)
+        Me.LaporanTab.Controls.Add(Me.clblaplabarugi)
+        Me.LaporanTab.Controls.Add(Me.cblaplabarugi)
+        Me.LaporanTab.Controls.Add(Me.clblappenjualanpajak)
+        Me.LaporanTab.Controls.Add(Me.cblappenjualanpajak)
+        Me.LaporanTab.Controls.Add(Me.clblapmutasibarang)
+        Me.LaporanTab.Controls.Add(Me.cblapmutasibarang)
+        Me.LaporanTab.Controls.Add(Me.clblappenyesuaianstok)
+        Me.LaporanTab.Controls.Add(Me.cblappenyesuaianstok)
+        Me.LaporanTab.Controls.Add(Me.clblappricelist)
+        Me.LaporanTab.Controls.Add(Me.cblappricelist)
+        Me.LaporanTab.Controls.Add(Me.clblapmodalbarang)
+        Me.LaporanTab.Controls.Add(Me.clblappenjualan)
+        Me.LaporanTab.Controls.Add(Me.cblapmodalbarang)
+        Me.LaporanTab.Controls.Add(Me.cblappenjualan)
+        Me.LaporanTab.Controls.Add(Me.clblapbarangkeluar)
+        Me.LaporanTab.Controls.Add(Me.clblapstokbarang)
+        Me.LaporanTab.Controls.Add(Me.cblapbarangkeluar)
+        Me.LaporanTab.Controls.Add(Me.cblapstokbarang)
+        Me.LaporanTab.Controls.Add(Me.clblaptransaksikas)
+        Me.LaporanTab.Controls.Add(Me.cblappembelian)
+        Me.LaporanTab.Controls.Add(Me.cblaptransaksikas)
+        Me.LaporanTab.Controls.Add(Me.clblapbarangmasuk)
+        Me.LaporanTab.Controls.Add(Me.clblaptransferbarang)
+        Me.LaporanTab.Controls.Add(Me.cblaptransferbarang)
+        Me.LaporanTab.Controls.Add(Me.clblappembelian)
+        Me.LaporanTab.Controls.Add(Me.clblaptransferkas)
+        Me.LaporanTab.Controls.Add(Me.cblapbarangmasuk)
+        Me.LaporanTab.Controls.Add(Me.cblaptransferkas)
+        Me.LaporanTab.Controls.Add(Me.clblapreturjual)
+        Me.LaporanTab.Controls.Add(Me.cblapreturbeli)
+        Me.LaporanTab.Controls.Add(Me.clblapreturbeli)
+        Me.LaporanTab.Controls.Add(Me.cblapreturjual)
+        Me.LaporanTab.Controls.Add(Me.clblapakunkeluar)
+        Me.LaporanTab.Controls.Add(Me.cblapakunmasuk)
+        Me.LaporanTab.Controls.Add(Me.clblapakunmasuk)
+        Me.LaporanTab.Controls.Add(Me.cblapakunkeluar)
+        Me.LaporanTab.Controls.Add(Me.cblaputang)
+        Me.LaporanTab.Controls.Add(Me.clblaputang)
+        Me.LaporanTab.Controls.Add(Me.cblappiutang)
+        Me.LaporanTab.Controls.Add(Me.clblappiutang)
+        Me.LaporanTab.Location = New System.Drawing.Point(4, 27)
+        Me.LaporanTab.Name = "LaporanTab"
+        Me.LaporanTab.Size = New System.Drawing.Size(1002, 344)
+        Me.LaporanTab.TabIndex = 3
+        Me.LaporanTab.Text = "Laporan"
         '
         'clblaprekapanakhir
         '
@@ -1656,27 +1666,27 @@ Partial Class fuser
         Me.cblappenyesuaianstok.Text = "Lap. Penyesuaian Stok"
         Me.cblappenyesuaianstok.UseVisualStyleBackColor = True
         '
-        'TabPage5
+        'ChartTab
         '
-        Me.TabPage5.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage5.Controls.Add(Me.CheckedListBox5)
-        Me.TabPage5.Controls.Add(Me.CheckBox5)
-        Me.TabPage5.Controls.Add(Me.CheckedListBox6)
-        Me.TabPage5.Controls.Add(Me.CheckBox6)
-        Me.TabPage5.Controls.Add(Me.CheckBox3)
-        Me.TabPage5.Controls.Add(Me.CheckedListBox3)
-        Me.TabPage5.Controls.Add(Me.CheckBox4)
-        Me.TabPage5.Controls.Add(Me.CheckedListBox4)
-        Me.TabPage5.Controls.Add(Me.CheckedListBox1)
-        Me.TabPage5.Controls.Add(Me.CheckBox1)
-        Me.TabPage5.Controls.Add(Me.CheckBox2)
-        Me.TabPage5.Controls.Add(Me.CheckedListBox2)
-        Me.TabPage5.Location = New System.Drawing.Point(4, 27)
-        Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(1002, 344)
-        Me.TabPage5.TabIndex = 4
-        Me.TabPage5.Text = "Chart"
+        Me.ChartTab.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ChartTab.Controls.Add(Me.CheckedListBox5)
+        Me.ChartTab.Controls.Add(Me.CheckBox5)
+        Me.ChartTab.Controls.Add(Me.CheckedListBox6)
+        Me.ChartTab.Controls.Add(Me.CheckBox6)
+        Me.ChartTab.Controls.Add(Me.CheckBox3)
+        Me.ChartTab.Controls.Add(Me.CheckedListBox3)
+        Me.ChartTab.Controls.Add(Me.CheckBox4)
+        Me.ChartTab.Controls.Add(Me.CheckedListBox4)
+        Me.ChartTab.Controls.Add(Me.CheckedListBox1)
+        Me.ChartTab.Controls.Add(Me.CheckBox1)
+        Me.ChartTab.Controls.Add(Me.CheckBox2)
+        Me.ChartTab.Controls.Add(Me.CheckedListBox2)
+        Me.ChartTab.Location = New System.Drawing.Point(4, 27)
+        Me.ChartTab.Name = "ChartTab"
+        Me.ChartTab.Padding = New System.Windows.Forms.Padding(3)
+        Me.ChartTab.Size = New System.Drawing.Size(1002, 344)
+        Me.ChartTab.TabIndex = 4
+        Me.ChartTab.Text = "Chart"
         '
         'CheckedListBox5
         '
@@ -1684,7 +1694,7 @@ Partial Class fuser
         Me.CheckedListBox5.CheckOnClick = True
         Me.CheckedListBox5.FormattingEnabled = True
         Me.CheckedListBox5.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox5.Location = New System.Drawing.Point(187, 129)
+        Me.CheckedListBox5.Location = New System.Drawing.Point(192, 126)
         Me.CheckedListBox5.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckedListBox5.Name = "CheckedListBox5"
         Me.CheckedListBox5.SelectionMode = System.Windows.Forms.SelectionMode.None
@@ -1694,7 +1704,7 @@ Partial Class fuser
         'CheckBox5
         '
         Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(177, 19)
+        Me.CheckBox5.Location = New System.Drawing.Point(180, 16)
         Me.CheckBox5.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBox5.Name = "CheckBox5"
         Me.CheckBox5.Size = New System.Drawing.Size(149, 22)
@@ -1708,7 +1718,7 @@ Partial Class fuser
         Me.CheckedListBox6.CheckOnClick = True
         Me.CheckedListBox6.FormattingEnabled = True
         Me.CheckedListBox6.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox6.Location = New System.Drawing.Point(187, 49)
+        Me.CheckedListBox6.Location = New System.Drawing.Point(192, 46)
         Me.CheckedListBox6.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckedListBox6.Name = "CheckedListBox6"
         Me.CheckedListBox6.SelectionMode = System.Windows.Forms.SelectionMode.None
@@ -1718,7 +1728,7 @@ Partial Class fuser
         'CheckBox6
         '
         Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(177, 99)
+        Me.CheckBox6.Location = New System.Drawing.Point(180, 96)
         Me.CheckBox6.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBox6.Name = "CheckBox6"
         Me.CheckBox6.Size = New System.Drawing.Size(146, 22)
@@ -1729,7 +1739,7 @@ Partial Class fuser
         'CheckBox3
         '
         Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(18, 180)
+        Me.CheckBox3.Location = New System.Drawing.Point(18, 176)
         Me.CheckBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(150, 22)
@@ -1743,7 +1753,7 @@ Partial Class fuser
         Me.CheckedListBox3.CheckOnClick = True
         Me.CheckedListBox3.FormattingEnabled = True
         Me.CheckedListBox3.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox3.Location = New System.Drawing.Point(28, 210)
+        Me.CheckedListBox3.Location = New System.Drawing.Point(29, 206)
         Me.CheckedListBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckedListBox3.Name = "CheckedListBox3"
         Me.CheckedListBox3.SelectionMode = System.Windows.Forms.SelectionMode.None
@@ -1753,7 +1763,7 @@ Partial Class fuser
         'CheckBox4
         '
         Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(18, 260)
+        Me.CheckBox4.Location = New System.Drawing.Point(18, 256)
         Me.CheckBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(160, 22)
@@ -1767,7 +1777,7 @@ Partial Class fuser
         Me.CheckedListBox4.CheckOnClick = True
         Me.CheckedListBox4.FormattingEnabled = True
         Me.CheckedListBox4.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox4.Location = New System.Drawing.Point(28, 290)
+        Me.CheckedListBox4.Location = New System.Drawing.Point(29, 286)
         Me.CheckedListBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckedListBox4.Name = "CheckedListBox4"
         Me.CheckedListBox4.SelectionMode = System.Windows.Forms.SelectionMode.None
@@ -1780,7 +1790,7 @@ Partial Class fuser
         Me.CheckedListBox1.CheckOnClick = True
         Me.CheckedListBox1.FormattingEnabled = True
         Me.CheckedListBox1.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox1.Location = New System.Drawing.Point(28, 129)
+        Me.CheckedListBox1.Location = New System.Drawing.Point(29, 126)
         Me.CheckedListBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckedListBox1.Name = "CheckedListBox1"
         Me.CheckedListBox1.SelectionMode = System.Windows.Forms.SelectionMode.None
@@ -1790,7 +1800,7 @@ Partial Class fuser
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(18, 99)
+        Me.CheckBox1.Location = New System.Drawing.Point(18, 96)
         Me.CheckBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(131, 22)
@@ -1801,7 +1811,7 @@ Partial Class fuser
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(18, 19)
+        Me.CheckBox2.Location = New System.Drawing.Point(18, 16)
         Me.CheckBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(136, 22)
@@ -1815,12 +1825,70 @@ Partial Class fuser
         Me.CheckedListBox2.CheckOnClick = True
         Me.CheckedListBox2.FormattingEnabled = True
         Me.CheckedListBox2.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox2.Location = New System.Drawing.Point(28, 49)
+        Me.CheckedListBox2.Location = New System.Drawing.Point(29, 46)
         Me.CheckedListBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckedListBox2.Name = "CheckedListBox2"
         Me.CheckedListBox2.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.CheckedListBox2.Size = New System.Drawing.Size(134, 42)
         Me.CheckedListBox2.TabIndex = 59
+        '
+        'SettingTab
+        '
+        Me.SettingTab.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.SettingTab.Controls.Add(Me.CheckBox9)
+        Me.SettingTab.Controls.Add(Me.CheckBox10)
+        Me.SettingTab.Controls.Add(Me.CheckBox11)
+        Me.SettingTab.Controls.Add(Me.CheckBox12)
+        Me.SettingTab.Location = New System.Drawing.Point(4, 27)
+        Me.SettingTab.Name = "SettingTab"
+        Me.SettingTab.Padding = New System.Windows.Forms.Padding(3)
+        Me.SettingTab.Size = New System.Drawing.Size(1002, 344)
+        Me.SettingTab.TabIndex = 5
+        Me.SettingTab.Text = "Setting"
+        '
+        'CheckBox9
+        '
+        Me.CheckBox9.AutoSize = True
+        Me.CheckBox9.Location = New System.Drawing.Point(17, 77)
+        Me.CheckBox9.Margin = New System.Windows.Forms.Padding(4)
+        Me.CheckBox9.Name = "CheckBox9"
+        Me.CheckBox9.Size = New System.Drawing.Size(144, 22)
+        Me.CheckBox9.TabIndex = 104
+        Me.CheckBox9.Text = "Backup Database"
+        Me.CheckBox9.UseVisualStyleBackColor = True
+        '
+        'CheckBox10
+        '
+        Me.CheckBox10.AutoSize = True
+        Me.CheckBox10.Location = New System.Drawing.Point(18, 107)
+        Me.CheckBox10.Margin = New System.Windows.Forms.Padding(4)
+        Me.CheckBox10.Name = "CheckBox10"
+        Me.CheckBox10.Size = New System.Drawing.Size(102, 22)
+        Me.CheckBox10.TabIndex = 106
+        Me.CheckBox10.Text = "Pengaturan"
+        Me.CheckBox10.UseVisualStyleBackColor = True
+        '
+        'CheckBox11
+        '
+        Me.CheckBox11.AutoSize = True
+        Me.CheckBox11.Location = New System.Drawing.Point(17, 47)
+        Me.CheckBox11.Margin = New System.Windows.Forms.Padding(4)
+        Me.CheckBox11.Name = "CheckBox11"
+        Me.CheckBox11.Size = New System.Drawing.Size(70, 22)
+        Me.CheckBox11.TabIndex = 100
+        Me.CheckBox11.Text = "Printer"
+        Me.CheckBox11.UseVisualStyleBackColor = True
+        '
+        'CheckBox12
+        '
+        Me.CheckBox12.AutoSize = True
+        Me.CheckBox12.Location = New System.Drawing.Point(17, 17)
+        Me.CheckBox12.Margin = New System.Windows.Forms.Padding(4)
+        Me.CheckBox12.Name = "CheckBox12"
+        Me.CheckBox12.Size = New System.Drawing.Size(134, 22)
+        Me.CheckBox12.TabIndex = 102
+        Me.CheckBox12.Text = "Info Perusahaan"
+        Me.CheckBox12.UseVisualStyleBackColor = True
         '
         'Label9
         '
@@ -1887,15 +1955,39 @@ Partial Class fuser
         Me.btnrefresh.TabIndex = 108
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
-        'TabPage6
+        'FeatureTab
         '
-        Me.TabPage6.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TabPage6.Location = New System.Drawing.Point(4, 27)
-        Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage6.Size = New System.Drawing.Size(1002, 344)
-        Me.TabPage6.TabIndex = 5
-        Me.TabPage6.Text = "Setting"
+        Me.FeatureTab.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.FeatureTab.Controls.Add(Me.CheckBox7)
+        Me.FeatureTab.Controls.Add(Me.CheckBox8)
+        Me.FeatureTab.Location = New System.Drawing.Point(4, 27)
+        Me.FeatureTab.Name = "FeatureTab"
+        Me.FeatureTab.Padding = New System.Windows.Forms.Padding(3)
+        Me.FeatureTab.Size = New System.Drawing.Size(1002, 344)
+        Me.FeatureTab.TabIndex = 6
+        Me.FeatureTab.Text = "Feature"
+        '
+        'CheckBox7
+        '
+        Me.CheckBox7.AutoSize = True
+        Me.CheckBox7.Location = New System.Drawing.Point(11, 48)
+        Me.CheckBox7.Margin = New System.Windows.Forms.Padding(4)
+        Me.CheckBox7.Name = "CheckBox7"
+        Me.CheckBox7.Size = New System.Drawing.Size(154, 22)
+        Me.CheckBox7.TabIndex = 103
+        Me.CheckBox7.Text = "Barcode Generator"
+        Me.CheckBox7.UseVisualStyleBackColor = True
+        '
+        'CheckBox8
+        '
+        Me.CheckBox8.AutoSize = True
+        Me.CheckBox8.Location = New System.Drawing.Point(11, 18)
+        Me.CheckBox8.Margin = New System.Windows.Forms.Padding(4)
+        Me.CheckBox8.Name = "CheckBox8"
+        Me.CheckBox8.Size = New System.Drawing.Size(145, 22)
+        Me.CheckBox8.TabIndex = 104
+        Me.CheckBox8.Text = "Kalkulasi Expedisi"
+        Me.CheckBox8.UseVisualStyleBackColor = True
         '
         'fuser
         '
@@ -1921,7 +2013,7 @@ Partial Class fuser
         Me.Controls.Add(Me.GridControl)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.TabControl1)
+        Me.Controls.Add(Me.TabControl)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.btntambah)
         Me.Controls.Add(Me.btnedit)
@@ -1939,17 +2031,21 @@ Partial Class fuser
         Me.Text = "Data User"
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
-        Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout()
-        Me.TabPage4.ResumeLayout(False)
-        Me.TabPage4.PerformLayout()
-        Me.TabPage5.ResumeLayout(False)
-        Me.TabPage5.PerformLayout()
+        Me.TabControl.ResumeLayout(False)
+        Me.MasterTab.ResumeLayout(False)
+        Me.MasterTab.PerformLayout()
+        Me.TransaksiTab.ResumeLayout(False)
+        Me.TransaksiTab.PerformLayout()
+        Me.AdministrasiTab.ResumeLayout(False)
+        Me.AdministrasiTab.PerformLayout()
+        Me.LaporanTab.ResumeLayout(False)
+        Me.LaporanTab.PerformLayout()
+        Me.ChartTab.ResumeLayout(False)
+        Me.ChartTab.PerformLayout()
+        Me.SettingTab.ResumeLayout(False)
+        Me.SettingTab.PerformLayout()
+        Me.FeatureTab.ResumeLayout(False)
+        Me.FeatureTab.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2057,11 +2153,11 @@ Partial Class fuser
     Friend WithEvents cblapreturbeli As CheckBox
     Friend WithEvents clblapmodalbarang As CheckedListBox
     Friend WithEvents cblapmodalbarang As CheckBox
-    Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents TabPage3 As TabPage
-    Friend WithEvents TabPage4 As TabPage
+    Friend WithEvents TabControl As TabControl
+    Friend WithEvents MasterTab As TabPage
+    Friend WithEvents TransaksiTab As TabPage
+    Friend WithEvents AdministrasiTab As TabPage
+    Friend WithEvents LaporanTab As TabPage
     Friend WithEvents Label9 As Label
     Friend WithEvents cbauth As CheckBox
     Friend WithEvents txtmaxprint As TextBox
@@ -2081,7 +2177,7 @@ Partial Class fuser
     Friend WithEvents clblaprekapanakhir As CheckedListBox
     Friend WithEvents cblaprekapanakhir As CheckBox
     Friend WithEvents btnrefresh As Button
-    Friend WithEvents TabPage5 As TabPage
+    Friend WithEvents ChartTab As TabPage
     Friend WithEvents CheckedListBox1 As CheckedListBox
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents CheckBox2 As CheckBox
@@ -2094,5 +2190,12 @@ Partial Class fuser
     Friend WithEvents CheckBox5 As CheckBox
     Friend WithEvents CheckedListBox6 As CheckedListBox
     Friend WithEvents CheckBox6 As CheckBox
-    Friend WithEvents TabPage6 As TabPage
+    Friend WithEvents SettingTab As TabPage
+    Friend WithEvents CheckBox9 As CheckBox
+    Friend WithEvents CheckBox10 As CheckBox
+    Friend WithEvents CheckBox11 As CheckBox
+    Friend WithEvents CheckBox12 As CheckBox
+    Friend WithEvents FeatureTab As TabPage
+    Friend WithEvents CheckBox7 As CheckBox
+    Friend WithEvents CheckBox8 As CheckBox
 End Class
