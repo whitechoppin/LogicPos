@@ -468,198 +468,290 @@ Public Class flogin
 
         '===========================================================================================================================
 
+        If xlunas_utang > 0 Then
+            lunas_utang = Val(dr("lunas_utang"))
 
-        lunas_utang = Val(dr("lunas_utang"))
-        lunas_piutang = Val(dr("lunas_piutang"))
-        transfer_kas = Val(dr("transfer_kas"))
-        akun_masuk = Val(dr("akun_masuk"))
-        akun_keluar = Val(dr("akun_keluar"))
-
-        If lunas_utang > 0 Then
-            fmenu.AdministrasiMenu.DropDownItems.Item(0).Visible = True 'pelunasan utang
+            If lunas_utang > 0 Then
+                fmenu.AdministrasiMenu.DropDownItems.Item(0).Visible = True 'pelunasan utang
+            End If
         End If
 
-        If lunas_piutang > 0 Then
-            fmenu.AdministrasiMenu.DropDownItems.Item(1).Visible = True 'pelunasan piutang
+        If xlunas_piutang > 0 Then
+            lunas_piutang = Val(dr("lunas_piutang"))
+
+            If lunas_piutang > 0 Then
+                fmenu.AdministrasiMenu.DropDownItems.Item(1).Visible = True 'pelunasan piutang
+            End If
         End If
 
-        If transfer_kas > 0 Then
-            fmenu.AdministrasiMenu.DropDownItems.Item(4).Visible = True 'transfer kas
+        If xtransfer_kas > 0 Then
+            transfer_kas = Val(dr("transfer_kas"))
+
+            If transfer_kas > 0 Then
+                fmenu.AdministrasiMenu.DropDownItems.Item(4).Visible = True 'transfer kas
+            End If
         End If
 
-        If akun_masuk > 0 Then
-            fmenu.AdministrasiMenu.DropDownItems.Item(2).Visible = True 'kas masuk
+        If xakun_masuk > 0 Then
+            akun_masuk = Val(dr("akun_masuk"))
+
+            If akun_masuk > 0 Then
+                fmenu.AdministrasiMenu.DropDownItems.Item(2).Visible = True 'kas masuk
+            End If
         End If
 
-        If akun_keluar > 0 Then
-            fmenu.AdministrasiMenu.DropDownItems.Item(3).Visible = True 'kas keluar
+        If xakun_keluar > 0 Then
+            akun_keluar = Val(dr("akun_keluar"))
+
+            If akun_keluar > 0 Then
+                fmenu.AdministrasiMenu.DropDownItems.Item(3).Visible = True 'kas keluar
+            End If
         End If
 
         '===========================================================================================================================
 
-        lap_pricelist = Val(dr("lap_pricelist"))
-        lap_pembelian = Val(dr("lap_pembelian"))
-        lap_penjualan = Val(dr("lap_penjualan"))
-        lap_penjualan_pajak = Val(dr("lap_penjualan_pajak"))
+        If xlap_pricelist > 0 Then
+            lap_pricelist = Val(dr("lap_pricelist"))
 
-        lap_returbeli = Val(dr("lap_returbeli"))
-        lap_returjual = Val(dr("lap_returjual"))
-        lap_barangmasuk = Val(dr("lap_barang_masuk"))
-        lap_barangkeluar = Val(dr("lap_barang_keluar"))
-
-        lap_transfer_barang = Val(dr("lap_transfer_barang"))
-        lap_stok_barang = Val(dr("lap_stok_barang"))
-        lap_lunas_utang = Val(dr("lap_utang"))
-        lap_lunas_piutang = Val(dr("lap_piutang"))
-
-        lap_akun_masuk = Val(dr("lap_akun_masuk"))
-        lap_akun_keluar = Val(dr("lap_akun_keluar"))
-        lap_transfer_kas = Val(dr("lap_transfer_kas"))
-        lap_transaksi_kas = Val(dr("lap_transaksi_kas"))
-
-        lap_modal_barang = Val(dr("lap_modal_barang"))
-        lap_mutasi_barang = Val(dr("lap_mutasi_barang"))
-        lap_penyesuaian_stok = Val(dr("lap_penyesuaian_stok"))
-        lap_laba_rugi = Val(dr("lap_laba_rugi"))
-
-        lap_rekapan_akhir = Val(dr("lap_rekapan_akhir"))
-
-        If lap_pricelist > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(0).Visible = True 'lap pembelian
+            If lap_pricelist > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(0).Visible = True 'lap pricelist
+            End If
         End If
 
-        If lap_pembelian > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(1).Visible = True 'lap pembelian
+        If xlap_pembelian > 0 Then
+            lap_pembelian = Val(dr("lap_pembelian"))
+
+            If lap_pembelian > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(1).Visible = True 'lap pembelian
+            End If
         End If
 
-        If lap_penjualan > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(2).Visible = True 'lap penjualan
+        If xlap_penjualan > 0 Then
+            lap_penjualan = Val(dr("lap_penjualan"))
+
+            If lap_penjualan > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(2).Visible = True 'lap penjualan
+            End If
         End If
 
-        If lap_penjualan_pajak > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(3).Visible = True 'lap penjualan pajak
+        If xlap_penjualan_pajak > 0 Then
+            lap_penjualan_pajak = Val(dr("lap_penjualan_pajak"))
+
+            If lap_penjualan_pajak > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(3).Visible = True 'lap penjualan pajak
+            End If
         End If
 
-        '=================================================================================
+        '==================================================
 
-        If lap_returbeli > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(4).Visible = True 'lap retur beli
+        If xlap_returbeli > 0 Then
+            lap_returbeli = Val(dr("lap_returbeli"))
+
+            If lap_returbeli > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(4).Visible = True 'lap retur beli
+            End If
         End If
 
-        If lap_returjual > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(5).Visible = True 'lap retur jual
+        If xlap_returjual > 0 Then
+            lap_returjual = Val(dr("lap_returjual"))
+
+            If lap_returjual > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(5).Visible = True 'lap retur jual
+            End If
         End If
 
-        If lap_barangmasuk > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(6).Visible = True 'lap brg masuk
+        If xlap_barangmasuk > 0 Then
+            lap_barangmasuk = Val(dr("lap_barang_masuk"))
+
+            If lap_barangmasuk > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(6).Visible = True 'lap brg masuk
+            End If
         End If
 
-        If lap_barangkeluar > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(7).Visible = True 'lap brg keluar
+        If xlap_barangkeluar > 0 Then
+            lap_barangkeluar = Val(dr("lap_barang_keluar"))
+
+            If lap_barangkeluar > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(7).Visible = True 'lap brg keluar
+            End If
         End If
 
-        '=================================================================================
+        '==================================================
 
-        If lap_transfer_barang > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(8).Visible = True 'lap transfer brg
+        If xlap_transfer_barang > 0 Then
+            lap_transfer_barang = Val(dr("lap_transfer_barang"))
+
+            If lap_transfer_barang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(8).Visible = True 'lap transfer brg
+            End If
         End If
 
-        If lap_stok_barang > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(9).Visible = True 'lap stok barang
+        If xlap_stok_barang > 0 Then
+            lap_stok_barang = Val(dr("lap_stok_barang"))
+
+            If lap_stok_barang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(9).Visible = True 'lap stok barang
+            End If
         End If
 
-        If lap_lunas_utang > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(10).Visible = True 'lap lunas utang
+        If xlap_lunas_utang > 0 Then
+            lap_lunas_utang = Val(dr("lap_utang"))
+
+            If lap_lunas_utang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(10).Visible = True 'lap lunas utang
+            End If
         End If
 
-        If lap_lunas_piutang > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(11).Visible = True 'lap lunas piutang
+        If xlap_lunas_piutang > 0 Then
+            lap_lunas_piutang = Val(dr("lap_piutang"))
+
+            If lap_lunas_piutang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(11).Visible = True 'lap lunas piutang
+            End If
         End If
 
-        '=================================================================================
+        '==================================================
 
-        If lap_akun_masuk > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(12).Visible = True 'lap akun masuk
+        If xlap_akun_masuk > 0 Then
+            lap_akun_masuk = Val(dr("lap_akun_masuk"))
+
+            If lap_akun_masuk > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(12).Visible = True 'lap akun masuk
+            End If
         End If
 
-        If lap_akun_keluar > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(13).Visible = True 'lap akun keluar
+        If xlap_akun_keluar > 0 Then
+            lap_akun_keluar = Val(dr("lap_akun_keluar"))
+
+            If lap_akun_keluar > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(13).Visible = True 'lap akun keluar
+            End If
         End If
 
-        If lap_transfer_kas > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(14).Visible = True 'lap transfer kas
+        If xlap_transfer_kas > 0 Then
+            lap_transfer_kas = Val(dr("lap_transfer_kas"))
+
+            If lap_transfer_kas > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(14).Visible = True 'lap transfer kas
+            End If
         End If
 
-        If lap_transaksi_kas > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(15).Visible = True 'lap transaksi kas 
+        If xlap_transaksi_kas > 0 Then
+            lap_transaksi_kas = Val(dr("lap_transaksi_kas"))
+
+            If lap_transaksi_kas > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(15).Visible = True 'lap transaksi kas 
+            End If
         End If
 
-        '===================================================================================
+        '====================================================
 
-        If lap_modal_barang > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(16).Visible = True 'lap modal barang
+        If xlap_modal_barang > 0 Then
+            lap_modal_barang = Val(dr("lap_modal_barang"))
+
+            If lap_modal_barang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(16).Visible = True 'lap modal barang
+            End If
         End If
 
-        If lap_mutasi_barang > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(17).Visible = True 'lap mutasi barang
+        If xlap_mutasi_barang > 0 Then
+            lap_mutasi_barang = Val(dr("lap_mutasi_barang"))
+
+            If lap_mutasi_barang > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(17).Visible = True 'lap mutasi barang
+            End If
         End If
 
-        If lap_penyesuaian_stok > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(18).Visible = True 'lap penyesuaian stok
+        If xlap_penyesuaian_stok > 0 Then
+            lap_penyesuaian_stok = Val(dr("lap_penyesuaian_stok"))
+
+            If lap_penyesuaian_stok > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(18).Visible = True 'lap penyesuaian stok
+            End If
         End If
 
-        If lap_laba_rugi > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(19).Visible = True 'lap laba rugi
+        If xlap_laba_rugi > 0 Then
+            lap_laba_rugi = Val(dr("lap_laba_rugi"))
+
+            If lap_laba_rugi > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(19).Visible = True 'lap laba rugi
+            End If
+        End If
+
+        If xlap_rekapan_akhir > 0 Then
+            lap_rekapan_akhir = Val(dr("lap_rekapan_akhir"))
+
+            If lap_rekapan_akhir > 0 Then
+                fmenu.LaporanMenu.DropDownItems.Item(20).Visible = True 'lap rekapan akhir
+            End If
         End If
 
         '=====================================================================================
 
-        If lap_rekapan_akhir > 0 Then
-            fmenu.LaporanMenu.DropDownItems.Item(20).Visible = True 'lap rekapan akhir
+        If xchart_pembelian > 0 Then
+            chart_pembelian = Val(dr("chart_pembelian"))
+
+            If chart_pembelian > 0 Then
+                fmenu.ChartMenu.DropDownItems.Item(0).Visible = True 'chart pembelian
+            End If
         End If
 
-        '=====================================================================================
+        If xchart_penjualan > 0 Then
+            chart_penjualan = Val(dr("chart_penjualan"))
 
-        chart_pembelian = Val(dr("chart_pembelian"))
-        chart_penjualan = Val(dr("chart_penjualan"))
-        chart_lunas_utang = Val(dr("chart_lunas_utang"))
-        chart_lunas_piutang = Val(dr("chart_lunas_piutang"))
-        chart_kas_masuk = Val(dr("chart_kas_masuk"))
-        chart_kas_keluar = Val(dr("chart_kas_keluar"))
-
-        If chart_pembelian > 0 Then
-            fmenu.ChartMenu.DropDownItems.Item(0).Visible = True 'chart pembelian
+            If chart_penjualan > 0 Then
+                fmenu.ChartMenu.DropDownItems.Item(1).Visible = True 'chart penjualan
+            End If
         End If
 
-        If chart_penjualan > 0 Then
-            fmenu.ChartMenu.DropDownItems.Item(1).Visible = True 'chart penjualan
+        If xchart_lunas_utang > 0 Then
+            chart_lunas_utang = Val(dr("chart_lunas_utang"))
+
+            If chart_lunas_utang > 0 Then
+                fmenu.ChartMenu.DropDownItems.Item(2).Visible = True 'chart lunas utang
+            End If
         End If
 
-        If chart_lunas_utang > 0 Then
-            fmenu.ChartMenu.DropDownItems.Item(2).Visible = True 'chart lunas utang
+        If xchart_lunas_piutang > 0 Then
+            chart_lunas_piutang = Val(dr("chart_lunas_piutang"))
+
+            If chart_lunas_piutang > 0 Then
+                fmenu.ChartMenu.DropDownItems.Item(3).Visible = True 'chart lunas piutang
+            End If
         End If
 
-        If chart_lunas_piutang > 0 Then
-            fmenu.ChartMenu.DropDownItems.Item(3).Visible = True 'chart lunas piutang
+        If xchart_kas_masuk > 0 Then
+            chart_kas_masuk = Val(dr("chart_kas_masuk"))
+
+            If chart_kas_masuk > 0 Then
+                fmenu.ChartMenu.DropDownItems.Item(4).Visible = True 'chart kas masuk
+            End If
         End If
 
-        If chart_kas_masuk > 0 Then
-            fmenu.ChartMenu.DropDownItems.Item(4).Visible = True 'chart kas masuk
+        If xchart_kas_keluar > 0 Then
+            chart_kas_keluar = Val(dr("chart_kas_keluar"))
+
+            If chart_kas_keluar > 0 Then
+                fmenu.ChartMenu.DropDownItems.Item(5).Visible = True 'chart kas keluar
+            End If
         End If
 
-        If chart_kas_keluar > 0 Then
-            fmenu.ChartMenu.DropDownItems.Item(5).Visible = True 'chart kas keluar
+        '===========================================================================================================================
+
+        If xfeature_kalkulasi > 0 Then
+            feature_kalkulasi = Val(dr("feature_kalkulasi_expedisi"))
+
+            If feature_kalkulasi > 0 Then
+                fmenu.FeatureMenu.DropDownItems.Item(0).Visible = True 'feature kalkulasi
+            End If
         End If
 
-        feature_kalkulasi = Val(dr("feature_kalkulasi_expedisi"))
-        feature_barcode = Val(dr("feature_barcode_generator"))
+        If xfeature_barcode > 0 Then
+            feature_barcode = Val(dr("feature_barcode_generator"))
 
-        If feature_kalkulasi > 0 Then
-            fmenu.FeatureMenu.DropDownItems.Item(0).Visible = True 'feature kalkulasi
-        End If
-
-        If feature_barcode > 0 Then
-            fmenu.FeatureMenu.DropDownItems.Item(1).Visible = True 'feature barcode
+            If feature_barcode > 0 Then
+                fmenu.FeatureMenu.DropDownItems.Item(1).Visible = True 'feature barcode
+            End If
         End If
 
         '===========================================================================================================================

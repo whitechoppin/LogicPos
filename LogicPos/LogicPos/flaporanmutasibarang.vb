@@ -572,7 +572,8 @@ Public Class flaporanmutasibarang
         Dim baris As DataRow
 
         With tabel_mutasi_barang
-            .Columns.Add("kode_tabel")
+            .Columns.Add("tabel")
+            .Columns.Add("id")
             .Columns.Add("kode_barang")
             .Columns.Add("kode_stok")
             .Columns.Add("qty", GetType(Double))
@@ -584,7 +585,8 @@ Public Class flaporanmutasibarang
 
         For i As Integer = 0 To GridView1.RowCount - 1
             baris = tabel_mutasi_barang.NewRow
-            baris("kode_tabel") = GridView1.GetRowCellValue(i, "kode_tabel")
+            baris("tabel") = GridView1.GetRowCellValue(i, "tabel")
+            baris("id") = GridView1.GetRowCellValue(i, "id")
             baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
             baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
             baris("qty") = GridView1.GetRowCellValue(i, "qty")
