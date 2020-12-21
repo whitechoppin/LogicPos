@@ -476,6 +476,12 @@
     <Compile Include="flappenyesuaianstok.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fpengaturan.Designer.vb">
+      <DependentUpon>fpengaturan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fpengaturan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fpenyesuaianstok.Designer.vb">
       <DependentUpon>fpenyesuaianstok.vb</DependentUpon>
     </Compile>
@@ -1357,6 +1363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="flappenyesuaianstok.resx">
       <DependentUpon>flappenyesuaianstok.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fpengaturan.resx">
+      <DependentUpon>fpengaturan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fpenyesuaianstok.resx">
       <DependentUpon>fpenyesuaianstok.vb</DependentUpon>

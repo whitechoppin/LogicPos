@@ -186,7 +186,7 @@ Partial Class fkonfigurasidatabase
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fkonfigurasidatabase"
-        Me.Text = "fkonfigurasidatabase"
+        Me.Text = "Konfigurasi Database"
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
