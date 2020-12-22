@@ -35,12 +35,14 @@ Partial Class fkonfigurasidatabase
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnreset = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.btnreset)
         Me.GroupBox2.Controls.Add(Me.btnrestore)
         Me.GroupBox2.Controls.Add(Me.btnbackup)
         Me.GroupBox2.Controls.Add(Me.ComboBox1)
@@ -49,14 +51,14 @@ Partial Class fkonfigurasidatabase
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(720, 194)
+        Me.GroupBox2.Size = New System.Drawing.Size(655, 229)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Database Informations"
         '
         'btnrestore
         '
-        Me.btnrestore.Location = New System.Drawing.Point(188, 127)
+        Me.btnrestore.Location = New System.Drawing.Point(129, 126)
         Me.btnrestore.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrestore.Name = "btnrestore"
         Me.btnrestore.Size = New System.Drawing.Size(510, 39)
@@ -66,7 +68,7 @@ Partial Class fkonfigurasidatabase
         '
         'btnbackup
         '
-        Me.btnbackup.Location = New System.Drawing.Point(188, 79)
+        Me.btnbackup.Location = New System.Drawing.Point(129, 78)
         Me.btnbackup.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbackup.Name = "btnbackup"
         Me.btnbackup.Size = New System.Drawing.Size(510, 39)
@@ -77,7 +79,7 @@ Partial Class fkonfigurasidatabase
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(188, 42)
+        Me.ComboBox1.Location = New System.Drawing.Point(129, 41)
         Me.ComboBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(508, 26)
@@ -106,14 +108,14 @@ Partial Class fkonfigurasidatabase
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(720, 213)
+        Me.GroupBox1.Size = New System.Drawing.Size(655, 213)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Autentications"
         '
         'btnconnect
         '
-        Me.btnconnect.Location = New System.Drawing.Point(188, 150)
+        Me.btnconnect.Location = New System.Drawing.Point(131, 150)
         Me.btnconnect.Margin = New System.Windows.Forms.Padding(4)
         Me.btnconnect.Name = "btnconnect"
         Me.btnconnect.Size = New System.Drawing.Size(510, 40)
@@ -123,7 +125,7 @@ Partial Class fkonfigurasidatabase
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(188, 114)
+        Me.TextBox3.Location = New System.Drawing.Point(131, 114)
         Me.TextBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(508, 24)
@@ -131,7 +133,7 @@ Partial Class fkonfigurasidatabase
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(188, 78)
+        Me.TextBox2.Location = New System.Drawing.Point(131, 78)
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(508, 24)
@@ -139,7 +141,7 @@ Partial Class fkonfigurasidatabase
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(188, 42)
+        Me.TextBox1.Location = New System.Drawing.Point(131, 42)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(508, 24)
@@ -175,12 +177,22 @@ Partial Class fkonfigurasidatabase
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Server"
         '
+        'btnreset
+        '
+        Me.btnreset.Location = New System.Drawing.Point(129, 173)
+        Me.btnreset.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnreset.Name = "btnreset"
+        Me.btnreset.Size = New System.Drawing.Size(510, 39)
+        Me.btnreset.TabIndex = 3
+        Me.btnreset.Text = "Reset Database"
+        Me.btnreset.UseVisualStyleBackColor = True
+        '
         'fkonfigurasidatabase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(746, 440)
+        Me.ClientSize = New System.Drawing.Size(680, 475)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -208,4 +220,5 @@ Partial Class fkonfigurasidatabase
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents btnreset As Button
 End Class
