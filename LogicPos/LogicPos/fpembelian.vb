@@ -927,7 +927,7 @@ Public Class fpembelian
 
             Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
             Console.WriteLine("Neither record was written to database.")
-            MsgBox("Transaksi Gagal Dilakukan", MsgBoxStyle.Information, "Sukses")
+            MsgBox("Transaksi Gagal Dilakukan", MsgBoxStyle.Information, "Gagal")
         End Try
 
     End Sub
@@ -1531,7 +1531,7 @@ Public Class fpembelian
             Console.WriteLine("An exception of type " + e.GetType().ToString() +
             "was encountered while inserting the data.")
             Console.WriteLine("Neither record was written to database.")
-            MsgBox("Update Gagal", MsgBoxStyle.Information, "Sukses")
+            MsgBox("Update Gagal", MsgBoxStyle.Information, "Gagal")
         End Try
     End Sub
     Private Sub txtongkir_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtongkir.KeyPress

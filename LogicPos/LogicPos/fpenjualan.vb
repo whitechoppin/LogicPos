@@ -2256,7 +2256,7 @@ Public Class fpenjualan
             Console.WriteLine("An exception of type " + e.GetType().ToString() +
             "was encountered while inserting the data.")
             Console.WriteLine("Neither record was written to database.")
-            MsgBox("Transaksi Gagal Dilakukan", MsgBoxStyle.Information, "Sukses")
+            MsgBox("Transaksi Gagal Dilakukan", MsgBoxStyle.Information, "Gagal")
         End Try
 
     End Sub
@@ -2394,7 +2394,7 @@ Public Class fpenjualan
                 Console.WriteLine("An exception of type " + e.GetType().ToString() + "was encountered while inserting the data.")
                 Console.WriteLine("Neither record was written to database.")
 
-                MsgBox("Update Gagal", MsgBoxStyle.Information, "Sukses")
+                MsgBox("Update Gagal", MsgBoxStyle.Information, "Gagal")
             End Try
         End If
     End Sub

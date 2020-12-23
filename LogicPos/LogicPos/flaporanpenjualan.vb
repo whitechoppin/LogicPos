@@ -101,6 +101,12 @@ Public Class flaporanpenjualan
         GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn10.DisplayFormat.FormatString = "##,##0"
 
+        If cbprofit.Checked = True Then
+            GridColumn10.Visible = True
+        Else
+            GridColumn10.Visible = False
+        End If
+
         GridColumn11.Caption = "User"
         GridColumn11.FieldName = "kode_user"
 

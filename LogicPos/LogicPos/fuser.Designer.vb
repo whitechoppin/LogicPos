@@ -145,32 +145,32 @@ Partial Class fuser
         Me.clblappenyesuaianstok = New System.Windows.Forms.CheckedListBox()
         Me.cblappenyesuaianstok = New System.Windows.Forms.CheckBox()
         Me.ChartTab = New System.Windows.Forms.TabPage()
-        Me.CheckedListBox5 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox6 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox3 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox4 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckedListBox2 = New System.Windows.Forms.CheckedListBox()
+        Me.clbchartakunkeluar = New System.Windows.Forms.CheckedListBox()
+        Me.cbchartakunmasuk = New System.Windows.Forms.CheckBox()
+        Me.clbchartakunmasuk = New System.Windows.Forms.CheckedListBox()
+        Me.cbchartakunkeluar = New System.Windows.Forms.CheckBox()
+        Me.cbchartlunasutang = New System.Windows.Forms.CheckBox()
+        Me.clbchartlunasutang = New System.Windows.Forms.CheckedListBox()
+        Me.cbchartlunaspiutang = New System.Windows.Forms.CheckBox()
+        Me.clbchartlunaspiutang = New System.Windows.Forms.CheckedListBox()
+        Me.clbchartpenjualan = New System.Windows.Forms.CheckedListBox()
+        Me.cbchartpenjualan = New System.Windows.Forms.CheckBox()
+        Me.cbchartpembelian = New System.Windows.Forms.CheckBox()
+        Me.clbchartpembelian = New System.Windows.Forms.CheckedListBox()
+        Me.FeatureTab = New System.Windows.Forms.TabPage()
+        Me.cbbarcodegenerator = New System.Windows.Forms.CheckBox()
+        Me.cbkalkulasiexpedisi = New System.Windows.Forms.CheckBox()
         Me.SettingTab = New System.Windows.Forms.TabPage()
-        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox10 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox11 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox12 = New System.Windows.Forms.CheckBox()
+        Me.cbbackupdatabase = New System.Windows.Forms.CheckBox()
+        Me.cbpengaturan = New System.Windows.Forms.CheckBox()
+        Me.cbprinter = New System.Windows.Forms.CheckBox()
+        Me.cbinfoperusahaan = New System.Windows.Forms.CheckBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cbauth = New System.Windows.Forms.CheckBox()
         Me.txtmaxprint = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.btnpassword = New System.Windows.Forms.Button()
         Me.btnrefresh = New System.Windows.Forms.Button()
-        Me.FeatureTab = New System.Windows.Forms.TabPage()
-        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl.SuspendLayout()
@@ -179,8 +179,8 @@ Partial Class fuser
         Me.AdministrasiTab.SuspendLayout()
         Me.LaporanTab.SuspendLayout()
         Me.ChartTab.SuspendLayout()
-        Me.SettingTab.SuspendLayout()
         Me.FeatureTab.SuspendLayout()
+        Me.SettingTab.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmbjabatan
@@ -1669,18 +1669,18 @@ Partial Class fuser
         'ChartTab
         '
         Me.ChartTab.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ChartTab.Controls.Add(Me.CheckedListBox5)
-        Me.ChartTab.Controls.Add(Me.CheckBox5)
-        Me.ChartTab.Controls.Add(Me.CheckedListBox6)
-        Me.ChartTab.Controls.Add(Me.CheckBox6)
-        Me.ChartTab.Controls.Add(Me.CheckBox3)
-        Me.ChartTab.Controls.Add(Me.CheckedListBox3)
-        Me.ChartTab.Controls.Add(Me.CheckBox4)
-        Me.ChartTab.Controls.Add(Me.CheckedListBox4)
-        Me.ChartTab.Controls.Add(Me.CheckedListBox1)
-        Me.ChartTab.Controls.Add(Me.CheckBox1)
-        Me.ChartTab.Controls.Add(Me.CheckBox2)
-        Me.ChartTab.Controls.Add(Me.CheckedListBox2)
+        Me.ChartTab.Controls.Add(Me.clbchartakunkeluar)
+        Me.ChartTab.Controls.Add(Me.cbchartakunmasuk)
+        Me.ChartTab.Controls.Add(Me.clbchartakunmasuk)
+        Me.ChartTab.Controls.Add(Me.cbchartakunkeluar)
+        Me.ChartTab.Controls.Add(Me.cbchartlunasutang)
+        Me.ChartTab.Controls.Add(Me.clbchartlunasutang)
+        Me.ChartTab.Controls.Add(Me.cbchartlunaspiutang)
+        Me.ChartTab.Controls.Add(Me.clbchartlunaspiutang)
+        Me.ChartTab.Controls.Add(Me.clbchartpenjualan)
+        Me.ChartTab.Controls.Add(Me.cbchartpenjualan)
+        Me.ChartTab.Controls.Add(Me.cbchartpembelian)
+        Me.ChartTab.Controls.Add(Me.clbchartpembelian)
         Me.ChartTab.Location = New System.Drawing.Point(4, 27)
         Me.ChartTab.Name = "ChartTab"
         Me.ChartTab.Padding = New System.Windows.Forms.Padding(3)
@@ -1688,157 +1688,191 @@ Partial Class fuser
         Me.ChartTab.TabIndex = 4
         Me.ChartTab.Text = "Chart"
         '
-        'CheckedListBox5
+        'clbchartakunkeluar
         '
-        Me.CheckedListBox5.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox5.CheckOnClick = True
-        Me.CheckedListBox5.FormattingEnabled = True
-        Me.CheckedListBox5.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox5.Location = New System.Drawing.Point(192, 126)
-        Me.CheckedListBox5.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckedListBox5.Name = "CheckedListBox5"
-        Me.CheckedListBox5.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox5.Size = New System.Drawing.Size(134, 42)
-        Me.CheckedListBox5.TabIndex = 99
+        Me.clbchartakunkeluar.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbchartakunkeluar.CheckOnClick = True
+        Me.clbchartakunkeluar.FormattingEnabled = True
+        Me.clbchartakunkeluar.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clbchartakunkeluar.Location = New System.Drawing.Point(192, 126)
+        Me.clbchartakunkeluar.Margin = New System.Windows.Forms.Padding(4)
+        Me.clbchartakunkeluar.Name = "clbchartakunkeluar"
+        Me.clbchartakunkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbchartakunkeluar.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartakunkeluar.TabIndex = 99
         '
-        'CheckBox5
+        'cbchartakunmasuk
         '
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(180, 16)
-        Me.CheckBox5.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(149, 22)
-        Me.CheckBox5.TabIndex = 96
-        Me.CheckBox5.Text = "Chart Akun Masuk"
-        Me.CheckBox5.UseVisualStyleBackColor = True
+        Me.cbchartakunmasuk.AutoSize = True
+        Me.cbchartakunmasuk.Location = New System.Drawing.Point(180, 16)
+        Me.cbchartakunmasuk.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbchartakunmasuk.Name = "cbchartakunmasuk"
+        Me.cbchartakunmasuk.Size = New System.Drawing.Size(149, 22)
+        Me.cbchartakunmasuk.TabIndex = 96
+        Me.cbchartakunmasuk.Text = "Chart Akun Masuk"
+        Me.cbchartakunmasuk.UseVisualStyleBackColor = True
         '
-        'CheckedListBox6
+        'clbchartakunmasuk
         '
-        Me.CheckedListBox6.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox6.CheckOnClick = True
-        Me.CheckedListBox6.FormattingEnabled = True
-        Me.CheckedListBox6.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox6.Location = New System.Drawing.Point(192, 46)
-        Me.CheckedListBox6.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckedListBox6.Name = "CheckedListBox6"
-        Me.CheckedListBox6.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox6.Size = New System.Drawing.Size(134, 42)
-        Me.CheckedListBox6.TabIndex = 97
+        Me.clbchartakunmasuk.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbchartakunmasuk.CheckOnClick = True
+        Me.clbchartakunmasuk.FormattingEnabled = True
+        Me.clbchartakunmasuk.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clbchartakunmasuk.Location = New System.Drawing.Point(192, 46)
+        Me.clbchartakunmasuk.Margin = New System.Windows.Forms.Padding(4)
+        Me.clbchartakunmasuk.Name = "clbchartakunmasuk"
+        Me.clbchartakunmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbchartakunmasuk.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartakunmasuk.TabIndex = 97
         '
-        'CheckBox6
+        'cbchartakunkeluar
         '
-        Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(180, 96)
-        Me.CheckBox6.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(146, 22)
-        Me.CheckBox6.TabIndex = 98
-        Me.CheckBox6.Text = "Chart Akun Keluar"
-        Me.CheckBox6.UseVisualStyleBackColor = True
+        Me.cbchartakunkeluar.AutoSize = True
+        Me.cbchartakunkeluar.Location = New System.Drawing.Point(180, 96)
+        Me.cbchartakunkeluar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbchartakunkeluar.Name = "cbchartakunkeluar"
+        Me.cbchartakunkeluar.Size = New System.Drawing.Size(146, 22)
+        Me.cbchartakunkeluar.TabIndex = 98
+        Me.cbchartakunkeluar.Text = "Chart Akun Keluar"
+        Me.cbchartakunkeluar.UseVisualStyleBackColor = True
         '
-        'CheckBox3
+        'cbchartlunasutang
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(18, 176)
-        Me.CheckBox3.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(150, 22)
-        Me.CheckBox3.TabIndex = 60
-        Me.CheckBox3.Text = "Chart Lunas Utang"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.cbchartlunasutang.AutoSize = True
+        Me.cbchartlunasutang.Location = New System.Drawing.Point(18, 176)
+        Me.cbchartlunasutang.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbchartlunasutang.Name = "cbchartlunasutang"
+        Me.cbchartlunasutang.Size = New System.Drawing.Size(150, 22)
+        Me.cbchartlunasutang.TabIndex = 60
+        Me.cbchartlunasutang.Text = "Chart Lunas Utang"
+        Me.cbchartlunasutang.UseVisualStyleBackColor = True
         '
-        'CheckedListBox3
+        'clbchartlunasutang
         '
-        Me.CheckedListBox3.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox3.CheckOnClick = True
-        Me.CheckedListBox3.FormattingEnabled = True
-        Me.CheckedListBox3.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox3.Location = New System.Drawing.Point(29, 206)
-        Me.CheckedListBox3.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckedListBox3.Name = "CheckedListBox3"
-        Me.CheckedListBox3.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox3.Size = New System.Drawing.Size(134, 42)
-        Me.CheckedListBox3.TabIndex = 61
+        Me.clbchartlunasutang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbchartlunasutang.CheckOnClick = True
+        Me.clbchartlunasutang.FormattingEnabled = True
+        Me.clbchartlunasutang.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clbchartlunasutang.Location = New System.Drawing.Point(29, 206)
+        Me.clbchartlunasutang.Margin = New System.Windows.Forms.Padding(4)
+        Me.clbchartlunasutang.Name = "clbchartlunasutang"
+        Me.clbchartlunasutang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbchartlunasutang.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartlunasutang.TabIndex = 61
         '
-        'CheckBox4
+        'cbchartlunaspiutang
         '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(18, 256)
-        Me.CheckBox4.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(160, 22)
-        Me.CheckBox4.TabIndex = 62
-        Me.CheckBox4.Text = "Chart Lunas Piutang"
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.cbchartlunaspiutang.AutoSize = True
+        Me.cbchartlunaspiutang.Location = New System.Drawing.Point(18, 256)
+        Me.cbchartlunaspiutang.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbchartlunaspiutang.Name = "cbchartlunaspiutang"
+        Me.cbchartlunaspiutang.Size = New System.Drawing.Size(160, 22)
+        Me.cbchartlunaspiutang.TabIndex = 62
+        Me.cbchartlunaspiutang.Text = "Chart Lunas Piutang"
+        Me.cbchartlunaspiutang.UseVisualStyleBackColor = True
         '
-        'CheckedListBox4
+        'clbchartlunaspiutang
         '
-        Me.CheckedListBox4.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox4.CheckOnClick = True
-        Me.CheckedListBox4.FormattingEnabled = True
-        Me.CheckedListBox4.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox4.Location = New System.Drawing.Point(29, 286)
-        Me.CheckedListBox4.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckedListBox4.Name = "CheckedListBox4"
-        Me.CheckedListBox4.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox4.Size = New System.Drawing.Size(134, 42)
-        Me.CheckedListBox4.TabIndex = 63
+        Me.clbchartlunaspiutang.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbchartlunaspiutang.CheckOnClick = True
+        Me.clbchartlunaspiutang.FormattingEnabled = True
+        Me.clbchartlunaspiutang.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clbchartlunaspiutang.Location = New System.Drawing.Point(29, 286)
+        Me.clbchartlunaspiutang.Margin = New System.Windows.Forms.Padding(4)
+        Me.clbchartlunaspiutang.Name = "clbchartlunaspiutang"
+        Me.clbchartlunaspiutang.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbchartlunaspiutang.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartlunaspiutang.TabIndex = 63
         '
-        'CheckedListBox1
+        'clbchartpenjualan
         '
-        Me.CheckedListBox1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox1.CheckOnClick = True
-        Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox1.Location = New System.Drawing.Point(29, 126)
-        Me.CheckedListBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox1.Size = New System.Drawing.Size(134, 42)
-        Me.CheckedListBox1.TabIndex = 57
+        Me.clbchartpenjualan.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbchartpenjualan.CheckOnClick = True
+        Me.clbchartpenjualan.FormattingEnabled = True
+        Me.clbchartpenjualan.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clbchartpenjualan.Location = New System.Drawing.Point(29, 126)
+        Me.clbchartpenjualan.Margin = New System.Windows.Forms.Padding(4)
+        Me.clbchartpenjualan.Name = "clbchartpenjualan"
+        Me.clbchartpenjualan.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbchartpenjualan.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartpenjualan.TabIndex = 57
         '
-        'CheckBox1
+        'cbchartpenjualan
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(18, 96)
-        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(131, 22)
-        Me.CheckBox1.TabIndex = 56
-        Me.CheckBox1.Text = "Chart Penjualan"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.cbchartpenjualan.AutoSize = True
+        Me.cbchartpenjualan.Location = New System.Drawing.Point(18, 96)
+        Me.cbchartpenjualan.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbchartpenjualan.Name = "cbchartpenjualan"
+        Me.cbchartpenjualan.Size = New System.Drawing.Size(131, 22)
+        Me.cbchartpenjualan.TabIndex = 56
+        Me.cbchartpenjualan.Text = "Chart Penjualan"
+        Me.cbchartpenjualan.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'cbchartpembelian
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(18, 16)
-        Me.CheckBox2.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(136, 22)
-        Me.CheckBox2.TabIndex = 58
-        Me.CheckBox2.Text = "Chart Pembelian"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.cbchartpembelian.AutoSize = True
+        Me.cbchartpembelian.Location = New System.Drawing.Point(18, 16)
+        Me.cbchartpembelian.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbchartpembelian.Name = "cbchartpembelian"
+        Me.cbchartpembelian.Size = New System.Drawing.Size(136, 22)
+        Me.cbchartpembelian.TabIndex = 58
+        Me.cbchartpembelian.Text = "Chart Pembelian"
+        Me.cbchartpembelian.UseVisualStyleBackColor = True
         '
-        'CheckedListBox2
+        'clbchartpembelian
         '
-        Me.CheckedListBox2.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.CheckedListBox2.CheckOnClick = True
-        Me.CheckedListBox2.FormattingEnabled = True
-        Me.CheckedListBox2.Items.AddRange(New Object() {"Print", "Export"})
-        Me.CheckedListBox2.Location = New System.Drawing.Point(29, 46)
-        Me.CheckedListBox2.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckedListBox2.Name = "CheckedListBox2"
-        Me.CheckedListBox2.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.CheckedListBox2.Size = New System.Drawing.Size(134, 42)
-        Me.CheckedListBox2.TabIndex = 59
+        Me.clbchartpembelian.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clbchartpembelian.CheckOnClick = True
+        Me.clbchartpembelian.FormattingEnabled = True
+        Me.clbchartpembelian.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clbchartpembelian.Location = New System.Drawing.Point(29, 46)
+        Me.clbchartpembelian.Margin = New System.Windows.Forms.Padding(4)
+        Me.clbchartpembelian.Name = "clbchartpembelian"
+        Me.clbchartpembelian.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clbchartpembelian.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartpembelian.TabIndex = 59
+        '
+        'FeatureTab
+        '
+        Me.FeatureTab.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.FeatureTab.Controls.Add(Me.cbbarcodegenerator)
+        Me.FeatureTab.Controls.Add(Me.cbkalkulasiexpedisi)
+        Me.FeatureTab.Location = New System.Drawing.Point(4, 27)
+        Me.FeatureTab.Name = "FeatureTab"
+        Me.FeatureTab.Padding = New System.Windows.Forms.Padding(3)
+        Me.FeatureTab.Size = New System.Drawing.Size(1002, 344)
+        Me.FeatureTab.TabIndex = 6
+        Me.FeatureTab.Text = "Feature"
+        '
+        'cbbarcodegenerator
+        '
+        Me.cbbarcodegenerator.AutoSize = True
+        Me.cbbarcodegenerator.Location = New System.Drawing.Point(11, 48)
+        Me.cbbarcodegenerator.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbbarcodegenerator.Name = "cbbarcodegenerator"
+        Me.cbbarcodegenerator.Size = New System.Drawing.Size(154, 22)
+        Me.cbbarcodegenerator.TabIndex = 103
+        Me.cbbarcodegenerator.Text = "Barcode Generator"
+        Me.cbbarcodegenerator.UseVisualStyleBackColor = True
+        '
+        'cbkalkulasiexpedisi
+        '
+        Me.cbkalkulasiexpedisi.AutoSize = True
+        Me.cbkalkulasiexpedisi.Location = New System.Drawing.Point(11, 18)
+        Me.cbkalkulasiexpedisi.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbkalkulasiexpedisi.Name = "cbkalkulasiexpedisi"
+        Me.cbkalkulasiexpedisi.Size = New System.Drawing.Size(145, 22)
+        Me.cbkalkulasiexpedisi.TabIndex = 104
+        Me.cbkalkulasiexpedisi.Text = "Kalkulasi Expedisi"
+        Me.cbkalkulasiexpedisi.UseVisualStyleBackColor = True
         '
         'SettingTab
         '
         Me.SettingTab.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.SettingTab.Controls.Add(Me.CheckBox9)
-        Me.SettingTab.Controls.Add(Me.CheckBox10)
-        Me.SettingTab.Controls.Add(Me.CheckBox11)
-        Me.SettingTab.Controls.Add(Me.CheckBox12)
+        Me.SettingTab.Controls.Add(Me.cbbackupdatabase)
+        Me.SettingTab.Controls.Add(Me.cbpengaturan)
+        Me.SettingTab.Controls.Add(Me.cbprinter)
+        Me.SettingTab.Controls.Add(Me.cbinfoperusahaan)
         Me.SettingTab.Location = New System.Drawing.Point(4, 27)
         Me.SettingTab.Name = "SettingTab"
         Me.SettingTab.Padding = New System.Windows.Forms.Padding(3)
@@ -1846,49 +1880,49 @@ Partial Class fuser
         Me.SettingTab.TabIndex = 5
         Me.SettingTab.Text = "Setting"
         '
-        'CheckBox9
+        'cbbackupdatabase
         '
-        Me.CheckBox9.AutoSize = True
-        Me.CheckBox9.Location = New System.Drawing.Point(17, 77)
-        Me.CheckBox9.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox9.Name = "CheckBox9"
-        Me.CheckBox9.Size = New System.Drawing.Size(144, 22)
-        Me.CheckBox9.TabIndex = 104
-        Me.CheckBox9.Text = "Backup Database"
-        Me.CheckBox9.UseVisualStyleBackColor = True
+        Me.cbbackupdatabase.AutoSize = True
+        Me.cbbackupdatabase.Location = New System.Drawing.Point(17, 77)
+        Me.cbbackupdatabase.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbbackupdatabase.Name = "cbbackupdatabase"
+        Me.cbbackupdatabase.Size = New System.Drawing.Size(144, 22)
+        Me.cbbackupdatabase.TabIndex = 104
+        Me.cbbackupdatabase.Text = "Backup Database"
+        Me.cbbackupdatabase.UseVisualStyleBackColor = True
         '
-        'CheckBox10
+        'cbpengaturan
         '
-        Me.CheckBox10.AutoSize = True
-        Me.CheckBox10.Location = New System.Drawing.Point(18, 107)
-        Me.CheckBox10.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox10.Name = "CheckBox10"
-        Me.CheckBox10.Size = New System.Drawing.Size(102, 22)
-        Me.CheckBox10.TabIndex = 106
-        Me.CheckBox10.Text = "Pengaturan"
-        Me.CheckBox10.UseVisualStyleBackColor = True
+        Me.cbpengaturan.AutoSize = True
+        Me.cbpengaturan.Location = New System.Drawing.Point(18, 107)
+        Me.cbpengaturan.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbpengaturan.Name = "cbpengaturan"
+        Me.cbpengaturan.Size = New System.Drawing.Size(102, 22)
+        Me.cbpengaturan.TabIndex = 106
+        Me.cbpengaturan.Text = "Pengaturan"
+        Me.cbpengaturan.UseVisualStyleBackColor = True
         '
-        'CheckBox11
+        'cbprinter
         '
-        Me.CheckBox11.AutoSize = True
-        Me.CheckBox11.Location = New System.Drawing.Point(17, 47)
-        Me.CheckBox11.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox11.Name = "CheckBox11"
-        Me.CheckBox11.Size = New System.Drawing.Size(70, 22)
-        Me.CheckBox11.TabIndex = 100
-        Me.CheckBox11.Text = "Printer"
-        Me.CheckBox11.UseVisualStyleBackColor = True
+        Me.cbprinter.AutoSize = True
+        Me.cbprinter.Location = New System.Drawing.Point(17, 47)
+        Me.cbprinter.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbprinter.Name = "cbprinter"
+        Me.cbprinter.Size = New System.Drawing.Size(70, 22)
+        Me.cbprinter.TabIndex = 100
+        Me.cbprinter.Text = "Printer"
+        Me.cbprinter.UseVisualStyleBackColor = True
         '
-        'CheckBox12
+        'cbinfoperusahaan
         '
-        Me.CheckBox12.AutoSize = True
-        Me.CheckBox12.Location = New System.Drawing.Point(17, 17)
-        Me.CheckBox12.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox12.Name = "CheckBox12"
-        Me.CheckBox12.Size = New System.Drawing.Size(134, 22)
-        Me.CheckBox12.TabIndex = 102
-        Me.CheckBox12.Text = "Info Perusahaan"
-        Me.CheckBox12.UseVisualStyleBackColor = True
+        Me.cbinfoperusahaan.AutoSize = True
+        Me.cbinfoperusahaan.Location = New System.Drawing.Point(17, 17)
+        Me.cbinfoperusahaan.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbinfoperusahaan.Name = "cbinfoperusahaan"
+        Me.cbinfoperusahaan.Size = New System.Drawing.Size(134, 22)
+        Me.cbinfoperusahaan.TabIndex = 102
+        Me.cbinfoperusahaan.Text = "Info Perusahaan"
+        Me.cbinfoperusahaan.UseVisualStyleBackColor = True
         '
         'Label9
         '
@@ -1955,40 +1989,6 @@ Partial Class fuser
         Me.btnrefresh.TabIndex = 108
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
-        'FeatureTab
-        '
-        Me.FeatureTab.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.FeatureTab.Controls.Add(Me.CheckBox7)
-        Me.FeatureTab.Controls.Add(Me.CheckBox8)
-        Me.FeatureTab.Location = New System.Drawing.Point(4, 27)
-        Me.FeatureTab.Name = "FeatureTab"
-        Me.FeatureTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.FeatureTab.Size = New System.Drawing.Size(1002, 344)
-        Me.FeatureTab.TabIndex = 6
-        Me.FeatureTab.Text = "Feature"
-        '
-        'CheckBox7
-        '
-        Me.CheckBox7.AutoSize = True
-        Me.CheckBox7.Location = New System.Drawing.Point(11, 48)
-        Me.CheckBox7.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(154, 22)
-        Me.CheckBox7.TabIndex = 103
-        Me.CheckBox7.Text = "Barcode Generator"
-        Me.CheckBox7.UseVisualStyleBackColor = True
-        '
-        'CheckBox8
-        '
-        Me.CheckBox8.AutoSize = True
-        Me.CheckBox8.Location = New System.Drawing.Point(11, 18)
-        Me.CheckBox8.Margin = New System.Windows.Forms.Padding(4)
-        Me.CheckBox8.Name = "CheckBox8"
-        Me.CheckBox8.Size = New System.Drawing.Size(145, 22)
-        Me.CheckBox8.TabIndex = 104
-        Me.CheckBox8.Text = "Kalkulasi Expedisi"
-        Me.CheckBox8.UseVisualStyleBackColor = True
-        '
         'fuser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -2042,10 +2042,10 @@ Partial Class fuser
         Me.LaporanTab.PerformLayout()
         Me.ChartTab.ResumeLayout(False)
         Me.ChartTab.PerformLayout()
-        Me.SettingTab.ResumeLayout(False)
-        Me.SettingTab.PerformLayout()
         Me.FeatureTab.ResumeLayout(False)
         Me.FeatureTab.PerformLayout()
+        Me.SettingTab.ResumeLayout(False)
+        Me.SettingTab.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2178,24 +2178,24 @@ Partial Class fuser
     Friend WithEvents cblaprekapanakhir As CheckBox
     Friend WithEvents btnrefresh As Button
     Friend WithEvents ChartTab As TabPage
-    Friend WithEvents CheckedListBox1 As CheckedListBox
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents CheckedListBox2 As CheckedListBox
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents CheckedListBox3 As CheckedListBox
-    Friend WithEvents CheckBox4 As CheckBox
-    Friend WithEvents CheckedListBox4 As CheckedListBox
-    Friend WithEvents CheckedListBox5 As CheckedListBox
-    Friend WithEvents CheckBox5 As CheckBox
-    Friend WithEvents CheckedListBox6 As CheckedListBox
-    Friend WithEvents CheckBox6 As CheckBox
+    Friend WithEvents clbchartpenjualan As CheckedListBox
+    Friend WithEvents cbchartpenjualan As CheckBox
+    Friend WithEvents cbchartpembelian As CheckBox
+    Friend WithEvents clbchartpembelian As CheckedListBox
+    Friend WithEvents cbchartlunasutang As CheckBox
+    Friend WithEvents clbchartlunasutang As CheckedListBox
+    Friend WithEvents cbchartlunaspiutang As CheckBox
+    Friend WithEvents clbchartlunaspiutang As CheckedListBox
+    Friend WithEvents clbchartakunkeluar As CheckedListBox
+    Friend WithEvents cbchartakunmasuk As CheckBox
+    Friend WithEvents clbchartakunmasuk As CheckedListBox
+    Friend WithEvents cbchartakunkeluar As CheckBox
     Friend WithEvents SettingTab As TabPage
-    Friend WithEvents CheckBox9 As CheckBox
-    Friend WithEvents CheckBox10 As CheckBox
-    Friend WithEvents CheckBox11 As CheckBox
-    Friend WithEvents CheckBox12 As CheckBox
+    Friend WithEvents cbbackupdatabase As CheckBox
+    Friend WithEvents cbpengaturan As CheckBox
+    Friend WithEvents cbprinter As CheckBox
+    Friend WithEvents cbinfoperusahaan As CheckBox
     Friend WithEvents FeatureTab As TabPage
-    Friend WithEvents CheckBox7 As CheckBox
-    Friend WithEvents CheckBox8 As CheckBox
+    Friend WithEvents cbbarcodegenerator As CheckBox
+    Friend WithEvents cbkalkulasiexpedisi As CheckBox
 End Class

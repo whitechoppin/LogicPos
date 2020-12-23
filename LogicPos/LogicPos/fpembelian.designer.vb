@@ -253,6 +253,7 @@ Partial Class fpembelian
         '
         'txtkodebarang
         '
+        Me.txtkodebarang.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtkodebarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkodebarang.Location = New System.Drawing.Point(17, 300)
         Me.txtkodebarang.Margin = New System.Windows.Forms.Padding(4)

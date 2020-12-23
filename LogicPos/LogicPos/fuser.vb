@@ -25,6 +25,15 @@ Public Class fuser
     'laporan
     Dim ceklappricelist, ceklappembelian, ceklappenjualan, ceklappenjualanpajak, ceklapreturbeli, ceklapreturjual, ceklapbarangmasuk, ceklapbarangkeluar, ceklaptransferbarang, ceklapstokbarang, ceklaputang, ceklappiutang, ceklapakunmasuk, ceklapakunkeluar, ceklaptransferkas, ceklaptransaksikas, ceklapmodalbarang, ceklapmutasibarang, ceklappenyesuaianstok, ceklaplabarugi, ceklaprekapanakhir As Integer
     Dim akseslappricelist, akseslappembelian, akseslappenjualan, akseslappenjualanpajak, akseslapreturbeli, akseslapreturjual, akseslapbarangmasuk, akseslapbarangkeluar, akseslaptransferbarang, akseslapstokbarang, akseslaputang, akseslappiutang, akseslapakunmasuk, akseslapakunkeluar, akseslaptransferkas, akseslaptransaksikas, akseslapmodalbarang, akseslapmutasibarang, akseslappenyesuaianstok, akseslaplabarugi, akseslaprekapanakhir As Integer
+    'chart
+    Dim cekchartpembelian, cekchartpenjualan, cekchartpelunasanutang, cekchartpelunasanpiutang, cekchartakunmasuk, cekchartakunkeluar As Integer
+    Dim akseschartpembelian, akseschartpenjualan, akseschartpelunasanutang, akseschartpelunasanpiutang, akseschartakunmasuk, akseschartakunkeluar As Integer
+    'feature
+    Dim cekfeaturekalkulasi, cekfeaturebarcode As Integer
+    Dim aksesfeaturekalkulasi, aksesfeaturebarcode As Integer
+    'setting
+    Dim ceksettinginfoperusahaan, ceksettingprinter, ceksettingbackupdatabase, ceksettingpengaturan As Integer
+    Dim aksessettinginfoperusahaan, aksessettingprinter, aksessettingbackupdatabase, aksessettingpengaturan As Integer
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -157,8 +166,27 @@ Public Class fuser
         cblapmutasibarang.Checked = False
         cblappenyesuaianstok.Checked = False
         cblaplabarugi.Checked = False
-
         cblaprekapanakhir.Checked = False
+
+        'chart
+        cbchartpembelian.Checked = False
+        cbchartpenjualan.Checked = False
+        cbchartlunasutang.Checked = False
+        cbchartlunaspiutang.Checked = False
+        cbchartakunmasuk.Checked = False
+        cbchartakunkeluar.Checked = False
+
+        'feature
+        cbkalkulasiexpedisi.Checked = False
+        cbbarcodegenerator.Checked = False
+
+        'setting
+        cbinfoperusahaan.Checked = False
+        cbprinter.Checked = False
+        cbbackupdatabase.Checked = False
+        cbpengaturan.Checked = False
+
+
 
         For id As Integer = 0 To 2
             'master
@@ -190,8 +218,9 @@ Public Class fuser
             clbakunmasuk.SetItemChecked(id, False)
             clbakunkeluar.SetItemChecked(id, False)
 
-            'laporan
+            'laporan dan chart
             If id <= 1 Then
+                'laporan
                 clblappricelist.SetItemChecked(id, False)
                 clblappembelian.SetItemChecked(id, False)
                 clblappenjualan.SetItemChecked(id, False)
@@ -218,6 +247,15 @@ Public Class fuser
                 clblaplabarugi.SetItemChecked(id, False)
 
                 clblaprekapanakhir.SetItemChecked(id, False)
+
+                'chart
+                clbchartpenjualan.SetItemChecked(id, False)
+                clbchartpembelian.SetItemChecked(id, False)
+                clbchartlunasutang.SetItemChecked(id, False)
+                clbchartlunaspiutang.SetItemChecked(id, False)
+                clbchartakunmasuk.SetItemChecked(id, False)
+                clbchartakunkeluar.SetItemChecked(id, False)
+
             End If
         Next
 
@@ -276,8 +314,27 @@ Public Class fuser
         cblapmutasibarang.Enabled = False
         cblappenyesuaianstok.Enabled = False
         cblaplabarugi.Enabled = False
-
         cblaprekapanakhir.Enabled = False
+
+        'chart
+        cbchartpembelian.Enabled = False
+        cbchartpenjualan.Enabled = False
+        cbchartlunasutang.Enabled = False
+        cbchartlunaspiutang.Enabled = False
+        cbchartakunmasuk.Enabled = False
+        cbchartakunkeluar.Enabled = False
+
+        'feature
+        cbkalkulasiexpedisi.Enabled = False
+        cbbarcodegenerator.Enabled = False
+
+        'setting
+        cbinfoperusahaan.Enabled = False
+        cbprinter.Enabled = False
+        cbbackupdatabase.Enabled = False
+        cbpengaturan.Enabled = False
+
+        '=======================================================================
 
         'combo box list
         clbmasterbarang.Enabled = False
@@ -333,8 +390,15 @@ Public Class fuser
         clblapmutasibarang.Enabled = False
         clblappenyesuaianstok.Enabled = False
         clblaplabarugi.Enabled = False
-
         clblaprekapanakhir.Enabled = False
+
+        'chart
+        clbchartpenjualan.Enabled = False
+        clbchartpembelian.Enabled = False
+        clbchartlunasutang.Enabled = False
+        clbchartlunaspiutang.Enabled = False
+        clbchartakunmasuk.Enabled = False
+        clbchartakunkeluar.Enabled = False
 
         txtkode.Enabled = False
         txtnama.Enabled = False
@@ -477,8 +541,25 @@ Public Class fuser
         cblapmutasibarang.Enabled = True
         cblappenyesuaianstok.Enabled = True
         cblaplabarugi.Enabled = True
-
         cblaprekapanakhir.Enabled = True
+
+        'chart
+        cbchartpembelian.Enabled = True
+        cbchartpenjualan.Enabled = True
+        cbchartlunasutang.Enabled = True
+        cbchartlunaspiutang.Enabled = True
+        cbchartakunmasuk.Enabled = True
+        cbchartakunkeluar.Enabled = True
+
+        'feature
+        cbkalkulasiexpedisi.Enabled = True
+        cbbarcodegenerator.Enabled = True
+
+        'setting
+        cbinfoperusahaan.Enabled = True
+        cbprinter.Enabled = True
+        cbbackupdatabase.Enabled = True
+        cbpengaturan.Enabled = True
 
         'batas akses user
 
@@ -554,6 +635,24 @@ Public Class fuser
         cblapmutasibarang.Enabled = True
         cblappenyesuaianstok.Enabled = True
         cblaplabarugi.Enabled = True
+
+        'chart
+        cbchartpembelian.Enabled = True
+        cbchartpenjualan.Enabled = True
+        cbchartlunasutang.Enabled = True
+        cbchartlunaspiutang.Enabled = True
+        cbchartakunmasuk.Enabled = True
+        cbchartakunkeluar.Enabled = True
+
+        'feature
+        cbkalkulasiexpedisi.Enabled = True
+        cbbarcodegenerator.Enabled = True
+
+        'setting
+        cbinfoperusahaan.Enabled = True
+        cbprinter.Enabled = True
+        cbbackupdatabase.Enabled = True
+        cbpengaturan.Enabled = True
 
         cblaprekapanakhir.Enabled = True
 
@@ -829,13 +928,50 @@ Public Class fuser
             clblaplabarugi.Enabled = False
         End If
 
-        '==========================================
-
         If akseslaprekapanakhir > 0 Then
             clblaprekapanakhir.Enabled = True
         Else
             clblaprekapanakhir.Enabled = False
         End If
+        '==========================================
+
+        If akseschartpembelian > 0 Then
+            clbchartpembelian.Enabled = True
+        Else
+            clbchartpembelian.Enabled = False
+        End If
+
+        If akseschartpenjualan > 0 Then
+            clbchartpenjualan.Enabled = True
+        Else
+            clbchartpenjualan.Enabled = False
+        End If
+
+        If akseschartpelunasanutang > 0 Then
+            clbchartlunasutang.Enabled = True
+        Else
+            clbchartlunasutang.Enabled = False
+        End If
+
+        If akseschartpelunasanpiutang > 0 Then
+            clbchartlunaspiutang.Enabled = True
+        Else
+            clbchartlunaspiutang.Enabled = False
+        End If
+
+        If akseschartakunmasuk > 0 Then
+            clbchartakunmasuk.Enabled = True
+        Else
+            clbchartakunmasuk.Enabled = False
+        End If
+
+        If akseschartakunkeluar > 0 Then
+            clbchartakunkeluar.Enabled = True
+        Else
+            clbchartakunkeluar.Enabled = False
+        End If
+
+        '==========================================
 
         'batas akses user
 
@@ -955,8 +1091,25 @@ Public Class fuser
         ceklapmutasibarang = 0
         ceklappenyesuaianstok = 0
         ceklaplabarugi = 0
-
         ceklaprekapanakhir = 0
+
+        'chart
+        cekchartpembelian = 0
+        cekchartpenjualan = 0
+        cekchartpelunasanutang = 0
+        cekchartpelunasanpiutang = 0
+        cekchartakunmasuk = 0
+        cekchartakunkeluar = 0
+
+        'feature
+        cekfeaturekalkulasi = 0
+        cekfeaturebarcode = 0
+
+        'setting
+        ceksettinginfoperusahaan = 0
+        ceksettingprinter = 0
+        ceksettingbackupdatabase = 0
+        ceksettingpengaturan = 0
 
         'We will run through each indice
 
@@ -1501,8 +1654,111 @@ Public Class fuser
                     ceklaprekapanakhir = ceklaprekapanakhir + 0
                 End If
 
+                '=========================================================================
+
+                'chartpembelian
+                If clbchartpembelian.GetItemChecked(i) Then
+                    If clbchartpembelian.Items(i).Equals("Print") Then
+                        cekchartpembelian = cekchartpembelian + 1
+                    ElseIf clbchartpembelian.Items(i).Equals("Export") Then
+                        cekchartpembelian = cekchartpembelian + 3
+                    End If
+                Else
+                    cekchartpembelian = cekchartpembelian + 0
+                End If
+
+                'chartpenjualan
+                If clbchartpenjualan.GetItemChecked(i) Then
+                    If clbchartpenjualan.Items(i).Equals("Print") Then
+                        cekchartpenjualan = cekchartpenjualan + 1
+                    ElseIf clbchartpenjualan.Items(i).Equals("Export") Then
+                        cekchartpenjualan = cekchartpenjualan + 3
+                    End If
+                Else
+                    cekchartpenjualan = cekchartpenjualan + 0
+                End If
+
+                'chartpelunasanutang
+                If clbchartlunasutang.GetItemChecked(i) Then
+                    If clbchartlunasutang.Items(i).Equals("Print") Then
+                        cekchartpelunasanutang = cekchartpelunasanutang + 1
+                    ElseIf clbchartlunasutang.Items(i).Equals("Export") Then
+                        cekchartpelunasanutang = cekchartpelunasanutang + 3
+                    End If
+                Else
+                    cekchartpelunasanutang = cekchartpelunasanutang + 0
+                End If
+
+                'chartpelunasanpiutang
+                If clbchartlunaspiutang.GetItemChecked(i) Then
+                    If clbchartlunaspiutang.Items(i).Equals("Print") Then
+                        cekchartpelunasanpiutang = cekchartpelunasanpiutang + 1
+                    ElseIf clbchartlunaspiutang.Items(i).Equals("Export") Then
+                        cekchartpelunasanpiutang = cekchartpelunasanpiutang + 3
+                    End If
+                Else
+                    cekchartpelunasanpiutang = cekchartpelunasanpiutang + 0
+                End If
+
+                'chartakunmasuk
+                If clbchartakunmasuk.GetItemChecked(i) Then
+                    If clbchartakunmasuk.Items(i).Equals("Print") Then
+                        cekchartakunmasuk = cekchartakunmasuk + 1
+                    ElseIf clbchartakunmasuk.Items(i).Equals("Export") Then
+                        cekchartakunmasuk = cekchartakunmasuk + 3
+                    End If
+                Else
+                    cekchartakunmasuk = cekchartakunmasuk + 0
+                End If
+
+                'chartakunkeluar
+                If clbchartakunkeluar.GetItemChecked(i) Then
+                    If clbchartakunkeluar.Items(i).Equals("Print") Then
+                        cekchartakunkeluar = cekchartakunkeluar + 1
+                    ElseIf clbchartakunkeluar.Items(i).Equals("Export") Then
+                        cekchartakunkeluar = cekchartakunkeluar + 3
+                    End If
+                Else
+                    cekchartakunkeluar = cekchartakunkeluar + 0
+                End If
             End If
         Next
+
+        '===========================================================================
+        If cbkalkulasiexpedisi.Checked = True Then
+            cekfeaturekalkulasi = 1
+        Else
+            cekfeaturekalkulasi = 0
+        End If
+
+        If cbbarcodegenerator.Checked = True Then
+            cekfeaturebarcode = 1
+        Else
+            cekfeaturebarcode = 0
+        End If
+        '============================================================================
+        If cbinfoperusahaan.Checked = True Then
+            ceksettinginfoperusahaan = 1
+        Else
+            ceksettinginfoperusahaan = 0
+        End If
+
+        If cbprinter.Checked = True Then
+            ceksettingprinter = 1
+        Else
+            ceksettingprinter = 0
+        End If
+        If cbbackupdatabase.Checked = True Then
+            ceksettingbackupdatabase = 1
+        Else
+            ceksettingbackupdatabase = 0
+        End If
+
+        If cbpengaturan.Checked = True Then
+            ceksettingpengaturan = 1
+        Else
+            ceksettingpengaturan = 0
+        End If
     End Sub
     Sub simpan()
         Call koneksii()
@@ -1524,6 +1780,9 @@ Public Class fuser
                     lap_transfer_barang, lap_stok_barang, lap_utang, lap_piutang, 
                     lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transaksi_kas, 
                     lap_modal_barang, lap_mutasi_barang, lap_penyesuaian_stok, lap_laba_rugi, lap_rekapan_akhir,
+                    chart_pembelian, chart_penjualan, chart_lunas_utang, chart_lunas_piutang, chart_kas_masuk, chart_kas_keluar,
+                    feature_kalkulasi_expedisi, feature_barcode_generator,
+                    setting_info_perusahaan, setting_printer, setting_backup_database, setting_pengaturan,
                     created_by, updated_by, date_created, last_updated) 
                     VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtpassword.Text & "', '" & cmbjabatan.Text & "', '" & txtemail.Text & "', '" & txttelp.Text & "','" & txtalamat.Text & "','" & txtketerangan.Text & "','" & cekauthuser & "','" & maxprint & "',
                     '" & cekmasterbarang & "','" & cekmasterkategori & "','" & cekmastergudang & "','" & cekmasterpelanggan & "','" & cekmastersupplier & "','" & cekmasteruser & "','" & cekmasterkas & "','" & cekmasterpricelist & "','" & cekmasterreksupp & "','" & cekmasterrekplng & "',
@@ -1534,6 +1793,9 @@ Public Class fuser
                     '" & ceklaptransferbarang & "','" & ceklapstokbarang & "','" & ceklaputang & "','" & ceklappiutang & "',
                     '" & ceklapakunmasuk & "','" & ceklapakunkeluar & "','" & ceklaptransferkas & "','" & ceklaptransaksikas & "',
                     '" & ceklapmodalbarang & "','" & ceklapmutasibarang & "','" & ceklappenyesuaianstok & "','" & ceklaplabarugi & "','" & ceklaprekapanakhir & "',
+                    '" & cekchartpembelian & "','" & cekchartpenjualan & "','" & cekchartpelunasanutang & "','" & cekchartpelunasanpiutang & "','" & cekchartakunmasuk & "','" & cekchartakunkeluar & "',
+                    '" & cekfeaturekalkulasi & "','" & cekfeaturebarcode & "',
+                    '" & ceksettinginfoperusahaan & "','" & ceksettingprinter & "','" & ceksettingbackupdatabase & "','" & ceksettingpengaturan & "',
                     '" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
@@ -1594,6 +1856,7 @@ Public Class fuser
         End If
     End Sub
 
+
     Sub edit()
         If txtkode.Text.Equals(kodeuser) Then
             Call perbaharui()
@@ -1618,6 +1881,9 @@ Public Class fuser
                 pembelian=? ,penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?, penyesuaian_stok=?,
                 lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?, 
                 lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_penjualan_pajak=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_transfer_barang=?, lap_stok_barang=?, lap_utang=?, lap_piutang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transaksi_kas=?, lap_modal_barang=?, lap_mutasi_barang=?, lap_penyesuaian_stok=?, lap_laba_rugi=?, lap_rekapan_akhir=?,
+                chart_pembelian=?, chart_penjualan=?, chart_lunas_utang=?, chart_lunas_piutang=?, chart_kas_masuk=?, chart_kas_keluar=?,
+                feature_kalkulasi_expedisi=?, feature_barcode_generator=?,
+                setting_info_perusahaan=?, setting_printer=?, setting_backup_database=?, setting_pengaturan=?,
                 updated_by=?, last_updated=? WHERE id='" & iduser & "'"
 
             cmmd = New OdbcCommand(sql, cnn)
@@ -1683,8 +1949,23 @@ Public Class fuser
             cmmd.Parameters.AddWithValue("@lap_mutasi_barang", ceklapmutasibarang)
             cmmd.Parameters.AddWithValue("@lap_penyesuaian_stok", ceklappenyesuaianstok)
             cmmd.Parameters.AddWithValue("@lap_laba_rugi", ceklaplabarugi)
-
             cmmd.Parameters.AddWithValue("@lap_rekapan_akhir", ceklaprekapanakhir)
+            'chart
+            cmmd.Parameters.AddWithValue("@chart_pembelian", cekchartpembelian)
+            cmmd.Parameters.AddWithValue("@chart_penjualan", cekchartpenjualan)
+            cmmd.Parameters.AddWithValue("@chart_lunas_utang", cekchartpelunasanutang)
+            cmmd.Parameters.AddWithValue("@chart_lunas_piutang", cekchartpelunasanpiutang)
+            cmmd.Parameters.AddWithValue("@chart_kas_masuk", cekchartakunmasuk)
+            cmmd.Parameters.AddWithValue("@chart_kas_keluar", cekchartakunkeluar)
+            'feature
+            cmmd.Parameters.AddWithValue("@feature_kalkulasi_expedisi", cekfeaturekalkulasi)
+            cmmd.Parameters.AddWithValue("@feature_barcode_generator", cekfeaturebarcode)
+            'setting
+            cmmd.Parameters.AddWithValue("@setting_info_perusahaan", ceksettinginfoperusahaan)
+            cmmd.Parameters.AddWithValue("@setting_printer", ceksettingprinter)
+            cmmd.Parameters.AddWithValue("@setting_backup_database", ceksettingbackupdatabase)
+            cmmd.Parameters.AddWithValue("@setting_pengaturan", ceksettingpengaturan)
+
             ' end akses
             cmmd.Parameters.AddWithValue("@updated_by", fmenu.kodeuser.Text)
             cmmd.Parameters.AddWithValue("@last_updated", Date.Now)
@@ -1714,7 +1995,7 @@ Public Class fuser
                     sql = "DELETE FROM tb_user WHERE id='" & iduser & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader
-                    MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show(txtnama.Text & " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     Call historysave("Menghapus Data User kode " + txtkode.Text, txtkode.Text, namaform)
 
@@ -1817,8 +2098,22 @@ Public Class fuser
             akseslapmutasibarang = Val(dr("lap_mutasi_barang"))
             akseslappenyesuaianstok = Val(dr("lap_penyesuaian_stok"))
             akseslaplabarugi = Val(dr("lap_laba_rugi"))
-
             akseslaprekapanakhir = Val(dr("lap_rekapan_akhir"))
+
+            akseschartpembelian = dr("chart_pembelian")
+            akseschartpenjualan = dr("chart_Penjualan")
+            akseschartpelunasanutang = dr("chart_lunas_utang")
+            akseschartpelunasanpiutang = dr("chart_lunas_piutang")
+            akseschartakunmasuk = dr("chart_kas_masuk")
+            akseschartakunkeluar = dr("chart_kas_keluar")
+
+            aksesfeaturekalkulasi = dr("feature_kalkulasi_expedisi")
+            aksesfeaturebarcode = dr("feature_barcode_generator")
+
+            aksessettinginfoperusahaan = dr("setting_info_perusahaan")
+            aksessettingprinter = dr("setting_printer")
+            aksessettingbackupdatabase = dr("setting_backup_database")
+            aksessettingpengaturan = dr("setting_pengaturan")
 
             Select Case aksesauthuser
                 Case 0
@@ -3229,6 +3524,172 @@ Public Class fuser
                     clblaprekapanakhir.SetItemChecked(1, True)
             End Select
 
+            '=============================================================================
+
+            Select Case akseschartpembelian
+                Case 0
+                    cbchartpembelian.Checked = False
+                    clbchartpembelian.SetItemChecked(0, False)
+                    clbchartpembelian.SetItemChecked(1, False)
+                Case 1
+                    cbchartpembelian.Checked = True
+                    clbchartpembelian.SetItemChecked(0, True)
+                    clbchartpembelian.SetItemChecked(1, False)
+                Case 3
+                    cbchartpembelian.Checked = True
+                    clbchartpembelian.SetItemChecked(0, False)
+                    clbchartpembelian.SetItemChecked(1, True)
+                Case 4
+                    cbchartpembelian.Checked = True
+                    clbchartpembelian.SetItemChecked(0, True)
+                    clbchartpembelian.SetItemChecked(1, True)
+            End Select
+
+            Select Case akseschartpenjualan
+                Case 0
+                    cbchartpenjualan.Checked = False
+                    clbchartpenjualan.SetItemChecked(0, False)
+                    clbchartpenjualan.SetItemChecked(1, False)
+                Case 1
+                    cbchartpenjualan.Checked = True
+                    clbchartpenjualan.SetItemChecked(0, True)
+                    clbchartpenjualan.SetItemChecked(1, False)
+                Case 3
+                    cbchartpenjualan.Checked = True
+                    clbchartpenjualan.SetItemChecked(0, False)
+                    clbchartpenjualan.SetItemChecked(1, True)
+                Case 4
+                    cbchartpenjualan.Checked = True
+                    clbchartpenjualan.SetItemChecked(0, True)
+                    clbchartpenjualan.SetItemChecked(1, True)
+            End Select
+
+            Select Case akseschartpelunasanutang
+                Case 0
+                    cbchartlunasutang.Checked = False
+                    clbchartlunasutang.SetItemChecked(0, False)
+                    clbchartlunasutang.SetItemChecked(1, False)
+                Case 1
+                    cbchartlunasutang.Checked = True
+                    clbchartlunasutang.SetItemChecked(0, True)
+                    clbchartlunasutang.SetItemChecked(1, False)
+                Case 3
+                    cbchartlunasutang.Checked = True
+                    clbchartlunasutang.SetItemChecked(0, False)
+                    clbchartlunasutang.SetItemChecked(1, True)
+                Case 4
+                    cbchartlunasutang.Checked = True
+                    clbchartlunasutang.SetItemChecked(0, True)
+                    clbchartlunasutang.SetItemChecked(1, True)
+            End Select
+
+            Select Case akseschartpelunasanpiutang
+                Case 0
+                    cbchartlunaspiutang.Checked = False
+                    clbchartlunaspiutang.SetItemChecked(0, False)
+                    clbchartlunaspiutang.SetItemChecked(1, False)
+                Case 1
+                    cbchartlunaspiutang.Checked = True
+                    clbchartlunaspiutang.SetItemChecked(0, True)
+                    clbchartlunaspiutang.SetItemChecked(1, False)
+                Case 3
+                    cbchartlunaspiutang.Checked = True
+                    clbchartlunaspiutang.SetItemChecked(0, False)
+                    clbchartlunaspiutang.SetItemChecked(1, True)
+                Case 4
+                    cbchartlunaspiutang.Checked = True
+                    clbchartlunaspiutang.SetItemChecked(0, True)
+                    clbchartlunaspiutang.SetItemChecked(1, True)
+            End Select
+
+            Select Case akseschartakunmasuk
+                Case 0
+                    cbchartakunmasuk.Checked = False
+                    clbchartakunmasuk.SetItemChecked(0, False)
+                    clbchartakunmasuk.SetItemChecked(1, False)
+                Case 1
+                    cbchartakunmasuk.Checked = True
+                    clbchartakunmasuk.SetItemChecked(0, True)
+                    clbchartakunmasuk.SetItemChecked(1, False)
+                Case 3
+                    cbchartakunmasuk.Checked = True
+                    clbchartakunmasuk.SetItemChecked(0, False)
+                    clbchartakunmasuk.SetItemChecked(1, True)
+                Case 4
+                    cbchartakunmasuk.Checked = True
+                    clbchartakunmasuk.SetItemChecked(0, True)
+                    clbchartakunmasuk.SetItemChecked(1, True)
+            End Select
+
+            Select Case akseschartakunkeluar
+                Case 0
+                    cbchartakunkeluar.Checked = False
+                    clbchartakunkeluar.SetItemChecked(0, False)
+                    clbchartakunkeluar.SetItemChecked(1, False)
+                Case 1
+                    cbchartakunkeluar.Checked = True
+                    clbchartakunkeluar.SetItemChecked(0, True)
+                    clbchartakunkeluar.SetItemChecked(1, False)
+                Case 3
+                    cbchartakunkeluar.Checked = True
+                    clbchartakunkeluar.SetItemChecked(0, False)
+                    clbchartakunkeluar.SetItemChecked(1, True)
+                Case 4
+                    cbchartakunkeluar.Checked = True
+                    clbchartakunkeluar.SetItemChecked(0, True)
+                    clbchartakunkeluar.SetItemChecked(1, True)
+            End Select
+
+            '=============================================================================
+
+            Select Case aksesfeaturekalkulasi
+                Case 0
+                    cbkalkulasiexpedisi.Checked = False
+                Case 1
+                    cbkalkulasiexpedisi.Checked = True
+            End Select
+
+            Select Case aksesfeaturebarcode
+                Case 0
+                    cbbarcodegenerator.Checked = False
+                Case 1
+                    cbbarcodegenerator.Checked = True
+            End Select
+
+            '=============================================================================
+
+            Select Case aksessettinginfoperusahaan
+                Case 0
+                    cbinfoperusahaan.Checked = False
+                Case 1
+                    cbinfoperusahaan.Checked = True
+            End Select
+
+
+            Select Case aksessettingprinter
+                Case 0
+                    cbprinter.Checked = False
+                Case 1
+                    cbprinter.Checked = True
+            End Select
+
+            Select Case aksessettingbackupdatabase
+                Case 0
+                    cbbackupdatabase.Checked = False
+                Case 1
+                    cbbackupdatabase.Checked = True
+            End Select
+
+
+            Select Case aksessettingpengaturan
+                Case 0
+                    cbpengaturan.Checked = False
+                Case 1
+                    cbpengaturan.Checked = True
+            End Select
+
+            '=============================================================================
+
             '==batas case==
 
             'master
@@ -3285,8 +3746,15 @@ Public Class fuser
             clblapmutasibarang.Enabled = False
             clblappenyesuaianstok.Enabled = False
             clblaplabarugi.Enabled = False
-
             clblaprekapanakhir.Enabled = False
+
+            'chart
+            clbchartpenjualan.Enabled = False
+            clbchartpembelian.Enabled = False
+            clbchartlunasutang.Enabled = False
+            clbchartlunaspiutang.Enabled = False
+            clbchartakunmasuk.Enabled = False
+            clbchartakunkeluar.Enabled = False
             'end
 
             btnedit.Enabled = True
@@ -3378,10 +3846,6 @@ Public Class fuser
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
         Call isitabel()
-    End Sub
-
-    Private Sub txtemail_TextChanged(sender As Object, e As EventArgs) Handles txtemail.TextChanged
-
     End Sub
 
     Function EmailAddressCheck(ByVal emailAddress As String) As Boolean
@@ -3937,8 +4401,6 @@ Public Class fuser
         End If
     End Sub
 
-    '======================================================================================================================================
-
     Private Sub cblaprekapanakhir_CheckedChanged(sender As Object, e As EventArgs) Handles cblaprekapanakhir.CheckedChanged
         If cblaprekapanakhir.Checked = True Then
             clblaprekapanakhir.Enabled = True
@@ -3949,6 +4411,92 @@ Public Class fuser
             clblaprekapanakhir.Enabled = False
             For id As Integer = 0 To clblaprekapanakhir.Items.Count - 1
                 Me.clblaprekapanakhir.SetItemChecked(id, False)
+            Next
+        End If
+    End Sub
+
+    '======================================================================================================================================
+
+    Private Sub cbchartpembelian_CheckedChanged(sender As Object, e As EventArgs) Handles cbchartpembelian.CheckedChanged
+        If cbchartpembelian.Checked = True Then
+            clbchartpembelian.Enabled = True
+            For id As Integer = 0 To clbchartpembelian.Items.Count - 1
+                Me.clbchartpembelian.SetItemChecked(id, True)
+            Next
+        ElseIf cbchartpembelian.Checked = False Then
+            clbchartpembelian.Enabled = False
+            For id As Integer = 0 To clbchartpembelian.Items.Count - 1
+                Me.clbchartpembelian.SetItemChecked(id, False)
+            Next
+        End If
+    End Sub
+
+    Private Sub cbchartpenjualan_CheckedChanged(sender As Object, e As EventArgs) Handles cbchartpenjualan.CheckedChanged
+        If cbchartpenjualan.Checked = True Then
+            clbchartpenjualan.Enabled = True
+            For id As Integer = 0 To clbchartpenjualan.Items.Count - 1
+                Me.clbchartpenjualan.SetItemChecked(id, True)
+            Next
+        ElseIf cbchartpenjualan.Checked = False Then
+            clbchartpenjualan.Enabled = False
+            For id As Integer = 0 To clbchartpenjualan.Items.Count - 1
+                Me.clbchartpenjualan.SetItemChecked(id, False)
+            Next
+        End If
+    End Sub
+
+    Private Sub cbchartlunasutang_CheckedChanged(sender As Object, e As EventArgs) Handles cbchartlunasutang.CheckedChanged
+        If cbchartlunasutang.Checked = True Then
+            clbchartlunasutang.Enabled = True
+            For id As Integer = 0 To clbchartlunasutang.Items.Count - 1
+                Me.clbchartlunasutang.SetItemChecked(id, True)
+            Next
+        ElseIf cbchartlunasutang.Checked = False Then
+            clbchartlunasutang.Enabled = False
+            For id As Integer = 0 To clbchartlunasutang.Items.Count - 1
+                Me.clbchartlunasutang.SetItemChecked(id, False)
+            Next
+        End If
+    End Sub
+
+    Private Sub cbchartlunaspiutang_CheckedChanged(sender As Object, e As EventArgs) Handles cbchartlunaspiutang.CheckedChanged
+        If cbchartlunaspiutang.Checked = True Then
+            clbchartlunaspiutang.Enabled = True
+            For id As Integer = 0 To clbchartlunaspiutang.Items.Count - 1
+                Me.clbchartlunaspiutang.SetItemChecked(id, True)
+            Next
+        ElseIf cbchartlunaspiutang.Checked = False Then
+            clbchartlunaspiutang.Enabled = False
+            For id As Integer = 0 To clbchartlunaspiutang.Items.Count - 1
+                Me.clbchartlunaspiutang.SetItemChecked(id, False)
+            Next
+        End If
+    End Sub
+
+    Private Sub cbchartakunmasuk_CheckedChanged(sender As Object, e As EventArgs) Handles cbchartakunmasuk.CheckedChanged
+        If cbchartakunmasuk.Checked = True Then
+            clbchartakunmasuk.Enabled = True
+            For id As Integer = 0 To clbchartakunmasuk.Items.Count - 1
+                Me.clbchartakunmasuk.SetItemChecked(id, True)
+            Next
+        ElseIf cbchartakunmasuk.Checked = False Then
+            clbchartakunmasuk.Enabled = False
+            For id As Integer = 0 To clbchartakunmasuk.Items.Count - 1
+                Me.clbchartakunmasuk.SetItemChecked(id, False)
+            Next
+        End If
+    End Sub
+
+    Private Sub cbchartakunkeluar_CheckedChanged(sender As Object, e As EventArgs) Handles cbchartakunkeluar.CheckedChanged
+        If cbchartakunkeluar.Checked = True Then
+            clbchartakunkeluar.Enabled = True
+            For id As Integer = 0 To clbchartakunkeluar.Items.Count - 1
+                Me.clbchartakunkeluar.SetItemChecked(id, True)
+            Next
+        ElseIf cbchartakunkeluar.Checked = False Then
+            clbchartakunkeluar.Enabled = False
+            For id As Integer = 0 To clbchartakunkeluar.Items.Count - 1
+                Me.clbchartakunkeluar.SetItemChecked(id, False)
             Next
         End If
     End Sub
@@ -4753,6 +5301,114 @@ Public Class fuser
         If Counter.Equals(0) Then
             clblaprekapanakhir.Enabled = False
             cblaprekapanakhir.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbchartpembelian_MouseDown(sender As Object, e As MouseEventArgs) Handles clbchartpembelian.MouseDown
+        Dim Index As Integer = clbchartpembelian.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbchartpembelian.SetItemChecked(Index, Not clbchartpembelian.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbchartpembelian.Items.Count - 1
+            If clbchartpembelian.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbchartpembelian.Enabled = False
+            cbchartpembelian.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbchartpenjualan_MouseDown(sender As Object, e As MouseEventArgs) Handles clbchartpenjualan.MouseDown
+        Dim Index As Integer = clbchartpenjualan.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbchartpenjualan.SetItemChecked(Index, Not clbchartpenjualan.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbchartpenjualan.Items.Count - 1
+            If clbchartpenjualan.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbchartpenjualan.Enabled = False
+            cbchartpenjualan.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbchartlunasutang_MouseDown(sender As Object, e As MouseEventArgs) Handles clbchartlunasutang.MouseDown
+        Dim Index As Integer = clbchartlunasutang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbchartlunasutang.SetItemChecked(Index, Not clbchartlunasutang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbchartlunasutang.Items.Count - 1
+            If clbchartlunasutang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbchartlunasutang.Enabled = False
+            cbchartlunasutang.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbchartlunaspiutang_MouseDown(sender As Object, e As MouseEventArgs) Handles clbchartlunaspiutang.MouseDown
+        Dim Index As Integer = clbchartlunaspiutang.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbchartlunaspiutang.SetItemChecked(Index, Not clbchartlunaspiutang.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbchartlunaspiutang.Items.Count - 1
+            If clbchartlunaspiutang.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbchartlunaspiutang.Enabled = False
+            cbchartlunaspiutang.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbchartakunmasuk_MouseDown(sender As Object, e As MouseEventArgs) Handles clbchartakunmasuk.MouseDown
+        Dim Index As Integer = clbchartakunmasuk.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbchartakunmasuk.SetItemChecked(Index, Not clbchartakunmasuk.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbchartakunmasuk.Items.Count - 1
+            If clbchartakunmasuk.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbchartakunmasuk.Enabled = False
+            cbchartakunmasuk.Checked = False
+        End If
+    End Sub
+
+    Private Sub clbchartakunkeluar_MouseDown(sender As Object, e As MouseEventArgs) Handles clbchartakunkeluar.MouseDown
+        Dim Index As Integer = clbchartakunkeluar.IndexFromPoint(e.Location)
+        Dim Counter As Integer = 0
+
+        clbchartakunkeluar.SetItemChecked(Index, Not clbchartakunkeluar.GetItemChecked(Index))
+
+        For id As Integer = 0 To clbchartakunkeluar.Items.Count - 1
+            If clbchartakunkeluar.GetItemChecked(id) = True Then
+                Counter = Counter + 1
+            End If
+        Next
+
+        If Counter.Equals(0) Then
+            clbchartakunkeluar.Enabled = False
+            cbchartakunkeluar.Checked = False
         End If
     End Sub
 End Class

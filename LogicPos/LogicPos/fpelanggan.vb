@@ -217,11 +217,11 @@ Public Class fpelanggan
     End Sub
     Sub simpan()
         Call koneksii()
-        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" + txtkode.Text + "'"
+        sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" & txtkode.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            MsgBox("Kode pelanggan sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
+            MsgBox("Kode pelanggan sudah ada dengan nama " & dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
             txtkode.Focus()
         Else
             Dim ms As MemoryStream = New MemoryStream
@@ -311,11 +311,11 @@ Public Class fpelanggan
             Call perbaharui()
         Else
             Call koneksii()
-            sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" + txtkode.Text + "'"
+            sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
-                MsgBox("Kode pelanggan sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Exclamation, "Pemberitahuan")
+                MsgBox("Kode pelanggan sudah ada dengan nama " & dr("nama_pelanggan"), MsgBoxStyle.Exclamation, "Pemberitahuan")
                 txtkode.Focus()
             Else
                 Call perbaharui()
@@ -401,7 +401,7 @@ Public Class fpelanggan
         Dim foto As Byte()
 
         Call koneksii()
-        sql = "SELECT * FROM tb_pelanggan WHERE id  = '" + idpelanggan + "' LIMIT 1"
+        sql = "SELECT * FROM tb_pelanggan WHERE id  = '" & idpelanggan & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         dr.Read()
