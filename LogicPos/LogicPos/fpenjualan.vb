@@ -952,6 +952,25 @@ Public Class fpenjualan
             txtharga.Text = Format(dr("harga_jual"), "##,##0")
             txtharga.SelectionStart = Len(txtharga.Text)
             modalbarang = Val(dr("modal_barang"))
+
+            If idstok > 0 Then
+                If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
+                    txtkodestok.ForeColor = Color.Black
+                Else 'kalau ada isi
+                    Dim lokasi As Integer = -1
+                    For i As Integer = 0 To GridView1.RowCount - 1
+                        If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                            lokasi = i
+                        End If
+                    Next
+
+                    If lokasi = -1 Then
+                        txtkodestok.ForeColor = Color.Black
+                    Else
+                        txtkodestok.ForeColor = Color.Blue
+                    End If
+                End If
+            End If
         Else
             Call koneksii()
             sql = "SELECT tb_stok.id as idstok, tb_barang.id as idbarang, tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.satuan_barang, tb_barang.jenis_barang, tb_price_group.harga_jual, tb_barang.modal_barang FROM tb_stok JOIN tb_barang ON tb_stok.barang_id = tb_barang.id JOIN tb_price_group ON tb_barang.id = tb_price_group.barang_id WHERE kode_stok = '" & txtkodestok.Text & "' AND tb_price_group.pelanggan_id ='1' AND tb_stok.gudang_id ='" & idgudang & "' LIMIT 1"
@@ -970,6 +989,25 @@ Public Class fpenjualan
                 txtharga.Text = Format(dr("harga_jual"), "##,##0")
                 txtharga.SelectionStart = Len(txtharga.Text)
                 modalbarang = Val(dr("modal_barang"))
+
+                If idstok > 0 Then
+                    If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
+                        txtkodestok.ForeColor = Color.Black
+                    Else 'kalau ada isi
+                        Dim lokasi As Integer = -1
+                        For i As Integer = 0 To GridView1.RowCount - 1
+                            If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                                lokasi = i
+                            End If
+                        Next
+
+                        If lokasi = -1 Then
+                            txtkodestok.ForeColor = Color.Black
+                        Else
+                            txtkodestok.ForeColor = Color.Blue
+                        End If
+                    End If
+                End If
             Else
                 Call koneksii()
                 sql = "SELECT tb_stok.id as idstok, tb_barang.id as idbarang, tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.satuan_barang, tb_barang.jenis_barang, tb_barang.modal_barang, tb_kategori_barang.selisih_kategori FROM tb_stok JOIN tb_barang ON tb_barang.id = tb_stok.barang_id JOIN tb_kategori_barang ON tb_barang.kategori_barang_id = tb_kategori_barang.id WHERE kode_stok = '" & txtkodestok.Text & "' AND gudang_id ='" & idgudang & "' LIMIT 1"
@@ -998,6 +1036,25 @@ Public Class fpenjualan
                         txtharga.Text = Format(Val(dr("modal_barang")) + selisihkategori, "##,##0")
                         txtharga.SelectionStart = Len(txtharga.Text)
                     End If
+
+                    If idstok > 0 Then
+                        If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
+                            txtkodestok.ForeColor = Color.Black
+                        Else 'kalau ada isi
+                            Dim lokasi As Integer = -1
+                            For i As Integer = 0 To GridView1.RowCount - 1
+                                If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                                    lokasi = i
+                                End If
+                            Next
+
+                            If lokasi = -1 Then
+                                txtkodestok.ForeColor = Color.Black
+                            Else
+                                txtkodestok.ForeColor = Color.Blue
+                            End If
+                        End If
+                    End If
                 Else
                     idstok = 0
                     idbarang = 0
@@ -1009,6 +1066,8 @@ Public Class fpenjualan
                     lblsatuanjual.Text = satuan
                     jenis = ""
                     txtharga.Text = ""
+
+                    txtkodestok.ForeColor = Color.Red
                 End If
             End If
         End If
@@ -2030,6 +2089,7 @@ Public Class fpenjualan
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         Call tambah()
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+        txtkodestok.ForeColor = Color.Black
     End Sub
 
     Private Sub cbdiskon_CheckedChanged(sender As Object, e As EventArgs) Handles cbdiskon.CheckedChanged

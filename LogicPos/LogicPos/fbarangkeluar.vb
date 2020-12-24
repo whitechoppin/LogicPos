@@ -603,6 +603,25 @@ Public Class fbarangkeluar
             satuan = dr("satuan_barang")
             lblsatuan.Text = satuan
             jenis = dr("jenis_barang")
+
+            If idstok > 0 Then
+                If GridView1.RowCount = 0 Then 'kondisi keranjang kosong
+                    txtkodestok.ForeColor = Color.Black
+                Else 'kalau ada isi
+                    Dim lokasi As Integer = -1
+                    For i As Integer = 0 To GridView1.RowCount - 1
+                        If Val(GridView1.GetRowCellValue(i, "stok_id")).Equals(idstok) Then
+                            lokasi = i
+                        End If
+                    Next
+
+                    If lokasi = -1 Then
+                        txtkodestok.ForeColor = Color.Black
+                    Else
+                        txtkodestok.ForeColor = Color.Blue
+                    End If
+                End If
+            End If
         Else
             idstok = 0
             idbarang = 0
@@ -612,6 +631,8 @@ Public Class fbarangkeluar
             satuan = "satuan"
             lblsatuan.Text = satuan
             jenis = ""
+
+            txtkodestok.ForeColor = Color.Red
         End If
     End Sub
 
@@ -1161,6 +1182,7 @@ Public Class fbarangkeluar
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         Call tambah()
+        txtkodestok.ForeColor = Color.Black
     End Sub
 
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown

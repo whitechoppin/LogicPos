@@ -664,12 +664,45 @@ Public Class fpembelian
             jenis = dr("jenis_barang")
             modalpembelian = dr("modal_barang")
             txthargabarang.Text = Format(modalpembelian, "##,##0")
+
+            If idbarang > 0 Then
+                If GridView1.RowCount = 0 Then
+                    If jenis.Equals("Satuan") Then
+                        txtkodebarang.ForeColor = Color.Black
+                    Else
+                        txtkodebarang.ForeColor = Color.Black
+                    End If
+                Else 'data ada
+                    Dim lokasi As Integer = -1
+                    If GridView1.RowCount <> 0 Then
+                        'MsgBox("data ada")
+                        If jenis.Equals("Satuan") Then
+                            'MsgBox("ini pcs")
+                            For i As Integer = 0 To GridView1.RowCount - 1
+                                If GridView1.GetRowCellValue(i, "kode_barang").Equals(txtkodebarang.Text) And GridView1.GetRowCellValue(i, "satuan_barang").Equals("Pcs") Then
+                                    lokasi = i
+                                End If
+                            Next
+
+                            If lokasi = -1 Then
+                                txtkodebarang.ForeColor = Color.Black
+                            Else
+                                txtkodebarang.ForeColor = Color.Blue
+                            End If
+                        Else
+                            txtkodebarang.ForeColor = Color.Black
+                        End If
+                    End If
+                End If
+            End If
         Else
             idbarang = 0
             txtnamabarang.Text = ""
             lblsatuan.Text = "satuan"
             lblsatuanbeli.Text = "satuan"
             txthargabarang.Text = 0
+
+            txtkodebarang.ForeColor = Color.Red
         End If
     End Sub
     Sub carisupplier()
@@ -834,6 +867,7 @@ Public Class fpembelian
     Private Sub btntambahbarang_Click(sender As Object, e As EventArgs) Handles btntambahbarang.Click
         Call tambah()
         BeginInvoke(New MethodInvoker(AddressOf UpdateTotalText))
+        txtkodebarang.ForeColor = Color.Black
     End Sub
     Sub simpan()
         Call koneksii()
@@ -1216,6 +1250,7 @@ Public Class fpembelian
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
         Call nextnumber(txtnonota.Text)
     End Sub
+
     Private Sub GridView1_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridView1.CellValueChanging
         If e.Column.FieldName = "qty" Then
             If e.Value = "" Or e.Value = "0" Then

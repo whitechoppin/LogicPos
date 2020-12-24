@@ -551,10 +551,43 @@ Public Class fbarangmasuk
             satuan = dr("satuan_barang")
             lblsatuan.Text = satuan
             jenis = dr("jenis_barang")
+
+            If idbarang > 0 Then
+                If GridView1.RowCount = 0 Then
+                    If jenis.Equals("Satuan") Then
+                        txtkodebarang.ForeColor = Color.Black
+                    Else
+                        txtkodebarang.ForeColor = Color.Black
+                    End If
+                Else 'data ada
+                    Dim lokasi As Integer = -1
+                    If GridView1.RowCount <> 0 Then
+                        'MsgBox("data ada")
+                        If jenis.Equals("Satuan") Then
+                            'MsgBox("ini pcs")
+                            For i As Integer = 0 To GridView1.RowCount - 1
+                                If GridView1.GetRowCellValue(i, "kode_barang").Equals(txtkodebarang.Text) And GridView1.GetRowCellValue(i, "satuan_barang").Equals("Pcs") Then
+                                    lokasi = i
+                                End If
+                            Next
+
+                            If lokasi = -1 Then
+                                txtkodebarang.ForeColor = Color.Black
+                            Else
+                                txtkodebarang.ForeColor = Color.Blue
+                            End If
+                        Else
+                            txtkodebarang.ForeColor = Color.Black
+                        End If
+                    End If
+                End If
+            End If
         Else
             idbarang = 0
             txtnamabarang.Text = ""
             lblsatuan.Text = "satuan"
+
+            txtkodebarang.ForeColor = Color.Red
         End If
     End Sub
 
@@ -1149,6 +1182,7 @@ Public Class fbarangmasuk
 
     Private Sub btntambahbarang_Click(sender As Object, e As EventArgs) Handles btntambahbarang.Click
         Call tambah()
+        txtkodebarang.ForeColor = Color.Black
     End Sub
 
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown

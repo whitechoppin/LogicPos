@@ -54,6 +54,8 @@ Partial Class fbarangmasuk
         Me.riteqty = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.lblsatuan = New System.Windows.Forms.Label()
         Me.btncari = New System.Windows.Forms.Button()
         Me.btntambahbarang = New System.Windows.Forms.Button()
@@ -77,8 +79,6 @@ Partial Class fbarangmasuk
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.riteqty, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -419,6 +419,28 @@ Partial Class fbarangmasuk
         Me.GridColumn6.Visible = True
         Me.GridColumn6.VisibleIndex = 5
         '
+        'GridColumn7
+        '
+        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceCell.Options.UseFont = True
+        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn7.Caption = "id barang"
+        Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.Visible = True
+        Me.GridColumn7.VisibleIndex = 6
+        '
+        'GridColumn8
+        '
+        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceCell.Options.UseFont = True
+        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn8.Caption = "id stok"
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 7
+        '
         'lblsatuan
         '
         Me.lblsatuan.AutoSize = True
@@ -496,6 +518,7 @@ Partial Class fbarangmasuk
         '
         'txtkodebarang
         '
+        Me.txtkodebarang.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtkodebarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtkodebarang.Location = New System.Drawing.Point(14, 265)
         Me.txtkodebarang.Margin = New System.Windows.Forms.Padding(4)
@@ -677,28 +700,6 @@ Partial Class fbarangmasuk
         Me.TabPage2.Size = New System.Drawing.Size(1142, 134)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Keterangan"
-        '
-        'GridColumn7
-        '
-        Me.GridColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn7.AppearanceCell.Options.UseFont = True
-        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn7.Caption = "id barang"
-        Me.GridColumn7.Name = "GridColumn7"
-        Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 6
-        '
-        'GridColumn8
-        '
-        Me.GridColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn8.AppearanceCell.Options.UseFont = True
-        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.GridColumn8.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn8.Caption = "id stok"
-        Me.GridColumn8.Name = "GridColumn8"
-        Me.GridColumn8.Visible = True
-        Me.GridColumn8.VisibleIndex = 7
         '
         'fbarangmasuk
         '
