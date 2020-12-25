@@ -275,6 +275,7 @@ Public Class flaporanpenjualan
     Private Sub btnrekappenjualanbarang_Click(sender As Object, e As EventArgs) Handles btnrekappenjualanbarang.Click
         If printstatus.Equals(True) Then
             Dim rptrekap As ReportDocument
+
             Dim awalPFDs As ParameterFieldDefinitions
             Dim awalPFD As ParameterFieldDefinition
             Dim awalPVs As New ParameterValues
@@ -284,6 +285,11 @@ Public Class flaporanpenjualan
             Dim akhirPFD As ParameterFieldDefinition
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
+
+            Dim statusPFDs As ParameterFieldDefinitions
+            Dim statusPFD As ParameterFieldDefinition
+            Dim statusPVs As New ParameterValues
+            Dim statusPDV As New ParameterDiscreteValue
 
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_penjualan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
@@ -310,6 +316,18 @@ Public Class flaporanpenjualan
                 akhirPVs.Clear()
                 akhirPVs.Add(akhirPDV)
                 akhirPFD.ApplyCurrentValues(akhirPVs)
+
+                If cbprofit.Checked = True Then
+                    statusPDV.Value = True
+                Else
+                    statusPDV.Value = False
+                End If
+
+                statusPFDs = rptrekap.DataDefinition.ParameterFields
+                statusPFD = statusPFDs.Item("profitstatus") 'tanggal merupakan nama parameter
+                statusPVs.Clear()
+                statusPVs.Add(statusPDV)
+                statusPFD.ApplyCurrentValues(statusPVs)
 
                 flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
                 flappenjualan.ShowDialog()
