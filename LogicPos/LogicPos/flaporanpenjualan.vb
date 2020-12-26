@@ -58,6 +58,12 @@ Public Class flaporanpenjualan
                 exportstatus = True
         End Select
 
+        If fmenu.jabatanuser.Text.Equals("OWNER") Then
+            cbprofit.Enabled = True
+        Else
+            cbprofit.Enabled = False
+        End If
+
         Call historysave("Membuka Laporan Penjualan", "N/A", namaform)
     End Sub
     Sub grid()
