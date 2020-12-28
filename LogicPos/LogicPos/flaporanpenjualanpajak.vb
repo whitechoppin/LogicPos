@@ -49,10 +49,10 @@ Public Class flaporanpenjualanpajak
         GridColumn2.Caption = "Pelangan"
         GridColumn2.FieldName = "nama_pelanggan"
 
-        GridColumn3.Caption = "Tanggal Penjualan"
+        GridColumn3.Caption = "Tanggal"
         GridColumn3.FieldName = "tgl_penjualan"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy"
+        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn4.Caption = "Barang"
         GridColumn4.FieldName = "nama_barang"

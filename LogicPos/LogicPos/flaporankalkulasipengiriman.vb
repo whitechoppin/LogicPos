@@ -69,7 +69,7 @@ Public Class flaporankalkulasipengiriman
         GridColumn2.Caption = "Tanggal"
         GridColumn2.FieldName = "tgl_kirim"
         GridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn2.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn2.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn3.Caption = "Kode Barang"
         GridColumn3.FieldName = "kode_barang"

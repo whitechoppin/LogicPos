@@ -58,7 +58,7 @@ Public Class flaporanpenjualan
                 exportstatus = True
         End Select
 
-        If fmenu.jabatanuser.Text.Equals("OWNER") Then
+        If fmenu.jabatanuser.Text.Equals("Owner") Then
             cbprofit.Enabled = True
         Else
             cbprofit.Enabled = False
@@ -73,10 +73,10 @@ Public Class flaporanpenjualan
         GridColumn2.Caption = "Pelangan"
         GridColumn2.FieldName = "nama_pelanggan"
 
-        GridColumn3.Caption = "Tanggal Penjualan"
+        GridColumn3.Caption = "Tanggal"
         GridColumn3.FieldName = "tgl_penjualan"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy"
+        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn4.Caption = "Barang"
         GridColumn4.FieldName = "nama_barang"

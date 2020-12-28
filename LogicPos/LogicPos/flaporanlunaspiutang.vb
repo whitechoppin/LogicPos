@@ -70,12 +70,12 @@ Public Class flaporanlunaspiutang
         GridColumn3.Caption = "Tanggal Penjualan"
         GridColumn3.FieldName = "tanggal_penjualan"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn4.Caption = "Tanggal Jatuh Tempo"
         GridColumn4.FieldName = "tanggal_jatuhtempo"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn4.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn5.Caption = "Pelanggan"
         GridColumn5.FieldName = "nama_pelanggan"
@@ -99,7 +99,7 @@ Public Class flaporanlunaspiutang
         GridColumn10.Caption = "Tanggal Transaksi"
         GridColumn10.FieldName = "tanggal_transaksi"
         GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn10.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn10.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn11.Caption = "No bukti"
         GridColumn11.FieldName = "no_bukti"

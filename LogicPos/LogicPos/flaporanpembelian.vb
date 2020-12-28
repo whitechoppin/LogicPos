@@ -68,10 +68,10 @@ Public Class flaporanpembelian
         GridColumn2.Caption = "Supplier"
         GridColumn2.FieldName = "nama_supplier"
 
-        GridColumn3.Caption = "Tanggal Pembelian"
+        GridColumn3.Caption = "Tanggal"
         GridColumn3.FieldName = "tgl_pembelian"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy"
+        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn4.Caption = "Item"
         GridColumn4.FieldName = "nama_barang"

@@ -93,10 +93,10 @@ Public Class flaporantransaksikas
         GridColumn10.Caption = "Jenis Kas"
         GridColumn10.FieldName = "jenis_kas"
 
-        GridColumn11.Caption = "Tanggal Transaksi"
+        GridColumn11.Caption = "Tanggal"
         GridColumn11.FieldName = "tanggal_transaksi"
         GridColumn11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn11.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn11.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn12.Caption = "Debet"
         GridColumn12.FieldName = "debet_kas"

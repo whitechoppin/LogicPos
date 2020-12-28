@@ -68,10 +68,10 @@ Public Class flaporanreturbeli
         GridColumn2.Caption = "User"
         GridColumn2.FieldName = "kode_user"
 
-        GridColumn3.Caption = "Tanggal Retur Pembelian"
+        GridColumn3.Caption = "Tanggal Retur"
         GridColumn3.FieldName = "tgl_returbeli"
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn4.Caption = "Barang"
         GridColumn4.FieldName = "nama_barang"

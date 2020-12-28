@@ -81,7 +81,7 @@ Public Class flaporantransferkas
         GridColumn6.Caption = "Tanggal Transfer"
         GridColumn6.FieldName = "tanggal"
         GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn6.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn6.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn7.Caption = "Saldo Transfer"
         GridColumn7.FieldName = "saldo_transfer_kas"

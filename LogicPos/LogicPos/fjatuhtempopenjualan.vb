@@ -121,7 +121,7 @@ Public Class fjatuhtempopenjualan
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            tabellunas.Rows.Add("PENJUALAN : " + dr("id"), dr("last_updated"), dr("bayar_penjualan"))
+            tabellunas.Rows.Add("PENJUALAN : " & dr("id"), dr("last_updated"), dr("bayar_penjualan"))
         End If
 
         Call koneksii()

@@ -71,7 +71,7 @@ Public Class flaporantransferbarang
         GridColumn4.Caption = "Tanggal Transfer"
         GridColumn4.FieldName = "tanggal_transfer_barang"
         GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn4.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn4.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn5.Caption = "Kode Barang"
         GridColumn5.FieldName = "kode_barang"

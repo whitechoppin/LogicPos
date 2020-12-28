@@ -76,7 +76,7 @@ Public Class flaporankaskeluar
         GridColumn5.Caption = "Tanggal"
         GridColumn5.FieldName = "tanggal"
         GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn5.DisplayFormat.FormatString = "dd/MM/yyy"
+        GridColumn5.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss"
 
         GridColumn6.Caption = "Saldo Kas"
         GridColumn6.FieldName = "saldo_kas"
