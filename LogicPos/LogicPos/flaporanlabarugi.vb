@@ -122,7 +122,8 @@ Public Class flaporanlabarugi
         Next
 
         rptlabarugi = New rptrekaplabarugi
-        rptlabarugi.SetDataSource(tabel_laba_rugi)
+        rptlabarugi.Database.Tables(1).SetDataSource(tabel_laba_rugi)
+
         rptlabarugi.SetParameterValue("bulan", cmbmonth.Text)
         rptlabarugi.SetParameterValue("tahun", cmbyear.Text)
         flaplabarugi.CrystalReportViewer1.ReportSource = rptlabarugi
