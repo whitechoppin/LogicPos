@@ -124,9 +124,9 @@ Public Class flaporanpenjualan
     Sub tabel()
         Call koneksii()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan ON tb_pelanggan.id =tb_penjualan.pelanggan_id JOIN tb_user ON tb_user.id = tb_penjualan.user_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan ON tb_pelanggan.id =tb_penjualan.pelanggan_id JOIN tb_user ON tb_user.id = tb_penjualan.user_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_penjualan.id ASC"
         Else
-            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan On tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan On tb_pelanggan.id =tb_penjualan.pelanggan_id JOIN tb_user ON tb_user.id = tb_penjualan.user_id WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan On tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan On tb_pelanggan.id =tb_penjualan.pelanggan_id JOIN tb_user ON tb_user.id = tb_penjualan.user_id WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_penjualan.id ASC"
         End If
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -135,7 +135,6 @@ Public Class flaporanpenjualan
         GridControl1.DataSource = ds.Tables(0)
         Call grid()
     End Sub
-
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
         If printstatus.Equals(True) Then

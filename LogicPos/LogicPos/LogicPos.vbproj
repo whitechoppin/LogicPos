@@ -839,6 +839,12 @@
       <DependentUpon>rptrekapexpedisi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptrekaplabarugi.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekaplabarugi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptrekappenyesuaianstok.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1566,6 +1572,10 @@
     <EmbeddedResource Include="rptrekapexpedisi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekapexpedisi.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekaplabarugi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekaplabarugi.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekappenyesuaianstok.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

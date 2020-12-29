@@ -91,9 +91,9 @@ Public Class flaporankasmasuk
     Sub tabel()
         Call koneksii()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT tb_kas_masuk.id, tb_kas.kode_kas, tb_user.kode_user, tb_kas.jenis_kas, tb_kas_masuk.tanggal, saldo_kas, tb_kas_masuk.keterangan_kas FROM tb_kas_masuk JOIN tb_kas ON tb_kas.id = tb_kas_masuk.kas_id JOIN tb_user ON tb_user.id = tb_kas_masuk.user_id WHERE DATE(tanggal) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT tb_kas_masuk.id, tb_kas.kode_kas, tb_user.kode_user, tb_kas.jenis_kas, tb_kas_masuk.tanggal, saldo_kas, tb_kas_masuk.keterangan_kas FROM tb_kas_masuk JOIN tb_kas ON tb_kas.id = tb_kas_masuk.kas_id JOIN tb_user ON tb_user.id = tb_kas_masuk.user_id WHERE DATE(tanggal) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_kas_masuk.id ASC"
         Else
-            sql = "SELECT tb_kas_masuk.id, tb_kas.kode_kas, tb_user.kode_user, tb_kas.jenis_kas, tb_kas_masuk.tanggal, saldo_kas, tb_kas_masuk.keterangan_kas FROM tb_kas_masuk JOIN tb_kas ON tb_kas.id = tb_kas_masuk.kas_id JOIN tb_user ON tb_user.id = tb_kas_masuk.user_id WHERE tanggal BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "Select tb_kas_masuk.id, tb_kas.kode_kas, tb_user.kode_user, tb_kas.jenis_kas, tb_kas_masuk.tanggal, saldo_kas, tb_kas_masuk.keterangan_kas FROM tb_kas_masuk JOIN tb_kas On tb_kas.id = tb_kas_masuk.kas_id JOIN tb_user On tb_user.id = tb_kas_masuk.user_id WHERE tanggal BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_kas_masuk.id ASC"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)

@@ -126,9 +126,9 @@ Public Class flaporanpembelian
             Dim akhirPDV As New ParameterDiscreteValue
 
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-                sql = "SELECT * FROM tb_pembelian WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_pembelian WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_pembelian.id ASC"
             Else
-                sql = "SELECT * FROM tb_pembelian WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_pembelian WHERE tgl_pembelian BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_pembelian.id ASC"
             End If
 
             cmmd = New OdbcCommand(sql, cnn)
@@ -159,8 +159,6 @@ Public Class flaporanpembelian
             Else
                 MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
             End If
-
-
         Else
             MsgBox("Tidak ada akses")
         End If

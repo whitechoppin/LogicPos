@@ -88,9 +88,9 @@ Public Class flaporanbarangkeluar
         Call koneksii()
 
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar.id = tb_barang_keluar_detail.barang_keluar_id JOIN tb_pelanggan ON tb_pelanggan.id = tb_barang_keluar.pelanggan_id JOIN tb_user ON tb_user.id = tb_barang_keluar.user_id WHERE DATE(tgl_barang_keluar) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar.id = tb_barang_keluar_detail.barang_keluar_id JOIN tb_pelanggan ON tb_pelanggan.id = tb_barang_keluar.pelanggan_id JOIN tb_user ON tb_user.id = tb_barang_keluar.user_id WHERE DATE(tgl_barang_keluar) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_barang_keluar.id ASC"
         Else
-            sql = "SELECT * FROM tb_barang_keluar_detail JOIN tb_barang_keluar On tb_barang_keluar.id = tb_barang_keluar_detail.barang_keluar_id JOIN tb_pelanggan On tb_pelanggan.id = tb_barang_keluar.pelanggan_id JOIN tb_user ON tb_user.id = tb_barang_keluar.user_id WHERE tgl_barang_keluar BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_barang_keluar_detail JOIN tb_barang_keluar On tb_barang_keluar.id = tb_barang_keluar_detail.barang_keluar_id JOIN tb_pelanggan On tb_pelanggan.id = tb_barang_keluar.pelanggan_id JOIN tb_user ON tb_user.id = tb_barang_keluar.user_id WHERE tgl_barang_keluar BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_barang_keluar.id ASC"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
