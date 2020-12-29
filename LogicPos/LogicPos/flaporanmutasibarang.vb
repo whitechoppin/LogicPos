@@ -567,41 +567,46 @@ Public Class flaporanmutasibarang
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
-        Dim rptmutasibarang As ReportDocument
-        Dim tabel_mutasi_barang As New DataTable
-        Dim baris As DataRow
+        If printstatus.Equals(True) Then
+            Dim rptmutasibarang As ReportDocument
+            Dim tabel_mutasi_barang As New DataTable
+            Dim baris As DataRow
 
-        With tabel_mutasi_barang
-            .Columns.Add("tabel")
-            .Columns.Add("id")
-            .Columns.Add("kode_barang")
-            .Columns.Add("kode_stok")
-            .Columns.Add("qty", GetType(Double))
-            .Columns.Add("dari_gudang")
-            .Columns.Add("ke_gudang")
-            .Columns.Add("tanggal")
-        End With
+            With tabel_mutasi_barang
+                .Columns.Add("tabel")
+                .Columns.Add("id")
+                .Columns.Add("kode_barang")
+                .Columns.Add("kode_stok")
+                .Columns.Add("qty", GetType(Double))
+                .Columns.Add("dari_gudang")
+                .Columns.Add("ke_gudang")
+                .Columns.Add("tanggal")
+            End With
 
 
-        For i As Integer = 0 To GridView1.RowCount - 1
-            baris = tabel_mutasi_barang.NewRow
-            baris("tabel") = GridView1.GetRowCellValue(i, "tabel")
-            baris("id") = GridView1.GetRowCellValue(i, "id")
-            baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
-            baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
-            baris("qty") = GridView1.GetRowCellValue(i, "qty")
-            baris("dari_gudang") = GridView1.GetRowCellValue(i, "dari_gudang")
-            baris("ke_gudang") = GridView1.GetRowCellValue(i, "ke_gudang")
-            baris("tanggal") = GridView1.GetRowCellValue(i, "tanggal")
-            tabel_mutasi_barang.Rows.Add(baris)
-        Next
+            For i As Integer = 0 To GridView1.RowCount - 1
+                baris = tabel_mutasi_barang.NewRow
+                baris("tabel") = GridView1.GetRowCellValue(i, "tabel")
+                baris("id") = GridView1.GetRowCellValue(i, "id")
+                baris("kode_barang") = GridView1.GetRowCellValue(i, "kode_barang")
+                baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
+                baris("qty") = GridView1.GetRowCellValue(i, "qty")
+                baris("dari_gudang") = GridView1.GetRowCellValue(i, "dari_gudang")
+                baris("ke_gudang") = GridView1.GetRowCellValue(i, "ke_gudang")
+                baris("tanggal") = GridView1.GetRowCellValue(i, "tanggal")
+                tabel_mutasi_barang.Rows.Add(baris)
+            Next
 
-        rptmutasibarang = New rptrekapmutasibarang
-        rptmutasibarang.SetDataSource(tabel_mutasi_barang)
-        rptmutasibarang.SetParameterValue("tglawal", dtawal.Text)
-        rptmutasibarang.SetParameterValue("tglakhir", dtakhir.Text)
-        flapmutasibarang.CrystalReportViewer1.ReportSource = rptmutasibarang
-        flapmutasibarang.ShowDialog()
+            rptmutasibarang = New rptrekapmutasibarang
+            rptmutasibarang.SetDataSource(tabel_mutasi_barang)
+            rptmutasibarang.SetParameterValue("tglawal", dtawal.Text)
+            rptmutasibarang.SetParameterValue("tglakhir", dtakhir.Text)
+            flapmutasibarang.CrystalReportViewer1.ReportSource = rptmutasibarang
+            flapmutasibarang.ShowDialog()
+        Else
+            MsgBox("Tidak ada akses")
+        End If
+
     End Sub
 
     Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click

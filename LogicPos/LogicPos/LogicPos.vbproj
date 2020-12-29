@@ -416,6 +416,12 @@
     <Compile Include="flapkalkulasipengiriman.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="flaplabarugi.Designer.vb">
+      <DependentUpon>flaplabarugi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaplabarugi.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flapmutasibarang.Designer.vb">
       <DependentUpon>flapmutasibarang.vb</DependentUpon>
     </Compile>
@@ -1333,6 +1339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="flapkalkulasipengiriman.resx">
       <DependentUpon>flapkalkulasipengiriman.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaplabarugi.resx">
+      <DependentUpon>flaplabarugi.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flapmutasibarang.resx">
       <DependentUpon>flapmutasibarang.vb</DependentUpon>

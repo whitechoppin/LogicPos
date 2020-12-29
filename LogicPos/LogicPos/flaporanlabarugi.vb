@@ -59,14 +59,14 @@ Public Class flaporanlabarugi
                 exportstatus = True
         End Select
 
-        Call historysave("Membuka Laporan Penjualan", "N/A", namaform)
+        Call historysave("Membuka Laporan Laba Rugi", "N/A", namaform)
     End Sub
     Sub grid()
-        GridColumn1.Caption = "tipe"
-        GridColumn1.FieldName = "tipe_administrasi"
+        GridColumn1.Caption = "Tipe"
+        GridColumn1.FieldName = "tipe"
 
         GridColumn2.Caption = "Jenis"
-        GridColumn2.FieldName = "jenis_administrasi"
+        GridColumn2.FieldName = "jenis"
 
         GridColumn3.Caption = "Saldo"
         GridColumn3.FieldName = "saldo"
@@ -77,14 +77,20 @@ Public Class flaporanlabarugi
     End Sub
     Sub tabel()
         Call koneksii()
-        'If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-        '    sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan ON tb_pelanggan.id =tb_penjualan.pelanggan_id JOIN tb_user ON tb_user.id = tb_penjualan.user_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_penjualan.id ASC"
-        'Else
-        '    sql = "SELECT * FROM tb_penjualan_detail JOIN tb_penjualan On tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan On tb_pelanggan.id =tb_penjualan.pelanggan_id JOIN tb_user ON tb_user.id = tb_penjualan.user_id WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_penjualan.id ASC"
-        'End If
+
+        sql = "(SELECT 'PENDAPATAN' AS tipe, 'Penjualan' AS jenis, SUM(total_penjualan) AS saldo FROM tb_penjualan)
+                UNION 
+                (SELECT 'PENDAPATAN' AS tipe, 'Kas Masuk' AS jenis, SUM(saldo_kas) AS saldo FROM tb_kas_masuk)
+                UNION 
+                (SELECT 'PENGELUARAN' AS tipe, 'Harga Pokok Penjualan' AS jenis, (SUM(modal * qty) * -1) AS saldo FROM tb_penjualan_detail)
+                UNION 
+                (SELECT 'PENGELUARAN' AS tipe, 'Kas Keluar' AS jenis, (SUM(saldo_kas) * -1) AS saldo FROM tb_kas_keluar)
+                ORDER BY tipe ASC"
+
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
         da.Fill(ds)
+
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
         Call grid()
@@ -96,55 +102,31 @@ Public Class flaporanlabarugi
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
-        If printstatus.Equals(True) Then
-            Dim rptrekap As ReportDocument
-            Dim awalPFDs As ParameterFieldDefinitions
-            Dim awalPFD As ParameterFieldDefinition
-            Dim awalPVs As New ParameterValues
-            Dim awalPDV As New ParameterDiscreteValue
+        Dim rptlabarugi As ReportDocument
+        Dim tabel_laba_rugi As New DataTable
+        Dim baris As DataRow
 
-            Dim akhirPFDs As ParameterFieldDefinitions
-            Dim akhirPFD As ParameterFieldDefinition
-            Dim akhirPVs As New ParameterValues
-            Dim akhirPDV As New ParameterDiscreteValue
+        With tabel_laba_rugi
+            .Columns.Add("tipe")
+            .Columns.Add("jenis")
+            .Columns.Add("saldo", GetType(Double))
+        End With
 
-            'If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            '    sql = "SELECT * FROM tb_penjualan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY metode_pembayaran ASC"
-            'Else
-            '    sql = "SELECT * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY metode_pembayaran ASC"
-            'End If
 
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader
+        For i As Integer = 0 To GridView1.RowCount - 1
+            baris = tabel_laba_rugi.NewRow
+            baris("tipe") = GridView1.GetRowCellValue(i, "tipe")
+            baris("jenis") = GridView1.GetRowCellValue(i, "jenis")
+            baris("saldo") = GridView1.GetRowCellValue(i, "saldo")
+            tabel_laba_rugi.Rows.Add(baris)
+        Next
 
-            If dr.HasRows Then
-                rptrekap = New rptrekappenjualan
-
-                'awalPDV.Value = Format(DateTimePicker1.Value, "yyyy-MM-dd")
-                awalPFDs = rptrekap.DataDefinition.ParameterFields
-                awalPFD = awalPFDs.Item("tglawal") 'tanggal merupakan nama parameter
-                awalPVs.Clear()
-                awalPVs.Add(awalPDV)
-                awalPFD.ApplyCurrentValues(awalPVs)
-
-                'akhirPDV.Value = Format(DateTimePicker2.Value, "yyyy-MM-dd")
-                akhirPFDs = rptrekap.DataDefinition.ParameterFields
-                akhirPFD = akhirPFDs.Item("tglakhir") 'tanggal merupakan nama parameter
-                akhirPVs.Clear()
-                akhirPVs.Add(akhirPDV)
-                akhirPFD.ApplyCurrentValues(akhirPVs)
-
-                flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
-                flappenjualan.ShowDialog()
-                flappenjualan.WindowState = FormWindowState.Maximized
-
-                Call historysave("Merekap Faktur Laporan Penjualan", "N/A", namaform)
-            Else
-                MsgBox("Data pada tanggal tersebut tidak tersedia", MsgBoxStyle.Information, "Pemberitahuan")
-            End If
-        Else
-            MsgBox("Tidak ada akses")
-        End If
+        rptlabarugi = New rptrekaplabarugi
+        rptlabarugi.SetDataSource(tabel_laba_rugi)
+        rptlabarugi.SetParameterValue("bulan", cmbmonth.Text)
+        rptlabarugi.SetParameterValue("tahun", cmbyear.Text)
+        flaplabarugi.CrystalReportViewer1.ReportSource = rptlabarugi
+        flaplabarugi.ShowDialog()
     End Sub
 
     Sub ExportToExcel()
