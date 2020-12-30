@@ -73,19 +73,23 @@ Public Class flaporanlabarugi
         GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn3.DisplayFormat.FormatString = "##,##0"
 
+        GridColumn4.Caption = "id baris"
+        GridColumn4.FieldName = "idbaris"
+        GridColumn4.Visible = False
+
         GridControl1.Visible = True
     End Sub
     Sub tabel()
         Call koneksii()
 
-        sql = "(SELECT 'PENDAPATAN' AS tipe, 'Penjualan' AS jenis, SUM(total_penjualan) AS saldo FROM tb_penjualan)
+        sql = "(SELECT 'PENDAPATAN' AS tipe, 'Penjualan' AS jenis, IFNULL(SUM(total_penjualan), 0) AS saldo, '1' AS idbaris FROM tb_penjualan WHERE MONTHNAME(tgl_penjualan) = '" & cmbmonth.Text & "' AND YEAR(tgl_penjualan) = '" & cmbyear.Text & "')
                 UNION 
-                (SELECT 'PENDAPATAN' AS tipe, 'Kas Masuk' AS jenis, SUM(saldo_kas) AS saldo FROM tb_kas_masuk)
+                (SELECT 'PENDAPATAN' AS tipe, 'Kas Masuk' AS jenis, IFNULL(SUM(saldo_kas), 0) AS saldo, '2' AS idbaris FROM tb_kas_masuk WHERE MONTHNAME(tanggal) = '" & cmbmonth.Text & "' AND YEAR(tanggal) = '" & cmbyear.Text & "')
                 UNION 
-                (SELECT 'PENGELUARAN' AS tipe, 'Harga Pokok Penjualan' AS jenis, (SUM(modal * qty) * -1) AS saldo FROM tb_penjualan_detail)
+                (SELECT 'PENGELUARAN' AS tipe, 'Harga Pokok Penjualan' AS jenis, (IFNULL(SUM(modal * qty), 0) * -1) AS saldo, '3' AS idbaris FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE MONTHNAME(tgl_penjualan) = '" & cmbmonth.Text & "' AND YEAR(tgl_penjualan) = '" & cmbyear.Text & "')
                 UNION 
-                (SELECT 'PENGELUARAN' AS tipe, 'Kas Keluar' AS jenis, (SUM(saldo_kas) * -1) AS saldo FROM tb_kas_keluar)
-                ORDER BY tipe ASC"
+                (SELECT 'PENGELUARAN' AS tipe, 'Kas Keluar' AS jenis, (IFNULL(SUM(saldo_kas), 0) * -1) AS saldo, '4' AS idbaris FROM tb_kas_keluar WHERE MONTHNAME(tanggal) = '" & cmbmonth.Text & "' AND YEAR(tanggal) = '" & cmbyear.Text & "')
+                ORDER BY idbaris ASC"
 
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet

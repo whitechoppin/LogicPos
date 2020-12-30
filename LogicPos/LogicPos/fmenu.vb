@@ -100,7 +100,6 @@ Public Class fmenu
             fuser.kodeakses = masterstatus
             fuser.Show()
         End If
-        fuser.Show()
     End Sub
     Private Sub DataKasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataKasToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
