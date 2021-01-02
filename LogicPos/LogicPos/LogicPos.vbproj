@@ -154,6 +154,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="faboutlogicpos.Designer.vb">
+      <DependentUpon>faboutlogicpos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="faboutlogicpos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fakturexpedisi.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -360,6 +366,12 @@
       <DependentUpon>fchartpenjualan.vb</DependentUpon>
     </Compile>
     <Compile Include="fchartpenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fgantipassword.Designer.vb">
+      <DependentUpon>fgantipassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fgantipassword.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fgeneratebarcode.Designer.vb">
@@ -1079,10 +1091,10 @@
     <Compile Include="flaporanstokbarang.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="flogichouse.Designer.vb">
-      <DependentUpon>flogichouse.vb</DependentUpon>
+    <Compile Include="faboutlogichouse.Designer.vb">
+      <DependentUpon>faboutlogichouse.vb</DependentUpon>
     </Compile>
-    <Compile Include="flogichouse.vb">
+    <Compile Include="faboutlogichouse.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flunaspiutang.Designer.vb">
@@ -1209,6 +1221,9 @@
     <Compile Include="validasi.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="faboutlogicpos.resx">
+      <DependentUpon>faboutlogicpos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fakturexpedisi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>fakturexpedisi.vb</LastGenOutput>
@@ -1327,6 +1342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fchartpenjualan.resx">
       <DependentUpon>fchartpenjualan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fgantipassword.resx">
+      <DependentUpon>fgantipassword.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fgeneratebarcode.resx">
       <DependentUpon>fgeneratebarcode.vb</DependentUpon>
@@ -1517,8 +1535,8 @@
     <EmbeddedResource Include="flaptransferkas.resx">
       <DependentUpon>flaptransferkas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="flogichouse.resx">
-      <DependentUpon>flogichouse.vb</DependentUpon>
+    <EmbeddedResource Include="faboutlogichouse.resx">
+      <DependentUpon>faboutlogichouse.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flogin.resx">
       <DependentUpon>flogin.vb</DependentUpon>

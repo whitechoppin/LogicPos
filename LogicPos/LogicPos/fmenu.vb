@@ -442,7 +442,6 @@ Public Class fmenu
             fchartpembelian.kodeakses = masterstatus
             fchartpembelian.Show()
         End If
-
     End Sub
 
     Private Sub ChartPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPenjualanToolStripMenuItem.Click
@@ -473,11 +472,21 @@ Public Class fmenu
     End Sub
 
     Private Sub ChartKasMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartKasMasukToolStripMenuItem.Click
-        fchartkasmasuk.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.chart_kas_masuk
+        If masterstatus > 0 Then
+            fchartkasmasuk.kodeakses = masterstatus
+            fchartkasmasuk.Show()
+        End If
     End Sub
 
     Private Sub ChartKasKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartKasKeluarToolStripMenuItem.Click
-        fchartkaskeluar.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.chart_kas_keluar
+        If masterstatus > 0 Then
+            fchartkaskeluar.kodeakses = masterstatus
+            fchartkaskeluar.Show()
+        End If
     End Sub
 
     'feature ==============================================================================================================================
@@ -535,10 +544,18 @@ Public Class fmenu
         fpengaturan.Show()
     End Sub
 
+    Private Sub GantiPasswordToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GantiPasswordToolStripMenuItem.Click
+
+    End Sub
 
     'about ================================================================================================================================
     Private Sub LogicHouseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogicHouseToolStripMenuItem.Click
-        flogichouse.Show()
+        faboutlogichouse.Show()
     End Sub
+
+    Private Sub LogicPosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogicPosToolStripMenuItem.Click
+        faboutlogicpos.Show()
+    End Sub
+
 
 End Class
