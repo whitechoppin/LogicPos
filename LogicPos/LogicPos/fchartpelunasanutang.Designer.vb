@@ -48,6 +48,9 @@ Partial Class fchartpelunasanutang
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btncarisupplier = New System.Windows.Forms.Button()
+        Me.btnprint = New System.Windows.Forms.Button()
+        Me.btnrefresh = New System.Windows.Forms.Button()
+        Me.btnexcel = New System.Windows.Forms.Button()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -241,12 +244,45 @@ Partial Class fchartpelunasanutang
         Me.btncarisupplier.TabIndex = 63
         Me.btncarisupplier.UseVisualStyleBackColor = True
         '
+        'btnprint
+        '
+        Me.btnprint.Location = New System.Drawing.Point(1371, 121)
+        Me.btnprint.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnprint.Name = "btnprint"
+        Me.btnprint.Size = New System.Drawing.Size(166, 46)
+        Me.btnprint.TabIndex = 73
+        Me.btnprint.Text = "Print Chart"
+        Me.btnprint.UseVisualStyleBackColor = True
+        '
+        'btnrefresh
+        '
+        Me.btnrefresh.Location = New System.Drawing.Point(1371, 13)
+        Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrefresh.Name = "btnrefresh"
+        Me.btnrefresh.Size = New System.Drawing.Size(166, 46)
+        Me.btnrefresh.TabIndex = 71
+        Me.btnrefresh.Text = "Refresh"
+        Me.btnrefresh.UseVisualStyleBackColor = True
+        '
+        'btnexcel
+        '
+        Me.btnexcel.Location = New System.Drawing.Point(1371, 67)
+        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnexcel.Name = "btnexcel"
+        Me.btnexcel.Size = New System.Drawing.Size(166, 46)
+        Me.btnexcel.TabIndex = 72
+        Me.btnexcel.Text = "Export Excel"
+        Me.btnexcel.UseVisualStyleBackColor = True
+        '
         'fchartpelunasanutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1554, 723)
+        Me.Controls.Add(Me.btnprint)
+        Me.Controls.Add(Me.btnrefresh)
+        Me.Controls.Add(Me.btnexcel)
         Me.Controls.Add(Me.btncarikas)
         Me.Controls.Add(Me.cmbkas)
         Me.Controls.Add(Me.Label14)
@@ -293,4 +329,7 @@ Partial Class fchartpelunasanutang
     Friend WithEvents Label16 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents btncarisupplier As Button
+    Friend WithEvents btnprint As Button
+    Friend WithEvents btnrefresh As Button
+    Friend WithEvents btnexcel As Button
 End Class

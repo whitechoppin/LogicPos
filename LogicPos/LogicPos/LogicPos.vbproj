@@ -326,6 +326,18 @@
     <Compile Include="fcaritransferbarang.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fchartkaskeluar.Designer.vb">
+      <DependentUpon>fchartkaskeluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fchartkaskeluar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fchartkasmasuk.Designer.vb">
+      <DependentUpon>fchartkasmasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fchartkasmasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="fchartpelunasanpiutang.Designer.vb">
       <DependentUpon>fchartpelunasanpiutang.vb</DependentUpon>
     </Compile>
@@ -1297,6 +1309,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fcaritransferbarang.resx">
       <DependentUpon>fcaritransferbarang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fchartkaskeluar.resx">
+      <DependentUpon>fchartkaskeluar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fchartkasmasuk.resx">
+      <DependentUpon>fchartkasmasuk.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fchartpelunasanpiutang.resx">
       <DependentUpon>fchartpelunasanpiutang.vb</DependentUpon>

@@ -3,6 +3,7 @@
 Public Class fchartpenjualan
     Public namaform As String = "chart-penjualan"
     Dim idgudang, iduser, idpelanggan, idstok, idbarang As Integer
+    Public kodeakses As Integer
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width

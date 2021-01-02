@@ -3,6 +3,7 @@
 Public Class fchartpembelian
     Public namaform As String = "chart-pembelian"
     Dim idgudang, iduser, idsupplier, idbarang As Integer
+    Public kodeakses As Integer
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width

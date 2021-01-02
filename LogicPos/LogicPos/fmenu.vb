@@ -436,27 +436,48 @@ Public Class fmenu
     'chart =============================================================================================================================
 
     Private Sub ChartPembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPembelianToolStripMenuItem.Click
-        fchartpembelian.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.chart_pembelian
+        If masterstatus > 0 Then
+            fchartpembelian.kodeakses = masterstatus
+            fchartpembelian.Show()
+        End If
+
     End Sub
 
     Private Sub ChartPenjualanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPenjualanToolStripMenuItem.Click
-        fchartpenjualan.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.chart_penjualan
+        If masterstatus > 0 Then
+            fchartpenjualan.kodeakses = masterstatus
+            fchartpenjualan.Show()
+        End If
     End Sub
 
     Private Sub ChartPelunasanUtangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPelunasanUtangToolStripMenuItem.Click
-        fchartpelunasanutang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.chart_lunas_utang
+        If masterstatus > 0 Then
+            fchartpelunasanutang.kodeakses = masterstatus
+            fchartpelunasanutang.Show()
+        End If
     End Sub
 
     Private Sub ChartPelunasanPiutangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartPelunasanPiutangToolStripMenuItem.Click
-        fchartpelunasanpiutang.Show()
+        Dim masterstatus As Integer = 0
+        masterstatus = flogin.chart_lunas_piutang
+        If masterstatus > 0 Then
+            fchartpelunasanpiutang.kodeakses = masterstatus
+            fchartpelunasanpiutang.Show()
+        End If
     End Sub
 
     Private Sub ChartKasMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartKasMasukToolStripMenuItem.Click
-
+        fchartkasmasuk.Show()
     End Sub
 
     Private Sub ChartKasKeluarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartKasKeluarToolStripMenuItem.Click
-
+        fchartkaskeluar.Show()
     End Sub
 
     'feature ==============================================================================================================================
