@@ -88,11 +88,11 @@ Public Class flaporanstokbarang
     Sub tabel()
         Call koneksii()
         If cmbstatus.SelectedIndex = 0 Then
-            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id"
+            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id ORDER BY kode_stok ASC"
         ElseIf cmbstatus.SelectedIndex = 1 Then
-            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id WHERE tb_stok.jumlah_stok > 0"
+            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id WHERE tb_stok.jumlah_stok > 0 ORDER BY kode_stok ASC"
         ElseIf cmbstatus.SelectedIndex = 2 Then
-            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id WHERE tb_stok.jumlah_stok = 0"
+            sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id WHERE tb_stok.jumlah_stok = 0 ORDER BY kode_stok ASC"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)

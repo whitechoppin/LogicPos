@@ -545,7 +545,7 @@ Public Class fmenu
     End Sub
 
     Private Sub GantiPasswordToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GantiPasswordToolStripMenuItem.Click
-
+        fgantipassword.Show()
     End Sub
 
     'about ================================================================================================================================

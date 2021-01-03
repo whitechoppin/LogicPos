@@ -701,7 +701,9 @@ Public Class fpembelian
             lblsatuan.Text = "satuan"
             lblsatuanbeli.Text = "satuan"
             txthargabarang.Text = 0
-
+            satuan = ""
+            jenis = ""
+            modalpembelian = 0
             txtkodebarang.ForeColor = Color.Red
         End If
     End Sub
@@ -803,6 +805,7 @@ Public Class fpembelian
         Else
             idstok = 0
             If GridView1.RowCount = 0 Then
+                MsgBox(jenis)
                 If jenis.Equals("Satuan") Then
                     'tambahkan data ke tabel keranjang
                     tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, Val(banyak), satuan, jenis, Val(hargabarang), Val(banyak) * Val(hargabarang), idbarang, idstok)
@@ -820,7 +823,7 @@ Public Class fpembelian
                     If jenis.Equals("Satuan") Then
                         'MsgBox("ini pcs")
                         For i As Integer = 0 To GridView1.RowCount - 1
-                            If GridView1.GetRowCellValue(i, "kode_barang").Equals(txtkodebarang.Text) And GridView1.GetRowCellValue(i, "satuan_barang").Equals("Pcs") Then
+                            If GridView1.GetRowCellValue(i, "kode_barang").Equals(txtkodebarang.Text) And GridView1.GetRowCellValue(i, "satuan_barang").Equals(satuan) Then
                                 lokasi = i
                             End If
                         Next
@@ -945,7 +948,7 @@ Public Class fpembelian
 
             MsgBox("Transaksi Berhasil Dilakukan", MsgBoxStyle.Information, "Sukses")
             'history user ==========
-            Call historysave("Menyimpan Data Pembelian Kode " + idpembelian, idpembelian, namaform)
+            Call historysave("Menyimpan Data Pembelian Kode " & idpembelian, idpembelian, namaform)
             '========================
             Call inisialisasi(idpembelian)
 
@@ -954,7 +957,7 @@ Public Class fpembelian
                 myTrans.Rollback()
             Catch ex As OdbcException
                 If Not myTrans.Connection Is Nothing Then
-                    Console.WriteLine("An exception of type " + ex.GetType().ToString() +
+                    Console.WriteLine("An exception of type " & ex.GetType().ToString() +
                     " was encountered while attempting to roll back the transaction.")
                 End If
             End Try
@@ -1018,7 +1021,7 @@ Public Class fpembelian
                             dr = cmmd.ExecuteReader()
 
                             'history user ==========
-                            Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text, namaform)
+                            Call historysave("Mencetak Data Pembelian Kode " & txtnonota.Text, txtnonota.Text, namaform)
                             '========================
 
                             cbprinted.Checked = True
@@ -1031,7 +1034,7 @@ Public Class fpembelian
                             dr = cmmd.ExecuteReader()
 
                             'history user ==========
-                            Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text, namaform)
+                            Call historysave("Mencetak Data Pembelian Kode " & txtnonota.Text, txtnonota.Text, namaform)
                             '========================
 
                             cbprinted.Checked = True
@@ -1047,7 +1050,7 @@ Public Class fpembelian
                         dr = cmmd.ExecuteReader()
 
                         'history user ==========
-                        Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text, namaform)
+                        Call historysave("Mencetak Data Pembelian Kode " & txtnonota.Text, txtnonota.Text, namaform)
                         '========================
 
                         cbprinted.Checked = True
@@ -1060,7 +1063,7 @@ Public Class fpembelian
                         dr = cmmd.ExecuteReader()
 
                         'history user ==========
-                        Call historysave("Mencetak Data Pembelian Kode " + txtnonota.Text, txtnonota.Text, namaform)
+                        Call historysave("Mencetak Data Pembelian Kode " & txtnonota.Text, txtnonota.Text, namaform)
                         '========================
 
                         cbprinted.Checked = True
@@ -1549,7 +1552,7 @@ Public Class fpembelian
             Console.WriteLine("Both records are written to database.")
 
             'history user ==========
-            Call historysave("Mengedit Data Pembelian Kode " + nomornota.ToString, nomornota, namaform)
+            Call historysave("Mengedit Data Pembelian Kode " & nomornota.ToString, nomornota, namaform)
             '========================
             MsgBox("Update Berhasil", MsgBoxStyle.Information, "Sukses")
             Call inisialisasi(nomornota)
@@ -1558,13 +1561,11 @@ Public Class fpembelian
                 myTrans.Rollback()
             Catch ex As OdbcException
                 If Not myTrans.Connection Is Nothing Then
-                    Console.WriteLine("An exception of type " + ex.GetType().ToString() +
-                    " was encountered while attempting to roll back the transaction.")
+                    Console.WriteLine("An exception of type " & ex.GetType().ToString() & " was encountered while attempting to roll back the transaction.")
                 End If
             End Try
 
-            Console.WriteLine("An exception of type " + e.GetType().ToString() +
-            "was encountered while inserting the data.")
+            Console.WriteLine("An exception of type " & e.GetType().ToString() & "was encountered while inserting the data.")
             Console.WriteLine("Neither record was written to database.")
             MsgBox("Update Gagal", MsgBoxStyle.Information, "Gagal")
         End Try
