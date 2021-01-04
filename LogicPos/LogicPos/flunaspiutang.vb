@@ -16,6 +16,7 @@ Public Class flunaspiutang
     Dim kodepenjualantbh, kodepelanggantbh As String
     Dim tgljualtbh, tgljatuhtempotbh As Date
     Dim totaljualtbh, bayarpiutangtbh, sisapiutangtbh As Double
+
     '====
     'variabel bantuan view piutang
     Dim viewkodelunas, viewkodecustomer, viewkodesales, viewkodebayar, viewketerangan, viewnobukti As String
@@ -644,9 +645,18 @@ Public Class flunaspiutang
         End If
     End Sub
 
-    Sub prosessimpan()
-        'ini array
+    Sub simpan()
+        Dim tglpenjualansimpan, tgljatuhtemposimpan As Date
         Dim totaljual(GridView1.RowCount - 1), bayarjual(GridView1.RowCount - 1), sisajual(GridView1.RowCount - 1) As Double
+
+        Call koneksii()
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
+        Dim myTrans As OdbcTransaction
+
+        ' Start a local transaction
+        myTrans = cnnx.BeginTransaction()
+        myCommand.Connection = cnnx
+        myCommand.Transaction = myTrans
 
         For i As Integer = 0 To GridView1.RowCount - 1
             'cek ke penjualan
@@ -659,7 +669,7 @@ Public Class flunaspiutang
                 totaljual(i) = Val(dr("total_penjualan"))
                 bayarjual(i) = Val(dr("bayar_penjualan"))
             Else
-                MsgBox("id penjualan : " + GridView1.GetRowCellValue(i, "penjualan_id") + " tidak ditemukan !")
+                MsgBox("id penjualan : " + GridView1.GetRowCellValue(i, "penjualan_id") & " tidak ditemukan !")
                 Exit Sub
             End If
 
@@ -680,34 +690,6 @@ Public Class flunaspiutang
             End If
         Next
 
-
-        For i As Integer = 0 To GridView1.RowCount - 1
-            If (bayarjual(i) + Val(GridView1.GetRowCellValue(i, "terima_piutang"))).Equals(totaljual(i)) Then
-                lunasstatus = 1
-
-                sql = "UPDATE tb_penjualan SET lunas_penjualan = '" & lunasstatus & "' WHERE id = '" & GridView1.GetRowCellValue(i, "penjualan_id") & "' "
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-            Else
-                lunasstatus = 0
-            End If
-        Next
-
-        Call simpan()
-    End Sub
-
-    Sub simpan()
-        Dim tglpenjualansimpan, tgljatuhtemposimpan As Date
-
-        Call koneksii()
-        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
-        Dim myTrans As OdbcTransaction
-
-        ' Start a local transaction
-        myTrans = cnnx.BeginTransaction()
-        myCommand.Connection = cnnx
-        myCommand.Transaction = myTrans
-
         Try
             Call koneksii()
             sql = "INSERT INTO tb_pelunasan_piutang (user_id, pelanggan_id, kas_id, tanggal_transaksi, jenis_kas, bayar_lunas, no_bukti, keterangan_lunas, void_lunas, print_lunas, posted_lunas, created_by, updated_by, date_created, last_updated) VALUES ('" & iduser & "', '" & idpelanggan & "', '" & idkas & "','" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "','" & cmbbayar.Text & "', '" & totalbayar & "','" & txtbukti.Text & "','" & txtketerangan.Text & "','" & 0 & "','" & 0 & "','" & 1 & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
@@ -725,6 +707,18 @@ Public Class flunaspiutang
             myCommand.CommandText = "INSERT INTO tb_transaksi_kas (kode_kas, kode_piutang, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & idkas & "','" & idlunaspiutang & "', 'BAYAR', now(), 'Transaksi Pelunasan Nomor " & idlunaspiutang & "','" & 0 & "', '" & totalbayar & "', '" & fmenu.kodeuser.Text & "', '" & fmenu.kodeuser.Text & "', now(), now())"
             myCommand.ExecuteNonQuery()
 
+
+            For i As Integer = 0 To GridView1.RowCount - 1
+                If (bayarjual(i) + Val(GridView1.GetRowCellValue(i, "terima_piutang"))).Equals(totaljual(i)) Then
+                    lunasstatus = 1
+
+                    myCommand.CommandText = "UPDATE tb_penjualan SET lunas_penjualan = '" & lunasstatus & "' WHERE id = '" & GridView1.GetRowCellValue(i, "penjualan_id") & "' "
+                    myCommand.ExecuteNonQuery()
+                Else
+                    lunasstatus = 0
+                End If
+            Next
+
             myTrans.Commit()
             Console.WriteLine("Both records are written to database.")
 
@@ -733,7 +727,7 @@ Public Class flunaspiutang
 
             'history user ==========
             Call historysave("Menyimpan Data Lunas Piutang Kode " & idlunaspiutang, idlunaspiutang, namaform)
-            '========================
+            '=======================
             'kodelunaspiutang = txtnolunaspiutang.Text
             Call inisialisasi(idlunaspiutang)
 
@@ -760,12 +754,12 @@ Public Class flunaspiutang
                 If cmbbayar.Text IsNot "" Then
                     If txttotalbayar.Text > 0 Then
                         If totalbayar.Equals(Val(GridView1.Columns("terima_piutang").SummaryItem.SummaryValue)) Then
-                            Call prosessimpan()
+                            Call simpan()
                         Else
                             If totalselisih > 0 Then
-                                MsgBox("Pembayaran Lebih " + Format(totalselisih, "##,##0").ToString)
+                                MsgBox("Pembayaran Lebih " & Format(totalselisih, "##,##0").ToString)
                             ElseIf totalselisih < 0 Then
-                                MsgBox("Pembayaran Kurang " + Format(totalselisih, "##,##0").ToString)
+                                MsgBox("Pembayaran Kurang " & Format(totalselisih, "##,##0").ToString)
                             End If
                         End If
                     Else
@@ -923,8 +917,19 @@ Public Class flunaspiutang
         End Try
     End Sub
 
-    Sub prosesperbarui(nomornota As String)
+    Sub perbarui(nomornota As String)
+        Dim tglpenjualansimpan, tgljatuhtemposimpan As Date
         Dim totaljual(GridView1.RowCount - 1), bayarjual(GridView1.RowCount - 1), sisajual(GridView1.RowCount - 1) As Double
+        idlunaspiutang = nomornota
+
+        Call koneksii()
+        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
+        Dim myTrans As OdbcTransaction
+
+        ' Start a local transaction
+        myTrans = cnnx.BeginTransaction()
+        myCommand.Connection = cnnx
+        myCommand.Transaction = myTrans
 
         For i As Integer = 0 To GridView1.RowCount - 1
             'cek ke penjualan
@@ -937,7 +942,7 @@ Public Class flunaspiutang
                 totaljual(i) = Val(dr("total_penjualan"))
                 bayarjual(i) = Val(dr("bayar_penjualan"))
             Else
-                MsgBox("id penjualan : " & GridView1.GetRowCellValue(i, "penjualan_id") + " tidak ditemukan !")
+                MsgBox("id penjualan : " & GridView1.GetRowCellValue(i, "penjualan_id") & " tidak ditemukan !")
                 Exit Sub
             End If
 
@@ -953,54 +958,21 @@ Public Class flunaspiutang
 
             'hitung pembayaran
             If sisajual(i) < Val(GridView1.GetRowCellValue(i, "terima_piutang")) Then
-                MsgBox("Kelebihan Bayar pada nota " + GridView1.GetRowCellValue(i, "penjualan_id"))
+                MsgBox("Kelebihan Bayar pada nota " & GridView1.GetRowCellValue(i, "penjualan_id"))
                 Exit Sub
             End If
         Next
 
-
-        'kembalikan status
-        Call koneksii()
-        For i As Integer = 0 To tabelsementara.Rows.Count - 1
-            sql = "UPDATE tb_penjualan SET lunas_penjualan = '" & 0 & "' WHERE id = '" & tabelsementara.Rows(i).Item(0) & "'"
-            cmmd = New OdbcCommand(sql, cnn)
-            dr = cmmd.ExecuteReader()
-        Next
-
-        '====
-
-        For i As Integer = 0 To GridView1.RowCount - 1
-            If (bayarjual(i) + Val(GridView1.GetRowCellValue(i, "terima_piutang"))).Equals(totaljual(i)) Then
-                lunasstatus = 1
-
-                sql = "UPDATE tb_penjualan SET lunas_penjualan = '" & lunasstatus & "' WHERE id = '" & GridView1.GetRowCellValue(i, "penjualan_id") & "' "
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-            Else
-                lunasstatus = 0
-            End If
-        Next
-
-        Call perbarui(nomornota)
-    End Sub
-
-    Sub perbarui(nomornota As String)
-        Dim tglpenjualansimpan, tgljatuhtemposimpan As Date
-        idlunaspiutang = nomornota
-
-        Call koneksii()
-        Dim myCommand As OdbcCommand = cnnx.CreateCommand()
-        Dim myTrans As OdbcTransaction
-
-
-        ' Start a local transaction
-        myTrans = cnnx.BeginTransaction()
-        myCommand.Connection = cnnx
-        myCommand.Transaction = myTrans
-
         Try
-            myCommand.CommandText = "DELETE FROM tb_pelunasan_piutang_detail WHERE kode_lunas = '" & nomornota & "'"
+            myCommand.CommandText = "DELETE FROM tb_pelunasan_piutang_detail WHERE pelunasan_piutang_id = '" & nomornota & "'"
             myCommand.ExecuteNonQuery()
+
+            'kembalikan status
+            For i As Integer = 0 To tabelsementara.Rows.Count - 1
+                myCommand.CommandText = "UPDATE tb_penjualan SET lunas_penjualan = '" & 0 & "' WHERE id = '" & tabelsementara.Rows(i).Item(0) & "'"
+                myCommand.ExecuteNonQuery()
+            Next
+            '====
 
             For i As Integer = 0 To GridView1.RowCount - 1
                 tglpenjualansimpan = Date.Parse(GridView1.GetRowCellValue(i, "tanggal_penjualan"))
@@ -1013,8 +985,19 @@ Public Class flunaspiutang
             myCommand.CommandText = "UPDATE tb_pelunasan_piutang SET user_id='" & iduser & "',tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', pelanggan_id='" & idpelanggan & "', kas_id='" & idkas & "', bayar_lunas='" & totalbayar & "', no_bukti='" & txtbukti.Text & "' ,keterangan_lunas='" & txtketerangan.Text & "', updated_by='" & fmenu.kodeuser.Text & "', last_updated=now()  WHERE id='" & nomornota & "'"
             myCommand.ExecuteNonQuery()
 
-            myCommand.CommandText = "UPDATE tb_transaksi_kas SET kas_id='" & idkas & "', tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', kredit_kas='" & totalbayar & "', updated_by='" & fmenu.kodeuser.Text & "', last_updated=now() WHERE kode_piutang='" & nomornota & "'"
+            myCommand.CommandText = "UPDATE tb_transaksi_kas SET kode_kas='" & idkas & "', tanggal_transaksi='" & Format(dtpelunasan.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', kredit_kas='" & totalbayar & "', updated_by='" & fmenu.kodeuser.Text & "', last_updated=now() WHERE kode_piutang='" & nomornota & "'"
             myCommand.ExecuteNonQuery()
+
+            For i As Integer = 0 To GridView1.RowCount - 1
+                If (bayarjual(i) + Val(GridView1.GetRowCellValue(i, "terima_piutang"))).Equals(totaljual(i)) Then
+                    lunasstatus = 1
+
+                    myCommand.CommandText = "UPDATE tb_penjualan SET lunas_penjualan = '" & lunasstatus & "' WHERE id = '" & GridView1.GetRowCellValue(i, "penjualan_id") & "' "
+                    myCommand.ExecuteNonQuery()
+                Else
+                    lunasstatus = 0
+                End If
+            Next
 
             myTrans.Commit()
             Console.WriteLine("Both records are written to database.")
@@ -1053,12 +1036,12 @@ Public Class flunaspiutang
                     If cmbbayar.Text IsNot "" And iduser > 0 Then
                         If txttotalbayar.Text > 0 Then
                             If totalbayar.Equals(Val(GridView1.Columns("terima_piutang").SummaryItem.SummaryValue)) Then
-                                Call prosesperbarui(txtnolunaspiutang.Text)
+                                Call perbarui(txtnolunaspiutang.Text)
                             Else
                                 If totalselisih > 0 Then
-                                    MsgBox("Pembayaran Lebih " + Format(totalselisih, "##,##0").ToString)
+                                    MsgBox("Pembayaran Lebih " & Format(totalselisih, "##,##0").ToString)
                                 ElseIf totalselisih < 0 Then
-                                    MsgBox("Pembayaran Kurang " + Format(totalselisih, "##,##0").ToString)
+                                    MsgBox("Pembayaran Kurang " & Format(totalselisih, "##,##0").ToString)
                                 End If
                             End If
                         Else
