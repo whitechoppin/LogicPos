@@ -5,6 +5,7 @@ Public Class fchartpelunasanpiutang
     Dim iduser, idpelanggan, idkas As Integer
     Public kodeakses As Integer
 
+    Dim exportstatus, printstatus As Boolean
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
     Dim CuRHeight As Integer = Me.Height
@@ -43,6 +44,33 @@ Public Class fchartpelunasanpiutang
         cmbsales.DataSource = ds.Tables(0)
         cmbsales.ValueMember = "id"
         cmbsales.DisplayMember = "kode_user"
+    End Sub
+
+    Sub comboboxpelanggan()
+        Call koneksii()
+        sql = "SELECT * FROM tb_pelanggan"
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
+        da.Dispose()
+
+        cmbpelanggan.DataSource = ds.Tables(0)
+        cmbpelanggan.ValueMember = "id"
+        cmbpelanggan.DisplayMember = "kode_pelanggan"
+    End Sub
+
+    Sub cariuser()
+        Call koneksii()
+        sql = "SELECT * FROM tb_user WHERE kode_user ='" & cmbsales.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            iduser = Val(dr("id"))
+            txtnamasales.Text = dr("nama_user")
+        Else
+            iduser = 0
+            txtnamasales.Text = ""
+        End If
     End Sub
 
     Sub caripelanggan()

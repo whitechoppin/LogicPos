@@ -5,6 +5,7 @@ Public Class fchartpelunasanutang
     Dim iduser, idsupplier, idkas As Integer
     Public kodeakses As Integer
 
+    Dim exportstatus, printstatus As Boolean
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
     Dim CuRHeight As Integer = Me.Height
@@ -54,6 +55,35 @@ Public Class fchartpelunasanutang
         cmbsales.DataSource = ds.Tables(0)
         cmbsales.ValueMember = "id"
         cmbsales.DisplayMember = "kode_user"
+    End Sub
+
+    Sub carisupplier()
+        Call koneksii()
+        sql = "SELECT * FROM tb_supplier WHERE kode_supplier='" & cmbsupplier.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+
+        If dr.HasRows Then
+            idsupplier = Val(dr("id"))
+            txtnamasupplier.Text = dr("nama_supplier")
+        Else
+            idsupplier = 0
+            txtnamasupplier.Text = ""
+        End If
+    End Sub
+
+    Sub cariuser()
+        Call koneksii()
+        sql = "SELECT * FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            iduser = Val(dr("id"))
+            txtnamasales.Text = dr("nama_user")
+        Else
+            iduser = 0
+            txtnamasales.Text = ""
+        End If
     End Sub
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click

@@ -5,6 +5,7 @@ Public Class fchartpembelian
     Dim idgudang, iduser, idsupplier, idbarang As Integer
     Public kodeakses As Integer
 
+    Dim exportstatus, printstatus As Boolean
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
     Dim CuRHeight As Integer = Me.Height
@@ -37,6 +38,18 @@ Public Class fchartpembelian
         cmbsales.Text = ""
         cmbgudang.Text = ""
         cmbsupplier.Text = ""
+
+        Select Case kodeakses
+            Case 1
+                printstatus = True
+                exportstatus = False
+            Case 3
+                printstatus = False
+                exportstatus = True
+            Case 4
+                printstatus = True
+                exportstatus = True
+        End Select
 
         Call historysave("Membuka Chart Pembelian", "N/A", namaform)
     End Sub
@@ -359,8 +372,31 @@ Public Class fchartpembelian
         End If
     End Sub
 
-    Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
+    Sub ExportToExcel()
+        Dim filename As String = InputBox("Nama File", "Input Nama file ")
+        Dim pathdata As String = "C:\ExportLogicPos"
+        Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"
 
+        If filename <> "" Then
+            If (Not System.IO.Directory.Exists(pathdata)) Then
+                System.IO.Directory.CreateDirectory(pathdata)
+            End If
+
+            ChartControl1.ExportToXls(yourpath)
+            MsgBox("Data tersimpan di " & yourpath, MsgBoxStyle.Information, "Success")
+            ' Do something
+        ElseIf DialogResult.Cancel Then
+            MsgBox("You've canceled")
+        End If
+    End Sub
+
+    Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
+        If exportstatus.Equals(True) Then
+            ExportToExcel()
+            Call historysave("Mengexport Chart Pembelian", "N/A", namaform)
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
 
     Private Sub btncarisupplier_Click(sender As Object, e As EventArgs) Handles btncarisupplier.Click
