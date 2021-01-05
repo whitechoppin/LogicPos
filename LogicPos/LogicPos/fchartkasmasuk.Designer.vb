@@ -49,6 +49,8 @@ Partial Class fchartkasmasuk
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
+        Me.txtnamasales = New System.Windows.Forms.TextBox()
+        Me.txtnamakas = New System.Windows.Forms.TextBox()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -228,7 +230,7 @@ Partial Class fchartkasmasuk
         XyDiagram1.AxisY.Label.TextPattern = "{V:#,#}"
         XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
         Me.ChartControl1.Diagram = XyDiagram1
-        Me.ChartControl1.Location = New System.Drawing.Point(18, 175)
+        Me.ChartControl1.Location = New System.Drawing.Point(18, 201)
         Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartControl1.Name = "ChartControl1"
         SideBySideBarSeriesLabel1.TextPattern = "{V:#,#}"
@@ -237,10 +239,28 @@ Partial Class fchartkasmasuk
         Series1.Name = "Penjualan"
         Series1.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint1, SeriesPoint2, SeriesPoint3, SeriesPoint4, SeriesPoint5})
         Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1}
-        Me.ChartControl1.Size = New System.Drawing.Size(1521, 456)
+        Me.ChartControl1.Size = New System.Drawing.Size(1521, 430)
         Me.ChartControl1.TabIndex = 79
         ChartTitle1.Text = "Periode :"
         Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle1})
+        '
+        'txtnamasales
+        '
+        Me.txtnamasales.Enabled = False
+        Me.txtnamasales.Location = New System.Drawing.Point(19, 155)
+        Me.txtnamasales.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnamasales.Name = "txtnamasales"
+        Me.txtnamasales.Size = New System.Drawing.Size(268, 24)
+        Me.txtnamasales.TabIndex = 81
+        '
+        'txtnamakas
+        '
+        Me.txtnamakas.Enabled = False
+        Me.txtnamakas.Location = New System.Drawing.Point(304, 154)
+        Me.txtnamakas.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtnamakas.Name = "txtnamakas"
+        Me.txtnamakas.Size = New System.Drawing.Size(268, 24)
+        Me.txtnamakas.TabIndex = 80
         '
         'fchartkasmasuk
         '
@@ -248,6 +268,8 @@ Partial Class fchartkasmasuk
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1552, 644)
+        Me.Controls.Add(Me.txtnamasales)
+        Me.Controls.Add(Me.txtnamakas)
         Me.Controls.Add(Me.ChartControl1)
         Me.Controls.Add(Me.btnprint)
         Me.Controls.Add(Me.btnrefresh)
@@ -295,4 +317,6 @@ Partial Class fchartkasmasuk
     Friend WithEvents btnrefresh As Button
     Friend WithEvents btnexcel As Button
     Friend WithEvents ChartControl1 As DevExpress.XtraCharts.ChartControl
+    Friend WithEvents txtnamasales As TextBox
+    Friend WithEvents txtnamakas As TextBox
 End Class

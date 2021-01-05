@@ -401,6 +401,6 @@ Public Class fchartpembelian
     End Sub
 
     Private Sub txtkodebarang_TextChanged(sender As Object, e As EventArgs) Handles txtkodebarang.TextChanged
-
+        Call caribarang()
     End Sub
 End Class

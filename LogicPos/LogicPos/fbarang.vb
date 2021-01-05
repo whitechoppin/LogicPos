@@ -191,7 +191,7 @@ Public Class fbarang
         GridColumn5.FieldName = "modal_barang"
         GridColumn5.Width = 60
         GridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        GridColumn5.DisplayFormat.FormatString = "Rp ##,#0"
+        GridColumn5.DisplayFormat.FormatString = "##,#0"
         GridColumn5.Visible = False
 
         GridColumn6.Caption = "Kategori"
@@ -261,7 +261,7 @@ Public Class fbarang
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            MsgBox("Kode barang Sudah ada dengan nama " + dr("nama_barang"), MsgBoxStyle.Critical, "Pemberitahuan")
+            MsgBox("Kode barang Sudah ada dengan nama " & dr("nama_barang"), MsgBoxStyle.Critical, "Pemberitahuan")
             txtkode.Focus()
         Else
             'menyiapkan MemoryStream
@@ -291,7 +291,7 @@ Public Class fbarang
                 MsgBox("Data tersimpan", MsgBoxStyle.Information, "Berhasil")
 
                 'history user ==========
-                Call historysave("Menyimpan Data Barang Kode " + txtkode.Text, txtkode.Text, namaform)
+                Call historysave("Menyimpan Data Barang Kode " & txtkode.Text, txtkode.Text, namaform)
                 '========================
 
                 btntambah.Text = "Tambah"
@@ -331,8 +331,12 @@ Public Class fbarang
             kategoribarang = dr("kategori_barang_id")
             keteranganbarang = dr("keterangan_barang")
 
-            PictureBox.SizeMode = PictureBoxSizeMode.StretchImage
-            PictureBox.Image = Image.FromStream(New IO.MemoryStream(foto))
+            Try
+                PictureBox.SizeMode = PictureBoxSizeMode.StretchImage
+                PictureBox.Image = Image.FromStream(New IO.MemoryStream(foto))
+            Catch ex As Exception
+                PictureBox.Image = ImageList.Images(0)
+            End Try
 
             txtkode.Text = kodebarang
             txtnama.Text = namabarang
@@ -424,7 +428,7 @@ Public Class fbarang
             btnedit.Text = "Edit"
 
             'history user ==========
-            Call historysave("Mengedit Data Barang Kode " + txtkode.Text, txtkode.Text, namaform)
+            Call historysave("Mengedit Data Barang Kode " & txtkode.Text, txtkode.Text, namaform)
             '========================
 
             Me.Refresh()
@@ -438,11 +442,11 @@ Public Class fbarang
             Call perbaharui()
         Else
             Call koneksii()
-            sql = "SELECT * FROM tb_barang WHERE kode_barang  = '" + txtkode.Text + "'"
+            sql = "SELECT * FROM tb_barang WHERE kode_barang  = '" & txtkode.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
-                MsgBox("Kode barang Sudah ada dengan nama " + dr("nama_barang"), MsgBoxStyle.Exclamation, "Pemberitahuan")
+                MsgBox("Kode barang Sudah ada dengan nama " & dr("nama_barang"), MsgBoxStyle.Exclamation, "Pemberitahuan")
                 txtkode.Focus()
             Else
                 Call perbaharui()
@@ -473,7 +477,7 @@ Public Class fbarang
                     MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     'history user ===========
-                    Call historysave("Menghapus Data Barang Kode" + txtkode.Text, txtkode.Text, namaform)
+                    Call historysave("Menghapus Data Barang Kode" & txtkode.Text, txtkode.Text, namaform)
                     '========================
                     Me.Refresh()
                     Call awal()
