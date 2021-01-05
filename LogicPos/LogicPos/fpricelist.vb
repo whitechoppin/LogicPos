@@ -166,9 +166,10 @@ Public Class fpricelist
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            idpelanggan = dr("id")
+            idpelanggan = Val(dr("id"))
             txtnamapelanggan.Text = dr("nama_pelanggan")
         Else
+            idpelanggan = 0
             txtnamapelanggan.Text = ""
         End If
 
@@ -286,7 +287,7 @@ Public Class fpricelist
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If tambahstatus.Equals(True) Then
-            If cmbpelanggan.SelectedIndex = -1 Then
+            If idpelanggan > 0 Then
                 MsgBox("Pelanggan Belum Di isi")
             Else
                 If txtkode.Text.Length = 0 Then
@@ -330,7 +331,7 @@ Public Class fpricelist
                 MessageBox.Show(txtnama.Text + " Berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 'history user ==========
-                Call historysave("Menghapus Data Pricelist Kode " + txtkode.Text + " Pada Kode Customer " + cmbpelanggan.Text, txtkode.Text, namaform)
+                Call historysave("Menghapus Data Pricelist Kode " & txtkode.Text & " Pada Kode Customer " & cmbpelanggan.Text, txtkode.Text, namaform)
                 '========================
                 Me.Refresh()
                 Call awal()
@@ -393,7 +394,7 @@ Public Class fpricelist
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If editstatus.Equals(True) Then
-            If cmbpelanggan.SelectedIndex = -1 Then
+            If idpelanggan > 0 Then
                 MsgBox("Pelanggan Belum Di isi")
             Else
                 If txtkode.Text.Length = 0 Then

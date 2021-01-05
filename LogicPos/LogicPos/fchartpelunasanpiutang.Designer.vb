@@ -22,16 +22,16 @@ Partial Class fchartpelunasanpiutang
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpelunasanpiutang))
         Dim XyDiagram1 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
         Dim Series1 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim SideBySideBarSeriesLabel1 As DevExpress.XtraCharts.SideBySideBarSeriesLabel = New DevExpress.XtraCharts.SideBySideBarSeriesLabel()
         Dim SeriesPoint1 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
         Dim SeriesPoint2 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
         Dim SeriesPoint3 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
         Dim SeriesPoint4 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
         Dim SeriesPoint5 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
         Dim ChartTitle1 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpelunasanpiutang))
-        Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         Me.rbtahunan = New System.Windows.Forms.RadioButton()
         Me.rbbulanan = New System.Windows.Forms.RadioButton()
         Me.rbharian = New System.Windows.Forms.RadioButton()
@@ -51,27 +51,12 @@ Partial Class fchartpelunasanpiutang
         Me.btnprint = New System.Windows.Forms.Button()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btnexcel = New System.Windows.Forms.Button()
+        Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(SideBySideBarSeriesLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'ChartControl1
-        '
-        XyDiagram1.AxisX.VisibleInPanesSerializable = "-1"
-        XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
-        Me.ChartControl1.Diagram = XyDiagram1
-        Me.ChartControl1.Location = New System.Drawing.Point(18, 174)
-        Me.ChartControl1.Margin = New System.Windows.Forms.Padding(6)
-        Me.ChartControl1.Name = "ChartControl1"
-        Series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
-        Series1.Name = "Penjualan"
-        Series1.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint1, SeriesPoint2, SeriesPoint3, SeriesPoint4, SeriesPoint5})
-        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1}
-        Me.ChartControl1.Size = New System.Drawing.Size(1570, 532)
-        Me.ChartControl1.TabIndex = 2
-        ChartTitle1.Text = "Periode :"
-        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle1})
         '
         'rbtahunan
         '
@@ -274,12 +259,33 @@ Partial Class fchartpelunasanpiutang
         Me.btnexcel.Text = "Export Excel"
         Me.btnexcel.UseVisualStyleBackColor = True
         '
+        'ChartControl1
+        '
+        XyDiagram1.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram1.AxisY.Label.TextPattern = "{V:#,#}"
+        XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
+        Me.ChartControl1.Diagram = XyDiagram1
+        Me.ChartControl1.Location = New System.Drawing.Point(19, 175)
+        Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
+        Me.ChartControl1.Name = "ChartControl1"
+        SideBySideBarSeriesLabel1.TextPattern = "{V:#,#}"
+        Series1.Label = SideBySideBarSeriesLabel1
+        Series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
+        Series1.Name = "Penjualan"
+        Series1.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint1, SeriesPoint2, SeriesPoint3, SeriesPoint4, SeriesPoint5})
+        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1}
+        Me.ChartControl1.Size = New System.Drawing.Size(1569, 536)
+        Me.ChartControl1.TabIndex = 74
+        ChartTitle1.Text = "Periode :"
+        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle1})
+        '
         'fchartpelunasanpiutang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1604, 724)
+        Me.Controls.Add(Me.ChartControl1)
         Me.Controls.Add(Me.btnprint)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.btnexcel)
@@ -299,20 +305,18 @@ Partial Class fchartpelunasanpiutang
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.DateTimePicker2)
         Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.ChartControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fchartpelunasanpiutang"
         Me.Text = "Chart Pelunasan Piutang"
         CType(XyDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(SideBySideBarSeriesLabel1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Series1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents ChartControl1 As DevExpress.XtraCharts.ChartControl
     Friend WithEvents rbtahunan As RadioButton
     Friend WithEvents rbbulanan As RadioButton
     Friend WithEvents rbharian As RadioButton
@@ -332,4 +336,5 @@ Partial Class fchartpelunasanpiutang
     Friend WithEvents btnprint As Button
     Friend WithEvents btnrefresh As Button
     Friend WithEvents btnexcel As Button
+    Friend WithEvents ChartControl1 As DevExpress.XtraCharts.ChartControl
 End Class
