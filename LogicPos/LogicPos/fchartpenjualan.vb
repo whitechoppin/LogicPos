@@ -424,7 +424,11 @@ Public Class fchartpenjualan
     End Sub
 
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
-        ChartControl1.ShowPrintPreview()
+        If printstatus.Equals(True) Then
+            ChartControl1.ShowPrintPreview()
+        Else
+            MsgBox("Tidak ada akses")
+        End If
     End Sub
 
     Private Sub cmbpelanggan_TextChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.TextChanged

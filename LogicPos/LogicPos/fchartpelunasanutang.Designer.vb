@@ -23,15 +23,15 @@ Partial Class fchartpelunasanutang
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fchartpelunasanutang))
-        Dim XyDiagram2 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
-        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim SideBySideBarSeriesLabel2 As DevExpress.XtraCharts.SideBySideBarSeriesLabel = New DevExpress.XtraCharts.SideBySideBarSeriesLabel()
-        Dim SeriesPoint6 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
-        Dim SeriesPoint7 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
-        Dim SeriesPoint8 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
-        Dim SeriesPoint9 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
-        Dim SeriesPoint10 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
-        Dim ChartTitle2 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
+        Dim XyDiagram6 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+        Dim Series6 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim SideBySideBarSeriesLabel6 As DevExpress.XtraCharts.SideBySideBarSeriesLabel = New DevExpress.XtraCharts.SideBySideBarSeriesLabel()
+        Dim SeriesPoint26 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("0", New Object() {CType(6.9R, Object)})
+        Dim SeriesPoint27 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("1", New Object() {CType(2.6R, Object)})
+        Dim SeriesPoint28 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("2", New Object() {CType(7.9R, Object)})
+        Dim SeriesPoint29 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("3", New Object() {CType(7.2R, Object)})
+        Dim SeriesPoint30 As DevExpress.XtraCharts.SeriesPoint = New DevExpress.XtraCharts.SeriesPoint("4", New Object() {CType(6.3R, Object)})
+        Dim ChartTitle6 As DevExpress.XtraCharts.ChartTitle = New DevExpress.XtraCharts.ChartTitle()
         Me.rbtahunan = New System.Windows.Forms.RadioButton()
         Me.rbbulanan = New System.Windows.Forms.RadioButton()
         Me.rbharian = New System.Windows.Forms.RadioButton()
@@ -56,9 +56,9 @@ Partial Class fchartpelunasanutang
         Me.txtnamakas = New System.Windows.Forms.TextBox()
         Me.txtnamasupplier = New System.Windows.Forms.TextBox()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(SideBySideBarSeriesLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(XyDiagram6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(SideBySideBarSeriesLabel6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'rbtahunan
@@ -234,7 +234,7 @@ Partial Class fchartpelunasanutang
         '
         'btnprint
         '
-        Me.btnprint.Location = New System.Drawing.Point(1371, 121)
+        Me.btnprint.Location = New System.Drawing.Point(1370, 145)
         Me.btnprint.Margin = New System.Windows.Forms.Padding(4)
         Me.btnprint.Name = "btnprint"
         Me.btnprint.Size = New System.Drawing.Size(166, 46)
@@ -244,7 +244,7 @@ Partial Class fchartpelunasanutang
         '
         'btnrefresh
         '
-        Me.btnrefresh.Location = New System.Drawing.Point(1371, 13)
+        Me.btnrefresh.Location = New System.Drawing.Point(1370, 37)
         Me.btnrefresh.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(166, 46)
@@ -254,7 +254,7 @@ Partial Class fchartpelunasanutang
         '
         'btnexcel
         '
-        Me.btnexcel.Location = New System.Drawing.Point(1371, 67)
+        Me.btnexcel.Location = New System.Drawing.Point(1370, 91)
         Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnexcel.Name = "btnexcel"
         Me.btnexcel.Size = New System.Drawing.Size(166, 46)
@@ -264,23 +264,23 @@ Partial Class fchartpelunasanutang
         '
         'ChartControl1
         '
-        XyDiagram2.AxisX.VisibleInPanesSerializable = "-1"
-        XyDiagram2.AxisY.Label.TextPattern = "{V:#,#}"
-        XyDiagram2.AxisY.VisibleInPanesSerializable = "-1"
-        Me.ChartControl1.Diagram = XyDiagram2
+        XyDiagram6.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram6.AxisY.Label.TextPattern = "{V:#,#}"
+        XyDiagram6.AxisY.VisibleInPanesSerializable = "-1"
+        Me.ChartControl1.Diagram = XyDiagram6
         Me.ChartControl1.Location = New System.Drawing.Point(18, 206)
         Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartControl1.Name = "ChartControl1"
-        SideBySideBarSeriesLabel2.TextPattern = "{V:#,#}"
-        Series2.Label = SideBySideBarSeriesLabel2
-        Series2.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
-        Series2.Name = "Penjualan"
-        Series2.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint6, SeriesPoint7, SeriesPoint8, SeriesPoint9, SeriesPoint10})
-        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series2}
+        SideBySideBarSeriesLabel6.TextPattern = "{V:#,#}"
+        Series6.Label = SideBySideBarSeriesLabel6
+        Series6.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]
+        Series6.Name = "Penjualan"
+        Series6.Points.AddRange(New DevExpress.XtraCharts.SeriesPoint() {SeriesPoint26, SeriesPoint27, SeriesPoint28, SeriesPoint29, SeriesPoint30})
+        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series6}
         Me.ChartControl1.Size = New System.Drawing.Size(1518, 509)
         Me.ChartControl1.TabIndex = 74
-        ChartTitle2.Text = "Periode :"
-        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle2})
+        ChartTitle6.Text = "Periode :"
+        Me.ChartControl1.Titles.AddRange(New DevExpress.XtraCharts.ChartTitle() {ChartTitle6})
         '
         'txtnamasales
         '
@@ -342,9 +342,9 @@ Partial Class fchartpelunasanutang
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fchartpelunasanutang"
         Me.Text = "Chart Pelunasan Utang"
-        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(SideBySideBarSeriesLabel2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(XyDiagram6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(SideBySideBarSeriesLabel6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
