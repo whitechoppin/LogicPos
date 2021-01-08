@@ -805,7 +805,7 @@ Public Class fpembelian
         Else
             idstok = 0
             If GridView1.RowCount = 0 Then
-                MsgBox(jenis)
+                'MsgBox(jenis)
                 If jenis.Equals("Satuan") Then
                     'tambahkan data ke tabel keranjang
                     tabel.Rows.Add(txtkodebarang.Text, txtkodebarang.Text, txtnamabarang.Text, Val(banyak), satuan, jenis, Val(hargabarang), Val(banyak) * Val(hargabarang), idbarang, idstok)

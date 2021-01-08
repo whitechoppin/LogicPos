@@ -26,16 +26,21 @@ Module koneksi
 
     Public Sub koneksii()
         Dim status As MsgBoxResult
+        Dim DriverString As String
         Try
             'untuk koneksi biasa : select atau delete data gak penting
+            DriverString = "Driver={MySQL ODBC 8.0 ANSI Driver};Database=logicpos;server=localhost;uid=root;Option=67108864;"
+
             If cnn.State = ConnectionState.Closed Then
-                cnn = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
+                'cnn = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
+                cnn = New OdbcConnection(DriverString)
                 cnn.Open()
             End If
 
             'untuk koneksi data berbasis transaksi : sekali save query > 1 query
             If cnnx.State = ConnectionState.Closed Then
-                cnnx = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
+                'cnnx = New OdbcConnection("DSN=dsn_logicpos;MultipleActiveResultSets=True")
+                cnnx = New OdbcConnection(DriverString)
                 cnnx.Open()
             End If
         Catch ex As Exception
