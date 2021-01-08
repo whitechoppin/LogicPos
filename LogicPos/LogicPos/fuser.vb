@@ -111,6 +111,212 @@ Public Class fuser
         txtalamat.Clear()
         txtketerangan.Clear()
 
+        'feature
+        '===========================================
+        'checkbox
+        '===========================================
+        'master
+        If flogin.xmaster_barang > 0 Then
+            cbmasterbarang.Visible = True
+            clbmasterbarang.Visible = True
+        Else
+            cbmasterbarang.Visible = False
+            clbmasterbarang.Visible = False
+        End If
+
+        If flogin.xmaster_kategori > 0 Then
+            cbmasterkategori.Visible = True
+            clbmasterkategori.Visible = True
+        Else
+            cbmasterkategori.Visible = False
+            clbmasterkategori.Visible = False
+        End If
+
+        If flogin.xmaster_gudang > 0 Then
+            cbmastergudang.Visible = True
+            clbmastergudang.Visible = True
+        Else
+            cbmastergudang.Visible = False
+            clbmastergudang.Visible = False
+        End If
+
+        If flogin.xmaster_pelanggan > 0 Then
+            cbmasterpelanggan.Visible = True
+            clbmasterpelanggan.Visible = True
+        Else
+            cbmasterpelanggan.Visible = False
+            clbmasterpelanggan.Visible = False
+        End If
+
+        If flogin.xmaster_supplier > 0 Then
+            cbmastersupplier.Visible = True
+            clbmastersupplier.Visible = True
+        Else
+            cbmastersupplier.Visible = False
+            clbmastersupplier.Visible = False
+        End If
+
+        If flogin.xmaster_user > 0 Then
+            cbmasteruser.Visible = True
+            clbmasteruser.Visible = True
+        Else
+            cbmasteruser.Visible = False
+            clbmasteruser.Visible = False
+        End If
+
+        If flogin.xmaster_kas > 0 Then
+            cbmasterkas.Visible = True
+            clbmasterkas.Visible = True
+        Else
+            cbmasterkas.Visible = False
+            clbmasterkas.Visible = False
+        End If
+
+        If flogin.xmaster_pricelist > 0 Then
+            cbmasterpricelist.Visible = True
+            clbmasterpricelist.Visible = True
+        Else
+            cbmasterpricelist.Visible = False
+            clbmasterpricelist.Visible = False
+        End If
+
+        If flogin.xmaster_rek_supplier > 0 Then
+            cbmasterreksupp.Visible = True
+            clbmasterreksupp.Visible = True
+        Else
+            cbmasterreksupp.Visible = False
+            clbmasterreksupp.Visible = False
+        End If
+
+        If flogin.xmaster_rek_pelanggan > 0 Then
+            cbmasterrekplng.Visible = True
+            clbmasterrekplng.Visible = True
+        Else
+            cbmasterrekplng.Visible = False
+            clbmasterrekplng.Visible = False
+        End If
+
+        'transaksi
+
+        If flogin.xmaster_kategori > 0 Then
+
+        End If
+
+        ''transaksi
+        'cbpembelian.Visible = False
+        'cbpenjualan.Visible = False
+        'cbreturbeli.Visible = False
+        'cbreturjual.Visible = False
+        'cbbarangmasuk.Visible = False
+        'cbbarangkeluar.Visible = False
+        'cbtransferbarang.Visible = False
+        'cbpenyesuaianstok.Visible = False
+
+        ''administrasi
+        'cblunasutang.Visible = False
+        'cblunaspiutang.Visible = False
+        'cbtransferkas.Visible = False
+        'cbakunmasuk.Visible = False
+        'cbakunkeluar.Visible = False
+
+        ''laporan
+        'cblappricelist.Visible = False
+        'cblappembelian.Visible = False
+        'cblappenjualan.Visible = False
+        'cblappenjualanpajak.Visible = False
+
+        'cblapreturbeli.Visible = False
+        'cblapreturjual.Visible = False
+        'cblapbarangmasuk.Visible = False
+        'cblapbarangkeluar.Visible = False
+
+        'cblaptransferbarang.Visible = False
+        'cblapstokbarang.Visible = False
+        'cblaputang.Visible = False
+        'cblappiutang.Visible = False
+
+        'cblapakunmasuk.Visible = False
+        'cblapakunkeluar.Visible = False
+        'cblaptransferkas.Visible = False
+        'cblaptransaksikas.Visible = False
+
+        'cblapmodalbarang.Visible = False
+        'cblapmutasibarang.Visible = False
+        'cblappenyesuaianstok.Visible = False
+        'cblaplabarugi.Visible = False
+        'cblaprekapanakhir.Visible = False
+
+        ''chart
+        'cbchartpembelian.Visible = False
+        'cbchartpenjualan.Visible = False
+        'cbchartlunasutang.Visible = False
+        'cbchartlunaspiutang.Visible = False
+        'cbchartakunmasuk.Visible = False
+        'cbchartakunkeluar.Visible = False
+
+        ''feature
+        'cbkalkulasiexpedisi.Visible = False
+        'cbbarcodegenerator.Visible = False
+
+        ''=======================================
+        ''CheckBox list
+        ''=======================================
+
+        ''transaksi
+        'clbpembelian.Visible = False
+        'clbpenjualan.Visible = False
+        'clbreturbeli.Visible = False
+        'clbreturjual.Visible = False
+        'clbbarangmasuk.Visible = False
+        'clbbarangkeluar.Visible = False
+        'clbtransferbarang.Visible = False
+        'clbpenyesuaianstok.Visible = False
+
+        ''administrasi
+        'clblunasutang.Visible = False
+        'clblunaspiutang.Visible = False
+        'clbtransferkas.Visible = False
+        'clbakunmasuk.Visible = False
+        'clbakunkeluar.Visible = False
+
+        ''laporan dan chart
+        ''laporan
+        'clblappricelist.Visible = False
+        'clblappembelian.Visible = False
+        'clblappenjualan.Visible = False
+        'clblappenjualanpajak.Visible = False
+
+        'clblapreturbeli.Visible = False
+        'clblapreturjual.Visible = False
+        'clblapbarangmasuk.Visible = False
+        'clblapbarangkeluar.Visible = False
+
+        'clblaptransferbarang.Visible = False
+        'clblapstokbarang.Visible = False
+        'clblaputang.Visible = False
+        'clblappiutang.Visible = False
+
+        'clblapakunmasuk.Visible = False
+        'clblapakunkeluar.Visible = False
+        'clblaptransferkas.Visible = False
+        'clblaptransaksikas.Visible = False
+
+        'clblapmodalbarang.Visible = False
+        'clblapmutasibarang.Visible = False
+        'clblappenyesuaianstok.Visible = False
+        'clblaplabarugi.Visible = False
+        'clblaprekapanakhir.Visible = False
+
+        ''chart
+        'clbchartpenjualan.Visible = False
+        'clbchartpembelian.Visible = False
+        'clbchartlunasutang.Visible = False
+        'clbchartlunaspiutang.Visible = False
+        'clbchartakunmasuk.Visible = False
+        'clbchartakunkeluar.Visible = False
+
+        '==========================================================
+
         'akses user
         'master
         cbmasterbarang.Checked = False
