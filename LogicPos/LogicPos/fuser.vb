@@ -113,8 +113,9 @@ Public Class fuser
 
         'feature
         '===========================================
-        'checkbox
+        'checkbox and checkboxlist
         '===========================================
+
         'master
         If flogin.xmaster_barang > 0 Then
             cbmasterbarang.Visible = True
@@ -198,122 +199,353 @@ Public Class fuser
 
         'transaksi
 
-        If flogin.xmaster_kategori > 0 Then
-
+        If flogin.xpembelian > 0 Then
+            cbpembelian.Visible = True
+            clbpembelian.Visible = True
+        Else
+            cbpembelian.Visible = False
+            clbpembelian.Visible = False
         End If
 
-        ''transaksi
-        'cbpembelian.Visible = False
-        'cbpenjualan.Visible = False
-        'cbreturbeli.Visible = False
-        'cbreturjual.Visible = False
-        'cbbarangmasuk.Visible = False
-        'cbbarangkeluar.Visible = False
-        'cbtransferbarang.Visible = False
-        'cbpenyesuaianstok.Visible = False
+        If flogin.xpenjualan > 0 Then
+            cbpenjualan.Visible = True
+            clbpenjualan.Visible = True
+        Else
+            cbpenjualan.Visible = False
+            clbpenjualan.Visible = False
+        End If
 
-        ''administrasi
-        'cblunasutang.Visible = False
-        'cblunaspiutang.Visible = False
-        'cbtransferkas.Visible = False
-        'cbakunmasuk.Visible = False
-        'cbakunkeluar.Visible = False
+        If flogin.xretur_beli > 0 Then
+            cbreturbeli.Visible = True
+            clbreturbeli.Visible = True
+        Else
+            cbreturbeli.Visible = False
+            clbreturbeli.Visible = False
+        End If
 
-        ''laporan
-        'cblappricelist.Visible = False
-        'cblappembelian.Visible = False
-        'cblappenjualan.Visible = False
-        'cblappenjualanpajak.Visible = False
+        If flogin.xretur_jual > 0 Then
+            cbreturjual.Visible = True
+            clbreturjual.Visible = True
+        Else
+            cbreturjual.Visible = False
+            clbreturjual.Visible = False
+        End If
 
-        'cblapreturbeli.Visible = False
-        'cblapreturjual.Visible = False
-        'cblapbarangmasuk.Visible = False
-        'cblapbarangkeluar.Visible = False
+        If flogin.xbarang_masuk > 0 Then
+            cbbarangmasuk.Visible = True
+            clbbarangmasuk.Visible = True
+        Else
+            cbbarangmasuk.Visible = False
+            clbbarangmasuk.Visible = False
+        End If
 
-        'cblaptransferbarang.Visible = False
-        'cblapstokbarang.Visible = False
-        'cblaputang.Visible = False
-        'cblappiutang.Visible = False
+        If flogin.xbarang_keluar > 0 Then
+            cbbarangkeluar.Visible = True
+            clbbarangkeluar.Visible = True
+        Else
+            cbbarangkeluar.Visible = False
+            clbbarangkeluar.Visible = False
+        End If
 
-        'cblapakunmasuk.Visible = False
-        'cblapakunkeluar.Visible = False
-        'cblaptransferkas.Visible = False
-        'cblaptransaksikas.Visible = False
+        If flogin.xtransfer_barang > 0 Then
+            cbtransferbarang.Visible = True
+            clbtransferbarang.Visible = True
+        Else
+            cbtransferbarang.Visible = False
+            clbtransferbarang.Visible = False
+        End If
 
-        'cblapmodalbarang.Visible = False
-        'cblapmutasibarang.Visible = False
-        'cblappenyesuaianstok.Visible = False
-        'cblaplabarugi.Visible = False
-        'cblaprekapanakhir.Visible = False
+        If flogin.xpenyesuaian_stok > 0 Then
+            cbpenyesuaianstok.Visible = True
+            clbpenyesuaianstok.Visible = True
+        Else
+            cbpenyesuaianstok.Visible = False
+            clbpenyesuaianstok.Visible = False
+        End If
 
-        ''chart
-        'cbchartpembelian.Visible = False
-        'cbchartpenjualan.Visible = False
-        'cbchartlunasutang.Visible = False
-        'cbchartlunaspiutang.Visible = False
-        'cbchartakunmasuk.Visible = False
-        'cbchartakunkeluar.Visible = False
+        'administrasi
 
-        ''feature
-        'cbkalkulasiexpedisi.Visible = False
-        'cbbarcodegenerator.Visible = False
+        If flogin.xlunas_utang > 0 Then
+            cblunasutang.Visible = True
+            clblunasutang.Visible = True
+        Else
+            cblunasutang.Visible = False
+            clblunasutang.Visible = False
+        End If
 
-        ''=======================================
-        ''CheckBox list
-        ''=======================================
+        If flogin.xlunas_piutang > 0 Then
+            cblunaspiutang.Visible = True
+            clblunaspiutang.Visible = True
+        Else
+            cblunaspiutang.Visible = False
+            clblunaspiutang.Visible = False
+        End If
 
-        ''transaksi
-        'clbpembelian.Visible = False
-        'clbpenjualan.Visible = False
-        'clbreturbeli.Visible = False
-        'clbreturjual.Visible = False
-        'clbbarangmasuk.Visible = False
-        'clbbarangkeluar.Visible = False
-        'clbtransferbarang.Visible = False
-        'clbpenyesuaianstok.Visible = False
+        If flogin.xakun_masuk > 0 Then
+            cbakunmasuk.Visible = True
+            clbakunmasuk.Visible = True
+        Else
+            cbakunmasuk.Visible = False
+            clbakunmasuk.Visible = False
+        End If
 
-        ''administrasi
-        'clblunasutang.Visible = False
-        'clblunaspiutang.Visible = False
-        'clbtransferkas.Visible = False
-        'clbakunmasuk.Visible = False
-        'clbakunkeluar.Visible = False
+        If flogin.xakun_keluar > 0 Then
+            cbakunkeluar.Visible = True
+            clbakunkeluar.Visible = True
+        Else
+            cbakunkeluar.Visible = False
+            clbakunkeluar.Visible = False
+        End If
 
-        ''laporan dan chart
-        ''laporan
-        'clblappricelist.Visible = False
-        'clblappembelian.Visible = False
-        'clblappenjualan.Visible = False
-        'clblappenjualanpajak.Visible = False
+        If flogin.xtransfer_kas > 0 Then
+            cbtransferkas.Visible = True
+            clbtransferkas.Visible = True
+        Else
+            cbtransferkas.Visible = False
+            clbtransferkas.Visible = False
+        End If
 
-        'clblapreturbeli.Visible = False
-        'clblapreturjual.Visible = False
-        'clblapbarangmasuk.Visible = False
-        'clblapbarangkeluar.Visible = False
+        'laporan
 
-        'clblaptransferbarang.Visible = False
-        'clblapstokbarang.Visible = False
-        'clblaputang.Visible = False
-        'clblappiutang.Visible = False
+        If flogin.xlap_pricelist > 0 Then
+            cblappricelist.Visible = True
+            clblappricelist.Visible = True
+        Else
+            cblappricelist.Visible = False
+            clblappricelist.Visible = False
+        End If
 
-        'clblapakunmasuk.Visible = False
-        'clblapakunkeluar.Visible = False
-        'clblaptransferkas.Visible = False
-        'clblaptransaksikas.Visible = False
+        If flogin.xlap_pembelian > 0 Then
+            cblappembelian.Visible = True
+            clblappembelian.Visible = True
+        Else
+            cblappembelian.Visible = False
+            clblappembelian.Visible = False
+        End If
 
-        'clblapmodalbarang.Visible = False
-        'clblapmutasibarang.Visible = False
-        'clblappenyesuaianstok.Visible = False
-        'clblaplabarugi.Visible = False
-        'clblaprekapanakhir.Visible = False
+        If flogin.xlap_penjualan > 0 Then
+            cblappenjualan.Visible = True
+            clblappenjualan.Visible = True
+        Else
+            cblappenjualan.Visible = False
+            clblappenjualan.Visible = False
+        End If
 
-        ''chart
-        'clbchartpenjualan.Visible = False
-        'clbchartpembelian.Visible = False
-        'clbchartlunasutang.Visible = False
-        'clbchartlunaspiutang.Visible = False
-        'clbchartakunmasuk.Visible = False
-        'clbchartakunkeluar.Visible = False
+        If flogin.xlap_penjualan_pajak > 0 Then
+            cblappenjualanpajak.Visible = True
+            clblappenjualanpajak.Visible = True
+        Else
+            cblappenjualanpajak.Visible = False
+            clblappenjualanpajak.Visible = False
+        End If
+
+        '===
+
+        If flogin.xlap_returbeli > 0 Then
+            cblapreturbeli.Visible = True
+            clblapreturbeli.Visible = True
+        Else
+            cblapreturbeli.Visible = False
+            clblapreturbeli.Visible = False
+        End If
+
+        If flogin.xlap_returjual > 0 Then
+            cblapreturjual.Visible = True
+            clblapreturjual.Visible = True
+        Else
+            cblapreturjual.Visible = False
+            clblapreturjual.Visible = False
+        End If
+
+        If flogin.xlap_barangmasuk > 0 Then
+            cblapbarangmasuk.Visible = True
+            clblapbarangmasuk.Visible = True
+        Else
+            cblapbarangmasuk.Visible = False
+            clblapbarangmasuk.Visible = False
+        End If
+
+        If flogin.xlap_barangkeluar > 0 Then
+            cblapbarangkeluar.Visible = True
+            clblapbarangkeluar.Visible = True
+        Else
+            cblapbarangkeluar.Visible = False
+            clblapbarangkeluar.Visible = False
+        End If
+
+        '===
+
+        If flogin.xlap_transfer_barang > 0 Then
+            cblaptransferbarang.Visible = True
+            clblaptransferbarang.Visible = True
+        Else
+            cblaptransferbarang.Visible = False
+            clblaptransferbarang.Visible = False
+        End If
+
+        If flogin.xlap_stok_barang > 0 Then
+            cblapstokbarang.Visible = True
+            clblapstokbarang.Visible = True
+        Else
+            cblapstokbarang.Visible = False
+            clblapstokbarang.Visible = False
+        End If
+
+        If flogin.xlap_lunas_utang > 0 Then
+            cblaputang.Visible = True
+            clblaputang.Visible = True
+        Else
+            cblaputang.Visible = False
+            clblaputang.Visible = False
+        End If
+
+        If flogin.xlap_lunas_piutang > 0 Then
+            cblappiutang.Visible = True
+            clblappiutang.Visible = True
+        Else
+            cblappiutang.Visible = False
+            clblappiutang.Visible = False
+        End If
+
+        '===
+
+        If flogin.xlap_akun_masuk > 0 Then
+            cblapakunmasuk.Visible = True
+            clblapakunmasuk.Visible = True
+        Else
+            cblapakunmasuk.Visible = False
+            clblapakunmasuk.Visible = False
+        End If
+
+        If flogin.xlap_akun_keluar > 0 Then
+            cblapakunkeluar.Visible = True
+            clblapakunkeluar.Visible = True
+        Else
+            cblapakunkeluar.Visible = False
+            clblapakunkeluar.Visible = False
+        End If
+
+        If flogin.xlap_transfer_kas > 0 Then
+            cblaptransferkas.Visible = True
+            clblaptransferkas.Visible = True
+        Else
+            cblaptransferkas.Visible = False
+            clblaptransferkas.Visible = False
+        End If
+
+        If flogin.xlap_transaksi_kas > 0 Then
+            cblaptransaksikas.Visible = True
+            clblaptransaksikas.Visible = True
+        Else
+            cblaptransaksikas.Visible = False
+            clblaptransaksikas.Visible = False
+        End If
+
+        '===
+
+        If flogin.xlap_modal_barang > 0 Then
+            cblapmodalbarang.Visible = True
+            clblapmodalbarang.Visible = True
+        Else
+            cblapmodalbarang.Visible = False
+            clblapmodalbarang.Visible = False
+        End If
+
+        If flogin.xlap_mutasi_barang > 0 Then
+            cblapmutasibarang.Visible = True
+            clblapmutasibarang.Visible = True
+        Else
+            cblapmutasibarang.Visible = False
+            clblapmutasibarang.Visible = False
+        End If
+
+        If flogin.xlap_penyesuaian_stok > 0 Then
+            cblappenyesuaianstok.Visible = True
+            clblappenyesuaianstok.Visible = True
+        Else
+            cblappenyesuaianstok.Visible = False
+            clblappenyesuaianstok.Visible = False
+        End If
+
+        If flogin.xlap_laba_rugi > 0 Then
+            cblaplabarugi.Visible = True
+            clblaplabarugi.Visible = True
+        Else
+            cblaplabarugi.Visible = False
+            clblaplabarugi.Visible = False
+        End If
+
+        If flogin.xlap_rekapan_akhir > 0 Then
+            cblaprekapanakhir.Visible = True
+            clblaprekapanakhir.Visible = True
+        Else
+            cblaprekapanakhir.Visible = False
+            clblaprekapanakhir.Visible = False
+        End If
+
+        'chart
+
+        If flogin.xchart_pembelian > 0 Then
+            cbchartpembelian.Visible = True
+            clbchartpembelian.Visible = True
+        Else
+            cbchartpembelian.Visible = False
+            clbchartpembelian.Visible = False
+        End If
+
+        If flogin.xchart_penjualan > 0 Then
+            cbchartpenjualan.Visible = True
+            clbchartpenjualan.Visible = True
+        Else
+            cbchartpenjualan.Visible = False
+            clbchartpenjualan.Visible = False
+        End If
+
+        If flogin.xchart_lunas_utang > 0 Then
+            cbchartlunasutang.Visible = True
+            clbchartlunasutang.Visible = True
+        Else
+            cbchartlunasutang.Visible = False
+            clbchartlunasutang.Visible = False
+        End If
+
+        If flogin.xchart_lunas_piutang > 0 Then
+            cbchartlunaspiutang.Visible = True
+            clbchartlunaspiutang.Visible = True
+        Else
+            cbchartlunaspiutang.Visible = False
+            clbchartlunaspiutang.Visible = False
+        End If
+
+        If flogin.xchart_kas_masuk > 0 Then
+            cbchartakunmasuk.Visible = True
+            clbchartakunmasuk.Visible = True
+        Else
+            cbchartakunmasuk.Visible = False
+            clbchartakunmasuk.Visible = False
+        End If
+
+        If flogin.xchart_kas_keluar > 0 Then
+            cbchartakunkeluar.Visible = True
+            clbchartakunkeluar.Visible = True
+        Else
+            cbchartakunkeluar.Visible = False
+            clbchartakunkeluar.Visible = False
+        End If
+
+        '===
+
+        If flogin.xfeature_kalkulasi > 0 Then
+            cbkalkulasiexpedisi.Visible = True
+        Else
+            cbkalkulasiexpedisi.Visible = False
+        End If
+
+        If flogin.xfeature_barcode > 0 Then
+            cbbarcodegenerator.Visible = True
+        Else
+            cbbarcodegenerator.Visible = False
+        End If
 
         '==========================================================
 
