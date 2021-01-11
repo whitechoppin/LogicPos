@@ -26,7 +26,7 @@ Module koneksi
 
     Public Sub koneksii()
         Dim status As MsgBoxResult
-        Dim DriverString As String
+        'Dim DriverString As String
         Try
             'untuk koneksi biasa : select atau delete data gak penting
             'DriverString = "Driver={MySQL ODBC 8.0 ANSI Driver};Database=logicpos;server=localhost;User=root;Password=RumahLogika07092019;Option=67108864;"

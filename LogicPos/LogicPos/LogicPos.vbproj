@@ -977,12 +977,6 @@
       <DependentUpon>rptrekappenjualan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SplashScreen.Designer.vb">
-      <DependentUpon>SplashScreen.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SplashScreen.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="fbarang.designer.vb">
       <DependentUpon>fbarang.vb</DependentUpon>
     </Compile>
@@ -1216,6 +1210,12 @@
     </Compile>
     <Compile Include="POS.vb">
       <DependentUpon>POS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.vb">
+      <DependentUpon>SplashScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="variabelvalidasi.vb" />
     <Compile Include="validasi.vb" />
@@ -1690,9 +1690,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekappenjualan.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashScreen.resx">
-      <DependentUpon>SplashScreen.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="fbarang.resx">
       <DependentUpon>fbarang.vb</DependentUpon>
     </EmbeddedResource>
@@ -1790,6 +1787,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
@@ -1818,8 +1818,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Graphicloads-Seo-Services-Conversion.ico" />
-    <Content Include="logo.ico" />
-    <Content Include="Untitled-1.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

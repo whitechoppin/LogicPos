@@ -33,47 +33,48 @@ Partial Class flogin
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(7, 10)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(12, 15)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(97, 24)
+        Me.Label1.Size = New System.Drawing.Size(77, 18)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Username"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(7, 41)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(12, 46)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(92, 24)
+        Me.Label2.Size = New System.Drawing.Size(75, 18)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Password"
         '
         'txtusername
         '
-        Me.txtusername.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtusername.Location = New System.Drawing.Point(111, 10)
+        Me.txtusername.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtusername.Location = New System.Drawing.Point(95, 12)
         Me.txtusername.Name = "txtusername"
-        Me.txtusername.Size = New System.Drawing.Size(206, 26)
+        Me.txtusername.Size = New System.Drawing.Size(267, 24)
         Me.txtusername.TabIndex = 2
         '
         'txtpassword
         '
-        Me.txtpassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtpassword.Location = New System.Drawing.Point(111, 41)
+        Me.txtpassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpassword.Location = New System.Drawing.Point(95, 43)
         Me.txtpassword.Name = "txtpassword"
-        Me.txtpassword.Size = New System.Drawing.Size(206, 26)
+        Me.txtpassword.Size = New System.Drawing.Size(267, 24)
         Me.txtpassword.TabIndex = 3
         '
         'btnlogin
         '
-        Me.btnlogin.BackgroundImage = CType(resources.GetObject("btnlogin.BackgroundImage"), System.Drawing.Image)
         Me.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnlogin.Location = New System.Drawing.Point(323, 9)
+        Me.btnlogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnlogin.Location = New System.Drawing.Point(368, 12)
         Me.btnlogin.Name = "btnlogin"
-        Me.btnlogin.Size = New System.Drawing.Size(72, 58)
+        Me.btnlogin.Size = New System.Drawing.Size(96, 55)
         Me.btnlogin.TabIndex = 4
+        Me.btnlogin.Text = "Login"
         Me.btnlogin.UseVisualStyleBackColor = True
         '
         'flogin
@@ -81,7 +82,7 @@ Partial Class flogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(407, 84)
+        Me.ClientSize = New System.Drawing.Size(474, 83)
         Me.Controls.Add(Me.btnlogin)
         Me.Controls.Add(Me.txtpassword)
         Me.Controls.Add(Me.txtusername)
