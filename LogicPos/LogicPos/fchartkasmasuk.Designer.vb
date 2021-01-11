@@ -233,6 +233,7 @@ Partial Class fchartkasmasuk
         Me.ChartControl1.Location = New System.Drawing.Point(18, 201)
         Me.ChartControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartControl1.Name = "ChartControl1"
+        Series1.CrosshairLabelPattern = "{S} : {V:#,#}"
         SideBySideBarSeriesLabel1.TextPattern = "{V:#,#}"
         Series1.Label = SideBySideBarSeriesLabel1
         Series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.[True]

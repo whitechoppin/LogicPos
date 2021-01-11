@@ -45,7 +45,7 @@ Partial Class flaporanpenjualan
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnrekappenjualanbarang = New System.Windows.Forms.Button()
-        Me.cbprofit = New System.Windows.Forms.CheckBox()
+        Me.cbkeuntungan = New System.Windows.Forms.CheckBox()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -241,16 +241,16 @@ Partial Class flaporanpenjualan
         Me.btnrekappenjualanbarang.Text = "Rekap Penjualan Barang"
         Me.btnrekappenjualanbarang.UseVisualStyleBackColor = True
         '
-        'cbprofit
+        'cbkeuntungan
         '
-        Me.cbprofit.AutoSize = True
-        Me.cbprofit.Location = New System.Drawing.Point(624, 57)
-        Me.cbprofit.Margin = New System.Windows.Forms.Padding(4)
-        Me.cbprofit.Name = "cbprofit"
-        Me.cbprofit.Size = New System.Drawing.Size(62, 22)
-        Me.cbprofit.TabIndex = 105
-        Me.cbprofit.Text = "Profit"
-        Me.cbprofit.UseVisualStyleBackColor = True
+        Me.cbkeuntungan.AutoSize = True
+        Me.cbkeuntungan.Location = New System.Drawing.Point(624, 57)
+        Me.cbkeuntungan.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbkeuntungan.Name = "cbkeuntungan"
+        Me.cbkeuntungan.Size = New System.Drawing.Size(105, 22)
+        Me.cbkeuntungan.TabIndex = 105
+        Me.cbkeuntungan.Text = "Keuntungan"
+        Me.cbkeuntungan.UseVisualStyleBackColor = True
         '
         'flaporanpenjualan
         '
@@ -258,7 +258,7 @@ Partial Class flaporanpenjualan
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1213, 695)
-        Me.Controls.Add(Me.cbprofit)
+        Me.Controls.Add(Me.cbkeuntungan)
         Me.Controls.Add(Me.btnrekappenjualanbarang)
         Me.Controls.Add(Me.btntabel)
         Me.Controls.Add(Me.btnfaktur)
@@ -303,5 +303,5 @@ Partial Class flaporanpenjualan
     Friend WithEvents btnfaktur As Button
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btnrekappenjualanbarang As Button
-    Friend WithEvents cbprofit As CheckBox
+    Friend WithEvents cbkeuntungan As CheckBox
 End Class

@@ -51,6 +51,12 @@ Public Class fchartpenjualan
                 exportstatus = True
         End Select
 
+        If fmenu.jabatanuser.Text.Equals("Owner") Then
+            cbkeuntungan.Enabled = True
+        Else
+            cbkeuntungan.Enabled = False
+        End If
+
         Call historysave("Membuka Chart Penjualan", "N/A", namaform)
     End Sub
 
@@ -160,29 +166,61 @@ Public Class fchartpenjualan
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         End If
                     End If
                 End If
@@ -190,29 +228,61 @@ Public Class fchartpenjualan
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         End If
                     End If
                 End If
@@ -220,29 +290,61 @@ Public Class fchartpenjualan
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         End If
                     End If
                 End If
@@ -252,29 +354,61 @@ Public Class fchartpenjualan
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_penjualan)"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND stok_id = '" & idstok & "' GROUP BY DATE(tgl_penjualan)"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE(tgl_penjualan) as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE(tgl_penjualan)"
+                            End If
                         End If
                     End If
                 End If
@@ -282,29 +416,61 @@ Public Class fchartpenjualan
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y-%m') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y-%m')"
+                            End If
                         End If
                     End If
                 End If
@@ -312,29 +478,61 @@ Public Class fchartpenjualan
                 If iduser > 0 Then
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "'GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND user_id = '" & iduser & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         End If
                     End If
                 Else
                     If idgudang > 0 Then
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND gudang_id = '" & idgudang & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         End If
                     Else
                         If idpelanggan > 0 Then
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND pelanggan_id = '" & idpelanggan & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         Else
-                            sql = "SELECT SUM(subtotal) AS total, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            If idstok > 0 Then
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' AND stok_id = '" & idstok & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            Else
+                                sql = "SELECT SUM(subtotal) as total, SUM(keuntungan) as keuntungan, DATE_FORMAT(tgl_penjualan,'%Y') as tgl FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' GROUP BY DATE_FORMAT(tgl_penjualan,'%Y')"
+                            End If
                         End If
                     End If
                 End If
@@ -352,10 +550,12 @@ Public Class fchartpenjualan
             ChartControl1.Series("Penjualan").ValueDataMembersSerializable = "total"
             ChartControl1.Series("Penjualan").ArgumentDataMember = "tgl"
 
-            'ChartControl1.Series("Series 2").Visible = True
-            'ChartControl1.Series("Series 2").DataSource = ds.Tables(0)
-            'ChartControl1.Series("Series 2").ValueDataMembersSerializable = "NETT"
-            'ChartControl1.Series("Series 2").ArgumentDataMember = "TGL2"
+            If cbkeuntungan.Checked = True Then
+                ChartControl1.Series("Keuntungan").Visible = True
+                ChartControl1.Series("Keuntungan").DataSource = ds.Tables(0)
+                ChartControl1.Series("Keuntungan").ValueDataMembersSerializable = "keuntungan"
+                ChartControl1.Series("Keuntungan").ArgumentDataMember = "tgl"
+            End If
 
             ChartControl1.Titles(0).Text = "PERIODE : " & Format(DateTimePicker1.Value, "dd MMMM yyyy") & " S/D " & Format(DateTimePicker2.Value, "dd MMMM yyyy")
         Catch ex As Exception

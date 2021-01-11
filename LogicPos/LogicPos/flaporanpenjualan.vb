@@ -59,9 +59,9 @@ Public Class flaporanpenjualan
         End Select
 
         If fmenu.jabatanuser.Text.Equals("Owner") Then
-            cbprofit.Enabled = True
+            cbkeuntungan.Enabled = True
         Else
-            cbprofit.Enabled = False
+            cbkeuntungan.Enabled = False
         End If
 
         Call historysave("Membuka Laporan Penjualan", "N/A", namaform)
@@ -107,7 +107,7 @@ Public Class flaporanpenjualan
         GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn10.DisplayFormat.FormatString = "##,##0"
 
-        If cbprofit.Checked = True Then
+        If cbkeuntungan.Checked = True Then
             GridColumn10.Visible = True
         Else
             GridColumn10.Visible = False
@@ -322,7 +322,7 @@ Public Class flaporanpenjualan
                 akhirPVs.Add(akhirPDV)
                 akhirPFD.ApplyCurrentValues(akhirPVs)
 
-                If cbprofit.Checked = True Then
+                If cbkeuntungan.Checked = True Then
                     statusPDV.Value = True
                 Else
                     statusPDV.Value = False
