@@ -287,7 +287,7 @@ Public Class fpricelist
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         If tambahstatus.Equals(True) Then
-            If idpelanggan > 0 Then
+            If idpelanggan = 0 Then
                 MsgBox("Pelanggan Belum Di isi")
             Else
                 If txtkode.Text.Length = 0 Then
@@ -394,7 +394,7 @@ Public Class fpricelist
 
     Private Sub btnedit_Click(sender As Object, e As EventArgs) Handles btnedit.Click
         If editstatus.Equals(True) Then
-            If idpelanggan > 0 Then
+            If idpelanggan = 0 Then
                 MsgBox("Pelanggan Belum Di isi")
             Else
                 If txtkode.Text.Length = 0 Then
