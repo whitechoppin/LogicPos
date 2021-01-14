@@ -791,6 +791,7 @@ Public Class flogin
     End Sub
 
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
+        Call resetfeature()
         Call reset()
         If txtusername.Text = "" Then
             MessageBox.Show("User masih kosong", "username", MessageBoxButtons.OK, MessageBoxIcon.Stop)
@@ -820,24 +821,35 @@ Public Class flogin
         e.Handled = ValidAngkaHuruf(e)
     End Sub
 
-
-    Private Sub txtpassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtpassword.KeyDown
+    Private Sub txtusername_KeyDown(sender As Object, e As KeyEventArgs) Handles txtusername.KeyDown
         If e.KeyCode = Keys.Enter Then
+            Call resetfeature()
+            Call reset()
             If txtusername.Text = "" Then
                 MessageBox.Show("User masih kosong", "username", MessageBoxButtons.OK, MessageBoxIcon.Stop)
                 txtusername.Focus()
-                Exit Sub
-            End If
-
-            If txtpassword.Text = "" Then
+            ElseIf txtpassword.Text = "" Then
                 MessageBox.Show("Password masih kosong", "password", MessageBoxButtons.OK, MessageBoxIcon.Stop)
                 txtpassword.Focus()
-                Exit Sub
+            Else
+                Call login()
             End If
+        End If
+    End Sub
 
+    Private Sub txtpassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtpassword.KeyDown
+        If e.KeyCode = Keys.Enter Then
             Call resetfeature()
             Call reset()
-            Call login()
+            If txtusername.Text = "" Then
+                MessageBox.Show("User masih kosong", "username", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                txtusername.Focus()
+            ElseIf txtpassword.Text = "" Then
+                MessageBox.Show("Password masih kosong", "password", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                txtpassword.Focus()
+            Else
+                Call login()
+            End If
         End If
     End Sub
 End Class
