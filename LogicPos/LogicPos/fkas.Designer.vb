@@ -40,7 +40,7 @@ Partial Class fkas
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GridControl = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -50,7 +50,7 @@ Partial Class fkas
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbjeniskas
@@ -222,20 +222,20 @@ Partial Class fkas
         '
         Me.GridControl.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Location = New System.Drawing.Point(17, 282)
-        Me.GridControl.MainView = Me.GridView1
+        Me.GridControl.MainView = Me.GridView
         Me.GridControl.Margin = New System.Windows.Forms.Padding(4)
         Me.GridControl.Name = "GridControl"
         Me.GridControl.Size = New System.Drawing.Size(708, 332)
         Me.GridControl.TabIndex = 12
-        Me.GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        Me.GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView})
         '
-        'GridView1
+        'GridView
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
-        Me.GridView1.GridControl = Me.GridControl
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsBehavior.Editable = False
-        Me.GridView1.OptionsFind.AlwaysVisible = True
+        Me.GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
+        Me.GridView.GridControl = Me.GridControl
+        Me.GridView.Name = "GridView"
+        Me.GridView.OptionsBehavior.Editable = False
+        Me.GridView.OptionsFind.AlwaysVisible = True
         '
         'GridColumn1
         '
@@ -351,7 +351,7 @@ Partial Class fkas
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Kas"
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -368,7 +368,7 @@ Partial Class fkas
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents GridControl As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn

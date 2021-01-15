@@ -2200,11 +2200,11 @@ Public Class fuser
     End Sub
     Sub simpan()
         Call koneksii()
-        sql = "SELECT * FROM tb_user WHERE kode_user = '" + txtkode.Text + "'"
+        sql = "SELECT * FROM tb_user WHERE kode_user = '" & txtkode.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            MsgBox("Kode User Sudah ada dengan nama " + dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
+            MsgBox("Kode User Sudah ada dengan nama " & dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
             Try
                 Call aksesadmin()
@@ -2240,7 +2240,7 @@ Public Class fuser
                 MsgBox("Data Tersimpan", MsgBoxStyle.Information, "Berhasil")
                 btntambah.Text = "Tambah"
 
-                Call historysave("Menyimpan Data User kode " + txtkode.Text, txtkode.Text, namaform)
+                Call historysave("Menyimpan Data User kode " & txtkode.Text, txtkode.Text, namaform)
 
                 Me.Refresh()
                 Call awal()
@@ -2300,11 +2300,11 @@ Public Class fuser
             Call perbaharui()
         Else
             Call koneksii()
-            sql = "SELECT * FROM tb_user WHERE kode_user ='" + txtkode.Text + "'"
+            sql = "SELECT * FROM tb_user WHERE kode_user ='" & txtkode.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
-                MsgBox("Kode User Sudah ada dengan nama " + dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
+                MsgBox("Kode User Sudah ada dengan nama " & dr("nama_user"), MsgBoxStyle.Information, "Pemberitahuan")
             Else
                 Call perbaharui()
             End If
@@ -2412,7 +2412,7 @@ Public Class fuser
             MsgBox("Data terupdate", MsgBoxStyle.Information, "Berhasil")
             btnedit.Text = "Edit"
 
-            Call historysave("Mengedit Data User kode " + txtkode.Text, txtkode.Text, namaform)
+            Call historysave("Mengedit Data User kode " & txtkode.Text, txtkode.Text, namaform)
 
             Me.Refresh()
             Call awal()
@@ -2435,7 +2435,7 @@ Public Class fuser
                     dr = cmmd.ExecuteReader
                     MessageBox.Show(txtnama.Text & " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                    Call historysave("Menghapus Data User kode " + txtkode.Text, txtkode.Text, namaform)
+                    Call historysave("Menghapus Data User kode " & txtkode.Text, txtkode.Text, namaform)
 
                     Me.Refresh()
                     Call awal()

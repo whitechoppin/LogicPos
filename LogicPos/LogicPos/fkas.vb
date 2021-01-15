@@ -228,15 +228,15 @@ Public Class fkas
         End If
     End Sub
 
-    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        idkasedit = GridView1.GetFocusedRowCellValue("id")
-        kodekasedit = GridView1.GetFocusedRowCellValue("kode_kas")
+    Private Sub GridView_DoubleClick(sender As Object, e As EventArgs) Handles GridView.DoubleClick
+        idkasedit = GridView.GetFocusedRowCellValue("id")
+        kodekasedit = GridView.GetFocusedRowCellValue("kode_kas")
 
         txtkode.Text = kodekasedit
-        txtnama.Text = GridView1.GetFocusedRowCellValue("nama_kas")
-        cbjeniskas.Text = GridView1.GetFocusedRowCellValue("jenis_kas")
-        txtrekening.Text = GridView1.GetFocusedRowCellValue("rekening_kas")
-        txtketerangan.Text = GridView1.GetFocusedRowCellValue("keterangan_kas")
+        txtnama.Text = GridView.GetFocusedRowCellValue("nama_kas")
+        cbjeniskas.Text = GridView.GetFocusedRowCellValue("jenis_kas")
+        txtrekening.Text = GridView.GetFocusedRowCellValue("rekening_kas")
+        txtketerangan.Text = GridView.GetFocusedRowCellValue("keterangan_kas")
 
         btnedit.Enabled = True
         btnbatal.Enabled = True
