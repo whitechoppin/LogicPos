@@ -177,11 +177,11 @@ Public Class fkas
     End Sub
     Sub simpan()
         Call koneksii()
-        sql = "SELECT * FROM tb_kas WHERE kode_kas ='" + txtkode.Text + "'"
+        sql = "SELECT * FROM tb_kas WHERE kode_kas ='" & txtkode.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
-            MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
+            MsgBox("Kode Kas Sudah ada dengan nama " & dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
             Try
                 Call koneksii()
@@ -192,7 +192,7 @@ Public Class fkas
                 btntambah.Text = "Tambah"
 
                 'history user ==========
-                Call historysave("Menyimpan Data Kas Kode " + txtkode.Text, txtkode.Text, namaform)
+                Call historysave("Menyimpan Data Kas Kode " & txtkode.Text, txtkode.Text, namaform)
                 '========================
 
                 Me.Refresh()
@@ -211,10 +211,10 @@ Public Class fkas
                     sql = "DELETE FROM tb_kas WHERE id='" & idkasedit & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader
-                    MessageBox.Show(txtnama.Text + " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show(txtnama.Text & " berhasil di hapus !", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     'history user ==========
-                    Call historysave("Menghapus Data Kas Kode" + txtkode.Text, txtkode.Text, namaform)
+                    Call historysave("Menghapus Data Kas Kode" & txtkode.Text, txtkode.Text, namaform)
                     '========================
 
                     Me.Refresh()
@@ -255,11 +255,11 @@ Public Class fkas
             Call perbaharui()
         Else
             Call koneksii()
-            sql = "SELECT * FROM tb_kas WHERE kode_kas ='" + txtkode.Text + "'"
+            sql = "SELECT * FROM tb_kas WHERE kode_kas ='" & txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
-                MsgBox("Kode Kas Sudah ada dengan nama " + dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
+                MsgBox("Kode Kas Sudah ada dengan nama " & dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
             Else
                 Call perbaharui()
             End If
@@ -277,7 +277,7 @@ Public Class fkas
             btnedit.Text = "Edit"
 
             'history user ==========
-            Call historysave("Mengedit Data Kas Kode " + txtkode.Text, txtkode.Text, namaform)
+            Call historysave("Mengedit Data Kas Kode " & txtkode.Text, txtkode.Text, namaform)
             '========================
 
             Me.Refresh()
