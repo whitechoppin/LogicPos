@@ -115,9 +115,11 @@ Public Class fkaskeluar
         dr = cmmd.ExecuteReader
         If dr.HasRows Then
             idkas = Val(dr("id"))
+            cmbkas.ForeColor = Color.Black
             txtnamakas.Text = dr("nama_kas")
         Else
             idkas = 0
+            cmbkas.ForeColor = Color.Red
             txtnamakas.Text = ""
         End If
     End Sub
