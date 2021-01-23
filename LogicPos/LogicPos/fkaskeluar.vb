@@ -406,7 +406,7 @@ Public Class fkaskeluar
             Else
                 Call cetak_faktur()
 
-                sql = "UPDATE tb_kas_keluar SET print_kas = 1 WHERE kode_kas_keluar = '" & txtkodekeluar.Text & "' "
+                sql = "UPDATE tb_kas_keluar SET print_kas = 1 WHERE id= '" & txtkodekeluar.Text & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 

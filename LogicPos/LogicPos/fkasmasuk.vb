@@ -396,7 +396,7 @@ Public Class fkasmasuk
                     dr = cmmd.ExecuteReader()
 
                     'history user ==========
-                    Call historysave("Mencetak Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text, namaform)
+                    Call historysave("Mencetak Data Kas Masuk Kode " & txtkodemasuk.Text, txtkodemasuk.Text, namaform)
                     '========================
 
                     cbprinted.Checked = True
@@ -405,12 +405,12 @@ Public Class fkasmasuk
             Else
                 Call cetak_faktur()
 
-                sql = "UPDATE tb_kas_masuk SET print_kas = 1 WHERE kode_kas_masuk = '" & txtkodemasuk.Text & "' "
+                sql = "UPDATE tb_kas_masuk SET print_kas = 1 WHERE id= '" & txtkodemasuk.Text & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
 
                 'history user ==========
-                Call historysave("Mencetak Data Kas Masuk Kode " + txtkodemasuk.Text, txtkodemasuk.Text, namaform)
+                Call historysave("Mencetak Data Kas Masuk Kode " & txtkodemasuk.Text, txtkodemasuk.Text, namaform)
                 '========================
 
                 cbprinted.Checked = True
