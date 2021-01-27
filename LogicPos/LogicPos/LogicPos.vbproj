@@ -149,7 +149,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include=".designer - Copy.vb">
+    <Compile Include="flaporantransferbarang.designer.vb">
       <DependentUpon>flaporantransferbarang.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
@@ -262,7 +262,7 @@
       <DependentUpon>fakturpenjualan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include=".designer.vb">
+    <Compile Include="flaporantransferkas.designer.vb">
       <DependentUpon>flaporantransferkas.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
