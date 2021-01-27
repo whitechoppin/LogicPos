@@ -43,6 +43,7 @@ Public Class flaporanpembelian
         With GridView1
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
+            .Columns("qty").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "qty", "{0:n0}")
             .Columns("subtotal").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "subtotal", "{0:n0}")
             ' .Columns("keuntungan").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "keuntungan", "{0:n0}")
         End With
@@ -76,7 +77,7 @@ Public Class flaporanpembelian
         GridColumn4.Caption = "Item"
         GridColumn4.FieldName = "nama_barang"
 
-        GridColumn5.Caption = "Banyak"
+        GridColumn5.Caption = "Qty"
         GridColumn5.FieldName = "qty"
 
         GridColumn6.Caption = "Satuan"
