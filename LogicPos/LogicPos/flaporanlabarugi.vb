@@ -9,8 +9,6 @@ Public Class flaporanlabarugi
 
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
-    Public isi As String
-    Public isi2 As String
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -41,7 +39,7 @@ Public Class flaporanlabarugi
 
         Call grid()
 
-        With GridView1
+        With GridView
             .OptionsView.ShowFooter = True 'agar muncul footer untuk sum/avg/count
             'buat sum harga
             .Columns("saldo").Summary.Add(DevExpress.Data.SummaryItemType.Sum, "saldo", "{0:n0}")
@@ -77,7 +75,7 @@ Public Class flaporanlabarugi
         GridColumn4.FieldName = "idbaris"
         GridColumn4.Visible = False
 
-        GridControl1.Visible = True
+        GridControl.Visible = True
     End Sub
     Sub tabel()
         Call koneksi()
@@ -95,8 +93,8 @@ Public Class flaporanlabarugi
         ds = New DataSet
         da.Fill(ds)
 
-        GridControl1.DataSource = Nothing
-        GridControl1.DataSource = ds.Tables(0)
+        GridControl.DataSource = Nothing
+        GridControl.DataSource = ds.Tables(0)
         Call grid()
     End Sub
 
@@ -117,11 +115,11 @@ Public Class flaporanlabarugi
         End With
 
 
-        For i As Integer = 0 To GridView1.RowCount - 1
+        For i As Integer = 0 To GridView.RowCount - 1
             baris = tabel_laba_rugi.NewRow
-            baris("tipe") = GridView1.GetRowCellValue(i, "tipe")
-            baris("jenis") = GridView1.GetRowCellValue(i, "jenis")
-            baris("saldo") = GridView1.GetRowCellValue(i, "saldo")
+            baris("tipe") = GridView.GetRowCellValue(i, "tipe")
+            baris("jenis") = GridView.GetRowCellValue(i, "jenis")
+            baris("saldo") = GridView.GetRowCellValue(i, "saldo")
             tabel_laba_rugi.Rows.Add(baris)
         Next
 
@@ -145,7 +143,7 @@ Public Class flaporanlabarugi
                 System.IO.Directory.CreateDirectory(pathdata)
             End If
 
-            GridView1.ExportToXls(yourpath)
+            GridView.ExportToXls(yourpath)
             MsgBox("Data tersimpan di " + yourpath, MsgBoxStyle.Information, "Success")
             ' Do something
         ElseIf DialogResult.Cancel Then
@@ -156,7 +154,7 @@ Public Class flaporanlabarugi
 
     Private Sub btnexcel_Click(sender As Object, e As EventArgs) Handles btnexcel.Click
         If exportstatus.Equals(True) Then
-            If GridView1.DataRowCount > 0 Then
+            If GridView.DataRowCount > 0 Then
                 ExportToExcel()
 
                 Call historysave("Mengexport Laporan Laba Rugi", "N/A", namaform)

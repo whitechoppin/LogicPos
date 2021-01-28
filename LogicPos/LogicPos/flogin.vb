@@ -13,6 +13,7 @@ Public Class flogin
     Public xlap_pricelist, xlap_pembelian, xlap_penjualan, xlap_penjualan_pajak, xlap_returbeli, xlap_returjual, xlap_barangmasuk, xlap_barangkeluar,
             xlap_transfer_barang, xlap_stok_barang, xlap_lunas_utang, xlap_lunas_piutang, xlap_akun_masuk, xlap_akun_keluar, xlap_transfer_kas, xlap_transaksi_kas,
             xlap_modal_barang, xlap_mutasi_barang, xlap_penyesuaian_stok, xlap_laba_rugi, xlap_rekapan_akhir As Integer
+
     Public xchart_pembelian, xchart_penjualan, xchart_lunas_utang, xchart_lunas_piutang, xchart_kas_masuk, xchart_kas_keluar As Integer
     Public xfeature_kalkulasi, xfeature_barcode As Integer
 
@@ -790,21 +791,6 @@ Public Class flogin
         fmenu.Show()
     End Sub
 
-    Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
-        Call resetfeature()
-        Call reset()
-        If txtusername.Text = "" Then
-            MessageBox.Show("User masih kosong", "username", MessageBoxButtons.OK, MessageBoxIcon.Stop)
-            txtusername.Focus()
-        ElseIf txtpassword.Text = "" Then
-            MessageBox.Show("Password masih kosong", "password", MessageBoxButtons.OK, MessageBoxIcon.Stop)
-            txtpassword.Focus()
-        Else
-            Call login()
-        End If
-    End Sub
-
-
     Private Sub flogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtpassword.UseSystemPasswordChar = False
         txtpassword.PasswordChar = "•"
@@ -851,5 +837,23 @@ Public Class flogin
                 Call login()
             End If
         End If
+    End Sub
+
+    Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
+        Call resetfeature()
+        Call reset()
+        If txtusername.Text = "" Then
+            MessageBox.Show("User masih kosong", "username", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            txtusername.Focus()
+        ElseIf txtpassword.Text = "" Then
+            MessageBox.Show("Password masih kosong", "password", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            txtpassword.Focus()
+        Else
+            Call login()
+        End If
+    End Sub
+
+    Private Sub btncancel_Click(sender As Object, e As EventArgs) Handles btncancel.Click
+        Application.Exit()
     End Sub
 End Class
