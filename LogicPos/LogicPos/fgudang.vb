@@ -97,7 +97,7 @@ Public Class fgudang
         Call isitabel()
     End Sub
     Sub isitabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_gudang ORDER BY nama_gudang ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -142,7 +142,7 @@ Public Class fgudang
         txtketerangan.TabIndex = 6
     End Sub
     Function autonumber()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT RIGHT(kode_gudang,3) FROM tb_gudang WHERE DATE_FORMAT(MID(`kode_gudang`, 3 , 6), ' %y ')+ MONTH(MID(`kode_gudang`,3 , 6)) + DAY(MID(`kode_gudang`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_gudang,3) DESC"
         Dim pesan As String = ""
         Try
@@ -216,7 +216,7 @@ Public Class fgudang
         End If
     End Sub
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_gudang WHERE kode_gudang  = '" + txtkode.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -225,7 +225,7 @@ Public Class fgudang
             txtkode.Focus()
         Else
             Try
-                Call koneksii()
+                Call koneksi()
                 sql = "INSERT INTO tb_gudang (kode_gudang, nama_gudang, telepon_gudang, alamat_gudang, keterangan_gudang, created_by, updated_by,date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
@@ -274,7 +274,7 @@ Public Class fgudang
         If txtkode.Text.Equals(kodegudangedit) Then
             Call perbaharui()
         Else
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_gudang WHERE kode_gudang  = '" + txtkode.Text + "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
@@ -289,7 +289,7 @@ Public Class fgudang
 
     Sub perbaharui()
         Try
-            Call koneksii()
+            Call koneksi()
             sql = "UPDATE tb_gudang SET kode_gudang='" & txtkode.Text & "',nama_gudang='" & txtnama.Text & "',alamat_gudang='" & txtalamat.Text & "', telepon_gudang='" & txttelp.Text & "',keterangan_gudang='" & txtketerangan.Text & "',updated_by='" & fmenu.kodeuser.Text & "',last_updated=now()  WHERE id='" & idgudangedit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
@@ -329,7 +329,7 @@ Public Class fgudang
         If hapusstatus.Equals(True) Then
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 Try
-                    Call koneksii()
+                    Call koneksi()
                     sql = "DELETE FROM tb_gudang WHERE  id='" & idgudangedit & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader

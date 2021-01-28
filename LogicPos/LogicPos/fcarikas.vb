@@ -16,7 +16,7 @@ Public Class fcarikas
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         'Using cnn As New OdbcConnection(strConn)
         sql = "SELECT tb_kas.kode_kas, tb_kas.nama_kas, tb_kas.keterangan_kas FROM tb_kas"
         da = New OdbcDataAdapter(sql, cnn)

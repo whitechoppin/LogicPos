@@ -75,7 +75,7 @@ Public Class ftransferkas
     End Sub
 
     Sub comboboxuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -88,7 +88,7 @@ Public Class ftransferkas
     End Sub
 
     Sub comboboxdarikas()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -101,7 +101,7 @@ Public Class ftransferkas
     End Sub
 
     Sub comboboxkekas()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -114,7 +114,7 @@ Public Class ftransferkas
     End Sub
 
     Sub caridarikas()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas WHERE kode_kas ='" & cmbdarikas.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -128,7 +128,7 @@ Public Class ftransferkas
     End Sub
 
     Sub carikekas()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas WHERE kode_kas ='" & cmbkekas.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -183,7 +183,7 @@ Public Class ftransferkas
 
     End Sub
     Sub isitabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT tk.id, dari.nama_kas AS dari_kas, ke.nama_kas AS ke_kas, usr.nama_user, tk.tanggal, tk.saldo_transfer_kas FROM tb_transfer_kas AS tk JOIN tb_kas AS dari ON dari.id = tk.dari_kas_id JOIN tb_kas AS ke ON ke.id = tk.ke_kas_id JOIN tb_user AS usr ON usr.id = tk.user_id"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -273,7 +273,7 @@ Public Class ftransferkas
     End Sub
 
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()
         Dim myTrans As OdbcTransaction
 
@@ -323,7 +323,7 @@ Public Class ftransferkas
     End Sub
 
     Sub edit()
-        Call koneksii()
+        Call koneksi()
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()
         Dim myTrans As OdbcTransaction
 
@@ -405,7 +405,7 @@ Public Class ftransferkas
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If editstatus.Equals(True) Then
-            Call koneksii()
+            Call koneksi()
             If MessageBox.Show("Hapus Data Kas Masuk " & Me.txtkodetransfer.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 sql = "DELETE FROM tb_transfer_kas WHERE id='" & idtransfer & "'"
                 cmmd = New OdbcCommand(sql, cnn)
@@ -520,7 +520,7 @@ Public Class ftransferkas
     End Sub
 
     Sub carisales()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -572,7 +572,7 @@ Public Class ftransferkas
         idtransfer = GridView1.GetFocusedRowCellValue("id")
         txtkodetransfer.Text = idtransfer
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_transfer_kas WHERE id = '" & idtransfer & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader

@@ -182,7 +182,7 @@ Public Class flogin
     Sub login()
         Dim counteruser As Integer
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE kode_user = '" & txtusername.Text & "' AND password_user= '" & txtpassword.Text & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -193,7 +193,7 @@ Public Class flogin
         Else
             USERID = dr("id")
 
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT COUNT(user_id) AS total_user FROM tb_status_user WHERE user_id='" & USERID & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
@@ -225,7 +225,7 @@ Public Class flogin
     End Sub
 
     Sub feature()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_feature LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -296,12 +296,12 @@ Public Class flogin
     End Sub
 
     Sub procced()
-        Call koneksii()
+        Call koneksi()
         sql = "DELETE FROM tb_status_user WHERE user_id='" & USERID & "' AND computer_id='" & CPUIDPOS & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE id = '" & USERID & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()

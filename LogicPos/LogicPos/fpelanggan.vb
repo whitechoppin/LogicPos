@@ -77,7 +77,7 @@ Public Class fpelanggan
         txttelp.Clear()
         txtketerangan.Clear()
 
-        Call koneksii()
+        Call koneksi()
 
         txtkode.Enabled = False
         btnauto.Enabled = False
@@ -104,7 +104,7 @@ Public Class fpelanggan
         Call isitabel()
     End Sub
     Sub isitabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelanggan ORDER BY nama_pelanggan ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -150,7 +150,7 @@ Public Class fpelanggan
         btnupload.TabIndex = 8
     End Sub
     Function autonumber()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT RIGHT(kode_pelanggan,3) FROM tb_pelanggan WHERE DATE_FORMAT(MID(`kode_pelanggan`, 3 , 6), ' %y ')+ MONTH(MID(`kode_pelanggan`,3 , 6)) + DAY(MID(`kode_pelanggan`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_pelanggan,3) DESC"
         Dim pesan As String = ""
         Try
@@ -216,7 +216,7 @@ Public Class fpelanggan
         End If
     End Sub
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan  = '" & txtkode.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -230,7 +230,7 @@ Public Class fpelanggan
             ms.ToArray()
 
             Try
-                Call koneksii()
+                Call koneksi()
                 sql = "INSERT INTO tb_pelanggan (kode_pelanggan, nama_pelanggan, alamat_pelanggan, telepon_pelanggan, keterangan_pelanggan, foto_pelanggan, created_by, updated_by, date_created, last_updated) VALUES (?,?,?,?,?,?,?,?,?,?)"
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
@@ -310,7 +310,7 @@ Public Class fpelanggan
         If txtkode.Text.Equals(kodepelanggan) Then
             Call perbaharui()
         Else
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
@@ -329,7 +329,7 @@ Public Class fpelanggan
         ms.ToArray()
 
         Try
-            Call koneksii()
+            Call koneksi()
             sql = "UPDATE tb_pelanggan SET kode_pelanggan=?, nama_pelanggan=?, alamat_pelanggan=?,  telepon_pelanggan=?, keterangan_pelanggan=?, foto_pelanggan=?, updated_by=?, last_updated=? WHERE  id='" & idpelanggan & "'"
             cmmd = New OdbcCommand(sql, cnn)
             cmmd.Parameters.AddWithValue("@kode_pelanggan", txtkode.Text)
@@ -363,7 +363,7 @@ Public Class fpelanggan
 
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 Try
-                    Call koneksii()
+                    Call koneksi()
                     sql = "DELETE FROM tb_pelanggan WHERE id='" & idpelanggan & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader
@@ -400,7 +400,7 @@ Public Class fpelanggan
         'menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
         Dim foto As Byte()
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelanggan WHERE id  = '" & idpelanggan & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader

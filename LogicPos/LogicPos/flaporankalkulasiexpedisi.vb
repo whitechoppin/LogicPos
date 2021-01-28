@@ -32,7 +32,7 @@ Public Class flaporankalkulasiexpedisi
     '=======================
     Private Sub flaporankalkulasiexpedisi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
 
         dtawal.MaxDate = Now
         dtakhir.MaxDate = Now
@@ -130,7 +130,7 @@ Public Class flaporankalkulasiexpedisi
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_pengiriman_detail AS tpd JOIN tb_pengiriman AS tp ON tp.id = tpd.pengiriman_id JOIN tb_user AS usr ON usr.id = tp.user_id WHERE DATE(tgl_pengiriman) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
         Else
@@ -163,7 +163,7 @@ Public Class flaporankalkulasiexpedisi
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
 
-            Call koneksii()
+            Call koneksi()
 
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_pengiriman WHERE DATE(tgl_pengiriman) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"

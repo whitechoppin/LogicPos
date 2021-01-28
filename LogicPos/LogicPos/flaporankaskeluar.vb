@@ -34,7 +34,7 @@ Public Class flaporankaskeluar
 
     Private Sub flaporankaskeluar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
 
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
@@ -89,7 +89,7 @@ Public Class flaporankaskeluar
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT tb_kas_keluar.id, tb_kas.kode_kas, tb_user.kode_user, tb_kas.jenis_kas, tb_kas_keluar.tanggal, saldo_kas, tb_kas_keluar.keterangan_kas FROM tb_kas_keluar JOIN tb_kas ON tb_kas.id = tb_kas_keluar.kas_id JOIN tb_user ON tb_user.id = tb_kas_keluar.user_id WHERE DATE(tanggal) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_kas_keluar.id ASC"
         Else
@@ -151,7 +151,7 @@ Public Class flaporankaskeluar
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
 
-            Call koneksii()
+            Call koneksi()
 
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_kas_keluar WHERE DATE(tanggal) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"

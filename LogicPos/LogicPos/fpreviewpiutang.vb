@@ -28,7 +28,7 @@ Public Class fpreviewpiutang
 
     Private Sub fpreviewpiutang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
         Call comboboxpelanggan()
         Call tabel_penjualan()
 
@@ -42,7 +42,7 @@ Public Class fpreviewpiutang
     End Sub
 
     Sub comboboxpelanggan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelanggan"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -55,7 +55,7 @@ Public Class fpreviewpiutang
     End Sub
 
     Sub caripelanggan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan ='" & cmbpelanggan.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -125,7 +125,7 @@ Public Class fpreviewpiutang
         GridControl2.Visible = True
     End Sub
     Sub tabel_penjualan()
-        Call koneksii()
+        Call koneksi()
 
         If cbperiode.Checked = True Then
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
@@ -224,7 +224,7 @@ Public Class fpreviewpiutang
         Call gridlunas()
         kode = Me.GridView1.GetFocusedRowCellValue("id")
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_penjualan WHERE id = '" & kode & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -232,7 +232,7 @@ Public Class fpreviewpiutang
             tabellunas.Rows.Add("DP : " & dr("id"), dr("last_updated"), dr("bayar_penjualan"))
         End If
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE penjualan_id ='" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()

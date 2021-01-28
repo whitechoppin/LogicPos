@@ -1,4 +1,4 @@
-﻿Module variabelvalidasi
+﻿Module modulevariabel
     Public isicari As String = ""
     Public isicari2 As String = ""
     Public tutupcaribarang As Integer

@@ -55,7 +55,7 @@ Public Class fchartpelunasanutang
     End Sub
 
     Sub comboboxsupplier()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_supplier"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -67,7 +67,7 @@ Public Class fchartpelunasanutang
         cmbsupplier.DisplayMember = "kode_supplier"
     End Sub
     Sub comboboxuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -80,7 +80,7 @@ Public Class fchartpelunasanutang
     End Sub
 
     Sub comboboxkas()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -93,7 +93,7 @@ Public Class fchartpelunasanutang
     End Sub
 
     Sub carikas()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas WHERE kode_kas='" & cmbkas.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -107,7 +107,7 @@ Public Class fchartpelunasanutang
     End Sub
 
     Sub carisupplier()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_supplier WHERE kode_supplier='" & cmbsupplier.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -122,7 +122,7 @@ Public Class fchartpelunasanutang
     End Sub
 
     Sub cariuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -138,7 +138,7 @@ Public Class fchartpelunasanutang
     Sub LoadChart()
         Me.Cursor = Cursors.WaitCursor
 
-        Call koneksii()
+        Call koneksi()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             If rbharian.Checked Then
                 If iduser > 0 Then

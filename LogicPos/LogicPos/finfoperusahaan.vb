@@ -69,7 +69,7 @@ Public Class finfoperusahaan
     End Function
 
     Sub awal()
-        Call koneksii()
+        Call koneksi()
 
         sql = "SELECT * FROM tb_info_perusahaan WHERE nomor =1 LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
@@ -98,7 +98,7 @@ Public Class finfoperusahaan
     End Sub
 
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
         namaakhir = txtnama.Text
         alamatakhir = txtalamat.Text
         telpakhir = txttelepon.Text

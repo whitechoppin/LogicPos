@@ -863,7 +863,7 @@ Public Class fuser
         Call isitabel()
     End Sub
     Sub isitabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user ORDER BY nama_user ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -2199,7 +2199,7 @@ Public Class fuser
         End If
     End Sub
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE kode_user = '" & txtkode.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -2208,7 +2208,7 @@ Public Class fuser
         Else
             Try
                 Call aksesadmin()
-                Call koneksii()
+                Call koneksi()
                 sql = "INSERT INTO tb_user (kode_user, nama_user, password_user, jabatan_user, email_user, telepon_user, alamat_user, keterangan_user, auth_user, max_print,
                     master_barang, master_kategori, master_gudang, master_pelanggan, master_supplier, master_user, master_kas, master_pricelist, master_rek_supp, master_rek_plng, 
                     pembelian, penjualan, retur_beli, retur_jual, barang_masuk, barang_keluar, transfer_barang, penyesuaian_stok,
@@ -2299,7 +2299,7 @@ Public Class fuser
         If txtkode.Text.Equals(kodeuser) Then
             Call perbaharui()
         Else
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_user WHERE kode_user ='" & txtkode.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
@@ -2314,7 +2314,7 @@ Public Class fuser
     Sub perbaharui()
         Try
             Call aksesadmin()
-            Call koneksii()
+            Call koneksi()
             sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, auth_user=?, max_print=?, master_barang=?, master_kategori=?, master_gudang=?, master_pelanggan=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_plng=?, 
                 pembelian=? ,penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?, penyesuaian_stok=?,
                 lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?, 
@@ -2429,7 +2429,7 @@ Public Class fuser
         If hapusstatus.Equals(True) Then
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 Try
-                    Call koneksii()
+                    Call koneksi()
                     sql = "DELETE FROM tb_user WHERE id='" & iduser & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader

@@ -85,7 +85,7 @@ Public Class flaporanbarangmasuk
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.id = tb_barang_masuk_detail.barang_masuk_id JOIN tb_supplier ON tb_supplier.id = tb_barang_masuk.supplier_id JOIN tb_user ON tb_user.id = tb_barang_masuk.user_id WHERE DATE(tgl_barang_masuk) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_barang_masuk.id ASC"
         Else
@@ -151,7 +151,7 @@ Public Class flaporanbarangmasuk
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
 
-            Call koneksii()
+            Call koneksi()
 
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_barang_masuk WHERE DATE(tgl_barang_masuk) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"

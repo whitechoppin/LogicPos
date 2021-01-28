@@ -34,7 +34,7 @@ Public Class flaporantransaksikas
     '=======================
     Private Sub flaporantransaksi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
 
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
@@ -112,7 +112,7 @@ Public Class flaporantransaksikas
     End Sub
 
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
 
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_transaksi_kas WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY id ASC"
@@ -176,7 +176,7 @@ Public Class flaporantransaksikas
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
 
-            Call koneksii()
+            Call koneksi()
 
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_transaksi_kas WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"

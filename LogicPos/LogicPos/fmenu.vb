@@ -41,12 +41,12 @@ Public Class fmenu
         End If
     End Sub
     Private Sub fmenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        Call koneksii()
+        Call koneksi()
         sql = "DELETE FROM tb_status_user WHERE user_id='" & flogin.USERID & "'AND computer_id='" & flogin.CPUIDPOS & "'AND status_user='" & flogin.STATUSPOS & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
-        Call diskoneksii()
+        Call diskoneksi()
         Application.Exit()
     End Sub
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick

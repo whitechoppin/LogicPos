@@ -13,7 +13,7 @@ Public Class fcaribarang
     End Sub
     Sub tabel()
         If tutupcaribarang > 0 Then
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_barang "
             da = New OdbcDataAdapter(sql, cnn)
             ds = New DataSet
@@ -52,7 +52,7 @@ Public Class fcaribarang
         kode = Me.GridView1.GetFocusedRowCellValue("id")
         Dim foto As Byte()
         'menyiapkan koneksi database
-        Call koneksii()
+        Call koneksi()
 
         sql = "SELECT * FROM tb_barang WHERE id ='" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)

@@ -15,7 +15,7 @@ Public Class fprinter
             cmbstruk.Items.Add(PrinterSettings.InstalledPrinters(i))
         Next
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_printer WHERE nomor='1' AND computer_id='" & cpuid & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -46,7 +46,7 @@ Public Class fprinter
     End Sub
 
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
 
         sql = "SELECT * FROM tb_printer WHERE nomor=1 AND computer_id='" & cpuid & "'"
         cmmd = New OdbcCommand(sql, cnn)

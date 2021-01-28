@@ -34,7 +34,7 @@ Public Class flaporanpembelian
 
     Private Sub flaporanpembelian_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
 
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
@@ -99,7 +99,7 @@ Public Class flaporanpembelian
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id JOIN tb_supplier ON tb_supplier.id = tb_pembelian.supplier_id JOIN tb_user ON tb_user.id = tb_pembelian.user_id WHERE DATE(tgl_pembelian) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_pembelian.id ASC"
         Else

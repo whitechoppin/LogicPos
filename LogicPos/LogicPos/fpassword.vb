@@ -19,7 +19,7 @@ Public Class fpassword
     End Sub
 
     Sub proceed()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE password_user= '" & txtpassword.Text & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -28,7 +28,7 @@ Public Class fpassword
         If dr.HasRows = 0 Then
             '=== coba pake password generate ===
 
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_password WHERE kode_password = '" & txtpassword.Text & "'AND status = 0 LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
@@ -131,7 +131,7 @@ Public Class fpassword
                 End If
 
                 If statuscode = True Then
-                    Call koneksii()
+                    Call koneksi()
                     sql = "UPDATE tb_password SET status = 1, kode_user='" & fmenu.kodeuser.Text & "' WHERE  kode_password='" & txtpassword.Text & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
@@ -329,7 +329,7 @@ Public Class fpassword
 
         tResult = GenerateRandomString(6)
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_password WHERE kode_password ='" & kodepassword & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -345,14 +345,14 @@ Public Class fpassword
         Dim SmtpServer As New SmtpClient()
         Dim mail As New MailMessage()
 
-        Call koneksii()
+        Call koneksi()
         kodepassword = trueString()
 
         sql = "INSERT INTO tb_password (kode_password, created_by, date_created) VALUES ('" & kodepassword & "','" & fmenu.kodeuser.Text & "',now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE jabatan_user = 'Owner' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()

@@ -85,7 +85,7 @@ Public Class flaporanmodalbarang
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_barang JOIN tb_kategori_barang ON tb_kategori_barang.id = tb_barang.kategori_barang_id"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -99,7 +99,7 @@ Public Class flaporanmodalbarang
         kode = Me.GridView1.GetFocusedRowCellValue("kode_barang")
         Dim foto As Byte()
         'menyiapkan koneksi database
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader

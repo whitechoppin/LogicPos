@@ -83,7 +83,7 @@ Public Class fkaskeluar
     End Sub
 
     Sub comboboxuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -96,7 +96,7 @@ Public Class fkaskeluar
     End Sub
 
     Sub comboboxkas()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -109,7 +109,7 @@ Public Class fkaskeluar
     End Sub
 
     Sub carikas()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas WHERE kode_kas='" & cmbkas.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -125,7 +125,7 @@ Public Class fkaskeluar
     End Sub
 
     Sub carisales()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -176,7 +176,7 @@ Public Class fkaskeluar
 
     End Sub
     Sub isitabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas_keluar JOIN tb_kas ON tb_kas.id = tb_kas_keluar.kas_id"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -255,14 +255,14 @@ Public Class fkaskeluar
     End Sub
 
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
 
         sql = "INSERT INTO tb_kas_keluar(kas_id, user_id, jenis_kas, tanggal, keterangan_kas, saldo_kas, print_kas, posted_kas, created_by, updated_by,date_created, last_updated) VALUES ('" & idkas & "','" & cmbsales.SelectedValue & "','Keluar', '" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "','" & txtketerangan.Text & "','" & saldokeluar & "','" & 0 & "','" & 1 & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
         cmmd = New OdbcCommand(sql, cnn)
         idkaskeluar = CInt(cmmd.ExecuteScalar())
 
         If idkas > 0 Then
-            Call koneksii()
+            Call koneksi()
             sql = "INSERT INTO tb_transaksi_kas(kode_kas, kode_kas_keluar, jenis_kas, tanggal_transaksi, keterangan_kas, debet_kas, kredit_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & idkas & "','" & idkaskeluar & "', 'KELUAR','" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', 'Transaksi Kas Keluar Nomor " & idkaskeluar & "','" & saldokeluar & "', '" & 0 & "', '" & fmenu.kodeuser.Text & "', '" & fmenu.kodeuser.Text & "', now(), now())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
@@ -278,7 +278,7 @@ Public Class fkaskeluar
     End Sub
 
     Sub edit()
-        Call koneksii()
+        Call koneksi()
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()
         Dim myTrans As OdbcTransaction
 
@@ -355,7 +355,7 @@ Public Class fkaskeluar
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If editstatus.Equals(True) Then
-            Call koneksii()
+            Call koneksi()
             If MessageBox.Show("Hapus Data Kas Keluar " & Me.txtkodekeluar.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 sql = "DELETE FROM tb_kas_keluar WHERE id='" & txtkodekeluar.Text & "'"
                 cmmd = New OdbcCommand(sql, cnn)
@@ -508,7 +508,7 @@ Public Class fkaskeluar
         idkaskeluar = GridView1.GetFocusedRowCellValue("id")
         txtkodekeluar.Text = idkaskeluar
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas_keluar WHERE id='" & idkaskeluar & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader

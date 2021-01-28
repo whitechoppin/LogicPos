@@ -1,7 +1,6 @@
 ﻿Imports System.Data.Odbc
 
-
-Module koneksi
+Module modulekoneksi
     Public cnn As New OdbcConnection
     Public cnnx As New OdbcConnection
 
@@ -16,6 +15,7 @@ Module koneksi
     Public drlunaspembelian As OdbcDataReader
 
     Public sql As String
+
     Public da As OdbcDataAdapter
     Public ds As DataSet
     '=========================
@@ -24,7 +24,7 @@ Module koneksi
     Dim counter As Integer
     '=========================
 
-    Public Sub koneksii()
+    Public Sub koneksi()
         Dim status As MsgBoxResult
         'Dim DriverString As String
         Try
@@ -47,14 +47,14 @@ Module koneksi
             MsgBox("Koneksi ke Database bermasalah, Periksa koneksi Jaringan Anda.")
             status = MsgBox("Refresh koneksi database logicpos ?", MsgBoxStyle.YesNo, "Peringatan !")
             If status = MsgBoxResult.Yes Then
-                Call koneksii()
+                Call koneksi()
             Else
                 End
             End If
         End Try
     End Sub
 
-    Public Sub diskoneksii()
+    Public Sub diskoneksi()
         If cnn.State = ConnectionState.Open Then
             cnn.Close()
         End If
@@ -66,14 +66,14 @@ Module koneksi
     End Sub
 
     Public Sub historysave(keterangan As String, kode As String, jenis As String)
-        Call koneksii()
+        Call koneksi()
         sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, jenis_tabel, created_by, date_created) VALUES ('" & keterangan & "','" & kode & "','" & jenis & "','" & fmenu.kodeuser.Text & "',now())"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
     End Sub
 
     Public Function cekcetakan(nomor As String, jenis As String) As Boolean
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT IFNULL(COUNT(*), 0) AS penghitung FROM tb_history_user WHERE keterangan_history LIKE '%mencetak%' AND created_by='" & fmenu.kodeuser.Text & "' AND kode_tabel = '" & nomor & "' AND jenis_tabel='" & jenis & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader

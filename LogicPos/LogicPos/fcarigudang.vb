@@ -22,7 +22,7 @@ Public Class fcarigudang
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_gudang"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet

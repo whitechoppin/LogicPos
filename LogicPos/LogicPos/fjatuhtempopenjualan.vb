@@ -27,7 +27,7 @@ Public Class fjatuhtempopenjualan
 
     Private Sub fjatuhtempopenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
         Call tabel_penjualan()
 
         With GridView1
@@ -99,7 +99,7 @@ Public Class fjatuhtempopenjualan
         GridControl2.Visible = True
     End Sub
     Sub tabel_penjualan()
-        Call koneksii()
+        Call koneksi()
 
         sql = "SELECT tb_penjualan.id, nama_pelanggan, tgl_penjualan, tgl_jatuhtempo_penjualan, total_penjualan, bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id) as bayar_penjualan, (total_penjualan - (bayar_penjualan + (SELECT IFNULL(SUM(terima_piutang), 0) FROM tb_pelunasan_piutang_detail WHERE tb_pelunasan_piutang_detail.penjualan_id = tb_penjualan.id))) AS sisa_penjualan 
                 FROM tb_penjualan JOIN tb_pelanggan WHERE tb_penjualan.pelanggan_id = tb_pelanggan.id AND tb_penjualan.lunas_penjualan = 0 AND tb_penjualan.tgl_jatuhtempo_penjualan < now() AND tb_penjualan.total_penjualan > tb_penjualan.bayar_penjualan"
@@ -116,7 +116,7 @@ Public Class fjatuhtempopenjualan
         Call gridlunas()
         kode = Me.GridView1.GetFocusedRowCellValue("id")
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_penjualan WHERE id = '" & kode & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -124,7 +124,7 @@ Public Class fjatuhtempopenjualan
             tabellunas.Rows.Add("PENJUALAN : " & dr("id"), dr("last_updated"), dr("bayar_penjualan"))
         End If
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelunasan_piutang_detail WHERE penjualan_id ='" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()

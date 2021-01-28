@@ -1,6 +1,6 @@
 ﻿Imports System.Data.Odbc
 
-Module fungsi
+Module modulefungsional
     Dim cpuid As String = flogin.CPUIDPOS
 
     Public Function GenerateRandomString(ByRef iLength As Integer) As String
@@ -28,7 +28,7 @@ Module fungsi
 
     Public Function GetPrinterName(ByVal nomor As Integer) As String
         Dim sResult As String = ""
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_printer WHERE nomor='" & nomor & "' AND computer_id='" & cpuid & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()

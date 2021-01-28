@@ -111,7 +111,7 @@ Public Class fbarang
     End Sub
 
     Sub comboboxsatuan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT DISTINCT satuan_barang FROM tb_barang WHERE jenis_barang='Satuan'"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -124,7 +124,7 @@ Public Class fbarang
     End Sub
 
     Sub comboboxroll()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT DISTINCT satuan_barang FROM tb_barang WHERE jenis_barang='Roll'"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -137,7 +137,7 @@ Public Class fbarang
     End Sub
 
     Sub comboboxkategori()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kategori_barang"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -161,7 +161,7 @@ Public Class fbarang
         btnupload.TabIndex = 9
     End Sub
     Sub isitabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_barang JOIN tb_kategori_barang ON tb_barang.kategori_barang_id = tb_kategori_barang.id ORDER BY nama_barang ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -256,7 +256,7 @@ Public Class fbarang
         End If
     End Sub
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_barang WHERE kode_barang = '" + txtkode.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -272,7 +272,7 @@ Public Class fbarang
             ms.ToArray()
 
             Try
-                Call koneksii()
+                Call koneksi()
                 sql = "INSERT INTO tb_barang (kode_barang, nama_barang, jenis_barang, kategori_barang_id, satuan_barang, keterangan_barang, modal_barang, gambar_barang, created_by, updated_by, date_created, last_updated) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)"
                 cmmd = New OdbcCommand(sql, cnn)
                 cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
@@ -315,7 +315,7 @@ Public Class fbarang
         'Menyiapkan variable byte() untuk menampung byte() dari foto yang ada di database
         Dim foto As Byte()
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_barang WHERE id = '" & idbarang & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -409,7 +409,7 @@ Public Class fbarang
         ms.ToArray()
 
         Try
-            Call koneksii()
+            Call koneksi()
             sql = "UPDATE tb_barang SET kode_barang=?, nama_barang=?, jenis_barang=?, kategori_barang_id=?, satuan_barang=?, keterangan_barang=?, modal_barang=?, gambar_barang=?, updated_by=?, last_updated=? WHERE  id='" & idbarang & "'"
             cmmd = New OdbcCommand(sql, cnn)
             cmmd.Parameters.AddWithValue("@kode_barang", txtkode.Text)
@@ -441,7 +441,7 @@ Public Class fbarang
         If txtkode.Text.Equals(kodebarang) Then
             Call perbaharui()
         Else
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_barang WHERE kode_barang  = '" & txtkode.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
@@ -470,7 +470,7 @@ Public Class fbarang
         If hapusstatus.Equals(True) Then
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 Try
-                    Call koneksii()
+                    Call koneksi()
                     sql = "DELETE FROM tb_barang WHERE id='" & idbarang & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader

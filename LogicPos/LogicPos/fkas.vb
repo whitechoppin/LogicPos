@@ -121,7 +121,7 @@ Public Class fkas
         Call isitabel()
     End Sub
     Sub isitabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas ORDER BY nama_kas ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -176,7 +176,7 @@ Public Class fkas
         txtnama.Focus()
     End Sub
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas WHERE kode_kas ='" & txtkode.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -184,7 +184,7 @@ Public Class fkas
             MsgBox("Kode Kas Sudah ada dengan nama " & dr("nama_kas"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
             Try
-                Call koneksii()
+                Call koneksi()
                 sql = "INSERT INTO tb_kas(kode_kas, nama_kas, keterangan_kas, jenis_kas, rekening_kas, created_by, updated_by, date_created, last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txtketerangan.Text & "','" & cbjeniskas.Text & "','" & txtrekening.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
@@ -207,7 +207,7 @@ Public Class fkas
         If hapusstatus.Equals(True) Then
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 Try
-                    Call koneksii()
+                    Call koneksi()
                     sql = "DELETE FROM tb_kas WHERE id='" & idkasedit & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader
@@ -250,11 +250,11 @@ Public Class fkas
     End Sub
 
     Sub edit()
-        Call koneksii()
+        Call koneksi()
         If txtkode.Text.Equals(kodekasedit) Then
             Call perbaharui()
         Else
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_kas WHERE kode_kas ='" & txtkode.Text + "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
@@ -268,7 +268,7 @@ Public Class fkas
 
     Sub perbaharui()
         Try
-            Call koneksii()
+            Call koneksi()
             sql = "UPDATE tb_kas SET kode_kas='" & txtkode.Text & "', nama_kas='" & txtnama.Text & "', jenis_kas='" & cbjeniskas.Text & "', rekening_kas='" & txtrekening.Text & "',keterangan_kas='" & txtketerangan.Text & "',updated_by='" & fmenu.kodeuser.Text & "',last_updated= now()  WHERE id='" & idkasedit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
@@ -288,7 +288,7 @@ Public Class fkas
     End Sub
 
     Function autonumber()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT RIGHT(kode_kas,3) FROM tb_kas WHERE DATE_FORMAT(MID(`kode_kas`, 3 , 6), ' %y ')+ MONTH(MID(`kode_kas`,3 , 6)) + DAY(MID(`kode_kas`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_kas,3) DESC"
         Dim pesan As String = ""
         Try

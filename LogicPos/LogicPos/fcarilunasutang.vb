@@ -30,7 +30,7 @@ Public Class fcarilunasutang
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
 
         If cbperiode.Checked = True Then
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then

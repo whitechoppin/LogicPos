@@ -67,7 +67,7 @@ Public Class fhistoryuser
     End Sub
 
     Sub tabel_history()
-        Call koneksii()
+        Call koneksi()
         kode = txtkodetabel.Text
         oleh = txtoleh.Text
 

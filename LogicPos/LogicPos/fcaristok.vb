@@ -41,7 +41,7 @@ Public Class fcaristok
     End Sub
     Sub tabel()
         If tutupcaristok > 0 Then
-            Call koneksii()
+            Call koneksi()
             If idgudangcari > 0 Then
                 If cbstokkosong.Checked = True Then
                     sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id WHERE tb_stok.gudang_id ='" & idgudangcari & "'"
@@ -70,7 +70,7 @@ Public Class fcaristok
         kode = Me.GridView1.GetFocusedRowCellValue("kode_barang")
         Dim foto As Byte()
         'menyiapkan koneksi database
-        Call koneksii()
+        Call koneksi()
 
         sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)

@@ -6,7 +6,7 @@ Public Class fcaripelanggan
         Call tabel()
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelanggan"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet

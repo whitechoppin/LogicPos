@@ -57,7 +57,7 @@ Public Class fcaritransferbarang
         GridControl2.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
 
         If cbperiode.Checked = True Then
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
@@ -88,7 +88,7 @@ Public Class fcaritransferbarang
         Call gridlunas()
         kode = Me.GridView1.GetFocusedRowCellValue("id")
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_transfer_barang_detail WHERE transfer_barang_id ='" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()

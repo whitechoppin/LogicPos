@@ -102,7 +102,7 @@ Public Class fpricelist
     End Sub
 
     Sub datatable()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT tb_barang.id as barang_id, tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.jenis_barang ,tb_barang.satuan_barang, tb_price_group.harga_jual, tb_price_group.id FROM tb_price_group JOIN tb_barang ON tb_barang.id=tb_price_group.barang_id JOIN tb_pelanggan ON tb_pelanggan.id=tb_price_group.pelanggan_id WHERE tb_pelanggan.id = '" & idpelanggan & "' "
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -148,7 +148,7 @@ Public Class fpricelist
     End Sub
 
     Sub comboboxpelanggan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelanggan"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -161,7 +161,7 @@ Public Class fpricelist
     End Sub
 
     Sub caripelanggan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & cmbpelanggan.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -179,7 +179,7 @@ Public Class fpricelist
         Call cari()
     End Sub
     Sub cari()
-        Call koneksii()
+        Call koneksi()
         If idbarang > 0 Then
             sql = "SELECT tb_price_group.id, tb_barang.id as barang_id, tb_barang.nama_barang, tb_barang.modal_barang, tb_price_group.harga_jual FROM tb_price_group JOIN tb_barang ON tb_barang.id = tb_price_group.barang_id WHERE tb_barang.id='" & idbarang & "' AND tb_price_group.pelanggan_id='" & idpelanggan & "' LIMIT 1"
         Else
@@ -237,7 +237,7 @@ Public Class fpricelist
         End If
     End Sub
     Sub save_new_item()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_price_group WHERE barang_id='" & idbarang & "' AND pelanggan_id='" & idpelanggan & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -246,7 +246,7 @@ Public Class fpricelist
             Exit Sub
         Else
             Try
-                Call koneksii()
+                Call koneksi()
                 sql = "INSERT INTO tb_price_group(barang_id, pelanggan_id, harga_jual) VALUES('" & idbarang & "', '" & idpelanggan & "', '" & hargabarang & "')"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
@@ -267,7 +267,7 @@ Public Class fpricelist
 
     Sub save_exist_item()
         Try
-            Call koneksii()
+            Call koneksi()
             sql = "UPDATE tb_price_group SET harga_jual='" & hargabarang & "',updated_by='" & fmenu.kodeuser.Text & "', last_updated=now() WHERE id='" & idprice & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
@@ -323,7 +323,7 @@ Public Class fpricelist
     Sub hapus()
         If MessageBox.Show("Hapus data price barang " & txtkode.Text & " untuk pelanggan " & txtnamapelanggan.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             Try
-                Call koneksii()
+                Call koneksi()
                 sql = "DELETE FROM tb_price_group WHERE id='" & idprice & "'"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader
@@ -349,7 +349,7 @@ Public Class fpricelist
     End Sub
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
         If hapusstatus.Equals(True) Then
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_price_group WHERE id='" & idprice & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader

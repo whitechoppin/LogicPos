@@ -4,12 +4,12 @@ Imports DevExpress.Utils
 Public Class fnotifikasistok
     Private Sub fnotifikasistok_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
         Call grid_stok()
     End Sub
 
     Sub grid_stok()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT kode_stok, tb_barang.kode_barang, tb_barang.nama_barang, tb_barang.jenis_barang, tb_barang.satuan_barang, tb_stok.jumlah_stok, tb_gudang.nama_gudang FROM tb_stok JOIN tb_barang ON tb_barang.id = tb_stok.barang_id JOIN tb_gudang ON tb_gudang.id = tb_stok.gudang_id WHERE tb_stok.jumlah_stok < 20"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet

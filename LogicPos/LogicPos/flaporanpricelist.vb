@@ -53,7 +53,7 @@ Public Class flaporanpricelist
     End Sub
 
     Sub comboboxpelanggan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelanggan"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -89,7 +89,7 @@ Public Class flaporanpricelist
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT kode_barang, nama_barang, tb_price_group.harga_jual, tb_price_group.pelanggan_id, tb_barang.jenis_barang, tb_kategori_barang.nama_kategori FROM tb_barang JOIN tb_price_group ON tb_price_group.barang_id = tb_barang.id JOIN tb_kategori_barang ON tb_kategori_barang.id = tb_barang.kategori_barang_id WHERE tb_price_group.pelanggan_id = '" & idpelanggan & "' "
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -104,7 +104,7 @@ Public Class flaporanpricelist
         kode = Me.GridView1.GetFocusedRowCellValue("kode_barang")
         Dim foto As Byte()
         'menyiapkan koneksi database
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -120,7 +120,7 @@ Public Class flaporanpricelist
     End Sub
 
     Sub caripelanggan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pelanggan WHERE kode_pelanggan = '" & cmbpelanggan.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader

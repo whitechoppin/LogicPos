@@ -78,7 +78,7 @@ Public Class frekeningpelanggan
     End Sub
 
     Sub isitabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_rekening_pelanggan WHERE pelanggan_id = '" & idpelanggan & "'"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -113,7 +113,7 @@ Public Class frekeningpelanggan
     End Sub
 
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_rekening_pelanggan JOIN tb_pelanggan ON tb_rekening_pelanggan.pelanggan_id = tb_pelanggan.id WHERE nomor_rekening = '" + txtnorekening.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -121,7 +121,7 @@ Public Class frekeningpelanggan
             MsgBox("Nomor Rekening Sudah ada dengan nama " + dr("nama_pelanggan"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
             Try
-                Call koneksii()
+                Call koneksi()
                 sql = "INSERT INTO tb_rekening_pelanggan (nomor_rekening, nama_bank, nama_rekening, keterangan_rekening, pelanggan_id, created_by, update_by,date_created,last_updated) VALUES ('" & txtnorekening.Text & "', '" & txtnamabank.Text & "','" & txtnamarekening.Text & "','" & txtketeranganrekening.Text & "','" & idpelanggan & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
@@ -197,7 +197,7 @@ Public Class frekeningpelanggan
         If hapusstatus.Equals(True) Then
             If MessageBox.Show("Hapus " & Me.txtnorekening.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 Try
-                    Call koneksii()
+                    Call koneksi()
                     sql = "DELETE FROM tb_rekening_pelanggan WHERE pelanggan_id='" & idpelanggan & "' AND id= '" & idrekening & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader
@@ -249,7 +249,7 @@ Public Class frekeningpelanggan
         If txtnorekening.Text.Equals(norekening) Then
             Call perbaharui()
         Else
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_rekening_pelanggan JOIN tb_pelanggan ON tb_rekening_pelanggan.pelanggan_id = tb_pelanggan.id WHERE nomor_rekening ='" + norekening + "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
@@ -264,7 +264,7 @@ Public Class frekeningpelanggan
 
     Sub perbaharui()
         Try
-            Call koneksii()
+            Call koneksi()
             sql = "UPDATE tb_rekening_pelanggan SET nomor_rekening='" & txtnorekening.Text & "', nama_bank='" & txtnamabank.Text & "', nama_rekening='" & txtnamarekening.Text & "', keterangan_rekening='" & txtketeranganrekening.Text & "', update_by='" & fmenu.kodeuser.Text & "', last_updated= now()  WHERE pelanggan_id='" & idpelanggan & "' AND id= '" & idrekening & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()

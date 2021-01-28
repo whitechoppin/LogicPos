@@ -54,7 +54,7 @@ Public Class fchartkaskeluar
     End Sub
 
     Sub comboboxuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -67,7 +67,7 @@ Public Class fchartkaskeluar
     End Sub
 
     Sub comboboxkas()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -80,7 +80,7 @@ Public Class fchartkaskeluar
     End Sub
 
     Sub carikas()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kas WHERE kode_kas='" & cmbkas.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -94,7 +94,7 @@ Public Class fchartkaskeluar
     End Sub
 
     Sub cariuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader

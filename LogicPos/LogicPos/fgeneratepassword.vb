@@ -40,7 +40,7 @@ Public Class fgeneratepassword
     End Sub
 
     Sub isitabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_password"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -64,7 +64,7 @@ Public Class fgeneratepassword
 
         tResult = GenerateRandomString(6)
 
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_password WHERE kode_password ='" & kode & "' LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -78,7 +78,7 @@ Public Class fgeneratepassword
 
     Private Sub btntambah_Click(sender As Object, e As EventArgs) Handles btntambah.Click
         'txtkodepassword.Text = GenerateRandomString(6)
-        Call koneksii()
+        Call koneksi()
         For i As Integer = 0 To banyak - 1
             kode = trueString()
 
@@ -91,7 +91,7 @@ Public Class fgeneratepassword
     End Sub
 
     Private Sub btnhapus_Click(sender As Object, e As EventArgs) Handles btnhapus.Click
-        Call koneksii()
+        Call koneksi()
         sql = "DELETE FROM tb_password WHERE kode_password ='" & txtkodepassword.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader

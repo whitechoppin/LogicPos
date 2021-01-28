@@ -14,7 +14,7 @@ Public Class fcarisupp
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         sql = "Select tb_supplier.kode_supplier, tb_supplier.nama_supplier from tb_supplier"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet

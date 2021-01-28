@@ -80,7 +80,7 @@ Public Class flaporanlabarugi
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
 
         sql = "(SELECT 'PENDAPATAN' AS tipe, 'Penjualan' AS jenis, IFNULL(SUM(total_penjualan), 0) AS saldo, '1' AS idbaris FROM tb_penjualan WHERE MONTHNAME(tgl_penjualan) = '" & cmbmonth.Text & "' AND YEAR(tgl_penjualan) = '" & cmbyear.Text & "')
                 UNION 

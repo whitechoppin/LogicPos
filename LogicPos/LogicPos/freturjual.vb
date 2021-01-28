@@ -106,7 +106,7 @@ Public Class freturjual
     End Sub
 
     Function currentnumber()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT id FROM tb_retur_penjualan ORDER BY id DESC LIMIT 1;"
         Dim pesan As String = ""
         Try
@@ -125,7 +125,7 @@ Public Class freturjual
         Return pesan
     End Function
     Private Sub prevnumber(previousnumber As String)
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT id FROM tb_retur_penjualan WHERE date_created < (SELECT date_created FROM tb_retur_penjualan WHERE id = '" & previousnumber & "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
@@ -148,7 +148,7 @@ Public Class freturjual
         End Try
     End Sub
     Private Sub nextnumber(nextingnumber As String)
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT id FROM tb_retur_penjualan WHERE date_created > (SELECT date_created FROM tb_retur_penjualan WHERE id = '" & nextingnumber & "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
@@ -171,7 +171,7 @@ Public Class freturjual
         End Try
     End Sub
     Sub previewreturpenjualan(lihatjual As String, lihatretur As String)
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_penjualan WHERE id ='" & lihatjual & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -220,7 +220,7 @@ Public Class freturjual
         GridControl2.RefreshDataSource()
     End Sub
     Sub comboboxuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -233,7 +233,7 @@ Public Class freturjual
     End Sub
 
     Sub carisales()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE kode_user ='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -348,7 +348,7 @@ Public Class freturjual
         txtketerangan.Clear()
 
         If nomorkode IsNot "" Then
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_retur_penjualan WHERE id = '" & nomorkode & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
@@ -647,7 +647,7 @@ Public Class freturjual
         Dim total_retur As Double = GridView2.Columns("subtotal").SummaryItem.SummaryValue
         statusvoid = 0
 
-        Call koneksii()
+        Call koneksi()
 
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()
         Dim myTrans As OdbcTransaction
@@ -658,7 +658,7 @@ Public Class freturjual
         myCommand.Transaction = myTrans
 
         Try
-            Call koneksii()
+            Call koneksi()
             sql = "INSERT INTO tb_retur_penjualan(user_id, penjualan_id, tgl_returjual, print_returjual, posted_returjual, keterangan_returjual, total_retur, created_by, updated_by, date_created, last_updated) VALUES ('" & iduser & "','" & txtnonota.Text & "','" & Format(dtreturjual.Value, "yyyy-MM-dd HH:mm:ss") & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & total_retur & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
             cmmd = New OdbcCommand(sql, cnn)
             idreturjual = CInt(cmmd.ExecuteScalar())
@@ -745,7 +745,7 @@ Public Class freturjual
                 fpassword.ShowDialog()
                 If statusizincetak.Equals(True) Then
                     Call cetak_faktur()
-                    Call koneksii()
+                    Call koneksi()
                     sql = "UPDATE tb_retur_penjualan SET print_returjual = 1 WHERE id = '" & txtnonota.Text & "' "
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader()
@@ -758,7 +758,7 @@ Public Class freturjual
                 End If
             Else
                 Call cetak_faktur()
-                Call koneksii()
+                Call koneksi()
                 sql = "UPDATE tb_retur_penjualan SET print_returjual = 1 WHERE kode_retur = '" & txtnonota.Text & "' "
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
@@ -888,7 +888,7 @@ Public Class freturjual
         If txtgoretur.Text = "" Then
             MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
         Else
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_retur_penjualan WHERE id = '" & txtgoretur.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
@@ -914,7 +914,7 @@ Public Class freturjual
         fcaripenjualan.Show()
     End Sub
     Sub cari_nota()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_penjualan JOIN tb_pelanggan ON tb_pelanggan.id = tb_penjualan.pelanggan_id JOIN tb_gudang ON tb_gudang.id = tb_penjualan.gudang_id WHERE tb_penjualan.id = '" & txtnonota.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader

@@ -32,7 +32,7 @@ Public Class flaporanmutasibarang
 
     Private Sub flaporanmutasibarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
 
         dtawal.Value = Now
         dtakhir.Value = Now
@@ -68,7 +68,7 @@ Public Class flaporanmutasibarang
         kode = Me.GridView1.GetFocusedRowCellValue("kode_barang")
         Dim foto As Byte()
         'menyiapkan koneksi database
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_barang WHERE kode_barang = '" & kode & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -84,7 +84,7 @@ Public Class flaporanmutasibarang
     End Sub
 
     Sub comboboxbarang()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_barang"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -97,7 +97,7 @@ Public Class flaporanmutasibarang
     End Sub
 
     Sub comboboxstok()
-        Call koneksii()
+        Call koneksi()
         cmbstok.DataSource = Nothing
         If cmbbarang.Text.Length = 0 Then
             sql = "SELECT DISTINCT kode_stok FROM tb_stok"
@@ -115,7 +115,7 @@ Public Class flaporanmutasibarang
     End Sub
 
     Sub comboboxgudang()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_gudang"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -171,7 +171,7 @@ Public Class flaporanmutasibarang
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
 
         If cbperiode.Checked = True Then
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then

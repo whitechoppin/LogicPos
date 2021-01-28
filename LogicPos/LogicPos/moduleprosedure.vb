@@ -1,4 +1,4 @@
-﻿Module prosedure
+﻿Module moduleprosedure
     Sub resetmenu()
         fmenu.MenuUtama.Items.Item(0).Visible = True
         fmenu.MenuUtama.Items.Item(1).Visible = True

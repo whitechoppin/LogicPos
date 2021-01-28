@@ -55,7 +55,7 @@ Public Class fchartpembelian
     End Sub
 
     Sub comboboxsupplier()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_supplier"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -67,7 +67,7 @@ Public Class fchartpembelian
         cmbsupplier.DisplayMember = "kode_supplier"
     End Sub
     Sub comboboxgudang()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_gudang"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -79,7 +79,7 @@ Public Class fchartpembelian
         cmbgudang.DisplayMember = "kode_gudang"
     End Sub
     Sub comboboxuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -92,7 +92,7 @@ Public Class fchartpembelian
     End Sub
 
     Sub carisupplier()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_supplier WHERE kode_supplier='" & cmbsupplier.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -106,7 +106,7 @@ Public Class fchartpembelian
         End If
     End Sub
     Sub carigudang()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_gudang WHERE kode_gudang='" & cmbgudang.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -120,7 +120,7 @@ Public Class fchartpembelian
     End Sub
 
     Sub cariuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE kode_user='" & cmbsales.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -134,7 +134,7 @@ Public Class fchartpembelian
     End Sub
 
     Sub caribarang()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_barang WHERE kode_barang='" & txtkodebarang.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -150,7 +150,7 @@ Public Class fchartpembelian
     Sub LoadChart()
         Me.Cursor = Cursors.WaitCursor
 
-        Call koneksii()
+        Call koneksi()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             If rbharian.Checked Then
                 If iduser > 0 Then

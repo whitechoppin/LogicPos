@@ -32,7 +32,7 @@ Public Class flaporantransferbarang
     '=======================
     Private Sub flaporankaskeluar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
 
         dtawal.MaxDate = Now
         dtakhir.MaxDate = Now
@@ -91,7 +91,7 @@ Public Class flaporantransferbarang
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
             sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, tbd.kode_barang, tbd.kode_stok, tbd.nama_barang, tbd.qty, usr.kode_user FROM tb_transfer_barang_detail AS tbd JOIN tb_transfer_barang AS tb ON tb.id = tbd.transfer_barang_id JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE DATE(tanggal_transfer_barang) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "' ORDER BY tb.id ASC"
         Else
@@ -152,7 +152,7 @@ Public Class flaporantransferbarang
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
 
-            Call koneksii()
+            Call koneksi()
 
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_transfer_barang WHERE DATE(tanggal_transfer_barang) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"

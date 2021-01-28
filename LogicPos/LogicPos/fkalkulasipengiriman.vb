@@ -26,7 +26,7 @@ Public Class fkalkulasipengiriman
 
     Private Sub fkalkulasipengiriman_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
 
         hitnumber = 0
         idpengiriman = currentnumber()
@@ -45,7 +45,7 @@ Public Class fkalkulasipengiriman
     End Sub
 
     Sub comboboxuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -91,7 +91,7 @@ Public Class fkalkulasipengiriman
 
 
     Function currentnumber()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT id FROM tb_kirim ORDER BY id DESC LIMIT 1;"
         Dim pesan As String = ""
         Try
@@ -111,7 +111,7 @@ Public Class fkalkulasipengiriman
     End Function
 
     Private Sub prevnumber(previousnumber As String)
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT id FROM tb_kirim WHERE date_created < (SELECT date_created FROM tb_kirim WHERE id = '" & previousnumber & "' LIMIT 1) ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
@@ -136,7 +136,7 @@ Public Class fkalkulasipengiriman
         End Try
     End Sub
     Private Sub nextnumber(nextingnumber As String)
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT id FROM tb_kirim WHERE date_created > (SELECT date_created FROM tb_kirim WHERE id = '" & nextingnumber & "' LIMIT 1) ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
@@ -240,7 +240,7 @@ Public Class fkalkulasipengiriman
     End Sub
 
     Sub previewpengiriman(lihat As String)
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_kirim_detail WHERE kirim_id ='" & lihat & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -551,7 +551,7 @@ Public Class fkalkulasipengiriman
     Sub simpan()
         'kodepengiriman = autonumber()
 
-        Call koneksii()
+        Call koneksi()
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()
         Dim myTrans As OdbcTransaction
 
@@ -570,7 +570,7 @@ Public Class fkalkulasipengiriman
             Dim hurufkubik As String
 
             Try
-                Call koneksii()
+                Call koneksi()
                 sql = "INSERT INTO tb_kirim (user_id, nama_expedisi, alamat_expedisi, telp_expedisi, tgl_kirim, harga_kubik, print_kirim, posted_kirim, keterangan_kirim, created_by, updated_by, date_created, last_updated) VALUES ('" & iduser & "','" & txtnamaexpedisi.Text & "','" & txtalamatexpedisi.Text & "','" & txttelpexpedisi.Text & "','" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "','" & hargakubik & "','" & 0 & "','" & 1 & "', '" & txtketerangan.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now());SELECT LAST_INSERT_ID();"
                 cmmd = New OdbcCommand(sql, cnn)
                 idpengiriman = CInt(cmmd.ExecuteScalar())
@@ -718,7 +718,7 @@ Public Class fkalkulasipengiriman
     Private Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
         Call cetak_faktur()
 
-        Call koneksii()
+        Call koneksi()
         sql = "UPDATE tb_kirim SET print_kirim = 1 WHERE id = '" & txtnonota.Text & "' "
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -730,7 +730,7 @@ Public Class fkalkulasipengiriman
 
     Sub perbarui(nomornota As String)
         'hapus tb_pembelian_detail
-        Call koneksii()
+        Call koneksi()
         Dim myCommand As OdbcCommand = cnnx.CreateCommand()
         Dim myTrans As OdbcTransaction
 
@@ -759,7 +759,7 @@ Public Class fkalkulasipengiriman
                     myCommand.ExecuteNonQuery()
                 Next
 
-                Call koneksii()
+                Call koneksi()
                 myCommand.CommandText = "UPDATE tb_kirim SET user_id = '" & iduser & "', nama_expedisi = '" & txtnamaexpedisi.Text & "', alamat_expedisi = '" & txtalamatexpedisi.Text & "', telp_expedisi = '" & txttelpexpedisi.Text & "', tgl_kirim = '" & Format(dtpengiriman.Value, "yyyy-MM-dd HH:mm:ss") & "', harga_kubik='" & hargakubik & "', print_kirim = 0, posted_kirim = 1, keterangan_kirim = '" & txtketerangan.Text & "', updated_by = '" & fmenu.kodeuser.Text & "', last_updated = now() WHERE id = '" & nomornota & "' "
                 myCommand.ExecuteNonQuery()
 
@@ -856,7 +856,7 @@ Public Class fkalkulasipengiriman
     End Sub
 
     Sub cariuser()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_user WHERE kode_user = '" & cmbuser.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -874,7 +874,7 @@ Public Class fkalkulasipengiriman
     End Sub
 
     Sub caribarang()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_barang WHERE kode_barang='" & txtkodebarang.Text & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader

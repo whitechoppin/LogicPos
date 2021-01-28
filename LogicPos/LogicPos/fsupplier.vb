@@ -72,7 +72,7 @@ Public Class fsupplier
         txttelp.Clear()
         txtketerangan.Clear()
 
-        Call koneksii()
+        Call koneksi()
 
         txtkode.Enabled = False
         btnauto.Enabled = False
@@ -95,7 +95,7 @@ Public Class fsupplier
         Call isitabel()
     End Sub
     Sub isitabel()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_supplier ORDER BY nama_supplier ASC"
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -140,7 +140,7 @@ Public Class fsupplier
         txtketerangan.TabIndex = 7
     End Sub
     Function autonumber()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT RIGHT(kode_supplier,3) FROM tb_supplier WHERE DATE_FORMAT(MID(`kode_supplier`, 3 , 6), ' %y ')+ MONTH(MID(`kode_supplier`,3 , 6)) + DAY(MID(`kode_supplier`,3, 6)) = DATE_FORMAT(NOW(),' %y ') + month(Curdate()) + day(Curdate()) ORDER BY RIGHT(kode_supplier,3) DESC"
         Dim pesan As String = ""
         Try
@@ -205,7 +205,7 @@ Public Class fsupplier
         End If
     End Sub
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_supplier WHERE kode_supplier  = '" + txtkode.Text + "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
@@ -213,7 +213,7 @@ Public Class fsupplier
             MsgBox("Kode Supplier Sudah ada dengan nama " + dr("nama_supplier"), MsgBoxStyle.Information, "Pemberitahuan")
         Else
             Try
-                Call koneksii()
+                Call koneksi()
                 sql = "INSERT INTO tb_supplier (kode_supplier, nama_supplier, telepon_supplier, alamat_supplier, keterangan_supplier, created_by, updated_by,date_created,last_updated) VALUES ('" & txtkode.Text & "', '" & txtnama.Text & "', '" & txttelp.Text & "', '" & txtalamat.Text & "','" & txtketerangan.Text & "','" & fmenu.kodeuser.Text & "','" & fmenu.kodeuser.Text & "',now(),now())"
                 cmmd = New OdbcCommand(sql, cnn)
                 dr = cmmd.ExecuteReader()
@@ -259,7 +259,7 @@ Public Class fsupplier
         If txtkode.Text.Equals(kodesupplieredit) Then
             Call perbaharui()
         Else
-            Call koneksii()
+            Call koneksi()
             sql = "SELECT * FROM tb_supplier WHERE kode_supplier  = '" & txtkode.Text & "' LIMIT 1"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
@@ -274,7 +274,7 @@ Public Class fsupplier
 
     Sub perbaharui()
         Try
-            Call koneksii()
+            Call koneksi()
             sql = "UPDATE tb_supplier SET  kode_supplier='" & txtkode.Text & "',nama_supplier='" & txtnama.Text & "',alamat_supplier='" & txtalamat.Text & "', telepon_supplier='" & txttelp.Text & "',keterangan_supplier='" & txtketerangan.Text & "',updated_by='" & fmenu.kodeuser.Text & "',last_updated= now()  WHERE  id='" & idsupplieredit & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
@@ -329,7 +329,7 @@ Public Class fsupplier
         If hapusstatus.Equals(True) Then
             If MessageBox.Show("Hapus " & Me.txtnama.Text & " ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 Try
-                    Call koneksii()
+                    Call koneksi()
                     sql = "DELETE FROM tb_supplier WHERE id='" & idsupplieredit & "'"
                     cmmd = New OdbcCommand(sql, cnn)
                     dr = cmmd.ExecuteReader

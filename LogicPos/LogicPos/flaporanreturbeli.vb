@@ -34,7 +34,7 @@ Public Class flaporanreturbeli
 
     Private Sub flaporanreturbeli_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
 
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
@@ -96,7 +96,7 @@ Public Class flaporanreturbeli
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.id = tb_retur_pembelian_detail.retur_pembelian_id JOIN tb_user ON tb_user.id = tb_retur_pembelian.user_id WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
@@ -123,7 +123,7 @@ Public Class flaporanreturbeli
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
 
-            Call koneksii()
+            Call koneksi()
 
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY id ASC"
@@ -212,7 +212,7 @@ Public Class flaporanreturbeli
             Dim akhirPVs As New ParameterValues
             Dim akhirPDV As New ParameterDiscreteValue
 
-            Call koneksii()
+            Call koneksi()
 
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"

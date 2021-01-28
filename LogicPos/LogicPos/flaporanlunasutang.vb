@@ -34,7 +34,7 @@ Public Class flaporanlunasutang
 
     Private Sub flaporanutang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
-        Call koneksii()
+        Call koneksi()
 
         DateTimePicker1.MaxDate = Now
         DateTimePicker2.MaxDate = Now
@@ -107,7 +107,7 @@ Public Class flaporanlunasutang
         GridControl1.Visible = True
     End Sub
     Sub tabel()
-        Call koneksii()
+        Call koneksi()
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT tb_pelunasan_utang.id, pembelian_id, tb_supplier.nama_supplier, tanggal_pembelian, tanggal_jatuhtempo, total_pembelian, terima_utang, nama_user, nama_kas, tanggal_transaksi, no_bukti FROM tb_pelunasan_utang_detail JOIN tb_pelunasan_utang ON tb_pelunasan_utang.id = tb_pelunasan_utang_detail.pelunasan_utang_id JOIN tb_supplier ON tb_supplier.id = tb_pelunasan_utang.supplier_id JOIN tb_user ON tb_user.id = tb_pelunasan_utang.user_id JOIN tb_kas ON tb_kas.id = tb_pelunasan_utang.kas_id WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_pelunasan_utang.id ASC"
         Else

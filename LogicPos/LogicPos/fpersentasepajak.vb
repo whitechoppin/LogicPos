@@ -12,7 +12,7 @@ Public Class fpersentasepajak
     End Sub
 
     Sub awal()
-        Call koneksii()
+        Call koneksi()
         sql = "SELECT * FROM tb_pajak LIMIT 1"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
@@ -25,7 +25,7 @@ Public Class fpersentasepajak
     End Sub
 
     Sub simpan()
-        Call koneksii()
+        Call koneksi()
 
         sql = "SELECT * FROM tb_pajak WHERE pajak='" & pajakawal & "'"
         cmmd = New OdbcCommand(sql, cnn)
