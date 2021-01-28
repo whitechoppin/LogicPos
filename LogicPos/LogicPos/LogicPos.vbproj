@@ -153,7 +153,6 @@
       <DependentUpon>flaporantransferbarang.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="faboutlogicpos.Designer.vb">
       <DependentUpon>faboutlogicpos.vb</DependentUpon>
     </Compile>
@@ -783,7 +782,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fungsi.vb" />
-    <Compile Include="mform.vb" />
     <Compile Include="prosedure.vb" />
     <Compile Include="rptlaporbarcode.vb">
       <AutoGen>True</AutoGen>
@@ -1218,7 +1216,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="variabelvalidasi.vb" />
-    <Compile Include="validasi.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="faboutlogicpos.resx">
