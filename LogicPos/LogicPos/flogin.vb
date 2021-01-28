@@ -203,7 +203,7 @@ Public Class flogin
 
             If counteruser = 0 Then
                 MsgBox("Selamat Datang " & txtusername.Text & " ! ", MsgBoxStyle.Information, "Successfull Login")
-                Call offform()
+                Call resetmenu()
                 Call feature()
                 Call procced()
             Else
@@ -216,7 +216,7 @@ Public Class flogin
                     MsgBox("Anda Sudah Login !", MsgBoxStyle.Exclamation, "Error Login")
                 Else
                     MsgBox("Selamat Datang " & txtusername.Text & " ! ", MsgBoxStyle.Information, "Successfull Login")
-                    Call offform()
+                    Call resetmenu()
                     Call feature()
                     Call procced()
                 End If

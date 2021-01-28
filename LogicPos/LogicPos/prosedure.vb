@@ -1,5 +1,5 @@
 ﻿Module prosedure
-    Sub offform()
+    Sub resetmenu()
         fmenu.MenuUtama.Items.Item(0).Visible = True
         fmenu.MenuUtama.Items.Item(1).Visible = True
         fmenu.MenuUtama.Items.Item(2).Visible = True
