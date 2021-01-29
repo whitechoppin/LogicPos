@@ -36,7 +36,9 @@ Public Class flaporanmodalbarang
     '=======================
     Private Sub flaporanmodalbarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
+        Call grid()
         Call tabel()
+
         With GridView1
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
@@ -93,7 +95,6 @@ Public Class flaporanmodalbarang
 
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
-        Call grid()
     End Sub
     Sub ambil_gbr()
         kode = Me.GridView1.GetFocusedRowCellValue("kode_barang")

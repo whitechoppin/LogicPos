@@ -8,8 +8,6 @@ Public Class flaporanreturbeli
 
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
-    Public isi As String
-    Public isi2 As String
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -107,7 +105,6 @@ Public Class flaporanreturbeli
         da.Fill(ds)
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
-        Call grid()
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click

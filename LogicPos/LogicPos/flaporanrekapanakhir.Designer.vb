@@ -172,7 +172,7 @@ Partial Class flaporanrekapanakhir
         Me.Controls.Add(Me.btnexcel)
         Me.Controls.Add(Me.btnrekap)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "flaporanrekapanakhir"
         Me.Text = "Laporan Rekapan Akhir"
         CType(Me.GridControl, System.ComponentModel.ISupportInitialize).EndInit()

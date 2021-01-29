@@ -7,8 +7,6 @@ Public Class flaporanpenjualanpajak
     Public namaform As String = "laporan-penjualan_pajak"
 
     Public kodeakses As Integer
-    Public isi As String
-    Public isi2 As String
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -94,7 +92,6 @@ Public Class flaporanpenjualanpajak
         da.Fill(ds)
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
-        Call grid()
     End Sub
 
 

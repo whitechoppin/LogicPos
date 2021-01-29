@@ -34,6 +34,7 @@ Public Class flaporanpricelist
 
     Private Sub flaporanpricelist_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.MdiParent = fmenu
+        Call grid()
         Call tabel()
         Call comboboxpelanggan()
 
@@ -97,7 +98,6 @@ Public Class flaporanpricelist
 
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
-        Call grid()
     End Sub
 
     Sub ambil_gbr()

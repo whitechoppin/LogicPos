@@ -10,13 +10,17 @@ Public Class fmenu
 
         Call historysave("User Login Program", Me.namauser.Text, namaform)
     End Sub
+
     Public Sub ActiveMdiChild_FormClosed(sender As Object)
         TryCast(TryCast(sender, Form).Tag, TabPage).Dispose()
     End Sub
+
     Private Sub tabform_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tabform.SelectedIndexChanged
         If tabform.TabCount.Equals(0) Then
+
         Else
             If (tabform.SelectedTab.Equals(Nothing)) Or (tabform.SelectedTab.Tag.Equals(Nothing)) Then
+
             Else
                 TryCast(tabform.SelectedTab.Tag, Form).Select()
             End If

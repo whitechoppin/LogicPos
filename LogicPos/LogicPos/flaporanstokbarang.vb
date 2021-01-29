@@ -38,8 +38,10 @@ Public Class flaporanstokbarang
         Me.MdiParent = fmenu
         cmbstatus.SelectedIndex = 0
 
+        Call grid()
         Call tabel()
         LabelHarga.Visible = False
+
         With GridView1
             'agar muncul footer untuk sum/avg/count
             .OptionsView.ShowFooter = True
@@ -100,7 +102,6 @@ Public Class flaporanstokbarang
         da.Fill(ds)
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
-        Call grid()
     End Sub
 
     Sub ambil_gbr()

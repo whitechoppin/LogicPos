@@ -79,7 +79,6 @@ Public Class flaporanlabarugi
     End Sub
     Sub tabel()
         Call koneksi()
-
         sql = "(SELECT 'PENDAPATAN' AS tipe, 'Penjualan' AS jenis, IFNULL(SUM(total_penjualan), 0) AS saldo, '1' AS idbaris FROM tb_penjualan WHERE MONTHNAME(tgl_penjualan) = '" & cmbmonth.Text & "' AND YEAR(tgl_penjualan) = '" & cmbyear.Text & "')
                 UNION 
                 (SELECT 'PENDAPATAN' AS tipe, 'Kas Masuk' AS jenis, IFNULL(SUM(saldo_kas), 0) AS saldo, '2' AS idbaris FROM tb_kas_masuk WHERE MONTHNAME(tanggal) = '" & cmbmonth.Text & "' AND YEAR(tanggal) = '" & cmbyear.Text & "')
@@ -95,7 +94,6 @@ Public Class flaporanlabarugi
 
         GridControl.DataSource = Nothing
         GridControl.DataSource = ds.Tables(0)
-        Call grid()
     End Sub
 
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click

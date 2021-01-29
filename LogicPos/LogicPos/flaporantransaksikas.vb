@@ -8,9 +8,6 @@ Public Class flaporantransaksikas
 
     Public kodeakses As Integer
     Dim exportstatus, printstatus As Boolean
-    Dim tabel1 As DataTable
-    Public isi As String
-    Public isi2 As String
 
     '==== autosize form ====
     Dim CuRWidth As Integer = Me.Width
@@ -124,7 +121,6 @@ Public Class flaporantransaksikas
         da.Fill(ds)
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
-        Call grid()
     End Sub
     Private Sub btntabel_Click(sender As Object, e As EventArgs) Handles btntabel.Click
         Call tabel()
