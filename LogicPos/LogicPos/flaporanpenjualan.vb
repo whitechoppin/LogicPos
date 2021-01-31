@@ -106,12 +106,6 @@ Public Class flaporanpenjualan
         GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         GridColumn10.DisplayFormat.FormatString = "##,##0"
 
-        If cbkeuntungan.Checked = True Then
-            GridColumn10.Visible = True
-        Else
-            GridColumn10.Visible = False
-        End If
-
         GridColumn11.Caption = "User"
         GridColumn11.FieldName = "kode_user"
 
@@ -132,6 +126,12 @@ Public Class flaporanpenjualan
         da.Fill(ds)
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
+
+        If cbkeuntungan.Checked = True Then
+            GridColumn10.Visible = True
+        Else
+            GridColumn10.Visible = False
+        End If
     End Sub
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
