@@ -13,8 +13,8 @@ Public Class fcarireturbeli
     End Sub
 
     Sub grid()
-        GridColumn1.Caption = "Kode Retur"
-        GridColumn1.FieldName = "kode_retur"
+        GridColumn1.Caption = "id retur"
+        GridColumn1.FieldName = "id"
         GridColumn2.Caption = "Kode User"
         GridColumn2.FieldName = "kode_user"
         GridColumn3.Caption = "Kode Pembelian"
@@ -33,7 +33,7 @@ Public Class fcarireturbeli
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_retur_pembelian WHERE tgl_returbeli BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
         Else
             sql = "SELECT * FROM tb_retur_pembelian"

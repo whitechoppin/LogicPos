@@ -319,12 +319,6 @@
     <Compile Include="fcarireturjual.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fcarisales.Designer.vb">
-      <DependentUpon>fcarisales.vb</DependentUpon>
-    </Compile>
-    <Compile Include="fcarisales.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="fcaritransferbarang.Designer.vb">
       <DependentUpon>fcaritransferbarang.vb</DependentUpon>
     </Compile>
@@ -1315,9 +1309,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fcarireturjual.resx">
       <DependentUpon>fcarireturjual.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fcarisales.resx">
-      <DependentUpon>fcarisales.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fcaritransferbarang.resx">
       <DependentUpon>fcaritransferbarang.vb</DependentUpon>

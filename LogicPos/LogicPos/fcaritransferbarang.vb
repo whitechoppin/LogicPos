@@ -20,7 +20,7 @@ Public Class fcaritransferbarang
     End Sub
 
     Sub grid()
-        GridColumn1.Caption = "id"
+        GridColumn1.Caption = "id transfer"
         GridColumn1.FieldName = "id"
         GridColumn2.Caption = "Tanggal"
         GridColumn2.FieldName = "tanggal_transfer_barang"
@@ -63,7 +63,7 @@ Public Class fcaritransferbarang
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, usr.kode_user FROM tb_transfer_barang AS tb JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE DATE(tanggal_transfer_barang) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, usr.kode_user FROM tb_transfer_barang AS tb JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE tanggal_transfer_barang BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, usr.kode_user FROM tb_transfer_barang AS tb JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id WHERE DATE(tanggal_transfer_barang) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
         Else
             sql = "SELECT tb.id, dari.nama_gudang AS dari_gudang, ke.nama_gudang AS ke_gudang, tb.tanggal_transfer_barang, usr.kode_user FROM tb_transfer_barang AS tb JOIN tb_gudang AS dari ON dari.id = tb.dari_gudang_id JOIN tb_gudang AS ke ON ke.id = tb.ke_gudang_id JOIN tb_user AS usr ON usr.id = tb.user_id"

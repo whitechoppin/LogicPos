@@ -14,8 +14,8 @@ Public Class fcarilunaspiutang
     End Sub
 
     Sub grid()
-        GridColumn1.Caption = "Kode"
-        GridColumn1.FieldName = "kode_lunas"
+        GridColumn1.Caption = "id pelunasan"
+        GridColumn1.FieldName = "id"
         GridColumn2.Caption = "Tanggal"
         GridColumn2.FieldName = "tanggal_transaksi"
         GridColumn3.Caption = "Nama Pelanggan"
@@ -34,12 +34,12 @@ Public Class fcarilunaspiutang
 
         If cbperiode.Checked = True Then
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
-                sql = "SELECT tb_pelunasan_piutang.kode_lunas, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan AND DATE(tb_pelunasan_piutang.tanggal_transaksi) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT tb_pelunasan_piutang.id, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan AND DATE(tb_pelunasan_piutang.tanggal_transaksi) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT tb_pelunasan_piutang.kode_lunas, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan AND tb_pelunasan_piutang.tanggal_transaksi BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
+                sql = "SELECT tb_pelunasan_piutang.id, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan AND DATE(tb_pelunasan_piutang.tanggal_transaksi) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' + INTERVAL 1 DAY"
             End If
         Else
-            sql = "SELECT tb_pelunasan_piutang.kode_lunas, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan"
+            sql = "SELECT tb_pelunasan_piutang.id, tb_pelunasan_piutang.bayar_lunas, tb_pelunasan_piutang.tanggal_transaksi, tb_pelanggan.nama_pelanggan, tb_pelunasan_piutang.no_bukti FROM tb_pelunasan_piutang JOIN tb_pelanggan WHERE tb_pelunasan_piutang.kode_pelanggan = tb_pelanggan.kode_pelanggan"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)

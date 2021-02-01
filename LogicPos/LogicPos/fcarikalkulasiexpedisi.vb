@@ -37,7 +37,7 @@ Public Class fcarikalkulasiexpedisi
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_pengiriman WHERE DATE(tb_pengiriman.tgl_pengiriman) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_pengiriman WHERE tb_pengiriman.tgl_pengiriman BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_pengiriman WHERE DATE(tb_pengiriman.tgl_pengiriman) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
         Else
             sql = "SELECT * FROM tb_pengiriman WHERE tb_pengiriman.tgl_pengiriman"

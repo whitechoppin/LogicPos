@@ -20,9 +20,6 @@ Module modulekoneksi
     Public ds As DataSet
     '=========================
 
-    'counter printing
-    Dim counter As Integer
-    '=========================
 
     Public Sub koneksi()
         Dim status As MsgBoxResult
@@ -69,10 +66,12 @@ Module modulekoneksi
         Call koneksi()
         sql = "INSERT INTO tb_history_user (keterangan_history, kode_tabel, jenis_tabel, created_by, date_created) VALUES ('" & keterangan & "','" & kode & "','" & jenis & "','" & fmenu.kodeuser.Text & "',now())"
         cmmd = New OdbcCommand(sql, cnn)
-        dr = cmmd.ExecuteReader()
+        cmmd.ExecuteNonQuery()
     End Sub
 
     Public Function cekcetakan(nomor As String, jenis As String) As Boolean
+        Dim counter As Integer
+
         Call koneksi()
         sql = "SELECT IFNULL(COUNT(*), 0) AS penghitung FROM tb_history_user WHERE keterangan_history LIKE '%mencetak%' AND created_by='" & fmenu.kodeuser.Text & "' AND kode_tabel = '" & nomor & "' AND jenis_tabel='" & jenis & "'"
         cmmd = New OdbcCommand(sql, cnn)

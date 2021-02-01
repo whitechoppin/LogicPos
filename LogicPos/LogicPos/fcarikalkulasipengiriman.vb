@@ -37,7 +37,7 @@ Public Class fcarikalkulasipengiriman
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_kirim WHERE DATE(tb_kirim.tgl_kirim) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_kirim WHERE tb_kirim.tgl_kirim BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_kirim WHERE DATE(tb_kirim.tgl_kirim) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
         Else
             sql = "SELECT * FROM tb_kirim WHERE tb_kirim.tgl_kirim"

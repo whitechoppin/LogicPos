@@ -70,7 +70,7 @@ Public Class fcaripenyesuaianstok
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_penyesuaian_stok JOIN tb_gudang ON tb_gudang.id = tb_penyesuaian_stok.gudang_id JOIN tb_user ON tb_user.id = tb_penyesuaian_stok.user_id WHERE DATE(tb_penyesuaian_stok.tanggal_penyesuaian_stok) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_penyesuaian_stok JOIN tb_gudang ON tb_gudang.id = tb_penyesuaian_stok.gudang_id JOIN tb_user ON tb_user.id = tb_penyesuaian_stok.user_id WHERE tb_penyesuaian_stok.tanggal_penyesuaian_stok BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_penyesuaian_stok JOIN tb_gudang ON tb_gudang.id = tb_penyesuaian_stok.gudang_id JOIN tb_user ON tb_user.id = tb_penyesuaian_stok.user_id WHERE DATE(tb_penyesuaian_stok.tanggal_penyesuaian_stok) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
         Else
             sql = "SELECT * FROM tb_penyesuaian_stok JOIN tb_gudang ON tb_gudang.id = tb_penyesuaian_stok.gudang_id JOIN tb_user ON tb_user.id = tb_penyesuaian_stok.user_id"

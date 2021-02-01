@@ -34,7 +34,7 @@ Public Class fcaripembelian
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT tb_pembelian.id, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE DATE(tb_pembelian.tgl_pembelian) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT tb_pembelian.id, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE tb_pembelian.tgl_pembelian BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT tb_pembelian.id, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id WHERE DATE(tb_pembelian.tgl_pembelian) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
         Else
             sql = "SELECT tb_pembelian.id, tb_pembelian.total_pembelian, tb_pembelian.tgl_pembelian, tb_supplier.nama_supplier, tb_pembelian.no_nota_pembelian FROM tb_pembelian JOIN tb_supplier ON tb_pembelian.supplier_id = tb_supplier.id"

@@ -16,18 +16,14 @@ Public Class fcarikas
         GridControl1.Visible = True
     End Sub
     Sub tabel()
+        Call grid()
         Call koneksi()
-        'Using cnn As New OdbcConnection(strConn)
         sql = "SELECT tb_kas.kode_kas, tb_kas.nama_kas, tb_kas.keterangan_kas FROM tb_kas"
         da = New OdbcDataAdapter(sql, cnn)
-        'cnn.Open()
         ds = New DataSet
         da.Fill(ds)
         GridControl1.DataSource = Nothing
         GridControl1.DataSource = ds.Tables(0)
-        Call grid()
-        'cnn.Close()
-        'End Using
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If tutupkas = 1 Then
