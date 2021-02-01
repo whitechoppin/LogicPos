@@ -76,7 +76,7 @@ Public Class fjatuhtempopembelian
         tabellunas = New DataTable
 
         With tabellunas
-            .Columns.Add("kode_lunas")
+            .Columns.Add("id")
             .Columns.Add("tgl_pelunasan")
             .Columns.Add("terima_utang", GetType(Double))
         End With
@@ -119,7 +119,7 @@ Public Class fjatuhtempopembelian
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabellunas.Rows.Add(dr("kode_lunas"), dr("last_updated"), dr("terima_utang"))
+            tabellunas.Rows.Add(dr("pelunasan_utang_id"), dr("last_updated"), dr("terima_utang"))
         End While
 
         GridControl2.RefreshDataSource()

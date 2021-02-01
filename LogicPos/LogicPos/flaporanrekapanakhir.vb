@@ -101,13 +101,13 @@ Public Class flaporanrekapanakhir
     Sub tabeltransaksi()
         Call koneksi()
 
-        sql = "(SELECT 'PEMBELIAN' AS tipe, pembelian_id AS no_transaksi, nama_barang AS keterangan, qty, harga_beli AS harga, subtotal AS total, nama_gudang AS gudang FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id JOIN tb_gudang ON tb_gudang.id = tb_pembelian.gudang_id)
+        sql = "(SELECT 'PEMBELIAN' AS tipe, pembelian_id AS no_transaksi, nama_barang, qty, harga_beli AS harga, subtotal AS total, nama_gudang AS gudang FROM tb_pembelian_detail JOIN tb_pembelian ON tb_pembelian.id = tb_pembelian_detail.pembelian_id JOIN tb_gudang ON tb_gudang.id = tb_pembelian.gudang_id)
                 UNION
                 (SELECT 'PENJUALAN' AS tipe, penjualan_id AS no_transaksi, nama_barang, qty, harga_jual AS harga, subtotal AS total, nama_gudang AS gudang FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_gudang ON tb_gudang.id = tb_penjualan.gudang_id)
                 UNION
-                (SELECT 'MASUK' AS tipe, barang_masuk_id AS no_transaksi, nama_barang, qty, 0 AS harga, 0 AS total, nama_gudang AS gudang FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.id = tb_barang_masuk_detail.barang_masuk_id JOIN tb_gudang ON tb_gudang.id = tb_barang_masuk.gudang_id)
+                (SELECT 'BARANG MASUK' AS tipe, barang_masuk_id AS no_transaksi, nama_barang, qty, 0 AS harga, 0 AS total, nama_gudang AS gudang FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.id = tb_barang_masuk_detail.barang_masuk_id JOIN tb_gudang ON tb_gudang.id = tb_barang_masuk.gudang_id)
                 UNION
-                (SELECT 'KELUAR' AS tipe, barang_keluar_id AS no_transaksi, nama_barang, qty, 0 AS harga, 0 AS total, nama_gudang AS gudang FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar.id = tb_barang_keluar_detail.barang_keluar_id JOIN tb_gudang ON tb_gudang.id = tb_barang_keluar.gudang_id)
+                (SELECT 'BARANG KELUAR' AS tipe, barang_keluar_id AS no_transaksi, nama_barang, qty, 0 AS harga, 0 AS total, nama_gudang AS gudang FROM tb_barang_keluar_detail JOIN tb_barang_keluar ON tb_barang_keluar.id = tb_barang_keluar_detail.barang_keluar_id JOIN tb_gudang ON tb_gudang.id = tb_barang_keluar.gudang_id)
                 UNION
                 (SELECT 'RETUR PEMBELIAN' AS tipe, retur_pembelian_id AS no_transaksi, nama_barang, qty, harga_beli AS harga, subtotal AS total, nama_gudang AS gudang FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.id = tb_retur_pembelian_detail.retur_pembelian_id JOIN tb_pembelian ON tb_pembelian.id = tb_retur_pembelian.pembelian_id JOIN tb_gudang ON tb_gudang.id = tb_pembelian.gudang_id)
                 UNION

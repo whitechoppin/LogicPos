@@ -129,7 +129,7 @@ Public Class fjatuhtempopenjualan
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader()
         While dr.Read
-            tabellunas.Rows.Add(dr("id"), dr("last_updated"), dr("terima_piutang"))
+            tabellunas.Rows.Add(dr("pelunasan_piutang_id"), dr("last_updated"), dr("terima_piutang"))
         End While
 
         GridControl2.RefreshDataSource()

@@ -186,8 +186,9 @@ Partial Class fpreviewpiutang
         '
         'cmbstatus
         '
+        Me.cmbstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbstatus.FormattingEnabled = True
-        Me.cmbstatus.Items.AddRange(New Object() {"Lunas", "Belum Lunas"})
+        Me.cmbstatus.Items.AddRange(New Object() {"Semua", "Belum Lunas", "Lunas"})
         Me.cmbstatus.Location = New System.Drawing.Point(292, 86)
         Me.cmbstatus.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbstatus.MaxLength = 99
