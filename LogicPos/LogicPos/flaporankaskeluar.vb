@@ -59,7 +59,7 @@ Public Class flaporankaskeluar
         Call historysave("Membuka Laporan Kas Keluar", "N/A", namaform)
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No.Kas Keluar"
+        GridColumn1.Caption = "id kas keluar"
         GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Kode Kas"
@@ -91,7 +91,7 @@ Public Class flaporankaskeluar
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT tb_kas_keluar.id, tb_kas.kode_kas, tb_user.kode_user, tb_kas.jenis_kas, tb_kas_keluar.tanggal, saldo_kas, tb_kas_keluar.keterangan_kas FROM tb_kas_keluar JOIN tb_kas ON tb_kas.id = tb_kas_keluar.kas_id JOIN tb_user ON tb_user.id = tb_kas_keluar.user_id WHERE DATE(tanggal) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_kas_keluar.id ASC"
         Else
-            sql = "SELECT tb_kas_keluar.id, tb_kas.kode_kas, tb_user.kode_user, tb_kas.jenis_kas, tb_kas_keluar.tanggal, saldo_kas, tb_kas_keluar.keterangan_kas FROM tb_kas_keluar JOIN tb_kas ON tb_kas.id = tb_kas_keluar.kas_id JOIN tb_user ON tb_user.id = tb_kas_keluar.user_id WHERE tanggal BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_kas_keluar.id ASC"
+            sql = "SELECT tb_kas_keluar.id, tb_kas.kode_kas, tb_user.kode_user, tb_kas.jenis_kas, tb_kas_keluar.tanggal, saldo_kas, tb_kas_keluar.keterangan_kas FROM tb_kas_keluar JOIN tb_kas ON tb_kas.id = tb_kas_keluar.kas_id JOIN tb_user ON tb_user.id = tb_kas_keluar.user_id WHERE DATE(tanggal) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_kas_keluar.id ASC"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -153,7 +153,7 @@ Public Class flaporankaskeluar
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_kas_keluar WHERE DATE(tanggal) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_kas_keluar WHERE tanggal BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_kas_keluar WHERE DATE(tanggal) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
             End If
 
             cmmd = New OdbcCommand(sql, cnn)

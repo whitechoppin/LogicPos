@@ -63,7 +63,7 @@ Public Class flaporankalkulasiexpedisi
     End Sub
 
     Sub grid()
-        GridColumn1.Caption = "No Faktur"
+        GridColumn1.Caption = "id expedisi"
         GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Tanggal"
@@ -134,7 +134,7 @@ Public Class flaporankalkulasiexpedisi
         If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_pengiriman_detail AS tpd JOIN tb_pengiriman AS tp ON tp.id = tpd.pengiriman_id JOIN tb_user AS usr ON usr.id = tp.user_id WHERE DATE(tgl_pengiriman) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_pengiriman_detail AS tpd JOIN tb_pengiriman AS tp ON tp.id = tpd.pengiriman_id JOIN tb_user AS usr ON usr.id = tp.user_id WHERE tgl_pengiriman BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_pengiriman_detail AS tpd JOIN tb_pengiriman AS tp ON tp.id = tpd.pengiriman_id JOIN tb_user AS usr ON usr.id = tp.user_id WHERE DATE(tgl_pengiriman) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -167,7 +167,7 @@ Public Class flaporankalkulasiexpedisi
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_pengiriman WHERE DATE(tgl_pengiriman) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_pengiriman WHERE tgl_pengiriman BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_pengiriman WHERE DATE(tgl_pengiriman) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
 
             cmmd = New OdbcCommand(sql, cnn)

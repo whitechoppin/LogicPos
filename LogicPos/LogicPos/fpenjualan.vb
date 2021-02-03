@@ -1618,11 +1618,9 @@ Public Class fpenjualan
             End If
 
             If statuspiutang = False Then
-
                 If btnedit.Text.Equals("Edit") Then
                     btnedit.Text = "Update"
                     Call awaledit()
-
                 ElseIf btnedit.Text.Equals("Update") Then
                     If GridView1.DataRowCount > 0 Then
                         If txtpelanggan.Text IsNot "" Then
@@ -1654,8 +1652,6 @@ Public Class fpenjualan
         Else
             MsgBox("Nota sudah void !")
         End If
-
-
     End Sub
 
     Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
@@ -1695,7 +1691,6 @@ Public Class fpenjualan
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
         Call nextnumber(txtnonota.Text)
     End Sub
-
 
     Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
         tutupcus = 2
@@ -2079,7 +2074,6 @@ Public Class fpenjualan
                 MsgBox("Persentase Lebih dari 10%", MsgBoxStyle.Information, "Peringatan")
             End If
         End If
-
     End Sub
 
     Private Sub GridView1_RowDeleted(sender As Object, e As DevExpress.Data.RowDeletedEventArgs) Handles GridView1.RowDeleted
@@ -2378,7 +2372,6 @@ Public Class fpenjualan
             myCommand.Connection = cnnx
             myCommand.Transaction = myTrans
 
-
             'cari nota  yang sebelumnya (kembalikan stok dulu) cek dulu disini
             Call koneksi()
             sql = "SELECT gudang_id FROM tb_penjualan WHERE id = '" & nomornota & "'"
@@ -2459,8 +2452,6 @@ Public Class fpenjualan
         End If
     End Sub
 
-
-
     'Private Function CpuId() As String
     '    Dim computer As String = "."
     '    Dim wmi As Object = GetObject("winmgmts:" &
@@ -2506,11 +2497,11 @@ Public Class fpenjualan
                 stok = Val(GridView1.GetRowCellValue(i, "qty"))
                 stokdatabase = Val(dr("jumlah_stok"))
                 If stokdatabase < stok Then
-                    MsgBox("Stok dengan kode stok " + dr("kode_stok") + " tidak mencukupi.", MsgBoxStyle.Information, "Information")
+                    MsgBox("Stok dengan kode stok " & dr("kode_stok") & " tidak mencukupi.", MsgBoxStyle.Information, "Information")
                     statusavailable = False
                 End If
             Else
-                MsgBox("Kode Stok Barang ini " + GridView1.GetRowCellValue(i, "kode_stok").ToString + " tidak ada di gudang.", MsgBoxStyle.Information, "Informasi")
+                MsgBox("Kode Stok Barang ini " & GridView1.GetRowCellValue(i, "kode_stok").ToString & " tidak ada di gudang.", MsgBoxStyle.Information, "Informasi")
                 statusavailable = False
             End If
         Next

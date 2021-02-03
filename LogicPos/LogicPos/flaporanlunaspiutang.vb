@@ -59,7 +59,7 @@ Public Class flaporanlunaspiutang
         Call historysave("Membuka Laporan Pelunasan Piutang", "N/A", namaform)
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No Faktur"
+        GridColumn1.Caption = "id lunas piutang"
         GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "No Penjualan"
@@ -109,7 +109,7 @@ Public Class flaporanlunaspiutang
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT tb_pelunasan_piutang.id, penjualan_id, tb_pelanggan.nama_pelanggan, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, terima_piutang, nama_user, nama_kas, tanggal_transaksi, no_bukti FROM tb_pelunasan_piutang_detail JOIN tb_pelunasan_piutang ON tb_pelunasan_piutang.id = tb_pelunasan_piutang_detail.pelunasan_piutang_id JOIN tb_pelanggan ON tb_pelanggan.id = tb_pelunasan_piutang.pelanggan_id JOIN tb_user ON tb_user.id = tb_pelunasan_piutang.user_id JOIN tb_kas ON tb_kas.id = tb_pelunasan_piutang.kas_id WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_pelunasan_piutang.id ASC"
         Else
-            sql = "SELECT tb_pelunasan_piutang.id, penjualan_id, tb_pelanggan.nama_pelanggan, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, terima_piutang, nama_user, nama_kas, tanggal_transaksi, no_bukti FROM tb_pelunasan_piutang_detail JOIN tb_pelunasan_piutang ON tb_pelunasan_piutang.id = tb_pelunasan_piutang_detail.pelunasan_piutang_id JOIN tb_pelanggan ON tb_pelanggan.id = tb_pelunasan_piutang.pelanggan_id JOIN tb_user ON tb_user.id = tb_pelunasan_piutang.user_id JOIN tb_kas ON tb_kas.id = tb_pelunasan_piutang.kas_id WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_pelunasan_piutang.id ASC"
+            sql = "SELECT tb_pelunasan_piutang.id, penjualan_id, tb_pelanggan.nama_pelanggan, tanggal_penjualan, tanggal_jatuhtempo, total_penjualan, terima_piutang, nama_user, nama_kas, tanggal_transaksi, no_bukti FROM tb_pelunasan_piutang_detail JOIN tb_pelunasan_piutang ON tb_pelunasan_piutang.id = tb_pelunasan_piutang_detail.pelunasan_piutang_id JOIN tb_pelanggan ON tb_pelanggan.id = tb_pelunasan_piutang.pelanggan_id JOIN tb_user ON tb_user.id = tb_pelunasan_piutang.user_id JOIN tb_kas ON tb_kas.id = tb_pelunasan_piutang.kas_id WHERE DATE(tanggal_transaksi) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_pelunasan_piutang.id ASC"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -170,7 +170,7 @@ Public Class flaporanlunaspiutang
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_pelunasan_piutang WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "Select * FROM tb_pelunasan_piutang WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "Select * FROM tb_pelunasan_piutang WHERE DATE(tanggal_transaksi) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
             End If
 
             cmmd = New OdbcCommand(sql, cnn)

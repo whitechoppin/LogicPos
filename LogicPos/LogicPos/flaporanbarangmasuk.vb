@@ -57,7 +57,7 @@ Public Class flaporanbarangmasuk
         Call historysave("Membuka Laporan Barang Masuk", "N/A", namaform)
     End Sub
     Sub grid()
-        GridColumn1.Caption = "No Nota"
+        GridColumn1.Caption = "id barang masuk"
         GridColumn1.FieldName = "id"
 
         GridColumn2.Caption = "Supplier"
@@ -87,7 +87,7 @@ Public Class flaporanbarangmasuk
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.id = tb_barang_masuk_detail.barang_masuk_id JOIN tb_supplier ON tb_supplier.id = tb_barang_masuk.supplier_id JOIN tb_user ON tb_user.id = tb_barang_masuk.user_id WHERE DATE(tgl_barang_masuk) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY tb_barang_masuk.id ASC"
         Else
-            sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.id = tb_barang_masuk_detail.barang_masuk_id JOIN tb_supplier ON tb_supplier.id = tb_barang_masuk.supplier_id JOIN tb_user ON tb_user.id = tb_barang_masuk.user_id WHERE tgl_barang_masuk BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_barang_masuk.id ASC"
+            sql = "SELECT * FROM tb_barang_masuk_detail JOIN tb_barang_masuk ON tb_barang_masuk.id = tb_barang_masuk_detail.barang_masuk_id JOIN tb_supplier ON tb_supplier.id = tb_barang_masuk.supplier_id JOIN tb_user ON tb_user.id = tb_barang_masuk.user_id WHERE DATE(tgl_barang_masuk) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY tb_barang_masuk.id ASC"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -153,7 +153,7 @@ Public Class flaporanbarangmasuk
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_barang_masuk WHERE DATE(tgl_barang_masuk) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_barang_masuk WHERE tgl_barang_masuk BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_barang_masuk WHERE DATE(tgl_barang_masuk) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
             End If
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
