@@ -2579,13 +2579,13 @@ Partial Public Class POS
         
         Private columnqty As Global.System.Data.DataColumn
         
-        Private columndari_gudang As Global.System.Data.DataColumn
-        
-        Private columnke_gudang As Global.System.Data.DataColumn
+        Private columngudang As Global.System.Data.DataColumn
         
         Private columntanggal As Global.System.Data.DataColumn
         
         Private columnid As Global.System.Data.DataColumn
+        
+        Private columnnama_barang As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -2656,17 +2656,9 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property dari_gudangColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property gudangColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columndari_gudang
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ke_gudangColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnke_gudang
+                Return Me.columngudang
             End Get
         End Property
         
@@ -2683,6 +2675,14 @@ Partial Public Class POS
         Public ReadOnly Property idColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnid
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property nama_barangColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnama_barang
             End Get
         End Property
         
@@ -2723,9 +2723,9 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtabelmutasibarangRow(ByVal tabel As String, ByVal kode_barang As String, ByVal kode_stok As String, ByVal qty As Double, ByVal dari_gudang As String, ByVal ke_gudang As String, ByVal tanggal As String, ByVal id As String) As tabelmutasibarangRow
+        Public Overloads Function AddtabelmutasibarangRow(ByVal tabel As String, ByVal kode_barang As String, ByVal kode_stok As String, ByVal qty As Double, ByVal gudang As String, ByVal tanggal As String, ByVal id As String, ByVal nama_barang As String) As tabelmutasibarangRow
             Dim rowtabelmutasibarangRow As tabelmutasibarangRow = CType(Me.NewRow,tabelmutasibarangRow)
-            Dim columnValuesArray() As Object = New Object() {tabel, kode_barang, kode_stok, qty, dari_gudang, ke_gudang, tanggal, id}
+            Dim columnValuesArray() As Object = New Object() {tabel, kode_barang, kode_stok, qty, gudang, tanggal, id, nama_barang}
             rowtabelmutasibarangRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtabelmutasibarangRow)
             Return rowtabelmutasibarangRow
@@ -2752,10 +2752,10 @@ Partial Public Class POS
             Me.columnkode_barang = MyBase.Columns("kode_barang")
             Me.columnkode_stok = MyBase.Columns("kode_stok")
             Me.columnqty = MyBase.Columns("qty")
-            Me.columndari_gudang = MyBase.Columns("dari_gudang")
-            Me.columnke_gudang = MyBase.Columns("ke_gudang")
+            Me.columngudang = MyBase.Columns("gudang")
             Me.columntanggal = MyBase.Columns("tanggal")
             Me.columnid = MyBase.Columns("id")
+            Me.columnnama_barang = MyBase.Columns("nama_barang")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2769,14 +2769,14 @@ Partial Public Class POS
             MyBase.Columns.Add(Me.columnkode_stok)
             Me.columnqty = New Global.System.Data.DataColumn("qty", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnqty)
-            Me.columndari_gudang = New Global.System.Data.DataColumn("dari_gudang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columndari_gudang)
-            Me.columnke_gudang = New Global.System.Data.DataColumn("ke_gudang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnke_gudang)
+            Me.columngudang = New Global.System.Data.DataColumn("gudang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columngudang)
             Me.columntanggal = New Global.System.Data.DataColumn("tanggal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntanggal)
             Me.columnid = New Global.System.Data.DataColumn("id", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnid)
+            Me.columnnama_barang = New Global.System.Data.DataColumn("nama_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnama_barang)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7774,31 +7774,16 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property dari_gudang() As String
+        Public Property gudang() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelmutasibarang.dari_gudangColumn),String)
+                    Return CType(Me(Me.tabletabelmutasibarang.gudangColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'dari_gudang' in table 'tabelmutasibarang' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'gudang' in table 'tabelmutasibarang' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletabelmutasibarang.dari_gudangColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ke_gudang() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabletabelmutasibarang.ke_gudangColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ke_gudang' in table 'tabelmutasibarang' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletabelmutasibarang.ke_gudangColumn) = value
+                Me(Me.tabletabelmutasibarang.gudangColumn) = value
             End Set
         End Property
         
@@ -7829,6 +7814,21 @@ Partial Public Class POS
             End Get
             Set
                 Me(Me.tabletabelmutasibarang.idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property nama_barang() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletabelmutasibarang.nama_barangColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'nama_barang' in table 'tabelmutasibarang' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletabelmutasibarang.nama_barangColumn) = value
             End Set
         End Property
         
@@ -7882,26 +7882,14 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isdari_gudangNull() As Boolean
-            Return Me.IsNull(Me.tabletabelmutasibarang.dari_gudangColumn)
+        Public Function IsgudangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelmutasibarang.gudangColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setdari_gudangNull()
-            Me(Me.tabletabelmutasibarang.dari_gudangColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iske_gudangNull() As Boolean
-            Return Me.IsNull(Me.tabletabelmutasibarang.ke_gudangColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setke_gudangNull()
-            Me(Me.tabletabelmutasibarang.ke_gudangColumn) = Global.System.Convert.DBNull
+        Public Sub SetgudangNull()
+            Me(Me.tabletabelmutasibarang.gudangColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7926,6 +7914,18 @@ Partial Public Class POS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetidNull()
             Me(Me.tabletabelmutasibarang.idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isnama_barangNull() As Boolean
+            Return Me.IsNull(Me.tabletabelmutasibarang.nama_barangColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setnama_barangNull()
+            Me(Me.tabletabelmutasibarang.nama_barangColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
