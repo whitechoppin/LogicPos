@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class flaporanrekapanakhir
+Partial Class flaporanrekapanharian
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -28,15 +28,15 @@ Partial Class flaporanrekapanakhir
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.btntabel = New System.Windows.Forms.Button()
-        Me.btnexcel = New System.Windows.Forms.Button()
-        Me.btnrekap = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.btntabel = New System.Windows.Forms.Button()
+        Me.btnexporttransaksi = New System.Windows.Forms.Button()
+        Me.btnrekaptransaksi = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.dttanggal = New System.Windows.Forms.DateTimePicker()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -46,8 +46,8 @@ Partial Class flaporanrekapanakhir
         Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn13 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn14 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnexportadmin = New System.Windows.Forms.Button()
+        Me.btnrekapadmin = New System.Windows.Forms.Button()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -115,65 +115,6 @@ Partial Class flaporanrekapanakhir
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 3
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(7, 12)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(319, 31)
-        Me.Label2.TabIndex = 124
-        Me.Label2.Text = "Laporan Rekapan Akhir"
-        '
-        'btntabel
-        '
-        Me.btntabel.Location = New System.Drawing.Point(734, 42)
-        Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
-        Me.btntabel.Name = "btntabel"
-        Me.btntabel.Size = New System.Drawing.Size(131, 46)
-        Me.btntabel.TabIndex = 122
-        Me.btntabel.Text = "Proses Data"
-        Me.btntabel.UseVisualStyleBackColor = True
-        '
-        'btnexcel
-        '
-        Me.btnexcel.Location = New System.Drawing.Point(873, 151)
-        Me.btnexcel.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnexcel.Name = "btnexcel"
-        Me.btnexcel.Size = New System.Drawing.Size(131, 46)
-        Me.btnexcel.TabIndex = 123
-        Me.btnexcel.Text = "Export Excel"
-        Me.btnexcel.UseVisualStyleBackColor = True
-        '
-        'btnrekap
-        '
-        Me.btnrekap.Location = New System.Drawing.Point(873, 97)
-        Me.btnrekap.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnrekap.Name = "btnrekap"
-        Me.btnrekap.Size = New System.Drawing.Size(131, 46)
-        Me.btnrekap.TabIndex = 121
-        Me.btnrekap.Text = "Rekap Faktur"
-        Me.btnrekap.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(16, 72)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(66, 16)
-        Me.Label1.TabIndex = 128
-        Me.Label1.Text = "Tanggal"
-        '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(89, 65)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(237, 24)
-        Me.DateTimePicker1.TabIndex = 129
-        '
         'GridColumn5
         '
         Me.GridColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 10.0!)
@@ -203,6 +144,65 @@ Partial Class flaporanrekapanakhir
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 6
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(7, 12)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(338, 31)
+        Me.Label2.TabIndex = 124
+        Me.Label2.Text = "Laporan Rekapan Harian"
+        '
+        'btntabel
+        '
+        Me.btntabel.Location = New System.Drawing.Point(734, 42)
+        Me.btntabel.Margin = New System.Windows.Forms.Padding(4)
+        Me.btntabel.Name = "btntabel"
+        Me.btntabel.Size = New System.Drawing.Size(131, 46)
+        Me.btntabel.TabIndex = 122
+        Me.btntabel.Text = "Proses Data"
+        Me.btntabel.UseVisualStyleBackColor = True
+        '
+        'btnexporttransaksi
+        '
+        Me.btnexporttransaksi.Location = New System.Drawing.Point(873, 151)
+        Me.btnexporttransaksi.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnexporttransaksi.Name = "btnexporttransaksi"
+        Me.btnexporttransaksi.Size = New System.Drawing.Size(131, 46)
+        Me.btnexporttransaksi.TabIndex = 123
+        Me.btnexporttransaksi.Text = "Export Excel"
+        Me.btnexporttransaksi.UseVisualStyleBackColor = True
+        '
+        'btnrekaptransaksi
+        '
+        Me.btnrekaptransaksi.Location = New System.Drawing.Point(873, 97)
+        Me.btnrekaptransaksi.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrekaptransaksi.Name = "btnrekaptransaksi"
+        Me.btnrekaptransaksi.Size = New System.Drawing.Size(131, 46)
+        Me.btnrekaptransaksi.TabIndex = 121
+        Me.btnrekaptransaksi.Text = "Rekap Faktur"
+        Me.btnrekaptransaksi.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(16, 72)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(66, 16)
+        Me.Label1.TabIndex = 128
+        Me.Label1.Text = "Tanggal"
+        '
+        'dttanggal
+        '
+        Me.dttanggal.Location = New System.Drawing.Point(89, 65)
+        Me.dttanggal.Name = "dttanggal"
+        Me.dttanggal.Size = New System.Drawing.Size(237, 24)
+        Me.dttanggal.TabIndex = 129
         '
         'GridControl2
         '
@@ -295,46 +295,46 @@ Partial Class flaporanrekapanakhir
         Me.GridColumn14.Visible = True
         Me.GridColumn14.VisibleIndex = 6
         '
-        'Button1
+        'btnexportadmin
         '
-        Me.Button1.Location = New System.Drawing.Point(873, 429)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(131, 46)
-        Me.Button1.TabIndex = 131
-        Me.Button1.Text = "Export Excel"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnexportadmin.Location = New System.Drawing.Point(873, 429)
+        Me.btnexportadmin.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnexportadmin.Name = "btnexportadmin"
+        Me.btnexportadmin.Size = New System.Drawing.Size(131, 46)
+        Me.btnexportadmin.TabIndex = 131
+        Me.btnexportadmin.Text = "Export Excel"
+        Me.btnexportadmin.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnrekapadmin
         '
-        Me.Button2.Location = New System.Drawing.Point(873, 375)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(131, 46)
-        Me.Button2.TabIndex = 132
-        Me.Button2.Text = "Rekap Faktur"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnrekapadmin.Location = New System.Drawing.Point(873, 375)
+        Me.btnrekapadmin.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnrekapadmin.Name = "btnrekapadmin"
+        Me.btnrekapadmin.Size = New System.Drawing.Size(131, 46)
+        Me.btnrekapadmin.TabIndex = 132
+        Me.btnrekapadmin.Text = "Rekap Faktur"
+        Me.btnrekapadmin.UseVisualStyleBackColor = True
         '
-        'flaporanrekapanakhir
+        'flaporanrekapanharian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1010, 696)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnrekapadmin)
+        Me.Controls.Add(Me.btnexportadmin)
         Me.Controls.Add(Me.GridControl2)
-        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.dttanggal)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btntabel)
-        Me.Controls.Add(Me.btnexcel)
-        Me.Controls.Add(Me.btnrekap)
+        Me.Controls.Add(Me.btnexporttransaksi)
+        Me.Controls.Add(Me.btnrekaptransaksi)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "flaporanrekapanakhir"
-        Me.Text = "Laporan Rekapan Akhir"
+        Me.Name = "flaporanrekapanharian"
+        Me.Text = "Laporan Rekapan Harian"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -351,10 +351,10 @@ Partial Class flaporanrekapanakhir
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Label2 As Label
     Friend WithEvents btntabel As Button
-    Friend WithEvents btnexcel As Button
-    Friend WithEvents btnrekap As Button
+    Friend WithEvents btnexporttransaksi As Button
+    Friend WithEvents btnrekaptransaksi As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents dttanggal As DateTimePicker
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
@@ -367,6 +367,6 @@ Partial Class flaporanrekapanakhir
     Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn13 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn14 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnexportadmin As Button
+    Friend WithEvents btnrekapadmin As Button
 End Class

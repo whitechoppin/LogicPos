@@ -77,7 +77,7 @@ Partial Class fmenu
         Me.LMutasiBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LPenyesuaianStokToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LLabaRugiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LRekapanAkhirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LRekapanHarianrToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChartMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChartPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChartPenjualanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -101,8 +101,10 @@ Partial Class fmenu
         Me.HistoryUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KonfigurasiDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PengaturanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GantiPasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogicHouseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogicPosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.prefixkode = New System.Windows.Forms.ToolStripStatusLabel()
         Me.kodeuser = New System.Windows.Forms.ToolStripStatusLabel()
@@ -116,8 +118,6 @@ Partial Class fmenu
         Me.statustgl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.tabform = New System.Windows.Forms.TabControl()
-        Me.LogicPosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GantiPasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuUtama.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -326,7 +326,7 @@ Partial Class fmenu
         '
         'LaporanMenu
         '
-        Me.LaporanMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LPricelistBarangToolStripMenuItem, Me.LPembelianToolStripMenuItem, Me.LPenjualanToolStripMenuItem, Me.LPenjualanPajakToolStripMenuItem, Me.LReturBeliToolStripMenuItem, Me.LReturJualToolStripMenuItem, Me.LBarangMasukToolStripMenuItem, Me.LBarangKeluarToolStripMenuItem, Me.LTransferBarangToolStripMenuItem, Me.LStokBarangToolStripMenuItem, Me.LUtangToolStripMenuItem, Me.LPiutangToolStripMenuItem, Me.LAkunMasukToolStripMenuItem, Me.LAkunKeluarToolStripMenuItem, Me.LTransferKasToolStripMenuItem, Me.LTransaksiKasToolStripMenuItem, Me.LModalBarangToolStripMenuItem, Me.LMutasiBarangToolStripMenuItem, Me.LPenyesuaianStokToolStripMenuItem, Me.LLabaRugiToolStripMenuItem, Me.LRekapanAkhirToolStripMenuItem})
+        Me.LaporanMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LPricelistBarangToolStripMenuItem, Me.LPembelianToolStripMenuItem, Me.LPenjualanToolStripMenuItem, Me.LPenjualanPajakToolStripMenuItem, Me.LReturBeliToolStripMenuItem, Me.LReturJualToolStripMenuItem, Me.LBarangMasukToolStripMenuItem, Me.LBarangKeluarToolStripMenuItem, Me.LTransferBarangToolStripMenuItem, Me.LStokBarangToolStripMenuItem, Me.LUtangToolStripMenuItem, Me.LPiutangToolStripMenuItem, Me.LAkunMasukToolStripMenuItem, Me.LAkunKeluarToolStripMenuItem, Me.LTransferKasToolStripMenuItem, Me.LTransaksiKasToolStripMenuItem, Me.LModalBarangToolStripMenuItem, Me.LMutasiBarangToolStripMenuItem, Me.LPenyesuaianStokToolStripMenuItem, Me.LLabaRugiToolStripMenuItem, Me.LRekapanHarianrToolStripMenuItem})
         Me.LaporanMenu.Name = "LaporanMenu"
         Me.LaporanMenu.Size = New System.Drawing.Size(62, 20)
         Me.LaporanMenu.Text = "&Laporan"
@@ -451,11 +451,11 @@ Partial Class fmenu
         Me.LLabaRugiToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.LLabaRugiToolStripMenuItem.Text = "Laporan Laba Rugi"
         '
-        'LRekapanAkhirToolStripMenuItem
+        'LRekapanHarianrToolStripMenuItem
         '
-        Me.LRekapanAkhirToolStripMenuItem.Name = "LRekapanAkhirToolStripMenuItem"
-        Me.LRekapanAkhirToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
-        Me.LRekapanAkhirToolStripMenuItem.Text = "Laporan Rekapan Akhir"
+        Me.LRekapanHarianrToolStripMenuItem.Name = "LRekapanHarianrToolStripMenuItem"
+        Me.LRekapanHarianrToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.LRekapanHarianrToolStripMenuItem.Text = "Laporan Rekapan Harian"
         '
         'ChartMenu
         '
@@ -599,6 +599,12 @@ Partial Class fmenu
         Me.PengaturanToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.PengaturanToolStripMenuItem.Text = "Pengaturan"
         '
+        'GantiPasswordToolStripMenuItem
+        '
+        Me.GantiPasswordToolStripMenuItem.Name = "GantiPasswordToolStripMenuItem"
+        Me.GantiPasswordToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.GantiPasswordToolStripMenuItem.Text = "Ganti Password"
+        '
         'AboutMenu
         '
         Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogicHouseToolStripMenuItem, Me.LogicPosToolStripMenuItem})
@@ -609,8 +615,14 @@ Partial Class fmenu
         'LogicHouseToolStripMenuItem
         '
         Me.LogicHouseToolStripMenuItem.Name = "LogicHouseToolStripMenuItem"
-        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogicHouseToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.LogicHouseToolStripMenuItem.Text = "Logic House"
+        '
+        'LogicPosToolStripMenuItem
+        '
+        Me.LogicPosToolStripMenuItem.Name = "LogicPosToolStripMenuItem"
+        Me.LogicPosToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.LogicPosToolStripMenuItem.Text = "Logic Pos"
         '
         'StatusStrip
         '
@@ -708,18 +720,6 @@ Partial Class fmenu
         Me.tabform.TabIndex = 3
         Me.tabform.Visible = False
         '
-        'LogicPosToolStripMenuItem
-        '
-        Me.LogicPosToolStripMenuItem.Name = "LogicPosToolStripMenuItem"
-        Me.LogicPosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.LogicPosToolStripMenuItem.Text = "Logic Pos"
-        '
-        'GantiPasswordToolStripMenuItem
-        '
-        Me.GantiPasswordToolStripMenuItem.Name = "GantiPasswordToolStripMenuItem"
-        Me.GantiPasswordToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.GantiPasswordToolStripMenuItem.Text = "Ganti Password"
-        '
         'fmenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -803,7 +803,7 @@ Partial Class fmenu
     Friend WithEvents InfoPerusahaanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LModalBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LLabaRugiToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents LRekapanAkhirToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LRekapanHarianrToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LMutasiBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents KonfigurasiDatabaseToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PreviewUtangToolStripMenuItem As ToolStripMenuItem

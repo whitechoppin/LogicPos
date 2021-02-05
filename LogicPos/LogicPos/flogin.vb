@@ -12,7 +12,7 @@ Public Class flogin
     Public xlunas_utang, xlunas_piutang, xtransfer_kas, xakun_masuk, xakun_keluar As Integer
     Public xlap_pricelist, xlap_pembelian, xlap_penjualan, xlap_penjualan_pajak, xlap_returbeli, xlap_returjual, xlap_barangmasuk, xlap_barangkeluar,
             xlap_transfer_barang, xlap_stok_barang, xlap_lunas_utang, xlap_lunas_piutang, xlap_akun_masuk, xlap_akun_keluar, xlap_transfer_kas, xlap_transaksi_kas,
-            xlap_modal_barang, xlap_mutasi_barang, xlap_penyesuaian_stok, xlap_laba_rugi, xlap_rekapan_akhir As Integer
+            xlap_modal_barang, xlap_mutasi_barang, xlap_penyesuaian_stok, xlap_laba_rugi, xlap_rekapan_harian As Integer
 
     Public xchart_pembelian, xchart_penjualan, xchart_lunas_utang, xchart_lunas_piutang, xchart_kas_masuk, xchart_kas_keluar As Integer
     Public xfeature_kalkulasi, xfeature_barcode As Integer
@@ -25,7 +25,7 @@ Public Class flogin
     Public lunas_utang, lunas_piutang, transfer_kas, akun_masuk, akun_keluar As Integer
     Public lap_pricelist, lap_pembelian, lap_penjualan, lap_penjualan_pajak, lap_returbeli, lap_returjual, lap_barangmasuk, lap_barangkeluar,
             lap_transfer_barang, lap_stok_barang, lap_lunas_utang, lap_lunas_piutang, lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transaksi_kas,
-            lap_modal_barang, lap_mutasi_barang, lap_penyesuaian_stok, lap_laba_rugi, lap_rekapan_akhir As Integer
+            lap_modal_barang, lap_mutasi_barang, lap_penyesuaian_stok, lap_laba_rugi, lap_rekapan_harian As Integer
     Public chart_pembelian, chart_penjualan, chart_lunas_utang, chart_lunas_piutang, chart_kas_masuk, chart_kas_keluar As Integer
     Public feature_kalkulasi, feature_barcode As Integer
 
@@ -96,7 +96,7 @@ Public Class flogin
         xlap_penyesuaian_stok = 0
         xlap_laba_rugi = 0
 
-        xlap_rekapan_akhir = 0
+        xlap_rekapan_harian = 0
 
         xchart_pembelian = 0
         xchart_penjualan = 0
@@ -163,7 +163,7 @@ Public Class flogin
         lap_penyesuaian_stok = 0
         lap_laba_rugi = 0
 
-        lap_rekapan_akhir = 0
+        lap_rekapan_harian = 0
 
         chart_pembelian = 0
         chart_penjualan = 0
@@ -283,7 +283,7 @@ Public Class flogin
         xlap_penyesuaian_stok = Val(dr("lap_penyesuaian_stok"))
         xlap_laba_rugi = Val(dr("lap_laba_rugi"))
 
-        xlap_rekapan_akhir = Val(dr("lap_rekapan_akhir"))
+        xlap_rekapan_harian = Val(dr("lap_rekapan_harian"))
 
         xchart_pembelian = Val(dr("chart_pembelian"))
         xchart_penjualan = Val(dr("chart_penjualan"))
@@ -679,10 +679,10 @@ Public Class flogin
             End If
         End If
 
-        If xlap_rekapan_akhir > 0 Then
-            lap_rekapan_akhir = Val(dr("lap_rekapan_akhir"))
+        If xlap_rekapan_harian > 0 Then
+            lap_rekapan_harian = Val(dr("lap_rekapan_harian"))
 
-            If lap_rekapan_akhir > 0 Then
+            If lap_rekapan_harian > 0 Then
                 fmenu.LaporanMenu.DropDownItems.Item(20).Visible = True 'lap rekapan akhir
             End If
         End If

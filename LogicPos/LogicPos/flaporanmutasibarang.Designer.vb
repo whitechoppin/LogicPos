@@ -290,6 +290,7 @@ Partial Class flaporanmutasibarang
         '
         'cmbgudang
         '
+        Me.cmbgudang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbgudang.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbgudang.FormattingEnabled = True
         Me.cmbgudang.Location = New System.Drawing.Point(885, 86)

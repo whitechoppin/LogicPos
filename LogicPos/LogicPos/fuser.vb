@@ -23,8 +23,8 @@ Public Class fuser
     Dim ceklunasutang, ceklunaspiutang, cektransferkas, cekakunmasuk, cekakunkeluar As Integer
     Dim akseslunasutang, akseslunaspiutang, aksestransferkas, aksesakunmasuk, aksesakunkeluar As Integer
     'laporan
-    Dim ceklappricelist, ceklappembelian, ceklappenjualan, ceklappenjualanpajak, ceklapreturbeli, ceklapreturjual, ceklapbarangmasuk, ceklapbarangkeluar, ceklaptransferbarang, ceklapstokbarang, ceklaputang, ceklappiutang, ceklapakunmasuk, ceklapakunkeluar, ceklaptransferkas, ceklaptransaksikas, ceklapmodalbarang, ceklapmutasibarang, ceklappenyesuaianstok, ceklaplabarugi, ceklaprekapanakhir As Integer
-    Dim akseslappricelist, akseslappembelian, akseslappenjualan, akseslappenjualanpajak, akseslapreturbeli, akseslapreturjual, akseslapbarangmasuk, akseslapbarangkeluar, akseslaptransferbarang, akseslapstokbarang, akseslaputang, akseslappiutang, akseslapakunmasuk, akseslapakunkeluar, akseslaptransferkas, akseslaptransaksikas, akseslapmodalbarang, akseslapmutasibarang, akseslappenyesuaianstok, akseslaplabarugi, akseslaprekapanakhir As Integer
+    Dim ceklappricelist, ceklappembelian, ceklappenjualan, ceklappenjualanpajak, ceklapreturbeli, ceklapreturjual, ceklapbarangmasuk, ceklapbarangkeluar, ceklaptransferbarang, ceklapstokbarang, ceklaputang, ceklappiutang, ceklapakunmasuk, ceklapakunkeluar, ceklaptransferkas, ceklaptransaksikas, ceklapmodalbarang, ceklapmutasibarang, ceklappenyesuaianstok, ceklaplabarugi, ceklaprekapanharian As Integer
+    Dim akseslappricelist, akseslappembelian, akseslappenjualan, akseslappenjualanpajak, akseslapreturbeli, akseslapreturjual, akseslapbarangmasuk, akseslapbarangkeluar, akseslaptransferbarang, akseslapstokbarang, akseslaputang, akseslappiutang, akseslapakunmasuk, akseslapakunkeluar, akseslaptransferkas, akseslaptransaksikas, akseslapmodalbarang, akseslapmutasibarang, akseslappenyesuaianstok, akseslaplabarugi, akseslaprekapanharian As Integer
     'chart
     Dim cekchartpembelian, cekchartpenjualan, cekchartpelunasanutang, cekchartpelunasanpiutang, cekchartakunmasuk, cekchartakunkeluar As Integer
     Dim akseschartpembelian, akseschartpenjualan, akseschartpelunasanutang, akseschartpelunasanpiutang, akseschartakunmasuk, akseschartakunkeluar As Integer
@@ -475,12 +475,12 @@ Public Class fuser
             clblaplabarugi.Visible = False
         End If
 
-        If flogin.xlap_rekapan_akhir > 0 Then
-            cblaprekapanakhir.Visible = True
-            clblaprekapanakhir.Visible = True
+        If flogin.xlap_rekapan_harian > 0 Then
+            cblaprekapanharian.Visible = True
+            clblaprekapanharian.Visible = True
         Else
-            cblaprekapanakhir.Visible = False
-            clblaprekapanakhir.Visible = False
+            cblaprekapanharian.Visible = False
+            clblaprekapanharian.Visible = False
         End If
 
         'chart
@@ -604,7 +604,7 @@ Public Class fuser
         cblapmutasibarang.Checked = False
         cblappenyesuaianstok.Checked = False
         cblaplabarugi.Checked = False
-        cblaprekapanakhir.Checked = False
+        cblaprekapanharian.Checked = False
 
         'chart
         cbchartpembelian.Checked = False
@@ -684,7 +684,7 @@ Public Class fuser
                 clblappenyesuaianstok.SetItemChecked(id, False)
                 clblaplabarugi.SetItemChecked(id, False)
 
-                clblaprekapanakhir.SetItemChecked(id, False)
+                clblaprekapanharian.SetItemChecked(id, False)
 
                 'chart
                 clbchartpenjualan.SetItemChecked(id, False)
@@ -752,7 +752,7 @@ Public Class fuser
         cblapmutasibarang.Enabled = False
         cblappenyesuaianstok.Enabled = False
         cblaplabarugi.Enabled = False
-        cblaprekapanakhir.Enabled = False
+        cblaprekapanharian.Enabled = False
 
         'chart
         cbchartpembelian.Enabled = False
@@ -828,7 +828,7 @@ Public Class fuser
         clblapmutasibarang.Enabled = False
         clblappenyesuaianstok.Enabled = False
         clblaplabarugi.Enabled = False
-        clblaprekapanakhir.Enabled = False
+        clblaprekapanharian.Enabled = False
 
         'chart
         clbchartpenjualan.Enabled = False
@@ -979,7 +979,7 @@ Public Class fuser
         cblapmutasibarang.Enabled = True
         cblappenyesuaianstok.Enabled = True
         cblaplabarugi.Enabled = True
-        cblaprekapanakhir.Enabled = True
+        cblaprekapanharian.Enabled = True
 
         'chart
         cbchartpembelian.Enabled = True
@@ -1092,7 +1092,7 @@ Public Class fuser
         cbbackupdatabase.Enabled = True
         cbpengaturan.Enabled = True
 
-        cblaprekapanakhir.Enabled = True
+        cblaprekapanharian.Enabled = True
 
         'combo box list
         'master
@@ -1366,10 +1366,10 @@ Public Class fuser
             clblaplabarugi.Enabled = False
         End If
 
-        If akseslaprekapanakhir > 0 Then
-            clblaprekapanakhir.Enabled = True
+        If akseslaprekapanharian > 0 Then
+            clblaprekapanharian.Enabled = True
         Else
-            clblaprekapanakhir.Enabled = False
+            clblaprekapanharian.Enabled = False
         End If
         '==========================================
 
@@ -1529,7 +1529,7 @@ Public Class fuser
         ceklapmutasibarang = 0
         ceklappenyesuaianstok = 0
         ceklaplabarugi = 0
-        ceklaprekapanakhir = 0
+        ceklaprekapanharian = 0
 
         'chart
         cekchartpembelian = 0
@@ -2082,14 +2082,14 @@ Public Class fuser
                 '=========================================================================
 
                 'laprekapanakhir
-                If clblaprekapanakhir.GetItemChecked(i) Then
-                    If clblaprekapanakhir.Items(i).Equals("Print") Then
-                        ceklaprekapanakhir = ceklaprekapanakhir + 1
-                    ElseIf clblaprekapanakhir.Items(i).Equals("Export") Then
-                        ceklaprekapanakhir = ceklaprekapanakhir + 3
+                If clblaprekapanharian.GetItemChecked(i) Then
+                    If clblaprekapanharian.Items(i).Equals("Print") Then
+                        ceklaprekapanharian = ceklaprekapanharian + 1
+                    ElseIf clblaprekapanharian.Items(i).Equals("Export") Then
+                        ceklaprekapanharian = ceklaprekapanharian + 3
                     End If
                 Else
-                    ceklaprekapanakhir = ceklaprekapanakhir + 0
+                    ceklaprekapanharian = ceklaprekapanharian + 0
                 End If
 
                 '=========================================================================
@@ -2217,7 +2217,7 @@ Public Class fuser
                     lap_returbeli, lap_returjual, lap_barang_masuk, lap_barang_keluar, 
                     lap_transfer_barang, lap_stok_barang, lap_utang, lap_piutang, 
                     lap_akun_masuk, lap_akun_keluar, lap_transfer_kas, lap_transaksi_kas, 
-                    lap_modal_barang, lap_mutasi_barang, lap_penyesuaian_stok, lap_laba_rugi, lap_rekapan_akhir,
+                    lap_modal_barang, lap_mutasi_barang, lap_penyesuaian_stok, lap_laba_rugi, lap_rekapan_harian,
                     chart_pembelian, chart_penjualan, chart_lunas_utang, chart_lunas_piutang, chart_kas_masuk, chart_kas_keluar,
                     feature_kalkulasi_expedisi, feature_barcode_generator,
                     setting_info_perusahaan, setting_printer, setting_backup_database, setting_pengaturan,
@@ -2230,7 +2230,7 @@ Public Class fuser
                     '" & ceklapreturbeli & "','" & ceklapreturjual & "','" & ceklapbarangmasuk & "','" & ceklapbarangkeluar & "',
                     '" & ceklaptransferbarang & "','" & ceklapstokbarang & "','" & ceklaputang & "','" & ceklappiutang & "',
                     '" & ceklapakunmasuk & "','" & ceklapakunkeluar & "','" & ceklaptransferkas & "','" & ceklaptransaksikas & "',
-                    '" & ceklapmodalbarang & "','" & ceklapmutasibarang & "','" & ceklappenyesuaianstok & "','" & ceklaplabarugi & "','" & ceklaprekapanakhir & "',
+                    '" & ceklapmodalbarang & "','" & ceklapmutasibarang & "','" & ceklappenyesuaianstok & "','" & ceklaplabarugi & "','" & ceklaprekapanharian & "',
                     '" & cekchartpembelian & "','" & cekchartpenjualan & "','" & cekchartpelunasanutang & "','" & cekchartpelunasanpiutang & "','" & cekchartakunmasuk & "','" & cekchartakunkeluar & "',
                     '" & cekfeaturekalkulasi & "','" & cekfeaturebarcode & "',
                     '" & ceksettinginfoperusahaan & "','" & ceksettingprinter & "','" & ceksettingbackupdatabase & "','" & ceksettingpengaturan & "',
@@ -2318,7 +2318,7 @@ Public Class fuser
             sql = "UPDATE tb_user SET kode_user=?, nama_user=?, password_user=?,  jabatan_user=?, email_user=?, telepon_user=?, alamat_user=?, keterangan_user=?, auth_user=?, max_print=?, master_barang=?, master_kategori=?, master_gudang=?, master_pelanggan=?, master_supplier=?, master_user=?, master_kas=?, master_pricelist=?, master_rek_supp=?, master_rek_plng=?, 
                 pembelian=? ,penjualan=?, retur_beli=?, retur_jual=?, barang_masuk=?, barang_keluar=?, transfer_barang=?, penyesuaian_stok=?,
                 lunas_utang=?, lunas_piutang=?, transfer_kas=?, akun_masuk=?, akun_keluar=?, 
-                lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_penjualan_pajak=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_transfer_barang=?, lap_stok_barang=?, lap_utang=?, lap_piutang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transaksi_kas=?, lap_modal_barang=?, lap_mutasi_barang=?, lap_penyesuaian_stok=?, lap_laba_rugi=?, lap_rekapan_akhir=?,
+                lap_pricelist=?, lap_pembelian=?, lap_penjualan=?, lap_penjualan_pajak=?, lap_returbeli=?, lap_returjual=?, lap_barang_masuk=?, lap_barang_keluar=?, lap_transfer_barang=?, lap_stok_barang=?, lap_utang=?, lap_piutang=?, lap_akun_masuk=?, lap_akun_keluar=?, lap_transfer_kas=?, lap_transaksi_kas=?, lap_modal_barang=?, lap_mutasi_barang=?, lap_penyesuaian_stok=?, lap_laba_rugi=?, lap_rekapan_harian=?,
                 chart_pembelian=?, chart_penjualan=?, chart_lunas_utang=?, chart_lunas_piutang=?, chart_kas_masuk=?, chart_kas_keluar=?,
                 feature_kalkulasi_expedisi=?, feature_barcode_generator=?,
                 setting_info_perusahaan=?, setting_printer=?, setting_backup_database=?, setting_pengaturan=?,
@@ -2387,7 +2387,7 @@ Public Class fuser
             cmmd.Parameters.AddWithValue("@lap_mutasi_barang", ceklapmutasibarang)
             cmmd.Parameters.AddWithValue("@lap_penyesuaian_stok", ceklappenyesuaianstok)
             cmmd.Parameters.AddWithValue("@lap_laba_rugi", ceklaplabarugi)
-            cmmd.Parameters.AddWithValue("@lap_rekapan_akhir", ceklaprekapanakhir)
+            cmmd.Parameters.AddWithValue("@lap_rekapan_harian", ceklaprekapanharian)
             'chart
             cmmd.Parameters.AddWithValue("@chart_pembelian", cekchartpembelian)
             cmmd.Parameters.AddWithValue("@chart_penjualan", cekchartpenjualan)
@@ -2536,7 +2536,7 @@ Public Class fuser
             akseslapmutasibarang = Val(dr("lap_mutasi_barang"))
             akseslappenyesuaianstok = Val(dr("lap_penyesuaian_stok"))
             akseslaplabarugi = Val(dr("lap_laba_rugi"))
-            akseslaprekapanakhir = Val(dr("lap_rekapan_akhir"))
+            akseslaprekapanharian = Val(dr("lap_rekapan_harian"))
 
             akseschartpembelian = dr("chart_pembelian")
             akseschartpenjualan = dr("chart_Penjualan")
@@ -3943,23 +3943,23 @@ Public Class fuser
                     clblaplabarugi.SetItemChecked(1, True)
             End Select
 
-            Select Case akseslaprekapanakhir
+            Select Case akseslaprekapanharian
                 Case 0
-                    cblaprekapanakhir.Checked = False
-                    clblaprekapanakhir.SetItemChecked(0, False)
-                    clblaprekapanakhir.SetItemChecked(1, False)
+                    cblaprekapanharian.Checked = False
+                    clblaprekapanharian.SetItemChecked(0, False)
+                    clblaprekapanharian.SetItemChecked(1, False)
                 Case 1
-                    cblaprekapanakhir.Checked = True
-                    clblaprekapanakhir.SetItemChecked(0, True)
-                    clblaprekapanakhir.SetItemChecked(1, False)
+                    cblaprekapanharian.Checked = True
+                    clblaprekapanharian.SetItemChecked(0, True)
+                    clblaprekapanharian.SetItemChecked(1, False)
                 Case 3
-                    cblaprekapanakhir.Checked = True
-                    clblaprekapanakhir.SetItemChecked(0, False)
-                    clblaprekapanakhir.SetItemChecked(1, True)
+                    cblaprekapanharian.Checked = True
+                    clblaprekapanharian.SetItemChecked(0, False)
+                    clblaprekapanharian.SetItemChecked(1, True)
                 Case 4
-                    cblaprekapanakhir.Checked = True
-                    clblaprekapanakhir.SetItemChecked(0, True)
-                    clblaprekapanakhir.SetItemChecked(1, True)
+                    cblaprekapanharian.Checked = True
+                    clblaprekapanharian.SetItemChecked(0, True)
+                    clblaprekapanharian.SetItemChecked(1, True)
             End Select
 
             '=============================================================================
@@ -4184,7 +4184,7 @@ Public Class fuser
             clblapmutasibarang.Enabled = False
             clblappenyesuaianstok.Enabled = False
             clblaplabarugi.Enabled = False
-            clblaprekapanakhir.Enabled = False
+            clblaprekapanharian.Enabled = False
 
             'chart
             clbchartpenjualan.Enabled = False
@@ -4839,16 +4839,16 @@ Public Class fuser
         End If
     End Sub
 
-    Private Sub cblaprekapanakhir_CheckedChanged(sender As Object, e As EventArgs) Handles cblaprekapanakhir.CheckedChanged
-        If cblaprekapanakhir.Checked = True Then
-            clblaprekapanakhir.Enabled = True
-            For id As Integer = 0 To clblaprekapanakhir.Items.Count - 1
-                Me.clblaprekapanakhir.SetItemChecked(id, True)
+    Private Sub cblaprekapanharian_CheckedChanged(sender As Object, e As EventArgs) Handles cblaprekapanharian.CheckedChanged
+        If cblaprekapanharian.Checked = True Then
+            clblaprekapanharian.Enabled = True
+            For id As Integer = 0 To clblaprekapanharian.Items.Count - 1
+                Me.clblaprekapanharian.SetItemChecked(id, True)
             Next
-        ElseIf cblaprekapanakhir.Checked = False Then
-            clblaprekapanakhir.Enabled = False
-            For id As Integer = 0 To clblaprekapanakhir.Items.Count - 1
-                Me.clblaprekapanakhir.SetItemChecked(id, False)
+        ElseIf cblaprekapanharian.Checked = False Then
+            clblaprekapanharian.Enabled = False
+            For id As Integer = 0 To clblaprekapanharian.Items.Count - 1
+                Me.clblaprekapanharian.SetItemChecked(id, False)
             Next
         End If
     End Sub
@@ -5724,21 +5724,21 @@ Public Class fuser
         End If
     End Sub
 
-    Private Sub clblaprekapanakhir_MouseDown(sender As Object, e As MouseEventArgs) Handles clblaprekapanakhir.MouseDown
-        Dim Index As Integer = clblaprekapanakhir.IndexFromPoint(e.Location)
+    Private Sub clblaprekapanharian_MouseDown(sender As Object, e As MouseEventArgs) Handles clblaprekapanharian.MouseDown
+        Dim Index As Integer = clblaprekapanharian.IndexFromPoint(e.Location)
         Dim Counter As Integer = 0
 
-        clblaprekapanakhir.SetItemChecked(Index, Not clblaprekapanakhir.GetItemChecked(Index))
+        clblaprekapanharian.SetItemChecked(Index, Not clblaprekapanharian.GetItemChecked(Index))
 
-        For id As Integer = 0 To clblaprekapanakhir.Items.Count - 1
-            If clblaprekapanakhir.GetItemChecked(id) = True Then
+        For id As Integer = 0 To clblaprekapanharian.Items.Count - 1
+            If clblaprekapanharian.GetItemChecked(id) = True Then
                 Counter = Counter + 1
             End If
         Next
 
         If Counter.Equals(0) Then
-            clblaprekapanakhir.Enabled = False
-            cblaprekapanakhir.Checked = False
+            clblaprekapanharian.Enabled = False
+            cblaprekapanharian.Checked = False
         End If
     End Sub
 

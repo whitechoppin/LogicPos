@@ -112,9 +112,9 @@ Public Class flaporantransaksikas
         Call koneksi()
 
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
-            sql = "SELECT * FROM tb_transaksi_kas WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY id ASC"
+            sql = "SELECT * FROM tb_transaksi_kas WHERE DATE(tanggal_transaksi) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY kode_transaksi ASC"
         Else
-            sql = "SELECT * FROM tb_transaksi_kas WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY id ASC"
+            sql = "SELECT * FROM tb_transaksi_kas WHERE tanggal_transaksi BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY kode_transaksi ASC"
         End If
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -127,7 +127,6 @@ Public Class flaporantransaksikas
         Call historysave("Merefresh Laporan Transaksi Kas", "N/A", namaform)
     End Sub
     Sub ExportToExcel()
-
         Dim filename As String = InputBox("Nama File", "Input Nama file ")
         Dim pathdata As String = "C:\ExportLogicPos"
         Dim yourpath As String = "C:\ExportLogicPos\" + filename + ".xls"

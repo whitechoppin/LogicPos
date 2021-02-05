@@ -428,12 +428,12 @@ Public Class fmenu
             flaporanlabarugi.Show()
         End If
     End Sub
-    Private Sub LRekapanAkhirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LRekapanAkhirToolStripMenuItem.Click
+    Private Sub LRekapanHarianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LRekapanHarianrToolStripMenuItem.Click
         Dim masterstatus As Integer = 0
-        masterstatus = flogin.lap_rekapan_akhir
+        masterstatus = flogin.lap_rekapan_harian
         If masterstatus > 0 Then
-            flaporanrekapanakhir.kodeakses = masterstatus
-            flaporanrekapanakhir.Show()
+            flaporanrekapanharian.kodeakses = masterstatus
+            flaporanrekapanharian.Show()
         End If
     End Sub
 

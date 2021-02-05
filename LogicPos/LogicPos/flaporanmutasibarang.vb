@@ -157,6 +157,7 @@ Public Class flaporanmutasibarang
         GridColumn7.Caption = "Gudang"
         GridColumn7.FieldName = "gudang"
         GridColumn7.Width = 15
+        GridColumn7.Visible = False
 
         GridColumn8.Caption = "Tanggal Transaksi"
         GridColumn8.FieldName = "tanggal"
@@ -543,7 +544,6 @@ Public Class flaporanmutasibarang
 
     Private Sub cmbbarang_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbbarang.SelectedIndexChanged
         If cmbbarang.SelectedIndex > -1 Then
-
             Call comboboxstok()
         End If
     End Sub
@@ -621,8 +621,7 @@ Public Class flaporanmutasibarang
                 .Columns.Add("kode_stok")
                 .Columns.Add("nama_barang")
                 .Columns.Add("qty", GetType(Double))
-                .Columns.Add("dari_gudang")
-                .Columns.Add("ke_gudang")
+                .Columns.Add("gudang")
                 .Columns.Add("tanggal")
             End With
 
@@ -635,8 +634,7 @@ Public Class flaporanmutasibarang
                 baris("kode_stok") = GridView1.GetRowCellValue(i, "kode_stok")
                 baris("nama_barang") = GridView1.GetRowCellValue(i, "nama_barang")
                 baris("qty") = GridView1.GetRowCellValue(i, "qty")
-                baris("dari_gudang") = GridView1.GetRowCellValue(i, "dari_gudang")
-                baris("ke_gudang") = GridView1.GetRowCellValue(i, "ke_gudang")
+                baris("gudang") = GridView1.GetRowCellValue(i, "gudang")
                 baris("tanggal") = GridView1.GetRowCellValue(i, "tanggal")
                 tabel_mutasi_barang.Rows.Add(baris)
             Next

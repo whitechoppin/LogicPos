@@ -296,7 +296,7 @@ Public Class fkaskeluar
             idkas = cmbkas.SelectedValue
 
             If idkas > 0 Then
-                myCommand.CommandText = "UPDATE tb_transaksi_kas SET kode_kas='" & idkas & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & saldokeluar & "', kredit_kas='" & 0 & "', updated_by='" & fmenu.kodeuser.Text & "', last_updated=now() WHERE id='" & idkaskeluar & "'"
+                myCommand.CommandText = "UPDATE tb_transaksi_kas SET kode_kas='" & idkas & "', tanggal_transaksi='" & Format(dttransaksi.Value, "yyyy-MM-dd HH:mm:ss") & "', keterangan_kas='" & txtketerangan.Text & "', debet_kas='" & saldokeluar & "', kredit_kas='" & 0 & "', updated_by='" & fmenu.kodeuser.Text & "', last_updated=now() WHERE kode_kas_keluar='" & idkaskeluar & "'"
                 myCommand.ExecuteNonQuery()
             End If
 

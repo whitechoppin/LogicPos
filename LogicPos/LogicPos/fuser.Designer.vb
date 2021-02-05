@@ -134,8 +134,8 @@ Partial Class fuser
         Me.clbpenyesuaianstok = New System.Windows.Forms.CheckedListBox()
         Me.AdministrasiTab = New System.Windows.Forms.TabPage()
         Me.LaporanTab = New System.Windows.Forms.TabPage()
-        Me.clblaprekapanakhir = New System.Windows.Forms.CheckedListBox()
-        Me.cblaprekapanakhir = New System.Windows.Forms.CheckBox()
+        Me.clblaprekapanharian = New System.Windows.Forms.CheckedListBox()
+        Me.cblaprekapanharian = New System.Windows.Forms.CheckBox()
         Me.clblaplabarugi = New System.Windows.Forms.CheckedListBox()
         Me.cblaplabarugi = New System.Windows.Forms.CheckBox()
         Me.clblappenjualanpajak = New System.Windows.Forms.CheckedListBox()
@@ -1498,8 +1498,8 @@ Partial Class fuser
         'LaporanTab
         '
         Me.LaporanTab.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.LaporanTab.Controls.Add(Me.clblaprekapanakhir)
-        Me.LaporanTab.Controls.Add(Me.cblaprekapanakhir)
+        Me.LaporanTab.Controls.Add(Me.clblaprekapanharian)
+        Me.LaporanTab.Controls.Add(Me.cblaprekapanharian)
         Me.LaporanTab.Controls.Add(Me.clblaplabarugi)
         Me.LaporanTab.Controls.Add(Me.cblaplabarugi)
         Me.LaporanTab.Controls.Add(Me.clblappenjualanpajak)
@@ -1546,29 +1546,29 @@ Partial Class fuser
         Me.LaporanTab.TabIndex = 3
         Me.LaporanTab.Text = "Laporan"
         '
-        'clblaprekapanakhir
+        'clblaprekapanharian
         '
-        Me.clblaprekapanakhir.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.clblaprekapanakhir.CheckOnClick = True
-        Me.clblaprekapanakhir.FormattingEnabled = True
-        Me.clblaprekapanakhir.Items.AddRange(New Object() {"Print", "Export"})
-        Me.clblaprekapanakhir.Location = New System.Drawing.Point(846, 43)
-        Me.clblaprekapanakhir.Margin = New System.Windows.Forms.Padding(4)
-        Me.clblaprekapanakhir.Name = "clblaprekapanakhir"
-        Me.clblaprekapanakhir.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblaprekapanakhir.Size = New System.Drawing.Size(134, 42)
-        Me.clblaprekapanakhir.TabIndex = 125
+        Me.clblaprekapanharian.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.clblaprekapanharian.CheckOnClick = True
+        Me.clblaprekapanharian.FormattingEnabled = True
+        Me.clblaprekapanharian.Items.AddRange(New Object() {"Print", "Export"})
+        Me.clblaprekapanharian.Location = New System.Drawing.Point(846, 43)
+        Me.clblaprekapanharian.Margin = New System.Windows.Forms.Padding(4)
+        Me.clblaprekapanharian.Name = "clblaprekapanharian"
+        Me.clblaprekapanharian.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.clblaprekapanharian.Size = New System.Drawing.Size(134, 42)
+        Me.clblaprekapanharian.TabIndex = 125
         '
-        'cblaprekapanakhir
+        'cblaprekapanharian
         '
-        Me.cblaprekapanakhir.AutoSize = True
-        Me.cblaprekapanakhir.Location = New System.Drawing.Point(832, 13)
-        Me.cblaprekapanakhir.Margin = New System.Windows.Forms.Padding(4)
-        Me.cblaprekapanakhir.Name = "cblaprekapanakhir"
-        Me.cblaprekapanakhir.Size = New System.Drawing.Size(155, 22)
-        Me.cblaprekapanakhir.TabIndex = 124
-        Me.cblaprekapanakhir.Text = "Lap. Rekapan Akhir"
-        Me.cblaprekapanakhir.UseVisualStyleBackColor = True
+        Me.cblaprekapanharian.AutoSize = True
+        Me.cblaprekapanharian.Location = New System.Drawing.Point(832, 13)
+        Me.cblaprekapanharian.Margin = New System.Windows.Forms.Padding(4)
+        Me.cblaprekapanharian.Name = "cblaprekapanharian"
+        Me.cblaprekapanharian.Size = New System.Drawing.Size(165, 22)
+        Me.cblaprekapanharian.TabIndex = 124
+        Me.cblaprekapanharian.Text = "Lap. Rekapan Harian"
+        Me.cblaprekapanharian.UseVisualStyleBackColor = True
         '
         'clblaplabarugi
         '
@@ -2174,8 +2174,8 @@ Partial Class fuser
     Friend WithEvents cblappenjualanpajak As CheckBox
     Friend WithEvents clblaplabarugi As CheckedListBox
     Friend WithEvents cblaplabarugi As CheckBox
-    Friend WithEvents clblaprekapanakhir As CheckedListBox
-    Friend WithEvents cblaprekapanakhir As CheckBox
+    Friend WithEvents clblaprekapanharian As CheckedListBox
+    Friend WithEvents cblaprekapanharian As CheckBox
     Friend WithEvents btnrefresh As Button
     Friend WithEvents ChartTab As TabPage
     Friend WithEvents clbchartpenjualan As CheckedListBox

@@ -19,27 +19,27 @@ Public Class fnotifikasistok
 
         GridColumn1.Caption = "Kode Stok"
         GridColumn1.FieldName = "kode_stok"
-        GridColumn1.Width = 10
+        GridColumn1.Width = 5
 
         GridColumn2.Caption = "Kode Barang"
         GridColumn2.FieldName = "kode_barang"
-        GridColumn2.Width = 10
+        GridColumn2.Width = 5
 
         GridColumn3.Caption = "Nama Barang"
         GridColumn3.FieldName = "nama_barang"
-        GridColumn3.Width = 30
+        GridColumn3.Width = 40
 
         GridColumn4.Caption = "Jenis"
         GridColumn4.FieldName = "jenis_barang"
-        GridColumn4.Width = 5
+        GridColumn4.Width = 1
 
         GridColumn5.Caption = "Satuan"
         GridColumn5.FieldName = "satuan_barang"
-        GridColumn5.Width = 5
+        GridColumn5.Width = 1
 
         GridColumn6.Caption = "Jumlah Stok"
         GridColumn6.FieldName = "jumlah_stok"
-        GridColumn6.Width = 5
+        GridColumn6.Width = 1
         GridColumn6.DisplayFormat.FormatType = FormatType.Numeric
         GridColumn6.DisplayFormat.FormatString = "{0:n0}"
 

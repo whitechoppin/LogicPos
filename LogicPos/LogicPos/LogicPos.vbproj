@@ -475,10 +475,10 @@
     <Compile Include="flaporanpenyesuaianstok.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="flaporanrekapanakhir.Designer.vb">
-      <DependentUpon>flaporanrekapanakhir.vb</DependentUpon>
+    <Compile Include="flaporanrekapanharian.Designer.vb">
+      <DependentUpon>flaporanrekapanharian.vb</DependentUpon>
     </Compile>
-    <Compile Include="flaporanrekapanakhir.vb">
+    <Compile Include="flaporanrekapanharian.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="flappenyesuaianstok.Designer.vb">
@@ -1385,8 +1385,8 @@
     <EmbeddedResource Include="flaporanpenyesuaianstok.resx">
       <DependentUpon>flaporanpenyesuaianstok.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="flaporanrekapanakhir.resx">
-      <DependentUpon>flaporanrekapanakhir.vb</DependentUpon>
+    <EmbeddedResource Include="flaporanrekapanharian.resx">
+      <DependentUpon>flaporanrekapanharian.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flappenyesuaianstok.resx">
       <DependentUpon>flappenyesuaianstok.vb</DependentUpon>
