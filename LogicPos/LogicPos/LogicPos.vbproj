@@ -867,6 +867,18 @@
       <DependentUpon>rptrekaplabarugi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptrekaplaporanadmin.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekaplaporanadmin.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptrekaplaporantransaksi.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrekaplaporantransaksi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptrekappenyesuaianstok.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1609,6 +1621,14 @@
     <EmbeddedResource Include="rptrekaplabarugi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptrekaplabarugi.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekaplaporanadmin.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekaplaporanadmin.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptrekaplaporantransaksi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrekaplaporantransaksi.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptrekappenyesuaianstok.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
