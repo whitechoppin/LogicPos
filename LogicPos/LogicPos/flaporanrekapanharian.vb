@@ -129,14 +129,14 @@ Public Class flaporanrekapanharian
         Call koneksi()
 
         sql = "(SELECT 'PELUNASAN UTANG' AS tipe, pelunasan_utang_id AS no_transaksi, CONCAT('Pelunasan Nota Pembelian no : ', pembelian_id) AS keterangan, terima_utang AS saldo FROM tb_pelunasan_utang_detail JOIN tb_pelunasan_utang ON tb_pelunasan_utang.id = tb_pelunasan_utang_detail.pelunasan_utang_id WHERE DATE(tb_pelunasan_utang.tanggal_transaksi)='" & Format(dttanggal.Value, "yyyy-MM-dd") & "')
-UNION
-(SELECT 'PELUNASAN PIUTANG' AS tipe, pelunasan_piutang_id AS no_transaksi, CONCAT('Pelunasan Nota Penjualan no : ', penjualan_id) AS keterangan, terima_piutang AS saldo FROM tb_pelunasan_piutang_detail JOIN tb_pelunasan_piutang ON tb_pelunasan_piutang.id = tb_pelunasan_piutang_detail.pelunasan_piutang_id WHERE DATE(tb_pelunasan_piutang.tanggal_transaksi)='" & Format(dttanggal.Value, "yyyy-MM-dd") & "')
-UNION
-(SELECT 'KAS MASUK' AS tipe, id AS no_transaksi, keterangan_kas AS keterangan, saldo_kas AS saldo FROM tb_kas_masuk WHERE DATE(tb_kas_masuk.tanggal)='" & Format(dttanggal.Value, "yyyy-MM-dd") & "')
-UNION
-(SELECT 'KAS KELUAR' AS tipe, id AS no_transaksi, keterangan_kas AS keterangan, saldo_kas AS saldo FROM tb_kas_keluar WHERE DATE(tb_kas_keluar.tanggal)='" & Format(dttanggal.Value, "yyyy-MM-dd") & "')
-UNION
-(SELECT 'TRANSFER KAS' AS tipe, id AS no_transaksi, CONCAT('Transfer Kas dari : ', dari_kas_id,' ke ', ke_kas_id,' Keterangan :', keterangan_transfer_kas) AS keterangan, saldo_transfer_kas AS saldo FROM tb_transfer_kas WHERE DATE(tb_transfer_kas.tanggal)='" & Format(dttanggal.Value, "yyyy-MM-dd") & "')"
+                UNION
+                (SELECT 'PELUNASAN PIUTANG' AS tipe, pelunasan_piutang_id AS no_transaksi, CONCAT('Pelunasan Nota Penjualan no : ', penjualan_id) AS keterangan, terima_piutang AS saldo FROM tb_pelunasan_piutang_detail JOIN tb_pelunasan_piutang ON tb_pelunasan_piutang.id = tb_pelunasan_piutang_detail.pelunasan_piutang_id WHERE DATE(tb_pelunasan_piutang.tanggal_transaksi)='" & Format(dttanggal.Value, "yyyy-MM-dd") & "')
+                UNION
+                (SELECT 'KAS MASUK' AS tipe, id AS no_transaksi, keterangan_kas AS keterangan, saldo_kas AS saldo FROM tb_kas_masuk WHERE DATE(tb_kas_masuk.tanggal)='" & Format(dttanggal.Value, "yyyy-MM-dd") & "')
+                UNION
+                (SELECT 'KAS KELUAR' AS tipe, id AS no_transaksi, keterangan_kas AS keterangan, saldo_kas AS saldo FROM tb_kas_keluar WHERE DATE(tb_kas_keluar.tanggal)='" & Format(dttanggal.Value, "yyyy-MM-dd") & "')
+                UNION
+                (SELECT 'TRANSFER KAS' AS tipe, id AS no_transaksi, CONCAT('Transfer Kas dari : ', dari_kas_id,' ke ', ke_kas_id,' Keterangan :', keterangan_transfer_kas) AS keterangan, saldo_transfer_kas AS saldo FROM tb_transfer_kas WHERE DATE(tb_transfer_kas.tanggal)='" & Format(dttanggal.Value, "yyyy-MM-dd") & "')"
 
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet

@@ -44,15 +44,15 @@ Public Class fcaristok
             Call koneksi()
             If idgudangcari > 0 Then
                 If cbstokkosong.Checked = True Then
-                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id WHERE tb_stok.gudang_id ='" & idgudangcari & "'"
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id WHERE tb_stok.gudang_id ='" & idgudangcari & "' ORDER BY kode_stok ASC"
                 Else
-                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id WHERE tb_stok.gudang_id ='" & idgudangcari & "' AND tb_stok.jumlah_stok > 0"
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id WHERE tb_stok.gudang_id ='" & idgudangcari & "' AND tb_stok.jumlah_stok > 0 ORDER BY kode_stok ASC"
                 End If
             Else
                 If cbstokkosong.Checked = True Then
-                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id"
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id ORDER BY kode_stok ASC"
                 Else
-                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id WHERE tb_stok.jumlah_stok > 0"
+                    sql = "SELECT kode_stok, tb_stok.kode_barang, nama_barang, jenis_barang, satuan_barang, tb_stok.jumlah_stok FROM tb_barang JOIN tb_stok ON tb_barang.id = tb_stok.barang_id WHERE tb_stok.jumlah_stok > 0 ORDER BY kode_stok ASC"
                 End If
             End If
 

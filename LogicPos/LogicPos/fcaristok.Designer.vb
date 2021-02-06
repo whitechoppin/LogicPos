@@ -212,9 +212,9 @@ Partial Class fcaristok
         Me.cbstokkosong.Location = New System.Drawing.Point(899, 18)
         Me.cbstokkosong.Margin = New System.Windows.Forms.Padding(4)
         Me.cbstokkosong.Name = "cbstokkosong"
-        Me.cbstokkosong.Size = New System.Drawing.Size(122, 22)
+        Me.cbstokkosong.Size = New System.Drawing.Size(114, 22)
         Me.cbstokkosong.TabIndex = 29
-        Me.cbstokkosong.Text = "Stok Kososng"
+        Me.cbstokkosong.Text = "Stok Kosong"
         Me.cbstokkosong.UseVisualStyleBackColor = True
         '
         'fcaristok
