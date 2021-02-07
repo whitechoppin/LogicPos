@@ -154,7 +154,7 @@ Public Class flaporanreturjual
                 akhirPVs.Add(akhirPDV)
                 akhirPFD.ApplyCurrentValues(akhirPVs)
 
-                flapreturpenjualan.CrystalReportViewer1.ReportSource = rptrekap
+                flapreturpenjualan.CrystalReportViewer.ReportSource = rptrekap
                 flapreturpenjualan.ShowDialog()
                 flapreturpenjualan.WindowState = FormWindowState.Maximized
 
@@ -244,7 +244,7 @@ Public Class flaporanreturjual
                 akhirPVs.Add(akhirPDV)
                 akhirPFD.ApplyCurrentValues(akhirPVs)
 
-                flapreturpenjualan.CrystalReportViewer1.ReportSource = rptrekap
+                flapreturpenjualan.CrystalReportViewer.ReportSource = rptrekap
                 flapreturpenjualan.ShowDialog()
                 flapreturpenjualan.WindowState = FormWindowState.Maximized
 

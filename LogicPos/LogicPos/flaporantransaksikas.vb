@@ -199,7 +199,7 @@ Public Class flaporantransaksikas
                 akhirPVs.Add(akhirPDV)
                 akhirPFD.ApplyCurrentValues(akhirPVs)
 
-                flaptransaksikas.CrystalReportViewer1.ReportSource = rptrekap
+                flaptransaksikas.CrystalReportViewer.ReportSource = rptrekap
                 flaptransaksikas.ShowDialog()
                 flaptransaksikas.WindowState = FormWindowState.Maximized
 

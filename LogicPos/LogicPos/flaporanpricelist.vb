@@ -186,7 +186,7 @@ Public Class flaporanpricelist
                 Call historysave("Merekap Laporan Pricelist", "N/A", namaform)
                 rptstok = New rptlaporprice
                 rptstok.SetParameterValue("kode", idpelanggan)
-                flappricelist.CrystalReportViewer1.ReportSource = rptstok
+                flappricelist.CrystalReportViewer.ReportSource = rptstok
                 flappricelist.ShowDialog()
                 flappricelist.WindowState = FormWindowState.Maximized
             End If

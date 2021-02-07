@@ -152,7 +152,7 @@ Public Class flaporanpenyesuaianstok
                 akhirPVs.Add(akhirPDV)
                 akhirPFD.ApplyCurrentValues(akhirPVs)
 
-                flappenyesuaianstok.CrystalReportViewer1.ReportSource = rptrekap
+                flappenyesuaianstok.CrystalReportViewer.ReportSource = rptrekap
                 flappenyesuaianstok.ShowDialog()
                 flappenyesuaianstok.WindowState = FormWindowState.Maximized
 

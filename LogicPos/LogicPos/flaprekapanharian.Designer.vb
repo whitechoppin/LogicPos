@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class flapkasmasuk
+Partial Class flaprekapanharian
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -33,18 +33,18 @@ Partial Class flapkasmasuk
         Me.CrystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrystalReportViewer.Location = New System.Drawing.Point(0, 0)
         Me.CrystalReportViewer.Name = "CrystalReportViewer"
-        Me.CrystalReportViewer.Size = New System.Drawing.Size(1036, 465)
-        Me.CrystalReportViewer.TabIndex = 1
+        Me.CrystalReportViewer.Size = New System.Drawing.Size(1031, 458)
+        Me.CrystalReportViewer.TabIndex = 3
         Me.CrystalReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
-        'flapkasmasuk
+        'flaprekapanharian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1036, 465)
+        Me.ClientSize = New System.Drawing.Size(1031, 458)
         Me.Controls.Add(Me.CrystalReportViewer)
-        Me.Name = "flapkasmasuk"
-        Me.Text = "Laporan Kas Masuk"
+        Me.Name = "flaprekapanharian"
+        Me.Text = "Laporan Rekapan Harian"
         Me.ResumeLayout(False)
 
     End Sub

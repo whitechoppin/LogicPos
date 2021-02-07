@@ -182,7 +182,7 @@ Public Class flaporanstokbarang
             statusPVs.Add(statusPDV)
             statusPFD.ApplyCurrentValues(statusPVs)
 
-            flapstokbarang.CrystalReportViewer1.ReportSource = rptstok
+            flapstokbarang.CrystalReportViewer.ReportSource = rptstok
             flapstokbarang.ShowDialog()
             flapstokbarang.WindowState = FormWindowState.Maximized
 
@@ -255,7 +255,7 @@ Public Class flaporanstokbarang
         rptbarcodebarang.SetDataSource(tabel_barcode)
         'rptbarcodebarang.SetParameterValue("tglawal", dtawal.Text)
         'rptbarcodebarang.SetParameterValue("tglakhir", dtakhir.Text)
-        flapbarcode.CrystalReportViewer1.ReportSource = rptbarcodebarang
+        flapbarcode.CrystalReportViewer.ReportSource = rptbarcodebarang
         flapbarcode.ShowDialog()
         flapbarcode.WindowState = FormWindowState.Maximized
     End Sub

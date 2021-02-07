@@ -173,7 +173,7 @@ Public Class flaporanpenjualan
                 akhirPVs.Add(akhirPDV)
                 akhirPFD.ApplyCurrentValues(akhirPVs)
 
-                flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
+                flappenjualan.CrystalReportViewer.ReportSource = rptrekap
                 flappenjualan.ShowDialog()
                 flappenjualan.WindowState = FormWindowState.Maximized
 
@@ -262,7 +262,7 @@ Public Class flaporanpenjualan
                 akhirPVs.Add(akhirPDV)
                 akhirPFD.ApplyCurrentValues(akhirPVs)
 
-                flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
+                flappenjualan.CrystalReportViewer.ReportSource = rptrekap
                 flappenjualan.ShowDialog()
                 flappenjualan.WindowState = FormWindowState.Maximized
 
@@ -332,7 +332,7 @@ Public Class flaporanpenjualan
                 statusPVs.Add(statusPDV)
                 statusPFD.ApplyCurrentValues(statusPVs)
 
-                flappenjualan.CrystalReportViewer1.ReportSource = rptrekap
+                flappenjualan.CrystalReportViewer.ReportSource = rptrekap
                 flappenjualan.ShowDialog()
                 flappenjualan.WindowState = FormWindowState.Maximized
 

@@ -157,7 +157,7 @@ Public Class flaporanmodalbarang
             Dim rptmodal As ReportDocument
             rptmodal = New rptlapormodal
 
-            flapmodalbarang.CrystalReportViewer1.ReportSource = rptmodal
+            flapmodalbarang.CrystalReportViewer.ReportSource = rptmodal
             flapmodalbarang.ShowDialog()
             flapmodalbarang.WindowState = FormWindowState.Maximized
 

@@ -103,30 +103,28 @@ Public Class flaporanlabarugi
 
     Private Sub btnrekap_Click(sender As Object, e As EventArgs) Handles btnrekap.Click
         Dim rptlabarugi As ReportDocument
-        Dim tabel_laba_rugi As New DataTable
-        Dim baris As DataRow
 
-        With tabel_laba_rugi
-            .Columns.Add("tipe")
-            .Columns.Add("jenis")
-            .Columns.Add("saldo", GetType(Double))
-        End With
+        Call koneksi()
+        sql = "(SELECT 'PENDAPATAN' AS tipe, 'Penjualan' AS jenis, IFNULL(SUM(total_penjualan), 0) AS saldo, '1' AS idbaris FROM tb_penjualan WHERE MONTHNAME(tgl_penjualan) = '" & cmbmonth.Text & "' AND YEAR(tgl_penjualan) = '" & cmbyear.Text & "')
+                UNION 
+                (SELECT 'PENDAPATAN' AS tipe, 'Kas Masuk' AS jenis, IFNULL(SUM(saldo_kas), 0) AS saldo, '2' AS idbaris FROM tb_kas_masuk WHERE MONTHNAME(tanggal) = '" & cmbmonth.Text & "' AND YEAR(tanggal) = '" & cmbyear.Text & "')
+                UNION 
+                (SELECT 'PENGELUARAN' AS tipe, 'Harga Pokok Penjualan' AS jenis, (IFNULL(SUM(modal * qty), 0) * -1) AS saldo, '3' AS idbaris FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id WHERE MONTHNAME(tgl_penjualan) = '" & cmbmonth.Text & "' AND YEAR(tgl_penjualan) = '" & cmbyear.Text & "')
+                UNION 
+                (SELECT 'PENGELUARAN' AS tipe, 'Kas Keluar' AS jenis, (IFNULL(SUM(saldo_kas), 0) * -1) AS saldo, '4' AS idbaris FROM tb_kas_keluar WHERE MONTHNAME(tanggal) = '" & cmbmonth.Text & "' AND YEAR(tanggal) = '" & cmbyear.Text & "')
+                ORDER BY idbaris ASC"
 
-
-        For i As Integer = 0 To GridView.RowCount - 1
-            baris = tabel_laba_rugi.NewRow
-            baris("tipe") = GridView.GetRowCellValue(i, "tipe")
-            baris("jenis") = GridView.GetRowCellValue(i, "jenis")
-            baris("saldo") = GridView.GetRowCellValue(i, "saldo")
-            tabel_laba_rugi.Rows.Add(baris)
-        Next
+        da = New OdbcDataAdapter(sql, cnn)
+        ds = New DataSet
+        da.Fill(ds)
 
         rptlabarugi = New rptrekaplabarugi
-        rptlabarugi.Database.Tables(1).SetDataSource(tabel_laba_rugi)
+        rptlabarugi.Database.Tables(1).SetDataSource(ds.Tables(0))
 
         rptlabarugi.SetParameterValue("bulan", cmbmonth.Text)
         rptlabarugi.SetParameterValue("tahun", cmbyear.Text)
-        flaplabarugi.CrystalReportViewer1.ReportSource = rptlabarugi
+
+        flaplabarugi.CrystalReportViewer.ReportSource = rptlabarugi
         flaplabarugi.ShowDialog()
     End Sub
 

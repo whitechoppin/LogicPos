@@ -193,7 +193,7 @@ Public Class flaporanlunaspiutang
                 akhirPVs.Add(akhirPDV)
                 akhirPFD.ApplyCurrentValues(akhirPVs)
 
-                flaplunaspiutang.CrystalReportViewer1.ReportSource = rptrekap
+                flaplunaspiutang.CrystalReportViewer.ReportSource = rptrekap
                 flaplunaspiutang.ShowDialog()
                 flaplunaspiutang.WindowState = FormWindowState.Maximized
 
@@ -245,7 +245,7 @@ Public Class flaporanlunaspiutang
                 akhirPVs.Add(akhirPDV)
                 akhirPFD.ApplyCurrentValues(akhirPVs)
 
-                flaplunaspiutang.CrystalReportViewer1.ReportSource = rptrekap
+                flaplunaspiutang.CrystalReportViewer.ReportSource = rptrekap
                 flaplunaspiutang.ShowDialog()
                 flaplunaspiutang.WindowState = FormWindowState.Maximized
 
