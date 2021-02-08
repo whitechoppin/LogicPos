@@ -6730,7 +6730,7 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtabelrekaphariantransaksiRow(ByVal tipe As String, ByVal no_transaksi As String, ByVal nama_barang As String, ByVal qty As String, ByVal harga As String, ByVal total As String, ByVal gudang As String) As tabelrekaphariantransaksiRow
+        Public Overloads Function AddtabelrekaphariantransaksiRow(ByVal tipe As String, ByVal no_transaksi As Double, ByVal nama_barang As String, ByVal qty As Double, ByVal harga As Double, ByVal total As Double, ByVal gudang As String) As tabelrekaphariantransaksiRow
             Dim rowtabelrekaphariantransaksiRow As tabelrekaphariantransaksiRow = CType(Me.NewRow,tabelrekaphariantransaksiRow)
             Dim columnValuesArray() As Object = New Object() {tipe, no_transaksi, nama_barang, qty, harga, total, gudang}
             rowtabelrekaphariantransaksiRow.ItemArray = columnValuesArray
@@ -6769,15 +6769,15 @@ Partial Public Class POS
         Private Sub InitClass()
             Me.columntipe = New Global.System.Data.DataColumn("tipe", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntipe)
-            Me.columnno_transaksi = New Global.System.Data.DataColumn("no_transaksi", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnno_transaksi = New Global.System.Data.DataColumn("no_transaksi", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnno_transaksi)
             Me.columnnama_barang = New Global.System.Data.DataColumn("nama_barang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnnama_barang)
-            Me.columnqty = New Global.System.Data.DataColumn("qty", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnqty = New Global.System.Data.DataColumn("qty", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnqty)
-            Me.columnharga = New Global.System.Data.DataColumn("harga", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnharga = New Global.System.Data.DataColumn("harga", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnharga)
-            Me.columntotal = New Global.System.Data.DataColumn("total", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columntotal = New Global.System.Data.DataColumn("total", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntotal)
             Me.columngudang = New Global.System.Data.DataColumn("gudang", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columngudang)
@@ -7030,7 +7030,7 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtabelrekapharianadminRow(ByVal tipe As String, ByVal no_transaksi As String, ByVal keterangan As String, ByVal saldo As String) As tabelrekapharianadminRow
+        Public Overloads Function AddtabelrekapharianadminRow(ByVal tipe As String, ByVal no_transaksi As Double, ByVal keterangan As String, ByVal saldo As Double) As tabelrekapharianadminRow
             Dim rowtabelrekapharianadminRow As tabelrekapharianadminRow = CType(Me.NewRow,tabelrekapharianadminRow)
             Dim columnValuesArray() As Object = New Object() {tipe, no_transaksi, keterangan, saldo}
             rowtabelrekapharianadminRow.ItemArray = columnValuesArray
@@ -7066,11 +7066,11 @@ Partial Public Class POS
         Private Sub InitClass()
             Me.columntipe = New Global.System.Data.DataColumn("tipe", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntipe)
-            Me.columnno_transaksi = New Global.System.Data.DataColumn("no_transaksi", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnno_transaksi = New Global.System.Data.DataColumn("no_transaksi", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnno_transaksi)
             Me.columnketerangan = New Global.System.Data.DataColumn("keterangan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnketerangan)
-            Me.columnsaldo = New Global.System.Data.DataColumn("saldo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnsaldo = New Global.System.Data.DataColumn("saldo", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnsaldo)
         End Sub
         
@@ -10854,10 +10854,10 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property no_transaksi() As String
+        Public Property no_transaksi() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelrekaphariantransaksi.no_transaksiColumn),String)
+                    Return CType(Me(Me.tabletabelrekaphariantransaksi.no_transaksiColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'no_transaksi' in table 'tabelrekaphariantransaksi' is DBNul"& _ 
                             "l.", e)
@@ -10886,10 +10886,10 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property qty() As String
+        Public Property qty() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelrekaphariantransaksi.qtyColumn),String)
+                    Return CType(Me(Me.tabletabelrekaphariantransaksi.qtyColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'qty' in table 'tabelrekaphariantransaksi' is DBNull.", e)
                 End Try
@@ -10901,10 +10901,10 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property harga() As String
+        Public Property harga() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelrekaphariantransaksi.hargaColumn),String)
+                    Return CType(Me(Me.tabletabelrekaphariantransaksi.hargaColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'harga' in table 'tabelrekaphariantransaksi' is DBNull.", e)
                 End Try
@@ -10916,10 +10916,10 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property total() As String
+        Public Property total() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelrekaphariantransaksi.totalColumn),String)
+                    Return CType(Me(Me.tabletabelrekaphariantransaksi.totalColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'total' in table 'tabelrekaphariantransaksi' is DBNull.", e)
                 End Try
@@ -11061,10 +11061,10 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property no_transaksi() As String
+        Public Property no_transaksi() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelrekapharianadmin.no_transaksiColumn),String)
+                    Return CType(Me(Me.tabletabelrekapharianadmin.no_transaksiColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'no_transaksi' in table 'tabelrekapharianadmin' is DBNull.", e)
                 End Try
@@ -11091,10 +11091,10 @@ Partial Public Class POS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property saldo() As String
+        Public Property saldo() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tabletabelrekapharianadmin.saldoColumn),String)
+                    Return CType(Me(Me.tabletabelrekapharianadmin.saldoColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'saldo' in table 'tabelrekapharianadmin' is DBNull.", e)
                 End Try
