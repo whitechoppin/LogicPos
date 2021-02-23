@@ -1469,7 +1469,7 @@ Public Class fpenjualan
         rpt_faktur.Database.Tables(0).SetDataSource(tabel_faktur)
         rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
 
-        rpt_faktur.SetParameterValue("nofaktur", idpenjualan)
+        rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
         rpt_faktur.SetParameterValue("namakasir", fmenu.kodeuser.Text)
         rpt_faktur.SetParameterValue("pembeli", txtpelanggan.Text)
         rpt_faktur.SetParameterValue("jatem", Format(dtjatuhtempo.Value, "dd MMMM yyyy HH:mm:ss").ToString)
@@ -1553,7 +1553,7 @@ Public Class fpenjualan
         rpt_faktur.Database.Tables(0).SetDataSource(tabel_faktur)
         rpt_faktur.Database.Tables(2).SetDataSource(tabel_barcode)
 
-        rpt_faktur.SetParameterValue("nofaktur", idpenjualan)
+        rpt_faktur.SetParameterValue("nofaktur", txtnonota.Text)
         rpt_faktur.SetParameterValue("namakasir", fmenu.kodeuser.Text)
         rpt_faktur.SetParameterValue("pembeli", txtpelanggan.Text)
         rpt_faktur.SetParameterValue("jatem", Format(dtjatuhtempo.Value, "dd MMMM yyyy HH:mm:ss").ToString)
