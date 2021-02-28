@@ -98,7 +98,7 @@ Public Class flaporanreturbeli
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.id = tb_retur_pembelian_detail.retur_pembelian_id JOIN tb_user ON tb_user.id = tb_retur_pembelian.user_id WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.id = tb_retur_pembelian_detail.retur_pembelian_id JOIN tb_user ON tb_user.id = tb_retur_pembelian.user_id WHERE tgl_returbeli BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_retur_pembelian_detail JOIN tb_retur_pembelian ON tb_retur_pembelian.id = tb_retur_pembelian_detail.retur_pembelian_id JOIN tb_user ON tb_user.id = tb_retur_pembelian.user_id WHERE DATE(tgl_returbeli) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
         da = New OdbcDataAdapter(sql, cnn)
         ds = New DataSet
@@ -125,7 +125,7 @@ Public Class flaporanreturbeli
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY id ASC"
             Else
-                sql = "SELECT * FROM tb_retur_pembelian WHERE tgl_returbeli BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY id ASC"
+                sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY id ASC"
             End If
 
             cmmd = New OdbcCommand(sql, cnn)
@@ -214,7 +214,7 @@ Public Class flaporanreturbeli
             If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_retur_pembelian WHERE tgl_returbeli BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_retur_pembelian WHERE DATE(tgl_returbeli) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
             End If
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader

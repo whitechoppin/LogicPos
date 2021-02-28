@@ -84,7 +84,7 @@ Public Class flaporanpenjualanpajak
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT tb_penjualan.id, tb_penjualan.tgl_penjualan, tb_pelanggan.nama_pelanggan, tb_penjualan_detail.nama_barang, tb_penjualan_detail.nama_barang, tb_penjualan_detail.qty, tb_penjualan_detail.satuan_barang, (tb_penjualan_detail.harga_jual - (tb_penjualan_detail.harga_jual * (SELECT tb_pajak.persentase_pajak FROM tb_pajak)/100)) AS harga_jual, (tb_penjualan_detail.subtotal - (tb_penjualan_detail.subtotal  * (SELECT tb_pajak.persentase_pajak FROM tb_pajak)/100)) as subtotal, tb_penjualan.metode_pembayaran, tb_penjualan.user_id FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan ON tb_pelanggan.id =tb_penjualan.pelanggan_id WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT tb_penjualan.id, tb_penjualan.tgl_penjualan, tb_pelanggan.nama_pelanggan, tb_penjualan_detail.nama_barang, tb_penjualan_detail.nama_barang, tb_penjualan_detail.qty, tb_penjualan_detail.satuan_barang, (tb_penjualan_detail.harga_jual - (tb_penjualan_detail.harga_jual * (SELECT tb_pajak.persentase_pajak FROM tb_pajak)/100)) AS harga_jual, (tb_penjualan_detail.subtotal - (tb_penjualan_detail.subtotal  * (SELECT tb_pajak.persentase_pajak FROM tb_pajak)/100)) as subtotal, tb_penjualan.metode_pembayaran, tb_penjualan.user_id FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan ON tb_pelanggan.id =tb_penjualan.pelanggan_id WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT tb_penjualan.id, tb_penjualan.tgl_penjualan, tb_pelanggan.nama_pelanggan, tb_penjualan_detail.nama_barang, tb_penjualan_detail.nama_barang, tb_penjualan_detail.qty, tb_penjualan_detail.satuan_barang, (tb_penjualan_detail.harga_jual - (tb_penjualan_detail.harga_jual * (SELECT tb_pajak.persentase_pajak FROM tb_pajak)/100)) AS harga_jual, (tb_penjualan_detail.subtotal - (tb_penjualan_detail.subtotal  * (SELECT tb_pajak.persentase_pajak FROM tb_pajak)/100)) as subtotal, tb_penjualan.metode_pembayaran, tb_penjualan.user_id FROM tb_penjualan_detail JOIN tb_penjualan ON tb_penjualan.id = tb_penjualan_detail.penjualan_id JOIN tb_pelanggan ON tb_pelanggan.id =tb_penjualan.pelanggan_id WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -110,7 +110,7 @@ Public Class flaporanpenjualanpajak
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_penjualan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' ORDER BY metode_pembayaran ASC"
         Else
-            sql = "SELECT * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY metode_pembayaran ASC"
+            sql = "SELECT * FROM tb_penjualan WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "' ORDER BY metode_pembayaran ASC"
         End If
 
         cmmd = New OdbcCommand(sql, cnn)
@@ -186,7 +186,7 @@ Public Class flaporanpenjualanpajak
         If Format(DateTimePicker1.Value, "yyyy-MM-dd").Equals(Format(DateTimePicker2.Value, "yyyy-MM-dd")) Then
             sql = "SELECT * FROM tb_penjualan WHERE DATE(tgl_penjualan) = '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "'"
         Else
-            sql = "SELECT * FROM tb_penjualan WHERE tgl_penjualan BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
+            sql = "SELECT * FROM tb_penjualan WHERE DATE(tgl_penjualan) BETWEEN '" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "' AND '" & Format(DateTimePicker2.Value, "yyyy-MM-dd") & "'"
         End If
 
         cmmd = New OdbcCommand(sql, cnn)

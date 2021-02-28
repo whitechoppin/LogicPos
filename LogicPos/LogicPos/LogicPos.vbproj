@@ -149,6 +149,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="flaporanrekeningpelanggan.Designer.vb">
+      <DependentUpon>flaporanrekeningpelanggan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanrekeningpelanggan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flaporanrekeningsupplier.Designer.vb">
+      <DependentUpon>flaporanrekeningsupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="flaporanrekeningsupplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flaporantransferbarang.Designer.vb">
       <DependentUpon>flaporantransferbarang.vb</DependentUpon>
       <SubType>Form</SubType>
@@ -1405,6 +1417,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="flaporanrekapanharian.resx">
       <DependentUpon>flaporanrekapanharian.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporanrekeningpelanggan.resx">
+      <DependentUpon>flaporanrekeningpelanggan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flaporanrekeningsupplier.resx">
+      <DependentUpon>flaporanrekeningsupplier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flappenyesuaianstok.resx">
       <DependentUpon>flappenyesuaianstok.vb</DependentUpon>

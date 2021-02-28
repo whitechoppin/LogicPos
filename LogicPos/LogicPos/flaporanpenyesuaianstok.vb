@@ -96,7 +96,7 @@ Public Class flaporanpenyesuaianstok
         If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
             sql = "SELECT tb_penyesuaian_stok.id, tb_gudang.nama_gudang, tanggal_penyesuaian_stok, kode_barang, kode_stok, nama_barang, qty, status_stok, tb_user.kode_user FROM tb_penyesuaian_stok JOIN tb_penyesuaian_stok_detail ON tb_penyesuaian_stok.id = tb_penyesuaian_stok_detail.penyesuaian_stok_id JOIN tb_gudang ON tb_gudang.id = tb_penyesuaian_stok.gudang_id JOIN tb_user ON tb_user.id = tb_penyesuaian_stok.user_id WHERE DATE(tanggal_penyesuaian_stok) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "' ORDER BY tb_penyesuaian_stok.id ASC"
         Else
-            sql = "Select tb_penyesuaian_stok.id, tb_gudang.nama_gudang, tanggal_penyesuaian_stok, kode_barang, kode_stok, nama_barang, qty, status_stok, tb_user.kode_user FROM tb_penyesuaian_stok JOIN tb_penyesuaian_stok_detail On tb_penyesuaian_stok.id = tb_penyesuaian_stok_detail.penyesuaian_stok_id JOIN tb_gudang On tb_gudang.id = tb_penyesuaian_stok.gudang_id JOIN tb_user On tb_user.id = tb_penyesuaian_stok.user_id WHERE tanggal_penyesuaian_stok BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' ORDER BY tb_penyesuaian_stok.id ASC"
+            sql = "Select tb_penyesuaian_stok.id, tb_gudang.nama_gudang, tanggal_penyesuaian_stok, kode_barang, kode_stok, nama_barang, qty, status_stok, tb_user.kode_user FROM tb_penyesuaian_stok JOIN tb_penyesuaian_stok_detail On tb_penyesuaian_stok.id = tb_penyesuaian_stok_detail.penyesuaian_stok_id JOIN tb_gudang On tb_gudang.id = tb_penyesuaian_stok.gudang_id JOIN tb_user On tb_user.id = tb_penyesuaian_stok.user_id WHERE DATE(tanggal_penyesuaian_stok) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "' ORDER BY tb_penyesuaian_stok.id ASC"
         End If
 
         da = New OdbcDataAdapter(sql, cnn)
@@ -129,7 +129,7 @@ Public Class flaporanpenyesuaianstok
             If Format(dtawal.Value, "yyyy-MM-dd").Equals(Format(dtakhir.Value, "yyyy-MM-dd")) Then
                 sql = "SELECT * FROM tb_penyesuaian_stok WHERE DATE(tanggal_penyesuaian_stok) = '" & Format(dtawal.Value, "yyyy-MM-dd") & "'"
             Else
-                sql = "SELECT * FROM tb_penyesuaian_stok WHERE tanggal_penyesuaian_stok BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
+                sql = "SELECT * FROM tb_penyesuaian_stok WHERE DATE(tanggal_penyesuaian_stok) BETWEEN '" & Format(dtawal.Value, "yyyy-MM-dd") & "' AND '" & Format(dtakhir.Value, "yyyy-MM-dd") & "'"
             End If
 
             cmmd = New OdbcCommand(sql, cnn)
