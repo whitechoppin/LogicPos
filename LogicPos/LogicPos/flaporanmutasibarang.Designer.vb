@@ -211,7 +211,7 @@ Partial Class flaporanmutasibarang
         Me.Label1.Location = New System.Drawing.Point(13, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(315, 31)
+        Me.Label1.Size = New System.Drawing.Size(391, 39)
         Me.Label1.TabIndex = 24
         Me.Label1.Text = "Laporan Mutasi Barang"
         '
@@ -222,7 +222,7 @@ Partial Class flaporanmutasibarang
         Me.Label2.Location = New System.Drawing.Point(1243, 175)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(126, 18)
+        Me.Label2.Size = New System.Drawing.Size(158, 24)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Sampai Dengan"
         '
@@ -231,7 +231,7 @@ Partial Class flaporanmutasibarang
         Me.dtakhir.Location = New System.Drawing.Point(1157, 197)
         Me.dtakhir.Margin = New System.Windows.Forms.Padding(4)
         Me.dtakhir.Name = "dtakhir"
-        Me.dtakhir.Size = New System.Drawing.Size(306, 24)
+        Me.dtakhir.Size = New System.Drawing.Size(306, 29)
         Me.dtakhir.TabIndex = 3
         '
         'dtawal
@@ -239,7 +239,7 @@ Partial Class flaporanmutasibarang
         Me.dtawal.Location = New System.Drawing.Point(1157, 147)
         Me.dtawal.Margin = New System.Windows.Forms.Padding(4)
         Me.dtawal.Name = "dtawal"
-        Me.dtawal.Size = New System.Drawing.Size(306, 24)
+        Me.dtawal.Size = New System.Drawing.Size(306, 29)
         Me.dtawal.TabIndex = 2
         '
         'btncaribarang
@@ -262,7 +262,7 @@ Partial Class flaporanmutasibarang
         Me.cmbbarang.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbbarang.MaxLength = 99
         Me.cmbbarang.Name = "cmbbarang"
-        Me.cmbbarang.Size = New System.Drawing.Size(230, 26)
+        Me.cmbbarang.Size = New System.Drawing.Size(230, 32)
         Me.cmbbarang.TabIndex = 63
         '
         'Label4
@@ -272,7 +272,7 @@ Partial Class flaporanmutasibarang
         Me.Label4.Location = New System.Drawing.Point(23, 88)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(102, 20)
+        Me.Label4.Size = New System.Drawing.Size(127, 25)
         Me.Label4.TabIndex = 62
         Me.Label4.Text = "Kode Barang"
         '
@@ -297,7 +297,7 @@ Partial Class flaporanmutasibarang
         Me.cmbgudang.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbgudang.MaxLength = 99
         Me.cmbgudang.Name = "cmbgudang"
-        Me.cmbgudang.Size = New System.Drawing.Size(230, 26)
+        Me.cmbgudang.Size = New System.Drawing.Size(230, 32)
         Me.cmbgudang.TabIndex = 66
         '
         'Label3
@@ -307,7 +307,7 @@ Partial Class flaporanmutasibarang
         Me.Label3.Location = New System.Drawing.Point(774, 89)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(100, 20)
+        Me.Label3.Size = New System.Drawing.Size(122, 25)
         Me.Label3.TabIndex = 65
         Me.Label3.Text = "Dari Gudang"
         '
@@ -331,7 +331,7 @@ Partial Class flaporanmutasibarang
         Me.cmbstok.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbstok.MaxLength = 99
         Me.cmbstok.Name = "cmbstok"
-        Me.cmbstok.Size = New System.Drawing.Size(230, 26)
+        Me.cmbstok.Size = New System.Drawing.Size(230, 32)
         Me.cmbstok.TabIndex = 70
         '
         'Label6
@@ -341,7 +341,7 @@ Partial Class flaporanmutasibarang
         Me.Label6.Location = New System.Drawing.Point(405, 88)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(83, 20)
+        Me.Label6.Size = New System.Drawing.Size(104, 25)
         Me.Label6.TabIndex = 69
         Me.Label6.Text = "Kode Stok"
         '
@@ -355,7 +355,7 @@ Partial Class flaporanmutasibarang
         Me.txtgbr.Location = New System.Drawing.Point(1157, 598)
         Me.txtgbr.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtgbr.Name = "txtgbr"
-        Me.txtgbr.Size = New System.Drawing.Size(106, 18)
+        Me.txtgbr.Size = New System.Drawing.Size(132, 24)
         Me.txtgbr.TabIndex = 72
         Me.txtgbr.Text = "Nama Gambar"
         '
@@ -366,14 +366,14 @@ Partial Class flaporanmutasibarang
         Me.cbperiode.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbperiode.Location = New System.Drawing.Point(1157, 120)
         Me.cbperiode.Name = "cbperiode"
-        Me.cbperiode.Size = New System.Drawing.Size(78, 22)
+        Me.cbperiode.Size = New System.Drawing.Size(98, 28)
         Me.cbperiode.TabIndex = 73
         Me.cbperiode.Text = "Periode"
         Me.cbperiode.UseVisualStyleBackColor = True
         '
         'flaporanmutasibarang
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1474, 627)

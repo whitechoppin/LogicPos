@@ -127,6 +127,18 @@ Public Class flaporanmutasibarang
         cmbgudang.DisplayMember = "kode_gudang"
     End Sub
 
+    Sub carigudang()
+        Call koneksi()
+        sql = "SELECT * FROM tb_gudang WHERE kode_gudang ='" & cmbgudang.Text & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
+        If dr.HasRows Then
+            idgudangcari = Val(dr("id"))
+        Else
+            idgudangcari = 0
+        End If
+    End Sub
+
     Sub grid()
         GridColumn1.Caption = "Tabel"
         GridColumn1.FieldName = "tabel"
@@ -562,7 +574,6 @@ Public Class flaporanmutasibarang
 
     Private Sub btncaristok_Click(sender As Object, e As EventArgs) Handles btncaristok.Click
         tutupcaristok = 4
-        idgudangcari = cmbgudang.Text
         fcaristok.ShowDialog()
     End Sub
 
@@ -1013,6 +1024,10 @@ Public Class flaporanmutasibarang
             dtawal.Enabled = False
             dtakhir.Enabled = False
         End If
+    End Sub
+
+    Private Sub cmbgudang_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbgudang.SelectedIndexChanged
+        Call carigudang()
     End Sub
 
     Private Sub flaporanmutasibarang_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
