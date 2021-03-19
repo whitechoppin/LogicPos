@@ -6,7 +6,7 @@
     'String Pencarian kode gudang
     Public idgudangcari As Integer
     'master
-    Public tutupcus As Integer
+    Public tutupplg As Integer
     Public tutupsup As Integer
     Public tutupcaristok As Integer
     Public tutupgudang As Integer

@@ -27,14 +27,16 @@ Public Class fcaripelanggan
         GridControl1.Visible = True
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        If tutupcus = 1 Then
+        If tutupplg = 1 Then
             fpricelist.cmbpelanggan.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
-        ElseIf tutupcus = 2 Then
+        ElseIf tutupplg = 2 Then
             fpenjualan.cmbpelanggan.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
-        ElseIf tutupcus = 3 Then
+        ElseIf tutupplg = 3 Then
             fbarangkeluar.cmbpelanggan.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
-        ElseIf tutupcus = 4 Then
+        ElseIf tutupplg = 4 Then
             flaporanpricelist.cmbpelanggan.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
+        ElseIf tutupplg = 5 Then
+            fpreviewpiutang.cmbpelanggan.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
         End If
         Me.Close()
     End Sub

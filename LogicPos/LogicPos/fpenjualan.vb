@@ -1693,7 +1693,7 @@ Public Class fpenjualan
     End Sub
 
     Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
-        tutupcus = 2
+        tutupplg = 2
         fcaripelanggan.ShowDialog()
     End Sub
     Private Sub btncaribarang_Click(sender As Object, e As EventArgs) Handles btncaribarang.Click

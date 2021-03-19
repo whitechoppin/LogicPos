@@ -214,7 +214,7 @@ Public Class flaporanpricelist
     End Sub
 
     Private Sub btncaricustomer_Click(sender As Object, e As EventArgs) Handles btncaricustomer.Click
-        tutupcus = 4
+        tutupplg = 4
         fcaripelanggan.ShowDialog()
     End Sub
 End Class

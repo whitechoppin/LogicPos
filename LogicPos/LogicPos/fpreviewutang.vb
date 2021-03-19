@@ -287,4 +287,9 @@ Public Class fpreviewutang
     Private Sub cmbsupplier_TextChanged(sender As Object, e As EventArgs) Handles cmbsupplier.TextChanged
         Call carisupplier()
     End Sub
+
+    Private Sub btncari_Click(sender As Object, e As EventArgs) Handles btncari.Click
+        tutupsup = 3
+        fcarisupplier.ShowDialog()
+    End Sub
 End Class

@@ -654,7 +654,7 @@ Public Class fbarangmasuk
 
     Private Sub btncarisupplier_Click(sender As Object, e As EventArgs) Handles btncarisupplier.Click
         tutupsup = 2
-        fcarisupp.ShowDialog()
+        fcarisupplier.ShowDialog()
     End Sub
 
     Private Sub btncarigudang_Click(sender As Object, e As EventArgs) Handles btncarigudang.Click

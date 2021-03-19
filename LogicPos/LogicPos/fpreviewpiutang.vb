@@ -296,4 +296,9 @@ Public Class fpreviewpiutang
     Private Sub cmbpelanggan_TextChanged(sender As Object, e As EventArgs) Handles cmbpelanggan.TextChanged
         Call caripelanggan()
     End Sub
+
+    Private Sub btncari_Click(sender As Object, e As EventArgs) Handles btncari.Click
+        tutupplg = 5
+        fcaripelanggan.ShowDialog()
+    End Sub
 End Class

@@ -316,7 +316,7 @@ Public Class fpricelist
         fcaribarang.ShowDialog()
     End Sub
     Private Sub btncaricus_Click(sender As Object, e As EventArgs) Handles btncaricus.Click
-        tutupcus = 1
+        tutupplg = 1
         fcaripelanggan.ShowDialog()
     End Sub
 

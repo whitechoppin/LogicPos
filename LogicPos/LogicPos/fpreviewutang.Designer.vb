@@ -50,6 +50,8 @@ Partial Class fpreviewutang
         Me.btnexcel2 = New System.Windows.Forms.Button()
         Me.btnexcel1 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.btncari = New System.Windows.Forms.Button()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -210,7 +212,7 @@ Partial Class fpreviewutang
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(289, 146)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(119, 16)
+        Me.Label1.Size = New System.Drawing.Size(142, 20)
         Me.Label1.TabIndex = 35
         Me.Label1.Text = "Data Pembelian"
         '
@@ -218,14 +220,14 @@ Partial Class fpreviewutang
         '
         Me.dtakhir.Location = New System.Drawing.Point(946, 87)
         Me.dtakhir.Name = "dtakhir"
-        Me.dtakhir.Size = New System.Drawing.Size(275, 24)
+        Me.dtakhir.Size = New System.Drawing.Size(275, 29)
         Me.dtakhir.TabIndex = 34
         '
         'dtawal
         '
-        Me.dtawal.Location = New System.Drawing.Point(533, 87)
+        Me.dtawal.Location = New System.Drawing.Point(624, 87)
         Me.dtawal.Name = "dtawal"
-        Me.dtawal.Size = New System.Drawing.Size(275, 24)
+        Me.dtawal.Size = New System.Drawing.Size(275, 29)
         Me.dtawal.TabIndex = 33
         '
         'cmbstatus
@@ -233,21 +235,21 @@ Partial Class fpreviewutang
         Me.cmbstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbstatus.FormattingEnabled = True
         Me.cmbstatus.Items.AddRange(New Object() {"Semua", "Lunas", "Belum Lunas"})
-        Me.cmbstatus.Location = New System.Drawing.Point(292, 86)
+        Me.cmbstatus.Location = New System.Drawing.Point(331, 87)
         Me.cmbstatus.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbstatus.MaxLength = 99
         Me.cmbstatus.Name = "cmbstatus"
-        Me.cmbstatus.Size = New System.Drawing.Size(231, 26)
+        Me.cmbstatus.Size = New System.Drawing.Size(231, 32)
         Me.cmbstatus.TabIndex = 40
         '
         'cmbsupplier
         '
         Me.cmbsupplier.FormattingEnabled = True
-        Me.cmbsupplier.Location = New System.Drawing.Point(12, 86)
+        Me.cmbsupplier.Location = New System.Drawing.Point(15, 88)
         Me.cmbsupplier.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbsupplier.MaxLength = 99
         Me.cmbsupplier.Name = "cmbsupplier"
-        Me.cmbsupplier.Size = New System.Drawing.Size(268, 26)
+        Me.cmbsupplier.Size = New System.Drawing.Size(268, 32)
         Me.cmbsupplier.TabIndex = 39
         '
         'btnrefresh
@@ -255,7 +257,7 @@ Partial Class fpreviewutang
         Me.btnrefresh.BackgroundImage = CType(resources.GetObject("btnrefresh.BackgroundImage"), System.Drawing.Image)
         Me.btnrefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnrefresh.ImageIndex = 0
-        Me.btnrefresh.Location = New System.Drawing.Point(1227, 85)
+        Me.btnrefresh.Location = New System.Drawing.Point(1226, 88)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(34, 27)
         Me.btnrefresh.TabIndex = 43
@@ -265,10 +267,10 @@ Partial Class fpreviewutang
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(15, 9)
+        Me.Label7.Location = New System.Drawing.Point(5, 9)
         Me.Label7.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(204, 31)
+        Me.Label7.Size = New System.Drawing.Size(243, 38)
         Me.Label7.TabIndex = 52
         Me.Label7.Text = "Preview Utang"
         '
@@ -276,9 +278,9 @@ Partial Class fpreviewutang
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 64)
+        Me.Label2.Location = New System.Drawing.Point(12, 60)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(66, 16)
+        Me.Label2.Size = New System.Drawing.Size(78, 20)
         Me.Label2.TabIndex = 53
         Me.Label2.Text = "Supplier"
         '
@@ -286,9 +288,9 @@ Partial Class fpreviewutang
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(289, 64)
+        Me.Label3.Location = New System.Drawing.Point(328, 64)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(51, 16)
+        Me.Label3.Size = New System.Drawing.Size(63, 20)
         Me.Label3.TabIndex = 54
         Me.Label3.Text = "Status"
         '
@@ -297,9 +299,9 @@ Partial Class fpreviewutang
         Me.cbperiode.AutoSize = True
         Me.cbperiode.Checked = True
         Me.cbperiode.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbperiode.Location = New System.Drawing.Point(533, 61)
+        Me.cbperiode.Location = New System.Drawing.Point(624, 56)
         Me.cbperiode.Name = "cbperiode"
-        Me.cbperiode.Size = New System.Drawing.Size(78, 22)
+        Me.cbperiode.Size = New System.Drawing.Size(98, 28)
         Me.cbperiode.TabIndex = 57
         Me.cbperiode.Text = "Periode"
         Me.cbperiode.UseVisualStyleBackColor = True
@@ -328,16 +330,40 @@ Partial Class fpreviewutang
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(943, 146)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(118, 16)
+        Me.Label4.Size = New System.Drawing.Size(142, 20)
         Me.Label4.TabIndex = 61
         Me.Label4.Text = "Data Pelunasan"
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(905, 92)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(35, 20)
+        Me.Label5.TabIndex = 62
+        Me.Label5.Text = "s/d"
+        '
+        'btncari
+        '
+        Me.btncari.BackgroundImage = CType(resources.GetObject("btncari.BackgroundImage"), System.Drawing.Image)
+        Me.btncari.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncari.ImageIndex = 0
+        Me.btncari.Location = New System.Drawing.Point(289, 88)
+        Me.btncari.Margin = New System.Windows.Forms.Padding(6)
+        Me.btncari.Name = "btncari"
+        Me.btncari.Size = New System.Drawing.Size(34, 27)
+        Me.btncari.TabIndex = 65
+        Me.btncari.UseVisualStyleBackColor = True
+        '
         'fpreviewutang
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1272, 568)
+        Me.Controls.Add(Me.btncari)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.btnexcel2)
         Me.Controls.Add(Me.btnexcel1)
@@ -393,4 +419,6 @@ Partial Class fpreviewutang
     Friend WithEvents btnexcel2 As Button
     Friend WithEvents btnexcel1 As Button
     Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents btncari As Button
 End Class

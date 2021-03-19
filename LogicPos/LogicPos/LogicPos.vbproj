@@ -1059,10 +1059,10 @@
     <Compile Include="fcaristok.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fcarisupp.Designer.vb">
-      <DependentUpon>fcarisupp.vb</DependentUpon>
+    <Compile Include="fcarisupplier.Designer.vb">
+      <DependentUpon>fcarisupplier.vb</DependentUpon>
     </Compile>
-    <Compile Include="fcarisupp.vb">
+    <Compile Include="fcarisupplier.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fcariuser.Designer.vb">
@@ -1755,8 +1755,8 @@
     <EmbeddedResource Include="fcaristok.resx">
       <DependentUpon>fcaristok.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fcarisupp.resx">
-      <DependentUpon>fcarisupp.vb</DependentUpon>
+    <EmbeddedResource Include="fcarisupplier.resx">
+      <DependentUpon>fcarisupplier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fcariuser.resx">
       <DependentUpon>fcariuser.vb</DependentUpon>
