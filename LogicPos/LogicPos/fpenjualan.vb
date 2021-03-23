@@ -1647,7 +1647,7 @@ Public Class fpenjualan
                     End If
                 End If
             Else
-                MsgBox("Nota sudah lunas!")
+                MsgBox("Nota Sudah Terkunci Dikarenakan Ada Pelunasan !")
             End If
         Else
             MsgBox("Nota sudah void !")
