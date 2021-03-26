@@ -102,7 +102,7 @@ Public Class fakturpenjualan
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_pembeli() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_pelanggan() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(1)
         End Get
@@ -201,6 +201,14 @@ Public Class fakturpenjualan
     Public ReadOnly Property Parameter_keterangan() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(13)
+        End Get
+    End Property
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+    Public ReadOnly Property Parameter_pembayaran() As CrystalDecisions.[Shared].IParameterField
+        Get
+            Return Me.DataDefinition.ParameterFields(14)
         End Get
     End Property
 End Class
