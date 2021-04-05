@@ -242,6 +242,7 @@ Public Class flunaspiutang
 
         cmbpelanggan.SelectedIndex = -1
         cmbpelanggan.Enabled = True
+        btncaripelanggan.Enabled = True
 
         cbvoid.Checked = False
         cbprinted.Checked = False
@@ -324,6 +325,7 @@ Public Class flunaspiutang
 
         'cmbcustomer.SelectedIndex = 0
         cmbpelanggan.Enabled = False
+        btncaripelanggan.Enabled = False
 
         'cmbbayar.SelectedIndex = 0
         cmbbayar.Enabled = False
@@ -458,6 +460,7 @@ Public Class flunaspiutang
         cmbsales.Enabled = True
         dtpelunasan.Enabled = True
         cmbpelanggan.Enabled = True
+        btncaripelanggan.Enabled = True
         cmbbayar.Enabled = True
         txttotalbayar.Enabled = True
         txtbukti.Enabled = True
@@ -1178,6 +1181,11 @@ Public Class flunaspiutang
             iduser = 0
             cmbsales.ForeColor = Color.Red
         End If
+    End Sub
+
+    Private Sub btncaripelanggan_Click(sender As Object, e As EventArgs) Handles btncaripelanggan.Click
+        tutupplg = 6
+        fcaripelanggan.ShowDialog()
     End Sub
 
     Sub caripelanggan()

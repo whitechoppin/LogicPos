@@ -91,6 +91,7 @@ Partial Class flunasutang
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btncarisupplier = New System.Windows.Forms.Button()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.riteterimapelunasan, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -108,7 +109,7 @@ Partial Class flunasutang
         Me.Label11.Location = New System.Drawing.Point(942, 264)
         Me.Label11.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(73, 18)
+        Me.Label11.Size = New System.Drawing.Size(89, 24)
         Me.Label11.TabIndex = 18
         Me.Label11.Text = "Sisa Nota"
         '
@@ -119,7 +120,7 @@ Partial Class flunasutang
         Me.txtsisabeli.Location = New System.Drawing.Point(939, 287)
         Me.txtsisabeli.Margin = New System.Windows.Forms.Padding(6)
         Me.txtsisabeli.Name = "txtsisabeli"
-        Me.txtsisabeli.Size = New System.Drawing.Size(210, 24)
+        Me.txtsisabeli.Size = New System.Drawing.Size(210, 29)
         Me.txtsisabeli.TabIndex = 17
         '
         'btntambah
@@ -141,7 +142,7 @@ Partial Class flunasutang
         Me.Label10.Location = New System.Drawing.Point(725, 264)
         Me.Label10.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(98, 18)
+        Me.Label10.Size = New System.Drawing.Size(126, 24)
         Me.Label10.TabIndex = 16
         Me.Label10.Text = "Telah Dibayar"
         '
@@ -152,7 +153,7 @@ Partial Class flunasutang
         Me.txtbayarbeli.Location = New System.Drawing.Point(725, 287)
         Me.txtbayarbeli.Margin = New System.Windows.Forms.Padding(6)
         Me.txtbayarbeli.Name = "txtbayarbeli"
-        Me.txtbayarbeli.Size = New System.Drawing.Size(210, 24)
+        Me.txtbayarbeli.Size = New System.Drawing.Size(210, 29)
         Me.txtbayarbeli.TabIndex = 15
         '
         'Label8
@@ -162,7 +163,7 @@ Partial Class flunasutang
         Me.Label8.Location = New System.Drawing.Point(512, 264)
         Me.Label8.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(77, 18)
+        Me.Label8.Size = New System.Drawing.Size(95, 24)
         Me.Label8.TabIndex = 14
         Me.Label8.Text = "Total Nota"
         '
@@ -173,7 +174,7 @@ Partial Class flunasutang
         Me.txttotalbeli.Location = New System.Drawing.Point(511, 287)
         Me.txttotalbeli.Margin = New System.Windows.Forms.Padding(6)
         Me.txttotalbeli.Name = "txttotalbeli"
-        Me.txttotalbeli.Size = New System.Drawing.Size(210, 24)
+        Me.txttotalbeli.Size = New System.Drawing.Size(210, 29)
         Me.txttotalbeli.TabIndex = 13
         '
         'btncaribeli
@@ -194,7 +195,7 @@ Partial Class flunasutang
         Me.txtkodepembelian.Location = New System.Drawing.Point(17, 287)
         Me.txtkodepembelian.Margin = New System.Windows.Forms.Padding(6)
         Me.txtkodepembelian.Name = "txtkodepembelian"
-        Me.txtkodepembelian.Size = New System.Drawing.Size(216, 24)
+        Me.txtkodepembelian.Size = New System.Drawing.Size(216, 29)
         Me.txtkodepembelian.TabIndex = 11
         '
         'Label12
@@ -204,7 +205,7 @@ Partial Class flunasutang
         Me.Label12.Location = New System.Drawing.Point(19, 264)
         Me.Label12.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(116, 18)
+        Me.Label12.Size = New System.Drawing.Size(150, 24)
         Me.Label12.TabIndex = 7
         Me.Label12.Text = "Kode Pembelian"
         '
@@ -215,7 +216,7 @@ Partial Class flunasutang
         Me.Label7.Location = New System.Drawing.Point(15, 19)
         Me.Label7.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(237, 31)
+        Me.Label7.Size = New System.Drawing.Size(282, 38)
         Me.Label7.TabIndex = 84
         Me.Label7.Text = "Pelunasan Utang"
         '
@@ -244,7 +245,7 @@ Partial Class flunasutang
         Me.txtgolunas.Location = New System.Drawing.Point(898, 21)
         Me.txtgolunas.Margin = New System.Windows.Forms.Padding(4)
         Me.txtgolunas.Name = "txtgolunas"
-        Me.txtgolunas.Size = New System.Drawing.Size(174, 24)
+        Me.txtgolunas.Size = New System.Drawing.Size(174, 29)
         Me.txtgolunas.TabIndex = 7
         '
         'btngolunas
@@ -329,7 +330,7 @@ Partial Class flunasutang
         Me.Label9.Location = New System.Drawing.Point(816, 126)
         Me.Label9.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(65, 18)
+        Me.Label9.Size = New System.Drawing.Size(80, 24)
         Me.Label9.TabIndex = 83
         Me.Label9.Text = "No Bukti"
         '
@@ -340,7 +341,7 @@ Partial Class flunasutang
         Me.txtbukti.Margin = New System.Windows.Forms.Padding(6)
         Me.txtbukti.MaxLength = 12
         Me.txtbukti.Name = "txtbukti"
-        Me.txtbukti.Size = New System.Drawing.Size(245, 24)
+        Me.txtbukti.Size = New System.Drawing.Size(245, 29)
         Me.txtbukti.TabIndex = 82
         '
         'cmbsupplier
@@ -350,7 +351,7 @@ Partial Class flunasutang
         Me.cmbsupplier.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbsupplier.MaxLength = 99
         Me.cmbsupplier.Name = "cmbsupplier"
-        Me.cmbsupplier.Size = New System.Drawing.Size(245, 26)
+        Me.cmbsupplier.Size = New System.Drawing.Size(213, 32)
         Me.cmbsupplier.TabIndex = 81
         '
         'txtalamat
@@ -370,7 +371,7 @@ Partial Class flunasutang
         Me.txtsupplier.Location = New System.Drawing.Point(533, 15)
         Me.txtsupplier.Margin = New System.Windows.Forms.Padding(6)
         Me.txtsupplier.Name = "txtsupplier"
-        Me.txtsupplier.Size = New System.Drawing.Size(245, 24)
+        Me.txtsupplier.Size = New System.Drawing.Size(245, 29)
         Me.txtsupplier.TabIndex = 46
         '
         'Label4
@@ -380,7 +381,7 @@ Partial Class flunasutang
         Me.Label4.Location = New System.Drawing.Point(413, 18)
         Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(105, 18)
+        Me.Label4.Size = New System.Drawing.Size(135, 24)
         Me.Label4.TabIndex = 19
         Me.Label4.Text = "Nama Supplier"
         '
@@ -391,7 +392,7 @@ Partial Class flunasutang
         Me.cmbbayar.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbbayar.MaxLength = 99
         Me.cmbbayar.Name = "cmbbayar"
-        Me.cmbbayar.Size = New System.Drawing.Size(245, 26)
+        Me.cmbbayar.Size = New System.Drawing.Size(245, 32)
         Me.cmbbayar.TabIndex = 79
         '
         'txttelp
@@ -400,7 +401,7 @@ Partial Class flunasutang
         Me.txttelp.Location = New System.Drawing.Point(533, 52)
         Me.txttelp.Margin = New System.Windows.Forms.Padding(6)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(245, 24)
+        Me.txttelp.Size = New System.Drawing.Size(245, 29)
         Me.txttelp.TabIndex = 71
         '
         'Label5
@@ -410,7 +411,7 @@ Partial Class flunasutang
         Me.Label5.Location = New System.Drawing.Point(798, 55)
         Me.Label5.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(100, 18)
+        Me.Label5.Size = New System.Drawing.Size(126, 24)
         Me.Label5.TabIndex = 80
         Me.Label5.Text = "Metode Bayar"
         '
@@ -421,7 +422,7 @@ Partial Class flunasutang
         Me.Label20.Location = New System.Drawing.Point(411, 92)
         Me.Label20.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(110, 18)
+        Me.Label20.Size = New System.Drawing.Size(142, 24)
         Me.Label20.TabIndex = 68
         Me.Label20.Text = "Alamat Supplier"
         '
@@ -432,7 +433,7 @@ Partial Class flunasutang
         Me.Label1.Location = New System.Drawing.Point(805, 93)
         Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(83, 18)
+        Me.Label1.Size = New System.Drawing.Size(103, 24)
         Me.Label1.TabIndex = 78
         Me.Label1.Text = "Total Bayar"
         '
@@ -443,7 +444,7 @@ Partial Class flunasutang
         Me.txttotalbayar.Margin = New System.Windows.Forms.Padding(6)
         Me.txttotalbayar.MaxLength = 12
         Me.txttotalbayar.Name = "txttotalbayar"
-        Me.txttotalbayar.Size = New System.Drawing.Size(245, 24)
+        Me.txttotalbayar.Size = New System.Drawing.Size(245, 29)
         Me.txttotalbayar.TabIndex = 77
         '
         'Label22
@@ -453,7 +454,7 @@ Partial Class flunasutang
         Me.Label22.Location = New System.Drawing.Point(419, 55)
         Me.Label22.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(93, 18)
+        Me.Label22.Size = New System.Drawing.Size(123, 24)
         Me.Label22.TabIndex = 69
         Me.Label22.Text = "Telp Supplier"
         '
@@ -463,7 +464,7 @@ Partial Class flunasutang
         Me.dtpelunasan.Location = New System.Drawing.Point(152, 89)
         Me.dtpelunasan.Margin = New System.Windows.Forms.Padding(6)
         Me.dtpelunasan.Name = "dtpelunasan"
-        Me.dtpelunasan.Size = New System.Drawing.Size(245, 23)
+        Me.dtpelunasan.Size = New System.Drawing.Size(245, 26)
         Me.dtpelunasan.TabIndex = 75
         '
         'Label3
@@ -473,7 +474,7 @@ Partial Class flunasutang
         Me.Label3.Location = New System.Drawing.Point(18, 92)
         Me.Label3.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(115, 18)
+        Me.Label3.Size = New System.Drawing.Size(147, 24)
         Me.Label3.TabIndex = 74
         Me.Label3.Text = "Tgl Lunas Utang"
         '
@@ -484,7 +485,7 @@ Partial Class flunasutang
         Me.txtnolunasutang.Location = New System.Drawing.Point(152, 15)
         Me.txtnolunasutang.Margin = New System.Windows.Forms.Padding(6)
         Me.txtnolunasutang.Name = "txtnolunasutang"
-        Me.txtnolunasutang.Size = New System.Drawing.Size(245, 24)
+        Me.txtnolunasutang.Size = New System.Drawing.Size(245, 29)
         Me.txtnolunasutang.TabIndex = 73
         '
         'Label2
@@ -494,7 +495,7 @@ Partial Class flunasutang
         Me.Label2.Location = New System.Drawing.Point(17, 18)
         Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(119, 18)
+        Me.Label2.Size = New System.Drawing.Size(150, 24)
         Me.Label2.TabIndex = 72
         Me.Label2.Text = "No. Lunas Utang"
         '
@@ -505,7 +506,7 @@ Partial Class flunasutang
         Me.cbposted.Location = New System.Drawing.Point(1073, 17)
         Me.cbposted.Margin = New System.Windows.Forms.Padding(4)
         Me.cbposted.Name = "cbposted"
-        Me.cbposted.Size = New System.Drawing.Size(74, 22)
+        Me.cbposted.Size = New System.Drawing.Size(90, 28)
         Me.cbposted.TabIndex = 41
         Me.cbposted.Text = "Posted"
         Me.cbposted.UseVisualStyleBackColor = True
@@ -518,7 +519,7 @@ Partial Class flunasutang
         Me.cbprinted.Location = New System.Drawing.Point(986, 17)
         Me.cbprinted.Margin = New System.Windows.Forms.Padding(4)
         Me.cbprinted.Name = "cbprinted"
-        Me.cbprinted.Size = New System.Drawing.Size(73, 22)
+        Me.cbprinted.Size = New System.Drawing.Size(91, 28)
         Me.cbprinted.TabIndex = 40
         Me.cbprinted.Text = "Printed"
         Me.cbprinted.UseVisualStyleBackColor = True
@@ -531,7 +532,7 @@ Partial Class flunasutang
         Me.cbvoid.Location = New System.Drawing.Point(909, 17)
         Me.cbvoid.Margin = New System.Windows.Forms.Padding(4)
         Me.cbvoid.Name = "cbvoid"
-        Me.cbvoid.Size = New System.Drawing.Size(56, 22)
+        Me.cbvoid.Size = New System.Drawing.Size(71, 28)
         Me.cbvoid.TabIndex = 39
         Me.cbvoid.Text = "Void"
         Me.cbvoid.UseVisualStyleBackColor = True
@@ -544,7 +545,7 @@ Partial Class flunasutang
         Me.cmbsales.Margin = New System.Windows.Forms.Padding(6)
         Me.cmbsales.MaxLength = 99
         Me.cmbsales.Name = "cmbsales"
-        Me.cmbsales.Size = New System.Drawing.Size(245, 26)
+        Me.cmbsales.Size = New System.Drawing.Size(245, 32)
         Me.cmbsales.TabIndex = 57
         '
         'Label16
@@ -554,7 +555,7 @@ Partial Class flunasutang
         Me.Label16.Location = New System.Drawing.Point(33, 54)
         Me.Label16.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(84, 18)
+        Me.Label16.Size = New System.Drawing.Size(106, 24)
         Me.Label16.TabIndex = 66
         Me.Label16.Text = "Kode Sales"
         '
@@ -565,7 +566,7 @@ Partial Class flunasutang
         Me.Label19.Location = New System.Drawing.Point(28, 127)
         Me.Label19.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(100, 18)
+        Me.Label19.Size = New System.Drawing.Size(130, 24)
         Me.Label19.TabIndex = 7
         Me.Label19.Text = "Kode Supplier"
         '
@@ -717,6 +718,7 @@ Partial Class flunasutang
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage1.Controls.Add(Me.btncarisupplier)
         Me.TabPage1.Controls.Add(Me.Label6)
         Me.TabPage1.Controls.Add(Me.Label9)
         Me.TabPage1.Controls.Add(Me.cbposted)
@@ -741,10 +743,10 @@ Partial Class flunasutang
         Me.TabPage1.Controls.Add(Me.dtpelunasan)
         Me.TabPage1.Controls.Add(Me.Label20)
         Me.TabPage1.Controls.Add(Me.Label22)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 33)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1181, 163)
+        Me.TabPage1.Size = New System.Drawing.Size(1181, 157)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Detail Pelunasan Utang"
         '
@@ -755,7 +757,7 @@ Partial Class flunasutang
         Me.Label6.Location = New System.Drawing.Point(816, 19)
         Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(50, 18)
+        Me.Label6.Size = New System.Drawing.Size(60, 24)
         Me.Label6.TabIndex = 84
         Me.Label6.Text = "Status"
         '
@@ -763,10 +765,10 @@ Partial Class flunasutang
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.TabPage2.Controls.Add(Me.txtketerangan)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 33)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1181, 163)
+        Me.TabPage2.Size = New System.Drawing.Size(1181, 157)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Keterangan"
         '
@@ -777,7 +779,7 @@ Partial Class flunasutang
         Me.Label13.Location = New System.Drawing.Point(885, 742)
         Me.Label13.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(51, 18)
+        Me.Label13.Size = New System.Drawing.Size(65, 24)
         Me.Label13.TabIndex = 92
         Me.Label13.Text = "Selisih"
         '
@@ -788,7 +790,7 @@ Partial Class flunasutang
         Me.txtselisih.Location = New System.Drawing.Point(939, 739)
         Me.txtselisih.Margin = New System.Windows.Forms.Padding(6)
         Me.txtselisih.Name = "txtselisih"
-        Me.txtselisih.Size = New System.Drawing.Size(210, 24)
+        Me.txtselisih.Size = New System.Drawing.Size(210, 29)
         Me.txtselisih.TabIndex = 91
         '
         'btnsesuaikan
@@ -852,9 +854,21 @@ Partial Class flunasutang
         Me.GridColumn11.Visible = True
         Me.GridColumn11.VisibleIndex = 2
         '
+        'btncarisupplier
+        '
+        Me.btncarisupplier.BackgroundImage = CType(resources.GetObject("btncarisupplier.BackgroundImage"), System.Drawing.Image)
+        Me.btncarisupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btncarisupplier.ImageIndex = 0
+        Me.btncarisupplier.Location = New System.Drawing.Point(368, 124)
+        Me.btncarisupplier.Margin = New System.Windows.Forms.Padding(6)
+        Me.btncarisupplier.Name = "btncarisupplier"
+        Me.btncarisupplier.Size = New System.Drawing.Size(29, 28)
+        Me.btncarisupplier.TabIndex = 86
+        Me.btncarisupplier.UseVisualStyleBackColor = True
+        '
         'flunasutang
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1223, 777)
@@ -971,4 +985,5 @@ Partial Class flunasutang
     Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents btncarisupplier As Button
 End Class

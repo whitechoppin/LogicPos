@@ -239,6 +239,7 @@ Public Class flunasutang
 
         cmbsupplier.SelectedIndex = -1
         cmbsupplier.Enabled = True
+        btncarisupplier.Enabled = True
 
         cbvoid.Checked = False
         cbprinted.Checked = False
@@ -320,6 +321,7 @@ Public Class flunasutang
 
         'cmbcustomer.SelectedIndex = 0
         cmbsupplier.Enabled = False
+        btncarisupplier.Enabled = False
 
         'cmbbayar.SelectedIndex = 0
         cmbbayar.Enabled = False
@@ -453,6 +455,7 @@ Public Class flunasutang
         cmbsales.Enabled = True
         dtpelunasan.Enabled = True
         cmbsupplier.Enabled = True
+        btncarisupplier.Enabled = True
         cmbbayar.Enabled = True
         txttotalbayar.Enabled = True
         txtbukti.Enabled = True
@@ -1175,6 +1178,11 @@ Public Class flunasutang
             iduser = 0
             cmbsales.ForeColor = Color.Red
         End If
+    End Sub
+
+    Private Sub btncarisupplier_Click(sender As Object, e As EventArgs) Handles btncarisupplier.Click
+        tutupsup = 4
+        fcarisupplier.ShowDialog()
     End Sub
 
     Sub carisupplier()

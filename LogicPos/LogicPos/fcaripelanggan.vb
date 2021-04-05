@@ -37,6 +37,8 @@ Public Class fcaripelanggan
             flaporanpricelist.cmbpelanggan.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
         ElseIf tutupplg = 5 Then
             fpreviewpiutang.cmbpelanggan.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
+        ElseIf tutupplg = 6 Then
+            flunaspiutang.cmbpelanggan.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
         End If
         Me.Close()
     End Sub

@@ -36,6 +36,8 @@ Public Class fcarisupplier
             fbarangmasuk.cmbsupplier.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
         ElseIf tutupsup = 3 Then
             fpreviewutang.cmbsupplier.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
+        ElseIf tutupsup = 4 Then
+            flunasutang.cmbsupplier.SelectedValue = Me.GridView1.GetFocusedRowCellValue("id")
         End If
         Me.Close()
     End Sub
