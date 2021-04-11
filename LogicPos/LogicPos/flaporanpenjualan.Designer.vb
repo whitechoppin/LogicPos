@@ -57,7 +57,7 @@ Partial Class flaporanpenjualan
         Me.Label1.Location = New System.Drawing.Point(258, 60)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(119, 16)
+        Me.Label1.Size = New System.Drawing.Size(141, 20)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Sampai Dengan"
         '
@@ -66,7 +66,7 @@ Partial Class flaporanpenjualan
         Me.DateTimePicker2.Location = New System.Drawing.Point(385, 56)
         Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(231, 24)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(231, 29)
         Me.DateTimePicker2.TabIndex = 3
         '
         'DateTimePicker1
@@ -74,7 +74,7 @@ Partial Class flaporanpenjualan
         Me.DateTimePicker1.Location = New System.Drawing.Point(19, 56)
         Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(231, 24)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(231, 29)
         Me.DateTimePicker1.TabIndex = 2
         '
         'btnrekap
@@ -132,7 +132,7 @@ Partial Class flaporanpenjualan
         '
         Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12})
         Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "qty", Me.GridColumn5, "")})
+        Me.GridView1.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "qty", Me.GridColumn5, "{0:n0}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "subtotal", Me.GridColumn9, "{0:n0}")})
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsFind.AlwaysVisible = True
         '
@@ -227,7 +227,7 @@ Partial Class flaporanpenjualan
         Me.Label2.Location = New System.Drawing.Point(13, 9)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(257, 31)
+        Me.Label2.Size = New System.Drawing.Size(321, 39)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Penjualan"
         '
@@ -247,14 +247,14 @@ Partial Class flaporanpenjualan
         Me.cbkeuntungan.Location = New System.Drawing.Point(624, 57)
         Me.cbkeuntungan.Margin = New System.Windows.Forms.Padding(4)
         Me.cbkeuntungan.Name = "cbkeuntungan"
-        Me.cbkeuntungan.Size = New System.Drawing.Size(105, 22)
+        Me.cbkeuntungan.Size = New System.Drawing.Size(135, 28)
         Me.cbkeuntungan.TabIndex = 105
         Me.cbkeuntungan.Text = "Keuntungan"
         Me.cbkeuntungan.UseVisualStyleBackColor = True
         '
         'flaporanpenjualan
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1213, 695)
