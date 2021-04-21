@@ -195,7 +195,7 @@ Public Class flogin
             USERID = dr("id")
 
             Call koneksi()
-            sql = "SELECT COUNT(user_id) AS total_user FROM tb_status_user WHERE user_id='" & USERID & "'"
+            sql = "SELECT COUNT(user_id) AS total_user FROM tb_status_user WHERE user_id='" & USERID & "' AND computer_id <> '" & CPUIDPOS & "' AND DATE(date_created) = DATE(NOW())"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader()
             dr.Read()
@@ -208,19 +208,7 @@ Public Class flogin
                 Call feature()
                 Call procced()
             Else
-                sql = "SELECT * FROM tb_status_user WHERE user_id = '" & USERID & "' AND computer_id='" & CPUIDPOS & "'"
-                cmmd = New OdbcCommand(sql, cnn)
-                dr = cmmd.ExecuteReader()
-                dr.Read()
-
-                If dr.HasRows = 0 Then
-                    MsgBox("Anda Sudah Login !", MsgBoxStyle.Exclamation, "Error Login")
-                Else
-                    MsgBox("Selamat Datang " & txtusername.Text & " ! ", MsgBoxStyle.Information, "Successfull Login")
-                    Call resetmenu()
-                    Call feature()
-                    Call procced()
-                End If
+                MsgBox("Anda Sudah Login !", MsgBoxStyle.Exclamation, "Error Login")
             End If
         End If
     End Sub

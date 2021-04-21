@@ -46,7 +46,7 @@ Public Class fmenu
     End Sub
     Private Sub fmenu_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Call koneksi()
-        sql = "DELETE FROM tb_status_user WHERE user_id='" & flogin.USERID & "'AND computer_id='" & flogin.CPUIDPOS & "'AND status_user='" & flogin.STATUSPOS & "'"
+        sql = "DELETE FROM tb_status_user WHERE user_id='" & flogin.USERID & "'"
         cmmd = New OdbcCommand(sql, cnn)
         dr = cmmd.ExecuteReader
 
@@ -561,5 +561,12 @@ Public Class fmenu
         faboutlogicpos.Show()
     End Sub
 
+    Private Sub fmenu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Call koneksi()
+        sql = "DELETE FROM tb_status_user WHERE user_id='" & flogin.USERID & "'"
+        cmmd = New OdbcCommand(sql, cnn)
+        dr = cmmd.ExecuteReader
 
+        Call diskoneksi()
+    End Sub
 End Class
