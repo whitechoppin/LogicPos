@@ -63,7 +63,7 @@ Partial Class flaporanpenjualan
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(385, 56)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(407, 56)
         Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(231, 29)
@@ -112,7 +112,7 @@ Partial Class flaporanpenjualan
         Me.btnfaktur.Location = New System.Drawing.Point(367, 94)
         Me.btnfaktur.Margin = New System.Windows.Forms.Padding(4)
         Me.btnfaktur.Name = "btnfaktur"
-        Me.btnfaktur.Size = New System.Drawing.Size(166, 46)
+        Me.btnfaktur.Size = New System.Drawing.Size(184, 46)
         Me.btnfaktur.TabIndex = 10
         Me.btnfaktur.Text = "Rekap Detail Faktur"
         Me.btnfaktur.UseVisualStyleBackColor = True
@@ -233,10 +233,10 @@ Partial Class flaporanpenjualan
         '
         'btnrekappenjualanbarang
         '
-        Me.btnrekappenjualanbarang.Location = New System.Drawing.Point(541, 94)
+        Me.btnrekappenjualanbarang.Location = New System.Drawing.Point(559, 94)
         Me.btnrekappenjualanbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.btnrekappenjualanbarang.Name = "btnrekappenjualanbarang"
-        Me.btnrekappenjualanbarang.Size = New System.Drawing.Size(197, 46)
+        Me.btnrekappenjualanbarang.Size = New System.Drawing.Size(231, 46)
         Me.btnrekappenjualanbarang.TabIndex = 19
         Me.btnrekappenjualanbarang.Text = "Rekap Penjualan Barang"
         Me.btnrekappenjualanbarang.UseVisualStyleBackColor = True
@@ -244,7 +244,7 @@ Partial Class flaporanpenjualan
         'cbkeuntungan
         '
         Me.cbkeuntungan.AutoSize = True
-        Me.cbkeuntungan.Location = New System.Drawing.Point(624, 57)
+        Me.cbkeuntungan.Location = New System.Drawing.Point(646, 57)
         Me.cbkeuntungan.Margin = New System.Windows.Forms.Padding(4)
         Me.cbkeuntungan.Name = "cbkeuntungan"
         Me.cbkeuntungan.Size = New System.Drawing.Size(135, 28)
