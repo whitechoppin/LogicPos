@@ -191,7 +191,7 @@ Partial Class fuser
         Me.cmbjabatan.Location = New System.Drawing.Point(108, 158)
         Me.cmbjabatan.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbjabatan.Name = "cmbjabatan"
-        Me.cmbjabatan.Size = New System.Drawing.Size(168, 26)
+        Me.cmbjabatan.Size = New System.Drawing.Size(168, 32)
         Me.cmbjabatan.TabIndex = 24
         '
         'GridControl
@@ -278,7 +278,7 @@ Partial Class fuser
         Me.txtemail.Location = New System.Drawing.Point(108, 192)
         Me.txtemail.Margin = New System.Windows.Forms.Padding(4)
         Me.txtemail.Name = "txtemail"
-        Me.txtemail.Size = New System.Drawing.Size(308, 24)
+        Me.txtemail.Size = New System.Drawing.Size(308, 29)
         Me.txtemail.TabIndex = 23
         '
         'txtpassword
@@ -287,7 +287,7 @@ Partial Class fuser
         Me.txtpassword.Margin = New System.Windows.Forms.Padding(4)
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.txtpassword.Size = New System.Drawing.Size(244, 24)
+        Me.txtpassword.Size = New System.Drawing.Size(244, 29)
         Me.txtpassword.TabIndex = 21
         '
         'Label8
@@ -297,7 +297,7 @@ Partial Class fuser
         Me.Label8.Location = New System.Drawing.Point(15, 128)
         Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(78, 20)
+        Me.Label8.Size = New System.Drawing.Size(98, 25)
         Me.Label8.TabIndex = 20
         Me.Label8.Text = "Password"
         '
@@ -308,7 +308,7 @@ Partial Class fuser
         Me.Label7.Location = New System.Drawing.Point(22, 160)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(67, 20)
+        Me.Label7.Size = New System.Drawing.Size(83, 25)
         Me.Label7.TabIndex = 19
         Me.Label7.Text = "Jabatan"
         '
@@ -319,7 +319,7 @@ Partial Class fuser
         Me.Label6.Location = New System.Drawing.Point(31, 194)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(48, 20)
+        Me.Label6.Size = New System.Drawing.Size(60, 25)
         Me.Label6.TabIndex = 18
         Me.Label6.Text = "Email"
         '
@@ -389,7 +389,7 @@ Partial Class fuser
         Me.txttelp.Location = New System.Drawing.Point(108, 224)
         Me.txttelp.Margin = New System.Windows.Forms.Padding(4)
         Me.txttelp.Name = "txttelp"
-        Me.txttelp.Size = New System.Drawing.Size(308, 22)
+        Me.txttelp.Size = New System.Drawing.Size(308, 26)
         Me.txttelp.TabIndex = 2
         '
         'txtnama
@@ -398,7 +398,7 @@ Partial Class fuser
         Me.txtnama.Location = New System.Drawing.Point(108, 96)
         Me.txtnama.Margin = New System.Windows.Forms.Padding(4)
         Me.txtnama.Name = "txtnama"
-        Me.txtnama.Size = New System.Drawing.Size(308, 22)
+        Me.txtnama.Size = New System.Drawing.Size(308, 26)
         Me.txtnama.TabIndex = 2
         '
         'Label5
@@ -408,7 +408,7 @@ Partial Class fuser
         Me.Label5.Location = New System.Drawing.Point(9, 320)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(92, 20)
+        Me.Label5.Size = New System.Drawing.Size(114, 25)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "Keterangan"
         '
@@ -419,7 +419,7 @@ Partial Class fuser
         Me.txtkode.Location = New System.Drawing.Point(108, 66)
         Me.txtkode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtkode.Name = "txtkode"
-        Me.txtkode.Size = New System.Drawing.Size(308, 22)
+        Me.txtkode.Size = New System.Drawing.Size(308, 26)
         Me.txtkode.TabIndex = 1
         '
         'Label4
@@ -429,7 +429,7 @@ Partial Class fuser
         Me.Label4.Location = New System.Drawing.Point(24, 255)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(59, 20)
+        Me.Label4.Size = New System.Drawing.Size(73, 25)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Alamat"
         '
@@ -440,7 +440,7 @@ Partial Class fuser
         Me.Label3.Location = New System.Drawing.Point(21, 223)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(66, 20)
+        Me.Label3.Size = New System.Drawing.Size(84, 25)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Telepon"
         '
@@ -451,7 +451,7 @@ Partial Class fuser
         Me.Label2.Location = New System.Drawing.Point(9, 96)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(89, 20)
+        Me.Label2.Size = New System.Drawing.Size(110, 25)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Nama User"
         '
@@ -462,7 +462,7 @@ Partial Class fuser
         Me.Label1.Location = New System.Drawing.Point(9, 66)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(84, 20)
+        Me.Label1.Size = New System.Drawing.Size(105, 25)
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Kode User"
         '
@@ -476,7 +476,7 @@ Partial Class fuser
         Me.clblapmodalbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.clblapmodalbarang.Name = "clblapmodalbarang"
         Me.clblapmodalbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblapmodalbarang.Size = New System.Drawing.Size(134, 42)
+        Me.clblapmodalbarang.Size = New System.Drawing.Size(134, 28)
         Me.clblapmodalbarang.TabIndex = 115
         '
         'cblapmodalbarang
@@ -485,7 +485,7 @@ Partial Class fuser
         Me.cblapmodalbarang.Location = New System.Drawing.Point(664, 13)
         Me.cblapmodalbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.cblapmodalbarang.Name = "cblapmodalbarang"
-        Me.cblapmodalbarang.Size = New System.Drawing.Size(151, 22)
+        Me.cblapmodalbarang.Size = New System.Drawing.Size(190, 28)
         Me.cblapmodalbarang.TabIndex = 114
         Me.cblapmodalbarang.Text = "Lap. Modal Barang"
         Me.cblapmodalbarang.UseVisualStyleBackColor = True
@@ -500,7 +500,7 @@ Partial Class fuser
         Me.clblapbarangkeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.clblapbarangkeluar.Name = "clblapbarangkeluar"
         Me.clblapbarangkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblapbarangkeluar.Size = New System.Drawing.Size(134, 42)
+        Me.clblapbarangkeluar.Size = New System.Drawing.Size(134, 28)
         Me.clblapbarangkeluar.TabIndex = 113
         '
         'cblapbarangkeluar
@@ -509,7 +509,7 @@ Partial Class fuser
         Me.cblapbarangkeluar.Location = New System.Drawing.Point(176, 253)
         Me.cblapbarangkeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.cblapbarangkeluar.Name = "cblapbarangkeluar"
-        Me.cblapbarangkeluar.Size = New System.Drawing.Size(152, 22)
+        Me.cblapbarangkeluar.Size = New System.Drawing.Size(192, 28)
         Me.cblapbarangkeluar.TabIndex = 112
         Me.cblapbarangkeluar.Text = "Lap. Barang Keluar"
         Me.cblapbarangkeluar.UseVisualStyleBackColor = True
@@ -524,7 +524,7 @@ Partial Class fuser
         Me.clblapbarangmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.clblapbarangmasuk.Name = "clblapbarangmasuk"
         Me.clblapbarangmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblapbarangmasuk.Size = New System.Drawing.Size(134, 42)
+        Me.clblapbarangmasuk.Size = New System.Drawing.Size(134, 28)
         Me.clblapbarangmasuk.TabIndex = 111
         '
         'cblapbarangmasuk
@@ -533,7 +533,7 @@ Partial Class fuser
         Me.cblapbarangmasuk.Location = New System.Drawing.Point(176, 173)
         Me.cblapbarangmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.cblapbarangmasuk.Name = "cblapbarangmasuk"
-        Me.cblapbarangmasuk.Size = New System.Drawing.Size(155, 22)
+        Me.cblapbarangmasuk.Size = New System.Drawing.Size(193, 28)
         Me.cblapbarangmasuk.TabIndex = 110
         Me.cblapbarangmasuk.Text = "Lap. Barang Masuk"
         Me.cblapbarangmasuk.UseVisualStyleBackColor = True
@@ -548,7 +548,7 @@ Partial Class fuser
         Me.clblapreturjual.Margin = New System.Windows.Forms.Padding(4)
         Me.clblapreturjual.Name = "clblapreturjual"
         Me.clblapreturjual.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblapreturjual.Size = New System.Drawing.Size(134, 42)
+        Me.clblapreturjual.Size = New System.Drawing.Size(134, 28)
         Me.clblapreturjual.TabIndex = 109
         '
         'cblapreturjual
@@ -557,7 +557,7 @@ Partial Class fuser
         Me.cblapreturjual.Location = New System.Drawing.Point(176, 93)
         Me.cblapreturjual.Margin = New System.Windows.Forms.Padding(4)
         Me.cblapreturjual.Name = "cblapreturjual"
-        Me.cblapreturjual.Size = New System.Drawing.Size(126, 22)
+        Me.cblapreturjual.Size = New System.Drawing.Size(157, 28)
         Me.cblapreturjual.TabIndex = 108
         Me.cblapreturjual.Text = "Lap. Retur Jual"
         Me.cblapreturjual.UseVisualStyleBackColor = True
@@ -572,7 +572,7 @@ Partial Class fuser
         Me.clblappricelist.Margin = New System.Windows.Forms.Padding(4)
         Me.clblappricelist.Name = "clblappricelist"
         Me.clblappricelist.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblappricelist.Size = New System.Drawing.Size(134, 42)
+        Me.clblappricelist.Size = New System.Drawing.Size(134, 28)
         Me.clblappricelist.TabIndex = 107
         '
         'cblappricelist
@@ -581,7 +581,7 @@ Partial Class fuser
         Me.cblappricelist.Location = New System.Drawing.Point(8, 13)
         Me.cblappricelist.Margin = New System.Windows.Forms.Padding(4)
         Me.cblappricelist.Name = "cblappricelist"
-        Me.cblappricelist.Size = New System.Drawing.Size(111, 22)
+        Me.cblappricelist.Size = New System.Drawing.Size(137, 28)
         Me.cblappricelist.TabIndex = 106
         Me.cblappricelist.Text = "Lap. Pricelist"
         Me.cblappricelist.UseVisualStyleBackColor = True
@@ -596,7 +596,7 @@ Partial Class fuser
         Me.clblapreturbeli.Margin = New System.Windows.Forms.Padding(4)
         Me.clblapreturbeli.Name = "clblapreturbeli"
         Me.clblapreturbeli.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblapreturbeli.Size = New System.Drawing.Size(134, 42)
+        Me.clblapreturbeli.Size = New System.Drawing.Size(134, 28)
         Me.clblapreturbeli.TabIndex = 105
         '
         'cblapreturbeli
@@ -605,7 +605,7 @@ Partial Class fuser
         Me.cblapreturbeli.Location = New System.Drawing.Point(176, 13)
         Me.cblapreturbeli.Margin = New System.Windows.Forms.Padding(4)
         Me.cblapreturbeli.Name = "cblapreturbeli"
-        Me.cblapreturbeli.Size = New System.Drawing.Size(123, 22)
+        Me.cblapreturbeli.Size = New System.Drawing.Size(154, 28)
         Me.cblapreturbeli.TabIndex = 104
         Me.cblapreturbeli.Text = "Lap. Retur Beli"
         Me.cblapreturbeli.UseVisualStyleBackColor = True
@@ -620,7 +620,7 @@ Partial Class fuser
         Me.clbmasterkategori.Margin = New System.Windows.Forms.Padding(4)
         Me.clbmasterkategori.Name = "clbmasterkategori"
         Me.clbmasterkategori.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmasterkategori.Size = New System.Drawing.Size(100, 61)
+        Me.clbmasterkategori.Size = New System.Drawing.Size(100, 52)
         Me.clbmasterkategori.TabIndex = 103
         '
         'cbmasterkategori
@@ -629,7 +629,7 @@ Partial Class fuser
         Me.cbmasterkategori.Location = New System.Drawing.Point(8, 102)
         Me.cbmasterkategori.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmasterkategori.Name = "cbmasterkategori"
-        Me.cbmasterkategori.Size = New System.Drawing.Size(132, 22)
+        Me.cbmasterkategori.Size = New System.Drawing.Size(162, 28)
         Me.cbmasterkategori.TabIndex = 102
         Me.cbmasterkategori.Text = "Master Kategori"
         Me.cbmasterkategori.UseVisualStyleBackColor = True
@@ -644,7 +644,7 @@ Partial Class fuser
         Me.clblaptransaksikas.Margin = New System.Windows.Forms.Padding(4)
         Me.clblaptransaksikas.Name = "clblaptransaksikas"
         Me.clblaptransaksikas.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblaptransaksikas.Size = New System.Drawing.Size(134, 42)
+        Me.clblaptransaksikas.Size = New System.Drawing.Size(134, 28)
         Me.clblaptransaksikas.TabIndex = 101
         '
         'cblaptransaksikas
@@ -653,7 +653,7 @@ Partial Class fuser
         Me.cblaptransaksikas.Location = New System.Drawing.Point(505, 253)
         Me.cblaptransaksikas.Margin = New System.Windows.Forms.Padding(4)
         Me.cblaptransaksikas.Name = "cblaptransaksikas"
-        Me.cblaptransaksikas.Size = New System.Drawing.Size(154, 22)
+        Me.cblaptransaksikas.Size = New System.Drawing.Size(189, 28)
         Me.cblaptransaksikas.TabIndex = 100
         Me.cblaptransaksikas.Text = "Lap. Transaksi Kas"
         Me.cblaptransaksikas.UseVisualStyleBackColor = True
@@ -668,7 +668,7 @@ Partial Class fuser
         Me.clblaptransferbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.clblaptransferbarang.Name = "clblaptransferbarang"
         Me.clblaptransferbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblaptransferbarang.Size = New System.Drawing.Size(134, 42)
+        Me.clblaptransferbarang.Size = New System.Drawing.Size(134, 28)
         Me.clblaptransferbarang.TabIndex = 99
         '
         'cblaptransferbarang
@@ -677,7 +677,7 @@ Partial Class fuser
         Me.cblaptransferbarang.Location = New System.Drawing.Point(332, 13)
         Me.cblaptransferbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.cblaptransferbarang.Name = "cblaptransferbarang"
-        Me.cblaptransferbarang.Size = New System.Drawing.Size(165, 22)
+        Me.cblaptransferbarang.Size = New System.Drawing.Size(207, 28)
         Me.cblaptransferbarang.TabIndex = 98
         Me.cblaptransferbarang.Text = "Lap. Transfer Barang"
         Me.cblaptransferbarang.UseVisualStyleBackColor = True
@@ -692,7 +692,7 @@ Partial Class fuser
         Me.clblaptransferkas.Margin = New System.Windows.Forms.Padding(4)
         Me.clblaptransferkas.Name = "clblaptransferkas"
         Me.clblaptransferkas.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblaptransferkas.Size = New System.Drawing.Size(134, 42)
+        Me.clblaptransferkas.Size = New System.Drawing.Size(134, 28)
         Me.clblaptransferkas.TabIndex = 97
         '
         'cblaptransferkas
@@ -701,7 +701,7 @@ Partial Class fuser
         Me.cblaptransferkas.Location = New System.Drawing.Point(505, 173)
         Me.cblaptransferkas.Margin = New System.Windows.Forms.Padding(4)
         Me.cblaptransferkas.Name = "cblaptransferkas"
-        Me.cblaptransferkas.Size = New System.Drawing.Size(144, 22)
+        Me.cblaptransferkas.Size = New System.Drawing.Size(178, 28)
         Me.cblaptransferkas.TabIndex = 96
         Me.cblaptransferkas.Text = "Lap. Transfer Kas"
         Me.cblaptransferkas.UseVisualStyleBackColor = True
@@ -716,7 +716,7 @@ Partial Class fuser
         Me.clblapakunkeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.clblapakunkeluar.Name = "clblapakunkeluar"
         Me.clblapakunkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblapakunkeluar.Size = New System.Drawing.Size(134, 42)
+        Me.clblapakunkeluar.Size = New System.Drawing.Size(134, 28)
         Me.clblapakunkeluar.TabIndex = 95
         '
         'cblapakunkeluar
@@ -725,7 +725,7 @@ Partial Class fuser
         Me.cblapakunkeluar.Location = New System.Drawing.Point(505, 93)
         Me.cblapakunkeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.cblapakunkeluar.Name = "cblapakunkeluar"
-        Me.cblapakunkeluar.Size = New System.Drawing.Size(138, 22)
+        Me.cblapakunkeluar.Size = New System.Drawing.Size(176, 28)
         Me.cblapakunkeluar.TabIndex = 94
         Me.cblapakunkeluar.Text = "Lap. Akun Keluar"
         Me.cblapakunkeluar.UseVisualStyleBackColor = True
@@ -740,7 +740,7 @@ Partial Class fuser
         Me.clblapakunmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.clblapakunmasuk.Name = "clblapakunmasuk"
         Me.clblapakunmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblapakunmasuk.Size = New System.Drawing.Size(134, 42)
+        Me.clblapakunmasuk.Size = New System.Drawing.Size(134, 28)
         Me.clblapakunmasuk.TabIndex = 93
         '
         'cblapakunmasuk
@@ -749,7 +749,7 @@ Partial Class fuser
         Me.cblapakunmasuk.Location = New System.Drawing.Point(505, 13)
         Me.cblapakunmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.cblapakunmasuk.Name = "cblapakunmasuk"
-        Me.cblapakunmasuk.Size = New System.Drawing.Size(141, 22)
+        Me.cblapakunmasuk.Size = New System.Drawing.Size(177, 28)
         Me.cblapakunmasuk.TabIndex = 92
         Me.cblapakunmasuk.Text = "Lap. Akun Masuk"
         Me.cblapakunmasuk.UseVisualStyleBackColor = True
@@ -764,7 +764,7 @@ Partial Class fuser
         Me.clbakunkeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.clbakunkeluar.Name = "clbakunkeluar"
         Me.clbakunkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbakunkeluar.Size = New System.Drawing.Size(100, 61)
+        Me.clbakunkeluar.Size = New System.Drawing.Size(100, 52)
         Me.clbakunkeluar.TabIndex = 90
         '
         'clbakunmasuk
@@ -777,7 +777,7 @@ Partial Class fuser
         Me.clbakunmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.clbakunmasuk.Name = "clbakunmasuk"
         Me.clbakunmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbakunmasuk.Size = New System.Drawing.Size(100, 61)
+        Me.clbakunmasuk.Size = New System.Drawing.Size(100, 52)
         Me.clbakunmasuk.TabIndex = 89
         '
         'cbakunkeluar
@@ -786,7 +786,7 @@ Partial Class fuser
         Me.cbakunkeluar.Location = New System.Drawing.Point(153, 111)
         Me.cbakunkeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.cbakunkeluar.Name = "cbakunkeluar"
-        Me.cbakunkeluar.Size = New System.Drawing.Size(106, 22)
+        Me.cbakunkeluar.Size = New System.Drawing.Size(135, 28)
         Me.cbakunkeluar.TabIndex = 87
         Me.cbakunkeluar.Text = "Akun Keluar"
         Me.cbakunkeluar.UseVisualStyleBackColor = True
@@ -797,7 +797,7 @@ Partial Class fuser
         Me.cbakunmasuk.Location = New System.Drawing.Point(153, 12)
         Me.cbakunmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.cbakunmasuk.Name = "cbakunmasuk"
-        Me.cbakunmasuk.Size = New System.Drawing.Size(109, 22)
+        Me.cbakunmasuk.Size = New System.Drawing.Size(136, 28)
         Me.cbakunmasuk.TabIndex = 86
         Me.cbakunmasuk.Text = "Akun Masuk"
         Me.cbakunmasuk.UseVisualStyleBackColor = True
@@ -812,7 +812,7 @@ Partial Class fuser
         Me.clbtransferkas.Margin = New System.Windows.Forms.Padding(4)
         Me.clbtransferkas.Name = "clbtransferkas"
         Me.clbtransferkas.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbtransferkas.Size = New System.Drawing.Size(100, 61)
+        Me.clbtransferkas.Size = New System.Drawing.Size(100, 52)
         Me.clbtransferkas.TabIndex = 85
         '
         'clblunaspiutang
@@ -825,7 +825,7 @@ Partial Class fuser
         Me.clblunaspiutang.Margin = New System.Windows.Forms.Padding(4)
         Me.clblunaspiutang.Name = "clblunaspiutang"
         Me.clblunaspiutang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblunaspiutang.Size = New System.Drawing.Size(100, 61)
+        Me.clblunaspiutang.Size = New System.Drawing.Size(100, 52)
         Me.clblunaspiutang.TabIndex = 84
         '
         'cbtransferkas
@@ -834,7 +834,7 @@ Partial Class fuser
         Me.cbtransferkas.Location = New System.Drawing.Point(309, 12)
         Me.cbtransferkas.Margin = New System.Windows.Forms.Padding(4)
         Me.cbtransferkas.Name = "cbtransferkas"
-        Me.cbtransferkas.Size = New System.Drawing.Size(112, 22)
+        Me.cbtransferkas.Size = New System.Drawing.Size(137, 28)
         Me.cbtransferkas.TabIndex = 83
         Me.cbtransferkas.Text = "Transfer Kas"
         Me.cbtransferkas.UseVisualStyleBackColor = True
@@ -845,7 +845,7 @@ Partial Class fuser
         Me.cblunaspiutang.Location = New System.Drawing.Point(7, 111)
         Me.cblunaspiutang.Margin = New System.Windows.Forms.Padding(4)
         Me.cblunaspiutang.Name = "cblunaspiutang"
-        Me.cblunaspiutang.Size = New System.Drawing.Size(120, 22)
+        Me.cblunaspiutang.Size = New System.Drawing.Size(151, 28)
         Me.cblunaspiutang.TabIndex = 82
         Me.cblunaspiutang.Text = "Lunas Piutang"
         Me.cblunaspiutang.UseVisualStyleBackColor = True
@@ -860,7 +860,7 @@ Partial Class fuser
         Me.clblunasutang.Margin = New System.Windows.Forms.Padding(4)
         Me.clblunasutang.Name = "clblunasutang"
         Me.clblunasutang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblunasutang.Size = New System.Drawing.Size(100, 61)
+        Me.clblunasutang.Size = New System.Drawing.Size(100, 52)
         Me.clblunasutang.TabIndex = 81
         '
         'cblunasutang
@@ -869,7 +869,7 @@ Partial Class fuser
         Me.cblunasutang.Location = New System.Drawing.Point(9, 12)
         Me.cblunasutang.Margin = New System.Windows.Forms.Padding(4)
         Me.cblunasutang.Name = "cblunasutang"
-        Me.cblunasutang.Size = New System.Drawing.Size(110, 22)
+        Me.cblunasutang.Size = New System.Drawing.Size(137, 28)
         Me.cblunasutang.TabIndex = 80
         Me.cblunasutang.Text = "Lunas Utang"
         Me.cblunasutang.UseVisualStyleBackColor = True
@@ -884,7 +884,7 @@ Partial Class fuser
         Me.clbtransferbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.clbtransferbarang.Name = "clbtransferbarang"
         Me.clbtransferbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbtransferbarang.Size = New System.Drawing.Size(100, 61)
+        Me.clbtransferbarang.Size = New System.Drawing.Size(100, 52)
         Me.clbtransferbarang.TabIndex = 79
         '
         'clbbarangkeluar
@@ -897,7 +897,7 @@ Partial Class fuser
         Me.clbbarangkeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.clbbarangkeluar.Name = "clbbarangkeluar"
         Me.clbbarangkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbbarangkeluar.Size = New System.Drawing.Size(100, 61)
+        Me.clbbarangkeluar.Size = New System.Drawing.Size(100, 52)
         Me.clbbarangkeluar.TabIndex = 78
         '
         'clbbarangmasuk
@@ -910,7 +910,7 @@ Partial Class fuser
         Me.clbbarangmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.clbbarangmasuk.Name = "clbbarangmasuk"
         Me.clbbarangmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbbarangmasuk.Size = New System.Drawing.Size(100, 61)
+        Me.clbbarangmasuk.Size = New System.Drawing.Size(100, 52)
         Me.clbbarangmasuk.TabIndex = 77
         '
         'cbtransferbarang
@@ -919,7 +919,7 @@ Partial Class fuser
         Me.cbtransferbarang.Location = New System.Drawing.Point(442, 12)
         Me.cbtransferbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.cbtransferbarang.Name = "cbtransferbarang"
-        Me.cbtransferbarang.Size = New System.Drawing.Size(133, 22)
+        Me.cbtransferbarang.Size = New System.Drawing.Size(166, 28)
         Me.cbtransferbarang.TabIndex = 76
         Me.cbtransferbarang.Text = "Transfer Barang"
         Me.cbtransferbarang.UseVisualStyleBackColor = True
@@ -930,7 +930,7 @@ Partial Class fuser
         Me.cbbarangkeluar.Location = New System.Drawing.Point(295, 111)
         Me.cbbarangkeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.cbbarangkeluar.Name = "cbbarangkeluar"
-        Me.cbbarangkeluar.Size = New System.Drawing.Size(120, 22)
+        Me.cbbarangkeluar.Size = New System.Drawing.Size(151, 28)
         Me.cbbarangkeluar.TabIndex = 75
         Me.cbbarangkeluar.Text = "Barang Keluar"
         Me.cbbarangkeluar.UseVisualStyleBackColor = True
@@ -941,7 +941,7 @@ Partial Class fuser
         Me.cbbarangmasuk.Location = New System.Drawing.Point(295, 12)
         Me.cbbarangmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.cbbarangmasuk.Name = "cbbarangmasuk"
-        Me.cbbarangmasuk.Size = New System.Drawing.Size(123, 22)
+        Me.cbbarangmasuk.Size = New System.Drawing.Size(152, 28)
         Me.cbbarangmasuk.TabIndex = 74
         Me.cbbarangmasuk.Text = "Barang Masuk"
         Me.cbbarangmasuk.UseVisualStyleBackColor = True
@@ -956,7 +956,7 @@ Partial Class fuser
         Me.clbmasterrekplng.Margin = New System.Windows.Forms.Padding(4)
         Me.clbmasterrekplng.Name = "clbmasterrekplng"
         Me.clbmasterrekplng.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmasterrekplng.Size = New System.Drawing.Size(100, 61)
+        Me.clbmasterrekplng.Size = New System.Drawing.Size(100, 52)
         Me.clbmasterrekplng.TabIndex = 73
         '
         'cbmasterrekplng
@@ -965,7 +965,7 @@ Partial Class fuser
         Me.cbmasterrekplng.Location = New System.Drawing.Point(439, 102)
         Me.cbmasterrekplng.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmasterrekplng.Name = "cbmasterrekplng"
-        Me.cbmasterrekplng.Size = New System.Drawing.Size(177, 22)
+        Me.cbmasterrekplng.Size = New System.Drawing.Size(222, 28)
         Me.cbmasterrekplng.TabIndex = 72
         Me.cbmasterrekplng.Text = "Master Rek Pelanggan"
         Me.cbmasterrekplng.UseVisualStyleBackColor = True
@@ -980,7 +980,7 @@ Partial Class fuser
         Me.clbmasterreksupp.Margin = New System.Windows.Forms.Padding(4)
         Me.clbmasterreksupp.Name = "clbmasterreksupp"
         Me.clbmasterreksupp.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmasterreksupp.Size = New System.Drawing.Size(100, 61)
+        Me.clbmasterreksupp.Size = New System.Drawing.Size(100, 52)
         Me.clbmasterreksupp.TabIndex = 71
         '
         'cbmasterreksupp
@@ -989,7 +989,7 @@ Partial Class fuser
         Me.cbmasterreksupp.Location = New System.Drawing.Point(439, 8)
         Me.cbmasterreksupp.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmasterreksupp.Name = "cbmasterreksupp"
-        Me.cbmasterreksupp.Size = New System.Drawing.Size(161, 22)
+        Me.cbmasterreksupp.Size = New System.Drawing.Size(201, 28)
         Me.cbmasterreksupp.TabIndex = 70
         Me.cbmasterreksupp.Text = "Master Rek Supplier"
         Me.cbmasterreksupp.UseVisualStyleBackColor = True
@@ -1004,7 +1004,7 @@ Partial Class fuser
         Me.clblapstokbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.clblapstokbarang.Name = "clblapstokbarang"
         Me.clblapstokbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblapstokbarang.Size = New System.Drawing.Size(134, 42)
+        Me.clblapstokbarang.Size = New System.Drawing.Size(134, 28)
         Me.clblapstokbarang.TabIndex = 69
         '
         'cblapstokbarang
@@ -1013,7 +1013,7 @@ Partial Class fuser
         Me.cblapstokbarang.Location = New System.Drawing.Point(332, 93)
         Me.cblapstokbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.cblapstokbarang.Name = "cblapstokbarang"
-        Me.cblapstokbarang.Size = New System.Drawing.Size(141, 22)
+        Me.cblapstokbarang.Size = New System.Drawing.Size(174, 28)
         Me.cblapstokbarang.TabIndex = 68
         Me.cblapstokbarang.Text = "Lap. Stok Barang"
         Me.cblapstokbarang.UseVisualStyleBackColor = True
@@ -1028,7 +1028,7 @@ Partial Class fuser
         Me.clblappiutang.Margin = New System.Windows.Forms.Padding(4)
         Me.clblappiutang.Name = "clblappiutang"
         Me.clblappiutang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblappiutang.Size = New System.Drawing.Size(134, 42)
+        Me.clblappiutang.Size = New System.Drawing.Size(134, 28)
         Me.clblappiutang.TabIndex = 59
         '
         'cblappiutang
@@ -1037,7 +1037,7 @@ Partial Class fuser
         Me.cblappiutang.Location = New System.Drawing.Point(332, 253)
         Me.cblappiutang.Margin = New System.Windows.Forms.Padding(4)
         Me.cblappiutang.Name = "cblappiutang"
-        Me.cblappiutang.Size = New System.Drawing.Size(152, 22)
+        Me.cblappiutang.Size = New System.Drawing.Size(192, 28)
         Me.cblappiutang.TabIndex = 58
         Me.cblappiutang.Text = "Lap. Lunas Piutang"
         Me.cblappiutang.UseVisualStyleBackColor = True
@@ -1052,7 +1052,7 @@ Partial Class fuser
         Me.clblaputang.Margin = New System.Windows.Forms.Padding(4)
         Me.clblaputang.Name = "clblaputang"
         Me.clblaputang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblaputang.Size = New System.Drawing.Size(134, 42)
+        Me.clblaputang.Size = New System.Drawing.Size(134, 28)
         Me.clblaputang.TabIndex = 57
         '
         'cblaputang
@@ -1061,7 +1061,7 @@ Partial Class fuser
         Me.cblaputang.Location = New System.Drawing.Point(332, 173)
         Me.cblaputang.Margin = New System.Windows.Forms.Padding(4)
         Me.cblaputang.Name = "cblaputang"
-        Me.cblaputang.Size = New System.Drawing.Size(142, 22)
+        Me.cblaputang.Size = New System.Drawing.Size(178, 28)
         Me.cblaputang.TabIndex = 56
         Me.cblaputang.Text = "Lap. Lunas Utang"
         Me.cblaputang.UseVisualStyleBackColor = True
@@ -1076,7 +1076,7 @@ Partial Class fuser
         Me.clblappembelian.Margin = New System.Windows.Forms.Padding(4)
         Me.clblappembelian.Name = "clblappembelian"
         Me.clblappembelian.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblappembelian.Size = New System.Drawing.Size(134, 42)
+        Me.clblappembelian.Size = New System.Drawing.Size(134, 28)
         Me.clblappembelian.TabIndex = 55
         '
         'cblappembelian
@@ -1085,7 +1085,7 @@ Partial Class fuser
         Me.cblappembelian.Location = New System.Drawing.Point(8, 93)
         Me.cblappembelian.Margin = New System.Windows.Forms.Padding(4)
         Me.cblappembelian.Name = "cblappembelian"
-        Me.cblappembelian.Size = New System.Drawing.Size(128, 22)
+        Me.cblappembelian.Size = New System.Drawing.Size(163, 28)
         Me.cblappembelian.TabIndex = 54
         Me.cblappembelian.Text = "Lap. Pembelian"
         Me.cblappembelian.UseVisualStyleBackColor = True
@@ -1100,7 +1100,7 @@ Partial Class fuser
         Me.clblappenjualan.Margin = New System.Windows.Forms.Padding(4)
         Me.clblappenjualan.Name = "clblappenjualan"
         Me.clblappenjualan.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblappenjualan.Size = New System.Drawing.Size(134, 42)
+        Me.clblappenjualan.Size = New System.Drawing.Size(134, 28)
         Me.clblappenjualan.TabIndex = 53
         '
         'cblappenjualan
@@ -1109,7 +1109,7 @@ Partial Class fuser
         Me.cblappenjualan.Location = New System.Drawing.Point(8, 173)
         Me.cblappenjualan.Margin = New System.Windows.Forms.Padding(4)
         Me.cblappenjualan.Name = "cblappenjualan"
-        Me.cblappenjualan.Size = New System.Drawing.Size(123, 22)
+        Me.cblappenjualan.Size = New System.Drawing.Size(157, 28)
         Me.cblappenjualan.TabIndex = 52
         Me.cblappenjualan.Text = "Lap. Penjualan"
         Me.cblappenjualan.UseVisualStyleBackColor = True
@@ -1124,7 +1124,7 @@ Partial Class fuser
         Me.clbreturjual.Margin = New System.Windows.Forms.Padding(4)
         Me.clbreturjual.Name = "clbreturjual"
         Me.clbreturjual.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbreturjual.Size = New System.Drawing.Size(100, 61)
+        Me.clbreturjual.Size = New System.Drawing.Size(100, 52)
         Me.clbreturjual.TabIndex = 40
         '
         'clbreturbeli
@@ -1137,7 +1137,7 @@ Partial Class fuser
         Me.clbreturbeli.Margin = New System.Windows.Forms.Padding(4)
         Me.clbreturbeli.Name = "clbreturbeli"
         Me.clbreturbeli.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbreturbeli.Size = New System.Drawing.Size(100, 61)
+        Me.clbreturbeli.Size = New System.Drawing.Size(100, 52)
         Me.clbreturbeli.TabIndex = 38
         '
         'clbpenjualan
@@ -1150,7 +1150,7 @@ Partial Class fuser
         Me.clbpenjualan.Margin = New System.Windows.Forms.Padding(4)
         Me.clbpenjualan.Name = "clbpenjualan"
         Me.clbpenjualan.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbpenjualan.Size = New System.Drawing.Size(100, 61)
+        Me.clbpenjualan.Size = New System.Drawing.Size(100, 52)
         Me.clbpenjualan.TabIndex = 36
         '
         'cbreturjual
@@ -1159,7 +1159,7 @@ Partial Class fuser
         Me.cbreturjual.Location = New System.Drawing.Point(155, 111)
         Me.cbreturjual.Margin = New System.Windows.Forms.Padding(4)
         Me.cbreturjual.Name = "cbreturjual"
-        Me.cbreturjual.Size = New System.Drawing.Size(94, 22)
+        Me.cbreturjual.Size = New System.Drawing.Size(116, 28)
         Me.cbreturjual.TabIndex = 28
         Me.cbreturjual.Text = "Retur Jual"
         Me.cbreturjual.UseVisualStyleBackColor = True
@@ -1170,7 +1170,7 @@ Partial Class fuser
         Me.cbreturbeli.Location = New System.Drawing.Point(155, 12)
         Me.cbreturbeli.Margin = New System.Windows.Forms.Padding(4)
         Me.cbreturbeli.Name = "cbreturbeli"
-        Me.cbreturbeli.Size = New System.Drawing.Size(91, 22)
+        Me.cbreturbeli.Size = New System.Drawing.Size(113, 28)
         Me.cbreturbeli.TabIndex = 26
         Me.cbreturbeli.Text = "Retur Beli"
         Me.cbreturbeli.UseVisualStyleBackColor = True
@@ -1181,7 +1181,7 @@ Partial Class fuser
         Me.cbpenjualan.Location = New System.Drawing.Point(8, 111)
         Me.cbpenjualan.Margin = New System.Windows.Forms.Padding(4)
         Me.cbpenjualan.Name = "cbpenjualan"
-        Me.cbpenjualan.Size = New System.Drawing.Size(91, 22)
+        Me.cbpenjualan.Size = New System.Drawing.Size(116, 28)
         Me.cbpenjualan.TabIndex = 24
         Me.cbpenjualan.Text = "Penjualan"
         Me.cbpenjualan.UseVisualStyleBackColor = True
@@ -1196,7 +1196,7 @@ Partial Class fuser
         Me.clbpembelian.Margin = New System.Windows.Forms.Padding(4)
         Me.clbpembelian.Name = "clbpembelian"
         Me.clbpembelian.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbpembelian.Size = New System.Drawing.Size(100, 61)
+        Me.clbpembelian.Size = New System.Drawing.Size(100, 52)
         Me.clbpembelian.TabIndex = 23
         '
         'cbpembelian
@@ -1205,7 +1205,7 @@ Partial Class fuser
         Me.cbpembelian.Location = New System.Drawing.Point(8, 12)
         Me.cbpembelian.Margin = New System.Windows.Forms.Padding(4)
         Me.cbpembelian.Name = "cbpembelian"
-        Me.cbpembelian.Size = New System.Drawing.Size(96, 22)
+        Me.cbpembelian.Size = New System.Drawing.Size(122, 28)
         Me.cbpembelian.TabIndex = 22
         Me.cbpembelian.Text = "Pembelian"
         Me.cbpembelian.UseVisualStyleBackColor = True
@@ -1220,7 +1220,7 @@ Partial Class fuser
         Me.clbmasteruser.Margin = New System.Windows.Forms.Padding(4)
         Me.clbmasteruser.Name = "clbmasteruser"
         Me.clbmasteruser.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmasteruser.Size = New System.Drawing.Size(100, 61)
+        Me.clbmasteruser.Size = New System.Drawing.Size(100, 52)
         Me.clbmasteruser.TabIndex = 21
         '
         'cbmasteruser
@@ -1229,7 +1229,7 @@ Partial Class fuser
         Me.cbmasteruser.Location = New System.Drawing.Point(150, 201)
         Me.cbmasteruser.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmasteruser.Name = "cbmasteruser"
-        Me.cbmasteruser.Size = New System.Drawing.Size(109, 22)
+        Me.cbmasteruser.Size = New System.Drawing.Size(132, 28)
         Me.cbmasteruser.TabIndex = 20
         Me.cbmasteruser.Text = "Master User"
         Me.cbmasteruser.UseVisualStyleBackColor = True
@@ -1244,7 +1244,7 @@ Partial Class fuser
         Me.clbmasterpricelist.Margin = New System.Windows.Forms.Padding(4)
         Me.clbmasterpricelist.Name = "clbmasterpricelist"
         Me.clbmasterpricelist.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmasterpricelist.Size = New System.Drawing.Size(100, 61)
+        Me.clbmasterpricelist.Size = New System.Drawing.Size(100, 52)
         Me.clbmasterpricelist.TabIndex = 19
         '
         'cbmasterpricelist
@@ -1253,7 +1253,7 @@ Partial Class fuser
         Me.cbmasterpricelist.Location = New System.Drawing.Point(301, 102)
         Me.cbmasterpricelist.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmasterpricelist.Name = "cbmasterpricelist"
-        Me.cbmasterpricelist.Size = New System.Drawing.Size(129, 22)
+        Me.cbmasterpricelist.Size = New System.Drawing.Size(157, 28)
         Me.cbmasterpricelist.TabIndex = 18
         Me.cbmasterpricelist.Text = "Master Pricelist"
         Me.cbmasterpricelist.UseVisualStyleBackColor = True
@@ -1268,7 +1268,7 @@ Partial Class fuser
         Me.clbmasterkas.Margin = New System.Windows.Forms.Padding(4)
         Me.clbmasterkas.Name = "clbmasterkas"
         Me.clbmasterkas.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmasterkas.Size = New System.Drawing.Size(100, 61)
+        Me.clbmasterkas.Size = New System.Drawing.Size(100, 52)
         Me.clbmasterkas.TabIndex = 17
         '
         'cbmasterkas
@@ -1277,7 +1277,7 @@ Partial Class fuser
         Me.cbmasterkas.Location = New System.Drawing.Point(301, 8)
         Me.cbmasterkas.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmasterkas.Name = "cbmasterkas"
-        Me.cbmasterkas.Size = New System.Drawing.Size(103, 22)
+        Me.cbmasterkas.Size = New System.Drawing.Size(124, 28)
         Me.cbmasterkas.TabIndex = 16
         Me.cbmasterkas.Text = "Master Kas"
         Me.cbmasterkas.UseVisualStyleBackColor = True
@@ -1292,7 +1292,7 @@ Partial Class fuser
         Me.clbmastersupplier.Margin = New System.Windows.Forms.Padding(4)
         Me.clbmastersupplier.Name = "clbmastersupplier"
         Me.clbmastersupplier.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmastersupplier.Size = New System.Drawing.Size(100, 61)
+        Me.clbmastersupplier.Size = New System.Drawing.Size(100, 52)
         Me.clbmastersupplier.TabIndex = 15
         '
         'cbmastersupplier
@@ -1301,7 +1301,7 @@ Partial Class fuser
         Me.cbmastersupplier.Location = New System.Drawing.Point(150, 102)
         Me.cbmastersupplier.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmastersupplier.Name = "cbmastersupplier"
-        Me.cbmastersupplier.Size = New System.Drawing.Size(130, 22)
+        Me.cbmastersupplier.Size = New System.Drawing.Size(163, 28)
         Me.cbmastersupplier.TabIndex = 14
         Me.cbmastersupplier.Text = "Master Supplier"
         Me.cbmastersupplier.UseVisualStyleBackColor = True
@@ -1316,7 +1316,7 @@ Partial Class fuser
         Me.clbmasterpelanggan.Margin = New System.Windows.Forms.Padding(4)
         Me.clbmasterpelanggan.Name = "clbmasterpelanggan"
         Me.clbmasterpelanggan.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmasterpelanggan.Size = New System.Drawing.Size(100, 61)
+        Me.clbmasterpelanggan.Size = New System.Drawing.Size(100, 52)
         Me.clbmasterpelanggan.TabIndex = 13
         '
         'cbmasterpelanggan
@@ -1325,7 +1325,7 @@ Partial Class fuser
         Me.cbmasterpelanggan.Location = New System.Drawing.Point(150, 8)
         Me.cbmasterpelanggan.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmasterpelanggan.Name = "cbmasterpelanggan"
-        Me.cbmasterpelanggan.Size = New System.Drawing.Size(146, 22)
+        Me.cbmasterpelanggan.Size = New System.Drawing.Size(184, 28)
         Me.cbmasterpelanggan.TabIndex = 12
         Me.cbmasterpelanggan.Text = "Master Pelanggan"
         Me.cbmasterpelanggan.UseVisualStyleBackColor = True
@@ -1340,7 +1340,7 @@ Partial Class fuser
         Me.clbmastergudang.Margin = New System.Windows.Forms.Padding(4)
         Me.clbmastergudang.Name = "clbmastergudang"
         Me.clbmastergudang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmastergudang.Size = New System.Drawing.Size(100, 61)
+        Me.clbmastergudang.Size = New System.Drawing.Size(100, 52)
         Me.clbmastergudang.TabIndex = 11
         '
         'cbmastergudang
@@ -1349,7 +1349,7 @@ Partial Class fuser
         Me.cbmastergudang.Location = New System.Drawing.Point(8, 201)
         Me.cbmastergudang.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmastergudang.Name = "cbmastergudang"
-        Me.cbmastergudang.Size = New System.Drawing.Size(129, 22)
+        Me.cbmastergudang.Size = New System.Drawing.Size(161, 28)
         Me.cbmastergudang.TabIndex = 10
         Me.cbmastergudang.Text = "Master Gudang"
         Me.cbmastergudang.UseVisualStyleBackColor = True
@@ -1364,7 +1364,7 @@ Partial Class fuser
         Me.clbmasterbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.clbmasterbarang.Name = "clbmasterbarang"
         Me.clbmasterbarang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbmasterbarang.Size = New System.Drawing.Size(100, 61)
+        Me.clbmasterbarang.Size = New System.Drawing.Size(100, 52)
         Me.clbmasterbarang.TabIndex = 9
         '
         'cbmasterbarang
@@ -1373,7 +1373,7 @@ Partial Class fuser
         Me.cbmasterbarang.Location = New System.Drawing.Point(8, 8)
         Me.cbmasterbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.cbmasterbarang.Name = "cbmasterbarang"
-        Me.cbmasterbarang.Size = New System.Drawing.Size(124, 22)
+        Me.cbmasterbarang.Size = New System.Drawing.Size(153, 28)
         Me.cbmasterbarang.TabIndex = 8
         Me.cbmasterbarang.Text = "Master Barang"
         Me.cbmasterbarang.UseVisualStyleBackColor = True
@@ -1387,7 +1387,7 @@ Partial Class fuser
         Me.TabControl.Controls.Add(Me.ChartTab)
         Me.TabControl.Controls.Add(Me.FeatureTab)
         Me.TabControl.Controls.Add(Me.SettingTab)
-        Me.TabControl.Location = New System.Drawing.Point(13, 387)
+        Me.TabControl.Location = New System.Drawing.Point(14, 387)
         Me.TabControl.Margin = New System.Windows.Forms.Padding(4)
         Me.TabControl.Name = "TabControl"
         Me.TabControl.SelectedIndex = 0
@@ -1417,11 +1417,11 @@ Partial Class fuser
         Me.MasterTab.Controls.Add(Me.cbmasterreksupp)
         Me.MasterTab.Controls.Add(Me.clbmasterreksupp)
         Me.MasterTab.Controls.Add(Me.cbmasterrekplng)
-        Me.MasterTab.Location = New System.Drawing.Point(4, 27)
+        Me.MasterTab.Location = New System.Drawing.Point(4, 33)
         Me.MasterTab.Margin = New System.Windows.Forms.Padding(4)
         Me.MasterTab.Name = "MasterTab"
         Me.MasterTab.Padding = New System.Windows.Forms.Padding(4)
-        Me.MasterTab.Size = New System.Drawing.Size(1002, 344)
+        Me.MasterTab.Size = New System.Drawing.Size(1002, 338)
         Me.MasterTab.TabIndex = 0
         Me.MasterTab.Text = "Master"
         '
@@ -1444,11 +1444,11 @@ Partial Class fuser
         Me.TransaksiTab.Controls.Add(Me.clbbarangmasuk)
         Me.TransaksiTab.Controls.Add(Me.cbtransferbarang)
         Me.TransaksiTab.Controls.Add(Me.clbtransferbarang)
-        Me.TransaksiTab.Location = New System.Drawing.Point(4, 27)
+        Me.TransaksiTab.Location = New System.Drawing.Point(4, 33)
         Me.TransaksiTab.Margin = New System.Windows.Forms.Padding(4)
         Me.TransaksiTab.Name = "TransaksiTab"
         Me.TransaksiTab.Padding = New System.Windows.Forms.Padding(4)
-        Me.TransaksiTab.Size = New System.Drawing.Size(1002, 344)
+        Me.TransaksiTab.Size = New System.Drawing.Size(1002, 338)
         Me.TransaksiTab.TabIndex = 1
         Me.TransaksiTab.Text = "Transaksi"
         '
@@ -1458,7 +1458,7 @@ Partial Class fuser
         Me.cbpenyesuaianstok.Location = New System.Drawing.Point(442, 111)
         Me.cbpenyesuaianstok.Margin = New System.Windows.Forms.Padding(4)
         Me.cbpenyesuaianstok.Name = "cbpenyesuaianstok"
-        Me.cbpenyesuaianstok.Size = New System.Drawing.Size(146, 22)
+        Me.cbpenyesuaianstok.Size = New System.Drawing.Size(182, 28)
         Me.cbpenyesuaianstok.TabIndex = 80
         Me.cbpenyesuaianstok.Text = "Penyesuaian Stok"
         Me.cbpenyesuaianstok.UseVisualStyleBackColor = True
@@ -1473,7 +1473,7 @@ Partial Class fuser
         Me.clbpenyesuaianstok.Margin = New System.Windows.Forms.Padding(4)
         Me.clbpenyesuaianstok.Name = "clbpenyesuaianstok"
         Me.clbpenyesuaianstok.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbpenyesuaianstok.Size = New System.Drawing.Size(100, 61)
+        Me.clbpenyesuaianstok.Size = New System.Drawing.Size(100, 52)
         Me.clbpenyesuaianstok.TabIndex = 81
         '
         'AdministrasiTab
@@ -1489,9 +1489,9 @@ Partial Class fuser
         Me.AdministrasiTab.Controls.Add(Me.cbakunkeluar)
         Me.AdministrasiTab.Controls.Add(Me.clblunasutang)
         Me.AdministrasiTab.Controls.Add(Me.cblunasutang)
-        Me.AdministrasiTab.Location = New System.Drawing.Point(4, 27)
+        Me.AdministrasiTab.Location = New System.Drawing.Point(4, 33)
         Me.AdministrasiTab.Name = "AdministrasiTab"
-        Me.AdministrasiTab.Size = New System.Drawing.Size(1002, 344)
+        Me.AdministrasiTab.Size = New System.Drawing.Size(1002, 338)
         Me.AdministrasiTab.TabIndex = 2
         Me.AdministrasiTab.Text = "Administrasi"
         '
@@ -1540,9 +1540,9 @@ Partial Class fuser
         Me.LaporanTab.Controls.Add(Me.clblaputang)
         Me.LaporanTab.Controls.Add(Me.cblappiutang)
         Me.LaporanTab.Controls.Add(Me.clblappiutang)
-        Me.LaporanTab.Location = New System.Drawing.Point(4, 27)
+        Me.LaporanTab.Location = New System.Drawing.Point(4, 33)
         Me.LaporanTab.Name = "LaporanTab"
-        Me.LaporanTab.Size = New System.Drawing.Size(1002, 344)
+        Me.LaporanTab.Size = New System.Drawing.Size(1002, 338)
         Me.LaporanTab.TabIndex = 3
         Me.LaporanTab.Text = "Laporan"
         '
@@ -1556,7 +1556,7 @@ Partial Class fuser
         Me.clblaprekapanharian.Margin = New System.Windows.Forms.Padding(4)
         Me.clblaprekapanharian.Name = "clblaprekapanharian"
         Me.clblaprekapanharian.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblaprekapanharian.Size = New System.Drawing.Size(134, 42)
+        Me.clblaprekapanharian.Size = New System.Drawing.Size(134, 28)
         Me.clblaprekapanharian.TabIndex = 125
         '
         'cblaprekapanharian
@@ -1565,7 +1565,7 @@ Partial Class fuser
         Me.cblaprekapanharian.Location = New System.Drawing.Point(832, 13)
         Me.cblaprekapanharian.Margin = New System.Windows.Forms.Padding(4)
         Me.cblaprekapanharian.Name = "cblaprekapanharian"
-        Me.cblaprekapanharian.Size = New System.Drawing.Size(165, 22)
+        Me.cblaprekapanharian.Size = New System.Drawing.Size(208, 28)
         Me.cblaprekapanharian.TabIndex = 124
         Me.cblaprekapanharian.Text = "Lap. Rekapan Harian"
         Me.cblaprekapanharian.UseVisualStyleBackColor = True
@@ -1580,7 +1580,7 @@ Partial Class fuser
         Me.clblaplabarugi.Margin = New System.Windows.Forms.Padding(4)
         Me.clblaplabarugi.Name = "clblaplabarugi"
         Me.clblaplabarugi.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblaplabarugi.Size = New System.Drawing.Size(134, 42)
+        Me.clblaplabarugi.Size = New System.Drawing.Size(134, 28)
         Me.clblaplabarugi.TabIndex = 123
         '
         'cblaplabarugi
@@ -1589,7 +1589,7 @@ Partial Class fuser
         Me.cblaplabarugi.Location = New System.Drawing.Point(664, 253)
         Me.cblaplabarugi.Margin = New System.Windows.Forms.Padding(4)
         Me.cblaplabarugi.Name = "cblaplabarugi"
-        Me.cblaplabarugi.Size = New System.Drawing.Size(125, 22)
+        Me.cblaplabarugi.Size = New System.Drawing.Size(158, 28)
         Me.cblaplabarugi.TabIndex = 122
         Me.cblaplabarugi.Text = "Lap. Laba Rugi"
         Me.cblaplabarugi.UseVisualStyleBackColor = True
@@ -1604,7 +1604,7 @@ Partial Class fuser
         Me.clblappenjualanpajak.Margin = New System.Windows.Forms.Padding(4)
         Me.clblappenjualanpajak.Name = "clblappenjualanpajak"
         Me.clblappenjualanpajak.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblappenjualanpajak.Size = New System.Drawing.Size(134, 42)
+        Me.clblappenjualanpajak.Size = New System.Drawing.Size(134, 28)
         Me.clblappenjualanpajak.TabIndex = 121
         '
         'cblappenjualanpajak
@@ -1613,7 +1613,7 @@ Partial Class fuser
         Me.cblappenjualanpajak.Location = New System.Drawing.Point(8, 253)
         Me.cblappenjualanpajak.Margin = New System.Windows.Forms.Padding(4)
         Me.cblappenjualanpajak.Name = "cblappenjualanpajak"
-        Me.cblappenjualanpajak.Size = New System.Drawing.Size(164, 22)
+        Me.cblappenjualanpajak.Size = New System.Drawing.Size(207, 28)
         Me.cblappenjualanpajak.TabIndex = 120
         Me.cblappenjualanpajak.Text = "Lap. Penjualan Pajak"
         Me.cblappenjualanpajak.UseVisualStyleBackColor = True
@@ -1628,7 +1628,7 @@ Partial Class fuser
         Me.clblapmutasibarang.Margin = New System.Windows.Forms.Padding(4)
         Me.clblapmutasibarang.Name = "clblapmutasibarang"
         Me.clblapmutasibarang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblapmutasibarang.Size = New System.Drawing.Size(134, 42)
+        Me.clblapmutasibarang.Size = New System.Drawing.Size(134, 28)
         Me.clblapmutasibarang.TabIndex = 119
         '
         'cblapmutasibarang
@@ -1637,7 +1637,7 @@ Partial Class fuser
         Me.cblapmutasibarang.Location = New System.Drawing.Point(664, 93)
         Me.cblapmutasibarang.Margin = New System.Windows.Forms.Padding(4)
         Me.cblapmutasibarang.Name = "cblapmutasibarang"
-        Me.cblapmutasibarang.Size = New System.Drawing.Size(154, 22)
+        Me.cblapmutasibarang.Size = New System.Drawing.Size(192, 28)
         Me.cblapmutasibarang.TabIndex = 118
         Me.cblapmutasibarang.Text = "Lap. Mutasi Barang"
         Me.cblapmutasibarang.UseVisualStyleBackColor = True
@@ -1652,7 +1652,7 @@ Partial Class fuser
         Me.clblappenyesuaianstok.Margin = New System.Windows.Forms.Padding(4)
         Me.clblappenyesuaianstok.Name = "clblappenyesuaianstok"
         Me.clblappenyesuaianstok.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clblappenyesuaianstok.Size = New System.Drawing.Size(134, 42)
+        Me.clblappenyesuaianstok.Size = New System.Drawing.Size(134, 28)
         Me.clblappenyesuaianstok.TabIndex = 117
         '
         'cblappenyesuaianstok
@@ -1661,7 +1661,7 @@ Partial Class fuser
         Me.cblappenyesuaianstok.Location = New System.Drawing.Point(664, 173)
         Me.cblappenyesuaianstok.Margin = New System.Windows.Forms.Padding(4)
         Me.cblappenyesuaianstok.Name = "cblappenyesuaianstok"
-        Me.cblappenyesuaianstok.Size = New System.Drawing.Size(178, 22)
+        Me.cblappenyesuaianstok.Size = New System.Drawing.Size(223, 28)
         Me.cblappenyesuaianstok.TabIndex = 116
         Me.cblappenyesuaianstok.Text = "Lap. Penyesuaian Stok"
         Me.cblappenyesuaianstok.UseVisualStyleBackColor = True
@@ -1681,10 +1681,10 @@ Partial Class fuser
         Me.ChartTab.Controls.Add(Me.cbchartpenjualan)
         Me.ChartTab.Controls.Add(Me.cbchartpembelian)
         Me.ChartTab.Controls.Add(Me.clbchartpembelian)
-        Me.ChartTab.Location = New System.Drawing.Point(4, 27)
+        Me.ChartTab.Location = New System.Drawing.Point(4, 33)
         Me.ChartTab.Name = "ChartTab"
         Me.ChartTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.ChartTab.Size = New System.Drawing.Size(1002, 344)
+        Me.ChartTab.Size = New System.Drawing.Size(1002, 338)
         Me.ChartTab.TabIndex = 4
         Me.ChartTab.Text = "Chart"
         '
@@ -1698,7 +1698,7 @@ Partial Class fuser
         Me.clbchartakunkeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.clbchartakunkeluar.Name = "clbchartakunkeluar"
         Me.clbchartakunkeluar.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbchartakunkeluar.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartakunkeluar.Size = New System.Drawing.Size(134, 28)
         Me.clbchartakunkeluar.TabIndex = 99
         '
         'cbchartakunmasuk
@@ -1707,7 +1707,7 @@ Partial Class fuser
         Me.cbchartakunmasuk.Location = New System.Drawing.Point(180, 16)
         Me.cbchartakunmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.cbchartakunmasuk.Name = "cbchartakunmasuk"
-        Me.cbchartakunmasuk.Size = New System.Drawing.Size(149, 22)
+        Me.cbchartakunmasuk.Size = New System.Drawing.Size(185, 28)
         Me.cbchartakunmasuk.TabIndex = 96
         Me.cbchartakunmasuk.Text = "Chart Akun Masuk"
         Me.cbchartakunmasuk.UseVisualStyleBackColor = True
@@ -1722,7 +1722,7 @@ Partial Class fuser
         Me.clbchartakunmasuk.Margin = New System.Windows.Forms.Padding(4)
         Me.clbchartakunmasuk.Name = "clbchartakunmasuk"
         Me.clbchartakunmasuk.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbchartakunmasuk.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartakunmasuk.Size = New System.Drawing.Size(134, 28)
         Me.clbchartakunmasuk.TabIndex = 97
         '
         'cbchartakunkeluar
@@ -1731,7 +1731,7 @@ Partial Class fuser
         Me.cbchartakunkeluar.Location = New System.Drawing.Point(180, 96)
         Me.cbchartakunkeluar.Margin = New System.Windows.Forms.Padding(4)
         Me.cbchartakunkeluar.Name = "cbchartakunkeluar"
-        Me.cbchartakunkeluar.Size = New System.Drawing.Size(146, 22)
+        Me.cbchartakunkeluar.Size = New System.Drawing.Size(184, 28)
         Me.cbchartakunkeluar.TabIndex = 98
         Me.cbchartakunkeluar.Text = "Chart Akun Keluar"
         Me.cbchartakunkeluar.UseVisualStyleBackColor = True
@@ -1742,7 +1742,7 @@ Partial Class fuser
         Me.cbchartlunasutang.Location = New System.Drawing.Point(18, 176)
         Me.cbchartlunasutang.Margin = New System.Windows.Forms.Padding(4)
         Me.cbchartlunasutang.Name = "cbchartlunasutang"
-        Me.cbchartlunasutang.Size = New System.Drawing.Size(150, 22)
+        Me.cbchartlunasutang.Size = New System.Drawing.Size(186, 28)
         Me.cbchartlunasutang.TabIndex = 60
         Me.cbchartlunasutang.Text = "Chart Lunas Utang"
         Me.cbchartlunasutang.UseVisualStyleBackColor = True
@@ -1757,7 +1757,7 @@ Partial Class fuser
         Me.clbchartlunasutang.Margin = New System.Windows.Forms.Padding(4)
         Me.clbchartlunasutang.Name = "clbchartlunasutang"
         Me.clbchartlunasutang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbchartlunasutang.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartlunasutang.Size = New System.Drawing.Size(134, 28)
         Me.clbchartlunasutang.TabIndex = 61
         '
         'cbchartlunaspiutang
@@ -1766,7 +1766,7 @@ Partial Class fuser
         Me.cbchartlunaspiutang.Location = New System.Drawing.Point(18, 256)
         Me.cbchartlunaspiutang.Margin = New System.Windows.Forms.Padding(4)
         Me.cbchartlunaspiutang.Name = "cbchartlunaspiutang"
-        Me.cbchartlunaspiutang.Size = New System.Drawing.Size(160, 22)
+        Me.cbchartlunaspiutang.Size = New System.Drawing.Size(200, 28)
         Me.cbchartlunaspiutang.TabIndex = 62
         Me.cbchartlunaspiutang.Text = "Chart Lunas Piutang"
         Me.cbchartlunaspiutang.UseVisualStyleBackColor = True
@@ -1781,7 +1781,7 @@ Partial Class fuser
         Me.clbchartlunaspiutang.Margin = New System.Windows.Forms.Padding(4)
         Me.clbchartlunaspiutang.Name = "clbchartlunaspiutang"
         Me.clbchartlunaspiutang.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbchartlunaspiutang.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartlunaspiutang.Size = New System.Drawing.Size(134, 28)
         Me.clbchartlunaspiutang.TabIndex = 63
         '
         'clbchartpenjualan
@@ -1794,7 +1794,7 @@ Partial Class fuser
         Me.clbchartpenjualan.Margin = New System.Windows.Forms.Padding(4)
         Me.clbchartpenjualan.Name = "clbchartpenjualan"
         Me.clbchartpenjualan.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbchartpenjualan.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartpenjualan.Size = New System.Drawing.Size(134, 28)
         Me.clbchartpenjualan.TabIndex = 57
         '
         'cbchartpenjualan
@@ -1803,7 +1803,7 @@ Partial Class fuser
         Me.cbchartpenjualan.Location = New System.Drawing.Point(18, 96)
         Me.cbchartpenjualan.Margin = New System.Windows.Forms.Padding(4)
         Me.cbchartpenjualan.Name = "cbchartpenjualan"
-        Me.cbchartpenjualan.Size = New System.Drawing.Size(131, 22)
+        Me.cbchartpenjualan.Size = New System.Drawing.Size(165, 28)
         Me.cbchartpenjualan.TabIndex = 56
         Me.cbchartpenjualan.Text = "Chart Penjualan"
         Me.cbchartpenjualan.UseVisualStyleBackColor = True
@@ -1814,7 +1814,7 @@ Partial Class fuser
         Me.cbchartpembelian.Location = New System.Drawing.Point(18, 16)
         Me.cbchartpembelian.Margin = New System.Windows.Forms.Padding(4)
         Me.cbchartpembelian.Name = "cbchartpembelian"
-        Me.cbchartpembelian.Size = New System.Drawing.Size(136, 22)
+        Me.cbchartpembelian.Size = New System.Drawing.Size(171, 28)
         Me.cbchartpembelian.TabIndex = 58
         Me.cbchartpembelian.Text = "Chart Pembelian"
         Me.cbchartpembelian.UseVisualStyleBackColor = True
@@ -1829,7 +1829,7 @@ Partial Class fuser
         Me.clbchartpembelian.Margin = New System.Windows.Forms.Padding(4)
         Me.clbchartpembelian.Name = "clbchartpembelian"
         Me.clbchartpembelian.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.clbchartpembelian.Size = New System.Drawing.Size(134, 42)
+        Me.clbchartpembelian.Size = New System.Drawing.Size(134, 28)
         Me.clbchartpembelian.TabIndex = 59
         '
         'FeatureTab
@@ -1837,10 +1837,10 @@ Partial Class fuser
         Me.FeatureTab.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.FeatureTab.Controls.Add(Me.cbbarcodegenerator)
         Me.FeatureTab.Controls.Add(Me.cbkalkulasiexpedisi)
-        Me.FeatureTab.Location = New System.Drawing.Point(4, 27)
+        Me.FeatureTab.Location = New System.Drawing.Point(4, 33)
         Me.FeatureTab.Name = "FeatureTab"
         Me.FeatureTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.FeatureTab.Size = New System.Drawing.Size(1002, 344)
+        Me.FeatureTab.Size = New System.Drawing.Size(1002, 338)
         Me.FeatureTab.TabIndex = 6
         Me.FeatureTab.Text = "Feature"
         '
@@ -1850,7 +1850,7 @@ Partial Class fuser
         Me.cbbarcodegenerator.Location = New System.Drawing.Point(11, 48)
         Me.cbbarcodegenerator.Margin = New System.Windows.Forms.Padding(4)
         Me.cbbarcodegenerator.Name = "cbbarcodegenerator"
-        Me.cbbarcodegenerator.Size = New System.Drawing.Size(154, 22)
+        Me.cbbarcodegenerator.Size = New System.Drawing.Size(192, 28)
         Me.cbbarcodegenerator.TabIndex = 103
         Me.cbbarcodegenerator.Text = "Barcode Generator"
         Me.cbbarcodegenerator.UseVisualStyleBackColor = True
@@ -1861,7 +1861,7 @@ Partial Class fuser
         Me.cbkalkulasiexpedisi.Location = New System.Drawing.Point(11, 18)
         Me.cbkalkulasiexpedisi.Margin = New System.Windows.Forms.Padding(4)
         Me.cbkalkulasiexpedisi.Name = "cbkalkulasiexpedisi"
-        Me.cbkalkulasiexpedisi.Size = New System.Drawing.Size(145, 22)
+        Me.cbkalkulasiexpedisi.Size = New System.Drawing.Size(183, 28)
         Me.cbkalkulasiexpedisi.TabIndex = 104
         Me.cbkalkulasiexpedisi.Text = "Kalkulasi Expedisi"
         Me.cbkalkulasiexpedisi.UseVisualStyleBackColor = True
@@ -1873,10 +1873,10 @@ Partial Class fuser
         Me.SettingTab.Controls.Add(Me.cbpengaturan)
         Me.SettingTab.Controls.Add(Me.cbprinter)
         Me.SettingTab.Controls.Add(Me.cbinfoperusahaan)
-        Me.SettingTab.Location = New System.Drawing.Point(4, 27)
+        Me.SettingTab.Location = New System.Drawing.Point(4, 33)
         Me.SettingTab.Name = "SettingTab"
         Me.SettingTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.SettingTab.Size = New System.Drawing.Size(1002, 344)
+        Me.SettingTab.Size = New System.Drawing.Size(1002, 338)
         Me.SettingTab.TabIndex = 5
         Me.SettingTab.Text = "Setting"
         '
@@ -1886,7 +1886,7 @@ Partial Class fuser
         Me.cbbackupdatabase.Location = New System.Drawing.Point(17, 77)
         Me.cbbackupdatabase.Margin = New System.Windows.Forms.Padding(4)
         Me.cbbackupdatabase.Name = "cbbackupdatabase"
-        Me.cbbackupdatabase.Size = New System.Drawing.Size(144, 22)
+        Me.cbbackupdatabase.Size = New System.Drawing.Size(178, 28)
         Me.cbbackupdatabase.TabIndex = 104
         Me.cbbackupdatabase.Text = "Backup Database"
         Me.cbbackupdatabase.UseVisualStyleBackColor = True
@@ -1897,7 +1897,7 @@ Partial Class fuser
         Me.cbpengaturan.Location = New System.Drawing.Point(18, 107)
         Me.cbpengaturan.Margin = New System.Windows.Forms.Padding(4)
         Me.cbpengaturan.Name = "cbpengaturan"
-        Me.cbpengaturan.Size = New System.Drawing.Size(102, 22)
+        Me.cbpengaturan.Size = New System.Drawing.Size(129, 28)
         Me.cbpengaturan.TabIndex = 106
         Me.cbpengaturan.Text = "Pengaturan"
         Me.cbpengaturan.UseVisualStyleBackColor = True
@@ -1908,7 +1908,7 @@ Partial Class fuser
         Me.cbprinter.Location = New System.Drawing.Point(17, 47)
         Me.cbprinter.Margin = New System.Windows.Forms.Padding(4)
         Me.cbprinter.Name = "cbprinter"
-        Me.cbprinter.Size = New System.Drawing.Size(70, 22)
+        Me.cbprinter.Size = New System.Drawing.Size(86, 28)
         Me.cbprinter.TabIndex = 100
         Me.cbprinter.Text = "Printer"
         Me.cbprinter.UseVisualStyleBackColor = True
@@ -1919,7 +1919,7 @@ Partial Class fuser
         Me.cbinfoperusahaan.Location = New System.Drawing.Point(17, 17)
         Me.cbinfoperusahaan.Margin = New System.Windows.Forms.Padding(4)
         Me.cbinfoperusahaan.Name = "cbinfoperusahaan"
-        Me.cbinfoperusahaan.Size = New System.Drawing.Size(134, 22)
+        Me.cbinfoperusahaan.Size = New System.Drawing.Size(168, 28)
         Me.cbinfoperusahaan.TabIndex = 102
         Me.cbinfoperusahaan.Text = "Info Perusahaan"
         Me.cbinfoperusahaan.UseVisualStyleBackColor = True
@@ -1931,7 +1931,7 @@ Partial Class fuser
         Me.Label9.Location = New System.Drawing.Point(8, 9)
         Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(128, 29)
+        Me.Label9.Size = New System.Drawing.Size(156, 36)
         Me.Label9.TabIndex = 41
         Me.Label9.Text = "Data User"
         '
@@ -1941,7 +1941,7 @@ Partial Class fuser
         Me.cbauth.Location = New System.Drawing.Point(363, 128)
         Me.cbauth.Margin = New System.Windows.Forms.Padding(4)
         Me.cbauth.Name = "cbauth"
-        Me.cbauth.Size = New System.Drawing.Size(56, 22)
+        Me.cbauth.Size = New System.Drawing.Size(71, 28)
         Me.cbauth.TabIndex = 104
         Me.cbauth.Text = "Auth"
         Me.cbauth.UseVisualStyleBackColor = True
@@ -1952,7 +1952,7 @@ Partial Class fuser
         Me.txtmaxprint.Margin = New System.Windows.Forms.Padding(4)
         Me.txtmaxprint.MaxLength = 3
         Me.txtmaxprint.Name = "txtmaxprint"
-        Me.txtmaxprint.Size = New System.Drawing.Size(51, 24)
+        Me.txtmaxprint.Size = New System.Drawing.Size(51, 29)
         Me.txtmaxprint.TabIndex = 105
         Me.txtmaxprint.Text = "1"
         '
@@ -1963,7 +1963,7 @@ Partial Class fuser
         Me.Label10.Location = New System.Drawing.Point(284, 161)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(74, 20)
+        Me.Label10.Size = New System.Drawing.Size(94, 25)
         Me.Label10.TabIndex = 106
         Me.Label10.Text = "Max Print"
         '
@@ -1991,7 +1991,7 @@ Partial Class fuser
         '
         'fuser
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1039, 775)

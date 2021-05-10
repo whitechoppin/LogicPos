@@ -7,7 +7,7 @@ Public Class fpassword
 
     Dim kodeuser As String
     Dim kodepassword As String
-    Public kodetabel, kodemode, kodejabatan As String
+    Public kodetabel, kodejabatan As String
     Dim authuser As String
     Dim statuscode As Boolean = False
 
@@ -358,7 +358,7 @@ Public Class fpassword
         dr = cmmd.ExecuteReader()
         dr.Read()
 
-        kodeuser = dr("kode_user")
+        kodeuserrequest = dr("kode_user")
         namauserrequest = dr("nama_user")
         emailuserrequest = dr("email_user")
         jabatanuserrequest = dr("jabatan_user")

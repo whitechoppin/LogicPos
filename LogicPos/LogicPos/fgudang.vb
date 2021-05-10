@@ -26,7 +26,6 @@ Public Class fgudang
         CuRHeight = Me.Height
         CuRWidth = Me.Width
     End Sub
-
     '=======================
 
     Private Sub fgudang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -212,7 +211,7 @@ Public Class fgudang
                 End If
             End If
         Else
-            MsgBox(True)
+            MsgBox("Tidak ada akses")
         End If
     End Sub
     Sub simpan()
