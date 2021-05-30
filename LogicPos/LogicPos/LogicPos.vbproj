@@ -1583,6 +1583,9 @@
     <EmbeddedResource Include="fprinter.resx">
       <DependentUpon>fprinter.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fsetting.resx">
+      <DependentUpon>fsetting.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ftransferkas.resx">
       <DependentUpon>ftransferkas.vb</DependentUpon>
     </EmbeddedResource>

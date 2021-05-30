@@ -71,7 +71,7 @@
                         'MsgBox("bagian 3")
                     Else
                         freturbeli.GridView1.SetRowCellValue(lokasi1, "qty", freturbeli.GridView1.GetRowCellValue(lokasi1, "qty") - banyak_retur)
-                        freturbeli.GridView1.SetRowCellValue(lokasi1, "subtototal", (freturbeli.GridView1.GetRowCellValue(lokasi1, "qty") - banyak_retur) * harga_beli)
+                        freturbeli.GridView1.SetRowCellValue(lokasi1, "subtotal", (freturbeli.GridView1.GetRowCellValue(lokasi1, "qty") - banyak_retur) * harga_beli)
                         lokasi1 = -1
                         'MsgBox("bagian 4")
                     End If
