@@ -53,7 +53,7 @@ Partial Class flaporanpembelian
         Me.Label1.Location = New System.Drawing.Point(258, 60)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(119, 16)
+        Me.Label1.Size = New System.Drawing.Size(141, 20)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Sampai Dengan"
         '
@@ -62,7 +62,7 @@ Partial Class flaporanpembelian
         Me.DateTimePicker2.Location = New System.Drawing.Point(384, 56)
         Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(231, 24)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(231, 29)
         Me.DateTimePicker2.TabIndex = 3
         '
         'DateTimePicker1
@@ -70,7 +70,7 @@ Partial Class flaporanpembelian
         Me.DateTimePicker1.Location = New System.Drawing.Point(19, 56)
         Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(231, 24)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(231, 29)
         Me.DateTimePicker1.TabIndex = 2
         '
         'btnrekap
@@ -128,7 +128,7 @@ Partial Class flaporanpembelian
         '
         Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9})
         Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "qty", Me.GridColumn5, "")})
+        Me.GridView1.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "qty", Me.GridColumn5, ""), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "subtotal", Me.GridColumn8, "{0:n0}")})
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsFind.AlwaysVisible = True
         '
@@ -202,7 +202,7 @@ Partial Class flaporanpembelian
         Me.Label2.Location = New System.Drawing.Point(13, 9)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(264, 31)
+        Me.Label2.Size = New System.Drawing.Size(330, 39)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Laporan Pembelian"
         '
@@ -218,7 +218,7 @@ Partial Class flaporanpembelian
         '
         'flaporanpembelian
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1213, 696)
