@@ -1080,7 +1080,7 @@ Public Class flunaspiutang
             MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
         Else
             Call koneksi()
-            sql = "SELECT kode_lunas FROM tb_pelunasan_piutang WHERE id = '" & txtgolunas.Text & "'"
+            sql = "SELECT id FROM tb_pelunasan_piutang WHERE id = '" & txtgolunas.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then

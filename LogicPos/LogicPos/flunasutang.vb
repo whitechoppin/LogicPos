@@ -161,7 +161,7 @@ Public Class flunasutang
     End Function
     Private Sub prevnumber(previousnumber As String)
         Call koneksi()
-        sql = "SELECT kode_lunas FROM tb_pelunasan_utang WHERE date_created < (SELECT date_created FROM tb_pelunasan_utang WHERE kode_lunas = '" + previousnumber + "') ORDER BY date_created DESC LIMIT 1"
+        sql = "SELECT id FROM tb_pelunasan_utang WHERE date_created < (SELECT date_created FROM tb_pelunasan_utang WHERE id = '" + previousnumber + "') ORDER BY date_created DESC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -184,7 +184,7 @@ Public Class flunasutang
     End Sub
     Private Sub nextnumber(nextingnumber As String)
         Call koneksi()
-        sql = "SELECT kode_lunas FROM tb_pelunasan_utang WHERE date_created > (SELECT date_created FROM tb_pelunasan_utang WHERE kode_lunas = '" + nextingnumber + "') ORDER BY date_created ASC LIMIT 1"
+        sql = "SELECT id FROM tb_pelunasan_utang WHERE date_created > (SELECT date_created FROM tb_pelunasan_utang WHERE id = '" + nextingnumber + "') ORDER BY date_created ASC LIMIT 1"
         Dim pesan As String = ""
         Try
             cmmd = New OdbcCommand(sql, cnn)
@@ -1078,7 +1078,7 @@ Public Class flunasutang
             MsgBox("Transaksi Tidak Ditemukan !", MsgBoxStyle.Information, "Gagal")
         Else
             Call koneksi()
-            sql = "SELECT kode_lunas FROM tb_pelunasan_utang WHERE id = '" & txtgolunas.Text & "'"
+            sql = "SELECT id FROM tb_pelunasan_utang WHERE id = '" & txtgolunas.Text & "'"
             cmmd = New OdbcCommand(sql, cnn)
             dr = cmmd.ExecuteReader
             If dr.HasRows Then
